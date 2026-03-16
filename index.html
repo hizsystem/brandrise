@@ -36,11 +36,10 @@ body{font-family:'Noto Sans KR',sans-serif;background:#0a0a0a;color:#f8f8f8;over
   display:flex;flex-direction:column;justify-content:center;
   padding:60px 80px;overflow-y:auto;overflow-x:hidden;
   opacity:0;
-  transition:opacity 0.4s ease;
   pointer-events:none;z-index:0;
 }
 .slide.active{opacity:1;pointer-events:auto;z-index:2}
-.slide.prev{opacity:1;z-index:1;pointer-events:none}
+.slide.entering{opacity:0;z-index:3;pointer-events:none}
 
 /* ============ TYPOGRAPHY ============ */
 .mono{font-family:var(--mono)}
@@ -562,7 +561,7 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
 </div>
 
 <!-- ==================== SLIDE 9: SCALE-UP TARGET ==================== -->
-<div class="slide" data-slide="9" style="background:var(--cream);color:#1a1a1a;position:relative;overflow:hidden">
+<div class="slide" data-slide="9" style="background:#F5F0E8;color:#1a1a1a;position:relative">
   <!-- HUGE watermark background -->
   <div class="mono" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:clamp(100px,14vw,180px);font-weight:900;color:var(--orange);opacity:0.06;white-space:nowrap;pointer-events:none;z-index:0;letter-spacing:8px">SCALE-UP</div>
   <div style="display:flex;align-items:center;gap:40px;flex-wrap:wrap;position:relative;z-index:1">
@@ -593,7 +592,7 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
 </div>
 
 <!-- ==================== SLIDE 10: EARLY STAGE TARGET ==================== -->
-<div class="slide" data-slide="10" style="background:#F2EDE5;color:#1a1a1a;position:relative;overflow:hidden">
+<div class="slide" data-slide="10" style="background:#F2EDE5;color:#1a1a1a;position:relative">
   <!-- HUGE watermark background -->
   <div class="mono" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:clamp(100px,14vw,180px);font-weight:900;color:var(--orange);opacity:0.06;white-space:nowrap;pointer-events:none;z-index:0;letter-spacing:8px">EARLY STAGE</div>
   <div style="position:relative;z-index:1">
@@ -944,20 +943,28 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
     isAnimating = true;
     var prev = slides[current];
     var next = slides[idx];
-    // Remove prev class from all slides
-    for(var i=0;i<total;i++) slides[i].classList.remove('prev');
     resetStagger(next);
-    // Keep previous slide visible underneath during transition
-    prev.classList.remove('active');
-    prev.classList.add('prev');
-    next.classList.add('active');
-    current = idx;
-    updateCounter();
-    triggerStagger(next);
+    // Step 1: place new slide on top, invisible
+    next.classList.add('entering');
+    next.style.opacity='0';
+    next.style.zIndex='3';
+    // Step 2: after a frame, fade new slide in
+    requestAnimationFrame(function(){
+      next.style.transition='opacity 0.4s ease';
+      next.style.opacity='1';
+    });
+    // Step 3: after fade completes, swap classes
     setTimeout(function(){
-      prev.classList.remove('prev');
+      prev.classList.remove('active');
+      prev.style.opacity='';prev.style.zIndex='';prev.style.transition='';
+      next.classList.remove('entering');
+      next.classList.add('active');
+      next.style.opacity='';next.style.zIndex='';next.style.transition='';
+      current = idx;
+      updateCounter();
+      triggerStagger(next);
       isAnimating=false;
-    },550);
+    },450);
   }
 
   window.nextSlide = function(){goTo(current+1)};
