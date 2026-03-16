@@ -6,16 +6,14 @@
 <title>brandrise — 브랜드 전략 컨설팅</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
 /* ============ RESET & BASE ============ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;overflow:hidden;font-size:16px}
-body{font-family:'Noto Sans KR',sans-serif;background:#0a0a0a;color:#f8f8f8;overflow:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Pretendard Variable','Noto Sans KR','Space Grotesk',sans-serif;background:#0a0a0a;color:#f8f8f8;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
 
-/* ============ VARIABLES ============ */
 :root{
   --orange:#E8700A;
   --amber:#F5A623;
@@ -26,25 +24,35 @@ body{font-family:'Noto Sans KR',sans-serif;background:#0a0a0a;color:#f8f8f8;over
   --sub:#bbbbbb;
   --muted:#999999;
   --mono:'Bebas Neue','Space Grotesk',monospace;
-  --body:'Noto Sans KR',sans-serif;
+  --body:'Pretendard Variable','Noto Sans KR',sans-serif;
 }
 
-/* ============ SLIDE CONTAINER ============ */
-.deck{position:relative;width:100vw;height:100vh;overflow:hidden}
-.slide{
-  position:absolute;top:0;left:0;width:100%;height:100%;
-  display:none;flex-direction:column;justify-content:center;
-  padding:60px 80px;overflow-y:auto;overflow-x:hidden;
-  pointer-events:none;
+/* ============ SECTIONS ============ */
+section{
+  padding:120px 80px;
+  max-width:1280px;
+  margin:0 auto;
+  position:relative;
 }
-.slide.active{display:flex;pointer-events:auto}
+.section-dark{background:#0a0a0a;color:#f8f8f8}
+.section-cream{background:var(--cream);color:#1a1a1a}
+.section-warmcream{background:#F2EDE5;color:#1a1a1a}
+.full-bg{max-width:100%;padding-left:0;padding-right:0}
+.full-bg > .inner{max-width:1280px;margin:0 auto;padding:0 80px}
+
+/* Divider between dark sections */
+section.section-dark + section.section-dark::before{
+  content:'';display:block;width:120px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(232,112,10,0.3),transparent);
+  margin:0 auto 80px;
+}
 
 /* ============ TYPOGRAPHY ============ */
 .mono{font-family:var(--mono)}
-h1{font-size:clamp(28px,4vw,48px);font-weight:700;line-height:1.25}
+h1{font-size:clamp(32px,4.8vw,56px);font-weight:700;line-height:1.25}
 h2{font-size:clamp(24px,3.2vw,40px);font-weight:700;line-height:1.3}
 h3{font-size:clamp(18px,2vw,24px);font-weight:600;line-height:1.4}
-p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
+p,.body-text{font-size:clamp(15px,1.1vw,18px);line-height:1.7;color:var(--sub)}
 .orange{color:var(--orange)}
 .amber{color:var(--amber)}
 .gradient-text{background:linear-gradient(135deg,var(--orange),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -57,6 +65,7 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
   color:#fff;font-size:16px;font-weight:600;font-family:var(--body);
   transition:transform .25s,box-shadow .25s;
   box-shadow:0 4px 24px rgba(232,112,10,0.35);
+  text-decoration:none;
 }
 .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(232,112,10,0.5)}
 
@@ -67,31 +76,7 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
 }
 .card-orange{background:linear-gradient(135deg,var(--orange),#d45e00);color:#fff;border:none}
 
-/* Plan card hover effect */
-/* 4D sequential animation */
-.d4-card{
-  opacity:0;
-  transform:translateY(40px) scale(0.95);
-  transition:opacity 0.6s cubic-bezier(.16,1,.3,1),transform 0.6s cubic-bezier(.16,1,.3,1);
-}
-.d4-card.d4-show{
-  opacity:1;
-  transform:translateY(0) scale(1);
-}
-.d4-card:nth-child(1){transition-delay:0s}
-.d4-card:nth-child(2){transition-delay:0.25s}
-.d4-card:nth-child(3){transition-delay:0.5s}
-.d4-card:nth-child(4){transition-delay:0.75s}
-/* Arrow between 4D cards */
-.d4-arrow{
-  opacity:0;
-  transition:opacity 0.3s ease;
-}
-.d4-arrow.d4-show{opacity:1}
-.d4-arrow:nth-of-type(1){transition-delay:0.2s}
-.d4-arrow:nth-of-type(2){transition-delay:0.45s}
-.d4-arrow:nth-of-type(3){transition-delay:0.7s}
-
+/* ============ PLAN HOVER ============ */
 .plan-hover{
   transition:all 0.4s cubic-bezier(.4,0,.2,1)!important;
   cursor:pointer;
@@ -106,43 +91,12 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
 .plan-hover:hover *{color:#fff!important}
 .plan-hover:hover .mono{color:rgba(255,255,255,0.7)!important}
 
-/* ============ STAGGER ANIMATION ============ */
-.stagger-item{opacity:0;transform:translateY(30px);transition:opacity .5s ease,transform .5s ease}
-.slide.active .stagger-item{opacity:1;transform:translateY(0)}
-.slide.active .stagger-item:nth-child(1){transition-delay:.1s}
-.slide.active .stagger-item:nth-child(2){transition-delay:.2s}
-.slide.active .stagger-item:nth-child(3){transition-delay:.25s}
-.slide.active .stagger-item:nth-child(4){transition-delay:.35s}
-.slide.active .stagger-item:nth-child(5){transition-delay:.45s}
-.slide.active .stagger-item:nth-child(6){transition-delay:.55s}
-.slide.active .stagger-item:nth-child(7){transition-delay:.6s}
-.slide.active .stagger-item:nth-child(8){transition-delay:.65s}
-
-/* ============ NAVIGATION ============ */
-.nav-float{
-  position:fixed;bottom:28px;right:28px;z-index:1000;
-  display:flex;align-items:center;gap:10px;
-  padding:10px 16px;border-radius:40px;
-  background:rgba(22,22,22,0.75);backdrop-filter:blur(16px);
-  border:1px solid rgba(255,255,255,0.08);
-  box-shadow:0 4px 20px rgba(0,0,0,0.4);
+/* ============ FADE IN ON SCROLL ============ */
+.fade-in{
+  opacity:0;transform:translateY(30px);
+  transition:opacity 0.7s ease,transform 0.7s ease;
 }
-.nav-float button{
-  width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,0.12);
-  background:rgba(255,255,255,0.06);color:#f8f8f8;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  font-size:14px;transition:background .2s;
-}
-.nav-float button:hover{background:rgba(232,112,10,0.3)}
-.nav-counter{font-family:var(--mono);font-size:13px;color:var(--sub);min-width:40px;text-align:center}
-
-/* ============ AURORA ORB ============ */
-.aurora{
-  position:absolute;width:600px;height:600px;border-radius:50%;
-  filter:blur(120px);opacity:0.18;pointer-events:none;
-}
-.aurora-1{background:radial-gradient(circle,var(--orange),transparent 70%);top:-100px;right:-100px}
-.aurora-2{background:radial-gradient(circle,var(--amber),transparent 70%);bottom:-200px;left:-100px}
+.fade-in.visible{opacity:1;transform:translateY(0)}
 
 /* ============ GRIDS ============ */
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
@@ -150,16 +104,13 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 .grid-3x2{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:20px}
 
-/* ============ PORTFOLIO IMAGE ============ */
-.port-img{
-  width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:12px;
-  transition:transform .3s;
-}
+/* ============ PORTFOLIO ============ */
+.port-img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:12px;transition:transform .3s}
 .port-item:hover .port-img{transform:scale(1.03)}
 .port-item{overflow:hidden;border-radius:12px}
 .port-caption{font-size:14px;color:var(--sub);margin-top:10px;line-height:1.5}
 
-/* ============ STAT BOX ============ */
+/* ============ STAT ============ */
 .stat-num{font-family:var(--mono);font-size:clamp(48px,6vw,80px);font-weight:700;color:var(--orange)}
 .stat-label{font-size:17px;color:var(--sub);margin-top:6px;font-weight:500}
 
@@ -169,311 +120,321 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
 .br-table td{padding:12px 18px;border-bottom:1px solid rgba(255,255,255,0.06)}
 .br-table tr:nth-child(even) td{background:rgba(255,255,255,0.02)}
 
+/* ============ TOP BUTTON ============ */
+#topBtn{
+  position:fixed;bottom:28px;right:28px;z-index:1000;
+  width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,0.12);
+  background:rgba(22,22,22,0.85);backdrop-filter:blur(16px);
+  color:#f8f8f8;cursor:pointer;font-size:13px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(0,0,0,0.4);
+  transition:background .2s,opacity .3s;
+  opacity:0;pointer-events:none;
+}
+#topBtn.show{opacity:1;pointer-events:auto}
+#topBtn:hover{background:rgba(232,112,10,0.4)}
+
+/* PDF button */
+#pdfBtn{
+  position:fixed;bottom:28px;right:86px;z-index:1000;
+  width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,0.12);
+  background:rgba(22,22,22,0.85);backdrop-filter:blur(16px);
+  color:#f8f8f8;cursor:pointer;font-size:13px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(0,0,0,0.4);
+  transition:background .2s;
+}
+#pdfBtn:hover{background:rgba(232,112,10,0.4)}
+
+/* ============ AURORA ============ */
+.aurora{
+  position:absolute;width:600px;height:600px;border-radius:50%;
+  filter:blur(120px);opacity:0.18;pointer-events:none;
+}
+.aurora-1{background:radial-gradient(circle,var(--orange),transparent 70%);top:-100px;right:-100px}
+.aurora-2{background:radial-gradient(circle,var(--amber),transparent 70%);bottom:-200px;left:-100px}
+
 /* ============ PRINT / PDF ============ */
 @media print{
   html,body{overflow:visible!important;background:#fff!important}
-  .nav-float{display:none!important}
-  .slide{
-    position:relative!important;opacity:1!important;transform:none!important;
-    pointer-events:auto!important;page-break-after:always;
-    min-height:100vh;break-inside:avoid;
-  }
-  .deck{overflow:visible!important;height:auto!important}
+  #topBtn,#pdfBtn{display:none!important}
   .aurora{display:none!important}
-  .stagger-item{opacity:1!important;transform:none!important}
+  .fade-in{opacity:1!important;transform:none!important}
+  section{page-break-inside:avoid;break-inside:avoid}
+  .section-dark{background:#fff!important;color:#1a1a1a!important}
+  .section-dark *{color:#1a1a1a!important}
+  .card{background:#f5f5f5!important;border:1px solid #ddd!important}
+  .orange{color:var(--orange)!important}
+  .gradient-text{-webkit-text-fill-color:var(--orange)!important}
+  .stat-num{color:var(--orange)!important}
 }
 
 /* ============ RESPONSIVE ============ */
-@media(max-width:900px){
-  /* Mobile: scroll mode — NO animations, NO slide system */
-  html{overflow:visible!important;overflow-x:hidden!important;height:auto!important}
-  body{overflow:visible!important;overflow-x:hidden!important;height:auto!important}
-  .deck{position:static!important;width:100%!important;height:auto!important;overflow:visible!important;display:block!important}
-  .slide{
-    position:static!important;
-    opacity:1!important;
-    transform:none!important;
-    pointer-events:auto!important;
-    z-index:auto!important;
-    width:100%!important;
-    height:auto!important;
-    min-height:auto!important;
-    max-height:none!important;
-    padding:40px 20px!important;
-    display:flex!important;
-    flex-direction:column!important;
-    justify-content:flex-start!important;
-    overflow:visible!important;
-  }
-  /* Kill ALL animations */
-  .stagger-item{opacity:1!important;transform:none!important;transition:none!important}
-  *{transition:none!important;animation:none!important}
-  .nav-float{display:none!important}
-  .aurora{display:none!important}
-  /* Grids */
-  .grid-2,.grid-4,.grid-3x2{grid-template-columns:1fr!important}
-  .grid-3{grid-template-columns:1fr 1fr!important}
+@media(max-width:768px){
+  section{padding:60px 20px}
+  .full-bg > .inner{padding:0 20px}
+  .grid-2,.grid-4,.grid-3x2{grid-template-columns:1fr}
+  .grid-3{grid-template-columns:1fr 1fr}
   h1{font-size:28px!important}
   h2{font-size:24px!important}
-  /* Flex layouts to column */
-  .ceo-section,
-  [style*="display:flex"][style*="gap:28px"],
-  [style*="display:flex"][style*="gap:32px"],
-  [style*="display:flex"][style*="gap:40px"]{flex-direction:column!important}
+  .ceo-section{flex-direction:column!important}
+  .ceo-left,.ceo-right{min-width:100%!important;flex:1!important}
+  .case-layout{flex-direction:column!important}
+  .case-img-wrap{max-width:100%!important;flex:auto!important}
   .pain-cols{flex-direction:column!important}
   .pain-col{width:100%!important}
   .compare-table-wrap{overflow-x:auto}
+  /* Mobile: 30억 vs 100억 table - brandrise row at bottom */
+  .compare-table-wrap .br-table th:nth-child(4),
+  .compare-table-wrap .br-table td:nth-child(4){
+    border-top:3px solid var(--orange);
+    background:rgba(232,112,10,0.08)!important;
+    font-size:15px!important;
+  }
   .pricing-cards{flex-direction:column!important;align-items:stretch!important}
   .pricing-card{width:100%!important;max-width:100%!important;transform:none!important}
-  .onboard-layout{flex-direction:column!important}
-  .step-flow{flex-direction:column!important}
-  /* Images */
+  .step-flow{flex-direction:column!important;gap:16px!important}
+  .step-flow .step-arrow{display:none}
+  .d4-grid{grid-template-columns:1fr 1fr!important}
+  .d4-arrow-cell{display:none}
   img{max-width:100%!important;height:auto!important}
-  .port-img{height:auto!important;max-height:200px!important}
-  /* Dividers */
-  .slide+.slide{border-top:1px solid #222}
+}
+@media(max-width:480px){
+  .grid-3{grid-template-columns:1fr}
 }
 
-/* scrollbar for overflow slides */
-.slide::-webkit-scrollbar{width:4px}
-.slide::-webkit-scrollbar-thumb{background:rgba(232,112,10,0.3);border-radius:4px}
+/* scrollbar */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-thumb{background:rgba(232,112,10,0.3);border-radius:4px}
+::-webkit-scrollbar-track{background:transparent}
 </style>
 </head>
 <body>
 
-<div class="deck" id="deck">
-
-<!-- ==================== SLIDE 1: COVER ==================== -->
-<div class="slide active" data-slide="1" style="justify-content:center;align-items:flex-start;position:relative;background:#0a0a0a">
+<!-- ==================== SECTION 1: HERO ==================== -->
+<section class="section-dark" style="min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden">
   <div class="aurora aurora-1"></div>
   <div class="aurora aurora-2"></div>
   <div style="position:relative;z-index:2;max-width:900px">
-    <div class="stagger-item" style="margin-bottom:48px">
+    <div class="fade-in" style="margin-bottom:48px">
       <span class="mono" style="font-size:clamp(22px,2.4vw,32px);font-weight:700;color:var(--orange);letter-spacing:-0.5px">brandrise</span>
     </div>
-    <h1 class="stagger-item" style="font-size:clamp(32px,4.8vw,56px);margin-bottom:12px">
+    <h1 class="fade-in" style="margin-bottom:12px">
       <span style="color:#f8f8f8">당신의 브랜드,</span><br>
       <span class="gradient-text">이제 팔리는 구조로 만듭니다.</span>
     </h1>
-    <p class="stagger-item" style="font-size:clamp(15px,1.3vw,20px);color:var(--sub);margin-bottom:48px;max-width:700px">
+    <p class="fade-in" style="font-size:clamp(15px,1.3vw,20px);color:var(--sub);margin-bottom:48px;max-width:700px">
       전략 · 브랜드 · 채널 · 성과까지 외부 CMO 팀이 처음부터 끝까지 책임집니다.
     </p>
-    <div class="stagger-item">
-      <button class="cta-btn" onclick="alert('상담 신청 페이지로 이동합니다.')">1시간 무료 구조 진단 신청 →</button>
+    <div class="fade-in">
+      <button class="cta-btn" onclick="alert('상담 신청 페이지로 이동합니다.')">1시간 무료 구조 진단 신청 &rarr;</button>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ==================== SLIDE 2: VEGGIET CASE ==================== -->
-<div class="slide" data-slide="2" style="background:#0a0a0a">
-  <h2 class="stagger-item" style="margin-bottom:32px"><span class="orange">연매출 20억. 여기서 멈춰 있었습니다</span></h2>
-  <div class="case-layout stagger-item" style="display:flex;gap:28px;align-items:stretch;flex-wrap:wrap">
+<!-- ==================== SECTION 2: VEGGIET CASE ==================== -->
+<section class="section-dark">
+  <h2 class="fade-in" style="margin-bottom:32px"><span class="orange">연매출 20억. 여기서 멈춰 있었습니다</span></h2>
+  <div class="case-layout fade-in" style="display:flex;gap:28px;align-items:stretch;flex-wrap:wrap">
     <!-- Left: Image -->
     <div class="case-img-wrap" style="flex:0 0 320px;max-width:360px">
       <img src="veggiet-01.jpg" alt="베지어트" style="width:100%;border-radius:16px;object-fit:cover;aspect-ratio:3/4">
     </div>
     <!-- Center: Stats -->
     <div style="flex:1;min-width:220px;display:flex;flex-direction:column;gap:16px;justify-content:center">
-      <div class="stagger-item" style="background:linear-gradient(135deg,var(--orange),#d45e00);border-radius:14px;padding:22px 28px;text-align:center">
+      <div style="background:linear-gradient(135deg,var(--orange),#d45e00);border-radius:14px;padding:22px 28px;text-align:center">
         <div class="mono" style="font-size:28px;font-weight:700;color:#fff">6개월</div>
         <div style="font-size:14px;color:rgba(255,255,255,0.85);margin-top:4px">프로젝트 기간</div>
       </div>
-      <div class="stagger-item" style="background:linear-gradient(135deg,var(--orange),#d45e00);border-radius:14px;padding:22px 28px;text-align:center">
+      <div style="background:linear-gradient(135deg,var(--orange),#d45e00);border-radius:14px;padding:22px 28px;text-align:center">
         <div class="mono" style="font-size:28px;font-weight:700;color:#fff">OO%</div>
         <div style="font-size:14px;color:rgba(255,255,255,0.85);margin-top:4px">매출 증가율</div>
       </div>
-      <div class="stagger-item" style="background:linear-gradient(135deg,var(--orange),#d45e00);border-radius:14px;padding:22px 28px;text-align:center">
+      <div style="background:linear-gradient(135deg,var(--orange),#d45e00);border-radius:14px;padding:22px 28px;text-align:center">
         <div style="font-size:16px;font-weight:600;color:#fff">올리브배러, 올리브영</div>
         <div style="font-size:14px;color:rgba(255,255,255,0.85);margin-top:4px">전 매장 입점</div>
       </div>
     </div>
     <!-- Right: Timeline -->
     <div style="flex:1;min-width:240px;display:flex;flex-direction:column;justify-content:center;gap:18px">
-      <div class="stagger-item" style="display:flex;align-items:center;gap:14px">
+      <div style="display:flex;align-items:center;gap:14px">
         <div style="width:10px;height:10px;border-radius:50%;background:var(--orange);flex-shrink:0"></div>
         <span style="font-size:16px;color:var(--text)">패키지 리뉴얼 & 브랜드 리포지셔닝</span>
       </div>
       <div style="width:1px;height:20px;background:rgba(232,112,10,0.3);margin-left:4.5px"></div>
-      <div class="stagger-item" style="display:flex;align-items:center;gap:14px">
+      <div style="display:flex;align-items:center;gap:14px">
         <div style="width:10px;height:10px;border-radius:50%;background:var(--orange);flex-shrink:0"></div>
         <span style="font-size:16px;color:var(--text)">네이버 카테고리 검색 1위 달성</span>
       </div>
       <div style="width:1px;height:20px;background:rgba(232,112,10,0.3);margin-left:4.5px"></div>
-      <div class="stagger-item" style="display:flex;align-items:center;gap:14px">
+      <div style="display:flex;align-items:center;gap:14px">
         <div style="width:10px;height:10px;border-radius:50%;background:var(--orange);flex-shrink:0"></div>
         <span style="font-size:16px;color:var(--text)">올리브영 입점 성공</span>
       </div>
       <div style="width:1px;height:20px;background:rgba(232,112,10,0.3);margin-left:4.5px"></div>
-      <div class="stagger-item" style="display:flex;align-items:center;gap:14px">
+      <div style="display:flex;align-items:center;gap:14px">
         <div style="width:10px;height:10px;border-radius:50%;background:var(--amber);flex-shrink:0"></div>
         <span style="font-size:16px;font-weight:600;color:var(--amber)">전 매장 확대 입점</span>
       </div>
     </div>
   </div>
-  <!-- Bottom quote -->
-  <div class="stagger-item" style="margin-top:32px;padding:20px 28px;border-left:3px solid var(--orange);background:rgba(232,112,10,0.05);border-radius:0 12px 12px 0">
+  <div class="fade-in" style="margin-top:32px;padding:20px 28px;border-left:3px solid var(--orange);background:rgba(232,112,10,0.05);border-radius:0 12px 12px 0">
     <p style="font-size:16px;color:var(--sub);font-style:italic;line-height:1.7">
       "제품은 처음부터 좋았습니다. <span style="color:var(--orange);font-weight:600">brandrise</span>가 한 건, 방향을 잡아드린 것 뿐입니다."
     </p>
   </div>
-</div>
+</section>
 
-<!-- ==================== SLIDE 3: CEO + TEAM ==================== -->
-<div class="slide" data-slide="3" style="background:#0a0a0a;padding-top:28px;padding-bottom:28px">
-  <div class="ceo-section" style="display:flex;gap:24px;height:100%;align-items:stretch">
-    <!-- LEFT: Director — large, centered vertically -->
+<!-- ==================== SECTION 3: CEO + TEAM ==================== -->
+<section class="section-dark">
+  <div class="ceo-section" style="display:flex;gap:24px;align-items:stretch">
+    <!-- LEFT: Director -->
     <div class="ceo-left" style="flex:1.3;min-width:360px">
-      <div class="card stagger-item" style="height:100%;padding:32px;display:flex;flex-direction:column;justify-content:center;border-left:4px solid var(--orange)">
-        <!-- Photo + Name -->
+      <div class="card fade-in" style="height:100%;padding:32px;display:flex;flex-direction:column;justify-content:center;border-left:4px solid var(--orange)">
         <div style="display:flex;gap:24px;align-items:center;margin-bottom:20px">
           <img src="portfolio_images/resume_img_p1_0.jpeg" alt="권윤정 대표" style="width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid var(--orange);flex-shrink:0">
           <div>
             <p class="mono" style="font-size:12px;color:var(--orange);letter-spacing:3px;font-weight:700;margin-bottom:4px">DIRECTOR</p>
-            <h3 style="font-size:32px;color:var(--text);font-weight:900;margin-bottom:4px">권윤정</h3>
-            <p style="font-size:15px;color:var(--orange);font-weight:600">Creative Director & CEO</p>
+            <h3 style="font-size:28px;color:var(--text);font-weight:900;margin-bottom:4px">권윤정</h3>
+            <p style="font-size:15px;color:var(--orange);font-weight:600">Creative Director &amp; CEO</p>
           </div>
         </div>
-        <!-- Badges -->
         <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px">
           <span style="background:linear-gradient(135deg,var(--orange),var(--amber));color:#fff;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700">IMC 전략 10년+</span>
           <span style="background:linear-gradient(135deg,var(--orange),var(--amber));color:#fff;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700">혁신대상 1등상</span>
           <span style="background:linear-gradient(135deg,var(--orange),var(--amber));color:#fff;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700">앤어워드 그랑프리</span>
           <span style="background:linear-gradient(135deg,var(--orange),var(--amber));color:#fff;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700">해외 팝업 8회</span>
         </div>
-        <!-- Key highlights -->
         <div style="border-top:1px solid #252525;padding-top:16px;margin-bottom:16px">
           <p style="font-size:15px;color:var(--text);font-weight:700;margin-bottom:8px">&#9670; 글로벌 브랜드 IMC 전략 설계 및 전담 10년+</p>
-          <p style="font-size:15px;color:var(--text);font-weight:700;margin-bottom:8px">&#9670; ReSaltZ 웰니스뷰티 기획 → 미국/일본 최상위 마켓 → DDP 팝업 A-to-Z</p>
-          <p style="font-size:15px;color:var(--text);font-weight:700;margin-bottom:8px">&#9670; 소셜아이어워드 혁신대상(1등상) · 앤어워드 그랑프리 · 대상 다수</p>
-          <p style="font-size:15px;color:var(--text);font-weight:700">&#9670; Cosmoprof NA/Bologna 직접 참가 · 뉴욕 K-브랜드 팝업 8회</p>
+          <p style="font-size:15px;color:var(--text);font-weight:700;margin-bottom:8px">&#9670; ReSaltZ 웰니스뷰티 기획 &rarr; 미국/일본 최상위 마켓 &rarr; DDP 팝업 A-to-Z</p>
+          <p style="font-size:15px;color:var(--text);font-weight:700;margin-bottom:8px">&#9670; 소셜아이어워드 혁신대상(1등상) &middot; 앤어워드 그랑프리 &middot; 대상 다수</p>
+          <p style="font-size:15px;color:var(--text);font-weight:700">&#9670; Cosmoprof NA/Bologna 직접 참가 &middot; 뉴욕 K-브랜드 팝업 8회</p>
         </div>
-        <!-- Career -->
         <div style="border-top:1px solid #252525;padding-top:14px">
           <p style="font-size:11px;color:var(--orange);letter-spacing:2px;font-weight:600;margin-bottom:8px">CAREER</p>
           <p style="font-size:14px;color:var(--sub);line-height:2">
-            리솔츠 브랜딩→미국/일본→DDP 총괄 · NC '도구리' 캐릭터 (150만+) · 하이네켄 디지털 캠페인 · CJ 'COOKIT'/'맥스봉' · 현대차 정몽구 재단 (KPI 130%+) · H.Point (10.5만 팔로워) · 노랑통닭 리브랜딩 (그랑프리) · 미샤 SNS · 문체부 K-Food · 외교부 유네스코 · 한식재단 도서
+            리솔츠 브랜딩&rarr;미국/일본&rarr;DDP 총괄 &middot; NC '도구리' 캐릭터 (150만+) &middot; 하이네켄 디지털 캠페인 &middot; CJ 'COOKIT'/'맥스봉' &middot; 현대차 정몽구 재단 (KPI 130%+) &middot; H.Point (10.5만 팔로워) &middot; 노랑통닭 리브랜딩 (그랑프리) &middot; 미샤 SNS &middot; 문체부 K-Food &middot; 외교부 유네스코 &middot; 한식재단 도서
           </p>
-          <p style="font-size:12px;color:var(--muted);margin-top:8px">히즈 대표 (2018~) · 코스트로퀸 (2015~18) · 연세대 브랜드전문가 과정</p>
+          <p style="font-size:12px;color:var(--muted);margin-top:8px">히즈 대표 (2018~) &middot; 코스트로퀸 (2015~18) &middot; 연세대 브랜드전문가 과정</p>
         </div>
       </div>
     </div>
-    <!-- RIGHT: 3 Teams stacked — supporting -->
+    <!-- RIGHT: 3 Teams -->
     <div class="ceo-right" style="flex:0.7;min-width:280px;display:flex;flex-direction:column;gap:12px">
-      <div class="card stagger-item" style="flex:1;padding:24px;border-left:3px solid var(--orange);display:flex;flex-direction:column;justify-content:center">
+      <div class="card fade-in" style="flex:1;padding:24px;border-left:3px solid var(--orange);display:flex;flex-direction:column;justify-content:center">
         <span class="mono" style="font-size:14px;color:var(--orange);font-weight:700;background:rgba(232,112,10,0.15);padding:5px 16px;border-radius:20px;display:inline-block;width:fit-content;margin-bottom:10px">TEAM 1</span>
-        <p style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:6px">임애라 &#183; 이슬기</p>
-        <p style="font-size:16px;color:var(--orange);font-weight:600;margin-bottom:8px">Strategy & Consulting</p>
-        <p style="font-size:15px;color:var(--sub);line-height:1.7">시장 분석 &#183; 경쟁 리서치<br>브랜드 전략 수립 &#183; 포지셔닝 설계</p>
+        <p style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:6px">임애라 &middot; 이슬기</p>
+        <p style="font-size:16px;color:var(--orange);font-weight:600;margin-bottom:8px">Strategy &amp; Consulting</p>
+        <p style="font-size:15px;color:var(--sub);line-height:1.7">시장 분석 &middot; 경쟁 리서치<br>브랜드 전략 수립 &middot; 포지셔닝 설계</p>
       </div>
-      <div class="card stagger-item" style="flex:1;padding:24px;border-left:3px solid var(--orange);display:flex;flex-direction:column;justify-content:center">
+      <div class="card fade-in" style="flex:1;padding:24px;border-left:3px solid var(--orange);display:flex;flex-direction:column;justify-content:center">
         <span class="mono" style="font-size:14px;color:var(--orange);font-weight:700;background:rgba(232,112,10,0.15);padding:5px 16px;border-radius:20px;display:inline-block;width:fit-content;margin-bottom:10px">TEAM 2</span>
         <p style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:6px">류수현</p>
-        <p style="font-size:16px;color:var(--orange);font-weight:600;margin-bottom:8px">Creative & Design</p>
-        <p style="font-size:15px;color:var(--sub);line-height:1.7">BI/CI &#183; 패키지 디자인<br>비주얼 아이덴티티 &#183; 공간 &#183; VMD</p>
+        <p style="font-size:16px;color:var(--orange);font-weight:600;margin-bottom:8px">Creative &amp; Design</p>
+        <p style="font-size:15px;color:var(--sub);line-height:1.7">BI/CI &middot; 패키지 디자인<br>비주얼 아이덴티티 &middot; 공간 &middot; VMD</p>
       </div>
-      <div class="card stagger-item" style="flex:1;padding:24px;border-left:3px solid var(--orange);display:flex;flex-direction:column;justify-content:center">
+      <div class="card fade-in" style="flex:1;padding:24px;border-left:3px solid var(--orange);display:flex;flex-direction:column;justify-content:center">
         <span class="mono" style="font-size:14px;color:var(--orange);font-weight:700;background:rgba(232,112,10,0.15);padding:5px 16px;border-radius:20px;display:inline-block;width:fit-content;margin-bottom:10px">TEAM 3</span>
         <p style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:6px">우성민</p>
-        <p style="font-size:16px;color:var(--orange);font-weight:600;margin-bottom:8px">Marketing & Contents</p>
-        <p style="font-size:15px;color:var(--sub);line-height:1.7">채널 전략 &#183; 콘텐츠 방향<br>바이럴 &#183; PR &#183; 퍼포먼스 마케팅</p>
+        <p style="font-size:16px;color:var(--orange);font-weight:600;margin-bottom:8px">Marketing &amp; Contents</p>
+        <p style="font-size:15px;color:var(--sub);line-height:1.7">채널 전략 &middot; 콘텐츠 방향<br>바이럴 &middot; PR &middot; 퍼포먼스 마케팅</p>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ==================== SLIDE 4: PORTFOLIO — Brand Strategy / IMC ==================== -->
-<div class="slide" data-slide="4" style="background:#0a0a0a;padding-top:48px;padding-bottom:48px">
-  <h2 class="stagger-item" style="margin-bottom:28px"><span class="orange">브랜드 전략 & IMC 캠페인</span></h2>
-  <div class="grid-3x2">
-    <div class="port-item stagger-item">
+<!-- ==================== SECTION 4: PORTFOLIO 1 ==================== -->
+<section class="section-dark">
+  <h2 class="fade-in" style="margin-bottom:28px"><span class="orange">브랜드 전략 &amp; IMC 캠페인</span></h2>
+  <div class="grid-3x2 fade-in">
+    <div class="port-item">
       <img src="portfolio_images/page_14_hyundai_foundation.jpg" alt="" class="port-img">
-      <p class="port-caption">현대차 정몽구 재단 전 채널 리뉴얼 &#183; KPI 130%+</p>
+      <p class="port-caption">현대차 정몽구 재단 전 채널 리뉴얼 &middot; KPI 130%+</p>
     </div>
-    <div class="port-item stagger-item">
+    <div class="port-item">
       <img src="portfolio_images/page_16_hpoint.jpg" alt="" class="port-img">
       <p class="port-caption">현대백화점 H.Point 1년만에 10.5만 팔로워</p>
     </div>
-    <div class="port-item stagger-item">
+    <div class="port-item">
       <img src="portfolio_images/page_15_heineken.jpg" alt="" class="port-img">
       <p class="port-caption">하이네켄 디지털 캠페인 바이럴</p>
     </div>
-    <div class="port-item stagger-item">
+    <div class="port-item">
       <img src="portfolio_images/page_18_bibigo_seventeen.jpg" alt="" class="port-img">
       <p class="port-caption">비비고 x 세븐틴 대규모 팝업스토어</p>
     </div>
-    <div class="port-item stagger-item">
+    <div class="port-item">
       <img src="portfolio_images/page_17_dolcegusto.jpg" alt="" class="port-img">
       <p class="port-caption">네스카페 돌체구스토 런칭쇼 1,000명</p>
     </div>
-    <div class="port-item stagger-item">
+    <div class="port-item">
       <img src="portfolio_images/page_06_yogiyo_1.jpg" alt="" class="port-img">
       <p class="port-caption">요기요 SNS 채널 운영</p>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ==================== SLIDE 5: PORTFOLIO — Package / BI / Design ==================== -->
-<div class="slide" data-slide="5" style="background:#0a0a0a;padding-top:40px;padding-bottom:40px">
-  <h2 class="stagger-item" style="margin-bottom:28px"><span class="orange">패키지 &#183; BI &#183; 크리에이티브 디자인</span></h2>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-height:calc(100vh - 160px);overflow:hidden">
-    <div class="port-item stagger-item">
-      <img src="portfolio_images/page_19_norangtongdak.jpg" alt="" style="width:100%;max-height:28vh;object-fit:cover;border-radius:12px">
+<!-- ==================== SECTION 5: PORTFOLIO 2 ==================== -->
+<section class="section-dark">
+  <h2 class="fade-in" style="margin-bottom:28px"><span class="orange">패키지 &middot; BI &middot; 크리에이티브 디자인</span></h2>
+  <div class="grid-2 fade-in">
+    <div class="port-item">
+      <img src="portfolio_images/page_19_norangtongdak.jpg" alt="" class="port-img">
       <p class="port-caption">노랑통닭 리브랜딩 (앤어워드 그랑프리)</p>
     </div>
-    <div class="port-item stagger-item">
-      <img src="portfolio_images/page_12_nc_doguri_1.jpg" alt="" style="width:100%;max-height:28vh;object-fit:cover;border-radius:12px">
+    <div class="port-item">
+      <img src="portfolio_images/page_12_nc_doguri_1.jpg" alt="" class="port-img">
       <p class="port-caption">NC소프트 도구리 캐릭터 브랜딩 150만+</p>
     </div>
-    <div class="port-item stagger-item">
-      <img src="portfolio_images/page_13_nc_doguri_2.jpg" alt="" style="width:100%;max-height:28vh;object-fit:cover;border-radius:12px">
+    <div class="port-item">
+      <img src="portfolio_images/page_13_nc_doguri_2.jpg" alt="" class="port-img">
       <p class="port-caption">도구리 캐릭터 Total Branding</p>
     </div>
-    <div class="port-item stagger-item">
-      <img src="portfolio_images/page_09_maxbon_1.jpg" alt="" style="width:100%;max-height:28vh;object-fit:cover;border-radius:12px">
+    <div class="port-item">
+      <img src="portfolio_images/page_09_maxbon_1.jpg" alt="" class="port-img">
       <p class="port-caption">CJ제일제당 맥스봉 브랜드 캠페인</p>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ==================== SLIDE 6: PORTFOLIO — Popup / Offline / Global ==================== -->
-<div class="slide" data-slide="6" style="background:#0a0a0a;padding-top:40px;padding-bottom:40px">
-  <h2 class="stagger-item" style="margin-bottom:24px"><span class="orange">팝업 &#183; 오프라인 &#183; 글로벌</span></h2>
-  <!-- Top row: 3 portfolio images -->
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px">
-    <div class="port-item stagger-item">
-      <img src="portfolio_images/page_20_resaltz_ddp.jpg" alt="" style="width:100%;max-height:24vh;object-fit:cover;border-radius:12px">
+<!-- ==================== SECTION 6: PORTFOLIO 3 ==================== -->
+<section class="section-dark">
+  <h2 class="fade-in" style="margin-bottom:24px"><span class="orange">팝업 &middot; 오프라인 &middot; 글로벌</span></h2>
+  <div class="grid-3 fade-in" style="margin-bottom:24px">
+    <div class="port-item">
+      <img src="portfolio_images/page_20_resaltz_ddp.jpg" alt="" class="port-img">
       <p class="port-caption">리솔츠(ReSaltZ) DDP 팝업 전시 총괄</p>
     </div>
-    <div class="port-item stagger-item">
-      <img src="portfolio_images/page_19_norangtongdak.jpg" alt="" style="width:100%;max-height:24vh;object-fit:cover;border-radius:12px">
+    <div class="port-item">
+      <img src="portfolio_images/page_19_norangtongdak.jpg" alt="" class="port-img">
       <p class="port-caption">노랑통닭 프랜차이즈 리브랜딩</p>
     </div>
-    <div class="port-item stagger-item">
-      <img src="portfolio_images/page_18_bibigo_seventeen.jpg" alt="" style="width:100%;max-height:24vh;object-fit:cover;border-radius:12px">
+    <div class="port-item">
+      <img src="portfolio_images/page_18_bibigo_seventeen.jpg" alt="" class="port-img">
       <p class="port-caption">비비고 x 세븐틴 팝업스토어</p>
     </div>
   </div>
-  <!-- Bottom row: 3 global items with images -->
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
-    <div class="port-item stagger-item">
-      <img src="portfolio_images/page_20_resaltz_ddp.jpg" alt="" style="width:100%;max-height:20vh;object-fit:cover;border-radius:12px">
+  <div class="grid-3 fade-in">
+    <div class="port-item">
+      <img src="portfolio_images/globalretail.jpg" alt="" class="port-img">
       <p class="port-caption">글로벌 리테일 진출 — 미국 시장 진출 전략</p>
     </div>
-    <div class="port-item stagger-item">
-      <img src="portfolio_images/kbrandpopup.jpg" alt="" style="width:100%;max-height:20vh;object-fit:cover;border-radius:12px">
+    <div class="port-item">
+      <img src="portfolio_images/kbrandpopup.jpg" alt="" class="port-img">
       <p class="port-caption">뉴욕 K-브랜드 팝업 — 8회 운영 경험</p>
     </div>
-    <div class="port-item stagger-item">
-      <img src="portfolio_images/buyernetwork.jpg" alt="" style="width:100%;max-height:20vh;object-fit:cover;border-radius:12px">
+    <div class="port-item">
+      <img src="portfolio_images/buyernetwork.jpg" alt="" class="port-img">
       <p class="port-caption">해외 바이어 네트워크 — 831개 거래처</p>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ==================== SLIDE 7: PAIN ==================== -->
-<div class="slide" data-slide="7" style="background:#0a0a0a">
-  <h2 class="stagger-item" style="margin-bottom:36px;text-align:center">혹시 지금 이런 상황이세요?</h2>
-  <div class="pain-cols stagger-item" style="display:flex;gap:24px;margin-bottom:28px">
+<!-- ==================== SECTION 7: PAIN ==================== -->
+<section class="section-dark">
+  <h2 class="fade-in" style="margin-bottom:36px;text-align:center">혹시 지금 이런 상황이세요?</h2>
+  <div class="pain-cols fade-in" style="display:flex;gap:24px;margin-bottom:28px">
     <!-- Left: Scale-up -->
     <div class="pain-col" style="flex:1;background:#1c1c1c;border-radius:16px;padding:32px 28px">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
@@ -481,15 +442,15 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
         <span style="font-size:15px;color:var(--sub)">연매출 5~30억</span>
       </div>
       <div style="display:flex;flex-direction:column;gap:16px">
-        <div class="stagger-item" style="padding:18px 20px;background:rgba(255,255,255,0.04);border-radius:12px;border-left:4px solid var(--orange)">
+        <div style="padding:18px 20px;background:rgba(255,255,255,0.04);border-radius:12px;border-left:4px solid var(--orange)">
           <p style="font-size:18px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:4px">"매출은 나오는데, 마케팅 담당자가 없어요."</p>
           <p style="font-size:13px;color:var(--muted);line-height:1.4">대표가 직접 마케팅까지 겸하는 구조</p>
         </div>
-        <div class="stagger-item" style="padding:18px 20px;background:rgba(255,255,255,0.04);border-radius:12px;border-left:4px solid var(--orange)">
+        <div style="padding:18px 20px;background:rgba(255,255,255,0.04);border-radius:12px;border-left:4px solid var(--orange)">
           <p style="font-size:18px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:4px">"대행사를 써봤는데, 우리 제품을 이해 못해요."</p>
           <p style="font-size:13px;color:var(--muted);line-height:1.4">산업 이해 없는 일반 대행의 한계</p>
         </div>
-        <div class="stagger-item" style="padding:18px 20px;background:rgba(255,255,255,0.04);border-radius:12px;border-left:4px solid var(--orange)">
+        <div style="padding:18px 20px;background:rgba(255,255,255,0.04);border-radius:12px;border-left:4px solid var(--orange)">
           <p style="font-size:18px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:4px">"30억 넘기려면 뭘 해야 할지 모르겠어요."</p>
           <p style="font-size:13px;color:var(--muted);line-height:1.4">성장 정체 구간의 전략 부재</p>
         </div>
@@ -502,134 +463,134 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
         <span style="font-size:15px;color:var(--sub)">연매출 1~10억</span>
       </div>
       <div style="display:flex;flex-direction:column;gap:16px">
-        <div class="stagger-item" style="padding:18px 20px;background:rgba(255,255,255,0.04);border-radius:12px;border-left:4px solid var(--amber)">
+        <div style="padding:18px 20px;background:rgba(255,255,255,0.04);border-radius:12px;border-left:4px solid var(--amber)">
           <p style="font-size:18px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:4px">"브랜드를 어떻게 시작해야 할지 몰라요."</p>
           <p style="font-size:13px;color:var(--muted);line-height:1.4">제품은 있지만 브랜드 방향이 없는 상태</p>
         </div>
-        <div class="stagger-item" style="padding:18px 20px;background:rgba(255,255,255,0.04);border-radius:12px;border-left:4px solid var(--amber)">
+        <div style="padding:18px 20px;background:rgba(255,255,255,0.04);border-radius:12px;border-left:4px solid var(--amber)">
           <p style="font-size:18px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:4px">"다 따로 맡기니 통일이 안 돼요."</p>
           <p style="font-size:13px;color:var(--muted);line-height:1.4">로고, 패키지, SNS 각각 별도 외주</p>
         </div>
-        <div class="stagger-item" style="padding:18px 20px;background:rgba(255,255,255,0.04);border-radius:12px;border-left:4px solid var(--amber)">
+        <div style="padding:18px 20px;background:rgba(255,255,255,0.04);border-radius:12px;border-left:4px solid var(--amber)">
           <p style="font-size:18px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:4px">"첫 투자금이 한정돼 있어서 실패하면 안 돼요."</p>
           <p style="font-size:13px;color:var(--muted);line-height:1.4">제한된 예산으로 최대 효과를 내야 하는 압박</p>
         </div>
       </div>
     </div>
   </div>
-  <!-- Bottom bar -->
-  <div class="stagger-item" style="background:linear-gradient(135deg,var(--orange),#d45e00);border-radius:12px;padding:20px 28px;text-align:center">
+  <div class="fade-in" style="background:linear-gradient(135deg,var(--orange),#d45e00);border-radius:12px;padding:20px 28px;text-align:center">
     <p style="font-size:18px;font-weight:700;color:#fff">지금이 <span style="text-decoration:underline">brandrise</span>가 필요한 때입니다.</p>
   </div>
-</div>
+</section>
 
-<!-- ==================== SLIDE 8: WHAT WE DO — 4D Process ==================== -->
-<div class="slide" data-slide="8" style="background:#0a0a0a">
-  <h2 class="stagger-item" style="margin-bottom:8px;text-align:center;font-size:clamp(28px,3.5vw,44px)">브랜드라이즈가 하는 일</h2>
-  <p class="stagger-item" style="text-align:center;color:var(--orange);margin-bottom:36px;font-size:20px;font-weight:600">감이 아닌 구조로 &#8212; 4D Process</p>
-  <div id="d4grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:stretch;max-width:1100px;margin:0 auto">
+<!-- ==================== SECTION 8: 4D PROCESS ==================== -->
+<section class="section-dark">
+  <h2 class="fade-in" style="margin-bottom:8px;text-align:center;font-size:clamp(28px,3.5vw,44px)">브랜드라이즈가 하는 일</h2>
+  <p class="fade-in" style="text-align:center;color:var(--orange);margin-bottom:48px;font-size:20px;font-weight:600">감이 아닌 구조로 — 4D Process</p>
+  <div class="d4-grid fade-in" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1100px;margin:0 auto">
     <!-- DISCOVER -->
-    <div class="card d4-card" style="position:relative;padding:24px 20px">
+    <div class="card" style="position:relative;padding:24px 20px">
       <span class="mono" style="font-size:18px;color:var(--sub);font-weight:700">Month 1</span>
       <h3 style="font-family:'Bebas Neue',var(--mono);color:var(--orange);margin:4px 0 0;font-size:65px;font-weight:400;letter-spacing:2px;line-height:1">Discover</h3>
       <p style="font-size:17px;color:var(--text);margin-bottom:14px;font-weight:600">자리를 찾다</p>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
-        <li style="font-size:15px;color:var(--sub)">&#8226; 시장 & 경쟁 분석</li>
-        <li style="font-size:15px;color:var(--sub)">&#8226; 고객 인사이트 리서치</li>
-        <li style="font-size:15px;color:var(--sub)">&#8226; 브랜드 현황 진단</li>
-        <li style="font-size:15px;color:var(--sub)">&#8226; 성장 기회 포착</li>
+        <li style="font-size:15px;color:var(--sub)">&bull; 시장 &amp; 경쟁 분석</li>
+        <li style="font-size:15px;color:var(--sub)">&bull; 고객 인사이트 리서치</li>
+        <li style="font-size:15px;color:var(--sub)">&bull; 브랜드 현황 진단</li>
+        <li style="font-size:15px;color:var(--sub)">&bull; 성장 기회 포착</li>
       </ul>
-      <div class="d4-arrow" style="position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:36px;color:var(--orange);z-index:2;font-weight:700">→</div>
+      <div style="position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:36px;color:var(--orange);z-index:2;font-weight:700">&rarr;</div>
     </div>
     <!-- DEFINE -->
-    <div class="card d4-card" style="position:relative;padding:24px 20px">
+    <div class="card" style="position:relative;padding:24px 20px">
       <span class="mono" style="font-size:18px;color:var(--sub);font-weight:700">Month 2</span>
       <h3 style="font-family:'Bebas Neue',var(--mono);color:var(--orange);margin:4px 0 0;font-size:65px;font-weight:400;letter-spacing:2px;line-height:1">Define</h3>
       <p style="font-size:17px;color:var(--text);margin-bottom:14px;font-weight:600">색을 입히다</p>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
-        <li style="font-size:15px;color:var(--sub)">&#8226; 브랜드 포지셔닝</li>
-        <li style="font-size:15px;color:var(--sub)">&#8226; 핵심 메시지 설계</li>
-        <li style="font-size:15px;color:var(--sub)">&#8226; 채널 전략 수립</li>
-        <li style="font-size:15px;color:var(--sub)">&#8226; KPI 설정</li>
+        <li style="font-size:15px;color:var(--sub)">&bull; 브랜드 포지셔닝</li>
+        <li style="font-size:15px;color:var(--sub)">&bull; 핵심 메시지 설계</li>
+        <li style="font-size:15px;color:var(--sub)">&bull; 채널 전략 수립</li>
+        <li style="font-size:15px;color:var(--sub)">&bull; KPI 설정</li>
       </ul>
-      <div class="d4-arrow" style="position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:36px;color:var(--orange);z-index:2;font-weight:700">→</div>
+      <div style="position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:36px;color:var(--orange);z-index:2;font-weight:700">&rarr;</div>
     </div>
     <!-- DESIGN -->
-    <div class="card d4-card" style="position:relative;padding:24px 20px">
+    <div class="card" style="position:relative;padding:24px 20px">
       <span class="mono" style="font-size:18px;color:var(--sub);font-weight:700">Month 3</span>
       <h3 style="font-family:'Bebas Neue',var(--mono);color:var(--orange);margin:4px 0 0;font-size:65px;font-weight:400;letter-spacing:2px;line-height:1">Design</h3>
       <p style="font-size:17px;color:var(--text);margin-bottom:14px;font-weight:600">구조를 짜다</p>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
-        <li style="font-size:15px;color:var(--sub)">&#8226; BI/CI 디자인</li>
-        <li style="font-size:15px;color:var(--sub)">&#8226; 패키지 디자인</li>
-        <li style="font-size:15px;color:var(--sub)">&#8226; 콘텐츠 제작</li>
-        <li style="font-size:15px;color:var(--sub)">&#8226; 채널 셋업</li>
+        <li style="font-size:15px;color:var(--sub)">&bull; BI/CI 디자인</li>
+        <li style="font-size:15px;color:var(--sub)">&bull; 패키지 디자인</li>
+        <li style="font-size:15px;color:var(--sub)">&bull; 콘텐츠 제작</li>
+        <li style="font-size:15px;color:var(--sub)">&bull; 채널 셋업</li>
       </ul>
-      <div class="d4-arrow" style="position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:36px;color:var(--orange);z-index:2;font-weight:700">→</div>
+      <div style="position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:36px;color:var(--orange);z-index:2;font-weight:700">&rarr;</div>
     </div>
     <!-- DIRECT -->
-    <div class="card-orange d4-card" style="border-radius:16px;padding:24px 20px">
+    <div class="card-orange" style="border-radius:16px;padding:24px 20px">
       <span class="mono" style="font-size:18px;color:rgba(255,255,255,0.8);font-weight:700">Ongoing</span>
       <h3 style="font-family:'Bebas Neue',var(--mono);color:#fff;margin:4px 0 0;font-size:65px;font-weight:400;letter-spacing:2px;line-height:1">Direct</h3>
       <p style="font-size:17px;color:rgba(255,255,255,0.9);margin-bottom:14px;font-weight:600">함께 성장</p>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
-        <li style="font-size:15px;color:rgba(255,255,255,0.85)">&#8226; 마케팅 실행 관리</li>
-        <li style="font-size:15px;color:rgba(255,255,255,0.85)">&#8226; 퍼포먼스 최적화</li>
-        <li style="font-size:15px;color:rgba(255,255,255,0.85)">&#8226; 월간 리포트</li>
-        <li style="font-size:15px;color:rgba(255,255,255,0.85)">&#8226; 전략 피봇</li>
+        <li style="font-size:15px;color:rgba(255,255,255,0.85)">&bull; 마케팅 실행 관리</li>
+        <li style="font-size:15px;color:rgba(255,255,255,0.85)">&bull; 퍼포먼스 최적화</li>
+        <li style="font-size:15px;color:rgba(255,255,255,0.85)">&bull; 월간 리포트</li>
+        <li style="font-size:15px;color:rgba(255,255,255,0.85)">&bull; 전략 피봇</li>
       </ul>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ==================== SLIDE 9: SCALE-UP TARGET ==================== -->
-<div class="slide" data-slide="9" style="background:#F5F0E8;color:#1a1a1a;position:relative">
-  <!-- HUGE watermark background -->
-  <div class="mono" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:clamp(100px,14vw,180px);font-weight:900;color:var(--orange);opacity:0.06;white-space:nowrap;pointer-events:none;z-index:0;letter-spacing:8px">SCALE-UP</div>
-  <div style="display:flex;align-items:center;gap:40px;flex-wrap:wrap;position:relative;z-index:1">
-    <div style="flex:1;min-width:300px">
-      <h2 class="stagger-item" style="color:#1a1a1a;margin-bottom:8px;font-size:clamp(22px,3vw,36px)">연매출 5~30억,</h2>
-      <h2 class="stagger-item" style="margin-bottom:32px"><span class="orange">마케팅 구조를 만들 시점입니다.</span></h2>
-      <!-- Table -->
-      <div class="stagger-item" style="background:#fff;border-radius:16px;padding:24px;box-shadow:0 2px 16px rgba(0,0,0,0.06)">
-        <table class="br-table" style="color:#333">
-          <thead>
-            <tr><th style="color:var(--orange)">항목</th><th>Before</th><th style="color:var(--orange)">After (brandrise)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td style="font-weight:500">마케팅 담당</td><td style="color:#888">대표가 직접</td><td style="color:var(--orange);font-weight:600">전담 외부 CMO팀</td></tr>
-            <tr><td style="font-weight:500">브랜드 전략</td><td style="color:#888">감으로 운영</td><td style="color:var(--orange);font-weight:600">데이터 기반 포지셔닝</td></tr>
-            <tr><td style="font-weight:500">채널 운영</td><td style="color:#888">산발적 외주</td><td style="color:var(--orange);font-weight:600">통합 채널 전략</td></tr>
-            <tr><td style="font-weight:500">성과 관리</td><td style="color:#888">체감 위주</td><td style="color:var(--orange);font-weight:600">KPI 기반 월간 리포트</td></tr>
-            <tr><td style="font-weight:500">비용 구조</td><td style="color:#888">정규직 연 5천만+</td><td style="color:var(--orange);font-weight:600">월 200~400만원</td></tr>
-          </tbody>
-        </table>
+<!-- ==================== SECTION 9: SCALE-UP ==================== -->
+<section class="section-cream full-bg" style="position:relative;overflow:hidden;padding-top:140px">
+  <div class="inner" style="position:relative;z-index:1">
+    <!-- SCALE-UP watermark above title -->
+    <div class="mono fade-in" style="font-size:clamp(60px,10vw,140px);font-weight:900;color:var(--orange);opacity:0.12;letter-spacing:6px;margin-bottom:-20px;line-height:1">SCALE-UP</div>
+    <div style="display:flex;align-items:center;gap:40px;flex-wrap:wrap">
+      <div style="flex:1;min-width:300px">
+        <h2 class="fade-in" style="color:#1a1a1a;margin-bottom:8px;font-size:clamp(22px,3vw,36px)">연매출 5~30억,</h2>
+        <h2 class="fade-in" style="margin-bottom:32px"><span class="orange">마케팅 구조를 만들 시점입니다.</span></h2>
+        <div class="fade-in" style="background:#fff;border-radius:16px;padding:24px;box-shadow:0 2px 16px rgba(0,0,0,0.06)">
+          <table class="br-table" style="color:#333">
+            <thead>
+              <tr><th style="color:var(--orange)">항목</th><th>Before</th><th style="color:var(--orange)">After (brandrise)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td style="font-weight:500">마케팅 담당</td><td style="color:#888">대표가 직접</td><td style="color:var(--orange);font-weight:600">전담 외부 CMO팀</td></tr>
+              <tr><td style="font-weight:500">브랜드 전략</td><td style="color:#888">감으로 운영</td><td style="color:var(--orange);font-weight:600">데이터 기반 포지셔닝</td></tr>
+              <tr><td style="font-weight:500">채널 운영</td><td style="color:#888">산발적 외주</td><td style="color:var(--orange);font-weight:600">통합 채널 전략</td></tr>
+              <tr><td style="font-weight:500">성과 관리</td><td style="color:#888">체감 위주</td><td style="color:var(--orange);font-weight:600">KPI 기반 월간 리포트</td></tr>
+              <tr><td style="font-weight:500">비용 구조</td><td style="color:#888">정규직 연 5천만+</td><td style="color:var(--orange);font-weight:600">월 200~400만원</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-    <div class="stagger-item" style="flex:0 0 auto;text-align:center">
-      <div class="mono" style="font-size:clamp(100px,12vw,160px);font-weight:900;color:var(--orange);line-height:1;opacity:0.3">30억</div>
-      <p style="font-size:22px;color:#444;margin-top:16px;font-weight:700">넘고 싶다면<br><span class="orange" style="font-size:26px">브랜드라이즈</span></p>
+      <div class="fade-in" style="flex:0 0 auto;text-align:center">
+        <div class="mono" style="font-size:clamp(100px,12vw,160px);font-weight:900;color:var(--orange);line-height:1;opacity:0.3">30억</div>
+        <p style="font-size:22px;color:#444;margin-top:16px;font-weight:700">넘고 싶다면<br><span class="orange" style="font-size:26px">브랜드라이즈</span></p>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ==================== SLIDE 10: EARLY STAGE TARGET ==================== -->
-<div class="slide" data-slide="10" style="background:#F2EDE5;color:#1a1a1a;position:relative">
-  <!-- HUGE watermark background -->
-  <div class="mono" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:clamp(100px,14vw,180px);font-weight:900;color:var(--orange);opacity:0.06;white-space:nowrap;pointer-events:none;z-index:0;letter-spacing:8px">EARLY STAGE</div>
-  <div style="position:relative;z-index:1">
+<!-- ==================== SECTION 10: EARLY STAGE ==================== -->
+<section class="section-warmcream full-bg" style="position:relative;overflow:hidden;padding-top:140px;margin-top:40px">
+  <div class="inner" style="position:relative;z-index:1">
+    <!-- EARLY STAGE watermark above title -->
+    <div class="mono fade-in" style="font-size:clamp(60px,10vw,140px);font-weight:900;color:var(--orange);opacity:0.12;letter-spacing:6px;margin-bottom:-20px;line-height:1">EARLY STAGE</div>
     <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:16px">
       <div>
-        <h2 class="stagger-item" style="color:#1a1a1a;margin-bottom:8px;font-size:clamp(22px,3vw,36px)">처음 브랜드를 만드는 분,</h2>
-        <h2 class="stagger-item"><span class="orange">처음부터 제대로 쌓아야 합니다.</span></h2>
+        <h2 class="fade-in" style="color:#1a1a1a;margin-bottom:8px;font-size:clamp(22px,3vw,36px)">처음 브랜드를 만드는 분,</h2>
+        <h2 class="fade-in"><span class="orange">처음부터 제대로 쌓아야 합니다.</span></h2>
       </div>
-      <div class="stagger-item" style="text-align:center">
+      <div class="fade-in" style="text-align:center">
         <div style="font-size:clamp(72px,8vw,120px);font-weight:900;color:var(--orange);line-height:1;opacity:0.4">첫 시작</div>
         <p style="font-size:20px;color:#444;margin-top:8px;font-weight:700">잘하고 싶다면 <span class="orange" style="font-size:22px">브랜드라이즈</span></p>
       </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
-      <div class="stagger-item" style="background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.05);display:flex;align-items:center;gap:16px">
+    <div class="grid-3 fade-in">
+      <div style="background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.05);display:flex;align-items:center;gap:16px">
         <div style="width:44px;height:44px;border-radius:10px;background:rgba(232,112,10,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
         </div>
@@ -638,7 +599,7 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
           <p style="font-size:13px;color:#777;line-height:1.4">시장분석부터 포지셔닝까지</p>
         </div>
       </div>
-      <div class="stagger-item" style="background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.05);display:flex;align-items:center;gap:16px">
+      <div style="background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.05);display:flex;align-items:center;gap:16px">
         <div style="width:44px;height:44px;border-radius:10px;background:rgba(232,112,10,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
         </div>
@@ -647,7 +608,7 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
           <p style="font-size:13px;color:#777;line-height:1.4">로고, 컬러, 타이포 시스템</p>
         </div>
       </div>
-      <div class="stagger-item" style="background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.05);display:flex;align-items:center;gap:16px">
+      <div style="background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.05);display:flex;align-items:center;gap:16px">
         <div style="width:44px;height:44px;border-radius:10px;background:rgba(232,112,10,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
         </div>
@@ -656,7 +617,7 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
           <p style="font-size:13px;color:#777;line-height:1.4">진열대에서 눈에 띄는 설계</p>
         </div>
       </div>
-      <div class="stagger-item" style="background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.05);display:flex;align-items:center;gap:16px">
+      <div style="background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.05);display:flex;align-items:center;gap:16px">
         <div style="width:44px;height:44px;border-radius:10px;background:rgba(232,112,10,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
         </div>
@@ -665,7 +626,7 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
           <p style="font-size:13px;color:#777;line-height:1.4">SNS, 스마트스토어, 자사몰</p>
         </div>
       </div>
-      <div class="stagger-item" style="background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.05);display:flex;align-items:center;gap:16px">
+      <div style="background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.05);display:flex;align-items:center;gap:16px">
         <div style="width:44px;height:44px;border-radius:10px;background:rgba(232,112,10,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
         </div>
@@ -674,7 +635,7 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
           <p style="font-size:13px;color:#777;line-height:1.4">제품 촬영, 상세페이지, 영상</p>
         </div>
       </div>
-      <div class="stagger-item" style="background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.05);display:flex;align-items:center;gap:16px">
+      <div style="background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.05);display:flex;align-items:center;gap:16px">
         <div style="width:44px;height:44px;border-radius:10px;background:rgba(232,112,10,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
         </div>
@@ -685,12 +646,12 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ==================== SLIDE 11: STATS ==================== -->
-<div class="slide" data-slide="11" style="background:#0a0a0a;align-items:center;text-align:center">
-  <h2 class="stagger-item" style="margin-bottom:48px;font-size:clamp(32px,4vw,48px)"><span class="gradient-text">숫자가 증명합니다</span></h2>
-  <div class="grid-4 stagger-item" style="margin-bottom:40px;max-width:900px;width:100%">
+<!-- ==================== SECTION 11: STATS ==================== -->
+<section class="section-dark" style="text-align:center">
+  <h2 class="fade-in" style="margin-bottom:48px;font-size:clamp(32px,4vw,48px)"><span class="gradient-text">숫자가 증명합니다</span></h2>
+  <div class="grid-4 fade-in" style="margin-bottom:40px;max-width:900px;width:100%;margin-left:auto;margin-right:auto">
     <div class="card" style="text-align:center;padding:32px 16px">
       <div class="stat-num mono">130%</div>
       <div class="stat-label">캠페인 KPI 초과 달성</div>
@@ -708,91 +669,91 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
       <div class="stat-label">브랜드 전략 경력(년)</div>
     </div>
   </div>
-  <!-- Awards -->
-  <div class="stagger-item" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:32px">
+  <div class="fade-in" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:32px">
     <span style="padding:8px 18px;border-radius:30px;background:rgba(232,112,10,0.12);color:var(--orange);font-size:13px;font-weight:500">소셜아이어워드 혁신대상</span>
     <span style="padding:8px 18px;border-radius:30px;background:rgba(232,112,10,0.12);color:var(--orange);font-size:13px;font-weight:500">앤어워드 그랑프리</span>
-    <span style="padding:8px 18px;border-radius:30px;background:rgba(232,112,10,0.12);color:var(--orange);font-size:13px;font-weight:500">Cosmoprof NA &#183; Bologna</span>
+    <span style="padding:8px 18px;border-radius:30px;background:rgba(232,112,10,0.12);color:var(--orange);font-size:13px;font-weight:500">Cosmoprof NA &middot; Bologna</span>
     <span style="padding:8px 18px;border-radius:30px;background:rgba(232,112,10,0.12);color:var(--orange);font-size:13px;font-weight:500">뉴욕 K-브랜드 팝업 8회</span>
   </div>
-  <p class="stagger-item" style="font-size:14px;color:var(--muted)">brandrise &#8212; 브랜드 전략 & 마케팅 실행 파트너</p>
-</div>
+  <p class="fade-in" style="font-size:14px;color:var(--muted)">brandrise — 브랜드 전략 &amp; 마케팅 실행 파트너</p>
+</section>
 
-<!-- ==================== SLIDE 12: 30억 vs 100억 ==================== -->
-<div class="slide" data-slide="12" style="background:var(--cream);color:#1a1a1a">
-  <h2 class="stagger-item" style="color:#1a1a1a;text-align:center;margin-bottom:36px">
-    <span class="mono orange" style="font-weight:900">30억</span> 기업과 <span class="mono orange" style="font-weight:900">100억</span> 기업의 차이
-  </h2>
-  <div class="stagger-item compare-table-wrap" style="background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 16px rgba(0,0,0,0.06);overflow-x:auto">
-    <table class="br-table" style="color:#333;min-width:600px">
-      <thead>
-        <tr>
-          <th style="color:#555">구분</th>
-          <th style="color:#888">30억 기업</th>
-          <th style="color:#555">100억 기업</th>
-          <th style="color:#fff;background:var(--orange);font-size:16px;padding:12px 16px;border-radius:8px">brandrise</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="font-weight:600">마케팅 조직</td>
-          <td style="color:#888">대표 혼자 겸직</td>
-          <td>CMO + 팀 3~5명</td>
-          <td style="color:var(--orange);font-weight:600">외부 CMO 팀 즉시 투입</td>
-        </tr>
-        <tr>
-          <td style="font-weight:600">브랜드 전략</td>
-          <td style="color:#888">제품 중심, 감 의존</td>
-          <td>데이터 기반 전략</td>
-          <td style="color:var(--orange);font-weight:600">전략 설계 + 실행 일괄</td>
-        </tr>
-        <tr>
-          <td style="font-weight:600">콘텐츠</td>
-          <td style="color:#888">필요할 때 외주</td>
-          <td>인하우스 제작팀</td>
-          <td style="color:var(--orange);font-weight:600">기획~제작 통합 운영</td>
-        </tr>
-        <tr>
-          <td style="font-weight:600">채널 관리</td>
-          <td style="color:#888">1~2개 산발 운영</td>
-          <td>옴니채널 운영</td>
-          <td style="color:var(--orange);font-weight:600">채널 전략 + 통합 관리</td>
-        </tr>
-        <tr>
-          <td style="font-weight:600">인건비</td>
-          <td style="color:#888">연 1~2억 (정규직)</td>
-          <td>연 3~5억</td>
-          <td style="color:var(--orange);font-weight:600">월 200~400만원</td>
-        </tr>
-      </tbody>
-    </table>
+<!-- ==================== SECTION 12: 30억 vs 100억 ==================== -->
+<section class="section-cream full-bg">
+  <div class="inner">
+    <h2 class="fade-in" style="color:#1a1a1a;text-align:center;margin-bottom:36px">
+      <span class="mono orange" style="font-weight:900">30억</span> 기업과 <span class="mono orange" style="font-weight:900">100억</span> 기업의 차이
+    </h2>
+    <div class="fade-in compare-table-wrap" style="background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 16px rgba(0,0,0,0.06);overflow-x:auto">
+      <table class="br-table" style="color:#333;min-width:600px">
+        <thead>
+          <tr>
+            <th style="color:#555">구분</th>
+            <th style="color:#888">30억 기업</th>
+            <th style="color:#555">100억 기업</th>
+            <th style="color:#fff;background:var(--orange);font-size:16px;padding:12px 16px;border-radius:8px">brandrise</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600">마케팅 조직</td>
+            <td style="color:#888">대표 혼자 겸직</td>
+            <td>CMO + 팀 3~5명</td>
+            <td style="color:var(--orange);font-weight:600">외부 CMO 팀 즉시 투입</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600">브랜드 전략</td>
+            <td style="color:#888">제품 중심, 감 의존</td>
+            <td>데이터 기반 전략</td>
+            <td style="color:var(--orange);font-weight:600">전략 설계 + 실행 일괄</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600">콘텐츠</td>
+            <td style="color:#888">필요할 때 외주</td>
+            <td>인하우스 제작팀</td>
+            <td style="color:var(--orange);font-weight:600">기획~제작 통합 운영</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600">채널 관리</td>
+            <td style="color:#888">1~2개 산발 운영</td>
+            <td>옴니채널 운영</td>
+            <td style="color:var(--orange);font-weight:600">채널 전략 + 통합 관리</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600">인건비</td>
+            <td style="color:#888">연 1~2억 (정규직)</td>
+            <td>연 3~5억</td>
+            <td style="color:var(--orange);font-weight:600">월 200~400만원</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="fade-in" style="margin-top:28px;background:linear-gradient(135deg,var(--orange),#d45e00);border-radius:12px;padding:18px 28px;text-align:center">
+      <p style="font-size:16px;font-weight:600;color:#fff">brandrise는 이 구조를 외부 팀으로 즉시 구현합니다.</p>
+    </div>
   </div>
-  <!-- Bottom bar -->
-  <div class="stagger-item" style="margin-top:28px;background:linear-gradient(135deg,var(--orange),#d45e00);border-radius:12px;padding:18px 28px;text-align:center">
-    <p style="font-size:16px;font-weight:600;color:#fff">brandrise는 이 구조를 외부 팀으로 즉시 구현합니다.</p>
-  </div>
-</div>
+</section>
 
-<!-- ==================== SLIDE 13: PRICING ==================== -->
-<div class="slide" data-slide="13" style="background:#0a0a0a;align-items:center">
-  <h2 class="stagger-item" style="text-align:center;margin-bottom:12px"><span class="gradient-text">합리적인 투자, 확실한 구조</span></h2>
-  <p class="stagger-item" style="text-align:center;color:var(--sub);margin-bottom:40px;font-size:16px">프로젝트 규모와 목표에 맞춰 선택하세요</p>
-  <div class="pricing-cards" style="display:flex;gap:24px;justify-content:center;align-items:stretch;flex-wrap:wrap">
+<!-- ==================== SECTION 13: PRICING ==================== -->
+<section class="section-dark" style="text-align:center">
+  <h2 class="fade-in" style="margin-bottom:12px"><span class="gradient-text">합리적인 투자, 확실한 구조</span></h2>
+  <p class="fade-in" style="color:var(--sub);margin-bottom:40px;font-size:16px">프로젝트 규모와 목표에 맞춰 선택하세요</p>
+  <div class="pricing-cards fade-in" style="display:flex;gap:24px;justify-content:center;align-items:stretch;flex-wrap:wrap">
     <!-- PLAN A -->
-    <div class="stagger-item pricing-card plan-hover" style="width:280px;background:var(--card);border-radius:20px;padding:36px 28px;border:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column">
+    <div class="pricing-card plan-hover" style="width:280px;background:var(--card);border-radius:20px;padding:36px 28px;border:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;text-align:left">
       <span class="mono" style="font-size:14px;color:var(--muted);font-weight:600">PLAN A</span>
       <h3 style="font-size:20px;color:var(--text);margin:12px 0 8px">브랜드 구조 설계</h3>
       <div class="mono" style="font-size:28px;font-weight:700;color:var(--orange);margin-bottom:4px">300~500만원</div>
       <p style="font-size:13px;color:var(--muted);margin-bottom:24px">프로젝트 단위</p>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;flex:1">
-        <li style="font-size:14px;color:var(--sub)">&#10003; 시장 & 경쟁 분석</li>
+        <li style="font-size:14px;color:var(--sub)">&#10003; 시장 &amp; 경쟁 분석</li>
         <li style="font-size:14px;color:var(--sub)">&#10003; 브랜드 포지셔닝</li>
         <li style="font-size:14px;color:var(--sub)">&#10003; 채널 전략 수립</li>
         <li style="font-size:14px;color:var(--sub)">&#10003; 실행 로드맵 제공</li>
       </ul>
     </div>
-    <!-- PLAN B (Popular) -->
-    <div class="stagger-item pricing-card" style="width:310px;background:linear-gradient(160deg,var(--orange),#c95d00);border-radius:20px;padding:40px 30px;position:relative;display:flex;flex-direction:column;box-shadow:0 8px 40px rgba(232,112,10,0.3);transform:scale(1.04)">
+    <!-- PLAN B -->
+    <div class="pricing-card" style="width:310px;background:linear-gradient(160deg,var(--orange),#c95d00);border-radius:20px;padding:40px 30px;position:relative;display:flex;flex-direction:column;box-shadow:0 8px 40px rgba(232,112,10,0.3);transform:scale(1.04);text-align:left">
       <div style="position:absolute;top:-12px;right:20px;background:var(--amber);color:#fff;font-size:12px;font-weight:700;padding:6px 16px;border-radius:20px">가장 인기</div>
       <span class="mono" style="font-size:14px;color:rgba(255,255,255,0.7);font-weight:600">PLAN B</span>
       <h3 style="font-size:22px;color:#fff;margin:12px 0 8px">외부 CMO 팀 운영</h3>
@@ -800,16 +761,16 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
       <p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:24px">월 단위 계약</p>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;flex:1">
         <li style="font-size:14px;color:rgba(255,255,255,0.9)">&#10003; PLAN A 전체 포함</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.9)">&#10003; 콘텐츠 기획 & 제작</li>
-        <li style="font-size:14px;color:rgba(255,255,255,0.9)">&#10003; 채널 운영 & 관리</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.9)">&#10003; 콘텐츠 기획 &amp; 제작</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.9)">&#10003; 채널 운영 &amp; 관리</li>
         <li style="font-size:14px;color:rgba(255,255,255,0.9)">&#10003; 퍼포먼스 마케팅</li>
         <li style="font-size:14px;color:rgba(255,255,255,0.9)">&#10003; 월간 성과 리포트</li>
       </ul>
     </div>
     <!-- PLAN C -->
-    <div class="stagger-item pricing-card plan-hover" style="width:280px;background:var(--card);border-radius:20px;padding:36px 28px;border:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column">
+    <div class="pricing-card plan-hover" style="width:280px;background:var(--card);border-radius:20px;padding:36px 28px;border:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;text-align:left">
       <span class="mono" style="font-size:14px;color:var(--muted);font-weight:600">PLAN C</span>
-      <h3 style="font-size:20px;color:var(--text);margin:12px 0 8px">자문 & 코칭</h3>
+      <h3 style="font-size:20px;color:var(--text);margin:12px 0 8px">자문 &amp; 코칭</h3>
       <div class="mono" style="font-size:28px;font-weight:700;color:var(--orange);margin-bottom:4px">50~100만원</div>
       <p style="font-size:13px;color:var(--muted);margin-bottom:24px">월 단위</p>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;flex:1">
@@ -820,14 +781,12 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
       </ul>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ==================== SLIDE 14: ONBOARDING ==================== -->
-<div class="slide" data-slide="14" style="background:#0a0a0a;align-items:center">
-  <h2 class="stagger-item" style="text-align:center;margin-bottom:48px"><span class="gradient-text">이렇게 시작됩니다</span></h2>
-  <!-- Steps: single horizontal flow with arrows -->
-  <div class="step-flow stagger-item" style="display:flex;align-items:flex-start;justify-content:center;gap:0;margin-bottom:48px;width:100%;max-width:960px">
-    <!-- Step 1 -->
+<!-- ==================== SECTION 14: ONBOARDING ==================== -->
+<section class="section-dark" style="text-align:center">
+  <h2 class="fade-in" style="margin-bottom:48px"><span class="gradient-text">이렇게 시작됩니다</span></h2>
+  <div class="step-flow fade-in" style="display:flex;align-items:flex-start;justify-content:center;gap:0;margin-bottom:48px;width:100%;max-width:960px;margin-left:auto;margin-right:auto">
     <div style="flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 12px">
       <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--amber));display:flex;align-items:center;justify-content:center;margin-bottom:14px">
         <span class="mono" style="font-size:22px;font-weight:700;color:#fff">1</span>
@@ -835,9 +794,7 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
       <h3 style="font-size:16px;color:var(--text);margin-bottom:6px;font-weight:700">무료 구조 진단</h3>
       <p style="font-size:13px;color:var(--sub);line-height:1.5">현재 브랜드 상황을 진단하고<br>시급한 과제를 파악합니다.</p>
     </div>
-    <!-- Arrow -->
-    <div style="flex-shrink:0;display:flex;align-items:center;padding-top:16px;color:var(--orange);font-size:28px;font-weight:700">&rarr;</div>
-    <!-- Step 2 -->
+    <div class="step-arrow" style="flex-shrink:0;display:flex;align-items:center;padding-top:16px;color:var(--orange);font-size:28px;font-weight:700">&rarr;</div>
     <div style="flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 12px">
       <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--amber));display:flex;align-items:center;justify-content:center;margin-bottom:14px">
         <span class="mono" style="font-size:22px;font-weight:700;color:#fff">2</span>
@@ -845,50 +802,45 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
       <h3 style="font-size:16px;color:var(--text);margin-bottom:6px;font-weight:700">맞춤 제안서 제공</h3>
       <p style="font-size:13px;color:var(--sub);line-height:1.5">전략 방향과 실행 범위를<br>제안합니다.</p>
     </div>
-    <!-- Arrow -->
-    <div style="flex-shrink:0;display:flex;align-items:center;padding-top:16px;color:var(--orange);font-size:28px;font-weight:700">&rarr;</div>
-    <!-- Step 3 -->
+    <div class="step-arrow" style="flex-shrink:0;display:flex;align-items:center;padding-top:16px;color:var(--orange);font-size:28px;font-weight:700">&rarr;</div>
     <div style="flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 12px">
       <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--amber));display:flex;align-items:center;justify-content:center;margin-bottom:14px">
         <span class="mono" style="font-size:22px;font-weight:700;color:#fff">3</span>
       </div>
-      <h3 style="font-size:16px;color:var(--text);margin-bottom:6px;font-weight:700">계약 & 킥오프</h3>
+      <h3 style="font-size:16px;color:var(--text);margin-bottom:6px;font-weight:700">계약 &amp; 킥오프</h3>
       <p style="font-size:13px;color:var(--sub);line-height:1.5">3개월 단위 유연 계약.<br>바로 시작합니다.</p>
     </div>
-    <!-- Arrow -->
-    <div style="flex-shrink:0;display:flex;align-items:center;padding-top:16px;color:var(--orange);font-size:28px;font-weight:700">&rarr;</div>
-    <!-- Step 4 -->
+    <div class="step-arrow" style="flex-shrink:0;display:flex;align-items:center;padding-top:16px;color:var(--orange);font-size:28px;font-weight:700">&rarr;</div>
     <div style="flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 12px">
       <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--amber));display:flex;align-items:center;justify-content:center;margin-bottom:14px">
         <span class="mono" style="font-size:22px;font-weight:700;color:#fff">4</span>
       </div>
-      <h3 style="font-size:16px;color:var(--text);margin-bottom:6px;font-weight:700">전략 실행 & 성과 관리</h3>
+      <h3 style="font-size:16px;color:var(--text);margin-bottom:6px;font-weight:700">전략 실행 &amp; 성과 관리</h3>
       <p style="font-size:13px;color:var(--sub);line-height:1.5">매월 리포트와 함께<br>성과를 관리합니다.</p>
     </div>
   </div>
-  <!-- CTA Card: full width centered below -->
-  <div class="stagger-item" style="width:100%;max-width:960px">
-    <div style="background:linear-gradient(160deg,var(--orange),#c95d00);border-radius:20px;padding:40px 40px;text-align:center">
+  <div class="fade-in" style="width:100%;max-width:960px;margin:0 auto">
+    <div style="background:linear-gradient(160deg,var(--orange),#c95d00);border-radius:20px;padding:40px;text-align:center">
       <h3 style="font-size:24px;color:#fff;margin-bottom:12px">무료 진단으로 시작해보세요</h3>
       <p style="font-size:15px;color:rgba(255,255,255,0.8);margin-bottom:24px;line-height:1.6">1시간 미팅으로 브랜드의 현재 위치를 파악합니다.</p>
       <button class="cta-btn" style="background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.5);justify-content:center;padding:16px 48px" onclick="alert('상담 신청 페이지로 이동합니다.')">
-        무료 진단 신청 &#8594;
+        무료 진단 신청 &rarr;
       </button>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ==================== SLIDE 15: CLOSING ==================== -->
-<div class="slide" data-slide="15" style="background:#0a0a0a;align-items:center;text-align:center;position:relative;color:#f8f8f8;justify-content:center">
-  <div style="position:relative;z-index:2;max-width:700px;margin:0 auto;width:100%">
-    <h2 class="stagger-item" style="font-size:clamp(24px,3.5vw,42px);margin-bottom:16px;line-height:1.4;color:#f8f8f8">
+<!-- ==================== SECTION 15: CLOSING ==================== -->
+<section class="section-dark" style="text-align:center;min-height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center">
+  <div style="max-width:700px;margin:0 auto;width:100%">
+    <h2 class="fade-in" style="font-size:clamp(24px,3.5vw,42px);margin-bottom:16px;line-height:1.4;color:#f8f8f8">
       좋은 제품은 있습니다.<br>
       <span class="gradient-text">팔리는 구조가 없을 뿐입니다.</span>
     </h2>
-    <div class="stagger-item" style="margin:32px 0">
+    <div class="fade-in" style="margin:32px 0">
       <span class="mono" style="font-size:clamp(28px,3.5vw,44px);font-weight:700;color:var(--orange);letter-spacing:-0.5px">brandrise</span>
     </div>
-    <div class="stagger-item" style="display:flex;justify-content:center;gap:32px;margin-bottom:40px;flex-wrap:wrap">
+    <div class="fade-in" style="display:flex;justify-content:center;gap:32px;margin-bottom:40px;flex-wrap:wrap">
       <div style="display:flex;align-items:center;gap:8px">
         <div style="width:6px;height:6px;border-radius:50%;background:var(--orange)"></div>
         <span style="font-size:15px;color:#bbbbbb">전략부터 실행까지 책임</span>
@@ -902,140 +854,50 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
         <span style="font-size:15px;color:#bbbbbb">월 200만원부터 시작</span>
       </div>
     </div>
-    <div class="stagger-item" style="margin-bottom:32px">
-      <button class="cta-btn" style="font-size:18px;padding:18px 44px" onclick="alert('상담 신청 페이지로 이동합니다.')">1시간 무료 구조 진단 신청 &#8594;</button>
+    <div class="fade-in" style="margin-bottom:32px">
+      <button class="cta-btn" style="font-size:18px;padding:18px 44px" onclick="alert('상담 신청 페이지로 이동합니다.')">1시간 무료 구조 진단 신청 &rarr;</button>
     </div>
-    <div class="stagger-item" style="display:flex;flex-direction:column;gap:6px;align-items:center">
-      <p style="font-size:14px;color:#999999">hello@brandrise.co.kr &#183; 010-XXXX-XXXX</p>
-      <p style="font-size:13px;color:#999999">서울특별시 &#183; brandrise.co.kr</p>
+    <div class="fade-in" style="display:flex;flex-direction:column;gap:6px;align-items:center">
+      <p style="font-size:14px;color:#999999">hello@brandrise.co.kr &middot; 010-XXXX-XXXX</p>
+      <p style="font-size:13px;color:#999999">서울특별시 &middot; brandrise.co.kr</p>
     </div>
   </div>
-</div>
+</section>
 
-</div><!-- end .deck -->
-
-<!-- ==================== NAVIGATION ==================== -->
-<div class="nav-float" id="navFloat">
-  <button onclick="prevSlide()" aria-label="Previous slide">&#8592;</button>
-  <span class="nav-counter mono" id="navCounter">1/15</span>
-  <button onclick="nextSlide()" aria-label="Next slide">&#8594;</button>
-  <button onclick="downloadPDF()" aria-label="Download PDF" style="margin-left:4px" title="PDF 다운로드">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-  </button>
-</div>
+<!-- ==================== FIXED BUTTONS ==================== -->
+<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로">TOP</button>
+<button id="pdfBtn" onclick="window.print()" title="PDF 다운로드">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+</button>
 
 <!-- ==================== SCRIPTS ==================== -->
 <script>
+// Fade-in on scroll using IntersectionObserver
 (function(){
-  // Mobile: disable slide navigation, use scroll instead
-  var isMobile = window.innerWidth <= 900;
-  if(isMobile) return; // Skip all slide JS on mobile
-
-  var deck = document.getElementById('deck');
-  var slides = deck.querySelectorAll('.slide');
-  var counter = document.getElementById('navCounter');
-  var total = slides.length;
-  var current = 0;
-  var isAnimating = false;
-
-  function updateCounter(){
-    counter.textContent = (current+1)+'/'+total;
+  var items = document.querySelectorAll('.fade-in');
+  if('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+    items.forEach(function(el){observer.observe(el)});
+  } else {
+    // Fallback: show all
+    items.forEach(function(el){el.classList.add('visible')});
   }
 
-  function resetStagger(slide){
-    var items = slide.querySelectorAll('.stagger-item');
-    for(var i=0;i<items.length;i++){
-      items[i].style.opacity='0';
-      items[i].style.transform='translateY(30px)';
+  // TOP button show/hide
+  var topBtn = document.getElementById('topBtn');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY > 600){
+      topBtn.classList.add('show');
+    } else {
+      topBtn.classList.remove('show');
     }
-  }
-
-  function triggerStagger(slide){
-    setTimeout(function(){
-      var items = slide.querySelectorAll('.stagger-item');
-      for(var i=0;i<items.length;i++){
-        items[i].style.opacity='';
-        items[i].style.transform='';
-      }
-    },50);
-  }
-
-  function goTo(idx){
-    if(idx<0||idx>=total||idx===current||isAnimating) return;
-    isAnimating = true;
-    var prev = slides[current];
-    var next = slides[idx];
-    resetStagger(next);
-    prev.classList.remove('active');
-    next.classList.add('active');
-    current = idx;
-    updateCounter();
-    triggerStagger(next);
-    // Trigger 4D sequential animation on slide 8
-    trigger4D(next);
-    setTimeout(function(){isAnimating=false},300);
-  }
-
-  // 4D card sequential animation
-  function trigger4D(slide){
-    var cards = slide.querySelectorAll('.d4-card');
-    var arrows = slide.querySelectorAll('.d4-arrow');
-    if(cards.length === 0) return;
-    // Reset
-    for(var i=0;i<cards.length;i++) cards[i].classList.remove('d4-show');
-    for(var i=0;i<arrows.length;i++) arrows[i].classList.remove('d4-show');
-    // Trigger sequentially
-    setTimeout(function(){
-      for(var i=0;i<cards.length;i++) cards[i].classList.add('d4-show');
-      for(var i=0;i<arrows.length;i++) arrows[i].classList.add('d4-show');
-    },100);
-  }
-  // Also trigger on initial load if slide 8 is first visible
-  var slide8 = document.querySelector('[data-slide="8"]');
-  if(slide8) {
-    var d4cards = slide8.querySelectorAll('.d4-card');
-    for(var i=0;i<d4cards.length;i++) d4cards[i].classList.add('d4-show');
-    var d4arrows = slide8.querySelectorAll('.d4-arrow');
-    for(var i=0;i<d4arrows.length;i++) d4arrows[i].classList.add('d4-show');
-  }
-
-  window.nextSlide = function(){goTo(current+1)};
-  window.prevSlide = function(){goTo(current-1)};
-
-  // Keyboard
-  document.addEventListener('keydown',function(e){
-    if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){e.preventDefault();nextSlide()}
-    if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();prevSlide()}
   });
-
-  // Mouse wheel
-  var wheelTimeout=null;
-  document.addEventListener('wheel',function(e){
-    if(wheelTimeout) return;
-    if(e.deltaY>30) nextSlide();
-    else if(e.deltaY<-30) prevSlide();
-    wheelTimeout=setTimeout(function(){wheelTimeout=null},800);
-  },{passive:true});
-
-  // Touch swipe
-  var touchStartY=0;
-  document.addEventListener('touchstart',function(e){touchStartY=e.touches[0].clientY},{passive:true});
-  document.addEventListener('touchend',function(e){
-    var dy=touchStartY-e.changedTouches[0].clientY;
-    if(Math.abs(dy)>50){
-      if(dy>0) nextSlide(); else prevSlide();
-    }
-  },{passive:true});
-
-  // PDF download
-  window.downloadPDF = function(){window.print()};
-
-  // Initialize
-  for(var i=0;i<slides.length;i++){
-    if(i===0) slides[i].classList.add('active');
-    else slides[i].classList.remove('active');
-  }
-  updateCounter();
 })();
 </script>
 
