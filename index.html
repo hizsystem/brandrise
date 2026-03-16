@@ -33,12 +33,11 @@ body{font-family:'Noto Sans KR',sans-serif;background:#0a0a0a;color:#f8f8f8;over
 .deck{position:relative;width:100vw;height:100vh;overflow:hidden}
 .slide{
   position:absolute;top:0;left:0;width:100%;height:100%;
-  display:flex;flex-direction:column;justify-content:center;
+  display:none;flex-direction:column;justify-content:center;
   padding:60px 80px;overflow-y:auto;overflow-x:hidden;
-  opacity:1;
-  pointer-events:none;z-index:0;
+  pointer-events:none;
 }
-.slide.active{pointer-events:auto;z-index:10}
+.slide.active{display:flex;pointer-events:auto}
 
 /* ============ TYPOGRAPHY ============ */
 .mono{font-family:var(--mono)}
@@ -69,6 +68,30 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
 .card-orange{background:linear-gradient(135deg,var(--orange),#d45e00);color:#fff;border:none}
 
 /* Plan card hover effect */
+/* 4D sequential animation */
+.d4-card{
+  opacity:0;
+  transform:translateY(40px) scale(0.95);
+  transition:opacity 0.6s cubic-bezier(.16,1,.3,1),transform 0.6s cubic-bezier(.16,1,.3,1);
+}
+.d4-card.d4-show{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+.d4-card:nth-child(1){transition-delay:0s}
+.d4-card:nth-child(2){transition-delay:0.25s}
+.d4-card:nth-child(3){transition-delay:0.5s}
+.d4-card:nth-child(4){transition-delay:0.75s}
+/* Arrow between 4D cards */
+.d4-arrow{
+  opacity:0;
+  transition:opacity 0.3s ease;
+}
+.d4-arrow.d4-show{opacity:1}
+.d4-arrow:nth-of-type(1){transition-delay:0.2s}
+.d4-arrow:nth-of-type(2){transition-delay:0.45s}
+.d4-arrow:nth-of-type(3){transition-delay:0.7s}
+
 .plan-hover{
   transition:all 0.4s cubic-bezier(.4,0,.2,1)!important;
   cursor:pointer;
@@ -137,8 +160,8 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
 .port-caption{font-size:14px;color:var(--sub);margin-top:10px;line-height:1.5}
 
 /* ============ STAT BOX ============ */
-.stat-num{font-family:var(--mono);font-size:clamp(36px,4vw,56px);font-weight:700;color:var(--orange)}
-.stat-label{font-size:14px;color:var(--sub);margin-top:4px}
+.stat-num{font-family:var(--mono);font-size:clamp(48px,6vw,80px);font-weight:700;color:var(--orange)}
+.stat-label{font-size:17px;color:var(--sub);margin-top:6px;font-weight:500}
 
 /* ============ TABLE ============ */
 .br-table{width:100%;border-collapse:collapse;font-size:15px}
@@ -504,9 +527,9 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
 <div class="slide" data-slide="8" style="background:#0a0a0a">
   <h2 class="stagger-item" style="margin-bottom:8px;text-align:center;font-size:clamp(28px,3.5vw,44px)">브랜드라이즈가 하는 일</h2>
   <p class="stagger-item" style="text-align:center;color:var(--orange);margin-bottom:36px;font-size:20px;font-weight:600">감이 아닌 구조로 &#8212; 4D Process</p>
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:stretch;max-width:1100px;margin:0 auto">
+  <div id="d4grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:stretch;max-width:1100px;margin:0 auto">
     <!-- DISCOVER -->
-    <div class="card stagger-item" style="position:relative;padding:24px 20px">
+    <div class="card d4-card" style="position:relative;padding:24px 20px">
       <span class="mono" style="font-size:18px;color:var(--sub);font-weight:700">Month 1</span>
       <h3 style="font-family:'Bebas Neue',var(--mono);color:var(--orange);margin:4px 0 0;font-size:65px;font-weight:400;letter-spacing:2px;line-height:1">Discover</h3>
       <p style="font-size:17px;color:var(--text);margin-bottom:14px;font-weight:600">자리를 찾다</p>
@@ -516,10 +539,10 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
         <li style="font-size:15px;color:var(--sub)">&#8226; 브랜드 현황 진단</li>
         <li style="font-size:15px;color:var(--sub)">&#8226; 성장 기회 포착</li>
       </ul>
-      <div style="position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:36px;color:var(--orange);z-index:2;font-weight:700">→</div>
+      <div class="d4-arrow" style="position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:36px;color:var(--orange);z-index:2;font-weight:700">→</div>
     </div>
     <!-- DEFINE -->
-    <div class="card stagger-item" style="position:relative;padding:24px 20px">
+    <div class="card d4-card" style="position:relative;padding:24px 20px">
       <span class="mono" style="font-size:18px;color:var(--sub);font-weight:700">Month 2</span>
       <h3 style="font-family:'Bebas Neue',var(--mono);color:var(--orange);margin:4px 0 0;font-size:65px;font-weight:400;letter-spacing:2px;line-height:1">Define</h3>
       <p style="font-size:17px;color:var(--text);margin-bottom:14px;font-weight:600">색을 입히다</p>
@@ -529,10 +552,10 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
         <li style="font-size:15px;color:var(--sub)">&#8226; 채널 전략 수립</li>
         <li style="font-size:15px;color:var(--sub)">&#8226; KPI 설정</li>
       </ul>
-      <div style="position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:36px;color:var(--orange);z-index:2;font-weight:700">→</div>
+      <div class="d4-arrow" style="position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:36px;color:var(--orange);z-index:2;font-weight:700">→</div>
     </div>
     <!-- DESIGN -->
-    <div class="card stagger-item" style="position:relative;padding:24px 20px">
+    <div class="card d4-card" style="position:relative;padding:24px 20px">
       <span class="mono" style="font-size:18px;color:var(--sub);font-weight:700">Month 3</span>
       <h3 style="font-family:'Bebas Neue',var(--mono);color:var(--orange);margin:4px 0 0;font-size:65px;font-weight:400;letter-spacing:2px;line-height:1">Design</h3>
       <p style="font-size:17px;color:var(--text);margin-bottom:14px;font-weight:600">구조를 짜다</p>
@@ -542,10 +565,10 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
         <li style="font-size:15px;color:var(--sub)">&#8226; 콘텐츠 제작</li>
         <li style="font-size:15px;color:var(--sub)">&#8226; 채널 셋업</li>
       </ul>
-      <div style="position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:36px;color:var(--orange);z-index:2;font-weight:700">→</div>
+      <div class="d4-arrow" style="position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:36px;color:var(--orange);z-index:2;font-weight:700">→</div>
     </div>
     <!-- DIRECT -->
-    <div class="card-orange stagger-item" style="border-radius:16px;padding:24px 20px">
+    <div class="card-orange d4-card" style="border-radius:16px;padding:24px 20px">
       <span class="mono" style="font-size:18px;color:rgba(255,255,255,0.8);font-weight:700">Ongoing</span>
       <h3 style="font-family:'Bebas Neue',var(--mono);color:#fff;margin:4px 0 0;font-size:65px;font-weight:400;letter-spacing:2px;line-height:1">Direct</h3>
       <p style="font-size:17px;color:rgba(255,255,255,0.9);margin-bottom:14px;font-weight:600">함께 성장</p>
@@ -666,7 +689,7 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
 
 <!-- ==================== SLIDE 11: STATS ==================== -->
 <div class="slide" data-slide="11" style="background:#0a0a0a;align-items:center;text-align:center">
-  <h2 class="stagger-item" style="margin-bottom:48px"><span class="gradient-text">숫자가 증명합니다</span></h2>
+  <h2 class="stagger-item" style="margin-bottom:48px;font-size:clamp(32px,4vw,48px)"><span class="gradient-text">숫자가 증명합니다</span></h2>
   <div class="grid-4 stagger-item" style="margin-bottom:40px;max-width:900px;width:100%">
     <div class="card" style="text-align:center;padding:32px 16px">
       <div class="stat-num mono">130%</div>
@@ -943,13 +966,37 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
     var prev = slides[current];
     var next = slides[idx];
     resetStagger(next);
-    // Simply swap active class — z-index handles visibility
     prev.classList.remove('active');
     next.classList.add('active');
     current = idx;
     updateCounter();
     triggerStagger(next);
+    // Trigger 4D sequential animation on slide 8
+    trigger4D(next);
     setTimeout(function(){isAnimating=false},300);
+  }
+
+  // 4D card sequential animation
+  function trigger4D(slide){
+    var cards = slide.querySelectorAll('.d4-card');
+    var arrows = slide.querySelectorAll('.d4-arrow');
+    if(cards.length === 0) return;
+    // Reset
+    for(var i=0;i<cards.length;i++) cards[i].classList.remove('d4-show');
+    for(var i=0;i<arrows.length;i++) arrows[i].classList.remove('d4-show');
+    // Trigger sequentially
+    setTimeout(function(){
+      for(var i=0;i<cards.length;i++) cards[i].classList.add('d4-show');
+      for(var i=0;i<arrows.length;i++) arrows[i].classList.add('d4-show');
+    },100);
+  }
+  // Also trigger on initial load if slide 8 is first visible
+  var slide8 = document.querySelector('[data-slide="8"]');
+  if(slide8) {
+    var d4cards = slide8.querySelectorAll('.d4-card');
+    for(var i=0;i<d4cards.length;i++) d4cards[i].classList.add('d4-show');
+    var d4arrows = slide8.querySelectorAll('.d4-arrow');
+    for(var i=0;i<d4arrows.length;i++) d4arrows[i].classList.add('d4-show');
   }
 
   window.nextSlide = function(){goTo(current+1)};
