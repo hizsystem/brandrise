@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>brandrise — Presentation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f8f8f8;
+    --orange: #E8700A;
+    --orange2: #FF8C2A;
+    --orange3: #d45e00;
+    --amber: #F5A623;
+    --cream: #F5F0E8;
+    --gray: #888;
+    --teal: #1a6b5a;
+    --teal-bg: #e6ede9;
+    --card: rgba(22,22,22,0.7);
+    --card-border: rgba(255,255,255,0.06);
+    --glass-bg: rgba(255,255,255,0.04);
+    --glass-border: rgba(255,255,255,0.08);
+  }
+
+  html, body { height:100%; overflow:hidden; }
+
+  body {
+    font-family: 'Noto Sans KR', -apple-system, sans-serif;
+    background: var(--black);
+    color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    cursor: default;
+  }
+
+  .t-mono { font-family: 'Space Grotesk', monospace; }
+
+  /* ═══ ANIMATED BACKGROUND ═══ */
+  @keyframes auroraDrift {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    33% { transform: translate(30px, -50px) rotate(120deg) scale(1.1); }
+    66% { transform: translate(-20px, 20px) rotate(240deg) scale(0.95); }
+    100% { transform: translate(0, 0) rotate(360deg) scale(1); }
+  }
+
+  @keyframes grainMove {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-5%, -10%); }
+    30% { transform: translate(3%, -15%); }
+    50% { transform: translate(12%, 9%); }
+    70% { transform: translate(9%, 4%); }
+    90% { transform: translate(-1%, 7%); }
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+  }
+
+  @keyframes floatIn {
+    from { opacity: 0; transform: translateY(30px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* Grain overlay */
+  .deck::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+    animation: grainMove 8s steps(10) infinite;
+  }
+
+  /* ═══ SLIDE SYSTEM ═══ */
+  .deck {
+    height: 100vh;
+    height: 100dvh;
+    position: relative;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 40px;
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+    transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    pointer-events: none;
+    overflow-y: auto;
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  .slide.exit-up {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.97);
+  }
+
+  .slide-inner {
+    max-width: 920px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Aurora mesh backgrounds for dark slides */
+  .bg-dark {
+    background: var(--black);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bg-dark::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,112,10,0.08) 0%, transparent 70%);
+    top: -200px;
+    right: -200px;
+    animation: auroraDrift 20s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .bg-dark::after {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,166,35,0.05) 0%, transparent 70%);
+    bottom: -150px;
+    left: -150px;
+    animation: auroraDrift 25s ease-in-out infinite reverse;
+    pointer-events: none;
+  }
+
+  .bg-cream { background: var(--cream); color: var(--black); }
+
+  .bg-orange {
+    background: linear-gradient(135deg, var(--orange), var(--orange3));
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bg-teal { background: linear-gradient(135deg, var(--teal), #1f8068); color: var(--white); }
+  .bg-teal-light { background: var(--teal-bg); color: var(--black); }
+
+  /* ═══ NAV — glass effect ═══ */
+  .nav {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 100;
+    background: rgba(10,10,10,0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 100px;
+    padding: 8px 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+
+  .nav-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+
+  .nav-dot:hover {
+    background: rgba(255,255,255,0.3);
+  }
+
+  .nav-dot.active {
+    background: linear-gradient(135deg, var(--orange), var(--amber));
+    box-shadow: 0 0 12px rgba(232,112,10,0.5), 0 0 24px rgba(232,112,10,0.2);
+    width: 28px;
+    border-radius: 4px;
+  }
+
+  .nav-counter {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    min-width: 48px;
+    text-align: center;
+  }
+
+  .nav-btn {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.25);
+    cursor: pointer;
+    padding: 4px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-btn:hover { color: var(--orange); transform: scale(1.15); }
+  .nav-btn svg { width: 20px; height: 20px; }
+
+  /* ═══ COMMON SLIDE STYLES ═══ */
+  .s-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .s-tag::before { content: ''; width: 32px; height: 2px; }
+
+  .bg-dark .s-tag { color: var(--orange); }
+  .bg-dark .s-tag::before { background: linear-gradient(90deg, var(--orange), var(--amber)); }
+  .bg-cream .s-tag { color: var(--orange); }
+  .bg-cream .s-tag::before { background: linear-gradient(90deg, var(--orange), var(--amber)); }
+  .bg-orange .s-tag { color: rgba(255,255,255,0.6); }
+  .bg-orange .s-tag::before { background: rgba(255,255,255,0.4); }
+  .bg-teal .s-tag { color: rgba(255,255,255,0.6); }
+  .bg-teal .s-tag::before { background: rgba(255,255,255,0.4); }
+  .bg-teal-light .s-tag { color: var(--teal); }
+  .bg-teal-light .s-tag::before { background: var(--teal); }
+
+  .s-h1 {
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    word-break: keep-all;
+    letter-spacing: -2px;
+  }
+
+  .s-h2 {
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    word-break: keep-all;
+    letter-spacing: -1px;
+  }
+
+  .s-h3 {
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+  }
+
+  .s-desc {
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .bg-dark .s-desc { color: rgba(255,255,255,0.55); }
+  .bg-cream .s-desc { color: #666; }
+  .bg-orange .s-desc { color: rgba(255,255,255,0.8); }
+
+  .accent {
+    background: linear-gradient(135deg, var(--orange), var(--amber));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-cream .accent { color: var(--orange); -webkit-text-fill-color: var(--orange); background: none; }
+
+  /* ═══ CHAPTER SLIDE — full-screen dramatic ═══ */
+  .ch-slide-inner {
+    max-width: 920px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Decorative geometric elements for chapter slides */
+  .ch-decor {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .ch-decor::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50%;
+    top: 50%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+  }
+
+  .ch-decor::after {
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 50%;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+  }
+
+  .ch-line-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  }
+
+  .ch-line-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  }
+
+  .ch-line-v {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 120px;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,0.08), transparent);
+  }
+
+  .ch-num {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 220px;
+    font-weight: 700;
+    line-height: 0.85;
+    margin-bottom: 16px;
+    letter-spacing: -10px;
+  }
+
+  .bg-orange .ch-num {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.15);
+    background: linear-gradient(180deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .bg-dark .ch-num {
+    background: linear-gradient(135deg, var(--orange), var(--amber));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .ch-title {
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: -1px;
+  }
+
+  .ch-sub {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 12px;
+    letter-spacing: 10px;
+    margin-top: 12px;
+    text-transform: uppercase;
+  }
+
+  .bg-dark .ch-sub { color: rgba(255,255,255,0.2); }
+  .bg-orange .ch-sub { color: rgba(255,255,255,0.35); }
+
+  /* ═══ GRIDS ═══ */
+  .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .g4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
+
+  @media (max-width: 700px) {
+    .g2 { grid-template-columns: 1fr; }
+    .g3 { grid-template-columns: 1fr 1fr; }
+    .g4 { grid-template-columns: 1fr 1fr; }
+    .s-h1 { font-size: 28px; }
+    .s-h2 { font-size: 24px; }
+    .ch-num { font-size: 120px; letter-spacing: -5px; }
+    .slide { padding: 32px 24px; }
+  }
+
+  /* ═══ CARDS — glass morphism ═══ */
+  .card {
+    border-radius: 20px;
+    padding: 24px;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px) scale(1.02);
+  }
+
+  .card-dark {
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  }
+
+  .card-dark:hover {
+    border-color: rgba(232,112,10,0.2);
+    box-shadow: 0 8px 40px rgba(232,112,10,0.08), 0 4px 24px rgba(0,0,0,0.3);
+  }
+
+  .card-white {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0,0,0,0.06);
+    color: var(--black);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+  }
+
+  .card-white:hover {
+    box-shadow: 0 12px 40px rgba(232,112,10,0.1), 0 4px 16px rgba(0,0,0,0.06);
+    border-color: rgba(232,112,10,0.15);
+  }
+
+  .card-orange {
+    background: linear-gradient(135deg, var(--orange), var(--orange3));
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 8px 32px rgba(232,112,10,0.2);
+  }
+
+  .card-orange:hover {
+    box-shadow: 0 12px 48px rgba(232,112,10,0.35);
+  }
+
+  .card-teal {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(26,107,90,0.12);
+    border-top: 3px solid var(--teal);
+    color: var(--black);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+  }
+
+  .card-teal:hover {
+    box-shadow: 0 12px 40px rgba(26,107,90,0.1);
+    border-color: rgba(26,107,90,0.2);
+    border-top-color: var(--teal);
+  }
+
+  .card-label {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .card-dark .card-label { color: var(--orange); }
+  .card-white .card-label { color: var(--orange); }
+  .card-orange .card-label { color: rgba(255,255,255,0.5); }
+  .card-teal .card-label { color: var(--teal); }
+
+  .card-title {
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+
+  .card-sub {
+    font-size: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(128,128,128,0.12);
+  }
+
+  .card-dark .card-sub { color: rgba(255,255,255,0.25); }
+  .card-white .card-sub { color: #999; }
+  .card-orange .card-sub { color: rgba(255,255,255,0.5); }
+
+  .card-body {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .card-dark .card-body { color: rgba(255,255,255,0.45); }
+  .card-white .card-body { color: #777; }
+  .card-orange .card-body { color: rgba(255,255,255,0.8); }
+  .card-teal .card-body { color: #777; }
+
+  /* ═══ SVG ICONS FOR SERVICES ═══ */
+  .svc-icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 12px;
+    opacity: 0.7;
+  }
+
+  .card-white .svc-icon { color: var(--orange); opacity: 1; }
+  .card-teal .svc-icon { color: var(--teal); opacity: 1; }
+
+  /* ═══ PAIN CARDS ═══ */
+  .pain-card {
+    border-radius: 20px;
+    padding: 28px;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+
+  .pain-card:hover { transform: translateY(-2px); }
+
+  .pain-card-dark {
+    background: rgba(22,22,22,0.9);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .pain-card-teal {
+    background: linear-gradient(135deg, var(--teal), #1f8068);
+  }
+
+  .pain-item { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .pain-item:last-child { border-bottom: none; }
+  .pain-q { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .pain-a { font-size: 11px; opacity: 0.45; }
+
+  /* ═══ TABLE — modern borderless ═══ */
+  .tbl {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 13px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+
+  .tbl th {
+    padding: 16px 16px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 13px;
+    border: none;
+  }
+
+  .tbl td {
+    padding: 16px;
+    text-align: center;
+    border: none;
+    background: var(--white);
+    color: #555;
+    transition: background 0.3s;
+  }
+
+  .tbl tr:nth-child(even) td { background: #faf8f4; }
+  .tbl tr:hover td { background: #fff3e6; }
+  .tbl tr:last-child td { border-bottom: none; }
+
+  .tbl td:first-child {
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+    color: #666;
+    background: rgba(250,247,242,0.8);
+    letter-spacing: 0.5px;
+  }
+
+  .tbl tr:nth-child(even) td:first-child { background: rgba(245,240,232,0.9); }
+  .tbl tr:hover td:first-child { background: #fff3e6; }
+
+  .tbl-h-gray { background: #3a3a3a; color: #ddd; }
+  .tbl-h-dark { background: #3a3a3a; color: #ddd; }
+  .tbl-h-orange { background: linear-gradient(135deg, var(--orange), var(--amber)); color: var(--white); }
+  .tbl-h-blank { background: #ede8df; color: #888; }
+  .tbl-h-mid { background: #555; color: #f0f0f0; }
+
+  .tbl .td-orange { color: var(--orange); font-weight: 700; background: #fff8f0; }
+  .tbl .td-gray { color: #aaa; }
+
+  /* comp-table inherits tbl styles */
+  .comp-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 13px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    margin-bottom: 16px;
+  }
+
+  .comp-table th {
+    padding: 16px 16px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 13px;
+    border: none;
+  }
+
+  .comp-table td {
+    padding: 16px;
+    text-align: center;
+    border: none;
+    background: var(--white);
+    color: #555;
+    transition: background 0.3s;
+  }
+
+  .comp-table tr:nth-child(even) td { background: #faf8f4; }
+  .comp-table tr:hover td { background: #fff3e6; }
+
+  .comp-table td:first-child {
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+    color: #666;
+    background: rgba(250,247,242,0.8);
+    letter-spacing: 0.5px;
+  }
+
+  .comp-table tr:nth-child(even) td:first-child { background: rgba(245,240,232,0.9); }
+  .comp-table tr:hover td:first-child { background: #fff3e6; }
+
+  .comp-table .td-orange { color: var(--orange); font-weight: 700; background: #fff8f0; }
+  .comp-table .td-gray { color: #aaa; }
+
+  /* ═══ STAT ═══ */
+  .stat-card {
+    text-align: center;
+    padding: 24px;
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(232,112,10,0.1);
+    border-color: rgba(232,112,10,0.15);
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--orange), var(--amber));
+  }
+
+  .stat-num {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 40px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--orange), var(--amber));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-txt { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+  .stat-sub { font-size: 10px; color: rgba(255,255,255,0.2); margin-top: 2px; }
+
+  /* ═══ AWARD ═══ */
+  .award {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--orange), var(--amber));
+    color: var(--white);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 4px;
+    box-shadow: 0 2px 12px rgba(232,112,10,0.25);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .award:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(232,112,10,0.4);
+  }
+
+  /* ═══ PORTFOLIO ═══ */
+  .pf-scroll {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .pf-scroll::-webkit-scrollbar { height: 4px; }
+  .pf-scroll::-webkit-scrollbar-track { background: #1a1a1a; border-radius: 2px; }
+  .pf-scroll::-webkit-scrollbar-thumb { background: linear-gradient(90deg, var(--orange), var(--amber)); border-radius: 2px; }
+
+  .pf-item {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+
+  .pf-item:hover { transform: scale(1.03); }
+
+  .pf-item img { width: 100%; height: 200px; object-fit: cover; display: block; }
+
+  .pf-cap {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 14px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  /* ═══ VEGGIET ═══ */
+  .vg-stat {
+    background: linear-gradient(135deg, var(--orange), var(--orange3));
+    border-radius: 16px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(232,112,10,0.15);
+  }
+
+  .vg-num { font-family: 'Space Grotesk', monospace; font-size: 28px; font-weight: 700; color: var(--white); }
+  .vg-label { font-size: 10px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+
+  .tl { padding-left: 20px; border-left: 2px solid rgba(255,255,255,0.08); }
+  .tl-item { padding: 10px 0 10px 16px; font-size: 14px; color: rgba(255,255,255,0.5); position: relative; }
+  .tl-item::before { content: ''; position: absolute; left: -25px; top: 16px; width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.12); }
+  .tl-item:last-child { color: var(--orange); font-weight: 700; }
+  .tl-item:last-child::before { background: var(--orange); box-shadow: 0 0 12px rgba(232,112,10,0.5); }
+
+  /* ═══ PLAN ═══ */
+  .plan {
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 24px;
+    padding: 28px;
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
+  }
+
+  .plan:hover {
+    transform: translateY(-4px) scale(1.02);
+    border-color: rgba(255,255,255,0.1);
+  }
+
+  .plan-pop {
+    background: linear-gradient(135deg, var(--orange), var(--orange3));
+    border-color: transparent;
+    color: var(--white);
+    box-shadow: 0 12px 48px rgba(232,112,10,0.3);
+  }
+
+  .plan-pop:hover {
+    box-shadow: 0 16px 56px rgba(232,112,10,0.45);
+  }
+
+  .plan-badge {
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    background: var(--white);
+    color: var(--orange);
+    font-size: 11px;
+    font-weight: 900;
+    padding: 4px 14px;
+    border-radius: 100px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .plan-label { font-family: 'Space Grotesk', monospace; font-size: 10px; letter-spacing: 4px; font-weight: 700; margin-bottom: 8px; }
+  .plan .plan-label { color: var(--orange); }
+  .plan-pop .plan-label { color: rgba(255,255,255,0.5); }
+  .plan-name { font-size: 18px; font-weight: 900; margin-bottom: 4px; }
+  .plan-price { font-family: 'Space Grotesk', monospace; font-size: 24px; font-weight: 700; }
+  .plan .plan-price { background: linear-gradient(135deg, var(--orange), var(--amber)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .plan-pop .plan-price { color: var(--white); -webkit-text-fill-color: var(--white); }
+  .plan-period { font-size: 11px; color: rgba(255,255,255,0.3); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .plan-pop .plan-period { color: rgba(255,255,255,0.4); border-color: rgba(255,255,255,0.15); }
+  .plan-feat { list-style: none; padding: 0; }
+  .plan-feat li { padding: 6px 0 6px 18px; font-size: 13px; position: relative; }
+  .plan .plan-feat li { color: rgba(255,255,255,0.5); }
+  .plan-pop .plan-feat li { color: rgba(255,255,255,0.9); }
+  .plan-feat li::before { content: ''; position: absolute; left: 0; top: 13px; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+  .plan-pop .plan-feat li::before { background: var(--white); }
+  .plan-contract { margin-top: 14px; padding: 10px 12px; border-radius: 12px; font-size: 11px; text-align: center; }
+  .plan .plan-contract { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.35); }
+  .plan-pop .plan-contract { background: rgba(0,0,0,0.2); color: rgba(255,255,255,0.7); }
+
+  /* ═══ ONBOARD ═══ */
+  .ob-step {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .ob-step:last-child { border-bottom: none; }
+
+  .ob-num {
+    min-width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--orange), var(--amber));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(232,112,10,0.25);
+  }
+
+  .ob-title { font-size: 14px; font-weight: 700; color: var(--orange); margin-bottom: 4px; }
+  .ob-desc { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+  /* ═══ CTA — glowing ═══ */
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--orange), var(--amber));
+    color: var(--white);
+    border-radius: 100px;
+    padding: 18px 40px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 4px 24px rgba(232,112,10,0.35), 0 0 60px rgba(232,112,10,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 40px rgba(232,112,10,0.5), 0 0 80px rgba(232,112,10,0.2);
+  }
+
+  .cta-btn svg { width: 16px; height: 16px; }
+
+  /* ═══ HERO GLOW ORB ═══ */
+  .hero-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,112,10,0.12) 0%, rgba(245,166,35,0.06) 40%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: glowPulse 6s ease-in-out infinite;
+    z-index: 0;
+  }
+
+  /* ═══ HELPER ═══ */
+  .mb-8 { margin-bottom: 8px; }
+  .mb-16 { margin-bottom: 16px; }
+  .mb-24 { margin-bottom: 24px; }
+  .mb-32 { margin-bottom: 32px; }
+  .mt-16 { margin-top: 16px; }
+  .mt-24 { margin-top: 24px; }
+  .mt-32 { margin-top: 32px; }
+  .center { text-align: center; }
+  .fw300 { font-weight: 300; }
+  .fs12 { font-size: 12px; }
+  .fs14 { font-size: 14px; }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+<!-- ─── 0: COVER ─── -->
+<div class="slide bg-dark active" data-idx="0">
+  <div class="hero-glow"></div>
+  <div class="slide-inner">
+    <p class="t-mono" style="font-size:14px; letter-spacing:10px; color:var(--orange); margin-bottom:48px;">brandrise</p>
+    <h1 class="s-h1">당신의 브랜드,<br><span class="accent">이제 팔리는 구조로 만듭니다.</span></h1>
+    <p class="s-desc mb-32">전략 · 브랜드 · 채널 · 성과까지<br>외부 CMO 팀이 처음부터 끝까지 책임집니다.</p>
+    <a href="#" class="cta-btn mb-32">1시간 무료 구조 진단 신청 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <div style="border-top:1px solid rgba(255,255,255,0.06); padding-top:20px; margin-top:32px;">
+      <p class="t-mono" style="font-size:11px; color:rgba(255,255,255,0.3); letter-spacing:4px; margin-bottom:8px;">CONTENTS</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px 24px; font-size:13px; color:rgba(255,255,255,0.45);">
+        <span><span class="t-mono" style="color:var(--orange); font-weight:700;">01</span> 기업 소개</span>
+        <span><span class="t-mono" style="color:var(--orange); font-weight:700;">04</span> 주요 프로젝트 사례</span>
+        <span><span class="t-mono" style="color:var(--orange); font-weight:700;">02</span> 주요 사업 영역</span>
+        <span><span class="t-mono" style="color:var(--orange); font-weight:700;">05</span> 함께하는 방법</span>
+        <span><span class="t-mono" style="color:var(--orange); font-weight:700;">03</span> 핵심 역량 & 성과</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 1: PAIN ─── -->
+<div class="slide bg-cream" data-idx="1">
+  <div class="slide-inner">
+    <h2 class="s-h2 mb-24">혹시 지금 이런 상황이세요?</h2>
+    <div class="g2 mb-16">
+      <div class="pain-card pain-card-dark">
+        <p class="t-mono" style="font-size:11px; letter-spacing:3px; color:var(--orange); font-weight:700; margin-bottom:16px;">SCALE-UP | 연매출 5~30억</p>
+        <div class="pain-item"><p class="pain-q">"광고비는 느는데 매출이 안 느네요"</p><p class="pain-a">채널별 실행은 있는데 전체 전략이 없는 상태</p></div>
+        <div class="pain-item"><p class="pain-q">"대행사 3곳 쓰는데 누가 뭘 하는지 모르겠어요"</p><p class="pain-a">파편화된 실행, 통합 관리하는 사람 없음</p></div>
+        <div class="pain-item"><p class="pain-q">"마케팅 의사결정을 제가 다 하고 있어요"</p><p class="pain-a">대표가 전략까지 맡으면 스케일업 병목</p></div>
+      </div>
+      <div class="pain-card pain-card-teal">
+        <p class="t-mono" style="font-size:11px; letter-spacing:3px; color:#a8e6d5; font-weight:700; margin-bottom:16px;">EARLY STAGE | 연매출 1~10억</p>
+        <div class="pain-item"><p class="pain-q">"제품은 좋은데 어떻게 팔아야 할지 모르겠어요"</p><p class="pain-a">제품과 브랜드가 분리된 상태, 방향 부재</p></div>
+        <div class="pain-item"><p class="pain-q">"인스타는 만들었는데 팔로워가 안 늘어요"</p><p class="pain-a">채널 운영은 하되 브랜드 정체성이 없는 상태</p></div>
+        <div class="pain-item"><p class="pain-q">"브랜딩이 뭔지 알겠는데 어디서부터 해야 하죠?"</p><p class="pain-a">전략 없이 실행만 하다 예산 낭비 반복</p></div>
+      </div>
+    </div>
+    <div style="background:linear-gradient(135deg,var(--orange),var(--amber)); border-radius:16px; padding:18px; text-align:center; color:var(--white); font-weight:700; font-size:14px; box-shadow: 0 4px 24px rgba(232,112,10,0.2);">
+      셋 중 하나라도 해당되면 — brandrise가 정확히 그 자리에 있습니다.
+    </div>
+  </div>
+</div>
+
+<!-- ─── 2: CH01 ─── -->
+<div class="slide bg-orange" data-idx="2">
+  <div class="ch-decor">
+    <div class="ch-line-top"></div>
+    <div class="ch-line-bottom"></div>
+    <div class="ch-line-v"></div>
+  </div>
+  <div class="ch-slide-inner"><p class="ch-num">01</p><p class="ch-title">브랜드라이즈 소개</p><p class="ch-sub">WHO WE ARE</p></div>
+</div>
+
+<!-- ─── 3: MVS ─── -->
+<div class="slide bg-dark" data-idx="3">
+  <div class="slide-inner">
+    <h2 class="s-h2 mb-24">브랜드 라이즈를 소개합니다</h2>
+    <div class="g3">
+      <div class="card card-dark"><p class="card-label">MISSION</p><p class="card-sub">우리가 하는 일</p><p class="card-title mb-8">브랜드 전략부터<br>실행까지 대신합니다</p><p class="card-body">좋은 제품인데 왜 안 팔릴까?<br>brandrise는 그 이유를 찾고<br>팔리는 구조로 바꿔드립니다.</p></div>
+      <div class="card card-dark"><p class="card-label">VISION</p><p class="card-sub">우리가 바라는 것</p><p class="card-title mb-8">전략 없어서 묻히는<br>브랜드는 없어야 한다</p><p class="card-body">CMO를 채용할 여력이 없어도,<br>대행사에 실망했어도.<br>brandrise가 그 자리에 있습니다.</p></div>
+      <div class="card card-orange"><p class="card-label">SLOGAN</p><p class="card-sub" style="color:rgba(255,255,255,0.4); border-color:rgba(255,255,255,0.15);">우리의 정체성</p><p class="card-title mb-8">Brand Direction<br>Think Tank</p><p class="card-body">방향을 잡고, 구조를 짜고,<br>실행을 감독합니다.<br>당신의 브랜드가 팔리는 날까지.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 4: TEAM ─── -->
+<div class="slide bg-cream" data-idx="4">
+  <div class="slide-inner">
+    <p class="s-tag">YOUR CMO TEAM</p>
+    <h2 class="s-h2 mb-24">당신의 CMO 팀을 소개합니다</h2>
+    <div class="card card-dark mb-16" style="border-top:3px solid var(--orange);">
+      <p class="card-label">DIRECTOR</p>
+      <p class="card-title" style="font-size:22px; color:var(--white);">권윤정</p>
+      <p style="font-size:12px; color:var(--gray); margin-bottom:12px;">Creative Director & CEO</p>
+      <p class="card-body">글로벌 브랜드 IMC 전략 10년+ · ReSaltZ A-to-Z 직접 실행 · 대기업 팝업 30건+ · 소셜아이어워드 혁신대상 · 앤어워드 그랑프리</p>
+    </div>
+    <div class="g3">
+      <div class="card card-white"><p class="card-label">TEAM 1</p><p class="card-title" style="color:var(--black);">임애라 · 이슬기</p><p style="font-size:11px; color:#888; margin-bottom:10px;">Strategy & Consulting</p><p class="card-body">· 시장 분석 · 경쟁 리서치<br>· 브랜드 전략 수립<br>· 포지셔닝 설계</p></div>
+      <div class="card card-white"><p class="card-label">TEAM 2</p><p class="card-title" style="color:var(--black);">류수현</p><p style="font-size:11px; color:#888; margin-bottom:10px;">Creative & Design</p><p class="card-body">· BI/CI · 패키지 디자인<br>· 비주얼 아이덴티티<br>· 공간 · VMD 설계</p></div>
+      <div class="card card-white"><p class="card-label">TEAM 3</p><p class="card-title" style="color:var(--black);">우성민</p><p style="font-size:11px; color:#888; margin-bottom:10px;">Marketing & Contents</p><p class="card-body">· 채널 전략 · 콘텐츠<br>· 바이럴 · PR<br>· 퍼포먼스 마케팅</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 5: CH02 ─── -->
+<div class="slide bg-orange" data-idx="5">
+  <div class="ch-decor">
+    <div class="ch-line-top"></div>
+    <div class="ch-line-bottom"></div>
+    <div class="ch-line-v"></div>
+  </div>
+  <div class="ch-slide-inner"><p class="ch-num">02</p><p class="ch-title">주요 사업 영역</p><p class="ch-sub">WHAT WE DO</p></div>
+</div>
+
+<!-- ─── 6: 4D PROCESS ─── -->
+<div class="slide bg-dark" data-idx="6">
+  <div class="slide-inner">
+    <h2 class="s-h2 mb-24">브랜드라이즈가 하는 일</h2>
+    <div class="g4">
+      <div class="card card-dark"><p class="card-label">1개월차</p><p class="t-mono" style="font-size:20px; font-weight:700; margin-bottom:4px;">DISCOVER</p><p style="font-size:12px; color:var(--orange); margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.06);">자리를 찾다</p><p style="font-size:10px; color:rgba(255,255,255,0.3); letter-spacing:3px; margin-bottom:6px;">DELIVERABLES</p><p class="card-body">브랜드 진단 리포트<br>경쟁사 포지셔닝 맵<br>타겟 고객 페르소나</p></div>
+      <div class="card card-dark"><p class="card-label">2개월차</p><p class="t-mono" style="font-size:20px; font-weight:700; margin-bottom:4px;">DEFINE</p><p style="font-size:12px; color:var(--orange); margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.06);">색을 입히다</p><p style="font-size:10px; color:rgba(255,255,255,0.3); letter-spacing:3px; margin-bottom:6px;">DELIVERABLES</p><p class="card-body">브랜드 전략서 납품<br>톤앤매너 가이드<br>채널 전략 설계</p></div>
+      <div class="card card-dark"><p class="card-label">3개월차</p><p class="t-mono" style="font-size:20px; font-weight:700; margin-bottom:4px;">DESIGN</p><p style="font-size:12px; color:var(--orange); margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.06);">구조를 짜다</p><p style="font-size:10px; color:rgba(255,255,255,0.3); letter-spacing:3px; margin-bottom:6px;">DELIVERABLES</p><p class="card-body">대행사 브리핑 & 감독<br>콘텐츠 방향 설계<br>월간 성과 리포트</p></div>
+      <div class="card card-orange"><p class="card-label">이후</p><p class="t-mono" style="font-size:20px; font-weight:700; margin-bottom:4px;">DIRECT</p><p style="font-size:12px; color:rgba(255,255,255,0.6); margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.15);">함께 성장</p><p style="font-size:10px; color:rgba(255,255,255,0.3); letter-spacing:3px; margin-bottom:6px;">DELIVERABLES</p><p class="card-body">분기 전략 업데이트<br>로드맵 지속 관리<br>신규 채널 확장 설계</p></div>
+    </div>
+    <p class="center mt-16 fs12" style="color:rgba(255,255,255,0.3); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:12px; backdrop-filter:blur(8px); background:rgba(255,255,255,0.02);">리테이너형 기준 — 매월 전략 코칭 + 실행 감독 + 성과 리포트 포함</p>
+  </div>
+</div>
+
+<!-- ─── 7: 6 SERVICES ─── -->
+<div class="slide bg-cream" data-idx="7">
+  <div class="slide-inner">
+    <p class="s-tag">SERVICE</p>
+    <h2 class="s-h2 mb-24">brandrise가 만들면 다릅니다</h2>
+    <div class="g3">
+      <div class="card card-white" style="border-top:3px solid var(--orange);">
+        <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/><path d="M12 2l4 4-4 4-4-4z"/></svg>
+        <p class="card-label">BRAND STRATEGY</p><p class="card-title" style="color:var(--black);">브랜드 전략</p><p class="card-body">시장 분석부터 포지셔닝까지<br>브랜드가 설 자리를 설계합니다</p>
+      </div>
+      <div class="card card-white" style="border-top:3px solid var(--orange);">
+        <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/><circle cx="7.5" cy="10" r="1.5"/><circle cx="12" cy="7" r="1.5"/><circle cx="16.5" cy="10" r="1.5"/></svg>
+        <p class="card-label">BI / CI DESIGN</p><p class="card-title" style="color:var(--black);">BI / CI 디자인</p><p class="card-body">로고·컬러·톤앤매너·패키지<br>브랜드만의 목소리를 만듭니다</p>
+      </div>
+      <div class="card card-white" style="border-top:3px solid var(--orange);">
+        <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l3-3 3 3"/><path d="M5 9v9a2 2 0 0 0 2 2h3"/><path d="M22 12l-3 3-3-3"/><path d="M19 15V6a2 2 0 0 0-2-2h-3"/></svg>
+        <p class="card-label">CHANNEL STRATEGY</p><p class="card-title" style="color:var(--black);">채널 전략</p><p class="card-body">SNS·유통·퍼포먼스 통합 설계<br>팔리는 구조를 만듭니다</p>
+      </div>
+      <div class="card card-white" style="border-top:3px solid var(--orange);">
+        <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        <p class="card-label">CMO AS A SERVICE</p><p class="card-title" style="color:var(--black);">외부 CMO 팀</p><p class="card-body">월간 브랜드 코칭 & 성과 관리<br>전략부터 실행까지 함께합니다</p>
+      </div>
+      <div class="card card-white" style="border-top:3px solid var(--orange);">
+        <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <p class="card-label">GLOBAL EXPANSION</p><p class="card-title" style="color:var(--black);">글로벌 진출</p><p class="card-body">미국·일본 시장 진출 전략<br>831개 해외 바이어 네트워크</p>
+      </div>
+      <div class="card card-white" style="border-top:3px solid var(--orange);">
+        <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>
+        <p class="card-label">AI BRAND GUIDE</p><p class="card-title" style="color:var(--black);">AI 브랜드 가이드</p><p class="card-body">AI 활용 운영 로드맵 설계<br>혼자서도 운영할 수 있는 시스템</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 8: SCALE-UP ─── -->
+<div class="slide bg-cream" data-idx="8">
+  <div class="slide-inner">
+    <p class="s-tag" style="color:var(--orange);">SCALE-UP BRAND</p>
+    <h2 class="s-h2">연매출 5~30억,<br>마케팅 구조를 만들 시점입니다.</h2>
+    <p class="s-desc mb-24" style="color:#666;">10억까지는 대표 영업력으로 됩니다. 30억은 시스템의 싸움입니다.</p>
+    <table class="tbl">
+      <tr><th class="tbl-h-blank"></th><th class="tbl-h-dark">BEFORE</th><th class="tbl-h-orange">AFTER — brandrise</th></tr>
+      <tr><td>마케팅 의사결정</td><td class="td-gray">대표가 직접</td><td class="td-orange">전략 수립 → 대표는 승인만</td></tr>
+      <tr><td>대행사 관리</td><td class="td-gray">각자 따로, 보고서만</td><td class="td-orange">통합 브리핑 & 실행 감독</td></tr>
+      <tr><td>성과 측정</td><td class="td-gray">채널별 단위 지표</td><td class="td-orange">매출 연동 통합 KPI</td></tr>
+      <tr><td>브랜드 방향</td><td class="td-gray">없거나 흔들림</td><td class="td-orange">분기별 전략 업데이트</td></tr>
+      <tr><td>채용 리스크</td><td class="td-gray">CMO 채용 실패 시 6개월</td><td class="td-orange">3개월 유연 계약</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ─── 9: EARLY STAGE ─── -->
+<div class="slide bg-teal-light" data-idx="9">
+  <div class="slide-inner">
+    <p class="s-tag">EARLY STAGE BRAND</p>
+    <h2 class="s-h2">처음 브랜드를 만드는 분,<br>처음부터 제대로 쌓아야 합니다.</h2>
+    <p class="s-desc mb-24" style="color:#bbb;">기초 없는 마케팅은 돈 낭비입니다. brandrise가 처음부터 잡아드립니다.</p>
+    <div class="g3">
+      <div class="card card-teal"><p class="card-label">BRAND IDENTITY</p><p class="card-title" style="color:var(--black);">브랜드 정체성</p><p class="card-body">포지셔닝 · 타겟 설정<br>핵심 메시지 · 톤앤매너</p></div>
+      <div class="card card-teal"><p class="card-label">BI / CI DESIGN</p><p class="card-title" style="color:var(--black);">BI / CI 디자인</p><p class="card-body">로고 · 컬러 시스템<br>패키지 · 브랜드 가이드라인</p></div>
+      <div class="card card-teal"><p class="card-label">CHANNEL SETUP</p><p class="card-title" style="color:var(--black);">채널 전략 & 셋업</p><p class="card-body">SNS 전략 수립<br>첫 90일 운영 가이드</p></div>
+      <div class="card card-teal"><p class="card-label">LAUNCH PLAN</p><p class="card-title" style="color:var(--black);">런칭 플랜 설계</p><p class="card-body">런칭 타임라인<br>초기 고객 확보 전략</p></div>
+      <div class="card card-teal"><p class="card-label">SALES FUNNEL</p><p class="card-title" style="color:var(--black);">판매 구조 설계</p><p class="card-body">스마트스토어 · 자사몰<br>구매 전환 구조 설계</p></div>
+      <div class="card card-teal"><p class="card-label">AI BRAND GUIDE</p><p class="card-title" style="color:var(--black);">AI 브랜드 가이드</p><p class="card-body">AI 활용 운영 가이드<br>혼자서도 운영 가능</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 10: CH03 ─── -->
+<div class="slide bg-orange" data-idx="10">
+  <div class="ch-decor">
+    <div class="ch-line-top"></div>
+    <div class="ch-line-bottom"></div>
+    <div class="ch-line-v"></div>
+  </div>
+  <div class="ch-slide-inner"><p class="ch-num">03</p><p class="ch-title">핵심 역량 및 성과</p><p class="ch-sub">WHY US</p></div>
+</div>
+
+<!-- ─── 11: STATS ─── -->
+<div class="slide bg-dark" data-idx="11">
+  <div class="slide-inner">
+    <h2 class="s-h2 mb-32">숫자가 증명합니다</h2>
+    <div class="g4 mb-24">
+      <div class="stat-card"><p class="stat-num">130%</p><p class="stat-txt">평균 KPI 초과 달성</p><p class="stat-sub">전 프로젝트 평균</p></div>
+      <div class="stat-card"><p class="stat-num">831</p><p class="stat-txt">해외 바이어 네트워크</p><p class="stat-sub">전 세계 20개국</p></div>
+      <div class="stat-card"><p class="stat-num">30+</p><p class="stat-txt">팝업 · 행사 운영</p><p class="stat-sub">대기업 포함</p></div>
+      <div class="stat-card"><p class="stat-num">10+</p><p class="stat-txt">브랜드 전략 연수</p><p class="stat-sub">자체 IP 프로그램</p></div>
+    </div>
+    <div style="margin-bottom:16px;">
+      <span class="award">소셜아이어워드 혁신대상</span>
+      <span class="award">앤어워드 그랑프리</span>
+      <span class="award">소셜아이어워드 대상</span>
+    </div>
+    <p class="fs12" style="color:rgba(255,255,255,0.3); line-height:1.8;">설립 2018.12 | 본사 서울시 마포구 | 미국 법인 Seoul Wellness, INC. (DE, 2023) | 자사 브랜드 ReSaltZ — 미국/일본 진출 완료</p>
+  </div>
+</div>
+
+<!-- ─── 12: 30 vs 100 ─── -->
+<div class="slide bg-cream" data-idx="12">
+  <div class="slide-inner">
+    <h2 class="s-h2">30억 기업과 100억 기업의<br><span class="accent">결정적 차이</span></h2>
+    <p class="s-desc mb-24" style="color:#666;">실행량이나 예산이 아닙니다. 마케팅이 작동하는 구조 자체가 다릅니다.</p>
+    <table class="comp-table">
+      <tr><th class="tbl-h-blank"></th><th class="tbl-h-gray">30억 기업</th><th class="tbl-h-mid">100억 기업</th><th class="tbl-h-orange">brandrise</th></tr>
+      <tr><td>전략 주체</td><td class="td-gray">대표 or 없음</td><td>전담 CMO/팀</td><td class="td-orange">외부 CMO팀 즉시 투입</td></tr>
+      <tr><td>채널 운영</td><td class="td-gray">대행사별 분리</td><td>통합 전략 실행</td><td class="td-orange">통합 전략 아래 실행</td></tr>
+      <tr><td>성과 측정</td><td class="td-gray">채널별 단위</td><td>매출 연동 KPI</td><td class="td-orange">매출 연동 통합 KPI</td></tr>
+      <tr><td>콘텐츠</td><td class="td-gray">필요할 때</td><td>브랜드 시스템</td><td class="td-orange">브랜드 시스템 기반</td></tr>
+      <tr><td>예산 배분</td><td class="td-gray">감으로</td><td>데이터 기반</td><td class="td-orange">데이터 기반 최적화</td></tr>
+    </table>
+    <div style="background:linear-gradient(135deg,var(--orange),var(--amber)); border-radius:16px; padding:18px; text-align:center; color:var(--white); font-weight:700; font-size:14px; box-shadow: 0 4px 24px rgba(232,112,10,0.2);">brandrise는 이 구조를 외부 팀으로 즉시 구현합니다.</div>
+  </div>
+</div>
+
+<!-- ─── 13: CH04 ─── -->
+<div class="slide bg-orange" data-idx="13">
+  <div class="ch-decor">
+    <div class="ch-line-top"></div>
+    <div class="ch-line-bottom"></div>
+    <div class="ch-line-v"></div>
+  </div>
+  <div class="ch-slide-inner"><p class="ch-num">04</p><p class="ch-title">주요 프로젝트 사례</p><p class="ch-sub">OUR WORK</p></div>
+</div>
+
+<!-- ─── 14: PORTFOLIO ─── -->
+<div class="slide bg-dark" data-idx="14">
+  <div class="slide-inner">
+    <h2 class="s-h2 mb-24">대기업과 함께한 브랜드 전략 실행</h2>
+    <div class="pf-scroll mb-32">
+      <div class="pf-item"><img src="portfolio_images/page_14_hyundai_foundation.jpg" alt="현대차 정몽구 재단"><div class="pf-cap">현대차 정몽구 재단 · KPI 130%+</div></div>
+      <div class="pf-item"><img src="portfolio_images/page_15_heineken.jpg" alt="하이네켄"><div class="pf-cap">하이네켄 디지털 캠페인 바이럴</div></div>
+      <div class="pf-item"><img src="portfolio_images/page_17_dolcegusto.jpg" alt="돌체구스토"><div class="pf-cap">네스카페 돌체구스토 런칭쇼 1,000명</div></div>
+      <div class="pf-item"><img src="portfolio_images/page_18_bibigo_seventeen.jpg" alt="비비고"><div class="pf-cap">비비고 x 세븐틴 대규모 팝업스토어</div></div>
+      <div class="pf-item"><img src="portfolio_images/page_12_nc_doguri_1.jpg" alt="NC 도구리"><div class="pf-cap">NC소프트 도구리 150만+</div></div>
+    </div>
+    <h3 class="s-h3 mb-16">오프라인 / 팝업 / 글로벌</h3>
+    <div class="pf-scroll">
+      <div class="pf-item"><img src="portfolio_images/page_20_resaltz_ddp.jpg" alt="리솔츠"><div class="pf-cap">리솔츠(ReSaltZ) DDP 팝업 전시 총괄</div></div>
+      <div class="pf-item"><img src="portfolio_images/page_19_norangtongdak.jpg" alt="노랑통닭"><div class="pf-cap">노랑통닭 리브랜딩 (앤어워드 그랑프리)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 15: VEGGIET ─── -->
+<div class="slide bg-dark" data-idx="15">
+  <div class="slide-inner">
+    <p class="s-tag">STARTUP CASE</p>
+    <h2 class="s-h2">연매출 20억. <span class="accent">여기서 멈춰 있었습니다</span></h2>
+    <div class="g2 mb-24" style="align-items:center;">
+      <div>
+        <img src="veggiet-01.jpg" alt="VEGGIET" style="width:100%; border-radius:20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
+        <p class="center fs12 mt-16" style="color:rgba(255,255,255,0.4);">VEGGIET — 건강식품 브랜드</p>
+      </div>
+      <div>
+        <div class="vg-stat mb-8"><p class="vg-num">6개월</p><p class="vg-label">프로젝트 기간</p></div>
+        <div class="vg-stat mb-8"><p class="vg-num">OO%</p><p class="vg-label">매출 증가율</p></div>
+        <div class="vg-stat"><p class="vg-num" style="font-size:16px; line-height:1.4;">올리브배러, 올리브영 전 매장</p><p class="vg-label">올리브영 입점 규모</p></div>
+        <div class="tl mt-16">
+          <div class="tl-item">패키지 리뉴얼</div>
+          <div class="tl-item">네이버 쇼핑 카테고리 1위</div>
+          <div class="tl-item">올리브영 베러 입점</div>
+          <div class="tl-item">올리브영 전 매장 입점</div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:17px; font-weight:700;">제품은 처음부터 좋았습니다. <span class="accent">brandrise가 한 건, 방향을 잡아드린 것 뿐입니다.</span></p>
+  </div>
+</div>
+
+<!-- ─── 16: CH05 ─── -->
+<div class="slide bg-orange" data-idx="16">
+  <div class="ch-decor">
+    <div class="ch-line-top"></div>
+    <div class="ch-line-bottom"></div>
+    <div class="ch-line-v"></div>
+  </div>
+  <div class="ch-slide-inner"><p class="ch-num">05</p><p class="ch-title">브랜드라이즈와 함께하는 방법</p><p class="ch-sub">HOW WORK IT</p></div>
+</div>
+
+<!-- ─── 17: PLANS ─── -->
+<div class="slide bg-dark" data-idx="17">
+  <div class="slide-inner">
+    <h2 class="s-h2 mb-8">지금 바로 시작할 수 있습니다</h2>
+    <p class="s-desc mb-24">정규직 CMO 채용 없이, 대행사 파편화 없이 — brandrise 하나로 해결됩니다.</p>
+    <div class="g3">
+      <div class="plan">
+        <p class="plan-label">PLAN A</p>
+        <p class="plan-name">프로젝트형</p>
+        <p class="plan-price">300~500만원</p>
+        <p class="plan-period">/ 프로젝트</p>
+        <ul class="plan-feat"><li>브랜드 런칭 · BI/CI 개발</li><li>패키지 리뉴얼</li><li>채널 전략 수립</li></ul>
+        <div class="plan-contract">1회성 · 기간 협의</div>
+      </div>
+      <div class="plan plan-pop">
+        <span class="plan-badge">가장 인기</span>
+        <p class="plan-label">PLAN B</p>
+        <p class="plan-name">리테이너형</p>
+        <p class="plan-price">200~400만원</p>
+        <p class="plan-period">/ 월</p>
+        <ul class="plan-feat"><li>월간 브랜드 전략 코칭</li><li>통합 마케팅 관리 & 실행 감독</li><li>월간 성과 리포트</li></ul>
+        <div class="plan-contract">3개월 단위 유연 계약</div>
+      </div>
+      <div class="plan">
+        <p class="plan-label">PLAN C</p>
+        <p class="plan-name">구독형</p>
+        <p class="plan-price">50~100만원</p>
+        <p class="plan-period">/ 월</p>
+        <ul class="plan-feat"><li>브랜드 운영 가이드 구축</li><li>AI 활용 셀프 코칭</li><li>월 1회 전략 체크인</li></ul>
+        <div class="plan-contract">월 단위 · 언제든 종료</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 18: ONBOARDING ─── -->
+<div class="slide bg-dark" data-idx="18">
+  <div class="slide-inner">
+    <h2 class="s-h2 mb-24">이렇게 시작됩니다</h2>
+    <div class="g2" style="align-items:center;">
+      <div>
+        <div class="ob-step"><div class="ob-num">1</div><div><p class="ob-title">1시간 무료 구조 진단</p><p class="ob-desc">현재 마케팅 구조와 병목 지점을 파악합니다.</p></div></div>
+        <div class="ob-step"><div class="ob-num">2</div><div><p class="ob-title">맞춤 제안서 전달</p><p class="ob-desc">최적의 플랜과 견적을 제안합니다.</p></div></div>
+        <div class="ob-step"><div class="ob-num">3</div><div><p class="ob-title">킥오프 미팅</p><p class="ob-desc">계약 후 1주 내. 목표 설정, 타임라인 수립.</p></div></div>
+        <div class="ob-step"><div class="ob-num">4</div><div><p class="ob-title">전략 실행 & 성과 관리</p><p class="ob-desc">4D 프로세스에 따라 전략을 실행합니다.</p></div></div>
+      </div>
+      <div class="card card-dark center" style="padding:40px;">
+        <p style="font-size:18px; font-weight:700; color:var(--orange); margin-bottom:12px;">무료 진단으로 시작해보세요.</p>
+        <p class="fs14" style="color:rgba(255,255,255,0.35); line-height:1.8;">부담 없이,<br>현재 구조를 점검하는 것만으로도<br>다음 스텝이 명확해집니다.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 19: CLOSING ─── -->
+<div class="slide bg-dark" data-idx="19">
+  <div class="hero-glow"></div>
+  <div class="slide-inner center">
+    <h2 class="s-h1 mb-24">좋은 제품은 있습니다.<br><span class="accent">팔리는 구조가 없을 뿐입니다.</span></h2>
+    <p class="s-desc mb-32">brandrise는 1시간 무료 진단을 통해<br>지금 당신 브랜드의 병목이 어디인지 짚어드립니다.</p>
+    <p class="t-mono" style="font-size:48px; font-weight:700; margin-bottom:24px; letter-spacing:-2px;">brand<span class="accent">rise</span></p>
+    <div style="display:flex; justify-content:center; gap:28px; margin-bottom:32px; font-size:13px; color:rgba(255,255,255,0.4); flex-wrap:wrap;">
+      <span><span style="color:var(--orange); font-weight:700;">→</span> 전략부터 실행까지 책임</span>
+      <span><span style="color:var(--orange); font-weight:700;">→</span> 3개월 단위 유연 계약</span>
+      <span><span style="color:var(--orange); font-weight:700;">→</span> 월 200만원부터 시작</span>
+    </div>
+    <a href="mailto:brandrise@hizpeople.com" class="cta-btn mb-24">1시간 무료 구조 진단 신청하기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="width:16px;height:16px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <div style="padding-top:20px; border-top:1px solid rgba(255,255,255,0.04);">
+      <p class="fs12" style="color:rgba(255,255,255,0.4);">brandrise@hizpeople.com | @brandrise_kr</p>
+      <p class="t-mono" style="font-size:10px; color:rgba(255,255,255,0.12); margin-top:12px;">&copy; 2026 brandrise by HIZ co., Ltd.</p>
+    </div>
+  </div>
+</div>
+
+</div><!-- /deck -->
+
+<!-- NAV BAR -->
+<div class="nav" id="nav">
+  <button class="nav-btn" id="prevBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <div class="nav-dots" id="dots"></div>
+  <button class="nav-btn" id="nextBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button>
+  <span class="nav-counter" id="counter"></span>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const dots = document.getElementById('dots');
+const counter = document.getElementById('counter');
+const total = slides.length;
+let current = 0;
+let isAnimating = false;
+
+// Build dots
+slides.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'nav-dot' + (i === 0 ? ' active' : '');
+  d.onclick = () => goTo(i);
+  dots.appendChild(d);
+});
+
+function updateCounter() {
+  counter.textContent = `${current + 1} / ${total}`;
+}
+updateCounter();
+
+function goTo(idx) {
+  if (idx === current || isAnimating || idx < 0 || idx >= total) return;
+  isAnimating = true;
+
+  const prev = slides[current];
+  const next = slides[idx];
+  const goingDown = idx > current;
+
+  prev.classList.remove('active');
+  if (goingDown) prev.classList.add('exit-up');
+
+  next.style.transform = goingDown ? 'translateY(30px) scale(0.97)' : 'translateY(-30px) scale(0.97)';
+  next.style.opacity = '0';
+
+  requestAnimationFrame(() => {
+    next.classList.add('active');
+    next.style.transform = '';
+    next.style.opacity = '';
+  });
+
+  setTimeout(() => {
+    prev.classList.remove('exit-up');
+    isAnimating = false;
+  }, 700);
+
+  document.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+  current = idx;
+  updateCounter();
+}
+
+document.getElementById('prevBtn').onclick = () => goTo(current - 1);
+document.getElementById('nextBtn').onclick = () => goTo(current + 1);
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); goTo(current - 1); }
+  if (e.key === 'Home') goTo(0);
+  if (e.key === 'End') goTo(total - 1);
+});
+
+// Touch swipe
+let touchY = 0;
+document.addEventListener('touchstart', e => { touchY = e.touches[0].clientY; }, { passive: true });
+document.addEventListener('touchend', e => {
+  const diff = touchY - e.changedTouches[0].clientY;
+  if (Math.abs(diff) > 50) { diff > 0 ? goTo(current + 1) : goTo(current - 1); }
+}, { passive: true });
+
+// Mouse wheel
+let wheelTimeout;
+document.addEventListener('wheel', e => {
+  clearTimeout(wheelTimeout);
+  wheelTimeout = setTimeout(() => {
+    if (e.deltaY > 30) goTo(current + 1);
+    else if (e.deltaY < -30) goTo(current - 1);
+  }, 80);
+}, { passive: true });
+</script>
+
+</body>
+</html>
