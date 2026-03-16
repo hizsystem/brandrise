@@ -249,49 +249,91 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
 </div>
 
 <!-- ==================== SLIDE 3: CEO + TEAM ==================== -->
-<div class="slide" data-slide="3" style="background:#0a0a0a;padding-top:40px;padding-bottom:40px">
-  <div class="ceo-section" style="display:flex;gap:32px;height:100%;align-items:stretch">
+<div class="slide" data-slide="3" style="background:#0a0a0a;padding-top:32px;padding-bottom:32px">
+  <div style="display:flex;gap:28px;height:100%;align-items:stretch">
     <!-- Left: CEO -->
-    <div class="ceo-left" style="flex:1;min-width:320px">
-      <div class="card stagger-item" style="height:100%;display:flex;flex-direction:column;align-items:center;padding:36px 32px">
-        <img src="portfolio_images/resume_img_p1_0.jpeg" alt="권윤정 대표" style="width:150px;height:150px;border-radius:50%;object-fit:cover;border:3px solid var(--orange);margin-bottom:20px">
-        <h3 style="font-size:22px;color:var(--text);margin-bottom:4px">권윤정</h3>
-        <p style="font-size:14px;color:var(--orange);margin-bottom:24px;font-weight:500">Creative Director & CEO</p>
-        <ul style="list-style:none;width:100%;display:flex;flex-direction:column;gap:12px">
-          <li style="font-size:14px;color:var(--sub);display:flex;align-items:baseline;gap:10px"><span style="color:var(--orange)">&#8226;</span>글로벌 브랜드 IMC 전략 10년+</li>
-          <li style="font-size:14px;color:var(--sub);display:flex;align-items:baseline;gap:10px"><span style="color:var(--orange)">&#8226;</span>ReSaltZ A-to-Z 직접 실행</li>
-          <li style="font-size:14px;color:var(--sub);display:flex;align-items:baseline;gap:10px"><span style="color:var(--orange)">&#8226;</span>대기업 팝업 30건+</li>
-          <li style="font-size:14px;color:var(--sub);display:flex;align-items:baseline;gap:10px"><span style="color:var(--orange)">&#8226;</span>Cosmoprof NA/Bologna 직접 참가</li>
-          <li style="font-size:14px;color:var(--sub);display:flex;align-items:baseline;gap:10px"><span style="color:var(--orange)">&#8226;</span>뉴욕 K-브랜드 팝업 8회</li>
-          <li style="font-size:14px;color:var(--sub);display:flex;align-items:baseline;gap:10px"><span style="color:var(--orange)">&#8226;</span>소셜아이어워드 혁신대상 &#183; 앤어워드 그랑프리</li>
-        </ul>
+    <div style="flex:1.2;min-width:340px">
+      <div class="card stagger-item" style="height:100%;padding:28px 28px;display:flex;flex-direction:column;position:relative;overflow:hidden">
+        <!-- Top: Photo + Name + Highlights -->
+        <div style="display:flex;gap:24px;align-items:flex-start;margin-bottom:20px">
+          <img src="portfolio_images/resume_img_p1_0.jpeg" alt="권윤정 대표" style="width:130px;height:130px;border-radius:50%;object-fit:cover;border:3px solid var(--orange);flex-shrink:0">
+          <div>
+            <p class="mono" style="font-size:11px;color:var(--orange);letter-spacing:3px;font-weight:600;margin-bottom:4px">DIRECTOR</p>
+            <h3 style="font-size:26px;color:var(--text);margin-bottom:2px;font-weight:900">권윤정</h3>
+            <p style="font-size:13px;color:var(--orange);margin-bottom:14px;font-weight:500">Creative Director & CEO</p>
+            <!-- Highlight badges -->
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              <span style="background:linear-gradient(135deg,var(--orange),var(--amber));color:#fff;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">IMC 전략 10년+</span>
+              <span style="background:linear-gradient(135deg,var(--orange),var(--amber));color:#fff;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">혁신대상 1등상</span>
+              <span style="background:linear-gradient(135deg,var(--orange),var(--amber));color:#fff;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">앤어워드 그랑프리</span>
+              <span style="background:linear-gradient(135deg,var(--orange),var(--amber));color:#fff;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">해외 팝업 8회</span>
+            </div>
+          </div>
+        </div>
+        <!-- Key highlights (bold) -->
+        <div style="border-top:1px solid #252525;padding-top:14px;margin-bottom:12px">
+          <p style="font-size:14px;color:var(--text);font-weight:700;margin-bottom:6px">&#9670; 글로벌 브랜드 커뮤니케이션 전략 설계 및 전담 10년+</p>
+          <p style="font-size:14px;color:var(--text);font-weight:700;margin-bottom:6px">&#9670; ReSaltZ 웰니스뷰티 기획 → 미국/일본 최상위 마켓 진입 → DDP 팝업 A-to-Z</p>
+          <p style="font-size:14px;color:var(--text);font-weight:700;margin-bottom:6px">&#9670; 소셜아이어워드 혁신대상(1등상) · 앤어워드 그랑프리 · 대상/최우수상 다수</p>
+          <p style="font-size:14px;color:var(--text);font-weight:700;margin-bottom:0">&#9670; Cosmoprof NA/Bologna 직접 참가, 뉴욕 K-브랜드 팝업 8회</p>
+        </div>
+        <!-- Detailed career (scrollable if needed) -->
+        <div style="border-top:1px solid #252525;padding-top:12px;flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:4px">
+          <p style="font-size:11px;color:var(--muted);letter-spacing:2px;margin-bottom:4px">CAREER PORTFOLIO</p>
+          <p style="font-size:12px;color:var(--sub)">웰니스 뷰티 브랜드 리솔츠 브랜딩 총괄</p>
+          <p style="font-size:12px;color:var(--sub)">NC소프트 신규캐릭 브랜드 '도구리' 마케팅 전략 및 디지털 채널 기획 운영</p>
+          <p style="font-size:12px;color:var(--sub)">하이네켄코리아 디지털 캠페인&필름에딩 기획·운영</p>
+          <p style="font-size:12px;color:var(--sub)">NC소프트 신규캐릭터 브랜드 '도구리' 캠페인 (총 KPI 150만+)</p>
+          <p style="font-size:12px;color:var(--sub)">CJ제일제당 밀키트 브랜드 'COOKIT' 디지털 커뮤니케이션 전략 설계</p>
+          <p style="font-size:12px;color:var(--sub)">CJ제일제당 밀키트 브랜드 'COOKIT' 디지털 캠페인 운영</p>
+          <p style="font-size:12px;color:var(--sub)">CJ제일제당 간식 브랜드 '맥스봉' 브랜드 활동 시리즈</p>
+          <p style="font-size:12px;color:var(--sub)">노랑통닭 프랜차이즈 리브랜딩 디지털 커뮤니케이션</p>
+          <p style="font-size:12px;color:var(--sub)">식품 브랜드 '뻔뻔밀' 디지털 커뮤니케이션</p>
+          <p style="font-size:12px;color:var(--sub)">에이블씨엔씨 코스메틱 브랜드 미샤 SNS 디자인 제비 마우쉬 기획</p>
+          <p style="font-size:12px;color:var(--sub)">현대차 정몽구 재단 전 채널 리뉴얼 KPI 130%+</p>
+          <p style="font-size:12px;color:var(--sub)">현대백화점 H.Point 디지털 채널 운영 (1년만에 10.5만 팔로워)</p>
+          <p style="font-size:12px;color:var(--sub)">중국 코스메틱 브랜드 찬도(chando) 86 5주년 라이브커머스</p>
+          <p style="font-size:12px;color:var(--sub)">아티스트 엘리쉬야 글로벌 런칭, MV 뮤직비디오 제작</p>
+          <p style="font-size:12px;color:var(--sub)">문화체육관광부 K-Food 페스티벌 콘텐츠 큐레이팅</p>
+          <p style="font-size:12px;color:var(--sub)">농림부 한국 수출농식품 홍보 스토리 전시 기획 운영</p>
+          <p style="font-size:12px;color:var(--sub)">외교부 해외공관 배포한 한국 소개 강의&필름 콘텐츠 기획 제작</p>
+          <p style="font-size:12px;color:var(--sub)">한식재단 관광역인사를 위한 도서 (맛있는 한국여행) 기획 제작</p>
+          <p style="font-size:12px;color:var(--sub)">연세대학교 미래교육원 브랜드전문가 과정 졸업 / 동덕여대 예술대학 음악과 졸업</p>
+        </div>
+        <!-- Work history -->
+        <div style="border-top:1px solid #252525;padding-top:10px;margin-top:8px;display:flex;gap:16px;flex-wrap:wrap">
+          <span style="font-size:11px;color:var(--muted)">히즈 대표 (2018~)</span>
+          <span style="font-size:11px;color:var(--muted)">코스트로퀸 대표 (2015~2018)</span>
+          <span style="font-size:11px;color:var(--muted)">클로즈스트릿 PD (2012~2014)</span>
+          <span style="font-size:11px;color:var(--muted)">뮤직컴퍼스 팀장 (2011~2012)</span>
+        </div>
       </div>
     </div>
     <!-- Right: Team -->
-    <div class="ceo-right" style="flex:1;min-width:320px;display:flex;flex-direction:column;gap:18px">
-      <div class="card stagger-item" style="flex:1;display:flex;flex-direction:column;justify-content:center">
+    <div style="flex:0.8;min-width:280px;display:flex;flex-direction:column;gap:14px">
+      <div class="card stagger-item" style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:20px 24px">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
-          <span class="mono" style="font-size:13px;color:var(--orange);font-weight:600;background:rgba(232,112,10,0.12);padding:4px 12px;border-radius:20px">TEAM 1</span>
-          <span style="font-size:16px;font-weight:600;color:var(--text)">임애라 &#183; 이슬기</span>
+          <span class="mono" style="font-size:12px;color:var(--orange);font-weight:700;background:rgba(232,112,10,0.15);padding:5px 14px;border-radius:20px">TEAM 1</span>
+          <span style="font-size:18px;font-weight:700;color:var(--text)">임애라 &#183; 이슬기</span>
         </div>
-        <p style="font-size:14px;color:var(--orange);font-weight:500;margin-bottom:6px">Strategy & Consulting</p>
-        <p style="font-size:14px;color:var(--sub)">시장분석&#183;경쟁리서치 / 브랜드전략수립 / 포지셔닝설계</p>
+        <p style="font-size:14px;color:var(--orange);font-weight:600;margin-bottom:8px">Strategy & Consulting</p>
+        <p style="font-size:14px;color:var(--sub);line-height:1.7">시장 분석 &#183; 경쟁 리서치<br>브랜드 전략 수립<br>포지셔닝 설계</p>
       </div>
-      <div class="card stagger-item" style="flex:1;display:flex;flex-direction:column;justify-content:center">
+      <div class="card stagger-item" style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:20px 24px">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
-          <span class="mono" style="font-size:13px;color:var(--orange);font-weight:600;background:rgba(232,112,10,0.12);padding:4px 12px;border-radius:20px">TEAM 2</span>
-          <span style="font-size:16px;font-weight:600;color:var(--text)">류수현</span>
+          <span class="mono" style="font-size:12px;color:var(--orange);font-weight:700;background:rgba(232,112,10,0.15);padding:5px 14px;border-radius:20px">TEAM 2</span>
+          <span style="font-size:18px;font-weight:700;color:var(--text)">류수현</span>
         </div>
-        <p style="font-size:14px;color:var(--orange);font-weight:500;margin-bottom:6px">Creative & Design</p>
-        <p style="font-size:14px;color:var(--sub)">BI/CI&#183;패키지디자인 / 비주얼아이덴티티 / 공간&#183;VMD설계</p>
+        <p style="font-size:14px;color:var(--orange);font-weight:600;margin-bottom:8px">Creative & Design</p>
+        <p style="font-size:14px;color:var(--sub);line-height:1.7">BI/CI &#183; 패키지 디자인<br>비주얼 아이덴티티<br>공간 &#183; VMD 설계</p>
       </div>
-      <div class="card stagger-item" style="flex:1;display:flex;flex-direction:column;justify-content:center">
+      <div class="card stagger-item" style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:20px 24px">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
-          <span class="mono" style="font-size:13px;color:var(--orange);font-weight:600;background:rgba(232,112,10,0.12);padding:4px 12px;border-radius:20px">TEAM 3</span>
-          <span style="font-size:16px;font-weight:600;color:var(--text)">우성민</span>
+          <span class="mono" style="font-size:12px;color:var(--orange);font-weight:700;background:rgba(232,112,10,0.15);padding:5px 14px;border-radius:20px">TEAM 3</span>
+          <span style="font-size:18px;font-weight:700;color:var(--text)">우성민</span>
         </div>
-        <p style="font-size:14px;color:var(--orange);font-weight:500;margin-bottom:6px">Marketing & Contents</p>
-        <p style="font-size:14px;color:var(--sub)">채널전략&#183;콘텐츠 / 바이럴&#183;PR / 퍼포먼스마케팅</p>
+        <p style="font-size:14px;color:var(--orange);font-weight:600;margin-bottom:8px">Marketing & Contents</p>
+        <p style="font-size:14px;color:var(--sub);line-height:1.7">채널 전략 &#183; 콘텐츠 방향<br>바이럴 &#183; PR<br>퍼포먼스 마케팅</p>
       </div>
     </div>
   </div>
