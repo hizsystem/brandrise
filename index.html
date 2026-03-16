@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
 <style>
 /* ============ RESET & BASE ============ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -33,11 +34,13 @@ body{font-family:'Noto Sans KR',sans-serif;background:#0a0a0a;color:#f8f8f8;over
   position:absolute;top:0;left:0;width:100%;height:100%;
   display:flex;flex-direction:column;justify-content:center;
   padding:60px 80px;overflow-y:auto;overflow-x:hidden;
-  opacity:0;transform:scale(0.96);
-  transition:opacity 0.6s cubic-bezier(.4,0,.2,1),transform 0.6s cubic-bezier(.4,0,.2,1);
+  opacity:0;transform:scale(0.98);
+  transition:opacity 0.5s ease,transform 0.5s ease;
   pointer-events:none;z-index:0;
+  visibility:hidden;
 }
-.slide.active{opacity:1;transform:scale(1);pointer-events:auto;z-index:1}
+.slide.active{opacity:1;transform:scale(1);pointer-events:auto;z-index:2;visibility:visible}
+.slide.prev{opacity:1;transform:scale(1);z-index:1;visibility:visible;pointer-events:none}
 
 /* ============ TYPOGRAPHY ============ */
 .mono{font-family:var(--mono)}
@@ -529,7 +532,7 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
     <!-- DISCOVER -->
     <div class="card stagger-item" style="position:relative;padding:24px 18px">
       <span class="mono" style="font-size:12px;color:var(--muted);font-weight:600">MONTH 1</span>
-      <h3 class="mono" style="color:var(--orange);margin:6px 0 2px;font-size:34px;font-weight:700">DISCOVER</h3>
+      <h3 style="font-family:'Pretendard Variable',var(--body);color:var(--orange);margin:6px 0 2px;font-size:36px;font-weight:800;letter-spacing:-0.5px">Discover</h3>
       <p style="font-size:17px;color:var(--text);margin-bottom:14px;font-weight:600">자리를 찾다</p>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
         <li style="font-size:15px;color:var(--sub)">&#8226; 시장 & 경쟁 분석</li>
@@ -542,7 +545,7 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
     <!-- DEFINE -->
     <div class="card stagger-item" style="position:relative;padding:24px 18px">
       <span class="mono" style="font-size:12px;color:var(--muted);font-weight:600">MONTH 2</span>
-      <h3 class="mono" style="color:var(--orange);margin:6px 0 2px;font-size:34px;font-weight:700">DEFINE</h3>
+      <h3 style="font-family:'Pretendard Variable',var(--body);color:var(--orange);margin:6px 0 2px;font-size:36px;font-weight:800;letter-spacing:-0.5px">Define</h3>
       <p style="font-size:17px;color:var(--text);margin-bottom:14px;font-weight:600">색을 입히다</p>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
         <li style="font-size:15px;color:var(--sub)">&#8226; 브랜드 포지셔닝</li>
@@ -555,7 +558,7 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
     <!-- DESIGN -->
     <div class="card stagger-item" style="position:relative;padding:24px 18px">
       <span class="mono" style="font-size:12px;color:var(--muted);font-weight:600">MONTH 3</span>
-      <h3 class="mono" style="color:var(--orange);margin:6px 0 2px;font-size:34px;font-weight:700">DESIGN</h3>
+      <h3 style="font-family:'Pretendard Variable',var(--body);color:var(--orange);margin:6px 0 2px;font-size:36px;font-weight:800;letter-spacing:-0.5px">Design</h3>
       <p style="font-size:17px;color:var(--text);margin-bottom:14px;font-weight:600">구조를 짜다</p>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
         <li style="font-size:15px;color:var(--sub)">&#8226; BI/CI 디자인</li>
@@ -568,7 +571,7 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
     <!-- DIRECT -->
     <div class="card-orange stagger-item" style="border-radius:16px;padding:24px 18px">
       <span class="mono" style="font-size:12px;color:rgba(255,255,255,0.7);font-weight:600">ONGOING</span>
-      <h3 class="mono" style="color:#fff;margin:6px 0 2px;font-size:34px;font-weight:700">DIRECT</h3>
+      <h3 style="font-family:'Pretendard Variable',var(--body);color:#fff;margin:6px 0 2px;font-size:36px;font-weight:800;letter-spacing:-0.5px">Direct</h3>
       <p style="font-size:17px;color:rgba(255,255,255,0.9);margin-bottom:14px;font-weight:600">함께 성장</p>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
         <li style="font-size:15px;color:rgba(255,255,255,0.85)">&#8226; 마케팅 실행 관리</li>
@@ -965,13 +968,20 @@ p,.body-text{font-size:clamp(14px,1.1vw,18px);line-height:1.7;color:var(--sub)}
     isAnimating = true;
     var prev = slides[current];
     var next = slides[idx];
+    // Remove prev class from all slides
+    for(var i=0;i<total;i++) slides[i].classList.remove('prev');
     resetStagger(next);
+    // Keep previous slide visible underneath during transition
     prev.classList.remove('active');
+    prev.classList.add('prev');
     next.classList.add('active');
     current = idx;
     updateCounter();
     triggerStagger(next);
-    setTimeout(function(){isAnimating=false},650);
+    setTimeout(function(){
+      prev.classList.remove('prev');
+      isAnimating=false;
+    },550);
   }
 
   window.nextSlide = function(){goTo(current+1)};
