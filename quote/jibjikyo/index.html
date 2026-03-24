@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>집지켜 브랜드 컨설팅 견적서 — 브랜드라이즈 by HIZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0D0D0D;
+      --white: #FFFFFF;
+      --bg: #F7F6F2;
+      --accent: #2563EB;
+      --accent-light: #EFF6FF;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-500: #6B7280;
+      --gray-700: #374151;
+      --text: #111827;
+    }
+    body {
+      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 48px; }
+
+    /* HERO */
+    .hero { background: var(--black); color: var(--white); padding: 100px 0 80px; }
+    .hero .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: 56px; font-weight: 900; line-height: 1.12;
+      letter-spacing: -0.025em; margin-bottom: 28px;
+    }
+    .hero h1 em { color: var(--accent); font-style: normal; }
+    .hero .sub {
+      font-size: 16px; color: rgba(255,255,255,0.55);
+      font-weight: 300; max-width: 480px; line-height: 1.85;
+    }
+    .hero-meta {
+      display: flex; gap: 56px; margin-top: 64px;
+      padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-meta-item .k {
+      font-size: 10px; letter-spacing: 0.12em; color: rgba(255,255,255,0.35);
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .hero-meta-item .v { font-size: 14px; font-weight: 600; }
+
+    /* SECTIONS */
+    section { padding: 88px 0; }
+    .sec-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 14px;
+    }
+    h2 {
+      font-size: 36px; font-weight: 900; letter-spacing: -0.025em;
+      line-height: 1.25; margin-bottom: 16px; color: var(--black);
+    }
+    .sec-desc {
+      font-size: 15px; color: var(--gray-500); max-width: 580px;
+      line-height: 1.85; margin-bottom: 52px;
+    }
+    hr { border: none; border-top: 1px solid var(--gray-200); }
+
+    /* URGENCY GRID */
+    .urgency-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 44px; }
+    .u-card {
+      background: var(--white); border-radius: 14px; padding: 30px;
+      border: 1px solid var(--gray-200);
+    }
+    .u-card .num {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.12em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .u-card .ct { font-size: 14px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+    .u-card .cd { font-size: 13px; color: var(--gray-500); line-height: 1.75; }
+    .u-card.dark {
+      background: var(--black); border-color: var(--black);
+      grid-column: 1 / -1;
+    }
+    .u-card.dark .num { color: rgba(255,255,255,0.35); }
+    .u-card.dark .ct { color: var(--white); }
+    .u-card.dark .cd { color: rgba(255,255,255,0.55); }
+    .u-card.dark em { color: #60A5FA; font-style: normal; font-weight: 700; }
+
+    /* GAP TABLE */
+    .gap-wrap { margin-top: 36px; border-radius: 14px; overflow: hidden; border: 1px solid var(--gray-200); }
+    .gap-table { width: 100%; border-collapse: collapse; }
+    .gap-table thead tr { background: var(--black); }
+    .gap-table th {
+      padding: 16px 22px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; color: rgba(255,255,255,0.6);
+      text-align: left; text-transform: uppercase;
+    }
+    .gap-table td {
+      padding: 17px 22px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); vertical-align: top; line-height: 1.65;
+    }
+    .gap-table tr:last-child td { border-bottom: none; }
+    .gap-table tr:nth-child(even) td { background: var(--gray-100); }
+    .gap-table td strong { color: var(--black); font-weight: 700; display: block; margin-bottom: 2px; }
+    .badge {
+      display: inline-block; font-size: 10px; font-weight: 800;
+      padding: 3px 11px; border-radius: 20px; letter-spacing: 0.05em;
+    }
+    .b-red { background: #FEF2F2; color: #DC2626; }
+    .b-orange { background: #FFF7ED; color: #EA580C; }
+
+    /* TIER OVERVIEW */
+    .tier-bg { background: var(--black); padding: 88px 0; }
+    .tier-bg h2 { color: var(--white); }
+    .tier-bg .sec-label { color: rgba(255,255,255,0.35); }
+    .tier-bg .sec-desc { color: rgba(255,255,255,0.45); }
+    .tier-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 52px; }
+    .t-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px; padding: 38px 30px;
+      position: relative;
+    }
+    .t-card.rec {
+      background: var(--accent); border-color: var(--accent);
+    }
+    .rec-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--white); color: var(--accent);
+      font-size: 10px; font-weight: 900; letter-spacing: 0.12em;
+      padding: 4px 16px; border-radius: 20px; text-transform: uppercase; white-space: nowrap;
+    }
+    .t-name {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 10px;
+    }
+    .t-title { font-size: 20px; font-weight: 800; color: var(--white); line-height: 1.3; margin-bottom: 28px; }
+    .t-price { font-size: 40px; font-weight: 900; color: var(--white); letter-spacing: -0.03em; }
+    .t-price span { font-size: 18px; font-weight: 600; }
+    .t-period { font-size: 12px; color: rgba(255,255,255,0.4); margin: 6px 0 28px; }
+    .t-feats { list-style: none; }
+    .t-feat {
+      font-size: 13px; color: rgba(255,255,255,0.6);
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .t-feat:last-child { border-bottom: none; }
+    .t-feat::before { content: "→"; color: rgba(255,255,255,0.3); flex-shrink: 0; margin-top: 1px; }
+    .t-feat.on { color: var(--white); font-weight: 500; }
+    .t-feat.on::before { color: rgba(255,255,255,0.7); }
+    .t-feat.off { opacity: 0.25; }
+
+    /* DETAIL */
+    .det { padding: 88px 0; border-bottom: 1px solid var(--gray-200); }
+    .det:last-of-type { border-bottom: none; }
+    .det-head {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 48px; margin-bottom: 52px;
+    }
+    .det-head-l { flex: 1; }
+    .det-head-l h2 { margin-bottom: 14px; }
+    .price-box {
+      background: var(--black); color: var(--white);
+      border-radius: 18px; padding: 30px 40px; text-align: right; flex-shrink: 0;
+    }
+    .price-box .pl { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; margin-bottom: 8px; }
+    .price-box .pa { font-size: 34px; font-weight: 900; letter-spacing: -0.03em; }
+    .price-box .ps { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 4px; }
+
+    .dblock { background: var(--white); border-radius: 14px; border: 1px solid var(--gray-200); overflow: hidden; margin-bottom: 14px; }
+    .dblock-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 24px; background: var(--gray-100); border-bottom: 1px solid var(--gray-200);
+    }
+    .dblock-head .bt { font-size: 14px; font-weight: 700; color: var(--black); }
+    .dblock-head .bp { font-size: 14px; font-weight: 800; color: var(--accent); }
+    .dtable { width: 100%; border-collapse: collapse; }
+    .dtable td {
+      padding: 14px 24px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); vertical-align: top; line-height: 1.7;
+    }
+    .dtable tr:last-child td { border-bottom: none; }
+    .dtable td:first-child { font-weight: 600; color: var(--black); width: 190px; white-space: nowrap; }
+    .dtable td:last-child { color: var(--gray-500); }
+
+    .total-bar {
+      background: var(--black); color: var(--white); padding: 26px 36px;
+      border-radius: 14px; display: flex; align-items: center;
+      justify-content: space-between; margin-top: 24px;
+    }
+    .total-bar .tl { font-size: 13px; color: rgba(255,255,255,0.5); }
+    .total-bar .ts { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+    .total-bar .ta { font-size: 38px; font-weight: 900; letter-spacing: -0.03em; }
+
+    .info-box {
+      background: var(--accent-light); border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0; padding: 22px 28px; margin-top: 20px;
+      font-size: 13px; color: var(--gray-700); line-height: 1.8;
+    }
+    .info-box strong { color: var(--accent); }
+
+    /* COMPARE */
+    .cmp-wrap { margin-top: 44px; border-radius: 14px; overflow: hidden; border: 1px solid var(--gray-200); }
+    .cmp-table { width: 100%; border-collapse: collapse; background: var(--white); }
+    .cmp-table th {
+      padding: 18px 24px; font-size: 13px; font-weight: 700;
+      text-align: center; border-bottom: 2px solid var(--gray-200);
+      background: var(--gray-100);
+    }
+    .cmp-table th:first-child { text-align: left; }
+    .cmp-table th.hi { color: var(--accent); background: var(--accent-light); }
+    .cmp-table td {
+      padding: 14px 24px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); text-align: center; color: var(--gray-500);
+    }
+    .cmp-table td:first-child { text-align: left; color: var(--text); font-weight: 500; }
+    .cmp-table .ck { color: var(--accent); font-weight: 800; font-size: 15px; }
+    .cmp-table .no { color: var(--gray-200); }
+    .cmp-table .sum-row td {
+      font-weight: 800; font-size: 15px; color: var(--black);
+      padding: 20px 24px; background: var(--gray-100);
+      border-top: 2px solid var(--gray-200); border-bottom: none;
+    }
+    .cmp-table .sum-row td.hi { color: var(--accent); background: var(--accent-light); }
+
+    /* FOOTER */
+    .footer { background: var(--black); color: rgba(255,255,255,0.4); padding: 72px 0; text-align: center; }
+    .footer .brand { font-size: 20px; font-weight: 900; color: var(--white); margin-bottom: 6px; letter-spacing: -0.02em; }
+    .footer .tag { font-size: 13px; margin-bottom: 36px; }
+    .footer .meta { font-size: 12px; line-height: 2.2; }
+
+    @media print {
+      .hero, .tier-bg, .footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── HERO ─── -->
+<div class="hero">
+  <div class="container">
+    <div class="label">Brand Consulting Proposal · 브랜드라이즈 by HIZ</div>
+    <h1>전세 안전의<br>카테고리 킹을<br><em>만드는 방법</em></h1>
+    <p class="sub">집지켜는 이미 17만 유저와 토스 연동을 확보했습니다.<br>지금 빠진 건 단 하나 — 시장이 집지켜를 어떻게 불러야 하는지입니다.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="k">공급자</div><div class="v">브랜드라이즈 by HIZ</div></div>
+      <div class="hero-meta-item"><div class="k">수신</div><div class="v">플다(주) 김한성 대표</div></div>
+      <div class="hero-meta-item"><div class="k">기준일</div><div class="v">2026. 03. 23</div></div>
+      <div class="hero-meta-item"><div class="k">금액 기준</div><div class="v">VAT 별도</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── WHY NOW ─── -->
+<section>
+  <div class="container">
+    <div class="sec-label">Market Signal</div>
+    <h2>왜 지금인가</h2>
+    <p class="sec-desc">세 가지 시장 신호가 동시에 켜져 있습니다. 이 타이밍이 지나면 카테고리 선점은 불가능해집니다.</p>
+    <div class="urgency-grid">
+      <div class="u-card">
+        <div class="num">Signal 01</div>
+        <div class="ct">2026.03 정부 전세사기 정책 대전환</div>
+        <div class="cd">사후 구제 → 사전 예방으로 전환. 확정일자 정보가 카카오뱅크·토스뱅크로 확대되며 "전세 안전" 카테고리가 메이저 시장으로 올라갑니다.</div>
+      </div>
+      <div class="u-card">
+        <div class="num">Signal 02</div>
+        <div class="ct">정부 '안심전세' 앱 2026.09 출시</div>
+        <div class="cd">HUG 운영 정부 앱이 9월 출시됩니다. 그 전에 "전세 안전 = 집지켜"가 심어지지 않으면 정부가 이 카테고리를 가져갑니다.</div>
+      </div>
+      <div class="u-card">
+        <div class="num">Signal 03</div>
+        <div class="ct">직방·다방 권리분석 기능 추가 움직임</div>
+        <div class="cd">MAU 229만의 직방이 권리분석 기능 추가를 준비 중입니다. 대형 플랫폼 진입 전 선점 가능한 윈도우는 12–18개월입니다.</div>
+      </div>
+      <div class="u-card dark">
+        <div class="num">Data</div>
+        <div class="ct">브랜드가 만드는 수치 차이</div>
+        <div class="cd">브랜드 확립 앱의 오가닉 설치 비율은 <em>60–70%</em>. 미확립 앱은 20–30%. <em>CPI 차이는 3–5배.</em> 지금 메시지를 잡으면 이후 모든 퍼포먼스 광고의 효율이 구조적으로 올라갑니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ─── CURRENT STATUS ─── -->
+<section>
+  <div class="container">
+    <div class="sec-label">Current Diagnosis</div>
+    <h2>지금 집지켜에<br>없는 마케팅 활동</h2>
+    <p class="sec-desc">17만 유저, 13.9조 진단, 토스 연동. 제품은 이미 작동합니다. 문제는 채널이 아니라 메시지입니다.</p>
+
+    <div class="info-box">
+      앱스토어(iOS) <strong>"행복주택을 가장 쉽게"</strong>&nbsp;&nbsp;→&nbsp;&nbsp;앱스토어(Android) <strong>"행복주택은 집지켜!"</strong>&nbsp;&nbsp;→&nbsp;&nbsp;웹사이트 <strong>"가장 싸고 안전한 집 찾기"</strong>&nbsp;&nbsp;→&nbsp;&nbsp;PR 기사 <strong>"전세사기 예방 앱"</strong>&nbsp;&nbsp;→&nbsp;&nbsp;토스 <strong>"전세 권리분석 서비스"</strong><br><br>
+      5개 채널에서 5개의 다른 서비스처럼 보입니다. 유저가 "이 앱이 나한테 맞는가"를 판단할 기준이 없습니다.
+    </div>
+
+    <div class="gap-wrap" style="margin-top: 36px;">
+      <table class="gap-table">
+        <thead>
+          <tr>
+            <th style="width:32px">#</th>
+            <th>없는 마케팅 활동</th>
+            <th>경쟁사 현황</th>
+            <th style="width:90px">상태</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>①</td>
+            <td><strong>카테고리 정의 + 브랜드 아이덴티티</strong>로고·비주얼 기준 미정립, "전세 안전 = 집지켜" 공식 없음</td>
+            <td>직방 2024.11 CI 리뉴얼 + "Beyond Home" 캠페인, 다방 12년간 일관 유지</td>
+            <td><span class="badge b-orange">긴급</span></td>
+          </tr>
+          <tr>
+            <td>②</td>
+            <td><strong>메시지 시스템 통일</strong>5채널에서 5개의 다른 포지셔닝 혼재</td>
+            <td>다방 "믿을 수 있는 정보" 슬로건 12년 유지</td>
+            <td><span class="badge b-orange">긴급</span></td>
+          </tr>
+          <tr>
+            <td>③</td>
+            <td><strong>인스타그램 공식 계정</strong>계정 자체 없음</td>
+            <td>호갱노노 @hogangnono.official 보유 (570팔로워라도 존재)</td>
+            <td><span class="badge b-red">없음</span></td>
+          </tr>
+          <tr>
+            <td>④</td>
+            <td><strong>유튜브 채널</strong>채널 없음</td>
+            <td>직방·다방 CF 기반 콘텐츠 운영 중</td>
+            <td><span class="badge b-red">없음</span></td>
+          </tr>
+          <tr>
+            <td>⑤</td>
+            <td><strong>ASO 전략</strong>타이틀에 핵심 키워드 미반영</td>
+            <td>직방·다방 앱스토어 카테고리 상위 점유</td>
+            <td><span class="badge b-orange">긴급</span></td>
+          </tr>
+          <tr>
+            <td>⑥</td>
+            <td><strong>커뮤니티 마케팅</strong>네이버 카페·지식인 비정기 산발 운영</td>
+            <td>호갱노노 부동산 커뮤니티 구전 성장으로 MAU 179만</td>
+            <td><span class="badge b-red">없음</span></td>
+          </tr>
+          <tr>
+            <td>⑦</td>
+            <td><strong>브랜드 캠페인</strong>단 한 번의 캠페인도 없음</td>
+            <td>다방 "때가 됐다!" 2주 만에 3억 뷰, 직방 전지현 모델</td>
+            <td><span class="badge b-red">없음</span></td>
+          </tr>
+          <tr>
+            <td>⑧</td>
+            <td><strong>전략적 PR</strong>산발적, 정부 정책 타이밍 연계 없음</td>
+            <td>직방 뉴스룸 운영, 정기 보도자료</td>
+            <td><span class="badge b-red">없음</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ─── TIER OVERVIEW ─── -->
+<div class="tier-bg">
+  <div class="container">
+    <div class="sec-label">Solution Packages</div>
+    <h2 style="color:var(--white)">3가지 제안</h2>
+    <p class="sec-desc">목표와 타임라인에 따라 선택하세요. Set B를 기준으로 상담을 진행합니다.</p>
+    <div class="tier-cards">
+
+      <div class="t-card">
+        <div class="t-name">Set A · Foundation</div>
+        <div class="t-title">브랜드 전략<br>기반 세팅</div>
+        <div class="t-price">2,500<span>만원</span></div>
+        <div class="t-period">3개월 · VAT 별도</div>
+        <ul class="t-feats">
+          <li class="t-feat on">브랜드 포지셔닝 전략</li>
+          <li class="t-feat on">메시지 아키텍처</li>
+          <li class="t-feat on">ASO + 웹사이트 카피</li>
+          <li class="t-feat off">BI 리뉴얼</li>
+          <li class="t-feat off">인스타그램 채널</li>
+          <li class="t-feat off">브랜드 풀 리뉴얼</li>
+        </ul>
+      </div>
+
+      <div class="t-card rec">
+        <div class="rec-badge">Recommended</div>
+        <div class="t-name">Set B · Build</div>
+        <div class="t-title">브랜드 시스템<br>+ 채널 구축</div>
+        <div class="t-price">7,000<span>만원</span></div>
+        <div class="t-period">6개월 · VAT 별도</div>
+        <ul class="t-feats">
+          <li class="t-feat">Set A 전체 포함</li>
+          <li class="t-feat">BI 리프레시</li>
+          <li class="t-feat">인스타그램 전략 + 기획</li>
+          <li class="t-feat">커뮤니티 마케팅</li>
+          <li class="t-feat">PR + 정책 연계 보도자료</li>
+          <li class="t-feat off">로고 전면 리뉴얼</li>
+        </ul>
+      </div>
+
+      <div class="t-card">
+        <div class="t-name">Set C · Renewal</div>
+        <div class="t-title">풀 브랜드 리뉴얼<br>파트너십</div>
+        <div class="t-price">1.3억<span>원</span></div>
+        <div class="t-period">9개월 · VAT 별도</div>
+        <ul class="t-feats">
+          <li class="t-feat on">Set B 전체 포함</li>
+          <li class="t-feat on">로고 전면 리뉴얼</li>
+          <li class="t-feat on">앱 비주얼 시스템 전면 재설계</li>
+          <li class="t-feat on">바이럴 캠페인 기획</li>
+          <li class="t-feat on">유튜브 채널 전략 + 기획</li>
+          <li class="t-feat on">월간 KPI 리뷰</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ─── SET A ─── -->
+<section class="det">
+  <div class="container">
+    <div class="sec-label">Set A · Foundation</div>
+    <div class="det-head">
+      <div class="det-head-l">
+        <h2>브랜드 전략<br>기반 세팅</h2>
+        <p class="sec-desc" style="margin-bottom:0">퍼포먼스 광고 전 반드시 선행되어야 하는 기반 작업. 5채널의 메시지를 하나로 통일하고, 전세 안전 카테고리의 언어를 선점합니다.</p>
+      </div>
+      <div class="price-box">
+        <div class="pl">TOTAL</div>
+        <div class="pa">25,000,000</div>
+        <div class="ps">3개월 · VAT 별도</div>
+      </div>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">① 브랜드 포지셔닝 전략</span>
+        <span class="bp">12,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>브랜드 워크숍 3회</td><td>서비스 딥다이브 · 유저 인식 분석 · 포지셔닝 도출 / 워크숍 결과 문서 납품</td></tr>
+        <tr><td>브랜드 진단 리포트</td><td>5채널 메시지 불일치 분석 + 유저 인식 갭 · 직방·다방·호갱노노·정부서비스 대비 포지셔닝 맵</td></tr>
+        <tr><td>카테고리 정의서</td><td>"집지켜 = 전세 안전 진단 #1" 공식화 · 시장 방어 논거 · 안심전세 앱 출시 이후 방어 근거 포함</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">② 브랜드 메시지 아키텍처</span>
+        <span class="bp">8,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>메시지 아키텍처</td><td>브랜드 스토리 · 태그라인 · 채널별 핵심 메시지 5종 · 채널 응용 가이드</td></tr>
+        <tr><td>톤앤매너 가이드</td><td>언어 스타일 · DO/DON'T · 2030 임차인 타겟 커뮤니케이션 원칙</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">③ 디지털 접점 카피 정비</span>
+        <span class="bp">5,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>ASO 전략</td><td>iOS·Android 타이틀·설명문·키워드 전략 · "전세안전" 카테고리 최적화</td></tr>
+        <tr><td>랜딩페이지 카피</td><td>savehome.kr 메인 카피 재설계 · IA 와이어프레임</td></tr>
+      </table>
+    </div>
+
+    <div class="total-bar">
+      <div><div class="tl">SET A TOTAL</div><div class="ts">VAT 별도 · 3개월</div></div>
+      <div class="ta">25,000,000원</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SET B ─── -->
+<section class="det">
+  <div class="container">
+    <div class="sec-label">Set B · Build — Recommended</div>
+    <div class="det-head">
+      <div class="det-head-l">
+        <h2>브랜드 시스템<br>+ 채널 구축</h2>
+        <p class="sec-desc" style="margin-bottom:0">브랜드 언어를 만들고, 그 언어로 작동하는 디지털 채널을 동시에 구축합니다. 안심전세 앱(2026.09) 출시 전 포지션 선점 완료 목표.</p>
+      </div>
+      <div class="price-box">
+        <div class="pl">TOTAL</div>
+        <div class="pa">70,000,000</div>
+        <div class="ps">6개월 · VAT 별도</div>
+      </div>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">① 브랜드 포지셔닝 전략 + 메시지 아키텍처</span>
+        <span class="bp">Set A 포함</span>
+      </div>
+      <table class="dtable">
+        <tr><td>Set A 전체</td><td>브랜드 포지셔닝 전략 · 메시지 아키텍처 · ASO + 랜딩 카피 정비</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">② BI 리프레시</span>
+        <span class="bp">13,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>로고 리프레시</td><td>현행 로고 분석 → 리프레시 2안 제시 (전면 리뉴얼 아님) · 신뢰·안전 방향 강화</td></tr>
+        <tr><td>컬러·타이포 시스템</td><td>브랜드 컬러 재정의 · 타이포그래피 가이드</td></tr>
+        <tr><td>앱 비주얼 가이드</td><td>앱 아이콘 · 스크린샷 · 온보딩 비주얼 원칙</td></tr>
+        <tr><td>브랜드 가이드라인</td><td>디지털 채널 적용 규정 · 내부 인계 가능</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">③ 인스타그램 채널 전략 + 6개월 콘텐츠 기획</span>
+        <span class="bp">16,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>채널 전략 + 무드보드</td><td>"전세 안전 정보 허브" 포지셔닝 · 피드 톤앤매너 · 릴스·카드뉴스·스토리 포맷 정의 (4,000,000원)</td></tr>
+        <tr><td>월별 콘텐츠 기획보드</td><td>월 10건 기획보드 + 레퍼런스 · 전세사기 예방·권리분석·행복주택 정보 구조화 (2,000,000 × 6개월)</td></tr>
+        <tr><td>피그마 인계</td><td>콘텐츠 템플릿 + 내부 운영 가이드</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">④ 커뮤니티 마케팅 전략</span>
+        <span class="bp">6,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>커뮤니티 채널 매핑</td><td>부동산·2030 임차인 타겟 네이버 카페·커뮤니티 리스트 + 운영 원칙</td></tr>
+        <tr><td>지식인 전략</td><td>전세안전 키워드 200개 맵 + 답변 템플릿 30종</td></tr>
+        <tr><td>월별 실행 플랜</td><td>내부 실행용 커뮤니티 배포 캘린더</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">⑤ PR 전략 + 보도자료 4건</span>
+        <span class="bp">10,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>미디어 리스트</td><td>프롭테크·핀테크·2030 라이프 미디어 50개</td></tr>
+        <tr><td>브랜드 보도자료 2건</td><td>포지셔닝 발표 · 17만 유저 데이터 기반 성장 보도자료 (각 2,000,000원)</td></tr>
+        <tr><td>정책 연계 보도자료 2건</td><td>"2026 전세사기 예방 정책 + 집지켜" 시의성 기사화 (각 3,000,000원)</td></tr>
+      </table>
+    </div>
+
+    <div class="total-bar">
+      <div><div class="tl">SET B TOTAL</div><div class="ts">VAT 별도 · 6개월</div></div>
+      <div class="ta">70,000,000원</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SET C ─── -->
+<section class="det">
+  <div class="container">
+    <div class="sec-label">Set C · Full Brand Renewal</div>
+    <div class="det-head">
+      <div class="det-head-l">
+        <h2>풀 브랜드 리뉴얼<br>파트너십</h2>
+        <p class="sec-desc" style="margin-bottom:0">로고부터 메시지·채널·캠페인까지. 집지켜를 전세 안전 카테고리의 원조 브랜드로 재정의합니다.</p>
+      </div>
+      <div class="price-box">
+        <div class="pl">TOTAL</div>
+        <div class="pa">130,000,000</div>
+        <div class="ps">9개월 · VAT 별도</div>
+      </div>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">① Set B 전체</span>
+        <span class="bp">포함</span>
+      </div>
+      <table class="dtable">
+        <tr><td>Set B 전체</td><td>브랜드 전략 · 메시지 · ASO · BI 리프레시 · 인스타그램 · 커뮤니티 · PR</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">② 브랜드 풀 리뉴얼 — 로고 + 비주얼 시스템</span>
+        <span class="bp">28,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>로고 전면 리뉴얼</td><td>현행 로고 분석 → 리뉴얼 방향 3안 제시 → 최종 확정 / 컬러 시스템·타이포 가이드 포함 (15,000,000원)</td></tr>
+        <tr><td>앱 비주얼 시스템</td><td>앱 아이콘 · 온보딩 화면 · UI 컴포넌트 비주얼 가이드 · 앱스토어 스크린샷 전면 재설계 (9,000,000원)</td></tr>
+        <tr><td>브랜드 풀 가이드라인</td><td>로고 규정 · 컬러 팔레트 · 타이포 시스템 · 디지털·오프라인 응용 규정 · 내부 인계 가능 (4,000,000원)</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">③ 바이럴 캠페인 기획 + 실행</span>
+        <span class="bp">18,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>캠페인 기획</td><td>"전세 계약 전 집지켜 했어?" 인식 캠페인 · 2030 임차인 공감형 · 다방 "때가 됐다!" 방식의 바이럴 설계</td></tr>
+        <tr><td>인플루언서 시딩</td><td>2030 이사·주거·라이프 마이크로 인플루언서 30–50인 · 브리핑 + 결과 리포트</td></tr>
+        <tr><td>릴스·쇼츠 기획</td><td>전세사기 예방 공감 콘텐츠 10건 기획 (제작은 내부/외주 선택)</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">④ 유튜브 채널 전략 + 콘텐츠 기획</span>
+        <span class="bp">9,800,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>채널 전략</td><td>"전세사기 예방 정보 채널" 포지셔닝 · 쇼츠 중심 성장 전략 (3,000,000원)</td></tr>
+        <tr><td>월별 기획보드</td><td>월 4건 (롱폼 1 + 쇼츠 3) · 전세안전 정보 구조화 (980,000 × 7개월 = 6,860,000원)</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">⑤ 월간 브랜드 KPI 리뷰 (9개월)</span>
+        <span class="bp">4,200,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>월간 리뷰</td><td>앱스토어 순위 · 오가닉 설치율 · 브랜드 서치량 · 커뮤니티 반응 추적 + 전략 조정 (300,000 × 9개월 = 2,700,000원)</td></tr>
+        <tr><td>브랜드 데이터 대시보드</td><td>채널별 브랜드 지표 종합 분석 툴 제공 (150,000 × 9개월 = 1,350,000원)</td></tr>
+      </table>
+    </div>
+
+    <div class="total-bar">
+      <div><div class="tl">SET C TOTAL</div><div class="ts">VAT 별도 · 9개월 · 분할 납부 가능</div></div>
+      <div class="ta">130,000,000원</div>
+    </div>
+
+    <div class="info-box">
+      <strong>분할 옵션:</strong> 전반기(1–6개월 브랜드+채널) 7,000만원 → 후반기(7–9개월 리뉴얼+캠페인) 6,000만원으로 분리 확정 가능합니다.
+    </div>
+  </div>
+</section>
+
+<!-- ─── COMPARE ─── -->
+<section>
+  <div class="container">
+    <div class="sec-label">Summary</div>
+    <h2>세트 비교</h2>
+    <p class="sec-desc">각 세트는 독립 집행 가능합니다. 기간 및 항목은 협의 조정 가능합니다.</p>
+    <div class="cmp-wrap">
+      <table class="cmp-table">
+        <thead>
+          <tr>
+            <th>항목</th>
+            <th>Set A</th>
+            <th class="hi">Set B ★</th>
+            <th>Set C</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>브랜드 포지셔닝 전략</td><td class="ck">✓</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+          <tr><td>메시지 아키텍처</td><td class="ck">✓</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+          <tr><td>ASO + 랜딩 카피 정비</td><td class="ck">✓</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+          <tr><td>BI 리프레시</td><td class="no">—</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+          <tr><td>인스타그램 채널 전략 + 기획 (6개월)</td><td class="no">—</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+          <tr><td>커뮤니티 마케팅 전략</td><td class="no">—</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+          <tr><td>PR + 정책 연계 보도자료 4건</td><td class="no">—</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+          <tr><td>로고 전면 리뉴얼</td><td class="no">—</td><td class="no">—</td><td class="ck">✓</td></tr>
+          <tr><td>앱 비주얼 시스템 전면 재설계</td><td class="no">—</td><td class="no">—</td><td class="ck">✓</td></tr>
+          <tr><td>바이럴 캠페인 기획 + 인플루언서</td><td class="no">—</td><td class="no">—</td><td class="ck">✓</td></tr>
+          <tr><td>유튜브 채널 전략 + 기획</td><td class="no">—</td><td class="no">—</td><td class="ck">✓</td></tr>
+          <tr><td>월간 KPI 리뷰</td><td class="no">—</td><td class="no">—</td><td class="ck">✓</td></tr>
+          <tr class="sum-row">
+            <td>기간</td><td>3개월</td><td class="hi">6개월</td><td>9개월</td>
+          </tr>
+          <tr class="sum-row">
+            <td>금액 (VAT 별도)</td><td>2,500만원</td><td class="hi">7,000만원</td><td>1억 3,000만원</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<div class="footer">
+  <div class="container">
+    <div class="brand">브랜드라이즈 by HIZ</div>
+    <div class="tag">Pace &amp; Proof</div>
+    <div class="meta">
+      본 견적서의 유효기간은 발행일로부터 30일입니다.<br>
+      위 금액은 모두 VAT 별도 기준입니다.<br>
+      각 세트는 독립 집행 가능하며, 기간 및 항목 조정은 협의 가능합니다.<br>
+      문의: 브랜드라이즈 by HIZ · 2026. 03. 23
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

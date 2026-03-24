@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Business 상담 준비 패키지 — 오들리컴바인 / ODDLYSATISFINE & abits</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap');
+
+  :root {
+    --bg: #fff;
+    --text: #1a1a1a;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --accent: #6366f1;
+    --accent-light: #eef2ff;
+    --blue: #3b82f6;
+    --blue-light: #eff6ff;
+    --orange: #f97316;
+    --orange-light: #fff7ed;
+    --purple: #8b5cf6;
+    --purple-light: #f5f3ff;
+    --green: #10b981;
+    --green-light: #ecfdf5;
+    --red: #ef4444;
+    --red-light: #fef2f2;
+    --gray-light: #f9fafb;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.75;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* Header */
+  .page-header {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 2px solid var(--text);
+  }
+
+  .page-header .icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+  }
+
+  .page-header h1 {
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+    margin-bottom: 20px;
+  }
+
+  .meta-block {
+    background: var(--gray-light);
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-size: 14px;
+    line-height: 2;
+    color: var(--muted);
+  }
+
+  .meta-block strong { color: var(--text); }
+
+  .go-badge {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 4px;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+
+  /* Sections */
+  .section { margin-top: 56px; }
+
+  .section-divider {
+    border: 0;
+    height: 2px;
+    background: var(--text);
+    margin: 56px 0;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 24px;
+    letter-spacing: -0.3px;
+  }
+
+  h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-top: 36px;
+    margin-bottom: 14px;
+  }
+
+  h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 10px;
+  }
+
+  p { margin-bottom: 12px; }
+
+  /* Blockquotes */
+  blockquote {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-light);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  blockquote.solution {
+    border-left-color: var(--accent);
+    background: var(--accent-light);
+    font-weight: 500;
+  }
+
+  blockquote.teaching {
+    border-left-color: var(--orange);
+    background: var(--orange-light);
+  }
+
+  blockquote.tip {
+    border-left-color: var(--green);
+    background: var(--green-light);
+  }
+
+  /* Callouts */
+  .callout {
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .callout-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+  .callout-body { flex: 1; }
+
+  .callout.moon { background: #f0f0ff; }
+  .callout.star { background: #fffbeb; }
+  .callout.warning { background: var(--red-light); }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  th, td {
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    background: var(--gray-light);
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  tr.highlight { background: var(--blue-light); }
+  tr.highlight td { font-weight: 600; }
+
+  tr.result { background: var(--accent-light); }
+  tr.result td { font-weight: 700; }
+
+  td.header-col {
+    background: var(--gray-light);
+    font-weight: 600;
+    white-space: nowrap;
+    width: 140px;
+  }
+
+  /* Lists */
+  ul, ol {
+    margin: 8px 0 12px 20px;
+  }
+
+  li { margin-bottom: 4px; }
+
+  .checklist {
+    list-style: none;
+    margin-left: 0;
+  }
+
+  .checklist li::before {
+    content: '☐ ';
+    margin-right: 4px;
+  }
+
+  /* Code / Pain Hierarchy */
+  .code-block {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    padding: 20px 24px;
+    border-radius: 8px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    overflow-x: auto;
+    margin: 16px 0;
+    white-space: pre;
+  }
+
+  /* Tags */
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .tag-blue { background: var(--blue-light); color: var(--blue); }
+  .tag-orange { background: var(--orange-light); color: var(--orange); }
+  .tag-purple { background: var(--purple-light); color: var(--purple); }
+  .tag-green { background: var(--green-light); color: var(--green); }
+
+  /* Tier headings */
+  .tier-heading {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 28px;
+    margin-bottom: 12px;
+  }
+
+  .tier-essential { background: var(--gray-light); }
+  .tier-professional { background: var(--blue-light); color: var(--blue); }
+  .tier-premium { background: var(--purple-light); color: var(--purple); }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .container { padding: 24px 16px 60px; }
+    .page-header h1 { font-size: 22px; }
+    h2 { font-size: 19px; }
+    table { font-size: 13px; }
+    th, td { padding: 8px 10px; }
+    td.header-col { width: auto; }
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--gray-light);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0 40px;
+  }
+
+  .toc h3 {
+    margin-top: 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .toc ol {
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  .toc li {
+    margin-bottom: 6px;
+  }
+
+  .toc a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .toc a:hover { color: var(--accent); }
+
+  /* Print */
+  @media print {
+    .container { max-width: 100%; padding: 20px; }
+    .section-divider { margin: 32px 0; }
+    blockquote, .callout, .code-block { break-inside: avoid; }
+    table { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <div class="icon">🧴</div>
+    <h1>New Business 상담 준비 패키지<br>오들리컴바인 / ODDLYSATISFINE & abits</h1>
+    <div class="meta-block">
+      <strong>생성일:</strong> 2026-03-23<br>
+      <strong>상담 예정일:</strong> 미정<br>
+      <strong>대표자:</strong> 백소연 (CEO)<br>
+      <strong>코파운더/CBO:</strong> 김현중 (솔로지옥 시즌1, 120만 팔로워)<br>
+      <strong>기회 적합도:</strong> 4.10/5.0 <span class="go-badge">GO 추진</span>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <h3>목차</h3>
+    <ol>
+      <li><a href="#solution">솔루션 1줄</a></li>
+      <li><a href="#summary">1-Page 요약 (상담 5분 전에 읽기)</a></li>
+      <li><a href="#profile">기업 프로필 상세</a></li>
+      <li><a href="#needs">니즈 분석 상세</a></li>
+      <li><a href="#strategy">수주 전략 상세</a></li>
+      <li><a href="#coaching">상담 코칭 상세</a></li>
+      <li><a href="#competition">경쟁 포지셔닝 맵</a></li>
+      <li><a href="#checklist">상담 전 확인 필요 사항</a></li>
+    </ol>
+  </div>
+
+  <!-- SOLUTION -->
+  <section id="solution" class="section">
+    <h2>솔루션 1줄</h2>
+    <blockquote class="solution">
+      제품은 만들었고 와디즈로 검증도 했는데, 브랜드 2개를 동시에 키울 마케팅 시스템이 없다. 인플루언서 레버리지(김현중 120만)를 체계적 콘텐츠 시스템으로 전환하고, 올리브영 입점 전 SNS 기반 브랜드파워를 구축하는 '브랜드 빌딩 파트너십'을 제안한다.
+    </blockquote>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- 1-PAGE SUMMARY -->
+  <section id="summary" class="section">
+    <h2>1-Page 요약 (상담 5분 전에 읽기)</h2>
+
+    <h3>브랜드 현재 상황</h3>
+    <p>뷰티/웰니스 기업 오들리컴바인. 2024.4 설립. 브랜드 2개 동시 운영: ①슬립테크 웰니스 브랜드 <strong>ODDLYSATISFINE</strong>(오들리새티스파인) — 수면 회복 중심 헤어/바디 케어, ②습관 뷰티 브랜드 <strong>abits</strong>(아빗) — 넷플릭스 '솔로지옥' 출연 김현중(120만 팔로워)이 CBO로 참여. abits 와디즈 2회 펀딩 3,862%·4,121% 대성공. 대표 백소연은 본인 건성피부 고민에서 출발, 성분 투명성·특허 성분 활용 철학.</p>
+
+    <h3>브랜드 현재 고민</h3>
+    <ul>
+      <li><strong>표면:</strong> "마케팅은 돈을 쓰는 것이 대부분" → 광고비 대신 커뮤니티 구축을 원하지만 방법론 부재</li>
+      <li><strong>추정 근본:</strong> 브랜드 2개 동시 운영에 리소스 분산, 김현중 개인 브랜드 의존도 높음, 체계적 SNS/콘텐츠 시스템 미구축</li>
+    </ul>
+
+    <h3>마케팅 행보</h3>
+    <p>abits 와디즈 2회 펀딩 대성공(3,862%·4,121%). 올리브영 입점 추진 중. oddlysatisfine 자사몰(Cafe24) + 글로벌몰 운영. 독일 더마테스트 엑설런트 등급 확보. SNS 채널 존재하나 체계적 운영 미확인. 매출 규모 비공개.</p>
+
+    <h3>필수 질문 Top 5</h3>
+    <table>
+      <tr><th>#</th><th>질문</th><th>의도</th></tr>
+      <tr><td>1</td><td>"지금 두 브랜드 마케팅은 각각 누가, 어떤 방식으로 하고 계세요?"</td><td>브랜드별 실행 주체/리소스 배분 파악</td></tr>
+      <tr><td>2</td><td>"김현중 CBO님의 실질적 마케팅 참여는 어느 정도인가요?"</td><td>인플루언서 레버리지의 실제 활용 수준 파악</td></tr>
+      <tr><td>3</td><td>"올리브영 입점 일정이 구체적으로 잡혀 있나요? 바이어 미팅은?"</td><td>가장 큰 마일스톤의 현실성 확인</td></tr>
+      <tr><td>4</td><td>"두 브랜드 중 지금 더 집중하고 싶은 쪽이 있으세요?"</td><td>리소스 분산 인식 여부 + 우선순위 파악</td></tr>
+      <tr><td>5</td><td>"현재 월 마케팅 예산은 어느 정도이고, 어디에 쓰고 계세요?"</td><td>예산 파이프라인 및 집행 효율 확인</td></tr>
+    </table>
+
+    <h3>예상 프로젝트 범위</h3>
+    <table>
+      <tr><th>티어</th><th>범위</th><th>기간</th><th>가격대</th></tr>
+      <tr><td>Essential</td><td>듀얼 브랜드 진단 + 3개월 마케팅 로드맵</td><td>2주</td><td>120만원</td></tr>
+      <tr class="highlight"><td><strong>Professional</strong></td><td><strong>인스타 채널 전략 + 콘텐츠 시스템 구축 + 월간 디렉션 (브랜드 1개 집중)</strong></td><td><strong>3개월</strong></td><td><strong>월 250만원</strong></td></tr>
+      <tr><td>Premium</td><td>듀얼 브랜드 통합 마케팅 (SNS + 퍼포먼스 + 올리브영 입점 지원 + 인플루언서 전략)</td><td>6개월</td><td>월 450만원</td></tr>
+    </table>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- COMPANY PROFILE -->
+  <section id="profile" class="section">
+    <h2>기업 프로필 상세</h2>
+
+    <h3>기업 기초</h3>
+    <table>
+      <tr><td class="header-col">법인명</td><td>주식회사 오들리컴바인</td></tr>
+      <tr><td class="header-col">브랜드</td><td>ODDLYSATISFINE (오들리새티스파인) + abits (아빗)</td></tr>
+      <tr><td class="header-col">대표</td><td>백소연 (CEO) — 건성피부 고민에서 창업, 성분 투명성·특허 성분 철학</td></tr>
+      <tr><td class="header-col">코파운더/CBO</td><td>김현중 (Chief Brand Officer) — 넷플릭스 '솔로지옥' 시즌1 출연, 인스타 120만+ 팔로워, 강남 무드짐 운영</td></tr>
+      <tr><td class="header-col">업종</td><td>뷰티 / 코스메틱 / 웰니스 / 슬립테크</td></tr>
+      <tr><td class="header-col">설립일</td><td>2024년 4월</td></tr>
+      <tr><td class="header-col">사업자등록번호</td><td>888-81-03288</td></tr>
+      <tr><td class="header-col">소재지 (본사)</td><td>서울 영등포구 양평로 136 파크호텔 유니언워크 305호</td></tr>
+      <tr><td class="header-col">소재지 (오들리)</td><td>광주광역시 북구 설죽로370번길 32, 6층 605-6호</td></tr>
+      <tr><td class="header-col">연락처</td><td>070-8065-3774</td></tr>
+      <tr><td class="header-col">이메일</td><td>info@oddlysatisfine.com / info@abitscosmetic.com</td></tr>
+      <tr><td class="header-col">팀 규모</td><td>추정 소규모 (대표 + CBO + 소수 인원)</td></tr>
+    </table>
+
+    <h3>브랜드 ① ODDLYSATISFINE (오들리새티스파인)</h3>
+    <div class="callout moon">
+      <div class="callout-icon">🌙</div>
+      <div class="callout-body">
+        <strong>슬립테크 + 정서적 케어</strong> 결합 웰니스 브랜드<br>
+        "Oddly Satisfying" 영상에서 착안 + "회복을 통해 괜찮아진다(fine)" = ODDLYSATISFINE<br>
+        <strong>타겟:</strong> 30~40대, 업무 후 자기 돌봄 시간을 원하는 소비자
+      </div>
+    </div>
+
+    <h4>제품 라인업</h4>
+    <table>
+      <tr><th>카테고리</th><th>제품명</th><th>정가</th><th>할인가(20%)</th><th>특징</th></tr>
+      <tr><td>Daily Hands</td><td>어메니티 핸드워시 (마요르/쇼디치/오치)</td><td>23,000원</td><td>18,400원</td><td>7HA Hydra 보습</td></tr>
+      <tr><td>Hair Care</td><td>배스 샴푸 1,000ml</td><td>38,000원</td><td>30,400원</td><td>탈모 기능성, 5종 펩타이드, 편백향</td></tr>
+      <tr><td>Hair Care</td><td>배스 컨디셔너 1,000ml</td><td>38,000원</td><td>30,400원</td><td>약산성, 편백 아로마</td></tr>
+      <tr><td>Body Care</td><td>배스 바디워시 1,000ml</td><td>38,000원</td><td>30,400원</td><td>독일 더마테스트 엑설런트</td></tr>
+      <tr><td>Body Care</td><td>범프리스 케라토 크림</td><td>32,000원</td><td>25,600원</td><td>7중 히알루론산</td></tr>
+      <tr><td>Body Care</td><td>범프리스 바디로션</td><td>26,000원</td><td>20,800원</td><td>민감피부 설계</td></tr>
+    </table>
+
+    <p><strong>공통 제품 특징:</strong> 약산성 포뮬러 / 식물성 성분 / 편백·자스민향(수면 질 향상) / 독일 더마테스트 엑설런트 / 특허 성분 다수 활용 / 계면활성제 최소화</p>
+    <p><strong>준비 중 제품:</strong> 속눈썹 영양제, 헤어 영양제, 두피 앰플, 우레아 나이트 케어, 아로마/디퓨저/티</p>
+
+    <h3>브랜드 ② abits (아빗)</h3>
+    <div class="callout star">
+      <div class="callout-icon">✨</div>
+      <div class="callout-body">
+        <strong>"습관의 미학"</strong> — 아름다워지기 위한 가장 빠른 길은 습관<br>
+        <strong>코파운더:</strong> 김현중 (솔로지옥 시즌1, 인스타 120만+)
+      </div>
+    </div>
+
+    <h4>제품 라인업</h4>
+    <table>
+      <tr><th>카테고리</th><th>제품명</th><th>정가</th><th>할인가</th><th>특징</th></tr>
+      <tr><td>BASE</td><td>블루아가베 선미스트 (SPF30 PA++)</td><td>38,000원</td><td>22,800원(40%)</td><td>특허 SOLARCEAR™, 와디즈 3,862%·4,121%</td></tr>
+      <tr><td>BASE</td><td>블루아가베 클렌징미스트</td><td>28,000원</td><td>14,000원(50%)</td><td>블루아가베 추출물</td></tr>
+      <tr><td>TUNE</td><td>데일리 립밤 00 클리어</td><td>11,000원</td><td>7,700원(30%)</td><td>데일리 립 케어</td></tr>
+      <tr><td>TUNE</td><td>데일리 립밤 01 리츄얼</td><td>12,800원</td><td>8,960원(30%)</td><td>데일리 립 케어</td></tr>
+    </table>
+
+    <p><strong>와디즈 펀딩:</strong> 블루아가베 선미스트 — 1차 3,862%, 2차 4,121% 달성 (2회 연속 대성공)<br>
+    <strong>확장 계획:</strong> 기초제품, 색조(남성 소비자 중심)<br>
+    <strong>유통 목표:</strong> 올리브영 입점 추진 중<br>
+    <strong>해외:</strong> 태국 등 동남아 반응 시작, 일본→미국 진출 목표, 150+ 국가 국제 배송 지원</p>
+
+    <h3>유통 채널 현황</h3>
+    <ul>
+      <li><strong>자사몰:</strong> oddlysatisfine.com (Cafe24 기반)</li>
+      <li><strong>자사몰:</strong> abitscosmetic.com</li>
+      <li><strong>글로벌:</strong> global.oddlysatisfine.com</li>
+      <li><strong>와디즈:</strong> abits 펀딩 2회 성공</li>
+      <li><strong>올리브영:</strong> 입점 추진 중 (핵심 마일스톤)</li>
+      <li><strong>스마트스토어/쿠팡:</strong> 미확인 (상담 시 확인 필요)</li>
+    </ul>
+
+    <h3>시장 환경 — 슬립테크</h3>
+    <table>
+      <tr><th>시장</th><th>규모</th></tr>
+      <tr><td>국내 수면 시장 (2021)</td><td>약 3조원</td></tr>
+      <tr><td>글로벌 수면 시장 (2026 전망)</td><td>약 40조원</td></tr>
+      <tr><td>10년 성장률</td><td>5배+ (2011 4,800억 → 2021 3조)</td></tr>
+      <tr><td>K-뷰티 글로벌 시장</td><td>지속 성장세</td></tr>
+    </table>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- NEEDS ANALYSIS -->
+  <section id="needs" class="section">
+    <h2>니즈 분석 상세</h2>
+
+    <h3>Step 1: 인테이크 데이터 분석</h3>
+    <ul>
+      <li><strong>원문</strong> (뷰티누리 인터뷰): "수많은 브랜드 속 마케팅은 돈을 쓰는 것이 대부분" → 광고비 대신 <strong>고객 커뮤니티 구축</strong> 전략 선택</li>
+      <li><strong>키워드:</strong> "돈을 쓰는 것" (광고비 부담 인식), "커뮤니티" (관계 기반 성장 욕구), "습관" (장기적 고객 관계)</li>
+      <li><strong>감정 톤:</strong> 광고비 중심 마케팅에 대한 거부감 + 진정성 있는 성장 방식에 대한 갈망</li>
+      <li><strong>추정 상태:</strong> 제품 개발과 와디즈 검증은 자신 있으나, 지속적 성장 시스템은 아직 못 찾은 상태</li>
+    </ul>
+
+    <h3>Step 2: SPIN 기반 니즈 레이어링</h3>
+    <table>
+      <tr><td class="header-col">Situation</td><td>설립 2년차, 브랜드 2개 동시 운영. 와디즈 2회 펀딩 대성공(3,862%·4,121%). 김현중(120만) CBO 영입. 올리브영 입점 추진 중. 자사몰 2개 + 글로벌몰 운영. 매출 규모 비공개.</td></tr>
+      <tr><td class="header-col">Problem</td><td>SNS 채널 체계적 운영 미구축. 브랜드 2개 동시 운영으로 리소스 분산. 김현중 개인 브랜드에 과도한 의존. 커뮤니티 전략은 말하지만 실행 방법론 부재. 와디즈 펀딩 ≠ 일상 마케팅 시스템.</td></tr>
+      <tr><td class="header-col">Implication</td><td>올리브영 바이어 미팅에서 "인스타 팔로워 몇 명?" 물으면 답할 수 없음. 김현중 개인 일정/이슈에 브랜드 리스크 종속. 와디즈 이후 일상 채널에서 지속 매출 생성 구조 없음. 두 브랜드 모두 중간에 멈출 위험.</td></tr>
+      <tr><td class="header-col">Need-Payoff</td><td>브랜드 1개에 집중한 콘텐츠 시스템 구축 → 올리브영 입점 레버리지 확보. 김현중 팔로워를 브랜드 팔로워로 전환하는 시스템. 커뮤니티 구축 방법론 실행.</td></tr>
+    </table>
+
+    <h3>Step 3: 고민 계층 분석 (Pain Hierarchy)</h3>
+    <div class="code-block">L1 [표면 요청] SNS 좀 해야 하는데, 광고비는 쓰기 싫어요
+    |
+L2 [전술적 문제] 브랜드 2개인데 어디에 집중해야 할지, 어떤 콘텐츠를 만들지 모르겠어요
+    |
+L3 [전략적 문제] 와디즈 성공 이후 → 올리브영 입점 → 지속 성장, 이 로드맵의 마케팅 파트가 비어 있어요
+    |
+L4 [근본 원인] 제품 만드는 건 잘하는데, 브랜드를 키우는 건 해본 적 없고
+               김현중이라는 강력한 카드가 있는데 체계적으로 쓸 줄 모르겠어요</div>
+
+    <h3>Step 4: JTBD 분석</h3>
+    <table>
+      <tr><td class="header-col">Functional</td><td>광고비 최소화하면서 SNS를 통한 신규 고객 유입 시스템을 만들고, 올리브영 입점을 성공시키는 것</td></tr>
+      <tr><td class="header-col">Social</td><td>올리브영 바이어/투자자에게 "마케팅도 잘하는 뷰티 스타트업"으로 보이고 싶음. 김현중 브랜드가 아닌 독립적 브랜드 정체성</td></tr>
+      <tr><td class="header-col">Emotional</td><td>"와디즈에서는 됐는데 왜 일상에서는 안 되지"라는 답답함 해소. 본인이 직접 개발한 제품이 제대로 알려지는 것</td></tr>
+    </table>
+
+    <h3>Step 5: 유사 사례 패턴</h3>
+    <ol>
+      <li><strong>"인플루언서 코파운더 + 제품 개발자 CEO" 패턴:</strong> 인플루언서 개인 브랜드에 과도 의존 → 브랜드 독립성 확보가 핵심 과제</li>
+      <li><strong>"와디즈 성공 → 일상 채널 전환 실패" 패턴:</strong> 크라우드펀딩의 모멘텀이 일상 마케팅으로 이어지지 않는 전형적 함정</li>
+      <li><strong>"브랜드 2개 = 리소스 ÷ 2" 패턴:</strong> 초기 스타트업의 멀티브랜드 전략은 대부분 집중도 부족으로 실패</li>
+      <li><strong>"광고비 거부 → 커뮤니티 말만" 패턴:</strong> 커뮤니티 전략은 정답이지만, 실행에는 광고비만큼의 시간과 체계가 필요</li>
+      <li><strong>"올리브영 입점이 모든 것을 해결해줄 것" 패턴:</strong> 입점 자체보다 입점 후 회전율이 핵심 — SNS 트래픽 없으면 퇴점</li>
+    </ol>
+
+    <h3>Step 6: 검증 질문</h3>
+    <ol>
+      <li>"오들리새티스파인과 아빗, 지금 매출 비중이 어떻게 되세요?" — <em>검증: 브랜드 간 실제 성과 차이 및 집중도</em></li>
+      <li>"김현중 CBO님이 콘텐츠에 실제로 얼마나 참여하세요? 월 몇 건?" — <em>검증: 인플루언서 레버리지의 실질적 활용도</em></li>
+      <li>"올리브영 바이어에게 브랜드를 소개할 때, SNS 데이터를 어떻게 보여주고 계세요?" — <em>검증: 올리브영 입점 과정에서 마케팅 부재 체감 여부</em></li>
+      <li>"커뮤니티 구축을 말씀하셨는데, 지금 가장 활발한 고객 접점은 어디예요?" — <em>검증: 커뮤니티 전략의 실행 수준</em></li>
+      <li>"두 브랜드 각각 인스타 팔로워가 몇 명이고, 주로 어떤 콘텐츠를 올리세요?" — <em>검증: SNS 현황 실태</em></li>
+    </ol>
+
+    <h3>솔루션 1줄 (니즈 분석 결론)</h3>
+    <blockquote class="solution">
+      "콘텐츠 제작이 아니라, 김현중 120만 팔로워를 브랜드 자산으로 전환하는 시스템 + 올리브영 입점 전 SNS 브랜드파워 구축 로드맵이 진짜 니즈."
+    </blockquote>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- STRATEGY -->
+  <section id="strategy" class="section">
+    <h2>수주 전략 상세</h2>
+
+    <h3>기회 적합도 평가</h3>
+    <table>
+      <tr><th>항목</th><th>가중치</th><th>점수</th><th>가중 점수</th><th>근거</th></tr>
+      <tr><td>니즈-서비스 핏</td><td>30%</td><td>5</td><td>1.50</td><td>SNS 채널 + 콘텐츠 전략 + 인플루언서 활용은 핵심 역량</td></tr>
+      <tr><td>예산 적합성</td><td>20%</td><td>3</td><td>0.60</td><td>"광고비 쓰기 싫다" 발언 → 예산 민감도 높을 수 있음</td></tr>
+      <tr><td>의사결정 구조</td><td>15%</td><td>4</td><td>0.60</td><td>CEO 직접 + CBO 김현중. 소규모팀 → 빠른 결정 가능</td></tr>
+      <tr><td>긴급도</td><td>15%</td><td>4</td><td>0.60</td><td>올리브영 입점 추진 중 → 입점 전 SNS 트랙션 급함</td></tr>
+      <tr><td>성장 잠재력</td><td>10%</td><td>4</td><td>0.40</td><td>김현중 120만 + K-뷰티 해외 확장 + 올리브영</td></tr>
+      <tr><td>레퍼런스 가치</td><td>10%</td><td>4</td><td>0.40</td><td>"솔로지옥 출연자가 만든 뷰티 브랜드" 화제성</td></tr>
+      <tr class="result"><td>종합</td><td></td><td></td><td>4.10</td><td>GO (추진)</td></tr>
+    </table>
+
+    <h3>3-Tier 패키징</h3>
+
+    <div class="tier-heading tier-essential">Tier 1: Essential — "듀얼 브랜드 전략 진단 + 로드맵"</div>
+    <table>
+      <tr><td class="header-col">범위</td><td>2개 브랜드 채널/성과 진단 + 브랜드 우선순위 제안 + 올리브영 입점 전 마케팅 체크리스트 + 3개월 로드맵 + 인스타 전략 프레임</td></tr>
+      <tr><td class="header-col">기간</td><td>2주 (1회성)</td></tr>
+      <tr><td class="header-col">가격</td><td>120만원</td></tr>
+      <tr><td class="header-col">산출물</td><td>듀얼 브랜드 진단 리포트 20p + 3개월 로드맵 + 올리브영 입점 마케팅 체크리스트</td></tr>
+    </table>
+
+    <div class="tier-heading tier-professional">Tier 2: Professional — "콘텐츠 시스템 구축" (목표 수주)</div>
+    <table>
+      <tr><td class="header-col">범위</td><td>Tier 1 포함 + 집중 브랜드 1개 인스타 채널 세팅/비주얼 가이드 + 김현중 콘텐츠 활용 전략 + 월간 캘린더/디렉션(12-15건) + 템플릿 시스템 + 월 1회 대표 미팅 + 월 2회 실무 디렉션 + 월간 리포트</td></tr>
+      <tr><td class="header-col">기간</td><td>3개월 리테이너</td></tr>
+      <tr><td class="header-col">가격</td><td>월 250만원</td></tr>
+      <tr><td class="header-col">추가 옵션</td><td>인플루언서 시딩 설계/집행(+월 80-100만), 촬영 디렉션(+월 50만)</td></tr>
+    </table>
+
+    <div class="tier-heading tier-premium">Tier 3: Premium — "듀얼 브랜드 통합 마케팅 파트너십"</div>
+    <table>
+      <tr><td class="header-col">범위</td><td>Tier 2 + 두 번째 브랜드 채널 전략 + 퍼포먼스 마케팅(Meta/네이버) + 올리브영 입점 지원(상세페이지, 프로모션 기획) + 김현중-브랜드 콘텐츠 분리 전략 + 주 1회 전략 미팅</td></tr>
+      <tr><td class="header-col">기간</td><td>6개월 리테이너</td></tr>
+      <tr><td class="header-col">가격</td><td>월 450만원 (광고비 별도)</td></tr>
+    </table>
+
+    <p><strong>추천 수주 경로:</strong> Tier 1(120만원) 엔트리 → 성과 증명 → Tier 2(월 250만원) 전환</p>
+
+    <h3>Challenger Teaching 포인트</h3>
+
+    <h4>#1: "120만 팔로워가 있는데 브랜드 팔로워가 없다 — 이게 가장 큰 리스크"</h4>
+    <blockquote class="teaching">
+      "김현중 CBO님 팔로워 120만이면 엄청난 자산이에요. 근데 지금 이 120만이 '김현중 팬'이지 'abits 팬'은 아닙니다. 이걸 브랜드 팔로워로 전환하는 시스템이 없으면, 김현중님 일정이 바빠지는 순간 마케팅이 멈춥니다."
+    </blockquote>
+
+    <h4>#2: "와디즈 4,121%는 '이벤트'고, 올리브영은 '매일'이다"</h4>
+    <blockquote class="teaching">
+      "와디즈 펀딩은 한정 기간 + 스토리 + 할인의 힘입니다. 올리브영에 들어가면 매일 선반에서 경쟁해야 해요. 그때 필요한 건 '와디즈에서 잘 됐다'가 아니라 '인스타에서 매일 회자된다'입니다. 입점 전에 이 엔진을 만들어야 합니다."
+    </blockquote>
+
+    <h4>#3: "브랜드 2개는 자랑이 아니라 리스크다 — 지금은 하나에 올인할 때"</h4>
+    <blockquote class="teaching">
+      "브랜드 2개를 동시에 잘 키우려면 각각에 마케팅팀이 필요합니다. 지금 팀 규모에서는 하나에 집중해서 올리브영까지 성공시키고, 그 시스템을 두 번째 브랜드에 복제하는 게 현실적입니다."
+    </blockquote>
+
+    <h3>예상 반론 & 대응</h3>
+    <table>
+      <tr><th>반론</th><th>대응 핵심</th></tr>
+      <tr><td>"광고비 쓰기 싫어요, 커뮤니티로 하고 싶어요"</td><td>"100% 동의합니다. 커뮤니티가 답이에요. 근데 커뮤니티를 만들려면 '초기 씨앗 콘텐츠'가 필요하고, 그게 우리가 하는 일입니다. 광고비가 아니라 콘텐츠 시스템에 투자하는 겁니다"</td></tr>
+      <tr><td>"김현중이 있으니 마케팅은 되고 있어요"</td><td>"김현중님은 최고의 자산이에요. 근데 '김현중이 올려주는 콘텐츠'와 '브랜드 채널의 콘텐츠 시스템'은 다른 게임입니다. 둘 다 있어야 올리브영 바이어가 납득합니다"</td></tr>
+      <tr><td>"250만원은 부담이에요"</td><td>"먼저 120만원 진단부터. 2주 뒤 결과 보시고 판단하세요. 진단 리포트는 저희와 안 하셔도 그 자체로 가치"</td></tr>
+      <tr><td>"다른 데도 알아보는 중이에요"</td><td>"비교하실 때 '인플루언서 코파운더 브랜드 경험'을 물어보세요. 일반 뷰티 마케팅이랑 인플루언서 레버리지 전략은 완전히 다릅니다"</td></tr>
+      <tr><td>"직접 해볼게요"</td><td>"3개월 시스템 세팅 → 이후 직접 운영. 대신 해주는 게 아니라 시스템 구축입니다"</td></tr>
+    </table>
+
+    <h3>클로징 전략</h3>
+    <ul>
+      <li><strong>엔트리:</strong> Tier 1 120만원 (2주 진단) → 진단 결과 공유 시 Tier 2 제안</li>
+      <li><strong>긴급성:</strong> 올리브영 입점 역산하면 지금 시작해야 입점 전 SNS 트랙션 확보</li>
+      <li><strong>리스크 제거:</strong> "120만원 진단 리포트는 저희와 안 하셔도 그 자체로 가치"</li>
+      <li><strong>코치형 프레이밍:</strong> "3개월 후에는 저희 없이도 돌아가는 게 목표"</li>
+      <li><strong>승률 예측:</strong> 50-55% (예산 민감도 변수)</li>
+    </ul>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- COACHING -->
+  <section id="coaching" class="section">
+    <h2>상담 코칭 상세</h2>
+
+    <h3>상담 전 체크리스트</h3>
+    <ul class="checklist">
+      <li>@oddlysatisfine 인스타그램 확인 (팔로워, 게시물, 콘텐츠 톤)</li>
+      <li>@abits.official 인스타그램 확인 (팔로워, 게시물, 콘텐츠 톤)</li>
+      <li>김현중 개인 인스타 확인 (abits 관련 게시물 빈도)</li>
+      <li>스마트스토어/쿠팡 판매 페이지 확인 (리뷰, 상세페이지)</li>
+      <li>와디즈 펀딩 페이지 확인 (스토리, 댓글, 서포터 수)</li>
+      <li>Meta 광고 라이브러리 확인 (광고 집행 여부)</li>
+      <li>미팅 소개 경위 확인</li>
+    </ul>
+
+    <h3>60분 상담 타임라인</h3>
+    <table>
+      <tr><th>시간</th><th>Phase</th><th>핵심 액션</th></tr>
+      <tr><td>0-5분</td><td>라포 형성</td><td>와디즈 4,121% 축하 + 솔로지옥 화제성 인정 + 슬립테크 컨셉 칭찬</td></tr>
+      <tr><td>5-20분</td><td>상황 확인 (15분)</td><td>두 브랜드 각각 현황 파악. 매출 구조, 채널, 팀 역할 분담, 김현중 참여도</td></tr>
+      <tr><td>20-35분</td><td>깊은 진단</td><td>"커뮤니티로 하고 싶다"의 구체적 맥락. 올리브영 입점 상황. 브랜드 우선순위</td></tr>
+      <tr><td>35-45분</td><td>인사이트 공유</td><td>Challenger Teaching 3개 (팔로워 전환, 와디즈→일상, 브랜드 집중)</td></tr>
+      <tr><td>45-55분</td><td>솔루션 방향</td><td>Tier 1 → Tier 2 시나리오 + 브랜드 집중 전략 제안</td></tr>
+      <tr><td>55-60분</td><td>클로징</td><td>Quick Tip 제공 + 다음 단계 합의 (제안서 발송 일정)</td></tr>
+    </table>
+
+    <h3>아이스브레이킹 소재</h3>
+    <table>
+      <tr><th>소재</th><th>멘트 예시</th></tr>
+      <tr><td>와디즈 4,121%</td><td>"와디즈 4,121%면 시장이 확실히 반응한 거잖아요. 이 에너지를 일상 마케팅으로 이어가는 게 핵심이겠네요"</td></tr>
+      <tr><td>김현중 CBO</td><td>"솔로지옥 120만 팔로워 분이 CBO로 합류하셨다는 거, 보통 스타트업에서는 꿈도 못 꾸는 자산이에요"</td></tr>
+      <tr><td>브랜드 네이밍</td><td>"오들리새티스파인이라는 이름, 'Oddly Satisfying'에서 따오신 거 너무 잘 지으셨어요"</td></tr>
+      <tr><td>더마테스트</td><td>"독일 더마테스트 엑설런트까지 받으셨으면 제품력은 검증된 거잖아요. 이 인증을 마케팅에 잘 쓰고 계세요?"</td></tr>
+      <tr><td>듀얼 브랜드</td><td>"설립 2년 만에 브랜드 2개를 동시에 돌리신다는 거, 엄청난 실행력이시네요"</td></tr>
+      <tr><td>슬립테크</td><td>"수면 시장 3조원인데, 뷰티에서 슬립테크 접근하는 브랜드는 거의 없잖아요. 포지셔닝이 독보적이에요"</td></tr>
+    </table>
+
+    <h3>핵심 질문 스크립트</h3>
+
+    <h4>Q1 (5분, Phase 2 초반)</h4>
+    <p><strong>"지금 두 브랜드 마케팅은 각각 어떤 식으로 하고 계세요?"</strong></p>
+    <ul>
+      <li>분기: 김현중 중심 → "CBO님 외에 브랜드 채널 자체 운영은?"</li>
+      <li>분기: 아무것도 안 함 → "와디즈 이후 어떤 채널에서 매출?"</li>
+    </ul>
+
+    <h4>Q2 (10분, Phase 2 중반)</h4>
+    <p><strong>"김현중 CBO님의 실질적 참여가 궁금해요. 월에 콘텐츠 몇 건 정도?"</strong></p>
+    <ul>
+      <li>분기: 적극 참여 → "그 콘텐츠의 브랜드 전환율?"</li>
+      <li>분기: 제한적 → "그럼 브랜드 자체 콘텐츠는?"</li>
+    </ul>
+
+    <h4>Q3 (15분, Phase 2 후반)</h4>
+    <p><strong>"올리브영 입점은 어디까지 진행되셨어요?"</strong></p>
+    <ul>
+      <li>분기: 바이어 미팅 완료 → "바이어가 마케팅 관련해서 뭘 물어보던가요?"</li>
+      <li>분기: 아직 초기 → "입점 전에 준비해야 할 것들 같이 정리할까요?"</li>
+    </ul>
+
+    <h4>Q4 (20분, Phase 3)</h4>
+    <p><strong>"두 브랜드 중 지금 더 집중하고 싶은 쪽이 있으세요?"</strong></p>
+    <ul>
+      <li>분기: abits → "김현중님 레버리지 극대화 전략"</li>
+      <li>분기: 오들리 → "슬립테크 포지셔닝 독보성 강화"</li>
+      <li>분기: 둘 다 → Teaching #3 활용</li>
+    </ul>
+
+    <h4>Q5 (25분, Phase 3)</h4>
+    <p><strong>"1년 후에 이 브랜드가 어떤 위치에 있으면 좋겠어요?"</strong></p>
+    <ul>
+      <li>분기: 올리브영 매출 중심 → "올리브영 회전율 KPI 같이 세워볼까요?"</li>
+      <li>분기: 브랜드 인지도 중심 → "인스타가 가장 강력한 채널"</li>
+    </ul>
+
+    <h3>경청 기법</h3>
+
+    <h4>미러링</h4>
+    <p>제품 개발자 출신이라 성분/기술 이야기에 열정이 있을 것. 그 부분 인정하면서 마케팅으로 연결.</p>
+    <ul>
+      <li>"약산성에 편백향… 제품 설계에 정말 공을 들이셨구나"</li>
+      <li>"커뮤니티로 하고 싶다…" (3초 침묵, 대표가 구체적으로 말하게)</li>
+    </ul>
+
+    <h4>라벨링</h4>
+    <ul>
+      <li>"제품은 자신 있는데, 그걸 알리는 방법이 아직 체계가 안 잡힌 상황인 것 같아요"</li>
+      <li>"김현중님이라는 엄청난 카드가 있는데, 이걸 시스템으로 쓰는 방법을 찾고 계신 거네요"</li>
+    </ul>
+
+    <h4>요약 확인 (3번)</h4>
+    <ol>
+      <li><strong>Phase 2 끝:</strong> "정리하면, 브랜드 2개 운영 중, 와디즈 성공 이후 일상 마케팅 시스템 부재, 올리브영 입점 추진 중. 맞으시죠?"</li>
+      <li><strong>Phase 3 중간:</strong> "대표님 고민의 핵심은, 김현중님이라는 자산을 브랜드 성장 시스템으로 전환하는 방법 + 올리브영 입점 전 마케팅 준비, 이 두 가지네요?"</li>
+      <li><strong>Phase 5 시작 전:</strong> "오늘 들은 걸 정리하면 세 가지. 브랜드 집중 전략, SNS 콘텐츠 체계화, 올리브영 입점 마케팅 준비."</li>
+    </ol>
+
+    <h3>위험 상황 대응</h3>
+
+    <h4>"광고비는 절대 안 쓸 거예요"</h4>
+    <blockquote class="tip">
+      "저도 그게 맞다고 봐요. 저희 제안은 광고비가 아니라 콘텐츠 시스템 투자예요. 한 번 만들어두면 계속 쓸 수 있는 자산이니까요."
+    </blockquote>
+
+    <h4>"김현중이 다 해주고 있어요"</h4>
+    <blockquote class="tip">
+      "김현중님이 가장 강력한 무기인 건 맞아요. 근데 올리브영 바이어는 '김현중 팔로워'가 아니라 '브랜드 채널 팔로워'를 봅니다. 두 가지를 같이 키워야 합니다."
+    </blockquote>
+
+    <h4>가격만 물어볼 때</h4>
+    <blockquote class="tip">
+      "견적은 제안서에 정리할게요. 같은 금액이라도 '브랜드 1개 집중'이냐 '2개 동시'냐에 따라 3개월 후 결과가 완전히 달라요."
+    </blockquote>
+
+    <h3>Trusted Advisor 마무리 — Quick Tip</h3>
+    <h4>"인스타 바이오 듀얼 브랜드 전략"</h4>
+    <blockquote class="tip">
+      "계약이랑 상관없이 바로 쓰실 수 있는 건데요 — 지금 두 브랜드 인스타가 각각 독립적으로 운영되고 있을 텐데, 프로필에 서로를 태그해주세요. oddlysatisfine 바이오에 'by 오들리컴바인 | @abits.official', abits 바이오에 'by 오들리컴바인 | @oddlysatisfine'. 이렇게만 해도 서로 팔로워가 교차합니다."
+      <br><br>
+      "그리고 김현중 CBO님 개인 프로필에 abits 공식 계정 링크가 확실히 걸려 있는지 확인하세요. 120만 팔로워 중 1%만 넘어와도 12,000명입니다. 이거 오늘 10분이면 됩니다."
+    </blockquote>
+
+    <h3>상담 후 액션 리스트</h3>
+
+    <h4>당일 (2시간 이내)</h4>
+    <ul class="checklist">
+      <li>감사 메시지 발송</li>
+      <li>내부 랩업</li>
+      <li>Quick Tip 정리본 전달</li>
+    </ul>
+
+    <h4>2-3일 이내</h4>
+    <ul class="checklist">
+      <li>1차 제안서 발송 (3-Tier + 브랜드 집중 전략 시나리오 + 올리브영 입점 마케팅 체크리스트)</li>
+      <li>인스타 채널 무료 진단 + 와디즈 → 일상 마케팅 전환 프레임 1장 (약속한 경우)</li>
+    </ul>
+
+    <h4>1주일 이내</h4>
+    <ul class="checklist">
+      <li>팔로업 연락</li>
+      <li>김현중 CBO 포함 2차 미팅 제안</li>
+    </ul>
+
+    <h3>상담 마인드셋</h3>
+    <ol>
+      <li>백소연 대표는 "마케팅 못하는 사람"이 아니라 <strong>"제품 천재가 브랜드 빌딩 파트너를 찾는 중"</strong> — 존중하되 방향 제시</li>
+      <li>김현중은 양날의 검 — 120만 팔로워는 최고 자산이지만 브랜드 독립성 확보 없이는 리스크</li>
+      <li>와디즈 성공이 양날의 검 — 크라우드펀딩과 일상 마케팅은 다른 게임</li>
+      <li>올리브영 입점이 핵심 레버리지 — 입점 전 마케팅 준비의 파트너가 되는 것이 수주의 열쇠</li>
+      <li>"광고비 거부감"을 존중 — 광고비가 아니라 '콘텐츠 시스템 투자'로 프레이밍</li>
+    </ol>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- COMPETITION -->
+  <section id="competition" class="section">
+    <h2>경쟁 포지셔닝 맵</h2>
+    <table>
+      <tr><th>브랜드</th><th>포지셔닝</th><th>마케팅 특징</th><th>약점</th></tr>
+      <tr><td>탬버린즈</td><td>아트 뷰티</td><td>공간 경험 + 비주얼 브랜딩</td><td>고가, 대중성 제한</td></tr>
+      <tr><td>논픽션</td><td>향 중심 라이프스타일</td><td>오프라인 매장 + 프리미엄</td><td>올리브영 비입점, 접근성 제한</td></tr>
+      <tr><td>바이오더마</td><td>더마 사이언스</td><td>약국 채널 + 피부과 추천</td><td>감성/스토리 부재</td></tr>
+      <tr><td>라운드랩</td><td>클린 스킨케어</td><td>올리브영 베스트셀러</td><td>차별화 포인트 흐릿</td></tr>
+      <tr><td>아누아</td><td>덜마 클린 뷰티</td><td>틱톡 바이럴 + 글로벌</td><td>인플루언서 의존도</td></tr>
+      <tr class="highlight"><td><strong>ODDLYSATISFINE</strong></td><td><strong>슬립테크 웰니스 뷰티</strong></td><td><strong>수면 회복 + 자기 돌봄</strong></td><td><strong>브랜드 인지도 제로에 가까움</strong></td></tr>
+      <tr class="highlight"><td><strong>abits</strong></td><td><strong>습관 뷰티 (인플루언서 브랜드)</strong></td><td><strong>김현중 120만 + 와디즈</strong></td><td><strong>개인 브랜드 의존, 채널 미구축</strong></td></tr>
+    </table>
+
+    <p><strong>ODDLYSATISFINE 차별화 자산:</strong> "수면 회복"이라는 독보적 카테고리 / 더마테스트 엑설런트 / 슬립테크 트렌드 선점 가능</p>
+    <p><strong>abits 차별화 자산:</strong> 김현중 120만 팔로워 / 와디즈 4,121% 검증 / "습관의 미학" 컨셉</p>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- CHECKLIST -->
+  <section id="checklist" class="section">
+    <h2>상담 전 확인 필요 사항 (최종)</h2>
+    <ul class="checklist">
+      <li>@oddlysatisfine 인스타그램 현황 (팔로워, 게시물, 콘텐츠 톤)</li>
+      <li>@abits.official 인스타그램 현황 (팔로워, 게시물, 콘텐츠 톤)</li>
+      <li>김현중 개인 인스타에서 abits 관련 게시물 빈도/반응</li>
+      <li>oddlysatisfine.com / abitscosmetic.com 상세페이지 퀄리티</li>
+      <li>스마트스토어/쿠팡 입점 여부 및 리뷰 수</li>
+      <li>와디즈 펀딩 페이지 상세 (스토리, 서포터 댓글)</li>
+      <li>Meta 광고 라이브러리 (광고 집행 여부)</li>
+      <li>올리브영 입점 진행 현황</li>
+      <li>미팅 소개 경위 / 연결 맥락</li>
+      <li>현재 매출 규모 및 마케팅 예산</li>
+      <li>지원사업/투자 유치 현황</li>
+    </ul>
+  </section>
+
+  <hr class="section-divider">
+
+  <footer style="text-align: center; color: var(--muted); font-size: 13px; padding: 24px 0;">
+    HIZ New Business Research Package · Generated 2026-03-23
+  </footer>
+
+</div>
+</body>
+</html>
