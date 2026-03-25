@@ -424,7 +424,7 @@
 
         .channel-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 12px;
             margin: 16px 0;
         }
@@ -463,6 +463,7 @@
             .swot-grid { grid-template-columns: 1fr; }
             .flow-steps { flex-direction: column; }
             .flow-step:not(:last-child)::after { display: none; }
+            .channel-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -787,11 +788,16 @@
                 <div class="ch-name">캐치테이블</div>
                 <div class="ch-stat">활용중</div>
                 <div class="ch-note">주요 예약 채널</div>
-            </tr>
+            </div>
         </div>
 
         <h3>마케팅 현황 진단</h3>
-        <table>
+        <table style="table-layout: fixed; width: 100%;">
+            <colgroup>
+                <col style="width: 140px;">
+                <col>
+                <col style="width: 100px;">
+            </colgroup>
             <tr>
                 <th>항목</th>
                 <th>현황</th>
