@@ -464,6 +464,9 @@
             .flow-steps { flex-direction: column; }
             .flow-step:not(:last-child)::after { display: none; }
             .channel-grid { grid-template-columns: repeat(2, 1fr); }
+            #executive-summary [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+            #executive-summary [style*="grid-template-columns: repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; }
+            #diagnosis [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
         }
     </style>
 </head>
@@ -478,10 +481,160 @@
 
 <div class="container">
 
+    <!-- Executive Summary -->
+    <div class="section" id="executive-summary" style="border-left: 4px solid var(--highlight); background: linear-gradient(135deg, #fff 0%, #fff5f7 100%);">
+        <h2 style="border-bottom-color: var(--highlight);">Executive Summary</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px;">
+            <div>
+                <div style="font-size: 13px; color: var(--text-light); margin-bottom: 4px;">브랜드</div>
+                <div style="font-size: 16px; font-weight: 700;">마키노차야 (MAKINO CHAYA)</div>
+                <div style="font-size: 13px; color: var(--text-light);">프리미엄 씨푸드 뷔페 | 전국 7개 직영점</div>
+            </div>
+            <div>
+                <div style="font-size: 13px; color: var(--text-light); margin-bottom: 4px;">대표이사</div>
+                <div style="font-size: 16px; font-weight: 700;">한만웅</div>
+                <div style="font-size: 13px; color: var(--text-light);">건설업 임원 출신, 2021년 LF푸드로부터 인수</div>
+            </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px;">
+            <div style="background: var(--primary); color: white; padding: 16px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 12px; opacity: 0.7;">2023 매출</div>
+                <div style="font-size: 24px; font-weight: 800;">387억</div>
+                <div style="font-size: 11px; opacity: 0.7;">YoY +140%</div>
+            </div>
+            <div style="background: var(--primary); color: white; padding: 16px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 12px; opacity: 0.7;">영업이익률</div>
+                <div style="font-size: 24px; font-weight: 800;">9.0%</div>
+                <div style="font-size: 11px; opacity: 0.7;">무차입 경영</div>
+            </div>
+            <div style="background: var(--primary); color: white; padding: 16px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 12px; opacity: 0.7;">회원 수</div>
+                <div style="font-size: 24px; font-weight: 800;">30만+</div>
+                <div style="font-size: 11px; opacity: 0.7;">충성 고객 기반</div>
+            </div>
+            <div style="background: var(--danger); color: white; padding: 16px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 12px; opacity: 0.7;">인스타 팔로워</div>
+                <div style="font-size: 24px; font-weight: 800;">4,000</div>
+                <div style="font-size: 11px; opacity: 0.7;">극심한 불균형</div>
+            </div>
+        </div>
+        <div style="background: #1a1a2e; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px;">
+            <div style="font-size: 13px; opacity: 0.7; margin-bottom: 8px;">핵심 진단 한 줄 요약</div>
+            <div style="font-size: 17px; font-weight: 700; line-height: 1.6;">
+                매출 387억 / 회원 30만의 검증된 오프라인 파워를 갖추고 있으나,<br>
+                디지털 브랜딩이 거의 전무하여 <span style="color: var(--highlight);">투자 유치 · 매장 확장의 병목</span>이 되고 있음.
+            </div>
+        </div>
+        <div style="font-size: 14px; line-height: 1.8;">
+            <strong>기회 적합도:</strong> <span style="color: var(--highlight); font-weight: 800;">4.4 / 5.0 (GO)</span> &nbsp;|&nbsp;
+            <strong>추천 Tier:</strong> Tier 2 (월 800~1,200만원, 6개월) &nbsp;|&nbsp;
+            <strong>Quick Win:</strong> 3개월 내 인스타 3배 성장 + PR 5건+
+        </div>
+    </div>
+
+    <!-- 핵심 문제점 & 진단 -->
+    <div class="section" id="diagnosis" style="border: 2px solid var(--danger);">
+        <h2 style="border-bottom-color: var(--danger); color: var(--danger);">핵심 문제점 & 진단</h2>
+
+        <h3>1. 디지털 브랜딩 부재 (Critical)</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px;">
+            <div style="background: #fce4ec; padding: 16px; border-radius: 8px;">
+                <div style="font-size: 13px; color: var(--danger); font-weight: 600; margin-bottom: 8px;">현재 상태</div>
+                <ul style="font-size: 14px; padding-left: 18px; margin: 0;">
+                    <li>인스타그램 팔로워 <strong>4,000명</strong> (매출 대비 극심한 부족)</li>
+                    <li>유튜브/숏폼 콘텐츠 <strong>미운영</strong></li>
+                    <li>SNS 콘텐츠는 메뉴/이벤트 나열 수준</li>
+                    <li>브랜드 스토리텔링 전무</li>
+                </ul>
+            </div>
+            <div style="background: #e8f5e9; padding: 16px; border-radius: 8px;">
+                <div style="font-size: 13px; color: var(--success); font-weight: 600; margin-bottom: 8px;">이상적 상태</div>
+                <ul style="font-size: 14px; padding-left: 18px; margin: 0;">
+                    <li>인스타그램 <strong>5만+</strong> 팔로워, 브랜드 콘텐츠 시스템</li>
+                    <li>유튜브 공식 채널 + 셰프 콘텐츠 + 먹방 협업</li>
+                    <li>대표 스토리 + 산지 직송 브랜딩</li>
+                    <li>월 2~3건 전략적 미디어 노출</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2. PR/미디어 전략 부재 (High)</h3>
+        <div style="font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: #fff3e0; border-radius: 8px;">
+            2024~2025년 기사는 <strong>매장 오픈 보도자료 수준</strong>에 그침. 대표 인터뷰는 nbn시사경제 1개 매체에만 집중.
+            매출 387억, 7개 직영점 규모의 브랜드 치고 미디어 노출이 <strong>매우 부족</strong>.
+            한만웅 대표의 "마이다스의 손" 턴어라운드 스토리가 전혀 활용되지 않고 있음.
+        </div>
+
+        <h3>3. 확장기 진입 vs 브랜딩 미정비 (High)</h3>
+        <div style="font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: #fff3e0; border-radius: 8px;">
+            현재 <strong>SI 투자 유치 + 2년 내 3~4개 신규 매장</strong> 계획을 추진 중이나, 디지털 브랜딩 인프라가 전무.
+            신규 상권에서의 고객 유입, 투자자 대상 브랜드 가치 입증 모두에 <strong>디지털 존재감이 핵심 변수</strong>가 됨.
+        </div>
+
+        <h3>영역별 진단 요약</h3>
+        <table>
+            <tr>
+                <th>영역</th>
+                <th>현재 상태</th>
+                <th>심각도</th>
+                <th>GAP</th>
+            </tr>
+            <tr>
+                <td>인스타그램</td>
+                <td>4,000 팔로워, 기본 운영</td>
+                <td><span class="tag tag-red">Critical</span></td>
+                <td><span class="tag tag-red">매우 큼</span></td>
+            </tr>
+            <tr>
+                <td>유튜브/숏폼</td>
+                <td>미운영</td>
+                <td><span class="tag tag-red">Critical</span></td>
+                <td><span class="tag tag-red">매우 큼</span></td>
+            </tr>
+            <tr>
+                <td>브랜드 스토리</td>
+                <td>메뉴/이벤트 나열 수준</td>
+                <td><span class="tag tag-red">High</span></td>
+                <td><span class="tag tag-red">큼</span></td>
+            </tr>
+            <tr>
+                <td>PR/미디어</td>
+                <td>보도자료 수준</td>
+                <td><span class="tag tag-red">High</span></td>
+                <td><span class="tag tag-red">큼</span></td>
+            </tr>
+            <tr>
+                <td>퍼포먼스 마케팅</td>
+                <td>예약 플랫폼 의존</td>
+                <td><span class="tag tag-yellow">Medium</span></td>
+                <td><span class="tag tag-yellow">중간</span></td>
+            </tr>
+            <tr>
+                <td>CRM/멤버십</td>
+                <td>카카오톡 + 30만 회원 (인프라 有)</td>
+                <td><span class="tag tag-yellow">Medium</span></td>
+                <td><span class="tag tag-yellow">중간</span></td>
+            </tr>
+            <tr>
+                <td>예약 시스템</td>
+                <td>캐치테이블 + 네이버 (양호)</td>
+                <td><span class="tag tag-green">Low</span></td>
+                <td><span class="tag tag-green">작음</span></td>
+            </tr>
+        </table>
+
+        <div class="callout callout-danger" style="margin-top: 20px;">
+            <strong>진단 결론:</strong> 마키노차야는 오프라인에서 이미 검증된 프리미엄 브랜드(매출 387억, ROE 44%, 무차입)이나,
+            디지털 영역에서는 사실상 "존재하지 않는" 상태입니다. 매장 확장과 투자 유치를 앞둔 지금이 디지털 브랜딩을 정비할 <strong>가장 적절한 타이밍</strong>입니다.
+        </div>
+    </div>
+
     <!-- 목차 -->
     <div class="toc">
         <h2>목차 (Table of Contents)</h2>
         <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 & 진단</a>
             <a href="#company-info">1. 기업 기초 정보</a>
             <a href="#brand-info">2. 브랜드 정보</a>
             <a href="#product-lineup">3. 매장 및 가격 라인업</a>
