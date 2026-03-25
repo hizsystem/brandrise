@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>위타민 x 카카오 선물하기 — 시장 정밀 리서치 v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --kakao: #FEE500;
+  --kakao-brown: #3C1E1E;
+  --mint: #2DD4BF;
+  --mint-dark: #0F9484;
+  --mint-light: #CCFBF1;
+  --text: #111827;
+  --muted: #6B7280;
+  --border: #E5E7EB;
+  --gray-50: #F9FAFB;
+  --gray-100: #F3F4F6;
+  --gray-200: #E5E7EB;
+  --orange: #F97316;
+  --blue: #3B82F6;
+  --purple: #8B5CF6;
+  --red: #EF4444;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans KR', -apple-system, sans-serif;
+  color: var(--text);
+  background: #fff;
+  line-height: 1.75;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* HEADER */
+.site-header {
+  background: linear-gradient(135deg, #111827 0%, #1F2937 100%);
+  color: #fff;
+  padding: 48px 32px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: -120px; left: -120px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(254,229,0,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.site-header::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; right: -100px;
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(45,212,191,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(254,229,0,0.15);
+  border: 1px solid rgba(254,229,0,0.3);
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--kakao);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.header-badge .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--kakao); }
+.site-header h1 {
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.8px;
+  margin-bottom: 12px;
+}
+.site-header h1 .accent { color: var(--kakao); }
+.site-header h1 .accent2 { color: var(--mint); }
+.header-meta {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.3px;
+}
+
+/* CONTAINER */
+.container { max-width: 900px; margin: 0 auto; padding: 56px 32px 80px; }
+
+/* SECTION */
+.section { margin-top: 64px; }
+.section:first-child { margin-top: 0; }
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.section-label .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--mint); display: inline-block; }
+h2 { font-size: 24px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 24px; line-height: 1.3; }
+h3 { font-size: 17px; font-weight: 700; margin-top: 36px; margin-bottom: 14px; letter-spacing: -0.3px; }
+h4 { font-size: 14px; font-weight: 700; margin-top: 20px; margin-bottom: 8px; }
+p { margin-bottom: 10px; }
+.divider { border: 0; height: 1px; background: var(--gray-200); margin: 56px 0; }
+
+/* KPI CARDS */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 8px;
+}
+.kpi-card {
+  background: var(--gray-50);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 18px;
+  text-align: center;
+}
+.kpi-card.highlight {
+  background: linear-gradient(135deg, #FFFDE7, #FFF9C4);
+  border-color: rgba(254,229,0,0.5);
+}
+.kpi-card.highlight2 {
+  background: linear-gradient(135deg, var(--mint-light), #F0FDFA);
+  border-color: rgba(45,212,191,0.35);
+}
+.kpi-value {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.kpi-card.highlight .kpi-value { color: #B8860B; }
+.kpi-card.highlight2 .kpi-value { color: var(--mint-dark); }
+.kpi-label { font-size: 12px; color: var(--muted); line-height: 1.45; }
+
+/* TABLE */
+.tbl-wrap { overflow-x: auto; margin: 16px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+thead th {
+  background: var(--gray-100);
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+tbody td {
+  border: 1px solid var(--border);
+  padding: 9px 12px;
+  vertical-align: top;
+  line-height: 1.55;
+}
+tbody tr:nth-child(even) td { background: var(--gray-50); }
+.tier-a { background: linear-gradient(135deg, #FFFDE7, #FFF9C4) !important; }
+.tier-b { background: var(--gray-50) !important; }
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.badge-a { background: #FEE500; color: #3C1E1E; }
+.badge-b { background: #E5E7EB; color: #374151; }
+.badge-c { background: #D1FAE5; color: #065F46; }
+.star { color: #FEE500; }
+.num { font-weight: 700; color: var(--text); }
+
+/* INSIGHT BOX */
+.insight {
+  background: linear-gradient(135deg, #111827 0%, #1F2937 100%);
+  border-radius: 14px;
+  padding: 28px 32px;
+  color: #fff;
+  margin: 20px 0;
+  position: relative;
+  overflow: hidden;
+}
+.insight::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(254,229,0,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.insight-inner { position: relative; z-index: 1; }
+.insight-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--kakao);
+  margin-bottom: 10px;
+}
+.insight ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.insight li { font-size: 14px; color: rgba(255,255,255,0.88); padding-left: 16px; position: relative; }
+.insight li::before { content: '→'; position: absolute; left: 0; color: var(--kakao); font-size: 12px; top: 1px; }
+.insight strong { color: var(--kakao); }
+
+/* STRATEGY CARDS */
+.strategy-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 12px; }
+.strategy-card {
+  background: var(--gray-50);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+.strategy-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--mint-dark);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.strategy-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.strategy-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* POSITIONING MAP */
+.posmap-wrap {
+  background: var(--gray-50);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 16px 0;
+}
+.posmap-wrap pre {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text);
+  white-space: pre;
+  overflow-x: auto;
+}
+.posmap-wrap .weetamin-mark { color: var(--orange); font-weight: 700; }
+
+/* WIN POINTS */
+.win-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 12px; }
+.win-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  background: #fff;
+}
+.win-card-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.win-icon {
+  width: 24px; height: 24px;
+  background: var(--mint-light);
+  color: var(--mint-dark);
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+/* SET CARDS */
+.set-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 12px; }
+.set-card {
+  background: var(--gray-50);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+.set-price {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--mint-dark);
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+.set-name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.set-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+.set-target {
+  display: inline-block;
+  margin-top: 8px;
+  background: var(--mint-light);
+  color: var(--mint-dark);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+/* KEY ACTIONS */
+.action-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.action-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  background: var(--gray-50);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.action-num {
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  background: var(--kakao);
+  color: var(--kakao-brown);
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+}
+.action-text { font-size: 14px; line-height: 1.6; }
+.action-text strong { font-weight: 700; }
+
+/* SOURCE TABLE */
+.source-wrap { margin-top: 12px; }
+.source-wrap table { font-size: 12.5px; }
+
+/* DISCLAIMER */
+.disclaimer {
+  background: var(--gray-50);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.disclaimer ul { list-style: disc; padding-left: 18px; }
+.disclaimer li { margin-bottom: 4px; }
+
+/* FOOTER */
+.site-footer {
+  background: #111827;
+  color: rgba(255,255,255,0.5);
+  padding: 32px;
+  text-align: center;
+  font-size: 13px;
+  margin-top: 80px;
+}
+.site-footer a { color: var(--kakao); text-decoration: none; font-weight: 600; }
+.site-footer a:hover { text-decoration: underline; }
+
+/* PRINT */
+@media print {
+  .site-header { padding: 32px; min-height: auto; }
+  .container { padding: 32px; }
+  .kpi-grid { grid-template-columns: repeat(4, 1fr); }
+  .section { page-break-inside: avoid; }
+  .divider { margin: 32px 0; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .site-header h1 { font-size: 22px; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .strategy-grid, .win-grid, .set-grid { grid-template-columns: 1fr; }
+  .container { padding: 40px 20px 60px; }
+  h2 { font-size: 20px; }
+  .posmap-wrap pre { font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-badge">
+      <span class="dot"></span>
+      BRANDRISE Research Report v2
+    </div>
+    <h1>
+      <span class="accent">위타민</span> × <span class="accent2">카카오 선물하기</span><br>
+      시장 정밀 리서치
+    </h1>
+    <p class="header-meta">작성일: 2026-03-25 &nbsp;|&nbsp; 작성: BRANDRISE by HIZ &nbsp;|&nbsp; v2.0</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- EXECUTIVE SUMMARY -->
+  <section class="section">
+    <div class="section-label"><span class="dot"></span>Executive Summary</div>
+    <h2>핵심 발견 4가지</h2>
+    <div class="kpi-grid">
+      <div class="kpi-card highlight">
+        <div class="kpi-value">1위</div>
+        <div class="kpi-label">비타민/영양제<br>배송상품 카테고리</div>
+      </div>
+      <div class="kpi-card highlight">
+        <div class="kpi-value">64%</div>
+        <div class="kpi-label">소비자가 2~3만원대<br>제품 구매</div>
+      </div>
+      <div class="kpi-card highlight2">
+        <div class="kpi-value">6개</div>
+        <div class="kpi-label">위타민 제품이<br>핫존(2~3만원) 해당</div>
+      </div>
+      <div class="kpi-card highlight2">
+        <div class="kpi-value">16~30위</div>
+        <div class="kpi-label">중소/인디 브랜드<br>현실적 진입 구간</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PART 1 -->
+  <section class="section">
+    <div class="section-label"><span class="dot"></span>Part 1</div>
+    <h2>카카오 선물하기 건강식품 인기 랭킹 분석</h2>
+
+    <h3>플랫폼 현황</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>항목</th><th>데이터</th></tr></thead>
+        <tbody>
+          <tr><td>일일 거래량</td><td>하루 평균 54~60만 건</td></tr>
+          <tr><td>입점 브랜드 수</td><td>8,600개 브랜드</td></tr>
+          <tr><td>총 상품 수</td><td>66만 종</td></tr>
+          <tr><td>거래형 매출 (2024 3Q)</td><td>2,151억 원 (YoY +8%)</td></tr>
+          <tr><td>연간 선물 건수 (2025)</td><td>약 1억 9,000만 건</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>배송상품 카테고리별 인기 순위 (2024년 1~11월 누적)</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>순위</th><th>카테고리</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr class="tier-a"><td><strong>1위</strong></td><td><strong>비타민/영양제</strong></td><td>배송상품 중 최다 선물 ★</td></tr>
+          <tr><td>2위</td><td>핸드크림</td><td></td></tr>
+          <tr><td>3위</td><td>립밤</td><td></td></tr>
+          <tr><td>4위</td><td>케이크</td><td></td></tr>
+          <tr><td>5위</td><td>초콜릿</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>건강식품/비타민 추정 랭킹 Top 30</h3>
+    <p style="font-size:12.5px;color:var(--muted);margin-bottom:12px;">※ SPA 기반 동적 렌더링으로 직접 크롤링 불가. 보도자료·기사·블로그 교차 검증 추정치.</p>
+
+    <h4>Tier A — 확인된 상위권 (1~5위)</h4>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>순위</th><th>브랜드</th><th>제품명</th><th>가격대</th><th>근거</th></tr></thead>
+        <tbody>
+          <tr class="tier-a"><td class="num">1</td><td>오쏘몰 (동아제약)</td><td>오쏘몰 이뮨 멀티비타민 30일분</td><td>69,000~79,000원</td><td>카카오 선물하기 전체 1위, 5월 180만 병</td></tr>
+          <tr class="tier-a"><td class="num">2</td><td>오쏘몰 (동아제약)</td><td>오쏘몰 이뮨 7일분 (체험팩)</td><td>19,900~26,100원</td><td>입문 가격대, 올리브영 6년 연속 1위</td></tr>
+          <tr class="tier-a"><td class="num">3</td><td>정관장 (KGC)</td><td>홍삼정 에브리타임 밸런스</td><td>30,000~55,000원</td><td>건기식 생산실적 1위 (6,723억)</td></tr>
+          <tr class="tier-a"><td class="num">4</td><td>오쏘몰 (동아제약)</td><td>오쏘몰 바이탈 m/f</td><td>69,000~79,000원</td><td>2025.1 출시, 성별 맞춤</td></tr>
+          <tr class="tier-a"><td class="num">5</td><td>정관장 (KGC)</td><td>홍이랑 튼튼 (키즈)</td><td>30,000~50,000원</td><td>3040 자녀 선물 1위</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Tier B — 주요 브랜드 (6~15위 추정)</h4>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>순위</th><th>브랜드</th><th>제품명</th><th>가격대</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td class="num">6</td><td>바이탈뷰티 (아모레)</td><td>메타그린 슬림업</td><td>35,000~55,000원</td><td>뷰티×건강 크로스오버, 여성 타겟</td></tr>
+          <tr><td class="num">7</td><td>고려은단</td><td>비타민C 1000 (300정)</td><td>25,000~48,180원</td><td>국민 비타민C, 인지도 80%</td></tr>
+          <tr><td class="num">8</td><td>종근당건강</td><td>이뮨 듀오 멀티비타맥스 7병</td><td>26,100원</td><td>구매율 1위 (27.8%)</td></tr>
+          <tr><td class="num">9</td><td>덴프스</td><td>트루바이타민 30포</td><td>49,000원</td><td>프리미엄 맞춤형</td></tr>
+          <tr><td class="num">10</td><td>에스더포뮬러</td><td>여에스더 글루타치온 다이렉트</td><td>39,000~59,000원</td><td>카카오 스토어 입점 확인, 이너뷰티</td></tr>
+          <tr><td class="num">11</td><td>뉴트리원 (CJ)</td><td>비비랩 저분자 콜라겐</td><td>29,000~49,000원</td><td>CJ 계열, 콜라겐 강자</td></tr>
+          <tr><td class="num">12</td><td>비타바움 (독일)</td><td>멀티비타민 브이-콤플렉스 15</td><td>95,200원</td><td>프리미엄 액상, 독일산</td></tr>
+          <tr><td class="num">13</td><td>GNC</td><td>메가틴 90정</td><td>35,000원</td><td>글로벌 브랜드 신뢰도</td></tr>
+          <tr><td class="num">14</td><td>노티드 × 건강</td><td>비타민D 꾸미 / 멀티비타민 젤리</td><td>32,900원</td><td>MZ 감성, 디자인 협업</td></tr>
+          <tr><td class="num">15</td><td>듀오랩</td><td>건강 시너지 패키지</td><td>35,000~55,000원</td><td>MZ 세트 구성</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Tier C — 중위권 (16~30위 추정) — 위타민의 현실적 목표 구간</h4>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>순위</th><th>브랜드</th><th>제품명</th><th>가격대</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td class="num">16</td><td>하이웰 (뉴질랜드)</td><td>멀티비타민&amp;미네랄 2종</td><td>32,000원</td><td>뉴질랜드산 프리미엄</td></tr>
+          <tr><td class="num">17</td><td>닥터엘리자베스</td><td>활력비타민 BnC 콤플렉스</td><td>11,900원</td><td>초저가 진입, 가성비</td></tr>
+          <tr><td class="num">18</td><td>솔가</td><td>에스터-C 비타민 1000 90정</td><td>54,000원</td><td>미국산 프리미엄</td></tr>
+          <tr><td class="num">19</td><td>광동제약</td><td>비타500 수퍼멀티앰플샷</td><td>15,000~25,000원</td><td>드링크형, 간편 섭취</td></tr>
+          <tr><td class="num">20</td><td>잭앤펄스</td><td>에너블라스트 포션 원터치샷</td><td>30,000원</td><td>액상형 활력 포션</td></tr>
+          <tr><td class="num">21</td><td>레모나</td><td>구미 멀티비타민 미네랄</td><td>9,900원</td><td>최저가, 부담 없는 선물</td></tr>
+          <tr><td class="num">22</td><td>키누 × 핑크퐁</td><td>츄어블 멀티비타민 2개</td><td>19,900원</td><td>키즈 타겟, 캐릭터 콜라보</td></tr>
+          <tr><td class="num">23</td><td>NOW Foods</td><td>칼-맥 D3&amp;아연</td><td>28,000원</td><td>미국 직수입 가성비</td></tr>
+          <tr><td class="num">24</td><td>모어네이처</td><td>루테인 / 오메가3 세트</td><td>30,000~50,000원</td><td>자연 유래 건기식</td></tr>
+          <tr><td class="num">25</td><td>필리 (Pilly)</td><td>맞춤 영양제 세트</td><td>35,000~59,000원</td><td>맞춤형 정기구독</td></tr>
+          <tr><td class="num">26</td><td>솔가</td><td>츄어블 칼슘 500mg 90정</td><td>21,300원</td><td>미국산, 츄어블</td></tr>
+          <tr><td class="num">27</td><td>닥터엘리자베스</td><td>패밀리 츄어블 비타민C 500</td><td>9,900원</td><td>가족용 대용량</td></tr>
+          <tr><td class="num">28</td><td>하이웰</td><td>키즈 유산균 비타민D 아연</td><td>38,000원</td><td>키즈 전문 라인</td></tr>
+          <tr><td class="num">29</td><td>닥터엘리자베스</td><td>프리미엄 산양유 초유 단백질</td><td>99,000원</td><td>고가 프리미엄</td></tr>
+          <tr><td class="num">30</td><td>키누 × 핑크퐁</td><td>키즈 이뮨 젤리 30포×2</td><td>55,000원</td><td>면역 젤리 키즈</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>가격대별 분포</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>가격대</th><th>Top 30 중 제품 수</th><th>비중</th><th>소비자 구매 비중</th></tr></thead>
+        <tbody>
+          <tr><td>1만원 이하</td><td>3개</td><td>10%</td><td>18% (1만원대)</td></tr>
+          <tr><td>1~2만원대</td><td>5개</td><td>17%</td><td>—</td></tr>
+          <tr class="tier-a"><td><strong>2~3만원대</strong></td><td><strong>8개</strong></td><td><strong>27%</strong></td><td><strong>35% (최다)</strong></td></tr>
+          <tr class="tier-a"><td><strong>3~5만원대</strong></td><td><strong>8개</strong></td><td><strong>27%</strong></td><td><strong>29%</strong></td></tr>
+          <tr><td>5~7만원대</td><td>3개</td><td>10%</td><td>8%</td></tr>
+          <tr><td>7만원 이상</td><td>3개</td><td>10%</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="insight">
+      <div class="insight-inner">
+        <div class="insight-title">핵심 인사이트</div>
+        <ul>
+          <li>소비자의 <strong>64%가 2~3만원대</strong> 구매 — 실제 거래량 압도적</li>
+          <li>상위 랭킹은 5~8만원대 프리미엄이 다수이나 대기업 독점 구간</li>
+          <li>위타민의 기회: <strong>2~3만원대 선물 세트 구성</strong>이 핵심 전략</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>상위권 독점 패턴</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>유형</th><th>브랜드</th><th>점유 특성</th></tr></thead>
+        <tbody>
+          <tr><td><strong>절대 강자</strong></td><td>오쏘몰 (동아제약)</td><td>전체 1위, YoY 190%+ 성장, "비타민계 에르메스"</td></tr>
+          <tr><td><strong>전통 강호</strong></td><td>정관장 (KGC)</td><td>홍삼 = 건강 선물의 대명사, 생산실적 6,723억</td></tr>
+          <tr><td><strong>대기업 차선</strong></td><td>종근당건강, 고려은단, 뉴트리원(CJ)</td><td>높은 인지도, 다양한 가격대</td></tr>
+          <tr><td><strong>뷰티×건강</strong></td><td>바이탈뷰티, 에스더포뮬러</td><td>이너뷰티 트렌드, 여성 2030 강세</td></tr>
+          <tr><td><strong>해외 프리미엄</strong></td><td>비타바움, GNC, NOW, 솔가</td><td>수입산 신뢰도, 고가 포지셔닝</td></tr>
+          <tr><td><strong>MZ 타겟</strong></td><td>노티드, 듀오랩, 필리</td><td>디자인/패키지 차별화, 젊은 감성</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="insight">
+      <div class="insight-inner">
+        <div class="insight-title">독점 패턴 요약</div>
+        <ul>
+          <li>상위 1~5위: 오쏘몰 + 정관장 <strong>대기업 완전 독점</strong></li>
+          <li>6~15위: 대기업 서브 브랜드 + 프리미엄 수입 브랜드</li>
+          <li><strong>16위 이하부터 중소/인디 브랜드 진입 가능</strong></li>
+          <li>위타민의 현실적 진입 목표: <strong>16~30위 구간</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PART 2 -->
+  <section class="section">
+    <div class="section-label"><span class="dot"></span>Part 2</div>
+    <h2>인디/중소 브랜드 전략 분석</h2>
+
+    <h3>성공 사례 5개</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>브랜드</th><th>포지셔닝</th><th>카카오 전략</th><th>가격대</th><th>차별점</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>듀오랩</strong></td>
+            <td>MZ세대 건강기능식품</td>
+            <td>건강 시너지 패키지 세트</td>
+            <td>35,000~55,000원</td>
+            <td>영양제+시너지 유산균 조합 컨셉, MZ 감성 패키지</td>
+          </tr>
+          <tr>
+            <td><strong>덴프스</strong></td>
+            <td>프리미엄 맞춤형 영양제</td>
+            <td>트루바이타민 30포 단일 집중</td>
+            <td>49,000원</td>
+            <td>개인 맞춤형 포뮬러, 프리미엄 패키지</td>
+          </tr>
+          <tr>
+            <td><strong>필리</strong></td>
+            <td>맞춤 영양제 정기구독 플랫폼</td>
+            <td>선물용 세트 별도 구성 (추정)</td>
+            <td>35,000~59,000원</td>
+            <td>AI 기반 맞춤 추천, 테크 브랜드 이미지, 40억 투자</td>
+          </tr>
+          <tr>
+            <td><strong>닥터엘리자베스</strong></td>
+            <td>가성비 건강기능식품</td>
+            <td>9,900원~99,000원 초광범위 SKU</td>
+            <td>9,900~99,000원</td>
+            <td>가격대 세분화, 가족 단위 타겟, 다수 SKU 노출 극대화</td>
+          </tr>
+          <tr>
+            <td><strong>노티드 × 건강</strong></td>
+            <td>디저트 브랜드 건강 크로스오버</td>
+            <td>비타민D 꾸미 MZ 여성 집중</td>
+            <td>32,900원</td>
+            <td>디저트 감성 + 비타민 = "맛있는 건강"</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>인디 브랜드 4가지 전략 패턴</h3>
+    <div class="strategy-grid">
+      <div class="strategy-card">
+        <div class="strategy-num">전략 01</div>
+        <div class="strategy-title">선물 최적화 패키지 디자인</div>
+        <div class="strategy-body">트렌디한 패키지, 커스텀 메시지카드, 언박싱 서프라이즈 경험. 대기업이 못하는 감성 영역.</div>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-num">전략 02</div>
+        <div class="strategy-title">가격대 3단계 전략</div>
+        <div class="strategy-body">진입가 9,900~19,900원 / 메인가 29,000~39,000원 / 프리미엄 49,000~69,000원. 소비자 64% 집중하는 2~3만원대 필수.</div>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-num">전략 03</div>
+        <div class="strategy-title">카테고리 키워드 점령</div>
+        <div class="strategy-body">"30대 여성 건강식품", "영양제 3종 세트", "글루타치온", "콜라겐" — 이너뷰티 트렌드 키워드 선제 확보.</div>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-num">전략 04</div>
+        <div class="strategy-title">한정판/시즌 에디션</div>
+        <div class="strategy-body">브랜드 협업 패키지, 계절별 기프트 박스, 증정품 추가, 메시지카드 동봉 기프트 에디션으로 선물 가치 향상.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PART 3 -->
+  <section class="section">
+    <div class="section-label"><span class="dot"></span>Part 3</div>
+    <h2>위타민의 경쟁 상대 재정의</h2>
+
+    <h3>위타민 제품 라인업 (선물 적합도 포함)</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>제품명</th><th>정가</th><th>할인가</th><th>카테고리</th><th>선물 적합도</th><th>핫존 해당</th></tr></thead>
+        <tbody>
+          <tr><td>장당당 (유산균)</td><td>39,000</td><td>39,000원</td><td>장 건강</td><td><span class="star">★★★★</span></td><td></td></tr>
+          <tr class="tier-a"><td><strong>간당당 (밀크씨슬)</strong></td><td>24,000</td><td><strong>19,800원</strong></td><td>간 건강</td><td><span class="star">★★★★★</span></td><td><span class="badge badge-a">핫존</span></td></tr>
+          <tr class="tier-a"><td><strong>당당당 (혈당컷 젤리)</strong></td><td>25,300</td><td><strong>19,800원</strong></td><td>혈당 관리</td><td><span class="star">★★★★</span></td><td><span class="badge badge-a">핫존</span></td></tr>
+          <tr class="tier-a"><td><strong>리포좀 글루타치온</strong></td><td>42,000</td><td><strong>34,900원</strong></td><td>이너뷰티</td><td><span class="star">★★★★★</span></td><td><span class="badge badge-a">핫존</span></td></tr>
+          <tr class="tier-a"><td><strong>리포좀 비타민C</strong></td><td>42,000</td><td><strong>31,900원</strong></td><td>항산화</td><td><span class="star">★★★★★</span></td><td><span class="badge badge-a">핫존</span></td></tr>
+          <tr class="tier-a"><td><strong>D3K2 부스터</strong></td><td>42,000</td><td><strong>34,800원</strong></td><td>비타민D</td><td><span class="star">★★★★</span></td><td><span class="badge badge-a">핫존</span></td></tr>
+          <tr class="tier-a"><td><strong>올리브 에 올리브</strong></td><td>59,000</td><td><strong>32,600원</strong></td><td>장 건강</td><td><span class="star">★★★</span></td><td><span class="badge badge-a">핫존</span></td></tr>
+          <tr><td>알래스카 오메가3</td><td>58,900</td><td>52,700원</td><td>혈관 건강</td><td><span class="star">★★★</span></td><td></td></tr>
+          <tr><td>알래스카 오메가3 츄어블</td><td>58,900</td><td>52,700원</td><td>혈관 건강</td><td><span class="star">★★★★</span></td><td></td></tr>
+          <tr><td>알티지 오메가3</td><td>62,000</td><td>54,700원</td><td>혈관 건강</td><td><span class="star">★★★</span></td><td></td></tr>
+          <tr><td>빌베리 구미</td><td>50,000</td><td>39,800원</td><td>눈 건강</td><td><span class="star">★★★★</span></td><td></td></tr>
+          <tr><td>콜라겐</td><td>61,000</td><td>60,000원</td><td>이너뷰티</td><td><span class="star">★★★★</span></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12.5px;color:var(--muted);">※ 노란색 행 = 2~3만원대 핫존 해당 제품 (6개). 출처: <a href="https://weetamin.co.kr/" target="_blank">위타민 공식몰</a></p>
+
+    <h3>현실적 경쟁 대상 12개 브랜드</h3>
+
+    <h4>그룹 A — 직접 경쟁 (규모/포지셔닝 유사)</h4>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>브랜드</th><th>주력 제품</th><th>가격대</th><th>카카오 위치</th><th>위타민 우위</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><strong>듀오랩</strong></td><td>비타민+유산균 시너지 패키지</td><td>35,000~55,000원</td><td>중위권 (입점 확인)</td><td>약사 개발 신뢰도, 리포좀 기술</td></tr>
+          <tr><td>2</td><td><strong>덴프스</strong></td><td>트루바이타민 30포</td><td>49,000원</td><td>중상위권</td><td>더 다양한 가격대 보유</td></tr>
+          <tr><td>3</td><td><strong>모어네이처</strong></td><td>루테인, 오메가3, 유산균</td><td>30,000~50,000원</td><td>중위권 (추정)</td><td>브랜딩 감성, MZ 타겟 디자인</td></tr>
+          <tr><td>4</td><td><strong>닥터엘리자베스</strong></td><td>활력비타민, 츄어블 비타민C</td><td>9,900~99,000원</td><td>중하위권 (다수 SKU)</td><td>프리미엄 포지셔닝 (위타민이 더 고급)</td></tr>
+          <tr><td>5</td><td><strong>필리 (Pilly)</strong></td><td>맞춤 영양제 세트</td><td>35,000~59,000원</td><td>중위권 (추정)</td><td>선물용 패키지 최적화 가능</td></tr>
+          <tr><td>6</td><td><strong>에스더포뮬러</strong></td><td>글루타치온, 콜라겐</td><td>39,000~59,000원</td><td>중상위권 (스토어 확인)</td><td>실제 약사 — 진정성 우위</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>그룹 B — 간접 경쟁 (특정 카테고리 겹침)</h4>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>브랜드</th><th>주력 제품</th><th>가격대</th><th>카카오 위치</th><th>위타민 우위</th></tr></thead>
+        <tbody>
+          <tr><td>7</td><td><strong>하이웰 (뉴질랜드)</strong></td><td>멀티비타민, 키즈 유산균</td><td>18,000~38,000원</td><td>중하위권</td><td>국내 제조 신뢰도, 빠른 배송</td></tr>
+          <tr><td>8</td><td><strong>잭앤펄스</strong></td><td>에너블라스트 포션</td><td>30,000원</td><td>중하위권</td><td>제품 라인업 다양성</td></tr>
+          <tr><td>9</td><td><strong>비타바움 (독일)</strong></td><td>멀티비타민 액상</td><td>95,200원</td><td>중위권</td><td>가격 경쟁력 (위타민이 절반 가격)</td></tr>
+          <tr><td>10</td><td><strong>노티드 (건강라인)</strong></td><td>비타민D 꾸미, 멀티비타민 젤리</td><td>32,900원</td><td>중위권</td><td>건기식 전문성 (노티드는 디저트 본업)</td></tr>
+          <tr><td>11</td><td><strong>뉴트리코어</strong></td><td>멀티비타민, 오메가3</td><td>25,000~45,000원</td><td>중하위권 (추정)</td><td>카카오 채널 집중 전략</td></tr>
+          <tr><td>12</td><td><strong>광동제약 (비타500 라인)</strong></td><td>비타500 수퍼멀티앰플샷</td><td>15,000~25,000원</td><td>중위권</td><td>프리미엄 포지셔닝 차별화</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>경쟁 포지셔닝 맵</h3>
+    <div class="posmap-wrap">
+<pre>
+                    고가 (5만원+)
+                        │
+     비타바움            │          오쏘몰(제외)
+                        │    에스더포뮬러
+     솔가/GNC           │    덴프스
+                        │         필리
+                        │
+브랜드인지도 낮음 ───────┼──────── 브랜드인지도 높음
+                        │
+     닥터엘리자베스      │    듀오랩
+     ★위타민★          │    모어네이처
+     뉴트리코어         │    노티드
+     하이웰             │    광동 비타500
+     잭앤펄스           │
+                        │
+                    저가 (2만원 이하)
+</pre>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-top:8px;">현재 위치: 브랜드 인지도 낮음 × 중가(2~5만원) &nbsp;→&nbsp; 목표: 인지도 상승 × 중가(2~4만원) 선물 최적 가격대</p>
+
+    <h3>위타민이 이길 수 있는 핵심 포인트 4가지</h3>
+    <div class="win-grid">
+      <div class="win-card">
+        <div class="win-card-title"><span class="win-icon">1</span> 약사 개발 브랜드 스토리</div>
+        <div class="tbl-wrap" style="margin:0">
+          <table style="font-size:12.5px">
+            <thead><tr><th>경쟁사</th><th>전문성 근거</th><th>위타민 우위</th></tr></thead>
+            <tbody>
+              <tr><td>듀오랩</td><td>식품회사 기반</td><td>약사 2인 직접 R&D</td></tr>
+              <tr><td>모어네이처</td><td>"자연 유래" 컨셉</td><td>약학 기반 배합</td></tr>
+              <tr><td>닥터엘리자베스</td><td>가성비 다품종</td><td>소수 정예 프리미엄</td></tr>
+              <tr><td>에스더포뮬러</td><td>셀럽(여에스더) 마케팅</td><td>실제 약사 — 진정성</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="win-card">
+        <div class="win-card-title"><span class="win-icon">2</span> 리포좀 기술 차별화</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.65;">리포좀 글루타치온(34,900원), 리포좀 비타민C(31,900원)은 일반 제품 대비 흡수율 차이. <strong>"같은 가격에 더 높은 효과"</strong> 메시지로 전환 가능.</p>
+      </div>
+      <div class="win-card">
+        <div class="win-card-title"><span class="win-icon">3</span> 선물 최적 가격대 6개 보유</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.65;">간당당 19,800 / 당당당 19,800 / 리포좀 비타민C 31,900 / 리포좀 글루타치온 34,900 / D3K2 34,800 / 올리브 에 올리브 32,600원 — 모두 소비자 64%가 집중하는 2~3만원대.</p>
+      </div>
+      <div class="win-card">
+        <div class="win-card-title"><span class="win-icon">4</span> "당당" 시리즈 네이밍</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.65;">장당당·간당당·당당당 — 위트 있고 기억하기 쉬운 네이밍. 선물하기 플랫폼에서 <strong>검색·공유 시 유리</strong>. 시리즈 확장 가능성도 보유.</p>
+      </div>
+    </div>
+
+    <h3>선물 세트 구성안 4개</h3>
+    <div class="set-grid">
+      <div class="set-card">
+        <div class="set-price">29,800원</div>
+        <div class="set-name">당당 듀오</div>
+        <div class="set-desc">간당당 + 장당당<br>간 건강 + 장 건강 동시 케어</div>
+        <span class="set-target">직장인 선물</span>
+      </div>
+      <div class="set-card">
+        <div class="set-price">39,800원</div>
+        <div class="set-name">이너뷰티 세트</div>
+        <div class="set-desc">리포좀 글루타치온 + 리포좀 비타민C<br>흡수율 높은 이너뷰티 2종 조합</div>
+        <span class="set-target">20~30대 여성</span>
+      </div>
+      <div class="set-card">
+        <div class="set-price">49,800원</div>
+        <div class="set-name">올인원 건강 박스</div>
+        <div class="set-desc">간당당 + 장당당 + 당당당<br>간·장·혈당 통합 케어 3종 세트</div>
+        <span class="set-target">부모님/어른 선물</span>
+      </div>
+      <div class="set-card">
+        <div class="set-price">69,800원</div>
+        <div class="set-name">프리미엄 케어</div>
+        <div class="set-desc">오메가3 + D3K2 부스터 + 멀티비타민<br>혈관·뼈·면역 올케어</div>
+        <span class="set-target">특별한 날 선물</span>
+      </div>
+    </div>
+
+    <h3>카카오 선물하기 공략 핵심 제언</h3>
+    <h4>즉시 실행 가능</h4>
+    <div class="action-list">
+      <div class="action-item">
+        <div class="action-num">1</div>
+        <div class="action-text"><strong>카카오톡 스토어 활성화:</strong> 이미 입점(store.kakao.com/weetamin) 확인 — 선물하기 연동 강화</div>
+      </div>
+      <div class="action-item">
+        <div class="action-num">2</div>
+        <div class="action-text"><strong>2~3만원대 선물 세트 3종 이상 구성:</strong> 소비자 64%가 이 가격대 구매 — 당장 가능</div>
+      </div>
+      <div class="action-item">
+        <div class="action-num">3</div>
+        <div class="action-text"><strong>선물용 패키지 별도 제작:</strong> 언박싱 경험 + 메시지카드 + 선물 포장으로 대기업 대비 감성 우위</div>
+      </div>
+      <div class="action-item">
+        <div class="action-num">4</div>
+        <div class="action-text"><strong>"약사가 만든 비타민" 키워드 전략:</strong> 검색 노출 차별화 — 경쟁사 대부분이 활용 못하는 포지셔닝</div>
+      </div>
+    </div>
+    <h4>중기 전략 (3~6개월)</h4>
+    <div class="action-list">
+      <div class="action-item">
+        <div class="action-num">1</div>
+        <div class="action-text"><strong>시즌 에디션:</strong> 어버이날·스승의날·추석·설 맞춤 기프트 에디션</div>
+      </div>
+      <div class="action-item">
+        <div class="action-num">2</div>
+        <div class="action-text"><strong>MZ 감성 콜라보:</strong> 일러스트레이터/디자이너 협업 패키지 — 노티드 성공 방정식 참고</div>
+      </div>
+      <div class="action-item">
+        <div class="action-num">3</div>
+        <div class="action-text"><strong>리뷰 확보 캠페인:</strong> 카카오 선물하기 내 리뷰 수 = 검색 순위와 직결</div>
+      </div>
+      <div class="action-item">
+        <div class="action-num">4</div>
+        <div class="action-text"><strong>"많이 선물한" 랭킹 진입:</strong> 소비자 51%가 이 랭킹으로 탐색 — 초기 집중 구매 캠페인 필요</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SOURCES -->
+  <section class="section">
+    <div class="section-label"><span class="dot"></span>출처</div>
+    <h2>주요 데이터 출처</h2>
+    <div class="source-wrap">
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>출처</th><th>URL</th><th>주요 데이터</th></tr></thead>
+          <tbody>
+            <tr><td>동아제약 보도자료</td><td><a href="https://www.dapharm.com/ko/newsroom/press/573" target="_blank">link</a></td><td>오쏘몰 5월 180만 병, 전체 1위</td></tr>
+            <tr><td>농민신문</td><td><a href="https://www.nongmin.com/article/20241222500020" target="_blank">link</a></td><td>일일 60만 건, 배송상품 1위 비타민</td></tr>
+            <tr><td>파이낸셜뉴스</td><td><a href="https://www.fnnews.com/news/202412221530271693" target="_blank">link</a></td><td>오쏘몰 YoY 190%, 거래형 매출 2,151억</td></tr>
+            <tr><td>한국경제</td><td><a href="https://www.hankyung.com/article/202510022355g" target="_blank">link</a></td><td>2~3만원대 64%, 30대 여성 최대 고객</td></tr>
+            <tr><td>메디파나뉴스</td><td><a href="https://www.medipana.com/news/articleView.html?idxno=312332" target="_blank">link</a></td><td>듀오랩 카카오 선물하기 출시</td></tr>
+            <tr><td>현대백화점 블로그</td><td><a href="https://thehyundaiblog.com/entry/Vitamingift" target="_blank">link</a></td><td>가격대별 비타민 제품 목록</td></tr>
+            <tr><td>벤처스퀘어</td><td><a href="https://www.venturesquare.net/833133" target="_blank">link</a></td><td>필리 40억 투자 유치</td></tr>
+            <tr><td>카카오 선물하기</td><td><a href="https://gift.kakao.com/" target="_blank">link</a></td><td>플랫폼 기본 정보</td></tr>
+            <tr><td>위타민 공식몰</td><td><a href="https://weetamin.co.kr/" target="_blank">link</a></td><td>제품 라인업, 가격 (2026-03-25 확인)</td></tr>
+            <tr><td>카카오톡 스토어 위타민</td><td><a href="https://store.kakao.com/weetamin" target="_blank">link</a></td><td>카카오 입점 확인</td></tr>
+            <tr><td>에스더포뮬러 카카오 스토어</td><td><a href="https://store.kakao.com/estherformula" target="_blank">link</a></td><td>경쟁사 카카오 입점 확인</td></tr>
+            <tr><td>건강기능식품협회</td><td><a href="https://www.khff.or.kr/user/info/InfoBoardUserView.do?_menuNo=369&boardSeqno=10035&postsSeqno=119022" target="_blank">link</a></td><td>2024 시장 6조 440억 원</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3>면책 사항</h3>
+    <div class="disclaimer">
+      <ul>
+        <li>카카오 선물하기 랭킹은 실시간 변동되며, SPA 기반 동적 로딩으로 정확한 크롤링이 불가합니다.</li>
+        <li>Top 30 랭킹은 보도자료·기사·블로그를 교차 검증하여 <strong>추정</strong>한 것입니다.</li>
+        <li>"추정" 표기 데이터는 직접 확인이 불가하여 업계 자료 기반 합리적 추론입니다.</li>
+        <li>정확한 실시간 순위는 카카오 선물하기 앱 건강식품 카테고리에서 직접 확인하시기 바랍니다.</li>
+        <li>"을록담" 브랜드는 검색 결과 확인되지 않아 유사 포지션 인디 브랜드 사례로 대체하였습니다.</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p>BRANDRISE by HIZ &nbsp;|&nbsp; 위타민 × 카카오 선물하기 시장 정밀 리서치 v2 &nbsp;|&nbsp; 2026-03-25</p>
+  <p style="margin-top:8px;">
+    <a href="https://hizsystem.github.io/brandrise/" target="_blank">BRANDRISE 통합 허브 →</a>
+  </p>
+</footer>
+
+</body>
+</html>
