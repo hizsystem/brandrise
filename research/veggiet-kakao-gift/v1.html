@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>베지어트 x 카카오 선물하기 — 시장 정밀 리서치 v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --kakao: #FEE500;
+  --kakao-brown: #3C1E1E;
+  --mint: #2DD4BF;
+  --mint-dark: #0F9484;
+  --mint-light: #CCFBF1;
+  --green: #22C55E;
+  --green-dark: #15803D;
+  --green-light: #DCFCE7;
+  --text: #111827;
+  --muted: #6B7280;
+  --border: #E5E7EB;
+  --gray-50: #F9FAFB;
+  --gray-100: #F3F4F6;
+  --gray-200: #E5E7EB;
+  --orange: #F97316;
+  --blue: #3B82F6;
+  --purple: #8B5CF6;
+  --red: #EF4444;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans KR', -apple-system, sans-serif;
+  color: var(--text);
+  background: #fff;
+  line-height: 1.75;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* HEADER */
+.site-header {
+  background: linear-gradient(135deg, #111827 0%, #1F2937 100%);
+  color: #fff;
+  padding: 48px 32px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: -120px; left: -120px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(34,197,94,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.site-header::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; right: -100px;
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(254,229,0,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(34,197,94,0.15);
+  border: 1px solid rgba(34,197,94,0.3);
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.header-badge .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); }
+.site-header h1 {
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.8px;
+  margin-bottom: 12px;
+}
+.site-header h1 .accent { color: var(--green); }
+.site-header h1 .accent2 { color: var(--kakao); }
+.header-meta {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.3px;
+}
+
+/* CONTAINER */
+.container { max-width: 900px; margin: 0 auto; padding: 56px 32px 80px; }
+
+/* SECTION */
+.section { margin-top: 64px; }
+.section:first-child { margin-top: 0; }
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.section-label .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); display: inline-block; }
+h2 { font-size: 24px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 24px; line-height: 1.3; }
+h3 { font-size: 17px; font-weight: 700; margin-top: 36px; margin-bottom: 14px; letter-spacing: -0.3px; }
+h4 { font-size: 14px; font-weight: 700; margin-top: 20px; margin-bottom: 8px; }
+p { margin-bottom: 10px; }
+.divider { border: 0; height: 1px; background: var(--gray-200); margin: 56px 0; }
+
+/* KPI CARDS */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 8px;
+}
+.kpi-card {
+  background: var(--gray-50);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 18px;
+  text-align: center;
+}
+.kpi-card.highlight {
+  background: linear-gradient(135deg, #FFFDE7, #FFF9C4);
+  border-color: rgba(254,229,0,0.5);
+}
+.kpi-card.highlight2 {
+  background: linear-gradient(135deg, var(--green-light), #F0FDF4);
+  border-color: rgba(34,197,94,0.35);
+}
+.kpi-value {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.kpi-card.highlight .kpi-value { color: #B8860B; }
+.kpi-card.highlight2 .kpi-value { color: var(--green-dark); }
+.kpi-label { font-size: 12px; color: var(--muted); line-height: 1.45; }
+
+/* TABLE */
+.tbl-wrap { overflow-x: auto; margin: 16px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+thead th {
+  background: var(--gray-100);
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+tbody td {
+  border: 1px solid var(--border);
+  padding: 9px 12px;
+  vertical-align: top;
+  line-height: 1.55;
+}
+tbody tr:nth-child(even) td { background: var(--gray-50); }
+.tier-a { background: linear-gradient(135deg, #FFFDE7, #FFF9C4) !important; }
+.tier-b { background: var(--gray-50) !important; }
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.badge-a { background: #FEE500; color: #3C1E1E; }
+.badge-b { background: #E5E7EB; color: #374151; }
+.badge-c { background: #D1FAE5; color: #065F46; }
+.star { color: #FEE500; }
+.num { font-weight: 700; color: var(--text); }
+
+/* INSIGHT BOX */
+.insight {
+  background: linear-gradient(135deg, #111827 0%, #1F2937 100%);
+  border-radius: 14px;
+  padding: 28px 32px;
+  color: #fff;
+  margin: 20px 0;
+  position: relative;
+  overflow: hidden;
+}
+.insight::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(34,197,94,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.insight-inner { position: relative; z-index: 1; }
+.insight-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 10px;
+}
+.insight ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.insight li { font-size: 14px; color: rgba(255,255,255,0.88); padding-left: 16px; position: relative; }
+.insight li::before { content: '\2192'; position: absolute; left: 0; color: var(--green); font-size: 12px; top: 1px; }
+.insight strong { color: var(--green); }
+
+/* STRATEGY CARDS */
+.strategy-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 12px; }
+.strategy-card {
+  background: var(--gray-50);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+.strategy-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green-dark);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.strategy-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.strategy-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* POSITIONING MAP */
+.posmap-wrap {
+  background: var(--gray-50);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 16px 0;
+}
+.posmap {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 420px;
+  margin: 0 auto;
+}
+.posmap-axis-y {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--gray-200);
+}
+.posmap-axis-x {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gray-200);
+}
+.posmap-label {
+  position: absolute;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.3px;
+}
+.posmap-label.top { top: 4px; left: 50%; transform: translateX(-50%); }
+.posmap-label.bottom { bottom: 4px; left: 50%; transform: translateX(-50%); }
+.posmap-label.left { left: 4px; top: 50%; transform: translateY(-50%); }
+.posmap-label.right { right: 4px; top: 50%; transform: translateY(-50%); }
+.posmap-dot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.posmap-dot.hero {
+  background: var(--green);
+  color: #fff;
+  border-color: var(--green-dark);
+  font-weight: 900;
+  font-size: 12px;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(34,197,94,0.3);
+}
+.posmap-dot.dim {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+/* WIN POINTS */
+.win-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 12px; }
+.win-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  background: #fff;
+}
+.win-card-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.win-icon {
+  width: 24px; height: 24px;
+  background: var(--green-light);
+  color: var(--green-dark);
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+.win-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* SET CARDS */
+.set-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 12px; }
+.set-card {
+  background: var(--gray-50);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+.set-price {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--green-dark);
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+.set-name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.set-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+.set-target {
+  display: inline-block;
+  margin-top: 8px;
+  background: var(--green-light);
+  color: var(--green-dark);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+/* ACTION LIST */
+.action-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.action-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  background: var(--gray-50);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.action-num {
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  background: var(--green);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+}
+.action-text { font-size: 14px; line-height: 1.6; }
+.action-text strong { font-weight: 700; }
+
+/* SOURCE TABLE */
+.source-wrap { margin-top: 12px; }
+.source-wrap table { font-size: 12.5px; }
+
+/* DISCLAIMER */
+.disclaimer {
+  background: var(--gray-50);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.disclaimer ul { list-style: disc; padding-left: 18px; }
+.disclaimer li { margin-bottom: 4px; }
+
+/* FOOTER */
+.site-footer {
+  background: #111827;
+  color: rgba(255,255,255,0.5);
+  padding: 32px;
+  text-align: center;
+  font-size: 13px;
+  margin-top: 80px;
+}
+.site-footer a { color: var(--green); text-decoration: none; font-weight: 600; }
+.site-footer a:hover { text-decoration: underline; }
+
+/* WATERMARK */
+.watermark {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: rgba(0,0,0,0.06);
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@page { size: landscape; margin: 14mm 14mm 22mm 14mm; }
+
+@media print {
+  .site-header { padding: 32px; min-height: auto; }
+  .container { padding: 32px 32px 48px; }
+  .kpi-grid { grid-template-columns: repeat(4, 1fr); }
+  .section { page-break-inside: avoid; margin-bottom: 20px; }
+  table { page-break-inside: avoid; }
+  tr { page-break-inside: avoid; }
+  .divider { margin: 32px 0; }
+  h2, h3 { page-break-after: avoid; }
+  .posmap-wrap { page-break-inside: avoid; }
+  .strategy-grid, .win-grid, .set-grid { page-break-inside: avoid; }
+  .watermark {
+    position: fixed;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(0,0,0,0.07);
+    font-size: 9px;
+    letter-spacing: 5px;
+    display: block;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .site-header h1 { font-size: 22px; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .strategy-grid, .win-grid, .set-grid { grid-template-columns: 1fr; }
+  .container { padding: 40px 20px 60px; }
+  h2 { font-size: 20px; }
+  .posmap { height: 360px; }
+  .posmap-dot { font-size: 10px; padding: 2px 6px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-badge">
+      <span class="dot"></span>
+      BRANDRISE Research Report v1
+    </div>
+    <h1>
+      <span class="accent">베지어트</span> &times; <span class="accent2">카카오 선물하기</span><br>
+      시장 정밀 리서치
+    </h1>
+    <p class="header-meta">작성일: 2026-03-28 &nbsp;|&nbsp; 작성: BRANDRISE by HIZ &nbsp;|&nbsp; v1.0</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- EXECUTIVE SUMMARY -->
+  <section class="section">
+    <div class="section-label"><span class="dot"></span>Executive Summary</div>
+    <h2>핵심 발견 4가지</h2>
+    <div class="kpi-grid">
+      <div class="kpi-card highlight">
+        <div class="kpi-value">1위</div>
+        <div class="kpi-label">비타민/건강기능식품<br>배송상품 카테고리</div>
+      </div>
+      <div class="kpi-card highlight">
+        <div class="kpi-value">5~6조</div>
+        <div class="kpi-label">전체 선물하기 시장<br>2027년 10조 전망</div>
+      </div>
+      <div class="kpi-card highlight2">
+        <div class="kpi-value">0개</div>
+        <div class="kpi-label">식물성 프로틴 전문<br>선물하기 입점 브랜드</div>
+      </div>
+      <div class="kpi-card highlight2">
+        <div class="kpi-value">3~5만</div>
+        <div class="kpi-label">건강식품 선물<br>최적 가격대(원)</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PART 1 -->
+  <section class="section">
+    <div class="section-label"><span class="dot"></span>Part 1</div>
+    <h2>카카오 선물하기 식품 카테고리 분석</h2>
+
+    <h3>1-1. 플랫폼 전체 현황</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>지표</th><th>수치</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>일일 거래 건수</td><td class="num">약 60만 건</td><td>2024년 기준 (농민신문)</td></tr>
+          <tr><td>연간 거래액 (모바일상품권)</td><td class="num">약 3.8조 원</td><td>2023년 기준</td></tr>
+          <tr><td>전체 선물하기 시장</td><td class="num">약 5~6조 원</td><td>2024년 추정, 2027년 10조 전망</td></tr>
+          <tr><td>카카오 시장 점유율</td><td class="num">65~70%</td><td>독보적 1위, 쿠팡/네이버 추격</td></tr>
+          <tr><td>톡비즈 커머스 Q4 매출</td><td class="num">2,534억 원</td><td>2025년 Q4, YoY +8%</td></tr>
+          <tr><td>Q4 거래액 성장률</td><td class="num">+14% YoY</td><td>추석+연말 성수기 효과</td></tr>
+          <tr><td>온라인 선물 구매 채널 1위</td><td class="num">83.4%</td><td>카카오톡이 압도적</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="insight">
+      <div class="insight-inner">
+        <div class="insight-title">핵심 인사이트</div>
+        <ul>
+          <li>카카오톡 선물하기는 <strong>"구매자 =/= 사용자"</strong>라는 독특한 구조</li>
+          <li>선물받는 사람이 직접 주소를 입력 &mdash; 일반 이커머스와 <strong>완전히 다른 소비 심리</strong> 작동</li>
+          <li>카카오 2025년 실적: 연 매출 <strong>8조 991억 원</strong>, 영업이익 7,320억 원 (역대 최대)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>1-2. 배송상품 카테고리별 순위</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>순위</th><th>카테고리</th><th>대표 브랜드/상품</th></tr></thead>
+        <tbody>
+          <tr class="tier-a"><td><strong>1위</strong></td><td><strong>비타민/건강기능식품</strong></td><td>오쏘몰, 정관장</td></tr>
+          <tr><td>2위</td><td>핸드크림/뷰티</td><td>논픽션, 템버린즈</td></tr>
+          <tr><td>3위</td><td>립밤/스킨케어</td><td>휩드 등</td></tr>
+          <tr><td>4위</td><td>케이크/디저트</td><td>노티드 등</td></tr>
+          <tr><td>5위</td><td>초콜릿/간식</td><td>가나슈 등</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12.5px;color:var(--muted);">식품 카테고리(케이크, 초콜릿, 간식)는 4~5위권. 프로틴/단백질 식품은 아직 독립 카테고리로 분류되지 않고 "건강식품" 또는 "식품" 하위에 포함.</p>
+
+    <h3>1-3. 건강식품/프로틴 Top 30 상품 분석</h3>
+
+    <h4>Tier A (1~5위): 대기업/대형 브랜드 독점</h4>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>순위</th><th>브랜드</th><th>대표 상품</th><th>가격대</th><th>특징</th></tr></thead>
+        <tbody>
+          <tr class="tier-a"><td class="num">1</td><td>오쏘몰 (동아제약)</td><td>오쏘몰 이뮨</td><td>55,000~110,000원</td><td>전체 랭킹 1위, 연매출 1,000억+</td></tr>
+          <tr class="tier-a"><td class="num">2</td><td>정관장 (KGC)</td><td>활기력</td><td>55,000~200,000원</td><td>건강부문 상위권 고정</td></tr>
+          <tr class="tier-a"><td class="num">3</td><td>정관장</td><td>에브리타임</td><td>55,000원~</td><td>배송 스테디셀러</td></tr>
+          <tr class="tier-a"><td class="num">4</td><td>뉴트리원</td><td>비타민/홍삼 세트</td><td>30,000~80,000원</td><td>다양한 가격대 구성</td></tr>
+          <tr class="tier-a"><td class="num">5</td><td>종근당건강</td><td>락토핏/비타민</td><td>30,000~60,000원</td><td>유산균 카테고리 강세</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Tier B (6~15위): 주요 브랜드</h4>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>순위권</th><th>브랜드</th><th>카테고리</th><th>가격대</th><th>특징</th></tr></thead>
+        <tbody>
+          <tr><td>6~8</td><td>닥터지/이니스프리</td><td>뷰티+건강</td><td>20,000~50,000원</td><td>뷰티-건강 크로스 카테고리</td></tr>
+          <tr><td>9~10</td><td>프리미엄 차/꿀 브랜드</td><td>식품 선물</td><td>30,000~80,000원</td><td>포트넘앤메이슨 등</td></tr>
+          <tr><td>11~12</td><td>한우/과일 선물세트</td><td>신선식품</td><td>50,000~150,000원</td><td>명절 시즌 급등</td></tr>
+          <tr><td>13~15</td><td>건강즙/건강음료</td><td>건강식품</td><td>20,000~50,000원</td><td>호박즙, 석류즙 등</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Tier C (16~30위): 중소/인디 진입 구간</h4>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>순위권</th><th>브랜드 유형</th><th>카테고리</th><th>가격대</th><th>특징</th></tr></thead>
+        <tbody>
+          <tr><td>16~20</td><td>인디 디저트 브랜드</td><td>케이크/쿠키</td><td>20,000~40,000원</td><td>노티드, 가나슈 등</td></tr>
+          <tr><td>21~25</td><td>프리미엄 간식</td><td>건강간식</td><td>15,000~35,000원</td><td>그래놀라, 견과류 등</td></tr>
+          <tr><td>26~30</td><td>신규/니치 건강브랜드</td><td>프로틴/기능성</td><td>25,000~50,000원</td><td>프로틴, 콜라겐 등</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="insight">
+      <div class="insight-inner">
+        <div class="insight-title">핵심 인사이트</div>
+        <ul>
+          <li>프로틴/식물성 단백질 전문 브랜드는 아직 <strong>Tier C 진입도 제한적</strong></li>
+          <li>이는 역으로 <strong>선점 기회</strong>를 의미한다</li>
+          <li>제약사 브랜드가 독점 &mdash; "건강 = 브랜드 신뢰"가 핵심 구매 동기</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>1-4. 가격대별 분포 분석</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>가격대</th><th>구매 비중(추정)</th><th>주요 상품</th><th>구매 시나리오</th></tr></thead>
+        <tbody>
+          <tr><td>1만원 미만</td><td>15%</td><td>교환권 위주, 커피</td><td>가벼운 감사, 일상 선물</td></tr>
+          <tr><td>1~3만원</td><td>35%</td><td>핸드크림, 립밤, 소형 간식</td><td>지인/동료 선물, 가장 활발</td></tr>
+          <tr class="tier-a"><td><strong>3~5만원</strong></td><td><strong>25%</strong></td><td><strong>비타민, 건강식품, 디저트</strong></td><td><strong>생일/기념일, 핵심 가격대</strong></td></tr>
+          <tr><td>5~10만원</td><td>15%</td><td>오쏘몰, 정관장, 프리미엄 세트</td><td>부모님/연인, 정성 선물</td></tr>
+          <tr><td>10만원 이상</td><td>10%</td><td>럭셔리 세트, 명절 선물</td><td>명절/VIP 선물</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13px;color:var(--muted);">선물하기 최적 가격대: <strong>3~5만원대</strong>가 "부담 없으면서 정성이 느껴지는" 가격으로 가장 높은 전환율. 특히 건강식품에서는 5만원대가 스윗스팟.</p>
+
+    <h3>1-5. 상위권 독점 패턴</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>패턴</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><td><strong>제약사 브랜드 독점</strong></td><td>건강 카테고리 상위 5개 중 4개가 제약사/대기업 (오쏘몰, 정관장, 뉴트리원, 종근당)</td></tr>
+          <tr><td><strong>"선물 = 인지도" 공식</strong></td><td>받는 사람이 "아, 이거!" 알아볼 수 있는 브랜드를 선호</td></tr>
+          <tr><td><strong>시즌 집중 현상</strong></td><td>설/추석/어버이날/수능 시즌에 건강식품 매출 폭증</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="insight">
+      <div class="insight-inner">
+        <div class="insight-title">인디 브랜드의 돌파구</div>
+        <ul>
+          <li>뷰티: 논픽션, 템버린즈, 휩드 &rarr; <strong>"선물 패키지 특화"</strong>로 성공</li>
+          <li>식품: 가나슈, 노티드 &rarr; <strong>"디저트 감성 + 소셜 화제성"</strong>으로 진입</li>
+          <li>건강: 아직 인디 브랜드 성공 사례 극히 드묾 &rarr; <strong>블루오션</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PART 2 -->
+  <section class="section">
+    <div class="section-label"><span class="dot"></span>Part 2</div>
+    <h2>인디/중소 식품 브랜드 전략 분석</h2>
+
+    <h3>2-1. 카카오 선물하기 성공 사례</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>브랜드</th><th>카테고리</th><th>핵심 전략</th><th>성과/시사점</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>휩드 (Whipped)</strong></td>
+            <td>뷰티 (팩클렌저)</td>
+            <td>자사몰 + 카카오 선물하기 <strong>단 2개 채널만</strong></td>
+            <td>연 매출 173억, 영업이익 37억 (2023)</td>
+          </tr>
+          <tr>
+            <td><strong>논픽션 (Nonfiction)</strong></td>
+            <td>향수/핸드크림</td>
+            <td>"선물에 집중한 패키지" 전략</td>
+            <td>영업이익 135억, 부동의 1위</td>
+          </tr>
+          <tr>
+            <td><strong>가나슈 (Ganache)</strong></td>
+            <td>초콜릿/디저트</td>
+            <td>옐로우 기프트 기획전 참여, 시즌별 기획 상품</td>
+            <td>다른 온라인 마켓 대비 2~3배 빠른 성장</td>
+          </tr>
+          <tr>
+            <td><strong>맘마레시피</strong></td>
+            <td>건강간식 큐레이션 박스</td>
+            <td>카카오 전용 '톡별' 상품, 타겟별 맞춤 큐레이션</td>
+            <td>"선물할 이유"를 만들어주는 큐레이션이 핵심</td>
+          </tr>
+          <tr>
+            <td><strong>디어니어스 (Dierneas)</strong></td>
+            <td>식품/라이프스타일</td>
+            <td>선물하기 전용 상품 기획, 패키지 차별화</td>
+            <td>6주 만에 입점 성공 (재시도 끝)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>2-2. 인디 식품 브랜드 핵심 전략 4가지</h3>
+    <div class="strategy-grid">
+      <div class="strategy-card">
+        <div class="strategy-num">전략 01</div>
+        <div class="strategy-title">선물 최적화 패키지</div>
+        <div class="strategy-body">"선물할 이유"를 만드는 디자인. 주는 사람의 센스를 높여주고, 받는 사람에게 "이거 뭐야, 예쁘다!" 반응을 유도. 카카오 전용 독점 세트(톡별 상품) 기획이 핵심.</div>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-num">전략 02</div>
+        <div class="strategy-title">가격대 전략</div>
+        <div class="strategy-body">엔트리 19,900~29,900원 / 메인 35,000~49,900원 / 프리미엄 55,000~79,000원 / 한정판 89,000~120,000원. 3만원대와 5만원대 두 가격대를 반드시 커버.</div>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-num">전략 03</div>
+        <div class="strategy-title">카테고리 키워드 점령</div>
+        <div class="strategy-body">"식물성 프로틴 선물" (경쟁 거의 없음), "건강간식 선물세트", "속 편한 단백질", "한국 원물 프로틴" &mdash; 서리태/곡물 등 로컬 원재료 스토리.</div>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-num">전략 04</div>
+        <div class="strategy-title">한정판/시즌 에디션</div>
+        <div class="strategy-body">설/추석 "건강 선물세트", 어버이날 "속 편한 건강 선물", 수능 "두뇌 영양", 다이어트 시즌 "새해 건강 습관", FOR ME "나를 위한 건강 루틴".</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PART 3 -->
+  <section class="section">
+    <div class="section-label"><span class="dot"></span>Part 3</div>
+    <h2>베지어트의 경쟁 상대 재정의</h2>
+
+    <h3>3-1. 베지어트 제품 라인업</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>제품</th><th>용량</th><th>가격</th><th>특징</th></tr></thead>
+        <tbody>
+          <tr class="tier-a"><td><strong>베지어트 리얼 서리태</strong></td><td>810g</td><td>38,900원</td><td>대표 제품, 서리태 원물</td></tr>
+          <tr><td>베지어트 오리지널 (곡물맛)</td><td>810g</td><td>38,900원</td><td>기본 라인</td></tr>
+          <tr><td>베지어트 카카오</td><td>810g</td><td>38,900원(추정)</td><td>카카오맛</td></tr>
+          <tr class="tier-a"><td><strong>베지어트 딸기맛</strong></td><td>출시 예정</td><td>미정</td><td>동결건조 딸기 23%, 신제품</td></tr>
+          <tr><td>베지어트+베지포유 세트</td><td>세트</td><td>85,900원</td><td>패키지 상품</td></tr>
+          <tr><td>베지어트 카카오+곡물 세트</td><td>세트</td><td>69,900원</td><td>2종 세트</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>3-2. 현실적 경쟁 대상 분석</h3>
+
+    <h4>직접 경쟁: 식물성 프로틴 브랜드</h4>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>브랜드</th><th>대표 제품</th><th>가격대</th><th>특징</th><th>카카오 입점</th></tr></thead>
+        <tbody>
+          <tr><td><strong>홀블렌딩</strong></td><td>식물성 단백질 쉐이크 4종</td><td>35,000~55,000원</td><td>약사 개발, 완두+현미 단백</td><td>미확인</td></tr>
+          <tr><td><strong>오필리 (Ohpily)</strong></td><td>잔소리 단백질 쉐이크</td><td>22,500~85,000원</td><td>한끼대용, 프로바이오틱스 19종</td><td>미확인</td></tr>
+          <tr><td>마이프로틴 비건라인</td><td>임팩트 비건 프로틴</td><td>25,000~45,000원</td><td>글로벌 브랜드, 가성비</td><td>미입점</td></tr>
+          <tr><td>가든오브라이프</td><td>오가닉 플랜트 프로틴</td><td>50,000~80,000원</td><td>미국 프리미엄, 유기농</td><td>미확인</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>간접 경쟁: 프로틴바/쉐이크 선물세트</h4>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>브랜드</th><th>카테고리</th><th>가격대</th><th>선물 적합도</th></tr></thead>
+        <tbody>
+          <tr><td>프로틴킹</td><td>프로틴바</td><td>20,000~40,000원</td><td>중</td></tr>
+          <tr><td>텐바디</td><td>단백질 음료</td><td>25,000~45,000원</td><td>중</td></tr>
+          <tr><td>칼로바이</td><td>다이어트 쉐이크</td><td>30,000~50,000원</td><td>중상</td></tr>
+          <tr><td>깐깐한단백질(오필리)</td><td>고단백 쉐이크</td><td>22,500~55,000원</td><td>중</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>간접 경쟁: 건강간식 선물</h4>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>브랜드 유형</th><th>대표 상품</th><th>가격대</th><th>선물 적합도</th></tr></thead>
+        <tbody>
+          <tr><td>프리미엄 견과류</td><td>너트리 등</td><td>25,000~50,000원</td><td>상 (기존 검증)</td></tr>
+          <tr><td>그래놀라 브랜드</td><td>오버나이트 등</td><td>20,000~40,000원</td><td>상</td></tr>
+          <tr><td>건강즙/주스</td><td>호박즙, 석류즙</td><td>20,000~45,000원</td><td>상 (부모님 선물 검증)</td></tr>
+          <tr><td>프리미엄 차 세트</td><td>포트넘앤메이슨 등</td><td>30,000~80,000원</td><td>상</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>3-3. 경쟁 포지셔닝 맵</h3>
+    <div class="posmap-wrap">
+      <div class="posmap">
+        <!-- Axes -->
+        <div class="posmap-axis-y"></div>
+        <div class="posmap-axis-x"></div>
+        <!-- Labels -->
+        <div class="posmap-label top">높은 가격</div>
+        <div class="posmap-label bottom">낮은 가격</div>
+        <div class="posmap-label left">낮은 인지도</div>
+        <div class="posmap-label right">높은 인지도</div>
+        <!-- Dots - upper right (high price, high awareness) -->
+        <div class="posmap-dot dim" style="top:15%;left:75%;">정관장 활기력</div>
+        <div class="posmap-dot dim" style="top:12%;left:82%;">오쏘몰 이뮨</div>
+        <!-- Upper left (high price, low awareness) -->
+        <div class="posmap-dot" style="top:25%;left:25%;">가든오브라이프</div>
+        <!-- Lower right (low price, high awareness) -->
+        <div class="posmap-dot" style="top:68%;left:72%;">마이프로틴 비건라인</div>
+        <div class="posmap-dot" style="top:75%;left:68%;">칼로바이</div>
+        <!-- Lower left (low price, low awareness) -->
+        <div class="posmap-dot" style="top:60%;left:30%;">홀블렌딩</div>
+        <div class="posmap-dot" style="top:72%;left:25%;">오필리</div>
+        <!-- VEGGIET - hero -->
+        <div class="posmap-dot hero" style="top:58%;left:32%;">베지어트</div>
+      </div>
+      <p style="font-size:12.5px;color:var(--muted);margin-top:16px;text-align:center;">
+        <strong>현재 위치</strong>: 낮은 인지도 + 중간 가격대 &nbsp;&rarr;&nbsp;
+        <strong>목표 위치</strong>: 중간~높은 인지도 + 중간 가격대 ("식물성 프로틴의 정관장")
+      </p>
+    </div>
+
+    <h3>3-4. 베지어트의 4가지 경쟁 우위</h3>
+    <div class="win-grid">
+      <div class="win-card">
+        <div class="win-card-title"><span class="win-icon">1</span> 동결건조 원물 고집</div>
+        <div class="win-body">대부분 프로틴은 합성향료로 맛을 낸다. 베지어트 딸기맛은 <strong>동결건조 딸기 23%</strong> 함유. "진짜 딸기가 들어간 프로틴" &mdash; 상세에서 원물 비율 강조하면 AI 리뷰 요약에서 핵심 키워드로 노출.</div>
+      </div>
+      <div class="win-card">
+        <div class="win-card-title"><span class="win-icon">2</span> 속 편한 식물성</div>
+        <div class="win-body">유청(Whey) 프로틴 섭취 후 소화 불편 호소하는 소비자 다수. "속 걱정 없이 선물하세요" &mdash; 선물하는 사람의 불안 해소. 2026년 "소화/장건강" 키워드 부상 트렌드와 부합.</div>
+      </div>
+      <div class="win-card">
+        <div class="win-card-title"><span class="win-icon">3</span> 서리태 = 한국 원물 스토리</div>
+        <div class="win-body">서리태(검은콩)는 한국인에게 친숙한 건강 식재료. 레시틴, 이소플라본 등 영양소 풍부. "한국 서리태로 만든 프로틴" &mdash; 수입 원료 대비 신뢰감. 홀블렌딩의 '블랙빈'과 직접 경쟁하나 선점 가능.</div>
+      </div>
+      <div class="win-card">
+        <div class="win-card-title"><span class="win-icon">4</span> 맛 + 건강 동시</div>
+        <div class="win-body">프로틴의 가장 큰 진입 장벽 = "맛없다"는 인식. 선물은 "건강에 좋으니까 먹어"만으로 부족, "맛있어서 또 먹고 싶다"가 재구매 연결. 홀블렌딩은 "약사가 만든 건강", 베지어트는 <strong>"맛있는 건강"</strong> 포지셔닝 가능.</div>
+      </div>
+    </div>
+
+    <h3>3-5. 선물 세트 구성안 (4개 가격대)</h3>
+    <div class="set-grid">
+      <div class="set-card">
+        <div class="set-price">25,000~29,900원</div>
+        <div class="set-name">베지어트 원데이 체험 세트</div>
+        <div class="set-desc">서리태 미니 파우치 3팩 + 딸기 미니 파우치 3팩<br>+ 전용 쉐이커 보틀 + 레시피 카드</div>
+        <span class="set-target">동료/지인 가벼운 선물</span>
+      </div>
+      <div class="set-card">
+        <div class="set-price">39,900~45,000원</div>
+        <div class="set-name">베지어트 데일리 프로틴 세트</div>
+        <div class="set-desc">서리태 정품 810g(약 30일분) + 딸기 미니 파우치 5팩<br>+ 프리미엄 쉐이커 + 선물 전용 박스</div>
+        <span class="set-target">생일/기념일 선물</span>
+      </div>
+      <div class="set-card">
+        <div class="set-price">59,000~69,000원</div>
+        <div class="set-name">베지어트 풀 플레이버 세트</div>
+        <div class="set-desc">서리태 810g + 딸기맛 810g<br>+ 프리미엄 쉐이커 + 고급 패키지</div>
+        <span class="set-target">부모님/연인 감사 선물</span>
+      </div>
+      <div class="set-card">
+        <div class="set-price">89,000~99,000원</div>
+        <div class="set-name">베지어트 웰니스 컴플리트 세트</div>
+        <div class="set-desc">서리태 + 딸기 + 카카오 810g 3종 풀세트<br>+ 한정판 컬러 쉐이커 + 선물 카드 & 리본</div>
+        <span class="set-target">명절/VIP 선물</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- APPENDIX -->
+  <section class="section">
+    <div class="section-label"><span class="dot"></span>부록</div>
+    <h2>핵심 데이터 & 시사점 요약</h2>
+
+    <h3>시장 기회 요약</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>항목</th><th>현황</th><th>베지어트 기회</th></tr></thead>
+        <tbody>
+          <tr><td>카카오 건강 카테고리</td><td>비타민/홍삼이 독점</td><td>프로틴은 빈 카테고리 &rarr; 선점 가능</td></tr>
+          <tr><td>식물성 프로틴 시장</td><td>글로벌 CAGR 12.4% 성장</td><td>트렌드 부합</td></tr>
+          <tr class="tier-a"><td><strong>국내 단백질 시장</strong></td><td><strong>2023년 4,500억 &rarr; 2026년 8,000억 전망</strong></td><td><strong>77.8% 성장 중</strong></td></tr>
+          <tr class="tier-a"><td><strong>선물하기 내 프로틴 경쟁</strong></td><td><strong>거의 없음</strong></td><td><strong>퍼스트무버 어드밴티지</strong></td></tr>
+          <tr><td>가격대 스윗스팟</td><td>3~5만원대</td><td>베지어트 정품 가격과 일치</td></tr>
+          <tr><td>자기선물(FOR ME) 트렌드</td><td>"나를 위한 건강" 급성장</td><td>데일리 프로틴 구독형 연계 가능</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>입점 전략 로드맵</h3>
+    <div class="action-list">
+      <div class="action-item">
+        <div class="action-num">1</div>
+        <div class="action-text"><strong>Phase 1: 입점 준비 (1~2개월)</strong><br>카카오 선물하기 전용 선물 세트 4종 기획 / 패키지 디자인 개발 / 입점 제안서 작성 (with.kakao.com) / 핵심 키워드: "식물성 프로틴 선물", "속 편한 단백질 선물"</div>
+      </div>
+      <div class="action-item">
+        <div class="action-num">2</div>
+        <div class="action-text"><strong>Phase 2: 입점 & 론칭 (1개월)</strong><br>MD 협의 &rarr; 카테고리 배치 (건강식품 > 프로틴) / 카카오 전용 상품 (톡별) 1종 이상 기획 / 론칭 프로모션: 첫 구매 할인 or 추가 구성</div>
+      </div>
+      <div class="action-item">
+        <div class="action-num">3</div>
+        <div class="action-text"><strong>Phase 3: 성장 (3~6개월)</strong><br>시즌별 기획전 참여 (어버이날, 추석 등) / 리뷰 관리 &rarr; AI 리뷰 요약에 핵심 키워드 반영 / "나에게 선물(FOR ME)" 탭 노출 전략 / 카카오 선물하기 광고 상품 활용</div>
+      </div>
+    </div>
+
+    <h3>수수료 구조 참고</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>항목</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><td>판매 수수료</td><td>최대 10%대 (카테고리별 차이)</td></tr>
+          <tr><td>PG 수수료</td><td>2025년 인하 진행 중</td></tr>
+          <tr><td>배송비 수수료</td><td>2025년부터 배송비에 수수료 미부과</td></tr>
+          <tr><td>배송비 결정</td><td>입점업체가 유/무료 결정</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SOURCES -->
+  <section class="section">
+    <div class="section-label"><span class="dot"></span>출처</div>
+    <h2>주요 데이터 출처</h2>
+    <div class="source-wrap">
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>출처</th><th>URL</th><th>주요 데이터</th></tr></thead>
+          <tbody>
+            <tr><td>카카오 2025 실적 발표</td><td><a href="https://www.kakaocorp.com/page/detail/11931" target="_blank">link</a></td><td>연 매출 8조, 영업이익 7,320억</td></tr>
+            <tr><td>카카오 선물하기 개편</td><td><a href="https://www.kakaocorp.com/page/detail/11905" target="_blank">link</a></td><td>플랫폼 개편 보도</td></tr>
+            <tr><td>농민신문</td><td><a href="https://www.nongmin.com/article/20241222500020" target="_blank">link</a></td><td>일일 60만 건, 배송상품 1위 비타민</td></tr>
+            <tr><td>branit (휩드 사례)</td><td><a href="https://branit.kr/account/contents/insight/trend-info/d4288a97-1f0a-421d-8310-d5b3c2837fbf" target="_blank">link</a></td><td>휩드 173억, 채널 집중 전략</td></tr>
+            <tr><td>네이트뉴스</td><td><a href="https://news.nate.com/view/20251105n16010" target="_blank">link</a></td><td>선물하기 거래액 변동</td></tr>
+            <tr><td>MTN</td><td><a href="https://news.mtn.co.kr/news-detail/2024091212202047524" target="_blank">link</a></td><td>연평균 거래액 3조원</td></tr>
+            <tr><td>동아제약 보도자료</td><td><a href="https://www.dapharm.com/ko/newsroom/press/573" target="_blank">link</a></td><td>오쏘몰 역대최다 180만 병</td></tr>
+            <tr><td>스포츠서울</td><td><a href="https://www.sportsseoul.com/news/read/1525065" target="_blank">link</a></td><td>오쏘몰 연매출 1,000억 돌파</td></tr>
+            <tr><td>FETV</td><td><a href="https://www.fetv.co.kr/news/article.html?no=211655" target="_blank">link</a></td><td>오쏘몰 설 기획팩</td></tr>
+            <tr><td>EBN</td><td><a href="https://www.ebn.co.kr/news/articleView.html?idxno=1649107" target="_blank">link</a></td><td>카카오 수수료 인하</td></tr>
+            <tr><td>bungee.work (입점 가이드)</td><td><a href="https://bungee.work/blog/insight/kakaogift-start" target="_blank">link</a></td><td>카카오 입점 절차</td></tr>
+            <tr><td>bungee.work (디어니어스)</td><td><a href="https://bungee.work/blog/success-stories/dierneas-kakaogift" target="_blank">link</a></td><td>6주 입점 성공 사례</td></tr>
+            <tr><td>베이비타임즈</td><td><a href="https://www.babytimes.co.kr/news/articleView.html?idxno=42149" target="_blank">link</a></td><td>맘마레시피 간식처방박스</td></tr>
+            <tr><td>카카오 FOR ME 탭</td><td><a href="https://www.kakaocorp.com/page/detail/11554" target="_blank">link</a></td><td>자기선물 트렌드</td></tr>
+            <tr><td>전국인력신문</td><td><a href="https://www.kjob.news/news/470512" target="_blank">link</a></td><td>식물성 식품 시장 633억 달러</td></tr>
+            <tr><td>네이트뉴스 (단백질 시장)</td><td><a href="https://news.nate.com/view/20250616n03621" target="_blank">link</a></td><td>국내 단백질 시장 6배 성장</td></tr>
+            <tr><td>오픈서베이</td><td><a href="https://blog.opensurvey.co.kr/trendreport/health-supplement-2025/" target="_blank">link</a></td><td>건강기능식품 트렌드 2025</td></tr>
+            <tr><td>더바이어</td><td><a href="https://www.withbuyer.com/news/articleView.html?idxno=30892" target="_blank">link</a></td><td>프로틴 선물 트렌드</td></tr>
+            <tr><td>홀블렌딩 공식몰</td><td><a href="https://wholeblending.com/" target="_blank">link</a></td><td>경쟁사 제품/가격 확인</td></tr>
+            <tr><td>오필리 공식몰</td><td><a href="https://ohpily.com/" target="_blank">link</a></td><td>경쟁사 제품/가격 확인</td></tr>
+            <tr><td>베지어트 공식몰</td><td><a href="https://huenic.com/" target="_blank">link</a></td><td>제품 라인업, 가격</td></tr>
+            <tr><td>카카오 입점 제안</td><td><a href="https://with.kakao.com/delivery/proposition" target="_blank">link</a></td><td>입점 신청 페이지</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="disclaimer" style="margin-top:24px;">
+      <ul>
+        <li>본 리포트는 2026년 3월 28일 기준 공개 데이터를 기반으로 작성되었습니다.</li>
+        <li>카카오 선물하기 랭킹은 SPA 기반 동적 렌더링으로 직접 크롤링이 불가하며, 보도자료/기사/블로그 교차 검증 추정치입니다.</li>
+        <li>실제 입점 시 카카오 MD와의 협의를 통해 카테고리 배치 및 수수료 등 조건이 결정됩니다.</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  <a href="https://hizsystem.github.io/brandrise/">BRANDRISE</a> by HIZ&ensp;&mdash;&ensp;Confidential
+</footer>
+
+<div class="watermark">BRANDRISE</div>
+</body>
+</html>
