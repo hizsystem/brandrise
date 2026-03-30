@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>더타임즈 (The Times) - New Business 리서치 | HIZ</title>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --highlight: #e94560;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --text-light: #636e72;
+            --border: #dfe6e9;
+            --success: #00b894;
+            --warning: #fdcb6e;
+            --danger: #d63031;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(233, 69, 96, 0.2);
+            border: 1px solid var(--highlight);
+            color: var(--highlight);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            font-size: 16px;
+            opacity: 0.7;
+            font-weight: 300;
+        }
+
+        .header .date {
+            margin-top: 16px;
+            font-size: 13px;
+            opacity: 0.5;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .toc {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .toc h2 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 8px;
+        }
+
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 0;
+            display: block;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover { color: var(--highlight); }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--highlight);
+        }
+
+        .section h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 20px 0 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 8px 16px;
+            font-size: 14px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .info-value {
+            color: var(--text);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        td {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:hover td { background: #f1f3f5; }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 2px;
+        }
+
+        .tag-red { background: #ffe0e0; color: #d63031; }
+        .tag-green { background: #d4f5e9; color: #00b894; }
+        .tag-blue { background: #dfe6fd; color: #0f3460; }
+        .tag-yellow { background: #fff3cd; color: #856404; }
+        .tag-gray { background: #e9ecef; color: #495057; }
+
+        .score-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 4px 0;
+        }
+
+        .score-bar .bar {
+            flex: 1;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .score-bar .fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s;
+        }
+
+        .fill-high { background: var(--success); }
+        .fill-mid { background: var(--warning); }
+        .fill-low { background: var(--danger); }
+
+        .verdict {
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            color: white;
+            padding: 24px 32px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 24px 0;
+        }
+
+        .verdict .label { font-size: 14px; opacity: 0.8; }
+        .verdict .value { font-size: 36px; font-weight: 800; margin: 8px 0; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+
+        .verdict-hold {
+            background: linear-gradient(135deg, #fdcb6e 0%, #ffeaa7 100%);
+            color: #2d3436;
+        }
+
+        .tier-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        .tier-card {
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .tier-card:hover { transform: translateY(-4px); }
+
+        .tier-card.recommended {
+            border-color: var(--highlight);
+            box-shadow: 0 4px 20px rgba(233, 69, 96, 0.15);
+        }
+
+        .tier-card .tier-badge {
+            position: absolute;
+            top: -12px;
+            right: 16px;
+            background: var(--highlight);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .tier-card h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .tier-card .price {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--highlight);
+            margin: 12px 0;
+        }
+
+        .tier-card .duration {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .tier-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tier-card li {
+            font-size: 13px;
+            padding: 4px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .tier-card li::before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: var(--highlight);
+            font-weight: 700;
+        }
+
+        .callout {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+
+        .callout-info {
+            background: #e3f2fd;
+            border-left-color: #2196f3;
+        }
+
+        .callout-danger {
+            background: #fce4ec;
+            border-left-color: #e53935;
+        }
+
+        .leverage-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin: 24px 0;
+            text-align: center;
+        }
+
+        .leverage-box .quote {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.5;
+            margin: 16px 0;
+        }
+
+        .flow-steps {
+            display: flex;
+            gap: 0;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .flow-step {
+            flex: 1;
+            min-width: 180px;
+            padding: 16px;
+            background: #f1f3f5;
+            position: relative;
+            text-align: center;
+        }
+
+        .flow-step:not(:last-child)::after {
+            content: ">";
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: var(--text-light);
+            z-index: 1;
+        }
+
+        .flow-step .step-num {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 4px;
+        }
+
+        .flow-step .step-title {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .flow-step .step-desc {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .source {
+            font-size: 11px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .source a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .source a:hover { text-decoration: underline; }
+
+        ul.check-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.check-list li {
+            padding: 6px 0 6px 24px;
+            position: relative;
+            font-size: 14px;
+        }
+
+        ul.check-list li::before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: var(--highlight);
+            font-weight: 700;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .highlight-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--highlight);
+        }
+
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 16px 0;
+        }
+
+        .swot-box {
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .swot-box h4 {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .swot-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .swot-box li {
+            font-size: 13px;
+            padding: 3px 0;
+        }
+
+        .swot-s { background: #d4f5e9; }
+        .swot-w { background: #ffe0e0; }
+        .swot-o { background: #dfe6fd; }
+        .swot-t { background: #fff3cd; }
+
+        .persona-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 28px;
+            margin: 16px 0;
+        }
+
+        .persona-card h4 {
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .objection-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+
+        .objection-item .q {
+            font-weight: 700;
+            color: var(--danger);
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .objection-item .a {
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 24px; }
+            .tier-cards { grid-template-columns: 1fr; }
+            .two-col { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .info-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-step:not(:last-child)::after { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="header-badge">NEW BUSINESS RESEARCH</div>
+    <h1>The Times (The Times Platform)</h1>
+    <div class="subtitle">B2B 전략 및 컨설팅 브랜드 리서치 | 담당자: 강푸름 이사</div>
+    <div class="date">작성일: 2026.03.30 | 작성: HIZ (brandrise)</div>
+</div>
+
+<div class="container">
+
+    <!-- TOC -->
+    <div class="toc">
+        <h2>목차</h2>
+        <div class="toc-grid">
+            <a href="#s1">1. 기업 개요</a>
+            <a href="#s2">2. 브랜드 분석</a>
+            <a href="#s3">3. 디지털 프레즌스</a>
+            <a href="#s4">4. 경쟁사 분석</a>
+            <a href="#s5">5. 시장 환경</a>
+            <a href="#s6">6. 기회 평가 (GO/HOLD)</a>
+            <a href="#s7">7. 3-Tier 제안 초안</a>
+            <a href="#s8">8. 상담 전략</a>
+            <a href="#s9">9. 강푸름 이사 프로필</a>
+        </div>
+    </div>
+
+    <!-- SECTION 1: 기업 개요 -->
+    <div class="section" id="s1">
+        <h2>1. 기업 개요</h2>
+
+        <h3>1-1. 기업 정보</h3>
+        <div class="info-grid">
+            <div class="info-label">법인명</div>
+            <div class="info-value">주식회사 더타임즈</div>
+            <div class="info-label">브랜드명</div>
+            <div class="info-value">The Times / The Times Platform</div>
+            <div class="info-label">대표자</div>
+            <div class="info-value">김재일</div>
+            <div class="info-label">설립일</div>
+            <div class="info-value">2023.02.21</div>
+            <div class="info-label">사업자등록번호</div>
+            <div class="info-value">757-87-02838</div>
+            <div class="info-label">소재지 (본사)</div>
+            <div class="info-value">경기도 광명시 일직로 43 GIDC B동 1705호</div>
+            <div class="info-label">소재지 (지사)</div>
+            <div class="info-value">인천 연수구 송도과학로 70 송도AT센터 오피스 1210/1211호</div>
+            <div class="info-label">업종</div>
+            <div class="info-value">경영 컨설팅 / 재무 컨설팅 / 정책자금 전략</div>
+            <div class="info-label">웹사이트</div>
+            <div class="info-value"><a href="https://thetimesplatform.com" target="_blank">thetimesplatform.com</a> / <a href="https://www.thetimesksh.com" target="_blank">thetimesksh.com</a></div>
+            <div class="info-label">연락처</div>
+            <div class="info-value">02-6455-0246 / 010-7335-0746 / contact@thetimesplatform.com</div>
+            <div class="info-label">직원 수</div>
+            <div class="info-value">비공개 (약 10명 이상의 전문 인력 추정)</div>
+            <div class="info-label">매출</div>
+            <div class="info-value">비공개 (2023년 설립, 초기 단계 기업)</div>
+        </div>
+        <div class="source">출처: <a href="https://www.114.co.kr/biznumber/detail/fc1f063239b3" target="_blank">114On 사업자 정보</a> | <a href="https://corp.udanax.org/corporation/1695858" target="_blank">Corp Udanax</a> | <a href="https://thetimesplatform.com/brand/location" target="_blank">The Times 위치 페이지</a></div>
+
+        <h3>1-2. 대표자: 김재일</h3>
+        <ul class="check-list">
+            <li>IT 컨설팅 및 신재생에너지 창업·엑시트 경험</li>
+            <li>미래에셋벤처투자 유치 경험</li>
+            <li>경영 철학: "지속 가능한 성장과 레버리지 전략"</li>
+            <li>기업 생애주기 전체 설계: 법인 설립부터 투자 유치, 글로벌 진출, EXIT 전략까지</li>
+        </ul>
+        <div class="source">출처: <a href="https://thetimesplatform.com/brand/greeting" target="_blank">The Times 인사말 페이지</a></div>
+
+        <h3>1-3. 핵심 사업 영역</h3>
+        <table>
+            <tr>
+                <th>영역</th>
+                <th>상세 내용</th>
+            </tr>
+            <tr>
+                <td><span class="tag tag-blue">정책자금</span></td>
+                <td>정책자금 전략, 시설/운전자금 조달 (누적 317억 원 성공 사례), 신용등급 진단 모델 (저작권 등록)</td>
+            </tr>
+            <tr>
+                <td><span class="tag tag-blue">법인 설립</span></td>
+                <td>법인 설립, 가상 오피스, 연구소 인증, 벤처 인증</td>
+            </tr>
+            <tr>
+                <td><span class="tag tag-blue">R&D / 지원사업</span></td>
+                <td>정부 지원사업 전략, 사업계획서 구조 설계, R&D 과제 신청</td>
+            </tr>
+            <tr>
+                <td><span class="tag tag-blue">투자 매칭</span></td>
+                <td>벤처투자 유치, 투자 매칭, EXIT 전략 컨설팅</td>
+            </tr>
+            <tr>
+                <td><span class="tag tag-blue">세무 최적화</span></td>
+                <td>절세 전략, 재무 관리, 회계 시스템 구축</td>
+            </tr>
+            <tr>
+                <td><span class="tag tag-blue">수출 / 글로벌</span></td>
+                <td>수출 컨설팅, 해외 시장 진출 지원</td>
+            </tr>
+            <tr>
+                <td><span class="tag tag-blue">IT 개발</span></td>
+                <td>IT 시스템 개발, 플랫폼 구축</td>
+            </tr>
+        </table>
+        <div class="source">출처: <a href="https://thetimesplatform.com" target="_blank">thetimesplatform.com</a></div>
+    </div>
+
+    <!-- SECTION 2: 브랜드 분석 -->
+    <div class="section" id="s2">
+        <h2>2. 브랜드 분석</h2>
+
+        <h3>2-1. 브랜드 컨셉 및 포지셔닝</h3>
+        <div class="callout callout-info">
+            <strong>핵심 포지셔닝:</strong> "자금 조달, 법인 설립, 투자 매칭, 세무 최적화, 수출, IT 개발까지 - 기업 생애주기 전체를 함께 설계하고 실행하는 전략적 파트너."
+        </div>
+
+        <div class="info-grid">
+            <div class="info-label">브랜드 에센스</div>
+            <div class="info-value">"기업의 페이스메이커" - 탄생부터 투자 유치까지 전 과정을 동반</div>
+            <div class="info-label">핵심 차별화</div>
+            <div class="info-value">15년 이상 정책자금 전문가 그룹 / 신용등급 진단 모델 (저작권 등록) / 누적 317억 원 시설자금 조달 성공</div>
+            <div class="info-label">타겟 고객</div>
+            <div class="info-value">스타트업 대표, 초기 법인, 성장기 중소기업, 외국인 창업자 (국내 창업 + 비자 지원)</div>
+            <div class="info-label">가격 모델</div>
+            <div class="info-value">비공개 (프로젝트 단위 / 성공 보수 모델 추정)</div>
+            <div class="info-label">경영 철학</div>
+            <div class="info-value">"지속 가능한 성장과 레버리지 전략" - 단기 성과를 넘어 장기적 기업 가치 상승 추구</div>
+        </div>
+
+        <h3>2-2. SWOT 분석</h3>
+        <div class="swot-grid">
+            <div class="swot-box swot-s">
+                <h4>S (강점)</h4>
+                <ul>
+                    <li>- 대표의 창업/엑시트/VC 유치 직접 경험</li>
+                    <li>- 누적 317억 원 자금 조달 성공 - 정량화된 실적</li>
+                    <li>- 저작권 등록된 독자적 신용등급 진단 모델</li>
+                    <li>- 법인 설립부터 투자/엑시트까지 원스톱 서비스</li>
+                    <li>- 이중 거점 운영 (광명 + 송도)으로 수도권 접근성 확보</li>
+                </ul>
+            </div>
+            <div class="swot-box swot-w">
+                <h4>W (약점)</h4>
+                <ul>
+                    <li>- 설립 3년차 (브랜드 인지도 구축 단계)</li>
+                    <li>- 디지털 프레즌스 거의 전무 (SNS, 블로그 없음)</li>
+                    <li>- 기존 시장 강자들과의 경쟁</li>
+                    <li>- 매출/규모 정보 비공개</li>
+                    <li>- 범용적 브랜드명 "The Times" - 차별화/SEO 어려움</li>
+                </ul>
+            </div>
+            <div class="swot-box swot-o">
+                <h4>O (기회)</h4>
+                <ul>
+                    <li>- 2026년 중소기업 정책자금 예산 4조 4,300억 원 (대규모)</li>
+                    <li>- 정부 지원사업 증가 및 복잡한 신청 절차 = 컨설팅 수요 성장</li>
+                    <li>- B2B 컨설팅 콘텐츠 마케팅 = 강력한 차별화 가능</li>
+                    <li>- 강푸름 이사 합류 = 역량 확장 신호</li>
+                </ul>
+            </div>
+            <div class="swot-box swot-t">
+                <h4>T (위협)</h4>
+                <ul>
+                    <li>- 포화 상태의 정책자금 컨설팅 시장 (다수의 경쟁사)</li>
+                    <li>- IT 플랫폼 기반 경쟁사 (헬프미, ZUZU 등) 급성장</li>
+                    <li>- 낮은 진입장벽으로 인한 가격 경쟁</li>
+                    <li>- 경기 침체로 법인 설립 수요 감소 가능성</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3: 디지털 프레즌스 -->
+    <div class="section" id="s3">
+        <h2>3. 디지털 프레즌스 분석</h2>
+
+        <div class="callout callout-danger">
+            <strong>핵심 이슈:</strong> The Times의 디지털 프레즌스는 마케팅 역량을 입증해야 하는 컨설팅 기업임에도 불구하고 거의 전무한 상태입니다. 이것이 가장 큰 갭이자 HIZ에게는 가장 큰 기회입니다.
+        </div>
+
+        <h3>3-1. 채널 현황</h3>
+        <table>
+            <tr>
+                <th>채널</th>
+                <th>상태</th>
+                <th>평가</th>
+            </tr>
+            <tr>
+                <td>공식 웹사이트</td>
+                <td><a href="https://thetimesplatform.com" target="_blank">thetimesplatform.com</a> (메인) + <a href="https://www.thetimesksh.com" target="_blank">thetimesksh.com</a> (랜딩)</td>
+                <td><span class="tag tag-yellow">운영 중이나 기본 수준</span></td>
+            </tr>
+            <tr>
+                <td>인스타그램</td>
+                <td>미발견 (공식 계정 미확인)</td>
+                <td><span class="tag tag-red">미운영</span></td>
+            </tr>
+            <tr>
+                <td>네이버 블로그</td>
+                <td>미발견</td>
+                <td><span class="tag tag-red">미운영</span></td>
+            </tr>
+            <tr>
+                <td>유튜브</td>
+                <td>미발견</td>
+                <td><span class="tag tag-red">미운영</span></td>
+            </tr>
+            <tr>
+                <td>네이버 플레이스</td>
+                <td>미발견</td>
+                <td><span class="tag tag-red">미운영</span></td>
+            </tr>
+            <tr>
+                <td>카카오 채널</td>
+                <td>미발견</td>
+                <td><span class="tag tag-red">미운영</span></td>
+            </tr>
+            <tr>
+                <td>뉴스/PR</td>
+                <td>김남근 이사의 한국 AI 부동산 뉴스 칼럼</td>
+                <td><span class="tag tag-yellow">최소 수준</span></td>
+            </tr>
+        </table>
+        <div class="source">검색일: 2026.03.30 | 다수 플랫폼 검색 수행</div>
+
+        <h3>3-2. 웹사이트 분석</h3>
+        <div class="two-col">
+            <div>
+                <h4 style="font-size:15px; margin-bottom:8px;">thetimesplatform.com (메인)</h4>
+                <ul class="check-list">
+                    <li>기업 정보, 서비스 설명, 팀 소개</li>
+                    <li>로그인/회원 시스템 구축</li>
+                    <li>전문 인력 소개 페이지 존재</li>
+                    <li>이중 거점 정보가 포함된 위치 페이지</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="font-size:15px; margin-bottom:8px;">thetimesksh.com (랜딩 페이지)</h4>
+                <ul class="check-list">
+                    <li>별도 랜딩 페이지 (목적 불분명)</li>
+                    <li>보다 간결한 구조</li>
+                    <li>특정 캠페인/서비스용으로 추정</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>3-3. 브랜드명 SEO 이슈</h3>
+        <div class="callout">
+            <strong>핵심 문제:</strong> "The Times"를 검색하면 영국 신문 The Times, New York Times, Korea Times 등이 나옵니다. 브랜드명 검색 노출에 심각한 문제가 있습니다. "The Times Platform"이 약간의 차별화를 주지만 여전히 검색 결과에 묻힙니다. 근본적인 브랜딩 과제로서 대응이 필요합니다.
+        </div>
+
+        <h3>3-4. 디지털 성숙도 점수</h3>
+        <div class="score-bar">
+            <span style="width:140px; font-size:14px;">종합</span>
+            <div class="bar"><div class="fill fill-low" style="width:15%"></div></div>
+            <span style="font-size:14px; font-weight:700;">1.5/10</span>
+        </div>
+        <div class="score-bar">
+            <span style="width:140px; font-size:14px;">웹사이트</span>
+            <div class="bar"><div class="fill fill-mid" style="width:40%"></div></div>
+            <span style="font-size:14px;">4/10</span>
+        </div>
+        <div class="score-bar">
+            <span style="width:140px; font-size:14px;">SNS</span>
+            <div class="bar"><div class="fill fill-low" style="width:0%"></div></div>
+            <span style="font-size:14px;">0/10</span>
+        </div>
+        <div class="score-bar">
+            <span style="width:140px; font-size:14px;">콘텐츠</span>
+            <div class="bar"><div class="fill fill-low" style="width:5%"></div></div>
+            <span style="font-size:14px;">0.5/10</span>
+        </div>
+        <div class="score-bar">
+            <span style="width:140px; font-size:14px;">SEO/검색 노출</span>
+            <div class="bar"><div class="fill fill-low" style="width:10%"></div></div>
+            <span style="font-size:14px;">1/10</span>
+        </div>
+    </div>
+
+    <!-- SECTION 4: 경쟁사 분석 -->
+    <div class="section" id="s4">
+        <h2>4. 경쟁 환경</h2>
+
+        <h3>4-1. 직접 경쟁사</h3>
+        <table>
+            <tr>
+                <th>기업</th>
+                <th>카테고리</th>
+                <th>강점</th>
+                <th>디지털 프레즌스</th>
+            </tr>
+            <tr>
+                <td><strong>헬프미 (주식회사)</strong></td>
+                <td>온라인 법인 등기 / 법률 서비스</td>
+                <td>IT 플랫폼 기반 자동화, AI 서류 생성, 높은 브랜드 인지도, VC 투자 유치</td>
+                <td><span class="tag tag-green">매우 강함</span> 나무위키 페이지, SNS 활발, SEO 상위</td>
+            </tr>
+            <tr>
+                <td><strong>ZUZU (주식회사)</strong></td>
+                <td>주주 관리 / 기업 서비스 플랫폼</td>
+                <td>모던 UX, 벤처 인증 가이드 콘텐츠, 스타트업 생태계 연계</td>
+                <td><span class="tag tag-green">강함</span> 콘텐츠 마케팅, 블로그, 가이드</td>
+            </tr>
+            <tr>
+                <td><strong>정책자금연구소 바름</strong></td>
+                <td>정책자금 컨설팅</td>
+                <td>중소기업/소상공인 정책자금 전문</td>
+                <td><span class="tag tag-yellow">보통</span> 웹사이트 운영 중</td>
+            </tr>
+            <tr>
+                <td><strong>비즈헬프</strong></td>
+                <td>저신용 사업자 정책자금</td>
+                <td>소외 계층 대상 니치 포지셔닝, 언론 보도</td>
+                <td><span class="tag tag-yellow">보통</span> 뉴스 기사</td>
+            </tr>
+            <tr>
+                <td><strong>오너스경영연구소 (오너수)</strong></td>
+                <td>정책자금 컨설팅</td>
+                <td>미디어 칼럼 전략, 전문가 브랜딩</td>
+                <td><span class="tag tag-yellow">보통</span> 뉴스 칼럼</td>
+            </tr>
+        </table>
+        <div class="source">출처: <a href="https://namu.wiki/w/%ED%97%AC%ED%94%84%EB%AF%B8(%EA%B8%B0%EC%97%85)" target="_blank">나무위키 - 헬프미</a> | <a href="https://zuzu.network" target="_blank">ZUZU Network</a> | <a href="https://lab-bareum.com" target="_blank">바름</a> | <a href="https://www.kairnews.com/news/433216" target="_blank">비즈헬프 기사</a></div>
+
+        <h3>4-2. 경쟁 포지션 맵</h3>
+        <div style="text-align:center; padding:20px;">
+            <div style="display:inline-block; width:100%; max-width:600px; position:relative; height:400px; border-left:2px solid var(--text-light); border-bottom:2px solid var(--text-light);">
+                <div style="position:absolute; top:-20px; left:-5px; font-size:12px; color:var(--text-light);">높은 디지털 프레즌스</div>
+                <div style="position:absolute; bottom:-25px; right:0; font-size:12px; color:var(--text-light);">넓은 서비스 범위</div>
+                <div style="position:absolute; bottom:-25px; left:0; font-size:12px; color:var(--text-light);">전문 특화</div>
+                <div style="position:absolute; bottom:0; left:-5px; font-size:12px; color:var(--text-light);">낮음</div>
+
+                <!-- Helpme -->
+                <div style="position:absolute; top:40px; right:60px; background:var(--success); color:white; padding:6px 12px; border-radius:8px; font-size:12px; font-weight:600;">헬프미</div>
+                <!-- ZUZU -->
+                <div style="position:absolute; top:60px; right:180px; background:var(--success); color:white; padding:6px 12px; border-radius:8px; font-size:12px; font-weight:600;">ZUZU</div>
+                <!-- Bareum -->
+                <div style="position:absolute; top:200px; left:60px; background:var(--warning); color:#333; padding:6px 12px; border-radius:8px; font-size:12px; font-weight:600;">바름</div>
+                <!-- Onersu -->
+                <div style="position:absolute; top:180px; left:180px; background:var(--warning); color:#333; padding:6px 12px; border-radius:8px; font-size:12px; font-weight:600;">오너수</div>
+                <!-- BizHelp -->
+                <div style="position:absolute; top:220px; left:20px; background:var(--warning); color:#333; padding:6px 12px; border-radius:8px; font-size:12px; font-weight:600;">비즈헬프</div>
+                <!-- The Times -->
+                <div style="position:absolute; top:320px; right:40px; background:var(--highlight); color:white; padding:8px 14px; border-radius:8px; font-size:13px; font-weight:700; border:2px solid white; box-shadow:0 2px 8px rgba(0,0,0,0.2);">The Times</div>
+            </div>
+        </div>
+        <div class="callout">
+            <strong>핵심 인사이트:</strong> The Times는 직접 경쟁사 중 가장 넓은 서비스 범위(법인 설립부터 투자/엑시트까지)를 보유하고 있으나, 디지털 프레즌스가 가장 약합니다. 이것이 핵심 갭입니다. 강력한 디지털 프레즌스를 가진 경쟁사(헬프미, ZUZU)는 더 좁은 서비스를 제공하면서도 고객 획득에서 우위를 점하고 있습니다.
+        </div>
+
+        <h3>4-3. The Times vs. 경쟁사 - 강점/약점</h3>
+        <div class="two-col">
+            <div>
+                <h4 style="font-size:15px; color:var(--success); margin-bottom:8px;">The Times 장점</h4>
+                <ul class="check-list">
+                    <li>가장 포괄적인 서비스 포트폴리오 (7개 영역)</li>
+                    <li>대표의 직접적인 창업/엑시트/VC 경험</li>
+                    <li>독자적 신용등급 평가 모델</li>
+                    <li>정량화된 실적 (317억 원)</li>
+                    <li>외국인 창업자 지원 (니치)</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="font-size:15px; color:var(--danger); margin-bottom:8px;">The Times 단점</h4>
+                <ul class="check-list">
+                    <li>디지털 마케팅 인프라 제로</li>
+                    <li>브랜드명 SEO 불가능 ("The Times")</li>
+                    <li>설립 3년차 vs. 기존 확립된 브랜드 경쟁사</li>
+                    <li>온라인에 고객 후기/사례 연구 없음</li>
+                    <li>콘텐츠 마케팅 부재 (블로그, SNS, 유튜브)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 5: 시장 환경 -->
+    <div class="section" id="s5">
+        <h2>5. 시장 환경</h2>
+
+        <h3>5-1. 정책자금 시장 (거시)</h3>
+        <div class="two-col">
+            <div style="text-align:center; padding:20px; background:#f1f3f5; border-radius:10px;">
+                <div class="highlight-number">4조 4,300억 원</div>
+                <div style="font-size:14px; color:var(--text-light);">2026년 중소기업 정책자금 예산</div>
+                <div class="source"><a href="https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=86&bcIdx=1064249&parentSeq=1064249" target="_blank">중소벤처기업부, 2026</a></div>
+            </div>
+            <div style="text-align:center; padding:20px; background:#f1f3f5; border-radius:10px;">
+                <div class="highlight-number">4.75% CAGR</div>
+                <div style="font-size:14px; color:var(--text-light);">글로벌 경영 컨설팅 시장 성장률 (2025-2030)</div>
+                <div class="source"><a href="https://www.mordorintelligence.kr/industry-reports/management-consulting-services-market" target="_blank">Mordor Intelligence</a></div>
+            </div>
+        </div>
+
+        <h3>5-2. 주요 시장 트렌드</h3>
+        <table>
+            <tr>
+                <th>트렌드</th>
+                <th>The Times에 미치는 영향</th>
+                <th>방향</th>
+            </tr>
+            <tr>
+                <td>정부 정책자금 확대 (생산적 금융 강조)</td>
+                <td>핵심 사업 수요 증가</td>
+                <td><span class="tag tag-green">긍정적</span></td>
+            </tr>
+            <tr>
+                <td>IT 플랫폼 기반 컨설팅 (헬프미, ZUZU 스타일) 성장</td>
+                <td>전통적 컨설팅 모델 위협</td>
+                <td><span class="tag tag-red">위협</span></td>
+            </tr>
+            <tr>
+                <td>B2B 콘텐츠 마케팅의 표준화</td>
+                <td>현재의 갭 = 리스크이자 기회</td>
+                <td><span class="tag tag-yellow">양면적</span></td>
+            </tr>
+            <tr>
+                <td>AI 기반 서류 자동화 도구 등장</td>
+                <td>저부가가치 컨설팅 서비스 범용화</td>
+                <td><span class="tag tag-red">위협</span></td>
+            </tr>
+            <tr>
+                <td>중소기업 디지털 전환 수요 증가</td>
+                <td>컨설팅 범위 확장 기회</td>
+                <td><span class="tag tag-green">긍정적</span></td>
+            </tr>
+            <tr>
+                <td>외국인 창업자 한국 진출 지원 수요</td>
+                <td>니치 서비스 차별화 가능</td>
+                <td><span class="tag tag-green">긍정적</span></td>
+            </tr>
+        </table>
+        <div class="source">출처: <a href="https://www.korea.kr/briefing/pressReleaseView.do?newsId=156736213" target="_blank">정책브리핑 2026</a> | <a href="https://www.businessresearchinsights.com/market-reports/management-consulting-market-117556" target="_blank">BRI 경영 컨설팅 시장 2025-2033</a></div>
+
+        <h3>5-3. 시장 성장 평가</h3>
+        <div class="callout callout-info">
+            <strong>평가:</strong> 정책자금 컨설팅 수요는 구조적으로 성장하고 있으나(정부 예산 확대 + 복잡한 신청 절차), 동시에 더 간편하고 저렴한 대안을 제공하는 IT 플랫폼에 의해 시장이 재편되고 있습니다. 승자는 전문성에 디지털 프레즌스와 콘텐츠 권위를 결합하는 기업이 될 것입니다. The Times는 전문성은 갖추었으나 디지털 레이어가 완전히 부재합니다.
+        </div>
+    </div>
+
+    <!-- SECTION 6: 기회 평가 -->
+    <div class="section" id="s6">
+        <h2>6. 기회 평가 (GO/HOLD/PASS)</h2>
+
+        <h3>6-1. 평가 기준 (5점 만점)</h3>
+        <table>
+            <tr>
+                <th>기준</th>
+                <th>점수</th>
+                <th>근거</th>
+            </tr>
+            <tr>
+                <td>시장 잠재력</td>
+                <td>
+                    <div class="score-bar">
+                        <div class="bar"><div class="fill fill-high" style="width:80%"></div></div>
+                        <span style="font-weight:700;">4.0</span>
+                    </div>
+                </td>
+                <td>4조 4,300억 원 정책자금 시장, 컨설팅 수요 구조적 성장</td>
+            </tr>
+            <tr>
+                <td>브랜드 성장 가능성</td>
+                <td>
+                    <div class="score-bar">
+                        <div class="bar"><div class="fill fill-high" style="width:90%"></div></div>
+                        <span style="font-weight:700;">4.5</span>
+                    </div>
+                </td>
+                <td>디지털 프레즌스 거의 제로 = 개선 여지가 매우 큼. 전문성은 있으나 온라인에서 보이지 않는 상태</td>
+            </tr>
+            <tr>
+                <td>HIZ 적합도</td>
+                <td>
+                    <div class="score-bar">
+                        <div class="bar"><div class="fill fill-high" style="width:80%"></div></div>
+                        <span style="font-weight:700;">4.0</span>
+                    </div>
+                </td>
+                <td>B2B 브랜드 구축, 콘텐츠 시스템, SNS 채널 제로 베이스 구축 = HIZ 핵심 역량</td>
+            </tr>
+            <tr>
+                <td>예산 실현 가능성</td>
+                <td>
+                    <div class="score-bar">
+                        <div class="bar"><div class="fill fill-mid" style="width:60%"></div></div>
+                        <span style="font-weight:700;">3.0</span>
+                    </div>
+                </td>
+                <td>설립 3년차, 매출 비공개. 컨설팅 기업 특성상 현금 흐름 변동성 있음. 담당자가 이사(대표 아님) - 예산 결재권 제한 가능</td>
+            </tr>
+            <tr>
+                <td>경쟁 강도</td>
+                <td>
+                    <div class="score-bar">
+                        <div class="bar"><div class="fill fill-mid" style="width:60%"></div></div>
+                        <span style="font-weight:700;">3.0</span>
+                    </div>
+                </td>
+                <td>시장에 강력한 IT 플랫폼 기업이 있으나, 전통 컨설팅 기업의 디지털 마케팅은 대체로 약함 = 차별화 기회</td>
+            </tr>
+        </table>
+
+        <div class="verdict">
+            <div class="label">종합 평가</div>
+            <div class="value">GO | 3.7 / 5.0</div>
+            <div class="desc">디지털 제로 베이스 = 가장 명확한 "비포/애프터" 스토리. 전문성은 풍부하나 디지털에서 보이지 않는 B2B 컨설팅 기업은 HIZ의 이상적인 클라이언트 프로필. 첫 미팅에서 예산 실현 가능성 검증 필요.</div>
+        </div>
+
+        <h3>6-2. 핵심 레버리지 포인트</h3>
+        <div class="leverage-box">
+            <div style="font-size:13px; opacity:0.7;">핵심 레버리지</div>
+            <div class="quote">"The Times는 317억 원의 검증된 자금 조달 실적을 보유하고 있지만, 잠재 고객이 '정책자금 컨설팅'을 검색할 때 귀사의 브랜드는 전혀 보이지 않습니다. 더 약한 실적을 가진 경쟁사들이 디지털 프레즌스만으로 고객을 가져가고 있습니다."</div>
+            <div style="font-size:13px; opacity:0.7;">오프라인 전문성과 온라인 비가시성의 갭 = 즉각적인 행동을 촉구하는 가장 설득력 있는 논거</div>
+        </div>
+    </div>
+
+    <!-- SECTION 7: 3-Tier 제안 -->
+    <div class="section" id="s7">
+        <h2>7. 3-Tier 제안 초안</h2>
+
+        <div class="tier-cards">
+            <div class="tier-card">
+                <h4>Tier 1: 파운데이션</h4>
+                <div style="font-size:13px; color:var(--text-light);">진단 + 전략</div>
+                <div class="price">800만 - 1,200만 원</div>
+                <div class="duration">4주 | VAT 별도</div>
+                <ul>
+                    <li>브랜드 감사 및 디지털 프레즌스 진단</li>
+                    <li>경쟁사 디지털 전략 분석</li>
+                    <li>브랜드 포지셔닝 전략 (B2B 중심)</li>
+                    <li>채널 전략 로드맵 (우선순위 설정)</li>
+                    <li>콘텐츠 필러 정의</li>
+                    <li>브랜드 네이밍/SEO 전략 컨설팅</li>
+                    <li>KPI 프레임워크 설계</li>
+                </ul>
+            </div>
+            <div class="tier-card recommended">
+                <div class="tier-badge">추천</div>
+                <h4>Tier 2: 빌드</h4>
+                <div style="font-size:13px; color:var(--text-light);">전략 + 실행</div>
+                <div class="price">월 500만 - 800만 원</div>
+                <div class="duration">6개월 | VAT 별도</div>
+                <ul>
+                    <li>Tier 1 전체 범위 포함</li>
+                    <li>네이버 블로그 구축 및 SEO 콘텐츠 (월 8-12건)</li>
+                    <li>인스타그램 계정 개설 및 운영 (월 12-16건)</li>
+                    <li>성공 사례 콘텐츠 제작 (월 2건)</li>
+                    <li>LinkedIn 프로필/콘텐츠 전략 (대표 브랜딩)</li>
+                    <li>전문가 칼럼 콘텐츠 (네이버 / 산업 미디어)</li>
+                    <li>월간 KPI 리뷰 및 리포팅</li>
+                    <li>브랜드 가이드라인 문서</li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>Tier 3: 프리미엄</h4>
+                <div style="font-size:13px; color:var(--text-light);">풀 파트너십</div>
+                <div class="price">월 1,000만 - 1,500만 원</div>
+                <div class="duration">12개월 | VAT 별도</div>
+                <ul>
+                    <li>Tier 2 전체 범위 포함</li>
+                    <li>유튜브 채널 개설 및 운영 (월 4편)</li>
+                    <li>BI/CI 리뉴얼 컨설팅</li>
+                    <li>웹사이트 UX/UI 리디자인</li>
+                    <li>퍼포먼스 마케팅 (Meta/Google/네이버)</li>
+                    <li>PR/미디어 관계 캠페인</li>
+                    <li>웨비나/이벤트 콘텐츠 제작</li>
+                    <li>데이터 대시보드 (리드 트래킹)</li>
+                    <li>분기별 전략 리뷰 미팅</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="callout callout-info">
+            <strong>가격 산정 근거:</strong> B2B 컨설팅 기업 브랜딩은 전문가 수준의 콘텐츠(정책자금, 세무, 투자 등)가 필요하여 B2C 대비 높은 제작 비용이 발생합니다. 추천하는 Tier 2는 ROI가 가장 높은 채널에 우선 집중합니다: 네이버 블로그 (SEO 확보) + 인스타그램 (브랜드 권위) + 성공 사례 (전환).
+        </div>
+    </div>
+
+    <!-- SECTION 8: 상담 전략 -->
+    <div class="section" id="s8">
+        <h2>8. 상담 전략</h2>
+
+        <h3>8-1. 상담 흐름</h3>
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="step-num">STEP 1</div>
+                <div class="step-title">아이스 브레이킹</div>
+                <div class="step-desc">전문성 인정 + 자금 조달 실적 언급</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 2</div>
+                <div class="step-title">페인 포인트 발굴</div>
+                <div class="step-desc">"현재 신규 고객은 주로 어떤 경로로 유입되나요?"</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 3</div>
+                <div class="step-title">갭 시각화</div>
+                <div class="step-desc">경쟁사 디지털 프레즌스 vs. 귀사 비교 제시</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 4</div>
+                <div class="step-title">솔루션 미리보기</div>
+                <div class="step-desc">콘텐츠 중심 브랜드 구축 로드맵</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 5</div>
+                <div class="step-title">Tier 제안</div>
+                <div class="step-desc">3-Tier 옵션 중 Tier 2 앵커링</div>
+            </div>
+        </div>
+
+        <h3>8-2. 핵심 질문 사항</h3>
+        <ul class="check-list">
+            <li>"현재 주요 고객 유입 경로는 무엇인가요?" (소개 의존도 높을 가능성)</li>
+            <li>"사업 확장에서 가장 큰 어려움은 무엇인가요?" (예상: 인지도, 리드 생성)</li>
+            <li>"콘텐츠 마케팅이나 SNS를 고려해 보신 적 있나요? 실행하지 못한 이유는?" (예상: 시간 부족, 전문 인력 부재)</li>
+            <li>"2026-2027년 회사의 성장 목표는 무엇인가요?" (포부 수준 파악)</li>
+            <li>"올해 마케팅 예산이 배정되어 있나요?" (예산 현실 확인)</li>
+            <li>"마케팅 투자 최종 의사결정은 누가 하시나요?" (강 이사 권한 확인)</li>
+        </ul>
+
+        <h3>8-3. 예상 반론 및 대응</h3>
+        <div class="objection-item">
+            <div class="q">"저희 사업은 B2B이고 소개 기반이에요. SNS가 필요 없습니다."</div>
+            <div class="a">대응: "B2B 의사결정자도 거래 전에 온라인 검색을 합니다. 잠재 고객이 소개를 통해 귀사 이름을 들으면 가장 먼저 검색을 합니다. 현재는 아무것도 나오지 않습니다. 317억 원의 실적이 보이지 않는 것입니다. 헬프미와 ZUZU가 단순히 검색에 노출된다는 이유만으로 귀사가 서비스해야 할 고객을 가져가고 있습니다."</div>
+        </div>
+        <div class="objection-item">
+            <div class="q">"아직 초기 기업이라 브랜드 마케팅은 이른 것 아닌가요?"</div>
+            <div class="a">대응: "사실 지금이 가장 좋은 시기입니다. 지금 평판이 만들어지는 시점입니다. 늦어질수록 디지털에서 보이는 경쟁사에게 고객이 갑니다. ZUZU와 헬프미는 초기부터 디지털 마케팅을 시작했습니다 - 그래서 후발주자임에도 시장을 지배하는 것입니다. 지금 시작하면 시장이 더 치열해지기 전에 권위를 쌓을 수 있습니다."</div>
+        </div>
+        <div class="objection-item">
+            <div class="q">"현재 단계에서 예산이 부담됩니다."</div>
+            <div class="a">대응: "이렇게 생각해 보시죠: 정책자금 컨설팅 고객 한 건이 수천만 원의 컨설팅 수수료를 발생시킵니다. 저희의 콘텐츠 마케팅으로 월 2-3건의 추가 리드만 확보해도 ROI는 명확합니다. 먼저 Tier 1(진단)으로 800만 원을 투자하여 접근 방식을 검증한 후 지속 실행 여부를 결정하실 수 있습니다."</div>
+        </div>
+        <div class="objection-item">
+            <div class="q">"브랜드명 'The Times'가 범용적인데, SEO가 가능한가요?"</div>
+            <div class="a">대응: "문제를 잘 인식하고 계십니다. 두 가지 접근이 있습니다: (1) 브랜드명 단독이 아닌 'The Times Platform' + '정책자금 컨설팅' 같은 특정 서비스 키워드를 최적화하고, (2) 고유하고 검색 가능한 전략적 서브 브랜드나 태그라인을 검토합니다. 이는 Tier 1 진단에서 다루는 항목입니다."</div>
+        </div>
+    </div>
+
+    <!-- SECTION 9: 강푸름 이사 프로필 -->
+    <div class="section" id="s9">
+        <h2>9. 담당자: 강푸름 이사 프로필</h2>
+
+        <div class="persona-card">
+            <h4>강푸름 | The Times 이사</h4>
+            <div class="info-grid">
+                <div class="info-label">직위</div>
+                <div class="info-value">이사 (대표가 아닌 임원 - 대표는 김재일)</div>
+                <div class="info-label">전문 분야</div>
+                <div class="info-value">정부 지원사업 전략, 사업계획서 구조 설계, 브랜딩 기획</div>
+                <div class="info-label">산업 배경</div>
+                <div class="info-value">농식품 산업 중심 - 건강식품 브랜드 기획/운영, 영양 상담 플랫폼 기획, 식품 공동구매 플랫폼 론칭</div>
+                <div class="info-label">경험 범위</div>
+                <div class="info-value">비즈니스 모델 설계부터 시장 검증까지 - 전 과정 실무 전략가</div>
+                <div class="info-label">수상</div>
+                <div class="info-value">제4회 전주 창업경진대회 대상 (최우수상)</div>
+                <div class="info-label">포상</div>
+                <div class="info-value">국회 보건복지위원장 표창 (장관급) - 플랫폼 성과 인정</div>
+                <div class="info-label">공개 프로필</div>
+                <div class="info-value"><a href="https://www.facebook.com/churumi.king/" target="_blank">Facebook: churumi.king</a> (확인 완료)</div>
+                <div class="info-label">전주 연결 고리</div>
+                <div class="info-value">전주 창업경진대회 수상자 - 전북 지역 배경 추정</div>
+            </div>
+        </div>
+        <div class="source">출처: <a href="https://thetimesplatform.com/brand/professional" target="_blank">The Times 전문 인력 페이지</a> | <a href="https://www.facebook.com/churumi.king/" target="_blank">Facebook 프로필</a> | WebSearch 첫 검색 결과 요약 데이터</div>
+
+        <h3>9-1. 강 이사 페르소나 분석</h3>
+        <div class="two-col">
+            <div>
+                <h4 style="font-size:15px; margin-bottom:8px;">예상 커뮤니케이션 스타일</h4>
+                <ul class="check-list">
+                    <li>전략 중심 사고 (사업계획서 구조 설계 배경)</li>
+                    <li>데이터/성과 중심 (창업경진대회 수상자)</li>
+                    <li>브랜딩 인식 보유 (F&B 브랜드 기획 경험)</li>
+                    <li>마케팅의 가치를 이해할 가능성 높음 (브랜딩 기획이 본인 역량)</li>
+                    <li>사내 마케팅 투자 옹호자 역할 가능</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="font-size:15px; margin-bottom:8px;">상담 접근법</h4>
+                <ul class="check-list">
+                    <li>전략적 프레임워크로 대화 (구조적 접근을 선호할 것)</li>
+                    <li>데이터 기반 경쟁사 분석 제시 (분석적 사고에 어필)</li>
+                    <li>브랜딩 전문성 인정 - HIZ를 전략 교육자가 아닌 실행 파트너로 포지셔닝</li>
+                    <li>ROI와 측정 가능한 KPI 강조 (스타트업 배경 = 지표 지향적)</li>
+                    <li>의사결정 프로세스 조기 확인 (이사 vs. 대표 권한)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="callout">
+            <strong>중요 참고:</strong> 강푸름은 대표가 아닌 이사입니다. 이는 다음을 의미합니다: (1) 예산 결정에 대표 승인이 필요할 수 있음, (2) 사내에서 마케팅 투자를 옹호하는 "챔피언" 역할일 수 있음, (3) 상담 시 대표를 설득할 수 있는 무기(명확한 ROI, 경쟁사 갭, 무행동의 리스크)를 제공해야 함.
+        </div>
+    </div>
+
+    <!-- 핵심 요약 -->
+    <div class="section" style="border: 2px solid var(--highlight);">
+        <h2>핵심 요약</h2>
+
+        <div class="two-col">
+            <div>
+                <h3>핵심 발견</h3>
+                <p style="font-size:14px;">The Times는 진정한 전문성(누적 317억 원 자금 조달 성공, 독자적 신용등급 모델, 대표의 VC 경험)을 보유한 경영 컨설팅 기업이지만 디지털 프레즌스가 거의 제로입니다. 헬프미, ZUZU 같은 경쟁사가 디지털 마케팅으로 시장을 지배하는 상황에서, The Times는 한 손을 뒤로 묶고 싸우고 있는 셈입니다.</p>
+            </div>
+            <div>
+                <h3>HIZ 기회</h3>
+                <p style="font-size:14px;">이것은 전형적인 "전문성은 풍부, 가시성은 빈약"한 클라이언트로, HIZ의 브랜드 구축 접근법에 이상적인 프로필입니다. 디지털 제로 베이스는 어떤 투자든 극적인 결과를 보여줄 수 있음을 의미합니다. 과제는 설립 3년차 기업의 예산 실현 가능성과 이사가 대표의 동의를 확보할 수 있는지입니다.</p>
+            </div>
+        </div>
+
+        <h3 style="margin-top:24px;">첫 미팅 액션 아이템</h3>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>액션</th>
+                <th>목적</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>고객 유입 채널 확인 (100% 소개 의존 가능성)</td>
+                <td>페인 포인트 가설 검증</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>경쟁사 디지털 분석 제시 (헬프미 vs. The Times 검색 결과)</td>
+                <td>긴급성 조성</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>2026년 성장 목표 및 마케팅 예산 문의</td>
+                <td>예산 현실 확인</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>의사결정 권한 확인 (이사 vs. 대표)</td>
+                <td>영업 프로세스 매핑</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Tier 2를 앵커로, Tier 1을 진입점으로 제안</td>
+                <td>유연한 계약 구조</td>
+            </tr>
+        </table>
+
+        <div class="leverage-box" style="margin-top:24px;">
+            <div style="font-size:13px; opacity:0.7;">원라인 피치</div>
+            <div class="quote">"귀사의 317억 원 실적은 온라인에서 자금 지원을 찾는 모든 중소기업에게 보여야 합니다. 지금은 완전히 보이지 않습니다. 이를 바꿔드리겠습니다."</div>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>대외비 | HIZ (brandrise) 내부 전용</p>
+    <p>작성일: 2026.03.30 | 분석: HIZ 리서치팀</p>
+    <p>모든 정보는 리서치 시점 기준 공개 출처에 기반합니다. "추정" 또는 "미확인"으로 표기된 항목은 검증이 필요합니다.</p>
+</div>
+
+</body>
+</html>
