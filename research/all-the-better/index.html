@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>올 더 베러 (ALL THE BETTER) - 올리브영 PB 분석 | HIZ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --highlight: #e94560;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --text-light: #636e72;
+            --border: #dfe6e9;
+            --success: #00b894;
+            --warning: #fdcb6e;
+            --danger: #d63031;
+            --olive: #5d8a3c;
+            --olive-light: #e8f5e0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a2e1a 0%, #2d5a27 50%, #0f3460 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(93, 138, 60, 0.25);
+            border: 1px solid #7db856;
+            color: #a8d77a;
+            padding: 4px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .header h1 {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .header h1 span {
+            color: #a8d77a;
+        }
+
+        .header .subtitle {
+            font-size: 16px;
+            opacity: 0.7;
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+
+        .header .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            opacity: 0.5;
+        }
+
+        /* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(90deg, #fff3cd, #fff8e1);
+            border-left: 5px solid #ffc107;
+            padding: 20px 32px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .alert-banner .alert-icon {
+            font-size: 22px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .alert-banner .alert-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #856404;
+            margin-bottom: 4px;
+        }
+
+        .alert-banner .alert-text {
+            font-size: 14px;
+            color: #664d03;
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* TOC */
+        .toc {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin-bottom: 36px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .toc-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 6px 24px;
+        }
+
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 5px 0;
+            display: block;
+            border-bottom: 1px dashed transparent;
+            transition: all 0.2s;
+        }
+
+        .toc a:hover {
+            color: var(--highlight);
+            border-bottom-color: var(--highlight);
+        }
+
+        /* Key Findings Box */
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .finding-card {
+            background: var(--bg);
+            border-radius: 10px;
+            padding: 20px;
+            border-top: 3px solid var(--olive);
+            text-align: center;
+        }
+
+        .finding-card.warning-card {
+            border-top-color: var(--warning);
+        }
+
+        .finding-card.info-card {
+            border-top-color: var(--accent);
+        }
+
+        .finding-card .finding-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .finding-card .finding-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            margin-bottom: 6px;
+        }
+
+        .finding-card .finding-value {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        /* Section */
+        .section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .section h2 {
+            font-size: 21px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--olive);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h2 .section-num {
+            background: var(--olive);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 24px 0 12px;
+            padding-left: 12px;
+            border-left: 3px solid var(--olive);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 14px 0;
+            font-size: 14px;
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            padding: 11px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        td {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td { background: #f8f9fa; }
+
+        /* Tags */
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 2px;
+        }
+
+        .tag-red { background: #ffe0e0; color: #d63031; }
+        .tag-green { background: #d4f5e9; color: #00b894; }
+        .tag-blue { background: #dfe6fd; color: #0f3460; }
+        .tag-yellow { background: #fff3cd; color: #856404; }
+        .tag-gray { background: #e9ecef; color: #495057; }
+        .tag-olive { background: #e8f5e0; color: #3d6b27; }
+
+        /* Callouts */
+        .callout {
+            border-left: 4px solid #ffc107;
+            background: #fff8e1;
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin: 14px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .callout-info {
+            border-left-color: #2196f3;
+            background: #e3f2fd;
+            color: #0d47a1;
+        }
+
+        .callout-danger {
+            border-left-color: var(--danger);
+            background: #fce4ec;
+            color: #b71c1c;
+        }
+
+        .callout-success {
+            border-left-color: var(--success);
+            background: #d4f5e9;
+            color: #005c42;
+        }
+
+        .callout strong {
+            font-weight: 700;
+        }
+
+        /* Possibility Cards */
+        .possibility-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin: 16px 0;
+        }
+
+        .possibility-card {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px 24px;
+            position: relative;
+        }
+
+        .possibility-card .poss-badge {
+            position: absolute;
+            top: -11px;
+            left: 20px;
+            background: var(--accent);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .possibility-card.poss-likely {
+            border-color: var(--success);
+            background: #f0fbf7;
+        }
+
+        .possibility-card.poss-likely .poss-badge {
+            background: var(--success);
+        }
+
+        .possibility-card.poss-maybe {
+            border-color: #fdcb6e;
+            background: #fffbf0;
+        }
+
+        .possibility-card.poss-maybe .poss-badge {
+            background: #e0a800;
+        }
+
+        .possibility-card.poss-no {
+            border-color: #dee2e6;
+            background: #f8f9fa;
+        }
+
+        .possibility-card.poss-no .poss-badge {
+            background: #6c757d;
+        }
+
+        .possibility-card h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .possibility-card p, .possibility-card li {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .possibility-card ul {
+            padding-left: 18px;
+            margin-top: 8px;
+        }
+
+        /* Platform Overview */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .category-item {
+            background: var(--olive-light);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+            border: 1px solid #c8e6b0;
+        }
+
+        .category-item .cat-kr {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--olive);
+            margin-bottom: 4px;
+        }
+
+        .category-item .cat-en {
+            font-size: 11px;
+            color: #6b8c56;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Benchmark Grid */
+        .benchmark-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .benchmark-card {
+            background: var(--bg);
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid var(--olive);
+        }
+
+        .benchmark-card.strategy-card {
+            border-left-color: var(--highlight);
+        }
+
+        .benchmark-card h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .benchmark-card .bm-point {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 4px;
+        }
+
+        .benchmark-card .bm-apply {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* Market Stats */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .stat-box {
+            background: var(--bg);
+            border-radius: 10px;
+            padding: 20px 16px;
+            text-align: center;
+        }
+
+        .stat-box .stat-num {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--olive);
+            line-height: 1.2;
+        }
+
+        .stat-box .stat-label {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 6px;
+            line-height: 1.4;
+        }
+
+        /* Action List */
+        .action-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+
+        .action-list li {
+            display: flex;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+            align-items: flex-start;
+        }
+
+        .action-list li:last-child {
+            border-bottom: none;
+        }
+
+        .action-list .action-num {
+            background: var(--highlight);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            min-width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .action-list .action-text strong {
+            display: block;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 3px;
+        }
+
+        .action-list .action-text span {
+            color: var(--text-light);
+        }
+
+        /* Sources */
+        .sources-table td:first-child {
+            font-weight: 600;
+            color: var(--text-light);
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .sources-table a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .sources-table a:hover {
+            text-decoration: underline;
+            color: var(--highlight);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            padding: 32px 20px;
+            font-size: 13px;
+        }
+
+        .footer strong {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Print */
+        @media print {
+            .header { padding: 40px 30px; }
+            .section { break-inside: avoid; box-shadow: none; border: 1px solid var(--border); }
+            .alert-banner { break-inside: avoid; }
+            body { background: white; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 26px; }
+            .section { padding: 24px 20px; }
+            .findings-grid { grid-template-columns: 1fr; }
+            .category-grid { grid-template-columns: repeat(2, 1fr); }
+            .benchmark-grid { grid-template-columns: 1fr; }
+            .stat-row { grid-template-columns: repeat(2, 1fr); }
+            table { font-size: 13px; }
+            th, td { padding: 8px 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+    <div class="header-badge">참고 리서치 | 올리브영 PB 분석</div>
+    <h1>올 더 베러 <span>(ALL THE BETTER)</span></h1>
+    <div class="subtitle">CJ올리브영 웰니스 PB 브랜드 분석 — 위타민 벤치마킹 컨텍스트</div>
+    <div class="meta">작성일: 2026-03-25 &nbsp;|&nbsp; BRANDRISE by HIZ &nbsp;|&nbsp; 웹 공개 데이터 기반</div>
+</div>
+
+<!-- Alert Banner -->
+<div class="alert-banner">
+    <div class="alert-icon">⚠️</div>
+    <div>
+        <div class="alert-title">리서치 핵심 결론: "올 더 베러"는 인디 브랜드가 아닌 CJ올리브영 자체 PB입니다</div>
+        <div class="alert-text">
+            고객이 제공한 단서("인디 브랜드", "50만개 이상 판매", "라이징 중")와 실제 조사 결과 사이에 차이가 있습니다. 올 더 베러는 CJ올리브영이 2026년 1월 직접 런칭한 웰니스 PB 브랜드로, 신규 비즈니스 타겟이 아닙니다. 위타민 벤치마킹 관점에서 시장 인사이트로 활용하시기 바랍니다.
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- TOC -->
+    <div class="toc">
+        <div class="toc-title">목차 (Contents)</div>
+        <div class="toc-grid">
+            <a href="#key-findings">핵심 요약</a>
+            <a href="#part1">PART 1: 확인된 사실</a>
+            <a href="#part2">PART 2: 인디 브랜드 가능성 검토</a>
+            <a href="#part3">PART 3: 올리브영 시장 컨텍스트</a>
+            <a href="#part4">PART 4: 위타민 벤치마킹 포인트</a>
+            <a href="#part5">PART 5: 추가 확인 필요 사항</a>
+            <a href="#sources">출처 종합</a>
+        </div>
+    </div>
+
+    <!-- Key Findings -->
+    <div class="section" id="key-findings">
+        <h2><span class="section-num">KEY</span> 핵심 요약</h2>
+        <div class="findings-grid">
+            <div class="finding-card">
+                <div class="finding-icon">🏢</div>
+                <div class="finding-label">브랜드 성격</div>
+                <div class="finding-value">CJ올리브영<br>자체 PB 브랜드</div>
+            </div>
+            <div class="finding-card warning-card">
+                <div class="finding-icon">📅</div>
+                <div class="finding-label">런칭 시기</div>
+                <div class="finding-value">2026년 1월 30일<br>올리브 베러 1호점 동시 런칭</div>
+            </div>
+            <div class="finding-card info-card">
+                <div class="finding-icon">🎯</div>
+                <div class="finding-label">타겟 연령</div>
+                <div class="finding-value">25~34세<br>헬시 플레저 세대</div>
+            </div>
+        </div>
+
+        <div class="callout callout-info">
+            <strong>위타민 활용 포인트:</strong> 올리브영이 건강기능식품 PB를 직접 런칭할 만큼 시장 매력도가 높습니다. 동시에 인디 브랜드에게는 PB와의 경쟁이라는 새로운 위협이 생겼습니다. 위타민은 PB가 커버하지 못하는 브랜드 스토리와 니치 카테고리에서 차별화해야 합니다.
+        </div>
+    </div>
+
+    <!-- PART 1: 확인된 사실 -->
+    <div class="section" id="part1">
+        <h2><span class="section-num">PART 1</span> 확인된 사실 — 올 더 베러(ALL THE BETTER)</h2>
+
+        <h3>1-1. 기본 정보</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 160px;">항목</th>
+                    <th>내용</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>브랜드명</strong></td>
+                    <td>올 더 베러 (ALL THE BETTER)</td>
+                </tr>
+                <tr>
+                    <td><strong>브랜드 성격</strong></td>
+                    <td><span class="tag tag-olive">CJ올리브영 웰니스 PB</span> (자체 브랜드)</td>
+                </tr>
+                <tr>
+                    <td><strong>운영사</strong></td>
+                    <td>CJ올리브영</td>
+                </tr>
+                <tr>
+                    <td><strong>런칭 시기</strong></td>
+                    <td>2026년 1월 30일 (올리브 베러 1호점과 동시 런칭)</td>
+                </tr>
+                <tr>
+                    <td><strong>판매 채널</strong></td>
+                    <td>올리브 베러 오프라인 매장 + 올리브영 온라인몰</td>
+                </tr>
+                <tr>
+                    <td><strong>카테고리</strong></td>
+                    <td>건강기능식품, 식품, 스낵</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout">
+            <strong>출처:</strong>
+            <a href="https://www.cosmorning.com/news/article.html?no=52093" target="_blank" style="color:#856404;">코스모닝 - 미리 가 본 올리브 베러</a>,
+            <a href="https://cosmorning.com/mobile/article.html?no=51797" target="_blank" style="color:#856404;">코스모닝 - 올리브영 웰니스 플랫폼 올리브 베러 첫선</a>
+        </div>
+
+        <h3>1-2. 올리브 베러(OLIVE BETTER) 플랫폼 개요</h3>
+        <p style="font-size:14px; color: var(--text-light); margin-bottom: 12px;">올 더 베러는 올리브영이 새로 런칭한 <strong>"올리브 베러"</strong> 웰니스 편집매장의 핵심 PB 브랜드입니다.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 160px;">항목</th>
+                    <th>내용</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>플랫폼명</strong></td>
+                    <td>올리브 베러 (OLIVE BETTER)</td>
+                </tr>
+                <tr>
+                    <td><strong>1호점</strong></td>
+                    <td>서울 광화문 (2026.01.30 오픈, 2층 규모)</td>
+                </tr>
+                <tr>
+                    <td><strong>2호점</strong></td>
+                    <td>서울 강남 (2026년 상반기 예정)</td>
+                </tr>
+                <tr>
+                    <td><strong>타겟</strong></td>
+                    <td>헬시 플레저(Healthy Pleasure)를 추구하는 25~34세</td>
+                </tr>
+                <tr>
+                    <td><strong>온라인</strong></td>
+                    <td>올리브영 온라인몰 내 별도 코너 운영</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout">
+            <strong>출처:</strong>
+            <a href="https://m.oliveyoung.co.kr/m/mtn/olivebetter" target="_blank" style="color:#856404;">올리브베러 공식 페이지</a>,
+            <a href="https://namu.wiki/w/%EC%98%AC%EB%A6%AC%EB%B8%8C%EB%B2%A0%EB%9F%AC" target="_blank" style="color:#856404;">나무위키 - 올리브베러</a>
+        </div>
+
+        <h3>1-3. 올리브 베러 6대 카테고리</h3>
+        <div class="category-grid">
+            <div class="category-item">
+                <div class="cat-kr">잘 먹기</div>
+                <div class="cat-en">Eat Well</div>
+            </div>
+            <div class="category-item">
+                <div class="cat-kr">잘 채우기</div>
+                <div class="cat-en">Nourish Well</div>
+            </div>
+            <div class="category-item">
+                <div class="cat-kr">잘 움직이기</div>
+                <div class="cat-en">Fit Well</div>
+            </div>
+            <div class="category-item">
+                <div class="cat-kr">잘 가꾸기</div>
+                <div class="cat-en">Glow Well</div>
+            </div>
+            <div class="category-item">
+                <div class="cat-kr">잘 쉬기</div>
+                <div class="cat-en">Relax Well</div>
+            </div>
+            <div class="category-item">
+                <div class="cat-kr">잘 케어하기</div>
+                <div class="cat-en">Care Well</div>
+            </div>
+        </div>
+        <p style="font-size:12px; color:var(--text-light);">주요 제품: 이너뷰티 푸드, 건강간식 / 영양제, 건강기능식품 / 스포츠 뉴트리션, 운동용품 / 아로마테라피, 더마코스메틱 / 수면용품, 허브티 / 구강케어, 위생용품</p>
+
+        <h3>1-4. 올 더 베러 PB 제품 라인업 (확인된 품목)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>제품군</th>
+                    <th>세부 제품</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>에너지 부스터 샷</strong></td>
+                    <td>모로오렌지, 토마토, 레몬진저, 블루베리 (4종)</td>
+                    <td><span class="tag tag-green">매장 판매 확인</span></td>
+                </tr>
+                <tr>
+                    <td><strong>워터스틱</strong></td>
+                    <td>저당 매실청, 루이보스, 저당 꿀도라지 (3종)</td>
+                    <td><span class="tag tag-green">매장 판매 확인</span></td>
+                </tr>
+                <tr>
+                    <td><strong>구미/스낵류</strong></td>
+                    <td>상세 미확인</td>
+                    <td><span class="tag tag-yellow">건강기능식품·식품·스낵 라인업</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="callout callout-danger">
+            <strong>데이터 한계:</strong> 개별 제품 가격, 리뷰 수, 판매량 등 구체적 수치는 웹 공개 자료에서 확인 불가. 올리브영 온라인몰은 SPA 방식으로 크롤링 제한.
+        </div>
+
+        <h3>1-5. 입점 채널 현황</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>채널</th>
+                    <th>상태</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>올리브영 온라인몰</td>
+                    <td><span class="tag tag-green">확인</span></td>
+                    <td>올리브베러 코너 내 판매</td>
+                </tr>
+                <tr>
+                    <td>올리브 베러 오프라인 매장</td>
+                    <td><span class="tag tag-green">확인</span></td>
+                    <td>광화문 1호점</td>
+                </tr>
+                <tr>
+                    <td>카카오 선물하기</td>
+                    <td><span class="tag tag-yellow">미확인</span></td>
+                    <td>검색 결과 없음</td>
+                </tr>
+                <tr>
+                    <td>쿠팡 / 네이버 쇼핑</td>
+                    <td><span class="tag tag-yellow">미확인</span></td>
+                    <td>별도 확인 필요</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- PART 2: 인디 브랜드 가능성 검토 -->
+    <div class="section" id="part2">
+        <h2><span class="section-num">PART 2</span> "인디 브랜드" 가능성 검토</h2>
+        <p style="font-size:14px; color:var(--text-light); margin-bottom: 20px;">
+            고객이 언급한 "인디 브랜드", "50만개 이상 판매", "라이징 중"이라는 단서는 올리브영 PB인 "올 더 베러"와 맞지 않을 수 있습니다. 아래 세 가지 가능성을 검토합니다.
+        </p>
+
+        <div class="possibility-cards">
+            <div class="possibility-card poss-likely">
+                <div class="poss-badge">가능성 1</div>
+                <h4>올리브영 PB "올 더 베러"가 맞는 경우</h4>
+                <ul>
+                    <li>올리브영 PB이므로 "인디 브랜드"는 아니지만, <strong>소비자 관점에서는 새로 등장한 브랜드로 인식</strong>될 수 있음</li>
+                    <li>올리브영 전체 채널 파워(1,400개+ 매장)를 활용하면 50만개 판매는 충분히 달성 가능</li>
+                    <li>2026년 1월 런칭 직후이므로 "라이징" 표현이 적절할 수 있음</li>
+                </ul>
+            </div>
+
+            <div class="possibility-card poss-maybe">
+                <div class="poss-badge">가능성 2</div>
+                <h4>다른 브랜드를 "올더베러"로 기억한 경우</h4>
+                <p style="margin-bottom:12px;">올리브영에 입점한 유사 포지셔닝(비타민/건강기능식품 인디 브랜드 + 급성장)의 후보:</p>
+                <table style="margin:0;">
+                    <thead>
+                        <tr>
+                            <th>브랜드</th>
+                            <th>특징</th>
+                            <th>유사도</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>크런틴</strong></td>
+                            <td>올리브영 라이징 브랜드 선정(2026.02), 단백질 식품</td>
+                            <td><span class="tag tag-yellow">중</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>아임비타</strong></td>
+                            <td>올리브영 구미젤리 비타민, 인지도 높음</td>
+                            <td><span class="tag tag-yellow">중</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>푸드올로지</strong></td>
+                            <td>올리브영 입점 건강기능식품, 라이징</td>
+                            <td><span class="tag tag-yellow">중</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>탄탄(tantan)</strong></td>
+                            <td>CJ올리브영 건강기능식품 PB, 슬리밍</td>
+                            <td><span class="tag tag-gray">낮음 (역시 PB)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="callout" style="margin-top:12px;">
+                    <strong>출처:</strong>
+                    <a href="https://www.slist.kr/news/articleView.html?idxno=722461" target="_blank" style="color:#856404;">slist - 크런틴 올리브영 라이징 브랜드 선정</a>,
+                    <a href="https://cjnews.cj.net/cj%EC%98%AC%EB%A6%AC%EB%B8%8C%EC%98%81-%EA%B1%B4%EA%B0%95%EA%B8%B0%EB%8A%A5%EC%8B%9D%ED%92%88-%EB%B8%8C%EB%9E%9C%EB%93%9C-%ED%83%84%ED%83%84tantan-%EB%A1%A0%EC%B9%AD%EC%8A%AC/" target="_blank" style="color:#856404;">CJ뉴스룸 - 탄탄 론칭</a>
+                </div>
+            </div>
+
+            <div class="possibility-card poss-no">
+                <div class="poss-badge">가능성 3</div>
+                <h4>"All The Vetter" 등 유사 표기의 별도 브랜드</h4>
+                <ul>
+                    <li>"All The Vetter", "allthevetter" 등으로 다양하게 검색했으나 <strong>해당 이름의 독립 브랜드는 발견되지 않음</strong></li>
+                    <li>네이버 블로그, 인스타그램, 쿠팡 등에서도 해당 브랜드명에 대한 결과 없음</li>
+                </ul>
+                <div class="callout callout-danger" style="margin-top:12px;">
+                    해당 브랜드명으로 검색한 결과: 독립 인디 브랜드 없음 (미확인 상태)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PART 3: 시장 컨텍스트 -->
+    <div class="section" id="part3">
+        <h2><span class="section-num">PART 3</span> 올리브영 건강기능식품 시장 컨텍스트</h2>
+        <p style="font-size:13px; color:var(--text-light); margin-bottom:20px;">위타민 벤치마킹용 시장 데이터</p>
+
+        <h3>3-1. 올리브영 건강식품 시장 성장세</h3>
+        <div class="stat-row">
+            <div class="stat-box">
+                <div class="stat-num">+45%</div>
+                <div class="stat-label">건강기능식품 매출 성장률<br>(2022 대비, 2024 기준)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">1,400+</div>
+                <div class="stat-label">올리브영 전국 매장 수</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">25~34</div>
+                <div class="stat-label">올리브 베러 핵심 타겟 연령</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">MZ</div>
+                <div class="stat-label">헬시 플레저 · 이너뷰티<br>트렌드 주도 세대</div>
+            </div>
+        </div>
+        <div class="callout">
+            <strong>출처:</strong>
+            <a href="https://cjnews.cj.net/%EC%98%AC%EB%A6%AC%EB%B8%8C%EC%98%81-%EB%A7%9E%EC%B6%A4%ED%98%95-%EA%B1%B4%EA%B0%95%EC%8B%9D%ED%92%88-%EC%B6%94%EC%B2%9C-%EC%86%94%EB%A3%A8%EC%85%98-%EB%8F%84%EC%9E%85-%EA%B1%B4%EA%B0%95/" target="_blank" style="color:#856404;">CJ뉴스룸 - 올리브영 맞춤형 건강식품 솔루션</a>
+        </div>
+
+        <h3>3-2. 올리브영 "라이징 브랜드" 제도</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>항목</th>
+                    <th>내용</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>선정 기준</strong></td>
+                    <td>카테고리 내 높은 성장성과 소비자 반응을 동시에 확보한 브랜드</td>
+                </tr>
+                <tr>
+                    <td><strong>최근 선정 사례</strong></td>
+                    <td>크런틴 (단백질 식품, 2026.02 선정)</td>
+                </tr>
+                <tr>
+                    <td><strong>효과</strong></td>
+                    <td>인디 브랜드가 라이징 브랜드 선정 시 매출 급상승, 노출도 대폭 증가</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>3-3. 올리브영 웰니스 PB 전략 시사점</h3>
+        <p style="font-size:14px; margin-bottom:16px;">올리브영이 "올 더 베러"와 "탄탄" 등 건강기능식품 PB를 적극 런칭하고 있다는 것은 세 가지를 의미합니다:</p>
+        <div class="possibility-cards">
+            <div class="possibility-card poss-likely" style="padding-left: 20px;">
+                <div class="poss-badge" style="background: var(--olive);">시사점 1</div>
+                <h4>시장 매력도가 매우 높음</h4>
+                <p>올리브영이 직접 PB까지 내놓을 정도로 건강기능식품 수요 폭증. 시장 진입/확장 적기.</p>
+            </div>
+            <div class="possibility-card poss-maybe" style="padding-left: 20px;">
+                <div class="poss-badge" style="background: #e0a800;">시사점 2</div>
+                <h4>인디 브랜드에게는 양날의 검</h4>
+                <p>올리브영 입점 기회는 크지만, PB와의 직접 경쟁도 심화. 가격/품질 차별화 필수.</p>
+            </div>
+            <div class="possibility-card poss-no" style="padding-left: 20px;">
+                <div class="poss-badge" style="background: #0f3460;">시사점 3</div>
+                <h4>차별화가 핵심</h4>
+                <p>PB가 커버하지 못하는 니치 카테고리나 강력한 브랜드 스토리가 경쟁 우위의 핵심.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PART 4: 위타민 벤치마킹 -->
+    <div class="section" id="part4">
+        <h2><span class="section-num">PART 4</span> 위타민 벤치마킹 포인트</h2>
+        <p style="font-size:14px; color:var(--text-light); margin-bottom: 20px;">
+            올 더 베러가 인디 브랜드가 아닌 올리브영 PB라는 점에서, 위타민이 실질적으로 벤치마킹·활용할 포인트를 정리합니다.
+        </p>
+
+        <h3>4-1. 올 더 베러 PB에서 배울 점</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>포인트</th>
+                    <th>올 더 베러 사례</th>
+                    <th>위타민 적용 방안</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>제품 포맷 혁신</strong></td>
+                    <td>에너지 부스터 샷(4종), 워터스틱(3종) 등 새로운 섭취 형태</td>
+                    <td>기존 정제/캡슐 외 새로운 폼팩터 검토</td>
+                </tr>
+                <tr>
+                    <td><strong>카테고리 세분화</strong></td>
+                    <td>6개 웰니스 카테고리로 라이프스타일 전체를 커버</td>
+                    <td>단순 비타민이 아닌 라이프스타일 브랜드로 포지셔닝</td>
+                </tr>
+                <tr>
+                    <td><strong>타겟 명확화</strong></td>
+                    <td>25~34세 헬시 플레저 세대</td>
+                    <td>MZ세대 맞춤 커뮤니케이션 강화</td>
+                </tr>
+                <tr>
+                    <td><strong>가격 접근성</strong></td>
+                    <td>워터스틱/부스터샷 등 소용량 저가 라인</td>
+                    <td>선물/체험용 소용량 SKU 개발</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>4-2. 올리브영 생태계에서 위타민이 경쟁할 전략</h3>
+        <div class="benchmark-grid">
+            <div class="benchmark-card">
+                <h4>PB가 못 하는 것에 집중</h4>
+                <div class="bm-point">올리브영 PB의 한계</div>
+                <div class="bm-apply">"범용" 제품 → 위타민은 특화/전문성으로 차별화</div>
+            </div>
+            <div class="benchmark-card">
+                <h4>브랜드 스토리 강화</h4>
+                <div class="bm-point">PB의 구조적 약점</div>
+                <div class="bm-apply">PB는 스토리 부재 → 위타민은 창업자/전문가 스토리로 감성 차별화</div>
+            </div>
+            <div class="benchmark-card strategy-card">
+                <h4>카카오 선물하기 선점</h4>
+                <div class="bm-point">채널 공백 기회</div>
+                <div class="bm-apply">올 더 베러는 올리브영 채널 내에서만 판매 → 카카오 선물하기에서 위타민 선점 가능</div>
+            </div>
+            <div class="benchmark-card strategy-card">
+                <h4>커뮤니티/팬덤 구축</h4>
+                <div class="bm-point">PB의 구조적 한계</div>
+                <div class="bm-apply">PB는 팬덤 형성 어려움 → 위타민은 SNS 커뮤니티 기반 충성도 구축</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PART 5: 추가 확인 필요 -->
+    <div class="section" id="part5">
+        <h2><span class="section-num">PART 5</span> 추가 확인이 필요한 사항</h2>
+        <p style="font-size:14px; color:var(--text-light); margin-bottom:16px;">
+            아래 항목들은 현재 웹 검색으로 확인이 불가하여, 고객에게 역질문이 필요합니다.
+        </p>
+
+        <ul class="action-list">
+            <li>
+                <div class="action-num">1</div>
+                <div class="action-text">
+                    <strong>"올더베러"의 정확한 영문 표기 확인</strong>
+                    <span>"All The Better"(올리브영 PB)가 맞는지, 아니면 다른 브랜드명인지 재확인 필요</span>
+                </div>
+            </li>
+            <li>
+                <div class="action-num">2</div>
+                <div class="action-text">
+                    <strong>"50만개 이상 판매"의 출처</strong>
+                    <span>어디서 이 수치를 보셨는지 확인 필요 (SNS 광고, 기사, 올리브영 배너 등)</span>
+                </div>
+            </li>
+            <li>
+                <div class="action-num">3</div>
+                <div class="action-text">
+                    <strong>"인디 브랜드"로 인지한 맥락</strong>
+                    <span>올리브영 PB라는 것을 모르고 인디 브랜드로 오인했을 가능성 검토</span>
+                </div>
+            </li>
+            <li>
+                <div class="action-num">4</div>
+                <div class="action-text">
+                    <strong>구체적 제품명 확인</strong>
+                    <span>어떤 제품을 보셨는지 확인 (구미, 워터스틱, 부스터샷 등) — 정확한 제품을 특정하면 해당 카테고리 인디 브랜드 리서치로 전환 가능</span>
+                </div>
+            </li>
+        </ul>
+
+        <div class="callout callout-info">
+            <strong>다음 단계:</strong> 위 역질문에 대한 답변을 받은 후, (1) 올리브영 PB 벤치마킹으로 마무리하거나 (2) 정확한 인디 브랜드명을 확인하여 재리서치를 진행합니다.
+        </div>
+    </div>
+
+    <!-- Sources -->
+    <div class="section" id="sources">
+        <h2><span class="section-num">출처</span> 출처 종합</h2>
+        <table class="sources-table">
+            <thead>
+                <tr>
+                    <th style="width: 40px;">#</th>
+                    <th>출처</th>
+                    <th>확인 내용</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><a href="https://www.cosmorning.com/news/article.html?no=52093" target="_blank">코스모닝 - 미리 가 본 올리브 베러</a></td>
+                    <td>올 더 베러 PB 확인, 제품 카테고리</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><a href="https://cosmorning.com/mobile/article.html?no=51797" target="_blank">코스모닝 - 올리브영 웰니스 플랫폼 올리브 베러 첫선</a></td>
+                    <td>올리브 베러 런칭 정보</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><a href="https://m.oliveyoung.co.kr/m/mtn/olivebetter" target="_blank">올리브베러 공식 페이지</a></td>
+                    <td>온라인 운영 확인 (접속 제한)</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><a href="https://namu.wiki/w/%EC%98%AC%EB%A6%AC%EB%B8%8C%EB%B2%A0%EB%9F%AC" target="_blank">나무위키 - 올리브베러</a></td>
+                    <td>플랫폼 개요</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><a href="https://www.slist.kr/news/articleView.html?idxno=722461" target="_blank">slist - 크런틴 올리브영 라이징 브랜드 선정</a></td>
+                    <td>올리브영 라이징 브랜드 제도</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><a href="https://cjnews.cj.net/cj%EC%98%AC%EB%A6%AC%EB%B8%8C%EC%98%81-%EA%B1%B4%EA%B0%95%EA%B8%B0%EB%8A%A5%EC%8B%9D%ED%92%88-%EB%B8%8C%EB%9E%9C%EB%93%9C-%ED%83%84%ED%83%84tantan-%EB%A1%A0%EC%B9%AD%EC%8A%AC/" target="_blank">CJ뉴스룸 - 탄탄 론칭</a></td>
+                    <td>올리브영 건강기능식품 PB 전략</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><a href="https://cjnews.cj.net/%EC%98%AC%EB%A6%AC%EB%B8%8C%EC%98%81-%EB%A7%9E%EC%B6%A4%ED%98%95-%EA%B1%B4%EA%B0%95%EC%8B%9D%ED%92%88-%EC%B6%94%EC%B2%9C-%EC%86%94%EB%A3%A8%EC%85%98-%EB%8F%84%EC%9E%85-%EA%B1%B4%EA%B0%95/" target="_blank">CJ뉴스룸 - 맞춤형 건강식품 솔루션</a></td>
+                    <td>건강식품 매출 성장률 45%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout" style="margin-top:20px; font-size:13px; color:#664d03;">
+            본 리서치는 2026-03-25 기준 웹 공개 데이터로 작성되었습니다. "올더베러"가 올리브영 PB가 아닌 별도의 인디 브랜드를 지칭하는 것이라면, 정확한 브랜드명/영문 표기를 확인한 후 재리서치가 필요합니다.
+        </div>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <strong>HIZ 브랜드라이즈 | New Business Research</strong><br>
+    올 더 베러 (ALL THE BETTER) — 올리브영 PB 분석 &nbsp;|&nbsp; 위타민 벤치마킹 참고 리서치<br>
+    작성일: 2026-03-25 &nbsp;|&nbsp; 웹 공개 데이터 기반 &nbsp;|&nbsp; 본 문서는 내부 참고용입니다
+</div>
+
+</body>
+</html>

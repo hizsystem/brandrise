@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>킥복싱 체육관 (류새인) - New Business 리서치 | HIZ</title>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --highlight: #e94560;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --text-light: #636e72;
+            --border: #dfe6e9;
+            --success: #00b894;
+            --warning: #fdcb6e;
+            --danger: #d63031;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(233, 69, 96, 0.2);
+            border: 1px solid var(--highlight);
+            color: var(--highlight);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            font-size: 16px;
+            opacity: 0.7;
+            font-weight: 300;
+        }
+
+        .header .date {
+            margin-top: 16px;
+            font-size: 13px;
+            opacity: 0.5;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .toc {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .toc h2 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 8px;
+        }
+
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 0;
+            display: block;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover { color: var(--highlight); }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--highlight);
+        }
+
+        .section h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 20px 0 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 8px 16px;
+            font-size: 14px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .info-value {
+            color: var(--text);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        td {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:hover td { background: #f1f3f5; }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 2px;
+        }
+
+        .tag-red { background: #ffe0e0; color: #d63031; }
+        .tag-green { background: #d4f5e9; color: #00b894; }
+        .tag-blue { background: #dfe6fd; color: #0f3460; }
+        .tag-yellow { background: #fff3cd; color: #856404; }
+        .tag-gray { background: #e9ecef; color: #495057; }
+
+        .score-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 4px 0;
+        }
+
+        .score-bar .label {
+            width: 140px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .score-bar .bar {
+            flex: 1;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .score-bar .fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s;
+        }
+
+        .fill-high { background: var(--success); }
+        .fill-mid { background: var(--warning); }
+        .fill-low { background: var(--danger); }
+
+        .score-bar .score {
+            width: 40px;
+            text-align: right;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .verdict {
+            background: linear-gradient(135deg, #fdcb6e 0%, #f39c12 100%);
+            color: white;
+            padding: 24px 32px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 24px 0;
+        }
+
+        .verdict .label { font-size: 14px; opacity: 0.8; }
+        .verdict .value { font-size: 36px; font-weight: 800; margin: 8px 0; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+
+        .tier-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        .tier-card {
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .tier-card:hover { transform: translateY(-4px); }
+
+        .tier-card.recommended {
+            border-color: var(--highlight);
+            box-shadow: 0 4px 20px rgba(233, 69, 96, 0.15);
+        }
+
+        .tier-card .tier-badge {
+            position: absolute;
+            top: -12px;
+            right: 16px;
+            background: var(--highlight);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .tier-card h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .tier-card .price {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--highlight);
+            margin: 12px 0;
+        }
+
+        .tier-card .duration {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .tier-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tier-card li {
+            font-size: 13px;
+            padding: 4px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .tier-card li::before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: var(--highlight);
+            font-weight: 700;
+        }
+
+        .callout {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+
+        .callout-info {
+            background: #e3f2fd;
+            border-left-color: #2196f3;
+        }
+
+        .callout-danger {
+            background: #fce4ec;
+            border-left-color: #e53935;
+        }
+
+        .leverage-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin: 24px 0;
+            text-align: center;
+        }
+
+        .leverage-box .quote {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.5;
+            margin: 16px 0;
+        }
+
+        .flow-steps {
+            display: flex;
+            gap: 0;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .flow-step {
+            flex: 1;
+            min-width: 180px;
+            padding: 16px;
+            background: #f1f3f5;
+            position: relative;
+            text-align: center;
+        }
+
+        .flow-step:not(:last-child)::after {
+            content: ">";
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: var(--highlight);
+            font-weight: 700;
+            z-index: 1;
+        }
+
+        .flow-step .step-num {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 4px;
+        }
+
+        .flow-step .step-title {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .flow-step .step-desc {
+            font-size: 11px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .swot-item {
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .swot-item h4 {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .swot-item ul {
+            padding-left: 18px;
+        }
+
+        .swot-item li { margin-bottom: 4px; }
+
+        .swot-s { background: #d4f5e9; }
+        .swot-w { background: #ffe0e0; }
+        .swot-o { background: #dfe6fd; }
+        .swot-t { background: #fff3cd; }
+
+        .source-list {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 8px;
+        }
+
+        .source-list a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .source-list a:hover { text-decoration: underline; }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        .channel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .channel-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .channel-card .ch-name {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .channel-card .ch-stat {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--highlight);
+            margin: 8px 0;
+        }
+
+        .channel-card .ch-note {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* Executive Summary */
+        .summary-section {
+            border-left: 4px solid var(--highlight);
+            background: linear-gradient(135deg, #fff 0%, #fff5f7 100%);
+        }
+
+        .summary-section h2 {
+            border-bottom-color: var(--highlight);
+        }
+
+        .summary-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+
+        .summary-header .sh-label {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 4px;
+        }
+
+        .summary-header .sh-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .summary-header .sh-sub {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .kpi-card {
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+        }
+
+        .kpi-card.kpi-dark { background: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--danger); }
+        .kpi-card.kpi-warning { background: #e17055; }
+
+        .kpi-card .kpi-label {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .kpi-card .kpi-value {
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .kpi-card .kpi-sub {
+            font-size: 11px;
+            opacity: 0.7;
+        }
+
+        .summary-oneliner {
+            background: #1a1a2e;
+            color: white;
+            padding: 20px 24px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .summary-oneliner .sol-label {
+            font-size: 13px;
+            opacity: 0.7;
+            margin-bottom: 8px;
+        }
+
+        .summary-oneliner .sol-text {
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.6;
+        }
+
+        .summary-oneliner .sol-text .hl {
+            color: var(--highlight);
+        }
+
+        .summary-bottom {
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .summary-bottom .hl {
+            color: var(--highlight);
+            font-weight: 800;
+        }
+
+        /* Diagnosis Section */
+        .diagnosis-section {
+            border: 2px solid var(--danger);
+        }
+
+        .diagnosis-section h2 {
+            border-bottom-color: var(--danger);
+            color: var(--danger);
+        }
+
+        .diag-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 12px 0 20px;
+        }
+
+        .diag-box {
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        .diag-box.diag-current { background: #fce4ec; }
+        .diag-box.diag-ideal { background: #e8f5e9; }
+
+        .diag-box .db-label {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .diag-box.diag-current .db-label { color: var(--danger); }
+        .diag-box.diag-ideal .db-label { color: var(--success); }
+
+        .diag-box ul {
+            font-size: 14px;
+            padding-left: 18px;
+            margin: 0;
+        }
+
+        .diag-note {
+            font-size: 14px;
+            margin: 8px 0 16px;
+            padding: 12px 16px;
+            background: #fff3e0;
+            border-radius: 8px;
+        }
+
+        .notice-box {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 28px;
+        }
+
+        .notice-box h3 {
+            color: #e65100;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .notice-box p {
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .tier-cards { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-step:not(:last-child)::after { display: none; }
+            .channel-grid { grid-template-columns: repeat(2, 1fr); }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .diag-compare { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">NEW BUSINESS RESEARCH</div>
+    <h1>킥복싱 체육관 마케팅 전략 리서치</h1>
+    <div class="subtitle">류새인 (관장/대표) | 킥복싱 체육관 브랜딩 &amp; 마케팅 기회 분석</div>
+    <div class="date">작성일: 2026-03-31 | Prepared by HIZ (brandrise)</div>
+</div>
+
+<div class="container">
+
+    <!-- 리서치 한계 고지 -->
+    <div class="notice-box">
+        <h3>[리서치 노트] 류새인 관련 공개 정보 한계</h3>
+        <p>
+            "류새인"으로 웹 검색(한국어/영어), 인스타그램, 유튜브, 네이버 등 다양한 소스에서 교차 검색을 수행하였으나,
+            <strong>해당 이름으로 공개된 킥복싱 선수/관장 프로필, SNS 계정, 체육관 정보를 확인할 수 없었습니다.</strong><br><br>
+            본 리서치는 <strong>킥복싱 체육관 시장 분석 + 마케팅 전략 프레임워크</strong>를 중심으로 작성하였으며,
+            상담 시 류새인 관장의 체육관 이름, 위치, SNS 계정 등 기본 정보를 확인한 뒤 업데이트할 수 있도록 구성하였습니다.<br><br>
+            <strong>상담 전 확인 필요 사항:</strong> 체육관명, 위치(지역), 운영 기간, SNS 계정(인스타그램 핸들), 선수 경력 유무, 현재 회원 수 규모
+        </p>
+    </div>
+
+    <!-- Executive Summary -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">대상</div>
+                <div class="sh-title">킥복싱 체육관 (류새인 관장)</div>
+                <div class="sh-sub">킥복싱/격투기 체육관 운영 | 브랜딩 + 마케팅 니즈 추정</div>
+            </div>
+            <div>
+                <div class="sh-label">업종/카테고리</div>
+                <div class="sh-title">스포츠 시설업 (격투기/피트니스)</div>
+                <div class="sh-sub">한국 스포츠산업 매출 81조원 돌파 (2024)</div>
+            </div>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">글로벌 피트니스 시장</div>
+                <div class="kpi-value">$131B</div>
+                <div class="kpi-sub">2032년 $245B 전망</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">아태 성장률</div>
+                <div class="kpi-value">10.6%</div>
+                <div class="kpi-sub">CAGR (2025-2032)</div>
+            </div>
+            <div class="kpi-card kpi-warning">
+                <div class="kpi-label">국내 체육관 마케팅</div>
+                <div class="kpi-value">동네장사</div>
+                <div class="kpi-sub">SNS 찌라시 수준 (FT스포츠)</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">체계적 브랜딩</div>
+                <div class="kpi-value">전무</div>
+                <div class="kpi-sub">대다수 체육관 해당</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                국내 킥복싱/격투기 체육관 시장은 MZ세대 중심으로 급성장 중이나,<br>
+                대다수 체육관의 마케팅이 <span class="hl">'동네 장사' 수준의 SNS 찌라시</span>에 머물러 있어<br>
+                <span class="hl">체계적 브랜딩만으로도 압도적 차별화</span>가 가능한 블루오션임.
+            </div>
+        </div>
+        <div class="summary-bottom">
+            <strong>기회 적합도:</strong> <span class="hl">3.8 / 5.0 (HOLD - 상담 후 재평가)</span> &nbsp;|&nbsp;
+            <strong>추천 Tier:</strong> Tier 2 (월 500~800만원, 4개월) &nbsp;|&nbsp;
+            <strong>Quick Win:</strong> 관장 퍼스널 브랜딩 + 인스타그램 콘텐츠 시스템 구축
+        </div>
+    </div>
+
+    <!-- 핵심 문제점 & 진단 -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 문제점 & 진단 (업계 공통)</h2>
+
+        <h3>1. 킥복싱/격투기 체육관 마케팅의 구조적 문제</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재 상태 (업계 평균)</div>
+                <ul>
+                    <li>SNS는 <strong>일상글 + 키워드 나열형 찌라시</strong></li>
+                    <li>블로그, 인스타, 유튜브 <strong>비체계적 운영</strong></li>
+                    <li>브랜드 아이덴티티 없이 <strong>"동네 체육관"</strong> 수준</li>
+                    <li>관장 퍼스널 브랜드 <strong>활용 전무</strong></li>
+                    <li>퍼포먼스 마케팅(검색광고) <strong>극소수만 진행</strong></li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">이상적 상태</div>
+                <ul>
+                    <li>관장의 선수/지도 경력 기반 <strong>퍼스널 브랜딩</strong></li>
+                    <li>인스타그램 <strong>1만+ 팔로워, 주 3~5회 콘텐츠</strong></li>
+                    <li>유튜브/릴스 <strong>트레이닝 콘텐츠 시리즈화</strong></li>
+                    <li>차별화된 BI/CI + <strong>프리미엄 체육관 포지셔닝</strong></li>
+                    <li>네이버 플레이스 + 검색광고 <strong>상위 노출</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2. 관장 퍼스널 브랜드 = 체육관 브랜드</h3>
+        <div class="diag-note">
+            격투기/킥복싱 체육관에서 <strong>관장의 인지도와 신뢰가 곧 체육관의 브랜드</strong>입니다.
+            관장의 선수 경력, 지도 철학, 라이프스타일이 곧 마케팅 소재이자 차별화 포인트가 됩니다.
+            류새인 관장의 선수/지도 경력이 확인되면 이를 핵심 브랜딩 자산으로 활용해야 합니다.
+        </div>
+
+        <h3>3. MZ세대 격투기 수요 급증 vs 체육관 브랜딩 부재</h3>
+        <div class="diag-note">
+            프로복싱/킥복싱이 MZ세대 사이에서 다이어트 + 스트레스 해소 운동으로 급부상 중이나,
+            대다수 체육관이 이 수요를 <strong>체계적 마케팅으로 포착하지 못하고</strong> 있음.
+            전국 복싱/킥복싱 체육관 추정 2,000개+ 중 체계적 브랜딩을 갖춘 곳은 <strong>극소수</strong>.
+        </div>
+
+        <h3>영역별 진단 요약 (업계 공통)</h3>
+        <table>
+            <tr>
+                <th>영역</th>
+                <th>업계 평균 상태</th>
+                <th>심각도</th>
+                <th>GAP</th>
+            </tr>
+            <tr>
+                <td>인스타그램</td>
+                <td>일상/이벤트 나열, 비정기 운영</td>
+                <td><span class="tag tag-red">Critical</span></td>
+                <td><span class="tag tag-red">매우 큼</span></td>
+            </tr>
+            <tr>
+                <td>유튜브/숏폼</td>
+                <td>미운영 또는 간헐적 업로드</td>
+                <td><span class="tag tag-red">Critical</span></td>
+                <td><span class="tag tag-red">매우 큼</span></td>
+            </tr>
+            <tr>
+                <td>관장 퍼스널 브랜딩</td>
+                <td>활용 전무</td>
+                <td><span class="tag tag-red">Critical</span></td>
+                <td><span class="tag tag-red">매우 큼</span></td>
+            </tr>
+            <tr>
+                <td>BI/CI</td>
+                <td>로고 수준, 브랜드 체계 부재</td>
+                <td><span class="tag tag-red">High</span></td>
+                <td><span class="tag tag-red">큼</span></td>
+            </tr>
+            <tr>
+                <td>네이버 플레이스/SEO</td>
+                <td>기본 등록만, 최적화 미흡</td>
+                <td><span class="tag tag-yellow">Medium</span></td>
+                <td><span class="tag tag-yellow">중간</span></td>
+            </tr>
+            <tr>
+                <td>퍼포먼스 마케팅</td>
+                <td>극소수만 검색광고 진행</td>
+                <td><span class="tag tag-yellow">Medium</span></td>
+                <td><span class="tag tag-yellow">중간</span></td>
+            </tr>
+            <tr>
+                <td>오프라인(전단지/배너)</td>
+                <td>전통적 방식 유지</td>
+                <td><span class="tag tag-gray">Low</span></td>
+                <td><span class="tag tag-green">작음</span></td>
+            </tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>진단 결론:</strong> 킥복싱/격투기 체육관 업계는 마케팅 수준이 전반적으로 낮아,
+            체계적인 브랜딩과 디지털 마케팅을 도입하는 것만으로도 <strong>지역 내 압도적 1위</strong>를 차지할 수 있는 기회가 존재합니다.
+            관장의 퍼스널 브랜드가 곧 체육관 브랜드인 이 업종에서, <strong>류새인 관장의 경력과 스토리</strong>가 핵심 자산이 됩니다.
+        </div>
+    </div>
+
+    <!-- 목차 -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 & 진단</a>
+            <a href="#profile">1. 류새인 프로필 (확인 필요)</a>
+            <a href="#market">2. 킥복싱 체육관 시장 현황</a>
+            <a href="#marketing-trends">3. 체육관 마케팅 트렌드</a>
+            <a href="#success-cases">4. 마케팅 성공 사례 (국내외)</a>
+            <a href="#competitors">5. 경쟁 체육관 분석</a>
+            <a href="#marketing-strategy">6. 마케팅 전략 프레임워크</a>
+            <a href="#swot">7. SWOT 분석</a>
+            <a href="#gap-analysis">8. GAP 분석 & 기회 평가</a>
+            <a href="#quote">9. 3-Tier 견적 초안</a>
+            <a href="#strategy">10. 상담 전략</a>
+        </div>
+    </div>
+
+    <!-- 1. 류새인 프로필 -->
+    <div class="section" id="profile">
+        <h2>1. 류새인 프로필 (상담 시 확인 필요)</h2>
+
+        <div class="callout callout-info">
+            <strong>[미확인]</strong> 웹 검색(한국어 "류새인 킥복싱", 영어 "ryu saein kickboxing" 등 다양한 조합),
+            인스타그램, 유튜브, 네이버 등에서 해당 이름으로 된 킥복싱 선수/관장 정보를 확인하지 못했습니다.
+            아래는 상담 시 확인해야 할 항목입니다.
+        </div>
+
+        <h3>상담 전 확인 필수 항목</h3>
+        <div class="info-grid">
+            <div class="info-label">이름</div>
+            <div class="info-value"><strong>류새인</strong> (대표 또는 관장)</div>
+
+            <div class="info-label">체육관명</div>
+            <div class="info-value"><span class="tag tag-yellow">확인 필요</span></div>
+
+            <div class="info-label">위치(지역)</div>
+            <div class="info-value"><span class="tag tag-yellow">확인 필요</span> - 지역에 따라 경쟁 환경 상이</div>
+
+            <div class="info-label">운영 기간</div>
+            <div class="info-value"><span class="tag tag-yellow">확인 필요</span></div>
+
+            <div class="info-label">선수 경력</div>
+            <div class="info-value"><span class="tag tag-yellow">확인 필요</span> - 퍼스널 브랜딩 핵심 자산</div>
+
+            <div class="info-label">인스타그램</div>
+            <div class="info-value"><span class="tag tag-yellow">확인 필요</span> - 핸들(아이디) 확인</div>
+
+            <div class="info-label">유튜브</div>
+            <div class="info-value"><span class="tag tag-yellow">확인 필요</span></div>
+
+            <div class="info-label">현재 회원 수</div>
+            <div class="info-value"><span class="tag tag-yellow">확인 필요</span></div>
+
+            <div class="info-label">월 매출 규모</div>
+            <div class="info-value"><span class="tag tag-yellow">확인 필요</span> - 견적 산정 기준</div>
+
+            <div class="info-label">현재 마케팅</div>
+            <div class="info-value"><span class="tag tag-yellow">확인 필요</span> - 진행 중인 마케팅 활동</div>
+
+            <div class="info-label">마케팅 니즈</div>
+            <div class="info-value"><span class="tag tag-yellow">확인 필요</span> - 회원 모집? 브랜딩? 확장?</div>
+        </div>
+
+        <div class="source-list">
+            검색 수행: Google 한/영, 네이버, 인스타그램, 유튜브 (2026-03-31)
+        </div>
+    </div>
+
+    <!-- 2. 시장 현황 -->
+    <div class="section" id="market">
+        <h2>2. 킥복싱/격투기 체육관 시장 현황</h2>
+
+        <h3>2-1. 글로벌 피트니스 시장</h3>
+        <table>
+            <tr>
+                <th>지표</th>
+                <th>수치</th>
+                <th>비고</th>
+            </tr>
+            <tr>
+                <td>글로벌 피트니스 클럽 시장 규모 (2024)</td>
+                <td><strong>USD 131.3B</strong></td>
+                <td>Fortune Business Insights</td>
+            </tr>
+            <tr>
+                <td>2032년 전망</td>
+                <td><strong>USD 244.7B</strong></td>
+                <td>CAGR 9.30%</td>
+            </tr>
+            <tr>
+                <td>아시아태평양 성장률</td>
+                <td><strong>10.61% CAGR</strong></td>
+                <td>가장 빠른 성장 지역</td>
+            </tr>
+        </table>
+
+        <h3>2-2. 한국 스포츠산업 현황</h3>
+        <table>
+            <tr>
+                <th>지표</th>
+                <th>수치</th>
+                <th>비고</th>
+            </tr>
+            <tr>
+                <td>한국 스포츠산업 매출액 (2024)</td>
+                <td><strong>81조원+</strong></td>
+                <td>문화체육관광부</td>
+            </tr>
+            <tr>
+                <td>스포츠산업 종사자</td>
+                <td><strong>46만명</strong></td>
+                <td>문화체육관광부</td>
+            </tr>
+            <tr>
+                <td>국내 피트니스센터 수</td>
+                <td><strong>약 9,900개</strong></td>
+                <td>KB금융지주 보고서</td>
+            </tr>
+            <tr>
+                <td>정부 목표 (2028)</td>
+                <td><strong>105조원</strong></td>
+                <td>스포츠산업 시장 규모</td>
+            </tr>
+            <tr>
+                <td>복싱/킥복싱 체육관 추정</td>
+                <td><strong>2,000개+</strong></td>
+                <td>KBM 등록 400+ 외 미등록 포함</td>
+            </tr>
+        </table>
+
+        <h3>2-3. MZ세대 격투기 수요 트렌드</h3>
+        <ul style="font-size: 14px; padding-left: 20px; margin: 12px 0;">
+            <li><strong>다이어트 + 스트레스 해소:</strong> 엔데믹 이후 복싱/킥복싱이 젊은 세대에서 인기 급부상</li>
+            <li><strong>프로모터/관장도 MZ세대 주류:</strong> 전국적으로 복싱체육관이 계속 증가 추세</li>
+            <li><strong>게이미피케이션(Gamification):</strong> 챌린지, 배지 획득 등 동기부여 요소에 반응</li>
+            <li><strong>커뮤니티 기반 운동:</strong> 팀 스포츠, 스튜디오 기반 운동이 2020년 이후 최대 인기</li>
+            <li><strong>맞춤형 운동 제공:</strong> 개인 체형/목표에 맞는 커스텀 프로그램 수요 증가</li>
+        </ul>
+
+        <div class="source-list">
+            출처:
+            <a href="https://www.fortunebusinessinsights.com/health-and-fitness-club-market-108652" target="_blank">Fortune Business Insights (2024)</a>,
+            <a href="https://www.korean-culture.org/koreanet/view.do?seq=1050459" target="_blank">코리아넷뉴스</a>,
+            <a href="https://www.kbfg.com/kbresearch/notice/noticeView.do?noticeId=2000045" target="_blank">KB금융지주</a>,
+            <a href="https://sports.news.nate.com/view/20250312n00116" target="_blank">더팩트 (2025.03.12)</a>,
+            <a href="https://sports.khan.co.kr/article/202502060951003" target="_blank">스포츠경향 (2025.02.06)</a>
+        </div>
+    </div>
+
+    <!-- 3. 체육관 마케팅 트렌드 -->
+    <div class="section" id="marketing-trends">
+        <h2>3. 체육관 마케팅 현황 & 트렌드</h2>
+
+        <h3>3-1. 국내 킥복싱 체육관 마케팅 현황 (문제점)</h3>
+        <div class="callout callout-danger">
+            <strong>FT스포츠 분석 (2023):</strong> "국내 대다수 격투스포츠 체육관들의 수련생 모집을 위한 마케팅이 '동네 장사' 수준에 머무르고 있다.
+            SNS에 게시된 홍보 글도 품위나 격이 있는 내용이라기보다, 키워드만 잔뜩 나열한 단순 '찌라시'들인 경우가 많다."
+        </div>
+
+        <table>
+            <tr>
+                <th>현재 방식</th>
+                <th>문제점</th>
+                <th>개선 방향</th>
+            </tr>
+            <tr>
+                <td>블로그/인스타에 일상글</td>
+                <td>브랜드 정체성 부재</td>
+                <td>콘텐츠 카테고리 시스템화</td>
+            </tr>
+            <tr>
+                <td>키워드 나열형 찌라시</td>
+                <td>신뢰도 저하</td>
+                <td>관장 스토리 + 수련생 후기 콘텐츠</td>
+            </tr>
+            <tr>
+                <td>전단지/명함 배포</td>
+                <td>도달 범위 한정</td>
+                <td>지역 타겟 디지털 광고</td>
+            </tr>
+            <tr>
+                <td>네이버 플레이스 기본 등록</td>
+                <td>최적화 미흡</td>
+                <td>리뷰 관리 + SEO 최적화</td>
+            </tr>
+        </table>
+
+        <h3>3-2. 2025-2026 체육관 마케팅 핵심 트렌드</h3>
+        <table>
+            <tr>
+                <th>트렌드</th>
+                <th>설명</th>
+                <th>적용 방법</th>
+            </tr>
+            <tr>
+                <td><strong>관장 퍼스널 브랜딩</strong></td>
+                <td>사람들은 로고보다 인물에 끌림. 관장이 곧 브랜드</td>
+                <td>관장 일상/훈련/철학 콘텐츠 시리즈</td>
+            </tr>
+            <tr>
+                <td><strong>숏폼 콘텐츠 (릴스/틱톡)</strong></td>
+                <td>빠르고 역동적인 킥복싱은 숏폼에 최적</td>
+                <td>기술 시연, 비포/애프터, 챌린지</td>
+            </tr>
+            <tr>
+                <td><strong>커뮤니티 빌딩</strong></td>
+                <td>운동 동기부여는 커뮤니티에서 옴</td>
+                <td>카카오톡 오픈채팅, 수련생 그룹</td>
+            </tr>
+            <tr>
+                <td><strong>Before/After 콘텐츠</strong></td>
+                <td>체형 변화는 가장 강력한 소셜 프루프</td>
+                <td>수련생 동의 하 변환 콘텐츠 제작</td>
+            </tr>
+            <tr>
+                <td><strong>지역 SEO / 네이버 플레이스</strong></td>
+                <td>체육관 선택 시 네이버 검색이 1순위</td>
+                <td>리뷰 관리 + 블로그 SEO + 사진 최적화</td>
+            </tr>
+            <tr>
+                <td><strong>마이크로 인플루언서 협업</strong></td>
+                <td>팔로워 1K~10K의 진정성 있는 콘텐츠</td>
+                <td>지역 피트니스 인플루언서 무료 체험 제공</td>
+            </tr>
+        </table>
+
+        <div class="source-list">
+            출처:
+            <a href="https://www.ftimes.kr/news/articleView.html?idxno=11337" target="_blank">FT스포츠</a>,
+            <a href="https://www.gymmaster.com/blog/social-media-for-gyms/" target="_blank">GymMaster (2025)</a>,
+            <a href="https://gymdesk.com/blog/social-media-content-ideas-martial-arts-school-owners" target="_blank">Gymdesk</a>,
+            <a href="https://www.exercise.com/grow/how-to-market-a-kickboxing-gym/" target="_blank">Exercise.com (2026)</a>,
+            <a href="https://sparkmembership.com/content-marketing-strategies-for-kickboxing/" target="_blank">Spark Membership</a>
+        </div>
+    </div>
+
+    <!-- 4. 마케팅 성공 사례 -->
+    <div class="section" id="success-cases">
+        <h2>4. 킥복싱/격투기 체육관 마케팅 성공 사례</h2>
+
+        <h3>4-1. 국내 사례</h3>
+        <table>
+            <tr>
+                <th>체육관/브랜드</th>
+                <th>핵심 전략</th>
+                <th>성과</th>
+            </tr>
+            <tr>
+                <td><strong>천기체육관 (CK GYM)</strong></td>
+                <td>관장/코치별 개별 인스타 운영, 지점별 계정 분리, 전문성 콘텐츠</td>
+                <td>수원 지역 다점포 확장 (성대/세류 등), 체계적 코치 브랜딩</td>
+            </tr>
+            <tr>
+                <td><strong>골든챔스 (Golden Champs)</strong></td>
+                <td>격투기 브랜드화 + 이커머스(격투기 용품 판매) 연계</td>
+                <td>격투기 용품 전문 브랜드로 인지도 구축, 서울 성동구 거점</td>
+            </tr>
+            <tr>
+                <td><strong>채니쌤 (스포츠 강사)</strong></td>
+                <td>10년차 스포츠 강사 퍼스널 브랜딩, 인스타그램 9년 운영</td>
+                <td>다양한 수익화 파이프라인 구축, 온라인 클래스 진출</td>
+            </tr>
+        </table>
+
+        <h3>4-2. 해외 사례 / 글로벌 트렌드</h3>
+        <table>
+            <tr>
+                <th>전략</th>
+                <th>설명</th>
+                <th>적용 포인트</th>
+            </tr>
+            <tr>
+                <td><strong>파이터 Daily Routine 시리즈</strong></td>
+                <td>인스타그램에서 파이터의 일일 훈련, 식단, 마인드셋을 시리즈로 공유</td>
+                <td>관장의 "하루" 콘텐츠 시리즈화</td>
+            </tr>
+            <tr>
+                <td><strong>유튜브 Long-form 튜토리얼</strong></td>
+                <td>기술 튜토리얼, 인터뷰, 풀 트레이닝 세션 공유로 권위 구축</td>
+                <td>킥복싱 기초/중급 기술 강좌 채널</td>
+            </tr>
+            <tr>
+                <td><strong>틱톡 바이럴 챌린지</strong></td>
+                <td>짧고 임팩트 있는 영상으로 젊은 층 유입, 대규모 예산 불필요</td>
+                <td>킥복싱 콤비네이션 챌린지, 체형 변화 챌린지</td>
+            </tr>
+            <tr>
+                <td><strong>커뮤니티 이벤트 참여</strong></td>
+                <td>지역 페스티벌/마라톤 등에서 체육관 홍보, 체험 세션 제공</td>
+                <td>지역 축제 부스, 무료 체험 이벤트</td>
+            </tr>
+            <tr>
+                <td><strong>마이크로 인플루언서 활용</strong></td>
+                <td>팔로워 1K~10K의 피트니스 인플루언서에게 무료 수업 제공</td>
+                <td>지역 피트니스/라이프스타일 인플루언서 협업</td>
+            </tr>
+        </table>
+
+        <div class="source-list">
+            출처:
+            <a href="https://ckgym.com/" target="_blank">천기체육관 공식 웹사이트</a>,
+            <a href="https://www.instagram.com/ckgym_master/" target="_blank">천기체육관 인스타그램</a>,
+            <a href="https://goldenchamps.co.kr/" target="_blank">골든챔스</a>,
+            <a href="https://gymdesk.com/blog/social-media-content-ideas-martial-arts-school-owners" target="_blank">Gymdesk (89 Content Ideas)</a>,
+            <a href="https://www.nickjoel.com/content-domination-fomula" target="_blank">Nick Joel - Content Domination</a>,
+            <a href="https://punchitgym.com/the-art-of-self-marketing-for-young-fighters-punching-your-way-to-success/" target="_blank">PunchIt Gym</a>
+        </div>
+    </div>
+
+    <!-- 5. 경쟁 체육관 분석 -->
+    <div class="section" id="competitors">
+        <h2>5. 경쟁 체육관 분석 (일반 프레임)</h2>
+
+        <div class="callout callout-info">
+            <strong>[참고]</strong> 류새인 관장의 체육관 위치(지역)가 확인되면, 해당 지역 반경 내 경쟁 체육관을 구체적으로 분석할 수 있습니다.
+            아래는 업계 대표 벤치마크 체육관과 일반적인 경쟁 구도를 정리한 것입니다.
+        </div>
+
+        <h3>5-1. 벤치마크 체육관 (전국 규모)</h3>
+        <table>
+            <tr>
+                <th>체육관/브랜드</th>
+                <th>특징</th>
+                <th>마케팅 강점</th>
+                <th>약점</th>
+            </tr>
+            <tr>
+                <td><strong>천기체육관 (CK GYM)</strong></td>
+                <td>수원 거점, 킥복싱/주짓수/MMA, 다점포</td>
+                <td>코치별 인스타 운영, 웹사이트 완비</td>
+                <td>콘텐츠 다양성 부족, 유튜브 미비</td>
+            </tr>
+            <tr>
+                <td><strong>정진체육관</strong></td>
+                <td>무에타이/킥복싱/복싱/크로스핏</td>
+                <td>페이스북 커뮤니티 활성</td>
+                <td>인스타/유튜브 체계 부족</td>
+            </tr>
+            <tr>
+                <td><strong>골든챔스</strong></td>
+                <td>격투기 + 용품 브랜드 통합</td>
+                <td>이커머스 연계, 브랜드화 선구자</td>
+                <td>체육관보다 용품 중심</td>
+            </tr>
+            <tr>
+                <td><strong>일반 동네 킥복싱 체육관</strong></td>
+                <td>관장 1인 운영, 지역 밀착형</td>
+                <td>관장 인맥 기반 입소문</td>
+                <td>디지털 마케팅 전무, 찌라시 수준</td>
+            </tr>
+        </table>
+
+        <h3>5-2. 경쟁 구도 분석 (지역 확인 후 업데이트 필요)</h3>
+        <table>
+            <tr>
+                <th>경쟁 유형</th>
+                <th>대상</th>
+                <th>위협 수준</th>
+            </tr>
+            <tr>
+                <td>직접 경쟁 (킥복싱 체육관)</td>
+                <td>반경 3km 내 킥복싱/무에타이 체육관</td>
+                <td><span class="tag tag-red">높음</span></td>
+            </tr>
+            <tr>
+                <td>간접 경쟁 (격투기 전반)</td>
+                <td>복싱체육관, 주짓수 도장, MMA 체육관</td>
+                <td><span class="tag tag-yellow">중간</span></td>
+            </tr>
+            <tr>
+                <td>대체재 (일반 피트니스)</td>
+                <td>크로스핏, 헬스장, 필라테스</td>
+                <td><span class="tag tag-yellow">중간</span></td>
+            </tr>
+            <tr>
+                <td>온라인 대체재</td>
+                <td>유튜브 홈트, 피트니스 앱</td>
+                <td><span class="tag tag-green">낮음</span></td>
+            </tr>
+        </table>
+
+        <div class="source-list">
+            출처:
+            <a href="https://ckgym.com/" target="_blank">천기체육관</a>,
+            <a href="https://www.facebook.com/jungjincombat/" target="_blank">정진체육관 페이스북</a>,
+            <a href="https://goldenchamps.co.kr/" target="_blank">골든챔스</a>
+        </div>
+    </div>
+
+    <!-- 6. 마케팅 전략 프레임워크 -->
+    <div class="section" id="marketing-strategy">
+        <h2>6. 킥복싱 체육관 마케팅 전략 프레임워크</h2>
+
+        <h3>6-1. 콘텐츠 카테고리 시스템 (인스타그램 기준)</h3>
+        <table>
+            <tr>
+                <th>카테고리</th>
+                <th>비율</th>
+                <th>콘텐츠 예시</th>
+                <th>목적</th>
+            </tr>
+            <tr>
+                <td><strong>관장 퍼스널</strong></td>
+                <td>30%</td>
+                <td>훈련 일상, 철학, 선수 시절 스토리, Q&A</td>
+                <td>신뢰 구축, 팬덤 형성</td>
+            </tr>
+            <tr>
+                <td><strong>기술/교육</strong></td>
+                <td>25%</td>
+                <td>킥복싱 기술 튜토리얼, 콤비네이션 시연</td>
+                <td>전문성 입증, 검색 유입</td>
+            </tr>
+            <tr>
+                <td><strong>수련생 스토리</strong></td>
+                <td>20%</td>
+                <td>비포/애프터, 인터뷰, 후기, 대회 참가</td>
+                <td>소셜 프루프, 전환 유도</td>
+            </tr>
+            <tr>
+                <td><strong>체육관 분위기</strong></td>
+                <td>15%</td>
+                <td>수업 현장, 시설, 팀 활동, 이벤트</td>
+                <td>진입 장벽 낮춤</td>
+            </tr>
+            <tr>
+                <td><strong>프로모션</strong></td>
+                <td>10%</td>
+                <td>체험 수업 안내, 등록 이벤트, 챌린지</td>
+                <td>직접 전환</td>
+            </tr>
+        </table>
+
+        <h3>6-2. 채널별 전략</h3>
+        <div class="channel-grid">
+            <div class="channel-card">
+                <div class="ch-name">Instagram</div>
+                <div class="ch-stat">핵심 채널</div>
+                <div class="ch-note">릴스 주 3~5회 + 스토리 매일 + 피드 주 2회</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">YouTube</div>
+                <div class="ch-stat">권위 채널</div>
+                <div class="ch-note">기술 튜토리얼 + 관장 브이로그 + 수련생 다큐</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">Naver</div>
+                <div class="ch-stat">검색 채널</div>
+                <div class="ch-note">플레이스 최적화 + 블로그 SEO + 리뷰 관리</div>
+            </div>
+        </div>
+
+        <h3>6-3. 콘텐츠 시리즈 아이디어 (89개 아이디어 중 핵심 선별)</h3>
+        <ul style="font-size: 14px; padding-left: 20px; margin: 12px 0;">
+            <li><strong>"관장의 하루"</strong> - 새벽 훈련부터 수업까지 일일 루틴 (릴스)</li>
+            <li><strong>"킥복싱 101"</strong> - 기초 기술 시리즈 (유튜브 + 릴스 숏버전)</li>
+            <li><strong>"30일 챌린지"</strong> - 초보자 30일 변화 과정 다큐 (유튜브)</li>
+            <li><strong>"수련생 인터뷰"</strong> - 왜 시작했고, 어떻게 변했나 (릴스)</li>
+            <li><strong>"킥복싱 vs 일반운동"</strong> - 칼로리 소모, 근력 변화 비교 (카루셀)</li>
+            <li><strong>"미트 치는 소리 ASMR"</strong> - 임팩트 있는 타격 사운드 (릴스/틱톡)</li>
+            <li><strong>"관장에게 물어봐"</strong> - 팔로워 질문에 답하는 Q&A (스토리/라이브)</li>
+            <li><strong>"이 주의 콤비네이션"</strong> - 매주 새로운 기술 조합 (릴스)</li>
+        </ul>
+
+        <div class="source-list">
+            출처:
+            <a href="https://gymdesk.com/blog/social-media-content-ideas-martial-arts-school-owners" target="_blank">Gymdesk - 89 Social Media Content Ideas</a>,
+            <a href="https://desygner.com/blog/industry/how-to-market-kickboxing-business" target="_blank">Desygner - Marketing Strategies for Kickboxing</a>,
+            <a href="https://membersolutions.com/how-to-brand-a-martial-arts-studio-for-long-term-success/" target="_blank">MemberSolutions - Branding Guide</a>
+        </div>
+    </div>
+
+    <!-- 7. SWOT 분석 -->
+    <div class="section" id="swot">
+        <h2>7. SWOT 분석 (킥복싱 체육관 일반)</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>S (Strengths) - 강점</h4>
+                <ul>
+                    <li>킥복싱은 시각적으로 역동적 -- SNS 콘텐츠 최적</li>
+                    <li>관장의 선수 경력이 곧 브랜드 자산</li>
+                    <li>다이어트 + 스트레스 해소 + 호신술의 복합 가치</li>
+                    <li>회원과의 밀접한 1:1 관계 (충성도 높음)</li>
+                    <li>경쟁사 대비 마케팅 진입장벽 낮음 (아무도 안 하므로)</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>W (Weaknesses) - 약점</h4>
+                <ul>
+                    <li>류새인 관장 온라인 존재감 현재 미확인</li>
+                    <li>업계 전반 마케팅 인프라 부재</li>
+                    <li>체육관 매출 규모 대비 마케팅 예산 한정적일 수 있음</li>
+                    <li>"격투기 = 무섭다"는 대중 인식 장벽</li>
+                    <li>관장 1인 의존 구조 -- 콘텐츠 지속성 리스크</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>O (Opportunities) - 기회</h4>
+                <ul>
+                    <li>MZ세대 격투기 수요 급증 (복싱/킥복싱 트렌드)</li>
+                    <li>업계 마케팅 수준이 매우 낮아 차별화 용이</li>
+                    <li>숏폼 콘텐츠 = 킥복싱의 역동성과 완벽 매칭</li>
+                    <li>여성 킥복싱 수요 증가 (다이어트 목적)</li>
+                    <li>퍼스널 브랜딩으로 온라인 클래스/굿즈 등 확장 가능</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>T (Threats) - 위협</h4>
+                <ul>
+                    <li>피트니스 시장 경쟁 심화 (크로스핏, 필라테스 등)</li>
+                    <li>프랜차이즈형 대형 체육관의 지역 진출</li>
+                    <li>유튜브/앱 기반 홈트레이닝 대안 증가</li>
+                    <li>격투기 관련 부정적 뉴스 리스크</li>
+                    <li>경기침체 시 체육관 등록 감소 가능</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. GAP 분석 & 기회 평가 -->
+    <div class="section" id="gap-analysis">
+        <h2>8. GAP 분석 & 기회 평가</h2>
+
+        <h3>기회 적합도 점수 (5점 만점)</h3>
+        <div class="score-bar">
+            <div class="label">시장 성장성</div>
+            <div class="bar"><div class="fill fill-high" style="width: 90%;"></div></div>
+            <div class="score">4.5</div>
+        </div>
+        <div class="score-bar">
+            <div class="label">마케팅 GAP 크기</div>
+            <div class="bar"><div class="fill fill-high" style="width: 96%;"></div></div>
+            <div class="score">4.8</div>
+        </div>
+        <div class="score-bar">
+            <div class="label">HIZ 역량 적합도</div>
+            <div class="bar"><div class="fill fill-high" style="width: 90%;"></div></div>
+            <div class="score">4.5</div>
+        </div>
+        <div class="score-bar">
+            <div class="label">예산 규모 (추정)</div>
+            <div class="bar"><div class="fill fill-low" style="width: 50%;"></div></div>
+            <div class="score">2.5</div>
+        </div>
+        <div class="score-bar">
+            <div class="label">정보 확인도</div>
+            <div class="bar"><div class="fill fill-low" style="width: 40%;"></div></div>
+            <div class="score">2.0</div>
+        </div>
+
+        <div class="verdict">
+            <div class="label">기회 적합도 종합 점수</div>
+            <div class="value">3.7 / 5.0</div>
+            <div class="desc">HOLD - 상담 후 류새인 관장 정보 확인 시 GO 전환 가능</div>
+        </div>
+
+        <h3>판단 근거</h3>
+        <table>
+            <tr>
+                <th>긍정 요인 (GO 방향)</th>
+                <th>보류 요인 (HOLD 방향)</th>
+            </tr>
+            <tr>
+                <td>킥복싱 시장 MZ세대 중심 급성장</td>
+                <td>류새인 관장/체육관 기본 정보 미확인</td>
+            </tr>
+            <tr>
+                <td>업계 마케팅 수준 극히 낮아 차별화 용이</td>
+                <td>체육관 매출 규모/마케팅 예산 미확인</td>
+            </tr>
+            <tr>
+                <td>숏폼 콘텐츠 + 퍼스널 브랜딩 = HIZ 핵심 역량</td>
+                <td>온라인 존재감(SNS) 현재 미확인</td>
+            </tr>
+            <tr>
+                <td>관장 퍼스널 브랜드 구축 기회 큼</td>
+                <td>체육관 단일 매장 vs 다점포 여부 미확인</td>
+            </tr>
+        </table>
+
+        <div class="callout">
+            <strong>GO 전환 조건:</strong> 상담 시 아래 3가지 중 2가지 이상 확인되면 GO로 전환합니다.
+            <br>1) 관장 선수 경력이 브랜딩 자산으로 활용 가능 (대회 입상, 지도 경력 5년+ 등)
+            <br>2) 월 매출 2,000만원+ 또는 회원 수 100명+ (마케팅 투자 여력)
+            <br>3) 마케팅/브랜딩에 대한 관장의 투자 의지 확인
+        </div>
+    </div>
+
+    <!-- 9. 3-Tier 견적 초안 -->
+    <div class="section" id="quote">
+        <h2>9. 3-Tier 견적 초안</h2>
+
+        <div class="callout callout-info">
+            <strong>[참고]</strong> 체육관 업종 특성상, 일반 기업 대비 마케팅 예산이 제한적일 수 있습니다.
+            아래 견적은 <strong>체육관 규모에 맞춘 맞춤형 가격</strong>으로 설계되었습니다.
+        </div>
+
+        <div class="tier-cards">
+            <div class="tier-card">
+                <h4>Tier 1: Foundation</h4>
+                <div class="price">350만원</div>
+                <div class="duration">일시불 / 3주 소요</div>
+                <ul>
+                    <li>브랜드 진단 리포트</li>
+                    <li>관장 퍼스널 브랜드 전략 수립</li>
+                    <li>콘텐츠 카테고리 시스템 설계</li>
+                    <li>인스타그램 채널 가이드라인</li>
+                    <li>네이버 플레이스 최적화 가이드</li>
+                    <li>경쟁 체육관 분석 (지역 반경)</li>
+                    <li>3개월 실행 로드맵</li>
+                </ul>
+            </div>
+            <div class="tier-card recommended">
+                <div class="tier-badge">추천</div>
+                <h4>Tier 2: Build</h4>
+                <div class="price">월 500~800만원</div>
+                <div class="duration">4개월 계약</div>
+                <ul>
+                    <li>Tier 1 전략 수립 포함</li>
+                    <li>BI/CI 리뉴얼 (로고, 톤앤매너)</li>
+                    <li>인스타그램 운영 대행 (월 12~16건)</li>
+                    <li>릴스 콘텐츠 제작 (월 8건)</li>
+                    <li>관장 퍼스널 콘텐츠 촬영/편집</li>
+                    <li>네이버 플레이스 최적화 + 리뷰 관리</li>
+                    <li>월간 KPI 리뷰/리포팅</li>
+                    <li>지역 타겟 퍼포먼스 광고 운영</li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>Tier 3: Premium</h4>
+                <div class="price">월 1,000~1,500만원</div>
+                <div class="duration">6개월 계약</div>
+                <ul>
+                    <li>Tier 2 전체 포함</li>
+                    <li>유튜브 채널 구축 + 콘텐츠 제작 (월 4건)</li>
+                    <li>관장 퍼스널 브랜딩 풀 패키지</li>
+                    <li>PR/미디어 노출 (월 2건+)</li>
+                    <li>바이럴 캠페인 기획/실행</li>
+                    <li>수련생 리크루팅 퍼포먼스 광고</li>
+                    <li>커뮤니티 빌딩 + CRM 구축</li>
+                    <li>온라인 클래스/굿즈 확장 컨설팅</li>
+                    <li>데이터 대시보드 구축</li>
+                </ul>
+            </div>
+        </div>
+        <p style="font-size: 12px; color: var(--text-light); text-align: center;">
+            * 상기 금액은 VAT 별도 기준이며, 체육관 규모/위치/니즈에 따라 조정 가능합니다.
+        </p>
+    </div>
+
+    <!-- 10. 상담 전략 -->
+    <div class="section" id="strategy">
+        <h2>10. 상담 전략</h2>
+
+        <h3>핵심 레버리지 문장</h3>
+        <div class="leverage-box">
+            <div style="font-size: 13px; opacity: 0.7;">ONE SENTENCE LEVERAGE</div>
+            <div class="quote">
+                "지금 킥복싱 시장은 MZ세대 중심으로 폭발적으로 성장하고 있는데,<br>
+                대다수 체육관은 아직 '동네 장사' 수준의 마케팅에 머물러 있습니다.<br>
+                관장님의 경력과 전문성을 체계적으로 브랜딩하면,<br>
+                3개월 내 지역 내 압도적 1위 체육관으로 포지셔닝할 수 있습니다."
+            </div>
+        </div>
+
+        <h3>상담 흐름 시나리오</h3>
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="step-num">STEP 1</div>
+                <div class="step-title">기본 정보 확인</div>
+                <div class="step-desc">체육관명, 위치, 운영 기간, 현재 회원 수, SNS 현황</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 2</div>
+                <div class="step-title">관장 경력 파악</div>
+                <div class="step-desc">선수 경력, 대회 입상, 지도 자격증, 특이 이력</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 3</div>
+                <div class="step-title">업계 현실 공유</div>
+                <div class="step-desc">FT스포츠 기사 인용, 동네장사 vs 브랜드 비교</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 4</div>
+                <div class="step-title">기회 제시</div>
+                <div class="step-desc">MZ세대 트렌드, 경쟁사 부재, Quick Win 시나리오</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 5</div>
+                <div class="step-title">Tier 2 추천</div>
+                <div class="step-desc">4개월 내 가시적 성과 약속, 단계적 확대 제안</div>
+            </div>
+        </div>
+
+        <h3>예상 반론 & 대응</h3>
+        <table>
+            <tr>
+                <th>예상 반론</th>
+                <th>대응 전략</th>
+            </tr>
+            <tr>
+                <td>"체육관 규모가 작아서 마케팅이 필요한가?"</td>
+                <td>"오히려 소규모일수록 관장님의 퍼스널 브랜드가 곧 체육관 브랜드입니다. 대형 체육관이 할 수 없는 '관장의 진정성'이 가장 강력한 마케팅 무기입니다."</td>
+            </tr>
+            <tr>
+                <td>"입소문으로 충분히 운영되고 있는데?"</td>
+                <td>"현재 입소문이 잘 되고 있다면, 그것을 디지털로 증폭시키는 것입니다. 네이버 검색 + 인스타로 유입되는 신규 회원이 월 10명만 늘어도 연 매출 1,200만원+ 증가입니다."</td>
+            </tr>
+            <tr>
+                <td>"마케팅 예산이 부담됩니다"</td>
+                <td>"Tier 1 진단만으로도 3개월 실행 로드맵을 드립니다. 350만원으로 방향을 잡고, 관장님이 직접 실행하는 것도 가능합니다. 이후 성과가 나오면 Tier 2로 확대하시면 됩니다."</td>
+            </tr>
+            <tr>
+                <td>"SNS 직접 할 수 있지 않나?"</td>
+                <td>"직접 하시면 가장 좋습니다. 하지만 콘텐츠 '전략'과 '시스템'이 없으면 3개월 안에 멈추게 됩니다. 저희가 시스템을 만들어드리면, 이후에는 관장님이 자체 운영도 가능합니다."</td>
+            </tr>
+            <tr>
+                <td>"다른 체육관도 SNS 하는데 효과 없던데?"</td>
+                <td>"그것이 바로 '찌라시'와 '브랜딩'의 차이입니다. 키워드만 나열하는 찌라시가 아니라, 관장님의 전문성과 수련생 스토리를 체계적으로 보여주는 브랜드 콘텐츠는 완전히 다른 결과를 만듭니다."</td>
+            </tr>
+        </table>
+
+        <h3>상담 시 핵심 확인 사항 체크리스트</h3>
+        <table>
+            <tr>
+                <th>항목</th>
+                <th>확인 내용</th>
+                <th>중요도</th>
+            </tr>
+            <tr>
+                <td>체육관 기본 정보</td>
+                <td>체육관명, 위치, 운영 기간, 시설 규모</td>
+                <td><span class="tag tag-red">필수</span></td>
+            </tr>
+            <tr>
+                <td>관장 경력</td>
+                <td>선수 경력, 대회 입상, 지도 자격증, 특이 이력</td>
+                <td><span class="tag tag-red">필수</span></td>
+            </tr>
+            <tr>
+                <td>현재 회원 현황</td>
+                <td>회원 수, 월 신규/이탈, 핵심 고객층 (연령/성별)</td>
+                <td><span class="tag tag-red">필수</span></td>
+            </tr>
+            <tr>
+                <td>SNS 현황</td>
+                <td>인스타그램 핸들, 팔로워 수, 유튜브 유무</td>
+                <td><span class="tag tag-red">필수</span></td>
+            </tr>
+            <tr>
+                <td>매출/수익</td>
+                <td>월 매출 규모, 마케팅 예산 가능 범위</td>
+                <td><span class="tag tag-yellow">중요</span></td>
+            </tr>
+            <tr>
+                <td>마케팅 경험</td>
+                <td>이전 마케팅 시도 경험, 결과</td>
+                <td><span class="tag tag-yellow">중요</span></td>
+            </tr>
+            <tr>
+                <td>목표</td>
+                <td>회원 수 목표, 확장 계획, 브랜딩 목적</td>
+                <td><span class="tag tag-yellow">중요</span></td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>본 문서는 HIZ (brandrise) 내부 상담 준비용으로 작성되었습니다.</p>
+    <p>Confidential - For Internal Use Only</p>
+    <p style="margin-top: 12px;">HIZ | brandrise by HIZ | 2026</p>
+</div>
+
+</body>
+</html>
