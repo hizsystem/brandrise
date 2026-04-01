@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>프랜비 브랜드 런칭 & 플랫폼 전략 견적서 — 브랜드라이즈 by HIZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0D0D0D;
+      --white: #FFFFFF;
+      --bg: #F7F6F2;
+      --accent: #2D8F5E;
+      --accent-light: #EEFBF3;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-500: #6B7280;
+      --gray-700: #374151;
+      --text: #111827;
+    }
+    body {
+      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 48px; }
+
+    /* HERO */
+    .hero { background: var(--black); color: var(--white); padding: 100px 0 80px; }
+    .hero .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: 52px; font-weight: 900; line-height: 1.15;
+      letter-spacing: -0.025em; margin-bottom: 28px;
+    }
+    .hero h1 em { color: var(--accent); font-style: normal; }
+    .hero .sub {
+      font-size: 16px; color: rgba(255,255,255,0.55);
+      font-weight: 300; max-width: 520px; line-height: 1.85;
+    }
+    .hero-meta {
+      display: flex; gap: 56px; margin-top: 64px;
+      padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-meta-item .k {
+      font-size: 10px; letter-spacing: 0.12em; color: rgba(255,255,255,0.35);
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .hero-meta-item .v { font-size: 14px; font-weight: 600; }
+
+    /* SECTIONS */
+    section { padding: 88px 0; }
+    .sec-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 14px;
+    }
+    h2 {
+      font-size: 36px; font-weight: 900; letter-spacing: -0.025em;
+      line-height: 1.25; margin-bottom: 16px; color: var(--black);
+    }
+    .sec-desc {
+      font-size: 15px; color: var(--gray-500); max-width: 580px;
+      line-height: 1.85; margin-bottom: 52px;
+    }
+    hr { border: none; border-top: 1px solid var(--gray-200); }
+
+    /* DIRECTION CARDS */
+    .dir-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 44px; }
+    .dir-card {
+      background: var(--white); border-radius: 14px; padding: 28px;
+      border: 2px solid var(--gray-200); position: relative;
+    }
+    .dir-card.rec { border-color: var(--accent); }
+    .dir-card .rec-tag {
+      position: absolute; top: -11px; left: 20px;
+      background: var(--accent); color: white;
+      font-size: 10px; font-weight: 800; letter-spacing: 0.08em;
+      padding: 3px 12px; border-radius: 20px;
+    }
+    .dir-card .dt { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+    .dir-card .dh { font-size: 16px; font-weight: 800; color: var(--black); margin-bottom: 8px; line-height: 1.35; }
+    .dir-card .dd { font-size: 13px; color: var(--gray-500); line-height: 1.7; }
+    .dir-card .dr { font-size: 12px; color: #DC2626; margin-top: 12px; font-weight: 600; }
+    .dir-card .dp { font-size: 12px; color: var(--accent); margin-top: 4px; font-weight: 600; }
+
+    /* URGENCY GRID */
+    .urgency-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 44px; }
+    .u-card {
+      background: var(--white); border-radius: 14px; padding: 30px;
+      border: 1px solid var(--gray-200);
+    }
+    .u-card .num {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.12em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .u-card .ct { font-size: 14px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+    .u-card .cd { font-size: 13px; color: var(--gray-500); line-height: 1.75; }
+    .u-card.dark {
+      background: var(--black); border-color: var(--black);
+      grid-column: 1 / -1;
+    }
+    .u-card.dark .num { color: rgba(255,255,255,0.35); }
+    .u-card.dark .ct { color: var(--white); }
+    .u-card.dark .cd { color: rgba(255,255,255,0.55); }
+    .u-card.dark em { color: #6EE7B7; font-style: normal; font-weight: 700; }
+
+    /* GAP TABLE */
+    .gap-wrap { margin-top: 36px; border-radius: 14px; overflow: hidden; border: 1px solid var(--gray-200); }
+    .gap-table { width: 100%; border-collapse: collapse; }
+    .gap-table thead tr { background: var(--black); }
+    .gap-table th {
+      padding: 16px 22px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; color: rgba(255,255,255,0.6);
+      text-align: left; text-transform: uppercase;
+    }
+    .gap-table td {
+      padding: 17px 22px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); vertical-align: top; line-height: 1.65;
+    }
+    .gap-table tr:last-child td { border-bottom: none; }
+    .gap-table tr:nth-child(even) td { background: var(--gray-100); }
+    .gap-table td strong { color: var(--black); font-weight: 700; display: block; margin-bottom: 2px; }
+    .badge {
+      display: inline-block; font-size: 10px; font-weight: 800;
+      padding: 3px 11px; border-radius: 20px; letter-spacing: 0.05em;
+    }
+    .b-red { background: #FEF2F2; color: #DC2626; }
+    .b-orange { background: #FFF7ED; color: #EA580C; }
+    .b-green { background: #ECFDF5; color: #059669; }
+    .b-blue { background: #EBF4FF; color: #2563EB; }
+
+    /* TIER OVERVIEW */
+    .tier-bg { background: var(--black); padding: 88px 0; }
+    .tier-bg h2 { color: var(--white); }
+    .tier-bg .sec-label { color: rgba(255,255,255,0.35); }
+    .tier-bg .sec-desc { color: rgba(255,255,255,0.45); }
+    .tier-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 52px; }
+    .t-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px; padding: 38px 30px;
+      position: relative;
+    }
+    .t-card.rec { background: var(--accent); border-color: var(--accent); }
+    .rec-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--white); color: var(--accent);
+      font-size: 10px; font-weight: 900; letter-spacing: 0.12em;
+      padding: 4px 16px; border-radius: 20px; text-transform: uppercase; white-space: nowrap;
+    }
+    .t-name {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 10px;
+    }
+    .t-title { font-size: 20px; font-weight: 800; color: var(--white); line-height: 1.3; margin-bottom: 28px; }
+    .t-price { font-size: 40px; font-weight: 900; color: var(--white); letter-spacing: -0.03em; }
+    .t-price span { font-size: 18px; font-weight: 600; }
+    .t-period { font-size: 12px; color: rgba(255,255,255,0.4); margin: 6px 0 28px; }
+    .t-feats { list-style: none; }
+    .t-feat {
+      font-size: 13px; color: rgba(255,255,255,0.6);
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .t-feat:last-child { border-bottom: none; }
+    .t-feat::before { content: "\2192"; color: rgba(255,255,255,0.3); flex-shrink: 0; margin-top: 1px; }
+    .t-feat.on { color: var(--white); font-weight: 500; }
+    .t-feat.on::before { color: rgba(255,255,255,0.7); }
+    .t-feat.off { opacity: 0.25; }
+
+    /* DETAIL */
+    .det { padding: 88px 0; border-bottom: 1px solid var(--gray-200); }
+    .det:last-of-type { border-bottom: none; }
+    .det-head {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 48px; margin-bottom: 52px;
+    }
+    .det-head-l { flex: 1; }
+    .det-head-l h2 { margin-bottom: 14px; }
+    .price-box {
+      background: var(--black); color: var(--white);
+      border-radius: 18px; padding: 30px 40px; text-align: right; flex-shrink: 0;
+    }
+    .price-box .pl { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; margin-bottom: 8px; }
+    .price-box .pa { font-size: 34px; font-weight: 900; letter-spacing: -0.03em; }
+    .price-box .ps { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 4px; }
+
+    .dblock { background: var(--white); border-radius: 14px; border: 1px solid var(--gray-200); overflow: hidden; margin-bottom: 14px; }
+    .dblock-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 24px; background: var(--gray-100); border-bottom: 1px solid var(--gray-200);
+    }
+    .dblock-head .bt { font-size: 14px; font-weight: 700; color: var(--black); }
+    .dblock-head .bp { font-size: 14px; font-weight: 800; color: var(--accent); }
+    .dtable { width: 100%; border-collapse: collapse; }
+    .dtable td {
+      padding: 14px 24px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); vertical-align: top; line-height: 1.7;
+    }
+    .dtable tr:last-child td { border-bottom: none; }
+    .dtable td:first-child { font-weight: 600; color: var(--black); width: 190px; white-space: nowrap; }
+    .dtable td:last-child { color: var(--gray-500); }
+
+    .total-bar {
+      background: var(--black); color: var(--white); padding: 26px 36px;
+      border-radius: 14px; display: flex; align-items: center;
+      justify-content: space-between; margin-top: 24px;
+    }
+    .total-bar .tl { font-size: 13px; color: rgba(255,255,255,0.5); }
+    .total-bar .ts { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+    .total-bar .ta { font-size: 38px; font-weight: 900; letter-spacing: -0.03em; }
+
+    .info-box {
+      background: var(--accent-light); border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0; padding: 22px 28px; margin-top: 20px;
+      font-size: 13px; color: var(--gray-700); line-height: 1.8;
+    }
+    .info-box strong { color: var(--accent); }
+
+    /* COMPARE */
+    .cmp-wrap { margin-top: 44px; border-radius: 14px; overflow: hidden; border: 1px solid var(--gray-200); }
+    .cmp-table { width: 100%; border-collapse: collapse; background: var(--white); }
+    .cmp-table th {
+      padding: 18px 24px; font-size: 13px; font-weight: 700;
+      text-align: center; border-bottom: 2px solid var(--gray-200);
+      background: var(--gray-100);
+    }
+    .cmp-table th:first-child { text-align: left; }
+    .cmp-table th.hi { color: var(--accent); background: var(--accent-light); }
+    .cmp-table td {
+      padding: 14px 24px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); text-align: center; color: var(--gray-500);
+    }
+    .cmp-table td:first-child { text-align: left; color: var(--text); font-weight: 500; }
+    .cmp-table .ck { color: var(--accent); font-weight: 800; font-size: 15px; }
+    .cmp-table .no { color: var(--gray-200); }
+    .cmp-table .sum-row td {
+      font-weight: 800; font-size: 15px; color: var(--black);
+      padding: 20px 24px; background: var(--gray-100);
+      border-top: 2px solid var(--gray-200); border-bottom: none;
+    }
+    .cmp-table .sum-row td.hi { color: var(--accent); background: var(--accent-light); }
+
+    /* FOOTER */
+    .footer { background: var(--black); color: rgba(255,255,255,0.4); padding: 72px 0; text-align: center; }
+    .footer .brand { font-size: 20px; font-weight: 900; color: var(--white); margin-bottom: 6px; letter-spacing: -0.02em; }
+    .footer .tag { font-size: 13px; margin-bottom: 36px; }
+    .footer .meta { font-size: 12px; line-height: 2.2; }
+
+    @media print {
+      body { background: var(--white); font-size: 11px; }
+      .container { max-width: 100%; padding: 0 32px; }
+      .hero { padding: 60px 0 50px; }
+      .hero h1 { font-size: 38px; }
+      section { padding: 48px 0; }
+      .det { padding: 48px 0; }
+      .tier-bg { padding: 48px 0; }
+      .hero, .tier-bg, .footer, .u-card.dark, .price-box, .total-bar, .gap-table thead tr, .dblock-head {
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+      }
+      .urgency-grid { gap: 8px; }
+      .dir-grid { gap: 8px; }
+      .u-card { padding: 20px; }
+      .tier-cards { gap: 10px; }
+      .t-card { padding: 24px 20px; }
+      .t-price { font-size: 30px; }
+      .det-head { gap: 24px; margin-bottom: 32px; }
+      .price-box { padding: 20px 28px; }
+      .price-box .pa { font-size: 26px; }
+      .total-bar .ta { font-size: 28px; }
+      .sec-desc { margin-bottom: 32px; }
+      h2 { font-size: 28px; }
+      .hero { page-break-after: always; }
+      .tier-bg { page-break-before: always; page-break-after: always; }
+      .det { page-break-inside: avoid; }
+      .dblock { page-break-inside: avoid; }
+      .footer { page-break-before: always; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="label">Brand Launch &amp; Platform Strategy &middot; 브랜드라이즈 by HIZ</div>
+    <h1>식품 전문가가<br>플랫폼을 만들 때,<br><em>브랜드가 먼저다</em></h1>
+    <p class="sub">브론테처럼 대표가 곧 브랜드인 커머스를 만들려면,<br>몰보다 먼저 "이 사람에게서 사야 하는 이유"가 필요합니다.<br>식품 정책 전문가라는 자산을 브랜드로 전환하는 전략을 제안합니다.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="k">공급자</div><div class="v">브랜드라이즈 by HIZ</div></div>
+      <div class="hero-meta-item"><div class="k">수신</div><div class="v">(주)프랜비 강푸름 대표</div></div>
+      <div class="hero-meta-item"><div class="k">기준일</div><div class="v" id="today-date"></div></div>
+      <div class="hero-meta-item"><div class="k">금액 기준</div><div class="v">VAT 별도</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- BUSINESS DIRECTION -->
+<section>
+  <div class="container">
+    <div class="sec-label">Business Direction</div>
+    <h2>사업 방향성 분석</h2>
+    <p class="sec-desc">강푸름 대표의 목표는 "브론테 같은 인플루언서 커머스 플랫폼"입니다.<br>하지만 이 모델이 작동하려면 대표 본인이 신뢰받는 인플루언서여야 합니다.<br>세 가지 방향을 검토하고, 최적의 전략을 제안합니다.</p>
+
+    <div class="dir-grid">
+      <div class="dir-card">
+        <div class="dt">Option A</div>
+        <div class="dh">대표 퍼스널 브랜딩<br>→ 브론테 모델</div>
+        <div class="dd">강푸름 대표를 "식품 안전 전문가 인플루언서"로 키운 뒤, 본인 브랜드로 커머스 전환</div>
+        <div class="dr">리스크: 6개월+ 소요, 결과 불확실</div>
+        <div class="dp">장점: 성공 시 가장 강력한 모델</div>
+      </div>
+
+      <div class="dir-card rec">
+        <div class="rec-tag">RECOMMENDED</div>
+        <div class="dt">Option C &middot; Hybrid</div>
+        <div class="dh">대표 브랜딩<br>+ 인플루언서 연합</div>
+        <div class="dd">대표를 "큐레이터"로 포지셔닝하면서, 기존 인플루언서 네트워크(모두가원해, 유민주 등)를 공구 파트너로 활용</div>
+        <div class="dr">리스크: 인플루언서 의존도 관리 필요</div>
+        <div class="dp">장점: 빠른 런칭 + 브랜드 축적 동시</div>
+      </div>
+
+      <div class="dir-card">
+        <div class="dt">Option B</div>
+        <div class="dh">플랫폼 독립형<br>(반포공동구매 모델)</div>
+        <div class="dd">인플루언서 없이 커뮤니티 기반 공동구매. 지역/카테고리 특화 채널로 운영</div>
+        <div class="dr">리스크: 차별화 어려움, 초기 트래픽 확보 난제</div>
+        <div class="dp">장점: 인플루언서 의존도 없음</div>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top:32px">
+      <strong>HIZ 추천: Option C (하이브리드)</strong><br><br>
+      강푸름 대표의 <strong>식품 정책 전문가</strong> 경력은 "이 사람이 골랐으니 안전하다"는 신뢰를 줄 수 있는 희소한 자산입니다.<br>
+      이 자산을 <strong>큐레이터 브랜드</strong>로 전환하면서, 기존 인플루언서 네트워크로 초기 트래픽을 확보합니다.<br>
+      몰(하우잇)은 이 브랜드 위에 올리는 것이 순서입니다. 브랜드 없는 몰은 가격 경쟁밖에 할 수 없습니다.
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- WHY NOW -->
+<section>
+  <div class="container">
+    <div class="sec-label">Market Signal</div>
+    <h2>왜 지금인가</h2>
+    <p class="sec-desc">식품 공동구매 시장의 구조적 변화가 프랜비에게 기회를 만들고 있습니다.</p>
+    <div class="urgency-grid">
+      <div class="u-card">
+        <div class="num">Signal 01</div>
+        <div class="ct">인플루언서 공구 → 플랫폼 전환기</div>
+        <div class="cd">인스타 공구의 한계(DM 주문, 정산 수작업)에<br>셀러들이 지치고 있습니다.<br>체계적인 플랫폼을 원하는 수요가 급증 중.</div>
+      </div>
+      <div class="u-card">
+        <div class="num">Signal 02</div>
+        <div class="ct">식품 안전 이슈 → 전문가 큐레이션 니즈</div>
+        <div class="cd">가공식품 안전 이슈가 반복되면서<br>"누가 골랐는가"가 구매 결정 요인으로 부상.<br>식품 정책 전문가 = 최적의 큐레이터.</div>
+      </div>
+      <div class="u-card">
+        <div class="num">Signal 03</div>
+        <div class="ct">당근마켓 로컬 커머스 성장</div>
+        <div class="cd">지역 기반 식품 거래가 당근마켓에서 활발히 이루어지고 있으나,<br>식품 전문 커뮤니티는 아직 부재.<br>"반포공동구매" 같은 로컬 식품 채널이 성장하는 이유.</div>
+      </div>
+      <div class="u-card dark">
+        <div class="num">Core Insight</div>
+        <div class="ct">브론테의 성공 공식</div>
+        <div class="cd">브론테가 작동하는 이유는 <em>몰이 좋아서가 아니라, 대표가 곧 브랜드이기 때문</em>입니다.<br>강푸름 대표에게는 <em>"식품 정책 전문가"</em>라는 브론테의 대표가 가진 것과 동등한 자산이 있습니다.<br>문제는 이 자산이 아직 <em>브랜드로 전환되지 않았다</em>는 것입니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- CURRENT STATUS -->
+<section>
+  <div class="container">
+    <div class="sec-label">Current Diagnosis</div>
+    <h2>프랜비 현황 진단</h2>
+    <p class="sec-desc">식품 정책 전문성, 인플루언서 네트워크, 플랫폼(하우잇) 개발 — 자산은 있습니다.<br>문제는 이것들이 하나의 브랜드로 연결되지 않고 있다는 점입니다.</p>
+
+    <div class="gap-wrap">
+      <table class="gap-table">
+        <thead>
+          <tr>
+            <th style="width:32px">#</th>
+            <th>현황 진단</th>
+            <th>벤치마크</th>
+            <th style="width:90px">상태</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><strong>브랜드 아이덴티티</strong><br>"하우잇" / "오늘도푸름" / 미확정. 네이밍·포지셔닝·비주얼 미수립. 누구를 위한 어떤 플랫폼인지 정의 필요</td>
+            <td>브론테: "브론테가 고른 것" 한 줄로 설명 가능</td>
+            <td><span class="badge b-red">미수립</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>대표 퍼스널 브랜딩</strong><br>식품 정책 개발 자문 경력 보유. 그러나 SNS·콘텐츠로 외부에 알려지지 않음. 식품 전문가로서의 인지도 전무</td>
+            <td>브론테 대표: 인스타 팔로워 기반 신뢰 구축</td>
+            <td><span class="badge b-red">부재</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>플랫폼(하우잇)</strong><br>채널 오픈 준비 완료 상태. 그러나 브랜드·콘텐츠·유저 없이 플랫폼만 열면 무의미</td>
+            <td>반포공동구매: 커뮤니티 먼저 → 채널 나중</td>
+            <td><span class="badge b-orange">대기</span></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>인플루언서 네트워크</strong><br>모두가원해, 유민주, 소피아 리빙 등 식품/리빙 인플루언서 인맥 보유. 공구 파트너로 활용 가능</td>
+            <td>타 플랫폼: 인플루언서 섭외에 마케팅비 지출</td>
+            <td><span class="badge b-green">자산</span></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><strong>수익 모델</strong><br>수수료 베이스. 공동구매 중개 수수료 구조 설계 필요. 인플루언서 수수료 배분 체계 미확정</td>
+            <td>브론테: 직매입+마진, 공구 플랫폼: 중개 수수료 10-15%</td>
+            <td><span class="badge b-orange">설계필요</span></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><strong>당근마켓 등 바이럴 채널</strong><br>당근 바이럴 아이디어 있으나 실행 전략 미수립. 로컬 커뮤니티 진입 방법론 필요</td>
+            <td>반포공동구매: 지역 맘카페 → 인스타 확장</td>
+            <td><span class="badge b-orange">기획필요</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- TIER OVERVIEW -->
+<div class="tier-bg">
+  <div class="container">
+    <div class="sec-label">Solution Packages</div>
+    <h2 style="color:var(--white)">3가지 제안</h2>
+    <p class="sec-desc">브랜드 → 콘텐츠 → 플랫폼 순서로 쌓아올립니다.<br>Set B를 기준으로 상담을 진행합니다.</p>
+    <div class="tier-cards">
+
+      <div class="t-card">
+        <div class="t-name">Set A &middot; Foundation</div>
+        <div class="t-title">브랜드 전략<br>+ 네이밍 확정</div>
+        <div class="t-price">1,500<span>만원</span></div>
+        <div class="t-period">2개월 &middot; VAT 별도</div>
+        <ul class="t-feats">
+          <li class="t-feat on">브랜드 포지셔닝 전략</li>
+          <li class="t-feat on">네이밍 + BI 방향</li>
+          <li class="t-feat on">대표 퍼스널 브랜딩 전략</li>
+          <li class="t-feat off">인플루언서 공구 설계</li>
+          <li class="t-feat off">런칭 마케팅</li>
+          <li class="t-feat off">플랫폼 운영 컨설팅</li>
+        </ul>
+      </div>
+
+      <div class="t-card rec">
+        <div class="rec-badge">Recommended</div>
+        <div class="t-name">Set B &middot; Launch</div>
+        <div class="t-title">브랜드 + 런칭<br>마케팅</div>
+        <div class="t-price">4,000<span>만원</span></div>
+        <div class="t-period">4개월 &middot; VAT 별도</div>
+        <ul class="t-feats">
+          <li class="t-feat">Set A 전체 포함</li>
+          <li class="t-feat">대표 SNS 채널 구축</li>
+          <li class="t-feat">인플루언서 공구 체계 설계</li>
+          <li class="t-feat">런칭 바이럴 캠페인</li>
+          <li class="t-feat off">플랫폼 운영 컨설팅</li>
+          <li class="t-feat off">월간 성과 리뷰</li>
+        </ul>
+      </div>
+
+      <div class="t-card">
+        <div class="t-name">Set C &middot; Growth</div>
+        <div class="t-title">풀 파트너십<br>런칭 ~ 운영</div>
+        <div class="t-price">7,000<span>만원</span></div>
+        <div class="t-period">6개월 &middot; VAT 별도</div>
+        <ul class="t-feats">
+          <li class="t-feat on">Set B 전체 포함</li>
+          <li class="t-feat on">플랫폼(하우잇) 런칭 컨설팅</li>
+          <li class="t-feat on">인플루언서 공구 3회 운영</li>
+          <li class="t-feat on">당근마켓 바이럴 실행</li>
+          <li class="t-feat on">콘텐츠 제작 관리</li>
+          <li class="t-feat on">월간 성과 리뷰</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SET A -->
+<section class="det">
+  <div class="container">
+    <div class="sec-label">Set A &middot; Foundation</div>
+    <div class="det-head">
+      <div class="det-head-l">
+        <h2>브랜드 전략<br>+ 네이밍 확정</h2>
+        <p class="sec-desc" style="margin-bottom:0">플랫폼을 열기 전에 반드시 선행되어야 하는 기반 작업.<br>"이 플랫폼에서 사야 하는 이유"를 만듭니다.</p>
+      </div>
+      <div class="price-box">
+        <div class="pl">TOTAL</div>
+        <div class="pa">15,000,000</div>
+        <div class="ps">2개월 &middot; VAT 별도</div>
+      </div>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">1. 브랜드 포지셔닝 전략</span>
+        <span class="bp">6,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>사업 방향 워크숍 2회</td><td>플랫폼 vs 브랜드 vs 하이브리드 최종 확정 / 타겟 정의 / 수익 모델 구조 설계</td></tr>
+        <tr><td>경쟁사·벤치마크 분석</td><td>브론테, 반포공동구매, 식탁이있는삶, 마켓컬리 공구 등 비교 분석 + 포지셔닝 맵</td></tr>
+        <tr><td>브랜드 콘셉트</td><td>"식품 정책 전문가가 고른" 큐레이션 브랜드 콘셉트 확정 / 스토리·미션·비전</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">2. 네이밍 + BI 방향</span>
+        <span class="bp">5,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>네이밍 개발</td><td>"하우잇" / "오늘도푸름" / 신규안 3개 — 총 5안 개발 + 상표 검색 + 최종 확정</td></tr>
+        <tr><td>BI 방향성</td><td>로고 콘셉트 3안 / 컬러·타이포 방향 / 플랫폼 비주얼 톤 가이드</td></tr>
+        <tr><td>채널 네이밍 체계</td><td>인스타그램·유튜브·하우잇 플랫폼 간 네이밍 통일 전략</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">3. 대표 퍼스널 브랜딩 전략</span>
+        <span class="bp">4,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>퍼스널 브랜드 설계</td><td>"식품 정책 전문가 → 식품 큐레이터" 포지셔닝 / 스토리라인 + 핵심 메시지</td></tr>
+        <tr><td>SNS 채널 전략</td><td>인스타그램·유튜브 채널 전략 수립 / 콘텐츠 카테고리·톤 정의 / 팔로워 성장 로드맵</td></tr>
+        <tr><td>콘텐츠 기획보드</td><td>2개월분 콘텐츠 기획 / "식품 전문가의 눈" 시리즈 등 포맷 설계</td></tr>
+      </table>
+    </div>
+
+    <div class="total-bar">
+      <div><div class="tl">SET A TOTAL</div><div class="ts">VAT 별도 &middot; 2개월</div></div>
+      <div class="ta">15,000,000원</div>
+    </div>
+  </div>
+</section>
+
+<!-- SET B -->
+<section class="det">
+  <div class="container">
+    <div class="sec-label">Set B &middot; Launch &mdash; Recommended</div>
+    <div class="det-head">
+      <div class="det-head-l">
+        <h2>브랜드 + 런칭<br>마케팅</h2>
+        <p class="sec-desc" style="margin-bottom:0">브랜드 전략 수립부터 런칭 마케팅까지.<br>대표 퍼스널 브랜딩과 인플루언서 공구 체계를 동시에 구축하여<br>플랫폼 런칭 전 시장 반응을 확인합니다.</p>
+      </div>
+      <div class="price-box">
+        <div class="pl">TOTAL</div>
+        <div class="pa">40,000,000</div>
+        <div class="ps">4개월 &middot; VAT 별도</div>
+      </div>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">1. 브랜드 전략 (Set A)</span>
+        <span class="bp">Set A 포함</span>
+      </div>
+      <table class="dtable">
+        <tr><td>Set A 전체</td><td>브랜드 포지셔닝 전략 + 네이밍 + BI 방향 + 대표 퍼스널 브랜딩 전략</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">2. 대표 SNS 채널 구축 + 콘텐츠</span>
+        <span class="bp">10,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>인스타그램 채널 세팅</td><td>프로필 최적화 + 피드 디자인 + 하이라이트 구조 / "식품 전문가" 포지셔닝 완성</td></tr>
+        <tr><td>콘텐츠 제작 (3개월)</td><td>릴스 12건 + 카드뉴스 12건 / "식품 전문가의 픽" "성분표 해설" "공장 방문기" 시리즈</td></tr>
+        <tr><td>유튜브 쇼츠 전략</td><td>쇼츠 6건 기획 / 식품 안전 정보·큐레이션 콘텐츠 / 인스타 릴스 연동</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">3. 인플루언서 공구 체계 설계</span>
+        <span class="bp">8,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>공구 운영 모델 설계</td><td>수수료 구조 확정 / 인플루언서 파트너 계약 프레임 / 정산 시스템 기획</td></tr>
+        <tr><td>파트너 인플루언서 온보딩</td><td>모두가원해, 유민주, 소피아 리빙 + 추가 5인 — 브리핑 키트 + 협업 체계 구축</td></tr>
+        <tr><td>파일럿 공구 1회</td><td>테스트 공구 1회 기획·운영 / 상품 선정 → 콘텐츠 → 판매 → 정산 풀 사이클 검증</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">4. 런칭 바이럴 캠페인</span>
+        <span class="bp">7,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>런칭 캠페인 기획</td><td>"식품 전문가가 만든 공동구매" 인식 캠페인 / 티저 → 런칭 → 팔로업 3단계</td></tr>
+        <tr><td>인플루언서 시딩</td><td>파트너 인플루언서 동시 포스팅 / 런칭 D-Day 집중 바이럴</td></tr>
+        <tr><td>당근마켓 시딩 전략</td><td>지역 타겟 당근 바이럴 기획 / 반포·서초·강남 시범 지역 설정</td></tr>
+      </table>
+    </div>
+
+    <div class="total-bar">
+      <div><div class="tl">SET B TOTAL</div><div class="ts">VAT 별도 &middot; 4개월</div></div>
+      <div class="ta">40,000,000원</div>
+    </div>
+  </div>
+</section>
+
+<!-- SET C -->
+<section class="det">
+  <div class="container">
+    <div class="sec-label">Set C &middot; Growth Partnership</div>
+    <div class="det-head">
+      <div class="det-head-l">
+        <h2>풀 파트너십<br>런칭 ~ 운영</h2>
+        <p class="sec-desc" style="margin-bottom:0">브랜드 전략부터 플랫폼 런칭, 공구 운영,<br>성과 관리까지 6개월간 파트너합니다.</p>
+      </div>
+      <div class="price-box">
+        <div class="pl">TOTAL</div>
+        <div class="pa">70,000,000</div>
+        <div class="ps">6개월 &middot; VAT 별도</div>
+      </div>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">1. Set B 전체</span>
+        <span class="bp">포함</span>
+      </div>
+      <table class="dtable">
+        <tr><td>Set B 전체</td><td>브랜드 전략 + 대표 SNS 구축 + 인플루언서 공구 체계 + 런칭 바이럴</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">2. 플랫폼(하우잇) 런칭 컨설팅</span>
+        <span class="bp">8,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>UX/UI 컨설팅</td><td>하우잇 플랫폼 UX 리뷰 + 개선 방향 / 브랜드 비주얼 적용 가이드</td></tr>
+        <tr><td>런칭 전략</td><td>소프트 런칭 → 정식 런칭 2단계 전략 / 초기 유저 확보 플랜</td></tr>
+        <tr><td>온보딩 설계</td><td>셀러·바이어 온보딩 플로우 / 첫 구매 전환율 최적화</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">3. 인플루언서 공구 운영 (3회)</span>
+        <span class="bp">9,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>공구 기획·운영 3회</td><td>월 1회 공구 — 상품 큐레이션 → 콘텐츠 제작 → 인플루언서 배포 → 정산 / 회차별 매출·전환 분석</td></tr>
+        <tr><td>당근마켓 바이럴 실행</td><td>공구 연동 당근 바이럴 3회 / 지역 확장 테스트 (반포→판교→분당)</td></tr>
+        <tr><td>콘텐츠 제작</td><td>공구 홍보 릴스·카드뉴스 9건 + 대표 리뷰 콘텐츠 3건</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">4. 월간 성과 리뷰 + 전략 조정</span>
+        <span class="bp">3,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>월간 리뷰</td><td>팔로워 성장·공구 매출·전환율·채널별 성과 리뷰 (500,000 x 6개월)</td></tr>
+        <tr><td>전략 조정 미팅</td><td>월 1회 전략 미팅 / 시장 변화·경쟁사 동향 반영</td></tr>
+      </table>
+    </div>
+
+    <div class="total-bar">
+      <div><div class="tl">SET C TOTAL</div><div class="ts">VAT 별도 &middot; 6개월 &middot; 분할 납부 가능</div></div>
+      <div class="ta">70,000,000원</div>
+    </div>
+
+    <div class="info-box">
+      <strong>분할 옵션:</strong><br>전반기(1-3개월 브랜드+런칭) 4,000만원<br>→ 후반기(4-6개월 운영+성장) 3,000만원으로 분리 확정 가능합니다.
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section>
+  <div class="container">
+    <div class="sec-label">Summary</div>
+    <h2>세트 비교</h2>
+    <p class="sec-desc">각 세트는 독립 집행 가능합니다.<br>기간 및 항목은 협의 조정 가능합니다.</p>
+    <div class="cmp-wrap">
+      <table class="cmp-table">
+        <thead>
+          <tr>
+            <th>항목</th>
+            <th>Set A</th>
+            <th class="hi">Set B ★</th>
+            <th>Set C</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>브랜드 포지셔닝 + 사업 방향 확정</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>네이밍 + BI 방향</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>대표 퍼스널 브랜딩 전략</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>대표 SNS 채널 구축 + 콘텐츠</td><td class="no">&mdash;</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>인플루언서 공구 체계 설계</td><td class="no">&mdash;</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>런칭 바이럴 캠페인</td><td class="no">&mdash;</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>플랫폼(하우잇) 런칭 컨설팅</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>인플루언서 공구 운영 (3회)</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>당근마켓 바이럴 실행</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>월간 성과 리뷰</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="ck">&#10003;</td></tr>
+          <tr class="sum-row">
+            <td>기간</td><td>2개월</td><td class="hi">4개월</td><td>6개월</td>
+          </tr>
+          <tr class="sum-row">
+            <td>금액 (VAT 별도)</td><td>1,500만원</td><td class="hi">4,000만원</td><td>7,000만원</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="container">
+    <div class="brand">브랜드라이즈 by HIZ</div>
+    <div class="tag">Pace &amp; Proof</div>
+    <div class="meta">
+      본 견적서의 유효기간은 발행일로부터 30일입니다.<br>
+      위 금액은 모두 VAT 별도 기준입니다.<br>
+      각 세트는 독립 집행 가능하며, 기간 및 항목 조정은 협의 가능합니다.<br>
+      문의: 브랜드라이즈 by HIZ &middot; <span id="footer-date"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var d = new Date();
+    var y = d.getFullYear();
+    var m = String(d.getMonth() + 1).padStart(2, '0');
+    var day = String(d.getDate()).padStart(2, '0');
+    var formatted = y + '. ' + m + '. ' + day;
+    document.getElementById('today-date').textContent = formatted;
+    document.getElementById('footer-date').textContent = formatted;
+  })();
+</script>
+</body>
+</html>
