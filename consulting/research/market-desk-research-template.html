@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Desk Research — [브랜드명]</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap');
+
+  :root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --accent: #2d3a8c;
+    --accent-light: #eef0ff;
+    --blue: #3b82f6;
+    --blue-light: #eff6ff;
+    --orange: #f97316;
+    --orange-light: #fff7ed;
+    --green: #10b981;
+    --green-light: #ecfdf5;
+    --red: #ef4444;
+    --red-light: #fef2f2;
+    --purple: #8b5cf6;
+    --purple-light: #f5f3ff;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-600: #4b5563;
+    --hiz-orange: #e8491d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===================== SLIDE SYSTEM ===================== */
+  .slide {
+    width: 297mm;
+    min-height: 210mm;
+    padding: 32mm 28mm;
+    margin: 0 auto 2px;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide--dark {
+    background: var(--accent);
+    color: #ffffff;
+  }
+
+  .slide--gray {
+    background: var(--gray-50);
+  }
+
+  .slide--gradient {
+    background: linear-gradient(135deg, #1e2a6e 0%, #2d3a8c 40%, #3b4fa6 100%);
+    color: #ffffff;
+  }
+
+  /* ===================== COVER SLIDE ===================== */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 210mm;
+    padding: 40mm 36mm;
+  }
+
+  .cover__badge {
+    display: inline-block;
+    background: var(--hiz-orange);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+
+  .cover__title {
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+
+  .cover__subtitle {
+    font-size: 20px;
+    font-weight: 300;
+    opacity: 0.85;
+    margin-bottom: 40px;
+  }
+
+  .cover__meta {
+    font-size: 13px;
+    opacity: 0.6;
+    line-height: 2;
+  }
+
+  .cover__logo {
+    position: absolute;
+    bottom: 32mm;
+    right: 36mm;
+    width: 60px;
+    height: 60px;
+    background: var(--hiz-orange);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 900;
+    color: #fff;
+    font-style: italic;
+  }
+
+  /* ===================== SECTION DIVIDER ===================== */
+  .divider {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 210mm;
+    padding: 40mm 36mm;
+  }
+
+  .divider__number {
+    font-size: 72px;
+    font-weight: 900;
+    opacity: 0.15;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .divider__title {
+    font-size: 38px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+
+  .divider__desc {
+    font-size: 16px;
+    font-weight: 300;
+    opacity: 0.7;
+    max-width: 500px;
+  }
+
+  /* ===================== CONTENT SLIDES ===================== */
+  .slide__header {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .slide__section-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--hiz-orange);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+
+  .slide__title {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.3;
+  }
+
+  .slide__title--dark { color: #fff; }
+
+  /* Page number */
+  .slide__page {
+    position: absolute;
+    bottom: 12mm;
+    right: 16mm;
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .slide--dark .slide__page,
+  .slide--gradient .slide__page {
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ===================== GRID LAYOUTS ===================== */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  .grid-2-1 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-1-2 {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
+  }
+
+  /* ===================== CARDS ===================== */
+  .card {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .card--accent {
+    border-left: 4px solid var(--accent);
+  }
+
+  .card--orange {
+    border-left: 4px solid var(--hiz-orange);
+  }
+
+  .card--blue {
+    border-left: 4px solid var(--blue);
+  }
+
+  .card--green {
+    border-left: 4px solid var(--green);
+  }
+
+  .card--purple {
+    border-left: 4px solid var(--purple);
+  }
+
+  .card--filled {
+    background: var(--gray-50);
+    border: none;
+  }
+
+  .card--dark {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+  }
+
+  .card__icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .card__label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .card__title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .card__value {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .card__desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ===================== TABLE ===================== */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .data-table thead th {
+    background: var(--accent);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  .data-table thead th:first-child {
+    border-radius: 8px 0 0 0;
+  }
+
+  .data-table thead th:last-child {
+    border-radius: 0 8px 0 0;
+  }
+
+  .data-table tbody td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--gray-200);
+    vertical-align: top;
+  }
+
+  .data-table tbody tr:nth-child(even) {
+    background: var(--gray-50);
+  }
+
+  .data-table tbody tr:hover {
+    background: var(--accent-light);
+  }
+
+  /* ===================== TAGS & BADGES ===================== */
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin: 2px 4px 2px 0;
+  }
+
+  .tag--blue { background: var(--blue-light); color: var(--blue); }
+  .tag--green { background: var(--green-light); color: var(--green); }
+  .tag--orange { background: var(--orange-light); color: var(--orange); }
+  .tag--purple { background: var(--purple-light); color: var(--purple); }
+  .tag--red { background: var(--red-light); color: var(--red); }
+
+  .kpi-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .kpi {
+    flex: 1;
+    text-align: center;
+    padding: 20px 16px;
+    background: var(--gray-50);
+    border-radius: 12px;
+  }
+
+  .kpi__value {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .kpi__label {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ===================== LISTS ===================== */
+  .insight-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .insight-list li {
+    position: relative;
+    padding: 10px 0 10px 24px;
+    font-size: 14px;
+    line-height: 1.7;
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .insight-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 8px;
+    height: 8px;
+    background: var(--hiz-orange);
+    border-radius: 50%;
+  }
+
+  .insight-list li:last-child {
+    border-bottom: none;
+  }
+
+  /* ===================== COMPETITOR BOX ===================== */
+  .competitor-card {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .competitor-card__logo {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 12px;
+    background: var(--gray-100);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--accent);
+  }
+
+  .competitor-card__name {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .competitor-card__category {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .competitor-card__stats {
+    font-size: 12px;
+    color: var(--gray-600);
+    line-height: 1.8;
+    text-align: left;
+  }
+
+  /* ===================== CHART PLACEHOLDER ===================== */
+  .chart-area {
+    background: var(--gray-50);
+    border: 2px dashed var(--gray-200);
+    border-radius: 12px;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  /* ===================== SOURCE NOTE ===================== */
+  .source-note {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 16px;
+    padding-top: 8px;
+    border-top: 1px solid var(--gray-200);
+  }
+
+  /* ===================== POSITIONING MAP ===================== */
+  .positioning-map {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/10;
+    background: var(--gray-50);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .positioning-map__axis-x,
+  .positioning-map__axis-y {
+    position: absolute;
+    background: var(--gray-200);
+  }
+
+  .positioning-map__axis-x {
+    width: 90%;
+    height: 1px;
+    top: 50%;
+    left: 5%;
+  }
+
+  .positioning-map__axis-y {
+    width: 1px;
+    height: 90%;
+    left: 50%;
+    top: 5%;
+  }
+
+  .positioning-map__label {
+    position: absolute;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  .positioning-map__dot {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+    transform: translate(-50%, -50%);
+  }
+
+  /* ===================== SWOT ===================== */
+  .swot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--gray-200);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .swot-cell {
+    background: #fff;
+    padding: 20px;
+  }
+
+  .swot-cell__title {
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .swot-cell__list {
+    list-style: none;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .swot-cell__list li::before {
+    content: '• ';
+    font-weight: 700;
+  }
+
+  .swot-cell--s .swot-cell__title { color: var(--blue); }
+  .swot-cell--w .swot-cell__title { color: var(--orange); }
+  .swot-cell--o .swot-cell__title { color: var(--green); }
+  .swot-cell--t .swot-cell__title { color: var(--red); }
+
+  /* ===================== TIMELINE ===================== */
+  .timeline {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    padding: 20px 0;
+  }
+
+  .timeline__step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+  }
+
+  .timeline__step::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gray-200);
+  }
+
+  .timeline__step:first-child::before {
+    left: 50%;
+  }
+
+  .timeline__step:last-child::before {
+    right: 50%;
+  }
+
+  .timeline__dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin: 0 auto 12px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .timeline__label {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .timeline__desc {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+    padding: 0 8px;
+  }
+
+  /* ===================== PRINT STYLES ===================== */
+  @media print {
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+
+    body {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    .slide {
+      width: 297mm;
+      height: 210mm;
+      min-height: 210mm;
+      max-height: 210mm;
+      margin: 0;
+      page-break-after: always;
+      page-break-inside: avoid;
+      overflow: hidden;
+    }
+
+    .slide:last-child {
+      page-break-after: auto;
+    }
+
+    .no-print {
+      display: none !important;
+    }
+  }
+
+  /* ===================== SCREEN PREVIEW ===================== */
+  @media screen {
+    body {
+      background: #e5e7eb;
+      padding: 24px 0;
+    }
+
+    .slide {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      border-radius: 4px;
+      margin-bottom: 24px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- SLIDE 01: COVER -->
+<!-- ============================================================ -->
+<div class="slide slide--gradient cover">
+  <div class="cover__badge">MARKET DESK RESEARCH</div>
+  <h1 class="cover__title">
+    마켓 데스크 리서치<br>
+    <span style="font-weight:300; font-size:32px;">— [브랜드명 / 산업 카테고리]</span>
+  </h1>
+  <p class="cover__subtitle">국내외 시장 환경 분석 및 경쟁 브랜드 벤치마킹</p>
+  <div class="cover__meta">
+    Prepared by HIZ System<br>
+    [날짜] | Confidential
+  </div>
+  <div class="cover__logo">hiz</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 02: TABLE OF CONTENTS -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">Contents</div>
+    <h2 class="slide__title">목차</h2>
+  </div>
+
+  <div class="grid-2" style="margin-top: 24px;">
+    <div>
+      <div class="card card--accent" style="margin-bottom:16px;">
+        <div class="card__title">01. 시장 개요</div>
+        <div class="card__desc">시장 정의, 규모, 성장률, 핵심 트렌드</div>
+      </div>
+      <div class="card card--orange" style="margin-bottom:16px;">
+        <div class="card__title">02. 소비자 분석</div>
+        <div class="card__desc">타겟 고객 세그먼트, 구매 행태, 니즈</div>
+      </div>
+      <div class="card card--blue" style="margin-bottom:16px;">
+        <div class="card__title">03. 경쟁사 분석</div>
+        <div class="card__desc">국내외 주요 플레이어, 포지셔닝 맵</div>
+      </div>
+    </div>
+    <div>
+      <div class="card card--green" style="margin-bottom:16px;">
+        <div class="card__title">04. 벤치마킹 브랜드</div>
+        <div class="card__desc">레퍼런스 브랜드 심층 분석</div>
+      </div>
+      <div class="card card--purple" style="margin-bottom:16px;">
+        <div class="card__title">05. 유통 채널 분석</div>
+        <div class="card__desc">온/오프라인 채널 현황, 입점 전략</div>
+      </div>
+      <div class="card card--orange" style="margin-bottom:16px;">
+        <div class="card__title">06. 인사이트 & 기회</div>
+        <div class="card__desc">SWOT 분석, 전략적 시사점</div>
+      </div>
+    </div>
+  </div>
+  <span class="slide__page">02</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 03: SECTION 01 DIVIDER -->
+<!-- ============================================================ -->
+<div class="slide slide--dark divider">
+  <div class="divider__number">01</div>
+  <div class="divider__title">시장 개요</div>
+  <div class="divider__desc">Market Overview — 시장 정의, 규모, 성장률 및 핵심 트렌드 분석</div>
+  <span class="slide__page">03</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 04: 시장 정의 & 규모 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">01. 시장 개요</div>
+    <h2 class="slide__title">시장 정의 & 규모</h2>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="kpi__value">[0.0]조원</div>
+      <div class="kpi__label">국내 시장 규모 (2025)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi__value">[+0.0]%</div>
+      <div class="kpi__label">연평균 성장률 (CAGR)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi__value">$[0.0]B</div>
+      <div class="kpi__label">글로벌 시장 규모</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi__value">[0000]년</div>
+      <div class="kpi__label">예상 피크 시점</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="card card--filled">
+        <div class="card__title">시장 정의</div>
+        <div class="card__desc">
+          [해당 산업/카테고리의 정의와 범위를 기술합니다. 어떤 제품/서비스가 포함되며, 시장의 경계는 어디까지인지 명확하게 정리합니다.]
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card card--filled">
+        <div class="card__title">시장 세분화</div>
+        <div class="card__desc">
+          <span class="tag tag--blue">[세그먼트 1]</span>
+          <span class="tag tag--green">[세그먼트 2]</span>
+          <span class="tag tag--orange">[세그먼트 3]</span>
+          <span class="tag tag--purple">[세그먼트 4]</span>
+          <br><br>
+          [각 세그먼트별 비중과 특성을 간략히 기술합니다.]
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="source-note">출처: [리서치 기관/보고서명], [연도]. [추가 출처]</div>
+  <span class="slide__page">04</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 05: 시장 성장 추이 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">01. 시장 개요</div>
+    <h2 class="slide__title">시장 성장 추이 & 전망</h2>
+  </div>
+
+  <div class="grid-2">
+    <div class="chart-area" style="min-height: 260px;">
+      [시장 규모 추이 차트 영역]<br>
+      <small>연도별 시장 규모 막대/라인 차트</small>
+    </div>
+    <div>
+      <div class="card card--accent" style="margin-bottom: 16px;">
+        <div class="card__title">성장 드라이버</div>
+        <ul class="insight-list">
+          <li>[성장 동인 1 — 예: 건강/웰니스 트렌드 확산]</li>
+          <li>[성장 동인 2 — 예: MZ세대 소비 패턴 변화]</li>
+          <li>[성장 동인 3 — 예: 온라인 채널 확대]</li>
+        </ul>
+      </div>
+      <div class="card card--orange">
+        <div class="card__title">리스크 요인</div>
+        <ul class="insight-list">
+          <li>[리스크 1 — 예: 원자재 가격 상승]</li>
+          <li>[리스크 2 — 예: 규제 강화]</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="source-note">출처: [리서치 기관/보고서명], [연도]</div>
+  <span class="slide__page">05</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 06: 핵심 트렌드 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">01. 시장 개요</div>
+    <h2 class="slide__title">핵심 트렌드</h2>
+  </div>
+
+  <div class="grid-3">
+    <div class="card card--accent">
+      <div class="card__icon">🔄</div>
+      <div class="card__title">[트렌드 1]</div>
+      <div class="card__desc">[트렌드에 대한 설명. 시장에 미치는 영향과 기회 요인을 기술합니다.]</div>
+    </div>
+    <div class="card card--blue">
+      <div class="card__icon">🌱</div>
+      <div class="card__title">[트렌드 2]</div>
+      <div class="card__desc">[트렌드에 대한 설명. 시장에 미치는 영향과 기회 요인을 기술합니다.]</div>
+    </div>
+    <div class="card card--green">
+      <div class="card__icon">📱</div>
+      <div class="card__title">[트렌드 3]</div>
+      <div class="card__desc">[트렌드에 대한 설명. 시장에 미치는 영향과 기회 요인을 기술합니다.]</div>
+    </div>
+  </div>
+
+  <div class="grid-3" style="margin-top: 20px;">
+    <div class="card card--purple">
+      <div class="card__icon">🎯</div>
+      <div class="card__title">[트렌드 4]</div>
+      <div class="card__desc">[트렌드에 대한 설명.]</div>
+    </div>
+    <div class="card card--orange">
+      <div class="card__icon">🌍</div>
+      <div class="card__title">[트렌드 5 — 글로벌]</div>
+      <div class="card__desc">[해외 시장에서 주목할 트렌드.]</div>
+    </div>
+    <div class="card card--filled">
+      <div class="card__icon">💡</div>
+      <div class="card__title">[시사점]</div>
+      <div class="card__desc">[트렌드를 종합한 우리 브랜드에 대한 시사점을 정리합니다.]</div>
+    </div>
+  </div>
+
+  <span class="slide__page">06</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 07: SECTION 02 DIVIDER -->
+<!-- ============================================================ -->
+<div class="slide slide--dark divider">
+  <div class="divider__number">02</div>
+  <div class="divider__title">소비자 분석</div>
+  <div class="divider__desc">Consumer Analysis — 타겟 고객 프로파일, 구매 행태, 핵심 니즈</div>
+  <span class="slide__page">07</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 08: 타겟 고객 세그먼트 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">02. 소비자 분석</div>
+    <h2 class="slide__title">타겟 고객 세그먼트</h2>
+  </div>
+
+  <div class="grid-3">
+    <div class="card card--accent">
+      <div class="card__icon">👤</div>
+      <div class="card__label">PRIMARY</div>
+      <div class="card__title">[핵심 타겟]</div>
+      <div class="card__desc">
+        <strong>연령:</strong> [00-00대]<br>
+        <strong>성별:</strong> [남/여/전체]<br>
+        <strong>소득:</strong> [수준]<br>
+        <strong>라이프스타일:</strong> [특징]<br>
+        <strong>구매동기:</strong> [핵심 동기]
+      </div>
+    </div>
+    <div class="card card--blue">
+      <div class="card__icon">👥</div>
+      <div class="card__label">SECONDARY</div>
+      <div class="card__title">[확장 타겟]</div>
+      <div class="card__desc">
+        <strong>연령:</strong> [00-00대]<br>
+        <strong>성별:</strong> [남/여/전체]<br>
+        <strong>소득:</strong> [수준]<br>
+        <strong>라이프스타일:</strong> [특징]<br>
+        <strong>구매동기:</strong> [핵심 동기]
+      </div>
+    </div>
+    <div class="card card--green">
+      <div class="card__icon">🎯</div>
+      <div class="card__label">POTENTIAL</div>
+      <div class="card__title">[잠재 타겟]</div>
+      <div class="card__desc">
+        <strong>연령:</strong> [00-00대]<br>
+        <strong>성별:</strong> [남/여/전체]<br>
+        <strong>소득:</strong> [수준]<br>
+        <strong>라이프스타일:</strong> [특징]<br>
+        <strong>구매동기:</strong> [핵심 동기]
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--filled" style="margin-top: 20px;">
+    <div class="card__title">소비자 구매 결정 요인 (Priority)</div>
+    <div class="card__desc">
+      <span class="tag tag--blue">1. [요인]</span>
+      <span class="tag tag--green">2. [요인]</span>
+      <span class="tag tag--orange">3. [요인]</span>
+      <span class="tag tag--purple">4. [요인]</span>
+      <span class="tag tag--red">5. [요인]</span>
+    </div>
+  </div>
+
+  <span class="slide__page">08</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 09: 소비자 인사이트 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">02. 소비자 분석</div>
+    <h2 class="slide__title">소비자 인사이트 & 구매 여정</h2>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="card card--accent" style="margin-bottom: 16px;">
+        <div class="card__title">Pain Points</div>
+        <ul class="insight-list">
+          <li>[소비자 불편/불만 사항 1]</li>
+          <li>[소비자 불편/불만 사항 2]</li>
+          <li>[소비자 불편/불만 사항 3]</li>
+        </ul>
+      </div>
+      <div class="card card--green">
+        <div class="card__title">Unmet Needs</div>
+        <ul class="insight-list">
+          <li>[충족되지 않은 니즈 1]</li>
+          <li>[충족되지 않은 니즈 2]</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card card--filled" style="height: 100%;">
+        <div class="card__title">구매 여정 (Customer Journey)</div>
+        <div style="margin-top: 16px;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <span class="tag tag--blue" style="min-width:60px; text-align:center;">인지</span>
+            <span style="font-size:13px; color:var(--gray-600);">[어떻게 처음 알게 되는지]</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <span class="tag tag--purple" style="min-width:60px; text-align:center;">탐색</span>
+            <span style="font-size:13px; color:var(--gray-600);">[정보 탐색 채널/방법]</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <span class="tag tag--orange" style="min-width:60px; text-align:center;">비교</span>
+            <span style="font-size:13px; color:var(--gray-600);">[비교 기준, 고려 브랜드]</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <span class="tag tag--green" style="min-width:60px; text-align:center;">구매</span>
+            <span style="font-size:13px; color:var(--gray-600);">[구매 채널, 결정 트리거]</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span class="tag tag--red" style="min-width:60px; text-align:center;">재구매</span>
+            <span style="font-size:13px; color:var(--gray-600);">[로열티 요인, 재구매율]</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">09</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 10: SECTION 03 DIVIDER -->
+<!-- ============================================================ -->
+<div class="slide slide--dark divider">
+  <div class="divider__number">03</div>
+  <div class="divider__title">경쟁사 분석</div>
+  <div class="divider__desc">Competitive Analysis — 국내외 주요 경쟁 브랜드 비교 분석</div>
+  <span class="slide__page">10</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 11: 경쟁 구도 개요 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">03. 경쟁사 분석</div>
+    <h2 class="slide__title">경쟁 구도 개요</h2>
+  </div>
+
+  <div class="grid-4">
+    <div class="competitor-card">
+      <div class="competitor-card__logo">[A]</div>
+      <div class="competitor-card__name">[브랜드 A]</div>
+      <div class="competitor-card__category">[카테고리] · [국가]</div>
+      <div class="competitor-card__stats">
+        매출: [금액]<br>
+        점유율: [00]%<br>
+        핵심 강점: [키워드]
+      </div>
+    </div>
+    <div class="competitor-card">
+      <div class="competitor-card__logo">[B]</div>
+      <div class="competitor-card__name">[브랜드 B]</div>
+      <div class="competitor-card__category">[카테고리] · [국가]</div>
+      <div class="competitor-card__stats">
+        매출: [금액]<br>
+        점유율: [00]%<br>
+        핵심 강점: [키워드]
+      </div>
+    </div>
+    <div class="competitor-card">
+      <div class="competitor-card__logo">[C]</div>
+      <div class="competitor-card__name">[브랜드 C]</div>
+      <div class="competitor-card__category">[카테고리] · [국가]</div>
+      <div class="competitor-card__stats">
+        매출: [금액]<br>
+        점유율: [00]%<br>
+        핵심 강점: [키워드]
+      </div>
+    </div>
+    <div class="competitor-card">
+      <div class="competitor-card__logo">[D]</div>
+      <div class="competitor-card__name">[브랜드 D]</div>
+      <div class="competitor-card__category">[카테고리] · [국가]</div>
+      <div class="competitor-card__stats">
+        매출: [금액]<br>
+        점유율: [00]%<br>
+        핵심 강점: [키워드]
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--filled" style="margin-top: 20px;">
+    <div class="card__title">경쟁 구도 요약</div>
+    <div class="card__desc">[전체 경쟁 구도에 대한 요약. 시장 집중도, 주요 플레이어 간 관계, 진입장벽 등을 기술합니다.]</div>
+  </div>
+
+  <span class="slide__page">11</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 12: 경쟁사 비교 테이블 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">03. 경쟁사 분석</div>
+    <h2 class="slide__title">경쟁사 비교 분석</h2>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="width:14%">브랜드</th>
+        <th style="width:14%">포지셔닝</th>
+        <th style="width:12%">가격대</th>
+        <th style="width:14%">타겟</th>
+        <th style="width:16%">핵심 강점</th>
+        <th style="width:16%">약점</th>
+        <th style="width:14%">유통채널</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>[브랜드 A]</strong></td>
+        <td>[프리미엄/매스 등]</td>
+        <td>[가격대]</td>
+        <td>[타겟층]</td>
+        <td>[강점]</td>
+        <td>[약점]</td>
+        <td>[채널]</td>
+      </tr>
+      <tr>
+        <td><strong>[브랜드 B]</strong></td>
+        <td>[포지셔닝]</td>
+        <td>[가격대]</td>
+        <td>[타겟층]</td>
+        <td>[강점]</td>
+        <td>[약점]</td>
+        <td>[채널]</td>
+      </tr>
+      <tr>
+        <td><strong>[브랜드 C]</strong></td>
+        <td>[포지셔닝]</td>
+        <td>[가격대]</td>
+        <td>[타겟층]</td>
+        <td>[강점]</td>
+        <td>[약점]</td>
+        <td>[채널]</td>
+      </tr>
+      <tr>
+        <td><strong>[브랜드 D]</strong></td>
+        <td>[포지셔닝]</td>
+        <td>[가격대]</td>
+        <td>[타겟층]</td>
+        <td>[강점]</td>
+        <td>[약점]</td>
+        <td>[채널]</td>
+      </tr>
+      <tr style="background:var(--accent-light) !important;">
+        <td><strong style="color:var(--hiz-orange);">[우리 브랜드]</strong></td>
+        <td>[목표 포지셔닝]</td>
+        <td>[예상 가격대]</td>
+        <td>[목표 타겟]</td>
+        <td>[차별화 포인트]</td>
+        <td>[보완 필요]</td>
+        <td>[계획 채널]</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="source-note">출처: 각 브랜드 공식 사이트, [리서치 기관], [연도]</div>
+  <span class="slide__page">12</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 13: 포지셔닝 맵 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">03. 경쟁사 분석</div>
+    <h2 class="slide__title">포지셔닝 맵</h2>
+  </div>
+
+  <div class="positioning-map">
+    <div class="positioning-map__axis-x"></div>
+    <div class="positioning-map__axis-y"></div>
+    <div class="positioning-map__label" style="top:8%; left:50%; transform:translateX(-50%);">[축 상단 — 예: 프리미엄]</div>
+    <div class="positioning-map__label" style="bottom:4%; left:50%; transform:translateX(-50%);">[축 하단 — 예: 매스]</div>
+    <div class="positioning-map__label" style="top:50%; left:2%; transform:translateY(-50%);">[축 좌 — 예: 기능성]</div>
+    <div class="positioning-map__label" style="top:50%; right:2%; transform:translateY(-50%);">[축 우 — 예: 감성]</div>
+
+    <!-- 경쟁사 포지션 (top/left 값으로 위치 조정) -->
+    <div class="positioning-map__dot" style="top:25%; left:30%; background:var(--blue);">A</div>
+    <div class="positioning-map__dot" style="top:35%; left:65%; background:var(--purple);">B</div>
+    <div class="positioning-map__dot" style="top:60%; left:45%; background:var(--green);">C</div>
+    <div class="positioning-map__dot" style="top:70%; left:70%; background:var(--gray-600);">D</div>
+
+    <!-- 우리 브랜드 목표 포지션 -->
+    <div class="positioning-map__dot" style="top:30%; left:55%; background:var(--hiz-orange); width:56px; height:56px; border: 3px solid #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.2);">US</div>
+  </div>
+
+  <div class="source-note" style="margin-top: 12px;">
+    A: [브랜드 A] &nbsp;|&nbsp; B: [브랜드 B] &nbsp;|&nbsp; C: [브랜드 C] &nbsp;|&nbsp; D: [브랜드 D] &nbsp;|&nbsp; <strong style="color:var(--hiz-orange);">US: [우리 브랜드] 목표 포지션</strong>
+  </div>
+  <span class="slide__page">13</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 14: SECTION 04 DIVIDER -->
+<!-- ============================================================ -->
+<div class="slide slide--dark divider">
+  <div class="divider__number">04</div>
+  <div class="divider__title">벤치마킹 브랜드</div>
+  <div class="divider__desc">Benchmark Brands — 국내외 레퍼런스 브랜드 심층 분석</div>
+  <span class="slide__page">14</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 15: 벤치마킹 브랜드 #1 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">04. 벤치마킹 브랜드</div>
+    <h2 class="slide__title">[벤치마킹 브랜드 1] — [한줄 요약]</h2>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="card card--accent" style="margin-bottom: 16px;">
+        <div class="card__label">BRAND OVERVIEW</div>
+        <div class="card__desc">
+          <strong>설립:</strong> [연도] · [국가]<br>
+          <strong>카테고리:</strong> [제품/서비스 카테고리]<br>
+          <strong>매출:</strong> [금액/추정]<br>
+          <strong>핵심 제품:</strong> [대표 제품 라인]<br>
+          <strong>타겟:</strong> [핵심 타겟층]
+        </div>
+      </div>
+      <div class="card card--filled">
+        <div class="card__title">벤치마킹 포인트</div>
+        <ul class="insight-list">
+          <li>[참고할 점 1]</li>
+          <li>[참고할 점 2]</li>
+          <li>[참고할 점 3]</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card card--blue" style="margin-bottom: 16px;">
+        <div class="card__title">브랜딩 전략</div>
+        <div class="card__desc">
+          <strong>컨셉:</strong> [브랜드 컨셉]<br>
+          <strong>슬로건:</strong> [슬로건]<br>
+          <strong>비주얼:</strong> [비주얼 아이덴티티 특징]<br>
+          <strong>톤앤매너:</strong> [커뮤니케이션 톤]
+        </div>
+      </div>
+      <div class="card card--green">
+        <div class="card__title">마케팅 & 채널 전략</div>
+        <div class="card__desc">
+          <strong>온라인:</strong> [자사몰/쿠팡/네이버 등]<br>
+          <strong>오프라인:</strong> [유통 채널]<br>
+          <strong>SNS:</strong> [주력 채널 + 팔로워]<br>
+          <strong>캠페인:</strong> [대표 캠페인]
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">15</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 16: 벤치마킹 브랜드 #2 (복사해서 사용) -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">04. 벤치마킹 브랜드</div>
+    <h2 class="slide__title">[벤치마킹 브랜드 2] — [한줄 요약]</h2>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="card card--orange" style="margin-bottom: 16px;">
+        <div class="card__label">BRAND OVERVIEW</div>
+        <div class="card__desc">
+          <strong>설립:</strong> [연도] · [국가]<br>
+          <strong>카테고리:</strong> [제품/서비스 카테고리]<br>
+          <strong>매출:</strong> [금액/추정]<br>
+          <strong>핵심 제품:</strong> [대표 제품 라인]<br>
+          <strong>타겟:</strong> [핵심 타겟층]
+        </div>
+      </div>
+      <div class="card card--filled">
+        <div class="card__title">벤치마킹 포인트</div>
+        <ul class="insight-list">
+          <li>[참고할 점 1]</li>
+          <li>[참고할 점 2]</li>
+          <li>[참고할 점 3]</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card card--purple" style="margin-bottom: 16px;">
+        <div class="card__title">브랜딩 전략</div>
+        <div class="card__desc">
+          <strong>컨셉:</strong> [브랜드 컨셉]<br>
+          <strong>슬로건:</strong> [슬로건]<br>
+          <strong>비주얼:</strong> [비주얼 아이덴티티 특징]<br>
+          <strong>톤앤매너:</strong> [커뮤니케이션 톤]
+        </div>
+      </div>
+      <div class="card card--green">
+        <div class="card__title">마케팅 & 채널 전략</div>
+        <div class="card__desc">
+          <strong>온라인:</strong> [자사몰/쿠팡/네이버 등]<br>
+          <strong>오프라인:</strong> [유통 채널]<br>
+          <strong>SNS:</strong> [주력 채널 + 팔로워]<br>
+          <strong>캠페인:</strong> [대표 캠페인]
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">16</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 17: SECTION 05 DIVIDER -->
+<!-- ============================================================ -->
+<div class="slide slide--dark divider">
+  <div class="divider__number">05</div>
+  <div class="divider__title">유통 채널 분석</div>
+  <div class="divider__desc">Distribution Channel — 온/오프라인 채널 현황 및 입점 전략</div>
+  <span class="slide__page">17</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 18: 유통 채널 분석 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">05. 유통 채널 분석</div>
+    <h2 class="slide__title">채널별 현황 & 기회</h2>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="card card--accent" style="margin-bottom: 16px;">
+        <div class="card__icon">🖥️</div>
+        <div class="card__title">온라인 채널</div>
+        <table class="data-table" style="font-size: 12px;">
+          <thead>
+            <tr><th>채널</th><th>특징</th><th>적합도</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>[자사몰]</td><td>[특징]</td><td><span class="tag tag--green">높음</span></td></tr>
+            <tr><td>[네이버스토어]</td><td>[특징]</td><td><span class="tag tag--green">높음</span></td></tr>
+            <tr><td>[쿠팡]</td><td>[특징]</td><td><span class="tag tag--orange">보통</span></td></tr>
+            <tr><td>[카카오선물하기]</td><td>[특징]</td><td><span class="tag tag--blue">검토</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="card card--orange" style="margin-bottom: 16px;">
+        <div class="card__icon">🏪</div>
+        <div class="card__title">오프라인 채널</div>
+        <table class="data-table" style="font-size: 12px;">
+          <thead>
+            <tr><th>채널</th><th>특징</th><th>적합도</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>[백화점]</td><td>[특징]</td><td><span class="tag tag--green">높음</span></td></tr>
+            <tr><td>[편집숍]</td><td>[특징]</td><td><span class="tag tag--green">높음</span></td></tr>
+            <tr><td>[마트/편의점]</td><td>[특징]</td><td><span class="tag tag--red">낮음</span></td></tr>
+            <tr><td>[팝업스토어]</td><td>[특징]</td><td><span class="tag tag--blue">추천</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--filled" style="margin-top: 8px;">
+    <div class="card__title">채널 전략 제안</div>
+    <div class="card__desc">[초기 런칭 시 추천 채널 조합과 단계별 확장 전략을 기술합니다.]</div>
+  </div>
+
+  <span class="slide__page">18</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 19: SECTION 06 DIVIDER -->
+<!-- ============================================================ -->
+<div class="slide slide--dark divider">
+  <div class="divider__number">06</div>
+  <div class="divider__title">인사이트 & 기회</div>
+  <div class="divider__desc">Insights & Opportunities — SWOT 분석 및 전략적 시사점</div>
+  <span class="slide__page">19</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 20: SWOT -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">06. 인사이트 & 기회</div>
+    <h2 class="slide__title">SWOT 분석</h2>
+  </div>
+
+  <div class="swot-grid">
+    <div class="swot-cell swot-cell--s">
+      <div class="swot-cell__title">💪 Strengths (강점)</div>
+      <ul class="swot-cell__list">
+        <li>[강점 1]</li>
+        <li>[강점 2]</li>
+        <li>[강점 3]</li>
+      </ul>
+    </div>
+    <div class="swot-cell swot-cell--w">
+      <div class="swot-cell__title">⚠️ Weaknesses (약점)</div>
+      <ul class="swot-cell__list">
+        <li>[약점 1]</li>
+        <li>[약점 2]</li>
+        <li>[약점 3]</li>
+      </ul>
+    </div>
+    <div class="swot-cell swot-cell--o">
+      <div class="swot-cell__title">🌟 Opportunities (기회)</div>
+      <ul class="swot-cell__list">
+        <li>[기회 1]</li>
+        <li>[기회 2]</li>
+        <li>[기회 3]</li>
+      </ul>
+    </div>
+    <div class="swot-cell swot-cell--t">
+      <div class="swot-cell__title">🔥 Threats (위협)</div>
+      <ul class="swot-cell__list">
+        <li>[위협 1]</li>
+        <li>[위협 2]</li>
+        <li>[위협 3]</li>
+      </ul>
+    </div>
+  </div>
+
+  <span class="slide__page">20</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 21: 전략적 시사점 & 기회 영역 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">06. 인사이트 & 기회</div>
+    <h2 class="slide__title">전략적 시사점 & 기회 영역</h2>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="card card--accent" style="margin-bottom: 16px;">
+        <div class="card__icon">🎯</div>
+        <div class="card__title">핵심 기회 영역</div>
+        <ul class="insight-list">
+          <li><strong>[기회 1]:</strong> [구체적 설명]</li>
+          <li><strong>[기회 2]:</strong> [구체적 설명]</li>
+          <li><strong>[기회 3]:</strong> [구체적 설명]</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card card--orange" style="margin-bottom: 16px;">
+        <div class="card__icon">⚡</div>
+        <div class="card__title">차별화 전략 방향</div>
+        <ul class="insight-list">
+          <li><strong>[전략 1]:</strong> [구체적 방향]</li>
+          <li><strong>[전략 2]:</strong> [구체적 방향]</li>
+          <li><strong>[전략 3]:</strong> [구체적 방향]</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--filled" style="margin-top: 8px; border: 2px solid var(--accent);">
+    <div class="card__title" style="color: var(--accent);">💡 Key Takeaway</div>
+    <div class="card__desc" style="font-size: 15px; font-weight: 500; line-height: 1.8;">
+      [리서치 전체를 관통하는 핵심 메시지. 이 시장에서 우리 브랜드가 성공하기 위해 반드시 가져가야 할 1-2가지 핵심 방향을 명확하게 제시합니다.]
+    </div>
+  </div>
+
+  <span class="slide__page">21</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 22: CLOSING -->
+<!-- ============================================================ -->
+<div class="slide slide--gradient" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; min-height:210mm;">
+  <div style="font-size:13px; font-weight:600; letter-spacing:3px; opacity:0.5; margin-bottom:20px;">THANK YOU</div>
+  <h2 style="font-size:32px; font-weight:900; margin-bottom:12px;">Market Desk Research</h2>
+  <p style="font-size:16px; opacity:0.7; margin-bottom:48px;">[브랜드명] — [산업 카테고리]</p>
+  <div class="cover__logo" style="position:static;">hiz</div>
+  <p style="font-size:12px; opacity:0.4; margin-top:24px;">
+    Prepared by HIZ System · Confidential<br>
+    [날짜]
+  </p>
+  <span class="slide__page">22</span>
+</div>
+
+</body>
+</html>

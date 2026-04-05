@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Desk Research — 슈퍼세이브 곰보배추시럽</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap');
+
+  :root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --accent: #2d3a8c;
+    --accent-light: #eef0ff;
+    --blue: #3b82f6;
+    --blue-light: #eff6ff;
+    --orange: #f97316;
+    --orange-light: #fff7ed;
+    --green: #10b981;
+    --green-light: #ecfdf5;
+    --red: #ef4444;
+    --red-light: #fef2f2;
+    --purple: #8b5cf6;
+    --purple-light: #f5f3ff;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-600: #4b5563;
+    --hiz-orange: #e8491d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===================== SLIDE SYSTEM ===================== */
+  .slide {
+    width: 297mm;
+    min-height: 210mm;
+    padding: 28mm 28mm;
+    margin: 0 auto 2px;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide--dark {
+    background: var(--accent);
+    color: #ffffff;
+  }
+
+  .slide--gradient {
+    background: linear-gradient(135deg, #1e2a6e 0%, #2d3a8c 40%, #3b4fa6 100%);
+    color: #ffffff;
+  }
+
+  .slide--green-gradient {
+    background: linear-gradient(135deg, #064e3b 0%, #065f46 40%, #047857 100%);
+    color: #ffffff;
+  }
+
+  /* ===================== COVER ===================== */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 210mm;
+    padding: 40mm 36mm;
+  }
+
+  .cover__badge {
+    display: inline-block;
+    background: var(--hiz-orange);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+
+  .cover__title {
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+
+  .cover__subtitle {
+    font-size: 18px;
+    font-weight: 300;
+    opacity: 0.85;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  .cover__meta {
+    font-size: 13px;
+    opacity: 0.6;
+    line-height: 2;
+  }
+
+  .cover__logo {
+    position: absolute;
+    bottom: 32mm;
+    right: 36mm;
+    width: 56px;
+    height: 56px;
+    background: var(--hiz-orange);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 900;
+    color: #fff;
+    font-style: italic;
+  }
+
+  /* ===================== SECTION DIVIDER ===================== */
+  .divider {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 210mm;
+    padding: 40mm 36mm;
+  }
+
+  .divider__number {
+    font-size: 72px;
+    font-weight: 900;
+    opacity: 0.15;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .divider__title {
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+
+  .divider__desc {
+    font-size: 15px;
+    font-weight: 300;
+    opacity: 0.7;
+    max-width: 500px;
+  }
+
+  /* ===================== CONTENT ===================== */
+  .slide__header {
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .slide__section-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--hiz-orange);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+
+  .slide__title {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.3;
+  }
+
+  .slide__page {
+    position: absolute;
+    bottom: 10mm;
+    right: 14mm;
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .slide--dark .slide__page,
+  .slide--gradient .slide__page,
+  .slide--green-gradient .slide__page {
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ===================== GRIDS ===================== */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 14px; }
+  .grid-2-1 { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+
+  /* ===================== CARDS ===================== */
+  .card {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .card--accent { border-left: 4px solid var(--accent); }
+  .card--orange { border-left: 4px solid var(--hiz-orange); }
+  .card--blue { border-left: 4px solid var(--blue); }
+  .card--green { border-left: 4px solid var(--green); }
+  .card--purple { border-left: 4px solid var(--purple); }
+  .card--red { border-left: 4px solid var(--red); }
+  .card--filled { background: var(--gray-50); border: none; }
+  .card--dark { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; }
+
+  .card__icon { font-size: 24px; margin-bottom: 10px; }
+  .card__label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .card__title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .card__value {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .card__desc {
+    font-size: 12.5px;
+    color: var(--gray-600);
+    line-height: 1.7;
+  }
+
+  /* ===================== KPI ===================== */
+  .kpi-row { display: flex; gap: 14px; margin-bottom: 20px; }
+  .kpi {
+    flex: 1;
+    text-align: center;
+    padding: 18px 12px;
+    background: var(--gray-50);
+    border-radius: 10px;
+  }
+  .kpi__value { font-size: 26px; font-weight: 900; color: var(--accent); margin-bottom: 4px; }
+  .kpi__label { font-size: 10px; color: var(--muted); font-weight: 500; }
+
+  /* ===================== TABLE ===================== */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .data-table thead th {
+    background: var(--accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+  }
+  .data-table thead th:first-child { border-radius: 6px 0 0 0; }
+  .data-table thead th:last-child { border-radius: 0 6px 0 0; }
+  .data-table tbody td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--gray-200);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .data-table tbody tr:nth-child(even) { background: var(--gray-50); }
+
+  /* ===================== TAGS ===================== */
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin: 2px 3px 2px 0;
+  }
+  .tag--blue { background: var(--blue-light); color: var(--blue); }
+  .tag--green { background: var(--green-light); color: var(--green); }
+  .tag--orange { background: var(--orange-light); color: var(--orange); }
+  .tag--purple { background: var(--purple-light); color: var(--purple); }
+  .tag--red { background: var(--red-light); color: var(--red); }
+
+  /* ===================== LISTS ===================== */
+  .insight-list { list-style: none; padding: 0; }
+  .insight-list li {
+    position: relative;
+    padding: 7px 0 7px 20px;
+    font-size: 13px;
+    line-height: 1.6;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .insight-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 7px;
+    height: 7px;
+    background: var(--hiz-orange);
+    border-radius: 50%;
+  }
+  .insight-list li:last-child { border-bottom: none; }
+
+  /* ===================== SWOT ===================== */
+  .swot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--gray-200);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .swot-cell { background: #fff; padding: 18px; }
+  .swot-cell__title {
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+  .swot-cell__list { list-style: none; padding: 0; font-size: 12px; line-height: 1.8; }
+  .swot-cell__list li::before { content: '• '; font-weight: 700; }
+  .swot-cell--s .swot-cell__title { color: var(--blue); }
+  .swot-cell--w .swot-cell__title { color: var(--orange); }
+  .swot-cell--o .swot-cell__title { color: var(--green); }
+  .swot-cell--t .swot-cell__title { color: var(--red); }
+
+  /* ===================== POSITIONING MAP ===================== */
+  .positioning-map {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--gray-50);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .positioning-map__axis-x,
+  .positioning-map__axis-y { position: absolute; background: var(--gray-200); }
+  .positioning-map__axis-x { width: 88%; height: 1px; top: 50%; left: 6%; }
+  .positioning-map__axis-y { width: 1px; height: 88%; left: 50%; top: 6%; }
+  .positioning-map__label { position: absolute; font-size: 10px; font-weight: 600; color: var(--muted); }
+  .positioning-map__dot {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    color: #fff;
+    transform: translate(-50%, -50%);
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  /* ===================== SOURCE ===================== */
+  .source-note {
+    font-size: 9px;
+    color: var(--muted);
+    margin-top: 12px;
+    padding-top: 6px;
+    border-top: 1px solid var(--gray-200);
+  }
+
+  /* ===================== COMPETITOR CARD ===================== */
+  .competitor-card {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .competitor-card__logo {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 10px;
+    background: var(--gray-100);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--accent);
+  }
+  .competitor-card__name { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+  .competitor-card__category { font-size: 10px; color: var(--muted); margin-bottom: 10px; }
+  .competitor-card__stats { font-size: 11px; color: var(--gray-600); line-height: 1.8; text-align: left; }
+
+  /* ===================== PRINT ===================== */
+  @media print {
+    @page { size: A4 landscape; margin: 0; }
+    body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .slide {
+      width: 297mm; height: 210mm; min-height: 210mm; max-height: 210mm;
+      margin: 0; page-break-after: always; page-break-inside: avoid; overflow: hidden;
+    }
+    .slide:last-child { page-break-after: auto; }
+  }
+
+  @media screen {
+    body { background: #d1d5db; padding: 20px 0; }
+    .slide { box-shadow: 0 4px 24px rgba(0,0,0,0.12); border-radius: 4px; margin-bottom: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- COVER -->
+<!-- ============================================================ -->
+<div class="slide slide--gradient cover">
+  <div class="cover__badge">MARKET DESK RESEARCH</div>
+  <h1 class="cover__title">슈퍼세이브<br>곰보배추시럽</h1>
+  <p class="cover__subtitle">국내외 시장 환경 분석 및 경쟁 브랜드 벤치마킹<br>건강즙/허벌시럽 카테고리 마켓 데스크 리서치</p>
+  <div class="cover__meta">
+    Prepared by HIZ System<br>
+    2026.04 | Confidential
+  </div>
+  <div class="cover__logo">hiz</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOC -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">Contents</div>
+    <h2 class="slide__title">목차</h2>
+  </div>
+  <div class="grid-2" style="margin-top:20px;">
+    <div>
+      <div class="card card--accent" style="margin-bottom:14px;">
+        <div class="card__title">01. 시장 개요</div>
+        <div class="card__desc">시장 정의, 규모(6조/1.2조/50~150억), 성장률, 핵심 트렌드</div>
+      </div>
+      <div class="card card--orange" style="margin-bottom:14px;">
+        <div class="card__title">02. 소비자 분석</div>
+        <div class="card__desc">타겟 세그먼트 4개, 구매 동기, 구매 여정</div>
+      </div>
+      <div class="card card--blue" style="margin-bottom:14px;">
+        <div class="card__title">03. 경쟁사 분석</div>
+        <div class="card__desc">국내 9개 브랜드, 포지셔닝 맵, 비교 분석표</div>
+      </div>
+    </div>
+    <div>
+      <div class="card card--green" style="margin-bottom:14px;">
+        <div class="card__title">04. 슈퍼세이브 브랜드 진단</div>
+        <div class="card__desc">기업 정보, 제품, 유통, SNS, 브랜딩 현황</div>
+      </div>
+      <div class="card card--purple" style="margin-bottom:14px;">
+        <div class="card__title">05. 유통 채널 분석</div>
+        <div class="card__desc">온/오프라인 채널 현황 및 전략 기회</div>
+      </div>
+      <div class="card card--red" style="margin-bottom:14px;">
+        <div class="card__title">06. 인사이트 & 기회</div>
+        <div class="card__desc">SWOT 분석, 핵심 기회, 전략 방향</div>
+      </div>
+      <div class="card" style="border-left:4px solid #0ea5e9;">
+        <div class="card__title">07. 해외 시장 분석</div>
+        <div class="card__desc">글로벌 허벌 시장($2,512억), 벤치마킹 6개 브랜드, 진출 로드맵</div>
+      </div>
+    </div>
+  </div>
+  <span class="slide__page">02</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 01 DIVIDER -->
+<!-- ============================================================ -->
+<div class="slide slide--dark divider">
+  <div class="divider__number">01</div>
+  <div class="divider__title">시장 개요</div>
+  <div class="divider__desc">Market Overview — 건강즙/곰보배추시럽 시장 정의, 규모, 핵심 트렌드</div>
+  <span class="slide__page">03</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 01-1: 시장 정의 & 규모 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">01. 시장 개요</div>
+    <h2 class="slide__title">시장 정의 & 규모</h2>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="kpi__value">~6조원</div>
+      <div class="kpi__label">건강기능식품 전체 (2024)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi__value">1.2~1.5조</div>
+      <div class="kpi__label">건강즙 시장 (추정)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi__value">50~150억</div>
+      <div class="kpi__label">곰보배추시럽 니치 (추정)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi__value">4.8%</div>
+      <div class="kpi__label">건기식 CAGR (5년)</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="card card--filled">
+        <div class="card__title">시장 정의</div>
+        <div class="card__desc">
+          곰보배추시럽은 <strong>단일 카테고리가 아닌 복수 시장의 교차점</strong>에 위치합니다.
+          건강즙/건강음료 시장과 전통 민간약초 식품 시장의 교집합이며,
+          <strong>식약처 인증 건강기능식품이 아닌 "일반식품"</strong>으로 분류되어 기능성 표시가 불가합니다.
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card card--filled">
+        <div class="card__title">카테고리 분류</div>
+        <div class="card__desc">
+          <span class="tag tag--blue">건강즙/건강음료 (핵심)</span>
+          <span class="tag tag--green">전통 민간약초 (핵심)</span>
+          <span class="tag tag--orange">호흡기 건강식품</span>
+          <span class="tag tag--purple">유아 건강식품 (신흥)</span>
+          <br><br>
+          양배추즙, 도라지즙, 흑마늘즙 등과 동일 카테고리에 속하며, 곰보배추 특유의 <strong>호흡기 효능 포지셔닝</strong>이 차별점.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="source-note">출처: 한국건강기능식품협회, e-나라지표, 헤럴드경제(건강즙 시장 1조원), HIZ 추정</div>
+  <span class="slide__page">04</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 01-2: 시장 성장 추이 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">01. 시장 개요</div>
+    <h2 class="slide__title">건강기능식품 시장 추이 & 성장 동인</h2>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <table class="data-table">
+        <thead><tr><th>연도</th><th>시장 규모</th><th>전년대비</th></tr></thead>
+        <tbody>
+          <tr><td>2021</td><td>5조 6,902억</td><td>-</td></tr>
+          <tr><td>2022</td><td>6조 1,498억</td><td><span class="tag tag--green">+8.1%</span></td></tr>
+          <tr><td>2023</td><td>6조 1,415억</td><td><span class="tag tag--red">-0.1%</span></td></tr>
+          <tr><td>2024</td><td>5조 9,531억</td><td><span class="tag tag--red">-3.1%</span></td></tr>
+          <tr><td>2025</td><td>5조 9,626억</td><td><span class="tag tag--blue">+0.2%</span></td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:12px; padding:12px; background:var(--orange-light); border-radius:8px; font-size:12px; color:var(--orange);">
+        <strong>주의:</strong> 건기식 전체 시장은 정체 국면이지만, 건강즙/전통약초 서브 카테고리는 자연주의 트렌드로 <strong>별도 성장세</strong> 유지 중
+      </div>
+    </div>
+    <div>
+      <div class="card card--accent" style="margin-bottom:14px;">
+        <div class="card__title">성장 드라이버</div>
+        <ul class="insight-list">
+          <li><strong>MZ세대 자연주의 소비 확대</strong> — 온라인 구매 69.8%, 모바일 72.4%</li>
+          <li><strong>정밀 소비 트렌드</strong> — "기관지에 좋은" 등 목적형 검색 증가</li>
+          <li><strong>미세먼지/환절기</strong> — 계절성 호흡기 수요 지속</li>
+          <li><strong>유아 건강 시장</strong> — 아이용 자연 시럽 카테고리 성장</li>
+        </ul>
+      </div>
+      <div class="card card--orange">
+        <div class="card__title">리스크 요인</div>
+        <ul class="insight-list">
+          <li><strong>건기식 인증 미비</strong> — 일반식품 분류, 기능성 표시 불가</li>
+          <li><strong>낮은 진입장벽</strong> — 영세 농가 다수 참여</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="source-note">출처: 한국건강기능식품협회, 오픈서베이 2025, e-나라지표, 푸드투데이</div>
+  <span class="slide__page">05</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 01-3: 핵심 트렌드 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">01. 시장 개요</div>
+    <h2 class="slide__title">핵심 트렌드 (2024-2026)</h2>
+  </div>
+
+  <div class="grid-3">
+    <div class="card card--accent">
+      <div class="card__icon">🎯</div>
+      <div class="card__title">정밀 소비<br>(Precision Wellness)</div>
+      <div class="card__desc">막연한 "건강"이 아닌 구체적 고민 해결 목적 구매. "기침에 좋은", "비염 자연치료" 등 상황 기반 검색이 구매를 견인.</div>
+    </div>
+    <div class="card card--blue">
+      <div class="card__icon">📱</div>
+      <div class="card__title">MZ세대<br>건강식품 소비</div>
+      <div class="card__desc">89.9%가 사전 정보 탐색 후 구매. 인스타그램에서 "재료의 진정성"에 반응. 스틱형 간편 섭취 선호.</div>
+    </div>
+    <div class="card card--green">
+      <div class="card__icon">👶</div>
+      <div class="card__title">유아 건강시장<br>급성장</div>
+      <div class="card__desc">"아이 기침에 좋은 시럽" 검색 증가. 곰보배추시럽의 핵심 확장 세그먼트. 키즈 라인 제품 다수 출시.</div>
+    </div>
+  </div>
+
+  <div class="grid-3" style="margin-top:14px;">
+    <div class="card card--purple">
+      <div class="card__icon">🌿</div>
+      <div class="card__title">자연주의<br>회귀 트렌드</div>
+      <div class="card__desc">합성 성분 기피, 전통 약초 선호 증가. 촌사람영농조합법인 등 곰보배추 발효 산업 엑셀러레이터 투자 유치.</div>
+    </div>
+    <div class="card card--orange">
+      <div class="card__icon">🎬</div>
+      <div class="card__title">라이브커머스<br>급성장</div>
+      <div class="card__desc">건강식품 라이브커머스 거래액 전월대비 17% 증가(2024). 설명이 필요한 곰보배추시럽에 최적 채널.</div>
+    </div>
+    <div class="card card--filled">
+      <div class="card__icon">💡</div>
+      <div class="card__title">시사점</div>
+      <div class="card__desc" style="color:var(--accent); font-weight:600;">곰보배추시럽은 "목적형 자연 건강식품" 트렌드의 교차점에 위치. 유아+호흡기+자연주의 포지셔닝이 핵심.</div>
+    </div>
+  </div>
+
+  <div class="source-note">출처: 오픈서베이 2025, ListeningMind 2026, 식품음료신문, 뉴스팸</div>
+  <span class="slide__page">06</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 01-4: 곰보배추 원료 분석 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">01. 시장 개요</div>
+    <h2 class="slide__title">곰보배추(배암차즈기) 원료 분석</h2>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="card card--filled" style="margin-bottom:14px;">
+        <div class="card__label">BASIC INFO</div>
+        <div class="card__desc">
+          <strong>학명:</strong> Salvia plebeia R. Br.<br>
+          <strong>과:</strong> 꿀풀과 (Lamiaceae)<br>
+          <strong>분포:</strong> 동아시아 (한국, 중국, 일본)<br>
+          <strong>별명:</strong> 배암차즈기, 뱀차즈기, 여지초<br>
+          <strong>이름 유래:</strong> 잎 표면 주름이 곰보 자국 같다 하여
+        </div>
+      </div>
+      <div class="card card--accent">
+        <div class="card__title">주요 기능 성분</div>
+        <div class="card__desc">
+          폴리페놀, 플라보노이드 17종, 테르펜, 베타카로틴 261mcg, 비타민K 152mcg (100g 기준)<br><br>
+          <span class="tag tag--blue">항염 작용</span>
+          <span class="tag tag--green">항균 작용</span>
+          <span class="tag tag--purple">항산화</span>
+          <span class="tag tag--orange">호흡기 (민간전승)</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card card--orange" style="margin-bottom:14px;">
+        <div class="card__title">소비자 인식 현황</div>
+        <table class="data-table" style="font-size:11px;">
+          <thead><tr><th>항목</th><th>현황</th></tr></thead>
+          <tbody>
+            <tr><td><strong>인지도</strong></td><td>중저 — 일반 소비자 대부분 "곰보배추"를 모름</td></tr>
+            <tr><td><strong>효능 신뢰</strong></td><td>양면적 — 약초 선호층에겐 높으나 과학적 근거 부족 인식</td></tr>
+            <tr><td><strong>맛</strong></td><td><strong>강한 쓴맛</strong>이 소비 확대의 최대 장벽</td></tr>
+            <tr><td><strong>법적 지위</strong></td><td>일반식품 — 건기식 개별인정 원료 아님</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="padding:14px; background:var(--red-light); border-radius:8px;">
+        <div style="font-size:12px; font-weight:700; color:var(--red); margin-bottom:6px;">핵심 제약</div>
+        <div style="font-size:12px; color:var(--text); line-height:1.7;">
+          식약처 건강기능식품 인증이 아닌 <strong>"일반식품"</strong> → 호흡기 개선, 면역력 증진 등 기능성 표시 불가. 마케팅 시 "건강에 좋은 전통 식품" 수준의 표현만 가능.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="source-note">출처: 그라디움, 농촌진흥청, 푸드투데이, 농업인신문</div>
+  <span class="slide__page">07</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 02 DIVIDER -->
+<!-- ============================================================ -->
+<div class="slide slide--dark divider">
+  <div class="divider__number">02</div>
+  <div class="divider__title">소비자 분석</div>
+  <div class="divider__desc">Consumer Analysis — 타겟 고객 프로파일, 구매 동기, 구매 여정</div>
+  <span class="slide__page">08</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 02-1: 타겟 세그먼트 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">02. 소비자 분석</div>
+    <h2 class="slide__title">타겟 고객 세그먼트</h2>
+  </div>
+
+  <div class="grid-4">
+    <div class="card card--accent">
+      <div class="card__icon">👩‍👦</div>
+      <div class="card__label">PRIMARY · 40~50%</div>
+      <div class="card__title">30~50대 엄마</div>
+      <div class="card__desc">
+        자녀 기침/가래/비염 관리 목적.<br>
+        "아이 기침할 때" 검색 유입.<br>
+        유아/어린이용 시럽 주 구매층.
+      </div>
+    </div>
+    <div class="card card--blue">
+      <div class="card__icon">🧓</div>
+      <div class="card__label">SECONDARY · 25~30%</div>
+      <div class="card__title">40~60대 중장년</div>
+      <div class="card__desc">
+        본인 호흡기/기관지 건강.<br>
+        전통 약초에 대한 높은 신뢰.<br>
+        건초/환 형태도 구매.
+      </div>
+    </div>
+    <div class="card card--green">
+      <div class="card__icon">🧘‍♀️</div>
+      <div class="card__label">POTENTIAL · 10~15%</div>
+      <div class="card__title">20~30대 웰니스</div>
+      <div class="card__desc">
+        자연주의 라이프스타일.<br>
+        인스타/블로그 후기 기반 구매.<br>
+        스틱형 간편 섭취 선호.
+      </div>
+    </div>
+    <div class="card card--purple">
+      <div class="card__icon">🌾</div>
+      <div class="card__label">NICHE · 10~15%</div>
+      <div class="card__title">농촌/지역 소비자</div>
+      <div class="card__desc">
+        직접 재배 또는 지인 추천.<br>
+        로컬 직거래/농산물 직판장.<br>
+        온라인 보다 오프라인 선호.
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--filled" style="margin-top:16px;">
+    <div class="card__title">소비자 구매 결정 요인 (건기식 전체)</div>
+    <div class="card__desc">
+      <span class="tag tag--blue">1. 면역력 증진 59.7%</span>
+      <span class="tag tag--green">2. 건강증진 56.5%</span>
+      <span class="tag tag--orange">3. 피로회복 52.6%</span>
+      <span class="tag tag--purple">4. 장건강 23.0%</span>
+      <span class="tag tag--red">5. 영양보충 19.9%</span>
+    </div>
+  </div>
+
+  <div class="source-note">출처: 한국건강기능식품협회, 오픈서베이 2025, HIZ 추정</div>
+  <span class="slide__page">09</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 02-2: 소비자 인사이트 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">02. 소비자 분석</div>
+    <h2 class="slide__title">소비자 인사이트 & 구매 여정</h2>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="card card--accent" style="margin-bottom:14px;">
+        <div class="card__title">핵심 구매 동기</div>
+        <ul class="insight-list">
+          <li><strong>자녀 호흡기 건강</strong> — "아이 기침에 좋은 것", "유아 비염 자연 케어"</li>
+          <li><strong>전통 약초 신뢰</strong> — "할머니가 해주던", "국내산 자연 원료"</li>
+          <li><strong>자연 요법 선호</strong> — "약 대신 시럽", "부작용 없는"</li>
+          <li><strong>환절기/미세먼지</strong> — 봄/가을/겨울 집중 수요</li>
+        </ul>
+      </div>
+      <div class="card card--orange">
+        <div class="card__title">Unmet Needs</div>
+        <ul class="insight-list">
+          <li><strong>쓴맛 해결</strong> — 원료 특유의 쓴맛이 진입장벽</li>
+          <li><strong>과학적 근거</strong> — 효능에 대한 객관적 검증 부재</li>
+          <li><strong>간편한 섭취</strong> — 전통 달임 방식의 불편함</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card card--filled" style="height:100%;">
+        <div class="card__title">구매 여정 (Customer Journey)</div>
+        <div style="margin-top:14px;">
+          <div style="display:flex; align-items:flex-start; gap:10px; margin-bottom:14px;">
+            <span class="tag tag--blue" style="min-width:50px; text-align:center;">인지</span>
+            <span style="font-size:12px; color:var(--gray-600);">인플루언서 공구 포스팅, 지인 추천, "아이 기침" 검색</span>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:10px; margin-bottom:14px;">
+            <span class="tag tag--purple" style="min-width:50px; text-align:center;">탐색</span>
+            <span style="font-size:12px; color:var(--gray-600);">네이버 블로그/카페 후기, 인스타그램 리뷰, 성분 확인</span>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:10px; margin-bottom:14px;">
+            <span class="tag tag--orange" style="min-width:50px; text-align:center;">비교</span>
+            <span style="font-size:12px; color:var(--gray-600);">가격(스틱당 900~1,750원), 원산지(국내산 여부), 리뷰 평점</span>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:10px; margin-bottom:14px;">
+            <span class="tag tag--green" style="min-width:50px; text-align:center;">구매</span>
+            <span style="font-size:12px; color:var(--gray-600);">인플루언서 공구 링크, 자사몰, 네이버스마트스토어</span>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:10px;">
+            <span class="tag tag--red" style="min-width:50px; text-align:center;">재구매</span>
+            <span style="font-size:12px; color:var(--gray-600);">효과 체감 시 높은 재구매율(평점 4.9). 선물세트로 지인 추천</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">10</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 03 DIVIDER -->
+<!-- ============================================================ -->
+<div class="slide slide--dark divider">
+  <div class="divider__number">03</div>
+  <div class="divider__title">경쟁사 분석</div>
+  <div class="divider__desc">Competitive Analysis — 국내 곰보배추시럽 브랜드 9개사 비교 분석</div>
+  <span class="slide__page">11</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 03-1: 경쟁 구도 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">03. 경쟁사 분석</div>
+    <h2 class="slide__title">경쟁 구도 개요 (Tier별 분류)</h2>
+  </div>
+
+  <div class="grid-3">
+    <div>
+      <div style="font-size:11px; font-weight:700; color:var(--accent); margin-bottom:10px; letter-spacing:1px;">TIER 1 — 브랜딩 선도</div>
+      <div class="competitor-card" style="margin-bottom:12px;">
+        <div class="competitor-card__logo" style="background:var(--accent-light);">SS</div>
+        <div class="competitor-card__name">슈퍼세이브</div>
+        <div class="competitor-card__category">(주)승만 · 경기 고양</div>
+        <div class="competitor-card__stats">
+          리뷰: 1,564개 (4.9점)<br>
+          가격: 52,000원 (선물세트)<br>
+          채널: CJ온스타일, 자사몰<br>
+          강점: "원조, 네이버 1위"
+        </div>
+      </div>
+      <div class="competitor-card">
+        <div class="competitor-card__logo" style="background:var(--purple-light); color:var(--purple);">SL</div>
+        <div class="competitor-card__name">슬리아 곰백보감</div>
+        <div class="competitor-card__category">슬리아 · 3개국 특허</div>
+        <div class="competitor-card__stats">
+          가격: 34,900원 (20포)<br>
+          포지셔닝: 의사/약사 개발<br>
+          강점: 노스릴리브 특허성분<br>
+          채널: 쿠팡, 자사몰
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:11px; font-weight:700; color:var(--blue); margin-bottom:10px; letter-spacing:1px;">TIER 2 — 가성비/볼륨</div>
+      <div class="competitor-card" style="margin-bottom:12px;">
+        <div class="competitor-card__logo" style="background:var(--blue-light);">HK</div>
+        <div class="competitor-card__name">한국유기농</div>
+        <div class="competitor-card__category">(주)한국유기농</div>
+        <div class="competitor-card__stats">
+          구매자: 49만명<br>
+          리뷰: 976개 (5.0점)<br>
+          가격: 24,900원 (14포)<br>
+          채널: 쿠마마켓
+        </div>
+      </div>
+      <div class="competitor-card">
+        <div class="competitor-card__logo" style="background:var(--green-light); color:var(--green);">OF</div>
+        <div class="competitor-card__name">오늘과일</div>
+        <div class="competitor-card__category">유아/아이 타겟 특화</div>
+        <div class="competitor-card__stats">
+          가격: 19,980원 (14포)<br>
+          포지셔닝: 국내산 프리미엄<br>
+          채널: 오아시스, 11번가
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:11px; font-weight:700; color:var(--green); margin-bottom:10px; letter-spacing:1px;">TIER 3 — 농가 직영/로컬</div>
+      <div class="competitor-card" style="margin-bottom:12px;">
+        <div class="competitor-card__logo" style="background:var(--green-light); color:var(--green);">GB</div>
+        <div class="competitor-card__name">곰배랑효소랑</div>
+        <div class="competitor-card__category">영농조합 · 여주</div>
+        <div class="competitor-card__stats">
+          제품: 26종 라인업<br>
+          직접 재배→가공 일관<br>
+          채널: 자사몰
+        </div>
+      </div>
+      <div class="competitor-card">
+        <div class="competitor-card__logo" style="background:var(--orange-light); color:var(--orange);">SD</div>
+        <div class="competitor-card__name">사온데 외 4개</div>
+        <div class="competitor-card__category">농가 직영 · 로컬</div>
+        <div class="competitor-card__stats">
+          특징: 원산지 프리미엄<br>
+          브랜딩/마케팅 미약<br>
+          채널: 자사몰, 직거래
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">12</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 03-2: 경쟁사 비교 테이블 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">03. 경쟁사 분석</div>
+    <h2 class="slide__title">경쟁사 비교 분석표</h2>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>브랜드</th>
+        <th>포지셔닝</th>
+        <th>스틱 단가</th>
+        <th>타겟</th>
+        <th>핵심 강점</th>
+        <th>핵심 약점</th>
+        <th>주요 채널</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:var(--accent-light) !important;">
+        <td><strong style="color:var(--hiz-orange);">슈퍼세이브</strong></td>
+        <td>온 가족 건강방패</td>
+        <td>~1,150원</td>
+        <td>엄마/가족</td>
+        <td>원조, 리뷰4.9, CJ입점</td>
+        <td>SNS 취약, 네이밍 혼선</td>
+        <td>자사몰, CJ, 공구</td>
+      </tr>
+      <tr>
+        <td><strong>슬리아</strong></td>
+        <td>의사/약사 개발</td>
+        <td>~1,750원</td>
+        <td>건강관심층</td>
+        <td>3개국 특허, 신뢰</td>
+        <td>높은 가격</td>
+        <td>쿠팡, 자사몰</td>
+      </tr>
+      <tr>
+        <td><strong>한국유기농</strong></td>
+        <td>공장도 가성비</td>
+        <td>~1,780원</td>
+        <td>가성비 소비자</td>
+        <td>49만 구매자, 리뷰5.0</td>
+        <td>브랜딩 약함</td>
+        <td>쿠마마켓</td>
+      </tr>
+      <tr>
+        <td><strong>오늘과일</strong></td>
+        <td>유아 프리미엄</td>
+        <td>~1,430원</td>
+        <td>영유아 엄마</td>
+        <td>유아 특화 포지셔닝</td>
+        <td>인지도 낮음</td>
+        <td>오아시스, 11번가</td>
+      </tr>
+      <tr>
+        <td><strong>곰배랑효소랑</strong></td>
+        <td>농장 직영 신뢰</td>
+        <td>~900원</td>
+        <td>전통 약초 선호층</td>
+        <td>26종 풀라인업, 직접재배</td>
+        <td>온라인 마케팅 미약</td>
+        <td>자사몰</td>
+      </tr>
+      <tr>
+        <td><strong>새잎</strong></td>
+        <td>복합 성분</td>
+        <td>미확인</td>
+        <td>건강관심층</td>
+        <td>삼백초+엘더베리 복합</td>
+        <td>브랜드 인지도 없음</td>
+        <td>온라인</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="source-note">출처: 각 브랜드 공식몰, 쿠팡, 오아시스마켓, 다나와 (2026.04 기준)</div>
+  <span class="slide__page">13</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 03-3: 포지셔닝 맵 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">03. 경쟁사 분석</div>
+    <h2 class="slide__title">포지셔닝 맵</h2>
+  </div>
+
+  <div class="positioning-map">
+    <div class="positioning-map__axis-x"></div>
+    <div class="positioning-map__axis-y"></div>
+    <div class="positioning-map__label" style="top:4%; left:50%; transform:translateX(-50%);">프리미엄</div>
+    <div class="positioning-map__label" style="bottom:2%; left:50%; transform:translateX(-50%);">가성비</div>
+    <div class="positioning-map__label" style="top:50%; left:2%; transform:translateY(-50%);">전통/자연</div>
+    <div class="positioning-map__label" style="top:50%; right:2%; transform:translateY(-50%);">과학/기능성</div>
+
+    <div class="positioning-map__dot" style="top:25%; left:70%; background:var(--purple);">슬리아</div>
+    <div class="positioning-map__dot" style="top:60%; left:55%; background:var(--blue);">한국<br>유기농</div>
+    <div class="positioning-map__dot" style="top:35%; left:45%; background:var(--green);">오늘<br>과일</div>
+    <div class="positioning-map__dot" style="top:65%; left:25%; background:var(--gray-600);">곰배랑</div>
+    <div class="positioning-map__dot" style="top:72%; left:20%; background:#9ca3af;">사온데</div>
+
+    <div class="positioning-map__dot" style="top:35%; left:40%; background:var(--hiz-orange); width:52px; height:52px; border:3px solid #fff; box-shadow:0 2px 12px rgba(0,0,0,0.2); font-size:10px;">슈퍼<br>세이브</div>
+  </div>
+
+  <div class="source-note">
+    슈퍼세이브는 "가족 건강" 포지셔닝으로 전통/자연 축 중앙에 위치. 슬리아 대비 과학적 근거 약하고, 농가 직영 대비 가격은 높은 중간 지대.
+  </div>
+  <span class="slide__page">14</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 04 DIVIDER -->
+<!-- ============================================================ -->
+<div class="slide slide--green-gradient divider">
+  <div class="divider__number">04</div>
+  <div class="divider__title">슈퍼세이브 브랜드 진단</div>
+  <div class="divider__desc">Brand Diagnosis — 기업 정보, 제품, 유통, SNS, 브랜딩 현황 점검</div>
+  <span class="slide__page">15</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 04-1: 기업 & 제품 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">04. 슈퍼세이브 브랜드 진단</div>
+    <h2 class="slide__title">기업 정보 & 제품 라인업</h2>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="card card--accent" style="margin-bottom:14px;">
+        <div class="card__label">COMPANY</div>
+        <div class="card__desc">
+          <strong>법인명:</strong> 주식회사 승만<br>
+          <strong>대표:</strong> 신주리<br>
+          <strong>설립:</strong> 2022년 (추정)<br>
+          <strong>소재:</strong> 경기 고양시 일산동구<br>
+          <strong>슬로건:</strong> "온 가족 건강방패 슈퍼세이브"<br>
+          <strong>스토리:</strong> "두 아들의 엄마가 만든 우리집 상비식품"<br>
+          <strong>공식몰:</strong> supersave.kr (카페24)<br>
+          <strong>추정 매출:</strong> 연 10~20억원대
+        </div>
+      </div>
+      <div style="padding:12px; background:var(--orange-light); border-radius:8px; font-size:11px;">
+        <strong style="color:var(--orange);">참고:</strong> 별도 유통 법인 <strong>뉴온아이앤씨</strong>(박종완 대표)가 G마켓 등에서 병행 판매 중
+      </div>
+    </div>
+    <div>
+      <div class="card card--filled">
+        <div class="card__title">제품 라인업 (5종 확인)</div>
+        <table class="data-table" style="font-size:11px;">
+          <thead><tr><th>제품</th><th>규격</th><th>가격</th></tr></thead>
+          <tbody>
+            <tr><td><strong>선물세트</strong></td><td>10g×15포×3박스</td><td>52,000원</td></tr>
+            <tr><td>시럽 300ml</td><td>병</td><td>미확인</td></tr>
+            <tr><td>스틱</td><td>150g (4개)</td><td>미확인</td></tr>
+            <tr><td>플러스</td><td>CJ 단독</td><td>판매종료</td></tr>
+            <tr><td>키즈</td><td>아이용</td><td>미확인</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:10px; font-size:11px; color:var(--gray-600); line-height:1.6;">
+          <strong>주원료:</strong> 곰보배추 추출액 100%(국내산) 31.85%<br>
+          <strong>감미료:</strong> 프락토올리고당<br>
+          <strong>구조:</strong> 곰보배추 단일 원료 <strong>모노 브랜드</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">16</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 04-2: SNS & 마케팅 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">04. 슈퍼세이브 브랜드 진단</div>
+    <h2 class="slide__title">마케팅 & SNS 현황</h2>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="card card--accent" style="margin-bottom:14px;">
+        <div class="card__title">SNS 채널 현황</div>
+        <table class="data-table" style="font-size:11px;">
+          <thead><tr><th>채널</th><th>상태</th><th>수치</th></tr></thead>
+          <tbody>
+            <tr><td>인스타그램</td><td>@supergombo</td><td><strong>1,319</strong> 팔로워</td></tr>
+            <tr><td>카카오톡</td><td>운영 중</td><td>미확인</td></tr>
+            <tr><td>유튜브</td><td><span class="tag tag--red">미운영</span></td><td>-</td></tr>
+            <tr><td>블로그</td><td><span class="tag tag--red">미운영</span></td><td>-</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card card--green">
+        <div class="card__title">고객 리뷰 현황</div>
+        <div class="card__desc">
+          <div style="display:flex; gap:16px; margin-bottom:8px;">
+            <div style="text-align:center;">
+              <div style="font-size:28px; font-weight:900; color:var(--green);">4.9</div>
+              <div style="font-size:10px; color:var(--muted);">평점 /5.0</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:28px; font-weight:900; color:var(--accent);">1,564</div>
+              <div style="font-size:10px; color:var(--muted);">리뷰 수</div>
+            </div>
+          </div>
+          <span class="tag tag--blue">비염개선</span>
+          <span class="tag tag--green">면역력</span>
+          <span class="tag tag--orange">환절기</span>
+          <span class="tag tag--purple">아이도 잘 먹음</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card card--orange" style="margin-bottom:14px;">
+        <div class="card__title">핵심 마케팅 전략: 인플루언서 공구</div>
+        <div class="card__desc">
+          육아/맘 인플루언서를 통한 공동구매가 <strong>주력 매출 채널</strong>.<br><br>
+          "공구예고 → 오픈 → LAST DAY" 패턴.<br>
+          대표 공구: @teenywishmarket, @papazzang, 끌리마마 등<br><br>
+          + 시사저널e PR (셰프 신종철 콜라보)<br>
+          + CJ온스타일 "곰보배추 플러스" 단독런칭 이력
+        </div>
+      </div>
+      <div class="card card--red">
+        <div class="card__title">마케팅 약점</div>
+        <ul class="insight-list">
+          <li>인스타 팔로워 1,319명 — <strong>자체 채널 매우 취약</strong></li>
+          <li>유튜브/블로그 자체 콘텐츠 채널 <strong>부재</strong></li>
+          <li>인플루언서 <strong>의존도 과다</strong> — 지속성 리스크</li>
+          <li>퍼포먼스 마케팅(메타/검색 광고) 미확인</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">17</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 04-3: 브랜딩 이슈 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">04. 슈퍼세이브 브랜드 진단</div>
+    <h2 class="slide__title">브랜딩 이슈 & 개선 포인트</h2>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="card card--red" style="margin-bottom:14px;">
+        <div class="card__title">🚨 주요 브랜딩 이슈</div>
+        <ul class="insight-list">
+          <li><strong>네이밍 검색 충돌</strong> — "슈퍼세이브" = 축구 용어, 티몬 멤버십 등과 검색 경쟁</li>
+          <li><strong>메시지 상충</strong> — "알뜰 쇼핑의 시작"(공식몰) vs 프리미엄 건강식품 포지셔닝</li>
+          <li><strong>복수 법인 혼선</strong> — (주)승만 vs 뉴온아이앤씨, 소비자 신뢰 저하 가능</li>
+          <li><strong>자사몰 경험</strong> — 카페24 기본 템플릿 수준, 브랜드 경험 부족</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card card--green" style="margin-bottom:14px;">
+        <div class="card__title">✅ 현재 강점</div>
+        <ul class="insight-list">
+          <li><strong>"원조, 네이버 1위"</strong> — 니치 카테고리 선점자</li>
+          <li><strong>리뷰 4.9 / 1,564개</strong> — 강력한 사회적 증거</li>
+          <li><strong>"엄마가 만든"</strong> — 진정성 있는 브랜드 스토리</li>
+          <li><strong>CJ온스타일 진출 이력</strong> — 유통 확장 가능성 입증</li>
+        </ul>
+      </div>
+      <div class="card card--filled">
+        <div class="card__title">💡 브랜드 진단 요약</div>
+        <div class="card__desc" style="font-weight:500; color:var(--accent);">
+          제품력(리뷰4.9)과 시장 선점(원조)이라는 강력한 기반을 보유하나, 브랜드 아이덴티티/네이밍/자사 채널의 <strong>체계적 정비가 시급</strong>. 인플루언서 의존에서 자체 채널 중심으로의 전환이 핵심 과제.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">18</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 05 DIVIDER -->
+<!-- ============================================================ -->
+<div class="slide slide--dark divider">
+  <div class="divider__number">05</div>
+  <div class="divider__title">유통 채널 분석</div>
+  <div class="divider__desc">Distribution — 온/오프라인 채널 현황 및 입점 전략</div>
+  <span class="slide__page">19</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 05-1: 채널 분석 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">05. 유통 채널 분석</div>
+    <h2 class="slide__title">채널별 현황 & 적합도</h2>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="card card--accent">
+        <div class="card__icon">🖥️</div>
+        <div class="card__title">온라인 채널</div>
+        <table class="data-table" style="font-size:11px;">
+          <thead><tr><th>채널</th><th>슈퍼세이브 현황</th><th>시장 비중</th></tr></thead>
+          <tbody>
+            <tr><td>자사몰</td><td><span class="tag tag--green">운영중</span></td><td>20~25%</td></tr>
+            <tr><td>네이버</td><td><span class="tag tag--orange">미확인</span></td><td>15~20%</td></tr>
+            <tr><td>쿠팡</td><td><span class="tag tag--red">미입점</span></td><td>35~40%</td></tr>
+            <tr><td>오아시스</td><td><span class="tag tag--green">운영중</span></td><td>5~10%</td></tr>
+            <tr><td>카카오선물하기</td><td><span class="tag tag--red">미입점</span></td><td>성장중</td></tr>
+            <tr><td>인플루언서 공구</td><td><span class="tag tag--green">활발</span></td><td>변동</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="card card--orange">
+        <div class="card__icon">🎬</div>
+        <div class="card__title">홈쇼핑/라이브커머스</div>
+        <table class="data-table" style="font-size:11px;">
+          <thead><tr><th>채널</th><th>현황</th><th>기회</th></tr></thead>
+          <tbody>
+            <tr><td>CJ온스타일</td><td><span class="tag tag--orange">종료</span></td><td>재진입 가능</td></tr>
+            <tr><td>네이버 라이브</td><td><span class="tag tag--red">미진행</span></td><td><span class="tag tag--green">높음</span></td></tr>
+            <tr><td>쿠팡 라이브</td><td><span class="tag tag--red">미진행</span></td><td><span class="tag tag--green">높음</span></td></tr>
+            <tr><td>그립/소스라이브</td><td><span class="tag tag--red">미진행</span></td><td><span class="tag tag--blue">검토</span></td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:10px; font-size:11px; color:var(--gray-600); line-height:1.6;">
+          라이브커머스 건강식품 거래액 전월대비 <strong>17% 증가</strong>(2024). 설명이 필요한 곰보배추시럽에 <strong>최적 채널</strong>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--filled" style="margin-top:14px; border:2px solid var(--accent);">
+    <div class="card__title" style="color:var(--accent);">채널 전략 제안</div>
+    <div class="card__desc">
+      <strong>1단계:</strong> 쿠팡/네이버 스마트스토어 입점 (검색 트래픽 확보) →
+      <strong>2단계:</strong> 카카오선물하기 입점 (선물 수요 흡수) →
+      <strong>3단계:</strong> 네이버/쿠팡 라이브커머스 정기 방송 (인플루언서 의존 탈피)
+    </div>
+  </div>
+
+  <div class="source-note">출처: 오픈서베이 2025, 오픈애즈 라이브커머스 리포트, 각 플랫폼</div>
+  <span class="slide__page">20</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 06 DIVIDER -->
+<!-- ============================================================ -->
+<div class="slide slide--dark divider">
+  <div class="divider__number">06</div>
+  <div class="divider__title">인사이트 & 기회</div>
+  <div class="divider__desc">Insights & Opportunities — SWOT 분석 및 전략적 시사점</div>
+  <span class="slide__page">21</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 06-1: SWOT -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">06. 인사이트 & 기회</div>
+    <h2 class="slide__title">SWOT 분석</h2>
+  </div>
+
+  <div class="swot-grid">
+    <div class="swot-cell swot-cell--s">
+      <div class="swot-cell__title">💪 Strengths</div>
+      <ul class="swot-cell__list">
+        <li>곰보배추시럽 카테고리 선점자 ("원조, 네이버 1위")</li>
+        <li>공식몰 리뷰 1,564개, 평점 4.9 — 강력한 사회적 증거</li>
+        <li>"엄마가 만든" 진정성 있는 브랜드 스토리</li>
+        <li>CJ온스타일 진출 이력 — 유통 확장 가능성 입증</li>
+        <li>명확한 효능 인식 (호흡기/비염) — 목적형 검색에 유리</li>
+      </ul>
+    </div>
+    <div class="swot-cell swot-cell--w">
+      <div class="swot-cell__title">⚠️ Weaknesses</div>
+      <ul class="swot-cell__list">
+        <li>SNS 자체 채널 극히 취약 (팔로워 1,319명)</li>
+        <li>브랜드명 "슈퍼세이브" 검색 충돌 (축구/티몬)</li>
+        <li>"알뜰 쇼핑" vs "프리미엄 건강식품" 메시지 불일치</li>
+        <li>인플루언서 공구 과의존 — 지속가능성 리스크</li>
+        <li>쿠팡/네이버 등 주요 채널 미비</li>
+        <li>자사몰 UX/브랜드 경험 미흡</li>
+      </ul>
+    </div>
+    <div class="swot-cell swot-cell--o">
+      <div class="swot-cell__title">🌟 Opportunities</div>
+      <ul class="swot-cell__list">
+        <li>MZ세대 자연주의 소비 확대 (온라인 69.8%)</li>
+        <li>유아 건강 시장 성장 — 키즈 라인 확장</li>
+        <li>라이브커머스 채널 급성장 (+17%)</li>
+        <li>미세먼지/환절기 계절성 수요 지속</li>
+        <li>글로벌 허벌 레메디 시장 성장 (CAGR 6~8%)</li>
+        <li>카카오선물하기 등 선물 채널 미개척</li>
+      </ul>
+    </div>
+    <div class="swot-cell swot-cell--t">
+      <div class="swot-cell__title">🔥 Threats</div>
+      <ul class="swot-cell__list">
+        <li>건기식 전체 시장 정체 (-3.1%, 2024)</li>
+        <li>낮은 진입장벽 — 영세 경쟁자 지속 유입</li>
+        <li>일반식품 분류 — 기능성 표시 불가 규제</li>
+        <li>대형 식품기업 카테고리 진출 시 시장 잠식 가능</li>
+        <li>곰보배추 원료의 강한 쓴맛 — 소비 확대 장벽</li>
+      </ul>
+    </div>
+  </div>
+
+  <span class="slide__page">22</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 06-2: 전략적 시사점 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">06. 인사이트 & 기회</div>
+    <h2 class="slide__title">전략적 시사점 & 핵심 기회</h2>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="card card--accent" style="margin-bottom:14px;">
+        <div class="card__icon">🎯</div>
+        <div class="card__title">핵심 기회 영역</div>
+        <ul class="insight-list">
+          <li><strong>유아/키즈 시럽 시장 선점:</strong> 가장 활발한 성장 세그먼트. "아이 기침에 좋은 자연 시럽" 포지셔닝 강화</li>
+          <li><strong>라이브커머스 정기 방송:</strong> 설명이 필요한 제품 특성에 최적. 인플루언서 의존 탈피</li>
+          <li><strong>카카오선물하기 입점:</strong> 선물세트 수요(리뷰 1,564개)를 선물 플랫폼으로 확장</li>
+          <li><strong>계절 마케팅 체계화:</strong> 봄(미세먼지)/가을(환절기)/겨울(감기) 3시즌 캠페인</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card card--orange" style="margin-bottom:14px;">
+        <div class="card__icon">⚡</div>
+        <div class="card__title">차별화 전략 방향</div>
+        <ul class="insight-list">
+          <li><strong>브랜드 리빌딩:</strong> 네이밍/BI 재정비, "알뜰"→"프리미엄 자연 건강" 메시지 전환</li>
+          <li><strong>자체 콘텐츠 채널 구축:</strong> 유튜브(레시피/건강정보) + 블로그(SEO) 운영</li>
+          <li><strong>과학적 근거 확보:</strong> 성분 분석, 임상시험 등으로 신뢰도 강화 (슬리아 대응)</li>
+          <li><strong>유통 다변화:</strong> 쿠팡/네이버 필수 입점 + 오프라인(백화점 팝업) 시도</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--filled" style="border:2px solid var(--accent);">
+    <div class="card__title" style="color:var(--accent); font-size:16px;">💡 Key Takeaway</div>
+    <div class="card__desc" style="font-size:14px; font-weight:500; line-height:1.8; color:var(--text);">
+      슈퍼세이브는 곰보배추시럽이라는 <strong>니치 카테고리의 확실한 선점자</strong>이며, 제품 만족도(4.9)가 이를 뒷받침합니다.
+      그러나 <strong>브랜드 인프라(네이밍, 자사채널, 유통)가 제품력을 따라가지 못하는 상태</strong>입니다.
+      지금 이 시점에서 <strong>브랜드 아이덴티티 재정비 + 유통채널 다변화</strong>를 실행하면, 시장이 커지기 전에 확고한 No.1 포지션을 구축할 수 있는 타이밍입니다.
+    </div>
+  </div>
+
+  <span class="slide__page">23</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 07 DIVIDER: 해외 시장 -->
+<!-- ============================================================ -->
+<div class="slide slide--dark divider">
+  <div class="divider__number">07</div>
+  <div class="divider__title">해외 시장 분석</div>
+  <div class="divider__desc">Global Market — 글로벌 허벌 시럽 시장, 벤치마킹 브랜드, 진출 전략</div>
+  <span class="slide__page">24</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 07-1: 글로벌 시장 규모 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">07. 해외 시장 분석</div>
+    <h2 class="slide__title">글로벌 허벌 시럽 / 기침시럽 시장</h2>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="kpi__value">$57.6억</div>
+      <div class="kpi__label">글로벌 기침시럽 (2026)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi__value" style="color:var(--green);">8.54%</div>
+      <div class="kpi__label">허벌/천연 CAGR</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi__value">$2,512억</div>
+      <div class="kpi__label">글로벌 허벌 의약품 (2025)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi__value">$610억</div>
+      <div class="kpi__label">아시아태평양 허벌 (2032)</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="card card--green" style="margin-bottom:14px;">
+        <div class="card__title">핵심 인사이트</div>
+        <div class="card__desc">
+          전체 기침시럽 CAGR <strong>4.63%</strong> 대비<br>
+          허벌/천연 세그먼트는 <strong>8.54%</strong>로 <strong>약 2배 고성장</strong>.<br><br>
+          소비자의 천연 원료 선호가 이 성장을 견인하며,
+          곰보배추시럽이 진입하기에 유리한 시장 환경.
+        </div>
+      </div>
+      <div class="card card--filled">
+        <div class="card__title">곰보배추 해외 인지도</div>
+        <div class="card__desc">
+          <span class="tag tag--blue">중국: 약전 등재 (荔枝草)</span>
+          <span class="tag tag--orange">해외: 인지도 거의 없음</span><br><br>
+          시럽 형태 상업화는 <strong>사실상 Blue Ocean</strong>.<br>
+          Amazon에서 건조잎만 소량 판매 ($12~15/3oz).
+        </div>
+      </div>
+    </div>
+    <div>
+      <table class="data-table" style="font-size:11px;">
+        <thead><tr><th>시장</th><th>규모</th><th>CAGR</th></tr></thead>
+        <tbody>
+          <tr><td>글로벌 기침시럽</td><td>$57.6억 (2026)</td><td>4.63%</td></tr>
+          <tr><td><strong>허벌/천연 세그먼트</strong></td><td>고성장</td><td><strong>8.54%</strong></td></tr>
+          <tr><td>글로벌 허벌 의약품</td><td>$2,512억→$5,159억</td><td>8.37%</td></tr>
+          <tr><td>아태 허벌</td><td>$241억→$610억</td><td>12.4%</td></tr>
+          <tr><td>글로벌 허벌 보조제</td><td>$468억→$872억</td><td>9.3%</td></tr>
+          <tr><td>마누카꿀 (인접)</td><td>$8.17억 (2033)</td><td>성장중</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:10px; padding:10px; background:var(--green-light); border-radius:8px; font-size:11px; color:var(--green);">
+        <strong>K-건강식품 수출:</strong> 3,802억원 (2024), 4년간 +67.9% 성장. 정관장 40개국 수출 모델 참고.
+      </div>
+    </div>
+  </div>
+
+  <div class="source-note">출처: SkyQuest, Mordor Intelligence, Fortune Business Insights, Data Bridge, 한국건강기능식품협회</div>
+  <span class="slide__page">25</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 07-2: 해외 벤치마킹 브랜드 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">07. 해외 시장 분석</div>
+    <h2 class="slide__title">글로벌 벤치마킹 브랜드 6선</h2>
+  </div>
+
+  <div class="grid-3">
+    <div class="card card--accent">
+      <div class="card__icon">🇨🇭</div>
+      <div class="card__title">Ricola</div>
+      <div class="card__desc">
+        <strong>스위스 · 1930년</strong><br>
+        45개국, 연 90억개 생산<br>
+        드롭스 $3~12<br>
+        <span class="tag tag--blue">원산지 스토리텔링</span><br>
+        13가지 알프스 허브 블렌드
+      </div>
+    </div>
+    <div class="card card--blue">
+      <div class="card__icon">🇳🇿</div>
+      <div class="card__title">Manuka Health</div>
+      <div class="card__desc">
+        <strong>뉴질랜드</strong><br>
+        UMF/MGO 등급 시스템<br>
+        꿀 $25~120<br>
+        <span class="tag tag--green">품질 계량화</span><br>
+        인증으로 프리미엄 정당화
+      </div>
+    </div>
+    <div class="card card--green">
+      <div class="card__icon">🇳🇿</div>
+      <div class="card__title">Comvita</div>
+      <div class="card__desc">
+        <strong>뉴질랜드 · 50년</strong><br>
+        중국 마누카꿀 50% 점유<br>
+        Costco 300+ 매장<br>
+        <span class="tag tag--orange">중국 시장 공략</span><br>
+        Tmall/JD 크로스보더
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-3" style="margin-top:14px;">
+    <div class="card card--orange">
+      <div class="card__icon">🇵🇰</div>
+      <div class="card__title">Herbion Naturals</div>
+      <div class="card__desc">
+        <strong>파키스탄/미국</strong><br>
+        기침시럽 $7~12<br>
+        CVS, Walmart 입점<br>
+        <span class="tag tag--purple">비주류→주류 진입</span><br>
+        Drug-free, All-natural
+      </div>
+    </div>
+    <div class="card card--purple">
+      <div class="card__icon">🇺🇸</div>
+      <div class="card__title">Gaia Herbs</div>
+      <div class="card__desc">
+        <strong>미국 · 매출 $50~100M</strong><br>
+        기침시럽 $12~18<br>
+        자체 농장 재배<br>
+        <span class="tag tag--blue">원료 추적 시스템</span><br>
+        MeetYourHerbs 투명성
+      </div>
+    </div>
+    <div class="card card--red">
+      <div class="card__icon">🇺🇸</div>
+      <div class="card__title">Zarbee's (J&J)</div>
+      <div class="card__desc">
+        <strong>미국 · J&J 인수</strong><br>
+        어린이 천연 기침시럽 1위<br>
+        시럽 $8~12<br>
+        <span class="tag tag--green">어린이 특화</span><br>
+        소아과 의사 개발 스토리
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">26</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 07-3: 벤치마킹 비교 & 시사점 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">07. 해외 시장 분석</div>
+    <h2 class="slide__title">벤치마킹 종합 비교 & 시사점</h2>
+  </div>
+
+  <table class="data-table" style="font-size:11px;">
+    <thead>
+      <tr><th>브랜드</th><th>원산지 스토리</th><th>인증/품질</th><th>가격</th><th>유통 범위</th><th>핵심 교훈</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Ricola</strong></td><td>스위스 알프스</td><td>13허브 블렌드</td><td>대중 $3~12</td><td>45개국</td><td>원산지 스토리텔링</td></tr>
+      <tr><td><strong>Manuka Health</strong></td><td>NZ 청정자연</td><td>UMF/MGO 등급</td><td>프리미엄 $25~120</td><td>글로벌 D2C</td><td>품질 계량화 시스템</td></tr>
+      <tr><td><strong>Comvita</strong></td><td>NZ 50년 양봉</td><td>UMF/MGO 이중</td><td>프리미엄</td><td>중국50%+Costco</td><td>크로스보더 전략</td></tr>
+      <tr><td><strong>Herbion</strong></td><td>파키스탄 허브</td><td>All-natural</td><td>대중 $7~12</td><td>CVS/Walmart</td><td>비주류→주류 진입</td></tr>
+      <tr><td><strong>Gaia Herbs</strong></td><td>미국 자체농장</td><td>MeetYourHerbs</td><td>프리미엄 $12~18</td><td>자연식품 리테일</td><td>원료 투명성</td></tr>
+      <tr><td><strong>Zarbee's</strong></td><td>소아과 의사</td><td>Drug-free</td><td>대중 $8~12</td><td>대형유통(J&J)</td><td>어린이 특화 → 인수</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid-2" style="margin-top:16px;">
+    <div class="card card--accent">
+      <div class="card__title">곰보배추시럽에 적용할 5가지</div>
+      <ul class="insight-list">
+        <li><strong>원산지 스토리:</strong> "1,000년 한국 전통 약초" + 현대 과학 검증 이중 내러티브 (Ricola 모델)</li>
+        <li><strong>품질 인증:</strong> 플라보노이드 함량 등급제 도입 (Manuka UMF 모델)</li>
+        <li><strong>Clean Label:</strong> Alcohol-free, Sugar-free, Non-GMO 등 서구 기준 충족 (Herbion)</li>
+        <li><strong>원료 투명성:</strong> 한국 재배지→추출→가공 전과정 공개 (Gaia MeetYourHerbs)</li>
+        <li><strong>어린이 라인:</strong> Kids 특화 라인으로 시장 진입 (Zarbee's 모델)</li>
+      </ul>
+    </div>
+    <div class="card card--green">
+      <div class="card__title">해외 소비자 트렌드</div>
+      <ul class="insight-list">
+        <li><strong>Natural > Synthetic:</strong> 천연이 합성 대비 2배 빠른 성장</li>
+        <li><strong>Self-medication:</strong> 코로나 이후 자가치료 경향 강화</li>
+        <li><strong>동양의학 수용:</strong> TCM/한방 글로벌 인정 확대</li>
+        <li><strong>K-wave 효과:</strong> K-드라마/K-pop이 K-건강식품 인지도 견인</li>
+      </ul>
+    </div>
+  </div>
+
+  <span class="slide__page">27</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 07-4: 해외 진출 로드맵 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">07. 해외 시장 분석</div>
+    <h2 class="slide__title">해외 진출 로드맵 (제안)</h2>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>단계</th><th>시기</th><th>시장</th><th>전략</th><th>근거</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tag tag--blue">1단계</span></td>
+        <td>0~6개월</td>
+        <td><strong>미국 한인시장</strong></td>
+        <td>Amazon + 한인마트<br>"Korean Herbal Cough Syrup"</td>
+        <td>낮은 진입장벽, 정관장 선례</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag--green">2단계</span></td>
+        <td>6~12개월</td>
+        <td><strong>중국</strong></td>
+        <td>Tmall Global 크로스보더<br>"荔枝草(여지초) 시럽"</td>
+        <td>TCM 약전 등재, Comvita 경로</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag--orange">3단계</span></td>
+        <td>12~18개월</td>
+        <td><strong>동남아</strong></td>
+        <td>Shopee/Lazada + 현지유통<br>K-herbal 브랜딩</td>
+        <td>K-wave 효과, 규제 유연</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag--purple">4단계</span></td>
+        <td>18~24개월</td>
+        <td><strong>일본</strong></td>
+        <td>기능성 표시 식품 인증</td>
+        <td>건강 의식 최고, 인증 시 신뢰</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag--red">5단계</span></td>
+        <td>24개월+</td>
+        <td><strong>유럽/미국 메인스트림</strong></td>
+        <td>Novel Food 인증 + 주류 리테일</td>
+        <td>Herbion CVS/Walmart 모델</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="card card--filled" style="margin-top:16px; border:2px solid var(--accent);">
+    <div class="card__title" style="color:var(--accent); font-size:15px;">💡 해외 진출 Key Takeaway</div>
+    <div class="card__desc" style="font-size:13px; font-weight:500; line-height:1.8;">
+      곰보배추시럽은 글로벌 허벌 시럽 시장에서 <strong>사실상 경쟁자가 없는 Blue Ocean</strong>입니다.
+      중국 약전 등재(荔枝草), 93종 활성 화합물 연구 기반이라는 <strong>과학적 자산</strong>이 있으며,
+      K-wave와 K-wellness 트렌드가 진입 타이밍을 만들어주고 있습니다.
+      <strong>"Korean Herbal" 카테고리를 K-beauty처럼 새로 개척</strong>하는 것이 최대 기회입니다.
+    </div>
+  </div>
+
+  <span class="slide__page">28</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- CLOSING -->
+<!-- ============================================================ -->
+<div class="slide slide--gradient" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; min-height:210mm;">
+  <div style="font-size:12px; font-weight:600; letter-spacing:3px; opacity:0.5; margin-bottom:20px;">THANK YOU</div>
+  <h2 style="font-size:30px; font-weight:900; margin-bottom:10px;">Market Desk Research</h2>
+  <p style="font-size:15px; opacity:0.7; margin-bottom:8px;">슈퍼세이브 — 곰보배추시럽</p>
+  <p style="font-size:12px; opacity:0.5; margin-bottom:40px;">건강즙/허벌시럽 카테고리 · 국내외 시장 분석</p>
+  <div class="cover__logo" style="position:static;">hiz</div>
+  <p style="font-size:11px; opacity:0.4; margin-top:20px;">
+    Prepared by HIZ System · Confidential<br>
+    2026.04
+  </p>
+  <span class="slide__page">24</span>
+</div>
+
+</body>
+</html>
