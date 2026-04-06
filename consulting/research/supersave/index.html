@@ -197,6 +197,24 @@
     color: rgba(255,255,255,0.4);
   }
 
+  .slide::after {
+    content: 'BRAND RISE';
+    position: absolute;
+    bottom: 10mm;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--muted);
+    opacity: 0.5;
+  }
+  .slide--dark::after,
+  .slide--gradient::after,
+  .slide--green-gradient::after {
+    color: rgba(255,255,255,0.35);
+  }
+
   /* ===================== GRIDS ===================== */
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
@@ -380,7 +398,7 @@
     border-top: 1px solid var(--gray-200);
   }
 
-  /* ===================== COMPETITOR CARD ===================== */
+  /* ===================== COMPETITOR CARD (summary) ===================== */
   .competitor-card {
     background: #fff;
     border: 1px solid var(--gray-200);
@@ -404,6 +422,149 @@
   .competitor-card__name { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
   .competitor-card__category { font-size: 10px; color: var(--muted); margin-bottom: 10px; }
   .competitor-card__stats { font-size: 11px; color: var(--gray-600); line-height: 1.8; text-align: left; }
+
+  /* ===================== BRAND PROFILE (개별 경쟁사) ===================== */
+  .bp-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 14px;
+    border-bottom: 3px solid var(--text);
+    margin-bottom: 22px;
+  }
+  .bp-header__left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .bp-header__category {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+  }
+  .bp-header__brand {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+  }
+  .bp-header__tier {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+  .bp-header__tier--t1 { background: var(--accent-light); color: var(--accent); }
+  .bp-header__tier--t2 { background: var(--blue-light); color: var(--blue); }
+  .bp-header__tier--t3 { background: var(--green-light); color: var(--green); }
+
+  .bp-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .bp-info { }
+  .bp-info__row {
+    display: flex;
+    align-items: baseline;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--gray-100);
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+  .bp-info__row:last-child { border-bottom: none; }
+  .bp-info__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--text);
+    flex-shrink: 0;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+  .bp-info__label {
+    font-weight: 700;
+    min-width: 72px;
+    flex-shrink: 0;
+    color: var(--text);
+  }
+  .bp-info__value {
+    color: var(--gray-600);
+    flex: 1;
+  }
+  .bp-info__value strong { color: var(--text); font-weight: 700; }
+
+  .bp-sub {
+    margin-top: 4px;
+    padding: 14px 16px;
+    background: var(--gray-50);
+    border-radius: 8px;
+  }
+  .bp-sub__title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+  .bp-sub__text {
+    font-size: 12px;
+    color: var(--gray-600);
+    line-height: 1.7;
+  }
+
+  .bp-right { }
+  .bp-right__section-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+  .bp-right__links {
+    font-size: 11.5px;
+    margin-bottom: 16px;
+    line-height: 2;
+  }
+  .bp-right__links span {
+    display: inline-block;
+    min-width: 70px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .bp-right__links a {
+    color: var(--blue);
+    text-decoration: none;
+    word-break: break-all;
+  }
+
+  .bp-products {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .bp-product {
+    background: var(--gray-50);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 11px;
+  }
+  .bp-product__name { font-weight: 700; margin-bottom: 2px; color: var(--text); }
+  .bp-product__price { color: var(--accent); font-weight: 600; }
+  .bp-product__detail { color: var(--muted); margin-top: 2px; }
+
+  .bp-verdict {
+    margin-top: 12px;
+    padding: 10px 14px;
+    border-left: 3px solid var(--hiz-orange);
+    background: var(--orange-light);
+    border-radius: 0 8px 8px 0;
+    font-size: 12px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .bp-verdict strong { color: var(--hiz-orange); }
 
   /* ===================== PRINT ===================== */
   @media print {
@@ -432,10 +593,9 @@
   <h1 class="cover__title">슈퍼세이브<br>곰보배추시럽</h1>
   <p class="cover__subtitle">국내외 시장 환경 분석 및 경쟁 브랜드 벤치마킹<br>건강즙/허벌시럽 카테고리 마켓 데스크 리서치</p>
   <div class="cover__meta">
-    Prepared by HIZ System<br>
+    Prepared by BRAND RISE<br>
     2026.04 | Confidential
   </div>
-  <div class="cover__logo">hiz</div>
 </div>
 
 <!-- ============================================================ -->
@@ -458,7 +618,7 @@
       </div>
       <div class="card card--blue" style="margin-bottom:14px;">
         <div class="card__title">03. 경쟁사 분석</div>
-        <div class="card__desc">국내 9개 브랜드, 포지셔닝 맵, 비교 분석표</div>
+        <div class="card__desc">국내 9개 브랜드, 포지셔닝 맵, 비교 분석표, 개별 브랜드 프로필 6건</div>
       </div>
     </div>
     <div>
@@ -1058,13 +1218,497 @@
 </div>
 
 <!-- ============================================================ -->
+<!-- 03-4: 경쟁사 개별 프로필 — 슬리아 (곰백보감) -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="bp-header">
+    <div class="bp-header__left">
+      <span class="bp-header__category">국내 |</span>
+      <span class="bp-header__brand">슬리아 (곰백보감)</span>
+    </div>
+    <span class="bp-header__tier bp-header__tier--t1">TIER 1 — 브랜딩 선도</span>
+  </div>
+
+  <div class="bp-body">
+    <div class="bp-info">
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">운영사</span>
+        <span class="bp-info__value"><strong>슬리아</strong></span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">포지셔닝</span>
+        <span class="bp-info__value"><strong>"30년 경력 의사/약사가 만든 곰보배추시럽"</strong></span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">핵심 강점</span>
+        <span class="bp-info__value">3개국 호흡기 특허 성분 <strong>'노스릴리브'</strong> 보유. 의료진 개발 신뢰도</span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">가격대</span>
+        <span class="bp-info__value"><strong>1박스(20포) 34,900원</strong> / 9박스 216,000원 (박스당 24,000원)<br>스틱 단가 ~1,750원/포 (프리미엄)</span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">유통 채널</span>
+        <span class="bp-info__value">쿠팡, 자사몰, 다나와</span>
+      </div>
+
+      <div class="bp-sub">
+        <div class="bp-sub__title">브랜드 특징</div>
+        <div class="bp-sub__text">
+          의사·약사 개발이라는 <strong>전문가 신뢰 포지셔닝</strong>이 명확함. 3개국 특허 성분을 전면에 내세워 경쟁사 대비 과학적 근거가 강함. 프리미엄 가격 정책을 유지하면서도 9박스 대량 구매 시 할인으로 재구매 유도. 브랜딩 패키징이 잘 되어있어 <strong>일관성 있는 커뮤니케이션</strong> 가능.
+        </div>
+      </div>
+    </div>
+
+    <div class="bp-right">
+      <div class="bp-right__section-title">온라인 채널</div>
+      <div class="bp-right__links">
+        <span>홈페이지</span> <a href="https://sliah.com/">sliah.com</a><br>
+        <span>쿠팡</span> 쿠팡 내 '슬리아 곰백보감' 검색
+      </div>
+
+      <div class="bp-right__section-title">주요 제품</div>
+      <div class="bp-products">
+        <div class="bp-product">
+          <div class="bp-product__name">곰보배추시럽 15g×20포</div>
+          <div class="bp-product__price">34,900원</div>
+          <div class="bp-product__detail">단품 1박스</div>
+        </div>
+        <div class="bp-product">
+          <div class="bp-product__name">곰보배추시럽 9박스 세트</div>
+          <div class="bp-product__price">216,000원</div>
+          <div class="bp-product__detail">박스당 24,000원</div>
+        </div>
+      </div>
+
+      <div class="bp-verdict">
+        <strong>HIZ 분석:</strong> 슈퍼세이브 대비 과학적 신뢰도(특허)에서 우위. 단, 가격대가 높아 대중 접근성은 낮음. TV홈쇼핑 미진출.
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">15</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 03-5: 경쟁사 개별 프로필 — 한국유기농 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="bp-header">
+    <div class="bp-header__left">
+      <span class="bp-header__category">국내 |</span>
+      <span class="bp-header__brand">한국유기농</span>
+    </div>
+    <span class="bp-header__tier bp-header__tier--t2">TIER 2 — 가성비/볼륨</span>
+  </div>
+
+  <div class="bp-body">
+    <div class="bp-info">
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">운영사</span>
+        <span class="bp-info__value"><strong>(주)한국유기농</strong> · 대표 김성중</span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">포지셔닝</span>
+        <span class="bp-info__value"><strong>"저온추출 공법, 국내산 곰보배추+배+생강"</strong></span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">핵심 강점</span>
+        <span class="bp-info__value">구매자 <strong>49만명</strong>, 리뷰 976개, 평점 <strong>5.0</strong>. 공장도 가성비 소구</span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">가격대</span>
+        <span class="bp-info__value"><strong>1박스(14포) 24,900원</strong> (정가 33,900원, 27% 할인)<br>스틱 단가 ~1,780원/포</span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">유통 채널</span>
+        <span class="bp-info__value">쿠마마켓 (주력)</span>
+      </div>
+
+      <div class="bp-sub">
+        <div class="bp-sub__title">브랜드 특징</div>
+        <div class="bp-sub__text">
+          쿠마마켓 단일 채널에서 <strong>49만 구매자</strong>를 달성한 볼륨 플레이어. "공장도 가격"을 내세우며 가성비 소비자층을 공략. 저온추출 공법과 국내산 원료를 강조하나 별도 브랜딩/패키징 투자는 미약한 편. 평점 5.0으로 <strong>제품 만족도는 최상위</strong>.
+        </div>
+      </div>
+    </div>
+
+    <div class="bp-right">
+      <div class="bp-right__section-title">온라인 채널</div>
+      <div class="bp-right__links">
+        <span>쿠마마켓</span> <a href="https://www.cumamarket.co.kr/product/356">cumamarket.co.kr</a>
+      </div>
+
+      <div class="bp-right__section-title">주요 제품</div>
+      <div class="bp-products">
+        <div class="bp-product">
+          <div class="bp-product__name">곰보배추시럽 1박스(14포)</div>
+          <div class="bp-product__price">24,900원</div>
+          <div class="bp-product__detail">정가 33,900원 → 27% 할인</div>
+        </div>
+        <div class="bp-product">
+          <div class="bp-product__name">원료 구성</div>
+          <div class="bp-product__price">국내산</div>
+          <div class="bp-product__detail">곰보배추+배+생강</div>
+        </div>
+      </div>
+
+      <div class="bp-verdict">
+        <strong>HIZ 분석:</strong> 볼륨/리뷰 수에서 슈퍼세이브와 직접 경쟁. 단, 채널 다각화(쿠마마켓 편중)와 브랜딩 투자 부재가 약점. 가격 경쟁으로 마진 압박 가능성.
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">16</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 03-6: 경쟁사 개별 프로필 — 오늘과일 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="bp-header">
+    <div class="bp-header__left">
+      <span class="bp-header__category">국내 |</span>
+      <span class="bp-header__brand">오늘과일</span>
+    </div>
+    <span class="bp-header__tier bp-header__tier--t2">TIER 2 — 가성비/볼륨</span>
+  </div>
+
+  <div class="bp-body">
+    <div class="bp-info">
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">운영사</span>
+        <span class="bp-info__value">미확인</span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">포지셔닝</span>
+        <span class="bp-info__value"><strong>"국내산 프리미엄 유아/아이 건강즙"</strong></span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">핵심 강점</span>
+        <span class="bp-info__value">유아/어린이 타겟 <strong>특화 포지셔닝</strong>. 2만 원 이하 저가 진입으로 접근성 확보</span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">가격대</span>
+        <span class="bp-info__value"><strong>14포 19,980원</strong><br>스틱 단가 ~1,430원/포</span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">유통 채널</span>
+        <span class="bp-info__value">오아시스마켓, 11번가</span>
+      </div>
+
+      <div class="bp-sub">
+        <div class="bp-sub__title">브랜드 특징</div>
+        <div class="bp-sub__text">
+          곰보배추시럽 시장에서 유일하게 <strong>유아/아이 전용</strong>으로 포지셔닝. 국내산 프리미엄을 내세우면서도 2만 원 이하 가격으로 진입 장벽을 낮춤. 오아시스마켓 등 프리미엄 건강식품 채널에 입점하여 타겟 소비자(건강 관심 높은 엄마)와의 접점 확보.
+        </div>
+      </div>
+    </div>
+
+    <div class="bp-right">
+      <div class="bp-right__section-title">온라인 채널</div>
+      <div class="bp-right__links">
+        <span>오아시스</span> 오아시스마켓 내 '오늘과일 곰보배추' 검색<br>
+        <span>11번가</span> 11번가 내 검색
+      </div>
+
+      <div class="bp-right__section-title">주요 제품</div>
+      <div class="bp-products">
+        <div class="bp-product">
+          <div class="bp-product__name">곰보배추시럽 스틱 14포</div>
+          <div class="bp-product__price">19,980원</div>
+          <div class="bp-product__detail">유아/아이 건강즙</div>
+        </div>
+        <div class="bp-product">
+          <div class="bp-product__name">원료 구성</div>
+          <div class="bp-product__price">국내산</div>
+          <div class="bp-product__detail">프리미엄 곰보배추</div>
+        </div>
+      </div>
+
+      <div class="bp-verdict">
+        <strong>HIZ 분석:</strong> 슈퍼세이브가 "온 가족" 포지셔닝이라면, 오늘과일은 유아 특화로 세그먼트 차별화. 인지도는 낮으나 타겟이 명확해 니치 시장에서 성장 가능성.
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">17</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 03-7: 경쟁사 개별 프로필 — 곰배랑효소랑 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="bp-header">
+    <div class="bp-header__left">
+      <span class="bp-header__category">국내 |</span>
+      <span class="bp-header__brand">곰배랑효소랑</span>
+    </div>
+    <span class="bp-header__tier bp-header__tier--t3">TIER 3 — 농가 직영/로컬</span>
+  </div>
+
+  <div class="bp-body">
+    <div class="bp-info">
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">운영사</span>
+        <span class="bp-info__value"><strong>곰배랑효소랑 영농조합법인</strong> · 대표 이흥민 · 경기 여주</span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">포지셔닝</span>
+        <span class="bp-info__value"><strong>"경기도 여주 곰보배추 전문 농장"</strong> — 직접 재배→가공 일관 체계</span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">핵심 강점</span>
+        <span class="bp-info__value">곰보배추 <strong>전 품목 26종</strong> 풀라인업 (환, 차, 달임액, 시럽, 건초 등). 직접 재배로 원재료 신뢰도 최상</span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">가격대</span>
+        <span class="bp-info__value">달임액 30포 27,000원 / 차 70포 53,000원 / 환 200g 25,000원<br>스틱 단가 ~900원/포 (최저가)</span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">유통 채널</span>
+        <span class="bp-info__value">자사몰 (gombobaechu.com)</span>
+      </div>
+
+      <div class="bp-sub">
+        <div class="bp-sub__title">브랜드 특징</div>
+        <div class="bp-sub__text">
+          곰보배추 <strong>전문 농장 직영</strong>으로 원재료부터 최종 제품까지 일관된 품질 관리. 26종이라는 압도적 라인업이 강점이나, 온라인 마케팅과 브랜딩 투자가 매우 미약. 자사몰 의존도 높아 신규 고객 유입에 한계. <strong>원료 공급자 역할</strong>로 전환 가능성도 있음.
+        </div>
+      </div>
+    </div>
+
+    <div class="bp-right">
+      <div class="bp-right__section-title">온라인 채널</div>
+      <div class="bp-right__links">
+        <span>홈페이지</span> <a href="https://www.gombobaechu.com/">gombobaechu.com</a>
+      </div>
+
+      <div class="bp-right__section-title">주요 제품</div>
+      <div class="bp-products">
+        <div class="bp-product">
+          <div class="bp-product__name">곰보배추 달임액 30포</div>
+          <div class="bp-product__price">27,000원</div>
+          <div class="bp-product__detail">전통 방식 달임</div>
+        </div>
+        <div class="bp-product">
+          <div class="bp-product__name">곰보배추차 70포</div>
+          <div class="bp-product__price">53,000원</div>
+          <div class="bp-product__detail">티백 형태</div>
+        </div>
+        <div class="bp-product">
+          <div class="bp-product__name">곰보배추환 200g</div>
+          <div class="bp-product__price">25,000원</div>
+          <div class="bp-product__detail">환 형태</div>
+        </div>
+        <div class="bp-product">
+          <div class="bp-product__name">외 23종</div>
+          <div class="bp-product__price">다양</div>
+          <div class="bp-product__detail">건초, 즙, 효소 등</div>
+        </div>
+      </div>
+
+      <div class="bp-verdict">
+        <strong>HIZ 분석:</strong> 원재료 신뢰도에서 최상위이나 브랜딩/마케팅 전무. 슈퍼세이브와 직접 경쟁보다는 다른 세그먼트. 원료 파트너로서의 가치 존재.
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">18</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 03-8: 경쟁사 개별 프로필 — 사온데 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="bp-header">
+    <div class="bp-header__left">
+      <span class="bp-header__category">국내 |</span>
+      <span class="bp-header__brand">사온데</span>
+    </div>
+    <span class="bp-header__tier bp-header__tier--t3">TIER 3 — 농가 직영/로컬</span>
+  </div>
+
+  <div class="bp-body">
+    <div class="bp-info">
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">운영사</span>
+        <span class="bp-info__value"><strong>사온데</strong> · 낙동강 상수원보호구역</span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">포지셔닝</span>
+        <span class="bp-info__value"><strong>"낙동강 상수원보호구역 재배"</strong> — 원산지 프리미엄</span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">핵심 강점</span>
+        <span class="bp-info__value">상수원보호구역이라는 <strong>청정 원산지 스토리</strong>. 효소/발효액/시럽/건초/즙 등 다양한 형태 보유</span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">가격대</span>
+        <span class="bp-info__value">다양 (제품 형태별 상이)</span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">유통 채널</span>
+        <span class="bp-info__value">자사몰 (saonde.com)</span>
+      </div>
+
+      <div class="bp-sub">
+        <div class="bp-sub__title">브랜드 특징</div>
+        <div class="bp-sub__text">
+          <strong>낙동강 상수원보호구역</strong>이라는 독보적인 원산지 스토리가 핵심 자산. 곰보배추 효소, 발효액, 시럽, 건초, 즙 등 다양한 형태로 제품화. 농가 직영 특유의 <strong>진정성과 원료 신뢰도</strong>가 높으나, 자사몰 중심 운영으로 마케팅/브랜딩 활동은 미약.
+        </div>
+      </div>
+    </div>
+
+    <div class="bp-right">
+      <div class="bp-right__section-title">온라인 채널</div>
+      <div class="bp-right__links">
+        <span>홈페이지</span> <a href="https://m.saonde.com/">saonde.com</a>
+      </div>
+
+      <div class="bp-right__section-title">주요 제품</div>
+      <div class="bp-products">
+        <div class="bp-product">
+          <div class="bp-product__name">곰보배추 효소</div>
+          <div class="bp-product__price">별도 확인</div>
+          <div class="bp-product__detail">발효 제품</div>
+        </div>
+        <div class="bp-product">
+          <div class="bp-product__name">곰보배추 발효액</div>
+          <div class="bp-product__price">별도 확인</div>
+          <div class="bp-product__detail">액상 형태</div>
+        </div>
+        <div class="bp-product">
+          <div class="bp-product__name">곰보배추 시럽</div>
+          <div class="bp-product__price">별도 확인</div>
+          <div class="bp-product__detail">시럽 형태</div>
+        </div>
+        <div class="bp-product">
+          <div class="bp-product__name">곰보배추 건초/즙</div>
+          <div class="bp-product__price">별도 확인</div>
+          <div class="bp-product__detail">건초, 즙 형태</div>
+        </div>
+      </div>
+
+      <div class="bp-verdict">
+        <strong>HIZ 분석:</strong> 원산지 스토리텔링 잠재력이 높으나 현재 활용 못하는 상태. 슈퍼세이브와는 타겟/채널 모두 다른 영역. 브랜딩 지원 시 급성장 가능성.
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">19</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- 03-9: 경쟁사 개별 프로필 — 새잎 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="bp-header">
+    <div class="bp-header__left">
+      <span class="bp-header__category">국내 |</span>
+      <span class="bp-header__brand">새잎</span>
+    </div>
+    <span class="bp-header__tier bp-header__tier--t2">TIER 2 — 가성비/볼륨</span>
+  </div>
+
+  <div class="bp-body">
+    <div class="bp-info">
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">운영사</span>
+        <span class="bp-info__value">미확인</span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">포지셔닝</span>
+        <span class="bp-info__value"><strong>"곰보배추 + 삼백초 + 엘더베리 복합"</strong></span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">핵심 강점</span>
+        <span class="bp-info__value"><strong>복합 성분</strong> 차별화 — 곰보배추 단독이 아닌 삼백초·엘더베리 블렌딩으로 부가가치 창출</span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">가격대</span>
+        <span class="bp-info__value"><strong>45,100원</strong> (스틱)</span>
+      </div>
+      <div class="bp-info__row">
+        <div class="bp-info__dot"></div>
+        <span class="bp-info__label">유통 채널</span>
+        <span class="bp-info__value">온라인</span>
+      </div>
+
+      <div class="bp-sub">
+        <div class="bp-sub__title">브랜드 특징</div>
+        <div class="bp-sub__text">
+          곰보배추 시럽 시장에서 <strong>복합 성분 전략</strong>을 취하는 유일한 브랜드. 삼백초와 엘더베리를 블렌딩하여 "곰보배추+" 포지셔닝. 가격대가 높아 프리미엄을 지향하나, 브랜드 인지도가 거의 없어 소비자 접근에 한계. <strong>성분 차별화</strong>라는 전략 방향은 참고할 만함.
+        </div>
+      </div>
+    </div>
+
+    <div class="bp-right">
+      <div class="bp-right__section-title">온라인 채널</div>
+      <div class="bp-right__links">
+        <span>판매처</span> 온라인 쇼핑몰 (상세 미확인)
+      </div>
+
+      <div class="bp-right__section-title">주요 제품</div>
+      <div class="bp-products">
+        <div class="bp-product">
+          <div class="bp-product__name">곰보배추시럽 삼백초 엘더베리진액</div>
+          <div class="bp-product__price">45,100원</div>
+          <div class="bp-product__detail">스틱 형태</div>
+        </div>
+        <div class="bp-product">
+          <div class="bp-product__name">복합 원료</div>
+          <div class="bp-product__price">—</div>
+          <div class="bp-product__detail">곰보배추 + 삼백초 + 엘더베리</div>
+        </div>
+      </div>
+
+      <div class="bp-verdict">
+        <strong>HIZ 분석:</strong> 복합 성분이라는 차별화 전략은 슈퍼세이브 라인업 확장 시 참고 가능. 현재 인지도/채널 모두 미약해 직접 위협은 낮음.
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">20</span>
+</div>
+
+<!-- ============================================================ -->
 <!-- 04 DIVIDER -->
 <!-- ============================================================ -->
 <div class="slide slide--green-gradient divider">
   <div class="divider__number">04</div>
   <div class="divider__title">슈퍼세이브 브랜드 진단</div>
   <div class="divider__desc">Brand Diagnosis — 기업 정보, 제품, 유통, SNS, 브랜딩 현황 점검</div>
-  <span class="slide__page">15</span>
+  <span class="slide__page">21</span>
 </div>
 
 <!-- ============================================================ -->
@@ -1117,7 +1761,7 @@
     </div>
   </div>
 
-  <span class="slide__page">16</span>
+  <span class="slide__page">22</span>
 </div>
 
 <!-- ============================================================ -->
@@ -1186,7 +1830,7 @@
     </div>
   </div>
 
-  <span class="slide__page">17</span>
+  <span class="slide__page">23</span>
 </div>
 
 <!-- ============================================================ -->
@@ -1229,7 +1873,7 @@
     </div>
   </div>
 
-  <span class="slide__page">18</span>
+  <span class="slide__page">24</span>
 </div>
 
 <!-- ============================================================ -->
@@ -1239,7 +1883,7 @@
   <div class="divider__number">05</div>
   <div class="divider__title">유통 채널 분석</div>
   <div class="divider__desc">Distribution — 온/오프라인 채널 현황 및 입점 전략</div>
-  <span class="slide__page">19</span>
+  <span class="slide__page">25</span>
 </div>
 
 <!-- ============================================================ -->
@@ -1299,7 +1943,7 @@
   </div>
 
   <div class="source-note">출처: 오픈서베이 2025, 오픈애즈 라이브커머스 리포트, 각 플랫폼</div>
-  <span class="slide__page">20</span>
+  <span class="slide__page">26</span>
 </div>
 
 <!-- ============================================================ -->
@@ -1309,7 +1953,7 @@
   <div class="divider__number">06</div>
   <div class="divider__title">인사이트 & 기회</div>
   <div class="divider__desc">Insights & Opportunities — SWOT 분석 및 전략적 시사점</div>
-  <span class="slide__page">21</span>
+  <span class="slide__page">27</span>
 </div>
 
 <!-- ============================================================ -->
@@ -1366,7 +2010,7 @@
     </div>
   </div>
 
-  <span class="slide__page">22</span>
+  <span class="slide__page">28</span>
 </div>
 
 <!-- ============================================================ -->
@@ -1414,7 +2058,7 @@
     </div>
   </div>
 
-  <span class="slide__page">23</span>
+  <span class="slide__page">29</span>
 </div>
 
 <!-- ============================================================ -->
@@ -1424,7 +2068,7 @@
   <div class="divider__number">07</div>
   <div class="divider__title">해외 시장 분석</div>
   <div class="divider__desc">Global Market — 글로벌 허벌 시럽 시장, 벤치마킹 브랜드, 진출 전략</div>
-  <span class="slide__page">24</span>
+  <span class="slide__page">30</span>
 </div>
 
 <!-- ============================================================ -->
@@ -1495,7 +2139,7 @@
   </div>
 
   <div class="source-note">출처: SkyQuest, Mordor Intelligence, Fortune Business Insights, Data Bridge, 한국건강기능식품협회</div>
-  <span class="slide__page">25</span>
+  <span class="slide__page">31</span>
 </div>
 
 <!-- ============================================================ -->
@@ -1579,7 +2223,7 @@
     </div>
   </div>
 
-  <span class="slide__page">26</span>
+  <span class="slide__page">32</span>
 </div>
 
 <!-- ============================================================ -->
@@ -1627,7 +2271,7 @@
     </div>
   </div>
 
-  <span class="slide__page">27</span>
+  <span class="slide__page">33</span>
 </div>
 
 <!-- ============================================================ -->
@@ -1692,7 +2336,7 @@
     </div>
   </div>
 
-  <span class="slide__page">28</span>
+  <span class="slide__page">34</span>
 </div>
 
 <!-- ============================================================ -->
@@ -1703,12 +2347,11 @@
   <h2 style="font-size:30px; font-weight:900; margin-bottom:10px;">Market Desk Research</h2>
   <p style="font-size:15px; opacity:0.7; margin-bottom:8px;">슈퍼세이브 — 곰보배추시럽</p>
   <p style="font-size:12px; opacity:0.5; margin-bottom:40px;">건강즙/허벌시럽 카테고리 · 국내외 시장 분석</p>
-  <div class="cover__logo" style="position:static;">hiz</div>
   <p style="font-size:11px; opacity:0.4; margin-top:20px;">
-    Prepared by HIZ System · Confidential<br>
+    Prepared by BRAND RISE · Confidential<br>
     2026.04
   </p>
-  <span class="slide__page">24</span>
+  <span class="slide__page">35</span>
 </div>
 
 </body>
