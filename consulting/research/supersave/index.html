@@ -570,13 +570,40 @@
 
   /* ===================== PRINT ===================== */
   @media print {
-    @page { size: A4 landscape; margin: 0; }
-    body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-    .slide {
-      width: 297mm; height: 210mm; min-height: 210mm; max-height: 210mm;
-      margin: 0; page-break-after: always; page-break-inside: avoid; overflow: hidden;
+    @page {
+      size: 297mm 210mm;
+      margin: 0 !important;
     }
-    .slide:last-child { page-break-after: auto; }
+    html, body {
+      width: 297mm;
+      margin: 0 !important;
+      padding: 0 !important;
+      background: #fff !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    .slide {
+      width: 297mm !important;
+      height: 210mm !important;
+      min-height: 210mm !important;
+      max-height: 210mm !important;
+      margin: 0 !important;
+      padding: 28mm 28mm !important;
+      page-break-after: always;
+      page-break-inside: avoid;
+      break-after: page;
+      break-inside: avoid;
+      overflow: hidden !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+    .slide:last-child {
+      page-break-after: auto;
+      break-after: auto;
+    }
+    .slide::after {
+      opacity: 0.4 !important;
+    }
   }
 
   @media screen {
