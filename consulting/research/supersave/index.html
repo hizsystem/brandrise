@@ -42,11 +42,9 @@
 
   /* ===================== SLIDE SYSTEM ===================== */
   .slide {
-    width: 297mm;
-    height: 210mm;
-    min-height: 210mm;
-    max-height: 210mm;
-    padding: 28mm 28mm;
+    width: 1122px;
+    height: 793px;
+    padding: 60px 70px;
     margin: 0 auto 2px;
     background: var(--bg);
     position: relative;
@@ -74,7 +72,7 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    padding: 40mm 36mm;
+    padding: 100px 90px;
   }
 
   .cover__badge {
@@ -136,7 +134,7 @@
     justify-content: center;
     align-items: flex-start;
     height: 100%;
-    padding: 40mm 36mm;
+    padding: 100px 90px;
   }
 
   .divider__number {
@@ -186,8 +184,8 @@
 
   .slide__page {
     position: absolute;
-    bottom: 10mm;
-    right: 14mm;
+    bottom: 24px;
+    right: 36px;
     font-size: 10px;
     color: var(--muted);
     font-weight: 500;
@@ -202,7 +200,7 @@
   .slide::after {
     content: 'BRAND RISE';
     position: absolute;
-    bottom: 10mm;
+    bottom: 24px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 9px;
@@ -571,24 +569,22 @@
   /* ===================== PRINT ===================== */
   @media print {
     @page {
-      size: 297mm 210mm;
-      margin: 0 !important;
+      size: 1122px 793px;
+      margin: 0;
     }
     html, body {
-      width: 297mm;
-      margin: 0 !important;
-      padding: 0 !important;
-      background: #fff !important;
+      width: 1122px;
+      margin: 0;
+      padding: 0;
+      background: #fff;
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
     }
     .slide {
-      width: 297mm !important;
-      height: 210mm !important;
-      min-height: 210mm !important;
-      max-height: 210mm !important;
+      width: 1122px !important;
+      height: 793px !important;
       margin: 0 !important;
-      padding: 28mm 28mm !important;
+      padding: 60px 70px !important;
       page-break-after: always;
       page-break-inside: avoid;
       break-after: page;
@@ -600,9 +596,6 @@
     .slide:last-child {
       page-break-after: auto;
       break-after: auto;
-    }
-    .slide::after {
-      opacity: 0.4 !important;
     }
   }
 
