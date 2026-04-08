@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>집지켜 브랜드 + 마케팅 견적서 — 브랜드라이즈 by HIZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0D0D0D;
+      --white: #FFFFFF;
+      --bg: #F7F6F2;
+      --accent: #FF6B00;
+      --accent-light: #FFF7ED;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-500: #6B7280;
+      --gray-700: #374151;
+      --text: #111827;
+    }
+    body {
+      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 48px; }
+
+    /* HERO */
+    .hero { background: var(--black); color: var(--white); padding: 100px 0 80px; }
+    .hero .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: 52px; font-weight: 900; line-height: 1.15;
+      letter-spacing: -0.025em; margin-bottom: 28px;
+    }
+    .hero h1 em { color: var(--accent); font-style: normal; }
+    .hero .sub {
+      font-size: 16px; color: rgba(255,255,255,0.55);
+      font-weight: 300; max-width: 520px; line-height: 1.85;
+    }
+    .hero-meta {
+      display: flex; gap: 56px; margin-top: 64px;
+      padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-meta-item .k {
+      font-size: 10px; letter-spacing: 0.12em; color: rgba(255,255,255,0.35);
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .hero-meta-item .v { font-size: 14px; font-weight: 600; }
+
+    /* SECTIONS */
+    section { padding: 88px 0; }
+    .sec-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 14px;
+    }
+    h2 {
+      font-size: 36px; font-weight: 900; letter-spacing: -0.025em;
+      line-height: 1.25; margin-bottom: 16px; color: var(--black);
+    }
+    .sec-desc {
+      font-size: 15px; color: var(--gray-500); max-width: 580px;
+      line-height: 1.85; margin-bottom: 52px;
+    }
+    hr { border: none; border-top: 1px solid var(--gray-200); }
+
+    /* DATA GRID */
+    .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 44px; }
+    .d-card {
+      background: var(--white); border-radius: 14px; padding: 30px;
+      border: 1px solid var(--gray-200);
+    }
+    .d-card .num {
+      font-size: 36px; font-weight: 900; color: var(--black);
+      letter-spacing: -0.03em; margin-bottom: 6px;
+    }
+    .d-card .num em { color: var(--accent); font-style: normal; }
+    .d-card .ct { font-size: 13px; font-weight: 600; color: var(--gray-500); margin-bottom: 4px; }
+    .d-card .cd { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+    .d-card.wide { grid-column: 1 / -1; }
+    .d-card.dark {
+      background: var(--black); border-color: var(--black);
+    }
+    .d-card.dark .num { color: var(--white); }
+    .d-card.dark .ct { color: rgba(255,255,255,0.5); }
+    .d-card.dark .cd { color: rgba(255,255,255,0.45); }
+
+    /* COMPARE TABLE */
+    .cmp-wrap { margin-top: 36px; border-radius: 14px; overflow: hidden; border: 1px solid var(--gray-200); }
+    .cmp-table { width: 100%; border-collapse: collapse; background: var(--white); }
+    .cmp-table th {
+      padding: 16px 22px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; color: rgba(0,0,0,0.4);
+      text-align: left; text-transform: uppercase;
+      background: var(--gray-100); border-bottom: 1px solid var(--gray-200);
+    }
+    .cmp-table th.hi { color: var(--accent); background: var(--accent-light); }
+    .cmp-table td {
+      padding: 14px 22px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); vertical-align: top; line-height: 1.65;
+      color: var(--gray-500);
+    }
+    .cmp-table td:first-child { color: var(--text); font-weight: 500; }
+    .cmp-table tr:last-child td { border-bottom: none; }
+    .cmp-table .accent { color: var(--accent); font-weight: 700; }
+
+    /* TRACK SECTIONS */
+    .track-bg { background: var(--black); padding: 88px 0; }
+    .track-bg h2 { color: var(--white); }
+    .track-bg .sec-label { color: rgba(255,255,255,0.35); }
+    .track-bg .sec-desc { color: rgba(255,255,255,0.45); }
+
+    .track-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 52px; }
+    .tr-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px; padding: 38px 30px;
+      position: relative;
+    }
+    .tr-card.rec {
+      background: var(--accent); border-color: var(--accent);
+    }
+    .tr-card.full { grid-column: 1 / -1; }
+    .rec-badge {
+      position: absolute; top: -13px; left: 30px;
+      background: var(--white); color: var(--accent);
+      font-size: 10px; font-weight: 900; letter-spacing: 0.12em;
+      padding: 4px 16px; border-radius: 20px; text-transform: uppercase; white-space: nowrap;
+    }
+    .tr-name {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 10px;
+    }
+    .tr-title { font-size: 22px; font-weight: 800; color: var(--white); line-height: 1.3; margin-bottom: 20px; }
+    .tr-price { font-size: 40px; font-weight: 900; color: var(--white); letter-spacing: -0.03em; }
+    .tr-price span { font-size: 18px; font-weight: 600; }
+    .tr-period { font-size: 12px; color: rgba(255,255,255,0.4); margin: 6px 0 24px; }
+    .tr-feats { list-style: none; }
+    .tr-feat {
+      font-size: 13px; color: rgba(255,255,255,0.65);
+      padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .tr-feat:last-child { border-bottom: none; }
+    .tr-feat::before { content: "→"; color: rgba(255,255,255,0.3); flex-shrink: 0; margin-top: 1px; }
+
+    /* DETAIL */
+    .det { padding: 88px 0; border-bottom: 1px solid var(--gray-200); }
+    .det:last-of-type { border-bottom: none; }
+    .det-head {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 48px; margin-bottom: 52px;
+    }
+    .det-head-l { flex: 1; }
+    .det-head-l h2 { margin-bottom: 14px; }
+    .price-box {
+      background: var(--black); color: var(--white);
+      border-radius: 18px; padding: 30px 40px; text-align: right; flex-shrink: 0;
+    }
+    .price-box .pl { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; margin-bottom: 8px; text-transform: uppercase; }
+    .price-box .pa { font-size: 34px; font-weight: 900; letter-spacing: -0.03em; }
+    .price-box .ps { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 4px; }
+
+    .dblock { background: var(--white); border-radius: 14px; border: 1px solid var(--gray-200); overflow: hidden; margin-bottom: 14px; }
+    .dblock-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 24px; background: var(--gray-100); border-bottom: 1px solid var(--gray-200);
+    }
+    .dblock-head .bt { font-size: 14px; font-weight: 700; color: var(--black); }
+    .dblock-head .bp { font-size: 14px; font-weight: 800; color: var(--accent); }
+    .dtable { width: 100%; border-collapse: collapse; }
+    .dtable td {
+      padding: 14px 24px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); vertical-align: top; line-height: 1.7;
+    }
+    .dtable tr:last-child td { border-bottom: none; }
+    .dtable td:first-child { font-weight: 600; color: var(--black); width: 200px; white-space: nowrap; }
+    .dtable td:last-child { color: var(--gray-500); }
+
+    .total-bar {
+      background: var(--black); color: var(--white); padding: 26px 36px;
+      border-radius: 14px; display: flex; align-items: center;
+      justify-content: space-between; margin-top: 24px;
+    }
+    .total-bar .tl { font-size: 13px; color: rgba(255,255,255,0.5); }
+    .total-bar .ts { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+    .total-bar .ta { font-size: 38px; font-weight: 900; letter-spacing: -0.03em; }
+
+    .info-box {
+      background: var(--accent-light); border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0; padding: 22px 28px; margin-top: 20px;
+      font-size: 13px; color: var(--gray-700); line-height: 1.8;
+    }
+    .info-box strong { color: var(--accent); }
+
+    /* PHASE */
+    .phase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 44px; }
+    .ph-card {
+      background: var(--white); border-radius: 18px; padding: 38px 30px;
+      border: 1px solid var(--gray-200); position: relative;
+    }
+    .ph-card.rec { border: 2px solid var(--accent); }
+    .ph-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 10px;
+    }
+    .ph-title { font-size: 20px; font-weight: 800; color: var(--black); margin-bottom: 6px; }
+    .ph-price { font-size: 36px; font-weight: 900; color: var(--black); letter-spacing: -0.03em; }
+    .ph-price span { font-size: 16px; font-weight: 600; }
+    .ph-desc { font-size: 13px; color: var(--gray-500); margin: 16px 0; line-height: 1.7; }
+    .ph-items { list-style: none; }
+    .ph-items li {
+      font-size: 13px; color: var(--gray-700); padding: 6px 0;
+      display: flex; gap: 8px;
+    }
+    .ph-items li::before { content: "→"; color: var(--accent); flex-shrink: 0; }
+
+    /* FOOTER */
+    .footer { background: var(--black); color: rgba(255,255,255,0.4); padding: 72px 0; text-align: center; }
+    .footer .brand { font-size: 20px; font-weight: 900; color: var(--white); margin-bottom: 6px; letter-spacing: -0.02em; }
+    .footer .tag { font-size: 13px; margin-bottom: 36px; }
+    .footer .meta { font-size: 12px; line-height: 2.2; }
+
+    @media print {
+      .hero, .track-bg, .footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="label">Brand + Marketing Proposal</div>
+    <h1>쌓이는 마케팅,<br><em>집지켜의 블루프린트</em></h1>
+    <p class="sub">52만 유저, 인스타 16만, CPI 200원.<br>실행력은 이미 증명됐습니다.<br>지금 필요한 건 실행이 쌓이는 구조 — 브랜드 체계와 콘텐츠 자산입니다.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="k">공급자</div><div class="v">브랜드라이즈 by HIZ</div></div>
+      <div class="hero-meta-item"><div class="k">수신</div><div class="v">플다(주) 김한성 대표</div></div>
+      <div class="hero-meta-item"><div class="k">기준일</div><div class="v" id="today-date"></div></div>
+      <div class="hero-meta-item"><div class="k">유효기간</div><div class="v">발행일로부터 30일</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY — 숫자 기반 진단 -->
+<section>
+  <div class="container">
+    <div class="sec-label">Current Numbers</div>
+    <h2>집지켜의 현재 숫자</h2>
+    <p class="sec-desc">사업 지표는 압도적입니다.<br>빠진 건 하나 — 이 숫자들을 하나의 브랜드로 묶는 체계.</p>
+
+    <div class="data-grid">
+      <div class="d-card">
+        <div class="ct">누적 유저</div>
+        <div class="num">52<em>만+</em></div>
+        <div class="cd">행복주택 정보 플랫폼 최대 규모</div>
+      </div>
+      <div class="d-card">
+        <div class="ct">월간 활성 사용자 (MAU)</div>
+        <div class="num">17-18<em>만</em></div>
+        <div class="cd">Seed 단계에서 이례적 수치</div>
+      </div>
+      <div class="d-card">
+        <div class="ct">인스타그램 팔로워</div>
+        <div class="num">16<em>만</em></div>
+        <div class="cd">대표 직접 운영으로 달성한 오가닉 자산</div>
+      </div>
+      <div class="d-card">
+        <div class="ct">메타 광고 CPI</div>
+        <div class="num">200<em>원</em></div>
+        <div class="cd">주 64만원 집행, 퍼포먼스는 이미 최적화</div>
+      </div>
+      <div class="d-card dark wide">
+        <div class="ct">문제</div>
+        <div class="num" style="font-size:24px; line-height:1.4;">실행은 하는데, <em>쌓이지 않는다</em></div>
+        <div class="cd" style="margin-top:12px;">메타 광고에 연 3,072만원을 쓰면 1년 뒤 남는 건 없습니다.<br>인스타 16만, 앱 52만의 자산이 하나의 브랜드로 연결되지 않고 있습니다.<br>유튜브 채널이 없어 "아영이네 행복주택"이 카테고리를 독점하고 있습니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- 효율 비교 -->
+<section>
+  <div class="container">
+    <div class="sec-label">Efficiency Comparison</div>
+    <h2>메타 광고 vs<br>콘텐츠 자산</h2>
+    <p class="sec-desc">같은 예산을 어디에 쓰느냐에 따라<br>1년 뒤의 자산이 완전히 달라집니다.</p>
+
+    <div class="cmp-wrap">
+      <table class="cmp-table">
+        <thead>
+          <tr>
+            <th style="width:200px">항목</th>
+            <th>메타 광고 (현재)</th>
+            <th class="hi">유튜브 콘텐츠 (제안)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>투자 금액</td>
+            <td>연 3,072만원 (월 256만)</td>
+            <td class="accent">4,800만원 (1회)</td>
+          </tr>
+          <tr>
+            <td>1년 뒤 자산</td>
+            <td>없음 (광고비 소진)</td>
+            <td class="accent">롱폼 10편 + 숏폼 100개+<br>채널 구독자 + 검색 유입</td>
+          </tr>
+          <tr>
+            <td>콘텐츠 수명</td>
+            <td>광고 중단 시 유입 0</td>
+            <td class="accent">검색 유입으로 롱테일 지속<br>(아영이네: 2020년 영상 아직 조회 발생)</td>
+          </tr>
+          <tr>
+            <td>크로스 채널</td>
+            <td>메타 내에서만 작동</td>
+            <td class="accent">유튜브 → 릴스 → 쇼츠<br>1편 촬영 → 숏폼 10개 전환</td>
+          </tr>
+          <tr>
+            <td>브랜드 효과</td>
+            <td>인지 없음 (광고 피로도)</td>
+            <td class="accent">"행복주택 = 집지켜" 포지션 선점</td>
+          </tr>
+          <tr>
+            <td>인스타 16만 활용</td>
+            <td>별개 운영</td>
+            <td class="accent">숏폼 전환 → 기존 팔로워 리텐션<br>+ 유튜브에서 신규 유입</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="info-box" style="margin-top:24px;">
+      <strong>벤치마크:</strong> 아영이네 행복주택은 404편, 4년에 45-65만 구독자를 만들었습니다.<br>
+      집지켜는 이미 52만 유저 + 16만 인스타 팔로워가 있어 초기 유튜브 유입 속도가 훨씬 빠릅니다.<br>
+      <strong>10편의 롱폼이 100개+의 숏폼으로 확장됩니다.</strong>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- 제안 구조 -->
+<div class="track-bg">
+  <div class="container">
+    <div class="sec-label">Proposal Structure</div>
+    <h2 style="color:var(--white)">투트랙 제안</h2>
+    <p class="sec-desc">Track 1로 시장 반응을 만들고,<br>Track 2로 브랜드 체계를 세웁니다.<br>Track 1 선행, Track 2는 성과 확인 후 진행합니다.</p>
+
+    <div class="track-cards">
+      <div class="tr-card rec">
+        <div class="rec-badge">Start Here</div>
+        <div class="tr-name">Track 1 · Contents</div>
+        <div class="tr-title">마케팅 콘텐츠</div>
+        <div class="tr-price">4,800<span>만원</span></div>
+        <div class="tr-period">VAT 별도</div>
+        <ul class="tr-feats">
+          <li class="tr-feat">콘텐츠 전략 + 채널 셋업</li>
+          <li class="tr-feat">유튜브 롱폼 10편 제작</li>
+          <li class="tr-feat">숏폼 전환 100개+ (릴스/쇼츠)</li>
+          <li class="tr-feat">PPL 기획 + 섭외 + 관리</li>
+        </ul>
+      </div>
+
+      <div class="tr-card">
+        <div class="tr-name">Track 2 · Branding</div>
+        <div class="tr-title">브랜드 시스템</div>
+        <div class="tr-price">6,000<span>만원</span></div>
+        <div class="tr-period">VAT 별도</div>
+        <ul class="tr-feats">
+          <li class="tr-feat">브랜드 전략 (포지셔닝 + 메시지)</li>
+          <li class="tr-feat">BI 개발 (로고 + 앱 비주얼)</li>
+          <li class="tr-feat">앱스토어 최적화 포함</li>
+          <li class="tr-feat">디지털 가이드라인</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- TRACK 1 상세 -->
+<section class="det">
+  <div class="container">
+    <div class="sec-label">Track 1 · Contents</div>
+    <div class="det-head">
+      <div class="det-head-l">
+        <h2>마케팅 콘텐츠</h2>
+        <p class="sec-desc" style="margin-bottom:0">"아영이네 행복주택"이 점유한 카테고리에<br>집지켜의 콘텐츠를 심습니다.<br>유튜브 1편이 릴스·쇼츠·틱톡까지 확장됩니다.</p>
+      </div>
+      <div class="price-box">
+        <div class="pl">Track 1 Total</div>
+        <div class="pa">48,000,000</div>
+        <div class="ps">VAT 별도</div>
+      </div>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">① 콘텐츠 전략 + 채널 셋업</span>
+        <span class="bp">8,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>채널 포지셔닝</td><td>아영이네 행복주택 · 자취남 · 오늘의집 벤치마크 분석 / "집지켜"만의 콘텐츠 톤 정의</td></tr>
+        <tr><td>시리즈 기획</td><td>10편 시리즈 구성 · 에피소드별 주제 · 출연자 · CTA 설계</td></tr>
+        <tr><td>채널 셋업</td><td>채널아트 · 프로필 · SEO 키워드 · 재생목록 구조 · 업로드 가이드</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">② 유튜브 롱폼 제작 (10편)</span>
+        <span class="bp">40,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>편당 구성</td><td>기획 + 스크립트 + 촬영 디렉션 + 편집 + 썸네일 / 편당 10-15분</td></tr>
+        <tr><td>콘텐츠 스타일</td><td>공간남·자취남 레퍼런스 — 정보+호감, 시청자가 "고마운" 채널</td></tr>
+        <tr><td>제작 단가</td><td>편당 4,000,000원 × 10편</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">③ 숏폼 전환 + PPL 관리</span>
+        <span class="bp">포함</span>
+      </div>
+      <table class="dtable">
+        <tr><td>숏폼 전환</td><td>롱폼 10편 → 쇼츠/릴스 100개+ 전환 (편당 10개) / 플랫폼별 최적화</td></tr>
+        <tr><td>PPL 기획</td><td>주거·라이프 유튜버 대상 PPL 채널 선정 + 브리핑 + 성과 관리</td></tr>
+        <tr><td>PPL 집행비</td><td>별도</td></tr>
+      </table>
+    </div>
+
+    <div class="total-bar">
+      <div><div class="tl">TRACK 1 TOTAL</div><div class="ts">VAT 별도</div></div>
+      <div class="ta">48,000,000원</div>
+    </div>
+
+    <div class="info-box">
+      <strong>예상 산출물:</strong> 유튜브 롱폼 10편 + 숏폼 100개+ + 채널 완성<br>
+      <strong>효율:</strong> 롱폼 1편 → 숏폼 10개 전환 = 총 콘텐츠 110개+<br>
+      <strong>도달:</strong> 편당 5-30만뷰 (니치 정보 채널 벤치마크) × 10편 = 50-300만뷰<br>
+      <strong>자산:</strong> 메타 광고와 달리, 콘텐츠는 검색 유입으로 계속 작동합니다.
+    </div>
+  </div>
+</section>
+
+<!-- TRACK 2 상세 -->
+<section class="det">
+  <div class="container">
+    <div class="sec-label">Track 2 · Branding</div>
+    <div class="det-head">
+      <div class="det-head-l">
+        <h2>브랜드 시스템</h2>
+        <p class="sec-desc" style="margin-bottom:0">상표권 변경과 함께 터뜨릴 브랜드 체계.<br>"행복주택 = 집지켜"를 심는 언어와 시각 시스템.</p>
+      </div>
+      <div class="price-box">
+        <div class="pl">Track 2 Total</div>
+        <div class="pa">60,000,000</div>
+        <div class="ps">VAT 별도</div>
+      </div>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">① 브랜드 전략</span>
+        <span class="bp">15,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>브랜드 워크숍 2회</td><td>서비스 딥다이브 · 유저 인식 분석 · 포지셔닝 도출</td></tr>
+        <tr><td>카테고리 정의</td><td>"집지켜 = ___" 한 줄 정의 · 경쟁 포지셔닝 맵</td></tr>
+        <tr><td>메시지 체계</td><td>브랜드 스토리 · 태그라인 · 채널별 메시지 · 톤앤매너 가이드</td></tr>
+        <tr><td>UX 라이팅 가이드</td><td>앱 내 푸시 알림 · 온보딩 카피 · CTA 톤 원칙</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">② BI 개발</span>
+        <span class="bp">35,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>로고 리뉴얼</td><td>현행 분석 → 방향 3안 제시 → 최종 확정 / 상표권 변경 연계</td></tr>
+        <tr><td>컬러 · 타이포 시스템</td><td>브랜드 컬러 재정의 · 디지털 최적화 · 다크모드 대응</td></tr>
+        <tr><td>앱 비주얼 시스템</td><td>앱 아이콘 · 스플래시 · 온보딩 비주얼 · 스크린샷 가이드</td></tr>
+        <tr><td>앱스토어 최적화</td><td>iOS/Android 타이틀 · 설명문 · 키워드 · 스크린샷 전면 재설계</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">③ 디지털 가이드라인</span>
+        <span class="bp">10,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>브랜드 가이드북</td><td>로고 규정 · 컬러 · 타이포 · 디지털 응용 규정</td></tr>
+        <tr><td>SNS 템플릿</td><td>인스타 피드 · 스토리 · 유튜브 썸네일 템플릿</td></tr>
+        <tr><td>내부 인계</td><td>인하우스 마케터/디자이너용 실무 가이드</td></tr>
+      </table>
+    </div>
+
+    <div class="total-bar">
+      <div><div class="tl">TRACK 2 TOTAL</div><div class="ts">VAT 별도</div></div>
+      <div class="ta">60,000,000원</div>
+    </div>
+  </div>
+</section>
+
+
+<hr>
+
+<!-- 총합 + 분할 옵션 -->
+<section>
+  <div class="container">
+    <div class="sec-label">Total + Payment Option</div>
+    <h2>합계 및 분할 옵션</h2>
+    <p class="sec-desc">Phase 1의 성과를 확인한 후<br>Phase 2 진행 여부를 판단할 수 있습니다.</p>
+
+    <div class="phase-grid">
+      <div class="ph-card rec">
+        <div class="ph-label">Phase 1 · 즉시 시작</div>
+        <div class="ph-title">마케팅 콘텐츠</div>
+        <div class="ph-price">4,800<span>만원</span></div>
+        <div class="ph-desc">유튜브 콘텐츠로 시장 반응을 만듭니다.</div>
+        <ul class="ph-items">
+          <li>Track 1 전체</li>
+          <li>PPL 집행비 별도</li>
+        </ul>
+      </div>
+      <div class="ph-card">
+        <div class="ph-label">Phase 2 · 성과 확인 후</div>
+        <div class="ph-title">브랜드 시스템</div>
+        <div class="ph-price">6,000<span>만원</span></div>
+        <div class="ph-desc">상표권 변경 시점에 맞춰<br>브랜드 시스템을 완성합니다.</div>
+        <ul class="ph-items">
+          <li>Track 2 전체</li>
+          <li>Phase 1 성과 기반 최적화</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top:24px;">
+      <strong>PPL 집행비:</strong> 별도<br>
+      PPL 채널 선정 · 브리핑 · 성과 관리는 Track 1에 포함되어 있습니다.<br><br>
+      <strong>진행 방식:</strong> Phase 1 완료 후 유튜브 채널 성과(구독자, 조회수, 앱 유입)를 함께 리뷰하고, Phase 2 진행 여부 및 시점을 결정합니다.
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="container">
+    <div class="brand">브랜드라이즈 by HIZ</div>
+    <div class="meta">
+      본 견적서의 유효기간은 발행일로부터 30일입니다.<br>
+      위 금액은 모두 VAT 별도 기준입니다.<br>
+      Track 1, Track 2는 독립 집행 가능하며, 항목 조정은 협의 가능합니다.<br>
+      문의: 브랜드라이즈 by HIZ · <span id="footer-date"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var d = new Date();
+    var y = d.getFullYear();
+    var m = String(d.getMonth() + 1).padStart(2, '0');
+    var day = String(d.getDate()).padStart(2, '0');
+    var formatted = y + '. ' + m + '. ' + day;
+    document.getElementById('today-date').textContent = formatted;
+    document.getElementById('footer-date').textContent = formatted;
+  })();
+</script>
+</body>
+</html>
