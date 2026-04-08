@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>케어비네스트 레드비 마케팅 견적서 — 브랜드라이즈 by HIZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0D0D0D;
+      --white: #FFFFFF;
+      --bg: #F7F6F2;
+      --accent: #C23652;
+      --accent-light: #FDF2F4;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-500: #6B7280;
+      --gray-700: #374151;
+      --text: #111827;
+    }
+    body {
+      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 48px; }
+
+    /* HERO */
+    .hero { background: var(--black); color: var(--white); padding: 100px 0 80px; }
+    .hero .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: 56px; font-weight: 900; line-height: 1.12;
+      letter-spacing: -0.025em; margin-bottom: 28px;
+    }
+    .hero h1 em { color: var(--accent); font-style: normal; }
+    .hero .sub {
+      font-size: 16px; color: rgba(255,255,255,0.55);
+      font-weight: 300; max-width: 520px; line-height: 1.85;
+    }
+    .hero-meta {
+      display: flex; gap: 56px; margin-top: 64px;
+      padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-meta-item .k {
+      font-size: 10px; letter-spacing: 0.12em; color: rgba(255,255,255,0.35);
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .hero-meta-item .v { font-size: 14px; font-weight: 600; }
+
+    /* SECTIONS */
+    section { padding: 88px 0; }
+    .sec-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 14px;
+    }
+    h2 {
+      font-size: 36px; font-weight: 900; letter-spacing: -0.025em;
+      line-height: 1.25; margin-bottom: 16px; color: var(--black);
+    }
+    .sec-desc {
+      font-size: 15px; color: var(--gray-500); max-width: 580px;
+      line-height: 1.85; margin-bottom: 52px;
+    }
+    hr { border: none; border-top: 1px solid var(--gray-200); }
+
+    /* URGENCY GRID */
+    .urgency-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 44px; }
+    .u-card {
+      background: var(--white); border-radius: 14px; padding: 30px;
+      border: 1px solid var(--gray-200);
+    }
+    .u-card .num {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.12em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .u-card .ct { font-size: 14px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+    .u-card .cd { font-size: 13px; color: var(--gray-500); line-height: 1.75; }
+    .u-card.dark {
+      background: var(--black); border-color: var(--black);
+      grid-column: 1 / -1;
+    }
+    .u-card.dark .num { color: rgba(255,255,255,0.35); }
+    .u-card.dark .ct { color: var(--white); }
+    .u-card.dark .cd { color: rgba(255,255,255,0.55); }
+    .u-card.dark em { color: #F472B6; font-style: normal; font-weight: 700; }
+
+    /* GAP TABLE */
+    .gap-wrap { margin-top: 36px; border-radius: 14px; overflow: hidden; border: 1px solid var(--gray-200); }
+    .gap-table { width: 100%; border-collapse: collapse; }
+    .gap-table thead tr { background: var(--black); }
+    .gap-table th {
+      padding: 16px 22px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; color: rgba(255,255,255,0.6);
+      text-align: left; text-transform: uppercase;
+    }
+    .gap-table td {
+      padding: 17px 22px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); vertical-align: top; line-height: 1.65;
+    }
+    .gap-table tr:last-child td { border-bottom: none; }
+    .gap-table tr:nth-child(even) td { background: var(--gray-100); }
+    .gap-table td strong { color: var(--black); font-weight: 700; display: block; margin-bottom: 2px; }
+    .badge {
+      display: inline-block; font-size: 10px; font-weight: 800;
+      padding: 3px 11px; border-radius: 20px; letter-spacing: 0.05em;
+    }
+    .b-red { background: #FEF2F2; color: #DC2626; }
+    .b-orange { background: #FFF7ED; color: #EA580C; }
+    .b-green { background: #ECFDF5; color: #059669; }
+    .b-blue { background: #EBF4FF; color: #0066CC; }
+
+    /* TIER OVERVIEW */
+    .tier-bg { background: var(--black); padding: 88px 0; }
+    .tier-bg h2 { color: var(--white); }
+    .tier-bg .sec-label { color: rgba(255,255,255,0.35); }
+    .tier-bg .sec-desc { color: rgba(255,255,255,0.45); }
+    .tier-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 52px; }
+    .t-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px; padding: 38px 30px;
+      position: relative;
+    }
+    .t-card.rec {
+      background: var(--accent); border-color: var(--accent);
+    }
+    .rec-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--white); color: var(--accent);
+      font-size: 10px; font-weight: 900; letter-spacing: 0.12em;
+      padding: 4px 16px; border-radius: 20px; text-transform: uppercase; white-space: nowrap;
+    }
+    .t-name {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 10px;
+    }
+    .t-title { font-size: 20px; font-weight: 800; color: var(--white); line-height: 1.3; margin-bottom: 28px; }
+    .t-price { font-size: 40px; font-weight: 900; color: var(--white); letter-spacing: -0.03em; }
+    .t-price span { font-size: 18px; font-weight: 600; }
+    .t-period { font-size: 12px; color: rgba(255,255,255,0.4); margin: 6px 0 28px; }
+    .t-feats { list-style: none; }
+    .t-feat {
+      font-size: 13px; color: rgba(255,255,255,0.6);
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .t-feat:last-child { border-bottom: none; }
+    .t-feat::before { content: "\2192"; color: rgba(255,255,255,0.3); flex-shrink: 0; margin-top: 1px; }
+    .t-feat.on { color: var(--white); font-weight: 500; }
+    .t-feat.on::before { color: rgba(255,255,255,0.7); }
+    .t-feat.off { opacity: 0.25; }
+
+    /* DETAIL */
+    .det { padding: 88px 0; border-bottom: 1px solid var(--gray-200); }
+    .det:last-of-type { border-bottom: none; }
+    .det-head {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 48px; margin-bottom: 52px;
+    }
+    .det-head-l { flex: 1; }
+    .det-head-l h2 { margin-bottom: 14px; }
+    .price-box {
+      background: var(--black); color: var(--white);
+      border-radius: 18px; padding: 30px 40px; text-align: right; flex-shrink: 0;
+    }
+    .price-box .pl { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; margin-bottom: 8px; }
+    .price-box .pa { font-size: 34px; font-weight: 900; letter-spacing: -0.03em; }
+    .price-box .ps { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 4px; }
+
+    .dblock { background: var(--white); border-radius: 14px; border: 1px solid var(--gray-200); overflow: hidden; margin-bottom: 14px; }
+    .dblock-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 24px; background: var(--gray-100); border-bottom: 1px solid var(--gray-200);
+    }
+    .dblock-head .bt { font-size: 14px; font-weight: 700; color: var(--black); }
+    .dblock-head .bp { font-size: 14px; font-weight: 800; color: var(--accent); }
+    .dtable { width: 100%; border-collapse: collapse; }
+    .dtable td {
+      padding: 14px 24px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); vertical-align: top; line-height: 1.7;
+    }
+    .dtable tr:last-child td { border-bottom: none; }
+    .dtable td:first-child { font-weight: 600; color: var(--black); width: 190px; white-space: nowrap; }
+    .dtable td:last-child { color: var(--gray-500); }
+
+    .total-bar {
+      background: var(--black); color: var(--white); padding: 26px 36px;
+      border-radius: 14px; display: flex; align-items: center;
+      justify-content: space-between; margin-top: 24px;
+    }
+    .total-bar .tl { font-size: 13px; color: rgba(255,255,255,0.5); }
+    .total-bar .ts { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+    .total-bar .ta { font-size: 38px; font-weight: 900; letter-spacing: -0.03em; }
+
+    .info-box {
+      background: var(--accent-light); border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0; padding: 22px 28px; margin-top: 20px;
+      font-size: 13px; color: var(--gray-700); line-height: 1.8;
+    }
+    .info-box strong { color: var(--accent); }
+
+    /* COMPARE */
+    .cmp-wrap { margin-top: 44px; border-radius: 14px; overflow: hidden; border: 1px solid var(--gray-200); }
+    .cmp-table { width: 100%; border-collapse: collapse; background: var(--white); }
+    .cmp-table th {
+      padding: 18px 24px; font-size: 13px; font-weight: 700;
+      text-align: center; border-bottom: 2px solid var(--gray-200);
+      background: var(--gray-100);
+    }
+    .cmp-table th:first-child { text-align: left; }
+    .cmp-table th.hi { color: var(--accent); background: var(--accent-light); }
+    .cmp-table td {
+      padding: 14px 24px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); text-align: center; color: var(--gray-500);
+    }
+    .cmp-table td:first-child { text-align: left; color: var(--text); font-weight: 500; }
+    .cmp-table .ck { color: var(--accent); font-weight: 800; font-size: 15px; }
+    .cmp-table .no { color: var(--gray-200); }
+    .cmp-table .sum-row td {
+      font-weight: 800; font-size: 15px; color: var(--black);
+      padding: 20px 24px; background: var(--gray-100);
+      border-top: 2px solid var(--gray-200); border-bottom: none;
+    }
+    .cmp-table .sum-row td.hi { color: var(--accent); background: var(--accent-light); }
+
+    /* FOOTER */
+    .footer { background: var(--black); color: rgba(255,255,255,0.4); padding: 72px 0; text-align: center; }
+    .footer .brand { font-size: 20px; font-weight: 900; color: var(--white); margin-bottom: 6px; letter-spacing: -0.02em; }
+    .footer .tag { font-size: 13px; margin-bottom: 36px; }
+    .footer .meta { font-size: 12px; line-height: 2.2; }
+
+    @media print {
+      body { background: var(--white); font-size: 11px; }
+      .container { max-width: 100%; padding: 0 32px; }
+      .hero { padding: 60px 0 50px; }
+      .hero h1 { font-size: 40px; }
+      section { padding: 48px 0; }
+      .det { padding: 48px 0; }
+      .tier-bg { padding: 48px 0; }
+      .hero, .tier-bg, .footer, .u-card.dark, .price-box, .total-bar, .gap-table thead tr, .dblock-head {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .urgency-grid { gap: 8px; }
+      .u-card { padding: 20px; }
+      .tier-cards { gap: 10px; }
+      .t-card { padding: 24px 20px; }
+      .t-price { font-size: 30px; }
+      .det-head { gap: 24px; margin-bottom: 32px; }
+      .price-box { padding: 20px 28px; }
+      .price-box .pa { font-size: 26px; }
+      .total-bar .ta { font-size: 28px; }
+      .sec-desc { margin-bottom: 32px; }
+      h2 { font-size: 28px; }
+      .hero { page-break-after: always; }
+      .tier-bg { page-break-before: always; page-break-after: always; }
+      .det { page-break-inside: avoid; }
+      .dblock { page-break-inside: avoid; }
+      .footer { page-break-before: always; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="label">Brand Marketing Proposal &middot; 브랜드라이즈 by HIZ</div>
+    <h1>여성이 선택하는<br>건기식의 기준,<br><em>레드비를 보이게</em></h1>
+    <p class="sub">레드비는 여성 갱년기 건강기능식품 시장에 진입한 신제품입니다.<br>제품력은 갖췄지만, 소비자에게 보여주는 일이 아직 시작되지 않았습니다.<br>인스타그램과 콘텐츠, 바이럴로 첫 인지도를 만듭니다.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="k">공급자</div><div class="v">브랜드라이즈 by HIZ</div></div>
+      <div class="hero-meta-item"><div class="k">수신</div><div class="v">케어비네스트 김형준 대표</div></div>
+      <div class="hero-meta-item"><div class="k">기준일</div><div class="v" id="today-date"></div></div>
+      <div class="hero-meta-item"><div class="k">금액 기준</div><div class="v">VAT 별도</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY NOW -->
+<section>
+  <div class="container">
+    <div class="sec-label">Market Signal</div>
+    <h2>왜 지금인가</h2>
+    <p class="sec-desc">세 가지 시장 신호가 레드비의 디지털 마케팅을 지금 시작해야 한다고 말하고 있습니다.</p>
+    <div class="urgency-grid">
+      <div class="u-card">
+        <div class="num">Signal 01</div>
+        <div class="ct">여성 건기식 시장 폭발적 성장</div>
+        <div class="cd">글로벌 여성 건기식 시장 5년간 +45.9% 성장.<br>국내 갱년기 관련 건기식 시장도<br>매년 두 자릿수 성장을 기록하고 있습니다.</div>
+      </div>
+      <div class="u-card">
+        <div class="num">Signal 02</div>
+        <div class="ct">인스타그램이 건기식 구매를 결정</div>
+        <div class="cd">건기식 구매 의사결정의 핵심 채널이<br>인스타그램 릴스·피드로 이동.<br>리뷰형 콘텐츠가 신뢰와 구매를 동시에 만듭니다.</div>
+      </div>
+      <div class="u-card">
+        <div class="num">Signal 03</div>
+        <div class="ct">론칭 3개월, 골든타임</div>
+        <div class="cd">신제품 출시 후 첫 3~6개월이<br>초기 인지도와 리뷰 자산을 쌓는 결정적 시기.<br>이 시점을 놓치면 후발 진입 비용이 3배 이상 증가합니다.</div>
+      </div>
+      <div class="u-card dark">
+        <div class="num">Core Gap</div>
+        <div class="ct">제품력 vs. 디지털 존재감의 괴리</div>
+        <div class="cd">레드비는 <em>여성케어 건기식</em>으로 제품력을 갖추고 있습니다.<br>그러나 현재 검색 노출, SNS 콘텐츠, 바이럴 리뷰 모두 <em>거의 0</em>인 상태.<br><em>좋은 제품인데 아무도 모른다</em> — 이 갭을 메우는 것이 첫 번째 과제입니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- CURRENT STATUS -->
+<section>
+  <div class="container">
+    <div class="sec-label">Current Diagnosis</div>
+    <h2>레드비 마케팅,<br>어디까지 와 있나</h2>
+    <p class="sec-desc">제품 출시는 완료. 쿠팡·스마트스토어 입점 완료.<br>문제는 소비자가 레드비를 발견할 수 있는 경로가 없다는 점입니다.</p>
+
+    <div class="info-box">
+      현재 판매 채널: <strong>쿠팡 / 스마트스토어</strong><br>
+      인스타그램: <strong>중단 상태</strong><br>
+      검색 노출: <strong>거의 없음</strong> (브랜드 검색 0)<br>
+      바이럴 콘텐츠: <strong>없음</strong><br><br>
+      판매 채널은 열려 있지만, 소비자가 레드비를 찾아올 수 있는 길이 없습니다.<br>
+      인스타그램 콘텐츠 + 바이럴 리뷰로 유입 경로를 만들어야 합니다.
+    </div>
+
+    <div class="gap-wrap" style="margin-top: 36px;">
+      <table class="gap-table">
+        <thead>
+          <tr>
+            <th style="width:32px">#</th>
+            <th>마케팅 현황 진단</th>
+            <th>경쟁사 대비</th>
+            <th style="width:90px">상태</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><strong>브랜드 인지도</strong><br>레드비 브랜드 검색량 0. 소비자가 제품을 발견할 수 있는 디지털 접점이 전무</td>
+            <td>화애락·에스트로업 브랜드 검색 확보</td>
+            <td><span class="badge b-red">부재</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>인스타그램 채널</strong><br>운영 중단 상태. 건기식 카테고리에서 인스타그램은 핵심 구매 의사결정 채널</td>
+            <td>경쟁사 인스타 활발 운영 + 인플루언서 협업</td>
+            <td><span class="badge b-red">부재</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>콘텐츠 자산</strong><br>제품 소개 콘텐츠, 리뷰 콘텐츠, 브랜드 스토리 콘텐츠 모두 미구축</td>
+            <td>경쟁사 블로그·SNS 콘텐츠 다수 보유</td>
+            <td><span class="badge b-red">부재</span></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>바이럴 / 리뷰</strong><br>네이버 블로그·카페 등 바이럴 콘텐츠 없음. 구매 전 정보 탐색 시 노출 안 됨</td>
+            <td>GRN+ 블로그 리뷰 다수, 카페 체험단 운영</td>
+            <td><span class="badge b-red">부재</span></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><strong>커머스 채널</strong><br>쿠팡·스마트스토어 입점 완료. 판매 인프라는 갖춤</td>
+            <td>기본 수준 동일</td>
+            <td><span class="badge b-green">완료</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- TIER OVERVIEW -->
+<div class="tier-bg">
+  <div class="container">
+    <div class="sec-label">Solution Packages</div>
+    <h2 style="color:var(--white)">3가지 제안</h2>
+    <p class="sec-desc">레드비의 디지털 존재감을 만들고,<br>인스타그램·콘텐츠·바이럴로 첫 고객을 만듭니다.</p>
+    <div class="tier-cards">
+
+      <div class="t-card">
+        <div class="t-name">Set A &middot; Starter</div>
+        <div class="t-title">채널 세팅<br>+ 가이드라인</div>
+        <div class="t-price">100<span>만원</span></div>
+        <div class="t-period">2주 &middot; VAT 별도</div>
+        <ul class="t-feats">
+          <li class="t-feat on">인스타그램 채널 세팅</li>
+          <li class="t-feat on">콘텐츠 가이드라인</li>
+          <li class="t-feat off">브랜드 콘텐츠 제작</li>
+          <li class="t-feat off">인플루언서 콘텐츠</li>
+          <li class="t-feat off">네이버 바이럴</li>
+          <li class="t-feat off">월간 리포트</li>
+        </ul>
+      </div>
+
+      <div class="t-card rec">
+        <div class="rec-badge">Recommended</div>
+        <div class="t-name">Set B &middot; Growth</div>
+        <div class="t-title">콘텐츠<br>+ 인플루언서</div>
+        <div class="t-price">300<span>만원</span></div>
+        <div class="t-period">1개월 &middot; VAT 별도</div>
+        <ul class="t-feats">
+          <li class="t-feat on">Set A 전체 포함</li>
+          <li class="t-feat on">브랜드 콘텐츠 5건 제작</li>
+          <li class="t-feat on">인플루언서 콘텐츠 3건</li>
+          <li class="t-feat off">네이버 바이럴</li>
+          <li class="t-feat off">월간 콘텐츠 운영</li>
+          <li class="t-feat off">월간 리포트</li>
+        </ul>
+      </div>
+
+      <div class="t-card">
+        <div class="t-name">Set C &middot; Full</div>
+        <div class="t-title">콘텐츠 + 인플루언서<br>+ 메타 광고</div>
+        <div class="t-price">500<span>만원</span></div>
+        <div class="t-period">2개월 &middot; VAT 별도</div>
+        <ul class="t-feats">
+          <li class="t-feat on">Set B 전체 포함</li>
+          <li class="t-feat on">메타 광고 A/B 테스트</li>
+          <li class="t-feat on">광고 성과 보고서</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SET A -->
+<section class="det">
+  <div class="container">
+    <div class="sec-label">Set A &middot; Starter</div>
+    <div class="det-head">
+      <div class="det-head-l">
+        <h2>채널 세팅<br>+ 가이드라인</h2>
+        <p class="sec-desc" style="margin-bottom:0">레드비의 디지털 존재감을 만드는 첫 단계.<br>인스타그램 채널을 정비하고, 운영 가이드라인을 수립하여<br>이후 콘텐츠·바이럴 실행의 기반을 만듭니다.</p>
+      </div>
+      <div class="price-box">
+        <div class="pl">TOTAL</div>
+        <div class="pa">1,000,000</div>
+        <div class="ps">2주 &middot; VAT 별도</div>
+      </div>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">1. 인스타그램 채널 세팅</span>
+        <span class="bp">500,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>프로필 최적화</td><td>브랜드 바이오·프로필 이미지·하이라이트 커버 세팅 / 여성케어 건기식 포지셔닝 반영</td></tr>
+        <tr><td>피드 그리드 기획</td><td>9-12그리드 피드 레이아웃 설계 / 색상·톤 가이드라인 확정</td></tr>
+        <tr><td>해시태그 전략</td><td>여성건기식·갱년기·건강관리 관련 핵심 해시태그 50개 맵핑 + 사용 가이드</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">2. 콘텐츠 운영 가이드라인</span>
+        <span class="bp">500,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>톤&매너 가이드</td><td>레드비 인스타그램 운영 톤·비주얼·카피 가이드라인 / 내부 운영용 문서 납품</td></tr>
+        <tr><td>콘텐츠 카테고리 설계</td><td>제품 소개·브랜드 스토리·리뷰·일상 등 콘텐츠 유형별 기획 방향 + 월간 발행 로드맵</td></tr>
+        <tr><td>인플루언서 브리핑 템플릿</td><td>향후 인플루언서 협업 시 사용할 브리핑 양식 + DO/DON'T 가이드</td></tr>
+      </table>
+    </div>
+
+    <div class="total-bar">
+      <div><div class="tl">SET A TOTAL</div><div class="ts">VAT 별도 &middot; 2주</div></div>
+      <div class="ta">1,000,000원</div>
+    </div>
+  </div>
+</section>
+
+<!-- SET B -->
+<section class="det">
+  <div class="container">
+    <div class="sec-label">Set B &middot; Growth &mdash; Recommended</div>
+    <div class="det-head">
+      <div class="det-head-l">
+        <h2>콘텐츠<br>+ 인플루언서</h2>
+        <p class="sec-desc" style="margin-bottom:0">채널 세팅에서 콘텐츠 실행까지.<br>브랜드 콘텐츠와 인플루언서 협업으로<br>레드비의 첫 인지도를 만듭니다.</p>
+      </div>
+      <div class="price-box">
+        <div class="pl">TOTAL</div>
+        <div class="pa">3,000,000</div>
+        <div class="ps">1개월 &middot; VAT 별도</div>
+      </div>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">1. 채널 세팅 + 가이드라인 (Set A)</span>
+        <span class="bp">Set A 포함</span>
+      </div>
+      <table class="dtable">
+        <tr><td>Set A 전체</td><td>인스타그램 채널 세팅 + 콘텐츠 운영 가이드라인</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">2. 브랜드 콘텐츠 제작 (5건)</span>
+        <span class="bp">800,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>제품 소개 콘텐츠</td><td>레드비 핵심 성분·효과 카드뉴스 2건 / 인스타 피드 최적화 디자인</td></tr>
+        <tr><td>브랜드 스토리</td><td>케어비네스트 브랜드 철학 + 레드비 탄생 스토리 1건</td></tr>
+        <tr><td>릴스 콘텐츠</td><td>제품 언박싱·활용법 숏폼 릴스 2건 / 15-30초 포맷</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">3. 인플루언서 콘텐츠 (3건)</span>
+        <span class="bp">1,200,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>인플루언서 선정</td><td>여성 건강·뷰티·라이프스타일 마이크로 인플루언서 리스트업 + 섭외</td></tr>
+        <tr><td>콘텐츠 제작</td><td>인스타 릴스·피드 리뷰 콘텐츠 3건 / 레드비 키 메시지 기반 브리핑 제공</td></tr>
+        <tr><td>2차 활용 가이드</td><td>인플루언서 콘텐츠 → 광고 소재 전환 가이드 / 리포스팅 활용 방안</td></tr>
+      </table>
+    </div>
+
+    <div class="total-bar">
+      <div><div class="tl">SET B TOTAL</div><div class="ts">VAT 별도 &middot; 1개월</div></div>
+      <div class="ta">3,000,000원</div>
+    </div>
+  </div>
+</section>
+
+<!-- SET C -->
+<section class="det">
+  <div class="container">
+    <div class="sec-label">Set C &middot; Full</div>
+    <div class="det-head">
+      <div class="det-head-l">
+        <h2>콘텐츠 + 인플루언서<br>+ 메타 광고</h2>
+        <p class="sec-desc" style="margin-bottom:0">Set B의 콘텐츠·인플루언서 자산을 활용해<br>메타(인스타/페이스북) 광고 A/B 테스트를 실행하고,<br>성과 보고서까지 공유합니다.</p>
+      </div>
+      <div class="price-box">
+        <div class="pl">TOTAL</div>
+        <div class="pa">5,000,000</div>
+        <div class="ps">2개월 &middot; VAT 별도</div>
+      </div>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">1. Set B 전체</span>
+        <span class="bp">포함</span>
+      </div>
+      <table class="dtable">
+        <tr><td>Set B 전체</td><td>채널 세팅 + 가이드라인 + 브랜드 콘텐츠 5건 + 인플루언서 3건</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">2. 메타 광고 A/B 테스트</span>
+        <span class="bp">1,500,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>광고 세팅</td><td>메타 광고 계정 세팅 + 픽셀 설치 + 전환 이벤트 설정</td></tr>
+        <tr><td>소재 A/B 테스트</td><td>인플루언서 콘텐츠·브랜드 콘텐츠 기반 광고 소재 3~5세트 제작 / 타겟·소재·카피 조합별 테스트</td></tr>
+        <tr><td>타겟 테스트</td><td>여성 30~50대 관심사 기반 타겟 세그먼트 설계 / 유사 타겟·리타겟팅 테스트</td></tr>
+        <tr><td>예산 운용</td><td>광고비 별도 (권장 월 50~100만원) / 예산 내 최적 조합 도출</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">3. 광고 성과 보고서</span>
+        <span class="bp">500,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>주간 모니터링</td><td>CPC·CPM·CTR·전환율 등 핵심 지표 트래킹 / 저성과 소재 교체·예산 재배분</td></tr>
+        <tr><td>성과 보고서</td><td>A/B 테스트 결과 종합 보고서 / 최적 소재·타겟 조합 도출 + 향후 스케일업 전략 제안</td></tr>
+      </table>
+    </div>
+
+    <div class="total-bar">
+      <div><div class="tl">SET C TOTAL</div><div class="ts">VAT 별도 &middot; 2개월 &middot; 광고비 별도</div></div>
+      <div class="ta">5,000,000원</div>
+    </div>
+
+    <div class="info-box">
+      <strong>참고:</strong> 메타 광고비는 별도입니다. 월 50~100만원 권장하며, 테스트 결과에 따라 스케일업 가능합니다.
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section>
+  <div class="container">
+    <div class="sec-label">Summary</div>
+    <h2>세트 비교</h2>
+    <p class="sec-desc">각 세트는 독립 집행 가능합니다.<br>기간 및 항목은 협의 조정 가능합니다.</p>
+    <div class="cmp-wrap">
+      <table class="cmp-table">
+        <thead>
+          <tr>
+            <th>항목</th>
+            <th>Set A</th>
+            <th class="hi">Set B ★</th>
+            <th>Set C</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>인스타그램 채널 세팅</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>콘텐츠 운영 가이드라인</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>브랜드 콘텐츠 제작 (5건)</td><td class="no">&mdash;</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>인플루언서 콘텐츠</td><td class="no">&mdash;</td><td class="ck">3건</td><td class="ck">3건</td></tr>
+          <tr><td>메타 광고 A/B 테스트</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>광고 성과 보고서</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="ck">&#10003;</td></tr>
+          <tr class="sum-row">
+            <td>기간</td><td>2주</td><td class="hi">1개월</td><td>2개월</td>
+          </tr>
+          <tr class="sum-row">
+            <td>금액 (VAT 별도)</td><td>100만원</td><td class="hi">300만원</td><td>500만원</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="container">
+    <div class="brand">브랜드라이즈 by HIZ</div>
+    <div class="tag">Pace &amp; Proof</div>
+    <div class="meta">
+      본 견적서의 유효기간은 발행일로부터 30일입니다.<br>
+      위 금액은 모두 VAT 별도 기준입니다.<br>
+      각 세트는 독립 집행 가능하며, 기간 및 항목 조정은 협의 가능합니다.<br>
+      문의: 브랜드라이즈 by HIZ &middot; <span id="footer-date"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var d = new Date();
+    var y = d.getFullYear();
+    var m = String(d.getMonth() + 1).padStart(2, '0');
+    var day = String(d.getDate()).padStart(2, '0');
+    var formatted = y + '. ' + m + '. ' + day;
+    document.getElementById('today-date').textContent = formatted;
+    document.getElementById('footer-date').textContent = formatted;
+  })();
+</script>
+</body>
+</html>
