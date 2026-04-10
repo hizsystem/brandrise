@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인셀라(INSELLA) — 레퍼런스 보드 | BRANDRISE</title>
+    <style>
+        :root {
+            --accent: #EA580C;
+            --text: #1a1b18;
+            --text-light: #999;
+            --border: #e8edf1;
+            --warm: #FFF7ED;
+            --bg: #f4f7f9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 14px; }
+
+        .header { background: #fff; padding: 32px 40px 24px; border-bottom: 3px solid var(--accent); display: flex; justify-content: space-between; align-items: center; }
+        .header h1 { font-size: 22px; font-weight: 800; }
+        .header a { color: var(--accent); text-decoration: none; font-size: 13px; font-weight: 600; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+
+        .board-section { margin-bottom: 40px; }
+        .board-section h2 { font-size: 16px; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--accent); }
+        .board-section .board-desc { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+
+        .gallery-item {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            transition: transform 0.2s;
+        }
+        .gallery-item:hover { transform: translateY(-2px); }
+
+        .gallery-img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .gallery-img .placeholder {
+            text-align: center;
+            padding: 20px;
+        }
+        .gallery-img .placeholder .plus {
+            width: 40px;
+            height: 40px;
+            border: 2px dashed var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px;
+            font-size: 20px;
+            color: var(--border);
+        }
+
+        .gallery-info { padding: 12px 14px; }
+        .gallery-info .gi-brand { font-size: 11px; color: var(--accent); font-weight: 600; }
+        .gallery-info .gi-title { font-size: 13px; font-weight: 600; margin: 2px 0; }
+        .gallery-info .gi-desc { font-size: 12px; color: var(--text-light); }
+        .gallery-info .gi-link { font-size: 11px; color: var(--accent); text-decoration: none; margin-top: 4px; display: inline-block; }
+
+        .note-box {
+            background: var(--warm);
+            border-left: 3px solid var(--accent);
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+
+        .footer { text-align: center; padding: 32px; color: var(--text-light); font-size: 12px; }
+
+        @media (max-width: 768px) {
+            .header { flex-direction: column; gap: 8px; padding: 24px 20px 16px; }
+            .gallery { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>인셀라 레퍼런스 보드</h1>
+    <a href="../">← 견적 & 실행 플랜으로 돌아가기</a>
+</div>
+
+<div class="container">
+
+    <div class="note-box">
+        <strong>사용법:</strong> 각 카드의 이미지 영역에 스크린샷을 넣으면 됩니다.
+        이미지 파일을 이 폴더(<code>references/img/</code>)에 저장한 후, HTML의 <code>&lt;img src="img/파일명.png"&gt;</code>으로 교체하세요.
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 톰(THOME) -->
+    <!-- ============================================================ -->
+    <div class="board-section">
+        <h2>톰 / THOME — 핵심 벤치마크</h2>
+        <div class="board-desc">론칭 1년 150억. 유인나 모델 + 홈쇼핑 3사 매진. 인셀라가 따라가되 차별화해야 할 대상.</div>
+
+        <div class="gallery">
+            <div class="gallery-item">
+                <div class="gallery-img">
+                    <!-- <img src="img/thome-insta-feed.png" alt="톰 인스타 피드"> -->
+                    <div class="placeholder"><div class="plus">+</div>인스타 피드 캡처</div>
+                </div>
+                <div class="gallery-info">
+                    <div class="gi-brand">THOME</div>
+                    <div class="gi-title">인스타그램 피드 톤앤매너</div>
+                    <div class="gi-desc">프리미엄 뷰티 디바이스의 비주얼 기준</div>
+                    <a class="gi-link" href="https://www.instagram.com/thome_official/" target="_blank">@thome_official →</a>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-img">
+                    <!-- <img src="img/thome-website.png" alt="톰 자사몰"> -->
+                    <div class="placeholder"><div class="plus">+</div>자사몰 메인 캡처</div>
+                </div>
+                <div class="gallery-info">
+                    <div class="gi-brand">THOME</div>
+                    <div class="gi-title">자사몰 디자인 톤</div>
+                    <div class="gi-desc">"홈페이지 하나가 브랜드의 대문" — 권 이사님 발언</div>
+                    <a class="gi-link" href="https://thome.kr/" target="_blank">thome.kr →</a>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-img">
+                    <!-- <img src="img/thome-homeshopping.png" alt="톰 홈쇼핑"> -->
+                    <div class="placeholder"><div class="plus">+</div>홈쇼핑 방송 캡처</div>
+                </div>
+                <div class="gallery-info">
+                    <div class="gi-brand">THOME</div>
+                    <div class="gi-title">홈쇼핑 3사 매진 사례</div>
+                    <div class="gi-desc">GS홈쇼핑 1회 16~17억. 더글로우 PRO 연속 완판</div>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-img">
+                    <!-- <img src="img/thome-seeding.png" alt="톰 시딩"> -->
+                    <div class="placeholder"><div class="plus">+</div>시딩/인플루언서 캡처</div>
+                </div>
+                <div class="gallery-info">
+                    <div class="gi-brand">THOME</div>
+                    <div class="gi-title">시딩 & 인플루언서 전략</div>
+                    <div class="gi-desc">유인나 모델 + 마이크로 인플루언서 물량</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 메디큐브 -->
+    <!-- ============================================================ -->
+    <div class="board-section">
+        <h2>메디큐브 AGE-R — 다른 리그, 배울 것은 있다</h2>
+        <div class="board-desc">디바이스 4,000억. 틱톡 미국 1위. 정면 승부 불가하나 콘텐츠 전략은 참고 가치.</div>
+
+        <div class="gallery">
+            <div class="gallery-item">
+                <div class="gallery-img">
+                    <!-- <img src="img/medicube-insta.png" alt="메디큐브 인스타"> -->
+                    <div class="placeholder"><div class="plus">+</div>인스타 피드 캡처</div>
+                </div>
+                <div class="gallery-info">
+                    <div class="gi-brand">MEDICUBE</div>
+                    <div class="gi-title">인스타그램 콘텐츠 전략</div>
+                    <div class="gi-desc">제품 데모 릴스 + 인플루언서 협업</div>
+                    <a class="gi-link" href="https://www.instagram.com/medicube_official/" target="_blank">@medicube_official →</a>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-img">
+                    <!-- <img src="img/medicube-tiktok.png" alt="메디큐브 틱톡"> -->
+                    <div class="placeholder"><div class="plus">+</div>틱톡 캡처</div>
+                </div>
+                <div class="gallery-info">
+                    <div class="gi-brand">MEDICUBE</div>
+                    <div class="gi-title">틱톡 어필리에이트 전략</div>
+                    <div class="gi-desc">미국 틱톡샵 거래액 1,900억 1위. 콘텐츠 내재화</div>
+                    <a class="gi-link" href="https://www.tiktok.com/@medicube" target="_blank">@medicube →</a>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-img">
+                    <!-- <img src="img/medicube-website.png" alt="메디큐브 사이트"> -->
+                    <div class="placeholder"><div class="plus">+</div>자사몰 캡처</div>
+                </div>
+                <div class="gallery-info">
+                    <div class="gi-brand">MEDICUBE</div>
+                    <div class="gi-title">자사몰 D2C 구조</div>
+                    <div class="gi-desc">AI 피부 진단 앱 연동. 디지털 클리닉</div>
+                    <a class="gi-link" href="https://medicube.kr/" target="_blank">medicube.kr →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 시딩 박스 사례 -->
+    <!-- ============================================================ -->
+    <div class="board-section">
+        <h2>시딩 박스 & 언박싱 레퍼런스</h2>
+        <div class="board-desc">"시딩 박스가 중요하다" — 미팅 발언. 인셀라 시딩 박스 기획 시 참고할 사례.</div>
+
+        <div class="gallery">
+            <div class="gallery-item">
+                <div class="gallery-img">
+                    <!-- <img src="img/seeding-box-mycu.png" alt="마이큐 시딩 박스"> -->
+                    <div class="placeholder"><div class="plus">+</div>마이큐 시딩 박스</div>
+                </div>
+                <div class="gallery-info">
+                    <div class="gi-brand">MYCU (리서치)</div>
+                    <div class="gi-title">마이큐 시딩 박스</div>
+                    <div class="gi-desc">브랜드라이즈 자체 브랜드. 김나영 시딩 사례</div>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-img">
+                    <!-- <img src="img/seeding-box-tombeauty.png" alt="톰뷰티 시딩"> -->
+                    <div class="placeholder"><div class="plus">+</div>톰뷰티 시딩 사례</div>
+                </div>
+                <div class="gallery-info">
+                    <div class="gi-brand">THOME</div>
+                    <div class="gi-title">톰 시딩 박스/언박싱</div>
+                    <div class="gi-desc">프리미엄 패키지 + 인플루언서 언박싱 콘텐츠</div>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-img">
+                    <!-- <img src="img/seeding-reels-example.png" alt="릴스 시딩 예시"> -->
+                    <div class="placeholder"><div class="plus">+</div>릴스 시딩 콘텐츠 예시</div>
+                </div>
+                <div class="gallery-info">
+                    <div class="gi-brand">레퍼런스</div>
+                    <div class="gi-title">마이크로 인플루언서 릴스</div>
+                    <div class="gi-desc">"팔로워 안 보이는 게 릴스의 장점" — 미팅 발언</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 공구 레퍼런스 -->
+    <!-- ============================================================ -->
+    <div class="board-section">
+        <h2>공동구매 레퍼런스</h2>
+        <div class="board-desc">"셀럽과 셀러는 다르다. 셀러가 진짜 잘 판다." 샤크닌자 등 공구 성공 사례.</div>
+
+        <div class="gallery">
+            <div class="gallery-item">
+                <div class="gallery-img">
+                    <!-- <img src="img/gonggu-sharkninja.png" alt="샤크닌자 공구"> -->
+                    <div class="placeholder"><div class="plus">+</div>샤크닌자 공구 사례</div>
+                </div>
+                <div class="gallery-info">
+                    <div class="gi-brand">레퍼런스</div>
+                    <div class="gi-title">샤크닌자 한국 진출 공구 전략</div>
+                    <div class="gi-desc">글로벌 본사가 공구 먼저 → 팬덤이 콘텐츠 자동 생산</div>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-img">
+                    <!-- <img src="img/gonggu-device-example.png" alt="뷰티디바이스 공구"> -->
+                    <div class="placeholder"><div class="plus">+</div>뷰티 디바이스 공구 사례</div>
+                </div>
+                <div class="gallery-info">
+                    <div class="gi-brand">레퍼런스</div>
+                    <div class="gi-title">디바이스 카테고리 공구</div>
+                    <div class="gi-desc">"머신 몇백 대 팔았어요 벌써" — 미팅 발언</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 미국 시장 -->
+    <!-- ============================================================ -->
+    <div class="board-section">
+        <h2>미국 시장 — Heyday & 에스테틱</h2>
+        <div class="board-desc">브랜드라이즈 거래처. "미국에서 쓰는 디바이스" PR 스토리 확보용.</div>
+
+        <div class="gallery">
+            <div class="gallery-item">
+                <div class="gallery-img">
+                    <!-- <img src="img/heyday-store.png" alt="Heyday 매장"> -->
+                    <div class="placeholder"><div class="plus">+</div>Heyday 매장 캡처</div>
+                </div>
+                <div class="gallery-info">
+                    <div class="gi-brand">HEYDAY</div>
+                    <div class="gi-title">Heyday 에스테틱 샵</div>
+                    <div class="gi-desc">뉴욕 35개 지점. 유니콘. 월 멤버십 100만원+</div>
+                    <a class="gi-link" href="https://www.heydayskincare.com/" target="_blank">heydayskincare.com →</a>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-img">
+                    <!-- <img src="img/heyday-interior.png" alt="Heyday 내부"> -->
+                    <div class="placeholder"><div class="plus">+</div>Heyday 시술 장면</div>
+                </div>
+                <div class="gallery-info">
+                    <div class="gi-brand">HEYDAY</div>
+                    <div class="gi-title">시술 공간 & 서비스</div>
+                    <div class="gi-desc">1:1 페이셜 케어. 여기서 인셀라 제품 시딩 가능</div>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-img">
+                    <!-- <img src="img/kds-store.png" alt="KDS 매장"> -->
+                    <div class="placeholder"><div class="plus">+</div>KDS 매장 캡처</div>
+                </div>
+                <div class="gallery-info">
+                    <div class="gi-brand">KDS</div>
+                    <div class="gi-title">KDS (미국 에스테틱 체인)</div>
+                    <div class="gi-desc">미국 35개 지점. 젊은 바이브. 브랜드라이즈 6개 지점 거래</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    BRANDRISE | 인셀라 레퍼런스 보드<br>
+    이미지를 <code>references/img/</code> 폴더에 넣고 HTML 주석을 해제하면 표시됩니다.
+</div>
+
+</body>
+</html>

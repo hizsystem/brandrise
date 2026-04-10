@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인셀라(INSELLA) — 견적 & 실행 플랜 | BRANDRISE</title>
+    <style>
+        :root {
+            --accent: #EA580C;
+            --text: #1a1b18;
+            --text-light: #999;
+            --border: #e8edf1;
+            --warm: #FFF7ED;
+            --bg: #f4f7f9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 14px; }
+
+        .header { background: #fff; padding: 48px 40px 32px; text-align: center; border-bottom: 3px solid var(--accent); }
+        .header-badge { display: inline-block; background: var(--warm); color: var(--accent); padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 12px; }
+        .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
+        .header .subtitle { font-size: 14px; color: var(--text-light); }
+
+        .container { max-width: 960px; margin: 0 auto; padding: 32px 20px; }
+
+        .section { background: #fff; border-radius: 10px; padding: 28px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+        .section h2 { font-size: 18px; font-weight: 700; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); }
+        .section h3 { font-size: 15px; font-weight: 600; margin: 20px 0 10px; color: var(--text); }
+
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        th { background: #f8fafb; padding: 10px 14px; text-align: left; font-weight: 600; font-size: 13px; border-bottom: 2px solid var(--border); }
+        td { padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 13px; }
+        tr:hover td { background: #fafbfc; }
+
+        .quote-total { background: var(--warm); padding: 20px 24px; border-radius: 8px; margin: 16px 0; display: flex; justify-content: space-between; align-items: center; }
+        .quote-total .qt-label { font-size: 14px; color: var(--text-light); }
+        .quote-total .qt-value { font-size: 28px; font-weight: 800; color: var(--accent); }
+        .quote-total .qt-sub { font-size: 12px; color: var(--text-light); }
+
+        .task-group { margin: 16px 0; }
+        .task-group-title { font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .task-group-title .tg-num { background: var(--accent); color: white; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; }
+        .task-item { padding: 8px 0 8px 30px; border-bottom: 1px solid #f0f2f5; font-size: 13px; position: relative; }
+        .task-item::before { content: ""; position: absolute; left: 10px; top: 16px; width: 6px; height: 6px; border-radius: 50%; background: var(--border); }
+        .task-item strong { color: var(--text); }
+        .task-item .task-note { color: var(--text-light); font-size: 12px; }
+
+        .ref-card { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0; }
+        .ref-item { padding: 16px; border: 1px solid var(--border); border-radius: 8px; }
+        .ref-item .ref-name { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+        .ref-item .ref-stat { font-size: 20px; font-weight: 800; color: var(--accent); margin: 4px 0; }
+        .ref-item .ref-desc { font-size: 12px; color: var(--text-light); line-height: 1.6; }
+
+        .callout { background: var(--warm); border-left: 3px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 14px 0; font-size: 13px; }
+
+        .timeline { display: flex; gap: 0; margin: 16px 0; }
+        .tl-item { flex: 1; padding: 14px 10px; text-align: center; border-right: 1px solid var(--border); }
+        .tl-item:last-child { border-right: none; }
+        .tl-item .tl-period { font-size: 11px; font-weight: 700; color: var(--accent); }
+        .tl-item .tl-title { font-size: 13px; font-weight: 600; margin: 4px 0; }
+        .tl-item .tl-desc { font-size: 11px; color: var(--text-light); }
+
+        .footer { text-align: center; padding: 32px; color: var(--text-light); font-size: 12px; }
+
+        .highlight { color: var(--accent); font-weight: 700; }
+        .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; background: var(--warm); color: var(--accent); }
+
+        @media (max-width: 768px) {
+            .header { padding: 32px 20px 24px; }
+            .header h1 { font-size: 22px; }
+            .section { padding: 20px 16px; }
+            .ref-card { grid-template-columns: 1fr; }
+            .timeline { flex-direction: column; }
+            .tl-item { border-right: none; border-bottom: 1px solid var(--border); }
+            .quote-total { flex-direction: column; text-align: center; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">INSELLA LAUNCH PLAN</div>
+    <h1>인셀라(INSELLA) 견적 & 실행 플랜</h1>
+    <div class="subtitle">청우메디칼 | 6개월 집중 론칭 | 2026.04</div>
+</div>
+
+<div class="container">
+
+    <!-- ============================================================ -->
+    <!-- 견적 요약 -->
+    <!-- ============================================================ -->
+    <div class="section">
+        <h2>견적 요약</h2>
+
+        <table>
+            <tr><th>항목</th><th>금액</th><th>기간</th><th>비고</th></tr>
+            <tr>
+                <td><strong>인스타그램 피드 세팅 + 운영</strong></td>
+                <td class="highlight">6,000만</td>
+                <td>3개월</td>
+                <td>톤앤매너 + 릴스/세로형 + 내부 이관</td>
+            </tr>
+            <tr>
+                <td><strong>메타 퍼포먼스 광고</strong></td>
+                <td class="highlight">3,000만</td>
+                <td>6개월</td>
+                <td>릴스 부스트 + 리타겟팅. 시딩 소재 활용</td>
+            </tr>
+            <tr>
+                <td><strong>인플루언서 / 시딩</strong></td>
+                <td class="highlight">1억</td>
+                <td>6개월</td>
+                <td>마이크로 인플루언서 물량. 제품 2~3천개</td>
+            </tr>
+            <tr>
+                <td><strong>공동구매</strong></td>
+                <td class="highlight">착수금 2,000만<br>+ 수익 쉐어</td>
+                <td>6개월</td>
+                <td>탑셀러 4명. 큐티프로 중심</td>
+            </tr>
+        </table>
+
+        <div class="quote-total">
+            <div>
+                <div class="qt-label">총 예산</div>
+                <div class="qt-value">2억원</div>
+                <div class="qt-sub">6개월 / 마케팅 비용 전체</div>
+            </div>
+            <div style="text-align:right;">
+                <div class="qt-label">CPC/DA 광고</div>
+                <div style="font-size:16px; font-weight:700;">최소화</div>
+                <div class="qt-sub">콘텐츠 + 시딩 + 공구에 집중</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 영역별 세부 TASK -->
+    <!-- ============================================================ -->
+    <div class="section">
+        <h2>영역별 세부 Task</h2>
+
+        <!-- 인스타그램 -->
+        <div class="task-group">
+            <div class="task-group-title"><span class="tg-num">1</span> 인스타그램 (6,000만)</div>
+            <div class="task-item"><strong>인스타그램 계정 세팅</strong> — 아직 미오픈 상태. 콘텐츠 기반 완성 후 공식 오픈<div class="task-note">피드는 많이 안 올림. MD/바이어가 보는 용도. "피드 보는 건 MD밖에 없다"</div></div>
+            <div class="task-item"><strong>톤앤매너 가이드 제작</strong> — 인셀라 브랜드 비주얼 기준 정립<div class="task-note">톰뷰티 수준의 세련된 사이트/인스타 참고</div></div>
+            <div class="task-item"><strong>릴스/세로형 콘텐츠 집중</strong> — 틱톡+릴스 동시 활용 가능한 세로형에 올인<div class="task-note">"유튜브 말고 틱톡이랑 릴스에 같이 쓸 수 있는 세로형에 몰빵"</div></div>
+            <div class="task-item"><strong>기존 콘텐츠 자산 살리기</strong> — 촬영팀이 만든 80개 영상/사진 중 인스타용 선별<div class="task-note">콘텐츠 드라이브 공유 받아서 살릴 사진 확인. "80개는 브랜드 필름이지, 인스타 콘텐츠는 따로 만들어야"</div></div>
+            <div class="task-item"><strong>3개월 집중 세팅 → 내부 이관</strong> — 3개월 후 운영 가이드와 함께 내부팀에 전달</div>
+        </div>
+
+        <!-- 시딩 -->
+        <div class="task-group">
+            <div class="task-group-title"><span class="tg-num">2</span> 시딩 (1억 中 배분)</div>
+            <div class="task-item"><strong>마이크로 인플루언서 물량 전략</strong> — "2천 팔로워, 인플루언서 되고 싶은 귀여운 애들" 물량으로 밀기<div class="task-note">대형 1명(1,500만)보다 소규모 100명이 낫다. 릴스 팔로워 안 보이는 게 장점</div></div>
+            <div class="task-item"><strong>제품 2~3천개 확보</strong> — 대표에게 물건값 깎아서 물량 확보 쇼부 필요<div class="task-note">"광고비 적으면 물건을 푸는 거. 이 가격이면 사겠지 싶은 선에서"</div></div>
+            <div class="task-item"><strong>시딩 박스 기획/제작</strong> — 시딩 박스가 언박싱 콘텐츠의 핵심<div class="task-note">마이큐(리서치 브랜드) 시딩 박스 이미지 참고. "시딩 박스가 중요하다"</div></div>
+            <div class="task-item"><strong>D-day 동시 배포</strong> — 1~2달에 나눠 쓰지 않고 한 번에 몰빵<div class="task-note">"1월 조수 2월 조수 절대 안 돼. 2개월 안에 확 밀어내야 피드에서 올라온다"</div></div>
+            <div class="task-item"><strong>미국 Heyday 에스테틱 샵 시딩</strong> — 브랜드라이즈 거래처 6개 지점 활용<div class="task-note">"미국에서 쓰는 디바이스" PR 스토리 확보. 톰뷰티 패턴</div></div>
+            <div class="task-item"><strong>내부 시딩</strong> — 청우 내부에서 자체 진행분. 수량 몇 개 풀 수 있는지 확인 필요</div>
+        </div>
+
+        <!-- 메타 광고 -->
+        <div class="task-group">
+            <div class="task-group-title"><span class="tg-num">3</span> 메타 퍼포먼스 광고 (3,000만)</div>
+            <div class="task-item"><strong>CPC/DA 광고 최소화</strong> — 네이버 배너, 페이스북 DA 등 기존 광고 안 함<div class="task-note">"DA 광고는 요즘 많이 안 해요. 소비자가 어디 가서 머물어요? 안 머문다니까요"</div></div>
+            <div class="task-item"><strong>시딩 콘텐츠를 광고 소재로</strong> — 인플루언서가 만든 릴스를 Meta 광고로 부스트<div class="task-note">자체 제작 광고보다 시딩 콘텐츠 부스트가 신뢰도+효율 둘 다 높음</div></div>
+            <div class="task-item"><strong>릴스 부스트 + 리타겟팅</strong> — 시딩으로 유입된 트래픽 리타겟팅</div>
+            <div class="task-item"><strong>시딩 터진 후 투입</strong> — 시딩 콘텐츠가 쌓인 후에 광고비 투입. 선후 관계 중요</div>
+        </div>
+
+        <!-- 공동구매 -->
+        <div class="task-group">
+            <div class="task-group-title"><span class="tg-num">4</span> 공동구매 (착수금 2,000만 + 수익 쉐어)</div>
+            <div class="task-item"><strong>탑셀러 4명 연결</strong> — 브랜드라이즈 네트워크 활용. "혼자 200억 하는 분"<div class="task-note">"셀럽과 셀러는 다르다. 공구 시장에서는 셀러가 진짜 잘 판다"</div></div>
+            <div class="task-item"><strong>큐티프로(CUTIPRO) 제품으로 공구</strong> — EMS 패치+리프팅밴드 연결 = 액세서리 캡슐 장사 가능<div class="task-note">"이 제품이 되게 매력적. 본체 사면 패치를 계속 사야 되는 구조"</div></div>
+            <div class="task-item"><strong>지금부터 셀러 부킹</strong> — 탑셀러 4개월치 이미 부킹됨. 즉시 피칭 시작<div class="task-note">"공구 잘하는 애들은 4개월 치 다 부킹 돼 있어요"</div></div>
+            <div class="task-item"><strong>4명만 집중, 너무 많이 X</strong> — 공구 너무 많이 하면 싸움 남<div class="task-note">4명의 팬덤 + 체험단으로 바이럴. 샤크닌자 사례 참고</div></div>
+            <div class="task-item"><strong>제품 샘플 먼저 발송</strong> — 탑셀러들은 제품이 안 좋으면 안 함. 먼저 써보게 해야</div>
+        </div>
+
+        <!-- 연예인 (추후) -->
+        <div class="task-group">
+            <div class="task-group-title"><span class="tg-num">5</span> 연예인 (1억 中 배분 — 적정 시점에)</div>
+            <div class="task-item"><strong>바이럴 깔린 후 투입</strong> — 시딩+공구로 밑 작업 후, 연예인으로 부스트<div class="task-note">"바이럴을 밑에 깔고 그 다음에 적정 시점에 연예인"</div></div>
+            <div class="task-item"><strong>"살짝 무너졌다 치고 올라오는" 연예인</strong> — 서인영 등 호감 캐 전환 중인 셀럽<div class="task-note">PPL 6~7천만원대. "예쁜 애가 흔들어줘야 돼"</div></div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 인프라 (선행 과제) -->
+    <!-- ============================================================ -->
+    <div class="section">
+        <h2>선행 과제 (인프라)</h2>
+        <table>
+            <tr><th>과제</th><th>현재</th><th>필요</th><th>긴급도</th></tr>
+            <tr>
+                <td><strong>자사몰 카페24 이전</strong></td>
+                <td>아임웹 (CRM 불가)</td>
+                <td>카페24 (CRM/재구매 추적 가능)</td>
+                <td><span class="tag">즉시</span></td>
+            </tr>
+            <tr>
+                <td><strong>홈페이지 오픈</strong></td>
+                <td>4/20 오픈 예정</td>
+                <td>콘텐츠 업로드 후 오픈</td>
+                <td><span class="tag">4/20</span></td>
+            </tr>
+            <tr>
+                <td><strong>네이버 검색 노출</strong></td>
+                <td>"인셀라" 네이버 미노출</td>
+                <td>네이버 검색광고 월 60만+</td>
+                <td><span class="tag">4월 내</span></td>
+            </tr>
+            <tr>
+                <td><strong>네이버 라이브</strong></td>
+                <td>5/29 잡아놓음 (큐티프로)</td>
+                <td>라이브 전 시딩/공구 사전 작업</td>
+                <td><span class="tag">5/29 전</span></td>
+            </tr>
+            <tr>
+                <td><strong>콘텐츠 드라이브 공유</strong></td>
+                <td>영상팀 촬영 완료분 있음</td>
+                <td>드라이브 열어서 인스타용 선별</td>
+                <td><span class="tag">즉시</span></td>
+            </tr>
+            <tr>
+                <td><strong>제품 샘플 발송</strong></td>
+                <td>-</td>
+                <td>인셀라/큐티프로/더마실 → 브랜드라이즈</td>
+                <td><span class="tag">즉시</span></td>
+            </tr>
+        </table>
+
+        <div class="callout">
+            <strong>카페24 이전이 최우선.</strong> 아임웹은 CRM이 안 돼서 재구매 지표가 안 읽힘. "캡슐 장사(패치/밴드 재구매)"가 핵심 수익 모델인데, CRM 없으면 측정 불가. 카페24 이전 저비용 파트너 소개 가능.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 타임라인 -->
+    <!-- ============================================================ -->
+    <div class="section">
+        <h2>실행 타임라인</h2>
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-period">M1 (4~5월)</div>
+                <div class="tl-title">기반 세팅</div>
+                <div class="tl-desc">인스타 세팅<br>카페24 이전<br>시딩 리스트+박스<br>셀러 부킹</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-period">M2 (5~6월)</div>
+                <div class="tl-title">D-DAY 폭발</div>
+                <div class="tl-desc">시딩 동시 배포<br>인스타 공식 오픈<br>네이버 라이브(5/29)<br>메타 부스트 시작</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-period">M3~4 (6~8월)</div>
+                <div class="tl-title">공구 + 스케일</div>
+                <div class="tl-desc">탑셀러 4명 공구<br>시딩 콘텐츠 → 광고<br>Heyday 미국 시딩<br>데이터 기반 최적화</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-period">M5~6 (8~10월)</div>
+                <div class="tl-title">확장 판단</div>
+                <div class="tl-desc">성과 리뷰<br>연예인 투입 검토<br>다음 투자 규모 결정<br>홈쇼핑/오프라인 검토</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 경쟁사 레퍼런스 -->
+    <!-- ============================================================ -->
+    <div class="section">
+        <h2>경쟁사 레퍼런스</h2>
+
+        <div class="ref-card">
+            <div class="ref-item">
+                <div class="ref-name">톰/THOME (앳홈)</div>
+                <div class="ref-stat">론칭 1년 150억</div>
+                <div class="ref-desc">
+                    시리즈A 180억 유치 후 본격 투자<br>
+                    유인나 모델 + 더현대 옥외광고<br>
+                    홈쇼핑 3사 매진 (1회 16~17억)<br>
+                    면세점 8개월 만에 매출 930%↑<br>
+                    <strong>인셀라 벤치마크 — "따라가되 차별화"</strong>
+                </div>
+            </div>
+            <div class="ref-item">
+                <div class="ref-name">메디큐브 AGE-R (APR)</div>
+                <div class="ref-stat">디바이스 4,000억</div>
+                <div class="ref-desc">
+                    연간 광고비 2,350억 (다른 리그)<br>
+                    틱톡샵 미국 1위 (거래액 1,900억)<br>
+                    글로벌 600만 대 판매<br>
+                    데이터 기반 콘텐츠 내재화<br>
+                    <strong>정면 승부 불가 — "의료기기 기술"로 차별화</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="ref-card">
+            <div class="ref-item">
+                <div class="ref-name">듀얼소닉 (지온메디텍)</div>
+                <div class="ref-stat">누적 400억+</div>
+                <div class="ref-desc">
+                    CJ온스타일 중심 홈쇼핑 렌탈<br>
+                    방송 3회 만에 주문 83억<br>
+                    HIFU 기술 — 청우와 동일 기반<br>
+                    <strong>참고 — 홈쇼핑 렌탈 모델 검증 사례</strong>
+                </div>
+            </div>
+            <div class="ref-item">
+                <div class="ref-name">홈뷰티 디바이스 시장</div>
+                <div class="ref-stat">한국 1.8조 / 글로벌 125조</div>
+                <div class="ref-desc">
+                    한국 CAGR 13.8% (2025~2034)<br>
+                    글로벌 CAGR 35% (2030년까지)<br>
+                    AI 융합 + 소모품 락인 모델 트렌드<br>
+                    <strong>"의료기기 25년 기술"은 지금이 선점 기회</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 인셀라 차별점 -->
+    <!-- ============================================================ -->
+    <div class="section" style="background: var(--warm);">
+        <h2 style="border-bottom-color: var(--accent);">인셀라가 이들과 다른 점</h2>
+        <table>
+            <tr><th></th><th>톰/메디큐브</th><th>인셀라</th></tr>
+            <tr><td><strong>기술 기반</strong></td><td>뷰티/소비재에서 출발</td><td>25년 의료기기 제조사에서 출발</td></tr>
+            <tr><td><strong>인증</strong></td><td>일반 가전 수준</td><td>의료기기 인증 + 해외 수출 기반</td></tr>
+            <tr><td><strong>해외</strong></td><td>국내 → 해외 확장</td><td>해외 수출 90% → 국내 B2C 진출</td></tr>
+            <tr><td><strong>제품 확장</strong></td><td>기기 단발</td><td>기기 + 패치 + 밴드 + 세럼 (캡슐 구조)</td></tr>
+        </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 다음 단계 -->
+    <!-- ============================================================ -->
+    <div class="section">
+        <h2>요청 사항 & 다음 단계</h2>
+        <table>
+            <tr><th>요청</th><th>담당</th><th>기한</th></tr>
+            <tr><td>인셀라/큐티프로/더마실 제품 샘플</td><td>청우 → 브랜드라이즈</td><td>즉시</td></tr>
+            <tr><td>콘텐츠 자산 드라이브 공유</td><td>최 과장 → 브랜드라이즈</td><td>즉시</td></tr>
+            <tr><td>카페24 이전 내부 결정</td><td>청우 내부</td><td>이번 주</td></tr>
+            <tr><td>공구 탑셀러 리스트 + 피칭</td><td>브랜드라이즈</td><td>4/18</td></tr>
+            <tr><td>인스타 톤앤매너 초안</td><td>브랜드라이즈</td><td>4/21</td></tr>
+            <tr><td>시딩 박스 기획안</td><td>브랜드라이즈</td><td>4/21</td></tr>
+            <tr><td>범위/가격 최종 합의</td><td>양측</td><td>4/14 미팅</td></tr>
+        </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 레퍼런스 바로가기 -->
+    <!-- ============================================================ -->
+    <div class="section">
+        <h2>레퍼런스 바로가기</h2>
+        <p style="font-size:13px; color:var(--text-light); margin-bottom:16px;">경쟁사 채널을 직접 확인하실 수 있습니다. 상세 스크린샷은 <a href="./references/" style="color:var(--accent); font-weight:600;">레퍼런스 보드</a>에서 확인.</p>
+
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px;">
+            <a href="https://www.instagram.com/thome_official/" target="_blank" style="text-decoration:none; color:var(--text); padding:14px; border:1px solid var(--border); border-radius:8px; display:block; transition:border-color 0.2s;">
+                <div style="font-size:12px; color:var(--text-light);">인스타그램</div>
+                <div style="font-size:14px; font-weight:700; margin:4px 0;">톰(THOME)</div>
+                <div style="font-size:12px; color:var(--accent);">@thome_official →</div>
+            </a>
+            <a href="https://www.instagram.com/medicube_official/" target="_blank" style="text-decoration:none; color:var(--text); padding:14px; border:1px solid var(--border); border-radius:8px; display:block; transition:border-color 0.2s;">
+                <div style="font-size:12px; color:var(--text-light);">인스타그램</div>
+                <div style="font-size:14px; font-weight:700; margin:4px 0;">메디큐브</div>
+                <div style="font-size:12px; color:var(--accent);">@medicube_official →</div>
+            </a>
+            <a href="https://www.instagram.com/dualsonic_official/" target="_blank" style="text-decoration:none; color:var(--text); padding:14px; border:1px solid var(--border); border-radius:8px; display:block; transition:border-color 0.2s;">
+                <div style="font-size:12px; color:var(--text-light);">인스타그램</div>
+                <div style="font-size:14px; font-weight:700; margin:4px 0;">듀얼소닉</div>
+                <div style="font-size:12px; color:var(--accent);">@dualsonic_official →</div>
+            </a>
+            <a href="https://thome.kr/" target="_blank" style="text-decoration:none; color:var(--text); padding:14px; border:1px solid var(--border); border-radius:8px; display:block; transition:border-color 0.2s;">
+                <div style="font-size:12px; color:var(--text-light);">자사몰</div>
+                <div style="font-size:14px; font-weight:700; margin:4px 0;">톰(THOME)</div>
+                <div style="font-size:12px; color:var(--accent);">thome.kr →</div>
+            </a>
+            <a href="https://www.tiktok.com/@medicube" target="_blank" style="text-decoration:none; color:var(--text); padding:14px; border:1px solid var(--border); border-radius:8px; display:block; transition:border-color 0.2s;">
+                <div style="font-size:12px; color:var(--text-light);">틱톡</div>
+                <div style="font-size:14px; font-weight:700; margin:4px 0;">메디큐브</div>
+                <div style="font-size:12px; color:var(--accent);">@medicube →</div>
+            </a>
+            <a href="https://www.heydayskincare.com/" target="_blank" style="text-decoration:none; color:var(--text); padding:14px; border:1px solid var(--border); border-radius:8px; display:block; transition:border-color 0.2s;">
+                <div style="font-size:12px; color:var(--text-light);">미국 에스테틱</div>
+                <div style="font-size:14px; font-weight:700; margin:4px 0;">Heyday</div>
+                <div style="font-size:12px; color:var(--accent);">heydayskincare.com →</div>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    BRANDRISE | 인셀라(INSELLA) 견적 & 실행 플랜<br>
+    Confidential — 내부 검토용
+</div>
+
+</body>
+</html>

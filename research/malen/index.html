@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>말렌 (MALEN) - New Business 상담 준비 | BRANDRISE</title>
+    <style>
+        :root {
+            --primary: #0D0D0D;
+            --secondary: #1a1b18;
+            --accent: #EA580C;
+            --highlight: #EA580C;
+            --bg: #f4f7f9;
+            --card-bg: #ffffff;
+            --text: #1a1b18;
+            --text-light: #636569;
+            --border: #e8edf1;
+            --success: #00b894;
+            --warning: #EA580C;
+            --danger: #dc2626;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+        .header { background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); color: white; padding: 60px 40px; text-align: center; }
+        .header-badge { display: inline-block; background: rgba(233,69,96,0.2); border: 1px solid var(--highlight); color: var(--highlight); padding: 4px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 16px; letter-spacing: 1px; }
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+        .header .subtitle { font-size: 16px; opacity: 0.7; font-weight: 300; }
+        .header .date { margin-top: 16px; font-size: 13px; opacity: 0.5; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        .toc { background: var(--card-bg); border-radius: 12px; padding: 32px; margin-bottom: 40px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+        .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }
+        .toc a { color: var(--accent); text-decoration: none; font-size: 14px; padding: 6px 0; display: block; transition: color 0.2s; }
+        .toc a:hover { color: var(--highlight); }
+        .section { background: var(--card-bg); border-radius: 12px; padding: 36px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section h2 { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--highlight); }
+        .section h3 { font-size: 17px; font-weight: 600; color: var(--secondary); margin: 20px 0 12px; }
+        .info-grid { display: grid; grid-template-columns: 160px 1fr; gap: 8px 16px; font-size: 14px; }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th { background: var(--primary); color: white; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px; }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+        tr:hover td { background: #f1f3f5; }
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin: 2px; }
+        .tag-red { background: #ffe0e0; color: #d63031; }
+        .tag-green { background: #d4f5e9; color: #00b894; }
+        .tag-blue { background: #dfe6fd; color: #EA580C; }
+        .tag-yellow { background: #fff3cd; color: #856404; }
+        .tag-gray { background: #e9ecef; color: #495057; }
+        .score-bar { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+        .score-bar .bar { flex: 1; height: 8px; background: #e9ecef; border-radius: 4px; overflow: hidden; }
+        .score-bar .fill { height: 100%; border-radius: 4px; }
+        .fill-high { background: var(--success); }
+        .fill-mid { background: var(--warning); }
+        .fill-low { background: var(--danger); }
+        .verdict { background: linear-gradient(135deg, #00b894 0%, #00cec9 100%); color: white; padding: 24px 32px; border-radius: 12px; text-align: center; margin: 24px 0; }
+        .verdict .label { font-size: 14px; opacity: 0.8; }
+        .verdict .value { font-size: 36px; font-weight: 800; margin: 8px 0; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+        .tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+        .tier-card { border: 2px solid var(--border); border-radius: 12px; padding: 24px; position: relative; transition: transform 0.2s; }
+        .tier-card:hover { transform: translateY(-4px); }
+        .tier-card.recommended { border-color: var(--highlight); box-shadow: 0 4px 20px rgba(233,69,96,0.15); }
+        .tier-card .tier-badge { position: absolute; top: -12px; right: 16px; background: var(--highlight); color: white; padding: 2px 12px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+        .tier-card h4 { font-size: 16px; margin-bottom: 4px; }
+        .tier-card .price { font-size: 24px; font-weight: 800; color: var(--highlight); margin: 12px 0; }
+        .tier-card .duration { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+        .tier-card ul { list-style: none; padding: 0; }
+        .tier-card li { font-size: 13px; padding: 4px 0; padding-left: 20px; position: relative; }
+        .tier-card li::before { content: ">"; position: absolute; left: 0; color: var(--highlight); font-weight: 700; }
+        .callout { background: #fff8e1; border-left: 4px solid #ffc107; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 14px; }
+        .callout-info { background: #e3f2fd; border-left-color: #2196f3; }
+        .callout-danger { background: #fce4ec; border-left-color: #e53935; }
+        .callout-success { background: #e8f5e9; border-left-color: #00b894; }
+        .leverage-box { background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); color: white; padding: 32px; border-radius: 12px; margin: 24px 0; text-align: center; }
+        .leverage-box .quote { font-size: 20px; font-weight: 700; line-height: 1.5; margin: 16px 0; }
+        .flow-steps { display: flex; gap: 0; margin: 20px 0; overflow-x: auto; }
+        .flow-step { flex: 1; min-width: 160px; padding: 16px; background: #f1f3f5; position: relative; text-align: center; }
+        .flow-step:not(:last-child)::after { content: ">"; position: absolute; right: -8px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--highlight); font-weight: 700; z-index: 1; }
+        .flow-step .step-num { font-size: 11px; font-weight: 700; color: var(--highlight); margin-bottom: 4px; }
+        .flow-step .step-title { font-size: 13px; font-weight: 600; }
+        .flow-step .step-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .swot-item h4 { font-size: 15px; margin-bottom: 10px; }
+        .swot-item ul { padding-left: 18px; }
+        .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: #d4f5e9; }
+        .swot-w { background: #ffe0e0; }
+        .swot-o { background: #dfe6fd; }
+        .swot-t { background: #fff3cd; }
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+        .source-list a { color: var(--accent); text-decoration: none; }
+        .source-list a:hover { text-decoration: underline; }
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+        .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 8px 0; }
+        .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+        .summary-section { border-left: 4px solid var(--highlight); background: linear-gradient(135deg, #fff 0%, #fff5f7 100%); }
+        .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; color: white; }
+        .kpi-card.kpi-dark { background: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--danger); }
+        .kpi-card.kpi-success { background: var(--success); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.7; }
+        .kpi-card .kpi-value { font-size: 24px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.7; }
+        .summary-oneliner { background: #0D0D0D; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+        .summary-oneliner .sol-text .hl { color: var(--highlight); }
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+        .diagnosis-section { border: 2px solid var(--danger); }
+        .diagnosis-section h2 { border-bottom-color: var(--danger); color: var(--danger); }
+        .diag-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .diag-box { padding: 16px; border-radius: 8px; }
+        .diag-box.diag-current { background: #fce4ec; }
+        .diag-box.diag-ideal { background: #e8f5e9; }
+        .diag-box .db-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .diag-box.diag-current .db-label { color: var(--danger); }
+        .diag-box.diag-ideal .db-label { color: var(--success); }
+        .diag-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+        .diag-note { font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: #fff3e0; border-radius: 8px; }
+        .spin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .spin-card { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .spin-card h4 { font-size: 15px; margin-bottom: 10px; }
+        .spin-s { background: #e3f2fd; }
+        .spin-p { background: #fce4ec; }
+        .spin-i { background: #fff3e0; }
+        .spin-n { background: #e8f5e9; }
+        .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+        .pain-level { flex: 1; min-width: 200px; padding: 16px; border-radius: 10px; font-size: 13px; }
+        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .pain-l1 { background: #e3f2fd; }
+        .pain-l2 { background: #fff3e0; }
+        .pain-l3 { background: #fce4ec; }
+        .pain-l4 { background: #f3e5f5; }
+        .question-card { background: #f8f9fa; border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+        .question-card .q-num { font-size: 12px; font-weight: 700; color: var(--highlight); }
+        .question-card .q-text { font-size: 15px; font-weight: 600; margin: 4px 0 8px; }
+        .question-card .q-intent { font-size: 13px; color: var(--text-light); }
+        .timeline-phase { display: grid; grid-template-columns: 100px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .timeline-phase .phase-time { font-size: 13px; font-weight: 700; color: var(--highlight); text-align: center; padding-top: 4px; }
+        .timeline-phase .phase-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .timeline-phase .phase-content p { font-size: 13px; color: var(--text-light); }
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .tier-cards { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-step:not(:last-child)::after { display: none; }
+            .channel-grid { grid-template-columns: repeat(2, 1fr); }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .diag-compare { grid-template-columns: 1fr; }
+            .spin-grid { grid-template-columns: 1fr; }
+            .pain-layer { flex-direction: column; }
+            .timeline-phase { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">NEW BUSINESS 상담 준비 패키지</div>
+    <h1>말렌 (MALEN)</h1>
+    <div class="subtitle">내추럴웨어 | 유니섹스 | "편안함에서 오는 평안"</div>
+    <div class="date">작성일: 2026-04-10 | 상담일: 2026-04-08 | Prepared by BRANDRISE</div>
+</div>
+
+<div class="container">
+
+    <!-- Executive Summary -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">브랜드</div>
+                <div class="sh-title">말렌 (MALEN) / 주식회사 그늘아래</div>
+                <div class="sh-sub">내추럴웨어 | 유니섹스 | 부산 기반 7년차 브랜드</div>
+            </div>
+            <div>
+                <div class="sh-label">담당자</div>
+                <div class="sh-title">조정규 대표</div>
+                <div class="sh-sub">제품 중심 창업자 | 메일 9개 항목 상세 회신</div>
+            </div>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">브랜드 역사</div>
+                <div class="kpi-value">7년</div>
+                <div class="kpi-sub">마케팅 없이 매출 우상향</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">Meta ROAS</div>
+                <div class="kpi-value">338%</div>
+                <div class="kpi-sub">월 300만 → 전환매출 1,036만</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">인스타 팔로워</div>
+                <div class="kpi-value">17K</div>
+                <div class="kpi-sub">경쟁사 대비 1/3~1/10</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">마케팅 투자율</div>
+                <div class="kpi-value">~2%</div>
+                <div class="kpi-sub">업계 평균 7~15% 대비 극소</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                7년간 제품력만으로 성장을 증명한 브랜드이나,<br>
+                <span class="hl">마케팅 투자 부재 + 브랜드 메시지 미번역</span>이 다음 성장 단계의 최대 병목.
+            </div>
+        </div>
+        <div class="summary-bottom">
+            <strong>기회 적합도:</strong> <span class="hl">3.71 / 5.0 (GO 조건부)</span> &nbsp;|&nbsp;
+            <strong>추천 Tier:</strong> Professional (월 450만원, 광고비 별도) &nbsp;|&nbsp;
+            <strong>조건:</strong> 예산 확대 논의 필수
+        </div>
+    </div>
+
+    <!-- 핵심 문제점 & 진단 -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 문제점 & 진단</h2>
+
+        <h3>1. 브랜드 철학의 시장 언어 번역 실패 (Critical)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재 상태</div>
+                <ul>
+                    <li>"편안함에서 오는 평안" 슬로건은 있으나 추상적</li>
+                    <li>국내 시딩/인플루언서 마케팅 <strong>효과 미미</strong></li>
+                    <li>인스타 17K — 동급 브랜드(포터리 15~20만, 노앙 10만+) 대비 현저히 낮음</li>
+                    <li>콘텐츠 월 3~4개 수준 (경쟁사 대비 저빈도)</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">이상적 상태</div>
+                <ul>
+                    <li>브랜드 철학이 고객 언어로 번역된 메시징 체계</li>
+                    <li>시딩 시 인플루언서가 "자기 말로" 설명할 수 있는 브랜드 서사</li>
+                    <li>인스타 50K+ (동급 벤치마크 수준)</li>
+                    <li>주 2~3회 콘텐츠 + 릴스 운영 체계</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2. 마케팅 투자 구조의 부재 (Critical)</h3>
+        <div class="diag-note">
+            목표 매출 <strong>SS 월 1~1.5억, FW 월 2~3억</strong>이지만 현재 마케팅 예산은 <strong>월 150~300만원</strong>.
+            업계 성장 브랜드 기준(매출의 7~15%)이면 <strong>월 1,050~4,500만원</strong>이 필요.
+            현재 투자율 약 2%는 목표 달성에 구조적으로 불가능한 수준.
+            다만 ROAS 338%라는 검증된 수치가 있어 <strong>스케일업의 근거</strong>는 충분.
+        </div>
+
+        <h3>3. 퍼포먼스 광고 단일 채널 의존 (High)</h3>
+        <div class="diag-note">
+            Meta 광고만 운영 중. 3월 후반 ROAS 하락(520%→195%)은 <strong>소재 피로도 징후</strong>.
+            5주차 CTR 1.29%로 급락 + CPC 700원 급등.
+            브랜드 마케팅(상단 퍼널) 없이 퍼포먼스만으로는 천장이 있음.
+        </div>
+
+        <h3>영역별 진단 요약</h3>
+        <table>
+            <tr><th>영역</th><th>현재 상태</th><th>심각도</th><th>GAP</th></tr>
+            <tr><td>브랜드 메시지 체계</td><td>슬로건은 있으나 채널별 번역 미비</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>마케팅 투자 규모</td><td>월 300만 (목표 매출 대비 ~2%)</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>Meta 광고 효율</td><td>ROAS 338% 양호, 하락 추세</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-yellow">중간</span></td></tr>
+            <tr><td>시딩/인플루언서</td><td>일본 성공, 국내 실패</td><td><span class="tag tag-red">High</span></td><td><span class="tag tag-red">큼</span></td></tr>
+            <tr><td>인스타그램 규모</td><td>17K (동급 브랜드 대비 1/3~1/10)</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-yellow">중간</span></td></tr>
+            <tr><td>입점 채널</td><td>무신사/29CM/W컨셉/OCO 등 양호</td><td><span class="tag tag-green">Low</span></td><td><span class="tag tag-green">작음</span></td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>진단 결론:</strong> 말렌은 "제품력은 증명됐으나 마케팅 체계가 부재한" 전형적인 제품 중심 브랜드의 <strong>7년차 성장 전환점</strong>에 있습니다.
+            좋은 철학과 제품이 있지만, 이를 시장이 알아듣는 언어로 번역하고, 적절한 투자 구조를 만드는 것이 지금의 핵심 과제입니다.
+        </div>
+    </div>
+
+    <!-- 목차 -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 & 진단</a>
+            <a href="#company-info">1. 기업 기초 정보</a>
+            <a href="#product-lineup">2. 주력 제품 & 채널</a>
+            <a href="#digital-presence">3. 디지털 프레즌스 & 광고 분석</a>
+            <a href="#competitors">4. 경쟁사 분석</a>
+            <a href="#market">5. 시장 환경</a>
+            <a href="#ceo-background">6. 대표자 프로필</a>
+            <a href="#swot">7. SWOT 분석</a>
+            <a href="#needs-analysis">8. 니즈 분석 (SPIN + JTBD)</a>
+            <a href="#gap-analysis">9. GAP 분석 & 기회 평가</a>
+            <a href="#quote">10. 3-Tier 견적 초안</a>
+            <a href="#strategy">11. 상담 전략 & 코칭</a>
+            <a href="#closing">12. 클로징 전략</a>
+        </div>
+    </div>
+
+    <!-- 1. 기업 기초 정보 -->
+    <div class="section" id="company-info">
+        <h2>1. 기업 기초 정보</h2>
+        <div class="info-grid">
+            <div class="info-label">법인명</div><div class="info-value">주식회사 그늘아래</div>
+            <div class="info-label">브랜드명</div><div class="info-value">말렌 (MALEN)</div>
+            <div class="info-label">대표</div><div class="info-value">조정규</div>
+            <div class="info-label">설립</div><div class="info-value">약 2019년 (7년차)</div>
+            <div class="info-label">소재지</div><div class="info-value">부산광역시 부산진구 초읍동 215-1, 3층</div>
+            <div class="info-label">팀 규모</div><div class="info-value">소규모 (2025년 디자이너+마케팅 채용 공고 이력)</div>
+            <div class="info-label">사업 모델</div><div class="info-value">D2C 자사몰(malen.kr, cafe24) + 온라인 플랫폼 다채널 입점</div>
+            <div class="info-label">슬로건</div><div class="info-value">"편안함에서 오는 평안" — 내추럴웨어</div>
+            <div class="info-label">타겟</div><div class="info-value">20대 후반~30대 초반 유니섹스, 다양한 연령층 유입 희망</div>
+            <div class="info-label">가격대</div><div class="info-value">셔츠 8만원대 ~ 더플코트 33만원대 (중상위 컨템포러리)</div>
+        </div>
+        <div class="callout callout-info" style="margin-top:20px">
+            <strong>핵심 팩트:</strong> 부산 기반 소규모 팀이 7년간 큰 마케팅 없이 매출 우상향.
+            무신사/29CM/W컨셉/OCO 등 주요 셀렉트샵을 모두 뚫은 것은 <strong>제품력의 증명</strong>.
+            "유행을 따르지 않는다"는 철학을 7년간 일관되게 유지.
+        </div>
+    </div>
+
+    <!-- 2. 주력 제품 & 채널 -->
+    <div class="section" id="product-lineup">
+        <h2>2. 주력 제품 & 채널</h2>
+        <h3>시그니처 제품</h3>
+        <table>
+            <tr><th>제품</th><th>가격대</th><th>특징</th></tr>
+            <tr><td><strong>캐시미어 더플코트</strong></td><td>33만원대</td><td>FW 핵심 시그니처. 시즌마다 테마 부여 (ex. 23AW "정글")</td></tr>
+            <tr><td>셔츠/블라우스</td><td>8~12만원대</td><td>미니멀 디테일, 편안한 핏</td></tr>
+            <tr><td>크로스백/악세서리</td><td>10만원대 내외</td><td>보조 라인</td></tr>
+        </table>
+
+        <h3>입점 채널</h3>
+        <div class="channel-grid">
+            <div class="channel-card">
+                <div class="ch-name">자사몰</div>
+                <div class="ch-stat">malen.kr</div>
+                <div class="ch-note">cafe24 기반<br>D2C 핵심 채널</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">무신사</div>
+                <div class="ch-stat">입점</div>
+                <div class="ch-note">브랜드 페이지 활성<br>글로벌 무신사도 입점</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">29CM / W컨셉</div>
+                <div class="ch-stat">입점</div>
+                <div class="ch-note">프리미엄 셀렉트샵<br>타겟 매칭 양호</div>
+            </div>
+        </div>
+        <p style="font-size:13px; color:var(--text-light); margin-top:8px;">기타: OCO 편집샵, Prelude 오프라인 편집샵, 60%(SIXTYPERCENT) 해외 플랫폼</p>
+
+        <div class="callout">
+            <strong>포인트:</strong> FW 시그니처(더플코트) 의존도가 높을 수 있음 → SS 매출 구조 취약성 확인 필요.
+            해외 플랫폼(60%) 입점으로 글로벌 채널은 기본적으로 확보된 상태.
+        </div>
+    </div>
+
+    <!-- 3. 디지털 프레즌스 & 광고 분석 -->
+    <div class="section" id="digital-presence">
+        <h2>3. 디지털 프레즌스 & 광고 분석</h2>
+
+        <div class="channel-grid">
+            <div class="channel-card">
+                <div class="ch-name">인스타그램</div>
+                <div class="ch-stat">~17K</div>
+                <div class="ch-note">@malen.kr<br>게시물 287개 · 월 3~4개</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">Meta 광고</div>
+                <div class="ch-stat">ROAS 338%</div>
+                <div class="ch-note">ampm글로벌 대행<br>월 150~300만원</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">자사몰</div>
+                <div class="ch-stat">양호</div>
+                <div class="ch-note">malen.kr (cafe24)<br>카테고리 잘 구분됨</div>
+            </div>
+        </div>
+
+        <h3>Meta 광고 성과 상세 (2026년 3월)</h3>
+        <table>
+            <tr><th>주차</th><th>노출수</th><th>클릭수</th><th>CTR</th><th>CPC</th><th>광고비</th><th>전환매출</th><th>ROAS</th></tr>
+            <tr><td>3월 1주</td><td>48,646</td><td>1,039</td><td>2.14%</td><td>535원</td><td>556,354</td><td>1,793,734</td><td><span class="tag tag-green">322%</span></td></tr>
+            <tr style="background:#e8f5e9;"><td><strong>3월 2주</strong></td><td>71,548</td><td>1,655</td><td>2.31%</td><td>512원</td><td>847,447</td><td>4,403,820</td><td><span class="tag tag-green">520%</span></td></tr>
+            <tr><td>3월 3주</td><td>51,204</td><td>1,123</td><td>2.19%</td><td>426원</td><td>478,034</td><td>1,802,185</td><td><span class="tag tag-green">377%</span></td></tr>
+            <tr style="background:#fce4ec;"><td><strong>3월 4주</strong></td><td>50,809</td><td>1,062</td><td>2.09%</td><td>552원</td><td>586,293</td><td>1,141,400</td><td><span class="tag tag-red">195%</span></td></tr>
+            <tr style="background:#fce4ec;"><td><strong>3월 5주</strong></td><td>66,204</td><td>853</td><td>1.29%</td><td>700원</td><td>597,094</td><td>1,226,506</td><td><span class="tag tag-red">205%</span></td></tr>
+            <tr style="font-weight:700;"><td>합계</td><td>288,411</td><td>5,732</td><td>2.0%</td><td>535원</td><td>3,065,222</td><td>10,367,645</td><td>338%</td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>경고 시그널:</strong> 3월 후반 ROAS 급락(520%→195%). 5주차 CTR 1.29%로 급락 + CPC 700원 급등은
+            <strong>소재 피로도(Creative Fatigue)</strong>의 전형적 징후. 새로운 크리에이티브 소재 + 브랜드 콘텐츠 투입이 시급.
+        </div>
+    </div>
+
+    <!-- 4. 경쟁사 분석 -->
+    <div class="section" id="competitors">
+        <h2>4. 경쟁사 분석</h2>
+        <table>
+            <tr><th>브랜드</th><th>포지셔닝</th><th>인스타 팔로워</th><th>가격대</th><th>차별점</th></tr>
+            <tr><td><strong>포터리 (POTTERY)</strong></td><td>미니멀, 베이직, 내추럴 소재</td><td>15~20만+</td><td>중상위</td><td>남성 베이직 강세, 무신사 상위</td></tr>
+            <tr><td><strong>노앙 (NOHANT)</strong></td><td>프렌치 감성, 유니섹스</td><td>10만+</td><td>중상위</td><td>스토리텔링 강점</td></tr>
+            <tr><td><strong>르917</strong></td><td>모던 미니멀</td><td>20만+</td><td>상위</td><td>희소성 마케팅, 에디터 선호</td></tr>
+            <tr><td><strong>블랭크룸</strong></td><td>모던 미니멀, 유니섹스</td><td>5~10만</td><td>중상위</td><td>깔끔한 실루엣, 무채색</td></tr>
+            <tr style="background:#fff5f7;"><td><strong>말렌 (MALEN)</strong></td><td>내추럴웨어, 편안함</td><td><span class="tag tag-red">1.7만</span></td><td>중상위</td><td>더플코트 시그니처, 7년 유기적 성장</td></tr>
+        </table>
+        <div class="callout">
+            <strong>시사점:</strong> 제품 포지셔닝은 동급이나, 인스타 팔로워에서 <strong>3~12배 격차</strong>.
+            이 격차의 핵심은 "제품력"이 아닌 "브랜드 커뮤니케이션 역량" 차이.
+            노앙(스토리텔링), 르917(희소성), 포터리(베이직 정석) 모두 명확한 브랜드 서사가 있음.
+        </div>
+    </div>
+
+    <!-- 5. 시장 환경 -->
+    <div class="section" id="market">
+        <h2>5. 시장 환경</h2>
+        <table>
+            <tr><th>항목</th><th>규모/트렌드</th><th>말렌 영향</th></tr>
+            <tr><td>한국 패션시장</td><td>약 49.6조원 (2024), YoY +2.3%</td><td>전체 시장 완만한 성장</td></tr>
+            <tr><td>컨템포러리 세그먼트</td><td>연평균 5%+ 성장</td><td>말렌 포지셔닝 시장 고성장</td></tr>
+            <tr><td>온라인 패션</td><td>전체 의류 거래의 50%+ 온라인</td><td>D2C + 플랫폼 전략 유효</td></tr>
+            <tr><td>K-패션 글로벌</td><td>일본/동남아 수요 급증</td><td>일본 시딩 성공 경험 레버리지</td></tr>
+            <tr><td>슬로우패션 트렌드</td><td>지속가능성/가치소비 부상</td><td>"유행을 따르지 않는" 철학과 부합</td></tr>
+        </table>
+    </div>
+
+    <!-- 6. 대표자 프로필 -->
+    <div class="section" id="ceo-background">
+        <h2>6. 대표자 프로필</h2>
+        <div class="info-grid">
+            <div class="info-label">대표자</div><div class="info-value">조정규</div>
+            <div class="info-label">공개 정보</div><div class="info-value"><span class="tag tag-yellow">극히 제한적</span> (인터뷰/언론 노출 거의 없음)</div>
+            <div class="info-label">추정 배경</div><div class="info-value">패션 디자인 또는 의류 업계 경력 (제품 중심 경영)</div>
+            <div class="info-label">경영 스타일</div><div class="info-value">제품 중심 창업자 — 철학 > 트렌드, 장기적 관점</div>
+            <div class="info-label">의사결정 특성</div><div class="info-value">숙고형 — "대화를 나눠본 후 생각날 것 같습니다" (2회 반복)</div>
+            <div class="info-label">마케팅 관점</div><div class="info-value">"유행을 따르지 않는" 철학 → 브랜드 훼손 없는 마케팅 원함</div>
+        </div>
+        <div class="callout" style="margin-top:16px">
+            <strong>상담 키포인트:</strong> 이 대표님에게 필요한 건 "영업"이 아니라 "말렌을 진짜 이해하는 사람과 대화한 경험".
+            "7년간 마케팅 없이 성장"을 강하게 인정해주는 것이 선행되어야 모든 제안이 먹힘.
+            첫 상담에서 클로징 시도하면 역효과 — 신뢰 구축 우선.
+        </div>
+    </div>
+
+    <!-- 7. SWOT 분석 -->
+    <div class="section" id="swot">
+        <h2>7. SWOT 분석</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>Strength (강점)</h4>
+                <ul>
+                    <li>7년간 제품력으로 검증된 유기적 성장</li>
+                    <li>명확한 브랜드 철학 ("편안함에서 오는 평안")</li>
+                    <li>시그니처 제품(더플코트) 보유</li>
+                    <li>다채널 입점 완료 (무신사/29CM/W컨셉/OCO)</li>
+                    <li>일본 시장 초기 검증 성공</li>
+                    <li>Meta ROAS 338% — 퍼포먼스 효율 검증</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>Weakness (약점)</h4>
+                <ul>
+                    <li>마케팅 투자율 ~2% (업계 평균의 1/3)</li>
+                    <li>브랜드 메시지의 시장 언어 번역 실패</li>
+                    <li>인스타 17K (경쟁사 대비 현저히 낮음)</li>
+                    <li>국내 시딩/인플루언서 마케팅 실패 경험</li>
+                    <li>콘텐츠 제작 빈도 저조 (월 3~4개)</li>
+                    <li>FW 시그니처 의존 → SS 매출 구조 취약 가능</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>Opportunity (기회)</h4>
+                <ul>
+                    <li>슬로우패션/가치소비 트렌드 부상</li>
+                    <li>K-패션 글로벌 수요 증가 (일본 경험 레버리지)</li>
+                    <li>ROAS 검증 → 광고비 스케일업 여지 큼</li>
+                    <li>"7년간 유행을 안 따른 브랜드" 자체가 마케팅 서사</li>
+                    <li>유니섹스 시장 지속 확대</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>Threat (위협)</h4>
+                <ul>
+                    <li>동급 경쟁사 마케팅 역량 강화 (노앙, 포터리)</li>
+                    <li>SPA 프리미엄 라인(유니클로U, COS) 가성비 잠식</li>
+                    <li>Meta 알고리즘 변화/CPM 상승 리스크</li>
+                    <li>디자이너 브랜드 평균 수명 5~7년 → 전환점 위기</li>
+                    <li>소재 피로도 징후 (ROAS 하락 추세)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. 니즈 분석 -->
+    <div class="section" id="needs-analysis">
+        <h2>8. 니즈 분석 (SPIN + JTBD)</h2>
+
+        <h3>8-1. SPIN 기반 니즈 레이어링</h3>
+        <div class="spin-grid">
+            <div class="spin-card spin-s">
+                <h4>S — Situation (현재 상태)</h4>
+                <ul style="padding-left:16px;">
+                    <li>7년 운영, 매출 우상향, 제품력 검증</li>
+                    <li>Meta 광고 월 300만, ROAS 338%</li>
+                    <li>SS 목표 월 1~1.5억, FW 목표 월 2~3억</li>
+                    <li>인스타 + 메타 광고만 운영 (단일 채널)</li>
+                    <li>ampm글로벌 대행 중 (퍼포먼스)</li>
+                </ul>
+            </div>
+            <div class="spin-card spin-p">
+                <h4>P — Problem (인식한 문제)</h4>
+                <ul style="padding-left:16px;">
+                    <li>"메시지를 바르고 정확하게 전달" 못하고 있음</li>
+                    <li>국내 시딩이 효과가 없음</li>
+                    <li>목표 매출(월 1~3억)에 도달 못함</li>
+                    <li>뭘 해야 할지 방향을 모르겠음</li>
+                </ul>
+            </div>
+            <div class="spin-card spin-i">
+                <h4>I — Implication (방치 시 파급)</h4>
+                <ul style="padding-left:16px;">
+                    <li>7년차 정체기 → 디자이너 브랜드 쇠퇴기 진입</li>
+                    <li>Meta 단일 의존 → 알고리즘/CPM 변화 시 즉시 타격</li>
+                    <li>국내 포지셔닝 공백 → "해외에서만 팔리는 브랜드" 고착</li>
+                    <li>예산 함정 → 월 300만으로 월 3억 매출은 구조적 불가능</li>
+                </ul>
+            </div>
+            <div class="spin-card spin-n">
+                <h4>N — Need-Payoff (해결 시 가치)</h4>
+                <ul style="padding-left:16px;">
+                    <li>메시지 체계화 → 모든 채널 광고 효율 상승</li>
+                    <li>채널 다변화 → Meta 의존 감소, LTV 증가</li>
+                    <li>국내 포지셔닝 → 시딩 성공률 상승, 오가닉 성장</li>
+                    <li>투자 구조 설계 → 목표 매출 도달 경로 확보</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>8-2. 고민 계층 분석 (Pain Hierarchy)</h3>
+        <div class="pain-layer">
+            <div class="pain-level pain-l1">
+                <span class="level-tag" style="color:#1565c0;">L1 표면 요청</span>
+                "브랜드 메시지 전달"<br>"매출도 올리고 싶다"
+            </div>
+            <div class="pain-level pain-l2">
+                <span class="level-tag" style="color:#e65100;">L2 전술적 문제</span>
+                국내 시딩 실패<br>Meta ROAS 하락 추세<br>콘텐츠 빈도/질 부족
+            </div>
+            <div class="pain-level pain-l3">
+                <span class="level-tag" style="color:#c62828;">L3 전략적 문제</span>
+                브랜드 포지셔닝 미정립<br>마케팅 투자 구조 부재<br>"왜 말렌을 사야 하나" 답 부재
+            </div>
+            <div class="pain-level pain-l4">
+                <span class="level-tag" style="color:#6a1b9a;">L4 근본 원인</span>
+                7년간 제품에만 집중,<br><strong>브랜드 커뮤니케이션에는<br>투자하지 않음</strong>
+            </div>
+        </div>
+
+        <h3>8-3. JTBD (Jobs-to-be-Done)</h3>
+        <table>
+            <tr><th>Job 유형</th><th>내용</th></tr>
+            <tr>
+                <td><span class="tag tag-blue">Functional</span></td>
+                <td>월 1~3억 매출 달성을 위한 마케팅 구조 만들기<br>브랜드 메시지 체계화 + 콘텐츠 전략 + 시딩 체계화</td>
+            </tr>
+            <tr>
+                <td><span class="tag tag-green">Social</span></td>
+                <td>"아는 사람만 아는 브랜드"에서 <strong>"인정받는 브랜드"</strong>로 올라서기<br>경쟁 브랜드(노앙, 포터리)와 동급으로 인식되기</td>
+            </tr>
+            <tr>
+                <td><span class="tag tag-red">Emotional</span></td>
+                <td>"7년간 혼자 해왔는데, 이제는 <strong>믿고 맡길 파트너</strong>가 필요하다"<br>"대화를 나눠본 후 생각날 것 같습니다" = 방향을 잡아줄 사람을 찾고 있음</td>
+            </tr>
+        </table>
+
+        <h3>8-4. 표면 vs 진짜 니즈 갭</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">표면 요청</div>
+                <ul>
+                    <li>"브랜드 메시지 전달"</li>
+                    <li>"이해도 향상"</li>
+                    <li>"매출도 올리고 싶다"</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">진짜 니즈 (추정)</div>
+                <ul>
+                    <li><strong>브랜드 철학 → 시장 언어 번역</strong> (슬로건이 아닌 고객이 자기 말로 설명할 수 있는 서사)</li>
+                    <li><strong>마케팅 투자 구조 설계</strong> (월 300만 → 단계적 확대 로드맵)</li>
+                    <li><strong>전략적 파트너</strong> (대행사가 아닌 방향을 잡아주는 사람)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="callout callout-info">
+            <strong>핵심 결론:</strong> 말렌의 진짜 니즈는 "메시지 전달"이 아니라
+            <strong>"7년간 축적한 브랜드 철학을 시장이 알아듣는 언어로 번역하고, 다음 성장 단계로 도약할 구조를 만드는 것"</strong>.
+        </div>
+    </div>
+
+    <!-- 9. GAP 분석 & 기회 평가 -->
+    <div class="section" id="gap-analysis">
+        <h2>9. GAP 분석 & 기회 평가</h2>
+        <table>
+            <tr><th>항목</th><th>가중치</th><th>점수</th><th>근거</th></tr>
+            <tr><td>니즈-서비스 핏</td><td>30%</td><td><span class="tag tag-green">4/5</span></td><td>브랜딩+콘텐츠+시딩 = 핵심 서비스와 높은 일치</td></tr>
+            <tr><td>예산 적합성</td><td>20%</td><td><span class="tag tag-yellow">2.5/5</span></td><td>월 150~300만은 소규모. 단, 목표 매출 대비 확대 여지 큼</td></tr>
+            <tr><td>의사결정 구조</td><td>15%</td><td><span class="tag tag-green">4.5/5</span></td><td>대표 직접 상담, 9항목 상세 회신. 의사결정 구조 단순</td></tr>
+            <tr><td>긴급도</td><td>15%</td><td><span class="tag tag-yellow">3.5/5</span></td><td>SS 시즌 진행 중. "대화 후" 태도이나 소재 피로도 시급</td></tr>
+            <tr><td>성장 잠재력</td><td>10%</td><td><span class="tag tag-green">4/5</span></td><td>7년 브랜드, 일본 성공, ROAS 양호. 레버리지 큼</td></tr>
+            <tr><td>레퍼런스 가치</td><td>10%</td><td><span class="tag tag-green">4/5</span></td><td>패션 브랜드 포트폴리오 확보. 주요 셀렉트샵 입점</td></tr>
+        </table>
+
+        <div class="verdict">
+            <div class="label">종합 기회 적합도</div>
+            <div class="value">3.71 / 5.0</div>
+            <div class="desc">GO (조건부) — 예산 확대 논의가 상담 내에서 이루어져야 함</div>
+        </div>
+
+        <h3>스케일업 시나리오 (ROAS 기반)</h3>
+        <table>
+            <tr><th>월 광고비</th><th>예상 ROAS</th><th>전환매출</th><th>순수익(광고비 제외)</th></tr>
+            <tr style="background:#fff5f7;"><td>300만 (현재)</td><td>338%</td><td>1,036만</td><td>736만 (기준)</td></tr>
+            <tr><td>500만</td><td>300%</td><td>1,500만</td><td>1,000만 (+264만)</td></tr>
+            <tr><td>800만</td><td>270%</td><td>2,160만</td><td>1,360만 (+624만)</td></tr>
+            <tr style="background:#e8f5e9;"><td><strong>1,200만</strong></td><td>240%</td><td>2,880만</td><td><strong>1,680만 (+944만)</strong></td></tr>
+        </table>
+        <div class="callout callout-success">
+            <strong>핵심:</strong> ROAS 338%는 "더 투자하면 더 남는다"는 검증된 신호.
+            광고비를 300→800으로 올리면 ROAS가 270%로 떨어져도 <strong>순수익이 월 624만원 더 생김</strong>.
+        </div>
+    </div>
+
+    <!-- 10. 3-Tier 견적 초안 -->
+    <div class="section" id="quote">
+        <h2>10. 3-Tier 견적 초안</h2>
+        <div class="tier-cards">
+            <div class="tier-card">
+                <h4>Essential</h4>
+                <div style="font-size:13px; color:var(--text-light);">브랜드 메시지 정비</div>
+                <div class="price">월 250만</div>
+                <div class="duration">광고비 별도 / 3개월 기본</div>
+                <ul>
+                    <li>브랜드 메시징 프레임워크 (1회성+유지보수)</li>
+                    <li>월간 콘텐츠 방향 가이드 (기획안, 레퍼런스)</li>
+                    <li>월 1회 전략 미팅 (30분)</li>
+                    <li style="color:var(--danger);">X 콘텐츠 제작 미포함</li>
+                    <li style="color:var(--danger);">X 시딩/인플루언서 미포함</li>
+                    <li style="color:var(--danger);">X Meta 광고 관여 없음</li>
+                </ul>
+            </div>
+            <div class="tier-card recommended">
+                <div class="tier-badge">RECOMMENDED</div>
+                <h4>Professional</h4>
+                <div style="font-size:13px; color:var(--text-light);">브랜드 서사 구축 + 콘텐츠 전략</div>
+                <div class="price">월 450만</div>
+                <div class="duration">광고비 별도 / 6개월 권장</div>
+                <ul>
+                    <li>브랜드 메시징 체계 수립 (스토리+톤앤매너+가이드)</li>
+                    <li>월간 콘텐츠 기획+디렉션 (피드 6개, 릴스 2개)</li>
+                    <li>시딩 전략 설계 + 인플루언서 리스트업 (월 1~2명)</li>
+                    <li>Meta 광고 전략 컨설팅 (ampm 협업, 월 1회 리뷰)</li>
+                    <li>월 1회 전략 미팅 (60분) + 슬랙</li>
+                    <li><strong>마케팅 담당자 1명 인건비의 60% 수준</strong></li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>Premium</h4>
+                <div style="font-size:13px; color:var(--text-light);">브랜드 + 퍼포먼스 통합 운영</div>
+                <div class="price">월 800만</div>
+                <div class="duration">광고비 별도 / 6개월 계약</div>
+                <ul>
+                    <li>브랜드 전략 수립 (포지셔닝/메시징/비주얼 가이드)</li>
+                    <li>콘텐츠 기획+제작 (피드 8, 릴스 4, 스토리 운영)</li>
+                    <li>Meta 광고 전략+운영 (ampm 대체 or 공동)</li>
+                    <li>시딩/인플루언서 캠페인 (월 2~3명)</li>
+                    <li>시즌 캠페인 기획 (SS/FW)</li>
+                    <li>격주 전략 미팅 + 월간 리포트</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="leverage-box">
+            <div style="font-size:14px; opacity:0.7;">가치 프레이밍</div>
+            <div class="quote">
+                "월 450만원은 마케팅 담당자 1명 인건비의 60%.<br>
+                목표 매출 1.5억 기준 마케팅 비율 3%로, 업계 평균(7.7%)보다 효율적."
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. 상담 전략 & 코칭 -->
+    <div class="section" id="strategy">
+        <h2>11. 상담 전략 & 코칭</h2>
+
+        <h3>상담 전 필수 확인 — 대표님 핵심 질문 3가지</h3>
+        <div class="callout callout-info">
+            이 3가지 질문은 프로젝트 방향을 결정하는 핵심 데이터를 확보합니다. Phase 3에서 반드시 확인.
+        </div>
+        <div class="question-card" style="border-left: 4px solid var(--highlight);">
+            <div class="q-num">핵심 Q1. 채널별 매출 구조</div>
+            <div class="q-text">"어느 채널에서 매출이 제일 잘 나오세요? 자사몰? 무신사? 29CM?"</div>
+            <div class="q-intent">자사몰 비중 = CRM 가능성. 포터리(70%) vs 세터(플랫폼 90%)로 전략이 완전히 갈림. 자사몰 비중 높으면 CRM 선행, 낮으면 자사몰 전환 퍼널 먼저</div>
+        </div>
+        <div class="question-card" style="border-left: 4px solid var(--highlight);">
+            <div class="q-num">핵심 Q2. 광고비 구조</div>
+            <div class="q-text">"월 광고비가 얼마이고, 어느 채널에 가장 많이 쓰고 계세요?"</div>
+            <div class="q-intent">현재 Meta 월 300만만 확인됨. 무신사/29CM 내 프로모션비, 시딩비 등 숨은 마케팅 비용 파악. 총 마케팅 투자 대비 매출 비율로 스케일업 여지 진단</div>
+        </div>
+        <div class="question-card" style="border-left: 4px solid var(--highlight);">
+            <div class="q-num">핵심 Q3. 벤치마크 브랜드</div>
+            <div class="q-text">"요즘 주목하고 계시는 브랜드가 있으세요? 잘하고 있다고 느끼는 브랜드?"</div>
+            <div class="q-intent">대표의 머릿속 벤치마크 = 프로젝트 방향. 포터리(CRM) / 마뗑킴(셀럽) / 노앙(스토리텔링) / ALO(라이프스타일) 등 답에 따라 제안 프레이밍이 달라짐</div>
+        </div>
+
+        <h3>60분 상담 타임라인</h3>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 1<br>0~5분</div>
+            <div class="phase-content">
+                <h4>아이스브레이킹</h4>
+                <p>"내추럴웨어라는 카테고리를 브랜드가 직접 정의한 게 인상적" + 23AW 정글 더플코트 언급</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 2<br>5~20분</div>
+            <div class="phase-content">
+                <h4>브랜드 스토리 경청 (가장 긴 배분)</h4>
+                <p>"7년간 마케팅 없이 성장한 이유가 뭐라고 보세요?" 대표님이 충분히 말하게 하기. 80% 듣기</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 3<br>20~30분</div>
+            <div class="phase-content">
+                <h4>현황 파악 — 숫자와 구조 (핵심 Q1~Q3 여기서 확인)</h4>
+                <p>채널별 매출 구조(자사몰 vs 플랫폼), 총 광고비 구조(Meta+플랫폼+시딩), 벤치마크 브랜드, Meta 캠페인 구조(리타겟 vs 신규)</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 4<br>30~42분</div>
+            <div class="phase-content">
+                <h4>니즈 발견 — 함께 찾기</h4>
+                <p>"말렌다운 마케팅은 어떤 건가요?" + "이번에 파트너를 찾게 된 계기가 뭐였어요?"</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 5<br>42~52분</div>
+            <div class="phase-content">
+                <h4>가능성 제시 — 방향 스케치</h4>
+                <p>3개 축: 브랜드 메시지 체계화 / 콘텐츠 전략 / 퍼포먼스 최적화. "마케팅이 아니라 이야기를 닿게 하는 것"</p>
+            </div>
+        </div>
+        <div class="timeline-phase" style="border-bottom:none;">
+            <div class="phase-time">Phase 6<br>52~60분</div>
+            <div class="phase-content">
+                <h4>Trusted Advisor 마무리</h4>
+                <p>무료 Quick Tip 전달 + 진단 리포트 발송 제안 + "부담 없이 보시고 결정" 톤</p>
+            </div>
+        </div>
+
+        <h3>필수 질문 Top 5</h3>
+        <div class="question-card">
+            <div class="q-num">Q1. 성장의 비결</div>
+            <div class="q-text">"7년간 마케팅 없이 매출이 올라왔는데, 그 이유가 뭐라고 생각하세요?"</div>
+            <div class="q-intent">의도: 제품력 자부심 인정 + 브랜드 핵심 경쟁력(=마케팅 자산) 파악</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q2. 목표 대비 현재 위치</div>
+            <div class="q-text">"SS 월 1~1.5억 목표 대비 현재 어느 정도 위치에 계세요?"</div>
+            <div class="q-intent">의도: 정확한 Gap 파악. 예산 논의와 제안 규모를 결정하는 기초 데이터</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q3. 말렌다운 마케팅</div>
+            <div class="q-text">"정규님이 생각하시는 '말렌다운 마케팅'은 어떤 건가요? '이건 하면 안 된다'고 생각하시는 게 있으세요?"</div>
+            <div class="q-intent">의도: 마케팅 심리적 저항선과 허용 범위 파악. "안 하고 싶은 것"을 물어봐야 "해도 되는 것"이 드러남</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q4. 전환점의 계기</div>
+            <div class="q-text">"7년간 안 하셨는데, 이번에 마케팅 파트너를 찾으신 계기가 뭐예요?"</div>
+            <div class="q-intent">의도: 진짜 트리거 발굴 — 매출 정체? 경쟁 심화? 성장 한계? 이 답이 제안의 방향을 결정</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q5. ampm 만족도</div>
+            <div class="q-text">"현재 ampm글로벌 메타 광고, 만족하시는 부분과 아쉬운 부분이 있다면?"</div>
+            <div class="q-intent">의도: 기존 대행사 관계 파악. 대체 vs 보완 포지셔닝 결정 기준</div>
+        </div>
+
+        <h3>Challenger Teaching 포인트 3가지</h3>
+        <div class="leverage-box">
+            <div style="font-size:13px; opacity:0.7;">Teaching #1 — 마케팅 투자 갭</div>
+            <div class="quote">
+                "말렌은 업계 평균의 1/5~1/3만 마케팅에 투자하고 있습니다.<br>
+                7년간 제품력이라는 엔진은 만들었는데, 연료를 안 넣고 있는 셈이에요."
+            </div>
+        </div>
+        <div class="leverage-box" style="background: linear-gradient(135deg, #dc2626 0%, #EA580C 100%);">
+            <div style="font-size:13px; opacity:0.7;">Teaching #2 — ROAS가 말해주는 기회비용</div>
+            <div class="quote">
+                "ROAS 338%는 '더 넣으면 더 남는다'는 신호입니다.<br>
+                광고비를 300→800으로 올리면 순수익이 월 624만원 더 생깁니다.<br>
+                지금은 돈을 벌 수 있는데 투자를 안 하는 상태예요."
+            </div>
+        </div>
+        <div class="leverage-box" style="background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);">
+            <div style="font-size:13px; opacity:0.7;">Teaching #3 — 일본 성공의 교훈</div>
+            <div class="quote">
+                "일본에서 'K-fashion'이 브랜드 스토리 역할을 해줬습니다.<br>
+                국내에서는 그 맥락이 없으니 말렌만의 서사를 직접 만들어야 합니다.<br>
+                시딩 채널의 문제가 아니라, '뭘 전달하느냐'의 문제입니다."
+            </div>
+        </div>
+
+        <h3>예상 반론 & 대응</h3>
+        <table>
+            <tr><th>반론</th><th>대응 전략</th></tr>
+            <tr>
+                <td><strong>"이미 ampm이 있는데..."</strong></td>
+                <td>경쟁 X, 보완 O. "ampm=요리사, 우리=메뉴기획자. 브랜드 서사가 잡히면 ampm 광고 효율도 올라감"</td>
+            </tr>
+            <tr>
+                <td><strong>"예산이 많지 않아서..."</strong></td>
+                <td>"예산은 나중 문제. 먼저 뭐가 필요한지 정확히 아는 게 중요. 메시지만 정확하면 제품이 알아서 팔리는 구조가 이미 있으시니까"</td>
+            </tr>
+            <tr>
+                <td><strong>"아직 뭘 해야 할지..."</strong></td>
+                <td>"그래서 저희를 만나신 거 아닙니까. 말렌에 필요한 건 딱 두 가지 — 메시지 구체화 + 투자 스케일업. 순서대로 하면 됩니다"</td>
+            </tr>
+            <tr>
+                <td><strong>"유행 따르는 마케팅은 싫어요"</strong></td>
+                <td>"당연하고, 해서도 안 됩니다. 말렌다운 마케팅은 새로운 이야기를 만드는 게 아니라, 이미 있는 이야기를 더 넓게 전달하는 것"</td>
+            </tr>
+        </table>
+
+        <h3>Trusted Advisor Quick Tip (무료로 줄 팁)</h3>
+        <div class="callout callout-success">
+            <strong>Tip 1 — Meta 캠페인 분리 확인:</strong> ampm에 "신규 유입 ROAS와 리타겟팅 ROAS를 분리해서 알려달라"고 요청하세요.
+            전체 338%가 리타겟팅에서 나오는 건지 신규에서 나오는 건지에 따라 다음 달 예산 배분이 완전히 달라집니다.<br><br>
+            <strong>Tip 2 — 인스타 하이라이트 정리:</strong> "말렌이란?", "소재 이야기", "코디 제안" 하이라이트 3~4개를 만들어보세요.
+            신규 방문자의 첫인상이 하이라이트에서 결정됩니다. "편안함에서 오는 평안"을 하이라이트 하나로 풀어두면 효과 있을 거예요.
+        </div>
+    </div>
+
+    <!-- 12. 클로징 전략 -->
+    <div class="section" id="closing">
+        <h2>12. 클로징 전략</h2>
+
+        <h3>클로징 플로우</h3>
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="step-num">STEP 1</div>
+                <div class="step-title">상담 당일</div>
+                <div class="step-desc">감사 메일 + Quick Tip<br>+ 다음 미팅 제안</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 2</div>
+                <div class="step-title">D+2~3</div>
+                <div class="step-desc">인스타/광고 소재<br>간단 진단 1장 (무료)</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 3</div>
+                <div class="step-title">D+5~7</div>
+                <div class="step-desc">2차 미팅 30분<br>진단 공유 + 패키지 제안</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 4</div>
+                <div class="step-title">D+7~10</div>
+                <div class="step-desc">제안서 발송<br>3-Tier + ROI 시나리오</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 5</div>
+                <div class="step-title">D+14</div>
+                <div class="step-desc">팔로업 연락<br>결정 or 피봇</div>
+            </div>
+        </div>
+
+        <div class="callout">
+            <strong>핵심 마인드셋:</strong> 이 상담의 성공은 "수주"가 아니라 <strong>"이 사람은 말렌을 이해한다"는 인식을 심는 것</strong>.
+            7년간 마케팅 없이 버텨온 대표에게 필요한 건 영업이 아니라, 자기 브랜드를 진짜 아는 사람과 대화한 경험.
+            그 경험이 되면 수주는 자연히 따라온다.
+        </div>
+
+        <h3>추천 착지 시나리오</h3>
+        <table>
+            <tr><th>시나리오</th><th>확률</th><th>금액</th><th>비고</th></tr>
+            <tr style="background:#fff5f7;"><td><strong>Professional (450만) 직행</strong></td><td><strong>40%</strong></td><td><strong>월 450만</strong></td><td>가장 이상적. 광고비 300만 + 대행비 450만 = 월 750만</td></tr>
+            <tr><td>Essential(250만) 파일럿 → Professional 전환</td><td>35%</td><td>월 250만 → 450만</td><td>신뢰 구축 후 확장. 첫 달 산출물로 체감 유도</td></tr>
+            <tr><td>Premium (800만)</td><td>10%</td><td>월 800만</td><td>예산 확대 의지가 강한 경우</td></tr>
+            <tr><td>No-Go</td><td>15%</td><td>-</td><td>예산 미확대 또는 타이밍 미스</td></tr>
+        </table>
+
+        <h3>상담 후 액션 리스트</h3>
+        <table>
+            <tr><th>타이밍</th><th>액션</th></tr>
+            <tr><td><strong>당일 2시간 내</strong></td><td>감사 메일 (인상 깊었던 대표님 말씀 인용) + Quick Tip 2개 정리</td></tr>
+            <tr><td><strong>D+2~3</strong></td><td>간단 진단 리포트 (3~5페이지): 브랜드 메시지 현황 + 인스타 분석 + Quick Win 제안</td></tr>
+            <tr><td><strong>D+5~7</strong></td><td>2차 미팅 제안 (진단 리포트 리뷰 30분)</td></tr>
+            <tr><td><strong>D+7~10</strong></td><td>제안서 발송 (3-Tier + ROI 시나리오)</td></tr>
+            <tr><td><strong>D+14 무응답 시</strong></td><td>부드러운 팔로업 + 업계 인사이트 1개 무료 제공</td></tr>
+        </table>
+    </div>
+
+    <!-- 참고 링크 -->
+    <div class="section">
+        <h2>참고 링크</h2>
+        <div class="source-list" style="font-size:14px; line-height:2;">
+            <a href="https://malen.kr/" target="_blank">말렌 공식 자사몰</a><br>
+            <a href="https://www.instagram.com/malen.kr/" target="_blank">말렌 인스타그램 (@malen.kr)</a><br>
+            <a href="https://www.musinsa.com/brand/malen" target="_blank">말렌 무신사 브랜드 페이지</a><br>
+            <a href="https://www.29cm.co.kr/store/brand/6278" target="_blank">말렌 29CM</a><br>
+            <a href="https://display.wconcept.co.kr/brand/105851" target="_blank">말렌 W Concept</a><br>
+            <a href="https://global.sixty-percent.com/shops/malen" target="_blank">말렌 60% (해외 플랫폼)</a><br>
+            <a href="https://ampm.co.kr/" target="_blank">AMPM글로벌 대행사</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>BRANDRISE (MarketingOS) — New Business 상담 준비 패키지</p>
+    <p>이 문서는 상담 준비 목적으로 작성되었으며, 외부 공유를 금합니다.</p>
+</div>
+
+</body>
+</html>

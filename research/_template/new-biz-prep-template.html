@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{회사명} ({영문명}) - New Business 상담 준비 | BRANDRISE</title>
+    <style>
+        :root {
+            --primary: #0D0D0D;
+            --secondary: #1a1b18;
+            --accent: #EA580C;
+            --highlight: #EA580C;
+            --bg: #f4f7f9;
+            --card-bg: #ffffff;
+            --text: #1a1b18;
+            --text-light: #636569;
+            --border: #e8edf1;
+            --success: #00b894;
+            --warning: #EA580C;
+            --danger: #dc2626;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(233, 69, 96, 0.2);
+            border: 1px solid var(--highlight);
+            color: var(--highlight);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+        .header .subtitle { font-size: 16px; opacity: 0.7; font-weight: 300; }
+        .header .date { margin-top: 16px; font-size: 13px; opacity: 0.5; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        .toc {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 8px;
+        }
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 0;
+            display: block;
+            transition: color 0.2s;
+        }
+        .toc a:hover { color: var(--highlight); }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--highlight);
+        }
+        .section h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 20px 0 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 8px 16px;
+            font-size: 14px;
+        }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th {
+            background: var(--primary);
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+        tr:hover td { background: #f1f3f5; }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 2px;
+        }
+        .tag-red { background: #ffe0e0; color: #d63031; }
+        .tag-green { background: #d4f5e9; color: #00b894; }
+        .tag-blue { background: #dfe6fd; color: #EA580C; }
+        .tag-yellow { background: #fff3cd; color: #856404; }
+        .tag-gray { background: #e9ecef; color: #495057; }
+
+        .score-bar { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+        .score-bar .bar { flex: 1; height: 8px; background: #e9ecef; border-radius: 4px; overflow: hidden; }
+        .score-bar .fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
+        .fill-high { background: var(--success); }
+        .fill-mid { background: var(--warning); }
+        .fill-low { background: var(--danger); }
+
+        .verdict {
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            color: white;
+            padding: 24px 32px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 24px 0;
+        }
+        .verdict .label { font-size: 14px; opacity: 0.8; }
+        .verdict .value { font-size: 36px; font-weight: 800; margin: 8px 0; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+
+        .tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+        .tier-card {
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .tier-card:hover { transform: translateY(-4px); }
+        .tier-card.recommended {
+            border-color: var(--highlight);
+            box-shadow: 0 4px 20px rgba(233, 69, 96, 0.15);
+        }
+        .tier-card .tier-badge {
+            position: absolute;
+            top: -12px;
+            right: 16px;
+            background: var(--highlight);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .tier-card h4 { font-size: 16px; margin-bottom: 4px; }
+        .tier-card .price { font-size: 24px; font-weight: 800; color: var(--highlight); margin: 12px 0; }
+        .tier-card .duration { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+        .tier-card ul { list-style: none; padding: 0; }
+        .tier-card li { font-size: 13px; padding: 4px 0; padding-left: 20px; position: relative; }
+        .tier-card li::before { content: ">"; position: absolute; left: 0; color: var(--highlight); font-weight: 700; }
+
+        .callout {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+        .callout-info { background: #e3f2fd; border-left-color: #2196f3; }
+        .callout-danger { background: #fce4ec; border-left-color: #e53935; }
+        .callout-success { background: #e8f5e9; border-left-color: #00b894; }
+
+        .leverage-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        .leverage-box .quote { font-size: 20px; font-weight: 700; line-height: 1.5; margin: 16px 0; }
+
+        .flow-steps { display: flex; gap: 0; margin: 20px 0; overflow-x: auto; }
+        .flow-step {
+            flex: 1;
+            min-width: 160px;
+            padding: 16px;
+            background: #f1f3f5;
+            position: relative;
+            text-align: center;
+        }
+        .flow-step:not(:last-child)::after {
+            content: ">";
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: var(--highlight);
+            font-weight: 700;
+            z-index: 1;
+        }
+        .flow-step .step-num { font-size: 11px; font-weight: 700; color: var(--highlight); margin-bottom: 4px; }
+        .flow-step .step-title { font-size: 13px; font-weight: 600; }
+        .flow-step .step-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .swot-item h4 { font-size: 15px; margin-bottom: 10px; }
+        .swot-item ul { padding-left: 18px; }
+        .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: #d4f5e9; }
+        .swot-w { background: #ffe0e0; }
+        .swot-o { background: #dfe6fd; }
+        .swot-t { background: #fff3cd; }
+
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+        .source-list a { color: var(--accent); text-decoration: none; }
+        .source-list a:hover { text-decoration: underline; }
+
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+        .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 8px 0; }
+        .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+
+        /* Executive Summary */
+        .summary-section { border-left: 4px solid var(--highlight); background: linear-gradient(135deg, #fff 0%, #fff5f7 100%); }
+        .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; color: white; }
+        .kpi-card.kpi-dark { background: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--danger); }
+        .kpi-card.kpi-success { background: var(--success); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.7; }
+        .kpi-card .kpi-value { font-size: 24px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.7; }
+
+        .summary-oneliner { background: #0D0D0D; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+        .summary-oneliner .sol-text .hl { color: var(--highlight); }
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+
+        /* Diagnosis */
+        .diagnosis-section { border: 2px solid var(--danger); }
+        .diagnosis-section h2 { border-bottom-color: var(--danger); color: var(--danger); }
+        .diag-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .diag-box { padding: 16px; border-radius: 8px; }
+        .diag-box.diag-current { background: #fce4ec; }
+        .diag-box.diag-ideal { background: #e8f5e9; }
+        .diag-box .db-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .diag-box.diag-current .db-label { color: var(--danger); }
+        .diag-box.diag-ideal .db-label { color: var(--success); }
+        .diag-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+        .diag-note { font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: #fff3e0; border-radius: 8px; }
+
+        /* SPIN & JTBD */
+        .spin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .spin-card { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .spin-card h4 { font-size: 15px; margin-bottom: 10px; }
+        .spin-s { background: #e3f2fd; }
+        .spin-p { background: #fce4ec; }
+        .spin-i { background: #fff3e0; }
+        .spin-n { background: #e8f5e9; }
+
+        .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+        .pain-level { flex: 1; min-width: 200px; padding: 16px; border-radius: 10px; font-size: 13px; }
+        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .pain-l1 { background: #e3f2fd; }
+        .pain-l2 { background: #fff3e0; }
+        .pain-l3 { background: #fce4ec; }
+        .pain-l4 { background: #f3e5f5; }
+
+        /* Script & Coaching */
+        .script-block {
+            background: #f8f9fa;
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            font-style: italic;
+            color: var(--secondary);
+        }
+        .question-card { background: #f8f9fa; border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+        .question-card .q-num { font-size: 12px; font-weight: 700; color: var(--highlight); }
+        .question-card .q-text { font-size: 15px; font-weight: 600; margin: 4px 0 8px; }
+        .question-card .q-intent { font-size: 13px; color: var(--text-light); }
+
+        .timeline-phase { display: grid; grid-template-columns: 100px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .timeline-phase .phase-time { font-size: 13px; font-weight: 700; color: var(--highlight); text-align: center; padding-top: 4px; }
+        .timeline-phase .phase-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .timeline-phase .phase-content p { font-size: 13px; color: var(--text-light); }
+
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .tier-cards { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-step:not(:last-child)::after { display: none; }
+            .channel-grid { grid-template-columns: repeat(2, 1fr); }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .diag-compare { grid-template-columns: 1fr; }
+            .spin-grid { grid-template-columns: 1fr; }
+            .pain-layer { flex-direction: column; }
+            .timeline-phase { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!--
+  ============================================================
+  BRANDRISE New Business 상담 준비 패키지 — HTML 템플릿
+  ============================================================
+
+  사용법: 4개 에이전트 결과를 종합하여 아래 구조에 맞춰 채운다.
+  {플레이스홀더}를 실제 데이터로 교체.
+
+  필수 섹션 (12개):
+    1. Executive Summary (1-Page 요약)
+    2. 핵심 문제점 & 진단
+    3. 목차 (TOC)
+    4. 기업 기초 정보        ← Agent 1 (기업 프로파일러)
+    5. 주력 제품/서비스      ← Agent 1
+    6. 디지털 프레즌스 진단   ← Agent 1
+    7. 경쟁사 분석           ← Agent 1
+    8. 시장 환경             ← Agent 1
+    9. 대표자/경영진 프로필   ← Agent 1
+   10. SWOT 분석            ← Agent 1 종합
+   11. 니즈 분석 (SPIN+JTBD) ← Agent 2 (니즈 분석가)
+   12. GAP 분석 & 기회 평가  ← Agent 3 (수주 전략가)
+   13. 3-Tier 견적 초안      ← Agent 3
+   14. 상담 전략 & 코칭      ← Agent 3 + Agent 4 (상담 코치)
+   15. 클로징 전략           ← Agent 3 + Agent 4
+   16. 참고 링크
+
+  컴포넌트 레퍼런스:
+    .summary-section   — Executive Summary (핑크 그라디언트 배경, 좌측 빨간 보더)
+    .diagnosis-section — 진단 (빨간 보더)
+    .kpi-grid          — KPI 카드 4열 (kpi-dark / kpi-danger / kpi-success)
+    .channel-grid      — 채널 카드 3열
+    .info-grid         — 라벨-값 2열 그리드
+    .swot-grid         — SWOT 2x2 (swot-s/w/o/t)
+    .spin-grid         — SPIN 2x2 (spin-s/p/i/n)
+    .pain-layer        — Pain Hierarchy 수평 레이어 (pain-l1~l4)
+    .diag-compare      — 현재 vs 이상 비교 박스
+    .tier-cards        — 3-Tier 견적 카드 (.recommended)
+    .leverage-box      — 어두운 그라디언트 인용 박스
+    .flow-steps        — 수평 플로우 단계
+    .question-card     — 질문 카드 (q-num/q-text/q-intent)
+    .timeline-phase    — 상담 타임라인 (phase-time/phase-content)
+    .callout           — 콜아웃 (기본=노란, callout-info=파란, callout-danger=빨간, callout-success=초록)
+    .tag               — 태그 (tag-red/green/blue/yellow/gray)
+    .verdict           — 점수 판정 박스 (초록 그라디언트)
+    table              — 표준 테이블 (th=어두운 헤더)
+    .source-list       — 출처 링크 목록
+  ============================================================
+-->
+
+<div class="header">
+    <div class="header-badge">NEW BUSINESS 상담 준비 패키지</div>
+    <h1>{회사명} ({영문명})</h1>
+    <div class="subtitle">{업종} | {핵심 키워드 2-3개}</div>
+    <div class="date">작성일: {YYYY-MM-DD} | Prepared by BRANDRISE (MarketingOS)</div>
+</div>
+
+<div class="container">
+
+    <!-- ============================================================ -->
+    <!-- Executive Summary -->
+    <!-- ============================================================ -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">회사</div>
+                <div class="sh-title">{회사명}</div>
+                <div class="sh-sub">{업종} | {핵심 특징 1줄}</div>
+            </div>
+            <div>
+                <div class="sh-label">대표이사</div>
+                <div class="sh-title">{대표자명}</div>
+                <div class="sh-sub">{대표 배경 1줄}</div>
+            </div>
+        </div>
+        <!-- KPI 카드: 핵심 지표 3개 + 문제 지표 1개 (kpi-danger) -->
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">{지표1 라벨}</div>
+                <div class="kpi-value">{지표1 값}</div>
+                <div class="kpi-sub">{지표1 보충}</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">{지표2 라벨}</div>
+                <div class="kpi-value">{지표2 값}</div>
+                <div class="kpi-sub">{지표2 보충}</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">{지표3 라벨}</div>
+                <div class="kpi-value">{지표3 값}</div>
+                <div class="kpi-sub">{지표3 보충}</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">{문제 지표 라벨}</div>
+                <div class="kpi-value">{문제 지표 값}</div>
+                <div class="kpi-sub">{문제 지표 보충}</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                {강점/실체 요약}을 갖추고 있으나,<br>
+                <span class="hl">{핵심 병목/문제}</span>이 성장의 최대 병목이 되고 있음.
+            </div>
+        </div>
+        <div class="summary-bottom">
+            <strong>기회 적합도:</strong> <span class="hl">{점수} / 5.0 ({GO/NO-GO})</span> &nbsp;|&nbsp;
+            <strong>추천 Tier:</strong> Professional (월 {가격}만원, {기간}) &nbsp;|&nbsp;
+            <strong>기대 계약액:</strong> {총액}
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 핵심 문제점 & 진단 -->
+    <!-- ============================================================ -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 문제점 & 진단</h2>
+
+        <h3>1. {문제1 제목} (Critical)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재 상태</div>
+                <ul>
+                    <li>{현재 상태 항목들}</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">이상적 상태</div>
+                <ul>
+                    <li>{이상 상태 항목들}</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2. {문제2 제목} (High)</h3>
+        <div class="diag-note">{문제2 설명}</div>
+
+        <h3>영역별 진단 요약</h3>
+        <table>
+            <tr><th>영역</th><th>현재 상태</th><th>심각도</th><th>GAP</th></tr>
+            <!-- tag-red=Critical, tag-yellow=Medium, tag-green=Low -->
+            <tr><td>{영역}</td><td>{상태}</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>진단 결론:</strong> {종합 진단 결론}
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 목차 -->
+    <!-- ============================================================ -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 & 진단</a>
+            <a href="#company-info">1. 기업 기초 정보</a>
+            <a href="#product-lineup">2. 주력 제품/서비스</a>
+            <a href="#digital-presence">3. 디지털 프레즌스 진단</a>
+            <a href="#competitors">4. 경쟁사 분석</a>
+            <a href="#market">5. 시장 환경</a>
+            <a href="#ceo-background">6. 대표자/경영진 프로필</a>
+            <a href="#swot">7. SWOT 분석</a>
+            <a href="#needs-analysis">8. 니즈 분석 (SPIN + JTBD)</a>
+            <a href="#gap-analysis">9. GAP 분석 & 기회 평가</a>
+            <a href="#quote">10. 3-Tier 견적 초안</a>
+            <a href="#strategy">11. 상담 전략 & 코칭</a>
+            <a href="#closing">12. 클로징 전략</a>
+        </div>
+    </div>
+
+    <!-- 이하 각 섹션은 에이전트 결과를 채워 넣는다 -->
+    <!-- 컴포넌트 사용법은 상단 주석 참고 -->
+    <!-- 실제 사례: clients/brandrise-pages/research/chungwoo-medical/index.html -->
+
+</div>
+
+<div class="footer">
+    <p>BRANDRISE (MarketingOS) — New Business 상담 준비 패키지</p>
+    <p>이 문서는 상담 준비 목적으로 작성되었으며, 외부 공유를 금합니다.</p>
+</div>
+
+</body>
+</html>
