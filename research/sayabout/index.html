@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>세이어바웃 (SAYABOUT) - New Business 리서치 | HIZ</title>
+    <title>세이어바웃 / 유비발디 (SAYABOUT / UBIVALDI) - New Business 상담 준비 | BRANDRISE</title>
     <style>
         :root {
-            --primary: #1a1a2e;
-            --secondary: #16213e;
-            --accent: #0f3460;
-            --highlight: #e94560;
-            --bg: #f8f9fa;
+            --primary: #1a1a1a;
+            --secondary: #444444;
+            --accent: #f07030;
+            --accent-light: #fff3ec;
+            --accent-soft: #fde8da;
+            --bg: #fafafa;
             --card-bg: #ffffff;
-            --text: #2d3436;
-            --text-light: #636e72;
-            --border: #dfe6e9;
-            --success: #00b894;
-            --warning: #fdcb6e;
-            --danger: #d63031;
+            --text: #1a1a1a;
+            --text-light: #999999;
+            --border: #eeeeee;
+            --muted: #f5f5f5;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,101 +29,73 @@
         }
 
         .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            color: white;
+            background: #ffffff;
+            color: var(--primary);
             padding: 60px 40px;
             text-align: center;
+            border-bottom: 1px solid var(--border);
         }
 
         .header-badge {
             display: inline-block;
-            background: rgba(233, 69, 96, 0.2);
-            border: 1px solid var(--highlight);
-            color: var(--highlight);
-            padding: 4px 16px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 18px;
             border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 12px;
+            font-weight: 700;
             margin-bottom: 16px;
             letter-spacing: 1px;
         }
 
-        .header h1 {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; color: var(--primary); }
+        .header .subtitle { font-size: 16px; color: var(--text-light); font-weight: 400; }
+        .header .date { margin-top: 16px; font-size: 13px; color: #cccccc; }
 
-        .header .subtitle {
-            font-size: 16px;
-            opacity: 0.7;
-            font-weight: 300;
-        }
-
-        .header .date {
-            margin-top: 16px;
-            font-size: 13px;
-            opacity: 0.5;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
 
         .toc {
             background: var(--card-bg);
             border-radius: 12px;
             padding: 32px;
             margin-bottom: 40px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid var(--border);
         }
-
-        .toc h2 {
-            font-size: 18px;
-            margin-bottom: 16px;
-            color: var(--primary);
-        }
-
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
         .toc-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 8px;
         }
-
         .toc a {
-            color: var(--accent);
+            color: var(--secondary);
             text-decoration: none;
             font-size: 14px;
             padding: 6px 0;
             display: block;
             transition: color 0.2s;
         }
-
-        .toc a:hover { color: var(--highlight); }
+        .toc a:hover { color: var(--accent); }
 
         .section {
             background: var(--card-bg);
             border-radius: 12px;
             padding: 36px;
             margin-bottom: 28px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid var(--border);
         }
-
         .section h2 {
             font-size: 22px;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 24px;
             padding-bottom: 12px;
-            border-bottom: 2px solid var(--highlight);
+            border-bottom: 2px solid var(--accent);
         }
-
         .section h3 {
             font-size: 17px;
             font-weight: 600;
-            color: var(--secondary);
+            color: var(--primary);
             margin: 20px 0 12px;
         }
 
@@ -134,38 +105,21 @@
             gap: 8px 16px;
             font-size: 14px;
         }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
 
-        .info-label {
-            font-weight: 600;
-            color: var(--text-light);
-        }
-
-        .info-value {
-            color: var(--text);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 16px 0;
-            font-size: 14px;
-        }
-
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
         th {
-            background: var(--primary);
-            color: white;
+            background: var(--muted);
+            color: var(--primary);
             padding: 12px 16px;
             text-align: left;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 13px;
+            border-bottom: 2px solid var(--border);
         }
-
-        td {
-            padding: 10px 16px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        tr:hover td { background: #f1f3f5; }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+        tr:hover td { background: var(--muted); }
 
         .tag {
             display: inline-block;
@@ -175,995 +129,1035 @@
             font-weight: 600;
             margin: 2px;
         }
+        .tag-red { background: var(--accent-soft); color: var(--accent); }
+        .tag-green { background: #eef3ec; color: #6a8a5a; }
+        .tag-blue { background: var(--accent-light); color: var(--accent); }
+        .tag-yellow { background: #fef6e8; color: #b8860b; }
+        .tag-gray { background: var(--muted); color: var(--secondary); }
 
-        .tag-red { background: #ffe0e0; color: #d63031; }
-        .tag-green { background: #d4f5e9; color: #00b894; }
-        .tag-blue { background: #dfe6fd; color: #0f3460; }
-        .tag-yellow { background: #fff3cd; color: #856404; }
-        .tag-gray { background: #e9ecef; color: #495057; }
-
-        .score-bar {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin: 4px 0;
-        }
-
-        .score-bar .label {
-            width: 160px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-light);
-        }
-
-        .score-bar .bar {
-            flex: 1;
-            height: 8px;
-            background: #e9ecef;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .score-bar .fill {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 0.5s;
-        }
-
-        .score-bar .score {
-            width: 40px;
-            text-align: right;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        .fill-high { background: var(--success); }
-        .fill-mid { background: var(--warning); }
-        .fill-low { background: var(--danger); }
+        .score-bar { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+        .score-bar .label-text { width: 140px; font-size: 13px; font-weight: 600; }
+        .score-bar .bar { flex: 1; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+        .score-bar .fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
+        .score-bar .score-num { width: 40px; font-size: 14px; font-weight: 700; text-align: right; }
+        .fill-high { background: var(--accent); }
+        .fill-mid { background: #f0a070; }
+        .fill-low { background: #e8c0a0; }
 
         .verdict {
-            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            background: var(--accent);
             color: white;
             padding: 24px 32px;
             border-radius: 12px;
             text-align: center;
             margin: 24px 0;
         }
+        .verdict .label { font-size: 14px; opacity: 0.85; }
+        .verdict .value { font-size: 36px; font-weight: 800; margin: 8px 0; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
 
-        .verdict .v-label { font-size: 14px; opacity: 0.8; }
-        .verdict .v-value { font-size: 42px; font-weight: 800; margin: 8px 0; }
-        .verdict .v-desc { font-size: 14px; opacity: 0.9; }
-
-        .verdict-hold {
-            background: linear-gradient(135deg, #fdcb6e 0%, #f39c12 100%);
-        }
-
-        .tier-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin: 24px 0;
-        }
-
+        .tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
         .tier-card {
-            border: 2px solid var(--border);
+            border: 1px solid var(--border);
             border-radius: 12px;
             padding: 24px;
             position: relative;
             transition: transform 0.2s;
+            background: var(--card-bg);
         }
-
-        .tier-card:hover { transform: translateY(-4px); }
-
+        .tier-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
         .tier-card.recommended {
-            border-color: var(--highlight);
-            box-shadow: 0 4px 20px rgba(233, 69, 96, 0.15);
+            border-color: var(--accent);
+            background: var(--accent-light);
         }
-
         .tier-card .tier-badge {
             position: absolute;
             top: -12px;
             right: 16px;
-            background: var(--highlight);
+            background: var(--accent);
             color: white;
             padding: 2px 12px;
             border-radius: 10px;
             font-size: 11px;
             font-weight: 700;
         }
-
-        .tier-card h4 {
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
-
-        .tier-card .price {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--highlight);
-            margin: 12px 0;
-        }
-
-        .tier-card .duration {
-            font-size: 13px;
-            color: var(--text-light);
-            margin-bottom: 16px;
-        }
-
-        .tier-card ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .tier-card li {
-            font-size: 13px;
-            padding: 4px 0;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .tier-card li::before {
-            content: ">";
-            position: absolute;
-            left: 0;
-            color: var(--highlight);
-            font-weight: 700;
-        }
+        .tier-card h4 { font-size: 16px; margin-bottom: 4px; color: var(--primary); }
+        .tier-card .price { font-size: 24px; font-weight: 800; color: var(--accent); margin: 12px 0; }
+        .tier-card .duration { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+        .tier-card ul { list-style: none; padding: 0; }
+        .tier-card li { font-size: 13px; padding: 4px 0; padding-left: 20px; position: relative; }
+        .tier-card li::before { content: ">"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
 
         .callout {
-            background: #fff8e1;
-            border-left: 4px solid #ffc107;
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
             padding: 16px 20px;
             border-radius: 0 8px 8px 0;
             margin: 16px 0;
             font-size: 14px;
         }
+        .callout-info { background: var(--muted); border-left-color: #bbb; }
+        .callout-danger { background: var(--accent-soft); border-left-color: var(--accent); }
+        .callout-success { background: #eef3ec; border-left-color: #8aaa7a; }
 
-        .callout-blue {
-            background: #e8f0fe;
-            border-left-color: var(--accent);
-        }
-
-        .callout-red {
-            background: #fce4ec;
-            border-left-color: var(--highlight);
-        }
-
-        .leverage {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        .leverage-box {
+            background: var(--primary);
             color: white;
-            padding: 28px 36px;
+            padding: 32px;
             border-radius: 12px;
             margin: 24px 0;
+            text-align: center;
+        }
+        .leverage-box .quote { font-size: 20px; font-weight: 700; line-height: 1.5; margin: 16px 0; }
+
+        .flow-steps { display: flex; gap: 0; margin: 20px 0; overflow-x: auto; }
+        .flow-step {
+            flex: 1;
+            min-width: 160px;
+            padding: 16px;
+            background: var(--accent-light);
+            position: relative;
+            text-align: center;
+        }
+        .flow-step:not(:last-child)::after {
+            content: ">";
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
             font-size: 18px;
-            font-weight: 600;
-            line-height: 1.8;
-            text-align: center;
-        }
-
-        .source {
-            font-size: 11px;
-            color: var(--text-light);
-            margin-top: 4px;
-        }
-
-        .source a {
             color: var(--accent);
-            text-decoration: none;
-        }
-
-        .source a:hover { text-decoration: underline; }
-
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--text-light);
-            font-size: 13px;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-
-        .footer strong { color: var(--primary); }
-
-        .two-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .scenario-step {
-            display: flex;
-            gap: 12px;
-            margin: 12px 0;
-            font-size: 14px;
-        }
-
-        .scenario-step .step-num {
-            width: 28px;
-            height: 28px;
-            min-width: 28px;
-            background: var(--highlight);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             font-weight: 700;
-            font-size: 13px;
+            z-index: 1;
         }
+        .flow-step .step-num { font-size: 11px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+        .flow-step .step-title { font-size: 13px; font-weight: 600; color: var(--primary); }
+        .flow-step .step-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
 
-        .qna {
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; border: 1px solid var(--border); }
+        .swot-item h4 { font-size: 15px; margin-bottom: 10px; color: var(--accent); }
+        .swot-item ul { padding-left: 18px; }
+        .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: #ffffff; }
+        .swot-w { background: var(--accent-light); }
+        .swot-o { background: #ffffff; }
+        .swot-t { background: var(--accent-light); }
+
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+        .source-list a { color: var(--accent); text-decoration: none; }
+        .source-list a:hover { text-decoration: underline; }
+
+        .footer { text-align: center; padding: 40px; color: #cccccc; font-size: 13px; }
+
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; background: var(--card-bg); }
+        .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; color: var(--primary); }
+        .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--accent); margin: 8px 0; }
+        .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+
+        /* Executive Summary */
+        .summary-section { border: 1px solid var(--border); border-left: 4px solid var(--accent); background: #ffffff; }
+        .summary-section h2 { border-bottom-color: var(--accent); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; color: var(--primary); }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; }
+        .kpi-card.kpi-dark { background: var(--muted); color: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--accent-soft); color: var(--accent); }
+        .kpi-card.kpi-success { background: var(--accent); color: white; }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.6; }
+        .kpi-card .kpi-value { font-size: 24px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.6; }
+
+        .summary-oneliner { background: var(--primary); color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.5; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+        .summary-oneliner .sol-text .hl { color: var(--accent); }
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--accent); font-weight: 800; }
+
+        /* Diagnosis */
+        .diagnosis-section { border: 1px solid var(--border); border-left: 4px solid var(--accent); }
+        .diagnosis-section h2 { border-bottom-color: var(--accent); color: var(--accent); }
+        .diag-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .diag-box { padding: 16px; border-radius: 8px; }
+        .diag-box.diag-current { background: var(--accent-light); }
+        .diag-box.diag-ideal { background: var(--muted); }
+        .diag-box .db-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .diag-box.diag-current .db-label { color: var(--accent); }
+        .diag-box.diag-ideal .db-label { color: #6a8a5a; }
+        .diag-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+        .diag-note { font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: var(--muted); border-radius: 8px; }
+
+        /* SPIN & JTBD */
+        .spin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .spin-card { padding: 20px; border-radius: 10px; font-size: 14px; border: 1px solid var(--border); }
+        .spin-card h4 { font-size: 15px; margin-bottom: 10px; color: var(--accent); }
+        .spin-s { background: #ffffff; }
+        .spin-p { background: var(--accent-light); }
+        .spin-i { background: #ffffff; }
+        .spin-n { background: var(--accent-light); }
+
+        .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+        .pain-level { flex: 1; min-width: 200px; padding: 16px; border-radius: 10px; font-size: 13px; border: 1px solid var(--border); }
+        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; color: var(--accent); }
+        .pain-l1 { background: #ffffff; }
+        .pain-l2 { background: var(--accent-light); }
+        .pain-l3 { background: var(--accent-soft); }
+        .pain-l4 { background: var(--accent-soft); }
+
+        /* Script & Coaching */
+        .script-block {
+            background: var(--muted);
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
             margin: 12px 0;
+            border-radius: 0 8px 8px 0;
             font-size: 14px;
+            font-style: italic;
+            color: var(--secondary);
         }
+        .question-card { background: var(--muted); border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+        .question-card .q-num { font-size: 12px; font-weight: 700; color: var(--accent); }
+        .question-card .q-text { font-size: 15px; font-weight: 600; margin: 4px 0 8px; color: var(--primary); }
+        .question-card .q-intent { font-size: 13px; color: var(--text-light); }
 
-        .qna .q {
-            font-weight: 700;
-            color: var(--highlight);
-            margin-bottom: 4px;
-        }
-
-        .qna .a {
-            padding-left: 16px;
-            color: var(--text);
-        }
+        .timeline-phase { display: grid; grid-template-columns: 100px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .timeline-phase .phase-time { font-size: 13px; font-weight: 700; color: var(--accent); text-align: center; padding-top: 4px; }
+        .timeline-phase .phase-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--primary); }
+        .timeline-phase .phase-content p { font-size: 13px; color: var(--text-light); }
 
         @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
             .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
             .tier-cards { grid-template-columns: 1fr; }
-            .two-col { grid-template-columns: 1fr; }
-            .info-grid { grid-template-columns: 120px 1fr; }
-            .toc-grid { grid-template-columns: 1fr; }
-            .section { padding: 24px; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-step:not(:last-child)::after { display: none; }
+            .channel-grid { grid-template-columns: repeat(2, 1fr); }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .diag-compare { grid-template-columns: 1fr; }
+            .spin-grid { grid-template-columns: 1fr; }
+            .pain-layer { flex-direction: column; }
+            .timeline-phase { grid-template-columns: 1fr; }
+        }
+
+        @media print {
+            body { background: white; }
+            .section { box-shadow: none; border: 1px solid #ddd; }
+            .toc { box-shadow: none; border: 1px solid #ddd; }
         }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <div class="header-badge">NEW BUSINESS RESEARCH</div>
-    <h1>주식회사 세이어바웃 (SAYABOUT)</h1>
-    <div class="subtitle">영상 편집 대행 및 뉴미디어 콘텐츠 제작 기업 | 상담 준비 패키지</div>
-    <div class="date">2026.03.31 | HIZ 브랜드라이즈</div>
+    <div class="header-badge">NEW BUSINESS 상담 준비 패키지</div>
+    <h1>세이어바웃 / 유비발디 (UBIVALDI)</h1>
+    <div class="subtitle">헬스/뷰티 | 콘텐츠 기업의 뷰티 신사업 진출 | 브랜드 아이덴티티 구축</div>
+    <div class="date">작성일: 2026-04-16 | Prepared by BRANDRISE (MarketingOS)</div>
 </div>
 
 <div class="container">
 
-    <!-- 목차 -->
-    <div class="toc">
-        <h2>목차</h2>
-        <div class="toc-grid">
-            <a href="#s1">1. 기업 기본 정보</a>
-            <a href="#s2">2. 사업 영역 분석</a>
-            <a href="#s3">3. 대표자 프로필</a>
-            <a href="#s4">4. 재무 현황</a>
-            <a href="#s5">5. 온라인 현황</a>
-            <a href="#s6">6. 마케팅 현황 분석</a>
-            <a href="#s7">7. 경쟁사 / 시장 분석</a>
-            <a href="#s8">8. GAP 분석 & 기회 평가</a>
-            <a href="#s9">9. 3-Tier 견적 초안</a>
-            <a href="#s10">10. 상담 전략</a>
+    <!-- ============================================================ -->
+    <!-- Executive Summary -->
+    <!-- ============================================================ -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">회사</div>
+                <div class="sh-title">주식회사 세이어바웃 (SAYABOUT)</div>
+                <div class="sh-sub">콘텐츠/미디어 기업 | 유비발디(UBIVALDI) 뷰티 브랜드 신규 런칭</div>
+            </div>
+            <div>
+                <div class="sh-label">대표이사</div>
+                <div class="sh-title">이재연</div>
+                <div class="sh-sub">한양대 경영학 | 콘텐츠/미디어/신사업 기획 전문</div>
+            </div>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">설립</div>
+                <div class="kpi-value">2021</div>
+                <div class="kpi-sub">법인 5년차, 벤처인증</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">팀 규모</div>
+                <div class="kpi-value">~9명</div>
+                <div class="kpi-sub">콘텐츠/미디어 중심</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">월 예산</div>
+                <div class="kpi-value">300만 이하</div>
+                <div class="kpi-sub">뷰티 시장 기준 극소</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">디지털 프레즌스</div>
+                <div class="kpi-value">거의 0</div>
+                <div class="kpi-sub">유비발디 온라인 노출 없음</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                콘텐츠/미디어 제작 역량과 벤처 인증을 갖춘 5년차 기업이나,<br>
+                <span class="hl">뷰티 브랜드 포지셔닝과 아이덴티티가 완전히 미정립</span>된 상태에서 시장 진입을 시도 중.
+            </div>
+        </div>
+        <div class="summary-bottom">
+            <strong>기회 적합도:</strong> <span class="hl">3.65 / 5.0 (Conditional Go)</span> &nbsp;|&nbsp;
+            <strong>추천 Tier:</strong> Professional (980만원, 2개월 프로젝트형) &nbsp;|&nbsp;
+            <strong>기대 계약액:</strong> 연 3,380만원 (프로젝트 + 리테이너 전환 시)
         </div>
     </div>
 
-    <!-- 1. 기업 기본 정보 -->
-    <div class="section" id="s1">
-        <h2>1. 기업 기본 정보</h2>
+    <!-- ============================================================ -->
+    <!-- 핵심 문제점 & 진단 -->
+    <!-- ============================================================ -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 문제점 & 진단</h2>
+
+        <h3>1. 브랜드 아이덴티티 완전 미정립 <span class="tag tag-red">Critical</span></h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재 상태</div>
+                <ul>
+                    <li>유비발디 공식 사이트/SNS 미확인 (온라인 존재감 0)</li>
+                    <li>브랜드 스토리, 톤앤매너, 비주얼 시스템 없음</li>
+                    <li>타겟 고객, 제품 카테고리, USP 미정의</li>
+                    <li>"독보적인 플레이"를 원하나 그 "독보적"의 정의 부재</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">이상적 상태</div>
+                <ul>
+                    <li>명확한 브랜드 포지셔닝 + 비주얼 아이덴티티 체계</li>
+                    <li>타겟 페르소나 정의 + 채널 전략 수립</li>
+                    <li>"왜 유비발디여야 하는가"에 대한 답 보유</li>
+                    <li>콘텐츠 역량을 즉시 활용할 수 있는 브랜드 가이드라인</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2. 콘텐츠 기업의 뷰티 도메인 갭 <span class="tag tag-red">High</span></h3>
+        <div class="diag-note">세이어바웃의 본업은 콘텐츠/미디어/SW 개발이며, 뷰티 업계 경험이 확인되지 않음. 화장품 시장의 유통 구조, 소비자 구매 여정, 성분 마케팅, 인플루언서 생태계 등에 대한 실전 경험 부족이 "무기가 없다"는 감정의 근본 원인.</div>
+
+        <h3>영역별 진단 요약</h3>
+        <table>
+            <tr><th>영역</th><th>현재 상태</th><th>심각도</th><th>GAP</th></tr>
+            <tr><td>브랜드 아이덴티티</td><td>미정립. 로고/BI/가이드라인 없음 (추정)</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>디지털 프레즌스</td><td>유비발디 웹사이트/SNS 미확인. 검색 노출 0</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>포지셔닝 전략</td><td>타겟, USP, 경쟁 포지션 미정의</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>콘텐츠 역량</td><td>본업이 콘텐츠/미디어 제작사. 역량 보유</td><td><span class="tag tag-green">Low</span></td><td><span class="tag tag-green">작음</span></td></tr>
+            <tr><td>제품 준비</td><td>서포터즈 1기 모집 이력 있으나, 구체적 제품 미확인</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-yellow">확인 필요</span></td></tr>
+            <tr><td>마케팅 예산</td><td>월 300만원 이하. 뷰티 시장 기준 극소</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-yellow">구조적 접근 필요</span></td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>진단 결론:</strong> 유비발디는 "제품/콘텐츠 역량은 있을 수 있으나, 브랜드 전략이 완전히 비어있는" 상태. 브랜딩 이전에 포지셔닝부터 잡아야 하며, 300만원 예산은 프로젝트형(일시불) 브랜딩 투자로 전환해야 실효성이 있음.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 목차 -->
+    <!-- ============================================================ -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 & 진단</a>
+            <a href="#company-info">1. 기업 기초 정보</a>
+            <a href="#product-lineup">2. 주력 사업 & 유비발디</a>
+            <a href="#digital-presence">3. 디지털 프레즌스 진단</a>
+            <a href="#competitors">4. 경쟁사 분석</a>
+            <a href="#market">5. 시장 환경</a>
+            <a href="#ceo-background">6. 대표자/경영진 프로필</a>
+            <a href="#swot">7. SWOT 분석</a>
+            <a href="#needs-analysis">8. 니즈 분석 (SPIN + JTBD)</a>
+            <a href="#gap-analysis">9. GAP 분석 & 기회 평가</a>
+            <a href="#quote">10. 3-Tier 견적 초안</a>
+            <a href="#strategy">11. 상담 전략 & 코칭</a>
+            <a href="#closing">12. 클로징 전략</a>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 1. 기업 기초 정보 -->
+    <!-- ============================================================ -->
+    <div class="section" id="company-info">
+        <h2>1. 기업 기초 정보</h2>
         <div class="info-grid">
             <div class="info-label">법인명</div>
             <div class="info-value">주식회사 세이어바웃 (SAYABOUT Co., Ltd.)</div>
-
+            <div class="info-label">사업자번호</div>
+            <div class="info-value">335-88-02111</div>
+            <div class="info-label">설립일</div>
+            <div class="info-value">2021년 7월 7일</div>
             <div class="info-label">대표이사</div>
             <div class="info-value">이재연</div>
-
-            <div class="info-label">설립일</div>
-            <div class="info-value">2021년 7월 7일 (업력 약 5년차)</div>
-
-            <div class="info-label">사업자등록번호</div>
-            <div class="info-value">335-88-02111</div>
-
-            <div class="info-label">법인등록번호</div>
-            <div class="info-value">110111-7949550</div>
-
-            <div class="info-label">업종</div>
-            <div class="info-value">응용 소프트웨어 개발 및 공급업 (정보통신업)</div>
-
-            <div class="info-label">기업 규모</div>
-            <div class="info-value">중소기업 / 종업원 약 9~10명</div>
-
-            <div class="info-label">본사 주소</div>
-            <div class="info-value">서울특별시 금천구 디지털로9길 41 (가산동) 삼성IT해링턴타워 13층 1309호</div>
-
-            <div class="info-label">지사</div>
-            <div class="info-value">세종지사 운영 (채용 확인)</div>
-
-            <div class="info-label">연락처</div>
-            <div class="info-value">070-8666-6758 / FAX 070-8666-7010</div>
-
-            <div class="info-label">이메일</div>
-            <div class="info-value">help@editsay.com (추정)</div>
-
-            <div class="info-label">홈페이지</div>
-            <div class="info-value">
-                editsay.com (에딧세이 - 주력 서비스, 현재 접속 불가 확인)<br>
-                sayabout.imweb.me (세이어바웃 공식 사이트)<br>
-                kkokkascene.com (꼬까씬콘텐츠랩)<br>
-                sayabout.co.kr (인크루트 등록, 미확인)
-            </div>
-
-            <div class="info-label">벤처 인증</div>
-            <div class="info-value">중소벤처기업부 '혁신성장형' 벤처기업 인증 (추정 - 꼬까씬 사이트 언급)</div>
-
-            <div class="info-label">사업 상태</div>
-            <div class="info-value"><span class="tag tag-green">계속사업자</span></div>
+            <div class="info-label">본사</div>
+            <div class="info-value">서울 구로구 디지털로26길 43, R-1506 (대륭포스트타워 8차)</div>
+            <div class="info-label">세종 지사</div>
+            <div class="info-value">세종시 한누리대로 284, 819</div>
+            <div class="info-label">등기 업종</div>
+            <div class="info-value">정보통신업 / 컴퓨터 프로그래밍 서비스업</div>
+            <div class="info-label">팀 규모</div>
+            <div class="info-value">6~10명 (잡코리아 7명, bizno 9명)</div>
+            <div class="info-label">기업 유형</div>
+            <div class="info-value">중소기업 / 혁신성장유형 벤처기업 (중소벤처기업부)</div>
+            <div class="info-label">투자 단계</div>
+            <div class="info-value">외부 투자 유치 이력 미확인</div>
         </div>
-
-        <div class="source">
-            출처: <a href="https://bizno.net/article/3358802111" target="_blank">bizno.net</a>,
-            <a href="https://moneypin.biz/bizno/detail/3358802111/" target="_blank">moneypin.biz</a>,
-            <a href="https://www.incruit.com/company/1682739098/" target="_blank">인크루트</a>,
-            <a href="https://www.rocketpunch.com/companies/sayabout" target="_blank">로켓펀치</a> (2026.03 조회)
+        <div class="callout callout-info">
+            <strong>핵심:</strong> 세이어바웃은 본래 콘텐츠/미디어/SW 기업이며, 유비발디(UBIVALDI)는 신규 뷰티 사업 진출 브랜드. 전형적인 "미디어 커머스" 확장 패턴.
         </div>
     </div>
 
-    <!-- 2. 사업 영역 분석 -->
-    <div class="section" id="s2">
-        <h2>2. 사업 영역 분석</h2>
+    <!-- ============================================================ -->
+    <!-- 2. 주력 사업 & 유비발디 -->
+    <!-- ============================================================ -->
+    <div class="section" id="product-lineup">
+        <h2>2. 주력 사업 & 유비발디</h2>
 
-        <h3>주요 사업 영역</h3>
-        <p style="font-size:14px; margin-bottom:16px;">세이어바웃은 영상 편집 대행 서비스와 뉴미디어 콘텐츠 제작을 핵심 사업으로 운영하고 있습니다. 복수의 브랜드/서비스를 운영하는 구조입니다.</p>
-
+        <h3>축 1: 꼬까씬콘텐츠랩 (기존 캐시카우)</h3>
         <table>
-            <thead>
-                <tr>
-                    <th>서비스/브랜드</th>
-                    <th>영역</th>
-                    <th>설명</th>
-                    <th>상태</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>에딧세이 (Editsay)</strong></td>
-                    <td>영상편집 대행</td>
-                    <td>영상 편집이 필요한 크리에이터/기업 대상 편집 대행 서비스 플랫폼. 본사 서비스로 추정.</td>
-                    <td><span class="tag tag-yellow">사이트 접속불가</span></td>
-                </tr>
-                <tr>
-                    <td><strong>꼬까씬콘텐츠랩</strong></td>
-                    <td>뉴미디어 콘텐츠 제작</td>
-                    <td>콘텐츠 기획/제작 전문 랩. "진심을 다해 꼼꼼하고 까다롭게" 콘텐츠 제작. 정부/공공기관 홍보 콘텐츠 포함.</td>
-                    <td><span class="tag tag-green">운영중</span></td>
-                </tr>
-                <tr>
-                    <td><strong>뉴미디어 홍보 콘텐츠</strong></td>
-                    <td>정부/공공 콘텐츠</td>
-                    <td>세종지사를 통한 정부기관 뉴미디어 홍보 콘텐츠 PD 인력 운영 (잡코리아 채용공고 확인)</td>
-                    <td><span class="tag tag-green">운영중</span></td>
-                </tr>
-            </tbody>
+            <tr><th>항목</th><th>내용</th></tr>
+            <tr><td>서비스</td><td>온/오프라인 콘텐츠 제작 서비스 (미디어, 영상, 이러닝)</td></tr>
+            <tr><td>기술 자산</td><td>기술특허 2건 취득 (2022), 기업부설연구소 설립 (2022.10)</td></tr>
+            <tr><td>주요 성과</td><td>월간 활성 사용자 25,000명, 고객 만족도 97% (자사 공시)</td></tr>
+            <tr><td>관련 서비스</td><td>비디오쿠키 (영상 편집 템플릿)</td></tr>
         </table>
 
-        <h3>업종 분류 혼재</h3>
+        <h3>축 2: 유비발디 UBIVALDI (신규 뷰티 브랜드)</h3>
+        <table>
+            <tr><th>항목</th><th>내용</th></tr>
+            <tr><td>카테고리</td><td>헬스/뷰티 (구체적 제품 카테고리 미확인)</td></tr>
+            <tr><td>준비 상태</td><td>온라인 서포터즈 1기 "BIBI" 모집 이력 확인 (뷰티 관심자 20명)</td></tr>
+            <tr><td>공식 사이트</td><td>미확인 (별도 도메인 없는 것으로 추정)</td></tr>
+            <tr><td>SNS</td><td>미확인 (비공개이거나 미개설)</td></tr>
+            <tr><td>제품 출시</td><td>미확인 (런칭 초기 또는 런칭 전 단계 추정)</td></tr>
+        </table>
+
         <div class="callout">
-            <strong>주의:</strong> 등기 업종은 '응용 소프트웨어 개발 및 공급업'이나, 인크루트 등록 정보에서는 '음식료품 제조업'으로 분류되어 있고, 로켓펀치에서는 '방송/광고/영상/오디오'로 분류되어 있습니다. 실제 사업 영역은 <strong>영상 편집 대행 + 뉴미디어 콘텐츠 제작</strong>으로 판단됩니다. 업종 분류 혼재는 사업 피봇 또는 복수 사업 운영을 시사합니다.
-        </div>
-
-        <h3>타겟 고객 (추정)</h3>
-        <div class="two-col">
-            <div>
-                <p style="font-size:14px;"><strong>B2B</strong></p>
-                <ul style="font-size:13px; padding-left:20px;">
-                    <li>정부/공공기관 (뉴미디어 홍보 콘텐츠)</li>
-                    <li>중소기업 (영상 마케팅 필요 기업)</li>
-                    <li>브랜드 (콘텐츠 외주 니즈)</li>
-                </ul>
-            </div>
-            <div>
-                <p style="font-size:14px;"><strong>B2C</strong></p>
-                <ul style="font-size:13px; padding-left:20px;">
-                    <li>유튜브 크리에이터 (영상 편집 외주)</li>
-                    <li>1인 미디어/인플루언서</li>
-                    <li>브이로거 등 개인 영상 제작자</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="source">
-            출처: <a href="https://www.facebook.com/editsay/" target="_blank">에딧세이 Facebook</a>,
-            <a href="http://kkokkascene.com/" target="_blank">꼬까씬콘텐츠랩</a>,
-            <a href="https://www.jobkorea.co.kr/Recruit/GI_Read/44764568" target="_blank">잡코리아 채용공고</a>,
-            <a href="https://www.incruit.com/company/1682739098/" target="_blank">인크루트</a>
+            <strong>상담 확인 필수:</strong> 유비발디의 제품이 이미 있는지, 기획 단계인지에 따라 제안 범위가 완전히 달라짐. 화장품책임판매업 등록 여부도 확인 필요.
         </div>
     </div>
 
-    <!-- 3. 대표자 프로필 -->
-    <div class="section" id="s3">
-        <h2>3. 이재연 대표 프로필</h2>
+    <!-- ============================================================ -->
+    <!-- 3. 디지털 프레즌스 진단 -->
+    <!-- ============================================================ -->
+    <div class="section" id="digital-presence">
+        <h2>3. 디지털 프레즌스 진단</h2>
 
+        <div class="channel-grid">
+            <div class="channel-card">
+                <div class="ch-name">웹사이트 (세이어바웃)</div>
+                <div class="ch-stat">imweb</div>
+                <div class="ch-note">sayabout.imweb.me / 간이 사이트</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">유비발디 공식 사이트</div>
+                <div class="ch-stat">없음</div>
+                <div class="ch-note">별도 도메인 미확인</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">유비발디 SNS</div>
+                <div class="ch-stat">없음</div>
+                <div class="ch-note">검색 결과 미확인</div>
+            </div>
+        </div>
+
+        <h3>웹 도메인 현황</h3>
+        <table>
+            <tr><th>도메인</th><th>상태</th><th>비고</th></tr>
+            <tr><td>sayabout.imweb.me</td><td><span class="tag tag-green">운영 중</span></td><td>imweb 기반 간이 회사소개 사이트</td></tr>
+            <tr><td>kkokkascene.com</td><td><span class="tag tag-green">운영 중</span></td><td>꼬까씬콘텐츠랩 메인 사이트</td></tr>
+            <tr><td>www.editsay.com</td><td><span class="tag tag-red">접속 불가</span></td><td>bizno 등록 URL, 서버 다운</td></tr>
+            <tr><td>유비발디 전용</td><td><span class="tag tag-red">미확인</span></td><td>별도 도메인 없는 것으로 추정</td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>디지털 프레즌스 종합 점수: 매우 낮음.</strong> 유비발디 브랜드의 온라인 존재감이 거의 없는 상태. 미디어 노출 0건, 광고 집행 이력 미확인. 역으로 보면 처음부터 제대로 세팅할 수 있는 클린 슬레이트.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 4. 경쟁사 분석 -->
+    <!-- ============================================================ -->
+    <div class="section" id="competitors">
+        <h2>4. 경쟁사 분석</h2>
+
+        <div class="callout callout-info">
+            <strong>참고:</strong> 유비발디의 직접 경쟁자는 "이미 성공한 인디 브랜드"가 아니라, 동일하게 시장 진입을 시도하는 수백 개의 신생 뷰티 브랜드. THE VC 기준 뷰티/화장품 스타트업만 50개 이상.
+        </div>
+
+        <h3>벤치마크 브랜드 (성공 사례)</h3>
+        <table>
+            <tr><th>브랜드</th><th>성공 전략</th><th>유비발디 시사점</th></tr>
+            <tr><td><strong>아누아 (ANUA)</strong></td><td>SNS 바이럴 + 성분 마케팅으로 급성장 (매출 1,000억+)</td><td>콘텐츠 역량으로 바이럴 전략 벤치마킹 가능</td></tr>
+            <tr><td><strong>조선미녀</strong></td><td>한국 전통 컨셉 + 글로벌 D2C (미국 아마존 1위)</td><td>독특한 세계관이 차별화의 핵심</td></tr>
+            <tr><td><strong>스킨1004</strong></td><td>마다가스카르 센텔라 원료 특화, 해외 매출 비중 높음</td><td>원료/성분 기반 스토리텔링</td></tr>
+            <tr><td><strong>라운드랩</strong></td><td>독도/소나무 등 자연 원료 스토리텔링 (올리브영 히트)</td><td>자연/지역 연계 브랜드 스토리</td></tr>
+            <tr><td><strong>토리든</strong></td><td>다이브인 세럼 단일 제품 집중 + 틱톡 바이럴</td><td>히어로 제품 1개에 집중하는 전략</td></tr>
+        </table>
+
+        <div class="leverage-box">
+            <div style="font-size: 14px; opacity: 0.8;">성공 인디 브랜드 공통점</div>
+            <div class="quote">(1) 명확한 브랜드 스토리/컨셉 (2) 1-2개 히어로 제품 집중<br>(3) SNS 바이럴 마케팅 역량 (4) 올리브영/글로벌 채널 입점 전략</div>
+            <div style="font-size: 13px; opacity: 0.7;">유비발디가 이 중 무엇을 갖추고 있는지가 상담의 핵심 질문</div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 5. 시장 환경 -->
+    <!-- ============================================================ -->
+    <div class="section" id="market">
+        <h2>5. 시장 환경</h2>
+
+        <h3>시장 규모 추정 (TAM/SAM/SOM)</h3>
+        <table>
+            <tr><th>구분</th><th>규모</th><th>근거</th></tr>
+            <tr><td><strong>TAM</strong> (글로벌 화장품)</td><td>약 770조 원 (2027E)</td><td>PwC K-뷰티 가이드북, CAGR 6%</td></tr>
+            <tr><td><strong>SAM</strong> (한국 화장품 시장)</td><td>약 17조 원 (2025E)</td><td>유로모니터 기준</td></tr>
+            <tr><td><strong>SOM</strong> (인디 뷰티 D2C)</td><td>약 500억~1,000억 원</td><td>인디 브랜드 온라인 D2C, 올리브영 입점 가능 범위</td></tr>
+        </table>
+
+        <h3>시장 핵심 동인</h3>
+        <table>
+            <tr><th>트렌드</th><th>내용</th><th>유비발디 기회</th></tr>
+            <tr><td>K-뷰티 글로벌 2위</td><td>프랑스에 이어 세계 2위 수출국</td><td>해외 진출 기회 열려 있음</td></tr>
+            <tr><td>인디 브랜드 급성장</td><td>코스알엑스, 아누아 등 영업이익률 20%+</td><td>소규모 브랜드도 성장 가능한 시장</td></tr>
+            <tr><td>ODM/OEM 인프라</td><td>한국콜마, 코스맥스 등 세계적 생산 인프라</td><td>소자본 진입 가능 (제품 자체는 만들기 쉬움)</td></tr>
+            <tr><td>2026 트렌드 키워드</td><td>"Hyper Sensory" + "Self-Clinical"</td><td>감각 경험 + 확실한 효능이 소비자 선택 기준</td></tr>
+        </table>
+
+        <div class="callout">
+            <strong>시장 리스크:</strong> 2021년 약 500개였던 폐업 화장품업체가 최근 연 3,000개 이상. 진입은 쉬우나 생존은 어려운 시장. "브랜드 없이 제품만"으로는 가격 경쟁에 빠져 사라짐.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 6. 대표자/경영진 -->
+    <!-- ============================================================ -->
+    <div class="section" id="ceo-background">
+        <h2>6. 대표자/경영진 프로필</h2>
         <div class="info-grid">
             <div class="info-label">성명</div>
             <div class="info-value">이재연</div>
-
-            <div class="info-label">직위</div>
-            <div class="info-value">주식회사 세이어바웃 대표이사</div>
-
             <div class="info-label">학력</div>
-            <div class="info-value">한양대학교 경영학과</div>
-
-            <div class="info-label">관심 분야</div>
-            <div class="info-value">
-                <span class="tag tag-blue">신사업 기획</span>
-                <span class="tag tag-blue">경영기획</span>
-                <span class="tag tag-blue">콘텐츠 매니지먼트</span>
-            </div>
-
+            <div class="info-value">한양대학교 경영학 전공</div>
+            <div class="info-label">주요 이력</div>
+            <div class="info-value">한양대 제21회 벤처창업경진대회 수상 (2016.08, 194개 중 최종 9팀)</div>
+            <div class="info-label">전문 분야</div>
+            <div class="info-value">신사업 기획, 경영기획, 콘텐츠 매니지먼트</div>
             <div class="info-label">LinkedIn</div>
-            <div class="info-value">
-                <a href="https://kr.linkedin.com/in/%EC%9E%AC%EC%97%B0-%EC%9D%B4-30b90b300" target="_blank" style="color:var(--accent);">프로필 확인</a>
-                (SAYABOUT Co., Ltd. 소속)
-            </div>
-
-            <div class="info-label">로켓펀치</div>
-            <div class="info-value">
-                <a href="https://www.rocketpunch.com/@6d140238" target="_blank" style="color:var(--accent);">프로필 확인</a>
-            </div>
-
-            <div class="info-label">경력 특징</div>
-            <div class="info-value">경영학 전공 + 콘텐츠/미디어 사업 운영. 2021년 법인 설립 후 에딧세이(영상편집 대행)와 꼬까씬콘텐츠랩(뉴미디어 제작) 두 가지 사업 라인 구축.</div>
+            <div class="info-value">존재하나 활동 거의 없음</div>
+            <div class="info-label">인터뷰/기고</div>
+            <div class="info-value">확인 불가</div>
         </div>
 
-        <div class="callout-blue callout" style="margin-top:20px;">
-            <strong>상담 포인트:</strong> 한양대 경영학 출신으로 경영 전략과 사업 확장에 관심이 높을 것으로 추정됩니다. '신사업 기획'이 관심 분야인 만큼, 현재 사업의 브랜딩 강화를 통한 성장 전략에 관심을 가질 가능성이 높습니다.
-        </div>
-
-        <div class="callout" style="margin-top:12px;">
-            <strong>참고:</strong> 인크루트에 등록된 대표명이 '임혜현'으로 되어 있는 점이 확인됩니다. 공동대표 또는 정보 업데이트 시점 차이일 수 있으며, 공식 사업자 등록 기준 대표이사는 '이재연'입니다. 상담 시 확인 필요.
-        </div>
-
-        <div class="source">
-            출처: <a href="https://www.rocketpunch.com/@6d140238" target="_blank">로켓펀치</a>,
-            <a href="https://kr.linkedin.com/in/%EC%9E%AC%EC%97%B0-%EC%9D%B4-30b90b300" target="_blank">LinkedIn</a>,
-            <a href="https://bizno.net/article/3358802111" target="_blank">bizno.net</a>
-        </div>
-    </div>
-
-    <!-- 4. 재무 현황 -->
-    <div class="section" id="s4">
-        <h2>4. 재무 현황</h2>
-
-        <div class="callout-red callout">
-            <strong>데이터 제한:</strong> 세이어바웃은 비상장 중소기업으로, DART(전자공시시스템)에 공시 의무가 없어 매출액, 영업이익 등 구체적 재무 데이터를 확인할 수 없습니다.
-        </div>
-
-        <h3>간접 지표를 통한 추정</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>지표</th>
-                    <th>내용</th>
-                    <th>해석</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>종업원 수</td>
-                    <td>약 9~10명</td>
-                    <td>소규모이나 콘텐츠 제작사로서 적정 규모. 인건비 기준 연매출 5~10억 추정.</td>
-                </tr>
-                <tr>
-                    <td>사업 연차</td>
-                    <td>5년차 (2021.07 설립)</td>
-                    <td>초기 생존기 통과. 안정 궤도 진입 또는 성장 정체 구간.</td>
-                </tr>
-                <tr>
-                    <td>사업자 상태</td>
-                    <td>계속사업자</td>
-                    <td>정상 운영 중</td>
-                </tr>
-                <tr>
-                    <td>벤처 인증</td>
-                    <td>혁신성장형 (추정)</td>
-                    <td>기술 혁신성 및 사업 성장성 인정받은 상태</td>
-                </tr>
-                <tr>
-                    <td>지사 운영</td>
-                    <td>세종지사 보유</td>
-                    <td>정부/공공 사업 수주를 위한 세종 거점 확보</td>
-                </tr>
-                <tr>
-                    <td>채용 활동</td>
-                    <td>뉴미디어 홍보 콘텐츠 PD 채용</td>
-                    <td>사업 확장 중. 공공 콘텐츠 프로젝트 수주 기반 인력 충원.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>추정 매출 규모</h3>
-        <div class="callout-blue callout">
-            직원 9~10명 규모의 영상/콘텐츠 제작사 기준, 1인당 매출 5,000만~1억 원 가정 시 <strong>연매출 약 5억~10억 원 수준</strong>으로 추정됩니다. 정부 사업 수주가 포함될 경우 상한이 높아질 수 있습니다. (미확인 추정치)
-        </div>
-
-        <div class="source">
-            출처: <a href="https://bizno.net/article/3358802111" target="_blank">bizno.net</a>,
-            <a href="https://www.incruit.com/company/1682739098/" target="_blank">인크루트</a> (2026.03 조회)
-        </div>
-    </div>
-
-    <!-- 5. 온라인 현황 -->
-    <div class="section" id="s5">
-        <h2>5. 온라인 현황</h2>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>채널</th>
-                    <th>URL / 상태</th>
-                    <th>비고</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>에딧세이 공식 사이트</strong></td>
-                    <td>editsay.com <span class="tag tag-red">접속 불가</span></td>
-                    <td>사업자 등록 홈페이지로 등록되어 있으나, 현재 접속 시 ECONNREFUSED 오류 발생. 서비스 중단 또는 리뉴얼 중 추정.</td>
-                </tr>
-                <tr>
-                    <td><strong>세이어바웃 공식 사이트</strong></td>
-                    <td><a href="https://sayabout.imweb.me/" target="_blank" style="color:var(--accent);">sayabout.imweb.me</a></td>
-                    <td>imweb(아임웹) 기반 사이트. 기본 CSS만 로드되며 실질적 콘텐츠 미확인.</td>
-                </tr>
-                <tr>
-                    <td><strong>꼬까씬콘텐츠랩</strong></td>
-                    <td><a href="http://kkokkascene.com/" target="_blank" style="color:var(--accent);">kkokkascene.com</a></td>
-                    <td>imweb 기반. 콘텐츠 제작 전문 랩 소개 페이지.</td>
-                </tr>
-                <tr>
-                    <td><strong>에딧세이 Facebook</strong></td>
-                    <td><a href="https://www.facebook.com/editsay/" target="_blank" style="color:var(--accent);">facebook.com/editsay</a></td>
-                    <td>"에딧세이 | Geumcheon District" - 영상편집 대행 서비스 페이지</td>
-                </tr>
-                <tr>
-                    <td><strong>인스타그램</strong></td>
-                    <td><span class="tag tag-gray">미확인</span></td>
-                    <td>공식 인스타그램 계정 검색 결과 없음</td>
-                </tr>
-                <tr>
-                    <td><strong>유튜브</strong></td>
-                    <td><span class="tag tag-gray">미확인</span></td>
-                    <td>공식 유튜브 채널 검색 결과 없음</td>
-                </tr>
-                <tr>
-                    <td><strong>네이버 블로그/스마트스토어</strong></td>
-                    <td><span class="tag tag-gray">미확인</span></td>
-                    <td>검색 결과 없음</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="callout-red callout">
-            <strong>핵심 문제 발견:</strong> 영상/콘텐츠 제작 기업임에도 불구하고 자사 온라인 채널이 극히 취약합니다.
-            <ul style="margin-top:8px; padding-left:20px; font-size:13px;">
-                <li>주력 서비스(에딧세이) 웹사이트 접속 불가</li>
-                <li>인스타그램/유튜브 등 SNS 채널 부재 (또는 미발견)</li>
-                <li>imweb 기반 사이트 2개가 실질적 콘텐츠 없이 운영</li>
-                <li>Facebook 페이지만 존재하나 활성화 수준 미확인</li>
-            </ul>
-            이는 <strong>"타인의 콘텐츠는 만들지만 자사 콘텐츠는 없는"</strong> 전형적인 B2B 제작사의 딜레마를 보여줍니다.
-        </div>
-
-        <div class="source">
-            출처: 웹사이트 직접 접속 확인 (2026.03.31), <a href="https://www.facebook.com/editsay/" target="_blank">Facebook</a>
-        </div>
-    </div>
-
-    <!-- 6. 마케팅 현황 분석 -->
-    <div class="section" id="s6">
-        <h2>6. 마케팅 현황 분석</h2>
-
-        <h3>브랜드 아이덴티티</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>항목</th>
-                    <th>현황</th>
-                    <th>평가</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>브랜드 체계</td>
-                    <td>세이어바웃(법인) > 에딧세이(서비스) / 꼬까씬콘텐츠랩(서비스) 이원 구조</td>
-                    <td><span class="tag tag-yellow">복잡</span></td>
-                </tr>
-                <tr>
-                    <td>네이밍 일관성</td>
-                    <td>세이어바웃 / 에딧세이 / 꼬까씬 - 3개 이름이 서로 연결성 낮음</td>
-                    <td><span class="tag tag-red">취약</span></td>
-                </tr>
-                <tr>
-                    <td>비주얼 아이덴티티</td>
-                    <td>확인 불가 (사이트 콘텐츠 미로드)</td>
-                    <td><span class="tag tag-gray">미확인</span></td>
-                </tr>
-                <tr>
-                    <td>브랜드 메시지</td>
-                    <td>"진심을 다해 꼼꼼하고 까다롭게" (꼬까씬) / 에딧세이 메시지 미확인</td>
-                    <td><span class="tag tag-yellow">분산</span></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>SNS / 콘텐츠 마케팅</h3>
-        <div class="callout-red callout">
-            <strong>결론:</strong> 자사 SNS 채널 운영이 사실상 부재합니다. 영상 편집/콘텐츠 제작 전문 기업이 자사 채널에서 작업물을 보여주지 못하고 있는 것은 잠재 고객 확보에 심각한 장애가 됩니다.
-        </div>
-
-        <h3>퍼포먼스 마케팅</h3>
-        <p style="font-size:14px; color:var(--text-light);">검색 광고(SEM), 디스플레이 광고 등 퍼포먼스 마케팅 집행 흔적 미확인. 현재 영업 방식은 정부 사업 입찰 + 지인 네트워크 기반으로 추정.</p>
-
-        <h3>채용 마케팅 (간접 지표)</h3>
-        <p style="font-size:14px;">잡코리아, 인크루트 등 채용 플랫폼에 기업 정보 등록. '뉴미디어 홍보 콘텐츠 PD' 채용 공고를 통해 사업 확장 의지를 확인할 수 있음.</p>
-
-        <div class="source">
-            출처: 전 채널 검색 기반 분석 (2026.03.31)
-        </div>
-    </div>
-
-    <!-- 7. 경쟁사 / 시장 분석 -->
-    <div class="section" id="s7">
-        <h2>7. 경쟁사 / 시장 분석</h2>
-
-        <h3>영상편집 대행 시장 경쟁 구도</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>기업</th>
-                    <th>서비스</th>
-                    <th>특징</th>
-                    <th>규모</th>
-                    <th>마케팅 수준</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>에딧메이트</strong><br>(쿨잼컴퍼니)</td>
-                    <td>영상편집 WaaS</td>
-                    <td>관리형 영상 편집 서비스. 20억 투자유치(2021). 월 700건+ 프로젝트. 매출 월평균 24% 성장.</td>
-                    <td><span class="tag tag-green">대형</span></td>
-                    <td><span class="tag tag-green">강함</span></td>
-                </tr>
-                <tr>
-                    <td><strong>브이크루 (V-Crew)</strong></td>
-                    <td>영상제작/편집 외주</td>
-                    <td>전담팀 형태의 영상 편집 서비스. 촬영부터 편집까지 풀 서비스.</td>
-                    <td><span class="tag tag-blue">중형</span></td>
-                    <td><span class="tag tag-blue">중간</span></td>
-                </tr>
-                <tr>
-                    <td><strong>미디어 플래너스</strong></td>
-                    <td>유튜브 편집 전문</td>
-                    <td>유튜브 콘텐츠 편집 특화. 채널 운영 컨설팅 포함.</td>
-                    <td><span class="tag tag-blue">중형</span></td>
-                    <td><span class="tag tag-blue">중간</span></td>
-                </tr>
-                <tr>
-                    <td><strong>편집몬</strong></td>
-                    <td>영상편집 구인구직 플랫폼</td>
-                    <td>편집자-클라이언트 매칭 플랫폼. 간접 경쟁.</td>
-                    <td><span class="tag tag-blue">중형</span></td>
-                    <td><span class="tag tag-blue">중간</span></td>
-                </tr>
-                <tr style="background:#fff5f5;">
-                    <td><strong>에딧세이</strong><br>(세이어바웃)</td>
-                    <td>영상편집 대행</td>
-                    <td>영상 편집 대행 + 뉴미디어 콘텐츠 제작. 정부 사업 포함. 웹사이트 미운영.</td>
-                    <td><span class="tag tag-yellow">소형</span></td>
-                    <td><span class="tag tag-red">매우 약함</span></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>시장 포지셔닝</h3>
-        <div class="callout-blue callout">
-            <strong>시장 환경:</strong> 영상 콘텐츠 시장은 유튜브, 숏폼 콘텐츠 확대에 따라 지속 성장 중이나, AI 기반 자동 편집 도구(캡컷, 에디츠 등)의 등장으로 저가 편집 시장은 축소 압력을 받고 있습니다. 프리미엄 편집/기획 통합 서비스와 정부 사업 등 B2B 중심 전략이 차별화 포인트가 됩니다.
-        </div>
-
-        <h3>세이어바웃의 포지션</h3>
-        <ul style="font-size:14px; padding-left:20px; line-height:2;">
-            <li><strong>강점:</strong> 정부 사업 수주 경험 (세종지사), 벤처 인증, 5년 업력</li>
-            <li><strong>약점:</strong> 온라인 존재감 극히 미약, 브랜드 분산(3개 이름), 포트폴리오 미노출</li>
-            <li><strong>기회:</strong> 뉴미디어 콘텐츠 수요 지속 증가, AI 활용 생산성 향상 가능</li>
-            <li><strong>위협:</strong> AI 편집 도구 발전, 에딧메이트 등 투자유치 경쟁사와의 격차 확대</li>
-        </ul>
-
-        <div class="source">
-            출처: <a href="https://www.editmate.kr/" target="_blank">에딧메이트</a>,
-            <a href="https://www.vcrewcorp.com/" target="_blank">브이크루</a>,
-            <a href="https://platum.kr/archives/169224" target="_blank">플래텀(에딧메이트 투자유치)</a>,
-            <a href="https://media-planners.co.kr/" target="_blank">미디어플래너스</a>
-        </div>
-    </div>
-
-    <!-- 8. GAP 분석 & 기회 평가 -->
-    <div class="section" id="s8">
-        <h2>8. GAP 분석 & 기회 평가</h2>
-
-        <h3>현재 상태 vs 이상적 상태</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>영역</th>
-                    <th>현재 상태</th>
-                    <th>이상적 상태</th>
-                    <th>GAP 수준</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>브랜드 체계</td>
-                    <td>3개 브랜드 분산 운영, 연결성 부재</td>
-                    <td>통합 브랜드 아키텍처 + 명확한 위계</td>
-                    <td><span class="tag tag-red">HIGH</span></td>
-                </tr>
-                <tr>
-                    <td>웹사이트</td>
-                    <td>주력 서비스(에딧세이) 사이트 접속 불가</td>
-                    <td>포트폴리오 중심 전문 웹사이트</td>
-                    <td><span class="tag tag-red">CRITICAL</span></td>
-                </tr>
-                <tr>
-                    <td>SNS 채널</td>
-                    <td>사실상 부재</td>
-                    <td>인스타 + 유튜브 포트폴리오 쇼케이스</td>
-                    <td><span class="tag tag-red">CRITICAL</span></td>
-                </tr>
-                <tr>
-                    <td>포트폴리오</td>
-                    <td>온라인 노출 없음</td>
-                    <td>카테고리별 체계적 포트폴리오 사이트</td>
-                    <td><span class="tag tag-red">HIGH</span></td>
-                </tr>
-                <tr>
-                    <td>리드 제네레이션</td>
-                    <td>입찰/지인 네트워크 의존 추정</td>
-                    <td>온라인 인바운드 + 콘텐츠 마케팅</td>
-                    <td><span class="tag tag-red">HIGH</span></td>
-                </tr>
-                <tr>
-                    <td>콘텐츠 전략</td>
-                    <td>자사 콘텐츠 생산 없음</td>
-                    <td>비포/애프터, 프로세스 등 시그니처 콘텐츠</td>
-                    <td><span class="tag tag-yellow">MID</span></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>기회 적합도 평가</h3>
-        <div style="margin: 20px 0;">
-            <div class="score-bar">
-                <div class="label">마케팅 니즈 명확성</div>
-                <div class="bar"><div class="fill fill-high" style="width:90%"></div></div>
-                <div class="score">4.5</div>
-            </div>
-            <div class="score-bar">
-                <div class="label">예산 여력 (추정)</div>
-                <div class="bar"><div class="fill fill-mid" style="width:50%"></div></div>
-                <div class="score">2.5</div>
-            </div>
-            <div class="score-bar">
-                <div class="label">의사결정 속도</div>
-                <div class="bar"><div class="fill fill-mid" style="width:60%"></div></div>
-                <div class="score">3.0</div>
-            </div>
-            <div class="score-bar">
-                <div class="label">성장 잠재력</div>
-                <div class="bar"><div class="fill fill-high" style="width:80%"></div></div>
-                <div class="score">4.0</div>
-            </div>
-            <div class="score-bar">
-                <div class="label">HIZ 서비스 적합도</div>
-                <div class="bar"><div class="fill fill-high" style="width:86%"></div></div>
-                <div class="score">4.3</div>
-            </div>
-            <div class="score-bar">
-                <div class="label">경쟁 차별화 가능성</div>
-                <div class="bar"><div class="fill fill-high" style="width:80%"></div></div>
-                <div class="score">4.0</div>
-            </div>
-        </div>
-
-        <div class="verdict">
-            <div class="v-label">종합 기회 평가</div>
-            <div class="v-value">3.7 / 5.0</div>
-            <div class="v-desc">HOLD (조건부 GO) - 니즈는 명확하나 예산 여력 확인 필요</div>
-        </div>
-
-        <h3>판정 근거</h3>
-        <div class="two-col">
-            <div>
-                <p style="font-size:14px; font-weight:700; color:var(--success); margin-bottom:8px;">GO 요인</p>
-                <ul style="font-size:13px; padding-left:20px; line-height:2;">
-                    <li>영상/콘텐츠 전문 기업이 자사 마케팅이 제로 - 니즈 극대</li>
-                    <li>브랜드 정리(3개 > 1개 체계), 웹사이트, SNS 등 할 일이 명확</li>
-                    <li>벤처 인증 기업 - 정부지원사업 활용 가능성</li>
-                    <li>5년차 기업 - 성장 전환점에서 브랜딩 투자 적기</li>
-                    <li>HIZ 서비스(브랜드 전략 + 웹 + SNS)와 완벽 매칭</li>
-                </ul>
-            </div>
-            <div>
-                <p style="font-size:14px; font-weight:700; color:var(--danger); margin-bottom:8px;">HOLD 요인</p>
-                <ul style="font-size:13px; padding-left:20px; line-height:2;">
-                    <li>추정 매출 5~10억 - 마케팅 예산 여력 제한적일 수 있음</li>
-                    <li>주력 서비스 사이트 접속 불가 - 사업 피봇 중일 가능성</li>
-                    <li>인크루트 대표명 불일치 - 경영 구조 변동 가능성</li>
-                    <li>AI 편집 도구 발전으로 사업 모델 자체 위협 존재</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="callout" style="margin-top:16px;">
-            <strong>핵심 확인 사항:</strong> 상담에서 (1) 에딧세이 서비스 현재 상태, (2) 마케팅 예산 규모, (3) 사업 방향성(피봇 여부)을 반드시 확인해야 합니다. 이 세 가지가 GO 전환의 핵심 조건입니다.
-        </div>
-    </div>
-
-    <!-- 9. 3-Tier 견적 초안 -->
-    <div class="section" id="s9">
-        <h2>9. 3-Tier 견적 초안</h2>
-
-        <p style="font-size:14px; color:var(--text-light); margin-bottom:24px;">
-            세이어바웃의 핵심 과제인 '브랜드 체계 정리 + 온라인 존재감 구축'에 초점을 맞춘 견적입니다.
-            모든 금액은 VAT 별도입니다.
-        </p>
-
-        <div class="tier-cards">
-            <!-- Tier 1 -->
-            <div class="tier-card">
-                <h4>Tier 1: Foundation</h4>
-                <p style="font-size:13px; color:var(--text-light);">브랜드 진단 + 전략 수립</p>
-                <div class="price">500만 원~</div>
-                <div class="duration">2~4주</div>
-                <ul>
-                    <li>브랜드 아키텍처 진단 (세이어바웃/에딧세이/꼬까씬 관계 정리)</li>
-                    <li>경쟁사 벤치마킹 리포트 (에딧메이트, 브이크루 등)</li>
-                    <li>타겟 오디언스 정의 (B2B/B2C 세분화)</li>
-                    <li>브랜드 포지셔닝 전략 제안서</li>
-                    <li>온라인 채널 전략 로드맵</li>
-                    <li>단기 실행 우선순위 매트릭스</li>
-                </ul>
-            </div>
-
-            <!-- Tier 2 (추천) -->
-            <div class="tier-card recommended">
-                <div class="tier-badge">RECOMMENDED</div>
-                <h4>Tier 2: Build</h4>
-                <p style="font-size:13px; color:var(--text-light);">전략 + 실행 (브랜드 리빌드)</p>
-                <div class="price">1,500~2,500만 원</div>
-                <div class="duration">3~4개월</div>
-                <ul>
-                    <li>Tier 1 전체 포함</li>
-                    <li>통합 BI/CI 리뉴얼 (로고, 컬러, 타이포)</li>
-                    <li>포트폴리오 중심 웹사이트 구축</li>
-                    <li>인스타그램 채널 구축 + 초기 콘텐츠 20건</li>
-                    <li>포트폴리오 쇼케이스 콘텐츠 제작</li>
-                    <li>브랜드 가이드라인 매뉴얼</li>
-                    <li>SEO 기본 세팅</li>
-                </ul>
-            </div>
-
-            <!-- Tier 3 -->
-            <div class="tier-card">
-                <h4>Tier 3: Premium</h4>
-                <p style="font-size:13px; color:var(--text-light);">풀 파트너십 (성장 가속)</p>
-                <div class="price">3,500~5,000만 원</div>
-                <div class="duration">6~12개월</div>
-                <ul>
-                    <li>Tier 2 전체 포함</li>
-                    <li>인스타그램 월간 운영 (콘텐츠 12건/월)</li>
-                    <li>유튜브 채널 구축 + 운영 (쇼릴/비하인드)</li>
-                    <li>퍼포먼스 마케팅 (검색광고 + SNS광고)</li>
-                    <li>리드 제네레이션 퍼널 설계</li>
-                    <li>월간 KPI 리뷰 + 리포팅</li>
-                    <li>PR/바이럴 캠페인 (분기 1회)</li>
-                    <li>데이터 대시보드 구축</li>
-                </ul>
-            </div>
+        <div class="callout callout-info">
+            <strong>의사결정 스타일 추정:</strong> 한양대 경영학 + 벤처 경진대회 수상 + 5년간 콘텐츠 회사 운영 + 벤처인증까지 받은 점은 실행력을 시사. 다만 뷰티 업계 경험은 확인되지 않아, 업종 전환에 따른 도메인 지식 부족 가능성.
         </div>
 
         <div class="callout">
-            <strong>견적 전략:</strong> 소형 기업(직원 10명)의 예산 규모를 고려해, Tier 1으로 시작 후 성과 기반으로 Tier 2 확대를 권장합니다. 다만, 에딧세이 사이트 접속 불가 상태가 긴급하므로 Tier 2 '웹사이트 구축'을 포함한 패키지가 가장 현실적인 제안입니다.
+            <strong>확인 필요:</strong> 인크루트에 대표자 "정옥구"로 표기됨. 공동대표이거나 변경 이력일 수 있음.
         </div>
     </div>
 
-    <!-- 10. 상담 전략 -->
-    <div class="section" id="s10">
-        <h2>10. 상담 전략</h2>
+    <!-- ============================================================ -->
+    <!-- 7. SWOT 분석 -->
+    <!-- ============================================================ -->
+    <div class="section" id="swot">
+        <h2>7. SWOT 분석</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>S (강점)</h4>
+                <ul>
+                    <li>콘텐츠/미디어 제작 역량 보유 (본업)</li>
+                    <li>기술특허 2건 + 기업부설연구소</li>
+                    <li>벤처인증 (혁신성장유형)</li>
+                    <li>대표의 사업 기획 역량 (경영학 + 벤처 수상)</li>
+                    <li>서울+세종 이중 거점</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>W (약점)</h4>
+                <ul>
+                    <li>뷰티 업계 도메인 경험 부재 (추정)</li>
+                    <li>유비발디 브랜드 아이덴티티 미정립</li>
+                    <li>디지털 프레즌스 거의 0 (온라인 노출 없음)</li>
+                    <li>극소 마케팅 예산 (월 300만원 이하)</li>
+                    <li>제품 라인업/USP 외부 미공개</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>O (기회)</h4>
+                <ul>
+                    <li>K-뷰티 글로벌 시장 급성장 (CAGR 6%)</li>
+                    <li>인디 브랜드 성공 모델 다수 존재</li>
+                    <li>ODM/OEM 인프라로 소자본 제품 제조 가능</li>
+                    <li>콘텐츠 역량 = 뷰티 SNS 마케팅 최대 무기</li>
+                    <li>클린 슬레이트 — 처음부터 제대로 구축 가능</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>T (위협)</h4>
+                <ul>
+                    <li>연간 폐업 화장품 업체 3,000개+</li>
+                    <li>올리브영/쿠팡 등 유통 파워의 지배력</li>
+                    <li>대형 브랜드의 마케팅 예산 압도</li>
+                    <li>본업(콘텐츠)과 신사업(뷰티) 리소스 충돌 가능</li>
+                    <li>뷰티 규제 (화장품책임판매업 등록 등)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-        <h3>핵심 레버리지 문장</h3>
-        <div class="leverage">
-            "영상 편집 전문 기업인데, 에딧세이 홈페이지가 접속 불가 상태이고 SNS에서 포트폴리오를 볼 수 없습니다. 잠재 고객이 검색해도 여러분의 작업물을 만날 수 없는 상태 -- 지금이 브랜드를 정비할 적기입니다."
+    <!-- ============================================================ -->
+    <!-- 8. 니즈 분석 (SPIN + JTBD) -->
+    <!-- ============================================================ -->
+    <div class="section" id="needs-analysis">
+        <h2>8. 니즈 분석 (SPIN + JTBD)</h2>
+
+        <h3>대표님 원문 (보존)</h3>
+        <div class="script-block">
+            "신규 뷰티 브랜드로 시장에서 독보적인 플레이를 하기 위한 무기(브랜딩, 마케팅 방안 등)에 대한 어려움을 겪고 있습니다."
         </div>
 
-        <h3>상담 흐름 시나리오</h3>
-        <div class="scenario-step">
-            <div class="step-num">1</div>
-            <div>
-                <strong>아이스브레이킹 (5분)</strong><br>
-                "세이어바웃이 에딧세이와 꼬까씬콘텐츠랩까지 운영하고 계시는 걸 알게 됐는데, 각 서비스의 현재 상황이 궁금합니다."
-                <br><span style="font-size:12px; color:var(--text-light);">→ 에딧세이 사이트 접속 불가 상태 확인, 사업 현황 파악</span>
+        <h3>키워드 심층 분석</h3>
+        <table>
+            <tr><th>키워드</th><th>심리 해석</th></tr>
+            <tr><td><strong>"신규"</strong></td><td>시장 진입 자체를 아직 못 했거나 막 시작한 상태. 기존 고객/매출 기반 없음</td></tr>
+            <tr><td><strong>"독보적인 플레이"</strong></td><td>"다르게 해야 한다"는 인식. 단순 판매가 아닌 차별화 욕구. 외부에 "이 브랜드는 다르다"는 인식을 만들고 싶음</td></tr>
+            <tr><td><strong>"무기"</strong></td><td>맨손으로 전장에 선 느낌. 전략/도구/체계의 부재</td></tr>
+            <tr><td><strong>"등"</strong></td><td>브랜딩인지 마케팅인지 본인도 뭐가 필요한지 정확히 모름</td></tr>
+            <tr><td><strong>"어려움을 겪고"</strong></td><td>이미 시도했으나 잘 안 된 경험, 또는 시작 자체를 못 하고 막혀 있는 상태</td></tr>
+        </table>
+
+        <h3>SPIN 분석</h3>
+        <div class="spin-grid">
+            <div class="spin-card spin-s">
+                <h4>S (Situation) 상황</h4>
+                <ul>
+                    <li>콘텐츠/IT 기업(9명)이 뷰티 신사업으로 유비발디를 준비/초기 운영 중</li>
+                    <li>온라인에서 유비발디 검색 시 거의 노출 안 됨 (인지도 0)</li>
+                    <li>월 예산 300만원 이하 (뷰티 시장에서는 극히 제한적)</li>
+                    <li>기대 성과 미기재 = 구체적 목표 수립이 안 된 상태</li>
+                </ul>
+            </div>
+            <div class="spin-card spin-p">
+                <h4>P (Problem) 문제</h4>
+                <ul>
+                    <li>"독보적 플레이를 할 무기가 없다" = 차별화 전략+실행 도구 부재</li>
+                    <li>브랜딩과 마케팅 방안 모두 정리 안 됨</li>
+                    <li>뭐부터 해야 할지 우선순위를 잡지 못함</li>
+                    <li>뷰티 시장 감각과 도메인 지식 부족</li>
+                </ul>
+            </div>
+            <div class="spin-card spin-i">
+                <h4>I (Implication) 방치 시 파급</h4>
+                <ul>
+                    <li>시장 진입 타이밍 상실 (6개월 내 경쟁 포지션 선점 위험)</li>
+                    <li>300만원이라도 방향 없이 쓰면 "마케팅은 돈만 든다" 결론</li>
+                    <li>팀 동력 상실 (신사업 우선순위 하락)</li>
+                    <li>본업과 신사업 모두 리소스 분산 위험</li>
+                </ul>
+            </div>
+            <div class="spin-card spin-n">
+                <h4>N (Need-Payoff) 해결 시 가치</h4>
+                <ul>
+                    <li>콘텐츠 역량을 뷰티에 접목한 독자적 포지셔닝 확보</li>
+                    <li>300만원으로도 먹히는 채널/전술 집중 → 초기 traction</li>
+                    <li>3개월 내 시장 검증 (PMF) → 사업 지속/피봇 판단 근거</li>
+                    <li>콘텐츠 역량 + 브랜드 전략 = 비용 대비 최고 효율</li>
+                </ul>
             </div>
         </div>
-        <div class="scenario-step">
-            <div class="step-num">2</div>
-            <div>
-                <strong>현황 진단 공유 (10분)</strong><br>
-                "영상/콘텐츠 제작 전문 기업이신데, 온라인에서 회사를 찾기가 어렵습니다." 에딧세이 사이트 접속 불가, SNS 부재, 브랜드 3개 분산 등 객관적 현황 공유.
-                <br><span style="font-size:12px; color:var(--text-light);">→ 문제 인식 공감 유도. 경쟁사(에딧메이트 20억 투자유치) 대비 상황 제시.</span>
+
+        <h3>고민 계층 분석 (Pain Hierarchy)</h3>
+        <div class="pain-layer">
+            <div class="pain-level pain-l1">
+                <span class="level-tag">L1 표면 요청</span>
+                "브랜딩과 마케팅 방안이 필요하다"<br>
+                로고, BI, 가이드라인 등 구체적 산출물 기대
+            </div>
+            <div class="pain-level pain-l2">
+                <span class="level-tag">L2 전술적 문제</span>
+                "뭘 먼저 해야 하는지 모른다"<br>
+                300만원을 어디에 집중해야 하는지 의사결정 프레임워크 부재
+            </div>
+            <div class="pain-level pain-l3">
+                <span class="level-tag">L3 전략적 문제</span>
+                "뷰티 시장에서 어떤 포지션을 잡아야 하는지 모른다"<br>
+                포지셔닝 → 브랜딩 → 마케팅의 가장 앞단이 비어 있음
+            </div>
+            <div class="pain-level pain-l4">
+                <span class="level-tag">L4 근본 원인</span>
+                콘텐츠/IT → 뷰티 전환 과정에서 도메인 전문성과 시장 감각의 공백<br>
+                "무기가 없다"는 감정의 근본 원인
             </div>
         </div>
-        <div class="scenario-step">
-            <div class="step-num">3</div>
-            <div>
-                <strong>기회 제시 (10분)</strong><br>
-                "에딧메이트는 브랜딩과 포트폴리오 웹사이트 하나로 20억 투자유치까지 이어졌습니다. 세이어바웃도 동일한 역량이 있는데, 브랜드가 이를 보여주지 못하고 있습니다."
-                <br><span style="font-size:12px; color:var(--text-light);">→ 가능성과 긴급성 동시 제시</span>
+
+        <h3>표면 니즈 vs 진짜 니즈</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">표면 니즈 (말한 것)</div>
+                <ul>
+                    <li>브랜드 마케팅 (BI 개발 등)</li>
+                    <li>브랜딩/마케팅 도구가 없다</li>
+                    <li>독보적인 브랜드를 만들고 싶다</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">추정 진짜 니즈</div>
+                <ul>
+                    <li>뷰티 시장 진입 전략 + 포지셔닝 + 브랜딩 + 초기 세일즈 퍼널</li>
+                    <li>뷰티 시장 자체에 대한 이해와 실전 감각 보완</li>
+                    <li>300만원으로도 가시적 성과가 나는 실행 가능한 로드맵</li>
+                </ul>
             </div>
         </div>
-        <div class="scenario-step">
-            <div class="step-num">4</div>
-            <div>
-                <strong>솔루션 제안 (10분)</strong><br>
-                3-Tier 견적 제시. 소규모 기업 특성 고려, Tier 1 진단부터 시작하되, 에딧세이 사이트 문제 해결이 급하므로 Tier 2 패키지 권장.
-                <br><span style="font-size:12px; color:var(--text-light);">→ "최소 Tier 1으로 브랜드 정리부터 시작하시죠"</span>
+
+        <h3>JTBD (Jobs to Be Done)</h3>
+        <table>
+            <tr><th>Job 유형</th><th>내용</th></tr>
+            <tr><td><strong>Functional Job</strong></td><td>유비발디 BI 체계 수립 + 300만원 이하 마케팅 실행 계획 + 타겟 정의 + 첫 판매 채널 확보</td></tr>
+            <tr><td><strong>Social Job</strong></td><td>"콘텐츠 회사가 만든 뷰티"가 아닌 "진짜 뷰티 브랜드"로 인정받고 싶음. 업계/투자자에게 "다른 브랜드"라는 인식</td></tr>
+            <tr><td><strong>Emotional Job</strong></td><td>"맨손으로 싸우고 있다"는 불안감 해소 → 전략/체계가 갖춰진 안심 상태. "뭘 해야 할지 모르겠다"는 막막함 탈출</td></tr>
+        </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 9. GAP 분석 & 기회 평가 -->
+    <!-- ============================================================ -->
+    <div class="section" id="gap-analysis">
+        <h2>9. GAP 분석 & 기회 평가</h2>
+
+        <h3>기회 적합도 평가 (6개 항목)</h3>
+        <table>
+            <tr><th>항목</th><th>가중치</th><th>점수</th><th>근거</th></tr>
+            <tr><td>니즈-서비스 핏</td><td>30%</td><td>5/5</td><td>"브랜딩, 마케팅 방안"을 직접 요청. 핵심 서비스와 정확히 일치</td></tr>
+            <tr><td>예산 적합성</td><td>20%</td><td>2/5</td><td>월 300만원 이하. 프로젝트형 전환 필요</td></tr>
+            <tr><td>의사결정 구조</td><td>15%</td><td>4/5</td><td>대표가 직접 문의. 의사결정자와 직접 소통 가능 (추정)</td></tr>
+            <tr><td>긴급도</td><td>15%</td><td>3/5</td><td>메일 미회신. "알아보는 중" 단계</td></tr>
+            <tr><td>성장 잠재력</td><td>10%</td><td>4/5</td><td>헬스/뷰티 시장 성장세. 리테이너 전환 여지 큼</td></tr>
+            <tr><td>레퍼런스 가치</td><td>10%</td><td>3/5</td><td>뷰티 카테고리 레퍼런스 확보 가치</td></tr>
+        </table>
+
+        <div class="verdict">
+            <div class="label">종합 기회 적합도</div>
+            <div class="value">3.65 / 5.0</div>
+            <div class="desc">Conditional Go — 프로젝트형(일시불) + 리테이너(월정액) 하이브리드 구조 필수</div>
+        </div>
+
+        <h3>수주 확률 시나리오</h3>
+        <table>
+            <tr><th>시나리오</th><th>확률</th><th>조건</th></tr>
+            <tr><td>Best: Professional 수주</td><td>30%</td><td>예산 인식 전환 성공 (월정액 → 프로젝트 투자 프레이밍)</td></tr>
+            <tr><td>Base: Essential 수주</td><td>40%</td><td>소규모 시작 후 확장 구조 제안</td></tr>
+            <tr><td>Worst: 미수주</td><td>30%</td><td>예산 제약 극복 실패 또는 내부 결정 지연</td></tr>
+        </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 10. 3-Tier 견적 초안 -->
+    <!-- ============================================================ -->
+    <div class="section" id="quote">
+        <h2>10. 3-Tier 견적 초안</h2>
+
+        <div class="tier-cards">
+            <div class="tier-card">
+                <h4>Essential</h4>
+                <div style="font-size: 13px; color: var(--text-light);">Brand Foundation</div>
+                <div class="price">480만원</div>
+                <div class="duration">1개월 / 프로젝트형</div>
+                <ul>
+                    <li>현재 브랜드 자산 점검 + 경쟁 환경 간략 분석</li>
+                    <li>로고 리파인/개발 + 기본 컬러/폰트 가이드</li>
+                    <li>브랜드 포지셔닝 1-pager</li>
+                    <li>콘텐츠 방향 권장안</li>
+                    <li>산출물: 로고 파일, 가이드시트, 포지셔닝 메모</li>
+                </ul>
+            </div>
+            <div class="tier-card recommended">
+                <div class="tier-badge">RECOMMENDED</div>
+                <h4>Professional</h4>
+                <div style="font-size: 13px; color: var(--text-light);">Brand Identity Builder</div>
+                <div class="price">980만원</div>
+                <div class="duration">2개월 / 프로젝트형 (4개월 분할 가능 = 월 245만)</div>
+                <ul>
+                    <li>경쟁사 벤치마킹 + 포지셔닝 전략</li>
+                    <li>핵심 메시지 체계 수립</li>
+                    <li>로고/심볼 + 컬러 시스템 + 타이포그래피</li>
+                    <li>브랜드 가이드라인 (풀 버전)</li>
+                    <li>SNS 톤앤매너 가이드 + 비주얼 무드보드</li>
+                    <li>초기 콘텐츠 템플릿 5종</li>
+                    <li>산출물: 브랜드덱, 가이드라인, 콘텐츠 방향 가이드</li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>Premium</h4>
+                <div style="font-size: 13px; color: var(--text-light);">Brand Launch Partner</div>
+                <div class="price">1,800만원</div>
+                <div class="duration">3개월 / 프로젝트형 + 런칭 후 2개월 운영 포함</div>
+                <ul>
+                    <li>시장분석 + 경쟁사 매핑 + 포지셔닝 전략</li>
+                    <li>타겟 페르소나 정의</li>
+                    <li>풀 BI 개발 (로고~가이드라인북)</li>
+                    <li>SNS 채널 전략 + 3개월 콘텐츠 캘린더</li>
+                    <li>GTM(Go-to-Market) 전략 + 런칭 플랜</li>
+                    <li>런칭 후 2개월 마케팅 운영 포함 (월 200만원 x 2)</li>
+                    <li>산출물: 브랜드덱, 가이드라인북, GTM 플랜, 콘텐츠 캘린더</li>
+                </ul>
             </div>
         </div>
-        <div class="scenario-step">
-            <div class="step-num">5</div>
-            <div>
-                <strong>클로징 (5분)</strong><br>
-                "정부지원사업 바우처를 활용하면 비용 부담을 줄일 수 있습니다. 벤처 인증 기업이시니 지원 자격이 있으실 겁니다."
-                <br><span style="font-size:12px; color:var(--text-light);">→ 예산 부담 해소 + 다음 스텝 확정</span>
+
+        <div class="leverage-box">
+            <div style="font-size: 14px; opacity: 0.8;">가치 프레이밍</div>
+            <div class="quote">"뷰티 브랜드 런칭 후 첫 해 마케팅에 평균 매출의 20%를 쓰게 됩니다.<br>그 비용의 효과를 좌우하는 브랜드 기반을 지금 구축하는 것입니다.<br>브랜딩 없이 마케팅비를 쓰면, 절반 이상이 허공에 날아갑니다."</div>
+        </div>
+
+        <div class="callout callout-info">
+            <strong>예산 제약 대응:</strong> 대표님이 "월 300만원"이라고 한 것은 월정액 리테이너 개념일 가능성 높음. 상담에서 반드시 구분 필요. "브랜딩은 매달 나가는 비용이 아니라, 한 번 만들어두면 3~5년 쓰는 자산입니다." Professional 4개월 분할 시 월 245만원.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 11. 상담 전략 & 코칭 -->
+    <!-- ============================================================ -->
+    <div class="section" id="strategy">
+        <h2>11. 상담 전략 & 코칭</h2>
+
+        <h3>60분 상담 타임라인</h3>
+        <div class="timeline-phase">
+            <div class="phase-time">0:00~5:00<br>(5분)</div>
+            <div class="phase-content">
+                <h4>Phase 1: 라포 형성</h4>
+                <p>비디오쿠키/꼬까씬 콘텐츠 역량에 대한 존중 → 뷰티 진출 계기를 자연스럽게 끌어냄</p>
             </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">5:00~15:00<br>(10분)</div>
+            <div class="phase-content">
+                <h4>Phase 2: 상황 확인 (SPIN S+P)</h4>
+                <p>제품 준비 상태, 팀 구성, 지금까지 시도한 것, "독보적 플레이"의 구체적 의미 탐색</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">15:00~30:00<br>(15분)</div>
+            <div class="phase-content">
+                <h4>Phase 3: 깊은 진단 (SPIN I+N)</h4>
+                <p>방치 시 파급효과 → 해결 시 가치 → 직접 진단 ("유비발디를 검색하면 정보가 없는 상태. 역으로 처음부터 제대로 세팅할 기회")</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">30:00~40:00<br>(10분)</div>
+            <div class="phase-content">
+                <h4>Phase 4: 인사이트 공유 (Challenger Teach)</h4>
+                <p>SCQA 프레이밍 + 3가지 Teaching 포인트 전달 (아래 참고)</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">40:00~50:00<br>(10분)</div>
+            <div class="phase-content">
+                <h4>Phase 5: 솔루션 방향</h4>
+                <p>3단계 방향 제시 (브랜드 파운데이션 → 고객 접점 설계 → 런칭 캠페인). 가격은 제시하지 않음</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">50:00~60:00<br>(10분)</div>
+            <div class="phase-content">
+                <h4>Phase 6: 클로징</h4>
+                <p>다음 단계 합의 → 제안서 발송 약속 → 2차 미팅 일정 잡기 → Quick Tip 전달</p>
+            </div>
+        </div>
+
+        <h3>아이스브레이킹 소재</h3>
+        <div class="script-block">
+            "대표님, 미팅 준비하면서 비디오쿠키 사이트 봤는데요. 자막 템플릿 퀄리티가 정말 좋더라고요. 영상 제작 쪽에서 이미 탄탄하게 하고 계신 분이 뷰티 쪽으로 새 브랜드를 준비하신다니, 어떤 계기가 있으셨는지 궁금했습니다."
+        </div>
+
+        <h3>Challenger Teaching 3 포인트</h3>
+        <div class="leverage-box" style="text-align: left;">
+            <div style="font-size: 14px; opacity: 0.8; margin-bottom: 12px;">상담에서 대표님에게 가르쳐줄 인사이트</div>
+            <div style="font-size: 15px; line-height: 1.8;">
+                <strong>1. 뷰티 인디브랜드 3,000개 폐업의 공통점</strong><br>
+                "제품 먼저, 브랜드 나중" 전략. 브랜드 없이 가격 경쟁에 빠져 사라짐.<br><br>
+                <strong>2. 디자인과 브랜딩은 다른 것</strong><br>
+                디자인은 브랜딩의 20%. 핵심은 "왜 이 브랜드여야 하는가"에 대한 답 (=포지셔닝+메시지 전략).<br><br>
+                <strong>3. 지금이 가장 싼 시점</strong><br>
+                6개월 뒤에 시작해도 되지만, 그 동안 방향 없이 쓸 마케팅 비용이 브랜딩 비용보다 큰 낭비.
+            </div>
+        </div>
+
+        <h3>필수 질문 스크립트</h3>
+
+        <div class="question-card">
+            <div class="q-num">Q1</div>
+            <div class="q-text">"유비발디가 지금 어느 단계예요? 제품이 이미 나와 있나요, 기획 중인가요?"</div>
+            <div class="q-intent">의도: 프로젝트 성숙도 파악. 제품 유무에 따라 제안 범위가 완전히 달라짐</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q2</div>
+            <div class="q-text">"이 브랜드를 쓸 고객이 누구라고 생각하세요? 구체적으로 어떤 사람이요?"</div>
+            <div class="q-intent">의도: 타겟 페르소나 수준 진단. 막연한 답 vs 구체적 답에 따라 전략 깊이가 결정</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q3</div>
+            <div class="q-text">"독보적인 플레이라고 말씀하셨는데, '이런 브랜드처럼 되고 싶다' 하는 레퍼런스가 있으세요?"</div>
+            <div class="q-intent">의도: "독보적"이 비주얼 차별화인지, 기술 차별화인지, 마케팅 방식 차별화인지 판별</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q4</div>
+            <div class="q-text">"유비발디 관련해서 지금까지 해보신 것들이 있으시면 공유해 주세요. 잘 된 것과 안 된 것 모두요."</div>
+            <div class="q-intent">의도: 시도 후 실패인지, 시작 자체를 못 한 것인지 확인. 실패 데이터 = 전략 출발점</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q5</div>
+            <div class="q-text">"6개월 뒤에 유비발디가 어떤 상태였으면 좋겠어요?"</div>
+            <div class="q-intent">의도: 기대치와 현실 간 갭 확인. 비현실적 기대 → 이 시점에 조율 필요</div>
         </div>
 
         <h3>예상 반론 & 대응</h3>
-        <div class="qna">
-            <div class="q">Q. "우리는 B2B라서 마케팅이 크게 필요 없어요"</div>
-            <div class="a">A. "B2B라도 의사결정자가 검색하고 비교합니다. 에딧메이트 홈페이지와 비교했을 때, 클라이언트는 어디에 발주할까요? 포트폴리오 웹사이트 하나가 영업 인력 한 명보다 효과적입니다."</div>
+        <table>
+            <tr><th>반론</th><th>대응 전략</th></tr>
+            <tr>
+                <td><strong>"비싸다 / 예산 부족"</strong></td>
+                <td>Essential 480만원 제시 + "브랜딩은 매달 나가는 비용이 아니라 3~5년 쓰는 자산". Professional 4개월 분할 시 월 245만원. 브랜딩 없이 SNS 광고 CPC 2~3배 높아짐을 수치로 설명.</td>
+            </tr>
+            <tr>
+                <td><strong>"직접 해볼게요"</strong></td>
+                <td>"좋은 생각입니다. 다만 지금까지 직접 하셨는데 만족스러웠다면 문의 안 하셨을 것 같아요." + Essential 1개월 시범 제안.</td>
+            </tr>
+            <tr>
+                <td><strong>"다른 데도 비교 중"</strong></td>
+                <td>"당연히 비교하세요. 비교 기준 3가지: (1) 뷰티 업종 경험, (2) 디자인만 vs 전략+디자인, (3) 브랜딩 후 마케팅 연결 여부."</td>
+            </tr>
+            <tr>
+                <td><strong>"디자이너에게 맡기면?"</strong></td>
+                <td>"디자이너는 '어떻게 예쁘게'를 해결. 저희는 '왜 이 브랜드여야 하는가'를 해결. 순서: 왜 → 어떻게. 전략 없이 디자인 맡기면 3번 수정해도 만족 못 함."</td>
+            </tr>
+        </table>
+
+        <h3>Trusted Advisor Quick Tip</h3>
+        <div class="callout callout-success">
+            <strong>상담 마무리에 무료로 드리는 팁:</strong><br><br>
+            "유비발디 인스타 계정 하나 만드세요. 아직 제품이 없어도 됩니다. '뷰티 브랜드를 만드는 과정'을 콘텐츠로 올리세요. 제품 개발, OEM 공장, 패키지 시안 고르기... 요즘 소비자들은 완성된 브랜드보다 만들어지는 과정에 빠져들어요. 대표님은 영상 만드는 게 본업이시니까 추가 비용 0원. 글로시에, 탬버린즈 초기에도 이렇게 시작했습니다."<br><br>
+            <em>"이건 저희랑 일하시든 안 하시든 도움이 되실 거예요."</em>
         </div>
-        <div class="qna">
-            <div class="q">Q. "예산이 부족합니다"</div>
-            <div class="a">A. "중소벤처기업부 디지털 전환 바우처, 콘텐츠 제작 지원사업 등 벤처 인증 기업 대상 지원이 있습니다. Tier 1 진단(500만 원)은 정부 지원 없이도 시작 가능한 규모이고, 이후 바우처 연계로 확대할 수 있습니다."</div>
-        </div>
-        <div class="qna">
-            <div class="q">Q. "직접 할 수 있지 않을까요? 우리도 콘텐츠 만드는 회사인데"</div>
-            <div class="a">A. "맞습니다. 하지만 5년간 직접 하지 못한 이유가 있으실 겁니다. 대부분의 제작사가 '남의 일'은 하면서 '자기 일'은 못합니다. 외부 파트너가 객관적 시선으로 브랜드를 정리해드리는 게 핵심입니다."</div>
-        </div>
-        <div class="qna">
-            <div class="q">Q. "에딧세이를 접거나 피봇할 수도 있는데요"</div>
-            <div class="a">A. "오히려 그 판단을 위해서도 Tier 1 진단이 필요합니다. 에딧세이를 살릴지, 꼬까씬에 집중할지, 통합할지 -- 브랜드 전략 없이 결정하면 또 시행착오가 반복됩니다."</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 12. 클로징 전략 -->
+    <!-- ============================================================ -->
+    <div class="section" id="closing">
+        <h2>12. 클로징 전략</h2>
+
+        <h3>이상적 수주 플로우</h3>
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="step-num">STEP 1</div>
+                <div class="step-title">팔로업 메일</div>
+                <div class="step-desc">D+3 (4/19)<br>가치 제공형</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 2</div>
+                <div class="step-title">무료 진단 통화</div>
+                <div class="step-desc">30분 온라인<br>현재 브랜드 상태 진단</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 3</div>
+                <div class="step-title">제안서 발송</div>
+                <div class="step-desc">3-Tier<br>Professional 추천</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 4</div>
+                <div class="step-title">계약 + 킥오프</div>
+                <div class="step-desc">2개월 프로젝트<br>브랜딩 시작</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 5</div>
+                <div class="step-title">리테이너 전환</div>
+                <div class="step-desc">월 200~300만<br>마케팅 운영</div>
+            </div>
         </div>
 
-        <h3>상담 시 반드시 확인할 사항</h3>
-        <div class="callout-blue callout">
-            <ol style="font-size:14px; padding-left:20px; line-height:2;">
-                <li>에딧세이 서비스 현재 상태 (운영 중단? 리뉴얼? 피봇?)</li>
-                <li>꼬까씬콘텐츠랩의 주요 클라이언트와 프로젝트 현황</li>
-                <li>연 매출 규모 및 마케팅 예산 가능 범위</li>
-                <li>임혜현(인크루트 등록 대표)과의 관계 (공동대표? 이전 대표?)</li>
-                <li>인바운드 리드 획득 현재 방식 (입찰? 소개? 기타?)</li>
-                <li>정부지원사업 바우처 활용 의향</li>
-                <li>사업 방향성 (영상편집 대행 지속? 뉴미디어 콘텐츠 특화? 통합?)</li>
-            </ol>
+        <h3>팔로업 시퀀스 (메일 미회신 대응)</h3>
+        <table>
+            <tr><th>시점</th><th>채널</th><th>핵심 메시지</th></tr>
+            <tr><td><strong>D+3 (4/19)</strong></td><td>이메일</td><td>뷰티 브랜딩 시 가장 흔한 3가지 고민 인사이트 + 15분 통화 제안. 가격 이야기 없이 가치만 전달.</td></tr>
+            <tr><td><strong>D+7 (4/23)</strong></td><td>인스타DM / 전화</td><td>"메일 확인 어려우실 수 있어서 연락드립니다. 무료 30분 진단 세션 제안."</td></tr>
+            <tr><td><strong>D+14 (4/30)</strong></td><td>이메일 (마지막)</td><td>"타이밍이 아니시면 괜찮습니다. 뷰티 브랜딩 체크리스트 보내드릴 수 있어요." 압박 없이 가치를 남기고 빠짐.</td></tr>
+        </table>
+
+        <h3>긴급성 요소</h3>
+        <table>
+            <tr><th>요소</th><th>활용법</th></tr>
+            <tr><td>시장 타이밍</td><td>"K-뷰티 인디 브랜드 진입 창이 열려 있는 지금, 6개월 뒤 같은 포지션에 경쟁자 3~5개 추가"</td></tr>
+            <tr><td>비용 타이밍</td><td>"브랜딩 없이 6개월 마케팅 = 브랜딩 투자금의 2~3배 낭비"</td></tr>
+            <tr><td>제한적 오퍼</td><td>"이달 계약 시 브랜드 경쟁사 벤치마킹 리포트(50만원 상당) 무료 제공"</td></tr>
+        </table>
+
+        <h3>리스크 제거 장치</h3>
+        <table>
+            <tr><th>장치</th><th>내용</th></tr>
+            <tr><td>무료 진단 세션</td><td>30분 온라인 미팅 — 현재 브랜드 상태 진단 자체가 가치</td></tr>
+            <tr><td>분할 납부</td><td>Professional 2~4개월 분할 가능 (월 245~490만)</td></tr>
+            <tr><td>단계별 진행</td><td>Essential로 시작 후 확장 가능</td></tr>
+            <tr><td>만족 보장</td><td>1차 컨셉 시안(2주차) 확인 후 방향 안 맞으면 잔금 없이 마무리 (Essential 한정)</td></tr>
+        </table>
+
+        <h3>상담 후 액션 리스트</h3>
+        <table>
+            <tr><th>#</th><th>액션</th><th>담당</th><th>마감</th></tr>
+            <tr><td>1</td><td>상담 내용 정리 (내부 랩업 문서)</td><td>Green</td><td>당일</td></tr>
+            <tr><td>2</td><td>대표님께 감사 메일 + 상담 요약 발송</td><td>Green</td><td>당일</td></tr>
+            <tr><td>3</td><td>유비발디 브랜드 진단 + 제안서 초안</td><td>Green + 브랜드 전략가</td><td>D+2</td></tr>
+            <tr><td>4</td><td>제안서 내부 리뷰 (범위/가격 적정성)</td><td>PM</td><td>D+3</td></tr>
+            <tr><td>5</td><td>최종 제안서 발송</td><td>Green</td><td>D+4</td></tr>
+            <tr><td>6</td><td>제안서 확인 여부 팔로업</td><td>Green</td><td>D+7</td></tr>
+            <tr><td>7</td><td>2차 미팅 일정 확정</td><td>Green</td><td>D+7~10</td></tr>
+        </table>
+
+        <div class="leverage-box">
+            <div style="font-size: 14px; opacity: 0.8;">최종 목표</div>
+            <div class="quote">"프로젝트형 980만원 + 이후 월정액 200만원 리테이너"<br>= 연간 약 3,380만원 규모의 클라이언트</div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 참고 링크 -->
+    <!-- ============================================================ -->
+    <div class="section">
+        <h2>참고 링크</h2>
+        <div class="source-list">
+            <p><a href="https://sayabout.imweb.me/" target="_blank">세이어바웃 공식 사이트</a></p>
+            <p><a href="https://www.rocketpunch.com/companies/sayabout" target="_blank">로켓펀치 세이어바웃 기업정보</a></p>
+            <p><a href="https://www.rocketpunch.com/@6d140238" target="_blank">이재연 대표 로켓펀치 프로필</a></p>
+            <p><a href="https://bizno.net/article/3358802111" target="_blank">bizno 사업자등록 정보</a></p>
+            <p><a href="http://kkokkascene.com/" target="_blank">꼬까씬콘텐츠랩</a></p>
+            <p><a href="https://www.videocookie.shop/" target="_blank">비디오쿠키 (세이어바웃 운영)</a></p>
+            <p><a href="https://www.pwc.com/kr/ko/insights/industry-focus/k-beauty-guidebook.html" target="_blank">PwC K-뷰티 가이드북</a></p>
+            <p><a href="https://business.hwahae.co.kr/insight/beauty-trend-2025-kbeauty-strategy/" target="_blank">화해 K-뷰티 트렌드</a></p>
+            <p><a href="https://thevc.kr/collections/680f8288fd038e31e6b39407" target="_blank">THE VC 화장품 스타트업 리스트</a></p>
         </div>
     </div>
 
 </div>
 
 <div class="footer">
-    <strong>HIZ 브랜드라이즈</strong> | New Business Research<br>
-    주식회사 세이어바웃 (SAYABOUT) 상담 준비 패키지 | 2026.03.31<br>
-    <span style="font-size:11px; margin-top:4px; display:inline-block;">Confidential - For Internal Use Only</span>
+    <p>BRANDRISE (MarketingOS) -- New Business 상담 준비 패키지</p>
+    <p>이 문서는 상담 준비 목적으로 작성되었으며, 외부 공유를 금합니다.</p>
 </div>
 
 </body>
