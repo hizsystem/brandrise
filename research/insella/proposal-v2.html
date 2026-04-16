@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>인셀라(INSELLA) — 견적서 | BRANDRISE</title>
+    <title>인셀라(INCELLA) x 브랜드라이즈 — 론칭 파트너십 제안 | BRANDRISE</title>
     <style>
         :root {
             --accent: #EA580C;
@@ -25,6 +25,7 @@
 
         .section { background: #fff; border-radius: 10px; padding: 28px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
         .section h2 { font-size: 16px; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--accent); }
+        .section h3 { font-size: 14px; font-weight: 600; margin: 20px 0 10px; color: var(--accent); }
 
         table { width: 100%; border-collapse: collapse; margin: 8px 0; }
         th { background: #f8fafb; padding: 9px 14px; text-align: left; font-weight: 600; font-size: 13px; border-bottom: 2px solid var(--border); }
@@ -34,12 +35,36 @@
         .highlight { color: var(--accent); font-weight: 700; }
         .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; background: var(--warm); color: var(--accent); }
 
-        .quote-total { background: var(--warm); padding: 20px 24px; border-radius: 8px; margin: 12px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .quote-total { background: var(--warm); padding: 20px 24px; border-radius: 8px; margin: 16px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
         .qt-label { font-size: 13px; color: var(--text-light); }
         .qt-value { font-size: 28px; font-weight: 800; color: var(--accent); }
         .qt-sub { font-size: 12px; color: var(--text-light); }
 
         .callout { background: var(--warm); border-left: 3px solid var(--accent); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; font-size: 13px; }
+
+        .hero-quote { background: linear-gradient(135deg, var(--warm), #fff); border: 1px solid rgba(234,88,12,0.15); border-radius: 10px; padding: 24px 28px; margin-bottom: 16px; text-align: center; }
+        .hero-quote p { font-size: 18px; font-weight: 700; color: var(--accent); }
+        .hero-quote .sub { font-size: 13px; color: var(--text-light); margin-top: 4px; }
+
+        .status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 12px 0; }
+        .status-item { padding: 10px 14px; border-radius: 6px; font-size: 12px; }
+        .status-ready { background: #f0fdf4; border: 1px solid #bbf7d0; }
+        .status-ready::before { content: "✓ "; color: #16a34a; font-weight: 700; }
+        .status-gap { background: #fef2f2; border: 1px solid #fecaca; }
+        .status-gap::before { content: "△ "; color: #dc2626; font-weight: 700; }
+
+        .area-card { border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin: 12px 0; }
+        .area-card .area-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .area-card .area-title { font-size: 15px; font-weight: 700; }
+        .area-card .area-budget { font-size: 16px; font-weight: 800; color: var(--accent); }
+        .area-card .area-tagline { font-size: 12px; color: var(--text-light); font-style: italic; margin-bottom: 10px; }
+
+        .phase-timeline { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 12px 0; }
+        .phase-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
+        .phase-card .phase-label { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; }
+        .phase-card .phase-title { font-size: 14px; font-weight: 700; margin: 4px 0; }
+        .phase-card .phase-desc { font-size: 12px; color: var(--text-light); line-height: 1.6; }
+        .phase-card .phase-amount { font-size: 16px; font-weight: 800; color: var(--accent); margin-top: 8px; }
 
         /* Reference cards */
         .ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
@@ -57,7 +82,9 @@
             .header { padding: 32px 20px 20px; }
             .header h1 { font-size: 22px; }
             .section { padding: 20px 16px; }
+            .status-grid { grid-template-columns: 1fr; }
             .ref-grid { grid-template-columns: 1fr; }
+            .phase-timeline { grid-template-columns: 1fr; }
             .quote-total { flex-direction: column; text-align: center; }
         }
     </style>
@@ -65,79 +92,263 @@
 <body>
 
 <div class="header">
-    <div class="header-badge">QUOTE & REFERENCE</div>
-    <h1>인셀라(INSELLA) 견적서</h1>
-    <div class="subtitle">청우메디칼 x 브랜드라이즈 | 6개월 론칭 파트너십 | 2026.04</div>
+    <div class="header-badge">PROPOSAL & ESTIMATE</div>
+    <h1>인셀라(INCELLA) x 브랜드라이즈</h1>
+    <div class="subtitle">론칭 마케팅 파트너십 제안 | 청우메디칼 | 2026.04</div>
 </div>
 
 <div class="container">
 
     <!-- ============================================================ -->
-    <!-- 견적 -->
+    <!-- 한 줄 요약 -->
+    <!-- ============================================================ -->
+    <div class="hero-quote">
+        <p>"D-day를 잡고, 사전작업을 깔고, 한 번에 터뜨립니다"</p>
+        <div class="sub">인셀라 론칭 6개월 풀 파트너십</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 지금 상황 -->
     <!-- ============================================================ -->
     <div class="section">
-        <h2>견적</h2>
+        <h2>지금 상황</h2>
+        <p style="margin-bottom: 12px;">청우메디칼은 25년간 의료장비를 만들어온 기술력이 있고, 홈뷰티 디바이스 브랜드 <strong>인셀라(INCELLA)</strong>를 론칭합니다.</p>
+
+        <div class="status-grid">
+            <div class="status-item status-ready">큐티프로 EMS 패치 + 리프팅밴드 — 캡슐 구조 반복구매 모델</div>
+            <div class="status-item status-ready">콘텐츠 80개 촬영 진행 중</div>
+            <div class="status-item status-ready">4/20 홈페이지 오픈 확정</div>
+            <div class="status-item status-ready">5/29 네이버 라이브 확정</div>
+            <div class="status-item status-gap">인스타 "바이어가 봤을 때 세련된" 수준 미세팅</div>
+            <div class="status-item status-gap">인플루언서/시딩 초기 버즈 체계 없음</div>
+            <div class="status-item status-gap">공동구매 셀러 연결 안 됨</div>
+            <div class="status-item status-gap">"25년 기술" 스토리 → 콘텐츠 전환 안 됨</div>
+        </div>
+
+        <div class="callout">
+            <strong>기술은 있는데, 아직 세상에 인셀라를 보여줄 무대가 없습니다.</strong>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 6개월 후 -->
+    <!-- ============================================================ -->
+    <div class="section">
+        <h2>6개월 후 모습</h2>
+        <table>
+            <tr><th>지표</th><th>지금</th><th>6개월 후</th></tr>
+            <tr><td>인스타그램</td><td>미세팅</td><td class="highlight">피드 톤앤매너 완성, 릴스 50개+, 팔로워 1만+</td></tr>
+            <tr><td>인플루언서</td><td>0건</td><td class="highlight">100명 협업 콘텐츠, 버즈 확산</td></tr>
+            <tr><td>공동구매</td><td>미진행</td><td class="highlight">탑셀러 5인 통한 매출 발생</td></tr>
+            <tr><td>메타 광고</td><td>미집행</td><td class="highlight">잘 되는 릴스 기반 광고 최적화</td></tr>
+            <tr><td>네이버 라이브</td><td>5/29 예정</td><td class="highlight">사전 버즈 깔린 상태 → 전환율 극대화</td></tr>
+            <tr><td>브랜드 인지도</td><td>0</td><td class="highlight">"홈뷰티 신흥 브랜드" 포지션 안착</td></tr>
+        </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 2억 예산 — 이렇게 씁니다 -->
+    <!-- ============================================================ -->
+    <div class="section">
+        <h2>2억 예산 — 이렇게 씁니다</h2>
 
         <table>
-            <tr><th>영역</th><th>Phase 1<br>(M1~2)</th><th>Phase 2<br>(M3~4)</th><th>Phase 3<br>(M5~6)</th><th>6개월</th></tr>
+            <tr><th>영역</th><th>예산</th><th>해드리는 것</th></tr>
             <tr>
-                <td><strong>인스타그램 브랜딩 & 운영</strong><br><span style="font-size:12px; color:var(--text-light);">톤앤매너 세팅, 콘텐츠 기획/제작, 채널 운영</span></td>
-                <td>800만</td><td>600만</td><td>600만</td>
-                <td class="highlight">2,000만</td>
+                <td><strong>인스타그램</strong></td>
+                <td class="highlight">5,500만</td>
+                <td>톤앤매너 세팅 + 월간 콘텐츠 기획/제작/운영 + 성과 리포팅</td>
             </tr>
             <tr>
-                <td><strong>시딩 기획 / 매칭 / QC</strong><br><span style="font-size:12px; color:var(--text-light);">인플루언서 선정, 바이럴 가이드, 효율 분석</span></td>
-                <td>500만</td><td>400만</td><td>400만</td>
-                <td class="highlight">1,300만</td>
+                <td><strong>메타 광고</strong></td>
+                <td class="highlight">3,000만</td>
+                <td>광고 세팅 + 소재 제작 + 운영/최적화 + 리포팅 (광고비 포함)</td>
             </tr>
             <tr>
-                <td><strong>공구 셀러 매칭 & 지원</strong><br><span style="font-size:12px; color:var(--text-light);">탑셀러 4명 연결, 공구 기획, 콘텐츠 지원</span></td>
-                <td>200만</td><td>300만</td><td>200만</td>
-                <td class="highlight">700만</td>
+                <td><strong>인플루언서 + 씨딩</strong></td>
+                <td class="highlight">9,000만</td>
+                <td>100명 선정/섭외/가이드/QC + 씨딩 전략 (인플루언서 비용 포함)</td>
             </tr>
             <tr>
-                <td><strong>메타 광고 운영</strong><br><span style="font-size:12px; color:var(--text-light);">시딩 콘텐츠 부스트, A/B 테스트, 리포팅</span></td>
-                <td>100만</td><td>200만</td><td>200만</td>
-                <td class="highlight">500만</td>
-            </tr>
-            <tr>
-                <td><strong>Heyday 미국 시딩</strong><br><span style="font-size:12px; color:var(--text-light);">루트 확인, 시딩 기획, PR 연결</span></td>
-                <td>—</td><td>200만</td><td>100만</td>
-                <td class="highlight">300만</td>
-            </tr>
-            <tr>
-                <td><strong>전략 수립 & PM</strong><br><span style="font-size:12px; color:var(--text-light);">론칭 IMC 전략, 6개월 풀 리포트</span></td>
-                <td>300만</td><td>—</td><td>200만</td>
-                <td class="highlight">500만</td>
+                <td><strong>공동구매</strong></td>
+                <td class="highlight">2,500만</td>
+                <td>탑셀러 5명 매칭/협상 + 공구 기획/실행 지원 (셀러 착수금 포함)</td>
             </tr>
         </table>
 
         <div class="quote-total">
             <div>
-                <div class="qt-label">브랜드라이즈 파트너십</div>
-                <div class="qt-value">5,300만원</div>
-                <div class="qt-sub">6개월 / VAT 별도 / 월 883만원</div>
+                <div class="qt-label">6개월 론칭 파트너십</div>
+                <div class="qt-value">2억원</div>
+                <div class="qt-sub">VAT 별도</div>
             </div>
             <div style="text-align:right;">
-                <div class="qt-label">2억 예산 대비</div>
-                <div style="font-size:22px; font-weight:800; color:var(--accent);">27%</div>
-                <div class="qt-sub">나머지 73% = 광고비·물량·공구 실비</div>
+                <div class="qt-label">4개 영역 올인원</div>
+                <div style="font-size: 18px; font-weight: 700; color: var(--accent);">인스타 + 광고 + 인플루언서 + 공구</div>
+                <div class="qt-sub">설계부터 실행까지 브랜드라이즈가 운영</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 영역별 상세 -->
+    <!-- ============================================================ -->
+    <div class="section">
+        <h2>영역별 상세</h2>
+
+        <!-- 인스타그램 -->
+        <div class="area-card">
+            <div class="area-header">
+                <div class="area-title">1. 인스타그램</div>
+                <div class="area-budget">5,500만원</div>
+            </div>
+            <div class="area-tagline">"바이어가 봤을 때 세련된 브랜드"를 만드는 것</div>
+            <table>
+                <tr><th>하는 일</th><th>구체적 내용</th></tr>
+                <tr><td>톤앤매너 세팅</td><td>피드 그리드 설계, 컬러 팔레트, 타이포 가이드, 무드보드</td></tr>
+                <tr><td>콘텐츠 기획</td><td>월간 콘텐츠 캘린더, 콘텐츠 시리즈, 피드&amp;릴스 기획</td></tr>
+                <tr><td>콘텐츠 제작</td><td>피드 디자인, 릴스 편집, 카피라이팅, 스토리 템플릿</td></tr>
+                <tr><td>채널 운영</td><td>게시, 해시태그 전략, 댓글 관리, DM 응대 가이드</td></tr>
+                <tr><td>성과 리포팅</td><td>주간 인사이트, 월간 성과 리포트</td></tr>
+            </table>
+            <p style="font-size: 12px; color: var(--text-light); margin-top: 8px;"><strong>월간 산출물:</strong> 피드 12~15개 + 릴스 8~10개 + 스토리 20개+</p>
+        </div>
+
+        <!-- 메타 광고 -->
+        <div class="area-card">
+            <div class="area-header">
+                <div class="area-title">2. 메타 광고</div>
+                <div class="area-budget">3,000만원</div>
+            </div>
+            <div class="area-tagline">"잘 되는 릴스를 광고로 부스트" — 광고비 포함</div>
+            <table>
+                <tr><th>하는 일</th><th>구체적 내용</th></tr>
+                <tr><td>계정 세팅</td><td>광고 계정, 픽셀 설치, 전환 이벤트 세팅</td></tr>
+                <tr><td>캠페인 설계</td><td>타겟 오디언스, 미디어 믹스, 예산 배분</td></tr>
+                <tr><td>소재 제작</td><td>인스타 콘텐츠 → 광고용 편집, A/B 테스트</td></tr>
+                <tr><td>최적화</td><td>타겟/소재/배치 최적화, 리타겟팅</td></tr>
+                <tr><td>리포팅</td><td>주간/월간 광고 성과 리포트</td></tr>
+            </table>
+        </div>
+
+        <!-- 인플루언서 -->
+        <div class="area-card">
+            <div class="area-header">
+                <div class="area-title">3. 인플루언서 + 씨딩</div>
+                <div class="area-budget">9,000만원 / 100명</div>
+            </div>
+            <div class="area-tagline">"톰뷰티 벤치마크하되, 인셀라만의 차별화"</div>
+            <table>
+                <tr><th>하는 일</th><th>구체적 내용</th></tr>
+                <tr><td>전략 수립</td><td>티어별 물량 배분, 웨이브 설계, KPI 설정</td></tr>
+                <tr><td>인플루언서 선정</td><td>100명 리스트업, 적합도 스코어링, 섭외</td></tr>
+                <tr><td>가이드 제작</td><td>바이럴 포인트 가이드, 촬영 레퍼런스, 필수 멘션</td></tr>
+                <tr><td>QC & 리포팅</td><td>콘텐츠 사전 검수, 성과 트래킹, 효율 분석</td></tr>
+                <tr><td>씨딩 자문</td><td>물량 배분, 씨딩 키트 구성, 언박싱 가이드</td></tr>
+            </table>
+            <p style="font-size: 12px; color: var(--text-light); margin-top: 10px; font-weight: 600;">티어 믹스안 (100명 기준):</p>
+            <table>
+                <tr><th>티어</th><th>팔로워</th><th>단가</th><th>인원</th></tr>
+                <tr><td>메가</td><td>10만+</td><td>300~500만</td><td>3명</td></tr>
+                <tr><td>미드</td><td>3~10만</td><td>100~200만</td><td>15명</td></tr>
+                <tr><td>마이크로</td><td>1~3만</td><td>30~80만</td><td>40명</td></tr>
+                <tr><td>나노</td><td>1만 이하</td><td>10~30만</td><td>42명</td></tr>
+            </table>
+            <p style="font-size: 11px; color: var(--text-light); margin-top: 6px;">* 티어 믹스는 예시이며, 협의하여 최종 확정합니다.</p>
+        </div>
+
+        <!-- 공동구매 -->
+        <div class="area-card">
+            <div class="area-header">
+                <div class="area-title">4. 공동구매</div>
+                <div class="area-budget">2,500만원 / 5명</div>
+            </div>
+            <div class="area-tagline">"탑셀러 연결 — 다른 에이전시가 못 주는 밸류"</div>
+            <table>
+                <tr><th>하는 일</th><th>구체적 내용</th></tr>
+                <tr><td>셀러 리스트업</td><td>뷰티 디바이스 카테고리 탑셀러 5인 프로필 + 실적</td></tr>
+                <tr><td>매칭 & 협상</td><td>셀러 미팅, 조건 협상 (착수금 + 수익 쉐어)</td></tr>
+                <tr><td>공구 기획</td><td>셀러별 공구 타임라인, 특가 구조, 리뷰 이벤트 설계</td></tr>
+                <tr><td>실행 지원</td><td>셀러 전용 콘텐츠 제작, 상세페이지 감수, 성과 리포트</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 6개월 로드맵 -->
+    <!-- ============================================================ -->
+    <div class="section">
+        <h2>6개월 로드맵</h2>
+
+        <div class="phase-timeline">
+            <div class="phase-card">
+                <div class="phase-label">Phase 1 — M1~M2</div>
+                <div class="phase-title">사전 세팅</div>
+                <div class="phase-desc">
+                    인스타 톤앤매너 세팅<br>
+                    인플루언서 1차 웨이브 30명<br>
+                    공구 탑셀러 5명 미팅<br>
+                    5/29 라이브 사전 버즈
+                </div>
+                <div class="phase-amount">7,000만</div>
+            </div>
+            <div class="phase-card">
+                <div class="phase-label">Phase 2 — M3~M4</div>
+                <div class="phase-title">확산 & 매출</div>
+                <div class="phase-desc">
+                    인플루언서 2~3차 (누적 70명)<br>
+                    공구 1~2차 실행<br>
+                    메타 광고 본격 운영<br>
+                    더마실 론칭 대비
+                </div>
+                <div class="phase-amount">6,500만</div>
+            </div>
+            <div class="phase-card">
+                <div class="phase-label">Phase 3 — M5~M6</div>
+                <div class="phase-title">안착 & 스케일</div>
+                <div class="phase-desc">
+                    인플루언서 앰배서더 전환<br>
+                    공구 3~4차 최적화<br>
+                    메타 광고 효율 극대화<br>
+                    <strong>6개월 풀 리포트</strong>
+                </div>
+                <div class="phase-amount">6,500만</div>
             </div>
         </div>
 
-        <div class="callout">
-            광고비(미디어), 시딩 제품/물류, 공구 셀러 착수금은 이사님 직접 집행.<br>
-            브랜드라이즈는 <strong>설계 + 운영 + 매칭</strong> 역할입니다.
-        </div>
+        <p style="font-size: 12px; color: var(--text-light); margin-top: 8px;">
+            <strong>핵심 마일스톤:</strong> 4/20 홈페이지 오픈 → 인스타 피드 세팅 완료 | 5/29 네이버 라이브 → 사전 버즈 + 공구 셀러 확정
+        </p>
+    </div>
 
-        <h2 style="margin-top:24px;">결제</h2>
+    <!-- ============================================================ -->
+    <!-- 결제 구조 -->
+    <!-- ============================================================ -->
+    <div class="section">
+        <h2>결제 구조</h2>
         <table>
             <tr><th>시점</th><th>금액</th><th></th></tr>
-            <tr><td>계약 시</td><td class="highlight">1,900만</td><td>Phase 1 (M1~2)</td></tr>
-            <tr><td>M3 시작</td><td class="highlight">1,700만</td><td>Phase 2 (M3~4)</td></tr>
-            <tr><td>M5 시작</td><td class="highlight">1,700만</td><td>Phase 3 (M5~6)</td></tr>
+            <tr><td>계약 시</td><td class="highlight">7,000만원</td><td>Phase 1 (M1~2)</td></tr>
+            <tr><td>M3 시작</td><td class="highlight">6,500만원</td><td>Phase 2 (M3~4)</td></tr>
+            <tr><td>M5 시작</td><td class="highlight">6,500만원</td><td>Phase 3 (M5~6)</td></tr>
         </table>
-        <p style="font-size:12px; color:var(--text-light); margin-top:6px;">Phase 1 완료 후 성과 보고 Phase 2 진행 여부 결정 가능.</p>
+        <p style="font-size: 12px; color: var(--text-light); margin-top: 8px;">VAT 별도. Phase 1 완료 후 성과를 보고 Phase 2 진행 여부 결정 가능합니다.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 경쟁사 포지셔닝 -->
+    <!-- ============================================================ -->
+    <div class="section">
+        <h2>경쟁사 포지셔닝 — 왜 지금, 이 방식인가</h2>
+        <table>
+            <tr><th>브랜드</th><th>전략</th><th>시사점</th></tr>
+            <tr><td><strong>메디큐브 (APR)</strong></td><td>자체 콘텐츠 + 대규모 광고비</td><td>같은 판에서 싸우면 안 됨</td></tr>
+            <tr><td><strong>톰뷰티</strong></td><td>시딩 → 공구 → 입소문</td><td class="highlight">인셀라 카운터브랜드</td></tr>
+            <tr><td><strong>듀얼소닉</strong></td><td>의료기기 기술 마케팅</td><td>기술은 비슷, 브랜딩 부족</td></tr>
+        </table>
+        <div class="callout" style="margin-top: 12px;">
+            <strong>인셀라의 포지션:</strong> "25년 의료기기 기술 + 세련된 뷰티 브랜딩" = 기술은 듀얼소닉급, 브랜딩은 톰뷰티급
+        </div>
     </div>
 
     <!-- ============================================================ -->
@@ -145,11 +356,12 @@
     <!-- ============================================================ -->
     <div class="section">
         <h2>레퍼런스 — 히즈(HIZ) 실적</h2>
+        <p style="font-size: 12px; color: var(--text-light); margin-bottom: 12px;">*회사소개서에도 포함되어 있습니다.</p>
 
-        <h3 style="font-size:14px; font-weight:600; margin-bottom:10px; color:var(--accent);">인스타그램 브랜딩 & 운영</h3>
+        <h3>인스타그램 브랜딩 & 운영</h3>
         <div class="ref-grid">
             <div class="ref-card">
-                <img src="../../portfolio_images/page_16_hpoint.jpg" alt="H.Point">
+                <img src="../../portfolio_images/page_16_hpoint.jpg" alt="H.Point" onerror="this.style.display='none'">
                 <div class="rc-body">
                     <div class="rc-tag">SNS 채널 운영</div>
                     <div class="rc-title">현대백화점 H.Point</div>
@@ -157,7 +369,7 @@
                 </div>
             </div>
             <div class="ref-card">
-                <img src="../../portfolio_images/page_14_hyundai_foundation.jpg" alt="현대차 정몽구 재단">
+                <img src="../../portfolio_images/page_14_hyundai_foundation.jpg" alt="현대차 정몽구 재단" onerror="this.style.display='none'">
                 <div class="rc-body">
                     <div class="rc-tag">전 채널 리뉴얼</div>
                     <div class="rc-title">현대차 정몽구 재단</div>
@@ -166,84 +378,52 @@
             </div>
         </div>
 
-        <h3 style="font-size:14px; font-weight:600; margin: 20px 0 10px; color:var(--accent);">시딩 & 인플루언서</h3>
+        <h3>인플루언서 바이럴 & 팝업 캠페인</h3>
         <div class="ref-grid">
             <div class="ref-card">
-                <img src="../../portfolio_images/page_06_yogiyo_1.jpg" alt="요기요">
+                <img src="../../portfolio_images/page_15_heineken.jpg" alt="하이네켄" onerror="this.style.display='none'">
                 <div class="rc-body">
-                    <div class="rc-tag">SNS 채널 운영 & 캠페인</div>
-                    <div class="rc-title">요기요 SNS</div>
-                    <div class="rc-desc">채널 운영 + 인플루언서 캠페인 기획/실행</div>
+                    <div class="rc-tag">바이럴 캠페인 · 도달 460만+</div>
+                    <div class="rc-title">하이네켄 콘텐츠 바이럴 캠페인</div>
+                    <div class="rc-desc">시딩 캠페인 +96만 바이럴 · 게시물 저장 4,177<br>인플루언서 자발적 2차 바이럴 달성</div>
                 </div>
             </div>
             <div class="ref-card">
-                <img src="../../portfolio_images/page_15_heineken.jpg" alt="하이네켄">
+                <img src="../../portfolio_images/page_18_bibigo_seventeen.jpg" alt="비비고 x 세븐틴" onerror="this.style.display='none'">
                 <div class="rc-body">
-                    <div class="rc-tag">디지털 캠페인</div>
-                    <div class="rc-title">하이네켄 바이럴 캠페인</div>
-                    <div class="rc-desc">디지털 캠페인 바이럴 기획/실행</div>
+                    <div class="rc-tag">팝업스토어 기획 & 운영</div>
+                    <div class="rc-title">비비고 x 세븐틴 팝업스토어</div>
+                    <div class="rc-desc">K-POP 팬덤 타겟 대규모 팝업<br>홍대·명동 2개관 기획/크리에이티브/운영 전담</div>
                 </div>
             </div>
         </div>
 
-        <h3 style="font-size:14px; font-weight:600; margin: 20px 0 10px; color:var(--accent);">공구 셀러 매칭</h3>
+        <h3>공구 & 인플루언서 캠페인</h3>
         <div class="ref-grid">
             <div class="ref-card">
-                <img src="../../portfolio_images/buyernetwork.jpg" alt="바이어 네트워크">
+                <img src="../../portfolio_images/gongu_ref_1.png" alt="공구 레퍼런스 1" onerror="this.style.display='none'">
                 <div class="rc-body">
-                    <div class="rc-tag">네트워크</div>
-                    <div class="rc-title">해외 바이어 네트워크 831개 거래처</div>
-                    <div class="rc-desc">국내외 유통/바이어/셀러 네트워크 보유<br>뷰티 디바이스 카테고리 탑셀러 접근 가능</div>
-                </div>
-            </div>
-            <div class="ref-card" style="background:#fafbfc; display:flex; align-items:center; justify-content:center; min-height:180px;">
-                <div class="rc-body" style="text-align:center;">
-                    <div class="rc-tag">공구 실적</div>
-                    <div class="rc-title" style="font-size:16px;">공구 셀러 레퍼런스</div>
-                    <div class="rc-desc">탑셀러 프로필 & 실적은<br>미팅에서 별도 공유드립니다</div>
-                </div>
-            </div>
-        </div>
-
-        <h3 style="font-size:14px; font-weight:600; margin: 20px 0 10px; color:var(--accent);">해외 (Heyday / 미국)</h3>
-        <div class="ref-grid">
-            <div class="ref-card">
-                <img src="../../portfolio_images/globalretail.jpg" alt="글로벌 리테일">
-                <div class="rc-body">
-                    <div class="rc-tag">미국 시장</div>
-                    <div class="rc-title">글로벌 리테일 진출</div>
-                    <div class="rc-desc">미국 시장 진출 전략 수립 & 실행</div>
+                    <div class="rc-tag">공구 캠페인 · 콘텐츠 도달 30만+</div>
+                    <div class="rc-title">돌체구스토 공구 캠페인</div>
+                    <div class="rc-desc">인플루언서 Reels + Story 바이럴<br>공구 오픈 후 <strong>조기 마감</strong> 달성</div>
                 </div>
             </div>
             <div class="ref-card">
-                <img src="../../portfolio_images/kbrandpopup.jpg" alt="K-브랜드 팝업">
+                <img src="../../portfolio_images/gongu_ref_2.png" alt="공구 레퍼런스 2" onerror="this.style.display='none'">
                 <div class="rc-body">
-                    <div class="rc-tag">뉴욕</div>
-                    <div class="rc-title">K-브랜드 팝업 8회 운영</div>
-                    <div class="rc-desc">뉴욕 에스테틱/리테일 현지 네트워크 보유<br>Heyday 시딩 루트 접근 가능</div>
+                    <div class="rc-tag">공구 캠페인 · 콘텐츠 도달 130만+</div>
+                    <div class="rc-title">인플루언서 공구 캠페인</div>
+                    <div class="rc-desc">팬덤 기반 공구 → <strong>매출 목표 초과 달성</strong><br>광고비 0원, 오가닉 바이럴만으로 전환</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- 다음 스텝 -->
-    <!-- ============================================================ -->
-    <div class="section">
-        <h2>다음 스텝</h2>
-        <table>
-            <tr><th>일정</th><th>내용</th></tr>
-            <tr><td class="highlight">4/14(월)</td><td>견적서 검토 → 범위/가격 조율</td></tr>
-            <tr><td>합의 후</td><td>계약 → 즉시 Phase 1 착수 (인스타 세팅 + 셀러 부킹)</td></tr>
-            <tr><td class="highlight">4/20</td><td>홈페이지 오픈과 동시에 인스타 라이브</td></tr>
-            <tr><td class="highlight">5/29</td><td>네이버 라이브 전까지 사전 버즈 완료</td></tr>
-        </table>
-    </div>
 
 </div>
 
 <div class="footer">
-    BRANDRISE | 인셀라(INSELLA) 견적서<br>
+    BRANDRISE | 인셀라(INCELLA) 론칭 파트너십 제안<br>
     2026.04 | Confidential
 </div>
 
