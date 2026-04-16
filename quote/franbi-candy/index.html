@@ -184,44 +184,6 @@
     }
     .info-box strong { color: #6B8F3A; }
 
-    /* TIMELINE */
-    .tl-wrap { margin-top: 44px; }
-    .tl-row {
-      display: grid; grid-template-columns: 120px 1fr; gap: 0;
-      min-height: 100px; position: relative;
-    }
-    .tl-left {
-      position: relative; padding: 24px 28px 24px 0; text-align: right;
-    }
-    .tl-left::after {
-      content: ''; position: absolute; right: -6px; top: 30px;
-      width: 12px; height: 12px; border-radius: 50%;
-      background: var(--accent); border: 3px solid var(--white);
-      box-shadow: 0 0 0 2px var(--accent);
-    }
-    .tl-row:not(:last-child) .tl-left::before {
-      content: ''; position: absolute; right: -1px; top: 42px;
-      width: 2px; height: calc(100% - 12px);
-      background: var(--gray-200);
-    }
-    .tl-period {
-      font-size: 11px; font-weight: 800; letter-spacing: 0.08em;
-      color: var(--accent); text-transform: uppercase;
-    }
-    .tl-right {
-      padding: 20px 0 20px 28px; border-left: none;
-    }
-    .tl-title { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 6px; }
-    .tl-desc { font-size: 13px; color: var(--gray-500); line-height: 1.75; }
-    .tl-tag {
-      display: inline-block; font-size: 10px; font-weight: 800;
-      padding: 3px 11px; border-radius: 20px; letter-spacing: 0.05em;
-      margin-top: 8px;
-    }
-    .tag-strategy { background: #EDE9FE; color: #7C3AED; }
-    .tag-design { background: #FEF3C7; color: #B45309; }
-    .tag-delivery { background: #D1FAE5; color: #059669; }
-
     /* FOOTER */
     .footer { background: var(--black); color: rgba(255,255,255,0.4); padding: 72px 0; text-align: center; }
     .footer .brand { font-size: 20px; font-weight: 900; color: var(--white); margin-bottom: 6px; letter-spacing: -0.02em; }
