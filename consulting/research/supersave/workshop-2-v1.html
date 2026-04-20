@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>슈퍼세이브 브랜드 컨설팅 — 워크샵 2회차</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap');
+
+  :root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --accent: #2d3a8c;
+    --accent-light: #eef0ff;
+    --blue: #3b82f6;
+    --blue-light: #eff6ff;
+    --orange: #f97316;
+    --orange-light: #fff7ed;
+    --green: #10b981;
+    --green-light: #ecfdf5;
+    --red: #ef4444;
+    --red-light: #fef2f2;
+    --purple: #8b5cf6;
+    --purple-light: #f5f3ff;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-600: #4b5563;
+    --hiz-orange: #e8491d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===================== SLIDE SYSTEM ===================== */
+  .slide {
+    width: 1122px;
+    height: 793px;
+    padding: 60px 70px;
+    margin: 0 auto 2px;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+  }
+  .slide--dark { background: var(--accent); color: #ffffff; }
+  .slide--gradient { background: linear-gradient(135deg, #1e2a6e 0%, #2d3a8c 40%, #3b4fa6 100%); color: #ffffff; }
+  .slide--green-gradient { background: linear-gradient(135deg, #064e3b 0%, #065f46 40%, #047857 100%); color: #ffffff; }
+  .slide--orange-gradient { background: linear-gradient(135deg, #9a3412 0%, #c2410c 40%, #e8491d 100%); color: #ffffff; }
+
+  /* ===================== COVER ===================== */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 100px 90px;
+  }
+  .cover__badge {
+    display: inline-block;
+    background: var(--hiz-orange);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+  .cover__title {
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+  .cover__subtitle {
+    font-size: 18px;
+    font-weight: 300;
+    opacity: 0.85;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+  .cover__meta { font-size: 13px; opacity: 0.6; line-height: 2; }
+  .cover__logo {
+    position: absolute;
+    bottom: 32mm;
+    right: 36mm;
+    width: 56px;
+    height: 56px;
+    background: var(--hiz-orange);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 900;
+    color: #fff;
+    font-style: italic;
+  }
+
+  /* ===================== SECTION DIVIDER ===================== */
+  .divider {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    padding: 100px 90px;
+  }
+  .divider__number { font-size: 72px; font-weight: 900; opacity: 0.15; line-height: 1; margin-bottom: 8px; }
+  .divider__title { font-size: 36px; font-weight: 900; letter-spacing: -1px; margin-bottom: 12px; }
+  .divider__desc { font-size: 15px; font-weight: 300; opacity: 0.7; max-width: 500px; }
+
+  /* ===================== CONTENT ===================== */
+  .slide__header {
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--accent);
+  }
+  .slide__section-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--hiz-orange);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .slide__title {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.3;
+  }
+  .slide__page {
+    position: absolute;
+    bottom: 24px;
+    right: 36px;
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .slide--dark .slide__page,
+  .slide--gradient .slide__page,
+  .slide--green-gradient .slide__page,
+  .slide--orange-gradient .slide__page {
+    color: rgba(255,255,255,0.4);
+  }
+  .slide::after {
+    content: 'BRAND RISE';
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--muted);
+    opacity: 0.5;
+  }
+  .slide--dark::after,
+  .slide--gradient::after,
+  .slide--green-gradient::after,
+  .slide--orange-gradient::after {
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ===================== GRIDS ===================== */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 14px; }
+  .grid-2-1 { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+  .grid-1-2 { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; }
+
+  /* ===================== CARDS ===================== */
+  .card {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .card--accent { border-left: 4px solid var(--accent); }
+  .card--orange { border-left: 4px solid var(--hiz-orange); }
+  .card--blue { border-left: 4px solid var(--blue); }
+  .card--green { border-left: 4px solid var(--green); }
+  .card--purple { border-left: 4px solid var(--purple); }
+  .card--red { border-left: 4px solid var(--red); }
+  .card--filled { background: var(--gray-50); border: none; }
+  .card--dark { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; }
+
+  .card__icon { font-size: 24px; margin-bottom: 10px; }
+  .card__label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .card__title { font-size: 15px; font-weight: 700; margin-bottom: 8px; line-height: 1.4; }
+  .card__value { font-size: 28px; font-weight: 900; color: var(--accent); line-height: 1.2; margin-bottom: 4px; }
+  .card__desc { font-size: 12.5px; color: var(--gray-600); line-height: 1.7; }
+
+  /* ===================== TAGS ===================== */
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin: 2px 3px 2px 0;
+  }
+  .tag--blue { background: var(--blue-light); color: var(--blue); }
+  .tag--green { background: var(--green-light); color: var(--green); }
+  .tag--orange { background: var(--orange-light); color: var(--orange); }
+  .tag--purple { background: var(--purple-light); color: var(--purple); }
+  .tag--red { background: var(--red-light); color: var(--red); }
+  .tag--accent { background: var(--accent-light); color: var(--accent); }
+
+  /* ===================== LISTS ===================== */
+  .insight-list { list-style: none; padding: 0; }
+  .insight-list li {
+    position: relative;
+    padding: 7px 0 7px 20px;
+    font-size: 13px;
+    line-height: 1.6;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .insight-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 7px;
+    height: 7px;
+    background: var(--hiz-orange);
+    border-radius: 50%;
+  }
+  .insight-list li:last-child { border-bottom: none; }
+
+  /* ===================== TABLE ===================== */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .data-table thead th {
+    background: var(--accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+  }
+  .data-table thead th:first-child { border-radius: 6px 0 0 0; }
+  .data-table thead th:last-child { border-radius: 0 6px 0 0; }
+  .data-table tbody td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--gray-200);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .data-table tbody tr:nth-child(even) { background: var(--gray-50); }
+
+  /* ===================== SOURCE ===================== */
+  .source-note {
+    font-size: 9px;
+    color: var(--muted);
+    margin-top: 12px;
+    padding-top: 6px;
+    border-top: 1px solid var(--gray-200);
+  }
+
+  /* ===================== KEYWORD PYRAMID ===================== */
+  .pyramid { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 6px; }
+  .pyramid__tier {
+    border-radius: 14px;
+    padding: 14px 24px;
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+  }
+  .pyramid__core {
+    background: var(--hiz-orange);
+    font-size: 22px;
+    font-weight: 900;
+    width: 360px;
+  }
+  .pyramid__primary {
+    background: var(--accent);
+    font-size: 14px;
+    width: 600px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .pyramid__secondary {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 12px;
+    width: 820px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .pyramid__label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: -4px;
+  }
+
+  /* ===================== POSITIONING MAP ===================== */
+  .map {
+    position: relative;
+    width: 100%;
+    height: 360px;
+    background: var(--gray-50);
+    border-radius: 10px;
+    border: 1px solid var(--gray-200);
+  }
+  .map__axis-x, .map__axis-y {
+    position: absolute;
+    background: var(--gray-600);
+  }
+  .map__axis-x { left: 8%; right: 8%; top: 50%; height: 2px; }
+  .map__axis-y { top: 8%; bottom: 8%; left: 50%; width: 2px; }
+  .map__label {
+    position: absolute;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gray-600);
+  }
+  .map__label--top { top: 10px; left: 50%; transform: translateX(-50%); }
+  .map__label--bottom { bottom: 10px; left: 50%; transform: translateX(-50%); }
+  .map__label--left { left: 12px; top: 50%; transform: translateY(-50%); }
+  .map__label--right { right: 12px; top: 50%; transform: translateY(-50%); }
+  .map__point {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .map__point-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin: 0 auto 4px;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+  .map__point-name {
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+    background: rgba(255,255,255,0.9);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .map__point--target .map__point-dot {
+    width: 20px;
+    height: 20px;
+    background: var(--hiz-orange);
+    box-shadow: 0 0 0 4px rgba(232,73,29,0.25);
+  }
+  .map__point--target .map__point-name {
+    background: var(--hiz-orange);
+    color: #fff;
+  }
+
+  /* ===================== COMPARE TABLE ===================== */
+  .star { color: var(--hiz-orange); font-size: 13px; letter-spacing: 1px; }
+  .star-empty { color: var(--gray-200); font-size: 13px; letter-spacing: 1px; }
+
+  /* ===================== PRINT ===================== */
+  @media print {
+    @page { size: 1122px 793px; margin: 0; }
+    html, body {
+      width: 1122px;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    .slide {
+      width: 1122px !important;
+      height: 793px !important;
+      margin: 0 !important;
+      padding: 60px 70px !important;
+      page-break-after: always;
+      page-break-inside: avoid;
+      break-after: page;
+      break-inside: avoid;
+      overflow: hidden !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+    .slide:last-child { page-break-after: auto; break-after: auto; }
+  }
+
+  @media screen {
+    body { background: #d1d5db; padding: 20px 0; }
+    .slide { box-shadow: 0 4px 24px rgba(0,0,0,0.12); border-radius: 4px; margin-bottom: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- SLIDE 1: COVER -->
+<!-- ============================================================ -->
+<div class="slide slide--gradient cover">
+  <div class="cover__badge">BRAND CONSULTING</div>
+  <h1 class="cover__title">슈퍼세이브 브랜드 컨설팅</h1>
+  <p class="cover__subtitle">워크샵 2회차 v1 — 포지셔닝 &amp; 핵심 메시지 정립 (리브랜딩 과제 반영 전 초안)</p>
+  <div class="cover__meta">
+    2026. 04 | HIZ BRAND RISE | Confidential
+  </div>
+  <div class="cover__logo">H</div>
+  <span class="slide__page">01</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 2: DIVIDER 01 — 1차 리캡 -->
+<!-- ============================================================ -->
+<div class="slide slide--dark divider">
+  <div class="divider__number">01</div>
+  <div class="divider__title">1차 워크샵 리캡</div>
+  <div class="divider__desc">브랜드 진단 결과 요약 &amp; 방향성 확정</div>
+  <span class="slide__page">02</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 3: 1차 합의사항 요약 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">RECAP</div>
+    <h2 class="slide__title">1차 워크샵 핵심 합의 사항</h2>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 14px;">
+    <div class="card card--orange">
+      <div class="card__label">핵심 문제 재확인</div>
+      <div class="card__title" style="margin-bottom: 8px;">브랜드 현황 3대 이슈</div>
+      <ul class="insight-list">
+        <li><strong>브랜드 아이덴티티 부재</strong> — 로고·패키지·톤앤매너 비일관</li>
+        <li><strong>카테고리 인지도 한계</strong> — "곰보배추" 자체 인지도 낮음</li>
+        <li><strong>포지셔닝 논리 부족</strong> — 저가 경쟁 시장에서 프리미엄 근거 약함</li>
+      </ul>
+    </div>
+
+    <div class="card card--accent">
+      <div class="card__label">타겟 페르소나 우선순위</div>
+      <div class="card__title" style="margin-bottom: 8px;">1차 선정 결과</div>
+      <ul class="insight-list">
+        <li><strong>1순위 A</strong> — 건강 케어맘 김소영 (40대 초반, 주부)</li>
+        <li><strong>2순위 C</strong> — 효도 선물족 이준호 (30대 후반, 기혼)</li>
+        <li><strong>3순위 B</strong> — 웰니스 직장인 박지원 (30대 중반, 미혼)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 핵심 방향성 확정 배너 -->
+  <div style="background: linear-gradient(135deg, var(--accent) 0%, var(--hiz-orange) 100%); color: #fff; border-radius: 12px; padding: 22px 28px; display: flex; align-items: center; gap: 20px;">
+    <div style="font-size: 36px;">🎯</div>
+    <div style="flex: 1;">
+      <div style="font-size: 11px; font-weight: 700; letter-spacing: 2px; opacity: 0.8; margin-bottom: 4px;">DIRECTION CONFIRMED</div>
+      <div style="font-size: 18px; font-weight: 900; margin-bottom: 4px;">방향성 확정 — A + B 하이브리드</div>
+      <div style="font-size: 12.5px; opacity: 0.95; line-height: 1.6;">
+        "<strong>곰보배추 전문성</strong>을 기반으로 <strong>온 가족 건강 루틴</strong>을 책임지는 브랜드" · 전문적이면서도 따뜻한 페르소나
+      </div>
+    </div>
+  </div>
+
+  <div class="source-note" style="margin-top: 18px;">
+    1차 워크샵 결과(2026.04) · HIZ BRAND RISE 정리
+  </div>
+  <span class="slide__page">03</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 4: 브랜드사 과제 실행 결과 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">ACTION REVIEW</div>
+    <h2 class="slide__title">브랜드사 과제 실행 결과 — 1→2차 사이</h2>
+  </div>
+
+  <div class="grid-2" style="gap: 12px; margin-bottom: 12px;">
+    <div class="card card--blue" style="padding: 14px 16px;">
+      <div class="card__label">과제 1</div>
+      <div class="card__title" style="font-size: 13px; margin-bottom: 4px;">방향성 내부 반응 수집</div>
+      <div class="card__desc" style="font-size: 11.5px;">
+        "전문적이면서도 따뜻한" 방향에 내부 공감대 형성. 다만 "곰보배추 전문성" 노출 수위에 대해 이견 존재 — 본 워크샵에서 조율.
+      </div>
+    </div>
+    <div class="card card--orange" style="padding: 14px 16px;">
+      <div class="card__label">과제 2</div>
+      <div class="card__title" style="font-size: 13px; margin-bottom: 4px;">실제 구매 고객 데이터 정리</div>
+      <div class="card__desc" style="font-size: 11.5px;">
+        공식몰 리뷰 1,564건 · 평점 4.9 · 핵심 키워드 <strong>비염/환절기/아이/달달/간편</strong> 상위 5개 추출. 선물(60%) vs 본인구매(40%) 비율 확인.
+      </div>
+    </div>
+    <div class="card card--green" style="padding: 14px 16px;">
+      <div class="card__label">과제 3</div>
+      <div class="card__title" style="font-size: 13px; margin-bottom: 4px;">제품 라인업 역할 정의</div>
+      <div class="card__desc" style="font-size: 11.5px;">
+        <strong>시럽(주력) / 스틱(간편·선물) / 키즈(확장)</strong> 3축 구조로 정리. 플러스/환 등 서브 라인은 2순위로 재배치.
+      </div>
+    </div>
+    <div class="card card--purple" style="padding: 14px 16px;">
+      <div class="card__label">과제 4</div>
+      <div class="card__title" style="font-size: 13px; margin-bottom: 4px;">레퍼런스 브랜드 수집</div>
+      <div class="card__desc" style="font-size: 11.5px;">
+        <strong>닮고 싶은 브랜드:</strong> 덴프스, 기린약방, 건강한약속바른 / <strong>절대 아닌 브랜드:</strong> 저가 대용량 건강즙 · 한방 올드 이미지.
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--red" style="padding: 14px 16px;">
+    <div class="card__label">과제 5 — 핵심 메시지 위밍업</div>
+    <div class="card__title" style="font-size: 13px; margin-bottom: 4px;">곰보배추를 한 문장으로 설명하기</div>
+    <div class="card__desc" style="font-size: 12px; line-height: 1.8;">
+      "곰보배추는 <strong>환절기·면역이 약해지기 쉬운 사람</strong>이 <strong>호흡기 건강을 온 가족이 함께 챙기기</strong> 위해 찾는 제품이다."<br>
+      → <span style="color: var(--accent); font-weight: 700;">2회차에서 이 문장을 슬로건/포지셔닝으로 정제</span>
+    </div>
+  </div>
+
+  <span class="slide__page">04</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 5: DIVIDER 02 — 핵심 메시지 & 키워드 -->
+<!-- ============================================================ -->
+<div class="slide slide--orange-gradient divider">
+  <div class="divider__number">02</div>
+  <div class="divider__title">핵심 브랜드 메시지 &amp; 키워드</div>
+  <div class="divider__desc">에센스 · 키워드 피라미드 · 슬로건 · 톤앤매너</div>
+  <span class="slide__page">05</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 6: 브랜드 에센스 모델 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">BRAND ESSENCE</div>
+    <h2 class="slide__title">브랜드 에센스 — Why / How / What / Where</h2>
+  </div>
+
+  <div class="grid-4" style="margin-bottom: 16px;">
+    <div class="card card--orange" style="text-align: center; padding: 20px 16px;">
+      <div class="card__icon">💡</div>
+      <div class="card__label" style="color: var(--hiz-orange);">Why — Purpose</div>
+      <div class="card__title" style="font-size: 14px; margin-bottom: 8px;">존재 이유</div>
+      <div class="card__desc" style="font-size: 12px;">
+        곰보배추의 가능성을 제대로 알려 <strong>온 가족의 일상 방패</strong>가 된다
+      </div>
+    </div>
+    <div class="card card--accent" style="text-align: center; padding: 20px 16px;">
+      <div class="card__icon">🧪</div>
+      <div class="card__label" style="color: var(--accent);">How — Mission</div>
+      <div class="card__title" style="font-size: 14px; margin-bottom: 8px;">일하는 방식</div>
+      <div class="card__desc" style="font-size: 12px;">
+        <strong>원료의 전문성</strong>과 <strong>엄마의 진심</strong>을 결합해 검증된 건강 루틴 제공
+      </div>
+    </div>
+    <div class="card card--green" style="text-align: center; padding: 20px 16px;">
+      <div class="card__icon">📦</div>
+      <div class="card__label" style="color: var(--green);">What — Offer</div>
+      <div class="card__title" style="font-size: 14px; margin-bottom: 8px;">제공하는 것</div>
+      <div class="card__desc" style="font-size: 12px;">
+        곰보배추 원료 기반 <strong>호흡기·면역 루틴 제품</strong> (시럽/스틱/키즈)
+      </div>
+    </div>
+    <div class="card card--purple" style="text-align: center; padding: 20px 16px;">
+      <div class="card__icon">🌱</div>
+      <div class="card__label" style="color: var(--purple);">Where — Vision</div>
+      <div class="card__title" style="font-size: 14px; margin-bottom: 8px;">3년 후 모습</div>
+      <div class="card__desc" style="font-size: 12px;">
+        "<strong>곰보배추 = 슈퍼세이브</strong>" 공식 확립 · 온 가족 호흡기 건강 대표 브랜드
+      </div>
+    </div>
+  </div>
+
+  <!-- Core Values -->
+  <div class="card card--filled" style="padding: 18px;">
+    <div class="card__label" style="margin-bottom: 10px;">CORE VALUES · 슈퍼세이브가 지키는 3가지 가치</div>
+    <div class="grid-3">
+      <div style="padding: 10px; background: #fff; border-radius: 8px; border-top: 3px solid var(--accent);">
+        <div style="font-size: 14px; font-weight: 900; color: var(--accent); margin-bottom: 4px;">1. 전문성 (Expertise)</div>
+        <div style="font-size: 11px; color: var(--gray-600); line-height: 1.6;">곰보배추 원료 31.85% · 프락토올리고당 · 원료 투명성</div>
+      </div>
+      <div style="padding: 10px; background: #fff; border-radius: 8px; border-top: 3px solid var(--hiz-orange);">
+        <div style="font-size: 14px; font-weight: 900; color: var(--hiz-orange); margin-bottom: 4px;">2. 따뜻함 (Warmth)</div>
+        <div style="font-size: 11px; color: var(--gray-600); line-height: 1.6;">"엄마가 만든" 진정성 · 가족 스토리 · 온 가족 경험</div>
+      </div>
+      <div style="padding: 10px; background: #fff; border-radius: 8px; border-top: 3px solid var(--green);">
+        <div style="font-size: 14px; font-weight: 900; color: var(--green); margin-bottom: 4px;">3. 신뢰 (Trust)</div>
+        <div style="font-size: 11px; color: var(--gray-600); line-height: 1.6;">리뷰 1,564건 · 평점 4.9 · 장기 재구매 검증</div>
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">06</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 7: 키워드 피라미드 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">KEYWORD HIERARCHY</div>
+    <h2 class="slide__title">핵심 키워드 추출 — 3-Tier 피라미드</h2>
+  </div>
+
+  <div class="pyramid">
+    <div class="pyramid__label">CORE KEYWORD · 단 하나의 단어</div>
+    <div class="pyramid__tier pyramid__core">
+      온 가족 건강방패
+    </div>
+
+    <div class="pyramid__label" style="margin-top: 14px;">PRIMARY · 3개 축</div>
+    <div class="pyramid__tier pyramid__primary">
+      <span>🌿 곰보배추 전문성</span>
+      <span>🫁 호흡기·면역</span>
+      <span>👨‍👩‍👧 가족 루틴</span>
+    </div>
+
+    <div class="pyramid__label" style="margin-top: 14px;">SECONDARY · 커뮤니케이션 확장 키워드</div>
+    <div class="pyramid__tier pyramid__secondary">
+      <span>환절기</span>
+      <span>엄마의 진심</span>
+      <span>원료 투명성</span>
+      <span>간편 섭취</span>
+      <span>검증된 품질</span>
+    </div>
+  </div>
+
+  <!-- Rationale -->
+  <div class="grid-3" style="margin-top: 26px; gap: 14px;">
+    <div class="card card--filled" style="padding: 14px;">
+      <div class="card__label" style="color: var(--hiz-orange);">선정 근거 — 내부</div>
+      <div class="card__desc" style="font-size: 11.5px;">
+        기존 슬로건 <strong>"온 가족 건강방패"</strong> 계승 — 브랜드 자산 손실 없이 에퀴티 극대화
+      </div>
+    </div>
+    <div class="card card--filled" style="padding: 14px;">
+      <div class="card__label" style="color: var(--accent);">선정 근거 — 고객</div>
+      <div class="card__desc" style="font-size: 11.5px;">
+        리뷰 키워드 빈도 TOP5(비염·면역력·환절기·아이·가족) 중 4개가 Primary·Secondary와 직접 매칭
+      </div>
+    </div>
+    <div class="card card--filled" style="padding: 14px;">
+      <div class="card__label" style="color: var(--green);">선정 근거 — 경쟁</div>
+      <div class="card__desc" style="font-size: 11.5px;">
+        기린약방(한방), 덴프스(MZ) 키워드와 겹치지 않는 <strong>"곰보배추 × 가족"</strong> 고유 영역 확보
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">07</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 8: 슬로건 & 태그라인 후보 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">SLOGAN CANDIDATES</div>
+    <h2 class="slide__title">슬로건 &amp; 태그라인 후보 5안</h2>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="width: 5%;">#</th>
+        <th style="width: 28%;">슬로건</th>
+        <th style="width: 18%;">성격</th>
+        <th style="width: 25%;">강점</th>
+        <th style="width: 24%;">리스크</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td style="font-weight: 800; color: var(--accent);">"온 가족 건강방패, 슈퍼세이브"</td>
+        <td><span class="tag tag--accent">계승형 / 현 슬로건</span></td>
+        <td>브랜드 에퀴티 유지, 고객 인식 단절 없음, 가족 키워드 선점</td>
+        <td>신규성 부족, 방향 전환 시그널 약함</td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td style="font-weight: 800; color: var(--accent);">"곰보배추의 모든 것, 슈퍼세이브"</td>
+        <td><span class="tag tag--orange">전문성 강조형</span></td>
+        <td>카테고리 리더십 명확, "곰보배추 = 슈퍼세이브" 공식화</td>
+        <td>가족·따뜻함 뉘앙스 약함, 니치 인식 고착 우려</td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td style="font-weight: 800; color: var(--hiz-orange); background: var(--orange-light);">"매일 한 포, 온 가족 곰보배추"</td>
+        <td><span class="tag tag--red">HIZ 권고</span></td>
+        <td>원료 + 가족 + 루틴 3요소 동시 내포, 행동 유도형 문장</td>
+        <td>"곰보배추" 생소함에 대한 교육 커뮤니케이션 병행 필수</td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td style="font-weight: 800; color: var(--accent);">"곰보배추를 가장 잘 아는 브랜드"</td>
+        <td><span class="tag tag--purple">카테고리 리더형</span></td>
+        <td>전문성·1위 지위 강조, "원조·네이버 1위" 자산 활용</td>
+        <td>제품 자체 베네핏 약함, 감성 접점 부족</td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td style="font-weight: 800; color: var(--accent);">"환절기, 우리집 첫 번째 건강 루틴"</td>
+        <td><span class="tag tag--green">시나리오형</span></td>
+        <td>사용 맥락(환절기) 구체적, 선물·본인구매 양쪽 커버</td>
+        <td>브랜드명/원료명 미노출, 기억 각인 약함</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="card card--orange" style="margin-top: 14px; padding: 14px;">
+    <div class="card__label">HIZ 권고 로직</div>
+    <div class="card__desc" style="font-size: 12px;">
+      <strong>메인 슬로건: 3안 "매일 한 포, 온 가족 곰보배추"</strong> — 온라인·패키지 전면 배치 /
+      <strong>서브 태그라인: 1안 "온 가족 건강방패"</strong> — 기존 고객 연속성 유지용 서브 활용 /
+      <strong>카테고리 메시지: 4안 "곰보배추를 가장 잘 아는 브랜드"</strong> — PR·콘텐츠 용
+    </div>
+  </div>
+
+  <span class="slide__page">08</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 9: 톤앤매너 가이드 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">TONE OF VOICE</div>
+    <h2 class="slide__title">브랜드 톤앤매너 가이드라인</h2>
+  </div>
+
+  <div class="grid-2-1" style="margin-bottom: 16px;">
+    <div class="card card--accent">
+      <div class="card__label">VOICE CHARACTER · 브랜드의 성격</div>
+      <div class="card__title" style="font-size: 18px; color: var(--accent); margin-bottom: 10px;">
+        "두 아이를 키우는 믿음직한 이웃 언니"
+      </div>
+      <div class="card__desc" style="font-size: 12.5px;">
+        약사도 의사도 아니지만, 직접 먹이고 챙기며 원료를 깊이 이해하는 사람.
+        전문 지식을 <strong>친근한 언어</strong>로 풀어주고, 과장 없이 <strong>담담하게 증거를 보여주는</strong> 어투.
+      </div>
+    </div>
+    <div class="card card--orange" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
+      <div style="font-size: 48px; margin-bottom: 8px;">👩‍👧</div>
+      <div style="font-size: 12px; font-weight: 700;">의사 ← — → 친구</div>
+      <div style="font-size: 11px; color: var(--muted); margin-top: 4px;">중간보다 친구 쪽 70%</div>
+    </div>
+  </div>
+
+  <!-- 5 Traits -->
+  <div class="grid-4" style="margin-bottom: 16px; grid-template-columns: repeat(5, 1fr); gap: 10px;">
+    <div style="background: var(--green-light); border-radius: 10px; padding: 14px; text-align: center;">
+      <div style="font-size: 22px;">✅</div>
+      <div style="font-size: 13px; font-weight: 800; color: var(--green); margin: 6px 0 4px;">진솔한</div>
+      <div style="font-size: 10.5px; color: var(--gray-600); line-height: 1.5;">과장 X, 경험 기반</div>
+    </div>
+    <div style="background: var(--blue-light); border-radius: 10px; padding: 14px; text-align: center;">
+      <div style="font-size: 22px;">📘</div>
+      <div style="font-size: 13px; font-weight: 800; color: var(--blue); margin: 6px 0 4px;">신뢰감 있는</div>
+      <div style="font-size: 10.5px; color: var(--gray-600); line-height: 1.5;">원료·수치 근거</div>
+    </div>
+    <div style="background: var(--orange-light); border-radius: 10px; padding: 14px; text-align: center;">
+      <div style="font-size: 22px;">🤗</div>
+      <div style="font-size: 13px; font-weight: 800; color: var(--hiz-orange); margin: 6px 0 4px;">따뜻한</div>
+      <div style="font-size: 10.5px; color: var(--gray-600); line-height: 1.5;">가족 언어, 반말 X</div>
+    </div>
+    <div style="background: var(--purple-light); border-radius: 10px; padding: 14px; text-align: center;">
+      <div style="font-size: 22px;">💡</div>
+      <div style="font-size: 13px; font-weight: 800; color: var(--purple); margin: 6px 0 4px;">교육적인</div>
+      <div style="font-size: 10.5px; color: var(--gray-600); line-height: 1.5;">원료 설명 친절</div>
+    </div>
+    <div style="background: var(--red-light); border-radius: 10px; padding: 14px; text-align: center;">
+      <div style="font-size: 22px;">🚫</div>
+      <div style="font-size: 13px; font-weight: 800; color: var(--red); margin: 6px 0 4px;">비-약장수</div>
+      <div style="font-size: 10.5px; color: var(--gray-600); line-height: 1.5;">"만병통치" 금지</div>
+    </div>
+  </div>
+
+  <!-- Do vs Don't -->
+  <div class="grid-2" style="gap: 14px;">
+    <div class="card card--green" style="padding: 14px;">
+      <div class="card__label" style="color: var(--green);">✅ DO</div>
+      <ul style="list-style: none; padding: 0; font-size: 12px; line-height: 1.8;">
+        <li>• "저희 아이도 3년째 먹고 있어요"</li>
+        <li>• "곰보배추 31.85%, 감미료는 프락토올리고당을 썼어요"</li>
+        <li>• "환절기에 한 포씩, 온 가족 함께"</li>
+      </ul>
+    </div>
+    <div class="card card--red" style="padding: 14px;">
+      <div class="card__label" style="color: var(--red);">❌ DON'T</div>
+      <ul style="list-style: none; padding: 0; font-size: 12px; line-height: 1.8;">
+        <li>• "면역력 100% 보장!" (과장 금지)</li>
+        <li>• "알뜰 쇼핑의 시작" (저가 이미지 폐기)</li>
+        <li>• "한방 전통의 비법" (올드 한방 탈피)</li>
+      </ul>
+    </div>
+  </div>
+
+  <span class="slide__page">09</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 10: DIVIDER 03 — 다각적 포지셔닝 -->
+<!-- ============================================================ -->
+<div class="slide slide--gradient divider">
+  <div class="divider__number">03</div>
+  <div class="divider__title">다각적 포지셔닝 전략</div>
+  <div class="divider__desc">4축 프레임 · STP 재정비 · 포지셔닝 스테이트먼트</div>
+  <span class="slide__page">10</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 11: 포지셔닝 4축 프레임 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">4-AXIS POSITIONING</div>
+    <h2 class="slide__title">포지셔닝 4축 — 하나의 브랜드, 네 개의 얼굴</h2>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 14px; gap: 14px;">
+    <div class="card card--accent" style="padding: 18px;">
+      <div style="display: flex; align-items: center; margin-bottom: 8px;">
+        <div style="font-size: 24px; margin-right: 10px;">🏷️</div>
+        <div>
+          <div class="card__label" style="color: var(--accent);">AXIS 1 · CATEGORY</div>
+          <div class="card__title" style="font-size: 15px; margin-bottom: 0;">카테고리 포지셔닝</div>
+        </div>
+      </div>
+      <div style="font-size: 15px; font-weight: 900; color: var(--accent); margin: 8px 0;">
+        "곰보배추 프리미엄 전문 브랜드"
+      </div>
+      <div class="card__desc" style="font-size: 12px;">
+        일반 한방즙 · 건강즙 카테고리 안에서 <strong>"곰보배추 단일 원료 특화"</strong>라는 좁고 깊은 지위 점유
+      </div>
+    </div>
+
+    <div class="card card--blue" style="padding: 18px;">
+      <div style="display: flex; align-items: center; margin-bottom: 8px;">
+        <div style="font-size: 24px; margin-right: 10px;">🫁</div>
+        <div>
+          <div class="card__label" style="color: var(--blue);">AXIS 2 · FUNCTIONAL</div>
+          <div class="card__title" style="font-size: 15px; margin-bottom: 0;">기능적 포지셔닝</div>
+        </div>
+      </div>
+      <div style="font-size: 15px; font-weight: 900; color: var(--blue); margin: 8px 0;">
+        "호흡기·면역 루틴 헬스케어"
+      </div>
+      <div class="card__desc" style="font-size: 12px;">
+        "종합 건강즙"이 아닌 <strong>비염·환절기·기관지</strong> 영역에 특화된 기능적 베네핏 명확화
+      </div>
+    </div>
+
+    <div class="card card--orange" style="padding: 18px;">
+      <div style="display: flex; align-items: center; margin-bottom: 8px;">
+        <div style="font-size: 24px; margin-right: 10px;">💗</div>
+        <div>
+          <div class="card__label" style="color: var(--hiz-orange);">AXIS 3 · EMOTIONAL</div>
+          <div class="card__title" style="font-size: 15px; margin-bottom: 0;">감성적 포지셔닝</div>
+        </div>
+      </div>
+      <div style="font-size: 15px; font-weight: 900; color: var(--hiz-orange); margin: 8px 0;">
+        "엄마가 만든 우리집 상비식품"
+      </div>
+      <div class="card__desc" style="font-size: 12px;">
+        창업자 스토리를 전면화 — <strong>"내 아이·내 부모가 먹는다"</strong>는 진정성으로 신뢰 축 구축
+      </div>
+    </div>
+
+    <div class="card card--purple" style="padding: 18px;">
+      <div style="display: flex; align-items: center; margin-bottom: 8px;">
+        <div style="font-size: 24px; margin-right: 10px;">🌳</div>
+        <div>
+          <div class="card__label" style="color: var(--purple);">AXIS 4 · LIFESTYLE</div>
+          <div class="card__title" style="font-size: 15px; margin-bottom: 0;">라이프스타일 포지셔닝</div>
+        </div>
+      </div>
+      <div style="font-size: 15px; font-weight: 900; color: var(--purple); margin: 8px 0;">
+        "환절기마다 떠오르는 가족 건강 파트너"
+      </div>
+      <div class="card__desc" style="font-size: 12px;">
+        계절·루틴·라이프스타일 이벤트(환절기·명절·신학기)에 <strong>떠오르는 브랜드</strong> 자산화
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--filled" style="padding: 12px 18px;">
+    <div class="card__desc" style="font-size: 12px; text-align: center;">
+      <strong style="color: var(--hiz-orange);">4축 통합 메시지:</strong>
+      곰보배추 전문성(Category) × 호흡기 기능(Functional) × 엄마의 진심(Emotional) × 환절기 루틴(Lifestyle)
+    </div>
+  </div>
+
+  <span class="slide__page">11</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 12: STP 재정비 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">STP FRAMEWORK</div>
+    <h2 class="slide__title">STP 재정비 — Segmentation · Targeting · Positioning</h2>
+  </div>
+
+  <!-- Segmentation -->
+  <div style="margin-bottom: 14px;">
+    <div style="font-size: 11px; font-weight: 800; color: var(--hiz-orange); letter-spacing: 2px; margin-bottom: 8px;">S · SEGMENTATION</div>
+    <div class="grid-4" style="gap: 10px;">
+      <div class="card" style="padding: 10px 12px; border-top: 3px solid var(--blue);">
+        <div style="font-size: 12px; font-weight: 800;">건강 케어맘</div>
+        <div style="font-size: 10px; color: var(--muted); line-height: 1.5;">30-40대 주부, 자녀 환절기 관리</div>
+      </div>
+      <div class="card" style="padding: 10px 12px; border-top: 3px solid var(--green);">
+        <div style="font-size: 12px; font-weight: 800;">웰니스 직장인</div>
+        <div style="font-size: 10px; color: var(--muted); line-height: 1.5;">20-30대 미혼, 자기관리 루틴</div>
+      </div>
+      <div class="card" style="padding: 10px 12px; border-top: 3px solid var(--hiz-orange);">
+        <div style="font-size: 12px; font-weight: 800;">효도 선물족</div>
+        <div style="font-size: 10px; color: var(--muted); line-height: 1.5;">30-40대, 명절·생신 선물</div>
+      </div>
+      <div class="card" style="padding: 10px 12px; border-top: 3px solid var(--purple);">
+        <div style="font-size: 12px; font-weight: 800;">비염 관리자</div>
+        <div style="font-size: 10px; color: var(--muted); line-height: 1.5;">증상 보유자, 장기 복용 니즈</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Targeting -->
+  <div style="margin-bottom: 14px;">
+    <div style="font-size: 11px; font-weight: 800; color: var(--hiz-orange); letter-spacing: 2px; margin-bottom: 8px;">T · TARGETING · 2+1 구조</div>
+    <div class="grid-3" style="gap: 12px;">
+      <div class="card card--accent" style="padding: 14px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+          <span style="background: var(--accent); color: #fff; font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 10px;">1순위</span>
+          <span style="font-size: 13px; font-weight: 800;">건강 케어맘</span>
+        </div>
+        <div class="card__desc" style="font-size: 11.5px;">
+          <strong>KPI 70%.</strong> 자사몰 본인 구매 주축. 재구매율 高.
+        </div>
+      </div>
+      <div class="card card--orange" style="padding: 14px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+          <span style="background: var(--hiz-orange); color: #fff; font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 10px;">2순위</span>
+          <span style="font-size: 13px; font-weight: 800;">효도 선물족</span>
+        </div>
+        <div class="card__desc" style="font-size: 11.5px;">
+          <strong>선물세트 + 카카오선물하기.</strong> 명절·시즌 볼륨 확장 지렛대.
+        </div>
+      </div>
+      <div class="card card--blue" style="padding: 14px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+          <span style="background: var(--blue); color: #fff; font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 10px;">서브</span>
+          <span style="font-size: 13px; font-weight: 800;">비염 관리자</span>
+        </div>
+        <div class="card__desc" style="font-size: 11.5px;">
+          <strong>검색 유입 · 세그먼트 특화.</strong> 기능 콘텐츠로 핀포인트 공략.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Positioning -->
+  <div>
+    <div style="font-size: 11px; font-weight: 800; color: var(--hiz-orange); letter-spacing: 2px; margin-bottom: 8px;">P · POSITIONING · 최종 정의</div>
+    <div style="background: linear-gradient(90deg, var(--accent) 0%, var(--hiz-orange) 100%); color: #fff; padding: 18px 24px; border-radius: 10px;">
+      <div style="font-size: 16px; font-weight: 900; line-height: 1.6;">
+        "곰보배추의 모든 것을 가장 잘 아는 브랜드 × 온 가족 건강 루틴 파트너"
+      </div>
+      <div style="font-size: 11.5px; opacity: 0.9; margin-top: 6px;">
+        전문성 + 따뜻함 하이브리드 — 저가 한방즙과도, 차가운 건기식과도 구분되는 제3의 지위
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">12</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 13: 포지셔닝 스테이트먼트 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">POSITIONING STATEMENT</div>
+    <h2 class="slide__title">포지셔닝 스테이트먼트 — "For / Who / That / Unlike"</h2>
+  </div>
+
+  <div class="card card--accent" style="padding: 26px 30px; margin-bottom: 16px; background: var(--accent-light); border-left-width: 6px;">
+    <div style="font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 2px; margin-bottom: 10px;">FINAL STATEMENT</div>
+    <div style="font-size: 15.5px; line-height: 1.9; color: var(--text);">
+      <span style="color: var(--hiz-orange); font-weight: 900;">환절기마다 온 가족 건강을 걱정하는 30–40대 부모</span>에게,<br>
+      <strong style="color: var(--accent);">슈퍼세이브</strong>는
+      <span style="color: var(--hiz-orange); font-weight: 900;">곰보배추 원료를 가장 깊이 이해하고 검증한 건강 루틴 브랜드</span>입니다.<br>
+      우리는 <span style="color: var(--hiz-orange); font-weight: 900;">엄마의 진심과 원료 투명성</span>을 결합하여
+      <strong>믿고 먹이는 우리집 상비식품</strong>을 제공하며,<br>
+      <span style="color: var(--muted);">일반 저가 건강즙이나 차가운 건기식 브랜드와 달리</span>
+      <strong>전문성과 따뜻함이 공존하는 가족 브랜드</strong>로 자리합니다.
+    </div>
+  </div>
+
+  <!-- 4 Parts -->
+  <div class="grid-4" style="gap: 10px;">
+    <div class="card" style="padding: 12px; border-top: 3px solid var(--accent);">
+      <div style="font-size: 10px; font-weight: 800; color: var(--accent); letter-spacing: 1.5px; margin-bottom: 4px;">FOR (타겟)</div>
+      <div style="font-size: 11.5px; line-height: 1.6;">환절기마다 온 가족 건강을 걱정하는 30–40대 부모</div>
+    </div>
+    <div class="card" style="padding: 12px; border-top: 3px solid var(--hiz-orange);">
+      <div style="font-size: 10px; font-weight: 800; color: var(--hiz-orange); letter-spacing: 1.5px; margin-bottom: 4px;">WHO (니즈)</div>
+      <div style="font-size: 11.5px; line-height: 1.6;">믿고 먹이는 가족 상비식품을 찾는다</div>
+    </div>
+    <div class="card" style="padding: 12px; border-top: 3px solid var(--green);">
+      <div style="font-size: 10px; font-weight: 800; color: var(--green); letter-spacing: 1.5px; margin-bottom: 4px;">THAT (제공 가치)</div>
+      <div style="font-size: 11.5px; line-height: 1.6;">곰보배추 원료 전문성 + 엄마의 진심 결합</div>
+    </div>
+    <div class="card" style="padding: 12px; border-top: 3px solid var(--purple);">
+      <div style="font-size: 10px; font-weight: 800; color: var(--purple); letter-spacing: 1.5px; margin-bottom: 4px;">UNLIKE (차별점)</div>
+      <div style="font-size: 11.5px; line-height: 1.6;">저가 건강즙 · 차가운 건기식과 다른 "제3의 지위"</div>
+    </div>
+  </div>
+
+  <span class="slide__page">13</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 14: DIVIDER 04 — 경쟁 포지셔닝 -->
+<!-- ============================================================ -->
+<div class="slide slide--green-gradient divider">
+  <div class="divider__number">04</div>
+  <div class="divider__title">경쟁 포지셔닝 방향 검토</div>
+  <div class="divider__desc">포지셔닝 맵 · 경쟁 5-Factor · 차별화 USP</div>
+  <span class="slide__page">14</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 15: 포지셔닝 맵 1 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">POSITIONING MAP — VIEW 1</div>
+    <h2 class="slide__title">가격대 × 원료 전문성</h2>
+  </div>
+
+  <div class="map" style="height: 440px;">
+    <!-- Axes -->
+    <div class="map__axis-x"></div>
+    <div class="map__axis-y"></div>
+    <div class="map__label map__label--top">↑ 프리미엄 (고가)</div>
+    <div class="map__label map__label--bottom">↓ 가성비 (저가)</div>
+    <div class="map__label map__label--left">← 범용 종합</div>
+    <div class="map__label map__label--right">특화 단일 →</div>
+
+    <!-- Points -->
+    <!-- 슈퍼세이브 (목표): 프리미엄 × 특화 (우상) -->
+    <div class="map__point map__point--target" style="top: 22%; left: 78%;">
+      <div class="map__point-dot"></div>
+      <div class="map__point-name">슈퍼세이브 (목표)</div>
+    </div>
+    <!-- 기린약방: 프리미엄 × 범용 (좌상) -->
+    <div class="map__point" style="top: 28%; left: 28%;">
+      <div class="map__point-dot" style="background: var(--accent);"></div>
+      <div class="map__point-name">기린약방</div>
+    </div>
+    <!-- 덴프스: 프리미엄 × 범용 건기식 (좌상) -->
+    <div class="map__point" style="top: 18%; left: 38%;">
+      <div class="map__point-dot" style="background: var(--purple);"></div>
+      <div class="map__point-name">덴프스</div>
+    </div>
+    <!-- 바이탈뷰티: 프리미엄 × 범용 (좌상) -->
+    <div class="map__point" style="top: 35%; left: 22%;">
+      <div class="map__point-dot" style="background: var(--blue);"></div>
+      <div class="map__point-name">바이탈뷰티</div>
+    </div>
+    <!-- 일반 곰보배추즙: 저가 × 특화 (우하) -->
+    <div class="map__point" style="top: 75%; left: 72%;">
+      <div class="map__point-dot" style="background: var(--green);"></div>
+      <div class="map__point-name">일반 곰보배추즙</div>
+    </div>
+    <!-- 쿠팡 대용량 한방즙: 저가 × 범용 (좌하) -->
+    <div class="map__point" style="top: 80%; left: 25%;">
+      <div class="map__point-dot" style="background: var(--red);"></div>
+      <div class="map__point-name">쿠팡 대용량 한방즙</div>
+    </div>
+    <!-- 슈퍼세이브 현재: 중가 × 특화 -->
+    <div class="map__point" style="top: 55%; left: 70%;">
+      <div class="map__point-dot" style="background: var(--orange); opacity: 0.6;"></div>
+      <div class="map__point-name" style="opacity: 0.7;">슈퍼세이브 (현재)</div>
+    </div>
+
+    <!-- Opportunity zone -->
+    <div style="position: absolute; top: 8%; right: 8%; width: 32%; height: 32%; background: rgba(232,73,29,0.08); border: 2px dashed var(--hiz-orange); border-radius: 16px; pointer-events: none;"></div>
+    <div style="position: absolute; top: 10%; right: 10%; font-size: 10px; font-weight: 800; color: var(--hiz-orange); letter-spacing: 1.5px;">OPPORTUNITY ZONE</div>
+  </div>
+
+  <div class="card card--orange" style="margin-top: 12px; padding: 12px 16px;">
+    <div class="card__desc" style="font-size: 12px;">
+      <strong>인사이트:</strong> 프리미엄 × 단일 원료 특화 영역은 <strong>공백 구간(Whitespace)</strong>.
+      현재 슈퍼세이브는 중가·특화에 위치 — 가격·브랜딩 업그레이드로 우상향 이동 필요.
+    </div>
+  </div>
+
+  <span class="slide__page">15</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 16: 포지셔닝 맵 2 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">POSITIONING MAP — VIEW 2</div>
+    <h2 class="slide__title">감성 코드 × 타겟 범위</h2>
+  </div>
+
+  <div class="map" style="height: 440px;">
+    <div class="map__axis-x"></div>
+    <div class="map__axis-y"></div>
+    <div class="map__label map__label--top">↑ 따뜻한 / 감성적</div>
+    <div class="map__label map__label--bottom">↓ 전문적 / 이성적</div>
+    <div class="map__label map__label--left">← 개인 중심</div>
+    <div class="map__label map__label--right">가족 중심 →</div>
+
+    <!-- 슈퍼세이브 (목표): 따뜻 × 가족 (우상) -->
+    <div class="map__point map__point--target" style="top: 22%; left: 78%;">
+      <div class="map__point-dot"></div>
+      <div class="map__point-name">슈퍼세이브 (목표)</div>
+    </div>
+    <!-- 건강한약속바른: 따뜻 × 가족 -->
+    <div class="map__point" style="top: 30%; left: 70%;">
+      <div class="map__point-dot" style="background: var(--green);"></div>
+      <div class="map__point-name">건강한약속바른</div>
+    </div>
+    <!-- 기린약방: 따뜻-전문 중간 × 가족 (중우) -->
+    <div class="map__point" style="top: 48%; left: 75%;">
+      <div class="map__point-dot" style="background: var(--accent);"></div>
+      <div class="map__point-name">기린약방</div>
+    </div>
+    <!-- 비타민하우스: 따뜻 × 가족 -->
+    <div class="map__point" style="top: 25%; left: 60%;">
+      <div class="map__point-dot" style="background: var(--blue);"></div>
+      <div class="map__point-name">비타민하우스</div>
+    </div>
+    <!-- 덴프스: 전문 × 개인 (좌하) -->
+    <div class="map__point" style="top: 75%; left: 25%;">
+      <div class="map__point-dot" style="background: var(--purple);"></div>
+      <div class="map__point-name">덴프스</div>
+    </div>
+    <!-- 바이탈뷰티: 전문 × 개인 (좌하) -->
+    <div class="map__point" style="top: 68%; left: 30%;">
+      <div class="map__point-dot" style="background: var(--blue);"></div>
+      <div class="map__point-name">바이탈뷰티</div>
+    </div>
+    <!-- 파지티브호텔: 따뜻 × 개인 (좌상) -->
+    <div class="map__point" style="top: 28%; left: 28%;">
+      <div class="map__point-dot" style="background: #ec4899;"></div>
+      <div class="map__point-name">파지티브호텔</div>
+    </div>
+    <!-- 에버콜라겐: 전문 × 개인 -->
+    <div class="map__point" style="top: 72%; left: 40%;">
+      <div class="map__point-dot" style="background: var(--red);"></div>
+      <div class="map__point-name">에버콜라겐</div>
+    </div>
+    <!-- 슈퍼세이브 현재 -->
+    <div class="map__point" style="top: 35%; left: 82%;">
+      <div class="map__point-dot" style="background: var(--orange); opacity: 0.6;"></div>
+      <div class="map__point-name" style="opacity: 0.7;">슈퍼세이브 (현재)</div>
+    </div>
+
+    <!-- Hybrid zone -->
+    <div style="position: absolute; top: 35%; right: 20%; width: 22%; height: 22%; background: rgba(232,73,29,0.08); border: 2px dashed var(--hiz-orange); border-radius: 16px; pointer-events: none;"></div>
+    <div style="position: absolute; top: 52%; right: 22%; font-size: 10px; font-weight: 800; color: var(--hiz-orange); letter-spacing: 1.5px; text-align: center; width: 18%;">HYBRID ZONE<br>(전문×따뜻)</div>
+  </div>
+
+  <div class="card card--orange" style="margin-top: 12px; padding: 12px 16px;">
+    <div class="card__desc" style="font-size: 12px;">
+      <strong>인사이트:</strong> 건기식 시장은 "전문·개인" 또는 "따뜻·가족" 한쪽으로 치우침.
+      <strong>"전문성과 따뜻함을 동시에 구현하는 가족 브랜드"</strong>는 여전히 공백 — 슈퍼세이브가 선점할 수 있는 지위.
+    </div>
+  </div>
+
+  <span class="slide__page">16</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 17: 경쟁 5-Factor 비교표 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">COMPETITIVE AUDIT</div>
+    <h2 class="slide__title">경쟁 5-Factor 비교 — 슈퍼세이브 vs 주요 경쟁사</h2>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="width: 18%;">평가 기준</th>
+        <th style="width: 17%; text-align: center;">슈퍼세이브 (현재)</th>
+        <th style="width: 17%; text-align: center;">슈퍼세이브 (목표)</th>
+        <th style="width: 16%; text-align: center;">기린약방</th>
+        <th style="width: 16%; text-align: center;">덴프스</th>
+        <th style="width: 16%; text-align: center;">일반 한방즙</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>원료 전문성</strong><br><span style="font-size: 10px; color: var(--muted);">단일 원료 특화도</span></td>
+        <td style="text-align: center;"><span class="star">★★★★</span><span class="star-empty">★</span></td>
+        <td style="text-align: center;"><span class="star">★★★★★</span></td>
+        <td style="text-align: center;"><span class="star">★★★</span><span class="star-empty">★★</span></td>
+        <td style="text-align: center;"><span class="star">★★★</span><span class="star-empty">★★</span></td>
+        <td style="text-align: center;"><span class="star">★★</span><span class="star-empty">★★★</span></td>
+      </tr>
+      <tr>
+        <td><strong>브랜드 인지도</strong><br><span style="font-size: 10px; color: var(--muted);">일반 소비자 인지</span></td>
+        <td style="text-align: center;"><span class="star">★★</span><span class="star-empty">★★★</span></td>
+        <td style="text-align: center;"><span class="star">★★★★</span><span class="star-empty">★</span></td>
+        <td style="text-align: center;"><span class="star">★★★★</span><span class="star-empty">★</span></td>
+        <td style="text-align: center;"><span class="star">★★★★</span><span class="star-empty">★</span></td>
+        <td style="text-align: center;"><span class="star">★★</span><span class="star-empty">★★★</span></td>
+      </tr>
+      <tr>
+        <td><strong>타겟 명확성</strong><br><span style="font-size: 10px; color: var(--muted);">페르소나 해상도</span></td>
+        <td style="text-align: center;"><span class="star">★★★</span><span class="star-empty">★★</span></td>
+        <td style="text-align: center;"><span class="star">★★★★★</span></td>
+        <td style="text-align: center;"><span class="star">★★★</span><span class="star-empty">★★</span></td>
+        <td style="text-align: center;"><span class="star">★★★★</span><span class="star-empty">★</span></td>
+        <td style="text-align: center;"><span class="star">★★</span><span class="star-empty">★★★</span></td>
+      </tr>
+      <tr>
+        <td><strong>라이프스타일 브랜딩</strong><br><span style="font-size: 10px; color: var(--muted);">콘텐츠·경험</span></td>
+        <td style="text-align: center;"><span class="star">★★</span><span class="star-empty">★★★</span></td>
+        <td style="text-align: center;"><span class="star">★★★★</span><span class="star-empty">★</span></td>
+        <td style="text-align: center;"><span class="star">★★★</span><span class="star-empty">★★</span></td>
+        <td style="text-align: center;"><span class="star">★★★★★</span></td>
+        <td style="text-align: center;"><span class="star">★</span><span class="star-empty">★★★★</span></td>
+      </tr>
+      <tr>
+        <td><strong>가족 친화도</strong><br><span style="font-size: 10px; color: var(--muted);">온 가족 커버리지</span></td>
+        <td style="text-align: center;"><span class="star">★★★★</span><span class="star-empty">★</span></td>
+        <td style="text-align: center;"><span class="star">★★★★★</span></td>
+        <td style="text-align: center;"><span class="star">★★★</span><span class="star-empty">★★</span></td>
+        <td style="text-align: center;"><span class="star">★★</span><span class="star-empty">★★★</span></td>
+        <td style="text-align: center;"><span class="star">★★★</span><span class="star-empty">★★</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="grid-2" style="margin-top: 14px; gap: 14px;">
+    <div class="card card--green" style="padding: 12px 14px;">
+      <div class="card__label" style="color: var(--green);">유지·강화할 강점</div>
+      <div class="card__desc" style="font-size: 11.5px;">
+        <strong>원료 전문성, 가족 친화도</strong> — 경쟁사 대비 우위 영역. 2차 이후 커뮤니케이션의 중심축.
+      </div>
+    </div>
+    <div class="card card--red" style="padding: 12px 14px;">
+      <div class="card__label" style="color: var(--red);">반드시 극복할 갭</div>
+      <div class="card__desc" style="font-size: 11.5px;">
+        <strong>라이프스타일 브랜딩(현재 ★★)</strong> — 덴프스 대비 격차 큼. Phase 3 콘텐츠 투자로 집중 공략.
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">17</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 18: 차별화 USP 3가지 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">UNIQUE SELLING PROPOSITION</div>
+    <h2 class="slide__title">차별화 USP 3가지 — "왜 슈퍼세이브여야 하는가?"</h2>
+  </div>
+
+  <div class="grid-3" style="gap: 14px; margin-bottom: 16px;">
+    <!-- USP 1 -->
+    <div class="card card--accent" style="padding: 18px; position: relative;">
+      <div style="position: absolute; top: -10px; left: 16px; background: var(--accent); color: #fff; font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 10px; letter-spacing: 1px;">USP 1</div>
+      <div style="font-size: 28px; margin-top: 6px; margin-bottom: 6px;">🌿</div>
+      <div style="font-size: 16px; font-weight: 900; color: var(--accent); margin-bottom: 8px; line-height: 1.3;">
+        곰보배추 단일 원료 전문성
+      </div>
+      <div class="card__desc" style="font-size: 12px;">
+        <strong>31.85% 함유</strong>의 독보적 원료 비중. 프락토올리고당 감미료.
+        경쟁사 대비 원료 스펙을 <strong>수치로 명시</strong>할 수 있는 유일한 브랜드.
+      </div>
+      <div style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--gray-200); font-size: 10.5px; color: var(--muted);">
+        👉 "한방 종합"이 아닌 "곰보배추 한 원료를 깊게"
+      </div>
+    </div>
+
+    <!-- USP 2 -->
+    <div class="card card--orange" style="padding: 18px; position: relative;">
+      <div style="position: absolute; top: -10px; left: 16px; background: var(--hiz-orange); color: #fff; font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 10px; letter-spacing: 1px;">USP 2</div>
+      <div style="font-size: 28px; margin-top: 6px; margin-bottom: 6px;">🏆</div>
+      <div style="font-size: 16px; font-weight: 900; color: var(--hiz-orange); margin-bottom: 8px; line-height: 1.3;">
+        카테고리 선점자 지위
+      </div>
+      <div class="card__desc" style="font-size: 12px;">
+        <strong>"곰보배추시럽 원조 · 네이버 1위"</strong> 타이틀. 리뷰 1,564건, 평점 4.9.
+        <strong>"곰보배추 = 슈퍼세이브"</strong> 각인의 시장 포지션 확보 가능.
+      </div>
+      <div style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--gray-200); font-size: 10.5px; color: var(--muted);">
+        👉 "검색하면 나오는 브랜드" 자산
+      </div>
+    </div>
+
+    <!-- USP 3 -->
+    <div class="card card--green" style="padding: 18px; position: relative;">
+      <div style="position: absolute; top: -10px; left: 16px; background: var(--green); color: #fff; font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 10px; letter-spacing: 1px;">USP 3</div>
+      <div style="font-size: 28px; margin-top: 6px; margin-bottom: 6px;">👨‍👩‍👧‍👦</div>
+      <div style="font-size: 16px; font-weight: 900; color: var(--green); margin-bottom: 8px; line-height: 1.3;">
+        온 가족 맞춤 라인업
+      </div>
+      <div class="card__desc" style="font-size: 12px;">
+        <strong>시럽(주력) · 스틱(간편) · 키즈(아이 전용)</strong> 3축 구조. 부모와 자녀가 <strong>동일 브랜드로 함께 섭취</strong> 가능한 경쟁사 찾기 어려움.
+      </div>
+      <div style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--gray-200); font-size: 10.5px; color: var(--muted);">
+        👉 "우리 집에서 4인이 함께"
+      </div>
+    </div>
+  </div>
+
+  <!-- Integrated message -->
+  <div style="background: var(--accent); color: #fff; padding: 18px 24px; border-radius: 10px; display: flex; align-items: center; gap: 18px;">
+    <div style="font-size: 32px;">💎</div>
+    <div>
+      <div style="font-size: 11px; font-weight: 800; letter-spacing: 2px; opacity: 0.7; margin-bottom: 4px;">INTEGRATED USP</div>
+      <div style="font-size: 15px; font-weight: 800; line-height: 1.5;">
+        "곰보배추 원료의 전문성 × 카테고리 리더 자산 × 온 가족 라인업 — 세 가지 USP의 교집합이 만드는 브랜드"
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">18</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 19: DIVIDER 05 — 합의 & 다음 스텝 -->
+<!-- ============================================================ -->
+<div class="slide slide--dark divider">
+  <div class="divider__number">05</div>
+  <div class="divider__title">2회차 합의 &amp; 다음 스텝</div>
+  <div class="divider__desc">워크샵 2→3차 연결 · 브랜드사 과제</div>
+  <span class="slide__page">19</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 20: 2회차 합의 사항 정리 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">WORKSHOP 2 SUMMARY</div>
+    <h2 class="slide__title">2회차 합의 사항 체크리스트</h2>
+  </div>
+
+  <div class="grid-2" style="gap: 14px;">
+    <div class="card card--accent">
+      <div class="card__label">DECISION 1 — 브랜드 에센스</div>
+      <div class="card__title" style="font-size: 14px; margin-bottom: 6px;">온 가족 건강방패 · 3대 가치 확정</div>
+      <div class="card__desc" style="font-size: 12px;">
+        Purpose · Mission · Offer · Vision 4축 합의 / Core Values: 전문성 · 따뜻함 · 신뢰 확정
+      </div>
+    </div>
+    <div class="card card--orange">
+      <div class="card__label">DECISION 2 — 핵심 키워드</div>
+      <div class="card__title" style="font-size: 14px; margin-bottom: 6px;">3-Tier 피라미드 확정</div>
+      <div class="card__desc" style="font-size: 12px;">
+        Core 1개 · Primary 3개 · Secondary 5개 → 브랜드 가이드라인·SNS 운영에 반영
+      </div>
+    </div>
+    <div class="card card--green">
+      <div class="card__label">DECISION 3 — 슬로건</div>
+      <div class="card__title" style="font-size: 14px; margin-bottom: 6px;">메인 / 서브 / PR 3층 구조</div>
+      <div class="card__desc" style="font-size: 12px;">
+        Main: "매일 한 포, 온 가족 곰보배추" / Sub: "온 가족 건강방패" / PR: "곰보배추를 가장 잘 아는 브랜드"
+      </div>
+    </div>
+    <div class="card card--purple">
+      <div class="card__label">DECISION 4 — 톤앤매너</div>
+      <div class="card__title" style="font-size: 14px; margin-bottom: 6px;">"믿음직한 이웃 언니" 페르소나</div>
+      <div class="card__desc" style="font-size: 12px;">
+        5 Traits: 진솔·신뢰감·따뜻함·교육적·비약장수 / Do · Don't 예시 3개씩 확정
+      </div>
+    </div>
+    <div class="card card--blue">
+      <div class="card__label">DECISION 5 — 포지셔닝 4축</div>
+      <div class="card__title" style="font-size: 14px; margin-bottom: 6px;">Category · Functional · Emotional · Lifestyle</div>
+      <div class="card__desc" style="font-size: 12px;">
+        4축 각각 한 문장 포지션 확정 / 4축 통합 메시지로 내부·외부 커뮤니케이션 일관성 확보
+      </div>
+    </div>
+    <div class="card card--red">
+      <div class="card__label">DECISION 6 — 포지셔닝 스테이트먼트</div>
+      <div class="card__title" style="font-size: 14px; margin-bottom: 6px;">For / Who / That / Unlike 정립</div>
+      <div class="card__desc" style="font-size: 12px;">
+        최종 스테이트먼트 기반 3회차에서 브랜드 매니페스토 · 론칭 카피로 발전
+      </div>
+    </div>
+  </div>
+
+  <div class="source-note" style="margin-top: 14px;">
+    이상 6개 합의 사항은 3회차 워크샵 전까지 <strong>브랜드 가이드라인 초안</strong>으로 문서화 예정
+  </div>
+
+  <span class="slide__page">20</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 21: 브랜드사 과제 (2→3차) -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">ACTION ITEMS</div>
+    <h2 class="slide__title">브랜드사 과제 — 워크샵 2→3차 사이</h2>
+  </div>
+
+  <div class="grid-2" style="gap: 12px; margin-bottom: 14px;">
+    <div class="card card--accent" style="padding: 14px 16px;">
+      <div class="card__label">과제 1</div>
+      <div class="card__title" style="font-size: 14px; margin-bottom: 4px;">슬로건 후보 3안 고객 반응 테스트</div>
+      <div class="card__desc" style="font-size: 12px;">
+        메인 3안 + 서브 1안을 <strong>공식몰 팝업 · 인스타그램 스토리 설문</strong>으로 테스트. 응답 100건 이상 확보.
+      </div>
+    </div>
+    <div class="card card--orange" style="padding: 14px 16px;">
+      <div class="card__label">과제 2</div>
+      <div class="card__title" style="font-size: 14px; margin-bottom: 4px;">브랜드 매니페스토 초안 작성</div>
+      <div class="card__desc" style="font-size: 12px;">
+        포지셔닝 스테이트먼트를 기반으로 <strong>소비자 메시지 300자 내외</strong> 초안 2~3안 준비 (대표·직원 함께).
+      </div>
+    </div>
+    <div class="card card--green" style="padding: 14px 16px;">
+      <div class="card__label">과제 3</div>
+      <div class="card__title" style="font-size: 14px; margin-bottom: 4px;">경쟁 브랜드 패키지 스크린샷 수집</div>
+      <div class="card__desc" style="font-size: 12px;">
+        <strong>기린약방 · 덴프스 · 건강한약속바른</strong> 패키지 실물 구매 또는 상세 이미지 수집 → 로고·패키지 시안 기초 자료.
+      </div>
+    </div>
+    <div class="card card--purple" style="padding: 14px 16px;">
+      <div class="card__label">과제 4</div>
+      <div class="card__title" style="font-size: 14px; margin-bottom: 4px;">제품 라인업 SKU 최종 결정</div>
+      <div class="card__desc" style="font-size: 12px;">
+        시럽·스틱·키즈 <strong>3축 확정 / 플러스·환 유지 여부 결정 / 선물세트 구성 재설계</strong> — 디자인 시안 이전 확정.
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--red" style="padding: 14px 16px; margin-bottom: 14px;">
+    <div class="card__label">과제 5 — 창업 스토리 인터뷰</div>
+    <div class="card__title" style="font-size: 14px; margin-bottom: 4px;">신주리 대표 "곰보배추를 만나게 된 이야기" 녹취</div>
+    <div class="card__desc" style="font-size: 12px;">
+      <strong>30분 인터뷰 녹취</strong> — 브랜드 매니페스토·About 페이지·인스타 콘텐츠 전체에 재활용 가능한 핵심 자산.
+    </div>
+  </div>
+
+  <!-- Next workshop schedule -->
+  <div style="background: var(--accent); color: #fff; padding: 14px 18px; border-radius: 10px;">
+    <div style="font-size: 10px; font-weight: 800; letter-spacing: 2px; opacity: 0.7; margin-bottom: 4px;">NEXT WORKSHOP</div>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <div style="font-size: 15px; font-weight: 900;">다음 3회차 워크샵 일정</div>
+      <span style="background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 14px; font-size: 12px; font-weight: 700;">5월 첫째주 (조율 중)</span>
+      <span style="font-size: 11px; opacity: 0.8;">오후 2시 ~ 5시 (3시간)</span>
+    </div>
+  </div>
+
+  <span class="slide__page">21</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 22: 3회차 미리보기 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">WORKSHOP 3 PREVIEW</div>
+    <h2 class="slide__title">3회차 아젠다 — 브랜드 커뮤니케이션 &amp; 최종 확정</h2>
+  </div>
+
+  <table class="data-table" style="margin-bottom: 16px;">
+    <thead>
+      <tr>
+        <th style="width: 6%;">순서</th>
+        <th style="width: 34%;">항목</th>
+        <th style="width: 60%;">상세 내용</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td style="font-weight: 700;">슬로건 최종 선정</td>
+        <td>2차 후보 + 고객 반응 테스트 결과 종합 → 메인/서브/PR 슬로건 확정</td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td style="font-weight: 700;">브랜드 매니페스토 확정</td>
+        <td>브랜드사 초안 + HIZ 리파인 → 최종 300자 매니페스토 확정</td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td style="font-weight: 700;">커뮤니케이션 플랫폼 설계</td>
+        <td>자사몰 · 인스타그램 · PR · 패키지별 메시지 계층 설계</td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td style="font-weight: 700;">제품 라인업 전략 최종본 납품</td>
+        <td>시럽·스틱·키즈 3축 + 선물세트 구성 + 신규 SKU 로드맵</td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td style="font-weight: 700;">Phase 2 (디자인) 킥오프 브리핑</td>
+        <td>브랜드 가이드라인 초안 공유 → 로고 리뉴얼 시안 제작 착수</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="grid-3" style="gap: 14px;">
+    <div class="card" style="text-align: center; padding: 16px 12px;">
+      <div style="font-size: 28px;">🗣️</div>
+      <div style="font-size: 13px; font-weight: 800; color: var(--accent); margin: 6px 0 4px;">브랜드 보이스</div>
+      <div style="font-size: 11px; color: var(--gray-600);">슬로건 · 매니페스토 · 카피 체계 확정</div>
+    </div>
+    <div class="card" style="text-align: center; padding: 16px 12px;">
+      <div style="font-size: 28px;">📐</div>
+      <div style="font-size: 13px; font-weight: 800; color: var(--hiz-orange); margin: 6px 0 4px;">브랜드 가이드라인</div>
+      <div style="font-size: 11px; color: var(--gray-600);">톤앤매너 · 메시지 계층 · 사용 예시</div>
+    </div>
+    <div class="card" style="text-align: center; padding: 16px 12px;">
+      <div style="font-size: 28px;">📦</div>
+      <div style="font-size: 13px; font-weight: 800; color: var(--green); margin: 6px 0 4px;">제품 라인업</div>
+      <div style="font-size: 11px; color: var(--gray-600);">시럽·스틱·키즈 3축 최종 확정</div>
+    </div>
+  </div>
+
+  <span class="slide__page">22</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 23: CLOSING -->
+<!-- ============================================================ -->
+<div class="slide slide--gradient" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+  <div style="font-size: 12px; font-weight: 600; letter-spacing: 3px; opacity: 0.5; margin-bottom: 20px;">THANK YOU</div>
+  <h2 style="font-size: 34px; font-weight: 900; margin-bottom: 12px;">슈퍼세이브 x BRAND RISE</h2>
+  <p style="font-size: 16px; opacity: 0.8; margin-bottom: 8px;">워크샵 2회차 — 포지셔닝 &amp; 핵심 메시지 정립</p>
+  <p style="font-size: 13px; opacity: 0.5; margin-bottom: 40px;">다음 워크샵: 3회차 — 브랜드 커뮤니케이션 &amp; 최종 확정</p>
+  <div style="width: 60px; height: 1px; background: rgba(255,255,255,0.3); margin-bottom: 20px;"></div>
+  <p style="font-size: 11px; opacity: 0.4;">
+    Prepared by HIZ BRAND RISE · Confidential<br>
+    2026. 04
+  </p>
+  <span class="slide__page">23</span>
+</div>
+
+</body>
+</html>
