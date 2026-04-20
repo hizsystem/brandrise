@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>슈퍼세이브 브랜드 컨설팅 — 워크샵 1회차</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap');
+
+  :root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --accent: #2d3a8c;
+    --accent-light: #eef0ff;
+    --blue: #3b82f6;
+    --blue-light: #eff6ff;
+    --orange: #f97316;
+    --orange-light: #fff7ed;
+    --green: #10b981;
+    --green-light: #ecfdf5;
+    --red: #ef4444;
+    --red-light: #fef2f2;
+    --purple: #8b5cf6;
+    --purple-light: #f5f3ff;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-600: #4b5563;
+    --hiz-orange: #e8491d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===================== SLIDE SYSTEM ===================== */
+  .slide {
+    width: 1122px;
+    height: 793px;
+    padding: 60px 70px;
+    margin: 0 auto 2px;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide--dark {
+    background: var(--accent);
+    color: #ffffff;
+  }
+
+  .slide--gradient {
+    background: linear-gradient(135deg, #1e2a6e 0%, #2d3a8c 40%, #3b4fa6 100%);
+    color: #ffffff;
+  }
+
+  .slide--green-gradient {
+    background: linear-gradient(135deg, #064e3b 0%, #065f46 40%, #047857 100%);
+    color: #ffffff;
+  }
+
+  /* ===================== COVER ===================== */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 100px 90px;
+  }
+
+  .cover__badge {
+    display: inline-block;
+    background: var(--hiz-orange);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+
+  .cover__title {
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+
+  .cover__subtitle {
+    font-size: 18px;
+    font-weight: 300;
+    opacity: 0.85;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  .cover__meta {
+    font-size: 13px;
+    opacity: 0.6;
+    line-height: 2;
+  }
+
+  .cover__logo {
+    position: absolute;
+    bottom: 32mm;
+    right: 36mm;
+    width: 56px;
+    height: 56px;
+    background: var(--hiz-orange);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 900;
+    color: #fff;
+    font-style: italic;
+  }
+
+  /* ===================== SECTION DIVIDER ===================== */
+  .divider {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    padding: 100px 90px;
+  }
+
+  .divider__number {
+    font-size: 72px;
+    font-weight: 900;
+    opacity: 0.15;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .divider__title {
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+
+  .divider__desc {
+    font-size: 15px;
+    font-weight: 300;
+    opacity: 0.7;
+    max-width: 500px;
+  }
+
+  /* ===================== CONTENT ===================== */
+  .slide__header {
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .slide__section-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--hiz-orange);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+
+  .slide__title {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.3;
+  }
+
+  .slide__page {
+    position: absolute;
+    bottom: 24px;
+    right: 36px;
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .slide--dark .slide__page,
+  .slide--gradient .slide__page,
+  .slide--green-gradient .slide__page {
+    color: rgba(255,255,255,0.4);
+  }
+
+  .slide::after {
+    content: 'BRAND RISE';
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--muted);
+    opacity: 0.5;
+  }
+  .slide--dark::after,
+  .slide--gradient::after,
+  .slide--green-gradient::after {
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ===================== GRIDS ===================== */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 14px; }
+  .grid-2-1 { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+
+  /* ===================== CARDS ===================== */
+  .card {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .card--accent { border-left: 4px solid var(--accent); }
+  .card--orange { border-left: 4px solid var(--hiz-orange); }
+  .card--blue { border-left: 4px solid var(--blue); }
+  .card--green { border-left: 4px solid var(--green); }
+  .card--purple { border-left: 4px solid var(--purple); }
+  .card--red { border-left: 4px solid var(--red); }
+  .card--filled { background: var(--gray-50); border: none; }
+  .card--dark { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; }
+
+  .card__icon { font-size: 24px; margin-bottom: 10px; }
+  .card__label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .card__title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .card__value {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .card__desc {
+    font-size: 12.5px;
+    color: var(--gray-600);
+    line-height: 1.7;
+  }
+
+  /* ===================== KPI ===================== */
+  .kpi-row { display: flex; gap: 14px; margin-bottom: 20px; }
+  .kpi {
+    flex: 1;
+    text-align: center;
+    padding: 18px 12px;
+    background: var(--gray-50);
+    border-radius: 10px;
+  }
+  .kpi__value { font-size: 26px; font-weight: 900; color: var(--accent); margin-bottom: 4px; }
+  .kpi__label { font-size: 10px; color: var(--muted); font-weight: 500; }
+
+  /* ===================== TABLE ===================== */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .data-table thead th {
+    background: var(--accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+  }
+  .data-table thead th:first-child { border-radius: 6px 0 0 0; }
+  .data-table thead th:last-child { border-radius: 0 6px 0 0; }
+  .data-table tbody td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--gray-200);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .data-table tbody tr:nth-child(even) { background: var(--gray-50); }
+
+  /* ===================== TAGS ===================== */
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin: 2px 3px 2px 0;
+  }
+  .tag--blue { background: var(--blue-light); color: var(--blue); }
+  .tag--green { background: var(--green-light); color: var(--green); }
+  .tag--orange { background: var(--orange-light); color: var(--orange); }
+  .tag--purple { background: var(--purple-light); color: var(--purple); }
+  .tag--red { background: var(--red-light); color: var(--red); }
+
+  /* ===================== LISTS ===================== */
+  .insight-list { list-style: none; padding: 0; }
+  .insight-list li {
+    position: relative;
+    padding: 7px 0 7px 20px;
+    font-size: 13px;
+    line-height: 1.6;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .insight-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 7px;
+    height: 7px;
+    background: var(--hiz-orange);
+    border-radius: 50%;
+  }
+  .insight-list li:last-child { border-bottom: none; }
+
+  /* ===================== SWOT ===================== */
+  .swot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--gray-200);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .swot-cell { background: #fff; padding: 18px; }
+  .swot-cell__title {
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+  .swot-cell__list { list-style: none; padding: 0; font-size: 12px; line-height: 1.8; }
+  .swot-cell__list li::before { content: '• '; font-weight: 700; }
+  .swot-cell--s .swot-cell__title { color: var(--blue); }
+  .swot-cell--w .swot-cell__title { color: var(--orange); }
+  .swot-cell--o .swot-cell__title { color: var(--green); }
+  .swot-cell--t .swot-cell__title { color: var(--red); }
+
+  /* ===================== SOURCE ===================== */
+  .source-note {
+    font-size: 9px;
+    color: var(--muted);
+    margin-top: 12px;
+    padding-top: 6px;
+    border-top: 1px solid var(--gray-200);
+  }
+
+  /* ===================== TIMELINE ===================== */
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    height: 100%;
+  }
+  .timeline__col {
+    padding: 0 10px;
+    border-right: 1px solid var(--gray-200);
+    position: relative;
+  }
+  .timeline__col:last-child { border-right: none; }
+  .timeline__col--active {
+    background: var(--accent-light);
+    border-radius: 10px;
+    border-right: 1px solid var(--gray-200);
+  }
+  .timeline__month {
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 2px;
+    line-height: 1.2;
+  }
+  .timeline__month-sub {
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .timeline__items {
+    list-style: none;
+    padding: 0;
+    font-size: 11px;
+    line-height: 1.65;
+  }
+  .timeline__items li {
+    position: relative;
+    padding: 3px 0 3px 12px;
+  }
+  .timeline__items li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--muted);
+  }
+  .timeline__phase {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 8px;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+  .timeline__now {
+    display: inline-block;
+    background: var(--hiz-orange);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 800;
+    padding: 2px 10px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    margin-left: 6px;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  /* ===================== PERSONA ===================== */
+  .persona-card {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+  }
+  .persona-card__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+  .persona-card__name { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+  .persona-card__demo { font-size: 10px; color: var(--muted); margin-bottom: 10px; }
+  .persona-card__section { text-align: left; margin-top: 10px; }
+  .persona-card__section-title { font-size: 10px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+  .persona-card__section-text { font-size: 11px; color: var(--gray-600); line-height: 1.6; }
+
+  /* ===================== BRAND SCAN CARD ===================== */
+  .scan-card {
+    background: var(--gray-50);
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+  .scan-card__name {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .scan-card__desc {
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ===================== PRINT ===================== */
+  @media print {
+    @page {
+      size: 1122px 793px;
+      margin: 0;
+    }
+    html, body {
+      width: 1122px;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    .slide {
+      width: 1122px !important;
+      height: 793px !important;
+      margin: 0 !important;
+      padding: 60px 70px !important;
+      page-break-after: always;
+      page-break-inside: avoid;
+      break-after: page;
+      break-inside: avoid;
+      overflow: hidden !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+    .slide:last-child {
+      page-break-after: auto;
+      break-after: auto;
+    }
+  }
+
+  @media screen {
+    body { background: #d1d5db; padding: 20px 0; }
+    .slide { box-shadow: 0 4px 24px rgba(0,0,0,0.12); border-radius: 4px; margin-bottom: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- SLIDE 1: COVER -->
+<!-- ============================================================ -->
+<div class="slide slide--gradient cover">
+  <div class="cover__badge">BRAND CONSULTING</div>
+  <h1 class="cover__title">슈퍼세이브 브랜드 컨설팅</h1>
+  <p class="cover__subtitle">워크샵 1회차 — 브랜드 진단 &amp; 방향성 설정</p>
+  <div class="cover__meta">
+    2026. 04 | HIZ BRAND RISE | Confidential
+  </div>
+  <div class="cover__logo">H</div>
+  <span class="slide__page">01</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 2: SECTION DIVIDER — 프로젝트 로드맵 -->
+<!-- ============================================================ -->
+<div class="slide slide--dark divider">
+  <div class="divider__number">01</div>
+  <div class="divider__title">프로젝트 로드맵</div>
+  <div class="divider__desc">4월–8월 전체 여정 요약</div>
+  <span class="slide__page">02</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 3: 전체 여정 타임라인 -->
+<!-- ============================================================ -->
+<div class="slide" style="padding: 40px 50px;">
+  <div class="slide__header" style="margin-bottom: 14px; padding-bottom: 10px;">
+    <div class="slide__section-label">PROJECT ROADMAP</div>
+    <h2 class="slide__title">전체 여정 타임라인 — 4월 ~ 8월</h2>
+  </div>
+
+  <!-- Phase banners -->
+  <div style="display: flex; gap: 0; margin-bottom: 12px; border-radius: 8px; overflow: hidden;">
+    <div style="flex: 2; background: var(--accent); color: #fff; padding: 6px 12px; font-size: 10px; font-weight: 700; text-align: center; letter-spacing: 0.5px;">
+      PHASE 1 — 브랜드 전략 <span style="opacity:0.6; font-weight:400;">(4–5월)</span>
+    </div>
+    <div style="flex: 2; background: var(--green); color: #fff; padding: 6px 12px; font-size: 10px; font-weight: 700; text-align: center; letter-spacing: 0.5px;">
+      PHASE 2 — 디자인 시스템 <span style="opacity:0.6; font-weight:400;">(5–6월)</span>
+    </div>
+    <div style="flex: 2; background: var(--purple); color: #fff; padding: 6px 12px; font-size: 10px; font-weight: 700; text-align: center; letter-spacing: 0.5px;">
+      PHASE 3 — 콘텐츠 제작 <span style="opacity:0.6; font-weight:400;">(6–7월)</span>
+    </div>
+    <div style="flex: 1; background: var(--hiz-orange); color: #fff; padding: 6px 12px; font-size: 10px; font-weight: 700; text-align: center; letter-spacing: 0.5px;">
+      LAUNCH <span style="opacity:0.6; font-weight:400;">(8월)</span>
+    </div>
+  </div>
+
+  <!-- Timeline columns -->
+  <div class="timeline" style="height: auto;">
+
+    <!-- 4월 — ACTIVE -->
+    <div class="timeline__col timeline__col--active" style="padding: 14px 12px;">
+      <div style="display: flex; align-items: center; margin-bottom: 2px;">
+        <span class="timeline__month" style="color: var(--accent);">4월</span>
+        <span class="timeline__now">NOW</span>
+      </div>
+      <div class="timeline__month-sub" style="color: var(--accent);">프로젝트 킥오프 &amp; 브랜드 진단</div>
+      <span class="timeline__phase" style="background: var(--accent);">PHASE 1</span>
+      <ul class="timeline__items">
+        <li style="font-weight: 600;">프로젝트 킥오프 및 팀 역할 확정</li>
+        <li>브랜드 현황 진단 및 시장·경쟁사 분석</li>
+        <li style="font-weight: 600; color: var(--accent);">워크샵 1회차: 브랜드 진단 &amp; 방향성 설정</li>
+        <li>워크샵 2회차: 포지셔닝 &amp; 핵심 메시지 정립</li>
+      </ul>
+    </div>
+
+    <!-- 5월 -->
+    <div class="timeline__col" style="padding: 14px 12px;">
+      <div class="timeline__month">5월</div>
+      <div class="timeline__month-sub">Phase 1 완료 &amp; Phase 2 킥오프</div>
+      <div>
+        <span class="timeline__phase" style="background: var(--accent);">P1</span>
+        <span class="timeline__phase" style="background: var(--green);">P2</span>
+      </div>
+      <ul class="timeline__items">
+        <li>워크샵 3회차: 브랜드 커뮤니케이션 &amp; 최종 확정</li>
+        <li>브랜드 포지셔닝 전략 최종본 납품</li>
+        <li>제품 라인업 전략 최종본 납품</li>
+        <li>로고 리뉴얼 1차 시안 3개 이상 제시</li>
+      </ul>
+    </div>
+
+    <!-- 6월 -->
+    <div class="timeline__col" style="padding: 14px 12px;">
+      <div class="timeline__month">6월</div>
+      <div class="timeline__month-sub">디자인 확정 &amp; 목업 제작 &amp; 1차 촬영</div>
+      <div>
+        <span class="timeline__phase" style="background: var(--green);">P2</span>
+        <span class="timeline__phase" style="background: var(--purple);">P3</span>
+      </div>
+      <ul class="timeline__items">
+        <li>로고 최종 확정 → 패키지 시안 완성</li>
+        <li>패키지 디자인 최종 확정 + 목업 제작</li>
+        <li>브랜드 가이드라인 최종본 납품</li>
+        <li>목업 기반 1차 제품 포트폴리오 촬영</li>
+      </ul>
+    </div>
+
+    <!-- 7월 -->
+    <div class="timeline__col" style="padding: 14px 12px;">
+      <div class="timeline__month">7월</div>
+      <div class="timeline__month-sub">라이프스타일 촬영 &amp; 콘텐츠 제작</div>
+      <span class="timeline__phase" style="background: var(--purple);">PHASE 3</span>
+      <ul class="timeline__items">
+        <li>라이프스타일 셋 촬영 (모델 포함)</li>
+        <li>인스타그램 광고 템플릿 디자인 10컷</li>
+        <li>자사몰 상세페이지 디자인 1~10개</li>
+        <li>인스타그램 무드보드 &amp; 운영 가이드 세팅</li>
+      </ul>
+    </div>
+
+    <!-- 8월 -->
+    <div class="timeline__col" style="padding: 14px 12px;">
+      <div class="timeline__month">8월</div>
+      <div class="timeline__month-sub">브랜드 리뉴얼 런칭</div>
+      <span class="timeline__phase" style="background: var(--hiz-orange);">LAUNCH</span>
+      <ul class="timeline__items">
+        <li>리뉴얼 패키지 실물 생산 완료 확인</li>
+        <li>온라인 채널 전면 리뉴얼 업데이트</li>
+        <li>인스타그램 리뉴얼 론치 콘텐츠 업로드</li>
+        <li>팔로워 이벤트 100명 기획 실행</li>
+        <li style="font-weight: 600; color: var(--hiz-orange);">전체 프로젝트 완료 결과 보고</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Bottom milestone bar -->
+  <div style="display: flex; align-items: center; margin-top: 14px; padding: 8px 16px; background: var(--gray-50); border-radius: 8px; font-size: 10px; color: var(--muted);">
+    <div style="width: 8px; height: 8px; background: var(--hiz-orange); border-radius: 50%; margin-right: 8px;"></div>
+    <span style="font-weight: 700; color: var(--text); margin-right: 16px;">현재 위치: 4월 1주차</span>
+    <span>킥오프 완료 → 워크샵 1회차 진행 중 → 2회차 (4월 중순 예정)</span>
+  </div>
+
+  <span class="slide__page">03</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 4: SECTION DIVIDER — 워크샵 1차 아젠다 -->
+<!-- ============================================================ -->
+<div class="slide slide--gradient divider">
+  <div class="divider__number">02</div>
+  <div class="divider__title">워크샵 1차 아젠다</div>
+  <div class="divider__desc">브랜드 진단 &amp; 방향성 설정</div>
+  <span class="slide__page">04</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 5: 워크샵 1차 진행 항목 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">WORKSHOP AGENDA</div>
+    <h2 class="slide__title">워크샵 1차 진행 항목</h2>
+  </div>
+
+  <div class="grid-2">
+    <!-- Left: 핵심 목표 -->
+    <div class="card card--accent">
+      <div class="card__label">4월 핵심 목표</div>
+      <div class="card__title" style="margin-bottom: 12px;">이번 달 달성 과제</div>
+      <ul class="insight-list">
+        <li>브랜드 현황 전수 점검 및 핵심 이슈 정의</li>
+        <li>타겟 고객 페르소나 초안 설정</li>
+        <li>브랜드 방향성 후보 3안 도출</li>
+        <li>2회차 워크샵 포지셔닝 준비 자료 확보</li>
+      </ul>
+    </div>
+
+    <!-- Right: 아젠다 테이블 -->
+    <div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 40px;">순서</th>
+            <th>항목</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight: 700; text-align: center;">1</td>
+            <td>브랜드 현황 점검 및 핵심 문제 정의<br><span style="color: var(--muted); font-size: 11px;">사전 질문지 제출 현황 공유 / 대표·직원 응답 인사이트 브리핑</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700; text-align: center;">2</td>
+            <td>경쟁사 브랜드 리서치</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700; text-align: center;">3</td>
+            <td>타겟 고객 페르소나 설정</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700; text-align: center;">4</td>
+            <td>브랜드 방향성 후보 도출</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700; text-align: center;">5</td>
+            <td>워크샵 1회차 결과 정리 및 공유 문서 작성</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700; text-align: center;">6</td>
+            <td>포지셔닝 초안 자료 수집<br><span style="color: var(--muted); font-size: 11px;">곰보배추 + 슈퍼세이브 맥락</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <span class="slide__page">05</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 6: 인터뷰 — 사전 질문지 인사이트 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">INTERVIEW INSIGHTS</div>
+    <h2 class="slide__title">인터뷰 — 사전 질문지 인사이트 브리핑</h2>
+  </div>
+
+  <div class="grid-2">
+    <!-- 대표 응답 -->
+    <div class="card card--accent">
+      <div class="card__icon">👤</div>
+      <div class="card__title">대표 응답 핵심</div>
+      <ul class="insight-list">
+        <li><strong>브랜드 인식:</strong> "곰보배추 = 슈퍼세이브"로 각인되길 원함</li>
+        <li><strong>핵심 고민:</strong> 곰보배추 시장 자체의 인지도 확장 필요</li>
+        <li><strong>지향점:</strong> 건강기능식품 전문 브랜드로의 포지셔닝 전환</li>
+        <li><strong>경쟁 인식:</strong> 저가·대량 경쟁보다 품질·신뢰 차별화 중시</li>
+        <li><strong>성장 목표:</strong> 온라인 자사몰 중심 DTC 매출 비중 확대</li>
+      </ul>
+    </div>
+
+    <!-- 직원 응답 -->
+    <div class="card card--blue">
+      <div class="card__icon">👥</div>
+      <div class="card__title">직원 응답 핵심</div>
+      <ul class="insight-list">
+        <li><strong>브랜드 인식:</strong> 내부적으로 브랜드 정체성 명확히 공유 안 됨</li>
+        <li><strong>현재 강점:</strong> 제품 품질 자체에 대한 높은 자부심</li>
+        <li><strong>약점 인식:</strong> 디자인·패키지가 시장 내 경쟁력 부족</li>
+        <li><strong>고객 피드백:</strong> 재구매율은 높으나 신규 유입 경로가 제한적</li>
+        <li><strong>개선 희망:</strong> SNS 콘텐츠, 패키지 리뉴얼, 브랜드 스토리텔링</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top: 16px; padding: 12px 16px; background: var(--orange-light); border-left: 3px solid var(--hiz-orange); border-radius: 0 8px 8px 0; font-size: 12px; line-height: 1.6;">
+    <strong style="color: var(--hiz-orange);">핵심 인사이트:</strong> 대표와 직원 모두 제품 품질에 대한 확신은 높으나, 브랜드 아이덴티티와 외부 커뮤니케이션에 대한 체계적 정비 필요성에 공감
+  </div>
+  <span class="slide__page">06</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 7: 브랜드 현황 점검 및 핵심 문제 정의 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">BRAND DIAGNOSIS</div>
+    <h2 class="slide__title">브랜드 현황 점검 및 핵심 문제 정의</h2>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="kpi__value">—</div>
+      <div class="kpi__label">브랜드 인지도</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi__value">—</div>
+      <div class="kpi__label">재구매율</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi__value">—</div>
+      <div class="kpi__label">주요 채널</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi__value">—</div>
+      <div class="kpi__label">핵심 제품</div>
+    </div>
+  </div>
+
+  <div class="card card--orange" style="margin-top: 8px;">
+    <div class="card__title" style="color: var(--hiz-orange);">핵심 문제 정의</div>
+    <ul class="insight-list">
+      <li>브랜드 아이덴티티 부재 — 로고·패키지·톤앤매너의 일관성 없음</li>
+      <li>곰보배추 카테고리 인지도 자체가 낮아 교육형 커뮤니케이션 필요</li>
+      <li>저가 경쟁 시장에서 프리미엄 포지셔닝의 논리 부족</li>
+      <li>온라인 채널(자사몰, 스마트스토어) 비주얼 경쟁력 미흡</li>
+      <li>SNS 콘텐츠 부재 — 인스타그램·유튜브 운영 전략 없음</li>
+      <li>타겟 고객 정의가 불명확하여 메시지 분산</li>
+    </ul>
+  </div>
+  <span class="slide__page">07</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 8: 경쟁사 브랜드 리서치 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">COMPETITIVE ANALYSIS</div>
+    <h2 class="slide__title">경쟁사 브랜드 리서치</h2>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 14px;">
+    <!-- 기린약방 — 핵심 직접 경쟁사 -->
+    <div class="card card--orange" style="grid-column: 1 / -1;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div style="flex: 1;">
+          <div class="card__label" style="color: var(--hiz-orange);">핵심 직접 경쟁사</div>
+          <div class="card__title" style="font-size: 17px;">기린약방</div>
+          <div class="card__desc" style="margin-top: 6px;">
+            네이버 스마트스토어 <strong>빅파워</strong> 등급 · 누적 판매 <strong>412,308건</strong><br>
+            전통 한방 감성 + 모던 클린 패키지 디자인으로 프리미엄 포지셔닝
+          </div>
+        </div>
+        <div style="text-align: right; min-width: 160px;">
+          <div style="font-size: 28px; font-weight: 900; color: var(--hiz-orange); line-height: 1.2;">412,308</div>
+          <div style="font-size: 10px; color: var(--muted);">누적 판매건</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 14px;">
+        <div style="background: var(--gray-50); border-radius: 8px; padding: 10px; text-align: center;">
+          <div style="font-size: 11px; font-weight: 700;">흑마늘진액고</div>
+          <div style="font-size: 10px; color: var(--muted); margin-top: 2px;">유기가공식품 인증</div>
+        </div>
+        <div style="background: var(--gray-50); border-radius: 8px; padding: 10px; text-align: center;">
+          <div style="font-size: 11px; font-weight: 700;">곰보배추</div>
+          <div style="font-size: 10px; color: var(--muted); margin-top: 2px;">직접 경쟁 제품군</div>
+        </div>
+        <div style="background: var(--gray-50); border-radius: 8px; padding: 10px; text-align: center;">
+          <div style="font-size: 11px; font-weight: 700;">명품소금</div>
+          <div style="font-size: 10px; color: var(--muted); margin-top: 2px;">Melted Salt</div>
+        </div>
+        <div style="background: var(--gray-50); border-radius: 8px; padding: 10px; text-align: center;">
+          <div style="font-size: 11px; font-weight: 700;">청국장가루</div>
+          <div style="font-size: 10px; color: var(--muted); margin-top: 2px;">라이브커머스 활용</div>
+        </div>
+      </div>
+      <div style="margin-top: 10px;">
+        <span class="tag tag--orange">빅파워 스토어</span>
+        <span class="tag tag--orange">라이브커머스</span>
+        <span class="tag tag--blue">전통 한방 브랜딩</span>
+        <span class="tag tag--green">유기가공식품</span>
+        <span class="tag tag--purple">프리미엄 패키지</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card card--blue">
+      <div class="card__label">직접 경쟁</div>
+      <div class="card__title">곰보배추 전문 브랜드</div>
+      <div class="card__desc">
+        곰보배추 시럽/환/즙 제품을 주력으로 하는 기타 경쟁사.<br>
+        주요 채널: 스마트스토어, 쿠팡<br>
+        특징: 가격 경쟁 중심, 브랜딩 미약
+      </div>
+      <div style="margin-top: 8px;">
+        <span class="tag tag--blue">가격 경쟁</span>
+        <span class="tag tag--blue">스마트스토어</span>
+      </div>
+    </div>
+
+    <div class="card card--green">
+      <div class="card__label">간접 경쟁</div>
+      <div class="card__title">건강즙·허벌 브랜드</div>
+      <div class="card__desc">
+        도라지청, 배즙, 양배추즙 등 유사 카테고리.<br>
+        주요 채널: 카카오 선물하기, 자사몰<br>
+        특징: 선물형 수요, 시즌성 높음
+      </div>
+      <div style="margin-top: 8px;">
+        <span class="tag tag--green">선물 수요</span>
+        <span class="tag tag--green">시즌성</span>
+      </div>
+    </div>
+
+    <div class="card card--purple">
+      <div class="card__label">벤치마크</div>
+      <div class="card__title">프리미엄 건기식 브랜드</div>
+      <div class="card__desc">
+        덴프스, 바이탈뷰티, 에버콜라겐 등.<br>
+        주요 채널: 자사몰, 올리브영, 백화점<br>
+        특징: 브랜딩 강화, 라이프스타일 마케팅
+      </div>
+      <div style="margin-top: 8px;">
+        <span class="tag tag--purple">브랜딩</span>
+        <span class="tag tag--purple">라이프스타일</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--filled" style="margin-top: 12px;">
+    <div class="card__desc">
+      <strong>핵심 인사이트:</strong> 기린약방은 전통 한방 감성 브랜딩 + 라이브커머스로 41만건 이상 판매 달성. 슈퍼세이브는 '곰보배추 = 슈퍼세이브' 카테고리 리더십을 선점하기 위해 브랜딩 차별화가 시급.
+    </div>
+  </div>
+  <span class="slide__page">08</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 9: 타겟 고객 페르소나 설정 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">TARGET PERSONA</div>
+    <h2 class="slide__title">타겟 고객 페르소나 설정</h2>
+  </div>
+
+  <div class="grid-3">
+    <div class="persona-card" style="border-top: 3px solid var(--accent);">
+      <div class="persona-card__avatar" style="background: var(--accent-light); color: var(--accent);">A</div>
+      <div class="persona-card__name">건강 케어맘 김소영</div>
+      <div class="persona-card__demo">40대 초반 · 주부 · 자녀 2명</div>
+      <div class="persona-card__section">
+        <div class="persona-card__section-title">Pain Point</div>
+        <div class="persona-card__section-text">가족 건강을 위해 검색하지만 믿을 수 있는 브랜드를 찾기 어려움</div>
+      </div>
+      <div class="persona-card__section">
+        <div class="persona-card__section-title">구매 동기</div>
+        <div class="persona-card__section-text">환절기 가족 건강관리, 자녀 면역력 강화</div>
+      </div>
+      <div class="persona-card__section">
+        <div class="persona-card__section-title">채널</div>
+        <div class="persona-card__section-text">네이버 블로그, 맘카페, 스마트스토어</div>
+      </div>
+    </div>
+
+    <div class="persona-card" style="border-top: 3px solid var(--green);">
+      <div class="persona-card__avatar" style="background: var(--green-light); color: var(--green);">B</div>
+      <div class="persona-card__name">웰니스 직장인 박지원</div>
+      <div class="persona-card__demo">30대 중반 · 직장인 · 미혼</div>
+      <div class="persona-card__section">
+        <div class="persona-card__section-title">Pain Point</div>
+        <div class="persona-card__section-text">바쁜 일상 속 간편하게 건강을 챙기고 싶으나 시간 부족</div>
+      </div>
+      <div class="persona-card__section">
+        <div class="persona-card__section-title">구매 동기</div>
+        <div class="persona-card__section-text">자기 관리, 호흡기 건강, 디톡스 루틴</div>
+      </div>
+      <div class="persona-card__section">
+        <div class="persona-card__section-title">채널</div>
+        <div class="persona-card__section-text">인스타그램, 카카오 선물하기, 올리브영</div>
+      </div>
+    </div>
+
+    <div class="persona-card" style="border-top: 3px solid var(--purple);">
+      <div class="persona-card__avatar" style="background: var(--purple-light); color: var(--purple);">C</div>
+      <div class="persona-card__name">효도 선물족 이준호</div>
+      <div class="persona-card__demo">30대 후반 · 직장인 · 기혼</div>
+      <div class="persona-card__section">
+        <div class="persona-card__section-title">Pain Point</div>
+        <div class="persona-card__section-text">부모님 건강이 걱정되지만 뭘 사야 할지 모름, 선물용 포장 중시</div>
+      </div>
+      <div class="persona-card__section">
+        <div class="persona-card__section-title">구매 동기</div>
+        <div class="persona-card__section-text">명절/생일 효도 선물, 부모님 건강 케어</div>
+      </div>
+      <div class="persona-card__section">
+        <div class="persona-card__section-title">채널</div>
+        <div class="persona-card__section-text">카카오 선물하기, 쿠팡, 네이버 검색</div>
+      </div>
+    </div>
+  </div>
+  <span class="slide__page">09</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 10: 브랜드 방향성 후보 도출 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">BRAND DIRECTION</div>
+    <h2 class="slide__title">브랜드 방향성 후보 도출</h2>
+  </div>
+
+  <div class="grid-3">
+    <div class="card card--blue" style="position: relative;">
+      <div style="position: absolute; top: 12px; right: 12px;"><span class="tag tag--blue">방향 A</span></div>
+      <div class="card__icon">🔬</div>
+      <div class="card__title">곰보배추 전문가 브랜드</div>
+      <div class="card__desc" style="margin-bottom: 10px;">
+        곰보배추 원료의 전문성과 과학적 근거를 중심으로 포지셔닝.<br><br>
+        <strong>키워드:</strong> 전문성, 신뢰, 원료 투명성<br>
+        <strong>톤앤매너:</strong> 클린, 화이트, 전문적<br>
+        <strong>벤치마크:</strong> 종근당건강, 덴프스
+      </div>
+      <div style="padding: 8px; background: var(--blue-light); border-radius: 6px; font-size: 11px; text-align: center; font-weight: 600; color: var(--blue);">
+        "곰보배추의 모든 것, 슈퍼세이브"
+      </div>
+    </div>
+
+    <div class="card card--green" style="position: relative;">
+      <div style="position: absolute; top: 12px; right: 12px;"><span class="tag tag--green">방향 B</span></div>
+      <div class="card__icon">🏡</div>
+      <div class="card__title">온가족 건강 케어 브랜드</div>
+      <div class="card__desc" style="margin-bottom: 10px;">
+        가족 전체의 건강을 책임지는 따뜻한 케어 브랜드로 포지셔닝.<br><br>
+        <strong>키워드:</strong> 가족, 돌봄, 일상 건강<br>
+        <strong>톤앤매너:</strong> 따뜻한, 자연스러운, 내추럴<br>
+        <strong>벤치마크:</strong> 건강한약속 바른, 비타민하우스
+      </div>
+      <div style="padding: 8px; background: var(--green-light); border-radius: 6px; font-size: 11px; text-align: center; font-weight: 600; color: var(--green);">
+        "우리 가족의 건강 루틴, 슈퍼세이브"
+      </div>
+    </div>
+
+    <div class="card card--purple" style="position: relative;">
+      <div style="position: absolute; top: 12px; right: 12px;"><span class="tag tag--purple">방향 C</span></div>
+      <div class="card__icon">🌿</div>
+      <div class="card__title">웰니스 라이프스타일 브랜드</div>
+      <div class="card__desc" style="margin-bottom: 10px;">
+        건강한 라이프스타일을 추구하는 MZ 타겟 웰니스 브랜드로 포지셔닝.<br><br>
+        <strong>키워드:</strong> 웰니스, 루틴, 클린뷰티<br>
+        <strong>톤앤매너:</strong> 모던, 미니멀, 감각적<br>
+        <strong>벤치마크:</strong> 바이탈뷰티, 파지티브호텔
+      </div>
+      <div style="padding: 8px; background: var(--purple-light); border-radius: 6px; font-size: 11px; text-align: center; font-weight: 600; color: var(--purple);">
+        "내 몸의 슈퍼파워, 슈퍼세이브"
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 16px; padding: 12px 16px; background: var(--accent-light); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; font-size: 12px; line-height: 1.6;">
+    <strong style="color: var(--accent);">HIZ 권고:</strong> A+B 하이브리드 — 곰보배추 전문성을 기반으로 가족 건강까지 아우르는 "전문적이면서도 따뜻한" 브랜드. 워크샵에서 방향성 논의 후 2회차에서 구체화.
+  </div>
+  <span class="slide__page">10</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 11: SECTION DIVIDER — 브랜드사 과제 -->
+<!-- ============================================================ -->
+<div class="slide slide--green-gradient divider">
+  <div class="divider__number">03</div>
+  <div class="divider__title">브랜드사 과제</div>
+  <div class="divider__desc">워크샵 1→2차 사이 수행 과제</div>
+  <span class="slide__page">11</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 12: 브랜드사 과제 5개 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">ACTION ITEMS</div>
+    <h2 class="slide__title">브랜드사 과제 — 워크샵 1→2차 사이</h2>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 12px;">
+    <div class="card card--accent">
+      <div class="card__label">과제 1</div>
+      <div class="card__title">브랜드 방향성 후보에 대한 내부 반응 수집</div>
+      <div class="card__desc">"어떤 방향이 가장 우리답다고 느끼나요?" — 내부 구성원 공감대 검증용 설문 진행</div>
+    </div>
+    <div class="card card--blue">
+      <div class="card__label">과제 2</div>
+      <div class="card__title">실제 구매 고객 데이터 정리</div>
+      <div class="card__desc">재구매율 높은 고객군 분석, 후기 키워드 10개 추출, 선물 vs 본인구매 비율 파악</div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 12px;">
+    <div class="card card--green">
+      <div class="card__label">과제 3</div>
+      <div class="card__title">제품 라인업 역할 정의</div>
+      <div class="card__desc">시럽/환/홍/복합 각각 "이 제품의 존재 이유는?" 한 줄 정의 — 라인업 전략 기초 자료</div>
+    </div>
+    <div class="card card--purple">
+      <div class="card__label">과제 4</div>
+      <div class="card__title">레퍼런스 브랜드 수집</div>
+      <div class="card__desc">닮고 싶은 브랜드 3개 + 절대 안 되는 브랜드 1~2개 — 내부 비전 공유용</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card card--orange">
+      <div class="card__label">과제 5</div>
+      <div class="card__title">곰보배추를 한 문장으로 설명하기</div>
+      <div class="card__desc">"곰보배추는 <u>___한 사람</u>이 <u>___을 위해</u> 찾는 제품이다" — 핵심 메시지 도출 워밍업</div>
+    </div>
+    <div class="card" style="background: var(--accent); color: #fff; border: none;">
+      <div style="font-size: 10px; font-weight: 700; letter-spacing: 1px; opacity: 0.7; margin-bottom: 8px;">NEXT WORKSHOP</div>
+      <div class="card__title" style="color: #fff; font-size: 16px;">다음 2회차 워크샵 일정</div>
+      <div style="margin-top: 10px; font-size: 13px; line-height: 2;">
+        <span style="display: inline-block; background: rgba(255,255,255,0.15); padding: 2px 12px; border-radius: 6px; margin-right: 6px;">15일(화)</span>
+        <span style="display: inline-block; background: rgba(255,255,255,0.15); padding: 2px 12px; border-radius: 6px; margin-right: 6px;">17일(목)</span>
+        <span style="display: inline-block; background: rgba(255,255,255,0.15); padding: 2px 12px; border-radius: 6px;">21일(월)</span>
+      </div>
+      <div style="margin-top: 6px; font-size: 12px; opacity: 0.7;">오후 2시 ~ 5시 (3시간)</div>
+    </div>
+  </div>
+  <span class="slide__page">12</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 13: SECTION DIVIDER — 워크샵 2차 미리보기 -->
+<!-- ============================================================ -->
+<div class="slide slide--dark divider">
+  <div class="divider__number">04</div>
+  <div class="divider__title">워크샵 2차 미리보기</div>
+  <div class="divider__desc">브랜드 포지셔닝 &amp; 메시지 정립</div>
+  <span class="slide__page">13</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 14: 워크샵 2차 아젠다 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">WORKSHOP 2 PREVIEW</div>
+    <h2 class="slide__title">워크샵 2차 아젠다 — 포지셔닝 &amp; 메시지 정립</h2>
+  </div>
+
+  <table class="data-table" style="margin-bottom: 20px;">
+    <thead>
+      <tr>
+        <th style="width: 50px;">순서</th>
+        <th>항목</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-weight: 700; text-align: center;">1</td>
+        <td><strong>곰보배추 + 슈퍼세이브 포지셔닝 전략 구체화</strong><br><span style="color: var(--muted); font-size: 11px;">1차 워크샵 결과 + 브랜드사 과제 반영</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight: 700; text-align: center;">2</td>
+        <td><strong>핵심 브랜드 메시지 및 키워드 선정</strong><br><span style="color: var(--muted); font-size: 11px;">슬로건, 태그라인, 핵심 키워드 3~5개</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight: 700; text-align: center;">3</td>
+        <td><strong>다각적 포지셔닝 전략 및 경쟁 포지셔닝 방향 검토</strong><br><span style="color: var(--muted); font-size: 11px;">포지셔닝 맵, 차별화 전략, 경쟁 우위 요소</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight: 700; text-align: center;">4</td>
+        <td><strong>워크샵 2회차 결과 정리</strong><br><span style="color: var(--muted); font-size: 11px;">합의 사항 문서화, 다음 스텝 확인</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight: 700; text-align: center;">5</td>
+        <td><strong>제품 라인업 전략 초안</strong><br><span style="color: var(--muted); font-size: 11px;">시럽/환/홍/복합 역할 구조화 — Phase 1 납품물 준비</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="grid-3">
+    <div class="card card--filled" style="text-align: center;">
+      <div style="font-size: 20px; margin-bottom: 6px;">🎯</div>
+      <div class="card__title" style="font-size: 13px;">포지셔닝 전략</div>
+      <div class="card__desc">브랜드 위치와 차별화 포인트 확정</div>
+    </div>
+    <div class="card card--filled" style="text-align: center;">
+      <div style="font-size: 20px; margin-bottom: 6px;">💬</div>
+      <div class="card__title" style="font-size: 13px;">핵심 메시지</div>
+      <div class="card__desc">슬로건, 태그라인, 커뮤니케이션 톤 확정</div>
+    </div>
+    <div class="card card--filled" style="text-align: center;">
+      <div style="font-size: 20px; margin-bottom: 6px;">📦</div>
+      <div class="card__title" style="font-size: 13px;">제품 라인업</div>
+      <div class="card__desc">제품별 역할과 타겟 구조화</div>
+    </div>
+  </div>
+  <span class="slide__page">14</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 15: SECTION DIVIDER — 레퍼런스 브랜드 분석 -->
+<!-- ============================================================ -->
+<div class="slide slide--gradient divider">
+  <div class="divider__number">05</div>
+  <div class="divider__title">레퍼런스 브랜드 분석</div>
+  <div class="divider__desc">건강기능식품 브랜드 마케팅 레퍼런스</div>
+  <span class="slide__page">15</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 16: TIER A — 바이탈뷰티 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header" style="display: flex; align-items: center; justify-content: space-between;">
+    <div>
+      <div class="slide__section-label">TIER A — DETAILED REFERENCE</div>
+      <h2 class="slide__title">바이탈뷰티</h2>
+    </div>
+    <span class="tag tag--blue" style="font-size: 11px; padding: 4px 12px;">아모레퍼시픽 이너뷰티</span>
+  </div>
+
+  <div class="grid-2">
+    <div class="card card--accent">
+      <div class="card__title">브랜드 개요</div>
+      <div class="card__desc">
+        아모레퍼시픽 산하 이너뷰티 전문 브랜드. 건강기능식품 + 뷰티를 결합한 프리미엄 포지셔닝.<br><br>
+        <strong>주요 채널:</strong> 자사몰, 올리브영, 백화점<br>
+        <strong>타겟:</strong> 2535 여성, 뷰티 관심층<br>
+        <strong>브랜딩 특징:</strong> 깔끔한 비주얼, 과학적 근거 강조, 셀럽 마케팅
+      </div>
+    </div>
+
+    <div>
+      <div class="card__label" style="margin-bottom: 10px;">주요 마케팅 활동</div>
+      <div class="card card--filled" style="margin-bottom: 8px; padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--blue">팝업</span>
+          <span style="font-size: 13px; font-weight: 700;">팝업스토어 진행</span>
+        </div>
+        <div class="card__desc">오프라인 체험 공간 운영 — 제품 체험 + 브랜드 경험 제공</div>
+      </div>
+      <div class="card card--filled" style="margin-bottom: 8px; padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--orange">콜라보</span>
+          <span style="font-size: 13px; font-weight: 700;">크라이치즈버거 콜라보</span>
+        </div>
+        <div class="card__desc">F&amp;B 브랜드 협업으로 MZ 타겟 접점 확대 — 이색 메뉴 개발</div>
+      </div>
+      <div class="card card--filled" style="padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--green">제품</span>
+          <span style="font-size: 13px; font-weight: 700;">루틴 키트 제작</span>
+        </div>
+        <div class="card__desc">개인 맞춤 루틴 키트로 구독형 모델 시도 — 고객 록인 전략</div>
+      </div>
+    </div>
+  </div>
+  <span class="slide__page">16</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 17: TIER A — 글루어트 (닥터다이어리) -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header" style="display: flex; align-items: center; justify-content: space-between;">
+    <div>
+      <div class="slide__section-label">TIER A — DETAILED REFERENCE</div>
+      <h2 class="slide__title">글루어트 (닥터다이어리)</h2>
+    </div>
+    <span class="tag tag--green" style="font-size: 11px; padding: 4px 12px;">헬스케어 앱 기반</span>
+  </div>
+
+  <div class="grid-2">
+    <div class="card card--green">
+      <div class="card__title">브랜드 개요</div>
+      <div class="card__desc">
+        닥터다이어리의 건강기능식품 브랜드. 혈당관리 앱 데이터를 기반으로 한 제품 개발이 특징.<br><br>
+        <strong>주요 채널:</strong> 자사앱, 자사몰, 올리브영<br>
+        <strong>타겟:</strong> 혈당관리 필요 고객, 건강 관심층<br>
+        <strong>브랜딩 특징:</strong> 데이터 기반 신뢰, 디지털 헬스케어 연동
+      </div>
+    </div>
+
+    <div>
+      <div class="card__label" style="margin-bottom: 10px;">주요 마케팅 활동</div>
+      <div class="card card--filled" style="margin-bottom: 8px; padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--blue">콘텐츠</span>
+          <span style="font-size: 13px; font-weight: 700;">건강 체크리스트 콘텐츠</span>
+        </div>
+        <div class="card__desc">자가 건강 체크 콘텐츠로 자연스러운 유입 — 교육형 마케팅</div>
+      </div>
+      <div class="card card--filled" style="margin-bottom: 8px; padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--green">협업</span>
+          <span style="font-size: 13px; font-weight: 700;">삼성 헬스 혈당관리 협업</span>
+        </div>
+        <div class="card__desc">삼성 헬스 앱과의 데이터 연동 — 디지털 헬스케어 생태계 진입</div>
+      </div>
+      <div class="card card--filled" style="margin-bottom: 8px; padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--orange">팝업</span>
+          <span style="font-size: 13px; font-weight: 700;">더현대 팝업스토어</span>
+        </div>
+        <div class="card__desc">프리미엄 유통 채널에서의 브랜드 경험 제공</div>
+      </div>
+      <div class="card card--filled" style="padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--purple">이벤트</span>
+          <span style="font-size: 13px; font-weight: 700;">당뇨인의 날 클래스</span>
+        </div>
+        <div class="card__desc">타겟 커뮤니티 대상 교육 이벤트 — 전문성 + 사회공헌</div>
+      </div>
+    </div>
+  </div>
+  <span class="slide__page">17</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 18: TIER A — 덴프스 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header" style="display: flex; align-items: center; justify-content: space-between;">
+    <div>
+      <div class="slide__section-label">TIER A — DETAILED REFERENCE</div>
+      <h2 class="slide__title">덴프스</h2>
+    </div>
+    <span class="tag tag--purple" style="font-size: 11px; padding: 4px 12px;">프리미엄 건기식</span>
+  </div>
+
+  <div class="grid-2">
+    <div class="card card--purple">
+      <div class="card__title">브랜드 개요</div>
+      <div class="card__desc">
+        프리미엄 건강기능식품 브랜드. 고품질 원료와 세련된 브랜딩으로 MZ세대 공략에 성공.<br><br>
+        <strong>주요 채널:</strong> 자사몰, 올리브영, 카카오 선물하기<br>
+        <strong>타겟:</strong> 2545 건강·라이프스타일 관심층<br>
+        <strong>브랜딩 특징:</strong> 매거진형 콘텐츠, 라이프스타일 브랜딩
+      </div>
+    </div>
+
+    <div>
+      <div class="card__label" style="margin-bottom: 10px;">주요 마케팅 활동</div>
+      <div class="card card--filled" style="margin-bottom: 8px; padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--blue">콘텐츠</span>
+          <span style="font-size: 13px; font-weight: 700;">매거진 콘텐츠 (피플/컬처/웰니스)</span>
+        </div>
+        <div class="card__desc">자체 매거진으로 브랜드 세계관 구축 — 제품 너머의 라이프스타일</div>
+      </div>
+      <div class="card card--filled" style="margin-bottom: 8px; padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--green">체험</span>
+          <span style="font-size: 13px; font-weight: 700;">체험단 운영</span>
+        </div>
+        <div class="card__desc">SNS 바이럴 + 리뷰 확보를 위한 체험단 프로그램</div>
+      </div>
+      <div class="card card--filled" style="margin-bottom: 8px; padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--orange">이벤트</span>
+          <span style="font-size: 13px; font-weight: 700;">러닝 클래스</span>
+        </div>
+        <div class="card__desc">건강 라이프스타일과 연결된 오프라인 경험 — 브랜드 커뮤니티</div>
+      </div>
+      <div class="card card--filled" style="margin-bottom: 8px; padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--orange">콜라보</span>
+          <span style="font-size: 13px; font-weight: 700;">밋보어(브런치카페) 메뉴 콜라보</span>
+        </div>
+        <div class="card__desc">F&amp;B 브랜드와의 메뉴 개발 협업 — 일상 속 건강 접점</div>
+      </div>
+      <div class="card card--filled" style="padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--blue">콘텐츠</span>
+          <span style="font-size: 13px; font-weight: 700;">공식사이트 아티클</span>
+        </div>
+        <div class="card__desc">웰니스 정보 아티클 정기 발행 — SEO + 브랜드 전문성</div>
+      </div>
+    </div>
+  </div>
+  <span class="slide__page">18</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 19: TIER A — 파지티브호텔 + 에버콜라겐 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header" style="display: flex; align-items: center; justify-content: space-between;">
+    <div>
+      <div class="slide__section-label">TIER A — DETAILED REFERENCE</div>
+      <h2 class="slide__title">파지티브호텔 + 에버콜라겐</h2>
+    </div>
+    <span class="tag tag--orange" style="font-size: 11px; padding: 4px 12px;">라이프스타일 + 뷰티</span>
+  </div>
+
+  <div class="grid-2">
+    <!-- 파지티브호텔 -->
+    <div>
+      <div style="font-size: 16px; font-weight: 800; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid var(--green);">파지티브호텔</div>
+      <div class="card card--green" style="margin-bottom: 8px; padding: 14px 16px;">
+        <div class="card__desc">
+          웰니스 라이프스타일 브랜드. 건강기능식품 + 공간(호텔/카페) + 콘텐츠를 결합한 브랜드 경험 설계.
+        </div>
+      </div>
+      <div class="card card--filled" style="margin-bottom: 6px; padding: 10px 14px;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span class="tag tag--green">클래스</span>
+          <span style="font-size: 12px; font-weight: 600;">요가 클래스</span>
+        </div>
+        <div class="card__desc" style="font-size: 11px;">웰니스 경험 프로그램 — 브랜드 세계관 체험</div>
+      </div>
+      <div class="card card--filled" style="margin-bottom: 6px; padding: 10px 14px;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span class="tag tag--orange">F&amp;B</span>
+          <span style="font-size: 12px; font-weight: 600;">키친 운영</span>
+        </div>
+        <div class="card__desc" style="font-size: 11px;">건강식 키친으로 일상 속 브랜드 접점 확대</div>
+      </div>
+      <div class="card card--filled" style="padding: 10px 14px;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span class="tag tag--blue">콘텐츠</span>
+          <span style="font-size: 12px; font-weight: 600;">매거진 콘텐츠</span>
+        </div>
+        <div class="card__desc" style="font-size: 11px;">라이프스타일 매거진으로 브랜드 스토리텔링</div>
+      </div>
+    </div>
+
+    <!-- 에버콜라겐 -->
+    <div>
+      <div style="font-size: 16px; font-weight: 800; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid var(--purple);">에버콜라겐</div>
+      <div class="card card--purple" style="margin-bottom: 8px; padding: 14px 16px;">
+        <div class="card__desc">
+          뉴트리원 산하 이너뷰티 브랜드. 콜라겐 전문 포지셔닝 + 스포츠/사회공헌 마케팅으로 브랜드 이미지 강화.
+        </div>
+      </div>
+      <div class="card card--filled" style="margin-bottom: 6px; padding: 10px 14px;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span class="tag tag--green">스포츠</span>
+          <span style="font-size: 12px; font-weight: 600;">스포츠 행사 (테니스)</span>
+        </div>
+        <div class="card__desc" style="font-size: 11px;">건강한 활동과 브랜드 연결 — 액티브 라이프스타일</div>
+      </div>
+      <div class="card card--filled" style="margin-bottom: 6px; padding: 10px 14px;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span class="tag tag--blue">체험</span>
+          <span style="font-size: 12px; font-weight: 600;">체험단</span>
+        </div>
+        <div class="card__desc" style="font-size: 11px;">인플루언서 체험단으로 SNS 바이럴 확보</div>
+      </div>
+      <div class="card card--filled" style="padding: 10px 14px;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span class="tag tag--red">사회공헌</span>
+          <span style="font-size: 12px; font-weight: 600;">핑크런 (유방암 캠페인) 부스</span>
+        </div>
+        <div class="card__desc" style="font-size: 11px;">사회공헌 캠페인 참여 — 브랜드 신뢰도 제고</div>
+      </div>
+    </div>
+  </div>
+  <span class="slide__page">19</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 20: TIER B — 비거너리 + 플랜트바이씨드 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header" style="display: flex; align-items: center; justify-content: space-between;">
+    <div>
+      <div class="slide__section-label">TIER B — ACTIVITY REFERENCE</div>
+      <h2 class="slide__title">비거너리 + 플랜트바이씨드</h2>
+    </div>
+    <span class="tag tag--green" style="font-size: 11px; padding: 4px 12px;">식물성 웰니스</span>
+  </div>
+
+  <div class="grid-2">
+    <!-- 비거너리 -->
+    <div>
+      <div style="font-size: 16px; font-weight: 800; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid var(--green);">비거너리</div>
+      <div class="card card--green" style="margin-bottom: 8px; padding: 14px 16px;">
+        <div class="card__desc">
+          비건 건강기능식품 브랜드. 식물성 원료 중심 제품 라인업과 F&amp;B 콜라보로 차별화.
+        </div>
+      </div>
+      <div class="card card--filled" style="margin-bottom: 6px; padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--orange">콜라보</span>
+          <span style="font-size: 13px; font-weight: 700;">부토(레스토랑) 콜라보 메뉴 개발</span>
+        </div>
+        <div class="card__desc">비건 레스토랑과 협업 메뉴 — 식문화 접점에서 브랜드 노출</div>
+      </div>
+      <div class="card card--filled" style="padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--purple">커뮤니티</span>
+          <span style="font-size: 13px; font-weight: 700;">엠버서더 모집</span>
+        </div>
+        <div class="card__desc">브랜드 앰버서더 프로그램으로 커뮤니티 기반 바이럴</div>
+      </div>
+    </div>
+
+    <!-- 플랜트바이씨드 -->
+    <div>
+      <div style="font-size: 16px; font-weight: 800; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid var(--blue);">플랜트바이씨드</div>
+      <div class="card card--blue" style="margin-bottom: 8px; padding: 14px 16px;">
+        <div class="card__desc">
+          식물성 영양 브랜드. 루틴 챌린지와 페스티벌 등 체험형 마케팅에 강점.
+        </div>
+      </div>
+      <div class="card card--filled" style="margin-bottom: 6px; padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--green">챌린지</span>
+          <span style="font-size: 13px; font-weight: 700;">P180 루틴 챌린지</span>
+        </div>
+        <div class="card__desc">21일 완주 시 50% 페이백 — 습관 형성 + 재구매 유도</div>
+      </div>
+      <div class="card card--filled" style="margin-bottom: 6px; padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--orange">이벤트</span>
+          <span style="font-size: 13px; font-weight: 700;">시티 포레스트 페스티벌</span>
+        </div>
+        <div class="card__desc">아웃도어 페스티벌 참여 — 자연·건강 브랜드 이미지 강화</div>
+      </div>
+      <div class="card card--filled" style="padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--blue">콘텐츠</span>
+          <span style="font-size: 13px; font-weight: 700;">매거진</span>
+        </div>
+        <div class="card__desc">자체 매거진으로 식물성 영양 정보 + 라이프스타일 콘텐츠 발행</div>
+      </div>
+    </div>
+  </div>
+  <span class="slide__page">20</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 21: TIER B — 비타블로썸 + 건강한약속 바른 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header" style="display: flex; align-items: center; justify-content: space-between;">
+    <div>
+      <div class="slide__section-label">TIER B — ACTIVITY REFERENCE</div>
+      <h2 class="slide__title">비타블로썸 + 건강한약속 바른</h2>
+    </div>
+    <span class="tag tag--orange" style="font-size: 11px; padding: 4px 12px;">스포츠 + 전문 건기식</span>
+  </div>
+
+  <div class="grid-2">
+    <!-- 비타블로썸 -->
+    <div>
+      <div style="font-size: 16px; font-weight: 800; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid var(--orange);">비타블로썸</div>
+      <div class="card card--orange" style="margin-bottom: 8px; padding: 14px 16px;">
+        <div class="card__desc">
+          비타민·영양제 브랜드. 스포츠 후원과 여성 커뮤니티 활동으로 액티브한 브랜드 이미지 구축.
+        </div>
+      </div>
+      <div class="card card--filled" style="margin-bottom: 6px; padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--green">스포츠</span>
+          <span style="font-size: 13px; font-weight: 700;">러닝 선수팀</span>
+        </div>
+        <div class="card__desc">자체 러닝팀 운영 — 건강한 라이프스타일 대표 브랜드</div>
+      </div>
+      <div class="card card--filled" style="margin-bottom: 6px; padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--red">후원</span>
+          <span style="font-size: 13px; font-weight: 700;">여성 풋살 대회 후원</span>
+        </div>
+        <div class="card__desc">여성 스포츠 후원으로 타겟 여성층 공감 + 브랜드 신뢰도</div>
+      </div>
+      <div class="card card--filled" style="padding: 12px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span class="tag tag--purple">디지털</span>
+          <span style="font-size: 13px; font-weight: 700;">인스타그램 스티커</span>
+        </div>
+        <div class="card__desc">커스텀 인스타그램 스티커로 UGC 유도 — 브랜드 친밀감</div>
+      </div>
+    </div>
+
+    <!-- 건강한약속 바른 -->
+    <div>
+      <div style="font-size: 16px; font-weight: 800; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid var(--accent);">건강한약속 바른</div>
+      <div class="card card--accent" style="margin-bottom: 8px; padding: 14px 16px;">
+        <div class="card__desc">
+          건강기능식품 전문 브랜드. "바른" 원료와 "바른" 제조를 핵심 가치로 삼아 신뢰 기반 포지셔닝.<br><br>
+          <strong>포지셔닝:</strong> 전문성 + 신뢰 + 투명성<br>
+          <strong>타겟:</strong> 건강 관심 3050 남녀<br>
+          <strong>참고점:</strong> 슈퍼세이브와 유사한 "진정성" 방향
+        </div>
+      </div>
+      <div style="padding: 12px 16px; background: var(--accent-light); border-radius: 8px; font-size: 12px; line-height: 1.6;">
+        <strong style="color: var(--accent);">슈퍼세이브 시사점:</strong><br>
+        곰보배추 원료의 투명한 이력 관리와 품질 인증을 전면에 내세우는 "바른 곰보배추" 컨셉 참고 가능
+      </div>
+    </div>
+  </div>
+  <span class="slide__page">21</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 22: TIER C — 브랜드 스캔 1/2 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">BRAND SCAN</div>
+    <h2 class="slide__title">건강기능식품 브랜드 스캔 (1/2)</h2>
+  </div>
+
+  <div class="grid-4" style="margin-bottom: 14px;">
+    <div class="scan-card" style="border-top: 3px solid var(--accent);">
+      <div class="scan-card__name">작심랩</div>
+      <div class="scan-card__desc">건강 습관 형성 플랫폼 기반 건기식 브랜드</div>
+    </div>
+    <div class="scan-card" style="border-top: 3px solid var(--green);">
+      <div class="scan-card__name">GC녹십자웰빙</div>
+      <div class="scan-card__desc">대기업 계열 건강기능식품 전문 유통</div>
+    </div>
+    <div class="scan-card" style="border-top: 3px solid var(--blue);">
+      <div class="scan-card__name">필리</div>
+      <div class="scan-card__desc">AI 맞춤 영양제 추천 구독 서비스</div>
+    </div>
+    <div class="scan-card" style="border-top: 3px solid var(--orange);">
+      <div class="scan-card__name">더리틀스</div>
+      <div class="scan-card__desc">아이 건강 전문 영양 솔루션 브랜드</div>
+    </div>
+  </div>
+
+  <div class="grid-4">
+    <div class="scan-card" style="border-top: 3px solid var(--purple);">
+      <div class="scan-card__name">닥터파이토</div>
+      <div class="scan-card__desc">식물성 유산균 전문 건기식 브랜드</div>
+    </div>
+    <div class="scan-card" style="border-top: 3px solid var(--red);">
+      <div class="scan-card__name">피토틱스</div>
+      <div class="scan-card__desc">프리/프로바이오틱스 전문 건기식</div>
+    </div>
+    <div class="scan-card" style="border-top: 3px solid var(--green);">
+      <div class="scan-card__name">플로네아</div>
+      <div class="scan-card__desc">장 건강 특화 프로바이오틱스 브랜드</div>
+    </div>
+    <div class="scan-card" style="border-top: 3px solid var(--accent);">
+      <div class="scan-card__name">퓨레카</div>
+      <div class="scan-card__desc">고순도 원료 기반 프리미엄 건기식</div>
+    </div>
+  </div>
+
+  <div class="source-note" style="margin-top: 16px;">
+    Tier C 브랜드는 마케팅 활동의 양/다양성은 적으나, 개별 포지셔닝 전략에서 참고할 수 있는 요소를 보유.
+  </div>
+  <span class="slide__page">22</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 23: TIER C — 브랜드 스캔 2/2 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">BRAND SCAN</div>
+    <h2 class="slide__title">건강기능식품 브랜드 스캔 (2/2)</h2>
+  </div>
+
+  <div class="grid-4" style="margin-bottom: 14px;">
+    <div class="scan-card" style="border-top: 3px solid var(--blue);">
+      <div class="scan-card__name">NGT</div>
+      <div class="scan-card__desc">뉴트리지노믹스 기반 맞춤 영양 브랜드</div>
+    </div>
+    <div class="scan-card" style="border-top: 3px solid var(--orange);">
+      <div class="scan-card__name">더블엔</div>
+      <div class="scan-card__desc">자연 원료 기반 건강기능식품 브랜드</div>
+    </div>
+    <div class="scan-card" style="border-top: 3px solid var(--purple);">
+      <div class="scan-card__name">슬로우글로우</div>
+      <div class="scan-card__desc">이너뷰티 + 슬로우라이프 콘셉트 브랜드</div>
+    </div>
+    <div class="scan-card" style="border-top: 3px solid var(--green);">
+      <div class="scan-card__name">줄리스초이스</div>
+      <div class="scan-card__desc">해외 직구 인기 프리미엄 건기식</div>
+    </div>
+  </div>
+
+  <div class="grid-4">
+    <div class="scan-card" style="border-top: 3px solid var(--red);">
+      <div class="scan-card__name">메디트리</div>
+      <div class="scan-card__desc">의약품 배경 건강기능식품 전문</div>
+    </div>
+    <div class="scan-card" style="border-top: 3px solid var(--accent);">
+      <div class="scan-card__name">바이크롬</div>
+      <div class="scan-card__desc">미네랄 전문 건강기능식품 브랜드</div>
+    </div>
+    <div class="scan-card" style="border-top: 3px solid var(--orange);">
+      <div class="scan-card__name">비딸리떼</div>
+      <div class="scan-card__desc">프랑스 스타일 이너뷰티 건기식</div>
+    </div>
+    <div class="scan-card" style="border-top: 3px solid var(--blue);">
+      <div class="scan-card__name">뉴오리진</div>
+      <div class="scan-card__desc">클린 라벨 지향 차세대 건기식 브랜드</div>
+    </div>
+  </div>
+
+  <div class="source-note" style="margin-top: 16px;">
+    총 16개 브랜드 스캔 완료. 상세 분석이 필요한 브랜드는 Tier A/B로 승격하여 개별 분석 진행 가능.
+  </div>
+  <span class="slide__page">23</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 24: 레퍼런스 인사이트 요약 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">REFERENCE INSIGHTS</div>
+    <h2 class="slide__title">레퍼런스 브랜드에서 배울 점</h2>
+  </div>
+
+  <div class="grid-3" style="margin-bottom: 14px;">
+    <div class="card card--blue">
+      <div class="card__icon">📖</div>
+      <div class="card__title" style="color: var(--blue);">콘텐츠 마케팅</div>
+      <div class="card__desc">
+        매거진/아티클 형태의 자체 콘텐츠 발행으로 브랜드 세계관 구축<br><br>
+        <strong>사례:</strong> 덴프스, 파지티브호텔, 플랜트바이씨드
+      </div>
+    </div>
+    <div class="card card--green">
+      <div class="card__icon">🎪</div>
+      <div class="card__title" style="color: var(--green);">체험형 이벤트</div>
+      <div class="card__desc">
+        팝업스토어, 러닝/요가 클래스, 페스티벌 부스 등 오프라인 체험<br><br>
+        <strong>사례:</strong> 바이탈뷰티, 에버콜라겐, 비타블로썸
+      </div>
+    </div>
+    <div class="card card--orange">
+      <div class="card__icon">🤝</div>
+      <div class="card__title" style="color: var(--hiz-orange);">브랜드 콜라보</div>
+      <div class="card__desc">
+        F&amp;B / 라이프스타일 브랜드와의 협업으로 새로운 접점 창출<br><br>
+        <strong>사례:</strong> 크라이치즈버거, 부토, 밋보어
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card card--purple">
+      <div class="card__icon">👥</div>
+      <div class="card__title" style="color: var(--purple);">커뮤니티 빌딩</div>
+      <div class="card__desc">
+        앰버서더, 챌린지, 체험단 운영으로 로열 고객 기반 구축<br><br>
+        <strong>사례:</strong> 비거너리, 플랜트바이씨드, 글루어트
+      </div>
+    </div>
+    <div class="card card--accent">
+      <div class="card__icon">📱</div>
+      <div class="card__title" style="color: var(--accent);">디지털 연동</div>
+      <div class="card__desc">
+        헬스케어 앱 협업, AI 추천 등 디지털 기술 접목<br><br>
+        <strong>사례:</strong> 닥터다이어리 x 삼성헬스, 필리
+      </div>
+    </div>
+    <div class="card card--red">
+      <div class="card__icon">💗</div>
+      <div class="card__title" style="color: var(--red);">사회공헌/대의</div>
+      <div class="card__desc">
+        건강 캠페인, 스포츠 후원 등 사회적 가치 연결<br><br>
+        <strong>사례:</strong> 에버콜라겐 핑크런, 비타블로썸 풋살
+      </div>
+    </div>
+  </div>
+  <span class="slide__page">24</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 25: CLOSING -->
+<!-- ============================================================ -->
+<div class="slide slide--gradient" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+  <div style="font-size: 12px; font-weight: 600; letter-spacing: 3px; opacity: 0.5; margin-bottom: 20px;">THANK YOU</div>
+  <h2 style="font-size: 34px; font-weight: 900; margin-bottom: 12px;">슈퍼세이브 x BRAND RISE</h2>
+  <p style="font-size: 16px; opacity: 0.8; margin-bottom: 8px;">워크샵 1회차 — 브랜드 진단 &amp; 방향성 설정</p>
+  <p style="font-size: 13px; opacity: 0.5; margin-bottom: 40px;">다음 워크샵: 2회차 — 포지셔닝 &amp; 메시지 정립</p>
+  <div style="width: 60px; height: 1px; background: rgba(255,255,255,0.3); margin-bottom: 20px;"></div>
+  <p style="font-size: 11px; opacity: 0.4;">
+    Prepared by HIZ BRAND RISE · Confidential<br>
+    2026. 04
+  </p>
+  <span class="slide__page">25</span>
+</div>
+
+</body>
+</html>
