@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>슈퍼세이브 브랜드 컨설팅 — 워크샵 1회차 리뷰</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap');
+
+  :root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --accent: #2d3a8c;
+    --accent-light: #eef0ff;
+    --blue: #3b82f6;
+    --blue-light: #eff6ff;
+    --orange: #f97316;
+    --orange-light: #fff7ed;
+    --green: #10b981;
+    --green-light: #ecfdf5;
+    --red: #ef4444;
+    --red-light: #fef2f2;
+    --purple: #8b5cf6;
+    --purple-light: #f5f3ff;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-600: #4b5563;
+    --hiz-orange: #e8491d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .slide {
+    width: 1122px;
+    height: 793px;
+    padding: 44px 54px;
+    margin: 0 auto 2px;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+  }
+  .slide--gradient { background: linear-gradient(135deg, #1e2a6e 0%, #2d3a8c 40%, #3b4fa6 100%); color: #fff; }
+
+  .cover { display: flex; flex-direction: column; justify-content: center; height: 100%; padding: 90px 80px; }
+  .cover__badge { display: inline-block; background: var(--hiz-orange); color: #fff; font-size: 11px; font-weight: 700; padding: 5px 14px; border-radius: 20px; letter-spacing: 1px; margin-bottom: 20px; width: fit-content; }
+  .cover__title { font-size: 38px; font-weight: 900; line-height: 1.25; letter-spacing: -1px; margin-bottom: 12px; }
+  .cover__subtitle { font-size: 16px; font-weight: 300; opacity: 0.85; margin-bottom: 30px; line-height: 1.6; }
+  .cover__meta { font-size: 13px; opacity: 0.6; line-height: 2; }
+  .cover__logo { position: absolute; bottom: 32mm; right: 36mm; width: 56px; height: 56px; background: var(--hiz-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; color: #fff; font-style: italic; }
+
+  .slide__header { margin-bottom: 18px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); }
+  .slide__section-label { font-size: 10px; font-weight: 600; color: var(--hiz-orange); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px; }
+  .slide__title { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.3; }
+  .slide__page { position: absolute; bottom: 18px; right: 30px; font-size: 10px; color: var(--muted); font-weight: 500; }
+  .slide--gradient .slide__page { color: rgba(255,255,255,0.4); }
+
+  .slide::after { content: 'BRAND RISE'; position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); font-size: 9px; font-weight: 600; letter-spacing: 2px; color: var(--muted); opacity: 0.5; }
+  .slide--gradient::after { color: rgba(255,255,255,0.35); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; }
+
+  .card { background: #fff; border: 1px solid var(--gray-200); border-radius: 9px; padding: 14px 16px; }
+  .card--accent { border-left: 4px solid var(--accent); }
+  .card--orange { border-left: 4px solid var(--hiz-orange); }
+  .card--blue { border-left: 4px solid var(--blue); }
+  .card--green { border-left: 4px solid var(--green); }
+  .card--purple { border-left: 4px solid var(--purple); }
+  .card--red { border-left: 4px solid var(--red); }
+  .card--filled { background: var(--gray-50); border: none; }
+
+  .card__label { font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .card__title { font-size: 13px; font-weight: 700; margin-bottom: 6px; line-height: 1.4; }
+  .card__desc { font-size: 11.5px; color: var(--gray-600); line-height: 1.65; }
+
+  .insight-list { list-style: none; padding: 0; }
+  .insight-list li { position: relative; padding: 5px 0 5px 16px; font-size: 11.5px; line-height: 1.55; border-bottom: 1px solid var(--gray-100); }
+  .insight-list li::before { content: ''; position: absolute; left: 0; top: 11px; width: 6px; height: 6px; background: var(--hiz-orange); border-radius: 50%; }
+  .insight-list li:last-child { border-bottom: none; }
+
+  .data-table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+  .data-table thead th { background: var(--accent); color: #fff; padding: 7px 10px; text-align: left; font-weight: 600; font-size: 10.5px; }
+  .data-table thead th:first-child { border-radius: 6px 0 0 0; }
+  .data-table thead th:last-child { border-radius: 0 6px 0 0; }
+  .data-table tbody td { padding: 7px 10px; border-bottom: 1px solid var(--gray-200); vertical-align: top; line-height: 1.55; }
+  .data-table tbody tr:nth-child(even) { background: var(--gray-50); }
+
+  .tag { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin: 2px 3px 2px 0; }
+  .tag--red { background: var(--red-light); color: var(--red); }
+  .tag--green { background: var(--green-light); color: var(--green); }
+
+  @media print {
+    @page { size: 1122px 793px; margin: 0; }
+    html, body { width: 1122px; margin: 0; padding: 0; background: #fff; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .slide { width: 1122px !important; height: 793px !important; margin: 0 !important; padding: 44px 54px !important; page-break-after: always; page-break-inside: avoid; break-after: page; break-inside: avoid; overflow: hidden !important; box-shadow: none !important; border-radius: 0 !important; }
+    .slide:last-child { page-break-after: auto; break-after: auto; }
+  }
+  @media screen {
+    body { background: #d1d5db; padding: 20px 0; }
+    .slide { box-shadow: 0 4px 24px rgba(0,0,0,0.12); border-radius: 4px; margin-bottom: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- SLIDE 1: COVER + EXECUTIVE SUMMARY -->
+<!-- ============================================================ -->
+<div class="slide slide--gradient">
+  <div style="display: flex; flex-direction: column; height: 100%;">
+    <div style="padding: 30px 26px 16px;">
+      <div class="cover__badge">BRAND CONSULTING · WORKSHOP REVIEW</div>
+      <h1 style="font-size: 32px; font-weight: 900; line-height: 1.25; letter-spacing: -1px; margin-bottom: 8px;">슈퍼세이브 워크샵 1회차 리뷰</h1>
+      <p style="font-size: 14px; font-weight: 300; opacity: 0.85; line-height: 1.6;">
+        브랜드 진단 &amp; 방향성 설정 — 사전 준비 · 회의 논의 · 확정 사항 한눈에
+      </p>
+      <div style="font-size: 11.5px; opacity: 0.6; margin-top: 8px;">
+        2026.04.08 (화) · 브랜드라이즈(이메라 리드 · 이슬기 PM) × (주)승만 신주리 대표 · 약 2시간 40분
+      </div>
+    </div>
+
+    <!-- Executive summary cards -->
+    <div style="background: rgba(255,255,255,0.06); padding: 18px 26px; flex: 1; display: flex; flex-direction: column; gap: 10px;">
+      <div style="font-size: 10.5px; font-weight: 800; letter-spacing: 2px; color: rgba(255,255,255,0.55); margin-bottom: 2px;">EXECUTIVE SUMMARY · 6 CONFIRMED POINTS</div>
+
+      <div class="grid-2" style="gap: 10px;">
+        <div style="background: rgba(255,255,255,0.10); border-left: 3px solid #fff; border-radius: 8px; padding: 10px 14px;">
+          <div style="font-size: 10px; font-weight: 700; opacity: 0.7; margin-bottom: 2px;">① 포지셔닝</div>
+          <div style="font-size: 13px; font-weight: 700;">저가 경쟁 배제 · 프리미엄 + 신뢰 기반</div>
+          <div style="font-size: 11px; opacity: 0.85; line-height: 1.5; margin-top: 2px;">"곰보배추 = 슈퍼세이브" 인식 구축 · 건기식 전문 → 곰보배추 카테고리 선점</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.10); border-left: 3px solid #fff; border-radius: 8px; padding: 10px 14px;">
+          <div style="font-size: 10px; font-weight: 700; opacity: 0.7; margin-bottom: 2px;">② 핵심 성분</div>
+          <div style="font-size: 13px; font-weight: 700;">히스피둘린(Hispidulin) · 농진청 특허</div>
+          <div style="font-size: 11px; opacity: 0.85; line-height: 1.5; margin-top: 2px;">뇌 직접 통과 · 신경 안정·스트레스 개선 · 호흡기/항염 확장 논거</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.10); border-left: 3px solid #fff; border-radius: 8px; padding: 10px 14px;">
+          <div style="font-size: 10px; font-weight: 700; opacity: 0.7; margin-bottom: 2px;">③ 제품 라인 5종</div>
+          <div style="font-size: 13px; font-weight: 700;">오리지널 · 플러스 · 댕이럽 · 곰수정과 · 원컵티</div>
+          <div style="font-size: 11px; opacity: 0.85; line-height: 1.5; margin-top: 2px;">기존 가정(시럽·스틱·키즈) 전면 폐기 · 반려동물·음료베이스·수정과 포함</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.10); border-left: 3px solid #fff; border-radius: 8px; padding: 10px 14px;">
+          <div style="font-size: 10px; font-weight: 700; opacity: 0.7; margin-bottom: 2px;">④ 타깃 전략</div>
+          <div style="font-size: 13px; font-weight: 700;">엄마(코어 재구매) + 2030 MZ 확장</div>
+          <div style="font-size: 11px; opacity: 0.85; line-height: 1.5; margin-top: 2px;">수정과 라인은 선물용 타깃 분리 · 아이 건강 시장 소비력 확대 활용</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.10); border-left: 3px solid #fff; border-radius: 8px; padding: 10px 14px;">
+          <div style="font-size: 10px; font-weight: 700; opacity: 0.7; margin-bottom: 2px;">⑤ 공간 사업 (신규 자산)</div>
+          <div style="font-size: 13px; font-weight: 700;">5월 말 2층+루프탑 오픈 · 웰니스 커뮤니티</div>
+          <div style="font-size: 11px; opacity: 0.85; line-height: 1.5; margin-top: 2px;">클래스·팝업·콘텐츠 촬영·브랜드 큐레이션 — 단순 임대 모델 배제</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.10); border-left: 3px solid #fff; border-radius: 8px; padding: 10px 14px;">
+          <div style="font-size: 10px; font-weight: 700; opacity: 0.7; margin-bottom: 2px;">⑥ 마케팅 전략</div>
+          <div style="font-size: 13px; font-weight: 700;">브랜드 과정 자체를 콘텐츠화 · 팬덤 형성</div>
+          <div style="font-size: 11px; opacity: 0.85; line-height: 1.5; margin-top: 2px;">인스타·유튜브 강화 · 메타 퍼포먼스 (옥외·무계획 PPL 배제) · 공구 의존도 축소</div>
+        </div>
+      </div>
+
+      <!-- One-liner -->
+      <div style="background: var(--hiz-orange); color: #fff; padding: 12px 18px; border-radius: 8px; margin-top: 6px; text-align: center;">
+        <div style="font-size: 10px; font-weight: 800; letter-spacing: 2px; opacity: 0.8;">1차 회의 한 줄 정리</div>
+        <div style="font-size: 15px; font-weight: 900; margin-top: 3px;">
+          "곰보배추 기반 프리미엄 건강 브랜드를, <u>콘텐츠 · 공간 · 팬덤</u>으로 확장하는 리브랜딩 프로젝트"
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover__logo">H</div>
+  <span class="slide__page">01</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 2: 사전 준비 vs 실제 회의 확정 사항 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">PREP vs DISCUSSION</div>
+    <h2 class="slide__title">HIZ 사전 준비 / 실제 회의 논의 / 브랜드사 사후 제공</h2>
+  </div>
+
+  <!-- 3열 구조 -->
+  <div class="grid-3" style="margin-bottom: 14px;">
+    <div class="card card--accent">
+      <div class="card__label" style="color: var(--accent);">① HIZ 사전 준비 (1차 페이퍼 25p)</div>
+      <div class="card__title">6대 워크샵 아젠다</div>
+      <ul class="insight-list">
+        <li>브랜드 현황 점검 &amp; 핵심 문제 정의</li>
+        <li>경쟁사 리서치 (기린약방 41만건 중심)</li>
+        <li>타깃 페르소나 3안 (건강 케어맘 / 웰니스 직장인 / 효도 선물족)</li>
+        <li>방향성 후보 3안 (전문가 / 온가족 / 라이프스타일) → <strong>A+B 하이브리드 잠정 권고</strong></li>
+        <li>레퍼런스 16개 브랜드 스캔</li>
+      </ul>
+    </div>
+
+    <div class="card card--orange">
+      <div class="card__label" style="color: var(--hiz-orange);">② 실제 회의 확정 (녹취록 기반)</div>
+      <div class="card__title">방향성·기능·타깃 재정렬</div>
+      <ul class="insight-list">
+        <li>포지셔닝: 프리미엄·신뢰 / "곰보배추 = 슈퍼세이브"</li>
+        <li>핵심 성분: <strong>히스피둘린</strong> — 신경 안정·스트레스·뇌 부종</li>
+        <li>기능 확장: ADHD·갱년기·불면·아이 건강</li>
+        <li>제품 5종: 오리지널·플러스·댕이럽·곰수정과·원컵티</li>
+        <li>공간 5월 말 오픈 · 브랜드 콘텐츠화·팬덤 전략</li>
+        <li>네이밍: 곰보보감·곰보당·Golden Sage 검토</li>
+      </ul>
+    </div>
+
+    <div class="card card--green">
+      <div class="card__label" style="color: var(--green);">③ 브랜드사 사후 제공 (4/20)</div>
+      <div class="card__title">리브랜딩 과제 + 공식 자료</div>
+      <ul class="insight-list">
+        <li>방향성: "<strong>건강식품 아닌 습관 브랜드 / 식물 필터</strong>"</li>
+        <li>닮고 싶은 3곳: 센텔리안24·오설록·Ritual</li>
+        <li>지양 3유형: 약령시장·저가 즙·과대광고</li>
+        <li>매출: <strong>24년 34억 / 25년 28억 / ROAS 380%</strong></li>
+        <li>인증 8종 (FDA·Vegan·ISO·벤처·MAIN-BIZ 등)</li>
+        <li>특허 4건 · 상표 8건 (Golden Sage 미국 등록)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 주요 사업 일정 -->
+  <div class="card card--filled" style="padding: 14px 18px;">
+    <div class="card__label" style="color: var(--hiz-orange); margin-bottom: 8px;">📅 회의에서 공유된 주요 사업 일정 · 브랜딩 타이밍에 반영 필요</div>
+    <table class="data-table">
+      <thead>
+        <tr><th style="width: 12%;">시점</th><th style="width: 30%;">이벤트</th><th style="width: 18%;">유형</th><th>브랜딩 연계 포인트</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>4/25</strong></td><td>LA BTS 팬마켓</td><td><span class="tag tag--red">해외</span></td><td>제품 공급 — 영문 패키지 우선 필요 · Golden Sage 활용 검토</td></tr>
+        <tr><td><strong>4/27–28</strong></td><td>데비스 플리마켓</td><td><span class="tag tag--green">국내 오프</span></td><td>2030 타깃 접점 — 패키지·SNS 콘텐츠 A/B 테스트</td></tr>
+        <tr><td><strong>5월</strong></td><td>CJ 프레시웨이 구내식당 협업 (1만명)</td><td><span class="tag tag--green">B2B</span></td><td>대중 접점 확대 — 제품 소개 POP·교육 카드 제작</td></tr>
+        <tr><td><strong>5월 말</strong></td><td>자체 공간 오픈 (2층+루프탑)</td><td><span class="tag tag--green">공간</span></td><td>브랜드 본진 · 콘텐츠 촬영 본격화 · 클래스·팝업 허브</td></tr>
+        <tr><td><strong>6월</strong></td><td>뉴욕 Fancy Food · 언더커버 셰프 TV 방영</td><td><span class="tag tag--red">해외·방송</span></td><td>글로벌 바이어 상담 · 방송 PR 콘텐츠 재활용</td></tr>
+        <tr><td><strong>11월</strong></td><td>푸드위크</td><td><span class="tag tag--green">국내 대형</span></td><td>런칭 후 안정화 쇼케이스 — 단독 부스 디자인 투자</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <span class="slide__page">02</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 3: 1차 한계 → 2차 보완 + 다음 스텝 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">GAP ANALYSIS &amp; NEXT STEP</div>
+    <h2 class="slide__title">1차의 한계 → 2차 보완 · 남은 과제</h2>
+  </div>
+
+  <!-- 1차 → 2차 보완 비교 -->
+  <div style="margin-bottom: 14px;">
+    <div style="font-size: 10.5px; font-weight: 800; color: var(--hiz-orange); letter-spacing: 2px; margin-bottom: 6px;">BEFORE · AFTER · 2차 페이퍼에서 보완된 6개 영역</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="width: 22%;">영역</th>
+          <th style="width: 36%;">1차 페이퍼 (가정·추정 기반)</th>
+          <th style="width: 42%;">2차 반영 (브랜드사 자료·회의 기반)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>매출 규모</strong></td><td>"리뷰 볼륨 기반 10–20억 추정"</td><td>24년 34억 · 25년 28억 (플러스 12억) · ROAS 380%</td></tr>
+        <tr><td><strong>제품 라인업</strong></td><td>시럽·스틱·키즈 3축 가정</td><td>오리지널·플러스·댕이럽·곰수정과·원컵티 <strong>5종 실제 구조</strong></td></tr>
+        <tr><td><strong>핵심 기능</strong></td><td>호흡기·면역 중심 설명</td><td><strong>히스피둘린·농진청 특허</strong> 추가 + ADHD/갱년기/아이 확장축</td></tr>
+        <tr><td><strong>레퍼런스 브랜드</strong></td><td>덴프스·기린약방·건강한약속바른 가정</td><td>대표 지정 <strong>센텔리안24·오설록·Ritual</strong>로 교체</td></tr>
+        <tr><td><strong>글로벌 축</strong></td><td>국내 시장 한정</td><td>FDA·Golden Sage·면세점·LA·뉴욕 진출 반영</td></tr>
+        <tr><td><strong>공간·팬덤 자산</strong></td><td>누락</td><td>2층+루프탑 웰니스 공간 · 브랜드 과정 콘텐츠화 반영</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 2차 과제 & 3회차 준비 -->
+  <div class="grid-2" style="margin-bottom: 12px;">
+    <div class="card card--accent">
+      <div class="card__label" style="color: var(--accent);">브랜드사 과제 (2→3회차)</div>
+      <ul class="insight-list">
+        <li>슬로건 3안 고객 반응 테스트 (공식몰 팝업·인스타 스토리 설문 100건+)</li>
+        <li>브랜드 매니페스토 초안 (300자, 대표·직원 공동 작성)</li>
+        <li>레퍼런스 3곳 패키지·UX 스크린샷 아카이브 (센텔리안24·오설록·Ritual)</li>
+        <li>5개 라인 타깃·메시지·채널·가격대 매트릭스</li>
+        <li>신주리 대표 창업 스토리 30분 인터뷰 녹취</li>
+      </ul>
+    </div>
+    <div class="card card--orange">
+      <div class="card__label" style="color: var(--hiz-orange);">HIZ 후속 준비 (2→3회차)</div>
+      <ul class="insight-list">
+        <li>유통처별 커뮤니케이션 시트 작성 (자사몰 외)</li>
+        <li>곰보보감·곰보당 상표권 디깅 + 일본 negative 체크</li>
+        <li>히스피둘린 성분 교육용 콘텐츠 얼개</li>
+        <li>공간 오픈 연계 콘텐츠 플랜 초안</li>
+        <li>3회차 아젠다: 슬로건 최종 · 매니페스토 확정 · Phase 2 디자인 킥오프</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bottom CTA band -->
+  <div style="background: linear-gradient(90deg, var(--accent) 0%, var(--hiz-orange) 100%); color: #fff; padding: 12px 20px; border-radius: 8px; display: flex; align-items: center; gap: 14px;">
+    <div style="font-size: 28px;">🚀</div>
+    <div>
+      <div style="font-size: 10.5px; font-weight: 800; letter-spacing: 2px; opacity: 0.8; margin-bottom: 2px;">NEXT WORKSHOP</div>
+      <div style="font-size: 14px; font-weight: 900;">3회차 워크샵 (5월 첫째주 예정) — 브랜드 커뮤니케이션 &amp; 최종 확정 · Phase 2 디자인 킥오프 브리핑</div>
+    </div>
+  </div>
+
+  <span class="slide__page">03</span>
+</div>
+
+</body>
+</html>
