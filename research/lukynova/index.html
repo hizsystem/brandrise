@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>루키노바 (LUKYNOVA) - New Business 리서치 | BRAND RISE</title>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --highlight: #e94560;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --text-light: #636e72;
+            --border: #dfe6e9;
+            --success: #00b894;
+            --warning: #fdcb6e;
+            --danger: #d63031;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(233, 69, 96, 0.2);
+            border: 1px solid var(--highlight);
+            color: var(--highlight);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            font-size: 16px;
+            opacity: 0.7;
+            font-weight: 300;
+        }
+
+        .header .date {
+            margin-top: 16px;
+            font-size: 13px;
+            opacity: 0.5;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .toc {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .toc h2 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 8px;
+        }
+
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 0;
+            display: block;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover { color: var(--highlight); }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--highlight);
+        }
+
+        .section h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 20px 0 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 8px 16px;
+            font-size: 14px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .info-value {
+            color: var(--text);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        td {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:hover td { background: #f1f3f5; }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 2px;
+        }
+
+        .tag-red { background: #ffe0e0; color: #d63031; }
+        .tag-green { background: #d4f5e9; color: #00b894; }
+        .tag-blue { background: #dfe6fd; color: #0f3460; }
+        .tag-yellow { background: #fff3cd; color: #856404; }
+        .tag-gray { background: #e9ecef; color: #495057; }
+
+        .score-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 4px 0;
+        }
+
+        .score-bar .label-text {
+            width: 140px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .score-bar .bar {
+            flex: 1;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .score-bar .fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s;
+        }
+
+        .score-bar .score-num {
+            width: 40px;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .fill-high { background: var(--success); }
+        .fill-mid { background: var(--warning); }
+        .fill-low { background: var(--danger); }
+
+        .verdict {
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            color: white;
+            padding: 24px 32px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 24px 0;
+        }
+
+        .verdict .label { font-size: 14px; opacity: 0.8; }
+        .verdict .value { font-size: 36px; font-weight: 800; margin: 8px 0; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+
+        .callout {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+
+        .callout-info {
+            background: #e3f2fd;
+            border-left-color: #2196f3;
+        }
+
+        .callout-danger {
+            background: #fce4ec;
+            border-left-color: #e53935;
+        }
+
+        .leverage-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin: 24px 0;
+            text-align: center;
+        }
+
+        .leverage-box .quote {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.5;
+            margin: 16px 0;
+        }
+
+        .flow-steps {
+            display: flex;
+            gap: 0;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .flow-step {
+            flex: 1;
+            min-width: 180px;
+            padding: 16px;
+            background: #f1f3f5;
+            position: relative;
+            text-align: center;
+        }
+
+        .flow-step:not(:last-child)::after {
+            content: ">";
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: var(--highlight);
+            font-weight: 700;
+            z-index: 1;
+        }
+
+        .flow-step .step-num {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 4px;
+        }
+
+        .flow-step .step-title {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .flow-step .step-desc {
+            font-size: 11px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .swot-item {
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .swot-item h4 {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .swot-item ul {
+            padding-left: 18px;
+        }
+
+        .swot-item li { margin-bottom: 4px; }
+
+        .swot-s { background: #d4f5e9; }
+        .swot-w { background: #ffe0e0; }
+        .swot-o { background: #dfe6fd; }
+        .swot-t { background: #fff3cd; }
+
+        .source-list {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 8px;
+        }
+
+        .source-list a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .source-list a:hover { text-decoration: underline; }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        .channel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .channel-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .channel-card .ch-name {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .channel-card .ch-stat {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--highlight);
+            margin: 8px 0;
+        }
+
+        .channel-card .ch-note {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* Executive Summary */
+        .summary-section {
+            border-left: 4px solid var(--highlight);
+            background: linear-gradient(135deg, #fff 0%, #fff5f7 100%);
+        }
+
+        .summary-section h2 {
+            border-bottom-color: var(--highlight);
+        }
+
+        .summary-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+
+        .summary-header .sh-label {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 4px;
+        }
+
+        .summary-header .sh-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .summary-header .sh-sub {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .kpi-card {
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+        }
+
+        .kpi-card.kpi-dark { background: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--danger); }
+        .kpi-card.kpi-accent { background: var(--accent); }
+        .kpi-card.kpi-success { background: var(--success); }
+
+        .kpi-card .kpi-label {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .kpi-card .kpi-value {
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .kpi-card .kpi-sub {
+            font-size: 11px;
+            opacity: 0.7;
+        }
+
+        .summary-oneliner {
+            background: #1a1a2e;
+            color: white;
+            padding: 20px 24px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .summary-oneliner .sol-label {
+            font-size: 13px;
+            opacity: 0.7;
+            margin-bottom: 8px;
+        }
+
+        .summary-oneliner .sol-text {
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.6;
+        }
+
+        .summary-oneliner .sol-text .hl {
+            color: var(--highlight);
+        }
+
+        .summary-bottom {
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .summary-bottom .hl {
+            color: var(--highlight);
+            font-weight: 800;
+        }
+
+        /* Diagnosis Section */
+        .diagnosis-section {
+            border: 2px solid var(--danger);
+        }
+
+        .diagnosis-section h2 {
+            border-bottom-color: var(--danger);
+            color: var(--danger);
+        }
+
+        .diag-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 12px 0 20px;
+        }
+
+        .diag-box {
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        .diag-box.diag-current { background: #fce4ec; }
+        .diag-box.diag-ideal { background: #e8f5e9; }
+
+        .diag-box .db-label {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .diag-box.diag-current .db-label { color: var(--danger); }
+        .diag-box.diag-ideal .db-label { color: var(--success); }
+
+        .diag-box ul {
+            font-size: 14px;
+            padding-left: 18px;
+            margin: 0;
+        }
+
+        .diag-note {
+            font-size: 14px;
+            margin: 8px 0 16px;
+            padding: 12px 16px;
+            background: #fff3e0;
+            border-radius: 8px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .product-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .product-card .pc-name {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .product-card .pc-desc {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .product-card .pc-price {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--highlight);
+        }
+
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 16px 0;
+        }
+
+        .persona-card {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 18px;
+            background: #fafbfc;
+        }
+
+        .persona-card .p-name {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .persona-card .p-tag {
+            font-size: 11px;
+            color: var(--highlight);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .persona-card .p-desc {
+            font-size: 13px;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .persona-card .p-need {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border);
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .strategy-pillar {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 16px;
+            padding: 16px;
+            margin: 12px 0;
+            background: linear-gradient(135deg, #fff 0%, #fff5f7 100%);
+            border-left: 4px solid var(--highlight);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .strategy-pillar .sp-num {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--highlight);
+            line-height: 1;
+            text-align: center;
+        }
+
+        .strategy-pillar .sp-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .strategy-pillar .sp-desc {
+            font-size: 13px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-step:not(:last-child)::after { display: none; }
+            .channel-grid { grid-template-columns: repeat(2, 1fr); }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .diag-compare { grid-template-columns: 1fr; }
+            .product-grid { grid-template-columns: 1fr 1fr; }
+            .persona-grid { grid-template-columns: 1fr; }
+            .strategy-pillar { grid-template-columns: 1fr; }
+            .strategy-pillar .sp-num { text-align: left; }
+        }
+
+        @media print {
+            body { background: white; }
+            .section { box-shadow: none; border: 1px solid #ddd; }
+            .toc { box-shadow: none; border: 1px solid #ddd; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">NEW BUSINESS RESEARCH</div>
+    <h1>루키노바 (LUKYNOVA)</h1>
+    <div class="subtitle">수면 기반 기능성 올데이 브라 | 상담 준비 패키지</div>
+    <div class="date">2026-04-20 | Prepared by BRAND RISE</div>
+</div>
+
+<div class="container">
+
+    <!-- Executive Summary -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">브랜드</div>
+                <div class="sh-title">루키노바 (LUKYNOVA)</div>
+                <div class="sh-sub">여성 이너웨어 — 수면 기반 기능성 올데이 브라 / 케어핏 브라</div>
+            </div>
+            <div>
+                <div class="sh-label">대표자</div>
+                <div class="sh-title">고효정 (Founder/CEO)</div>
+                <div class="sh-sub">법인 설립 2025.06 · 정식 런칭 2025.12 — 브랜드 기틀 세팅 골든타임</div>
+            </div>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">국내 수면브라 시장</div>
+                <div class="kpi-value" style="font-size:18px;">약 1,900억</div>
+                <div class="kpi-sub">'24 추정, 3년간 검색량 3배</div>
+            </div>
+            <div class="kpi-card kpi-success">
+                <div class="kpi-label">초기 퍼포먼스 ROAS</div>
+                <div class="kpi-value" style="font-size:18px;">1,105~1,768%</div>
+                <div class="kpi-sub">SA 1,105 / DA 1,768 (검증된 PMF)</div>
+            </div>
+            <div class="kpi-card kpi-accent">
+                <div class="kpi-label">초기 리뷰 평점</div>
+                <div class="kpi-value" style="font-size:18px;">4.94 / 5.0</div>
+                <div class="kpi-sub">누적 판매 200개+ / 방문자 6,300+</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">GO 판정</div>
+                <div class="kpi-value" style="font-size:18px;">4.2 / 5.0</div>
+                <div class="kpi-sub">GO — 스케일업 준비 완료</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                루키노바는 <span class="hl">PMF가 검증된 제품(ROAS 1,700%+ · 평점 4.94)</span>을 이미 확보했습니다.<br>
+                그런데 지금 브랜드의 모습은 <span class="hl">"스마트스토어 한 페이지"</span>일 뿐입니다.<br>
+                <span class="hl">감탄브라가 일 매출 11.5억을 찍는 동안, 루키노바는 "통일된 브랜드 정체성"이 없어 스케일업이 막혀 있습니다.</span>
+            </div>
+        </div>
+        <div class="summary-bottom">
+            <strong>기회 적합도:</strong> <span class="hl">4.2 / 5.0 (GO)</span> &nbsp;|&nbsp;
+            <strong>추천 방향:</strong> 브랜드 정체성 수립 + 콘텐츠 시스템 구축 + 퍼포먼스 스케일업 &nbsp;|&nbsp;
+            <strong>Quick Win:</strong> "수면 기반 케어핏" 한 줄 메시지 고정 + 인스타그램 릴스 중심 콘텐츠 발행
+        </div>
+    </div>
+
+    <!-- 핵심 문제점 & 진단 -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 문제점 & 진단</h2>
+
+        <h3>검증된 PMF, 그런데 "브랜드"는 아직 없습니다 (Critical)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재 상태</div>
+                <ul>
+                    <li>스마트스토어 단일 채널 의존 — <strong>자사몰/SNS 미성숙</strong></li>
+                    <li>"수면브라"로 검색은 되나 <strong>브랜드 검색량 없음</strong></li>
+                    <li>제품의 5 POINT 기술 차별화가 <strong>상세페이지에만 존재</strong></li>
+                    <li>"루키노바 = ?"에 대한 <strong>통일된 답이 없음</strong> (수면브라? 보정브라? 슬립 웰니스?)</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">이상적 상태</div>
+                <ul>
+                    <li>자사몰 + 스마트스토어 + 인스타 + 유튜브 <strong>4채널 통합</strong></li>
+                    <li>"케어핏 브라 = 루키노바" <strong>단일 카테고리 선점</strong></li>
+                    <li>5 POINT 기술이 <strong>콘텐츠·광고·패키지 전반에 반복</strong></li>
+                    <li>브랜드 검색 유입이 광고 의존도를 <strong>점진적으로 대체</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>이미 증명된 퍼포먼스 — 지금은 "돈을 더 부을 준비"가 핵심 (High)</h3>
+        <div class="diag-note">
+            SA 전환율 9.04% · ROAS 1,105.97%, DA 전환율 12.53% · ROAS 1,768.25%는
+            <strong>이너웨어 카테고리에서 상위 5% 수준</strong>의 지표입니다.
+            일반적으로 ROAS 300% 이상이면 광고비를 2~3배 증액해도 수익이 증가합니다.
+            현재 루키노바는 <strong>"더 투자할 준비가 된 엔진"이 이미 켜져 있는 상태</strong>이며,
+            브랜드 기틀만 세워지면 6개월 내 월 2~3천만 목표는 충분히 달성 가능합니다.
+        </div>
+
+        <h3>영역별 진단 요약</h3>
+        <table>
+            <tr>
+                <th>영역</th>
+                <th>현재 상태</th>
+                <th>심각도</th>
+                <th>GAP</th>
+            </tr>
+            <tr>
+                <td>제품/기술 차별화</td>
+                <td>5 POINT 설계 + 특허 출원 + 국내 생산</td>
+                <td><span class="tag tag-green">Low</span></td>
+                <td><span class="tag tag-green">양호</span></td>
+            </tr>
+            <tr>
+                <td>PMF 검증</td>
+                <td>리뷰 4.94, ROAS 1,768%, 관심고객 1,097+</td>
+                <td><span class="tag tag-green">Low</span></td>
+                <td><span class="tag tag-green">우수</span></td>
+            </tr>
+            <tr>
+                <td>브랜드 정체성</td>
+                <td>수면브라·보정브라·올데이 브라 혼재</td>
+                <td><span class="tag tag-red">Critical</span></td>
+                <td><span class="tag tag-red">매우 큼</span></td>
+            </tr>
+            <tr>
+                <td>콘텐츠 시스템</td>
+                <td>정기 발행 채널 부재</td>
+                <td><span class="tag tag-red">High</span></td>
+                <td><span class="tag tag-red">큼</span></td>
+            </tr>
+            <tr>
+                <td>자사몰 / D2C</td>
+                <td>미구축 — 스마트스토어 의존</td>
+                <td><span class="tag tag-yellow">Medium</span></td>
+                <td><span class="tag tag-yellow">중간</span></td>
+            </tr>
+            <tr>
+                <td>검색 노출 / SEO</td>
+                <td>수면브라 1p 36위 · 볼륨브라 3p 18위</td>
+                <td><span class="tag tag-yellow">Medium</span></td>
+                <td><span class="tag tag-yellow">중간 — 상승 중</span></td>
+            </tr>
+            <tr>
+                <td>제휴/유통</td>
+                <td>바딥(BODEEPSLEEP) 입점 완료</td>
+                <td><span class="tag tag-green">Low</span></td>
+                <td><span class="tag tag-green">확장 준비</span></td>
+            </tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>진단 결론:</strong> 루키노바는 대부분의 NB 스타트업이 가장 어려워하는 <strong>"제품력 + PMF"</strong>를 이미 완성했습니다.
+            하지만 <strong>"브랜드 = 유통 한 줄로 꿰어진 이야기"</strong>가 없어 추가 스케일업이 막혀 있습니다.
+            대표가 시급 과제로 지적한 <strong>"통일된 브랜드 정체성에 맞는 콘텐츠 배포"</strong>가 정확한 진단입니다.
+        </div>
+    </div>
+
+    <!-- 목차 -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 & 진단</a>
+            <a href="#company-info">1. 기업/브랜드 기초 정보</a>
+            <a href="#product">2. 제품 기술적 차별점</a>
+            <a href="#market">3. 시장 분석</a>
+            <a href="#competitors">4. 경쟁사 포지셔닝</a>
+            <a href="#persona">5. 타겟 고객 페르소나</a>
+            <a href="#performance">6. 초기 실적 및 성과 지표</a>
+            <a href="#swot">7. SWOT 분석</a>
+            <a href="#opportunity">8. 핵심 기회 요인</a>
+            <a href="#risk">9. 리스크 / 우려 요인</a>
+            <a href="#strategy">10. 브랜딩/마케팅 전략 기틀</a>
+            <a href="#agenda">11. 상담 Agenda 제안</a>
+            <a href="#sources">12. 출처 목록</a>
+        </div>
+    </div>
+
+    <!-- 1. 기업/브랜드 기초 정보 -->
+    <div class="section" id="company-info">
+        <h2>1. 기업/브랜드 기초 정보</h2>
+        <div class="info-grid">
+            <div class="info-label">브랜드명</div>
+            <div class="info-value">루키노바 (LUKYNOVA)</div>
+
+            <div class="info-label">대표자</div>
+            <div class="info-value">고효정 (Founder/CEO)</div>
+
+            <div class="info-label">업종</div>
+            <div class="info-value">여성 이너웨어 — 수면 기반 기능성 올데이 브라</div>
+
+            <div class="info-label">법인 설립</div>
+            <div class="info-value">2025-06-18</div>
+
+            <div class="info-label">창업</div>
+            <div class="info-value">2025년</div>
+
+            <div class="info-label">정식 런칭</div>
+            <div class="info-value">2025-12-09 (수면브라 정식 런칭)</div>
+
+            <div class="info-label">메인 제품</div>
+            <div class="info-value">케어핏 브라 — 수면브라 + 올데이 보정 + 쿠퍼인대 보호</div>
+
+            <div class="info-label">판매 가격</div>
+            <div class="info-value">59,000원 (사업소개서 기재)</div>
+
+            <div class="info-label">특허</div>
+            <div class="info-value">구조 설계 기술 특허 출원 — 출원번호 10-2025-0179436</div>
+
+            <div class="info-label">판매 채널</div>
+            <div class="info-value"><a href="https://smartstore.naver.com/lukynova/products/12684341733" target="_blank" style="color: var(--accent);">네이버 스마트스토어</a> · 바딥(BODEEPSLEEP) 제휴 입점</div>
+
+            <div class="info-label">6개월 목표</div>
+            <div class="info-value"><strong>월매출 2~3천만 / 누적 1억 이상</strong></div>
+
+            <div class="info-label">중장기 매출 목표</div>
+            <div class="info-value">2026년 3억 → 2028년 300억 → 2030년 2,000억 (IPO 목표)</div>
+        </div>
+
+        <h3>팀 구성</h3>
+        <table>
+            <tr>
+                <th>역할</th>
+                <th>배경 / 경력</th>
+                <th>비고</th>
+            </tr>
+            <tr>
+                <td>Founder / CEO<br><strong>고효정</strong></td>
+                <td>의상 전공, 19년차 E-커머스 패션 D2C End-to-End 경험</td>
+                <td>브랜드/운영 총괄</td>
+            </tr>
+            <tr>
+                <td>CTO</td>
+                <td>의상 전공, 28년차 비비안 속옷 디자이너, 보정·기능성 브라 설계 및 패턴 최적화 전문가</td>
+                <td><span class="tag tag-green">업계 최상급 전문성</span></td>
+            </tr>
+            <tr>
+                <td>Business Support</td>
+                <td>내부 운영, 외부 소통, 초기영업 지원</td>
+                <td>-</td>
+            </tr>
+        </table>
+
+        <h3>주요 파트너</h3>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="pc-name">생산/원부자재</div>
+                <div class="pc-desc">CNK · 이도플러스 · D.G.M기획</div>
+                <div class="pc-price" style="font-size:12px; color: var(--accent);">25년차 생산 협업</div>
+            </div>
+            <div class="product-card">
+                <div class="pc-name">마케팅/콘텐츠</div>
+                <div class="pc-desc">올바른 · ADFICTION · place · DS international</div>
+                <div class="pc-price" style="font-size:12px; color: var(--accent);">실행 파트너 확보</div>
+            </div>
+            <div class="product-card">
+                <div class="pc-name">유통/제휴</div>
+                <div class="pc-desc">BODEEPSLEEP(바딥) · ORBIT Fulfillment</div>
+                <div class="pc-price" style="font-size:12px; color: var(--accent);">슬립 웰니스 연계</div>
+            </div>
+            <div class="product-card">
+                <div class="pc-name">전략 파트너</div>
+                <div class="pc-desc">광운대 · Y&ARCHER · 씨엔티테크 · 세진회계법인 · 포레스트 특허 · KingoSpring · HiveOn</div>
+                <div class="pc-price" style="font-size:12px; color: var(--accent);">법무·특허·회계 정비</div>
+            </div>
+        </div>
+
+        <div class="callout callout-info" style="margin-top: 20px;">
+            <strong>특이사항:</strong> 법인 설립 1년 미만(2025.06)임에도 생산·마케팅·유통·법무 파트너 체계가 이미 정비되어 있음.
+            CTO의 28년 비비안 경력은 일반적인 이너웨어 NB 스타트업이 갖기 힘든 <strong>전문성 자산</strong>임.
+        </div>
+    </div>
+
+    <!-- 2. 제품 기술적 차별점 -->
+    <div class="section" id="product">
+        <h2>2. 제품 기술적 차별점</h2>
+
+        <h3>"수면 기반 기능성 올데이 브라" — 새 카테고리 창조</h3>
+        <div class="diag-note">
+            기존 브라 시장은 <strong>"보정 or 편안함"</strong>으로 이분되어 있습니다.
+            편안한 수면브라는 보정·지지력이 약하고, 보정브라는 종일 착용 시 불편합니다.
+            루키노바는 <strong>"편안함 + 보정 + 쿠퍼인대 보호"</strong>를 모두 충족하는 구조를 설계해 카테고리 공백을 노립니다.
+        </div>
+
+        <h3>5 POINT 구조 설계</h3>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>기술 요소</th>
+                <th>역할</th>
+            </tr>
+            <tr>
+                <td>POINT 1</td>
+                <td><strong>전용 몰드</strong></td>
+                <td>체형 맞춤 몰드 — 장시간 착용해도 눌림·비틀림 최소화</td>
+            </tr>
+            <tr>
+                <td>POINT 2</td>
+                <td><strong>서포트 패널</strong></td>
+                <td>와이어 없이도 가슴 모양 유지 / 쿠퍼인대 부하 분산</td>
+            </tr>
+            <tr>
+                <td>POINT 3</td>
+                <td><strong>3중 리프팅 패널</strong></td>
+                <td>수면 중·활동 중 처짐 방지 — 기존 수면브라 최대 약점 보완</td>
+            </tr>
+            <tr>
+                <td>POINT 4</td>
+                <td><strong>사이드 푸시업 패널</strong></td>
+                <td>큰컵 사이즈 / 출산 후 형태 케어 — 옆가슴 잡아주는 지지 구조</td>
+            </tr>
+            <tr>
+                <td>POINT 5</td>
+                <td><strong>레이어드 구조</strong></td>
+                <td>피부 자극 최소화 + 통기성 확보 (올데이 착용 가능성 담보)</td>
+            </tr>
+        </table>
+
+        <h3>경쟁 제품 대비 기술 비교 (사업소개서 기준)</h3>
+        <table>
+            <tr>
+                <th>구분</th>
+                <th>루키노바</th>
+                <th>큐모</th>
+                <th>모아브라</th>
+                <th>엑사브라 (JP)</th>
+                <th>와키브라 (JP)</th>
+            </tr>
+            <tr>
+                <td>가격</td>
+                <td><strong>59,000</strong></td>
+                <td>40,000</td>
+                <td>40,000</td>
+                <td>70,000</td>
+                <td>100,000</td>
+            </tr>
+            <tr>
+                <td>일상 착용</td>
+                <td><span class="tag tag-green">◎</span></td>
+                <td>✗</td>
+                <td>✗</td>
+                <td>✗</td>
+                <td>✗</td>
+            </tr>
+            <tr>
+                <td>맞춤 몰드</td>
+                <td><span class="tag tag-green">◎</span></td>
+                <td>✗</td>
+                <td>✗</td>
+                <td>✗</td>
+                <td>✗</td>
+            </tr>
+            <tr>
+                <td>국내 생산</td>
+                <td><span class="tag tag-green">◎</span></td>
+                <td>중국</td>
+                <td>중국</td>
+                <td>중국</td>
+                <td>중국</td>
+            </tr>
+            <tr>
+                <td>쿠퍼인대 보호</td>
+                <td><span class="tag tag-green">◎</span></td>
+                <td>△</td>
+                <td>△</td>
+                <td>△</td>
+                <td>△</td>
+            </tr>
+        </table>
+
+        <div class="callout">
+            <strong>전략 시사점:</strong> 루키노바는 "일상 착용이 가능한 수면브라" 포지션에서
+            <strong>국내·해외 어느 경쟁사도 점유하지 못한 빈칸</strong>을 차지하고 있습니다.
+            이 차별점은 단순 스펙 비교표가 아니라 <strong>"왜 고가 수면브라가 아닌 루키노바여야 하는가"</strong>라는
+            일관된 브랜드 메시지로 전환되어야 합니다.
+        </div>
+    </div>
+
+    <!-- 3. 시장 분석 -->
+    <div class="section" id="market">
+        <h2>3. 시장 분석</h2>
+
+        <h3>시장 규모 (TAM / SAM / SOM)</h3>
+        <table>
+            <tr>
+                <th>구분</th>
+                <th>규모</th>
+                <th>비고</th>
+            </tr>
+            <tr>
+                <td>TAM — 글로벌 브라 시장</td>
+                <td>약 32조원</td>
+                <td>글로벌 브래지어 시장 (사업소개서 기준)</td>
+            </tr>
+            <tr>
+                <td>SAM — 국내 여성 속옷</td>
+                <td>약 1.5조원</td>
+                <td>한국 내의 시장 2024년 2조 1,964억 (+5.3%), 여성 속옷 세그먼트 추정 (패션비즈)</td>
+            </tr>
+            <tr>
+                <td>SOM — 한국 수면브라</td>
+                <td>약 1,900억 ('24)</td>
+                <td>사업소개서 기준 — 3년간 "수면브라" 검색량 3배 증가</td>
+            </tr>
+            <tr>
+                <td>3년 내 목표 점유율</td>
+                <td>19~57억</td>
+                <td>국내 점유율 1~3% 가정 시</td>
+            </tr>
+        </table>
+
+        <h3>주요 시장 트렌드</h3>
+        <ul style="font-size: 14px; padding-left: 20px; margin-bottom: 16px;">
+            <li><strong>바디 포지티브 + 편안함 전환:</strong> 체형 보정 중시 시장이 "몸을 있는 그대로 인정"하는 편안함·심리스 중심으로 급변. 와이어·패드 제거 브라렛 수요 폭증. (메트로서울 2025.07)</li>
+            <li><strong>쿠퍼인대 교육 시장 형성:</strong> SNS·뷰티 콘텐츠를 통해 "쿠퍼인대" 용어 확산. 단 대부분 여성은 개념을 잘 모름 → <strong>교육 콘텐츠 선점자가 이기는 시장</strong>.</li>
+            <li><strong>수면 웰니스 카테고리 부상:</strong> 글로벌 슬립웨어/라운지웨어 시장 $82B (2030 전망, CAGR 7.8%). 침구·수면안대·수면브라의 "슬립 카테고리 번들링" 흐름.</li>
+            <li><strong>SKIMS · Lunya 효과:</strong> "세컨드 스킨" 감성이 메인스트림 브라 디자인에 영향. 셰이프웨어·라운지·데일리의 경계가 흐려지는 중.</li>
+            <li><strong>감탄브라 학습 효과:</strong> 심리스/노와이어 올데이 브라 카테고리에서 일 매출 11.5억 돌파 (2025.06). 한국 시장에서 올데이 편안함 브라는 이미 입증된 카테고리.</li>
+        </ul>
+
+        <div class="callout callout-info">
+            <strong>루키노바에 대한 시사점:</strong> 시장은 이미 <strong>"편안한 브라"</strong>로 넘어갔습니다.
+            안다르 올데이핏(300만장+), 감탄브라(일 11.5억)가 그 증거입니다.
+            루키노바가 파고들 틈은 <strong>"편안함 + 기능(보정/쿠퍼인대) + 수면까지 커버"</strong>라는
+            더 좁고 더 깊은 포지션입니다. 쿠퍼인대 교육 콘텐츠 선점이 핵심 레버리지입니다.
+        </div>
+
+        <div class="source-list">
+            출처: 패션비즈 (2026 한국 패션시장 전망), 메트로서울 (감탄브라 메가히트 2025.07), Shopify 이커머스 트렌드 리포트, SKIMS/Lunya 브랜드 리서치, 사업소개서 시장 섹션
+        </div>
+    </div>
+
+    <!-- 4. 경쟁사 포지셔닝 -->
+    <div class="section" id="competitors">
+        <h2>4. 경쟁사 포지셔닝</h2>
+
+        <h3>국내 경쟁사</h3>
+        <table>
+            <tr>
+                <th>브랜드</th>
+                <th>포지션</th>
+                <th>대표 제품</th>
+                <th>가격대</th>
+                <th>강점</th>
+                <th>약점</th>
+            </tr>
+            <tr>
+                <td><strong>감탄브라 (그리티)</strong></td>
+                <td>심리스/올데이 편안함</td>
+                <td>심리스 브라</td>
+                <td>3~5만원</td>
+                <td>일 매출 11.5억, 손예진 캠페인, 자사몰 +436% 성장</td>
+                <td>기능성(보정·쿠퍼인대) 약함</td>
+            </tr>
+            <tr>
+                <td><strong>안다르 올데이핏</strong></td>
+                <td>애슬레저 베이스 올데이</td>
+                <td>올데이핏 브라</td>
+                <td>2~4만원</td>
+                <td>300만장+ 판매, K-애슬레저 1위, 카테고리 장악</td>
+                <td>수면·집중 보정 포지션 없음</td>
+            </tr>
+            <tr>
+                <td><strong>비비안 올핏/와이어리스</strong></td>
+                <td>레거시 보정 → 편안함 확장</td>
+                <td>와이어리스 올핏</td>
+                <td>3~6만원</td>
+                <td>브랜드 신뢰도, 백화점 채널</td>
+                <td>올데이/수면 포지션 모호</td>
+            </tr>
+            <tr>
+                <td><strong>큐모 / 모아브라</strong></td>
+                <td>보정·수면 특화</td>
+                <td>수면 보정 브라</td>
+                <td>4만원대</td>
+                <td>수면·보정 기능 전문</td>
+                <td>중국 생산, 일상 착용성 부족</td>
+            </tr>
+            <tr style="background: #fff5f7;">
+                <td style="background: #fff5f7;"><strong>루키노바</strong></td>
+                <td style="background: #fff5f7;">수면 기반 기능성 올데이</td>
+                <td style="background: #fff5f7;">케어핏 브라</td>
+                <td style="background: #fff5f7;">59,000원</td>
+                <td style="background: #fff5f7;"><span class="tag tag-green">5 POINT 설계, 국내 생산, 특허, 쿠퍼인대</span></td>
+                <td style="background: #fff5f7;"><span class="tag tag-red">브랜드 인지도 초기</span></td>
+            </tr>
+        </table>
+
+        <h3>해외 경쟁사 / 벤치마크</h3>
+        <table>
+            <tr>
+                <th>브랜드</th>
+                <th>국가</th>
+                <th>포지션</th>
+                <th>시사점</th>
+            </tr>
+            <tr>
+                <td><strong>SKIMS</strong></td>
+                <td>미국</td>
+                <td>세컨드 스킨 / 셰이프웨어</td>
+                <td>"편안함 + 몸을 긍정" 메시지로 글로벌 확장 — 톤앤매너 벤치마크</td>
+            </tr>
+            <tr>
+                <td><strong>Lunya</strong></td>
+                <td>미국</td>
+                <td>프리미엄 슬립웨어</td>
+                <td>수면 웰니스 D2C 성공 사례 — 2020 매출 2배 성장</td>
+            </tr>
+            <tr>
+                <td><strong>엑사브라</strong></td>
+                <td>일본</td>
+                <td>바스트 케어 (수면)</td>
+                <td>7만원대 고가 — 전문 기능성 소구 레퍼런스</td>
+            </tr>
+            <tr>
+                <td><strong>와키브라</strong></td>
+                <td>일본</td>
+                <td>바스트 교정 (수면)</td>
+                <td>10만원대 초프리미엄 — 교정 서사 구축 사례</td>
+            </tr>
+        </table>
+
+        <h3>포지셔닝 맵 (X축: 보정/기능성 ↔ 편안함 / Y축: 일상 ↔ 수면)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-ideal">
+                <div class="db-label">루키노바가 선점 가능한 공백</div>
+                <ul>
+                    <li><strong>[편안함 × 일상 × 기능성]</strong> 사분면은 감탄브라·안다르가 차지 (기능성은 약함)</li>
+                    <li><strong>[기능성 × 수면]</strong> 사분면은 큐모·엑사브라·와키브라 (일상 착용 불가)</li>
+                    <li>루키노바는 <strong>"일상 × 수면 × 기능성"</strong>의 빈 사분면을 노리는 유일한 브랜드</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-current">
+                <div class="db-label">주의해야 할 포지션 충돌</div>
+                <ul>
+                    <li>감탄브라와 <strong>"편안함"</strong>으로만 싸우면 가격에서 진다 (3만원 vs 5.9만원)</li>
+                    <li>큐모/엑사브라와 <strong>"보정"</strong>으로만 싸우면 전문성에서 애매해진다</li>
+                    <li>해결책: <strong>"24시간 케어핏"</strong>이라는 새 단어로 비교 자체를 피한다</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="source-list">
+            출처: 패션비즈 (감탄브라 일매출 11.5억 2025), 어패럴뉴스 (감탄브라 공식몰 +436% 2024), 안다르 공식몰 (올데이핏 300만장+), 메트로서울 (심리스브라 시장 2025.07), SKIMS/Lunya 브랜드 리서치
+        </div>
+    </div>
+
+    <!-- 5. 타겟 고객 페르소나 -->
+    <div class="section" id="persona">
+        <h2>5. 타겟 고객 페르소나</h2>
+
+        <div class="persona-grid">
+            <div class="persona-card">
+                <div class="p-name">출산 후 엄마</div>
+                <div class="p-tag">28~38세 · 1~2번째 출산 후</div>
+                <div class="p-desc">
+                    임신·모유수유로 가슴 형태가 변했다. 남편에게도 말 못하고 혼자 고민한다.
+                    수면브라는 편하지만 "늘어질까 봐" 불안하고, 보정브라는 온종일 답답하다.
+                </div>
+                <div class="p-need">
+                    <strong>Need:</strong> 잠잘 때도 형태가 유지되는 브라 / 내 몸을 케어한다는 느낌<br>
+                    <strong>채널:</strong> 맘카페, 인스타 육아 크리에이터, 유튜브 산후케어
+                </div>
+            </div>
+            <div class="persona-card">
+                <div class="p-name">큰컵 사이즈 고민러</div>
+                <div class="p-tag">25~40세 · C~E컵</div>
+                <div class="p-desc">
+                    와이어 브라는 아프고 노와이어 브라는 모양이 흐트러진다. 운동할 때도, 잠잘 때도 신경 쓰인다.
+                    "나 같은 컵 사이즈를 위한 브라"가 시장에 없다고 느낀다.
+                </div>
+                <div class="p-need">
+                    <strong>Need:</strong> 큰컵도 모양 잡아주는 올데이 브라 / 사이드 푸시업 패널<br>
+                    <strong>채널:</strong> 유튜브 리뷰어 (큰컵 크리에이터), 인스타 릴스, 네이버 블로그
+                </div>
+            </div>
+            <div class="persona-card">
+                <div class="p-name">셀프케어 MZ 여성</div>
+                <div class="p-tag">24~35세 · 1인가구/맞벌이</div>
+                <div class="p-desc">
+                    "쿠퍼인대"라는 단어를 최근 SNS에서 처음 봤다. 저속노화·웰니스에 관심이 많고
+                    잠의 질을 올리는 데 돈을 쓴다. 수면안대, 필로우 미스트에 이어 "수면브라"도 고민 중.
+                </div>
+                <div class="p-need">
+                    <strong>Need:</strong> 케어하는 브랜드 스토리 / 기능 + 감성<br>
+                    <strong>채널:</strong> 인스타 릴스, 오늘의집, 쇼퍼홀릭 유튜브, 네이버 쇼핑라이브
+                </div>
+            </div>
+        </div>
+
+        <div class="callout">
+            <strong>공통 인사이트:</strong> 세 페르소나 모두 <strong>"남에게 보여주기 위한 브라"가 아닌 "나를 위한 브라"</strong>를 찾고 있습니다.
+            루키노바의 브랜드 톤은 섹슈얼리티(비비안·란제리)도, 애슬레저(안다르)도 아닌 <strong>"케어 & 셀프 리츄얼"</strong>로 세팅되어야 합니다.
+        </div>
+    </div>
+
+    <!-- 6. 초기 실적 및 성과 지표 -->
+    <div class="section" id="performance">
+        <h2>6. 초기 실적 및 성과 지표</h2>
+
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-success">
+                <div class="kpi-label">DA 광고 ROAS</div>
+                <div class="kpi-value">1,768%</div>
+                <div class="kpi-sub">전환율 12.53%</div>
+            </div>
+            <div class="kpi-card kpi-success">
+                <div class="kpi-label">SA 광고 ROAS</div>
+                <div class="kpi-value">1,106%</div>
+                <div class="kpi-sub">전환율 9.04%</div>
+            </div>
+            <div class="kpi-card kpi-accent">
+                <div class="kpi-label">누적 판매</div>
+                <div class="kpi-value">200+</div>
+                <div class="kpi-sub">초도 380장 중</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">리뷰 평점</div>
+                <div class="kpi-value">4.94/5</div>
+                <div class="kpi-sub">관심고객 1,097+</div>
+            </div>
+        </div>
+
+        <h3>채널별 지표 (2026-01 기준)</h3>
+        <table>
+            <tr>
+                <th>채널 / 지표</th>
+                <th>현재</th>
+                <th>평가</th>
+            </tr>
+            <tr>
+                <td>스마트스토어 "수면브라" 키워드</td>
+                <td>1페이지 36위</td>
+                <td><span class="tag tag-green">양호 — 광고 효율로 지탱</span></td>
+            </tr>
+            <tr>
+                <td>스마트스토어 "볼륨브라" 키워드</td>
+                <td>3페이지 18위</td>
+                <td><span class="tag tag-yellow">개선 여지 — SEO/리뷰 강화 필요</span></td>
+            </tr>
+            <tr>
+                <td>스마트스토어 전체 카테고리</td>
+                <td>425위 (▲60 상승)</td>
+                <td><span class="tag tag-green">상승 추세</span></td>
+            </tr>
+            <tr>
+                <td>스토어 누적 방문자</td>
+                <td>6,300+</td>
+                <td><span class="tag tag-green">우수 — 전환 퍼널 설계 필요</span></td>
+            </tr>
+            <tr>
+                <td>관심고객</td>
+                <td>1,097+</td>
+                <td><span class="tag tag-green">리마케팅 자산</span></td>
+            </tr>
+            <tr>
+                <td>평균 리뷰 평점</td>
+                <td>4.94 / 5.0</td>
+                <td><span class="tag tag-green">최상위 — 제품력 검증</span></td>
+            </tr>
+        </table>
+
+        <div class="callout callout-info">
+            <strong>지표 해석:</strong> ROAS 1,000% 이상은 이너웨어 카테고리 평균(300~500%)의 2~3배 수준입니다.
+            관심고객 1,097명 × 평균 구매 단가 59,000원 × 전환율 10% = 약 650만원의 즉시 전환 가능 자산이 있습니다.
+            <strong>현재 광고비를 3배 증액해도 ROAS가 400% 이상 유지될 가능성이 높음</strong>,
+            즉 월 2~3천만 매출 목표는 수학적으로 충분히 달성 가능한 구간입니다.
+        </div>
+    </div>
+
+    <!-- 7. SWOT 분석 -->
+    <div class="section" id="swot">
+        <h2>7. SWOT 분석</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>S (강점)</h4>
+                <ul>
+                    <li>CTO 28년 비비안 경력 — <strong>업계 최상급 기술 자산</strong></li>
+                    <li>5 POINT 구조 설계 + 특허 출원</li>
+                    <li>초기 ROAS 1,100~1,700% 검증</li>
+                    <li>리뷰 평점 4.94/5.0 — 제품력 입증</li>
+                    <li>국내 생산 (품질 + 마케팅 스토리 소재)</li>
+                    <li>CEO 19년 D2C E-커머스 End-to-End 경험</li>
+                    <li>바딥 제휴 입점 — 슬립 카테고리 연계 확보</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>W (약점)</h4>
+                <ul>
+                    <li>브랜드 검색량 / 인지도 <strong>초기 단계</strong></li>
+                    <li>통일된 브랜드 정체성 메시지 부재 (대표 지적사항)</li>
+                    <li>자사몰 미구축 — 스마트스토어 단일 채널</li>
+                    <li>인스타/유튜브 콘텐츠 시스템 미성숙</li>
+                    <li>"수면브라 vs 올데이 브라 vs 보정브라" 포지션 혼재</li>
+                    <li>초도 물량 380장 — 검증 데이터셋 작음</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>O (기회)</h4>
+                <ul>
+                    <li>수면브라 검색량 <strong>3년간 3배</strong> 증가</li>
+                    <li>쿠퍼인대 교육 시장 — 대부분 여성이 개념 모름 (선점 기회)</li>
+                    <li>슬립 웰니스 카테고리 부상 (SKIMS/Lunya 학습 효과)</li>
+                    <li>감탄브라·안다르 효과 — 올데이 브라 카테고리 이미 교육됨</li>
+                    <li>바디 포지티브 + 셀프케어 트렌드</li>
+                    <li>국내 생산 = K-언더웨어 해외 진출 스토리 활용 가능</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>T (위협)</h4>
+                <ul>
+                    <li>감탄브라·안다르의 규모 경제 (가격 공세)</li>
+                    <li>비비안 등 레거시의 올데이 카테고리 후발 진입</li>
+                    <li>내의 시장 전체 성장 둔화 ('25 대비 '26 하락 전망)</li>
+                    <li>SKIMS 한국 정식 진출 가능성 (프리미엄 세그먼트 잠식)</li>
+                    <li>네이버 쇼핑 광고 경쟁 심화 → CPC 상승</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. 핵심 기회 요인 -->
+    <div class="section" id="opportunity">
+        <h2>8. 핵심 기회 요인</h2>
+
+        <div class="strategy-pillar">
+            <div class="sp-num">1</div>
+            <div>
+                <div class="sp-title">쿠퍼인대 교육 시장 선점</div>
+                <div class="sp-desc">
+                    쿠퍼인대는 한 번 늘어나면 회복되지 않는 가슴 지지 인대이지만,
+                    대부분 여성은 개념을 모릅니다. SNS·유튜브에서 "쿠퍼인대"를 검색·학습하는 수요가 빠르게 늘고 있으나
+                    <strong>이 단어를 브랜드 자산으로 선점한 한국 브랜드가 없습니다.</strong>
+                    루키노바가 "쿠퍼인대 = 루키노바"로 교육 콘텐츠를 선점하면
+                    SEO + 바이럴 + 브랜드 자본이 동시에 쌓이는 구조를 만들 수 있습니다.
+                </div>
+            </div>
+        </div>
+
+        <div class="strategy-pillar">
+            <div class="sp-num">2</div>
+            <div>
+                <div class="sp-title">"슬립 웰니스" 카테고리의 공백</div>
+                <div class="sp-desc">
+                    국내에서 "슬립 웰니스" 카테고리를 선점한 대표 브랜드는 아직 없습니다.
+                    침구(에이스·시몬스), 수면안대(바딥), 수면브라(루키노바) 각 세그먼트는 존재하나
+                    이를 <strong>"자기 전 루틴 = 슬립 리츄얼"</strong>이라는 단일 우산 아래 묶은 브랜드는 없습니다.
+                    바딥 제휴가 이미 있는 상태에서 루키노바가 슬립 웰니스 번들·컬래버로 확장하면
+                    단품 브라 브랜드를 넘어 <strong>라이프스타일 브랜드</strong>로 성장 가능합니다.
+                </div>
+            </div>
+        </div>
+
+        <div class="strategy-pillar">
+            <div class="sp-num">3</div>
+            <div>
+                <div class="sp-title">글로벌 White Space — 일본/대만 진출 기회</div>
+                <div class="sp-desc">
+                    일본 경쟁사(엑사브라 7만원, 와키브라 10만원)는 고가·중국 생산·수면 전용입니다.
+                    루키노바는 "국내 생산 + 일상 착용 가능 + 5.9만원"이라는
+                    <strong>일본/대만 내 어떤 브랜드도 점유하지 않은 포지션</strong>을 가지고 있습니다.
+                    한국 내 브랜드 기틀이 잡히면 12개월 내 일본 진출 준비가 가능하며,
+                    이는 사업소개서상 2027~2028 해외 진출 로드맵과 정합합니다.
+                </div>
+            </div>
+        </div>
+
+        <div class="strategy-pillar">
+            <div class="sp-num">4</div>
+            <div>
+                <div class="sp-title">PMF 검증 완료 — 광고비 레버리지 극대화 구간</div>
+                <div class="sp-desc">
+                    ROAS 1,100~1,700%는 광고 효율이 이미 최고 구간임을 의미합니다.
+                    일반적 이너웨어 마케팅 효율의 2~3배이며, 이 구간에서는
+                    <strong>광고비를 2~3배 늘려도 수익이 비례해 커집니다.</strong>
+                    브랜드 정체성이 정비되면 광고 소재 퀄리티도 올라가 CPC가 낮아지고,
+                    결과적으로 "예산 증액 × 브랜드 정비"의 복리 효과로 6개월 내 누적 1억+ 달성이 가능합니다.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. 리스크 / 우려 요인 -->
+    <div class="section" id="risk">
+        <h2>9. 리스크 / 우려 요인</h2>
+
+        <table>
+            <tr>
+                <th>리스크</th>
+                <th>수준</th>
+                <th>완화 방안</th>
+            </tr>
+            <tr>
+                <td><strong>검증 데이터셋 작음</strong> — 누적 200개 판매, 리뷰 기반 표본이 좁음. 200장 넘어가면 리뷰 질이 달라질 가능성.</td>
+                <td><span class="tag tag-yellow">Medium</span></td>
+                <td>초기 구매자 심층 인터뷰 · 500장 시점 리뷰 데이터 다시 점검 · 반품/클레임 트래킹 대시보드 구축</td>
+            </tr>
+            <tr>
+                <td><strong>브랜드 인지도 초기</strong> — "루키노바" 브랜드 검색량 거의 없음, 모든 유입이 광고 의존.</td>
+                <td><span class="tag tag-red">High</span></td>
+                <td>"쿠퍼인대" / "케어핏" 키워드 SEO 선점 · 인스타 릴스 주 3회 발행 · 유튜브 숏츠 시리즈 (출산 후/큰컵 토픽)</td>
+            </tr>
+            <tr>
+                <td><strong>가격 포지션 모호</strong> — 감탄(3만원대)보다 비싸고 엑사(7만원대)보다 싸서 "애매한 프리미엄" 느낌 가능.</td>
+                <td><span class="tag tag-yellow">Medium</span></td>
+                <td>가격을 "24시간 케어 = 하루 2천원"으로 재프레임 · 국내 생산 / CTO 28년 / 특허를 가격 정당화 근거로 반복 노출</td>
+            </tr>
+            <tr>
+                <td><strong>단품 의존 구조</strong> — 케어핏 브라 단일 제품. 제품군 확장 전까지 LTV·재구매 레버리지 제한적.</td>
+                <td><span class="tag tag-yellow">Medium</span></td>
+                <td>사업소개서 Phase 2 (애슬레저/스포츠 확장) 로드맵 준수 · 컬러/사이즈 SKU 확장으로 재구매 포인트 설계</td>
+            </tr>
+            <tr>
+                <td><strong>자사몰 부재</strong> — 스마트스토어에 고객 데이터·LTV 관리가 귀속되어 D2C 전환 어려움.</td>
+                <td><span class="tag tag-yellow">Medium</span></td>
+                <td>6개월 내 Shopify/카페24 기반 자사몰 구축 · 뉴스레터·리뷰 CRM 자산화 · 스마트스토어는 신규 유입 채널로 역할 분리</td>
+            </tr>
+            <tr>
+                <td><strong>감탄브라·안다르의 대응</strong> — 이들이 "수면 케어 라인"을 런칭하면 가격·인지도에서 밀릴 가능성.</td>
+                <td><span class="tag tag-yellow">Medium</span></td>
+                <td>"쿠퍼인대 보호" + "CTO 28년 전문성" 같은 <strong>모방 어려운 서사</strong>를 빨리 선점 · 특허 방어 범위 확대</td>
+            </tr>
+            <tr>
+                <td><strong>내의 시장 전체 둔화</strong> — 2025 대비 2026 하락 전망 (패션비즈). 전체 시장 파이 축소.</td>
+                <td><span class="tag tag-gray">Low</span></td>
+                <td>하위 카테고리(수면 기반 케어핏)는 오히려 성장 — "카테고리 창조" 프레임으로 전체 시장 지표에 휘둘리지 않게 포지셔닝</td>
+            </tr>
+        </table>
+
+        <div class="callout callout-info">
+            <strong>종합 리스크 평가:</strong> High 리스크는 <strong>브랜드 인지도 단일 항목</strong>이며, 이는 정확히 본 리서치의 대상이 되는
+            브랜딩/콘텐츠 전략으로 직접 해결 가능한 영역입니다. 제품·PMF·팀 리스크는 모두 Low~Medium 수준으로, 전반적 사업 건전성은 양호합니다.
+        </div>
+    </div>
+
+    <!-- 10. 브랜딩/마케팅 전략 기틀 -->
+    <div class="section" id="strategy">
+        <h2>10. 브랜딩/마케팅 전략 기틀 제안</h2>
+
+        <div class="callout callout-info" style="margin-bottom: 24px;">
+            <strong>대표 최대 관심사:</strong> "통일된 브랜드 정체성에 맞는 콘텐츠 배포"와 "6개월 내 월 2~3천만 달성".
+            본 섹션은 이 두 가지를 직접적으로 푸는 기틀을 제시합니다.
+            (세부 견적·실행안은 별도 제안서에서 다룸)
+        </div>
+
+        <h3>제안 방향 ① — 브랜드 포지셔닝 한 줄 고정</h3>
+        <div class="leverage-box">
+            <div style="font-size:13px; opacity:0.7;">Brand Positioning One-Liner (초안)</div>
+            <div class="quote">
+                "루키노바는 <span style="color:#ffd166;">자는 동안에도, 일하는 동안에도</span><br>
+                당신의 쿠퍼인대를 지켜주는 <span style="color:#ffd166;">케어핏 브라</span>입니다."
+            </div>
+            <div style="font-size:12px; opacity:0.7; margin-top:8px;">
+                * 최종 카피는 워크샵에서 확정. 핵심은 "수면브라 ≠ 루키노바 / 보정브라 ≠ 루키노바 / 케어핏 = 루키노바"를 고정하는 것.
+            </div>
+        </div>
+
+        <h3>제안 방향 ② — 3-Layer 콘텐츠 시스템</h3>
+        <table>
+            <tr>
+                <th>Layer</th>
+                <th>목적</th>
+                <th>플랫폼</th>
+                <th>콘텐츠 유형</th>
+                <th>발행 빈도</th>
+            </tr>
+            <tr>
+                <td><strong>Layer 1<br>교육 (Hero)</strong></td>
+                <td>쿠퍼인대·가슴케어 교육, SEO·브랜드 자산 축적</td>
+                <td>유튜브 숏츠, 네이버 블로그</td>
+                <td>"쿠퍼인대란?", "출산 후 가슴 변화", "큰컵 고민" 시리즈</td>
+                <td>주 2회</td>
+            </tr>
+            <tr>
+                <td><strong>Layer 2<br>공감 (Hub)</strong></td>
+                <td>페르소나 별 감정 연결, 팔로워 자산화</td>
+                <td>인스타 릴스·피드, 틱톡</td>
+                <td>셀프 케어 루틴, 리뷰 리그램, 슬립 리츄얼</td>
+                <td>주 3~4회</td>
+            </tr>
+            <tr>
+                <td><strong>Layer 3<br>전환 (Hygiene)</strong></td>
+                <td>직접 구매 전환</td>
+                <td>네이버 쇼핑 SA/DA, 메타 광고</td>
+                <td>USP 기반 배너·릴스, 리뷰 모듈, 리타겟팅</td>
+                <td>상시 최적화</td>
+            </tr>
+        </table>
+
+        <h3>제안 방향 ③ — 6개월 스케일업 플레이북</h3>
+
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="step-num">Month 1</div>
+                <div class="step-title">정체성 정비</div>
+                <div class="step-desc">포지셔닝 워크샵 / BI 검토 / 상세페이지 메시지 정렬</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">Month 2</div>
+                <div class="step-title">콘텐츠 축 구축</div>
+                <div class="step-desc">인스타/유튜브 숏츠 제작 스튜디오 셋업 / 페르소나 시리즈 런칭</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">Month 3</div>
+                <div class="step-title">쿠퍼인대 교육 선점</div>
+                <div class="step-desc">네이버 블로그 SEO / 유튜브 숏츠 시리즈 / 인플루언서 교육 콘텐츠</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">Month 4</div>
+                <div class="step-title">광고 스케일업</div>
+                <div class="step-desc">ROAS 유지선 내 광고비 2배 증액 / 메타 광고 시작 / 소재 A/B 가속</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">Month 5</div>
+                <div class="step-title">채널 확장</div>
+                <div class="step-desc">자사몰 MVP 오픈 / 바딥 컬래버 상품 런칭 / 올리브영·백화점 팝업 검토</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">Month 6</div>
+                <div class="step-title">누적 1억 달성</div>
+                <div class="step-desc">LTV·재구매 캠페인 / KPI 리포트 / 2027 Phase 2 전략 수립</div>
+            </div>
+        </div>
+
+        <h3>제안 방향 ④ — 콘텐츠 배포의 "통일성"을 만드는 규칙</h3>
+        <table>
+            <tr>
+                <th>요소</th>
+                <th>통일 규칙 (초안)</th>
+            </tr>
+            <tr>
+                <td>브랜드 컬러</td>
+                <td>웜 뉴트럴 톤 (오프화이트 + 머스크 핑크 + 차콜) — 셀프 케어 감성</td>
+            </tr>
+            <tr>
+                <td>브랜드 보이스</td>
+                <td>전문가 이모님 톤 (친근하지만 근거 있음) — 감탄브라·안다르와 구분</td>
+            </tr>
+            <tr>
+                <td>헤드라인 공식</td>
+                <td>[문제 언급] + [쿠퍼인대/케어핏 키워드] + [CTO 28년/특허 근거]</td>
+            </tr>
+            <tr>
+                <td>해시태그 세트</td>
+                <td>#루키노바 #케어핏브라 #쿠퍼인대 #슬립웰니스 #24시간케어 (5종 고정)</td>
+            </tr>
+            <tr>
+                <td>비주얼 그리드</td>
+                <td>인스타 3x3 템플릿: 제품 / 리뷰 / 교육 / 리츄얼 / 제품 ... 반복 구조</td>
+            </tr>
+            <tr>
+                <td>콘텐츠 포맷</td>
+                <td>릴스 첫 3초에 페르소나 고민 → 5~10초 쿠퍼인대 교육 → 10초~ 제품 솔루션 (고정 프레임)</td>
+            </tr>
+        </table>
+
+        <div class="callout">
+            <strong>왜 이 기틀이 지금 필요한가:</strong> 현재 루키노바의 문제는 <strong>"뭘 만들지 모르는 게 아니라 뭘 만들든 통일되지 않는 것"</strong>입니다.
+            위 6가지 규칙(컬러·보이스·헤드라인·해시태그·그리드·포맷)을 1개월 안에 고정하면,
+            이후 어떤 파트너(ADFICTION/올바른/place)가 콘텐츠를 만들어도 <strong>같은 브랜드로 보입니다.</strong>
+            이것이 바로 대표가 시급 과제로 지적한 "통일된 브랜드 정체성에 맞는 콘텐츠 배포"의 실질적 해법입니다.
+        </div>
+    </div>
+
+    <!-- 11. 상담 Agenda 제안 -->
+    <div class="section" id="agenda">
+        <h2>11. 상담 Agenda 제안 (1시간 기준)</h2>
+
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="step-num">STEP 1 (10분)</div>
+                <div class="step-title">현황 공감</div>
+                <div class="step-desc">정식 런칭 4개월 축하 / 초기 실적(리뷰 4.94, ROAS 1,700%) 인정</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 2 (15분)</div>
+                <div class="step-title">진단 공유</div>
+                <div class="step-desc">"통일된 브랜드 정체성 부재" 문제를 구체적 예시로 시연 (스토어 vs 사업소개서 vs 바딥 제휴 메시지 비교)</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 3 (20분)</div>
+                <div class="step-title">전략 기틀 제안</div>
+                <div class="step-desc">4가지 제안 방향 설명 (포지셔닝 1줄 · 3-Layer 콘텐츠 · 6개월 플레이북 · 통일성 규칙)</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 4 (10분)</div>
+                <div class="step-title">우선순위 합의</div>
+                <div class="step-desc">6개월 1억 목표에 기여도 높은 항목 우선순위화 / 후속 제안서 범위 합의</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 5 (5분)</div>
+                <div class="step-title">다음 스텝</div>
+                <div class="step-desc">견적 제안서 전달 일정 / 샘플 제품 요청 / 광고 데이터 공유 요청</div>
+            </div>
+        </div>
+
+        <h3>상담 시 확인 필요 사항</h3>
+        <div class="callout callout-info">
+            <strong>상담 전 대표에게 확인:</strong><br><br>
+            - 현재 월 광고비 규모 및 집행 파트너(ADFICTION/올바른 등) 범위<br>
+            - 자사몰 구축 구체 계획 및 예산 (자체 / 외주 / 타임라인)<br>
+            - 초도 380장 소진 이후 2차 생산 계획 및 SKU 확장 로드맵<br>
+            - 바딥 제휴의 깊이 (단순 입점 / 컬래버 상품 / 공동 마케팅 가능 여부)<br>
+            - 투자 유치 현황 및 시리즈A 타임라인 (2028년 300억 매출 로드맵 기준 필수 단계)<br>
+            - BI/CI 현재 상태 — 리뉴얼 필요성 판단 포함
+        </div>
+
+        <h3>예상 반론 & 대응</h3>
+        <table>
+            <tr>
+                <th>예상 반론</th>
+                <th>대응</th>
+            </tr>
+            <tr>
+                <td>"이미 ROAS가 좋은데 왜 브랜딩 비용이 필요한가?"</td>
+                <td>ROAS 1,700%는 광고비 작을 때만 유지되는 수치. 광고비 증액 시 CPC 상승으로 효율 꺾임. 브랜드 검색 유입이 생겨야 CPC 안 오르고 ROAS가 유지됨.</td>
+            </tr>
+            <tr>
+                <td>"마케팅 파트너(ADFICTION 등)가 이미 있는데?"</td>
+                <td>퍼포먼스 파트너는 "수행"을 하고 HIZ는 "기틀"을 만듦. 기틀 없으면 파트너별로 다른 브랜드가 튀어나옴. 역할 구분 설명.</td>
+            </tr>
+            <tr>
+                <td>"초도 물량 소진 후 결정하고 싶다"</td>
+                <td>오히려 2차 생산 시점에 브랜드 메시지가 정립되어 있어야 패키지·상세페이지·광고 소재를 재활용 가능. 지금 정비하는 것이 효율적.</td>
+            </tr>
+            <tr>
+                <td>"BI는 우리가 직접 할 수 있다"</td>
+                <td>BI 자체보다 "어떤 메시지로 어떤 고객에게 닿을지"가 먼저. 전략 정합이 된 BI만 가치 있음. 전략 파트 협업 후 BI는 자체 결정 가능.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 12. 출처 목록 -->
+    <div class="section" id="sources">
+        <h2>12. 출처 목록</h2>
+        <table>
+            <tr>
+                <th>출처</th>
+                <th>내용</th>
+                <th>확인일</th>
+            </tr>
+            <tr>
+                <td>루키노바 사업소개서 (31p)</td>
+                <td>제품 5 POINT, 경쟁 비교, TAM/SAM/SOM, 로드맵, 팀 구성, 파트너</td>
+                <td>2026.04</td>
+            </tr>
+            <tr>
+                <td>네이버 스마트스토어 루키노바</td>
+                <td>가격 59,000원, 수면브라 1p 36위, 관심고객 1,097+</td>
+                <td>2026.01</td>
+            </tr>
+            <tr>
+                <td>패션비즈 "2026 한국 패션시장 전망"</td>
+                <td>내의 시장 2024 2조 1,964억 (+5.3%), 2025~26 감소 전망</td>
+                <td>2026</td>
+            </tr>
+            <tr>
+                <td>패션비즈 "감탄브라 일매출 11.5억"</td>
+                <td>감탄브라 2025.06.14 역대급 일 매출 달성</td>
+                <td>2025</td>
+            </tr>
+            <tr>
+                <td>어패럴뉴스 "감탄브라 공식몰 +436%"</td>
+                <td>그리티 감탄브라 자사몰 전년 대비 436% 성장</td>
+                <td>2024</td>
+            </tr>
+            <tr>
+                <td>메트로서울 메가히트상품스토리</td>
+                <td>심리스브라 시장 성장 배경, 바디 포지티브 트렌드</td>
+                <td>2025.07</td>
+            </tr>
+            <tr>
+                <td>안다르 공식몰 / 뉴스플릭스</td>
+                <td>올데이핏 브라 300만장+ 판매, K-애슬레저 4년 연속 1위</td>
+                <td>2026.01</td>
+            </tr>
+            <tr>
+                <td>SKIMS 공식 / Fashionista / Shopify</td>
+                <td>세컨드 스킨 트렌드, 글로벌 슬립웨어 시장 $82B (2030)</td>
+                <td>2024~2025</td>
+            </tr>
+            <tr>
+                <td>Lunya 공식 / Fashionista</td>
+                <td>프리미엄 슬립웨어 D2C, 2020 매출 2배 성장</td>
+                <td>2024</td>
+            </tr>
+            <tr>
+                <td>ECI Group — Bra Design Trends SS26</td>
+                <td>글로벌 브라 디자인 트렌드 — 편안함 + 혁신</td>
+                <td>2026</td>
+            </tr>
+        </table>
+
+        <div class="callout" style="margin-top: 20px;">
+            <strong>불확실한 정보 고지:</strong> 본 리서치에서 "추정", "미확인"으로 표기된 항목(SAM 1.5조 세부 산정, 일부 경쟁사 가격대, 현재 월 광고 예산 등)은
+            공개 정보만으로는 교차 검증이 어려운 사항입니다. 상담 시 대표와 직접 확인 후 보정 필요합니다.
+        </div>
+
+        <div class="callout callout-info" style="margin-top: 12px;">
+            <strong>향후 제안 방향:</strong> 본 리서치는 상담 준비용 진단 자료입니다. 상담 이후 대표와 합의된 우선순위에 맞춰
+            별도 제안서(포지셔닝 · 콘텐츠 시스템 · 퍼포먼스 스케일업)로 이어집니다.
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>Prepared by BRAND RISE · Confidential · 2026.04</p>
+    <p>본 자료는 BRAND RISE가 작성한 내부 상담 준비용 리서치 자료입니다.</p>
+</div>
+
+</body>
+</html>
