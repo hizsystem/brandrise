@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이퀼립 (equlib) - New Business 상담 준비 | BRANDRISE</title>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #444444;
+            --accent: #f07030;
+            --accent-light: #fff3ec;
+            --accent-soft: #fde8da;
+            --highlight: #f07030;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --muted: #f5f5f5;
+            --text: #1a1a1a;
+            --text-light: #999999;
+            --border: #eeeeee;
+            --success: #f07030;
+            --warning: #f07030;
+            --danger: #f07030;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+        .header { background: #ffffff; color: var(--primary); padding: 60px 40px; text-align: center; border-bottom: 1px solid var(--border); }
+        .header-badge { display: inline-block; background: var(--accent-soft); border: 1px solid var(--accent); color: var(--accent); padding: 4px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 16px; letter-spacing: 1px; }
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; color: var(--primary); }
+        .header .subtitle { font-size: 16px; color: var(--secondary); font-weight: 300; }
+        .header .date { margin-top: 16px; font-size: 13px; color: var(--text-light); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        .toc { background: var(--card-bg); border-radius: 12px; padding: 32px; margin-bottom: 40px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+        .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }
+        .toc a { color: var(--accent); text-decoration: none; font-size: 14px; padding: 6px 0; display: block; transition: color 0.2s; }
+        .toc a:hover { color: var(--highlight); }
+        .section { background: var(--card-bg); border-radius: 12px; padding: 36px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section h2 { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--highlight); }
+        .section h3 { font-size: 17px; font-weight: 600; color: var(--secondary); margin: 20px 0 12px; }
+        .info-grid { display: grid; grid-template-columns: 160px 1fr; gap: 8px 16px; font-size: 14px; }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th { background: var(--muted); color: var(--primary); padding: 12px 16px; text-align: left; font-weight: 700; font-size: 13px; }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        tr:hover td { background: #f1f3f5; }
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin: 2px; }
+        .tag-red { background: var(--accent-soft); color: var(--accent); }
+        .tag-green { background: #eef3ec; color: #5a7a52; }
+        .tag-blue { background: var(--accent-light); color: var(--accent); }
+        .tag-yellow { background: var(--accent-light); color: var(--secondary); }
+        .tag-gray { background: var(--muted); color: var(--secondary); }
+        .verdict { background: var(--accent); color: white; padding: 24px 32px; border-radius: 12px; text-align: center; margin: 24px 0; }
+        .verdict .label { font-size: 14px; opacity: 0.8; }
+        .verdict .value { font-size: 36px; font-weight: 800; margin: 8px 0; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+        .tier-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0; }
+        .tier-card { border: 2px solid var(--border); border-radius: 12px; padding: 20px; position: relative; transition: transform 0.2s; }
+        .tier-card:hover { transform: translateY(-4px); }
+        .tier-card.recommended { border-color: var(--accent); box-shadow: 0 4px 20px rgba(240, 112, 48, 0.15); }
+        .tier-card .tier-badge { position: absolute; top: -12px; right: 16px; background: var(--highlight); color: white; padding: 2px 12px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+        .tier-card h4 { font-size: 15px; margin-bottom: 4px; }
+        .tier-card .price { font-size: 18px; font-weight: 800; color: var(--highlight); margin: 10px 0; }
+        .tier-card .duration { font-size: 12px; color: var(--text-light); margin-bottom: 14px; }
+        .tier-card ul { list-style: none; padding: 0; }
+        .tier-card li { font-size: 12px; padding: 3px 0; padding-left: 16px; position: relative; line-height: 1.5; }
+        .tier-card li::before { content: ">"; position: absolute; left: 0; color: var(--highlight); font-weight: 700; }
+        .callout { background: var(--accent-light); border-left: 4px solid var(--accent); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 14px; }
+        .callout-info { background: var(--muted); border-left-color: var(--secondary); }
+        .callout-danger { background: var(--accent-soft); border-left-color: var(--accent); }
+        .callout-success { background: #eef3ec; border-left-color: #5a7a52; }
+        .leverage-box { background: var(--primary); color: white; padding: 32px; border-radius: 12px; margin: 24px 0; text-align: center; }
+        .leverage-box .quote { font-size: 20px; font-weight: 700; line-height: 1.5; margin: 16px 0; }
+        .flow-steps { display: flex; gap: 0; margin: 20px 0; overflow-x: auto; }
+        .flow-step { flex: 1; min-width: 160px; padding: 16px; background: #f1f3f5; position: relative; text-align: center; }
+        .flow-step:not(:last-child)::after { content: ">"; position: absolute; right: -8px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--highlight); font-weight: 700; z-index: 1; }
+        .flow-step .step-num { font-size: 11px; font-weight: 700; color: var(--highlight); margin-bottom: 4px; }
+        .flow-step .step-title { font-size: 13px; font-weight: 600; }
+        .flow-step .step-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .swot-item h4 { font-size: 15px; margin-bottom: 10px; }
+        .swot-item ul { padding-left: 18px; }
+        .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: #ffffff; border: 1px solid var(--border); }
+        .swot-w { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .swot-o { background: #ffffff; border: 1px solid var(--border); }
+        .swot-t { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+        .source-list a { color: var(--accent); text-decoration: none; }
+        .source-list a:hover { text-decoration: underline; }
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+        .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 8px 0; }
+        .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+        .summary-section { border-left: 4px solid var(--accent); background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%); }
+        .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; }
+        .kpi-card.kpi-dark { background: var(--muted); color: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--accent); color: white; }
+        .kpi-card.kpi-success { background: var(--accent-soft); color: var(--primary); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.7; }
+        .kpi-card .kpi-value { font-size: 24px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.7; }
+        .summary-oneliner { background: #0D0D0D; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+        .summary-oneliner .sol-text .hl { color: var(--highlight); }
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+        .diagnosis-section { border: 2px solid var(--accent); }
+        .diagnosis-section h2 { border-bottom-color: var(--accent); color: var(--accent); }
+        .diag-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .diag-box { padding: 16px; border-radius: 8px; }
+        .diag-box.diag-current { background: var(--accent-light); }
+        .diag-box.diag-ideal { background: #eef3ec; }
+        .diag-box .db-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .diag-box.diag-current .db-label { color: var(--accent); }
+        .diag-box.diag-ideal .db-label { color: #5a7a52; }
+        .diag-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+        .diag-note { font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: var(--accent-light); border-radius: 8px; }
+        .spin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .spin-card { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .spin-card h4 { font-size: 15px; margin-bottom: 10px; }
+        .spin-s { background: #ffffff; border: 1px solid var(--border); }
+        .spin-p { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .spin-i { background: var(--accent-soft); }
+        .spin-n { background: #ffffff; border: 1px solid var(--border); }
+        .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+        .pain-level { flex: 1; min-width: 200px; padding: 16px; border-radius: 10px; font-size: 13px; }
+        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .pain-l1 { background: var(--muted); }
+        .pain-l2 { background: var(--accent-light); }
+        .pain-l3 { background: var(--accent-soft); }
+        .pain-l4 { background: var(--accent); color: white; }
+        .script-block { background: #f8f9fa; border-left: 3px solid var(--accent); padding: 16px 20px; margin: 12px 0; border-radius: 0 8px 8px 0; font-size: 14px; font-style: italic; color: var(--secondary); }
+        .question-card { background: #f8f9fa; border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+        .question-card .q-num { font-size: 12px; font-weight: 700; color: var(--highlight); }
+        .question-card .q-text { font-size: 15px; font-weight: 600; margin: 4px 0 8px; }
+        .question-card .q-intent { font-size: 13px; color: var(--text-light); }
+        .timeline-phase { display: grid; grid-template-columns: 100px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .timeline-phase .phase-time { font-size: 13px; font-weight: 700; color: var(--highlight); text-align: center; padding-top: 4px; }
+        .timeline-phase .phase-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .timeline-phase .phase-content p { font-size: 13px; color: var(--text-light); }
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .tier-cards { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-step:not(:last-child)::after { display: none; }
+            .channel-grid { grid-template-columns: repeat(2, 1fr); }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .diag-compare { grid-template-columns: 1fr; }
+            .spin-grid { grid-template-columns: 1fr; }
+            .pain-layer { flex-direction: column; }
+            .timeline-phase { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">NEW BUSINESS 상담 준비 패키지 — 특수 케이스</div>
+    <h1>이퀼립 (equlib)</h1>
+    <div class="subtitle">(주)플래티넘브릿지 | 프리미엄 프렌치 스킨케어 + 인플루언서 커머스 인큐베이터</div>
+    <div class="date">작성일: 2026-04-20 | 1차 통화: 오늘 중 | 담당: 김도현 부대표 | Prepared by BRANDRISE</div>
+</div>
+
+<div class="container">
+
+    <!-- Executive Summary -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">브랜드 / 법인</div>
+                <div class="sh-title">이퀼립 (equlib) / (주)플래티넘브릿지</div>
+                <div class="sh-sub">뷰티 D2C + 공픽(인플루언서 공동구매) | 서울 서초구 | 설립 2020</div>
+            </div>
+            <div>
+                <div class="sh-label">인테이크 담당자</div>
+                <div class="sh-title">김도현 부대표 (010-7527-3324)</div>
+                <div class="sh-sub">CEO 이아영 | 리솔츠 초창기 팬 | 브랜드/디자인 고수</div>
+            </div>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">연매출(2024)</div>
+                <div class="kpi-value">33.6억</div>
+                <div class="kpi-sub">직원 7명 · 미투자 추정</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">수출국가</div>
+                <div class="kpi-value">11→28개국</div>
+                <div class="kpi-sub">2024부터 17개국 확장 계획</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">공픽 1년 거래</div>
+                <div class="kpi-value">30억+</div>
+                <div class="kpi-sub">120개 브랜드 · 1,200명 인플</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">인스타 팔로워</div>
+                <div class="kpi-value">5.4K</div>
+                <div class="kpi-sub">프리미엄 D2C 체급 대비 낮음</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">한 줄 진단</div>
+            <div class="sol-text">오늘 통화의 유일한 KPI는 <span class="hl">"미팅 달력에 날짜가 찍히는 것"</span>. 컨설팅 냄새가 나는 순간 실패. <span class="hl">수주 각도 0%</span>로 설계하고, 진짜 기회는 3~6개월 뒤 <span class="hl">파트너십(Track C)</span>에서 온다.</div>
+        </div>
+        <div class="summary-bottom">
+            ① <span class="hl">이해관계 충돌</span>: 이퀼립 공구 상품을 <b>데이나님(내부/파트너)</b>이 제조. 직접 컨설팅 수주는 충돌 구조.<br>
+            ② <span class="hl">강한 호감 자산</span>: 김 부대표가 소속 디자이너에게 <b>리솔츠를 '참고 브랜드' 교재</b>로 교육시켜옴. 단순 팬이 아니라 <b>조직 문화에 내재화된 리스펙트</b>.<br>
+            ③ <span class="hl">본인이 브랜드 전문가</span>: 공픽 인큐베이팅 운영 중 → "컨설팅 받고 싶다"의 진짜 의미는 <b>"인정하는 전문가와의 대화 관계"</b> 자체.
+        </div>
+    </div>
+
+    <!-- 핵심 문제점 & 진단 -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 문제점 & 진단</h2>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">표면 요청 (대표가 말한 것)</div>
+                <ul>
+                    <li>"패키징 컨설팅 받고 싶다"</li>
+                    <li>"브랜드 컨센선스(일관성) 컨설팅"</li>
+                    <li>"브랜드 인큐베이팅 비즈니스도 운영"</li>
+                    <li>폼 미응답 · 예산/일정 미확인</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">진짜 니즈 (분석 결과)</div>
+                <ul>
+                    <li>내 브랜드가 리솔츠급인지 <b>객관적 평가</b> 받고 싶음</li>
+                    <li>동경하는 팀과의 <b>전문가 대 전문가 대화</b></li>
+                    <li>파트너십/협업 교차점 <b>탐색</b> (잠재 Track C)</li>
+                    <li>당장의 발주가 아닌 <b>장기 관계의 첫 매듭</b></li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>영역별 문제 진단</h3>
+        <table>
+            <thead><tr><th style="width:130px;">영역</th><th>현재 상태</th><th style="width:80px;">심각도</th></tr></thead>
+            <tbody>
+                <tr><td><b>브랜드 자산</b></td><td>프리미엄 D2C 체급·수출 11개국·무신사/29CM/W컨셉 진입. 그러나 인스타 팔로워 5.4K, 카테고리 인지도 아누아·메디큐브 대비 1/10 이하. <b>"안목은 있으나 실행·시스템이 못 따라가는" 중견 브랜드 딜레마</b></td><td><span class="tag tag-red">High</span></td></tr>
+                <tr><td><b>패키지/일관성</b></td><td>제품 라인 4개 이상(오 브리에/오 캄/로맨티크 바디/굿즈) 분화. 가격은 프리미엄(패드 3.6~3.9만원)이나 시각적 격차 주장 약함. 본인이 '컨센선스 부재'로 직접 호소</td><td><span class="tag tag-red">High</span></td></tr>
+                <tr><td><b>포트폴리오</b></td><td>플래티넘브릿지 = 이퀼립 + 공픽 병행. 인큐베이팅 사업 확장 단계로 추정되나, <b>자사 브랜드 자체가 '일관성 부재' 상태</b>에서 남을 인큐베이팅하는 내부 모순</td><td><span class="tag tag-red">High</span></td></tr>
+                <tr><td><b>이해관계 충돌</b></td><td>이퀼립 공구 상품을 <b>데이나님(브랜드라이즈 내부/파트너)</b>이 제조. 직수주 시 "제조-브랜딩-유통"이 한 그룹 과도 엮임 + 데이나님 포지션 월권 해석 가능성</td><td><span class="tag tag-red">Critical</span></td></tr>
+                <tr><td><b>"은광패드"의 정체</b></td><td>공식 검색 전무. <b>가설 A</b>: 주력 SKU '오 브리에 패드'의 오기/별칭 / <b>가설 B</b>: 김 부대표 별도 관계 브랜드 / <b>가설 C</b>: 미공개 코드네임. <b>⚠️ 미팅에서 직접 확인 필수</b></td><td><span class="tag tag-yellow">Medium</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+        <h2>목차</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 & 진단</a>
+            <a href="#company-basic">1. 기업 기초 정보</a>
+            <a href="#products">2. 주력 제품/서비스</a>
+            <a href="#digital">3. 디지털 프레즌스</a>
+            <a href="#competitor">4. 경쟁사 분석</a>
+            <a href="#market">5. 시장 환경</a>
+            <a href="#leader">6. 대표자/경영진</a>
+            <a href="#swot">7. SWOT</a>
+            <a href="#spin">8. 니즈 분석 (SPIN+JTBD)</a>
+            <a href="#gap">9. GAP & 기회 평가</a>
+            <a href="#tiers">10. 4-Track 관계 설계</a>
+            <a href="#coaching">11. 상담 전략 & 통화 스크립트</a>
+            <a href="#closing">12. 클로징 & 다음 단계</a>
+            <a href="#sources">참고 링크</a>
+        </div>
+    </div>
+
+    <!-- 1. 기업 기초 정보 -->
+    <div class="section" id="company-basic">
+        <h2>1. 기업 기초 정보</h2>
+        <div class="info-grid">
+            <div class="info-label">법인명</div><div class="info-value">(주)플래티넘브릿지 (Platinumbridge Inc.)</div>
+            <div class="info-label">브랜드명</div><div class="info-value">이퀼립 (equlib) — 표기 다양 (이퀄리브/이퀼립)</div>
+            <div class="info-label">대표이사</div><div class="info-value">이아영 (CEO, 공식 대외 대표)</div>
+            <div class="info-label">인테이크 담당</div><div class="info-value">김도현 <b>부대표</b> (010-7527-3324) — 공개 기록 거의 없음, 내부 전략/사업개발 역할 추정</div>
+            <div class="info-label">설립일</div><div class="info-value">2020년 4월 13일 (6년차)</div>
+            <div class="info-label">이퀼립 론칭</div><div class="info-value">2021년</div>
+            <div class="info-label">직원수</div><div class="info-value">공식 7명 (사람인) / 11~50명(넥스트유니콘)</div>
+            <div class="info-label">연매출</div><div class="info-value">33.6억 원 (2024)</div>
+            <div class="info-label">투자 단계</div><div class="info-value">공시 없음 · 희망 '프리시리즈A~시리즈A' 명시 = <b>미투자 상태 추정</b></div>
+            <div class="info-label">소재지</div><div class="info-value">서울 서초구 (이수역/총신대입구역 인근)</div>
+            <div class="info-label">인증</div><div class="info-value">2024 서울형 강소기업 선정</div>
+            <div class="info-label">웹사이트</div><div class="info-value"><a href="https://equlib.com/" style="color:var(--accent)">equlib.com</a> · <a href="https://gongpick.kr/" style="color:var(--accent)">gongpick.kr</a></div>
+        </div>
+        <div class="callout-info callout">
+            <b>이퀼립 vs 플래티넘브릿지 구조</b><br>
+            · 모회사 (주)플래티넘브릿지<br>
+            ├ 이퀼립 — 자사 D2C 뷰티 브랜드 (프리미엄 프렌치 감성)<br>
+            └ 공픽(Gongpic) — 인플루언서-브랜드 매칭 커머스 (120개 브랜드·1,200명 인플·거래액 30억+)
+        </div>
+    </div>
+
+    <!-- 2. 주력 제품/서비스 -->
+    <div class="section" id="products">
+        <h2>2. 주력 제품/서비스</h2>
+        <table>
+            <thead><tr><th>라인/사업</th><th>내용</th><th>포지션</th></tr></thead>
+            <tbody>
+                <tr><td><b>오 브리에</b> (Eau Brière)</td><td>메인 스킨케어 — 패드(3.6~3.9만원), 세럼(4.6~5.5만원)</td><td>히어로 라인 · 프리미엄 · "빛나는 물" 프렌치 감성</td></tr>
+                <tr><td><b>오 캄</b> (Eau Calme)</td><td>진정 + 자외선 차단</td><td>서브 라인 · 확장 단계</td></tr>
+                <tr><td><b>로맨티크 바디</b></td><td>바디 케어</td><td>라인 확장</td></tr>
+                <tr><td><b>굿즈</b></td><td>브랜드 액세서리</td><td>팬덤 강화</td></tr>
+                <tr><td><b>공픽</b></td><td>인플루언서 매칭 공동구매 플랫폼</td><td>별도 사업 · 1,200 인플 풀 · 120 브랜드 협약</td></tr>
+            </tbody>
+        </table>
+        <div class="callout callout-danger">
+            <b>⚠️ "은광패드"의 정체</b> — 인테이크 원문에 등장했으나 공식 검색 전무.<br>
+            <b>가설 A (우세)</b>: 주력 SKU '오 브리에 패드'의 내부 표기 오류 또는 청자 귀에 들린 음운 왜곡<br>
+            <b>가설 B</b>: 김 부대표가 별도 운영하는 미공개 관계 브랜드/자회사<br>
+            <b>가설 C</b>: 공개 전 단계의 신규 프로젝트 코드네임<br>
+            → <b>미팅 필수 질문</b>: "은광패드는 이퀼립 내부 프로젝트인가요, 별도 브랜드인가요?"
+        </div>
+    </div>
+
+    <!-- 3. 디지털 프레즌스 -->
+    <div class="section" id="digital">
+        <h2>3. 디지털 프레즌스 진단</h2>
+        <div class="channel-grid">
+            <div class="channel-card">
+                <div class="ch-name">Instagram @equlib_official</div>
+                <div class="ch-stat">5,432</div>
+                <div class="ch-note">⚠️ 2021 론칭·수출 11개국 체급 대비 현저히 낮음</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">유통 채널</div>
+                <div class="ch-stat">10+</div>
+                <div class="ch-note">자사몰·무신사·29CM·W컨셉·신라면세점·라이브커머스(네이버/카카오/CJ)</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">글로벌 진출</div>
+                <div class="ch-stat">11개국</div>
+                <div class="ch-note">2024부터 17개국 추가 확장 계획</div>
+            </div>
+        </div>
+        <table>
+            <thead><tr><th>항목</th><th>상태</th><th>평가</th></tr></thead>
+            <tbody>
+                <tr><td>웹사이트(equlib.com)</td><td>미니멀·프렌치 감성, 슬로건 "la beauté de L'ÉQUILIBRE embellit votre vie"</td><td><span class="tag tag-green">양호</span></td></tr>
+                <tr><td>SNS 자산</td><td>인스타 5.4K, 오가닉 UGC 약함</td><td><span class="tag tag-red">취약</span></td></tr>
+                <tr><td>미디어 노출</td><td>한국금융경제신문, 경상일보 등 산업지 다수 PR 기사</td><td><span class="tag tag-green">양호</span></td></tr>
+                <tr><td>수상/전시</td><td>KOREA EXPO 2025, 서울 인디뷰티쇼 참가</td><td><span class="tag tag-green">양호</span></td></tr>
+                <tr><td>Meta 광고 라이브러리</td><td>⚠️ 직접 검증 필요</td><td><span class="tag tag-yellow">미확인</span></td></tr>
+            </tbody>
+        </table>
+        <div class="callout">
+            <b>핵심 진단</b>: 유통망·프리미엄 포지셔닝·수출 트랙 탄탄. 그러나 <b>브랜드 IP 자산(팔로워·UGC·콘텐츠 일관성)이 체급 대비 취약</b> → 본인이 지목한 "컨센선스" 페인이 <b>숫자로 증명됨</b>.
+        </div>
+    </div>
+
+    <!-- 4. 경쟁사 -->
+    <div class="section" id="competitor">
+        <h2>4. 경쟁사 분석</h2>
+        <h3>① 스킨케어 패드 카테고리 (오 브리에 패드 경쟁)</h3>
+        <table>
+            <thead><tr><th>브랜드</th><th>대표 SKU</th><th>포지션</th><th>이퀼립 대비</th></tr></thead>
+            <tbody>
+                <tr><td><b>아누아</b></td><td>어성초 77 패드</td><td>올영 패드 1위 · 저자극 기능</td><td>인지도 압도적 우위</td></tr>
+                <tr><td><b>메디큐브</b></td><td>제로 모공 패드</td><td>K뷰티 글로벌 강자 · 기능성</td><td>매스 브랜드 레벨링</td></tr>
+                <tr><td><b>넘버즈인</b></td><td>3번 패드</td><td>더마 라이트 · 가성비</td><td>가격 경쟁력 우위</td></tr>
+                <tr><td><b>바이오던스</b></td><td>콜라겐 패드</td><td>미스트·패드 복합 제안</td><td>MZ 인게이지먼트 우위</td></tr>
+                <tr><td><b>이퀼립</b> (오 브리에)</td><td>오 브리에 패드</td><td>프렌치 감성·프리미엄 가격</td><td><b>스토리 우위, 인지도 약세</b></td></tr>
+            </tbody>
+        </table>
+        <h3>② 브랜드 인큐베이팅 시장 (공픽·인큐베이팅 사업 경쟁)</h3>
+        <table>
+            <thead><tr><th>구분</th><th>플레이어</th><th>모델</th></tr></thead>
+            <tbody>
+                <tr><td>플랫폼형</td><td>무신사 인큐베이팅, 카카오스타일(지그재그 2026), 에이블리</td><td>플랫폼 기반 셀렉션+육성</td></tr>
+                <tr><td>마케팅컴퍼니형</td><td>레페리, 디퍼블릭, 태그바이, 유커넥트</td><td>인플루언서 네트워크 기반</td></tr>
+                <tr><td>에이전시형</td><td><b>리솔츠, 브랜드라이즈</b>, 필라멘트앤코</td><td>브랜드 전략+디자인+IMC로 밀어주기</td></tr>
+                <tr><td><b>하이브리드</b></td><td><b>플래티넘브릿지 (공픽+이퀼립)</b></td><td>자사 브랜드 경험 + 인플 커머스 결합</td></tr>
+            </tbody>
+        </table>
+        <div class="callout callout-info">
+            <b>전략적 시사점</b>: 브랜드라이즈와 플래티넘브릿지는 <b>동일 시장이 아니라 인접 레인</b>. 직접 경쟁이 아닌 <b>상호 보완 잠재</b>가 크다 — 이게 Track C 파트너십의 합리적 근거.
+        </div>
+    </div>
+
+    <!-- 5. 시장 환경 -->
+    <div class="section" id="market">
+        <h2>5. 시장 환경</h2>
+        <table>
+            <thead><tr><th>축</th><th>트렌드</th><th>이퀼립 해석</th></tr></thead>
+            <tbody>
+                <tr><td>스킨케어 패드</td><td>2021~ K-뷰티 최고 성장 카테고리 · 아누아/메디큐브 글로벌 히트</td><td>카테고리 파이는 크다 · 히어로 SKU 구축 타이밍</td></tr>
+                <tr><td>프리미엄 뷰티 D2C</td><td>프렌치/유러피안 감성 부활 · 가격보다 스토리</td><td>이퀼립 컨셉 정합성 높음</td></tr>
+                <tr><td>브랜드 인큐베이팅</td><td>2025~26 핫키워드 · 무신사 67 브랜드 거래액 3배 · 지그재그 2026 뷰티 인큐베이팅</td><td>플래티넘브릿지 공픽 확장 타이밍 · 브랜드라이즈 시장 교차점</td></tr>
+                <tr><td>리솔츠 롤모델링</td><td>에이전시형 인큐베이터의 벤치마크화</td><td>김 부대표 교육 교재 활용 = 깊은 리스펙트</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 6. 대표자 -->
+    <div class="section" id="leader">
+        <h2>6. 대표자/경영진 프로필</h2>
+        <h3>이아영 (CEO, 공식 대외 대표)</h3>
+        <div class="info-grid">
+            <div class="info-label">공개 채널</div><div class="info-value">LinkedIn, 사람인, 공식 기사·인터뷰 다수</div>
+            <div class="info-label">역할</div><div class="info-value">브랜드 철학 발신·공식 대외 커뮤니케이션</div>
+            <div class="info-label">참고</div><div class="info-value">2020.04 창업 · 이퀼립 2021 론칭 주도</div>
+        </div>
+        <h3>김도현 (부대표, 인테이크 담당자) — <span class="tag tag-yellow">공개 기록 전무</span></h3>
+        <div class="callout callout-danger">
+            <b>⚠️ 주의</b>: 사람인·넥스트유니콘·기사·잡플래닛·LinkedIn 어디에도 등장하지 않음.<br>
+            <b>해석 3가지</b>:<br>
+            ① 후발 조인자 (사업 확장 단계 영입)<br>
+            ② 대외 노출보다 내부 전략/재무/투자 담당<br>
+            ③ 플래티넘브릿지와는 별도로 <b>브랜드 인큐베이팅 사업(자칭)을 개인 또는 관계사로 운영</b> 중일 가능성 ← 인테이크 멘트 정합
+        </div>
+        <div class="callout callout-success">
+            <b>확인된 것 (팩트)</b><br>
+            · 리솔츠 초창기부터 팬<br>
+            · 소속 디자이너들에게 리솔츠를 <b>"가장 참고할 브랜드"로 교육</b>시켜 옴<br>
+            · 브랜드/디자인 감도 매우 높음, 레퍼런스 뱅크 풍부<br>
+            → <b>"안목은 있으나 실행·시스템이 못 따라가는"</b> 전형적 중견 브랜드 딜레마의 중심 인물
+        </div>
+    </div>
+
+    <!-- 7. SWOT -->
+    <div class="section" id="swot">
+        <h2>7. SWOT 분석</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>💪 Strengths</h4>
+                <ul>
+                    <li>프리미엄 프렌치 컨셉·스토리 명확</li>
+                    <li>11개국 수출 트랙 · 28개국 확장 중</li>
+                    <li>공픽 1,200 인플 풀 · 30억+ 거래액</li>
+                    <li>강소기업 인증 · PR 자산 축적</li>
+                    <li>대표·부대표 모두 브랜드/디자인 감도 고수</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>⚠️ Weaknesses</h4>
+                <ul>
+                    <li>인스타 5.4K = 체급 대비 낮음</li>
+                    <li>브랜드 비주얼/톤 일관성 부재 (본인 자인)</li>
+                    <li>카테고리 히어로 SKU 인지도 약세</li>
+                    <li>자사 브랜드도 "일관성 부재"인데 남을 인큐베이팅하는 내부 모순</li>
+                    <li>팔로워·UGC·콘텐츠 시스템 취약</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>🚀 Opportunities</h4>
+                <ul>
+                    <li>브랜드 인큐베이팅 시장 핫 타이밍</li>
+                    <li>28개국 수출 확장 → 글로벌 브랜드 가이드 필요</li>
+                    <li>리솔츠/브랜드라이즈와 파트너십 교차점</li>
+                    <li>공픽 풀을 브랜드라이즈 클라이언트와 교차 활용</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>🛑 Threats</h4>
+                <ul>
+                    <li>아누아·메디큐브 등 카테고리 리더 고착화</li>
+                    <li>플랫폼형 인큐베이터(무신사·카카오) 스케일 압박</li>
+                    <li>데이나님 공구 의존 = 단일 채널 리스크</li>
+                    <li>김 부대표 공개 기록 부재 = 투자 유치 시 리스크</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. 니즈 분석 -->
+    <div class="section" id="spin">
+        <h2>8. 니즈 분석 (SPIN + Pain Hierarchy + JTBD)</h2>
+
+        <h3>SPIN 레이어링</h3>
+        <div class="spin-grid">
+            <div class="spin-card spin-s">
+                <h4>S — Situation (팩트)</h4>
+                이퀼립(스킨케어) + 공픽(인플 커머스) 병행. 제조 외주(데이나님 포함), 공구 채널 유통.
+            </div>
+            <div class="spin-card spin-p">
+                <h4>P — Problem (자가 진단)</h4>
+                패키징이 브랜드 일관성을 해치고 있다는 본인 인식. 포트폴리오 브랜드 간 세계관 분기 추정.
+            </div>
+            <div class="spin-card spin-i">
+                <h4>I — Implication (검증 필요)</h4>
+                ① 공구/리테일 확장 시 패키징 발목 ② IR/투자 유치 설명 산만 ③ 디자이너 채용·협업 시 소통 비용.
+            </div>
+            <div class="spin-card spin-n">
+                <h4>N — Need-Payoff (강한 추정)</h4>
+                "리솔츠/브랜드라이즈 수준의 브랜드 체계를 내 포트폴리오에도 이식하고 싶다" — <b>벤치마크 자체가 브랜드라이즈</b>.
+            </div>
+        </div>
+        <div class="callout">
+            <b>핵심 통찰</b>: S-P는 잡히는데 I-N이 비어있음 → 일반 수주의 "Implication 증폭으로 긴박감 만들기" 전략 <b>부적합</b>. 이미 본인이 문제를 충분히 느끼고 있음. <b>"어디까지 가고 싶은가(N)"를 같이 그리는 대화</b>가 훨씬 유효.
+        </div>
+
+        <h3>Pain Hierarchy (L1 → L4)</h3>
+        <div class="pain-layer">
+            <div class="pain-level pain-l1">
+                <span class="level-tag">L1 표면</span>
+                "패키징 컨설팅 받고 싶다"
+            </div>
+            <div class="pain-level pain-l2">
+                <span class="level-tag">L2 전술</span>
+                라인별 패키지 톤이 튀고, 리뉴얼·신제품마다 일관성 흔들림
+            </div>
+            <div class="pain-level pain-l3">
+                <span class="level-tag">L3 전략</span>
+                인큐베이팅 포트폴리오 브랜드끼리 세계관이 따로 놀아 "이퀼립 스튜디오" 정체성 희석
+            </div>
+            <div class="pain-level pain-l4">
+                <span class="level-tag">L4 근본</span>
+                <b>전문가의 역설</b> — 본인이 브랜드 전문가라 자기 브랜드 객관화가 어려움. 동경하는 기준점(리솔츠)에 자기 작품이 부합하는지 확인받고 싶음
+            </div>
+        </div>
+
+        <h3>JTBD (Jobs-To-Be-Done)</h3>
+        <table>
+            <thead><tr><th style="width:160px;">Job</th><th>내용</th></tr></thead>
+            <tbody>
+                <tr><td><b>Functional</b></td><td>이퀼립+포트폴리오의 패키징·브랜드 체계를 외부 전문가 시선으로 정돈. 가능하면 실행 파트너까지 확보</td></tr>
+                <tr><td><b>Social</b></td><td>업계에서 "리솔츠급 브랜드 빌더"로 포지셔닝. 내부 디자이너에게 "우리가 리솔츠와 일한다"는 조직적 자부심. 투자자·파트너에 브랜드 수준 증명</td></tr>
+                <tr><td><b>Emotional ★</b></td><td><b>"오래 동경해온 리솔츠와 만나서, 내가 만들어온 것을 보여주고 전문가 대 전문가로 대화하고 싶다"</b> — 자기증명 × 전문성 교환 × 동경하는 공동체 입장</td></tr>
+            </tbody>
+        </table>
+
+        <h3>진짜 니즈 가설 3개 (우선순위)</h3>
+        <table>
+            <thead><tr><th>가설</th><th>내용</th><th>확률</th><th>맞다면 접근법</th></tr></thead>
+            <tbody>
+                <tr><td><b>A. 객관화 + 자기증명</b></td><td>"내 브랜드가 리솔츠 기준 몇 점인지 확인하고 싶다"</td><td><span class="tag tag-red">50%</span></td><td>컨설팅 제안 프레임 버리고 "브랜드 빌더 간 의견 교환 세션"으로. 1차엔 공식 제안서 금지.</td></tr>
+                <tr><td><b>B. 파트너십 교차점 탐색</b></td><td>"인큐베이팅 비즈니스 협업 가능성 타진"</td><td><span class="tag tag-yellow">30%</span></td><td>인큐베이팅 포트폴리오 맞교환 세션. "컨설팅 어려움을 역이용 → 파트너 테이블" 포지셔닝.</td></tr>
+                <tr><td><b>C. 실질 발주 탐색</b></td><td>"패키지 리뉴얼 실행 업체 쇼핑"</td><td><span class="tag tag-gray">15%</span></td><td>데이나님 이슈 때문에 직수주 X → 파트너 스튜디오 연결 옵션 준비.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 9. GAP & 기회 평가 -->
+    <div class="section" id="gap">
+        <h2>9. GAP 분석 & 기회 적합도 평가 (8축)</h2>
+        <table>
+            <thead><tr><th>축</th><th>점수</th><th>코멘트</th></tr></thead>
+            <tbody>
+                <tr><td>니즈-서비스 핏</td><td>3.5 / 5</td><td>표면 니즈(패키징/일관성)는 핏. 단 진짜 니즈는 "대화 관계"</td></tr>
+                <tr><td>예산 적합성</td><td>3 / 5</td><td>미확인. 매출 33억·프리미엄 포지션이면 Track D 500~1,500만 여유 있음</td></tr>
+                <tr><td>의사결정 구조</td><td>4 / 5</td><td>부대표 직접 컨택 = 의사결정권 근접</td></tr>
+                <tr><td>긴급도</td><td>2 / 5</td><td>폼/메일 미회신 = 긴급 발주 드라이브 약함</td></tr>
+                <tr><td>성장 잠재력</td><td>4 / 5</td><td>28개국 확장 + 인큐베이팅 사업 스케일업</td></tr>
+                <tr><td>레퍼런스 가치</td><td>4 / 5</td><td>리솔츠 팬덤이 외부 노출 시 강력한 레퍼럴 자산</td></tr>
+                <tr><td><b>충돌 리스크</b></td><td><span style="color:var(--accent);font-weight:800;">🔴 4 / 5</span></td><td>데이나님 제조 공구 라인 — 직수주 구조적 충돌</td></tr>
+                <tr><td><b>파트너십 잠재</b></td><td><span style="color:#5a7a52;font-weight:800;">🟢 5 / 5</span></td><td>인큐베이팅 교차점 + 리솔츠 리스펙트 + 공픽 풀 교환</td></tr>
+            </tbody>
+        </table>
+        <div class="verdict">
+            <div class="label">종합 판정</div>
+            <div class="value">미팅 GO / 직수주 NO-GO</div>
+            <div class="desc">"수주 0% 미팅"을 일부러 가는 것이 최선 전략. 장기 관계·레퍼럴 자산이 당장의 수주보다 훨씬 큼.</div>
+        </div>
+        <h3>수주 확률 시나리오</h3>
+        <table>
+            <thead><tr><th>시나리오</th><th>확률</th><th>결과</th></tr></thead>
+            <tbody>
+                <tr><td>1차 미팅에서 컨설팅 직수주</td><td><span class="tag tag-red">0~5%</span></td><td>데이나님 충돌로 구조적 불가</td></tr>
+                <tr><td>3~6개월 후 Track C 파트너십 딜</td><td><span class="tag tag-green">30~40%</span></td><td>공동 프로젝트 1건 건당 1,500~5,000만</td></tr>
+                <tr><td>Track D 교육 워크샵 (3~6개월)</td><td><span class="tag tag-green">25~35%</span></td><td>500~1,500만 규모 건단위</td></tr>
+                <tr><td>Track B 공구 제외 영역 자문 (6~12개월)</td><td><span class="tag tag-yellow">15~20%</span></td><td>월 300~700만 리테이너</td></tr>
+                <tr><td>레퍼럴 연결만 (언제든)</td><td><span class="tag tag-green">50%+</span></td><td>김 부대표가 신뢰하는 3인에게 연결 = 진짜 자산</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 10. 4-Track -->
+    <div class="section" id="tiers">
+        <h2>10. 4-Track 관계 설계 (3-Tier 아님)</h2>
+        <div class="callout callout-danger">
+            <b>왜 3-Tier가 아닌가</b> ①고객이 이미 수직 통합 인큐베이팅 조직 ②데이나님 제조 공구로 직수주 구조적 충돌 ③폼 미응답 = 구매 의사보다 <b>"리솔츠 궁금증"이 진짜 동기</b>. 따라서 가격 패키지가 아니라 <b>관계 트랙</b> 설계가 맞다.
+        </div>
+        <div class="tier-cards">
+            <div class="tier-card">
+                <h4>Track A</h4>
+                <div style="font-size:12px;color:var(--text-light)">단순 상호학습 미팅</div>
+                <div class="price">0원</div>
+                <div class="duration">60~90분 · 1회</div>
+                <ul>
+                    <li>컨설팅 무관 상호 소개</li>
+                    <li>인큐베이팅 포트폴리오 교류</li>
+                    <li>Quick Tip 1개 선물</li>
+                    <li>충돌 리스크 낮음</li>
+                    <li>★ <b>진입점</b>: 이번 미팅은 여기</li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>Track B</h4>
+                <div style="font-size:12px;color:var(--text-light)">공구 제외 영역 자문</div>
+                <div class="price">월 300~700만</div>
+                <div class="duration">3~6개월 리테이너</div>
+                <ul>
+                    <li>공구(데이나님) 카테고리 제외</li>
+                    <li>이퀼립 외 포트폴리오 브랜드 자문</li>
+                    <li>충돌 리스크 중</li>
+                    <li>데이나님 사전 동의 필수</li>
+                </ul>
+            </div>
+            <div class="tier-card recommended">
+                <div class="tier-badge">BEST</div>
+                <h4>Track C ★</h4>
+                <div style="font-size:12px;color:var(--text-light)">파트너십/공동 프로젝트</div>
+                <div class="price">1,500~5,000만/건</div>
+                <div class="duration">프로젝트 단위</div>
+                <ul>
+                    <li>이퀼립 신규 브랜드 공동 런칭</li>
+                    <li>공픽 풀 ↔ 브랜드라이즈 클라이언트 교차</li>
+                    <li>공동 세미나·콘텐츠</li>
+                    <li>충돌 리스크 낮음 (각자 레인 존중)</li>
+                    <li>★ <b>최고 잠재</b> · 3~6개월 후 진입</li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>Track D</h4>
+                <div style="font-size:12px;color:var(--text-light)">교육/워크샵</div>
+                <div class="price">500~1,500만</div>
+                <div class="duration">1~3회 세션</div>
+                <ul>
+                    <li>이퀼립 내부 디자이너 대상</li>
+                    <li>"리솔츠 브랜드 철학" 세션</li>
+                    <li>교육시켜왔다는 니즈 직접 활용</li>
+                    <li>충돌 리스크 매우 낮음</li>
+                </ul>
+            </div>
+        </div>
+        <div class="leverage-box">
+            <div style="font-size:13px;opacity:0.7">가치 프레이밍</div>
+            <div class="quote">"각자 잘하는 영역을 존중하는 파트너 3자 구도"<br>제조(데이나님) × 브랜드+커머스(이퀼립) × 브랜드 전략(브랜드라이즈)</div>
+        </div>
+        <h3>Challenger Teaching 포인트 3개 (고수 상대 차별화)</h3>
+        <table>
+            <thead><tr><th style="width:120px;">포인트</th><th>내용</th><th style="width:80px;">강도</th></tr></thead>
+            <tbody>
+                <tr><td><b>① 시간축 일관성</b></td><td>"리솔츠가 진짜 해낸 것은 비주얼이 아니라 <b>시간을 가로지르는 일관성</b>이다. 5년 전 카피가 지금도 읽힌다는 것 — 이게 대부분의 '리솔츠 팬 브랜드'가 놓치는 지점"</td><td><span class="tag tag-red">★★★</span></td></tr>
+                <tr><td><b>② 3-브랜드 한계점</b></td><td>"인큐베이팅 포트폴리오 3~5개 넘으면 브랜드북을 개별 관리하는 방식은 반드시 깨진다. <b>마스터 톤 1개 위에 변주 레이어</b> 얹는 메타 OS가 필요"</td><td><span class="tag tag-red">★★★</span></td></tr>
+                <tr><td><b>③ 패키지 일관성의 진짜 적</b></td><td>"패키지 통일이 안 되는 건 디자이너 실력 문제가 아니라 <b>공급망/MOQ 구조</b>. 제조처 다변화·소량 주문 구조가 톤을 쪼갠다"</td><td><span class="tag tag-red">★★★</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 11. 상담 전략 & 통화 스크립트 -->
+    <div class="section" id="coaching">
+        <h2>11. 상담 전략 & 통화 스크립트</h2>
+        <div class="callout callout-danger">
+            <b>오늘(4/20) 통화 KPI</b>: <b>"미팅 달력에 날짜가 찍히는 것" 1개</b>. 그 외 모든 건 부차적.<br>
+            <b>피할 단어</b>: "컨설팅 패키지", "가격대", "제안서", "저희 서비스", "도와드릴 수 있습니다"
+        </div>
+
+        <h3>통화 전 2분 체크리스트</h3>
+        <div class="info-grid">
+            <div class="info-label">추천 시간</div><div class="info-value">오늘 오후 <b>2:30~3:30</b> (1순위) 또는 오후 4:30~5:30 (2순위). 피할 것: 10시 전·정오~1:30·6시 후</div>
+            <div class="info-label">사전 훑기</div><div class="info-value">equlib.com 카테고리·톤(3분), 공픽 플랫폼 구조, 은광패드 질문 메모, 한나님 원 멘트 확인 (★ 가장 중요)</div>
+            <div class="info-label">손닿는 곳</div><div class="info-value">미팅 후보 3개: ① 4/24(금) 오후 2시 ② 4/28(화) 오전 11시 ③ 4/30(목) 오후 4시 / 장소 옵션: 이퀼립 사무실(1순위)·브랜드라이즈 스튜디오·중간 카페·줌</div>
+            <div class="info-label">스탑워치</div><div class="info-value">5분 넘기면 실패 신호</div>
+        </div>
+
+        <h3>5단계 통화 플로우 (3~5분)</h3>
+
+        <div class="timeline-phase">
+            <div class="phase-time">① 0:00~0:30<br>오프닝</div>
+            <div class="phase-content">
+                <h4>"이 전화가 뭔지" 3초 안에 납득</h4>
+                <div class="script-block">"부대표님 안녕하세요, 브랜드라이즈 우성민이라고 합니다. 혹시 지금 2~3분 통화 괜찮으실까요?"<br><br>(OK 시) "네, 볼로냐 박람회에서 저희 한나 통해서 부대표님 연락처 전달받았어요. 한나가 미리 말씀드렸다고 해서 편하게 연락드렸습니다."</div>
+                <p><b>의도</b>: "2~3분"으로 심리적 부담 제거. 한나님 이름을 앵커로 신뢰 이관. "미리 말씀드렸다"는 전제로 깔아 상대가 "아 맞아요"로 응답 유도.</p>
+            </div>
+        </div>
+
+        <div class="timeline-phase">
+            <div class="phase-time">② 0:30~1:15<br>연결고리</div>
+            <div class="phase-content">
+                <h4>호감 활성화 — 이번 통화 최대 무기</h4>
+                <div class="script-block">"말씀드리기 전에 한 가지만요, 한나한테 얘기 들었는데 부대표님께서 소속 디자이너분들 교육하실 때 리솔츠를 참고 브랜드로 보여주신다고요. 솔직히 저희 팀한테 그 얘기 전했을 때 다들 엄청 좋아했습니다. 저도 이퀼립 쪽 포트폴리오 쭉 보면서 브랜드 인큐베이팅을 이런 식으로 접근하시는구나 싶어서 흥미롭게 보고 있었어요."</div>
+                <p><b>의도</b>: 상대가 보여준 호의를 "알고 있고 감사하게 여긴다"는 선제 고백. 아부 톤 금지 — "팀이 좋아했다"는 사실 전달. 3~5초 침묵 권장.</p>
+            </div>
+        </div>
+
+        <div class="timeline-phase">
+            <div class="phase-time">③ 1:15~2:30<br>★ 심장</div>
+            <div class="phase-content">
+                <h4>미팅 목적 — 경계심 해소 2연타</h4>
+                <div class="script-block">"오늘 연락드린 건, 결론부터 말씀드리면 미팅 한번 뵙고 싶어서예요. 근데 먼저 한 가지 분명히 말씀드리고 싶은 게 있어요.<br><br><b>이번에 뵙는 자리는 저희가 컨설팅 영업하러 가는 자리가 아니에요.</b><br><br>그리고 이퀼립에서 지금 공구하시는 상품이 <b>저희 쪽 데이나님이 제조하시는 걸로 알고 있는데, 그 건은 저희가 분명히 인지하고 있고요, 그 영역은 이번 미팅에서 빼고 얘기할 거라는 것도 먼저 말씀드리고 싶었어요.</b><br><br>그래서 오늘 미팅 목적은 두 가지예요. 하나는 브랜드 인큐베이팅 비즈니스 산업 레퍼런스 교환. 다른 하나는 패키징·브랜드 컨센서스 주제로 저희가 인사이트 드릴 수 있는 게 있지 않을까 해서요. 견적이나 제안 얘기는 이번 자리엔 없습니다."</div>
+                <p><b>의도</b>: ★★★ 오늘 통화 최결정 한 줄 = "데이나님 건 인지·분리". 상대 머릿속 가장 큰 경계 지점을 내가 먼저 꺼내서 해소. "인지하고 있다"가 "교통정리 할 줄 아는 팀"이라는 신호.</p>
+            </div>
+        </div>
+
+        <div class="timeline-phase">
+            <div class="phase-time">④ 2:30~3:30<br>일정</div>
+            <div class="phase-content">
+                <h4>오픈 엔디드 금지 — 3개 후보만 던지기</h4>
+                <div class="script-block">"혹시 다음 주나 그다음 주 중에 한 시간 정도 시간 내실 수 있을까요? 제가 편하신 시간 후보 몇 개 먼저 말씀드려볼게요. <b>4월 24일 금요일 오후 2시, 4월 28일 화요일 오전 11시, 4월 30일 목요일 오후 4시</b> 중에 혹시 가능하신 시간 있으세요?"<br><br>(수락 시) "장소는 어떻게 하는 게 편하세요? 이퀼립 사무실로 찾아뵙는 것도 좋고, 저희 스튜디오로 초대드려도 좋고, 중간 카페도 괜찮습니다."</div>
+                <p><b>의도</b>: "언제 괜찮으세요?" 절대 금지 → "나중에 연락드릴게요"로 끝남. 3개 후보 던지면 상대가 고르거나 역제안. 결정을 이진화.</p>
+            </div>
+        </div>
+
+        <div class="timeline-phase">
+            <div class="phase-time">⑤ 3:30~4:00<br>클로징</div>
+            <div class="phase-content">
+                <h4>연결 고리 심기</h4>
+                <div class="script-block">"좋습니다, XX일 XX시 XX장소로 확정할게요. 미팅 전에 제가 짧게 자료 하나 문자로 보내드려도 될까요? 부대표님이 관심 있으시겠다 싶은 레퍼런스 1~2개만 골라서요, 길지 않게요."<br><br>"그럼 일정 확정 문자 오늘 중으로 하나 보내드리고, XX일에 뵙겠습니다. 좋은 하루 보내세요!"</div>
+                <p><b>의도</b>: ★ 숨은 핵심. 통화 끝나고 사라지면 미팅 당일까지 상대 머릿속에서 옅어짐. 자료 발송 허락 = 미팅 1~2일 전 자연스러운 리마인드 포인트 확보.</p>
+            </div>
+        </div>
+
+        <h3>리스크 상황 분기 대응</h3>
+        <table>
+            <thead><tr><th style="width:220px;">상대 반응</th><th>대응 멘트</th></tr></thead>
+            <tbody>
+                <tr><td>"컨설팅은 어려워요"</td><td>"네, 컨설팅은 오늘 말씀드릴 주제가 아니에요. 레퍼런스 교환 겸 가볍게 뵙는 자리라서요."</td></tr>
+                <tr><td>"데이나님 건 때문에 조심스럽네요"</td><td>"그 부분은 저도 조심스럽게 생각하고 있어요. 아예 그 카테고리는 이번 미팅 주제에서 빼둘 생각이에요."</td></tr>
+                <tr><td>"이번 달은 너무 바빠요"</td><td>"그럼 5월 중순쯤 어떠세요? 아니면 정말 짧게 15분 커피챗이나, 자료 먼저 보내드려도 됩니다."</td></tr>
+                <tr><td>"가격 얼마예요?"</td><td>"하하, 이번 미팅은 견적 자리는 진짜 아니에요. 필요하다 싶으시면 그때 따로 자리 잡아드릴게요."</td></tr>
+                <tr><td>"외주 쓸 계획 없어요"</td><td>"저도 그 자리로 가는 게 아니에요. 외주 얘기 아예 빼고, 산업 레퍼런스 교환 정도로요."</td></tr>
+                <tr><td>전화 안 받음</td><td>(문자) "부대표님 안녕하세요, 브랜드라이즈 우성민입니다. 한나 통해 연락처 전달받고 인사 겸 미팅 일정 한번 여쭤보려 전화드렸는데 부재중이시네요. 편하신 시간 말씀 주시면 맞춰보겠습니다. 감사합니다!"</td></tr>
+            </tbody>
+        </table>
+
+        <h3>60분 미팅 타임라인 — "관계 미팅" 모드</h3>
+        <div class="leverage-box">
+            <div style="font-size:13px;opacity:0.7">미팅 전 마인드셋</div>
+            <div class="quote">"오늘은 수주하러 온 게 아니다. 3~6개월 뒤 다시 만날 관계를 만들러 왔다.<br>똑똑해 보이려 하지 말자. 오늘 가져갈 건 '이 사람의 진짜 고민' 힌트 1개뿐이다."</div>
+        </div>
+        <div class="timeline-phase"><div class="phase-time">Phase 1<br>0~10분</div><div class="phase-content"><h4>라포 형성 — 아이스브레이킹</h4><p>① 리솔츠 교육 이야기 (1순위) — "어떤 포인트에서 참고하시는지?" ② 볼로냐 박람회 경험담 ③ equlib.com 메인 감상 (관찰 톤, 분석 금지)</p></div></div>
+        <div class="timeline-phase"><div class="phase-time">Phase 2<br>10~25분</div><div class="phase-content"><h4>상호 소개 + 인큐베이팅 교류</h4><p>자기소개 2문장 → 대화 주도권 상대에게. 질문 3개: 사업 모델 / 포트폴리오 의사결정 기준 / 요즘 재밌거나 고민되는 지점</p></div></div>
+        <div class="timeline-phase"><div class="phase-time">Phase 3<br>25~40분</div><div class="phase-content"><h4>진짜 고민 듣기 (SPIN, 솔루션 금지)</h4><p>Situation → Problem → Implication. <b>Need-Payoff는 오늘 금지.</b> "오늘은 여기까지 듣고 한 번 더 깊이 얘기할 기회 있으면 그때" 의도적 절제. 미러링·라벨링·3초 침묵.</p></div></div>
+        <div class="timeline-phase"><div class="phase-time">Phase 4<br>40~50분</div><div class="phase-content"><h4>무료 인사이트 2개 (Teach)</h4><p>"제안 드리는 건 아니고" 선제. Challenger Teaching 3개 중 2개만 투입 (시간축 일관성 / 3-브랜드 한계점 / 패키지의 진짜 적). 던지고 반드시 리액션 기다리기.</p></div></div>
+        <div class="timeline-phase"><div class="phase-time">Phase 5<br>50~55분</div><div class="phase-content"><h4>다음 단계 탐색</h4><p>"이런 주제로 한 번 더 깊이 얘기하면 서로 얻을 게 있을 것 같아요" 열린 질문. 긍정 시 "한 달쯤 뒤 한 번 더" 구체 시점.</p></div></div>
+        <div class="timeline-phase"><div class="phase-time">Phase 6<br>55~60분</div><div class="phase-content"><h4>클로징 + 소개 부탁</h4><p>"배우고 갑니다" 톤. 소개 요청은 "강요 아님 + 가볍게 + 언제든 환영" 3단 프레임. 후속 약속 3가지(자료/일정/인사).</p></div></div>
+
+        <h3>필수 질문 5개</h3>
+        <div class="question-card"><div class="q-num">Q1 · 동경의 온도 확인</div><div class="q-text">"리솔츠의 어떤 결정이나 순간이 가장 '이건 우리도 따라가고 싶다' 싶으셨어요?"</div><div class="q-intent">→ Emotional Job 강도 측정. 심리적 빚 해소 후 본심 대화 진입.</div></div>
+        <div class="question-card"><div class="q-num">Q2 · 컨센선스 재해석</div><div class="q-text">"이퀼립이나 인큐베이팅 브랜드들 중에 '이게 제일 고민이야' 싶은 한 장면이 있으실까요?"</div><div class="q-intent">→ 가설 A/B/C 분기점. 단일 브랜드 vs 포트폴리오, 개념 수준 vs SKU 수준.</div></div>
+        <div class="question-card"><div class="q-num">Q3 · 인큐베이팅 파고들기</div><div class="q-text">"인큐베이터로서 가장 공들이는 단계는 어디세요? 네이밍·초기 세계관·런칭 운영 중에서요."</div><div class="q-intent">→ 가설 B 검증. 대등한 브랜드 빌더 테이블 세팅 + 외부 필요 영역 드러남.</div></div>
+        <div class="question-card"><div class="q-num">Q4 · 시급성 측정</div><div class="q-text">"이 고민을 어떤 시점에 해결하고 싶다는 그림이 있으세요? 다음 론칭에 걸려 있는지, 올해 안 재정비인지?"</div><div class="q-intent">→ 가설 C 여과. 시간 지평 = 발주 의지 대리 지표.</div></div>
+        <div class="question-card"><div class="q-num">Q5 · 미팅 기대치 드러내기</div><div class="q-text">"오늘 '이 정도 얘기 나오면 오길 잘했다' 싶으신 순간이 있다면 어떤 순간일까요?"</div><div class="q-intent">→ 고객이 미팅 성공 기준을 스스로 말하게. 첫 3초 안에 나오는 단어가 진짜.</div></div>
+
+        <div class="callout callout-success">
+            <b>💡 Trusted Advisor Quick Tip — 미팅 마무리 무료 선물 (3개 중 1개 선택)</b><br>
+            ① equlib.com 메인 → 스토리 동선 테스트 아이디어 (가설형 톤)<br>
+            ② 프리미엄 뷰티 패키지 트렌드 1개 (일본 "역방향 디자인" 2024 하반기 사례) — <b>은광패드 언급은 회피</b><br>
+            ③ ★ <b>가장 파워풀</b>: "포트폴리오 5개 넘으면 반드시 깨진다. 마스터 톤 1개 + 변주 레이어 프레임워크 간단 공유 가능"
+        </div>
+    </div>
+
+    <!-- 12. 클로징 전략 -->
+    <div class="section" id="closing">
+        <h2>12. 클로징 전략 & 다음 단계</h2>
+
+        <h3>미팅 후 다음 단계 3 시나리오</h3>
+        <div class="flow-steps">
+            <div class="flow-step" style="background:#eef3ec;">
+                <div class="step-num">BEST</div>
+                <div class="step-title">Track C 파트너십 씨앗</div>
+                <div class="step-desc">2주 내 공동 프로젝트 제안서</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">MIDDLE</div>
+                <div class="step-title">Track D 교육/워크샵</div>
+                <div class="step-desc">1주 내 세션 제안</div>
+            </div>
+            <div class="flow-step" style="background:var(--accent-light);">
+                <div class="step-num">WORST</div>
+                <div class="step-title">관계 유지</div>
+                <div class="step-desc">분기별 뉴스레터·연하장 리스트</div>
+            </div>
+        </div>
+
+        <h3>미팅 후 24시간 내 액션</h3>
+        <table>
+            <thead><tr><th>시점</th><th>액션</th></tr></thead>
+            <tbody>
+                <tr><td>당일 저녁</td><td>감사 문자 1통 (2~3줄, 오늘 나온 얘기 중 1가지 언급)</td></tr>
+                <tr><td>2~3일 내</td><td>약속한 자료 발송 (Phase 4에서 언급한 프레임워크 간단 정리본)</td></tr>
+                <tr><td>1주일 내</td><td>한나님에게 상담 결과 공유 + <b>데이나님 내부 교통정리</b></td></tr>
+                <tr><td>한 달 뒤</td><td>2차 미팅 일정 리마인드</td></tr>
+            </tbody>
+        </table>
+
+        <h3>숨은 전략 — 이 미팅의 진짜 계산</h3>
+        <div class="callout callout-info">
+            ① <b>데이나님 지뢰 선제 해체</b> → 상대는 "이 팀은 교통정리 할 줄 아는 팀"으로 인지. 3~6개월 뒤 데이나님 외 카테고리 수주 기회 시 결정적 작용.<br><br>
+            ② <b>"수주 0%" 미팅을 일부러 가는 것</b> → 컨설팅 업계 가장 드문 접근. 고수일수록 이 "절제"에 감동. <b>레퍼럴 자산화</b>.<br><br>
+            ③ <b>한나 → 김 부대표 → 주변 브랜드 오너들</b>로 이어지는 네트워크가 진짜 수주 루트. 김 부대표 1명이 아니라 <b>그가 신뢰하는 3인</b>에게 연결되는 게 목표.
+        </div>
+
+        <h3>내부 챔피언 전략</h3>
+        <table>
+            <thead><tr><th>인물</th><th>역할</th><th>액션</th></tr></thead>
+            <tbody>
+                <tr><td>김도현 부대표</td><td>Economic Buyer + 팬</td><td>1차 미팅 목표 인물. 존중 최우선.</td></tr>
+                <tr><td>한나님</td><td>연결고리·원 소스</td><td>통화 전 한나님 원 멘트 확인 필수. 통화 후 결과 공유.</td></tr>
+                <tr><td>데이나님</td><td>잠재 충돌 축</td><td>미팅 <b>전/후</b> 투명 커뮤니케이션. "관계 미팅만 하고 옵니다"</td></tr>
+                <tr><td>이아영 CEO</td><td>공식 Final DM</td><td>1차엔 등장 X, 2차 이후 자연스럽게 포함 유도</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 참고 링크 -->
+    <div class="section" id="sources">
+        <h2>참고 링크</h2>
+        <div class="source-list">
+            <p>• <a href="https://equlib.com/" target="_blank">이퀼립 공식 사이트</a></p>
+            <p>• <a href="https://gongpick.kr/" target="_blank">공픽 공식 사이트</a></p>
+            <p>• <a href="https://www.platinumbridge.co.kr/" target="_blank">플래티넘브릿지 공식</a></p>
+            <p>• <a href="https://www.nextunicorn.kr/company/33fa7b09a6d1b3b7" target="_blank">넥스트유니콘 기업정보</a></p>
+            <p>• <a href="https://www.saramin.co.kr/zf_user/company-info/view/csn/aVdmTi96cXpWanhrUkZldUFVZ3ptZz09/" target="_blank">사람인 기업정보</a></p>
+            <p>• <a href="https://www.jobplanet.co.kr/companies/380140/landing/%ED%94%8C%EB%9E%98%ED%8B%B0%EB%84%98%EB%B8%8C%EB%A6%BF%EC%A7%80" target="_blank">잡플래닛</a></p>
+            <p>• <a href="https://www.kfenews.co.kr/news/articleView.html?idxno=576217" target="_blank">이퀄리브 론칭 기사 (KFE News)</a></p>
+            <p>• <a href="https://www.ksilbo.co.kr/news/articleView.html?idxno=924558" target="_blank">오 브리에 세럼 기사 (경상일보)</a></p>
+            <p>• <a href="https://www.musinsa.com/brand/equlib" target="_blank">무신사 브랜드관</a></p>
+            <p>• <a href="https://shop.29cm.co.kr/brand/18571" target="_blank">29CM 브랜드관</a></p>
+            <p>• <a href="https://www.instagram.com/equlib_official/" target="_blank">Instagram @equlib_official</a></p>
+            <p>• <a href="https://indiebeautyshow.com/exhibitor-list/?bmode=view&idx=156122321" target="_blank">서울 인디뷰티쇼 참가</a></p>
+            <p>• <a href="https://kr.linkedin.com/company/platinumbridge" target="_blank">플래티넘브릿지 LinkedIn</a></p>
+            <p>• <a href="https://resaltz.co.kr/" target="_blank">리솔츠(ResaltZ) 공식</a></p>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    BRANDRISE × HIZ × MarketingOS | 이 문서는 상담 준비용 내부 문서입니다.<br>
+    Prepared by (🔍)시장 조사관·(✦)브랜드 전략가·(💰)세일즈 전략가 + (🎤)상담 코치 통합
+</div>
+
+</body>
+</html>
