@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow">
+    <title>에코맘의 산골이유식 — 글로벌 확장 현황 & 시장 리포트 | BRANDRISE</title>
+    <style>
+        :root {
+            --primary: #1a2e1a;
+            --secondary: #2d4a2d;
+            --accent: #5a7d3a;
+            --highlight: #c2410c;
+            --bg: #f6f8f3;
+            --card-bg: #ffffff;
+            --text: #1a2e1a;
+            --text-light: #636569;
+            --border: #e0e6d6;
+            --success: #2d7a3e;
+            --warning: #c2410c;
+            --danger: #dc2626;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(194, 65, 12, 0.2);
+            border: 1px solid var(--highlight);
+            color: #fdba74;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+        .header .subtitle { font-size: 16px; opacity: 0.8; font-weight: 300; }
+        .header .date { margin-top: 16px; font-size: 13px; opacity: 0.6; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        .toc {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 8px;
+        }
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 0;
+            display: block;
+            transition: color 0.2s;
+        }
+        .toc a:hover { color: var(--highlight); }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--highlight);
+        }
+        .section h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 20px 0 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 8px 16px;
+            font-size: 14px;
+        }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th { background: var(--primary); color: white; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px; }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        tr:hover td { background: #f1f3f5; }
+
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin: 2px; }
+        .tag-red { background: #ffe0e0; color: #d63031; }
+        .tag-green { background: #d4f5e9; color: #2d7a3e; }
+        .tag-blue { background: #dfe6fd; color: #1a2e1a; }
+        .tag-yellow { background: #fff3cd; color: #856404; }
+        .tag-gray { background: #e9ecef; color: #495057; }
+
+        .callout {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+        .callout-info { background: #e3f2fd; border-left-color: #2196f3; }
+        .callout-danger { background: #fce4ec; border-left-color: #e53935; }
+        .callout-success { background: #e8f5e9; border-left-color: #2d7a3e; }
+
+        .leverage-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        .leverage-box .quote { font-size: 19px; font-weight: 700; line-height: 1.6; margin: 16px 0; }
+        .leverage-box .quote .hl { color: #fdba74; }
+
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .swot-item h4 { font-size: 15px; margin-bottom: 10px; }
+        .swot-item ul { padding-left: 18px; }
+        .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: #d4f5e9; }
+        .swot-w { background: #ffe0e0; }
+        .swot-o { background: #dfe6fd; }
+        .swot-t { background: #fff3cd; }
+
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; line-height: 2; }
+        .source-list a { color: var(--accent); text-decoration: none; }
+        .source-list a:hover { text-decoration: underline; }
+
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+        .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 8px 0; }
+        .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+
+        /* Executive Summary */
+        .summary-section { border-left: 4px solid var(--highlight); background: linear-gradient(135deg, #fff 0%, #fff7f0 100%); }
+        .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; color: white; }
+        .kpi-card.kpi-dark { background: var(--primary); }
+        .kpi-card.kpi-success { background: var(--success); }
+        .kpi-card.kpi-accent { background: var(--accent); }
+        .kpi-card.kpi-warning { background: var(--warning); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.8; }
+        .kpi-card .kpi-value { font-size: 22px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.8; }
+
+        .summary-oneliner { background: #1a2e1a; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+        .summary-oneliner .sol-text .hl { color: #fdba74; }
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+
+        /* Observation Section (진단 섹션 재활용, 톤 완화) */
+        .obs-section { border-left: 4px solid var(--accent); }
+        .obs-section h2 { border-bottom-color: var(--accent); }
+        .obs-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .obs-box { padding: 16px; border-radius: 8px; }
+        .obs-box.obs-now { background: #f1f5ed; }
+        .obs-box.obs-next { background: #e8f5e9; }
+        .obs-box .ob-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .obs-box.obs-now .ob-label { color: var(--secondary); }
+        .obs-box.obs-next .ob-label { color: var(--success); }
+        .obs-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+        .obs-note { font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: #fff3e0; border-radius: 8px; }
+
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .channel-grid { grid-template-columns: repeat(2, 1fr); }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .obs-compare { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">MARKET & OPPORTUNITY REPORT</div>
+    <h1>에코맘의 산골이유식 (Ecomom's Sangol Baby Food)</h1>
+    <div class="subtitle">프리미엄 이유식 · 글로벌 확장 현황 & 시장 기회 리포트</div>
+    <div class="date">작성일: 2026-04-21 | Prepared by BRANDRISE</div>
+</div>
+
+<div class="container">
+
+    <!-- ============================================================ -->
+    <!-- Executive Summary -->
+    <!-- ============================================================ -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">기업</div>
+                <div class="sh-title">(주)에코맘의 산골이유식</div>
+                <div class="sh-sub">2012년 설립 (14년차) · 경남 하동 · 계약농가 125곳 · 유기농쌀 300t/년</div>
+            </div>
+            <div>
+                <div class="sh-label">대표이사</div>
+                <div class="sh-title">오천호</div>
+                <div class="sh-sub">"거버 옆 K-이유식" 13년 비전 · 2025 중진공 Jump-Up 선정 (경남 유일 식품)</div>
+            </div>
+        </div>
+
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">2024 매출 [추정]</div>
+                <div class="kpi-value">약 200억</div>
+                <div class="kpi-sub">2023년 167.5억 대비 +19% · 공시 지연</div>
+            </div>
+            <div class="kpi-card kpi-accent">
+                <div class="kpi-label">이미 시작된 해외 실행</div>
+                <div class="kpi-value">Amazon 4 SKU</div>
+                <div class="kpi-sub">ECOMOMMEAL · 영문 인스타 운영</div>
+            </div>
+            <div class="kpi-card kpi-success">
+                <div class="kpi-label">글로벌 오가닉 베이비푸드</div>
+                <div class="kpi-value">$21.59B</div>
+                <div class="kpi-sub">2034 전망 · CAGR 10.27%</div>
+            </div>
+            <div class="kpi-card kpi-warning">
+                <div class="kpi-label">국내 경쟁 상황</div>
+                <div class="kpi-value">MS 43%</div>
+                <div class="kpi-sub">베베쿡 배달 1위 · TPG 자본 글로벌 가속</div>
+            </div>
+        </div>
+
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                13년 쌓은 제품력(크기·점성·농도 월령 설계)과 125농가 ESG 스토리,<br>
+                Amazon 4 SKU·영문 인스타 자력 실행까지 —<br>
+                <span class="hl">글로벌 확장에 필요한 하드웨어는 이미 대부분 확보된 상태.</span><br>
+                지금 남은 질문은 오직 하나 —<br>
+                <span class="hl">"1호국 · 1채널 · 첫 PO"를 어디에 찍을 것인가."</span>
+            </div>
+        </div>
+
+        <div class="summary-bottom">
+            <strong>시장 타이밍:</strong> <span class="hl">K-푸드 북미 붐 피크 2025-2027 · Natural Products Expo West 2027(3월) 역산 필요</span><br>
+            <strong>가장 큰 레버:</strong> K-food+ aT Brand-Up 매칭 펀드 · 코스맥스 협력 · 진주바이오특구 100억 투자 완료
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 핵심 관찰 -->
+    <!-- ============================================================ -->
+    <div class="section obs-section" id="observation">
+        <h2>핵심 관찰 — 글로벌 확장의 '지금 상태'</h2>
+
+        <h3>1. 상표는 완비, 런칭은 아직 — 베이비시즌(Baby Season)</h3>
+        <div class="obs-compare">
+            <div class="obs-box obs-now">
+                <div class="ob-label">지금까지 확보된 것</div>
+                <ul>
+                    <li><strong>베이비시즌 상표</strong>: 미국·중국·동남아 4-5년 전 등록 완료</li>
+                    <li>Amazon.com <strong>ECOMOMMEAL Sangol Rice Stick</strong> 4개 SKU 판매 중</li>
+                    <li>영문 인스타 <strong>@sangol.babyfood</strong> 영문 포스팅 · 해외 인플루언서 협업 (필리핀 <em>Little Peachlings PH</em> 등)</li>
+                    <li>글로벌 박람회 4-5년 출전 경력</li>
+                    <li>Weee! Asian Market 병행 유통</li>
+                </ul>
+            </div>
+            <div class="obs-box obs-next">
+                <div class="ob-label">글로벌 런칭 완성을 위해 더해질 것</div>
+                <ul>
+                    <li><strong>1호국 결정</strong> — 미국/일본/베트남 중 데이터 기반 단일 선택</li>
+                    <li>산골 ↔ 베이비시즌 ↔ ECOMOMMEAL <strong>브랜드 아키텍처</strong> 정립</li>
+                    <li>자력 실행 자산(Amazon·인스타·박람회)의 <strong>통합 거버넌스</strong></li>
+                    <li>Expo West 2027(3월) 부스 + <strong>바이어 전환 시스템</strong></li>
+                    <li>K-food+ aT 매칭 활용한 <strong>투자 효율화</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2. 회사는 이미 "생애주기 미래식품 플랫폼"으로 확장 중</h3>
+        <div class="obs-note">
+            2025년 7월 경남일보·11월 서울신문 인터뷰에서 오 대표는 "<strong>아기부터 어르신, 반려동물까지 나아가 우주에서도 먹을 수 있는 우리 식품이 목표</strong>"라고 공식화.
+            진주바이오특구 100억 투자 + 코스맥스 협력 + 펫푸드·고령식(실버푸드)·우주식 3대 신사업이 동시 가동 중. → 베이비시즌 글로벌 1호국 런칭 성공은 <strong>생애주기 플랫폼 전체의 글로벌 앵커이자 IR 증빙</strong>으로 작동.
+        </div>
+
+        <h3>영역별 현황 요약</h3>
+        <table>
+            <tr><th>영역</th><th>현재 상태</th><th>강도</th></tr>
+            <tr><td>제품력 · IP</td><td>13년 월령별(크기/점성/농도) 설계 노하우 · HACCP · 유기농 인증</td><td><span class="tag tag-green">Strong</span></td></tr>
+            <tr><td>원재료 · ESG 스토리</td><td>125농가 계약 · 유기농쌀 300t/년 · 남해 3년 연속 출생아 후원</td><td><span class="tag tag-green">Strong</span></td></tr>
+            <tr><td>국내 유통</td><td>현대백화점 압구정·롯데백화점 명동 · 11번가 라이브 77건 · 자사몰·쿠팡·컬리 안정</td><td><span class="tag tag-green">Strong</span></td></tr>
+            <tr><td>투자 · 인프라</td><td>2020 스마트공장 100억 + 2025 진주바이오특구 100억 · SK엔젤펀드 · 코스맥스 협력</td><td><span class="tag tag-green">Strong</span></td></tr>
+            <tr><td>해외 직접 실행</td><td>Amazon 4 SKU · 영문 인스타 · 해외 인플루언서 협업 (산발적 · 통합 거버넌스 공백)</td><td><span class="tag tag-yellow">In Progress</span></td></tr>
+            <tr><td>글로벌 브랜드 아키텍처</td><td>산골/아기의계절/베이비시즌/ECOMOMMEAL 4개 이름 관계 정리 필요</td><td><span class="tag tag-yellow">Next Step</span></td></tr>
+            <tr><td>1호국 바이어 전환 시스템</td><td>박람회 출전은 있으나 체계적 바이어 파이프라인 설계 여지</td><td><span class="tag tag-yellow">Next Step</span></td></tr>
+        </table>
+
+        <div class="callout callout-success">
+            <strong>총평:</strong> 글로벌 진출에 필요한 <strong>하드웨어(제품·공장·원재료·인증·투자·자력 실행 흔적)는 대부분 갖춰진 상태</strong>. 부족한 건 그것들을 묶어 "1호국 · 1채널 · 첫 PO"라는 손에 잡히는 성과로 연결하는 <strong>통합 거버넌스와 타이밍 레버리지</strong>.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 목차 -->
+    <!-- ============================================================ -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#observation">핵심 관찰</a>
+            <a href="#company-info">1. 기업 기초 정보</a>
+            <a href="#product-lineup">2. 주력 제품/서비스</a>
+            <a href="#digital-presence">3. 디지털 프레즌스</a>
+            <a href="#competitors">4. 경쟁사 분석</a>
+            <a href="#market">5. 시장 환경</a>
+            <a href="#ceo-background">6. 대표자 프로필</a>
+            <a href="#swot">7. SWOT 분석</a>
+            <a href="#sources">8. 참고 링크</a>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 1. 기업 기초 정보 -->
+    <!-- ============================================================ -->
+    <div class="section" id="company-info">
+        <h2>1. 기업 기초 정보</h2>
+        <div class="info-grid">
+            <div class="info-label">법인명</div>
+            <div class="info-value">(주)에코맘의 산골이유식 (Ecomom's Sangol Babyfood Co., Ltd.)</div>
+            <div class="info-label">대표이사</div>
+            <div class="info-value">오천호 (경남 하동 출생 · 2012 창업 당시 32세)</div>
+            <div class="info-label">법인 설립</div>
+            <div class="info-value">2012년 4월 17일 (14년차)</div>
+            <div class="info-label">업종</div>
+            <div class="info-value">영유아식 제조 · 프리미엄 간편 이유식 · 실온이유식</div>
+            <div class="info-label">본사</div>
+            <div class="info-value">경남 하동 · 스마트 공장 (2020년 100억 투자 · 일일 2만개 생산 / 7천건 배송)</div>
+            <div class="info-label">신규 거점 [추정]</div>
+            <div class="info-value">진주바이오특구 100억 투자 (2025 공식화 · 펫푸드·고령식·우주식 신사업)</div>
+            <div class="info-label">투자 유치</div>
+            <div class="info-value">SK 엔젤펀드</div>
+            <div class="info-label">홈페이지</div>
+            <div class="info-value"><a href="https://ecomommeal.co.kr" target="_blank" style="color: var(--accent);">ecomommeal.co.kr</a></div>
+            <div class="info-label">인증</div>
+            <div class="info-value">HACCP · 유기농 인증</div>
+            <div class="info-label">계약농가</div>
+            <div class="info-value">125곳 (2025 서울신문 기준)</div>
+            <div class="info-label">원재료 규모</div>
+            <div class="info-value">유기농쌀 300톤/년 · 농산물 매입 33억원/년</div>
+            <div class="info-label">누적 사회공헌</div>
+            <div class="info-value">기부 12억 5,900만원 · 9,234명 수혜 (2025.07 경남일보)</div>
+            <div class="info-label">최근 수상·선정</div>
+            <div class="info-value">2025 경남테크노파크 지역혁신선도기업 / 2025 중진공 도약(Jump-Up) 사업 (경남 유일 식품기업)</div>
+        </div>
+
+        <h3>재무 현황</h3>
+        <table>
+            <tr><th>결산년도</th><th>매출액</th><th>영업이익</th><th>비고</th></tr>
+            <tr><td>2019</td><td>126억</td><td>12.8억</td><td>100억 돌파 직후</td></tr>
+            <tr><td>2020</td><td>113억</td><td>-2.6억</td><td>100억 스마트공장 투자로 영업적자</td></tr>
+            <tr><td>2021</td><td>130억</td><td>4.3억</td><td>턴어라운드</td></tr>
+            <tr><td>2022</td><td>140억</td><td>2.1억</td><td>꾸준 성장</td></tr>
+            <tr><td>2023</td><td>167.5억</td><td>8.2억</td><td>최근 공시 기준</td></tr>
+            <tr style="background:#fff7f0"><td><strong>2024 [추정]</strong></td><td><strong>약 200억</strong></td><td>미공개</td><td>YoY +19% · 공시 지연 추정</td></tr>
+        </table>
+
+        <div class="callout callout-info">
+            <strong>재무 포인트:</strong> 매출 167~200억 레인지 · CAGR 12-19%. 2020년 스마트공장 100억 + 2025년 진주바이오특구 100억, 14년간 2회의 대규모 투자를 집행한 구조. 캐시플로와 조달 경험 모두 확보된 상태로 글로벌 확장 리소스 측면의 병목은 크지 않음.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 2. 주력 제품/서비스 -->
+    <!-- ============================================================ -->
+    <div class="section" id="product-lineup">
+        <h2>2. 주력 제품/서비스</h2>
+        <table>
+            <tr><th>브랜드/라인</th><th>카테고리</th><th>포지셔닝</th><th>타겟/채널</th></tr>
+            <tr><td><strong>산골이유식 (Sangol)</strong></td><td>냉동 이유식 · 월령별(초기/중기/후기/완료기)</td><td>제철 재료 · 크기/점성/농도 월령 맞춤 · 치아발육 설계</td><td>국내 프리미엄 / 자사몰·백화점·11번가 라이브</td></tr>
+            <tr><td><strong>아기의계절</strong></td><td>실온이유식 (2024.11 공개)</td><td>여행·나들이용 휴대형 · 제철재료 · HACCP</td><td>국내 + 해외 진출용 [추정]</td></tr>
+            <tr><td><strong>베이비시즌 (Baby Season)</strong></td><td>글로벌 브랜드 (상표 등록 완료)</td><td>사계절을 선물하는 K-이유식 · 6/9/12개월 월령 직관 표기</td><td>미국·중국·동남아 <span class="tag tag-yellow">실런칭 준비 단계</span></td></tr>
+            <tr><td><strong>ECOMOMMEAL (Amazon)</strong></td><td>Rice Stick 4종 (Apple&Carrot · Purple Sweet Potato · Pumpkin Rusks · Spinach Sticks)</td><td>실제 판매 중 (자력 런칭)</td><td>Amazon.com · Weee! Asian Market</td></tr>
+            <tr><td>산골부엌 / 산골쭘빵 (보조)</td><td>성인 식품 라인 [추정]</td><td>브랜드 확장 서브 계정 운영</td><td>인스타 각 5-7천명</td></tr>
+            <tr><td><strong>신사업 (2025~)</strong></td><td>프리미엄 펫푸드 · 고령식(실버푸드) · 우주식</td><td>"생애 전주기 식품 플랫폼" 전환</td><td>진주바이오특구 100억 투자 + 코스맥스 협력</td></tr>
+        </table>
+        <div class="callout">
+            <strong>시사점:</strong> 국내는 "산골이유식" 메인브랜드 + "아기의계절" 서브브랜드 2트랙. 해외는 "Baby Season" 상표권 + "ECOMOMMEAL/Sangol" 영문 직런칭이 <strong>자력으로 동시 진행 중</strong>. 이 4개 이름의 관계를 정리하고 글로벌 1호국에서 어느 네이밍으로 착지할지를 결정하는 것이 다음 단계의 핵심 과제.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 3. 디지털 프레즌스 -->
+    <!-- ============================================================ -->
+    <div class="section" id="digital-presence">
+        <h2>3. 디지털 프레즌스 · 최근 1년 변화</h2>
+
+        <div class="channel-grid">
+            <div class="channel-card">
+                <div class="ch-name">@sangol.babyfood</div>
+                <div class="ch-stat">~1.8만</div>
+                <div class="ch-note"><strong>영문 전환 중</strong><br>해외 인플루언서 협업 확인</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">@sangol.kitchen</div>
+                <div class="ch-stat">5,214</div>
+                <div class="ch-note">서브 계정 운영</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">@sangol.jumbbang</div>
+                <div class="ch-stat">6,831</div>
+                <div class="ch-note">서브 계정 운영</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">카카오플친</div>
+                <div class="ch-stat">11,687</div>
+                <div class="ch-note">월 2회+ 제철재료 업데이트<br>안정 운영</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">11번가 쇼핑라이브</div>
+                <div class="ch-stat">3.4만 알림</div>
+                <div class="ch-note">77건 진행 · 라이브 주력</div>
+            </div>
+            <div class="channel-card" style="border-color: var(--warning);">
+                <div class="ch-name">유튜브</div>
+                <div class="ch-stat" style="color:var(--warning);">221 · 휴면</div>
+                <div class="ch-note">23.2.7 마지막 업로드</div>
+            </div>
+        </div>
+
+        <h3>최근 1년간 결정적 변화 3가지 ★</h3>
+        <table>
+            <tr><th>#</th><th>변화</th><th>의미</th></tr>
+            <tr>
+                <td>1</td>
+                <td><strong>@sangol.babyfood 영문 포스팅 전환</strong> — "Snack time made simple. Sangol Baby Food has no salt..." / 필리핀 <em>@Little Peachlings PH</em> 협업 / <em>@eli_versus_food</em> 해외 리뷰어</td>
+                <td>글로벌 마케팅이 <strong>자력으로 이미 시작됨</strong>. 브랜드 체계 없이 산발적 실행 중.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><strong>Amazon.com ECOMOMMEAL Sangol Rice Stick 4 SKU 런칭</strong> (Weee! Asian Market 병행)</td>
+                <td>베이비시즌이 아닌 ECOMOMMEAL로 직진출 · 해외 매출 앵커 데이터가 이미 수집되고 있음.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><strong>회사 비전 공식화</strong> — 2025.07 경남일보·2025.11 서울신문에서 "생애 전주기 식품 기업" 선언, 펫푸드·고령식·우주식 3대 신사업 가동</td>
+                <td>글로벌 확장이 이유식만의 이슈가 아니라 <strong>회사 전체의 공통 인프라</strong>가 되어가는 국면.</td>
+            </tr>
+        </table>
+
+        <div class="callout callout-success">
+            <strong>핵심 관찰:</strong> 영문 인스타 · Amazon SKU · 해외 인플루언서 협업까지 이미 <strong>자력으로 시작된 글로벌 실행 흔적</strong>이 있다는 점은 프로젝트의 출발선을 크게 앞당깁니다. 이 자산들을 통합 브랜드 거버넌스 아래 재편하면 즉시 효과가 나는 구조.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 4. 경쟁사 분석 -->
+    <!-- ============================================================ -->
+    <div class="section" id="competitors">
+        <h2>4. 경쟁사 분석</h2>
+
+        <h3>국내 영유아식 경쟁 구도</h3>
+        <table>
+            <tr><th>업체</th><th>포지션</th><th>최근 상황</th><th>시사점</th></tr>
+            <tr><td><strong>베베쿡 (엘빈즈 합병)</strong></td><td>배달 1위 · 시장점유율 43%</td><td>홍콩 사모펀드(TPG) 인수 · 개인화 마케팅 · 2014~ 중국 수출 · 2021 중국지사 · 미주·동남아 확장</td><td><span class="tag tag-red">글로벌 확장 속도가 가장 빠른 국내 경쟁자</span></td></tr>
+            <tr><td>아이배냇 (대상그룹)</td><td>리테일 중심</td><td>재무 상위 9% · 구체 매출 미공개</td><td>대기업 자본력 · 국내 중심</td></tr>
+            <tr><td>아이조아 · 푸드케어 · 맘마밀</td><td>중견</td><td>국내 유지 중심</td><td>글로벌 진입 의사 미확인</td></tr>
+            <tr style="background:#f1f5ed"><td><strong>에코맘 산골이유식</strong></td><td>프리미엄 · 지역상생 · 스토리</td><td>200억 [추정] · 125농가 · 남해 3년 협약 · 중진공 Jump-Up</td><td><span class="tag tag-green">원재료 투명성 · ESG 스토리 차별화 명확</span></td></tr>
+        </table>
+
+        <h3>글로벌 레퍼런스 경쟁사 (북미 D2C)</h3>
+        <table>
+            <tr><th>브랜드</th><th>모델</th><th>시사점</th></tr>
+            <tr><td><strong>Gerber (Nestlé)</strong></td><td>매스 리테일 · 퓨레 중심</td><td>네슬레 인수 후 월령별 SKU 축소·효율화 중 — <strong>"거버 옆 매대"는 2010년대 전략</strong></td></tr>
+            <tr><td><strong>Little Spoon</strong></td><td>D2C 구독 + 6단계 블렌드</td><td>영유아 D2C 구독 표준 · 유아~초등 확장 · 누적 $44M 펀딩</td></tr>
+            <tr><td><strong>Yumi</strong></td><td>D2C 구독 → 리테일 하이브리드 전환</td><td>2026.01 퓨레 구독 일시중단 · <strong>D2C 단독 전략의 한계선도 보여줌</strong></td></tr>
+            <tr><td><strong>Serenity Kids</strong></td><td>목초 방목육·재생농업 · 프리미엄 가치 서사</td><td>$7M 펀딩 · Expo West 2026 참가 · 에코맘과 가장 유사한 포지셔닝</td></tr>
+            <tr><td><strong>Earth's Best</strong></td><td>올가닉 리테일 표준</td><td>매스 프리미엄 기준점</td></tr>
+        </table>
+
+        <div class="callout">
+            <strong>경쟁 프레임 제안:</strong> 글로벌 진출 시 벤치마크는 <strong>거버가 아니라 Serenity Kids · Little Spoon</strong>. 매스 리테일은 진입장벽·슬로팅피·경쟁 모두 높은 레드오션. "한국 프리미엄 이유식의 D2C + 구독 + 한정 리테일" 하이브리드 루트가 에코맘의 자산(원재료 투명성·ESG 스토리·자력 운영 경험)과 가장 잘 맞물리는 방향.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 5. 시장 환경 -->
+    <!-- ============================================================ -->
+    <div class="section" id="market">
+        <h2>5. 시장 환경</h2>
+
+        <h3>국내·글로벌 시장 규모</h3>
+        <table>
+            <tr><th>구분</th><th>규모</th><th>비고</th></tr>
+            <tr><td>국내 간편 영유아식 시장 (2015)</td><td>680억</td><td>aT 기준</td></tr>
+            <tr><td>국내 간편 영유아식 시장 (2020)</td><td>1,671억</td><td>5년 2.5배</td></tr>
+            <tr><td>국내 간편 영유아식 시장 (2025 전망)</td><td>3,300억</td><td><span class="tag tag-green">10년 5배</span> / 서울파이낸스 [추정]</td></tr>
+            <tr><td>국내 영유아식 전체 시장 (2022)</td><td>2,534억</td><td>2016년 1,320억 → 2022 +92%</td></tr>
+            <tr><td>글로벌 오가닉 베이비푸드 (2026)</td><td>$9.56B</td><td>OpenPR</td></tr>
+            <tr><td>글로벌 오가닉 베이비푸드 (2034 전망)</td><td>$21.59B</td><td><span class="tag tag-green">CAGR 10.27%</span></td></tr>
+            <tr><td>중국 영유아식 (2024 말)</td><td>465억 위안</td><td>저출산에도 성장</td></tr>
+            <tr><td>국내 영유아 인구</td><td>70만 → 25만</td><td>저출산 심화 · 1인당 지출 증가로 시장은 성장</td></tr>
+        </table>
+
+        <h3>K-푸드 수출 지원 인프라 2026 (레버 가능)</h3>
+        <table>
+            <tr><th>사업</th><th>주관</th><th>지원 범위</th><th>에코맘 적용성</th></tr>
+            <tr><td><strong>K-food+ Brand-Up 트랙</strong></td><td>aT</td><td>수출 유망 중견기업 현지화 컨설팅</td><td><span class="tag tag-green">매우 적합</span> — 2026 상반기 공고</td></tr>
+            <tr><td>K-food+ Value-Up</td><td>aT</td><td>컨소시엄 최대 5억원 지원</td><td>코스맥스 협력 시 유효</td></tr>
+            <tr><td>2026 글로벌 K-푸드 페어 참가업체 모집</td><td>aT</td><td>박람회 부스·마케팅 지원</td><td>Natural Products Expo West 연계 가능</td></tr>
+            <tr><td>K-수출전략품목 통합 공고</td><td>중기부</td><td>중소기업 수출지원사업</td><td>에코맘 매출 규모 적합</td></tr>
+            <tr><td>BKF 바이어초청 수출상담회</td><td>aT</td><td>해외 바이어 매칭</td><td>1호국 바이어 확보 수단</td></tr>
+        </table>
+
+        <div class="callout callout-success">
+            <strong>타이밍 요약:</strong> K-푸드 북미 붐은 2025-2027 피크 구간으로 평가됩니다. Natural Products Expo West 2027(3월) 역산 시 2026년 중순에는 브랜드 아키텍처와 1호국 플랜이 확정되어야 실효. 이 타이밍에 맞춰 aT K-food+ 매칭 펀드까지 묶으면 글로벌 진출의 초기 투자 효율이 크게 개선됩니다.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 6. 대표자 프로필 -->
+    <!-- ============================================================ -->
+    <div class="section" id="ceo-background">
+        <h2>6. 대표자 프로필 — 오천호 대표</h2>
+        <div class="info-grid">
+            <div class="info-label">출생·배경</div>
+            <div class="info-value">경남 하동 농부 집안 출생 · 2012 창업 당시 32세</div>
+            <div class="info-label">초기 경력</div>
+            <div class="info-value">대학 피부미용 전공 → 외국계 화장품 영업 → 화장품 수입사 창업 → 서울 죽집 운영</div>
+            <div class="info-label">전환점</div>
+            <div class="info-value">죽집 운영 중 고객의 아이용 이유식 주문 → 2012년 고향 하동으로 귀향, 농업회사 창업</div>
+            <div class="info-label">성장 궤적</div>
+            <div class="info-value">2013년 매출 3.6억 → 2017년 54억 → 2019년 100억 돌파 → 2020년 100억 스마트공장 투자 → 2023년 167억 → 2024년 약 200억 [추정]</div>
+            <div class="info-label">경영 철학</div>
+            <div class="info-value">"사람은 미음부터 시작해 죽을 먹고 자라고, 노인이 되선 죽을 먹다 마지막엔 미음을 먹으며 일생을 마친다" — 생애주기 식품 비전</div>
+            <div class="info-label">2025 최신 비전</div>
+            <div class="info-value">"아기부터 어르신, 반려동물까지 나아가 <strong>우주에서도 먹을 수 있는</strong> 우리 식품이 목표" (2025.11 서울신문)</div>
+            <div class="info-label">리더십 스타일</div>
+            <div class="info-value">현장형 · 자부심형 · 비전형 · 지역 농가 125곳 협약 · 청년·취약계층 일자리 제공 · 사람 중심 네트워킹(이상학 트릿지 부회장·하동 광고기획자 등)</div>
+            <div class="info-label">2024~25 주요 활동</div>
+            <div class="info-value">남해군 출생아 이유식 3년 연속 후원 협약 · 농림부 코엑스 푸드위크 프레젠테이션 · 경남도의원 현장방문 수용 · 중진공 Jump-Up 멘토링 수혜</div>
+            <div class="info-label">비전-실행 스타일</div>
+            <div class="info-value">13년간 "거버 옆 K-이유식" 단일 비전을 일관되게 유지 · 생애주기 확장은 이 비전의 자연스러운 진화 · 의사결정 속도 빠름 (오너 CEO 직결 구조)</div>
+        </div>
+
+        <div class="callout">
+            <strong>관찰:</strong> 오 대표는 제품 철학(크기/점성/농도 월령 설계)·원재료 투명성·지역상생 3대 축을 13년 내내 흔들리지 않고 지켜온 경영자. 이 일관성이 <strong>글로벌 시장에서도 가장 강력한 브랜드 자산</strong>으로 작동할 수 있으며, 1호국 현지화 시에도 축약·왜곡 없이 전달되는 것이 관건.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 7. SWOT 분석 -->
+    <!-- ============================================================ -->
+    <div class="section" id="swot">
+        <h2>7. SWOT 분석</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>S (강점)</h4>
+                <ul>
+                    <li>13년 노하우 · 크기/점성/농도 월령 설계 IP</li>
+                    <li>계약농가 <strong>125곳</strong> · 유기농쌀 <strong>300t/년</strong></li>
+                    <li>HACCP · 유기농 · 스마트공장 (일 2만개)</li>
+                    <li>국내 매출 약 200억 [추정] · CAGR 12-19%</li>
+                    <li>현대백화점·롯데백화점 입점 · 11번가 라이브 안정</li>
+                    <li>남해 3년 연속 협약 · 기부 12.6억 — <strong>ESG 스토리 자산</strong></li>
+                    <li>2025 중진공 Jump-Up 선정 (경남 유일 식품)</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>W (약점)</h4>
+                <ul>
+                    <li>베이비시즌 상표 등록 → 실런칭 연결 구간</li>
+                    <li>산골/아기의계절/베이비시즌/ECOMOMMEAL <strong>브랜드 아키텍처 정리 필요</strong></li>
+                    <li>해외영업 조직 "국내 관리 수준"</li>
+                    <li>외부 파트너 협업 경험 미진 (인하우스 중심)</li>
+                    <li>타겟국 전략 데이터 기반 확정 필요</li>
+                    <li>유튜브 휴면 · 서브 인스타 운영 여지</li>
+                    <li>대표 에너지 다축 분산 (이유식 + 펫 + 실버 + 우주식)</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>O (기회)</h4>
+                <ul>
+                    <li>글로벌 오가닉 베이비푸드 CAGR <strong>10.27%</strong> ($21.59B/2034)</li>
+                    <li>K-푸드 북미 붐 피크 2025-2027 [추정]</li>
+                    <li>Yumi D2C 구독 중단 = <strong>퍼플오션 구간</strong></li>
+                    <li>K-food+ aT Brand-Up 매칭 가능</li>
+                    <li>코스맥스 협력 — 글로벌 유통 레버</li>
+                    <li>Expo West 2027 3월 역산 기회</li>
+                    <li>이상학 부회장(트릿지) 등 글로벌 식품 네트워크</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>T (위협)</h4>
+                <ul>
+                    <li>베베쿡 사모펀드 자본 공세 (MS 43% · TPG)</li>
+                    <li>국내 영유아 인구 70만→25만 저출산 심화</li>
+                    <li>아이배냇(대상그룹) 대기업 자본</li>
+                    <li>Serenity Kids · Little Spoon 북미 직접 경쟁</li>
+                    <li>미국 상표 사용주의 — 5년 미사용 취소 리스크 [확인 필요]</li>
+                    <li>FDA 규제 복잡성 · 3PL 파트너 선정 난이도</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="leverage-box">
+            <div style="font-size: 13px; opacity: 0.7; margin-bottom: 8px;">🎯 핵심 메시지</div>
+            <div class="quote">
+                13년의 제품력과 원재료 투명성,<br>
+                125농가가 만든 ESG 스토리,<br>
+                이미 시작된 Amazon·영문 인스타의 실행 흔적 —<br>
+                <span class="hl">에코맘의 산골이유식이 가진 자산은</span><br>
+                <span class="hl">글로벌 시장에서도 여전히 유효합니다.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 8. 참고 링크 -->
+    <!-- ============================================================ -->
+    <div class="section" id="sources">
+        <h2>8. 참고 링크 (Sources)</h2>
+
+        <h3>에코맘 산골이유식 공식·보도</h3>
+        <div class="source-list">
+            <a href="https://ecomommeal.co.kr" target="_blank">에코맘의 산골이유식 공식 홈페이지</a><br>
+            <a href="https://www.instagram.com/sangol.babyfood/" target="_blank">Instagram @sangol.babyfood (영문 전환)</a><br>
+            <a href="https://www.amazon.com/ECOMOMMEAL-Sangol-Rice-Stick-Additives/dp/B0FGNTX81V" target="_blank">Amazon.com ECOMOMMEAL Sangol Rice Stick</a><br>
+            <a href="https://www.sayweee.com/en/product/Sangol-Ecomom-Organic-Rice-Sticks--Spinach-Flavor/87255" target="_blank">Weee! Asian Market 병행 유통</a><br>
+            <a href="https://www.gnnews.co.kr/news/articleView.html?idxno=614193" target="_blank">경남일보 2025.07 "세계로 향하는 에코맘의 꿈[상]"</a><br>
+            <a href="https://www.gnnews.co.kr/news/articleView.html?idxno=614336" target="_blank">경남일보 "세계로 향하는 에코맘의 꿈[하]"</a><br>
+            <a href="https://www.seoul.co.kr/news/economy/2025/11/20/20251120500183" target="_blank">서울신문 2025-11-20 "엄마들의 마음 사로잡는 이유식"</a><br>
+            <a href="https://kr.aving.net/news/articleView.html?idxno=1795707" target="_blank">aving 2024.11 실온이유식 "아기의계절" 공개</a><br>
+            <a href="https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003204742" target="_blank">오마이뉴스 2026-02-04 남해 3년 연속 출생아 후원 협약</a><br>
+            <a href="https://www.kpinews.kr/newsView/1065571414085336" target="_blank">KPI뉴스 2026.02.05 남해군 협약</a><br>
+            <a href="https://www.metroseoul.co.kr/article/20220410500050" target="_blank">메트로서울 2022 "한국의 거버" 오천호 대표 인터뷰</a><br>
+            <a href="https://www.theguru.co.kr/news/article.html?no=29737" target="_blank">더구루 2021.12 "내년 일본 진출 · 수출 10개국"</a><br>
+            <a href="https://www.saramin.co.kr/zf_user/company-info/view-inner-finance/csn/T01hem9QektZYXhuSTRIMDJJR2g2dz09/" target="_blank">사람인 — 에코맘의산골이유식 재무정보 (2023 공시)</a><br>
+            <a href="https://www.agrinet.co.kr/news/articleView.html?idxno=158091" target="_blank">한국농어민신문 — 농업-기업 상생협력 우수사례</a>
+        </div>
+
+        <h3>경쟁사·시장</h3>
+        <div class="source-list">
+            <a href="https://www.ibabynews.com/news/articleView.html?idxno=51449" target="_blank">베이비뉴스 — 베베쿡 업계 1위 MS 43%</a><br>
+            <a href="https://www.thebell.co.kr/free/content/ArticleView.asp?key=202106171007030000103659&lcode=00" target="_blank">더벨 — TPG 헬스밸런스 매각</a><br>
+            <a href="https://www.seoulfn.com/news/articleView.html?idxno=312535" target="_blank">서울파이낸스 — 이유식 시장 2025 전망</a><br>
+            <a href="https://www.openpr.com/news/4384378/organic-baby-food-market-size-is-expected-to-reach-usd-21-59" target="_blank">Organic Baby Food Market 2034 $21.59B</a><br>
+            <a href="https://www.futuremarketinsights.com/reports/baby-food-market" target="_blank">Future Market Insights — Baby Food Market 2025-2035</a><br>
+            <a href="https://www.koreaherald.com/article/10689389" target="_blank">Korea Herald — Pulmuone Expo West 2026</a><br>
+            <a href="https://www.cubbyathome.com/best-baby-and-kids-food-delivery-services-80023786" target="_blank">Cubby — Best Baby Food Subscriptions (Little Spoon/Yumi 비교)</a><br>
+            <a href="https://www.mysubscriptionaddiction.com/little-spoon-vs-yumi-which-baby-food-subscription-is-better" target="_blank">Little Spoon vs Yumi D2C 비교</a><br>
+            <a href="https://www.nosh.com/news/2021/yumi-funding-caps-off-year-of-growing-attention-on-childrens-nutrition/" target="_blank">Nosh — Yumi Funding</a>
+        </div>
+
+        <h3>K-푸드 수출지원 인프라 2026</h3>
+        <div class="source-list">
+            <a href="https://global.at.or.kr/front/bizReq/brList.do?_mtype=B&_dept1=3" target="_blank">aT 수출종합지원시스템 모집공고</a><br>
+            <a href="https://global.at.or.kr/front/board/noticeView.do?notice_no=570&_mtype=F&_dept1=1" target="_blank">2026 글로벌 K-푸드 페어 참가업체 상반기 모집공고</a><br>
+            <a href="https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000116737" target="_blank">K-수출전략품목 — 2026 중소기업 수출지원사업 통합 공고</a><br>
+            <a href="https://www.kati.net/board/pressKitView.do?board_seq=104860&menu_dept2=34&menu_dept3=360" target="_blank">KATI — 차세대 K-푸드 스타육성 프로젝트</a><br>
+            <a href="https://www.expowest.com/en/home.html" target="_blank">Natural Products Expo West 2026 공식</a>
+        </div>
+
+        <h3>벤치마크 — 한국 F&B 글로벌 진출 케이스</h3>
+        <div class="source-list">
+            <a href="https://www.insightkorea.co.kr/news/articleView.html?idxno=210087" target="_blank">인사이트코리아 — CJ제일제당 미국 비비고 성공전략</a><br>
+            <a href="https://www.nanro.kr/what-we-do/insight/id/40" target="_blank">NANRO — 비비고 브랜딩과 해외 진출 비하인드</a><br>
+            <a href="https://magazine.hankyung.com/business/article/202106239632b" target="_blank">매거진한경 — 비비고 10년 초고속 성장</a><br>
+            <a href="https://cjnews.cj.net/%EB%AF%B8%EA%B5%AD-%EB%A7%8C%EB%91%90-%EC%8B%9C%EC%9E%A5-%EC%A0%90%EC%9C%A0%EC%9C%A8-1%EC%9C%84-%EB%B9%84%EB%B9%84%EA%B3%A0%EA%B0%80-%EA%B1%B8%EC%96%B4%EC%98%A8-%EA%B8%B8%F0%9F%A5%9F/" target="_blank">CJ뉴스룸 — 미국 만두 시장 점유율 1위 비비고</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p><strong>BRANDRISE</strong> — Market & Opportunity Report</p>
+    <p>본 문서는 에코맘의 산골이유식 글로벌 확장 현황과 시장 기회 관찰을 정리한 리포트입니다.</p>
+    <p>작성일 2026-04-21</p>
+</div>
+
+</body>
+</html>
