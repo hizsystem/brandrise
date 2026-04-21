@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인셀라(INCELLA) x 브랜드라이즈 — 6개월 론칭 파트너십 제안 | BRANDRISE</title>
+    <style>
+        :root {
+            --accent: #EA580C;
+            --text: #1a1b18;
+            --text-light: #999;
+            --border: #e8edf1;
+            --warm: #FFF7ED;
+            --bg: #f4f7f9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 14px; }
+
+        .header { background: #fff; padding: 48px 40px 28px; text-align: center; border-bottom: 3px solid var(--accent); }
+        .header-badge { display: inline-block; background: var(--warm); color: var(--accent); padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 10px; }
+        .header h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.02em; }
+        .header .subtitle { font-size: 13px; color: var(--text-light); }
+
+        .container { max-width: 880px; margin: 0 auto; padding: 28px 20px; }
+
+        .toc { background: #fff; border-radius: 10px; padding: 20px 24px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+        .toc-title { font-size: 12px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+        .toc-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; list-style: none; }
+        .toc-list a { color: var(--text); text-decoration: none; font-size: 13px; padding: 3px 0; display: flex; align-items: center; gap: 8px; }
+        .toc-list a::before { content: attr(data-num); color: var(--accent); font-weight: 700; font-size: 11px; min-width: 18px; }
+        .toc-list a:hover { color: var(--accent); }
+
+        .section { background: #fff; border-radius: 10px; padding: 28px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); scroll-margin-top: 20px; }
+        .section h2 { font-size: 17px; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--accent); letter-spacing: -0.01em; }
+        .section h3 { font-size: 14px; font-weight: 600; margin: 20px 0 10px; color: var(--accent); }
+        .section p { margin-bottom: 10px; }
+        .section p:last-child { margin-bottom: 0; }
+
+        table { width: 100%; border-collapse: collapse; margin: 8px 0; }
+        th { background: #f8fafb; padding: 9px 14px; text-align: left; font-weight: 600; font-size: 13px; border-bottom: 2px solid var(--border); }
+        td { padding: 9px 14px; border-bottom: 1px solid var(--border); font-size: 13px; vertical-align: top; }
+        tr:hover td { background: #fafbfc; }
+
+        .highlight { color: var(--accent); font-weight: 700; }
+        .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; background: var(--warm); color: var(--accent); }
+
+        .quote-total { background: var(--warm); padding: 22px 26px; border-radius: 8px; margin: 16px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .qt-label { font-size: 13px; color: var(--text-light); }
+        .qt-value { font-size: 30px; font-weight: 800; color: var(--accent); letter-spacing: -0.02em; }
+        .qt-sub { font-size: 12px; color: var(--text-light); }
+
+        .callout { background: var(--warm); border-left: 3px solid var(--accent); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; font-size: 13px; line-height: 1.7; }
+        .callout strong { color: var(--accent); }
+
+        .hero-quote { background: linear-gradient(135deg, var(--warm), #fff); border: 1px solid rgba(234,88,12,0.15); border-radius: 10px; padding: 28px 32px; margin-bottom: 16px; text-align: center; }
+        .hero-quote p { font-size: 19px; font-weight: 700; color: var(--accent); letter-spacing: -0.01em; line-height: 1.55; }
+        .hero-quote .sub { font-size: 13px; color: var(--text-light); margin-top: 6px; }
+
+        .status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 12px 0; }
+        .status-item { padding: 10px 14px; border-radius: 6px; font-size: 12px; line-height: 1.55; }
+        .status-ready { background: #f0fdf4; border: 1px solid #bbf7d0; }
+        .status-ready::before { content: "✓ "; color: #16a34a; font-weight: 700; }
+        .status-gap { background: #fef2f2; border: 1px solid #fecaca; }
+        .status-gap::before { content: "△ "; color: #dc2626; font-weight: 700; }
+
+        .area-card { border: 1px solid var(--border); border-radius: 8px; padding: 22px; margin: 14px 0; background: #fff; }
+        .area-card .area-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; gap: 12px; flex-wrap: wrap; }
+        .area-card .area-title { font-size: 15px; font-weight: 700; }
+        .area-card .area-budget { font-size: 16px; font-weight: 800; color: var(--accent); }
+        .area-card .area-tagline { font-size: 12px; color: var(--text-light); font-style: italic; margin-bottom: 12px; }
+        .area-card .area-why { background: var(--warm); border-left: 3px solid var(--accent); padding: 10px 14px; border-radius: 0 6px 6px 0; font-size: 12.5px; margin: 10px 0 14px; }
+        .area-card .area-why strong { color: var(--accent); }
+
+        .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 12px 0; }
+        .col-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; background: #fff; }
+        .col-card .col-label { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
+        .col-card .col-title { font-size: 14px; font-weight: 700; margin: 4px 0 8px; }
+        .col-card .col-desc { font-size: 12px; color: var(--text); line-height: 1.65; }
+
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 12px 0; }
+
+        .pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 4px; }
+        .pill { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; background: var(--warm); color: var(--accent); border: 1px solid rgba(234,88,12,0.18); }
+
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 12px 0; }
+        .kpi-card { border: 1px solid var(--border); border-radius: 8px; padding: 14px; text-align: center; background: #fff; }
+        .kpi-card .kpi-num { font-size: 22px; font-weight: 800; color: var(--accent); letter-spacing: -0.02em; }
+        .kpi-card .kpi-label { font-size: 11px; color: var(--text-light); margin-top: 2px; }
+
+        .gantt-table th:first-child, .gantt-table td:first-child { white-space: nowrap; width: 84px; }
+        .gantt-table .d-mark { display: inline-block; background: var(--accent); color: #fff; padding: 1px 7px; border-radius: 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; }
+
+        .faq-q { font-size: 14px; font-weight: 700; margin: 18px 0 6px; color: var(--text); }
+        .faq-q::before { content: "Q. "; color: var(--accent); }
+        .faq-a { font-size: 13px; color: var(--text); line-height: 1.75; }
+
+        .next-step-card { background: linear-gradient(135deg, var(--warm), #fff); border: 1px solid rgba(234,88,12,0.2); border-radius: 10px; padding: 22px 26px; margin: 10px 0; }
+        .next-step-card .nsc-title { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+
+        .footer { text-align: center; padding: 28px; color: var(--text-light); font-size: 12px; }
+
+        @media (max-width: 768px) {
+            .header { padding: 32px 20px 20px; }
+            .header h1 { font-size: 22px; }
+            .section { padding: 20px 16px; }
+            .toc-list { grid-template-columns: 1fr; }
+            .status-grid { grid-template-columns: 1fr; }
+            .three-col { grid-template-columns: 1fr; }
+            .two-col { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: 1fr 1fr; }
+            .quote-total { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">6개월 론칭 파트너십 제안</div>
+    <h1>25년 의료기기 기술 위에, 인셀라를 세상에 보여줍니다</h1>
+    <div class="subtitle">인셀라(INCELLA) × 브랜드라이즈 | 청우메디칼 권윤정 이사님께 | 2026.04</div>
+</div>
+
+<div class="container">
+
+    <div class="hero-quote">
+        <p>"D-day를 잡고, 사전작업을 깔고, 한 번에 터뜨립니다."</p>
+        <div class="sub">4/20 홈페이지 오픈 → 5/29 네이버 라이브, 그 사이 37일을 어떻게 쓰느냐가 런칭 1년의 방향을 결정합니다.</div>
+    </div>
+
+    <div class="toc">
+        <div class="toc-title">이 제안서에 담긴 것</div>
+        <ul class="toc-list">
+            <li><a href="#why-now" data-num="01">Why Now — 지금, 이 방향인가</a></li>
+            <li><a href="#landscape" data-num="02">경쟁 지형과 인셀라의 길</a></li>
+            <li><a href="#four-axis" data-num="03">제안 구성 — 4개 축</a></li>
+            <li><a href="#review-marketing" data-num="04">리뷰 마케팅 — 전환의 키</a></li>
+            <li><a href="#defer" data-num="05">지금은 미뤄도 되는 것</a></li>
+            <li><a href="#roadmap" data-num="06">6개월 로드맵 (D-day 역산)</a></li>
+            <li><a href="#invest" data-num="07">투자 구성 — 2억 배분안</a></li>
+            <li><a href="#gonggu" data-num="08">공동구매 — 성과가 나올 때 함께 웃는 구조</a></li>
+            <li><a href="#quickwin" data-num="09">Quick Win — 계약 전에 먼저 드립니다</a></li>
+            <li><a href="#rhythm" data-num="10">함께 만들어갈 리듬</a></li>
+            <li><a href="#faq" data-num="11">자주 묻는 질문</a></li>
+            <li><a href="#next" data-num="12">다음 한 걸음</a></li>
+        </ul>
+    </div>
+
+    <div class="section" id="why-now">
+        <h2>01. Why Now — 지금, 이 방향인가</h2>
+
+        <p>청우메디칼은 25년간 의료장비를 만들어 온 기술 회사입니다. 그 위에 올라가는 홈뷰티 디바이스 브랜드 <strong>인셀라(INCELLA)</strong>는 기술·제품·홈페이지·첫 라이브까지 이미 준비된 자산이 많습니다. 지금 이 시점에 필요한 건 <strong>그 자산을 세상에 보여주는 무대, 살 이유를 만드는 소셜프루프, 그리고 반복 구매를 만드는 광고 엔진</strong>입니다.</p>
+
+        <h3>이미 준비된 것</h3>
+        <div class="status-grid">
+            <div class="status-item status-ready">큐티프로 EMS 패치 + 리프팅밴드 — 캡슐 구조 반복구매 모델</div>
+            <div class="status-item status-ready">콘텐츠 80개 촬영 진행 중</div>
+            <div class="status-item status-ready">4/20 홈페이지 오픈 완료</div>
+            <div class="status-item status-ready">5/29 네이버 라이브 확정</div>
+            <div class="status-item status-ready">권윤정 이사님 — 뷰티 업계 30년 네트워크</div>
+            <div class="status-item status-ready">25년 의료기기 R&D 기술 스토리</div>
+        </div>
+
+        <h3>지금 비어 있는 것</h3>
+        <div class="status-grid">
+            <div class="status-item status-gap">인스타그램 — 바이어·MD가 봤을 때 세련된 수준까지 미세팅</div>
+            <div class="status-item status-gap">네이버·쿠팡 상세페이지 리뷰 = 0건 (전환의 발목)</div>
+            <div class="status-item status-gap">인플루언서 초기 버즈 체계 없음</div>
+            <div class="status-item status-gap">메타 광고 픽셀·이벤트·소재 운용 체계 미구축</div>
+        </div>
+
+        <div class="callout">
+            <strong>기술은 있습니다.</strong> 지금 필요한 건 "보여줄 무대 + 살 이유(리뷰 소셜프루프) + 광고 엔진" 이 세 가지입니다. 이사님께서 25년 쌓아오신 기술력이 <strong>매출과 브랜드 자산</strong>으로 전환되는 시점을 이번 6개월 안에 만듭니다.
+        </div>
+
+        <h3>6개월 후 인셀라가 서 있을 자리</h3>
+        <div class="kpi-grid">
+            <div class="kpi-card"><div class="kpi-num">1만+</div><div class="kpi-label">인스타 팔로워</div></div>
+            <div class="kpi-card"><div class="kpi-num">50+</div><div class="kpi-label">릴스 콘텐츠</div></div>
+            <div class="kpi-card"><div class="kpi-num">500+</div><div class="kpi-label">네이버·쿠팡 리뷰</div></div>
+            <div class="kpi-card"><div class="kpi-num">60명</div><div class="kpi-label">인플루언서 협업</div></div>
+        </div>
+        <p style="font-size: 12px; color: var(--text-light); margin-top: 8px;">
+            이 숫자들은 단순 KPI가 아니라 <strong>이사님의 다음 미팅 자료</strong>입니다. 시리즈 A 투자 유치, 백화점·올리브영 MD 미팅, 해외 바이어 상담 — 어느 자리에서든 "이미 시장 반응이 있는 브랜드"라는 근거가 됩니다.
+        </p>
+    </div>
+
+    <div class="section" id="landscape">
+        <h2>02. 경쟁 지형과 인셀라의 길</h2>
+
+        <p>홈뷰티 디바이스 시장은 지금 세 가지 전략이 부딪히고 있습니다. 인셀라가 이 중 어느 판에서 싸울지 먼저 정하고 들어가야 합니다.</p>
+
+        <table>
+            <tr><th>브랜드</th><th>전략</th><th>인셀라 관점</th></tr>
+            <tr>
+                <td><strong>메디큐브 (APR)</strong></td>
+                <td>자체 콘텐츠 + 대규모 광고비 (월 수억 단위 집행)</td>
+                <td>같은 판에서 정면승부는 체력전. 피해야 할 길.</td>
+            </tr>
+            <tr>
+                <td><strong>톰뷰티</strong></td>
+                <td>체험단 리뷰 → 인플루언서 시딩 → 공동구매 → 입소문 확산</td>
+                <td class="highlight">인셀라가 복제할 경로. 6개월 안에 이 구조 완성.</td>
+            </tr>
+            <tr>
+                <td><strong>듀얼소닉</strong></td>
+                <td>의료기기 기술 소구 중심, 브랜딩 약함</td>
+                <td>기술은 유사. "세련된 뷰티 브랜딩"에서 차별화 가능.</td>
+            </tr>
+        </table>
+
+        <div class="callout">
+            <strong>인셀라가 가야 할 포지션:</strong> 기술은 듀얼소닉급, 브랜딩은 톰뷰티급. <strong>"25년 의료기기 기술을 입은 세련된 홈뷰티 브랜드"</strong>는 지금 한국 시장에 비어 있는 자리입니다. 메디큐브처럼 광고비 태우지 않고도 톰뷰티의 경로로 충분히 도달 가능합니다.
+        </div>
+    </div>
+
+    <div class="section" id="four-axis">
+        <h2>03. 제안 구성 — 4개 축</h2>
+
+        <p>6개월 동안 인셀라 브랜드에 동시에 작동해야 하는 엔진은 네 가지입니다. 각 축은 독립적으로 작동하지 않고, <strong>서로의 결과물을 재료로 쓰는 순환 구조</strong>로 설계했습니다.</p>
+
+        <div class="area-card">
+            <div class="area-header">
+                <div class="area-title">1. 인스타그램 운영 — 브랜드의 얼굴 세팅</div>
+                <div class="area-budget">5,500만원</div>
+            </div>
+            <div class="area-tagline">"바이어·MD·투자자가 봤을 때 세련된 브랜드"를 만듭니다.</div>
+            <div class="area-why">
+                <strong>이사님의 어떤 고민을 해결하는가.</strong> 지금 인셀라 인스타는 세상에 내놓기 어려운 수준입니다. 바이어 미팅에서 인스타를 먼저 보는 게 관행이 된 지 오래입니다. 6개월 안에 <strong>"이 브랜드는 준비됐다"고 느껴지는 얼굴</strong>을 만듭니다.
+            </div>
+            <table>
+                <tr><th>하는 일</th><th>구체적 내용</th></tr>
+                <tr><td>톤앤매너 세팅 (M1)</td><td>피드 그리드 설계, 컬러 팔레트, 타이포 가이드, 무드보드</td></tr>
+                <tr><td>콘텐츠 기획</td><td>월간 콘텐츠 캘린더, 릴스·세로형 중심 기획, 시리즈 설계</td></tr>
+                <tr><td>콘텐츠 제작</td><td>피드 디자인, 릴스 편집, 카피라이팅, 스토리 템플릿</td></tr>
+                <tr><td>채널 운영</td><td>게시, 해시태그 전략, 댓글 관리, DM 응대 가이드</td></tr>
+                <tr><td>성과 리포팅</td><td>주간 인사이트 + 월간 성과 리포트</td></tr>
+            </table>
+            <p style="font-size: 12px; color: var(--text-light); margin-top: 10px;">
+                <strong>쌓이는 자산:</strong> 피드 70+ / 릴스 30+ / 스토리 145+. 이 자산은 광고 소재·상세페이지·바이어 덱에 재활용됩니다.
+            </p>
+        </div>
+
+        <div class="area-card">
+            <div class="area-header">
+                <div class="area-title">2. 리뷰 마케팅 — 살 이유를 만드는 소셜프루프</div>
+                <div class="area-budget">2,500만원</div>
+            </div>
+            <div class="area-tagline">네이버·쿠팡 리뷰 300~500건 확보. 전환율의 절반을 결정하는 엔진입니다.</div>
+            <div class="area-why">
+                <strong>이사님의 어떤 고민을 해결하는가.</strong> 홈뷰티 디바이스 카테고리는 <strong>상세페이지 리뷰 수와 품질이 매출 전환의 절반 이상을 결정</strong>합니다. 리뷰 0건 상태로 5/29 네이버 라이브에 들어가면 유입이 와도 전환이 안 빠집니다. 이 라인이 <strong>광고비 대비 ROI가 가장 높은 영역</strong>입니다.
+            </div>
+            <p style="font-size: 13px; margin: 8px 0;">자세한 체험단 플랫폼 믹스·단가·KPI 구조는 다음 섹션(04)에서 상세히 설명드립니다.</p>
+            <p style="font-size: 12px; color: var(--text-light); margin-top: 6px;">
+                <strong>쌓이는 자산:</strong> 네이버·쿠팡 리뷰 300~500건. 이 리뷰는 이후 모든 광고 소재·상세페이지·라이브 커머스의 전환 레버로 계속 쓰입니다.
+            </p>
+        </div>
+
+        <div class="area-card">
+            <div class="area-header">
+                <div class="area-title">3. 메타 광고 운영 — 반복 가능한 매출 엔진</div>
+                <div class="area-budget">3,000만원 <span style="font-size: 12px; color: var(--text-light); font-weight: 500;">(운영 Fee)</span></div>
+            </div>
+            <div class="area-tagline">"잘 되는 릴스를 광고로 부스트" — 픽셀·이벤트·소재 학습을 6개월에 걸쳐 숙성.</div>
+            <div class="area-why">
+                <strong>이사님의 어떤 고민을 해결하는가.</strong> 메타 광고는 <strong>6개월을 쓴 계정과 첫 달 계정의 효율이 3배 이상 차이</strong>납니다. 지금 픽셀을 깔고 이벤트를 쌓아두지 않으면, 내년 시즌 매출은 또 0에서 시작해야 합니다. 이번 6개월은 <strong>광고비 그 자체보다 "학습된 광고 계정이라는 자산"</strong>을 만드는 시간입니다.
+            </div>
+            <table>
+                <tr><th>하는 일</th><th>구체적 내용</th></tr>
+                <tr><td>계정 세팅</td><td>광고 계정, 픽셀 설치, 전환 이벤트 세팅</td></tr>
+                <tr><td>캠페인 설계</td><td>타겟 오디언스, 미디어 믹스, 예산 배분</td></tr>
+                <tr><td>소재 제작</td><td>인스타 콘텐츠·인플루언서 UGC → 광고용 편집, A/B 테스트</td></tr>
+                <tr><td>최적화</td><td>타겟·소재·배치 최적화, 리타겟팅 세팅</td></tr>
+                <tr><td>리포팅</td><td>주간 광고 리포트 + 월간 ROAS 리뷰</td></tr>
+            </table>
+            <p style="font-size: 12px; color: var(--text-light); margin-top: 10px;">
+                <strong>쌓이는 자산:</strong> 숙성된 픽셀 데이터 + ROAS 기준선 + A/B 학습된 소재 라이브러리. 인하우스 마케터가 인수해도 바로 돌릴 수 있는 엔진.
+            </p>
+        </div>
+
+        <div class="area-card">
+            <div class="area-header">
+                <div class="area-title">4. 인플루언서 협업 — 신뢰의 씨앗</div>
+                <div class="area-budget">4,500만원 / 20~30명</div>
+            </div>
+            <div class="area-tagline">나노·마이크로 중심 타깃 적합 인플루언서. 받은 UGC를 광고 소재로 재활용.</div>
+            <div class="area-why">
+                <strong>이사님의 어떤 고민을 해결하는가.</strong> 홈뷰티 카테고리에서 타깃이 구매 직전에 검색하는 건 "블로그·인스타 후기"입니다. 체험단 리뷰가 "수량"을 만든다면, 인플루언서 협업은 "<strong>타깃이 팔로우하는 사람이 직접 쓰는 모습</strong>"이라는 다른 층위의 신뢰를 만듭니다. 그리고 그 원본 영상은 <strong>메타 광고의 최고 성과 소재</strong>로 그대로 재활용됩니다.
+            </div>
+            <table>
+                <tr><th>티어</th><th>팔로워</th><th>단가 범위</th><th>인원</th><th>역할</th></tr>
+                <tr><td>미드</td><td>3~10만</td><td>100~200만</td><td>3명</td><td>카테고리 신뢰·도달 확산</td></tr>
+                <tr><td>마이크로</td><td>1~3만</td><td>30~80만</td><td>15명</td><td>정합 타깃·콘텐츠 다양성</td></tr>
+                <tr><td>나노</td><td>1만 이하</td><td>10~30만</td><td>15명</td><td>UGC 원본 확보·광고 소재화</td></tr>
+            </table>
+            <p style="font-size: 12px; color: var(--text-light); margin-top: 10px;">
+                <strong>쌓이는 자산:</strong> 원본 UGC 33명분. 별도 저작권 계약으로 <strong>광고·상세페이지·PR에 6개월 이후에도 영구 재활용</strong> 가능.
+            </p>
+        </div>
+
+        <div class="callout">
+            <strong>네 축이 서로를 먹인다.</strong> 인스타 콘텐츠 → 메타 광고 소재. 인플루언서 UGC → 광고 소재 + 리뷰. 체험단 리뷰 → 상세페이지 전환율 → 광고 ROAS. 각 축은 독립 청구되지만, <strong>한 브랜드 안에서 하나의 엔진</strong>으로 돌아갑니다.
+        </div>
+    </div>
+
+    <div class="section" id="review-marketing">
+        <h2>04. 리뷰 마케팅 — 왜 이 라인이 전환의 키인가</h2>
+
+        <p>업계 통용 데이터 기준 홈뷰티 디바이스 카테고리에서 상세페이지 리뷰는 매출 전환에 이렇게 작동합니다.</p>
+
+        <div class="three-col">
+            <div class="col-card">
+                <div class="col-label">Data 1</div>
+                <div class="col-title">리뷰 1,000건 돌파 시점</div>
+                <div class="col-desc">네이버 스토어 CPC 단가가 평균 <strong>약 30% 하락</strong>. 같은 광고비로 더 많은 클릭을 받기 시작하는 임계점.</div>
+            </div>
+            <div class="col-card">
+                <div class="col-label">Data 2</div>
+                <div class="col-title">리뷰 500건 미만 구간</div>
+                <div class="col-desc">쿠팡 상세페이지 전환율이 <strong>제자리걸음</strong>. 유입이 와도 구매로 안 이어지는 "새는 깔때기" 상태.</div>
+            </div>
+            <div class="col-card">
+                <div class="col-label">Data 3</div>
+                <div class="col-title">홈뷰티 디바이스 카테고리</div>
+                <div class="col-desc">체험단 <strong>건당 1~2만원 구간</strong>이 가장 효율적. 이보다 싸면 리뷰 품질, 비싸면 수량 효율이 무너짐.</div>
+            </div>
+        </div>
+
+        <h3>체험단 플랫폼 비교 (2026-04 기준 추정)</h3>
+
+        <table>
+            <tr>
+                <th>플랫폼</th>
+                <th>주 이용층</th>
+                <th>회차당 단가</th>
+                <th>리뷰당 단가(추정)</th>
+                <th>디바이스 적합도</th>
+                <th>특징</th>
+            </tr>
+            <tr>
+                <td><strong>셀피패스</strong></td>
+                <td>일반 체험단 대량</td>
+                <td>150~250만</td>
+                <td>약 1~2만원</td>
+                <td>★★★★</td>
+                <td>저단가 대량 리뷰 확보. 네이버 리뷰 수량 빠르게 채우기 유리</td>
+            </tr>
+            <tr>
+                <td><strong>레뷰(Revu)</strong></td>
+                <td>프리미엄 체험단</td>
+                <td>300~500만</td>
+                <td>약 3~5만원</td>
+                <td>★★★★☆</td>
+                <td>체험단 수준·리뷰 품질 안정. 디바이스 후기 신뢰도 높음</td>
+            </tr>
+            <tr>
+                <td><strong>디너의여왕</strong></td>
+                <td>뷰티·라이프스타일</td>
+                <td>250~400만</td>
+                <td>약 2~4만원</td>
+                <td>★★★★</td>
+                <td>뷰티 카테고리 최적화. 블로그·인스타 후기 동시 확보</td>
+            </tr>
+            <tr>
+                <td><strong>놀러와</strong></td>
+                <td>체험단·콘텐츠 혼합</td>
+                <td>200~350만</td>
+                <td>약 2~3만원</td>
+                <td>★★★</td>
+                <td>중단가·중품질. 리뷰 수량 보조용</td>
+            </tr>
+        </table>
+        <p style="font-size: 11px; color: var(--text-light); margin-top: 4px;">* 공개 정보·업계 통용 수치 기반 추정. 최종 단가는 플랫폼 협상 후 확정합니다.</p>
+
+        <h3>우리 운용안 — 플랫폼 믹스</h3>
+        <p>단일 플랫폼 올인은 리뷰 품질·톤·리스크가 한쪽으로 쏠립니다. 아래 4개 플랫폼을 <strong>6개월에 걸쳐 교차 운용</strong>하며, 매월 성과 따라 비중을 재조정합니다.</p>
+
+        <table>
+            <tr><th>플랫폼</th><th>6개월 집행 비중</th><th>역할</th><th>예상 리뷰 확보</th></tr>
+            <tr><td>셀피패스</td><td class="highlight">40% · 1,000만</td><td>수량 확보 베이스</td><td>네이버 리뷰 100~150건</td></tr>
+            <tr><td>레뷰</td><td class="highlight">30% · 750만</td><td>품질 리뷰 확보</td><td>고관여 상세후기 80~120건</td></tr>
+            <tr><td>디너의여왕</td><td class="highlight">20% · 500만</td><td>뷰티 타깃 정합성</td><td>블로그+인스타 50~80건</td></tr>
+            <tr><td>놀러와</td><td class="highlight">10% · 250만</td><td>보조·회차별 밀어내기</td><td>보조 물량</td></tr>
+            <tr><td><strong>합계</strong></td><td class="highlight"><strong>2,500만</strong></td><td>6개월 누적</td><td class="highlight"><strong>300~500건</strong></td></tr>
+        </table>
+
+        <div class="callout">
+            <strong>법적 요건은 사전 차단합니다.</strong> 모든 체험단 리뷰·인플루언서 콘텐츠에 "유료 광고 포함" / "체험단 제공" 표기는 가이드 단계에서 의무화. 의료기기 오인 표현·질병 치료 표현은 <strong>게재 전 체크리스트로 사전 필터링</strong>합니다. 식약처 표시광고 기준 기반 체크리스트는 킥오프 자료로 드립니다.
+        </div>
+    </div>
+
+    <div class="section" id="defer">
+        <h2>05. 지금은 미뤄도 되는 것 — 솔직하게 말씀드립니다</h2>
+
+        <p>이번 6개월 안에 <strong>하지 않는 것</strong>도 똑같이 중요합니다. 지금 인셀라에게 가장 큰 레버리지를 만드는 순서로 우선순위를 정리했고, 아래 항목들은 <strong>지금 비용을 쓰면 오히려 비효율</strong>이라 남겨둡니다. 필요해지는 시점이 오면 그때 추가로 붙이면 됩니다.</p>
+
+        <div class="two-col">
+            <div class="col-card">
+                <div class="col-label">지금 미루는 것</div>
+                <div class="col-title">브랜드 리빌딩 · BI 재개발</div>
+                <div class="col-desc">현재 인셀라 BI는 이미 사용 가능한 상태입니다. 지금 중복 투자하면 3,000~8,000만이 그냥 들어갑니다. 인스타·광고·리뷰 쪽에 먼저 쓰고, 1년 뒤 리브랜딩 타이밍이 오면 그때 다시 의논드립니다.</div>
+            </div>
+            <div class="col-card">
+                <div class="col-label">지금 미루는 것</div>
+                <div class="col-title">대형 광고·상세페이지용 화보 촬영</div>
+                <div class="col-desc">이미 80개 콘텐츠가 촬영 중입니다. 이 자산을 먼저 활용·재편집해서 한계가 명확해지는 시점에 대형 촬영을 붙이는 게 ROI가 훨씬 좋습니다.</div>
+            </div>
+            <div class="col-card">
+                <div class="col-label">지금 미루는 것</div>
+                <div class="col-title">메타 외 유료 매체 (GFA, Google, TikTok)</div>
+                <div class="col-desc">현 단계에서는 메타 한 곳에 집중해서 픽셀·소재·타겟을 숙성시키는 게 효율적입니다. 메타 ROAS 기준선이 잡힌 뒤 채널 확장을 검토합니다.</div>
+            </div>
+            <div class="col-card">
+                <div class="col-label">필요하면 추가</div>
+                <div class="col-title">팝업·해외 시딩·올영 체험단 등</div>
+                <div class="col-desc">오프라인 팝업(1,500~5,000만), 미국 Heyday 시딩 파일럿(800~1,500만), 올영 별도 트랙(회차당 500~800만) 등은 필요한 시점이 오면 별도 견적으로 유연하게 붙여드립니다.</div>
+            </div>
+        </div>
+
+        <div class="callout">
+            <strong>"받을 수 있는 돈을 먼저 남겨둔다"</strong>는 원칙을 지킵니다. 6개월 안에 가장 큰 변화를 만드는 영역에 집중하고, 나머지는 이사님이 필요해지셨을 때 그때 판단하실 수 있도록 열어두겠습니다.
+        </div>
+    </div>
+
+    <div class="section" id="roadmap">
+        <h2>06. 6개월 로드맵 — 5/29 D-day 역산</h2>
+
+        <p><strong>라이브 전환율은 사전 버즈량에 비례합니다.</strong> D-38(오늘) → D-0(5/29)까지 37일을 어떻게 쓰느냐가 라이브 당일 매출을 결정합니다. 아래는 4/23 계약 가정 시 주차별 간트입니다.</p>
+
+        <table class="gantt-table">
+            <tr>
+                <th>주차</th>
+                <th>기간</th>
+                <th>인스타</th>
+                <th>리뷰 마케팅</th>
+                <th>인플루언서</th>
+                <th>메타 광고</th>
+                <th>D-day</th>
+            </tr>
+            <tr>
+                <td><strong>W1</strong></td>
+                <td>4/23~4/29</td>
+                <td>킥오프 / 톤앤매너 드래프트</td>
+                <td>플랫폼 3곳 견적 확정</td>
+                <td>1차 리스트업 30명</td>
+                <td>광고계정·픽셀 세팅</td>
+                <td><span class="d-mark">D-30</span></td>
+            </tr>
+            <tr>
+                <td><strong>W2</strong></td>
+                <td>4/30~5/6</td>
+                <td>톤앤매너 확정 / 첫 피드 4개 라이브</td>
+                <td>셀피패스·레뷰 캠페인 런칭</td>
+                <td>미드 1명·마이크로 5명 섭외</td>
+                <td>첫 소재 3안 준비</td>
+                <td><span class="d-mark">D-23</span></td>
+            </tr>
+            <tr>
+                <td><strong>W3</strong></td>
+                <td>5/7~5/13</td>
+                <td>피드 누적 8개 / 릴스 1~2개</td>
+                <td>체험단 제품 발송·후기 수거 시작</td>
+                <td>제품 발송·가이드 전달</td>
+                <td>테스트 캠페인 ON</td>
+                <td><span class="d-mark">D-16</span></td>
+            </tr>
+            <tr>
+                <td><strong>W4</strong></td>
+                <td>5/14~5/20</td>
+                <td>피드 누적 12개 / 릴스 3개</td>
+                <td class="highlight">네이버 리뷰 30건 돌파</td>
+                <td>첫 콘텐츠 수령·QC</td>
+                <td>A/B 1차 학습</td>
+                <td><span class="d-mark">D-9</span></td>
+            </tr>
+            <tr>
+                <td><strong>W5</strong></td>
+                <td>5/21~5/27</td>
+                <td>라이브 예고 콘텐츠 집중</td>
+                <td class="highlight">리뷰 50건 목표</td>
+                <td>UGC 광고 소재 재가공</td>
+                <td>라이브 전용 리타겟팅 ON</td>
+                <td><span class="d-mark">D-2</span></td>
+            </tr>
+            <tr>
+                <td><strong>W6</strong></td>
+                <td>5/28~5/29</td>
+                <td>라이브 당일 실시간 대응</td>
+                <td>리뷰 소셜프루프 상세페이지 반영</td>
+                <td>라이브 전/중/후 후기 콘텐츠</td>
+                <td>라이브 시점 예산 집중</td>
+                <td><span class="d-mark">D-day</span></td>
+            </tr>
+        </table>
+
+        <h3>월별 산출물 (M1~M6)</h3>
+        <table>
+            <tr><th>월</th><th>피드</th><th>릴스</th><th>스토리</th><th>광고 운영</th><th>인플루언서</th><th>리뷰 누적</th></tr>
+            <tr><td><strong>M1 (5월)</strong></td><td>10개</td><td>4개</td><td>20개</td><td>픽셀·이벤트 세팅 + 소재 3안</td><td>10명 컨택 / 5명 집행</td><td>30~50건</td></tr>
+            <tr><td><strong>M2 (6월)</strong></td><td>12개</td><td>5개</td><td>25개</td><td>소재 A/B 5안 / 예산 운용</td><td>8명 집행</td><td>80~130건</td></tr>
+            <tr><td><strong>M3 (7월)</strong></td><td>12개</td><td>6개</td><td>25개</td><td>ROAS 기준선 확보</td><td>5명 집행 + UGC 재활용</td><td>150~230건</td></tr>
+            <tr><td><strong>M4 (8월)</strong></td><td>12개</td><td>5개</td><td>25개</td><td>성과소재 스케일업</td><td>5명 집행</td><td>220~320건</td></tr>
+            <tr><td><strong>M5 (9월)</strong></td><td>12개</td><td>5개</td><td>25개</td><td>리타겟팅 본격화</td><td>5명 집행</td><td>280~420건</td></tr>
+            <tr><td><strong>M6 (10월)</strong></td><td>12개</td><td>5개</td><td>25개</td><td>풀 리포트 + 스케일 제안</td><td>5명 (앵커급 1인 포함)</td><td class="highlight">300~500건</td></tr>
+            <tr><td><strong>합계</strong></td><td class="highlight">70개</td><td class="highlight">30개</td><td class="highlight">145개</td><td>—</td><td class="highlight">33명 집행</td><td class="highlight">300~500건</td></tr>
+        </table>
+
+        <p style="font-size: 12px; color: var(--text-light); margin-top: 8px;">
+            이 표의 숫자는 <strong>계약서 부속 KPI</strong>로 들어갑니다. 주간 리포트로 실시간 추적하며, 차이가 나면 매월 리밸런싱합니다.
+        </p>
+    </div>
+
+    <div class="section" id="invest">
+        <h2>07. 투자 구성 — 2억 어떻게 쓰는가</h2>
+
+        <p>이사님께서 배분하신 2억 중, <strong>1.55억은 저희가 책임지고 집행하고, 4,500만은 이사님께서 직접 운용하실 수 있도록 남겨뒀습니다.</strong> 저희가 전액을 쥐고 있기보다 이사님이 통제하시는 편이 훨씬 효율이 좋다고 봤습니다.</p>
+
+        <h3>파트너 집행 — 1.55억</h3>
+        <table>
+            <tr><th>영역</th><th>6개월 합계</th><th>월 환산</th><th>해드리는 것</th></tr>
+            <tr>
+                <td><strong>인스타그램 운영</strong></td>
+                <td class="highlight">5,500만</td>
+                <td>약 917만</td>
+                <td>톤앤매너 세팅 + 월간 콘텐츠 풀사이클 + 리포팅</td>
+            </tr>
+            <tr>
+                <td><strong>리뷰 마케팅</strong></td>
+                <td class="highlight">2,500만</td>
+                <td>일시성 (2회 분할)</td>
+                <td>체험단 플랫폼 믹스 운용 → 리뷰 300~500건</td>
+            </tr>
+            <tr>
+                <td><strong>인플루언서 협업</strong></td>
+                <td class="highlight">4,500만</td>
+                <td>약 750만</td>
+                <td>나노·마이크로 20~30명 섭외·가이드·QC + 콘텐츠 비용</td>
+            </tr>
+            <tr>
+                <td><strong>메타 광고 운영 Fee</strong></td>
+                <td class="highlight">3,000만</td>
+                <td>500만</td>
+                <td>계정·픽셀·소재·운영·리포팅 (광고비 별도)</td>
+            </tr>
+            <tr>
+                <td><strong>파트너 집행 합계</strong></td>
+                <td class="highlight">1.55억</td>
+                <td>—</td>
+                <td>VAT 별도</td>
+            </tr>
+        </table>
+
+        <h3>이사님 직접 집행 — 4,500만</h3>
+        <p>아래 항목들은 <strong>저희가 기획·운영은 하되 결제는 이사님 명의로 직결</strong>하는 구조입니다. 사유는 세 가지입니다.</p>
+
+        <table>
+            <tr><th>항목</th><th>권장 금액</th><th>왜 직접 집행이 유리한가</th></tr>
+            <tr>
+                <td><strong>메타 광고 실집행 광고비</strong></td>
+                <td class="highlight">3,000만</td>
+                <td>대행비와 광고비를 따로 두셔야 <strong>ROAS가 투명하게 보이고</strong>, 세금계산서 처리가 깔끔합니다. 라이브 반응 따라 즉시 재투자도 가능합니다.</td>
+            </tr>
+            <tr>
+                <td><strong>체험단 플랫폼 직접 결제</strong></td>
+                <td class="highlight">1,000만</td>
+                <td>체험단 플랫폼은 기업 직계약 시 단가가 훨씬 좋습니다. 기획·운영은 저희가, 결제만 이사님이 직접 하시면 <strong>중간 마진 없이</strong> 더 많은 리뷰를 확보합니다.</td>
+            </tr>
+            <tr>
+                <td><strong>샘플·시딩 제품 원가</strong></td>
+                <td class="highlight">500만</td>
+                <td>원가 집행에 저희가 중간 마진 붙이지 않는 구조. 투명하게 이사님 명의로 지출됩니다.</td>
+            </tr>
+        </table>
+
+        <div class="quote-total">
+            <div>
+                <div class="qt-label">6개월 총 배분안</div>
+                <div class="qt-value">2억원</div>
+                <div class="qt-sub">VAT 별도</div>
+            </div>
+            <div style="text-align:right;">
+                <div class="qt-label">파트너 집행 + 직접 집행</div>
+                <div style="font-size: 16px; font-weight: 700; color: var(--accent);">1.55억 + 4,500만</div>
+                <div class="qt-sub">이사님이 통제하시는 만큼 효율이 올라갑니다</div>
+            </div>
+        </div>
+
+        <h3>결제 구조</h3>
+        <table>
+            <tr><th>시점</th><th>금액</th><th>해당 범위</th></tr>
+            <tr><td>계약 시 (W1)</td><td class="highlight">5,500만</td><td>Phase 1 (M1~M2): 세팅 + 리뷰 1차 + 광고 세팅 + 인플루언서 1차</td></tr>
+            <tr><td>M3 시작 시 (7월)</td><td class="highlight">5,000만</td><td>Phase 2 (M3~M4): 운영 + 리뷰 2차 + 인플루언서 2차 + 광고 최적화</td></tr>
+            <tr><td>M5 시작 시 (9월)</td><td class="highlight">5,000만</td><td>Phase 3 (M5~M6): 운영 + 스케일 + 최종 리포트</td></tr>
+            <tr><td><strong>파트너 집행 합계</strong></td><td class="highlight"><strong>1.55억</strong></td><td>VAT 별도</td></tr>
+        </table>
+        <p style="font-size: 12px; color: var(--text-light); margin-top: 8px;">
+            Phase 1 완료 후 성과를 보고 Phase 2 진행 여부를 결정하실 수 있습니다. 다만 6개월 풀 계약 시 전략 연속성·단가 효율이 훨씬 좋습니다.
+        </p>
+    </div>
+
+    <div class="section" id="gonggu">
+        <h2>08. 공동구매 — 성과가 나올 때 함께 웃는 구조</h2>
+
+        <p>공동구매는 <strong>실제 매출이 나올 때만 비용이 발생하는 성과 기반 수익 쉐어 구조</strong>로 제안드립니다. 본 배분안(2억)과 <strong>독립된 별도 MOU</strong>로 진행됩니다. 고정비 부담 없이 상방만 확보하는 방식입니다.</p>
+
+        <div class="two-col">
+            <div class="col-card">
+                <div class="col-label">구조</div>
+                <div class="col-title">착수금 0원 · 성과 쉐어 기반</div>
+                <div class="col-desc">
+                    • 대상: 뷰티 디바이스 카테고리 공구 채널 3~5곳<br>
+                    • 착수금: <strong>0원</strong><br>
+                    • 정산: 실제 순매출 기준 수익 쉐어 X%<br>
+                    • 계약 기간: 본 계약과 동시 6개월 운영
+                </div>
+            </div>
+            <div class="col-card">
+                <div class="col-label">왜 이 구조인가</div>
+                <div class="col-title">이사님과 저희 이해관계 일치</div>
+                <div class="col-desc">
+                    • 고정비 리스크 0 — 안 될 때 이사님 부담 없음<br>
+                    • 매출이 나야 저희도 수익 → 가장 잘 팔리는 채널만 제안<br>
+                    • 본 계약 KPI와 섞이지 않아 해석이 깔끔함
+                </div>
+            </div>
+        </div>
+
+        <h3>브랜드라이즈가 하는 일</h3>
+        <table>
+            <tr><th>단계</th><th>내용</th></tr>
+            <tr><td>1. 채널 탐색</td><td>뷰티 디바이스 공구 채널 후보 리스트업 + 실적·카테고리 적합도 검증</td></tr>
+            <tr><td>2. 매칭·협상</td><td>채널과의 매칭, 조건 조율, 공구 타임라인 설계</td></tr>
+            <tr><td>3. 전용 콘텐츠</td><td>공구 전용 콘텐츠 기획 지원 (채널별 맞춤)</td></tr>
+            <tr><td>4. 실행 지원</td><td>공구 진행 중 상세페이지 감수, 성과 모니터링</td></tr>
+            <tr><td>5. 리포팅</td><td>공구 종료 후 성과 리포트 + 재진행 판단 자료</td></tr>
+        </table>
+
+        <div class="callout">
+            <strong>공구 채널 후보 리스트는 5월 중 이사님께 공유드립니다.</strong> 지금 미리 이름을 약속하지 않는 이유는, 실제 협상 시점에 인셀라와의 적합도·단가 조건이 가장 좋은 조합을 최종 확정하기 위해서입니다. MOU 1페이지(쉐어율, 정산주기, 감사권 포함)로 본 계약과 함께 또는 별도 시점에 진행 가능합니다.
+        </div>
+    </div>
+
+    <div class="section" id="quickwin">
+        <h2>09. Quick Win — 계약 전에 먼저 드립니다</h2>
+
+        <p>큐티프로 EMS 패치 + 리프팅밴드의 "캡슐 구조"를 릴스 한 편으로 보여주는 스크립트입니다. 이사님께서 검토하시고, <strong>계약 여부와 무관하게 사내 콘텐츠팀이 바로 쓰실 수 있도록</strong> 무료로 드립니다.</p>
+
+        <div class="area-card" style="background: linear-gradient(135deg, var(--warm), #fff);">
+            <div class="area-header">
+                <div class="area-title">컨셉: "뷰티 디바이스계의 프린터 잉크 모델"</div>
+                <div class="area-budget" style="font-size: 13px;">릴스 30초</div>
+            </div>
+            <table>
+                <tr><th style="width: 80px;">씬</th><th>내용</th></tr>
+                <tr><td><strong>Hook</strong></td><td>"이 디바이스, 한 번 사면 계속 돈 쓰게 됩니다"</td></tr>
+                <tr><td><strong>반전</strong></td><td>"근데 이게 칭찬입니다"</td></tr>
+                <tr><td><strong>설명</strong></td><td>큐티프로 본체 → 캡슐 교체 장면 (ASMR 클로즈업)</td></tr>
+                <tr><td><strong>포인트</strong></td><td>"프린터는 잉크로 돈 벌고, 큐티프로는 캡슐로 피부를 관리합니다"</td></tr>
+                <tr><td><strong>CTA</strong></td><td>"캡슐 하나로 전문 에스테틱 한 번"</td></tr>
+            </table>
+            <p style="font-size: 12px; color: var(--text-light); margin-top: 10px;">
+                반복 구매 모델이라는 비즈니스 구조 자체를 <strong>소비자가 기분 좋게 받아들이도록 재프레이밍</strong>한 훅입니다. 인스타·쇼츠·릴스 어느 채널이든 적용 가능합니다.
+            </p>
+        </div>
+    </div>
+
+    <div class="section" id="rhythm">
+        <h2>10. 함께 만들어갈 리듬</h2>
+
+        <h3>주간 리듬 — 월·수·금 3박자</h3>
+        <table>
+            <tr><th>요일</th><th>내용</th></tr>
+            <tr><td>월요일</td><td>주간 미팅 30분 — 이번 주 할 일 · 지난 주 성과</td></tr>
+            <tr><td>수요일</td><td>중간 체크 — 콘텐츠 시안 · 진행 상황</td></tr>
+            <tr><td>금요일</td><td>주간 리포트 — 숫자 + 인사이트 + 다음 주 계획</td></tr>
+        </table>
+
+        <h3>월간 산출물</h3>
+        <div class="pill-row">
+            <span class="pill">월간 성과 리포트 (인스타·리뷰·인플루언서·광고 통합)</span>
+            <span class="pill">다음 달 콘텐츠 캘린더</span>
+            <span class="pill">인플루언서·리뷰 효율 분석</span>
+            <span class="pill">비용 집행 내역 투명 공유 (직접 집행분 포함)</span>
+        </div>
+
+        <h3>6개월 뒤 이사님께 남는 자산</h3>
+        <table>
+            <tr><th>자산</th><th>수량</th><th>활용처</th></tr>
+            <tr><td>인스타 피드·릴스</td><td>100개+</td><td>브랜드 채널, 광고 소재, 바이어 미팅 덱</td></tr>
+            <tr><td>인플루언서 UGC 원본</td><td>33명분</td><td>광고·상세페이지·PR 2차 활용 (영구 라이선스)</td></tr>
+            <tr><td><strong>네이버·쿠팡 리뷰</strong></td><td><strong>300~500건</strong></td><td>상세페이지 소셜프루프, 전환율 상승</td></tr>
+            <tr><td>브랜드 가이드</td><td>1식</td><td>인하우스 운영·외부 협업 표준</td></tr>
+            <tr><td>광고 소재·타겟 학습 데이터</td><td>1식</td><td>숙성된 픽셀 + ROAS 기준선</td></tr>
+            <tr><td>6개월 풀 리포트</td><td>1식</td><td>ROI 증명, 투자 유치, 스케일업 판단</td></tr>
+        </table>
+
+        <div class="callout">
+            <strong>이 자산들은 6개월 뒤 이사님의 다음 미팅 자료가 됩니다.</strong> 시리즈 A 투자 유치 덱, 백화점·올리브영 MD 미팅, 해외 바이어 상담 어느 자리에서든 "이미 시장 반응이 있는 브랜드"라는 객관적 근거로 그대로 활용됩니다.
+        </div>
+    </div>
+
+    <div class="section" id="faq">
+        <h2>11. 자주 묻는 질문</h2>
+
+        <div class="faq-q">공동구매는 어떻게 진행되나요?</div>
+        <div class="faq-a">
+            착수금 0원, 실제 매출이 나올 때 수익 쉐어가 발생하는 성과 기반 구조입니다. 본 배분안과 독립된 MOU 1페이지로 진행하며, 이사님께 고정비 부담은 없습니다. 공구 채널 후보 리스트는 5월 중 협상 조건이 가장 좋은 조합을 정리해서 공유드립니다.
+        </div>
+
+        <div class="faq-q">체험단과 인플루언서 협업은 어떻게 다른가요?</div>
+        <div class="faq-a">
+            둘 다 필요하지만 용도가 다릅니다.<br>
+            <strong>· 체험단(리뷰 마케팅)</strong>은 네이버·쿠팡 상세페이지 리뷰 수를 채워서 <strong>전환율</strong>을 올리는 엔진입니다. 대량·저단가·템플릿형.<br>
+            <strong>· 인플루언서 협업</strong>은 타깃 팔로워에게 <strong>브랜드 인지·신뢰</strong>를 심고, 그 원본 영상을 광고 소재로 재활용하는 엔진입니다. 소수·고단가·맞춤형.<br>
+            지금 인셀라는 리뷰 0건 상태라 체험단 쪽이 먼저 작동해야 광고 전환이 빠집니다.
+        </div>
+
+        <div class="faq-q">브랜딩·BI 재개발, 대형 촬영도 필요해지면 추가할 수 있나요?</div>
+        <div class="faq-a">
+            네, 필요해지는 시점에 언제든 별도 견적으로 붙여드립니다. 브랜딩·BI 리빌딩은 3,000~8,000만, 상세페이지 전문 화보 촬영은 1Day 1,200~2,500만 범위입니다. 다만 지금은 이미 사용 가능한 BI와 촬영 중인 80개 콘텐츠가 있어서, 이 자산부터 먼저 쓰는 게 훨씬 효율이 좋습니다.
+        </div>
+
+        <div class="faq-q">6개월 후 인하우스로 전환할 수 있나요?</div>
+        <div class="faq-a">
+            네. 6개월 동안 브랜드 가이드·콘텐츠 캘린더 템플릿·해시태그 전략서·광고 소재 라이브러리·픽셀 데이터를 전부 이사님 자산으로 축적합니다. 인하우스 마케터 채용 시 바로 인수인계 가능합니다. 저희가 인하우스 전환의 발판을 만드는 파트너입니다.
+        </div>
+
+        <div class="faq-q">Phase 단위로 끊을 수 있나요?</div>
+        <div class="faq-a">
+            Phase 1(M1~M2, 2개월) 완료 후 성과를 보고 Phase 2 진행 여부를 결정하실 수 있습니다. 다만 메타 광고 픽셀 숙성, 인플루언서 UGC 재활용 사이클, 리뷰 누적 효과 등은 6개월 연속 운영 시 효율이 훨씬 큽니다.
+        </div>
+
+        <div class="faq-q">의료기기·화장품 광고 표시법 리스크는요?</div>
+        <div class="faq-a">
+            체험단 리뷰·인플루언서 콘텐츠·광고 소재 전부 <strong>게재 전 사전 검수 체크리스트</strong>를 운영합니다. "주름 개선·질병 치료" 같은 금지 표현은 가이드 단계에서 사전 차단합니다. 식약처 표시광고 기준 기반 체크리스트는 킥오프 자료로 드립니다.
+        </div>
+    </div>
+
+    <div class="section" id="next">
+        <h2>12. 다음 한 걸음</h2>
+
+        <div class="next-step-card">
+            <div class="nsc-title">이사님 결정 흐름</div>
+            <table>
+                <tr><th>일정</th><th>내용</th></tr>
+                <tr><td><strong>이번 주</strong></td><td>이 제안서 검토 · 궁금한 점 30분 확정 콜</td></tr>
+                <tr><td><strong>4/23~24</strong></td><td>계약서 초안 송부 · 검토</td></tr>
+                <tr><td><strong>4/28(월)</strong></td><td>계약 서명</td></tr>
+                <tr><td><strong>4/29~30</strong></td><td>킥오프 — 톤앤매너 착수, 체험단 플랫폼 3곳 견적 확정</td></tr>
+                <tr><td class="highlight"><strong>5/29(목)</strong></td><td class="highlight"><strong>네이버 라이브 — 사전 버즈·리뷰 소셜프루프 완료 상태로 진입</strong></td></tr>
+            </table>
+        </div>
+
+        <p style="margin-top: 16px;">
+            이 제안서에 궁금하신 점이나 조율하고 싶은 부분이 있으시면 편하게 말씀 주세요.<br>
+            <strong>30분 확정 콜</strong>만으로도 이 문서의 모든 항목을 이사님 관점에서 다시 정리해드릴 수 있습니다.
+        </p>
+
+        <div class="callout" style="margin-top: 16px;">
+            <strong>D-38일.</strong> 오늘 결정이 5/29 라이브의 매출을 만들고, 5/29 매출이 인셀라 1년의 방향을 만듭니다. 이사님께서 25년 쌓아오신 기술을 세상에 보여드리는 무대, 저희가 만들겠습니다.
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    BRANDRISE | 인셀라(INCELLA) × 브랜드라이즈 6개월 론칭 파트너십 제안<br>
+    2026.04 | 청우메디칼 권윤정 이사님께 | Confidential
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에코맘의 산골이유식 (Ecomom's Sangol Baby Food) - 재접촉 상담 준비 | BRANDRISE</title>
+    <style>
+        :root {
+            --primary: #1a2e1a;
+            --secondary: #2d4a2d;
+            --accent: #5a7d3a;
+            --highlight: #c2410c;
+            --bg: #f6f8f3;
+            --card-bg: #ffffff;
+            --text: #1a2e1a;
+            --text-light: #636569;
+            --border: #e0e6d6;
+            --success: #2d7a3e;
+            --warning: #c2410c;
+            --danger: #dc2626;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(194, 65, 12, 0.2);
+            border: 1px solid var(--highlight);
+            color: #fdba74;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+        .header .subtitle { font-size: 16px; opacity: 0.8; font-weight: 300; }
+        .header .date { margin-top: 16px; font-size: 13px; opacity: 0.6; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        .toc {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 8px;
+        }
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 0;
+            display: block;
+            transition: color 0.2s;
+        }
+        .toc a:hover { color: var(--highlight); }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--highlight);
+        }
+        .section h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 20px 0 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 8px 16px;
+            font-size: 14px;
+        }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th { background: var(--primary); color: white; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px; }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        tr:hover td { background: #f1f3f5; }
+
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin: 2px; }
+        .tag-red { background: #ffe0e0; color: #d63031; }
+        .tag-green { background: #d4f5e9; color: #2d7a3e; }
+        .tag-blue { background: #dfe6fd; color: #1a2e1a; }
+        .tag-yellow { background: #fff3cd; color: #856404; }
+        .tag-gray { background: #e9ecef; color: #495057; }
+
+        .score-bar { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+        .score-bar .label-text { width: 160px; font-size: 13px; font-weight: 600; }
+        .score-bar .bar { flex: 1; height: 8px; background: #e9ecef; border-radius: 4px; overflow: hidden; }
+        .score-bar .fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
+        .score-bar .score-num { width: 40px; font-size: 14px; font-weight: 700; text-align: right; }
+        .fill-high { background: var(--success); }
+        .fill-mid { background: var(--warning); }
+        .fill-low { background: var(--danger); }
+
+        .verdict {
+            background: linear-gradient(135deg, #2d7a3e 0%, #5a7d3a 100%);
+            color: white;
+            padding: 24px 32px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 24px 0;
+        }
+        .verdict .label { font-size: 14px; opacity: 0.8; }
+        .verdict .value { font-size: 36px; font-weight: 800; margin: 8px 0; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+
+        .tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+        .tier-card {
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .tier-card:hover { transform: translateY(-4px); }
+        .tier-card.recommended {
+            border-color: var(--highlight);
+            box-shadow: 0 4px 20px rgba(194, 65, 12, 0.18);
+        }
+        .tier-card .tier-badge {
+            position: absolute;
+            top: -12px;
+            right: 16px;
+            background: var(--highlight);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .tier-card h4 { font-size: 16px; margin-bottom: 4px; }
+        .tier-card .price { font-size: 22px; font-weight: 800; color: var(--highlight); margin: 12px 0 4px; }
+        .tier-card .price-sub { font-size: 12px; color: var(--text-light); margin-bottom: 8px; }
+        .tier-card .duration { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+        .tier-card ul { list-style: none; padding: 0; }
+        .tier-card li { font-size: 13px; padding: 4px 0; padding-left: 20px; position: relative; }
+        .tier-card li::before { content: ">"; position: absolute; left: 0; color: var(--highlight); font-weight: 700; }
+
+        .callout {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+        .callout-info { background: #e3f2fd; border-left-color: #2196f3; }
+        .callout-danger { background: #fce4ec; border-left-color: #e53935; }
+        .callout-success { background: #e8f5e9; border-left-color: #2d7a3e; }
+
+        .leverage-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        .leverage-box .quote { font-size: 19px; font-weight: 700; line-height: 1.6; margin: 16px 0; }
+        .leverage-box .quote .hl { color: #fdba74; }
+
+        .flow-steps { display: flex; gap: 0; margin: 20px 0; overflow-x: auto; }
+        .flow-step {
+            flex: 1;
+            min-width: 170px;
+            padding: 16px;
+            background: #f1f5ed;
+            position: relative;
+            text-align: center;
+            border-radius: 6px;
+            margin-right: 8px;
+        }
+        .flow-step:not(:last-child)::after {
+            content: ">";
+            position: absolute;
+            right: -14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 22px;
+            color: var(--highlight);
+            font-weight: 700;
+            z-index: 1;
+        }
+        .flow-step .step-num { font-size: 11px; font-weight: 700; color: var(--highlight); margin-bottom: 4px; }
+        .flow-step .step-title { font-size: 13px; font-weight: 700; }
+        .flow-step .step-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .swot-item h4 { font-size: 15px; margin-bottom: 10px; }
+        .swot-item ul { padding-left: 18px; }
+        .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: #d4f5e9; }
+        .swot-w { background: #ffe0e0; }
+        .swot-o { background: #dfe6fd; }
+        .swot-t { background: #fff3cd; }
+
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; line-height: 2; }
+        .source-list a { color: var(--accent); text-decoration: none; }
+        .source-list a:hover { text-decoration: underline; }
+
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+        .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 8px 0; }
+        .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+
+        /* Executive Summary */
+        .summary-section { border-left: 4px solid var(--highlight); background: linear-gradient(135deg, #fff 0%, #fff7f0 100%); }
+        .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; color: white; }
+        .kpi-card.kpi-dark { background: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--danger); }
+        .kpi-card.kpi-success { background: var(--success); }
+        .kpi-card.kpi-accent { background: var(--accent); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.8; }
+        .kpi-card .kpi-value { font-size: 22px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.8; }
+
+        .summary-oneliner { background: #1a2e1a; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+        .summary-oneliner .sol-text .hl { color: #fdba74; }
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+
+        /* Diagnosis */
+        .diagnosis-section { border: 2px solid var(--danger); }
+        .diagnosis-section h2 { border-bottom-color: var(--danger); color: var(--danger); }
+        .diag-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .diag-box { padding: 16px; border-radius: 8px; }
+        .diag-box.diag-current { background: #fce4ec; }
+        .diag-box.diag-ideal { background: #e8f5e9; }
+        .diag-box .db-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .diag-box.diag-current .db-label { color: var(--danger); }
+        .diag-box.diag-ideal .db-label { color: var(--success); }
+        .diag-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+        .diag-note { font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: #fff3e0; border-radius: 8px; }
+
+        /* SPIN & JTBD */
+        .spin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .spin-card { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .spin-card h4 { font-size: 15px; margin-bottom: 10px; }
+        .spin-s { background: #e3f2fd; }
+        .spin-p { background: #fce4ec; }
+        .spin-i { background: #fff3e0; }
+        .spin-n { background: #e8f5e9; }
+
+        .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+        .pain-level { flex: 1; min-width: 210px; padding: 16px; border-radius: 10px; font-size: 13px; }
+        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .pain-l1 { background: #e3f2fd; }
+        .pain-l2 { background: #fff3e0; }
+        .pain-l3 { background: #fce4ec; }
+        .pain-l4 { background: #f3e5f5; }
+
+        /* Script & Coaching */
+        .script-block {
+            background: #f1f5ed;
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            font-style: italic;
+            color: var(--secondary);
+        }
+        .question-card { background: #f1f5ed; border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+        .question-card .q-num { font-size: 12px; font-weight: 700; color: var(--highlight); }
+        .question-card .q-text { font-size: 15px; font-weight: 600; margin: 4px 0 8px; color: var(--primary); }
+        .question-card .q-intent { font-size: 13px; color: var(--text-light); }
+        .question-card .q-branch { font-size: 12px; color: var(--text-light); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border); }
+
+        .timeline-phase { display: grid; grid-template-columns: 100px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .timeline-phase .phase-time { font-size: 13px; font-weight: 700; color: var(--highlight); text-align: center; padding-top: 4px; }
+        .timeline-phase .phase-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--primary); }
+        .timeline-phase .phase-content p { font-size: 13px; color: var(--text); margin-bottom: 4px; }
+        .timeline-phase .phase-content .phase-note { font-size: 12px; color: var(--text-light); font-style: italic; }
+
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .tier-cards { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-step:not(:last-child)::after { display: none; }
+            .channel-grid { grid-template-columns: repeat(2, 1fr); }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .diag-compare { grid-template-columns: 1fr; }
+            .spin-grid { grid-template-columns: 1fr; }
+            .pain-layer { flex-direction: column; }
+            .timeline-phase { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">NEW BUSINESS · 재접촉 (RE-ENGAGEMENT) 상담 준비</div>
+    <h1>에코맘의 산골이유식 (Ecomom's Sangol Baby Food)</h1>
+    <div class="subtitle">프리미엄 이유식 · 글로벌 진출(베이비시즌) · 생애주기 미래식품 플랫폼 전환 중</div>
+    <div class="date">작성일: 2026-04-21 (오늘 미팅 · 대면 추정) | Prepared by BRANDRISE (MarketingOS)</div>
+</div>
+
+<div class="container">
+
+    <!-- ============================================================ -->
+    <!-- Executive Summary -->
+    <!-- ============================================================ -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">기업</div>
+                <div class="sh-title">(주)에코맘의 산골이유식</div>
+                <div class="sh-sub">2012년 설립 (14년차) | 경남 하동 | 계약농가 125곳 · 유기농쌀 300t/년</div>
+            </div>
+            <div>
+                <div class="sh-label">대표이사</div>
+                <div class="sh-title">오천호 (45세 추정)</div>
+                <div class="sh-sub">자수성가형 · "거버 옆 K-이유식" 13년 비전 · 2025 중진공 Jump-Up 선정</div>
+            </div>
+        </div>
+
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">2024 매출 [추정]</div>
+                <div class="kpi-value">약 200억</div>
+                <div class="kpi-sub">2023년 167.5억 대비 +19% / 공시 지연</div>
+            </div>
+            <div class="kpi-card kpi-accent">
+                <div class="kpi-label">해외 실행 흔적</div>
+                <div class="kpi-value">Amazon 4 SKU</div>
+                <div class="kpi-sub">ECOMOMMEAL/Sangol 영문 인스타 운영 중</div>
+            </div>
+            <div class="kpi-card kpi-success">
+                <div class="kpi-label">기회 적합도</div>
+                <div class="kpi-value">4.05 / 5.0</div>
+                <div class="kpi-sub">GO (재접촉 감점 -0.3 반영)</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">작년 제안 정체</div>
+                <div class="kpi-value">1년 · 0원</div>
+                <div class="kpi-sub">1억/9-12개월 풀세트 → 미집행</div>
+            </div>
+        </div>
+
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                13년 쌓은 제품력·스토리(125농가·지역 ESG)와 Amazon/영문 인스타 자력 실행 흔적은 있으나,<br>
+                <span class="hl">"상표만 5년, 실행 0년"의 Trademark Graveyard 임계점에 서 있음.</span><br>
+                작년 1억 통짜 제안이 1년간 방치된 진짜 원인은 가격이 아니라 <span class="hl">"Landing Spot(착지 지점)이 안 보였다"</span>는 것.
+            </div>
+        </div>
+
+        <div class="summary-bottom">
+            <strong>기회 적합도:</strong> <span class="hl">4.05 / 5.0 (GO · 조건부)</span> &nbsp;|&nbsp;
+            <strong>추천 Tier:</strong> <span class="hl">Professional — 6천~8천만원대 (4~6개월)</span> &nbsp;|&nbsp;
+            <strong>Entry Move:</strong> <span class="hl">Essential 2천대 디스커버리 스프린트 선제공</span> &nbsp;|&nbsp;
+            <strong>레버:</strong> K-food+ aT 정부매칭 (실부담 30-70% 경감)
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 핵심 문제점 & 진단 -->
+    <!-- ============================================================ -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 문제점 & 진단</h2>
+
+        <h3>1. Trademark Graveyard 임계점 — 상표만 5년, 실행 0년 (Critical)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재 상태 (2026-04 기준)</div>
+                <ul>
+                    <li><strong>베이비시즌 상표</strong>: 미국/중국/동남아 4-5년 전 등록 완료, 실사용 0</li>
+                    <li>Amazon <strong>ECOMOMMEAL Sangol Rice Stick</strong> 4개 SKU — 자력 런칭, 통합 브랜드 거버넌스 부재</li>
+                    <li>영문 인스타 <strong>@sangol.babyfood</strong> 영문 포스팅 + 필리핀 인플루언서 협업 — 자력 실행</li>
+                    <li>박람회 4-5년 출전 — 바이어 전환 설계 부재</li>
+                    <li>수출 담당 조직: <strong>"국내 관리 수준"</strong> (대표 자백)</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">이상적 상태</div>
+                <ul>
+                    <li><strong>베이비시즌 = 1호국 1채널 런칭 완료</strong>, 첫 PO + 재주문 도달</li>
+                    <li>산골이유식(국내) ↔ 베이비시즌(글로벌) <strong>브랜드 아키텍처 정립</strong></li>
+                    <li>Amazon/영문 인스타 자력 실행을 <strong>통합 브랜드 거버넌스 아래 재편</strong></li>
+                    <li>Expo West 2027(3월) 부스 + 바이어 전환 시스템 장착</li>
+                    <li>K-food+ aT 매칭펀드로 <strong>실질 자부담 30-70% 경감</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2. 회사 피벗 중 — "이유식 글로벌 브랜드" → "생애주기 미래식품 플랫폼" (High)</h3>
+        <div class="diag-note">
+            2025년 7월 경남일보·11월 서울신문 기준 오 대표 공식 발언: "<strong>아기부터 어르신, 반려동물까지 나아가 우주에서도 먹을 수 있는</strong> 우리 식품이 목표". 진주바이오특구 100억 투자 공식화 + 코스맥스 협력 + 펫푸드/고령식/우주식 3대 신사업 동시 추진.
+            → <strong>작년 "이유식 글로벌 1억 단독" 제안을 그대로 꺼내면 프레임 미스매치.</strong> 오늘은 "글로벌 확장의 첫 점(앵커)을 어디에 찍을지"로 재프레이밍 필수.
+        </div>
+
+        <h3>영역별 진단 요약</h3>
+        <table>
+            <tr><th>영역</th><th>현재 상태</th><th>심각도</th><th>GAP</th></tr>
+            <tr><td>브랜드 아키텍처 (산골/베이비시즌/아기의계절)</td><td>3개 브랜드 관계 미정리, 영문 네이밍 혼재</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>해외 런칭 실행 증거</td><td>Amazon 4 SKU 외 1호국 착지 실패</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>타겟 국가 전략 확신</td><td>베트남→미국/일본, 1년 만에 뒤집힘</td><td><span class="tag tag-red">High</span></td><td><span class="tag tag-red">큼</span></td></tr>
+            <tr><td>글로벌 브랜드 언어</td><td>"Sangol Baby Food" 영문 카피 수준, 브랜드덱 부재</td><td><span class="tag tag-red">High</span></td><td><span class="tag tag-red">큼</span></td></tr>
+            <tr><td>수출 운영 조직</td><td>"국내 관리 수준" (대표 자백)</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-yellow">큼</span></td></tr>
+            <tr><td>국내 브랜드·SNS</td><td>인스타 1.8만, 카카오플친 1.17만, 카카오 라이브 안정</td><td><span class="tag tag-green">Low</span></td><td><span class="tag tag-green">관리</span></td></tr>
+            <tr><td>ESG·지역상생 스토리</td><td>남해 3년 연속 협약, 125농가, 12.59억 기부</td><td><span class="tag tag-green">Strong</span></td><td>글로벌 피치덱 자산으로 재활용 필요</td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>진단 결론:</strong> 에코맘의 산골이유식은 제품력·원재료 투명성·ESG 스토리·국내 유통망이라는 <strong>글로벌 진출에 필요한 하드웨어는 이미 완비</strong>. 부족한 건 "대표 1명의 비전 → 실행 가능한 로드맵 → 외부 파트너와의 협업 근육" 전환 장치. 브랜드라이즈의 역할은 <strong>작년 제안서 재작성이 아니라 "90일 안에 손에 잡히는 증거 1개를 만들어주는 Range-finder"</strong>.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 목차 -->
+    <!-- ============================================================ -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 & 진단</a>
+            <a href="#company-info">1. 기업 기초 정보</a>
+            <a href="#product-lineup">2. 주력 제품/서비스</a>
+            <a href="#digital-presence">3. 디지털 프레즌스 (1년 변화)</a>
+            <a href="#competitors">4. 경쟁사 분석</a>
+            <a href="#market">5. 시장 환경</a>
+            <a href="#ceo-background">6. 대표자 프로필</a>
+            <a href="#swot">7. SWOT 분석</a>
+            <a href="#needs-analysis">8. 니즈 분석 (SPIN + JTBD)</a>
+            <a href="#gap-analysis">9. GAP 분석 & 기회 평가</a>
+            <a href="#quote">10. 3-Tier 견적 초안</a>
+            <a href="#strategy">11. 상담 전략 & 코칭</a>
+            <a href="#closing">12. 클로징 전략</a>
+            <a href="#sources">13. 참고 링크</a>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 1. 기업 기초 정보 -->
+    <!-- ============================================================ -->
+    <div class="section" id="company-info">
+        <h2>1. 기업 기초 정보</h2>
+        <div class="info-grid">
+            <div class="info-label">법인명</div>
+            <div class="info-value">(주)에코맘의 산골이유식 (Ecomom's Sangol Babyfood Co., Ltd.)</div>
+            <div class="info-label">대표이사</div>
+            <div class="info-value">오천호 (출생 경남 하동 · 2012년 창업 당시 32세 → 현재 45세 추정)</div>
+            <div class="info-label">법인 설립</div>
+            <div class="info-value">2012년 4월 17일 (14년차)</div>
+            <div class="info-label">업종</div>
+            <div class="info-value">영유아식 제조 / 프리미엄 간편 이유식 / 실온이유식</div>
+            <div class="info-label">본사</div>
+            <div class="info-value">경남 하동 (스마트 공장: 2020년 100억 투자, 일일 2만개 생산 · 7천건 배송)</div>
+            <div class="info-label">신규 거점 [추정]</div>
+            <div class="info-value">진주바이오특구 100억 투자 (2025 공식화, 펫푸드·고령식·우주식 신사업)</div>
+            <div class="info-label">투자</div>
+            <div class="info-value">SK 엔젤펀드</div>
+            <div class="info-label">홈페이지</div>
+            <div class="info-value"><a href="https://ecomommeal.co.kr" target="_blank" style="color: var(--accent);">ecomommeal.co.kr</a></div>
+            <div class="info-label">인증</div>
+            <div class="info-value">HACCP, 유기농 인증</div>
+            <div class="info-label">계약농가</div>
+            <div class="info-value">125곳 (2025 서울신문 기준, 작년 "130여곳"에서 소폭 조정)</div>
+            <div class="info-label">원재료 규모</div>
+            <div class="info-value">유기농쌀 300톤/년, 농산물 매입 33억원/년</div>
+            <div class="info-label">누적 사회공헌</div>
+            <div class="info-value">기부 12억 5,900만원, 9,234명 수혜 (2025.07 경남일보)</div>
+            <div class="info-label">최근 수상/선정</div>
+            <div class="info-value">2025 경남테크노파크 지역혁신선도기업 / 2025 중진공 도약(Jump-Up) 사업 (경남 유일 식품기업)</div>
+        </div>
+
+        <h3>재무 현황</h3>
+        <table>
+            <tr><th>결산년도</th><th>매출액</th><th>영업이익</th><th>비고</th></tr>
+            <tr><td>2019</td><td>126억</td><td>12.8억</td><td>100억 돌파 직후</td></tr>
+            <tr><td>2020</td><td>113억</td><td>-2.6억</td><td>100억 스마트공장 투자로 영업적자</td></tr>
+            <tr><td>2021</td><td>130억</td><td>4.3억</td><td>턴어라운드</td></tr>
+            <tr><td>2022</td><td>140억</td><td>2.1억</td><td>꾸준 성장</td></tr>
+            <tr><td>2023</td><td>167.5억</td><td>8.2억</td><td>최근 공시 기준</td></tr>
+            <tr style="background:#fff7f0"><td><strong>2024 [추정]</strong></td><td><strong>약 200억</strong></td><td>미공개</td><td>YoY +19% · 공시 지연, 내부자 발화 기준</td></tr>
+        </table>
+        <div class="callout callout-info">
+            <strong>재무 포인트:</strong> 매출 167~200억 레인지, CAGR 12-19%. 2020년 스마트공장 100억 투자 후 4년 연속 회복·성장. 2025년 진주바이오특구 100억 <strong>2차 대규모 투자</strong> 결정 — 캐시플로에 여력이 있으나 <strong>신규 사업에 묶여 있어 이유식 글로벌에 100% 집중 못 할 가능성</strong>이 오늘 미팅의 숨은 변수.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 2. 주력 제품/서비스 -->
+    <!-- ============================================================ -->
+    <div class="section" id="product-lineup">
+        <h2>2. 주력 제품/서비스</h2>
+        <table>
+            <tr><th>브랜드/라인</th><th>카테고리</th><th>포지셔닝</th><th>타겟/채널</th></tr>
+            <tr><td><strong>산골이유식 (Sangol)</strong></td><td>냉동 이유식, 월령별(초기/중기/후기/완료기)</td><td>제철 재료 · 크기/점성/농도 월령 맞춤 · 치아발육 설계</td><td>국내 프리미엄 / 자사몰·백화점·11번가 라이브</td></tr>
+            <tr><td><strong>아기의계절</strong></td><td>실온이유식 (2024.11 공개)</td><td>여행/나들이용 휴대형 · 제철재료 · HACCP</td><td>국내 + 해외 진출용 [추정]</td></tr>
+            <tr><td><strong>베이비시즌 (Baby Season)</strong></td><td>글로벌 브랜드 (상표 등록만)</td><td>사계절을 선물하는 K-이유식 · 6/9/12개월 월령 직관 표기</td><td>미국/중국/동남아 <span class="tag tag-red">실런칭 미집행</span></td></tr>
+            <tr><td><strong>ECOMOMMEAL (Amazon)</strong></td><td>Rice Stick 4종 (Apple&Carrot / Purple Sweet Potato / Pumpkin Rusks / Spinach Sticks)</td><td>실제 판매 중, 직접 FBA 여부 확인 필요</td><td>Amazon.com + Weee! Asian Market</td></tr>
+            <tr><td>산골부엌 / 산골쭘빵 (보조)</td><td>성인 식품 라인 [추정]</td><td>브랜드 확장 서브 계정 운영</td><td>인스타 각 5-7천명</td></tr>
+            <tr><td><strong>신사업 (2025~)</strong></td><td>프리미엄 펫푸드 / 고령식(실버푸드) / 우주식</td><td>"생애 전주기 식품 플랫폼" 전환</td><td>진주바이오특구 100억 투자 + 코스맥스 협력</td></tr>
+        </table>
+        <div class="callout">
+            <strong>전략 시사점:</strong> 국내는 "산골이유식" 메인브랜드 + "아기의계절" 서브브랜드로 2트랙 정리됨. 해외는 "Baby Season" 상표권만 있고 "ECOMOMMEAL/Sangol" 영문 직런칭이 자력으로 시작됨 — <strong>브랜드 아키텍처 자체가 분기 상태</strong>. 오늘 상담의 3대 진짜 니즈 중 <strong>"산골 ↔ 베이비시즌 관계 정립"(25% 가중치)</strong>이 여기서 나옴.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 3. 디지털 프레즌스 (1년 변화 추적) -->
+    <!-- ============================================================ -->
+    <div class="section" id="digital-presence">
+        <h2>3. 디지털 프레즌스 · 1년 변화 추적 ★</h2>
+
+        <div class="channel-grid">
+            <div class="channel-card">
+                <div class="ch-name">@sangol.babyfood</div>
+                <div class="ch-stat">~1.8만</div>
+                <div class="ch-note"><strong>영문 전환 중</strong><br>필리핀 인플루언서 협업 확인</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">@sangol.kitchen</div>
+                <div class="ch-stat">5,214</div>
+                <div class="ch-note">정체 (작년 동일)</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">@sangol.jumbbang</div>
+                <div class="ch-stat">6,831</div>
+                <div class="ch-note">정체 (작년 동일)</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">카카오플친</div>
+                <div class="ch-stat">11,687</div>
+                <div class="ch-note">월 2회+ 제철재료 업데이트<br>안정 운영</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">11번가 쇼핑라이브</div>
+                <div class="ch-stat">3.4만 알림</div>
+                <div class="ch-note">77건 진행 · 라이브 주력</div>
+            </div>
+            <div class="channel-card" style="border-color: var(--danger);">
+                <div class="ch-name">유튜브</div>
+                <div class="ch-stat" style="color:var(--danger);">221 · 휴면</div>
+                <div class="ch-note">23.2.7 마지막 · 1년+ 휴면</div>
+            </div>
+        </div>
+
+        <h3>1년간 결정적 변화 3가지 (★ 수주 레버리지 포인트)</h3>
+        <table>
+            <tr><th>#</th><th>변화</th><th>의미</th><th>수주 시 활용</th></tr>
+            <tr>
+                <td>1</td>
+                <td><strong>@sangol.babyfood 영문 포스팅 전환</strong> — "Snack time made simple. Sangol Baby Food has no salt..." / 필리핀 @Little Peachlings PH 협업 / @eli_versus_food 해외 리뷰어</td>
+                <td>글로벌 마케팅이 <strong>자력으로 이미 시작됨</strong>. 브랜드 체계 없이 산발적 실행.</td>
+                <td>"이미 하고 계신 걸 체계로 묶어드립니다" (Essential 핵심 메시지)</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><strong>Amazon.com ECOMOMMEAL Sangol Rice Stick 4 SKU 런칭</strong> (Weee! Asian Market 병행)</td>
+                <td><strong>베이비시즌이 아닌 ECOMOMMEAL로 직진출</strong> → 브랜드 아키텍처 분기 상태. 직 FBA/현지 유통 여부 <strong>오늘 확인 필수</strong>.</td>
+                <td>"이미 있는 Amazon 실적을 베이비시즌 본격 런칭의 앵커 데이터로" (Professional 스토리)</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><strong>회사 피벗 공식화</strong> — 2025.07 경남일보·2025.11 서울신문에서 "생애 전주기 식품 기업" 선언, 펫푸드/고령식/우주식 3대 신사업</td>
+                <td>대표 에너지가 <strong>이유식 글로벌 전용이 아님</strong>. 작년 제안(이유식 풀세트)과 프레임 미스매치.</td>
+                <td>"글로벌 확장의 첫 점(앵커)을 어디에 찍을지" 프레임으로 재제안</td>
+            </tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>핵심 이슈:</strong> 대표님은 "다 인하우스"라고 말했지만, 실제로는 <strong>영문 인스타·Amazon 4 SKU·필리핀 인플루언서 협업</strong>을 자력으로 실행 중. 이것들이 <strong>통합 브랜드 거버넌스 없이 산발</strong>적으로 돌아가고 있는 게 진짜 문제. <strong>"이미 하고 있다 = 브랜드라이즈가 해줄 게 없다"가 아니라, "산발적으로 하고 있다 = 정리해주는 순간 즉시 효과"</strong>로 포지셔닝 전환 필수.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 4. 경쟁사 분석 -->
+    <!-- ============================================================ -->
+    <div class="section" id="competitors">
+        <h2>4. 경쟁사 분석</h2>
+
+        <h3>국내 영유아식 경쟁 구도</h3>
+        <table>
+            <tr><th>업체</th><th>포지션</th><th>최근 상황</th><th>시사점</th></tr>
+            <tr><td><strong>베베쿡 (엘빈즈 합병)</strong></td><td>배달 1위 · 시장점유율 43%</td><td>홍콩 사모펀드(TPG) 인수, 개인화 마케팅, 2014~ 중국 수출, 2021 중국지사, 미주·동남아 확장</td><td><span class="tag tag-red">에코맘 글로벌 경쟁 최대 위협</span></td></tr>
+            <tr><td>아이배냇 (대상그룹)</td><td>리테일 중심</td><td>재무 상위 9%, 구체 매출 미공개</td><td>대기업 자본력</td></tr>
+            <tr><td>아이조아 · 푸드케어 · 맘마밀</td><td>중견</td><td>국내 유지 중심</td><td>글로벌 진입 의사 미확인</td></tr>
+            <tr style="background:#f1f5ed"><td><strong>에코맘 산골이유식</strong></td><td>프리미엄 · 지역상생 · 스토리</td><td>200억 [추정] · 125농가 · 남해 3년 협약</td><td><span class="tag tag-green">차별화 자산 분명</span> · 글로벌 실행 부재</td></tr>
+        </table>
+
+        <h3>글로벌 레퍼런스 경쟁사 (북미 D2C)</h3>
+        <table>
+            <tr><th>브랜드</th><th>모델</th><th>시사점</th></tr>
+            <tr><td><strong>Gerber (Nestlé)</strong></td><td>매스 리테일 · 퓨레 중심</td><td>네슬레 인수 후 월령별 SKU 축소·효율화 중 — <strong>"거버 옆 매대"는 2010년대 전략</strong></td></tr>
+            <tr><td><strong>Little Spoon</strong></td><td>D2C 구독 + 6단계 블렌드</td><td>영유아 D2C·구독 표준, 유아~초등 확장. 누적 $44M 펀딩</td></tr>
+            <tr><td><strong>Yumi</strong></td><td>D2C 구독 (퓨레 → 스무디/바/퍼프로 피벗)</td><td>2026.01 퓨레 구독 일시중단. D2C → 하이브리드 리테일 전환 중. <strong>D2C 한계선도 보여줌</strong></td></tr>
+            <tr><td><strong>Serenity Kids</strong></td><td>목초 방목육·재생농업 · 프리미엄 가치 서사</td><td>$7M 펀딩. Expo West 2026 참가 확인. 에코맘과 가장 유사한 포지셔닝</td></tr>
+            <tr><td><strong>Earth's Best</strong></td><td>올가닉 리테일 표준</td><td>매스 프리미엄 기준점</td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>경쟁 프레임 재정의:</strong> 에코맘이 노려야 할 레퍼런스는 <strong>거버가 아니라 Serenity Kids · Little Spoon</strong>. "거버 옆 매대"를 말하는 순간 진입장벽·슬로팅피·경쟁 다 높은 레드오션 진입. <strong>"한국 프리미엄 이유식의 D2C + 구독 + 한정 리테일" 하이브리드</strong>가 승산 있는 길. 이게 오늘 Challenger Teaching 포인트 #1.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 5. 시장 환경 -->
+    <!-- ============================================================ -->
+    <div class="section" id="market">
+        <h2>5. 시장 환경</h2>
+        <table>
+            <tr><th>구분</th><th>규모</th><th>비고</th></tr>
+            <tr><td>국내 간편 영유아식 시장 (2015)</td><td>680억</td><td>aT</td></tr>
+            <tr><td>국내 간편 영유아식 시장 (2020)</td><td>1,671억</td><td>5년 2.5배</td></tr>
+            <tr><td>국내 간편 영유아식 시장 (2025 전망)</td><td>3,300억</td><td><span class="tag tag-green">10년 5배</span> / 서울파이낸스 [추정]</td></tr>
+            <tr><td>국내 영유아식 전체 시장 (2022)</td><td>2,534억</td><td>2016년 1,320억 → 2022 +92%</td></tr>
+            <tr><td>글로벌 오가닉 베이비푸드 (2026)</td><td>$9.56B</td><td>OpenPR</td></tr>
+            <tr><td>글로벌 오가닉 베이비푸드 (2034 전망)</td><td>$21.59B</td><td><span class="tag tag-green">CAGR 10.27%</span></td></tr>
+            <tr><td>중국 영유아식 (2024 말)</td><td>465억 위안</td><td>저출산에도 성장</td></tr>
+            <tr><td>국내 영유아 인구</td><td>70만 → 25만</td><td>[대표 발언] 저출산 심화, 1인당 지출 증가로 시장은 성장</td></tr>
+        </table>
+
+        <h3>K-푸드 수출 지원 인프라 2026 (★ 핵심 레버)</h3>
+        <table>
+            <tr><th>사업</th><th>주관</th><th>지원 범위</th><th>에코맘 적용성</th></tr>
+            <tr><td><strong>K-food+ Brand-Up 트랙</strong></td><td>aT</td><td>수출 유망 중견기업 현지화 컨설팅</td><td><span class="tag tag-green">매우 적합</span> — 2026 상반기 공고 확인됨</td></tr>
+            <tr><td>K-food+ Value-Up</td><td>aT</td><td>컨소시엄 최대 5억원 지원</td><td>코스맥스 협력 시 유효</td></tr>
+            <tr><td>2026 글로벌 K-푸드 페어 참가업체 모집</td><td>aT</td><td>박람회 부스·마케팅 지원</td><td>Natural Products Expo West 연계 가능</td></tr>
+            <tr><td>K-수출전략품목 통합 공고</td><td>중기부</td><td>중소기업 수출지원사업</td><td>에코맘 매출 규모 적합</td></tr>
+            <tr><td>BKF 바이어초청 수출상담회</td><td>aT</td><td>해외 바이어 매칭</td><td>1호국 바이어 확보 수단</td></tr>
+        </table>
+
+        <div class="callout callout-success">
+            <strong>레버 요약:</strong> 대표님이 말하는 "1억 컨설팅"은 K-food+ 매칭으로 <strong>실질 자부담 3천~7천대로 축소 가능</strong>. 이걸 아는 컨설팅사가 거의 없음. 브랜드라이즈가 제안서 동반 작성까지 묶어 제공하면 <strong>가격 장벽 해체 + 신뢰 장치 동시 확보</strong>. 오늘 상담 Challenger Teaching 포인트 #3.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 6. 대표자 프로필 -->
+    <!-- ============================================================ -->
+    <div class="section" id="ceo-background">
+        <h2>6. 대표자 프로필 — 오천호 대표</h2>
+        <div class="info-grid">
+            <div class="info-label">출생·배경</div>
+            <div class="info-value">경남 하동 농부 집안 출생. 2012 창업 당시 32세 → 현재 45세 추정</div>
+            <div class="info-label">초기 경력</div>
+            <div class="info-value">대학 피부미용 전공 → 외국계 화장품 영업 → 화장품 수입사 창업 → 서울 죽집 운영</div>
+            <div class="info-label">전환점</div>
+            <div class="info-value">죽집 운영 중 고객이 아이용 이유식 주문 → 2012년 고향 하동으로 귀향, 농업회사 창업</div>
+            <div class="info-label">성장 궤적</div>
+            <div class="info-value">2013년 매출 3.6억 → 2017년 54억 → 2019년 100억 돌파 → 2020년 100억 스마트공장 투자 → 2023년 167억 → 2024년 약 200억 [추정]</div>
+            <div class="info-label">경영 철학</div>
+            <div class="info-value">"사람은 미음부터 시작해 죽을 먹고 자라고, 노인이 되선 죽을 먹다 마지막엔 미음을 먹으며 일생을 마친다" — 생애주기 식품 비전</div>
+            <div class="info-label">2025~ 최신 비전</div>
+            <div class="info-value">"아기부터 어르신, 반려동물까지 나아가 <strong>우주에서도 먹을 수 있는</strong> 우리 식품이 목표" (2025.11 서울신문)</div>
+            <div class="info-label">리더십 스타일</div>
+            <div class="info-value">현장형 · 자부심형 · 비전형. 지역 농가 125곳 협약, 청년·취약계층 일자리 제공. 사람 중심 네트워킹(이상학 트릿지 부회장·하동 광고기획자 등)</div>
+            <div class="info-label">2024~25 주요 활동</div>
+            <div class="info-value">남해군 출생아 이유식 3년 연속 후원 협약 · 농림부 코엑스 푸드위크 프레젠테이션 · 경남도의원 현장방문 수용 · 중진공 Jump-Up 멘토링 수혜</div>
+            <div class="info-label">의사결정 스타일</div>
+            <div class="info-value">오너 CEO 직결 · 속도↑ / 변심·보류 리스크도 CEO에 집중. <strong>외부 업체와 일해본 경험 없음</strong> (본인 자백)</div>
+        </div>
+
+        <div class="callout">
+            <strong>코치 포인트:</strong> 제품 철학(크기/점성/농도), 13년 노하우, "본질·표준" 담론은 <strong>성역(sanctuary)</strong> — 정면 비판 금지. 승계·확장 관점으로만 접근. 레버리지 포인트는 원문에 단 3회 등장한 <strong>"다음 스텝이 뭔지 모르겠음"</strong> — 감정적 임계점 근처에서만 클로징 시도.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 7. SWOT 분석 -->
+    <!-- ============================================================ -->
+    <div class="section" id="swot">
+        <h2>7. SWOT 분석</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>S (강점)</h4>
+                <ul>
+                    <li>13년 노하우 · 크기/점성/농도 월령 설계 IP</li>
+                    <li>계약농가 <strong>125곳</strong> · 유기농쌀 <strong>300t/년</strong></li>
+                    <li>HACCP · 유기농 · 스마트공장(일 2만개)</li>
+                    <li>국내 매출 약 200억 [추정] · CAGR 12-19%</li>
+                    <li>현대백화점·롯데백화점 입점 · 11번가 라이브 안정</li>
+                    <li>남해 3년 연속 협약 · 기부 12.6억 — <strong>ESG 피치덱 자산</strong></li>
+                    <li>2025 중진공 Jump-Up 선정 (경남 유일 식품)</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>W (약점)</h4>
+                <ul>
+                    <li><strong>베이비시즌 상표만 5년, 실런칭 0</strong> (Trademark Graveyard)</li>
+                    <li>산골/아기의계절/베이비시즌/ECOMOMMEAL <strong>브랜드 아키텍처 분기</strong></li>
+                    <li>수출 조직 "국내 관리 수준" (대표 자백)</li>
+                    <li>외부 파트너 협업 경험 <strong>0</strong></li>
+                    <li>타겟국 전략 1년 만에 뒤집힘 (베트남 → 미국/일본)</li>
+                    <li>유튜브 1년+ 휴면 · 서브 인스타 정체</li>
+                    <li>대표 에너지 분산 (이유식+펫푸드+고령식+우주식)</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>O (기회)</h4>
+                <ul>
+                    <li>글로벌 오가닉 베이비푸드 CAGR <strong>10.27%</strong> ($21.59B/2034)</li>
+                    <li>K-푸드 북미 붐 피크 2025-2027 [추정]</li>
+                    <li>Yumi 구독 중단 = <strong>D2C 퍼플오션 구간</strong></li>
+                    <li>K-food+ aT Brand-Up 매칭 (실부담 1/3)</li>
+                    <li>코스맥스 협력 확보 — 글로벌 유통 레버</li>
+                    <li>Expo West 2027 3월 역산 기회</li>
+                    <li>이상학 부회장(트릿지) 커넥션</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>T (위협)</h4>
+                <ul>
+                    <li><strong>베베쿡 사모펀드 자본 공세</strong> (MS 43%, 중국 지사+미주·동남아)</li>
+                    <li>국내 영유아 인구 70만→25만 저출산 심화</li>
+                    <li>아이배냇(대상그룹) 대기업 자본</li>
+                    <li>Serenity Kids·Little Spoon 북미 직접 경쟁</li>
+                    <li>미국 상표 사용주의 — 5년 미사용 취소 리스크 [추정, 확인 필요]</li>
+                    <li>SK엔젤펀드 엑싯 압박 누적</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 8. 니즈 분석 (SPIN + JTBD + Pain Hierarchy) -->
+    <!-- ============================================================ -->
+    <div class="section" id="needs-analysis">
+        <h2>8. 니즈 분석 (SPIN + JTBD + Pain Hierarchy)</h2>
+
+        <div class="leverage-box">
+            <div style="font-size: 13px; opacity: 0.7; margin-bottom: 8px;">🎯 진짜 니즈 한 줄 압축</div>
+            <div class="quote">
+                오천호 대표님의 진짜 니즈는 "글로벌 컨설팅"이 아니라,<br>
+                13년간 가슴에 품은 <span class="hl">"거버 옆 K-이유식"</span> 비전을<br>
+                올해 안에 한 칸이라도 진짜로 움직여줄 —<br>
+                <span class="hl">실행 책임까지 함께 지는 외부 공동창업자급 파트너</span>.<br>
+                컨설팅 풀세트는 그 니즈의 외피(外皮)일 뿐.
+            </div>
+        </div>
+
+        <h3>SPIN 기반 니즈 레이어링</h3>
+        <div class="spin-grid">
+            <div class="spin-card spin-s">
+                <h4>S · Situation (현재 상황)</h4>
+                국내 200억 [추정] 매출. 백화점 입점 완료. 스마트공장·진주바이오특구 2중 투자. 베이비시즌 상표만 5년 등록. Amazon 4 SKU·영문 인스타·필리핀 인플루언서 협업은 자력으로 시작. 박람회 4-5년 출전했으나 바이어 전환 0. 수출팀은 "국내 관리 수준".
+            </div>
+            <div class="spin-card spin-p">
+                <h4>P · Problem (대표 인식 문제)</h4>
+                "수출 사업 기획이 먼저 필요하고, 브랜드 기획 정리, 입점·런칭 플랜이 뒤따라야." — 즉 <strong>"다음 스텝이 뭔지 모르겠음"</strong>이 유일한 망설임 서술. 13년 자문자답으로 Why·What은 정리됨. 막힌 건 <strong>How·Where to start</strong>.
+            </div>
+            <div class="spin-card spin-i">
+                <h4>I · Implication (방치 시 비용)</h4>
+                (a) K-푸드 북미 붐 2025-2027 타이밍 상실 / (b) 베베쿡 사모펀드 자본 공세에 선점당함 / (c) 영유아 인구 70→25만, 국내 역성장 3-5년 내 / (d) 45세 대표 "하동 이유식 사장" 라벨 고착 / (e) SK엔젤펀드 엑싯 압박 → 다음 라운드 밸류 영향.
+            </div>
+            <div class="spin-card spin-n">
+                <h4>N · Need-Payoff (해결 시 가치)</h4>
+                글로벌 진출 시 매출 3-10배 가능성. "한국의 거버" 타이틀 실현 → 업계 기조강연 레벨 커리어 도약. 카테고리 퍼스트무버 타이틀 — 대체 불가. 펫푸드·실버푸드·우주식 신사업의 <strong>해외 앵커(anchor) 데이터</strong> 확보.
+            </div>
+        </div>
+
+        <h3>Pain Hierarchy (4계층)</h3>
+        <div class="pain-layer">
+            <div class="pain-level pain-l1">
+                <span class="level-tag">L1 · 표면 요청</span>
+                "글로벌 진출 컨설팅 풀세트 (시장 리서치 + 브랜드 기획 + 입점/런칭 플랜)"
+            </div>
+            <div class="pain-level pain-l2">
+                <span class="level-tag">L2 · 전술적 문제</span>
+                수출 기획자 부재 · 3PL 모름 · 인허가 혼란 · 박람회 바이어 전환 설계 부재 · 산골↔베이비시즌 관계 미정리
+            </div>
+            <div class="pain-level pain-l3">
+                <span class="level-tag">L3 · 전략적 문제</span>
+                타겟 국가 확신 부족(1년 만에 뒤집힘) · 경쟁 포지셔닝 공백(거버 vs 한국?) · 브랜드 아키텍처 공백 · 상표 등록 ≠ 브랜드 존재 간극 미인식
+            </div>
+            <div class="pain-level pain-l4">
+                <span class="level-tag">L4 · 근본 원인</span>
+                13년 인하우스 → 외부 파트너 협업 근육 부재 · 대표 혼자 비전 품음, 조직 체화 X · 리스크 감수 기준 보수적 · 제품 자부심이 현지화 논의 어렵게 만듦
+            </div>
+        </div>
+
+        <h3>JTBD (Jobs-To-Be-Done)</h3>
+        <table>
+            <tr><th>층위</th><th>Job</th><th>해석</th></tr>
+            <tr><td><strong>Functional</strong></td><td>"해외 1곳에서 첫 유통 채널 + 첫 매출 + 재주문 도달"</td><td>측정 가능: 1국가 × 1채널 × PO 1건 × 재주문 1건 · 시한 기대 12개월 [추정]</td></tr>
+            <tr><td><strong>Social</strong></td><td>"하동 이유식 사장" → "K-이유식을 세계로 꺼낸 1세대 창업가"</td><td>관객: 현대백화점·SK엔젤펀드·농림부 · 이상학 부회장·트릿지 피어 · 창업가 커뮤니티</td></tr>
+            <tr><td><strong>Emotional</strong></td><td>"13년 가슴에 품은 자기 약속 미이행 부채감 해소"</td><td>45세는 도전형 타이틀 유효한 마지막 구간 [추정]. "오늘이 임계점"일 가능성.</td></tr>
+        </table>
+
+        <h3>표면 요청 vs 진짜 니즈 갭</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">표면 요청 (말로 하는 것)</div>
+                <ul>
+                    <li>글로벌 진출 컨설팅 풀세트 (1억+, 9-12개월)</li>
+                    <li>시장 리서치 · 브랜드 기획 · 입점 플랜</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">진짜 니즈 (추정 가중치)</div>
+                <ul>
+                    <li><strong>[40%]</strong> 90일 안에 손에 잡히는 증거 1개 — "작년에 못 움직인 나"를 부수는 심리적 해방</li>
+                    <li><strong>[35%]</strong> 타겟 국가 판정 — 베트남 vs 미국/일본 내기를 끊어주는 외부 권위</li>
+                    <li><strong>[25%]</strong> 브랜드 아키텍처 — 산골 ↔ 베이비시즌 ↔ ECOMOMMEAL 관계</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="callout callout-danger">
+            <strong>수주 리스크 1순위:</strong> 작년과 똑같이 "시장 리서치 6개월 + 브랜드 기획 + 입점 플랜"을 그대로 던지면 1년 방치 패턴 재현. 반드시 <strong>"90일 파일럿 → 본과제" 단계적 패키지</strong>로 재설계. 작년 1억은 "범위가 너무 커서 어디부터 잡을지 안 보였다"는 의미이지 "비쌌다"가 아님.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 9. GAP 분석 & 기회 평가 -->
+    <!-- ============================================================ -->
+    <div class="section" id="gap-analysis">
+        <h2>9. GAP 분석 & 기회 평가</h2>
+
+        <h3>기회 적합도 평가 (6개 항목 가중평균)</h3>
+        <div style="max-width: 620px;">
+            <div class="score-bar"><div class="label-text">니즈-서비스 핏 (30%)</div><div class="bar"><div class="fill fill-high" style="width:100%"></div></div><div class="score-num">5.0</div></div>
+            <div class="score-bar"><div class="label-text">예산 적합성 (20%)</div><div class="bar"><div class="fill fill-high" style="width:80%"></div></div><div class="score-num">4.0</div></div>
+            <div class="score-bar"><div class="label-text">의사결정 구조 (15%)</div><div class="bar"><div class="fill fill-high" style="width:80%"></div></div><div class="score-num">4.0</div></div>
+            <div class="score-bar"><div class="label-text">긴급도 (15%)</div><div class="bar"><div class="fill fill-mid" style="width:60%"></div></div><div class="score-num">3.0</div></div>
+            <div class="score-bar"><div class="label-text">성장 잠재력 (10%)</div><div class="bar"><div class="fill fill-high" style="width:100%"></div></div><div class="score-num">5.0</div></div>
+            <div class="score-bar"><div class="label-text">레퍼런스 가치 (10%)</div><div class="bar"><div class="fill fill-high" style="width:100%"></div></div><div class="score-num">5.0</div></div>
+            <div class="score-bar" style="margin-top:12px;"><div class="label-text"><strong>가중평균</strong></div><div class="bar"><div class="fill fill-high" style="width:87%"></div></div><div class="score-num"><strong>4.35</strong></div></div>
+            <div class="score-bar"><div class="label-text" style="color:var(--danger)">재접촉 감점 (-0.3)</div><div class="bar"><div class="fill fill-low" style="width:6%"></div></div><div class="score-num" style="color:var(--danger)">-0.30</div></div>
+        </div>
+
+        <div class="verdict">
+            <div class="label">기회 적합도 종합</div>
+            <div class="value">4.05 / 5.0</div>
+            <div class="desc">GO (조건부) — 티어 모듈화 · 중간 Go/No-Go 장치 · 정부매칭 3종 세트 필수</div>
+        </div>
+
+        <h3>1년 공백 이유 가설별 분기 대응</h3>
+        <table>
+            <tr><th>가설</th><th>시그널</th><th>탐침 질문</th><th>수주 대응</th></tr>
+            <tr><td><strong>A. 가격 저항</strong></td><td>"예산 여유가 없었다" 언급</td><td>"작년 저희 제안 규모 어떻게 보셨어요?"</td><td>Essential 2천대 선제공 + K-food+ 매칭</td></tr>
+            <tr><td><strong>B. 내부 리소스 부재</strong></td><td>해외영업 담당 공석</td><td>"수출 담당 지금 누가 계세요?"</td><td>HIZ가 PM 대리 add-on (+천만원대)</td></tr>
+            <tr><td><strong>C. 피벗 (신사업 우선)</strong></td><td>코스맥스·진주특구·펫푸드 언급</td><td>"지난 1년 회사 가장 큰 일은?"</td><td>글로벌+신사업 통합 제안으로 재프레이밍</td></tr>
+            <tr><td><strong>D. 대표 생각 변화</strong></td><td>국내/실버푸드 우선순위 언급</td><td>"지금 가장 큰 관심사?"</td><td>국내 리브랜딩+아키텍처 제안 선회</td></tr>
+            <tr><td><strong>E. 실행 공포 (Emotional Job)</strong></td><td>"다음 스텝 모르겠다" 반복</td><td>"작년과 지금 가장 달라진 게?"</td><td>90일 파일럿 = 공포 상쇄 장치</td></tr>
+        </table>
+
+        <h3>오늘 재회의의 진짜 목적 가설 (확률 가중)</h3>
+        <table>
+            <tr><th>가설</th><th>확률</th><th>근거</th><th>수주 프레임</th></tr>
+            <tr><td><strong>B. 펫푸드/고령식 신사업 컨설팅</strong></td><td><span class="tag tag-red">45%</span></td><td>2025.07 경남일보에서 가장 길게 언급, 코스맥스·진주특구 동시 가동, 펫 프리미엄 미국 시장 급성장</td><td>"생애주기 플랫폼 글로벌 진출" 확대 프레임</td></tr>
+            <tr><td><strong>A. 이유식 글로벌 재추진</strong></td><td><span class="tag tag-yellow">30%</span></td><td>자체 시도(Amazon·영문 인스타)의 한계 감지, 이상학 부회장 커넥션 유지</td><td>Essential 디스커버리 스프린트 직입</td></tr>
+            <tr><td><strong>C. 국내 리브랜딩 + 아키텍처</strong></td><td><span class="tag tag-yellow">25%</span></td><td>산골/아기의계절/베이비시즌/ECOMOMMEAL 혼란 임계치, 중견기업 도약 필요</td><td>브랜드 아키텍처 워크숍 · BI 체계 제안</td></tr>
+        </table>
+
+        <h3>수주 확률 시나리오</h3>
+        <table>
+            <tr><th>시나리오</th><th>확률</th><th>정의</th><th>기대 금액</th></tr>
+            <tr><td><strong>낙관</strong></td><td>40%</td><td>Essential 즉시 수주(2-3주 내) → 3개월 내 Professional 업셀</td><td>8천~1억대</td></tr>
+            <tr><td><strong>기본</strong></td><td>25%</td><td>Essential 견적 요청 후 2-3주 검토 → 절반 확률 수주</td><td>2천대</td></tr>
+            <tr><td><strong>비관</strong></td><td>10%</td><td>오늘은 탐색, 연내 재접촉 약속만 받기</td><td>0 (옵션 가치)</td></tr>
+            <tr><td>No-Go</td><td>25%</td><td>작년 반복 / 무기한 보류</td><td>0</td></tr>
+        </table>
+        <div class="callout callout-info">
+            <strong>기대값 계산:</strong> 40% × 9천만 + 25% × 2천5백만 + 10% × 0 + 25% × 0 ≈ <strong>약 4,200만원 기대값</strong>. Essential만 먼저 실현 시 2천만대 즉시 실현 가능성 65%.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 10. 3-Tier 견적 초안 -->
+    <!-- ============================================================ -->
+    <div class="section" id="quote">
+        <h2>10. 3-Tier 견적 초안 (재접촉 특화 모듈화)</h2>
+
+        <div class="tier-cards">
+            <div class="tier-card">
+                <h4>Essential</h4>
+                <div style="font-size:12px; color:var(--text-light); margin-bottom:6px;">글로벌 진출 디스커버리 스프린트</div>
+                <div class="price">2,000~3,000만</div>
+                <div class="price-sub">정부매칭 시 실부담 1천만원대</div>
+                <div class="duration">4~6주 · 진단·의사결정</div>
+                <ul>
+                    <li>타겟국 2개 비교 분석 (시장 크기·규제·유통·가격저항·K붐)</li>
+                    <li>Amazon ECOMOMMEAL + 영문 인스타 자력 실행 자산 인벤토리</li>
+                    <li>산골 ↔ 베이비시즌 ↔ ECOMOMMEAL 관계 초안</li>
+                    <li>초기 포지셔닝 가설 (거버 vs Serenity Kids vs 독자)</li>
+                    <li>다음 단계 의사결정 체크리스트 1장</li>
+                    <li>K-food+ 매칭 가능성 리포트 1장</li>
+                    <li><strong>Professional 미진행 시 위약금 0원</strong></li>
+                </ul>
+            </div>
+            <div class="tier-card recommended">
+                <div class="tier-badge">RECOMMENDED</div>
+                <h4>Professional</h4>
+                <div style="font-size:12px; color:var(--text-light); margin-bottom:6px;">베이비시즌 글로벌 1호국 런칭 엔진</div>
+                <div class="price">6,000~8,000만</div>
+                <div class="price-sub">정부매칭 시 실부담 3천만원대</div>
+                <div class="duration">4~6개월 · 전략+실행 준비</div>
+                <ul>
+                    <li>Essential 전체 포함</li>
+                    <li>타겟국 2개 <strong>심층 서베이</strong> (유통채널·가격대·경쟁사·규제)</li>
+                    <li><strong>베이비시즌 글로벌 브랜드덱</strong> (국문/영문)</li>
+                    <li>첫 박람회 부스 + 바이어 미팅 플랜 (Expo West 2027 역산)</li>
+                    <li>Go-to-Market 12개월 로드맵</li>
+                    <li>투자자용 IR 글로벌 섹션 산출물</li>
+                    <li>분기 Go/No-Go 결정점 <strong>2회</strong></li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>Premium</h4>
+                <div style="font-size:12px; color:var(--text-light); margin-bottom:6px;">K-이유식 글로벌 표준 프로젝트 (작년 원안의 진화판)</div>
+                <div class="price">1.5억~2억</div>
+                <div class="price-sub">정부매칭 시 실부담 7천~1억대</div>
+                <div class="duration">9~12개월 · 풀 파트너십</div>
+                <ul>
+                    <li>Professional 전체 포함</li>
+                    <li>풀 서베이 + 브랜딩 + 입점/런칭 + 영업 세일즈킷</li>
+                    <li>Expo West 2027(3월) 부스 실행</li>
+                    <li>1호국 첫 바이어 계약 지원 (3PL·인허가 포함)</li>
+                    <li>FDA/JAS 규제 대응 워킹 그룹</li>
+                    <li>12개월 KPI 리뷰·리포팅 · 단계별 중도 중단 옵션</li>
+                    <li>Fractional CMO/CSO 리테이너 옵션</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="leverage-box">
+            <div style="font-size: 13px; opacity: 0.7; margin-bottom: 8px;">💰 가치 프레이밍 한 줄</div>
+            <div class="quote">
+                "작년엔 통짜 1억을 드렸어요. 대표님이 망설이신 게 맞았습니다.<br>
+                올해는 <span class="hl">Essential 4주, 2천대로 먼저 문을 여는 구조</span>.<br>
+                Professional로 안 넘어가셔도 <span class="hl">위약금 0원</span>,<br>
+                K-food+ 매칭까지 얹으면 <span class="hl">실부담이 1/3</span>로 줄어듭니다."
+            </div>
+        </div>
+
+        <div class="callout callout-info">
+            <strong>상담 전 확인 필요 (내부 체크):</strong> (1) 오늘 가장 궁금한 주제가 이유식 글로벌인지 신사업(펫푸드/고령식)인지 / (2) 코스맥스 협력 구체 범위 / (3) Amazon ECOMOMMEAL SKU 직 FBA인지 위탁인지 / (4) 내부 해외영업 담당 현재 인원 / (5) SK엔젤펀드 다음 라운드 타이밍.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 11. 상담 전략 & 코칭 -->
+    <!-- ============================================================ -->
+    <div class="section" id="strategy">
+        <h2>11. 상담 전략 & 코칭 (60분 대면)</h2>
+
+        <div class="leverage-box">
+            <div style="font-size: 13px; opacity: 0.7; margin-bottom: 8px;">🎤 오프닝 30초 멘트 (대면 입장 직후)</div>
+            <div class="quote" style="font-size:17px;">
+                "대표님, 1년 만이네요. 오시는 길 어떠셨어요?<br>
+                저 사실은 오늘 오전에 경남일보 그 <span class="hl">'세계로 향하는 꿈'</span> 기획 다시 한 번 정독하고 왔습니다.<br>
+                거기서 '펫푸드, 우주식품은 다음 세대를 위한 준비'라고 하신 문장이<br>
+                작년 <span class="hl">'거버 옆에 K-이유식'</span> 그 말이랑 정확히 이어지더라고요.<br>
+                생애주기로 브랜드를 끌고 가시는 그림이 1년 전보다 훨씬 선명해지셔서,<br>
+                오늘은 제가 많이 <span class="hl">듣는 자리</span>로 잡았어요.<br>
+                커피 한 잔 하시면서, 1년 동안 베이비시즌 쪽은 어떻게 흘러왔는지부터 편하게 풀어주시겠어요?"
+            </div>
+        </div>
+
+        <h3>60분 상담 타임라인</h3>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 1<br>0~5분</div>
+            <div class="phase-content">
+                <h4>라포·재회 분위기</h4>
+                <p>작년 "거버 옆에 K-이유식" 구체 인용 / 남해 3년 연속 협약 뉴스 언급 / "오늘은 듣는 자리" 선언</p>
+                <p class="phase-note">주의: 이력서 나열 금지. 두 문장이면 충분. 대표가 말 꺼낼 공간 확보.</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 2<br>5~17분</div>
+            <div class="phase-content">
+                <h4>1년 변화 추적 (듣기 80%)</h4>
+                <p>핵심 질문 #1 투입 → 받아치기 금지 · 키워드만 메모 / 보조: "그때 1순위였던 베트남은 지금도 유효한가요?"</p>
+                <p class="phase-note">Phase 2 종료 시 1회 요약 확인: "정리하면 지난 1년은 ~ 이렇게 받아들여도 될까요?"</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 3<br>17~30분</div>
+            <div class="phase-content">
+                <h4>진짜 목적 추출 (침묵 70%)</h4>
+                <p>핵심 질문 #2, #3 연달아 투입 · <strong>5초 침묵 규칙 엄수</strong> / 표정 변화 관찰 — "작년 1억" 단어에서 눈썹/손짓/목소리 3개 중 2개 바뀌면 가격 이슈 확정</p>
+                <p class="phase-note">본인이 변명 먼저 꺼내면 파고들지 말 것. "네, 타이밍도 실력이니까요" 한 마디로 종결.</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 4<br>30~40분</div>
+            <div class="phase-content">
+                <h4>Challenger Teaching (SCQA)</h4>
+                <p>3개 인사이트 주입: (1) 거버 시대 저무는 D2C 트렌드(Little Spoon/Yumi/Serenity Kids) (2) Trademark Graveyard 루틴 경고 (3) K-food+ 정부매칭으로 실부담 1/3</p>
+                <p class="phase-note">펫푸드·우주식품 얘기로 빠지면 글로벌 축으로 묶기: "그 확장 전부 '생애주기 플랫폼'이시잖아요. 베이비시즌 1호국 성공이 그 전체의 <strong>앵커이자 IR 증빙</strong>입니다."</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 5<br>40~50분</div>
+            <div class="phase-content">
+                <h4>솔루션 방향 (3-Tier 오픈)</h4>
+                <p><strong>인정 멘트 먼저</strong>: "작년엔 저희도 너무 큰 그림을 한 번에 드렸어요." / Essential 2~3천 · Professional 6~8천 · Premium 1.5~2억 구조 입으로만. 서류 X / 핵심 질문 #4, #5 투입.</p>
+                <p class="phase-note">"80%의 고객이 Professional 선택"이라는 앵커 멘트 (중앙값 포지셔닝)</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 6<br>50~60분</div>
+            <div class="phase-content">
+                <h4>클로징 (Next Step 고정)</h4>
+                <p>"2주 안에 Essential 견적 1장 + K-food+ 매칭 리포트 1장 보내드릴게요 (각 10분 안에 읽는 분량)." / 실무 해외영업 담당자 다음 미팅 동석 요청 / <strong>Trusted Advisor Quick Tip 즉석 시연</strong>.</p>
+            </div>
+        </div>
+
+        <h3>필수 질문 5개</h3>
+        <div class="question-card">
+            <div class="q-num">Q1 · Phase 2 메인</div>
+            <div class="q-text">"작년에 저희랑 얘기 나눈 뒤로 <strong>1년 동안 베이비시즌은 어떻게 진행되셨어요?</strong> 상표 유지만 되어도 괜찮고, 솔직하게 말씀해주셔도 됩니다."</div>
+            <div class="q-intent">의도: 진척도 확인 (상표만 유지 vs 자체 시도 실패 vs 타 에이전시 경합)</div>
+            <div class="q-branch">분기: "상표만 있어요" → Essential 진입 신호 / "한 번 해봤는데…" → 실패 데이터 경청 / "다른 곳이랑 해봤어요" → "어떤 부분이 아쉬우셨어요?" 1회만</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q2 · Phase 3 메인</div>
+            <div class="q-text">"오늘 <strong>다시 뵙자고 하신 건 혹시 특별한 계기가 있으셨어요?</strong> 작년이랑 지금 대표님 마음이 어떻게 다르신지 궁금해요."</div>
+            <div class="q-intent">의도: 재접촉 동인 + 오늘 진짜 의제 판별</div>
+            <div class="q-branch">분기: 투자 라운드 → IR덱 연계 / 경쟁사 추격 → 차별화 프레임 / K-food+ 공고 → 매칭 리포트 무게↑ / 생애주기 확장 → 베이비시즌을 앵커로 재배치</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q3 · Phase 3 임계</div>
+            <div class="q-text">"그때 저희 제안 받으시고, <strong>가장 마음에 걸리셨던 부분</strong> 솔직히 여쭤봐도 될까요? 저희도 그 숙제를 1년 동안 풀어왔거든요."</div>
+            <div class="q-intent">의도: 미성사 원인 5종(가격/기간/범위/신뢰/타이밍) 판별</div>
+            <div class="q-branch">분기: 금액 → "Essential은 1/3~1/4" / 9개월 길어 → "Essential 6주" / 신뢰 이슈 → "리스크 낮은 테스트 드라이브" / 본인 변명 → 파고들지 말 것</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q4 · Phase 5 유도</div>
+            <div class="q-text">"지금 <strong>대표님 머릿속에서 '올해 안에 이것만 되면 성공'</strong> 하실 만한 한 가지 있으세요? 매출·팔로워 그런 거 말고, 진짜 사적으로라도요."</div>
+            <div class="q-intent">의도: 진짜 KPI 판별 — 1호국 첫 매출 / 박람회 / 투자자 보고 / 개인 성취</div>
+            <div class="q-branch">분기: 답변에 따라 Essential·Professional·Premium 각 정당성 자동 매칭</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q5 · Phase 5 클로징 브릿지</div>
+            <div class="q-text">"만약 저희가 <strong>작은 규모로라도 먼저 시작한다면</strong>, 대표님 입장에서 지금 제일 답답한 데가 어디세요? 시장을 모르는 건지, 브랜드 언어가 막힌 건지, 바이어 리스트가 없는 건지."</div>
+            <div class="q-intent">의도: Essential 첫 모듈 자동 선택 (시장 / 브랜드 / 바이어)</div>
+            <div class="q-branch">분기: "다 답답해요" → 오히려 좋음. "그럼 2주 뒤 우선순위 1개부터 제시드릴게요"로 견적 명분 확보</div>
+        </div>
+
+        <h3>Challenger Teaching 3포인트</h3>
+        <div class="leverage-box">
+            <div class="quote">
+                (1) <span class="hl">거버 옆 매대는 2010년대 전략</span> — 네슬레 인수 후 SKU 축소, D2C(Little Spoon/Yumi/Serenity Kids)가 프리미엄 성장 주도<br>
+                (2) <span class="hl">"상표만 5년, 실행 0년" = Trademark Graveyard 루틴</span> — 비비고 미국 단일 집중 3년이 해답<br>
+                (3) <span class="hl">K-food+ aT Brand-Up 매칭</span>으로 실질 자부담 30-70% 경감 — 아는 컨설팅사 거의 없음
+            </div>
+        </div>
+
+        <h3>예상 반론 & 대응</h3>
+        <table>
+            <tr><th>반론</th><th>대응 한 문장</th></tr>
+            <tr><td>"작년 제안이 너무 컸어요"</td><td>"네, 저희도 숙제로 생각했습니다. 올해는 4주짜리 Essential부터, Professional 안 넘어가셔도 위약금 0원입니다."</td></tr>
+            <tr><td>"인하우스로 해보려고 했는데"</td><td>"13년 인하우스 자산은 엄청납니다. 저희는 대체가 아니라 <strong>번역·증폭</strong>이에요."</td></tr>
+            <tr><td>"다른 컨설팅사도 알아보는 중"</td><td>"잘하셨어요. 파트너 선택이 70%입니다. 핏 안 맞으면 저희도 솔직히 말씀드릴게요. 다만 작년 저희 제안 이해하시는 분은 이미 저희뿐이라는 점은 있어요."</td></tr>
+            <tr><td>"좀 더 생각해볼게요"</td><td>"네. 다만 2027년 3월 Expo West 목표라면 역산해서 <strong>2026년 5~6월 킥오프가 마지노선</strong>이에요."</td></tr>
+            <tr><td>"정부지원 매칭 진짜 되나요?"</td><td>"aT K-food+ Brand-Up 트랙 2026 상반기 공고 이미 있었습니다. 저희가 제안서 동반 작성까지 해드려요."</td></tr>
+            <tr><td>"펫푸드·우주식품이 더 급해요"</td><td>"그 확장 전부 '생애주기 플랫폼'이시잖아요. 베이비시즌 1호국 성공이 그 전체의 <strong>앵커이자 IR 증빙</strong>입니다. 순서가 중요해요."</td></tr>
+            <tr><td>"가격만 말해봐요"</td><td>"대 가격대는 Essential 2~3천, Professional 6~8천대로만 말씀드려도 될까요? 정확한 숫자는 오늘 대화 기반으로 2주 안에."</td></tr>
+        </table>
+
+        <div class="callout callout-success">
+            <strong>💡 Trusted Advisor Quick Tip (상담 마무리 시연):</strong>
+            종이 한 장 꺼내서 대표님 앞에서 직접 그리기. 세로축(시장규모/규제/유통진입비용/가격저항/K붐/프리미엄 소비력) × 가로축(Phase 2·4에서 언급된 2개국). 완성 후 <strong>대표님 핸드폰으로 직접 사진 찍으시라고</strong> 드리기 → "공식 문서는 48시간 안에 이메일로." 견적서 보내기 전에 먼저 준다는 시그널 = 자기이익 낮추는 신뢰 장치.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 12. 클로징 전략 -->
+    <!-- ============================================================ -->
+    <div class="section" id="closing">
+        <h2>12. 클로징 전략</h2>
+
+        <h3>이상적 다음 스텝 플로우</h3>
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="step-num">STEP 1 · 당일 밤</div>
+                <div class="step-title">감사 문자</div>
+                <div class="step-desc">작년·올해 연결 멘트 + 48시간 내 타겟국 비교 약속</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 2 · 48시간</div>
+                <div class="step-title">타겟국 비교 1-pager</div>
+                <div class="step-desc">현장 스케치 공식 PDF화. CC 실무 담당자</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 3 · 2주</div>
+                <div class="step-title">Essential 견적 + K-food+ 매칭 리포트</div>
+                <div class="step-desc">각 1장 원칙 · 읽는 데 10분 안 넘게</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 4 · 2주+3일</div>
+                <div class="step-title">30분 통화/화상</div>
+                <div class="step-desc">"읽으셨으면 반응만 짧게, 수정은 다음에"</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 5 · 4주</div>
+                <div class="step-title">현장 재미팅</div>
+                <div class="step-desc">실무 해외영업 담당자 동석 — 디테일 받아 적는 자리</div>
+            </div>
+        </div>
+
+        <h3>긴급성 3대 레버 (Phase 4·6 투입)</h3>
+        <table>
+            <tr><th>레버</th><th>내용</th><th>마지노선</th></tr>
+            <tr><td><strong>Expo West 2027 역산</strong></td><td>부스 확보·브랜드덱·영문 세일즈킷 필요</td><td>2026년 5~6월 킥오프</td></tr>
+            <tr><td><strong>베베쿡 자본 공세</strong></td><td>TPG 자금으로 글로벌 선점 시 추격 어려움</td><td>2026 하반기 전 포지셔닝 확정</td></tr>
+            <tr><td><strong>aT 2026 상반기 공고</strong></td><td>매칭펀드 기회 — 놓치면 자부담 100%</td><td>공고별 상이 · 상시 체크 필요</td></tr>
+        </table>
+
+        <h3>리스크 제거 장치 (3중)</h3>
+        <div class="swot-grid">
+            <div class="swot-item swot-o">
+                <h4>1. 위약금 0원 조항</h4>
+                Essential → Professional 미진행 시 위약금 없음. 4주 후 자유롭게 이탈 가능.
+            </div>
+            <div class="swot-item swot-s">
+                <h4>2. 차감 크레딧</h4>
+                Essential 비용의 일부는 Professional 진행 시 차감. "이중 지불 아닙니다."
+            </div>
+            <div class="swot-item swot-o">
+                <h4>3. Go/No-Go 결정점 2회</h4>
+                Professional 진행 중 분기별 중단 옵션. 대표 컨트롤권 유지.
+            </div>
+            <div class="swot-item swot-s">
+                <h4>4. 무료 산출물 2종</h4>
+                타겟국 비교 + K-food+ 매칭 리포트는 <strong>진행 안 해도 남겨드림</strong> (Trusted Advisor).
+            </div>
+        </div>
+
+        <h3>내부 챔피언 전략</h3>
+        <table>
+            <tr><th>타겟</th><th>역할</th><th>접근 방식</th></tr>
+            <tr><td>오천호 대표</td><td>비전·의사결정</td><td>오늘 1차 상담 · 비전 언어 증폭 · 감정 임계점 공략</td></tr>
+            <tr><td>실무 해외영업 담당 [미확인]</td><td>실행·디테일</td><td>4주 차 재미팅 동석 요청 (Q: 지금 누가 계세요?)</td></tr>
+            <tr><td>코스맥스 파트너 담당 [추정]</td><td>유통·R&D 레버</td><td>Professional 단계에서 연계, 오늘은 언급만</td></tr>
+            <tr><td>SK엔젤펀드 IR 담당 [추정]</td><td>IR덱 수요자</td><td>IR 글로벌 섹션을 Professional 산출물에 포함해 간접 어필</td></tr>
+            <tr><td>이상학 부회장(트릿지)</td><td>신뢰 커넥터</td><td>재접촉 경로. 상담 후 감사 문자에 맥락 언급 고려</td></tr>
+        </table>
+
+        <div class="callout callout-success">
+            <strong>🎯 최종 권고:</strong> Essential 2천대 즉시 수주 → Professional 6~8천대 업셀 시나리오를 <strong>1순위 목표</strong>로, Premium 1.5억+은 대표 꿈 유지용 <strong>"앵커이자 보험"</strong>으로 둔다. 작년 실패의 진짜 교훈은 "가격이 아니라 <strong>Landing Spot이 안 보였다</strong>"는 것. 오늘은 4주 뒤 손에 쥘 수 있는 <strong>"타겟국 2개 비교 분석 한 장"</strong>이라는 초구체적 산출물을 무료로 약속하는 게 수주의 절반이다.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 13. 참고 링크 -->
+    <!-- ============================================================ -->
+    <div class="section" id="sources">
+        <h2>13. 참고 링크 (Sources · 팩트체크 완료)</h2>
+
+        <h3>에코맘 산골이유식 공식/보도</h3>
+        <div class="source-list">
+            <a href="https://ecomommeal.co.kr" target="_blank">에코맘의 산골이유식 공식 홈페이지</a><br>
+            <a href="https://www.instagram.com/sangol.babyfood/" target="_blank">Instagram @sangol.babyfood (영문 전환 확인)</a><br>
+            <a href="https://www.amazon.com/ECOMOMMEAL-Sangol-Rice-Stick-Additives/dp/B0FGNTX81V" target="_blank">★ Amazon.com ECOMOMMEAL Sangol Rice Stick (핵심 발견)</a><br>
+            <a href="https://www.sayweee.com/en/product/Sangol-Ecomom-Organic-Rice-Sticks--Spinach-Flavor/87255" target="_blank">Weee! Asian Market 병행 유통</a><br>
+            <a href="https://www.gnnews.co.kr/news/articleView.html?idxno=614193" target="_blank">★ 경남일보 2025.07 "세계로 향하는 에코맘의 꿈[상]" (코스맥스 협력 공식화)</a><br>
+            <a href="https://www.gnnews.co.kr/news/articleView.html?idxno=614336" target="_blank">경남일보 "세계로 향하는 에코맘의 꿈[하]" (펫푸드·우주식품)</a><br>
+            <a href="https://www.seoul.co.kr/news/economy/2025/11/20/20251120500183" target="_blank">★ 서울신문 2025-11-20 "엄마들의 마음 사로잡는 이유식" ("우주에서도 먹을 수 있는" 발언)</a><br>
+            <a href="https://kr.aving.net/news/articleView.html?idxno=1795707" target="_blank">aving 2024.11 실온이유식 "아기의계절" 공개</a><br>
+            <a href="https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003204742" target="_blank">오마이뉴스 2026-02-04 남해 3년 연속 출생아 후원 협약</a><br>
+            <a href="https://www.kpinews.kr/newsView/1065571414085336" target="_blank">KPI뉴스 2026.02.05 남해군 협약</a><br>
+            <a href="https://www.metroseoul.co.kr/article/20220410500050" target="_blank">메트로서울 2022 "한국의 거버" 오천호 대표 인터뷰</a><br>
+            <a href="https://www.theguru.co.kr/news/article.html?no=29737" target="_blank">더구루 2021.12 "내년 일본 진출 · 수출 10개국"</a><br>
+            <a href="https://www.saramin.co.kr/zf_user/company-info/view-inner-finance/csn/T01hem9QektZYXhuSTRIMDJJR2g2dz09/" target="_blank">사람인 — 에코맘의산골이유식 재무정보 (2023 공시)</a><br>
+            <a href="https://www.agrinet.co.kr/news/articleView.html?idxno=158091" target="_blank">한국농어민신문 — 농업-기업 상생협력 우수사례</a>
+        </div>
+
+        <h3>경쟁사·시장 (교차 검증)</h3>
+        <div class="source-list">
+            <a href="https://www.ibabynews.com/news/articleView.html?idxno=51449" target="_blank">베이비뉴스 — 베베쿡 업계 1위 MS 43%</a><br>
+            <a href="https://www.thebell.co.kr/free/content/ArticleView.asp?key=202106171007030000103659&lcode=00" target="_blank">더벨 — TPG 헬스밸런스 매각</a><br>
+            <a href="https://www.seoulfn.com/news/articleView.html?idxno=312535" target="_blank">서울파이낸스 — 이유식 시장 2025 전망</a><br>
+            <a href="https://www.openpr.com/news/4384378/organic-baby-food-market-size-is-expected-to-reach-usd-21-59" target="_blank">Organic Baby Food Market 2034 $21.59B</a><br>
+            <a href="https://www.futuremarketinsights.com/reports/baby-food-market" target="_blank">Future Market Insights — Baby Food Market 2025-2035</a><br>
+            <a href="https://www.koreaherald.com/article/10689389" target="_blank">Korea Herald — Pulmuone Expo West 2026</a><br>
+            <a href="https://www.cubbyathome.com/best-baby-and-kids-food-delivery-services-80023786" target="_blank">Cubby — Best Baby Food Subscriptions (Little Spoon/Yumi 비교)</a><br>
+            <a href="https://www.mysubscriptionaddiction.com/little-spoon-vs-yumi-which-baby-food-subscription-is-better" target="_blank">Little Spoon vs Yumi D2C 비교</a><br>
+            <a href="https://www.nosh.com/news/2021/yumi-funding-caps-off-year-of-growing-attention-on-childrens-nutrition/" target="_blank">Nosh — Yumi Funding</a>
+        </div>
+
+        <h3>K-푸드 수출지원 인프라 2026</h3>
+        <div class="source-list">
+            <a href="https://global.at.or.kr/front/bizReq/brList.do?_mtype=B&_dept1=3" target="_blank">★ aT 수출종합지원시스템 모집공고</a><br>
+            <a href="https://global.at.or.kr/front/board/noticeView.do?notice_no=570&_mtype=F&_dept1=1" target="_blank">2026 글로벌 K-푸드 페어 참가업체 상반기 모집공고</a><br>
+            <a href="https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000116737" target="_blank">K-수출전략품목 — 2026 중소기업 수출지원사업 통합 공고</a><br>
+            <a href="https://www.kati.net/board/pressKitView.do?board_seq=104860&menu_dept2=34&menu_dept3=360" target="_blank">KATI — 차세대 K-푸드 스타육성 프로젝트</a><br>
+            <a href="https://www.expowest.com/en/home.html" target="_blank">Natural Products Expo West 2026 공식</a>
+        </div>
+
+        <h3>벤치마크 — 한국 F&B 글로벌 진출 케이스</h3>
+        <div class="source-list">
+            <a href="https://www.insightkorea.co.kr/news/articleView.html?idxno=210087" target="_blank">인사이트코리아 — CJ제일제당 미국 비비고 성공전략</a><br>
+            <a href="https://www.nanro.kr/what-we-do/insight/id/40" target="_blank">NANRO — 비비고 브랜딩과 해외 진출 비하인드</a><br>
+            <a href="https://magazine.hankyung.com/business/article/202106239632b" target="_blank">매거진한경 — 비비고 10년 초고속 성장</a><br>
+            <a href="https://cjnews.cj.net/%EB%AF%B8%EA%B5%AD-%EB%A7%8C%EB%91%90-%EC%8B%9C%EC%9E%A5-%EC%A0%90%EC%9C%A0%EC%9C%A8-1%EC%9C%84-%EB%B9%84%EB%B9%84%EA%B3%A0%EA%B0%80-%EA%B1%B8%EC%96%B4%EC%98%A8-%EA%B8%B8%F0%9F%A5%9F/" target="_blank">CJ뉴스룸 — 미국 만두 시장 점유율 1위 비비고</a>
+        </div>
+
+        <div class="callout callout-info" style="margin-top:16px;">
+            <strong>⚠️ 확인 필요 (상담 중 직접 질문 권장):</strong><br>
+            (1) 2024년 매출 정확 숫자 / (2) Amazon ECOMOMMEAL SKU 직 FBA 여부 / (3) 베이비시즌 미국 상표 갱신 상태(사용주의) / (4) 코스맥스 협력 계약 범위 / (5) 내부 해외영업 담당 공석 여부 / (6) 유튜브 휴면 재개 계획 / (7) 오 대표 최근 인터뷰 시점 확인
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p><strong>BRANDRISE (MarketingOS)</strong> — New Business 재접촉 상담 준비 패키지</p>
+    <p>본 문서는 상담 준비 목적 내부 참고자료이며, 외부 공유 시 사전 승인이 필요합니다.</p>
+    <p>작성일 2026-04-21 · 4개 전담 에이전트 병렬 리서치 결과 종합 (프로파일러·니즈분석·수주전략·상담코치)</p>
+</div>
+
+</body>
+</html>
