@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>르베로 LEVERO 마케팅 견적서 — 브랜드라이즈 by HIZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #14181A;
+      --white: #FFFFFF;
+      --bg: #F5F2EC;
+      --accent: #2E5D4F;
+      --accent-light: #ECF2EE;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-500: #6B7280;
+      --gray-700: #374151;
+      --text: #111827;
+    }
+    body {
+      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 48px; }
+
+    /* HERO */
+    .hero { background: var(--black); color: var(--white); padding: 100px 0 80px; }
+    .hero .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      color: #7FB89F; text-transform: uppercase; margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: 56px; font-weight: 900; line-height: 1.12;
+      letter-spacing: -0.025em; margin-bottom: 28px;
+    }
+    .hero h1 em { color: #7FB89F; font-style: normal; }
+    .hero .sub {
+      font-size: 16px; color: rgba(255,255,255,0.55);
+      font-weight: 300; max-width: 560px; line-height: 1.85;
+    }
+    .hero-meta {
+      display: flex; gap: 48px; margin-top: 64px; flex-wrap: wrap;
+      padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-meta-item .k {
+      font-size: 10px; letter-spacing: 0.12em; color: rgba(255,255,255,0.35);
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .hero-meta-item .v { font-size: 14px; font-weight: 600; }
+
+    .confidential {
+      display: inline-block; margin-top: 32px;
+      padding: 6px 14px; border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px; font-size: 10px; letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.6); text-transform: uppercase;
+    }
+
+    /* SECTIONS */
+    section { padding: 88px 0; }
+    .sec-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 14px;
+    }
+    h2 {
+      font-size: 36px; font-weight: 900; letter-spacing: -0.025em;
+      line-height: 1.25; margin-bottom: 16px; color: var(--black);
+    }
+    .sec-desc {
+      font-size: 15px; color: var(--gray-500); max-width: 620px;
+      line-height: 1.85; margin-bottom: 52px;
+    }
+    hr { border: none; border-top: 1px solid var(--gray-200); }
+
+    /* URGENCY GRID */
+    .urgency-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 44px; }
+    .u-card {
+      background: var(--white); border-radius: 14px; padding: 30px;
+      border: 1px solid var(--gray-200);
+    }
+    .u-card .num {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.12em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .u-card .ct { font-size: 14px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+    .u-card .cd { font-size: 13px; color: var(--gray-500); line-height: 1.75; }
+    .u-card.dark {
+      background: var(--black); border-color: var(--black);
+      grid-column: 1 / -1;
+    }
+    .u-card.dark .num { color: rgba(255,255,255,0.35); }
+    .u-card.dark .ct { color: var(--white); }
+    .u-card.dark .cd { color: rgba(255,255,255,0.55); }
+    .u-card.dark em { color: #7FB89F; font-style: normal; font-weight: 700; }
+
+    /* GAP TABLE */
+    .gap-wrap { margin-top: 36px; border-radius: 14px; overflow: hidden; border: 1px solid var(--gray-200); }
+    .gap-table { width: 100%; border-collapse: collapse; background: var(--white); }
+    .gap-table thead tr { background: var(--black); }
+    .gap-table th {
+      padding: 16px 22px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; color: rgba(255,255,255,0.6);
+      text-align: left; text-transform: uppercase;
+    }
+    .gap-table td {
+      padding: 17px 22px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); vertical-align: top; line-height: 1.65;
+    }
+    .gap-table tr:last-child td { border-bottom: none; }
+    .gap-table tr:nth-child(even) td { background: var(--gray-100); }
+    .gap-table td strong { color: var(--black); font-weight: 700; display: block; margin-bottom: 2px; }
+    .badge {
+      display: inline-block; font-size: 10px; font-weight: 800;
+      padding: 3px 11px; border-radius: 20px; letter-spacing: 0.05em;
+    }
+    .b-red { background: #FEF2F2; color: #DC2626; }
+    .b-orange { background: #FFF7ED; color: #EA580C; }
+    .b-green { background: #ECFDF5; color: #059669; }
+    .b-blue { background: #EBF4FF; color: #0066CC; }
+
+    /* TIER OVERVIEW */
+    .tier-bg { background: var(--black); padding: 88px 0; }
+    .tier-bg h2 { color: var(--white); }
+    .tier-bg .sec-label { color: #7FB89F; }
+    .tier-bg .sec-desc { color: rgba(255,255,255,0.45); }
+    .tier-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 52px; }
+    .t-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px; padding: 38px 30px;
+      position: relative;
+    }
+    .t-card.rec {
+      background: var(--accent); border-color: var(--accent);
+    }
+    .rec-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--white); color: var(--accent);
+      font-size: 10px; font-weight: 900; letter-spacing: 0.12em;
+      padding: 4px 16px; border-radius: 20px; text-transform: uppercase; white-space: nowrap;
+    }
+    .t-name {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 10px;
+    }
+    .t-title { font-size: 20px; font-weight: 800; color: var(--white); line-height: 1.3; margin-bottom: 28px; }
+    .t-price { font-size: 40px; font-weight: 900; color: var(--white); letter-spacing: -0.03em; }
+    .t-price span { font-size: 18px; font-weight: 600; }
+    .t-period { font-size: 12px; color: rgba(255,255,255,0.4); margin: 6px 0 28px; }
+    .t-feats { list-style: none; }
+    .t-feat {
+      font-size: 13px; color: rgba(255,255,255,0.6);
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .t-feat:last-child { border-bottom: none; }
+    .t-feat::before { content: "\2192"; color: rgba(255,255,255,0.3); flex-shrink: 0; margin-top: 1px; }
+    .t-feat.on { color: var(--white); font-weight: 500; }
+    .t-feat.on::before { color: rgba(255,255,255,0.7); }
+    .t-feat.off { opacity: 0.25; }
+
+    /* DETAIL */
+    .det { padding: 88px 0; border-bottom: 1px solid var(--gray-200); }
+    .det:last-of-type { border-bottom: none; }
+    .det-head {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 48px; margin-bottom: 52px;
+    }
+    .det-head-l { flex: 1; }
+    .det-head-l h2 { margin-bottom: 14px; }
+    .price-box {
+      background: var(--black); color: var(--white);
+      border-radius: 18px; padding: 30px 40px; text-align: right; flex-shrink: 0;
+    }
+    .price-box .pl { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; margin-bottom: 8px; }
+    .price-box .pa { font-size: 34px; font-weight: 900; letter-spacing: -0.03em; }
+    .price-box .ps { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 4px; }
+
+    .dblock { background: var(--white); border-radius: 14px; border: 1px solid var(--gray-200); overflow: hidden; margin-bottom: 14px; }
+    .dblock-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 24px; background: var(--gray-100); border-bottom: 1px solid var(--gray-200);
+    }
+    .dblock-head .bt { font-size: 14px; font-weight: 700; color: var(--black); }
+    .dblock-head .bp { font-size: 14px; font-weight: 800; color: var(--accent); }
+    .dtable { width: 100%; border-collapse: collapse; }
+    .dtable td {
+      padding: 14px 24px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); vertical-align: top; line-height: 1.7;
+    }
+    .dtable tr:last-child td { border-bottom: none; }
+    .dtable td:first-child { font-weight: 600; color: var(--black); width: 190px; white-space: nowrap; }
+    .dtable td:last-child { color: var(--gray-500); }
+
+    .total-bar {
+      background: var(--black); color: var(--white); padding: 26px 36px;
+      border-radius: 14px; display: flex; align-items: center;
+      justify-content: space-between; margin-top: 24px;
+    }
+    .total-bar .tl { font-size: 13px; color: rgba(255,255,255,0.5); }
+    .total-bar .ts { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+    .total-bar .ta { font-size: 38px; font-weight: 900; letter-spacing: -0.03em; }
+
+    .info-box {
+      background: var(--accent-light); border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0; padding: 22px 28px; margin-top: 20px;
+      font-size: 13px; color: var(--gray-700); line-height: 1.8;
+    }
+    .info-box strong { color: var(--accent); }
+
+    /* COMPARE */
+    .cmp-wrap { margin-top: 44px; border-radius: 14px; overflow: hidden; border: 1px solid var(--gray-200); }
+    .cmp-table { width: 100%; border-collapse: collapse; background: var(--white); }
+    .cmp-table th {
+      padding: 18px 24px; font-size: 13px; font-weight: 700;
+      text-align: center; border-bottom: 2px solid var(--gray-200);
+      background: var(--gray-100);
+    }
+    .cmp-table th:first-child { text-align: left; }
+    .cmp-table th.hi { color: var(--accent); background: var(--accent-light); }
+    .cmp-table td {
+      padding: 14px 24px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); text-align: center; color: var(--gray-500);
+    }
+    .cmp-table td:first-child { text-align: left; color: var(--text); font-weight: 500; }
+    .cmp-table .ck { color: var(--accent); font-weight: 800; font-size: 15px; }
+    .cmp-table .no { color: var(--gray-200); }
+    .cmp-table .sum-row td {
+      font-weight: 800; font-size: 15px; color: var(--black);
+      padding: 20px 24px; background: var(--gray-100);
+      border-top: 2px solid var(--gray-200); border-bottom: none;
+    }
+    .cmp-table .sum-row td.hi { color: var(--accent); background: var(--accent-light); }
+
+    /* FOOTER */
+    .footer { background: var(--black); color: rgba(255,255,255,0.4); padding: 72px 0; text-align: center; }
+    .footer .brand { font-size: 20px; font-weight: 900; color: var(--white); margin-bottom: 6px; letter-spacing: -0.02em; }
+    .footer .tag { font-size: 13px; margin-bottom: 36px; }
+    .footer .meta { font-size: 12px; line-height: 2.2; }
+
+    @media print {
+      body { background: var(--white); font-size: 11px; }
+      .container { max-width: 100%; padding: 0 32px; }
+      .hero { padding: 60px 0 50px; }
+      .hero h1 { font-size: 40px; }
+      section { padding: 48px 0; }
+      .det { padding: 48px 0; }
+      .tier-bg { padding: 48px 0; }
+      .hero, .tier-bg, .footer, .u-card.dark, .price-box, .total-bar, .gap-table thead tr, .dblock-head {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .urgency-grid { gap: 8px; }
+      .u-card { padding: 20px; }
+      .tier-cards { gap: 10px; }
+      .t-card { padding: 24px 20px; }
+      .t-price { font-size: 30px; }
+      .det-head { gap: 24px; margin-bottom: 32px; }
+      .price-box { padding: 20px 28px; }
+      .price-box .pa { font-size: 26px; }
+      .total-bar .ta { font-size: 28px; }
+      .sec-desc { margin-bottom: 32px; }
+      h2 { font-size: 28px; }
+      .hero { page-break-after: always; }
+      .tier-bg { page-break-before: always; page-break-after: always; }
+      .det { page-break-inside: avoid; }
+      .dblock { page-break-inside: avoid; }
+      .footer { page-break-before: always; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="label">Brand Marketing Proposal &middot; 브랜드라이즈 by HIZ</div>
+    <h1>쿠팡 1등의 매출을,<br>르베로의 <em>자사몰 오디언스</em>로</h1>
+    <p class="sub">르베로는 염색샴푸 카테고리 1등의 매출 기반을 확보했습니다.<br>그러나 그 고객은 쿠팡과 네이버 위에만 존재합니다.<br>메타 퍼포먼스와 자사몰 유입 설계로, 르베로만의 오디언스를 만듭니다.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="k">공급자</div><div class="v">브랜드라이즈 by HIZ</div></div>
+      <div class="hero-meta-item"><div class="k">수신</div><div class="v">(주)에스엠에코랩 이미란 대표</div></div>
+      <div class="hero-meta-item"><div class="k">기준일</div><div class="v" id="today-date"></div></div>
+      <div class="hero-meta-item"><div class="k">금액 기준</div><div class="v">VAT 별도</div></div>
+    </div>
+    <div class="confidential">Confidential &middot; For LEVERO Only</div>
+  </div>
+</div>
+
+<!-- WHY NOW -->
+<section>
+  <div class="container">
+    <div class="sec-label">Market Signal</div>
+    <h2>왜 지금인가</h2>
+    <p class="sec-desc">르베로는 제품과 매출은 증명했습니다.<br>지금 필요한 것은 <strong>자사몰에서만 확보 가능한 자산</strong> — 고객 데이터와 리텐션입니다.</p>
+    <div class="urgency-grid">
+      <div class="u-card">
+        <div class="num">Signal 01</div>
+        <div class="ct">2030 새치커버 시장의 부상</div>
+        <div class="cd">염색샴푸·새치커버 카테고리가 40~60대에서<br>2030으로 빠르게 확장 중. 재이수·파파레서피 등<br>영 톤 브랜드가 20~30대 구매를 견인하고 있습니다.</div>
+      </div>
+      <div class="u-card">
+        <div class="num">Signal 02</div>
+        <div class="ct">메타 광고 = 가장 검증된 신규 획득 엔진</div>
+        <div class="cd">쿠팡·네이버는 트래픽은 주지만 고객 데이터는<br>남기지 않습니다. 메타 광고는 자사몰로 유입되는<br>유일한 저비용·고효율 퍼포먼스 채널입니다.</div>
+      </div>
+      <div class="u-card">
+        <div class="num">Signal 03</div>
+        <div class="ct">자사몰 오디언스 확보의 골든타임</div>
+        <div class="cd">런칭 1년차, 제품 라인업이 확장되는 시점.<br>트리트먼트·기능성 샴푸 론칭 전에 자사몰 회원 기반을<br>쌓아야 크로스셀·리텐션이 가능해집니다.</div>
+      </div>
+      <div class="u-card dark">
+        <div class="num">Core Gap</div>
+        <div class="ct">1등 매출 vs. 자사몰 자산의 괴리</div>
+        <div class="cd">르베로는 쿠팡·네이버 합산 <em>월 2.5~2.8억</em>의 매출 기반을 확보했습니다.<br>그러나 자사몰 회원 데이터는 <em>0에 가깝고</em>, 인스타그램은 운영 중단 수준.<br>이 갭을 메꾸는 방법은 <em>쿠팡 고객의 이동이 아니라 메타를 통한 신규 유입</em>입니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- CURRENT STATUS -->
+<section>
+  <div class="container">
+    <div class="sec-label">Current Diagnosis</div>
+    <h2>르베로 마케팅,<br>어디까지 와 있나</h2>
+    <p class="sec-desc">카테고리 1등의 제품과 매출은 확보.<br>아직 비어있는 것은 <strong>자사몰로 가는 신규 유입 경로</strong>와 <strong>그 고객을 증명할 데이터</strong>입니다.</p>
+
+    <div class="info-box">
+      주 판매 채널: <strong>쿠팡 (카테고리 1등, 월 2.5~2.8억)</strong><br>
+      보조 채널: <strong>네이버 스마트스토어 (m배송/P1 운영)</strong><br>
+      자사몰: <strong>구축 완료 / 회원·매출 거의 0</strong><br>
+      인스타그램: <strong>운영 최소 수준 (킬러 콘텐츠 부족)</strong><br>
+      메타 광고·CRM: <strong>미진행</strong><br><br>
+      매출은 외부 플랫폼에 쌓이고, 고객 데이터는 사라지고 있습니다.<br>
+      자사몰 오디언스 확보를 위한 <strong>전용 유입 엔진</strong>이 필요합니다.
+    </div>
+
+    <div class="gap-wrap" style="margin-top: 36px;">
+      <table class="gap-table">
+        <thead>
+          <tr>
+            <th style="width:32px">#</th>
+            <th>마케팅 현황 진단</th>
+            <th>우선순위</th>
+            <th style="width:90px">상태</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><strong>메타 퍼포먼스 광고</strong><br>신규 고객 획득·자사몰 유입의 핵심 엔진. 현재 미세팅</td>
+            <td>최우선 / 즉시</td>
+            <td><span class="badge b-red">부재</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>자사몰 유입 설계</strong><br>랜딩·썸네일·혜택 퍼널이 광고 유입과 매칭되지 않음</td>
+            <td>광고 집행과 동시</td>
+            <td><span class="badge b-orange">보완</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>광고 소재 자산</strong><br>2030 타겟을 위한 제품 비주얼·무드 이미지 부족</td>
+            <td>성과 견인 요인</td>
+            <td><span class="badge b-orange">보완</span></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>브랜드 콘텐츠 기반</strong><br>인스타그램 킬러 콘텐츠 부족 — 광고 유입 후 체류 감소 원인</td>
+            <td>본 견적 범위 외 (후속 제안)</td>
+            <td><span class="badge b-orange">부분</span></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><strong>쿠팡·네이버 매출</strong><br>카테고리 1등 유지 — 본 견적 범위 외</td>
+            <td>유지</td>
+            <td><span class="badge b-green">우수</span></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><strong>제품 인증·브랜드 자산</strong><br>FDA·ISO·Vegan·CPNP·EWG 6대 인증 확보 — 광고 신뢰 메시지로 활용</td>
+            <td>소재 카피에 반영</td>
+            <td><span class="badge b-green">우수</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- TIER OVERVIEW -->
+<div class="tier-bg">
+  <div class="container">
+    <div class="sec-label">Solution Packages</div>
+    <h2 style="color:var(--white)">3가지 제안</h2>
+    <p class="sec-desc">메타 광고 운영과 자사몰 유입 설계를 기본으로,<br>상위 세트부터 촬영을 통한 광고 소재 자산화를 추가합니다.</p>
+    <div class="tier-cards">
+
+      <div class="t-card">
+        <div class="t-name">Set A &middot; Performance</div>
+        <div class="t-title">메타 광고<br>+ 자사몰 유입 설계</div>
+        <div class="t-price">300<span>만원</span></div>
+        <div class="t-period">1개월 &middot; VAT 별도</div>
+        <ul class="t-feats">
+          <li class="t-feat on">메타 광고 세팅 + A/B 테스트</li>
+          <li class="t-feat on">자사몰 유입 설계 (썸네일/랜딩)</li>
+          <li class="t-feat on">주간 최적화 + 리포트</li>
+          <li class="t-feat off">제품 촬영</li>
+          <li class="t-feat off">브랜드 무드·모델 촬영</li>
+          <li class="t-feat off">광고 소재 확장 제작</li>
+        </ul>
+      </div>
+
+      <div class="t-card rec">
+        <div class="rec-badge">Recommended</div>
+        <div class="t-name">Set B &middot; Performance +</div>
+        <div class="t-title">메타 광고<br>+ 제품 촬영</div>
+        <div class="t-price">500<span>만원</span></div>
+        <div class="t-period">1개월 &middot; VAT 별도</div>
+        <ul class="t-feats">
+          <li class="t-feat on">Set A 전체 포함</li>
+          <li class="t-feat on">제품 촬영 (스튜디오 기본)</li>
+          <li class="t-feat on">광고 소재 3세트 제작</li>
+          <li class="t-feat off">브랜드 무드·모델 촬영</li>
+          <li class="t-feat off">숏폼 광고 소재 확장</li>
+          <li class="t-feat off">자사몰 상세페이지 리뉴얼</li>
+        </ul>
+      </div>
+
+      <div class="t-card">
+        <div class="t-name">Set C &middot; Full</div>
+        <div class="t-title">메타 광고 + 촬영<br>+ 상세페이지 리뉴얼</div>
+        <div class="t-price">1,000<span>만원</span></div>
+        <div class="t-period">1개월 &middot; VAT 별도</div>
+        <ul class="t-feats">
+          <li class="t-feat on">Set B 전체 포함</li>
+          <li class="t-feat on">브랜드 무드·모델 촬영</li>
+          <li class="t-feat on">숏폼 광고 소재 2~3편</li>
+          <li class="t-feat on">자사몰 상세페이지 리뉴얼</li>
+          <li class="t-feat on">광고 소재 5세트 확장</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SET A -->
+<section class="det">
+  <div class="container">
+    <div class="sec-label">Set A &middot; Performance</div>
+    <div class="det-head">
+      <div class="det-head-l">
+        <h2>메타 광고<br>+ 자사몰 유입 설계</h2>
+        <p class="sec-desc" style="margin-bottom:0">자사몰 오디언스 확보의 시작점.<br>메타 광고로 2030 신규 유입을 발생시키고,<br>유입된 고객이 구매·가입으로 이어지도록 자사몰 동선을 정비합니다.</p>
+      </div>
+      <div class="price-box">
+        <div class="pl">TOTAL</div>
+        <div class="pa">3,000,000</div>
+        <div class="ps">1개월 &middot; VAT 별도</div>
+      </div>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">1. 메타 광고 세팅 &amp; A/B 테스트</span>
+        <span class="bp">2,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>계정·픽셀 세팅</td><td>메타(인스타/페이스북) 광고 계정 세팅 + 픽셀 설치 + GA4 연동 + 전환 이벤트 설정</td></tr>
+        <tr><td>소재 A/B 테스트</td><td>기존 자산 기반 광고 소재 3~5세트 제작 / 카피·썸네일·포맷 조합별 테스트 (정지 이미지·슬라이드 중심)</td></tr>
+        <tr><td>타겟 세그먼트 설계</td><td>2030 새치커버·비건 케어·슬로우에이징 관심사 타겟 / 유사 타겟·리타겟팅 구조 설계</td></tr>
+        <tr><td>주간 최적화</td><td>CPC·CPM·CTR·ROAS 지표 기반 주간 소재·예산 재배분 / 저성과 소재 즉시 교체</td></tr>
+        <tr><td>예산 운용</td><td>광고비 별도 (권장 월 100~200만원) / 예산 내 최적 조합 도출</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">2. 자사몰 유입 설계</span>
+        <span class="bp">1,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>썸네일·배너 진단</td><td>자사몰 메인·카테고리 썸네일·배너 진단 + 개선안 제시 / 광고 유입 고객 전환율 개선 중심</td></tr>
+        <tr><td>랜딩 동선 점검</td><td>광고 → 랜딩 → 장바구니 → 결제 동선 점검 + 이탈 지점 개선 가이드</td></tr>
+        <tr><td>자사몰 전용 혜택 설계</td><td>자사몰 전용 쿠폰·첫구매 혜택·회원가입 인센티브 퍼널 설계 / 쿠팡 대비 명확한 가격 이점 설정</td></tr>
+        <tr><td>성과 리포트</td><td>월간 광고 성과 + 자사몰 유입·전환 리포트 통합 (1회)</td></tr>
+      </table>
+    </div>
+
+    <div class="total-bar">
+      <div><div class="tl">SET A TOTAL</div><div class="ts">VAT 별도 &middot; 1개월 &middot; 광고비 별도</div></div>
+      <div class="ta">3,000,000원</div>
+    </div>
+
+    <div class="info-box">
+      <strong>참고:</strong> 메타 광고비는 별도입니다. 월 100~200만원 권장하며, 첫 달 테스트 결과에 따라 스케일업 가능합니다.
+    </div>
+  </div>
+</section>
+
+<!-- SET B -->
+<section class="det">
+  <div class="container">
+    <div class="sec-label">Set B &middot; Performance + &mdash; Recommended</div>
+    <div class="det-head">
+      <div class="det-head-l">
+        <h2>메타 광고<br>+ 제품 촬영</h2>
+        <p class="sec-desc" style="margin-bottom:0">광고 성과의 핵심 변수는 소재.<br>기존 이미지로 시작한 A/B 테스트를<br>신규 촬영 소재로 업그레이드하여 ROAS를 끌어올립니다.</p>
+      </div>
+      <div class="price-box">
+        <div class="pl">TOTAL</div>
+        <div class="pa">5,000,000</div>
+        <div class="ps">1개월 &middot; VAT 별도</div>
+      </div>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">1. 메타 광고 + 자사몰 유입 설계 (Set A)</span>
+        <span class="bp">Set A 포함</span>
+      </div>
+      <table class="dtable">
+        <tr><td>Set A 전체</td><td>메타 광고 세팅·A/B 테스트 + 자사몰 유입 설계 + 월간 성과 리포트</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">2. 제품 촬영 (스튜디오 기본)</span>
+        <span class="bp">1,500,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>촬영 범위</td><td>주력 2~3 SKU 촬영 (예: 컬러링 샴푸 · 파우더 워시 중심) / 1일 스튜디오 촬영</td></tr>
+        <tr><td>컷 구성</td><td>메인컷 + 누끼컷 + 비주얼컷 총 10~15컷 / 광고·자사몰·상세페이지 활용 사이즈 동시 납품</td></tr>
+        <tr><td>아트 디렉션</td><td>2030 타겟 톤 매칭 + 6대 인증·비건·슬로우에이징 키 메시지 시각화 가이드</td></tr>
+        <tr><td>후보정</td><td>기본 색보정·리터치 포함 / 원본·보정본 병행 납품</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">3. 광고 소재 3세트 제작</span>
+        <span class="bp">500,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>정지 이미지 광고</td><td>신규 촬영 컷 기반 광고 소재 3세트 / 카피·디자인 포함 (피드·릴스 프레임 각 1:1·4:5·9:16)</td></tr>
+        <tr><td>A/B 테스트 연동</td><td>기존 소재 대비 성과 비교 분석 / 최적 조합 도출 후 스케일업 가이드</td></tr>
+      </table>
+    </div>
+
+    <div class="total-bar">
+      <div><div class="tl">SET B TOTAL</div><div class="ts">VAT 별도 &middot; 1개월 &middot; 광고비 별도</div></div>
+      <div class="ta">5,000,000원</div>
+    </div>
+
+    <div class="info-box">
+      <strong>참고:</strong> 촬영 결과물은 광고 외에도 자사몰·네이버·쿠팡 공용으로 활용 가능합니다. 촬영 SKU는 협의를 통해 조정 가능합니다.
+    </div>
+  </div>
+</section>
+
+<!-- SET C -->
+<section class="det">
+  <div class="container">
+    <div class="sec-label">Set C &middot; Full</div>
+    <div class="det-head">
+      <div class="det-head-l">
+        <h2>메타 광고 + 촬영<br>+ 상세페이지 리뉴얼</h2>
+        <p class="sec-desc" style="margin-bottom:0">자사몰 오디언스 확보를 위한 풀스택 세팅.<br>제품 컷을 넘어 브랜드 무드·모델 컷과 숏폼 광고 소재,<br>그리고 자사몰 상세페이지 리뉴얼까지 한 번에 구축합니다.</p>
+      </div>
+      <div class="price-box">
+        <div class="pl">TOTAL</div>
+        <div class="pa">10,000,000</div>
+        <div class="ps">1개월 &middot; VAT 별도</div>
+      </div>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">1. Set B 전체</span>
+        <span class="bp">Set B 포함</span>
+      </div>
+      <table class="dtable">
+        <tr><td>Set B 전체</td><td>메타 광고 운영·A/B 테스트 + 자사몰 유입 설계 + 제품 촬영 기본 + 광고 소재 3세트</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">2. 브랜드 무드·모델 촬영</span>
+        <span class="bp">2,500,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>촬영 범위</td><td>모델 1인 + 브랜드 무드 라이프스타일 / 1일 스튜디오 또는 현장 촬영</td></tr>
+        <tr><td>컷 구성</td><td>제품 사용컷 + 모델 컷 + 라이프스타일 무드컷 총 20~30컷 / 광고·자사몰·상세페이지 사이즈 납품</td></tr>
+        <tr><td>아트 디렉션</td><td>비건 라이프케어 × 슬로우에이징 × 2030 톤 매칭 무드 설계 / 글로벌 확장 활용 가능한 톤 기준</td></tr>
+        <tr><td>모델·스튜디오</td><td>모델 섭외 + 스튜디오 대관 포함 / 모델 추가·촬영 일정 확장은 별도 협의</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">3. 숏폼 광고 소재 &amp; 광고 소재 확장</span>
+        <span class="bp">1,500,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>숏폼 광고 소재</td><td>메타 광고 전용 숏폼(9:16) 2~3편 / 촬영 컷 기반 편집 + 자막·BGM 포함</td></tr>
+        <tr><td>광고 소재 5세트 확장</td><td>Set B의 3세트 외 신규 촬영 기반 2세트 추가 / 정지 이미지·슬라이드 포맷 혼합</td></tr>
+        <tr><td>캠페인 스케일업</td><td>확장된 소재 기반 광고 예산 스케일업 운영 + 성과 리포트 강화</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">4. 자사몰 상세페이지 리뉴얼</span>
+        <span class="bp">1,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>리뉴얼 범위</td><td>주력 1 SKU 상세페이지 리뉴얼 (예: 컬러링 샴푸 또는 파우더 워시)</td></tr>
+        <tr><td>기획·카피</td><td>2030 타겟 구매 여정 기반 상세페이지 구조 재설계 + 핵심 카피 작성</td></tr>
+        <tr><td>디자인 납품</td><td>신규 촬영 컷 기반 상세페이지 디자인 / 자사몰·쿠팡·네이버 공용 버전</td></tr>
+      </table>
+    </div>
+
+    <div class="total-bar">
+      <div><div class="tl">SET C TOTAL</div><div class="ts">VAT 별도 &middot; 1개월 &middot; 광고비 별도</div></div>
+      <div class="ta">10,000,000원</div>
+    </div>
+
+    <div class="info-box">
+      <strong>참고:</strong> 브랜드 무드·모델 촬영 결과물은 향후 글로벌 진출·신제품 론칭 시에도 지속 활용 가능한 마스터 에셋으로 설계됩니다.
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section>
+  <div class="container">
+    <div class="sec-label">Summary</div>
+    <h2>세트 비교</h2>
+    <p class="sec-desc">각 세트는 독립 집행 가능합니다.<br>기간 및 항목은 협의 조정 가능합니다.</p>
+    <div class="cmp-wrap">
+      <table class="cmp-table">
+        <thead>
+          <tr>
+            <th>항목</th>
+            <th>Set A</th>
+            <th class="hi">Set B ★</th>
+            <th>Set C</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>메타 광고 세팅 + A/B 테스트</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>자사몰 유입 설계 (썸네일/랜딩)</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>월간 성과 리포트</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>제품 촬영 (스튜디오 기본)</td><td class="no">&mdash;</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>광고 소재 제작</td><td class="no">&mdash;</td><td class="ck">3세트</td><td class="ck">5세트</td></tr>
+          <tr><td>브랜드 무드·모델 촬영</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>숏폼 광고 소재 (9:16)</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="ck">2~3편</td></tr>
+          <tr><td>자사몰 상세페이지 리뉴얼</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="ck">&#10003;</td></tr>
+          <tr class="sum-row">
+            <td>기간</td><td class="hi">1개월</td><td class="hi">1개월</td><td class="hi">1개월</td>
+          </tr>
+          <tr class="sum-row">
+            <td>금액 (VAT 별도)</td><td>300만원</td><td class="hi">500만원</td><td>1,000만원</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="container">
+    <div class="brand">브랜드라이즈 by HIZ</div>
+    <div class="tag">Pace &amp; Proof</div>
+    <div class="meta">
+      본 견적서의 유효기간은 발행일로부터 30일입니다.<br>
+      위 금액은 모두 VAT 별도 기준이며, 메타 광고비는 별도입니다.<br>
+      각 세트는 독립 집행 가능하며, 기간 및 항목 조정은 협의 가능합니다.<br>
+      문의: 브랜드라이즈 by HIZ &middot; <span id="footer-date"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var d = new Date();
+    var y = d.getFullYear();
+    var m = String(d.getMonth() + 1).padStart(2, '0');
+    var day = String(d.getDate()).padStart(2, '0');
+    var formatted = y + '. ' + m + '. ' + day;
+    document.getElementById('today-date').textContent = formatted;
+    document.getElementById('footer-date').textContent = formatted;
+  })();
+</script>
+</body>
+</html>
