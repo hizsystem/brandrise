@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네스틱 (Nestique) - 신규 비즈니스 상담 준비 | BRANDRISE</title>
+    <style>
+        :root {
+            --primary: #2c2418;
+            --secondary: #4a3d2e;
+            --accent: #8b9d6b;
+            --highlight: #d97706;
+            --bg: #faf7f2;
+            --card-bg: #ffffff;
+            --text: #2c2418;
+            --text-light: #6b6356;
+            --border: #ece6db;
+            --success: #2d7a3e;
+            --warning: #d97706;
+            --danger: #dc2626;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(217, 119, 6, 0.2);
+            border: 1px solid var(--highlight);
+            color: #fdba74;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+        .header .subtitle { font-size: 16px; opacity: 0.85; font-weight: 300; }
+        .header .date { margin-top: 16px; font-size: 13px; opacity: 0.6; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        .toc {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 8px;
+        }
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 0;
+            display: block;
+            transition: color 0.2s;
+        }
+        .toc a:hover { color: var(--highlight); }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--highlight);
+        }
+        .section h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 20px 0 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 8px 16px;
+            font-size: 14px;
+        }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th { background: var(--primary); color: white; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px; }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        tr:hover td { background: #f7f3ec; }
+
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin: 2px; }
+        .tag-red { background: #ffe0e0; color: #d63031; }
+        .tag-green { background: #d4f5e9; color: #2d7a3e; }
+        .tag-blue { background: #dfe6fd; color: #1a2e1a; }
+        .tag-yellow { background: #fff3cd; color: #856404; }
+        .tag-gray { background: #e9ecef; color: #495057; }
+
+        .score-bar { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+        .score-bar .label-text { width: 160px; font-size: 13px; font-weight: 600; }
+        .score-bar .bar { flex: 1; height: 8px; background: #e9ecef; border-radius: 4px; overflow: hidden; }
+        .score-bar .fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
+        .score-bar .score-num { width: 40px; font-size: 14px; font-weight: 700; text-align: right; }
+        .fill-high { background: var(--success); }
+        .fill-mid { background: var(--warning); }
+        .fill-low { background: var(--danger); }
+
+        .verdict {
+            background: linear-gradient(135deg, #2d7a3e 0%, #8b9d6b 100%);
+            color: white;
+            padding: 24px 32px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 24px 0;
+        }
+        .verdict .label { font-size: 14px; opacity: 0.85; }
+        .verdict .value { font-size: 36px; font-weight: 800; margin: 8px 0; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+
+        .tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+        .tier-card {
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .tier-card:hover { transform: translateY(-4px); }
+        .tier-card.recommended {
+            border-color: var(--highlight);
+            box-shadow: 0 4px 20px rgba(217, 119, 6, 0.18);
+        }
+        .tier-card .tier-badge {
+            position: absolute;
+            top: -12px;
+            right: 16px;
+            background: var(--highlight);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .tier-card h4 { font-size: 16px; margin-bottom: 4px; }
+        .tier-card .price { font-size: 22px; font-weight: 800; color: var(--highlight); margin: 12px 0 4px; }
+        .tier-card .price-sub { font-size: 12px; color: var(--text-light); margin-bottom: 8px; }
+        .tier-card .duration { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+        .tier-card ul { list-style: none; padding: 0; }
+        .tier-card li { font-size: 13px; padding: 4px 0; padding-left: 20px; position: relative; }
+        .tier-card li::before { content: ">"; position: absolute; left: 0; color: var(--highlight); font-weight: 700; }
+
+        .callout {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+        .callout-info { background: #e3f2fd; border-left-color: #2196f3; }
+        .callout-danger { background: #fce4ec; border-left-color: #e53935; }
+        .callout-success { background: #e8f5e9; border-left-color: #2d7a3e; }
+
+        .leverage-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        .leverage-box .quote { font-size: 19px; font-weight: 700; line-height: 1.6; margin: 16px 0; }
+        .leverage-box .quote .hl { color: #fdba74; }
+
+        .flow-steps { display: flex; gap: 0; margin: 20px 0; overflow-x: auto; }
+        .flow-step {
+            flex: 1;
+            min-width: 170px;
+            padding: 16px;
+            background: #f3efe5;
+            position: relative;
+            text-align: center;
+            border-radius: 6px;
+            margin-right: 8px;
+        }
+        .flow-step:not(:last-child)::after {
+            content: ">";
+            position: absolute;
+            right: -14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 22px;
+            color: var(--highlight);
+            font-weight: 700;
+            z-index: 1;
+        }
+        .flow-step .step-num { font-size: 11px; font-weight: 700; color: var(--highlight); margin-bottom: 4px; }
+        .flow-step .step-title { font-size: 13px; font-weight: 700; }
+        .flow-step .step-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .swot-item h4 { font-size: 15px; margin-bottom: 10px; }
+        .swot-item ul { padding-left: 18px; }
+        .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: #d4f5e9; }
+        .swot-w { background: #ffe0e0; }
+        .swot-o { background: #dfe6fd; }
+        .swot-t { background: #fff3cd; }
+
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; line-height: 2; }
+        .source-list a { color: var(--accent); text-decoration: none; }
+        .source-list a:hover { text-decoration: underline; }
+
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+        .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 8px 0; }
+        .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+
+        .summary-section { border-left: 4px solid var(--highlight); background: linear-gradient(135deg, #fff 0%, #fff7eb 100%); }
+        .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; color: white; }
+        .kpi-card.kpi-dark { background: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--danger); }
+        .kpi-card.kpi-success { background: var(--success); }
+        .kpi-card.kpi-accent { background: var(--accent); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.85; }
+        .kpi-card .kpi-value { font-size: 22px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.85; }
+
+        .summary-oneliner { background: var(--primary); color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+        .summary-oneliner .sol-text .hl { color: #fdba74; }
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+
+        .diagnosis-section { border: 2px solid var(--warning); }
+        .diagnosis-section h2 { border-bottom-color: var(--warning); color: var(--warning); }
+        .diag-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .diag-box { padding: 16px; border-radius: 8px; }
+        .diag-box.diag-current { background: #fff3e0; }
+        .diag-box.diag-ideal { background: #e8f5e9; }
+        .diag-box .db-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .diag-box.diag-current .db-label { color: var(--warning); }
+        .diag-box.diag-ideal .db-label { color: var(--success); }
+        .diag-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+        .diag-note { font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: #fff7eb; border-radius: 8px; }
+
+        .spin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .spin-card { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .spin-card h4 { font-size: 15px; margin-bottom: 10px; }
+        .spin-s { background: #e3f2fd; }
+        .spin-p { background: #fce4ec; }
+        .spin-i { background: #fff3e0; }
+        .spin-n { background: #e8f5e9; }
+
+        .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+        .pain-level { flex: 1; min-width: 210px; padding: 16px; border-radius: 10px; font-size: 13px; }
+        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .pain-l1 { background: #e3f2fd; }
+        .pain-l2 { background: #fff3e0; }
+        .pain-l3 { background: #fce4ec; }
+        .pain-l4 { background: #f3e5f5; }
+
+        .script-block {
+            background: #f3efe5;
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            font-style: italic;
+            color: var(--secondary);
+        }
+        .question-card { background: #f3efe5; border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+        .question-card .q-num { font-size: 12px; font-weight: 700; color: var(--highlight); }
+        .question-card .q-text { font-size: 15px; font-weight: 600; margin: 4px 0 8px; color: var(--primary); }
+        .question-card .q-intent { font-size: 13px; color: var(--text-light); }
+        .question-card .q-branch { font-size: 12px; color: var(--text-light); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border); }
+
+        .timeline-phase { display: grid; grid-template-columns: 100px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .timeline-phase .phase-time { font-size: 13px; font-weight: 700; color: var(--highlight); text-align: center; padding-top: 4px; }
+        .timeline-phase .phase-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--primary); }
+        .timeline-phase .phase-content p { font-size: 13px; color: var(--text); margin-bottom: 4px; }
+        .timeline-phase .phase-content .phase-note { font-size: 12px; color: var(--text-light); font-style: italic; }
+
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .tier-cards { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-step:not(:last-child)::after { display: none; }
+            .channel-grid { grid-template-columns: repeat(2, 1fr); }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .diag-compare { grid-template-columns: 1fr; }
+            .spin-grid { grid-template-columns: 1fr; }
+            .pain-layer { flex-direction: column; }
+            .timeline-phase { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">NEW BUSINESS · 초도 미팅 (FIRST CONTACT) 상담 준비</div>
+    <h1>네스틱 (Nestique)</h1>
+    <div class="subtitle">프리미엄 유아 식기 · 모듈형 원플레이트 특허 · 글로벌 116개국 진출 · 카테고리 확장 중</div>
+    <div class="date">작성일: 2026-04-27 | Prepared by BRANDRISE (MarketingOS)</div>
+</div>
+
+<div class="container">
+
+    <!-- ============================================================ -->
+    <!-- Executive Summary -->
+    <!-- ============================================================ -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">기업</div>
+                <div class="sh-title">(주)화진몰테크 (Hwajin Moltech)</div>
+                <div class="sh-sub">2015년 설립 (11년차) · 인천 부평 · 사출/금형 OEM 20년 → 자체 D2C 브랜드 전환</div>
+            </div>
+            <div>
+                <div class="sh-label">대표이사</div>
+                <div class="sh-title">진윤식</div>
+                <div class="sh-sub">제조업 2세대 추정 · "원 플레이트" 특허 보유 · ESG 사회공헌인증 획득</div>
+            </div>
+        </div>
+
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">브랜드 매출 [클라이언트 발화]</div>
+                <div class="kpi-value">100억대</div>
+                <div class="kpi-sub">2020 런칭 6년차 · 모회사 OEM 별도</div>
+            </div>
+            <div class="kpi-card kpi-accent">
+                <div class="kpi-label">대표 SKU</div>
+                <div class="kpi-value">토끼 원플레이트</div>
+                <div class="kpi-sub">3~8구 모듈 결합 특허, 26,900원대</div>
+            </div>
+            <div class="kpi-card kpi-success">
+                <div class="kpi-label">기회 적합도</div>
+                <div class="kpi-value">4.15 / 5.0</div>
+                <div class="kpi-sub">GO · 카테고리 확장 + 글로벌 리브랜딩 임계점</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">시그널 ‘약점’</div>
+                <div class="kpi-value">브랜드 산포</div>
+                <div class="kpi-sub">자사몰/네이버/Amazon/SHOOV/세이브어스 거버넌스 부재</div>
+            </div>
+        </div>
+
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                네스틱은 <span class="hl">"원 플레이트 모듈 특허 + 친환경 바이오플라스틱 + 116개국 유통"</span>이라는<br>
+                유아식기 카테고리에서 보기 드문 IP·기술·해외 라인을 동시에 가진 케이스.<br>
+                다만 <span class="hl">"브랜드는 100만 부모, 거버넌스는 5채널 산포"</span> 임계점에 도달.<br>
+                완구·성인식판·세이브어스 등 카테고리 확장이 본격화되는 지금이<br>
+                <span class="hl">"브랜드 아키텍처 + 글로벌 D2C 리포지셔닝"</span>의 골든타임.
+            </div>
+        </div>
+
+        <div class="summary-bottom">
+            <strong>기회 적합도:</strong> <span class="hl">4.15 / 5.0 (GO)</span> &nbsp;|&nbsp;
+            <strong>추천 Tier:</strong> <span class="hl">Professional — 5천~7천만원대 (3~4개월)</span> &nbsp;|&nbsp;
+            <strong>Entry Move:</strong> <span class="hl">Essential 1.5천~2.5천 디스커버리 스프린트 선제공</span> &nbsp;|&nbsp;
+            <strong>레버:</strong> 사회공헌인증·SK케미칼 Ecogen·KOTRA/aT 수출지원
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 핵심 진단 -->
+    <!-- ============================================================ -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 진단 — "100만 부모" 다음 챕터의 분기점</h2>
+
+        <h3>1. 브랜드 거버넌스 산포 (High)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재 상태 (2026-04 기준)</div>
+                <ul>
+                    <li>자사몰 <strong>nestique.kr</strong> + 네이버 brand.naver.com/nestique</li>
+                    <li>Instagram <strong>@nestique.co.kr</strong> (한국 공식)</li>
+                    <li>Amazon US <strong>NESTIQUE 스토어</strong> (Vanilla Mint/Pink 등 컬러웨이 직판)</li>
+                    <li>해외 유통 <strong>SHOOV USA</strong> 파트너 페이지 별도</li>
+                    <li>자매 브랜드 <strong>Save Us(세이브어스)</strong> 동반 운영 — 관계 정의 부재</li>
+                    <li>다국어 사이트 — 한국어/영어/일본어/스페인어/중국어 (UI 5개) 운영 중이나 콘텐츠 깊이 격차</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">이상적 상태</div>
+                <ul>
+                    <li>마스터브랜드 <strong>Nestique</strong> 하위에 라인업/지역/연령별 서브 정리</li>
+                    <li>국내(영유아·완구·성인) ↔ 글로벌(US/JP/CN) <strong>채널·언어 매트릭스</strong></li>
+                    <li>Save Us와의 관계 <strong>"브랜드 패밀리 vs 별도 사업" 결정</strong></li>
+                    <li>116개국 유통 데이터 → 모범 시장 1~2국 <strong>앵커 시장 선언</strong></li>
+                    <li>Amazon·SHOOV 트래픽을 <strong>네스틱 글로벌 D2C 진입로</strong>로 통합</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2. 카테고리 확장 임계점 — 식기 → 완구·성인식판 (High)</h3>
+        <div class="diag-note">
+            2024년 4월 토끼 식판 <strong>'자석놀이'</strong> 출시(자석 73종, 마그피아 협업)로 <strong>유아 교육완구 시장</strong> 진입 공식화. 자사몰 라인업에는 이미 <strong>성인용 식판(N901, 아이보리)</strong>도 등장. 네스틱이 "유아식기 단일 카테고리"를 벗어나 "<strong>나를 위한 특별한 시간</strong>" 슬로건 대로 라이프스타일 다회용 식기 마스터브랜드로 확장 중. → 그러나 인스타·홈·해외 채널의 핵심 메시지는 <strong>여전히 유아식기 중심</strong>이라 카테고리 확장과 브랜드 표현이 박자 미스매치.
+        </div>
+
+        <h3>3. 글로벌 표현의 깊이 격차 (Medium)</h3>
+        <div class="diag-note">
+            Amazon US 리스팅에 등장하는 영문 헤드(NESTIQUE Silicone Plate, Vanilla Mint/Pink)는 <strong>제품 스펙형</strong>으로, 자사몰 <strong>"나를 위한 특별한 시간"</strong> 한국어 카피의 정서적 깊이가 <strong>영·일·서·중 사이트에 그대로 옮겨가지 못함</strong>. 코니바이에린(110만 개·110개국)·ezpz·Bumkins 같은 D2C 글로벌 표준 대비 <strong>브랜드 언어가 영어권에서 1차원적</strong>으로 보일 가능성.
+        </div>
+
+        <h3>영역별 진단 요약</h3>
+        <table>
+            <tr><th>영역</th><th>현재 상태</th><th>심각도</th><th>GAP</th></tr>
+            <tr><td>핵심 IP·기술</td><td>원 플레이트 모듈 특허 + SK케미칼 Ecogen 바이오플라스틱 + SGS/FDA/KC</td><td><span class="tag tag-green">Strong</span></td><td>피치덱·글로벌 카피로 재활용 필요</td></tr>
+            <tr><td>국내 시장 위상</td><td>네이버·G마켓·11번가·인터파크 다채널 / "100만 부모" 발화</td><td><span class="tag tag-green">Strong</span></td><td>실리콘 흡착식판 1위는 모윰(33%) — 네스틱은 "분리형 모듈" 차별화로 영토 다름</td></tr>
+            <tr><td>해외 진출 흔적</td><td>Amazon US + SHOOV USA 파트너 + 116개국 유통 [추정·확인 필요]</td><td><span class="tag tag-yellow">Medium</span></td><td>영문 카피·컨텐츠 깊이 격차</td></tr>
+            <tr><td>브랜드 아키텍처</td><td>네스틱·세이브어스·완구·성인식판 4갈래 동시 가동</td><td><span class="tag tag-red">High</span></td><td>마스터·서브 관계 미정리</td></tr>
+            <tr><td>모회사·실행 조직</td><td>화진몰테크 사출/금형 OEM 20년 → 직원 평균 연봉 3천 미만, 입사율 36% / 퇴사율 23% (2026.02)</td><td><span class="tag tag-yellow">Medium</span></td><td>브랜드 직군 인력 비중 낮을 가능성 [추정]</td></tr>
+            <tr><td>인증·정부지원</td><td>한국사회공헌협회 사회공헌인증제품 / 벤처기업·특허보유</td><td><span class="tag tag-green">Strong</span></td><td>ESG 카드로 IR·해외 진출에 재활용 여지</td></tr>
+        </table>
+
+        <div class="callout callout-info">
+            <strong>진단 결론:</strong> 네스틱은 100억대 매출이라는 1차 임계점을 넘은 후 <strong>"단일 SKU(토끼 원플레이트) 의존도 → 라인 확장 + 글로벌 D2C 본격화"</strong> 분기점에 와 있는 케이스. 브랜드라이즈가 들어갈 자리는 <strong>"브랜드 아키텍처 정리 + 글로벌 표현 + 카테고리 확장 메시지"</strong> 3축 통합 컨설팅. 신규 미팅이라 정보 비대칭이 큰 만큼, 첫 미팅은 <strong>"진단형 발견(Discovery Sprint)"</strong>이 정답.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 목차 -->
+    <!-- ============================================================ -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 진단</a>
+            <a href="#company-info">1. 기업 기초 정보</a>
+            <a href="#product-lineup">2. 주력 제품/서비스</a>
+            <a href="#digital-presence">3. 디지털 프레즌스</a>
+            <a href="#competitors">4. 경쟁사 분석</a>
+            <a href="#market">5. 시장 환경</a>
+            <a href="#ceo-background">6. 대표자 프로필</a>
+            <a href="#swot">7. SWOT 분석</a>
+            <a href="#needs-analysis">8. 니즈 분석 (SPIN + JTBD)</a>
+            <a href="#gap-analysis">9. GAP 분석 & 기회 평가</a>
+            <a href="#quote">10. 3-Tier 견적 초안</a>
+            <a href="#strategy">11. 상담 전략 & 코칭</a>
+            <a href="#closing">12. 클로징 전략</a>
+            <a href="#sources">13. 참고 링크</a>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 1. 기업 기초 정보 -->
+    <!-- ============================================================ -->
+    <div class="section" id="company-info">
+        <h2>1. 기업 기초 정보</h2>
+        <div class="info-grid">
+            <div class="info-label">법인명</div>
+            <div class="info-value">(주)화진몰테크 (Hwajin Moltech Co., Ltd.)</div>
+            <div class="info-label">브랜드</div>
+            <div class="info-value">Nestique (네스틱) — 슬로건 "나를 위한 특별한 시간, 네스틱"</div>
+            <div class="info-label">대표이사</div>
+            <div class="info-value">진윤식</div>
+            <div class="info-label">법인 설립</div>
+            <div class="info-value">2015년 9월 24일 (11년차) · 브랜드 출시 2020년 (5년차)</div>
+            <div class="info-label">사업자번호</div>
+            <div class="info-value">422-81-00233</div>
+            <div class="info-label">업종</div>
+            <div class="info-value">주형 및 금형 제조업 (KSIC C29293) · 사출/금형 OEM 20년 → 자체 브랜드 전환</div>
+            <div class="info-label">본사 [추정]</div>
+            <div class="info-value">인천광역시 부평구 부평북로 (NICE 2026 기준) / 영업소재지 인천 계양구 계양대로16번길 87 (G마켓 등록 기준) — <strong>이전 또는 본사·영업장 분리</strong> 가능성</div>
+            <div class="info-label">홈페이지</div>
+            <div class="info-value">
+                자사몰 <a href="http://nestique.kr" target="_blank" style="color: var(--accent);">nestique.kr</a> ·
+                모회사 <a href="https://hwajinmoltech.co.kr" target="_blank" style="color: var(--accent);">hwajinmoltech.co.kr</a>
+            </div>
+            <div class="info-label">인증</div>
+            <div class="info-value">SGS · FDA · KC · BPA-free · 사회공헌인증제품(한국사회공헌협회) · 특허보유기업 · 벤처기업</div>
+            <div class="info-label">소재 파트너</div>
+            <div class="info-value">SK케미칼 <strong>Ecogen</strong> 바이오플라스틱 (친환경 소재)</div>
+            <div class="info-label">자매 브랜드</div>
+            <div class="info-value">Save Us (세이브어스) — 다회용기 라이프스타일</div>
+            <div class="info-label">최근 활동</div>
+            <div class="info-value">2024.04 토끼 식판 자석놀이(마그피아 협업) 출시 → 유아 교육완구 시장 진출 / 사회공헌인증제품 인증 획득 (이데일리)</div>
+        </div>
+
+        <h3>재무·조직 시그널 (산업 평가 기반 · 2024 NICE 기준)</h3>
+        <table>
+            <tr><th>지표</th><th>점수 (산업 백분위)</th><th>해석</th></tr>
+            <tr><td>안정성</td><td><strong>70 (상위)</strong></td><td>금형업 14년 누적 자산·OEM 안정 매출 기반</td></tr>
+            <tr><td>규모</td><td><strong>70 (상위)</strong></td><td>모회사 OEM + 네스틱 100억대 합산 추정</td></tr>
+            <tr><td>활동성</td><td>57 (중위)</td><td>자산 회전 보통</td></tr>
+            <tr><td>수익성</td><td><span class="tag tag-yellow">33 (하위)</span></td><td>OEM 마진 구조 + 브랜드 마케팅 투자 누적 [추정]</td></tr>
+            <tr><td>성장성</td><td><span class="tag tag-yellow">34 (하위)</span></td><td>OEM 베이스 정체 가능성 — 네스틱 단독 성장률은 별도 추정 필요</td></tr>
+        </table>
+        <div class="callout callout-info">
+            <strong>재무 포인트:</strong> 모회사 화진몰테크 단위로는 안정성·규모는 상위, 수익성·성장성은 하위인 <strong>"안정 OEM + 브랜드 도약기"</strong> 전형. 클라이언트가 발화한 <strong>"네스틱 100억대"</strong>는 OEM 매출과 별개의 D2C 브랜드 매출로 추정 — 미팅에서 <strong>네스틱 단독 매출·성장률·OEM 비중 분리</strong> 확인 필수. 직원 평균 연봉 3천 미만/입사율 36%·퇴사율 23%는 마케팅·디자인·해외영업 등 <strong>브랜드 직군이 OEM 사출 라인 인력에 묻혀 있을 가능성</strong>을 시사.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 2. 주력 제품/서비스 -->
+    <!-- ============================================================ -->
+    <div class="section" id="product-lineup">
+        <h2>2. 주력 제품/서비스</h2>
+        <table>
+            <tr><th>라인</th><th>대표 제품</th><th>포지셔닝</th><th>채널</th></tr>
+            <tr><td><strong>유아 식기 (메인)</strong></td><td>토끼 원플레이트 (3~8구 모듈 결합) · N-cup · 이유식 스푼/큐브 · 유아 빨대컵 · 테이블 매트 · 커트러리</td><td>모듈형 분리식판 카테고리 퍼스트무버 [추정]</td><td>자사몰·네이버·G마켓·11번가·인터파크</td></tr>
+            <tr><td><strong>유아 교육완구 (2024~)</strong></td><td>토끼 식판 자석놀이 (마그피아 협업, 자석 73종, 5mm 강자석)</td><td>"음식에 호기심을 — 놀이로 식습관" — 식판 IP를 완구로 확장</td><td>자사몰 + 어린이날 스타벅스 콜드컵 증정 프로모션</td></tr>
+            <tr><td><strong>성인 라인 (확장 신호)</strong></td><td>N901 성인용 식판 (아이보리)</td><td>"나를 위한 특별한 시간" 슬로건의 라이프스타일 확장</td><td>자사몰 — 메시지 노출 약함</td></tr>
+            <tr><td><strong>해외 (Amazon US)</strong></td><td>NESTIQUE Silicone Plate (Vanilla Mint, Vanilla Pink) · Mini Plate · Toddler Plate</td><td>BPA-free · 전자레인지/식세기 OK · 컬러웨이 미국 톤</td><td>Amazon.com NESTIQUE 스토어 + Weee/SHOOV USA</td></tr>
+            <tr><td><strong>자매 브랜드</strong></td><td>Save Us (세이브어스)</td><td>다회용기 라이프스타일 — 일회용품 대안</td><td>별도 채널 [관계 정의 미공개]</td></tr>
+        </table>
+
+        <h3>핵심 IP·차별화 자산</h3>
+        <table>
+            <tr><th>자산</th><th>내용</th><th>활용도</th></tr>
+            <tr><td><strong>원 플레이트 특허</strong></td><td>1개 식판 + 분리 가능한 볼 결합 → 3구·5구·8구+ 모듈 구성</td><td><span class="tag tag-green">매우 높음</span> — 카테고리 차별화 핵심</td></tr>
+            <tr><td><strong>SK케미칼 Ecogen 바이오플라스틱</strong></td><td>친환경 소재, 가열 시 환경호르몬 무방출</td><td><span class="tag tag-green">높음</span> — 글로벌 ESG·프리미엄 카피 자산</td></tr>
+            <tr><td><strong>인증 풀세트</strong></td><td>SGS · FDA · KC · BPA-free + 사회공헌인증제품</td><td><span class="tag tag-green">높음</span> — 해외 리테일·아마존 광고 신뢰 장치</td></tr>
+            <tr><td><strong>20년 사출/금형 노하우</strong></td><td>모회사 화진몰테크 IP — "원스톱 금형·사출 OEM"</td><td><span class="tag tag-green">높음</span> — 컬러·디테일·신제품 속도 경쟁력</td></tr>
+            <tr><td><strong>"100만 부모" 자체 발화</strong></td><td>2017 개발 시작 → 2020 출시 → 5년 누적 고객 자산</td><td><span class="tag tag-yellow">중간</span> — 검증 가능한 데이터 정리 필요</td></tr>
+        </table>
+
+        <div class="callout">
+            <strong>전략 시사점:</strong> 네스틱의 진짜 자산은 <strong>"디자인"이 아니라 "원 플레이트 특허·사출 IP·100만 부모 데이터"</strong>. 그러나 마케팅 노출은 컬러·바니티(귀여움) 중심. 카테고리 확장 시점인 지금, <strong>"기술 + 사용자 데이터 + 친환경"의 IP 트라이앵글</strong>로 브랜드 언어를 재구성하는 것이 글로벌·완구·성인식기 모든 라인의 공통 코어가 됨.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 3. 디지털 프레즌스 -->
+    <!-- ============================================================ -->
+    <div class="section" id="digital-presence">
+        <h2>3. 디지털 프레즌스</h2>
+
+        <div class="channel-grid">
+            <div class="channel-card">
+                <div class="ch-name">@nestique.co.kr</div>
+                <div class="ch-stat">국내 메인</div>
+                <div class="ch-note">한국 공식 인스타<br>팔로워 [상담 시 확인 필요]</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">자사몰 nestique.kr</div>
+                <div class="ch-stat">5개 언어</div>
+                <div class="ch-note">한·영·일·서·중 UI<br>콘텐츠 깊이 격차</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">네이버 스마트스토어</div>
+                <div class="ch-stat">brand.naver.com</div>
+                <div class="ch-note">/nestique 운영<br>국내 D2C 핵심</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">Amazon US</div>
+                <div class="ch-stat">NESTIQUE 스토어</div>
+                <div class="ch-note">Vanilla Mint/Pink<br>FBA 여부 미확인</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">SHOOV USA</div>
+                <div class="ch-stat">파트너 페이지</div>
+                <div class="ch-note">N-cup 등 컬렉션<br>전용 페이지 운영</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">G마켓·11번가·인터파크</div>
+                <div class="ch-stat">3+ 채널</div>
+                <div class="ch-note">전 라인업 노출<br>오픈마켓 미니샵</div>
+            </div>
+        </div>
+
+        <h3>채널 운영 시그널 (★ 수주 레버리지 포인트)</h3>
+        <table>
+            <tr><th>#</th><th>관찰</th><th>의미</th><th>수주 시 활용</th></tr>
+            <tr>
+                <td>1</td>
+                <td><strong>도메인 2개 병행</strong> — nestique.kr (자사몰 본진) / nestique.co.kr (이메일·인스타 핸들)</td>
+                <td>"대표 도메인이 한 개로 정리되지 않은 상태" → 글로벌 SEO·브랜드 검색 일관성 약화</td>
+                <td>"도메인·핸들·OG 메타 통합 정비"는 Essential 1주차 퀵윈 카드</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><strong>5개 언어 UI vs 콘텐츠 깊이 격차</strong> — 한국어 카피 "나를 위한 특별한 시간"의 정서가 영·일·서·중에서는 단순 번역 수준</td>
+                <td>다국어 인프라는 깔렸으나 <strong>현지 정서·검색 키워드·D2C 카피</strong> 미완성</td>
+                <td>Professional 단계에서 1국가(미국 우선 추정) 깊이 파기 → 표준 템플릿화</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><strong>Amazon US와 SHOOV USA 양립</strong> — D2C(Amazon)·B2B 유통(SHOOV) 동시 운영</td>
+                <td>채널 간 가격·메시지·정체성 정리되면 <strong>"앵커 시장 = 미국"</strong> 선언 가능</td>
+                <td>"Amazon 데이터 + SHOOV 채널 + 자사몰 영문 = 미국 진입 트라이포드" 구조 제안</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><strong>완구·성인식판 라인이 메인 SNS·홈에 거의 노출 안 됨</strong></td>
+                <td>"브랜드는 유아식기, 회사는 라이프스타일 식기"로 인식 갭</td>
+                <td>"마스터 네스틱 + 서브 라인" 위계 워크숍 (Professional 핵심 산출물)</td>
+            </tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>핵심 이슈:</strong> 채널·언어·카테고리·자매 브랜드가 모두 <strong>"있긴 있는데 통합 거버넌스가 없는 상태"</strong>. 이는 곧 <strong>"각 자산이 서로의 트래픽·매출을 끌어주지 못하는 구조"</strong>이며, 클라이언트가 발화한 100억대 매출이 <strong>토끼 원플레이트 단일 SKU에 과도하게 의존</strong>할 가능성을 강하게 시사. 미팅에서 SKU별 매출 비중·반복구매율·해외 비중 3개 숫자를 받아내면 견적 규모와 타이어가 자동 결정됨.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 4. 경쟁사 분석 -->
+    <!-- ============================================================ -->
+    <div class="section" id="competitors">
+        <h2>4. 경쟁사 분석</h2>
+
+        <h3>국내 유아식기·식판 경쟁 구도</h3>
+        <table>
+            <tr><th>브랜드</th><th>대표 카테고리</th><th>2025 부모 선호도 (베이비뉴스)</th><th>시사점</th></tr>
+            <tr><td><strong>모윰 (MOYUUM)</strong></td><td>실리콘 흡착식판·빨대컵</td><td><strong>흡착식판 1위 33%</strong> · 빨대컵 2위 21%</td><td><span class="tag tag-red">국내 카테고리 리더</span> — 흡착식판 영토</td></tr>
+            <tr><td><strong>블루마마</strong></td><td>실리콘 흡착식판</td><td>흡착식판 2위 23%</td><td>흡착 카테고리 안정 2위</td></tr>
+            <tr><td><strong>그로미미 (Grosmimi)</strong></td><td>빨대컵·실리콘</td><td><strong>빨대컵 1위 23%</strong> · 흡착식판 3위 21%</td><td>빨대컵 카테고리 리더</td></tr>
+            <tr><td><strong>에디슨 (Edison)</strong></td><td>유아 식기 종합 (커트러리·식판·물병)</td><td>흡착식판 4위 13% · 빨대컵 3위 13%</td><td>종합 라인 강자, 어린이집/유치원 채널</td></tr>
+            <tr><td>티지엠 / 유비맘 / 베네벨</td><td>실리콘·빨대컵 보조군</td><td>각 6~10%대</td><td>중견 보조군</td></tr>
+            <tr style="background:#f7f3ec"><td><strong>네스틱 (Nestique)</strong></td><td><strong>모듈 분리형 원 플레이트</strong> (특허) · 컬러웨이 D2C</td><td>주요 실리콘 흡착 순위에는 미포착 [확인 필요]</td><td><span class="tag tag-green">차별화 영토</span> — "흡착"이 아닌 <strong>"분리 모듈"</strong> 카테고리 퍼스트무버</td></tr>
+        </table>
+
+        <h3>글로벌 D2C 레퍼런스 (북미 유아식기·D2C)</h3>
+        <table>
+            <tr><th>브랜드</th><th>모델</th><th>시사점</th></tr>
+            <tr><td><strong>ezpz</strong></td><td>흡착 일체형 실리콘 매트·플레이트 — 미국 D2C 표준</td><td>흡착 카테고리 글로벌 표준. 네스틱과 다른 영토</td></tr>
+            <tr><td><strong>Bumkins</strong></td><td>실리콘·빕·식기 종합 라이프스타일</td><td>"라이프스타일 식기" 멀티카테고리 모델 — 네스틱이 가야 할 방향</td></tr>
+            <tr><td><strong>Coni by Erin (코니바이에린)</strong></td><td>D2C 본투글로벌 한국 유아용품 — 110만 개·110개국</td><td><span class="tag tag-green">한국발 글로벌 성공 모델</span> — 단일 SKU 글로벌 D2C 정석</td></tr>
+            <tr><td><strong>Nuk · Munchkin · OXO Tot</strong></td><td>매스 리테일 종합 유아식기</td><td>월마트·타겟 매대 표준 — 네스틱 진입 시 슬로팅피·MOQ 장벽 큼</td></tr>
+            <tr><td><strong>Grosmimi (그로미미)</strong></td><td>한국 빨대컵 → 미국 D2C 진출</td><td>한국 유아식기 글로벌화 직접 비교군</td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>경쟁 프레임 재정의:</strong> 네스틱의 진짜 경쟁자는 <strong>"흡착식판 카테고리(모윰·블루마마·ezpz)"가 아님</strong>. 모듈 분리형은 별도 영토. 진짜 경쟁축은 (1) <strong>국내 라이프스타일 식기 마스터브랜드</strong> 자리 (Bumkins 한국판) (2) <strong>한국발 글로벌 D2C 성공 사례</strong> 자리 (코니/그로미미와 자리다툼). 이 두 자리는 아직 비어 있음 — 네스틱이 <strong>특허·100만 부모·116개국 유통</strong>으로 선점할 수 있는 카테고리 퍼스트무버 슬롯.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 5. 시장 환경 -->
+    <!-- ============================================================ -->
+    <div class="section" id="market">
+        <h2>5. 시장 환경</h2>
+        <table>
+            <tr><th>구분</th><th>규모</th><th>비고</th></tr>
+            <tr><td>국내 영유아 거래액 (2018)</td><td>3.6조원</td><td>출처: 통계청·KB의 생각</td></tr>
+            <tr><td>국내 영유아 거래액 (2023)</td><td><strong>5.23조원</strong></td><td>5년 +45%, 합계출산율 0.72에도 성장</td></tr>
+            <tr><td>국내 유아용품 시장 규모</td><td>연 4조+, +10%/년</td><td>서울경제 · 코니바이에린 케이스 분석</td></tr>
+            <tr><td>국내 유아용품 최대 세부시장 (유아매트)</td><td>약 3,000억</td><td>식기 카테고리는 그보다 작음 [추정]</td></tr>
+            <tr><td>글로벌 베이비케어 (2025)</td><td>$169.38B</td><td>Mordor Intelligence</td></tr>
+            <tr><td>글로벌 베이비케어 (2030)</td><td>$217.00B</td><td><span class="tag tag-green">CAGR 5.08%</span></td></tr>
+            <tr><td>중국 영유아 시장</td><td>지속 성장</td><td>중국 영유아식 465억 위안 / 식기 별도 추정</td></tr>
+        </table>
+
+        <h3>한국 유아용품 시장의 역설</h3>
+        <div class="callout callout-success">
+            합계출산율은 <strong>0.72</strong>(역대 최저)인데 영유아 거래액은 <strong>5년간 +45%</strong>. 부모·조부모·친척이 한 아이에게 지출하는 <strong>"텐포켓(Ten Pockets)"</strong> 효과 + MZ세대 부모의 <strong>프리미엄·간편·비주얼</strong> 선호가 누적된 결과. 1인당 영유아 지출은 매년 늘고 있음 → <strong>"인구는 줄어도 시장은 큰다"</strong>는 코니바이에린·그로미미 성공 공식이 네스틱에도 그대로 적용 가능.
+        </div>
+
+        <h3>네스틱 적합 정부지원 인프라 2026</h3>
+        <table>
+            <tr><th>사업</th><th>주관</th><th>지원 범위</th><th>네스틱 적용성</th></tr>
+            <tr><td><strong>중기부 수출바우처</strong></td><td>중기부·KOTRA</td><td>해외 마케팅·번역·현지화 패키지</td><td><span class="tag tag-green">매우 적합</span> — 다국어 콘텐츠 격차 해소</td></tr>
+            <tr><td><strong>K-소비재 글로벌 진출 지원</strong></td><td>KOTRA</td><td>아마존·쇼피파이 D2C 입점·광고 매칭</td><td><span class="tag tag-green">매우 적합</span> — Amazon US 자력 운영 강화</td></tr>
+            <tr><td>K-Brand 100·소비재 챔피언</td><td>중기부</td><td>유망 소비재 브랜드 패키지 지원</td><td>벤처기업·특허보유 자격 충족</td></tr>
+            <tr><td>ESG·사회공헌 연계 사업</td><td>행안부·한국사회공헌협회</td><td>공공·기업·기관 협업 확장</td><td><span class="tag tag-green">사회공헌인증 보유 → 즉시 활용</span></td></tr>
+            <tr><td>코트라 해외 박람회 부스</td><td>KOTRA</td><td>ABC Kids Expo·NY Now 등 부스 지원</td><td>Amazon 실적 + 부스 = 바이어 전환 패키지</td></tr>
+        </table>
+
+        <div class="callout callout-success">
+            <strong>레버 요약:</strong> 네스틱은 <strong>벤처기업·특허보유·사회공헌인증·SK케미칼 협력</strong> 4종 자산을 이미 보유 → 정부지원 매칭 시 <strong>실부담 30~50% 경감</strong> 가능한 수준. 브랜드라이즈가 매칭사업 동반 신청까지 묶어 제공하면 <strong>가격 장벽 해체 + 신뢰 장치</strong> 동시 확보. 첫 미팅에서 "자격은 이미 다 있다"고 알려주는 것 자체가 <strong>Challenger Insight</strong>.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 6. 대표자 프로필 -->
+    <!-- ============================================================ -->
+    <div class="section" id="ceo-background">
+        <h2>6. 대표자 프로필 — 진윤식 대표</h2>
+        <div class="info-grid">
+            <div class="info-label">현직</div>
+            <div class="info-value">(주)화진몰테크 대표이사 · 네스틱 브랜드 총괄</div>
+            <div class="info-label">사업 배경</div>
+            <div class="info-value">사출/금형 OEM 20년 운영 → 2015 화진몰테크 법인화 → 2017 자녀 식판 개발 시작 → 2020 네스틱 런칭</div>
+            <div class="info-label">개인 동기 [공개 발화]</div>
+            <div class="info-value">"3살 자녀가 밥을 잘 안 먹어서, 시중 식판은 다 불만족 — 직접 만들어보자" (네스틱 ABOUT 페이지)</div>
+            <div class="info-label">2024 공개 발언</div>
+            <div class="info-value">"밥을 잘 안 먹는 아이들에게 <strong>놀이를 통해 음식에 대한 호기심</strong>을 심어주고 싶었다" (서울경제, 자석놀이 출시)</div>
+            <div class="info-label">경영 키워드</div>
+            <div class="info-value">"기업 성장은 <strong>사회와의 상생</strong>으로만 가능하다" (이데일리, 사회공헌인증 인터뷰)</div>
+            <div class="info-label">의사결정 스타일 [추정]</div>
+            <div class="info-value">제조업 2세대 또는 사출 OEM 직접 운영 → <strong>현장형·기술중심·실용형</strong>. 디자인·마케팅 영역은 외주 또는 보조 인력에 의존 가능성</div>
+            <div class="info-label">조직 운영 시그널</div>
+            <div class="info-value">2026.02 NICE 기준 입사율 36% / 퇴사율 23% — 조직 변동기 [추정] · 평균 연봉 3천만원 미만은 사출 라인 인력 비중 큰 구조 시사</div>
+            <div class="info-label">파트너십 이력</div>
+            <div class="info-value">SK케미칼(소재) · 마그피아(자석 완구) · SHOOV USA(해외 유통) · 한국사회공헌협회 — <strong>외부 협업 경험 풍부</strong></div>
+        </div>
+
+        <div class="callout">
+            <strong>코치 포인트:</strong> 진 대표는 사출 OEM 출신 <strong>"기술자형 창업가"</strong>로 추정 — 디자인·정서 카피보다 <strong>"기술·인증·매출·바이어"</strong> 같은 측정 가능 언어에 더 반응. 단, "사회와의 상생", "100만 부모 공감" 같은 멘트는 본인 자긍심 영역 — 직접 비판 금지. 외부 파트너십 이력이 있어 <strong>"브랜드라이즈 = SK·마그피아·SHOOV급 신뢰 가능한 파트너"</strong>로 포지셔닝하면 진입 장벽 낮음. 첫 미팅 핵심은 <strong>"파트너십 능력 입증 + 측정 가능 산출물 제시"</strong>.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 7. SWOT 분석 -->
+    <!-- ============================================================ -->
+    <div class="section" id="swot">
+        <h2>7. SWOT 분석</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>S (강점)</h4>
+                <ul>
+                    <li><strong>원 플레이트 모듈 특허</strong> — 카테고리 차별화 핵심 IP</li>
+                    <li>SK케미칼 Ecogen 바이오플라스틱 — 친환경 소재 표준</li>
+                    <li>인증 풀세트: SGS·FDA·KC·BPA-free·사회공헌</li>
+                    <li>"100만 부모" 5년 누적 데이터 [클라이언트 발화]</li>
+                    <li>브랜드 매출 100억대 [클라이언트 발화]</li>
+                    <li>모회사 화진몰테크 사출/금형 20년 노하우 — 신제품 속도</li>
+                    <li>Amazon US + SHOOV USA + 116개국 유통 흔적</li>
+                    <li>마그피아·SK·SHOOV 등 외부 파트너십 이력 풍부</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>W (약점)</h4>
+                <ul>
+                    <li><strong>브랜드 거버넌스 산포</strong> — 자사몰·네이버·Amazon·SHOOV·세이브어스 통합 부재</li>
+                    <li>도메인 이원화 (nestique.kr / nestique.co.kr) → 검색·SEO 분산</li>
+                    <li>5개 언어 UI vs 콘텐츠 깊이 격차 — 영문 카피 1차원적</li>
+                    <li>완구·성인식판 라인이 메인 채널에 거의 미노출</li>
+                    <li>"토끼 원플레이트" 단일 SKU 의존 가능성 [확인 필요]</li>
+                    <li>모회사 OEM 인력 중심 → <strong>브랜드 직군(디자인·마케팅·해외영업) 비중 낮을 가능성</strong></li>
+                    <li>실리콘 흡착식판 부모 선호도 TOP5에 미포착 — 인지도 ≠ 선호도 갭</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>O (기회)</h4>
+                <ul>
+                    <li>한국 영유아 거래액 5년 +45%, 합계출산율 0.72에도 성장</li>
+                    <li>글로벌 베이비케어 $169B → $217B (CAGR 5.08%)</li>
+                    <li>K-육아 글로벌 인기 (코니·그로미미 길 선례)</li>
+                    <li>"한국 라이프스타일 식기 마스터브랜드" 자리 공석</li>
+                    <li>중기부 수출바우처·KOTRA·K-Brand 매칭 — 실부담 30~50% 경감</li>
+                    <li>유아 교육완구 시장 진출(자석놀이) → 식판→완구 IP 활용 새 영토</li>
+                    <li>사회공헌인증 → 공공·기관 협업 확장 카드</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>T (위협)</h4>
+                <ul>
+                    <li>모윰·블루마마·그로미미 등 흡착·빨대컵 카테고리 리더와 인지도 경쟁</li>
+                    <li>출생아 70만 → 25만 [추정] 저출산 심화 — 단순 인구 의존 모델 한계</li>
+                    <li>ezpz·Bumkins·OXO Tot 등 글로벌 D2C 표준 선점</li>
+                    <li>대형 키친웨어 브랜드(에디슨·실리콘 메이커) 모듈 카피 가능성</li>
+                    <li>중국·동남아 OEM 카피품 가격 공세 — 모회사 사출 경쟁력에도 위협</li>
+                    <li>모회사 OEM 본업 의존이 브랜드 투자 속도 제약</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 8. 니즈 분석 -->
+    <!-- ============================================================ -->
+    <div class="section" id="needs-analysis">
+        <h2>8. 니즈 분석 (SPIN + JTBD + Pain Hierarchy)</h2>
+
+        <div class="leverage-box">
+            <div style="font-size: 13px; opacity: 0.7; margin-bottom: 8px;">🎯 진짜 니즈 한 줄 압축 (가설)</div>
+            <div class="quote">
+                진윤식 대표님의 진짜 니즈는 "마케팅 대행"이 아니라,<br>
+                "토끼 원플레이트 단일 SKU 100억"을 <span class="hl">"네스틱 마스터브랜드 300억"</span>으로<br>
+                다음 6~12개월 안에 끌어올려줄 —<br>
+                <span class="hl">기술·인증·100만 부모 데이터를 글로벌 브랜드 언어로 재포장해줄 외부 파트너</span>.<br>
+                "예쁜 SNS"는 그 니즈의 외피일 뿐.
+            </div>
+        </div>
+
+        <h3>SPIN 기반 니즈 레이어링</h3>
+        <div class="spin-grid">
+            <div class="spin-card spin-s">
+                <h4>S · Situation (현재 상황)</h4>
+                네스틱 출시 6년차. 토끼 원플레이트 카테고리 퍼스트무버. 100억대 매출 [클라이언트 발화]. Amazon US·SHOOV USA·116개국 유통 흔적. 2024년 자석놀이로 완구 진출, 성인식판도 라인업 등장. 자사몰 5개 언어 UI 운영. 사회공헌인증·SK케미칼·마그피아 협업 이력.
+            </div>
+            <div class="spin-card spin-p">
+                <h4>P · Problem (대표 인식 문제 가설)</h4>
+                "단일 SKU 의존도가 높고, 라인 확장은 했는데 메시지·채널이 따로 논다 / 해외 진출은 했는데 영문 콘텐츠가 한국만큼 깊지 못하다 / 흡착식판 카테고리 1위는 모윰인데 우리는 어디에 서 있는지 정의가 약하다." — 미팅 시 자체 발화 우선 청취 후 매핑.
+            </div>
+            <div class="spin-card spin-i">
+                <h4>I · Implication (방치 시 비용)</h4>
+                (a) K-육아 글로벌 골든타임(2025-2027) 상실 / (b) ezpz·Bumkins 등 글로벌 D2C에 카테고리 선점 당함 / (c) 100만 부모 데이터 시간 경과로 가치 감소 / (d) 단일 SKU 카피 리스크 (중국·동남아) / (e) OEM 본업 정체 시 브랜드가 모회사 캐시카우 못 됨.
+            </div>
+            <div class="spin-card spin-n">
+                <h4>N · Need-Payoff (해결 시 가치)</h4>
+                "한국 라이프스타일 식기 마스터브랜드 = Nestique" 자리 선점. 코니·그로미미급 한국발 글로벌 D2C 사례 등극 가능. 토끼 원플레이트 IP를 식기→완구→성인→펫 등으로 확장하는 마스터브랜드 플랫폼화. IR·정부지원·공공기관 협업까지 1개 브랜드 자산으로 연결.
+            </div>
+        </div>
+
+        <h3>Pain Hierarchy (4계층)</h3>
+        <div class="pain-layer">
+            <div class="pain-level pain-l1">
+                <span class="level-tag">L1 · 표면 요청</span>
+                "브랜드 리뉴얼 / 글로벌 마케팅 / 다음 SKU 기획 / 인스타·콘텐츠 운영" — 미팅에서 어떤 단어로 들어올지 다양
+            </div>
+            <div class="pain-level pain-l2">
+                <span class="level-tag">L2 · 전술적 문제</span>
+                다국어 콘텐츠 격차 · 인스타 단일 채널(@nestique.co.kr)에 모든 라인 혼재 · Amazon·SHOOV·자사몰 가격·메시지 정렬 부재 · 완구·성인 라인 메시지 부재
+            </div>
+            <div class="pain-level pain-l3">
+                <span class="level-tag">L3 · 전략적 문제</span>
+                <strong>"네스틱은 무슨 브랜드인가"</strong> 정의 공백 — 유아식기? 라이프스타일 다회용기? 모듈식기 플랫폼? · 마스터·서브 위계 · 세이브어스와의 관계 · 앵커 시장 미정 (US? JP?)
+            </div>
+            <div class="pain-level pain-l4">
+                <span class="level-tag">L4 · 근본 원인</span>
+                모회사 사출 OEM DNA → 제품·금형 중심 사고 vs 브랜드는 정의·언어·관계 중심 · 외부 디자인·마케팅 파트너 의존도 낮을 가능성 · 단일 SKU 성공 경험이 라인 확장 의사결정 늦춤
+            </div>
+        </div>
+
+        <h3>JTBD (Jobs-To-Be-Done)</h3>
+        <table>
+            <tr><th>층위</th><th>Job</th><th>해석</th></tr>
+            <tr><td><strong>Functional</strong></td><td>"단일 SKU 100억 → 마스터브랜드 매출·라인 확장 + 해외 1국 앵커 매출"</td><td>측정 가능: 토끼 외 SKU 매출 비중 30%↑ / 미국 또는 일본 단일 시장 자력 매출 확립</td></tr>
+            <tr><td><strong>Social</strong></td><td>"사출 OEM 사장" → "한국 라이프스타일 식기 1세대 브랜드 창업가"</td><td>관객: 중기부·KOTRA·SK케미칼·금형업계 동료 + IR 단계 투자자</td></tr>
+            <tr><td><strong>Emotional</strong></td><td>"내 아이 식판이 100만 가족 식탁에 올라갔다"는 6년차 자긍심을 글로벌 무대로 확장하고 싶음</td><td>"나를 위한 특별한 시간" 슬로건이 본인 정서 직결 — 이 카피를 본인이 직접 만든 흔적 있음 [추정]</td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>수주 리스크 1순위:</strong> 첫 미팅에서 "예쁜 SNS·바이럴·인플루언서" 같은 표면 모듈만 던지면 <strong>"우리도 이미 인하우스로 한다"</strong> 응답 받고 종결. 반드시 <strong>"SKU 매출 비중 / 해외 비중 / 마스터·서브 정의"</strong> 3개 진단 질문을 먼저 던져 L3·L4 문제로 끌어올린 뒤, 그 위에서 솔루션 제안. 첫 미팅 = "발견(Discovery)" 모드 고정.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 9. GAP 분석 -->
+    <!-- ============================================================ -->
+    <div class="section" id="gap-analysis">
+        <h2>9. GAP 분석 & 기회 평가</h2>
+
+        <h3>기회 적합도 평가 (6개 항목 가중평균)</h3>
+        <div style="max-width: 620px;">
+            <div class="score-bar"><div class="label-text">니즈-서비스 핏 (30%)</div><div class="bar"><div class="fill fill-high" style="width:90%"></div></div><div class="score-num">4.5</div></div>
+            <div class="score-bar"><div class="label-text">예산 적합성 (20%)</div><div class="bar"><div class="fill fill-high" style="width:80%"></div></div><div class="score-num">4.0</div></div>
+            <div class="score-bar"><div class="label-text">의사결정 구조 (15%)</div><div class="bar"><div class="fill fill-high" style="width:90%"></div></div><div class="score-num">4.5</div></div>
+            <div class="score-bar"><div class="label-text">긴급도 (15%)</div><div class="bar"><div class="fill fill-mid" style="width:70%"></div></div><div class="score-num">3.5</div></div>
+            <div class="score-bar"><div class="label-text">성장 잠재력 (10%)</div><div class="bar"><div class="fill fill-high" style="width:90%"></div></div><div class="score-num">4.5</div></div>
+            <div class="score-bar"><div class="label-text">레퍼런스 가치 (10%)</div><div class="bar"><div class="fill fill-high" style="width:80%"></div></div><div class="score-num">4.0</div></div>
+            <div class="score-bar" style="margin-top:12px;"><div class="label-text"><strong>가중평균</strong></div><div class="bar"><div class="fill fill-high" style="width:83%"></div></div><div class="score-num"><strong>4.15</strong></div></div>
+        </div>
+
+        <div class="verdict">
+            <div class="label">기회 적합도 종합</div>
+            <div class="value">4.15 / 5.0</div>
+            <div class="desc">GO — 첫 미팅 = Discovery 모드, Essential 1.5~2.5천 선제공으로 진입</div>
+        </div>
+
+        <h3>첫 미팅 의제 가설 (확률 가중)</h3>
+        <table>
+            <tr><th>가설</th><th>확률</th><th>근거</th><th>수주 프레임</th></tr>
+            <tr><td><strong>A. 글로벌 D2C 본격화 — Amazon US·다국어 콘텐츠 강화</strong></td><td><span class="tag tag-red">40%</span></td><td>Amazon 자력 운영 흔적 + 5개 언어 UI 깔려 있음 + 코니·그로미미 글로벌 성공 사례 자극</td><td>"Amazon 데이터를 앵커로 미국 D2C 트라이포드" Professional 직입</td></tr>
+            <tr><td><strong>B. 브랜드 아키텍처 + 카테고리 확장 정리</strong></td><td><span class="tag tag-yellow">35%</span></td><td>완구·성인식판·세이브어스 라인 확장 신호 + 단일 SKU 의존 리스크 인식 가능성</td><td>마스터브랜드 워크숍 + 마스터·서브 위계 (Professional)</td></tr>
+            <tr><td><strong>C. 신규 SKU·완구 라인 마케팅 단발성</strong></td><td><span class="tag tag-yellow">15%</span></td><td>2024 자석놀이 출시 후 후속 마케팅 / 어린이날·다음 시즌 캠페인 의뢰</td><td>Essential 견적 + 단발 캠페인 → 장기 묶기</td></tr>
+            <tr><td><strong>D. 사회공헌·ESG 연계 PR/IR</strong></td><td><span class="tag tag-gray">10%</span></td><td>사회공헌인증 획득 후 공공기관·기업 협업 확장 발화</td><td>ESG 스토리 IR덱 + 공공 컬래버 제안</td></tr>
+        </table>
+
+        <h3>수주 확률 시나리오</h3>
+        <table>
+            <tr><th>시나리오</th><th>확률</th><th>정의</th><th>기대 금액</th></tr>
+            <tr><td><strong>낙관</strong></td><td>35%</td><td>Essential 즉시 수주(2-3주 내) → 3개월 내 Professional 업셀</td><td>6천~8천대</td></tr>
+            <tr><td><strong>기본</strong></td><td>30%</td><td>Essential 견적 요청 → 절반 확률 수주</td><td>1.5천~2.5천대</td></tr>
+            <tr><td><strong>탐색</strong></td><td>20%</td><td>다음 미팅 약속 + 자료 발송, 분기 내 재타진</td><td>0 (옵션 가치)</td></tr>
+            <tr><td>No-Go</td><td>15%</td><td>인하우스로 충분 / 시기상조 / 핏 미스매치</td><td>0</td></tr>
+        </table>
+        <div class="callout callout-info">
+            <strong>기대값 계산:</strong> 35% × 7천만 + 30% × 2천만 + 20% × 0 + 15% × 0 ≈ <strong>약 3,050만원 기대값</strong>. 첫 미팅 후 Essential 견적 발송까지 도달할 확률 약 65%, 즉시 실행 약 35% 추정.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 10. 3-Tier 견적 초안 -->
+    <!-- ============================================================ -->
+    <div class="section" id="quote">
+        <h2>10. 3-Tier 견적 초안 (첫 미팅 특화 모듈화)</h2>
+
+        <div class="tier-cards">
+            <div class="tier-card">
+                <h4>Essential</h4>
+                <div style="font-size:12px; color:var(--text-light); margin-bottom:6px;">네스틱 브랜드 디스커버리 스프린트</div>
+                <div class="price">1,500~2,500만</div>
+                <div class="price-sub">정부매칭 시 실부담 7백~1.5천대</div>
+                <div class="duration">3~5주 · 진단·의사결정</div>
+                <ul>
+                    <li>SKU별 매출·반복구매·해외 비중 진단 1장</li>
+                    <li>채널 매트릭스 — 자사몰·네이버·Amazon·SHOOV·인스타 메시지·가격 정렬도 점검</li>
+                    <li>마스터·서브 브랜드 아키텍처 초안 (Nestique × Save Us × 완구 × 성인)</li>
+                    <li>앵커 시장 후보 비교 (US vs JP, 데이터 기반)</li>
+                    <li>경쟁 카테고리 좌표 (모윰 vs ezpz vs Bumkins vs 네스틱)</li>
+                    <li>중기부·KOTRA 매칭 가능성 리포트</li>
+                    <li><strong>Professional 미진행 시 위약금 0원</strong></li>
+                </ul>
+            </div>
+            <div class="tier-card recommended">
+                <div class="tier-badge">RECOMMENDED</div>
+                <h4>Professional</h4>
+                <div style="font-size:12px; color:var(--text-light); margin-bottom:6px;">Nestique 마스터브랜드 + 글로벌 D2C 1호국 엔진</div>
+                <div class="price">5,000~7,000만</div>
+                <div class="price-sub">정부매칭 시 실부담 2.5~4천대</div>
+                <div class="duration">3~4개월 · 전략+실행 준비</div>
+                <ul>
+                    <li>Essential 전체 포함</li>
+                    <li><strong>마스터브랜드 아키텍처 워크숍</strong> — 라인업·서브브랜드·세이브어스 위계 확정</li>
+                    <li>브랜드 언어·카피 시스템 (국문·영문 마스터 + 일·중·서 가이드)</li>
+                    <li>앵커 시장 1국 (미국 추정) D2C 트라이포드 — Amazon·SHOOV·자사몰 영문 통합</li>
+                    <li>인스타·콘텐츠 운영 가이드 + 완구·성인식기 메시지 모듈</li>
+                    <li>KOTRA·중기부 수출바우처 동반 신청 패키지</li>
+                    <li>분기 Go/No-Go 결정점 <strong>2회</strong></li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>Premium</h4>
+                <div style="font-size:12px; color:var(--text-light); margin-bottom:6px;">한국 라이프스타일 식기 마스터브랜드 풀 파트너십</div>
+                <div class="price">1.2억~1.8억</div>
+                <div class="price-sub">정부매칭 시 실부담 6천~1억대</div>
+                <div class="duration">8~10개월 · 풀 파트너십</div>
+                <ul>
+                    <li>Professional 전체 포함</li>
+                    <li>BI·CI 리뉴얼 + 패키지·UX 리디자인</li>
+                    <li>2개국 앵커 시장 동시 진행 (미국 + 일본 또는 동남아)</li>
+                    <li>박람회 부스 1회 실행 (ABC Kids Expo·NY Now·도쿄 베이비&키즈 中 1)</li>
+                    <li>완구 라인 IR·세이브어스 통합 IR덱</li>
+                    <li>SK케미칼·마그피아·SHOOV 외 신규 파트너십 1개 발굴 지원</li>
+                    <li>Fractional CMO 리테이너 옵션</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="leverage-box">
+            <div style="font-size: 13px; opacity: 0.7; margin-bottom: 8px;">💰 가치 프레이밍 한 줄</div>
+            <div class="quote">
+                "단일 SKU 100억은 카테고리 퍼스트무버의 증거.<br>
+                다음 100억은 <span class="hl">SKU가 아니라 '브랜드 정의'에서 나옵니다.</span><br>
+                Essential 4주, 1.5천대로 우선 좌표만 같이 찍어보시죠 —<br>
+                Professional로 안 넘어가셔도 <span class="hl">위약금 0원</span>,<br>
+                정부매칭까지 얹으면 <span class="hl">실부담이 절반 이하</span>로 떨어집니다."
+            </div>
+        </div>
+
+        <div class="callout callout-info">
+            <strong>상담 전 확인 필요 (내부 체크):</strong> (1) 첫 미팅 의제가 글로벌 D2C인지 / 카테고리 확장인지 / 신규 SKU 캠페인인지 (2) 토끼 원플레이트 외 SKU 매출 비중 (3) Amazon US 직 FBA 여부·월매출 (4) 인하우스 마케팅·디자인 인력 규모 (5) 이미 협업 중인 외부 에이전시·파트너 유무 (6) 네스틱 단독 매출 vs 화진몰테크 OEM 매출 분리.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 11. 상담 전략 & 코칭 -->
+    <!-- ============================================================ -->
+    <div class="section" id="strategy">
+        <h2>11. 상담 전략 & 코칭 (60분 첫 미팅)</h2>
+
+        <div class="leverage-box">
+            <div style="font-size: 13px; opacity: 0.7; margin-bottom: 8px;">🎤 오프닝 30초 멘트 (입장 직후)</div>
+            <div class="quote" style="font-size:17px;">
+                "대표님, 만나뵙게 되어 영광입니다.<br>
+                저희가 미팅 전에 네스틱 보고 <span class="hl">"토끼 원플레이트가 단순 식판이 아니라 모듈 시스템 IP"</span>라는 점에서<br>
+                국내에서 보기 드문 카테고리 퍼스트무버라고 정리하고 왔습니다.<br>
+                100만 부모, 116개국 유통, SK케미칼 협력 — 자산이 이미 풀세트인데,<br>
+                저희는 보통 이런 케이스에서 <span class="hl">"브랜드 정의 한 칸"</span>이 다음 100억의 분기점이라고 봅니다.<br>
+                오늘은 제안 드리는 자리가 아니라, 대표님이 지금 머릿속에 그리시는 그림을<br>
+                저희 시각으로 한 번 같이 좌표 찍어보는 자리로 잡았어요. 편하게 말씀해주세요."
+            </div>
+        </div>
+
+        <h3>60분 상담 타임라인</h3>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 1<br>0~5분</div>
+            <div class="phase-content">
+                <h4>라포 + 카테고리 퍼스트무버 인정</h4>
+                <p>"토끼 원플레이트 = 모듈 시스템 IP" 프레임 선제공 / SK케미칼·마그피아·SHOOV 파트너십 언급 / "오늘은 제안 자리가 아니다" 선언</p>
+                <p class="phase-note">주의: 회사 자랑 금지. 인정 멘트 후 바로 듣는 모드로 전환.</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 2<br>5~17분</div>
+            <div class="phase-content">
+                <h4>대표 발화로 의제 추출 (듣기 80%)</h4>
+                <p>핵심 질문 #1·#2 투입 → 키워드만 메모 / 보조: "100만 부모 누적은 어떻게 측정하시는지", "116개국 유통은 SHOOV 외에 어떤 라인 통하시는지"</p>
+                <p class="phase-note">Phase 2 종료 시 1회 요약: "정리하면 지금 가장 큰 화두는 ~ 이 맞을까요?"</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 3<br>17~30분</div>
+            <div class="phase-content">
+                <h4>SKU·해외·아키텍처 3대 진단 질문 (침묵 70%)</h4>
+                <p>핵심 질문 #3·#4 — SKU 매출 비중 / Amazon US 운영 구조 / 마스터·서브 정의 직격 / <strong>5초 침묵 규칙</strong></p>
+                <p class="phase-note">즉답이 안 나오는 항목 = L3·L4 문제 = 견적 정당성. 답이 빠르면 인하우스 강한 영역.</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 4<br>30~40분</div>
+            <div class="phase-content">
+                <h4>Challenger Teaching (3 인사이트)</h4>
+                <p>(1) 모듈식기는 흡착식판과 다른 카테고리 — "한국 라이프스타일 식기 마스터브랜드" 자리 공석<br>
+                (2) Amazon·SHOOV·자사몰 영문 = 미국 진입 트라이포드 잠재력<br>
+                (3) 벤처기업·특허·사회공헌인증 = 정부매칭 자격 풀세트, 실부담 30~50% 경감 가능</p>
+                <p class="phase-note">완구·성인 라인 얘기로 빠지면: "그 확장 전부 마스터 네스틱 IP 위에 있어야 시너지가 납니다." 한 마디로 묶기.</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 5<br>40~50분</div>
+            <div class="phase-content">
+                <h4>솔루션 방향 (3-Tier 입으로만)</h4>
+                <p>Essential 1.5~2.5천 · Professional 5~7천 · Premium 1.2~1.8억 구조 입으로만. 서류 X / 핵심 질문 #5 투입.</p>
+                <p class="phase-note">"보통 100억대 매출 단일 SKU 케이스는 Professional이 핏" 앵커 멘트.</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 6<br>50~60분</div>
+            <div class="phase-content">
+                <h4>클로징 (Next Step 고정)</h4>
+                <p>"2주 안에 Essential 견적 1장 + 정부매칭 가능성 리포트 1장 보내드릴게요 (각 10분 안에 읽는 분량)." / 마케팅·디자인 실무 담당자 다음 미팅 동석 요청 / <strong>Trusted Advisor Quick Tip 즉석 시연</strong>.</p>
+            </div>
+        </div>
+
+        <h3>필수 질문 5개</h3>
+        <div class="question-card">
+            <div class="q-num">Q1 · Phase 2 메인</div>
+            <div class="q-text">"네스틱 출시 6년차이신데, 대표님 입장에서 <strong>지난 1년 가장 의미 있었던 변화 한 가지</strong>를 꼽으신다면 뭘까요?"</div>
+            <div class="q-intent">의도: 자석놀이·성인식판·해외 진출 등 본인 자긍심 영역 자체 발화 유도</div>
+            <div class="q-branch">분기: 자석놀이 → 카테고리 확장 의제 / Amazon → 글로벌 의제 / 100만 부모 → 브랜드 자산 의제</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q2 · Phase 2 보조</div>
+            <div class="q-text">"오늘 저희를 만나주신 건 어떤 계기였어요? 검색하셨는지, 추천받으셨는지요."</div>
+            <div class="q-intent">의도: 의사결정 경로 + 비교군(다른 에이전시) 탐색</div>
+            <div class="q-branch">분기: 추천 → 누구인지 자연스럽게 / 검색 → 어떤 키워드인지 (브랜딩? 글로벌? 컨설팅?)</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q3 · Phase 3 진단</div>
+            <div class="q-text">"<strong>토끼 원플레이트가 매출에서 차지하는 비중</strong> — 대략적으로 70%대인지, 50%대인지 어떻게 보시나요?"</div>
+            <div class="q-intent">의도: 단일 SKU 의존도 직격. 답 자체보다 답을 꺼내는 표정·속도가 더 정보적</div>
+            <div class="q-branch">분기: 70%↑ → "라인 확장 강도가 다음 화두" / 50%대 → "마스터·서브 정리가 다음 화두"</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q4 · Phase 3 임계</div>
+            <div class="q-text">"<strong>Amazon US와 SHOOV USA</strong>는 어떻게 역할을 나눠 운영하세요? 자사몰 영문은 어디까지 노출하시는지요."</div>
+            <div class="q-intent">의도: 글로벌 D2C 거버넌스 깊이 진단. 답이 정리 안 되면 즉시 Professional 정당성 확보</div>
+            <div class="q-branch">분기: 정리되어 있음 → "그럼 다음 앵커 시장은?" / 정리 안 됨 → "이게 보통 100억대 한국 D2C 브랜드 공통 숙제죠"</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q5 · Phase 5 클로징 브릿지</div>
+            <div class="q-text">"만약 저희가 <strong>작은 단위로 먼저 시작한다면</strong>, 대표님 입장에서 가장 빨리 답을 받고 싶은 한 가지는 뭘까요? '브랜드 정의', '해외 1국 진입', '라인 위계' 중에서요."</div>
+            <div class="q-intent">의도: Essential 첫 모듈 자동 선택</div>
+            <div class="q-branch">분기: "다 궁금" → "그럼 Essential에서 3개 다 좌표 찍어드릴게요" 견적 명분 확보</div>
+        </div>
+
+        <h3>Challenger Teaching 3포인트</h3>
+        <div class="leverage-box">
+            <div class="quote">
+                (1) <span class="hl">"모듈식기 ≠ 흡착식판"</span> — 모윰·블루마마·ezpz와 다른 영토. "한국 라이프스타일 식기 마스터브랜드" 자리 공석<br>
+                (2) <span class="hl">"Amazon US + SHOOV + 영문 자사몰 = 미국 진입 트라이포드"</span> — 이미 자산 다 있음, 정렬만 하면 됨<br>
+                (3) <span class="hl">벤처·특허·사회공헌인증·SK케미칼 = 정부매칭 풀세트 자격</span> — 실부담 30~50% 경감 가능, 아는 컨설팅사 거의 없음
+            </div>
+        </div>
+
+        <h3>예상 반론 & 대응</h3>
+        <table>
+            <tr><th>반론</th><th>대응 한 문장</th></tr>
+            <tr><td>"인하우스로 충분히 잘 하고 있습니다"</td><td>"네, 100만 부모·116개국까지 인하우스로 가신 것 자체가 증거예요. 저희는 <strong>대체가 아니라 정렬·증폭</strong>입니다."</td></tr>
+            <tr><td>"이미 거래하는 에이전시가 있어요"</td><td>"잘하셨습니다. 핏 안 맞는 건 빨리 갈라지는 게 서로 손해가 적죠. 저희는 보통 <strong>마스터브랜드 정의 1번</strong>만 같이 잡고 빠지는 모듈도 있어요."</td></tr>
+            <tr><td>"비용을 좀 보고 결정하고 싶어요"</td><td>"Essential 1.5~2.5천대로만 먼저 말씀드려도 될까요? 정확한 숫자는 오늘 대화 기반 2주 안에 드립니다."</td></tr>
+            <tr><td>"우리는 디자인이 강점이에요"</td><td>"맞아요. 컬러웨이·바니티는 강점입니다. 다음 단계는 그 디자인이 <strong>'왜 네스틱이어야 하는가'라는 정의 위에 올라가는 것</strong>이에요."</td></tr>
+            <tr><td>"좀 더 생각해볼게요"</td><td>"네. 다만 K-육아 글로벌 골든타임이 2025-2027 추정이라, 미국 앵커 시장 잡으시려면 <strong>2026년 하반기 킥오프가 마지노선</strong>으로 보고 있어요."</td></tr>
+            <tr><td>"우리는 OEM이 본업이라 브랜드 투자 신중해요"</td><td>"바로 그래서 Essential 4주, 위약금 0원 구조로 만들었습니다. <strong>OEM 캐시플로 흔들지 않고 브랜드 가치 측정</strong>이 목적이에요."</td></tr>
+            <tr><td>"우리 매출 100억대 맞는데, 자료엔 NICE에 안 떠요"</td><td>"네, 모회사 화진몰테크 단위로 보였더라고요. <strong>네스틱 단독 매출 분리 공시</strong>가 다음 IR·정부매칭에 결정적이에요."</td></tr>
+        </table>
+
+        <div class="callout callout-success">
+            <strong>💡 Trusted Advisor Quick Tip (상담 마무리 시연):</strong>
+            종이 한 장 꺼내서 대표님 앞에서 직접 그리기. 가운데 <strong>Nestique</strong> 마스터, 위로 유아식기·완구·성인식판, 옆으로 Save Us, 아래로 한국·미국·일본 채널. 빈칸 3개 표시 — "지금 비어 있는 칸이 다음 100억의 위치예요." 완성 후 <strong>대표님 핸드폰으로 직접 사진 찍으시라고</strong> 드리기 → "공식 진단은 48시간 안에 PDF로." 견적서 보내기 전에 먼저 준다는 시그널 = 자기이익 낮추는 신뢰 장치.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 12. 클로징 전략 -->
+    <!-- ============================================================ -->
+    <div class="section" id="closing">
+        <h2>12. 클로징 전략</h2>
+
+        <h3>이상적 다음 스텝 플로우</h3>
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="step-num">STEP 1 · 당일 밤</div>
+                <div class="step-title">감사 메일·문자</div>
+                <div class="step-desc">미팅 한 줄 요약 + 48시간 내 1-pager 약속</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 2 · 48시간</div>
+                <div class="step-title">브랜드 좌표 1-pager PDF</div>
+                <div class="step-desc">Quick Tip 스케치 공식화 + 정부매칭 자격 1줄</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 3 · 2주</div>
+                <div class="step-title">Essential 견적 + 매칭 리포트</div>
+                <div class="step-desc">각 1장 원칙 · 읽는 데 10분 안 넘게</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 4 · 4주</div>
+                <div class="step-title">실무 담당자 동석 미팅</div>
+                <div class="step-desc">마케팅/디자인/해외영업 1~2명 + 의사결정 단축</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 5 · 6주</div>
+                <div class="step-title">Essential 킥오프</div>
+                <div class="step-desc">3~5주 진단 → Professional 직결 옵션</div>
+            </div>
+        </div>
+
+        <h3>클로징 시그널 (실시간 판독)</h3>
+        <table>
+            <tr><th>대표 신호</th><th>의미</th><th>즉시 대응</th></tr>
+            <tr><td>"일정 잡아드릴게요"</td><td>Essential 진입 신호</td><td>"이번 주 안에 견적·매칭 리포트 보내드릴게요"</td></tr>
+            <tr><td>"실무자도 같이 봐야겠네요"</td><td>의사결정 동맹 형성 신호</td><td>"동석 가능한 시간 2~3개 보내주시면 맞춰가겠습니다"</td></tr>
+            <tr><td>"OEM 본업 영향이 좀 걱정"</td><td>비용 리스크 우려</td><td>Essential 위약금 0원 + 매칭 30~50% 경감 카드 즉시 제시</td></tr>
+            <tr><td>"우리는 디자인이 강점"</td><td>본인 강점 방어 모드</td><td>"맞아요. 디자인 위에 정의를 얹는 1주차 워크숍이 핵심" 한 마디로 흡수</td></tr>
+            <tr><td>"좀 더 생각해볼게요"</td><td>탐색 모드</td><td>"2주 안에 1-pager만 보내드려도 될까요?" 정보 우위 자리 확보</td></tr>
+        </table>
+
+        <div class="callout callout-info">
+            <strong>첫 미팅 클로징 원칙:</strong> 첫 미팅에서 <strong>견적 서류 직접 전달 금지</strong>. 대신 <strong>"좌표 1-pager + Essential 견적 1장 + 매칭 리포트 1장"</strong> 3종 세트를 2주 안에 분리 발송. 첫 미팅은 "신뢰 장치 최대화 + 견적은 이메일에서" 룰 엄수. NICE 데이터로 본 화진몰테크는 안정·규모 상위, 수익·성장 하위 → 가격 민감도 중간 추정. Premium 1.2~1.8억은 첫 미팅에서 <strong>입으로만 언급</strong>, Professional 5~7천대를 중앙값으로 앵커링.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 13. 참고 링크 -->
+    <!-- ============================================================ -->
+    <div class="section" id="sources">
+        <h2>13. 참고 링크 (Sources · 확인일 2026-04-27)</h2>
+
+        <h3>공식 채널</h3>
+        <div class="source-list">
+            • 자사몰: <a href="http://nestique.kr" target="_blank">nestique.kr</a><br>
+            • ABOUT: <a href="http://nestique.kr/112" target="_blank">nestique.kr/112</a><br>
+            • 영유아 라인: <a href="http://nestique.kr/122" target="_blank">nestique.kr/122</a><br>
+            • Instagram: <a href="https://www.instagram.com/nestique.co.kr/" target="_blank">@nestique.co.kr</a><br>
+            • Linktree: <a href="https://linktr.ee/nestique" target="_blank">linktr.ee/nestique</a><br>
+            • 모회사: <a href="https://hwajinmoltech.co.kr" target="_blank">hwajinmoltech.co.kr</a>
+        </div>
+
+        <h3>판매·해외</h3>
+        <div class="source-list">
+            • Amazon US 스토어: <a href="https://www.amazon.com/stores/NESTIQUE/page/CE5494C4-03EB-4293-94EA-CE6EE0B2F96B" target="_blank">amazon.com/stores/NESTIQUE</a><br>
+            • SHOOV USA 파트너 페이지: <a href="https://shoovusa.com/pages/nestique" target="_blank">shoovusa.com/pages/nestique</a><br>
+            • G마켓 미니샵: <a href="http://minishop.gmarket.co.kr/nestique" target="_blank">minishop.gmarket.co.kr/nestique</a><br>
+            • 인터파크 스토어: <a href="https://store.interpark.com/nestique" target="_blank">store.interpark.com/nestique</a>
+        </div>
+
+        <h3>뉴스·리포트</h3>
+        <div class="source-list">
+            • 서울경제 (2024.04, 자석놀이 출시 · 진윤식 대표 발언): <a href="https://www.sedaily.com/NewsView/2GRQ2A0EH5" target="_blank">sedaily.com/NewsView/2GRQ2A0EH5</a><br>
+            • 이데일리 (사회공헌인증제품·ESG 인터뷰): <a href="https://www.edaily.co.kr/News/Read?newsId=02289446645322640" target="_blank">edaily.co.kr</a><br>
+            • NICE비즈인포 화진몰테크 기업정보: <a href="https://www.nicebizinfo.com/ep/EP0100M002GE.nice?kiscode=HJ2791" target="_blank">nicebizinfo.com</a><br>
+            • 베이비뉴스 2025 부모 선호 브랜드 (모윰·블루마마·그로미미·에디슨 순위): <a href="https://www.ibabynews.com/news/articleView.html?idxno=136987" target="_blank">ibabynews.com</a><br>
+            • 서울경제 코니바이에린 (한국발 글로벌 D2C 케이스): <a href="https://www.sedaily.com/NewsView/2D6QYU06GT" target="_blank">sedaily.com/NewsView/2D6QYU06GT</a><br>
+            • KB의 생각 (프리미엄 육아용품·텐포켓): <a href="https://kbthink.com/main/living-finance/consumption-life/mz-consumption/premium-child-care.html" target="_blank">kbthink.com</a><br>
+            • Mordor Intelligence Baby Care: <a href="https://www.mordorintelligence.kr/industry-reports/baby-care-products-market" target="_blank">mordorintelligence.kr</a>
+        </div>
+
+        <div class="callout callout-info" style="margin-top: 24px;">
+            <strong>리서치 신뢰도 안내:</strong> 이 리포트는 공개 자료(공식 사이트·언론 기사·기업정보 사이트·시장조사 보고서)와 클라이언트 발화(매출 100억대) 기반 종합 분석. <strong>네스틱 단독 매출·SKU별 비중·Amazon US 월매출·인스타 팔로워·116개국 유통 정확 범위</strong>는 미공개 정보로 [추정·확인 필요] 표기. 첫 미팅에서 보강 청취 권장. 모회사 화진몰테크 본사 주소는 NICE(부평구)와 G마켓 등록(계양구)이 다름 — 상담 전 재확인 권장.
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    BRANDRISE × MarketingOS · Nestique New Business Briefing · 2026-04-27
+</div>
+
+</body>
+</html>
