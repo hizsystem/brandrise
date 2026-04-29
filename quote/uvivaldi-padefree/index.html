@@ -48,61 +48,32 @@
             letter-spacing: 1px;
         }
 
-        .header h1 { font-size: 34px; font-weight: 800; margin-bottom: 10px; color: var(--primary); }
-        .header .subtitle { font-size: 16px; color: var(--text-light); font-weight: 400; }
+        .header h1 { font-size: 32px; font-weight: 800; margin-bottom: 10px; color: var(--primary); }
+        .header .subtitle { font-size: 15px; color: var(--text-light); font-weight: 400; }
         .header .date { margin-top: 16px; font-size: 13px; color: #cccccc; }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
-
-        .toc {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 32px;
-            margin-bottom: 40px;
-            border: 1px solid var(--border);
-        }
-        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
-        .toc-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 8px;
-        }
-        .toc a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-size: 14px;
-            padding: 6px 0;
-            display: block;
-            transition: color 0.2s;
-        }
-        .toc a:hover { color: var(--accent); }
+        .container { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
 
         .section {
             background: var(--card-bg);
             border-radius: 12px;
             padding: 36px;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
             border: 1px solid var(--border);
         }
         .section h2 {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             padding-bottom: 12px;
             border-bottom: 2px solid var(--accent);
         }
-        .section h3 {
-            font-size: 17px;
-            font-weight: 600;
-            color: var(--primary);
-            margin: 24px 0 12px;
-        }
-        .section p { font-size: 14px; margin: 8px 0; color: var(--text); }
-        .section ul { font-size: 14px; padding-left: 20px; margin: 8px 0; }
-        .section ul li { margin: 4px 0; }
+        .section p { font-size: 14.5px; margin: 8px 0; color: var(--text); }
+        .section ul { font-size: 14.5px; padding-left: 20px; margin: 8px 0; }
+        .section ul li { margin: 5px 0; }
 
-        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
         th {
             background: var(--muted);
             color: var(--primary);
@@ -113,21 +84,6 @@
             border-bottom: 2px solid var(--border);
         }
         td { padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
-        tr:hover td { background: var(--muted); }
-
-        .tag {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin: 2px;
-        }
-        .tag-red { background: var(--accent-soft); color: var(--accent); }
-        .tag-green { background: #eef3ec; color: #6a8a5a; }
-        .tag-blue { background: var(--accent-light); color: var(--accent); }
-        .tag-yellow { background: #fef6e8; color: #b8860b; }
-        .tag-gray { background: var(--muted); color: var(--secondary); }
 
         .callout {
             background: var(--accent-light);
@@ -135,65 +91,39 @@
             padding: 16px 20px;
             border-radius: 0 8px 8px 0;
             margin: 16px 0;
-            font-size: 14px;
+            font-size: 14.5px;
         }
         .callout-info { background: var(--muted); border-left-color: #bbb; }
-        .callout-danger { background: var(--accent-soft); border-left-color: var(--accent); }
-        .callout-success { background: #eef3ec; border-left-color: #8aaa7a; }
 
-        .module-card {
-            border: 1px solid var(--border);
+        .price-hero {
+            background: var(--primary);
+            color: white;
+            padding: 36px 32px;
             border-radius: 12px;
-            padding: 24px;
-            margin: 14px 0;
-            background: #ffffff;
-            display: grid;
-            grid-template-columns: 1fr 180px;
-            gap: 24px;
-            align-items: start;
+            text-align: center;
+            margin-bottom: 24px;
         }
-        .module-card.module-core {
-            border-color: var(--accent);
-            background: var(--accent-light);
-        }
-        .module-card.module-recommend {
-            border-color: #8aaa7a;
-            background: #f7faf6;
-        }
-        .module-card .module-tag {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 3px 10px;
-            border-radius: 10px;
-            margin-bottom: 8px;
-            background: var(--muted);
-            color: var(--secondary);
-        }
-        .module-core .module-tag { background: var(--accent); color: white; }
-        .module-recommend .module-tag { background: #8aaa7a; color: white; }
-        .module-card h3 { font-size: 17px; margin: 4px 0 10px; color: var(--primary); }
-        .module-card .module-body { font-size: 14px; color: var(--secondary); }
-        .module-card .module-body ul { padding-left: 18px; margin: 6px 0; font-size: 13px; }
-        .module-card .module-body li { margin: 3px 0; }
-        .module-card .module-price {
-            text-align: right;
-            border-left: 1px dashed var(--border);
-            padding-left: 24px;
-        }
-        .module-card .module-price .price-label { font-size: 11px; color: var(--text-light); }
-        .module-card .module-price .price-value { font-size: 26px; font-weight: 800; color: var(--accent); margin: 4px 0; }
-        .module-card .module-price .price-vat { font-size: 11px; color: var(--text-light); }
+        .price-hero .price-label { font-size: 14px; opacity: 0.65; margin-bottom: 8px; letter-spacing: 1px; }
+        .price-hero .price-value { font-size: 56px; font-weight: 800; color: var(--accent); margin: 4px 0; line-height: 1; }
+        .price-hero .price-vat { font-size: 13px; opacity: 0.6; margin-top: 6px; }
+        .price-hero .price-desc { font-size: 14.5px; opacity: 0.85; margin-top: 16px; line-height: 1.7; }
 
-        .combo-table table { font-size: 14px; }
-        .combo-table .combo-recommend { background: #f7faf6; }
-        .combo-table .combo-recommend td { font-weight: 600; }
+        .scope-card {
+            border: 1px solid var(--accent);
+            background: var(--accent-light);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin: 12px 0;
+        }
+        .scope-card h3 { font-size: 16px; color: var(--primary); margin-bottom: 12px; }
+        .scope-card ul { padding-left: 18px; margin: 0; font-size: 14px; }
+        .scope-card li { margin: 6px 0; line-height: 1.6; }
 
         .timeline-row {
             display: grid;
-            grid-template-columns: 130px 200px 1fr;
+            grid-template-columns: 110px 200px 1fr;
             gap: 16px;
-            padding: 14px 0;
+            padding: 12px 0;
             border-bottom: 1px solid var(--border);
             font-size: 14px;
             align-items: start;
@@ -203,70 +133,20 @@
         .timeline-row .tr-what { font-weight: 600; color: var(--primary); }
         .timeline-row .tr-detail { color: var(--secondary); font-size: 13px; }
 
-        .flow-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 20px 0; }
-        .flow-step {
-            padding: 16px;
-            background: var(--accent-light);
-            border-radius: 8px;
-            text-align: center;
-            position: relative;
-        }
-        .flow-step:not(:last-child)::after {
-            content: "›";
-            position: absolute;
-            right: -10px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 20px;
-            color: var(--accent);
-            font-weight: 700;
-            z-index: 1;
-        }
-        .flow-step .step-num { font-size: 11px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
-        .flow-step .step-title { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
-        .flow-step .step-desc { font-size: 12px; color: var(--text-light); }
-
-        .footer { text-align: center; padding: 40px; color: #aaaaaa; font-size: 13px; }
+        .footer { text-align: center; padding: 30px; color: #aaaaaa; font-size: 13px; }
         .footer a { color: var(--accent); text-decoration: none; }
-
-        /* Executive Summary */
-        .summary-section { border: 1px solid var(--border); border-left: 4px solid var(--accent); background: #ffffff; }
-        .summary-section h2 { border-bottom-color: var(--accent); }
-        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
-        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
-        .summary-header .sh-title { font-size: 16px; font-weight: 700; color: var(--primary); }
-        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
-
-        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
-        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; }
-        .kpi-card.kpi-dark { background: var(--muted); color: var(--primary); }
-        .kpi-card.kpi-accent { background: var(--accent); color: white; }
-        .kpi-card .kpi-label { font-size: 12px; opacity: 0.6; }
-        .kpi-card .kpi-value { font-size: 22px; font-weight: 800; margin: 4px 0; }
-        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.6; }
-
-        .summary-oneliner { background: var(--primary); color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
-        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.5; margin-bottom: 8px; }
-        .summary-oneliner .sol-text { font-size: 16px; font-weight: 600; line-height: 1.7; }
-        .summary-oneliner .sol-text .hl { color: var(--accent); font-weight: 800; }
 
         @media (max-width: 768px) {
             .header { padding: 40px 20px; }
-            .header h1 { font-size: 24px; }
-            .section { padding: 24px 16px; }
-            .module-card { grid-template-columns: 1fr; }
-            .module-card .module-price { border-left: none; border-top: 1px dashed var(--border); padding-left: 0; padding-top: 12px; text-align: left; }
-            .summary-header { grid-template-columns: 1fr; }
-            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .header h1 { font-size: 22px; }
+            .section { padding: 24px 18px; }
+            .price-hero .price-value { font-size: 42px; }
             .timeline-row { grid-template-columns: 1fr; gap: 4px; }
-            .flow-steps { grid-template-columns: 1fr 1fr; }
-            .flow-step:not(:last-child)::after { display: none; }
         }
 
         @media print {
             body { background: white; }
             .section { box-shadow: none; border: 1px solid #ddd; }
-            .toc { box-shadow: none; border: 1px solid #ddd; }
         }
     </style>
 </head>
@@ -282,410 +162,160 @@
 <div class="container">
 
     <!-- ============================================================ -->
-    <!-- Executive Summary -->
+    <!-- 단일 견적 -->
     <!-- ============================================================ -->
-    <div class="section summary-section" id="executive-summary">
-        <h2>한 페이지 요약</h2>
-        <div class="summary-header">
-            <div>
-                <div class="sh-label">대상</div>
-                <div class="sh-title">파데프리 선크림 2종 + 향후 라인 확장 대비 시스템</div>
-                <div class="sh-sub">패키지 디자인 + 단상자 디자인 + 영문 워드마크 + 컬러 시스템</div>
-            </div>
-            <div>
-                <div class="sh-label">기준 일정</div>
-                <div class="sh-title">2026년 6월 양산 가능</div>
-                <div class="sh-sub">5/6 킥오프 → 6/3 최종 납품 역산 5주 일정</div>
-            </div>
-        </div>
-        <div class="kpi-grid">
-            <div class="kpi-card kpi-accent">
-                <div class="kpi-label">Core 견적</div>
-                <div class="kpi-value">1,800만</div>
-                <div class="kpi-sub">VAT 별도</div>
-            </div>
-            <div class="kpi-card kpi-dark">
-                <div class="kpi-label">권장 구성 (Core + BI 정비)</div>
-                <div class="kpi-value">2,700만</div>
-                <div class="kpi-sub">VAT 별도</div>
-            </div>
-            <div class="kpi-card kpi-dark">
-                <div class="kpi-label">진행 기간</div>
-                <div class="kpi-value">5주</div>
-                <div class="kpi-sub">킥오프 → 최종 납품</div>
-            </div>
-            <div class="kpi-card kpi-dark">
-                <div class="kpi-label">결제 마일스톤</div>
-                <div class="kpi-value">3단계</div>
-                <div class="kpi-sub">계약·시안·납품 30/30/40</div>
-            </div>
-        </div>
-        <div class="summary-oneliner">
-            <div class="sol-label">제안 구성 한 줄</div>
-            <div class="sol-text">
-                대표님이 말씀해주신 <span class="hl">"1차 2천만 전후"</span> 기준선에 맞춰 코어 디자인 1,800만으로 잡고,
-                메일에서 직접 언급하신 <span class="hl">BI 체계 정비 · 해외 상표권 대응 · 기존 라인 리뉴얼 · 연말 클렌징 사전 설계</span>를
-                모듈로 분리해 단계적 선택이 가능한 구조로 구성했습니다.
-            </div>
-        </div>
-        <div class="callout callout-success" style="margin-top: 8px;">
-            <strong>권장 구성</strong>은 Core + Module A(BI 체계 정비) = <strong>2,700만</strong>입니다. 메일에서 "BI 체계·해외 상표권 등 필수 동반 진행 부분 제안 주시면 적극 검토" 언급해 주신 부분에 직접 대응하는 구성입니다.
-        </div>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- 목차 -->
-    <!-- ============================================================ -->
-    <div class="toc">
-        <h2>목차 (Table of Contents)</h2>
-        <div class="toc-grid">
-            <a href="#executive-summary">한 페이지 요약</a>
-            <a href="#scope">1. 진행 범위</a>
-            <a href="#method">2. 작업 방식</a>
-            <a href="#schedule">3. 일정</a>
-            <a href="#revision">4. 수정 범위</a>
-            <a href="#deliverables">5. 산출물 제공 범위</a>
-            <a href="#quote">6. 견적 구조</a>
-            <a href="#next">7. 다음 단계</a>
+    <div class="price-hero">
+        <div class="price-label">진행 견적</div>
+        <div class="price-value">1,800만원</div>
+        <div class="price-vat">VAT 별도</div>
+        <div class="price-desc">
+            대표님 말씀 주신 "1차 2천만 전후" 기준선에 맞춰<br>
+            <strong>패키지·단상자·워드마크·컬러 시스템·기존 라인 연결성·해외 매대 톤</strong>까지 단일 가격으로 구성
         </div>
     </div>
 
     <!-- ============================================================ -->
     <!-- 1. 진행 범위 -->
     <!-- ============================================================ -->
-    <div class="section" id="scope">
+    <div class="section">
         <h2>1. 진행 범위</h2>
-        <p>코어 디자인을 단일 가격으로 두고, 대표님이 메일에서 언급하신 동반 진행 영역(BI 체계·해외 상표권·pppf 리뉴얼·연말 클렌징)을 모듈로 분리했습니다. 모듈은 단계적으로 선택·추가가 가능합니다.</p>
-
-        <div class="module-card module-core">
-            <div class="module-body">
-                <span class="module-tag">CORE · 필수 진행</span>
-                <h3>신제품 파데프리 2종 패키지 디자인</h3>
-                <ul>
-                    <li>제품(튜브) 라벨 디자인 2종 — Latte / Toffee 컬러 변형</li>
-                    <li>단상자 6면 전개 디자인 2종 (캡 금형 변경 확정 이후 정확 칼선 기준)</li>
-                    <li>영문 워드마크 시안 2~3안 → 1안 확정 (해외 매대 가독성 1차 점검 포함)</li>
-                    <li>그린민트 기반 컬러 시스템 (Pantone / CMYK / RGB)</li>
-                    <li>디자인 컨셉 노트 (디자인 논리 · 음표 / pppf 연결성 / 워드마크 판단 근거)</li>
-                </ul>
-            </div>
-            <div class="module-price">
-                <div class="price-label">CORE</div>
-                <div class="price-value">1,800만</div>
-                <div class="price-vat">VAT 별도</div>
-            </div>
+        <div class="scope-card">
+            <h3>본 견적 포함 범위</h3>
+            <ul>
+                <li>신제품 파데프리 선크림 2종 패키지 디자인 (튜브 라벨 + 단상자 6면 전개) · Latte / Toffee 컬러 변형</li>
+                <li>영문 워드마크 정비 — 해외 매대 가독성 점검 + 보강</li>
+                <li>그린민트 기반 브랜드 컬러 시스템 + 운용 룰</li>
+                <li><strong>기존 pppf 2종과의 연결성 가이드</strong> — 시리즈로 보이는 디자인 룰 정의 (기존 라인 양산 리뉴얼은 별도)</li>
+                <li><strong>단상자·패키지 전체 톤 + 해외 매대 기본 현지화 톤</strong> 점검 (큐텐·쇼피·일본 1차 가독성 검토)</li>
+                <li>디자인 컨셉 노트 + 인쇄 감리 가이드</li>
+            </ul>
         </div>
 
-        <div class="module-card module-recommend">
-            <div class="module-body">
-                <span class="module-tag">MODULE A · 권장 동반</span>
-                <h3>BI 체계 정비 — 워드마크 + 컬러 시스템 + 운용 룰북</h3>
-                <ul>
-                    <li>영문 워드마크 해외 매대 가독성 정밀 점검 + 보강 시안</li>
-                    <li>그린민트 컬러 시스템 정비 — 코어 / 서브 / 카테고리 컬러칩 3층 구조</li>
-                    <li>로고 운용 룰북 (사용 가이드 · 단독 사용 / 조합 / 금지 사례)</li>
-                    <li>시리즈 확장 룰 — 클렌징·키즈·바디 등 라인 추가 시 디자인이 깨지지 않는 시스템</li>
-                </ul>
-                <p style="font-size: 12px; color: var(--text-light); margin-top: 8px;"><em>대표님이 메일에서 명시 요청하신 영역. 지금 함께 정비하면 향후 라인 추가 시 재작업 비용이 발생하지 않습니다.</em></p>
-            </div>
-            <div class="module-price">
-                <div class="price-label">+ MODULE A</div>
-                <div class="price-value">+900만</div>
-                <div class="price-vat">VAT 별도</div>
-            </div>
-        </div>
-
-        <div class="module-card">
-            <div class="module-body">
-                <span class="module-tag">MODULE B · 선택</span>
-                <h3>해외 매대 현지화 디자인 가이드</h3>
-                <ul>
-                    <li>큐텐(일본) / 쇼피(동남아) / 미국 매대 가독성 디자인 가이드</li>
-                    <li>미국 OTC Drug Facts 박스 등 규제 시각 영역 점검</li>
-                    <li>영문 카피 · 워드마크 현지화 룰</li>
-                </ul>
-                <p style="font-size: 12px; color: var(--text-light); margin-top: 8px;"><em>큐텐 입점 직전 · 쇼피 준비 중 · 일본·동남아 시딩 진행 단계와 직결.</em></p>
-            </div>
-            <div class="module-price">
-                <div class="price-label">+ MODULE B</div>
-                <div class="price-value">+600만</div>
-                <div class="price-vat">VAT 별도</div>
-            </div>
-        </div>
-
-        <div class="module-card">
-            <div class="module-body">
-                <span class="module-tag">MODULE C · 선택</span>
-                <h3>기존 pppf 2종 리뉴얼 가이드</h3>
-                <ul>
-                    <li>신제품 시스템에 맞춘 기존 2종 점진 전환 가이드</li>
-                    <li>재고 소진 시점 기준 교체 시나리오</li>
-                    <li>패키지 재설계 시안 (양산 단계 진입 시 별도 견적)</li>
-                </ul>
-                <p style="font-size: 12px; color: var(--text-light); margin-top: 8px;"><em>"재고 소진 시점 점진 전환" 방향에 동의 주신 부분에 대응.</em></p>
-            </div>
-            <div class="module-price">
-                <div class="price-label">+ MODULE C</div>
-                <div class="price-value">+700만</div>
-                <div class="price-vat">VAT 별도</div>
-            </div>
-        </div>
-
-        <div class="module-card">
-            <div class="module-body">
-                <span class="module-tag">MODULE D · 선택</span>
-                <h3>연말 클렌징 라인 디자인 사전 설계</h3>
-                <ul>
-                    <li>연말 출시 클렌징 1종 디자인 사전 설계 (개발 막바지 단계 반영)</li>
-                    <li>시리즈 룰북 흡수 — 본 디자인 양산 단계 시 별도 견적</li>
-                    <li>"선케어 → 선 케어 + 클렌징" 한 시리즈 인지 자산 확보</li>
-                </ul>
-            </div>
-            <div class="module-price">
-                <div class="price-label">+ MODULE D</div>
-                <div class="price-value">+500만</div>
-                <div class="price-vat">VAT 별도</div>
-            </div>
+        <div class="callout callout-info">
+            <strong>본 견적 외 별도 진행 가능 영역</strong> · 기존 pppf 2종 양산 리뉴얼 디자인 (재고 소진 시점) · 연말 클렌징 라인 본 디자인 · 매출·입점 전략 동반 (디자인 종료 후 별도 단계로 협의)
         </div>
     </div>
 
     <!-- ============================================================ -->
     <!-- 2. 작업 방식 -->
     <!-- ============================================================ -->
-    <div class="section" id="method">
+    <div class="section">
         <h2>2. 작업 방식</h2>
-        <p>4단계 발표·피드백 사이클로 진행합니다. 각 단계 종료 시 발표 + 피드백 회의 1회를 운영합니다.</p>
-
-        <div class="flow-steps">
-            <div class="flow-step">
-                <div class="step-num">STEP 1</div>
-                <div class="step-title">무드보드 + 방향 3안</div>
-                <div class="step-desc">컨셉 탐색 · 방향성 협의</div>
-            </div>
-            <div class="flow-step">
-                <div class="step-num">STEP 2</div>
-                <div class="step-title">1차 디벨롭 시안</div>
-                <div class="step-desc">선택 1안 디벨롭 · 컬러 체계 확정</div>
-            </div>
-            <div class="flow-step">
-                <div class="step-num">STEP 3</div>
-                <div class="step-title">2차 시안 + 단상자 전개</div>
-                <div class="step-desc">단상자 6면 + 디테일 보완</div>
-            </div>
-            <div class="flow-step">
-                <div class="step-num">STEP 4</div>
-                <div class="step-title">최종 납품 + 인쇄 가이드</div>
-                <div class="step-desc">파일 전달 · 인쇄 감리 가이드</div>
-            </div>
-        </div>
-
-        <h3>커뮤니케이션</h3>
-        <ul>
-            <li>주 1회 정기 발표 + 피드백 회의 (대면 또는 화상, 1시간 이내)</li>
-            <li>중간 진행 사항은 공유 폴더(드라이브 또는 노션) + 슬랙 채널로 실시간 공유</li>
-            <li>긴급 문의는 메일 또는 모바일 (24시간 내 회신)</li>
-        </ul>
+        <p>4단계 발표·피드백 사이클로 진행합니다.</p>
+        <table>
+            <tr><th style="width: 120px;">단계</th><th>내용</th></tr>
+            <tr><td><strong>STEP 1</strong></td><td>무드보드 + 컨셉 방향 3안 → 1안 선택</td></tr>
+            <tr><td><strong>STEP 2</strong></td><td>선택 1안 디벨롭 + 컬러 체계 확정</td></tr>
+            <tr><td><strong>STEP 3</strong></td><td>2차 시안 + 단상자 6면 전개</td></tr>
+            <tr><td><strong>STEP 4</strong></td><td>최종 납품 + 인쇄 감리 가이드</td></tr>
+        </table>
+        <p style="font-size: 13px; color: var(--text-light); margin-top: 12px;">각 단계 종료 시 발표 + 피드백 회의 1회 운영. 진행 사항은 공유 폴더와 슬랙으로 실시간 공유.</p>
     </div>
 
     <!-- ============================================================ -->
     <!-- 3. 일정 -->
     <!-- ============================================================ -->
-    <div class="section" id="schedule">
+    <div class="section">
         <h2>3. 일정 — 6월 양산 역산 5주</h2>
-        <div class="callout">
-            <strong>역산 기준</strong> · 빠르면 6월 양산을 목표로 하시는 일정에 맞춰 5/6(수) 킥오프 → 6/3(수) 최종 납품으로 5주 진행안을 잡았습니다. 단상자는 캡 금형 변경 확정 이후 정확 칼선 기준으로 별도 트랙으로 진행하며, 본 일정에 영향이 없습니다.
-        </div>
-
         <div class="timeline-row">
             <div class="tr-when">5/6 (수)</div>
             <div class="tr-what">킥오프</div>
-            <div class="tr-detail">에셋 확인 · 컨셉 방향 협의 · 일정 확정 · 협업 채널 세팅</div>
+            <div class="tr-detail">에셋 확인 · 컨셉 방향 협의 · 협업 채널 세팅</div>
         </div>
         <div class="timeline-row">
             <div class="tr-when">5/13 (수)</div>
-            <div class="tr-what">STEP 1 — 무드보드 + 방향 3안</div>
-            <div class="tr-detail">레퍼런스 · 톤 · 그린민트 활용 방향 3안 (단일 / 액센트 / 사계 시스템) · 1안 선택 회의</div>
+            <div class="tr-what">STEP 1 발표</div>
+            <div class="tr-detail">무드보드 + 방향 3안 → 1안 선택</div>
         </div>
         <div class="timeline-row">
             <div class="tr-when">5/20 (수)</div>
-            <div class="tr-what">STEP 2 — 1차 디벨롭 시안</div>
-            <div class="tr-detail">선택 1안 디벨롭 · 컬러 시스템 확정 · 워드마크 1차 안 · 라떼/토피 컬러칩 처리</div>
+            <div class="tr-what">STEP 2 발표</div>
+            <div class="tr-detail">1차 디벨롭 시안 + 컬러 시스템 확정</div>
         </div>
         <div class="timeline-row">
             <div class="tr-when">5/27 (수)</div>
-            <div class="tr-what">STEP 3 — 2차 시안 + 단상자 전개</div>
-            <div class="tr-detail">단상자 6면 전개도 · 라벨 디테일 · 인쇄 사양 협의 · 미세 수정</div>
+            <div class="tr-what">STEP 3 발표</div>
+            <div class="tr-detail">2차 시안 + 단상자 6면 전개</div>
         </div>
         <div class="timeline-row">
             <div class="tr-when">6/3 (수)</div>
             <div class="tr-what">STEP 4 — 최종 납품</div>
-            <div class="tr-detail">AI 원본 + 인쇄 PDF + 컨셉 노트 + 컬러 시스템 + 인쇄 감리 가이드 일괄 전달</div>
+            <div class="tr-detail">파일 일괄 전달 + 인쇄 감리 가이드</div>
         </div>
         <div class="timeline-row">
             <div class="tr-when">6월 중</div>
-            <div class="tr-what">양산 시작 · 인쇄 감리</div>
-            <div class="tr-detail">인쇄소 입고 · 1개월 인쇄 감리 미세 수정 1회 무상 지원</div>
+            <div class="tr-what">양산 시작</div>
+            <div class="tr-detail">1개월 인쇄 감리 미세 수정 무상 지원</div>
         </div>
-
-        <h3>모듈 추가 시 일정 영향</h3>
-        <ul>
-            <li><strong>Module A (BI 정비)</strong>: 본 일정 내 병행 가능. STEP 1~2 단계에서 BI 룰 정의 후 코어 디자인에 반영.</li>
-            <li><strong>Module B (해외 매대)</strong>: 본 일정 + 1주 (6/10까지). 코어 납품 직후 별도 가이드 정리.</li>
-            <li><strong>Module C (pppf 리뉴얼)</strong>: 코어 납품 후 별도 1~2주 진행 (6월 중순~말).</li>
-            <li><strong>Module D (클렌징)</strong>: 본 일정 외, 7~8월 별도 진행.</li>
-        </ul>
+        <p style="font-size: 13px; color: var(--text-light); margin-top: 12px;">단상자는 캡 금형 변경 확정 이후 정확 칼선 기준으로 별도 트랙으로 진행하며, 본 일정에 영향 없습니다.</p>
     </div>
 
     <!-- ============================================================ -->
     <!-- 4. 수정 범위 -->
     <!-- ============================================================ -->
-    <div class="section" id="revision">
+    <div class="section">
         <h2>4. 수정 범위</h2>
-        <table>
-            <tr><th style="width: 200px;">단계</th><th>수정 범위</th></tr>
-            <tr>
-                <td><strong>STEP 1 — 방향 3안</strong></td>
-                <td>3안 중 1안 선택 (방향성 협의 단계로 별도 수정 횟수 미적용)</td>
-            </tr>
-            <tr>
-                <td><strong>STEP 2 — 1차 디벨롭</strong></td>
-                <td>선택 1안 기준 <strong>2회 수정</strong> (컬러 · 그래픽 · 타이포 등)</td>
-            </tr>
-            <tr>
-                <td><strong>STEP 3 — 2차 시안 + 단상자</strong></td>
-                <td><strong>1회 미세 수정</strong> (디테일 · 인쇄 사양 보완)</td>
-            </tr>
-            <tr>
-                <td><strong>STEP 4 — 최종 납품 후</strong></td>
-                <td>1개월간 인쇄 감리 미세 수정 <strong>1회 무상</strong></td>
-            </tr>
-        </table>
-
+        <ul>
+            <li>STEP 2 (1차 디벨롭): 선택 1안 기준 <strong>2회 수정</strong></li>
+            <li>STEP 3 (2차 시안): <strong>1회 미세 수정</strong></li>
+            <li>최종 납품 후 1개월간 인쇄 감리 미세 수정 <strong>1회 무상</strong></li>
+        </ul>
         <div class="callout callout-info">
-            <strong>별도 견적 영역</strong> · 이미 선택한 1안에서 다른 방향으로 회귀하는 경우 (컨셉 방향 변경) · 신규 컬러 추가 (3종 이상) · 단상자 추가 사이즈 (현 2종 외) · 양산 시작 후 디자인 재설계 — 위 항목은 별도 견적으로 진행하며, 사전에 영향 범위와 가격을 공유드립니다.
+            이미 선택한 1안에서 컨셉 방향 변경 · 신규 컬러 추가 · 양산 시작 후 재설계는 별도 견적으로 진행하며, 사전에 영향 범위와 가격을 공유드립니다.
         </div>
     </div>
 
     <!-- ============================================================ -->
-    <!-- 5. 산출물 제공 범위 -->
+    <!-- 5. 산출물 -->
     <!-- ============================================================ -->
-    <div class="section" id="deliverables">
-        <h2>5. 산출물 제공 범위</h2>
-
-        <h3>Core 산출물 (필수)</h3>
-        <table>
-            <tr><th style="width: 280px;">항목</th><th>형태</th></tr>
-            <tr><td>파데프리 2종 라벨 디자인 원본</td><td>AI · CMYK · 폰트 아웃라인 · 레이어 정돈</td></tr>
-            <tr><td>단상자 6면 전개도 2종</td><td>AI · 인쇄용 PDF (Bleed 3mm 포함)</td></tr>
-            <tr><td>영문 워드마크 확정안</td><td>AI · SVG · PNG · JPG</td></tr>
-            <tr><td>컬러 시스템 가이드</td><td>PDF · Pantone + CMYK + RGB + Hex</td></tr>
-            <tr><td>디자인 컨셉 노트</td><td>PDF · 디자인 논리 · 판단 근거 (음표 처리 / pppf 연결성 / 워드마크 방향)</td></tr>
-            <tr><td>인쇄 감리 가이드</td><td>PDF · 인쇄소 발주 시 체크포인트 + 후가공 권장 사양</td></tr>
-        </table>
-
-        <h3>모듈 추가 시 산출물</h3>
-        <table>
-            <tr><th style="width: 280px;">모듈</th><th>추가 산출물</th></tr>
-            <tr><td>Module A — BI 체계 정비</td><td>BI 룰북 PDF · 로고 운용 가이드 · 컬러 시스템 3층 구조도 · 시리즈 확장 룰</td></tr>
-            <tr><td>Module B — 해외 매대 현지화</td><td>해외 매대 현지화 가이드 PDF (큐텐·쇼피·미국) · Drug Facts 시각 영역 가이드</td></tr>
-            <tr><td>Module C — pppf 리뉴얼 가이드</td><td>점진 전환 시나리오 PDF · 패키지 재설계 시안 (AI)</td></tr>
-            <tr><td>Module D — 클렌징 사전 설계</td><td>클렌징 1종 사전 디자인 시안 · 시리즈 룰 흡수 가이드</td></tr>
-        </table>
-
-        <h3>저작권 및 사용 범위</h3>
+    <div class="section">
+        <h2>5. 산출물</h2>
         <ul>
-            <li>최종 납품된 디자인의 사용권은 세이어바웃에 귀속됩니다 (국내 · 해외 매대 · 온라인 · 광고 무제한 사용).</li>
-            <li>브랜드라이즈는 포트폴리오 게재 권한을 보유합니다 (사전 협의 시 비공개 가능).</li>
-            <li>원본 작업 파일(AI/PSD)은 최종 납품 시 일괄 전달합니다.</li>
+            <li>파데프리 2종 라벨 디자인 AI 원본 (CMYK · 폰트 아웃라인)</li>
+            <li>단상자 6면 전개도 2종 (AI · 인쇄용 PDF · Bleed 3mm 포함)</li>
+            <li>영문 워드마크 확정안 (AI · SVG · PNG · JPG)</li>
+            <li>컬러 시스템 가이드 (Pantone + CMYK + RGB + Hex)</li>
+            <li>디자인 컨셉 노트 + 인쇄 감리 가이드 (PDF)</li>
         </ul>
+        <p style="font-size: 13px; color: var(--text-light); margin-top: 8px;">최종 납품된 디자인의 사용권은 세이어바웃에 귀속됩니다 (국내·해외·온라인·광고 무제한 사용).</p>
     </div>
 
     <!-- ============================================================ -->
     <!-- 6. 견적 구조 -->
     <!-- ============================================================ -->
-    <div class="section" id="quote">
+    <div class="section">
         <h2>6. 견적 구조</h2>
-
-        <h3>구성별 가격 (VAT 별도)</h3>
-        <div class="combo-table">
-            <table>
-                <tr>
-                    <th style="width: 280px;">구성</th>
-                    <th>포함 항목</th>
-                    <th style="width: 140px; text-align: right;">가격</th>
-                </tr>
-                <tr>
-                    <td><strong>Core only</strong></td>
-                    <td>파데프리 2종 디자인 + 단상자 + 워드마크 + 컬러 시스템</td>
-                    <td style="text-align: right; font-weight: 700;">1,800만</td>
-                </tr>
-                <tr class="combo-recommend">
-                    <td><strong>Core + Module A · 권장</strong></td>
-                    <td>Core + BI 체계 정비 (워드마크 정밀 점검 · 컬러 시스템 3층 · 운용 룰북 · 시리즈 확장 룰)</td>
-                    <td style="text-align: right; font-weight: 800; color: var(--accent);">2,700만</td>
-                </tr>
-                <tr>
-                    <td><strong>Core + A + B</strong></td>
-                    <td>위 + 해외 매대 현지화 가이드</td>
-                    <td style="text-align: right; font-weight: 700;">3,300만</td>
-                </tr>
-                <tr>
-                    <td><strong>Core + A + B + C</strong></td>
-                    <td>위 + 기존 pppf 2종 리뉴얼 가이드</td>
-                    <td style="text-align: right; font-weight: 700;">4,000만</td>
-                </tr>
-                <tr>
-                    <td><strong>풀 구성</strong></td>
-                    <td>Core + A + B + C + D (연말 클렌징 사전 설계)</td>
-                    <td style="text-align: right; font-weight: 700;">4,500만</td>
-                </tr>
-            </table>
-        </div>
-
-        <h3>결제 마일스톤</h3>
         <table>
-            <tr><th style="width: 200px;">시점</th><th>결제 비율</th><th>기준</th></tr>
-            <tr><td>① 계약 시</td><td><strong>30%</strong></td><td>킥오프 직전 · 계약서 작성과 동시 진행</td></tr>
-            <tr><td>② STEP 2 발표 후</td><td><strong>30%</strong></td><td>1차 디벨롭 시안 발표 + 1안 확정</td></tr>
-            <tr><td>③ 최종 납품 시</td><td><strong>40%</strong></td><td>STEP 4 산출물 일괄 전달 시점</td></tr>
+            <tr><th style="width: 200px;">항목</th><th style="text-align: right;">금액 (VAT 별도)</th></tr>
+            <tr><td>패키지·단상자 디자인 일괄</td><td style="text-align: right; font-weight: 700; color: var(--accent); font-size: 18px;">1,800만원</td></tr>
         </table>
 
-        <div class="callout">
-            <strong>VAT 별도</strong> · 위 모든 가격은 부가가치세 별도 기준입니다. 세금계산서는 결제 시점 기준 발행드립니다.
-        </div>
-
-        <h3>가격 산정 근거</h3>
-        <ul>
-            <li><strong>Core 1,800만</strong> · 화장품 패키지 디자인의 규제·라벨·인쇄 사양·해외 상표권 점검 레이어를 포함한 작업 범위. 일반 외주 단가(200~500만)와는 다른 영역으로, 시장 점유 가능한 디자인 자산을 만드는 데 필요한 최소 단위.</li>
-            <li><strong>Module A 900만</strong> · BI 체계 정비는 단발 작업이 아니라 향후 라인 확장 시 재작업을 막는 룰북 작업. 라인 추가될 때마다 재투자될 비용을 한 번에 정리하는 구조.</li>
-            <li><strong>Module B/C/D</strong> · 각 모듈은 본 작업 외 별도 영역으로, 필요 시점에 단계적으로 추가하실 수 있도록 분리 견적.</li>
-        </ul>
+        <h3 style="font-size: 16px; margin: 20px 0 10px;">결제 마일스톤</h3>
+        <table>
+            <tr><th style="width: 200px;">시점</th><th>비율</th></tr>
+            <tr><td>① 계약 시</td><td><strong>30%</strong></td></tr>
+            <tr><td>② STEP 2 시안 발표 후</td><td><strong>30%</strong></td></tr>
+            <tr><td>③ 최종 납품 시</td><td><strong>40%</strong></td></tr>
+        </table>
     </div>
 
     <!-- ============================================================ -->
     <!-- 7. 다음 단계 -->
     <!-- ============================================================ -->
-    <div class="section" id="next">
+    <div class="section">
         <h2>7. 다음 단계</h2>
         <table>
-            <tr><th style="width: 200px;">시점</th><th>내용</th></tr>
-            <tr><td>~ 5/2 (금)</td><td>구성 확정 회신 (Core only / Core + A / 그 외 조합)</td></tr>
+            <tr><th style="width: 180px;">시점</th><th>내용</th></tr>
+            <tr><td>~ 5/2 (금)</td><td>진행 확정 회신</td></tr>
             <tr><td>5/3 ~ 5/5</td><td>계약서 작성 · 1차 결제 · 협업 채널 세팅</td></tr>
             <tr><td><strong>5/6 (수)</strong></td><td><strong>킥오프 미팅</strong></td></tr>
-            <tr><td>5/13 (수)</td><td>STEP 1 — 무드보드 + 방향 3안 발표</td></tr>
         </table>
 
-        <div class="callout callout-success">
-            <strong>차주 고벤처포럼</strong> · 4/28 대인아 세션에 함께 참석 예정으로 알고 있습니다. 현장에서 짧게 인사드리고, 본 견적 관련 의문점도 자연스럽게 풀어드릴 수 있을 것 같습니다.
+        <div class="callout">
+            <strong>매출·입점 전략 동반</strong>은 본 디자인 진행 종료 후 별도 단계로 협의 진행하면 좋을 것 같습니다. 디자인 자산이 안정된 시점에서 마케팅·채널 전략의 효율이 가장 큽니다.
         </div>
 
-        <h3>유연한 조정 가능 영역</h3>
-        <ul>
-            <li>구성 단위 — Module 단위로 자유롭게 조합 가능 (예: Core + B만, Core + A + C 등)</li>
-            <li>일정 — 단상자 금형 확정 시점에 따라 일정 조정 가능 (양산 6월 목표 기준 상한선)</li>
-            <li>마일스톤 — 결제 비율 조정 가능 (예: 50/30/20, 25/25/50 등)</li>
-            <li>마케팅 · 입점 전략 동반 — 본 디자인 진행 종료 후 별도 단계로 협의 가능 (별도 견적)</li>
-        </ul>
+        <p style="margin-top: 16px;">차주 고벤처포럼 대인아 세션에서 뵙겠습니다. 현장에서 짧게 인사드리고, 의문점 있으시면 자연스럽게 풀어드릴 수 있을 것 같습니다.</p>
     </div>
 
 </div>
@@ -693,7 +323,6 @@
 <div class="footer">
     <div>BRANDRISE · 진행 제안 및 견적</div>
     <div style="margin-top: 6px;">발신: 우성민 · 2026-04-29 · hiz.systemdev02@gmail.com</div>
-    <div style="margin-top: 6px;"><a href="../../research/sayabout/post-meeting/">상담 후 정리 자료 보기 →</a></div>
 </div>
 
 </body>
