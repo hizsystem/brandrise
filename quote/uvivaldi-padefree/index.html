@@ -52,7 +52,44 @@
         .header .subtitle { font-size: 15px; color: var(--text-light); font-weight: 400; }
         .header .date { margin-top: 16px; font-size: 13px; color: #cccccc; }
 
-        .container { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
+        .corporate-info {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 24px 20px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            font-size: 13px;
+        }
+        .corporate-info .info-block {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 18px 22px;
+        }
+        .corporate-info .info-block .info-title {
+            font-size: 11px;
+            color: var(--text-light);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .corporate-info .info-block .info-row {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 4px;
+            padding: 3px 0;
+            font-size: 13px;
+        }
+        .corporate-info .info-block .info-row .ir-label {
+            color: var(--text-light);
+        }
+        .corporate-info .info-block .info-row .ir-value {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .container { max-width: 960px; margin: 0 auto; padding: 24px 20px 40px; }
 
         .section {
             background: var(--card-bg);
@@ -159,17 +196,38 @@
     <div class="date">발신: 브랜드라이즈(우성민) → 세이어바웃(이재연 대표) | 작성 2026-04-29</div>
 </div>
 
+<div class="corporate-info">
+    <div class="info-block">
+        <div class="info-title">발신 (FROM)</div>
+        <div class="info-row"><div class="ir-label">회사명</div><div class="ir-value">주식회사 하이즈 (HIZ)</div></div>
+        <div class="info-row"><div class="ir-label">서비스 브랜드</div><div class="ir-value">BRANDRISE</div></div>
+        <div class="info-row"><div class="ir-label">사업자등록번호</div><div class="ir-value" style="color: var(--text-light);">[발송 전 채움]</div></div>
+        <div class="info-row"><div class="ir-label">대표이사</div><div class="ir-value" style="color: var(--text-light);">[발송 전 채움]</div></div>
+        <div class="info-row"><div class="ir-label">담당</div><div class="ir-value">우성민 (Lead PM)</div></div>
+        <div class="info-row"><div class="ir-label">이메일</div><div class="ir-value">hiz.systemdev02@gmail.com</div></div>
+    </div>
+    <div class="info-block">
+        <div class="info-title">수신 (TO)</div>
+        <div class="info-row"><div class="ir-label">회사명</div><div class="ir-value">주식회사 세이어바웃</div></div>
+        <div class="info-row"><div class="ir-label">브랜드</div><div class="ir-value">UVIVALDI (유비발디)</div></div>
+        <div class="info-row"><div class="ir-label">대표이사</div><div class="ir-value">이재연 대표님</div></div>
+        <div class="info-row"><div class="ir-label">건명</div><div class="ir-value">신제품 파데프리 선크림 2종 패키지·단상자 디자인</div></div>
+        <div class="info-row"><div class="ir-label">제출일</div><div class="ir-value">2026-04-29</div></div>
+        <div class="info-row"><div class="ir-label">유효기간</div><div class="ir-value">제출일로부터 30일</div></div>
+    </div>
+</div>
+
 <div class="container">
 
     <!-- ============================================================ -->
     <!-- 단일 견적 -->
     <!-- ============================================================ -->
     <div class="price-hero">
-        <div class="price-label">진행 견적</div>
+        <div class="price-label">최종 제안가</div>
         <div class="price-value">1,800만원</div>
-        <div class="price-vat">VAT 별도</div>
+        <div class="price-vat">일만단위 절사 · 부가세 별도</div>
         <div class="price-desc">
-            대표님 말씀 주신 "1차 2천만 전후" 기준선에 맞춰<br>
+            KODIA 2026 디자이너 노임단가 기준 산정<br>
             <strong>패키지·단상자·워드마크·컬러 시스템·기존 라인 연결성·해외 매대 톤</strong>까지 단일 가격으로 구성
         </div>
     </div>
@@ -300,10 +358,62 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- 7. 다음 단계 -->
+    <!-- 7. 견적 산정 기준 -->
     <!-- ============================================================ -->
     <div class="section">
-        <h2>7. 다음 단계</h2>
+        <h2>7. 견적 산정 기준</h2>
+        <p>본 견적은 <strong>한국디자인산업연합회(KODIA) 2026년 디자이너 노임단가표</strong>를 기준으로 산정한 가격입니다.</p>
+
+        <h3 style="font-size: 16px; margin: 20px 0 10px;">투입 인력 구성</h3>
+        <table>
+            <tr>
+                <th style="width: 110px;">기술등급</th>
+                <th style="width: 200px;">역할</th>
+                <th style="width: 90px;">인원</th>
+                <th style="width: 100px;">투여율</th>
+                <th>주요 작업</th>
+            </tr>
+            <tr>
+                <td>특급</td>
+                <td>Lead PM · Strategy</td>
+                <td>1명</td>
+                <td>40%</td>
+                <td>전략·디렉션·클라이언트 커뮤니케이션</td>
+            </tr>
+            <tr>
+                <td>고급</td>
+                <td>Designer</td>
+                <td>1명</td>
+                <td>60%</td>
+                <td>패키지·단상자·워드마크·컬러 시스템 설계</td>
+            </tr>
+            <tr>
+                <td>중급</td>
+                <td>APD · 실행</td>
+                <td>1명</td>
+                <td>40%</td>
+                <td>가이드라인 정리·인쇄 감리·파일 정돈</td>
+            </tr>
+        </table>
+
+        <h3 style="font-size: 16px; margin: 20px 0 10px;">산정 구조</h3>
+        <ul>
+            <li>총 진행 기간: <strong>5주 (1.25 M/M)</strong> · 2026-05-06 ~ 2026-06-03</li>
+            <li>인건비 산정: KODIA 2026 디자이너 노임단가표 × 인력 등급 × 투여율 × 기간</li>
+            <li>제경비: 인건비 × 100% (산업 표준)</li>
+            <li>합계 → 일만 단위 절사 = <strong>1,800만원 (VAT 별도)</strong></li>
+        </ul>
+
+        <div class="callout callout-info">
+            본 견적은 KODIA 노임단가표 기준 합리 단가로 산정한 금액입니다. 화장품 패키지 디자인은 규제·라벨·인쇄 사양·해외 매대 가독성 점검을 포함하는 작업으로, 일반 단순 외주 단가(200~500만원) 대비 다른 영역으로 분류됩니다.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 8. 다음 단계 -->
+    <!-- ============================================================ -->
+    <div class="section">
+        <h2>8. 다음 단계</h2>
         <table>
             <tr><th style="width: 180px;">시점</th><th>내용</th></tr>
             <tr><td>~ 5/2 (금)</td><td>진행 확정 회신</td></tr>
