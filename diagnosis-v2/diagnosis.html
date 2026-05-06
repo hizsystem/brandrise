@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>브랜드 성장 처방전 — 진단 중</title>
+<meta name="description" content="우리 회사 마케팅, 진짜 어디가 문제일까. 3분 30초 진단으로 처방받기.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<!-- Meta Pixel (init은 배포 직전 활성화) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+// fbq('init', 'YOUR_PIXEL_ID');
+// fbq('track', 'ViewContent', {content_name: 'diagnosis_v2_start'});
+</script>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="logo">brandrise</a>
+  </div>
+</header>
+
+<!-- Form Area -->
+<section style="padding-top:40px;padding-bottom:60px;min-height:calc(100vh - 80px)">
+  <div class="container">
+    <!-- Progress -->
+    <div class="step-label" id="stepLabel">01 / 12</div>
+    <div class="progress-wrap">
+      <div class="progress-bar" id="progressBar" style="width:8.3%"></div>
+    </div>
+
+    <!-- Steps container (12문항 + 결과 게이트 4문항 = 총 16스텝) -->
+    <div id="formContainer" class="form-card">
+      <!-- Dynamically rendered by diagnosis.js -->
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-row" id="navRow">
+      <button class="nav-back" id="backBtn" style="visibility:hidden">&larr; 이전</button>
+      <div></div>
+    </div>
+  </div>
+</section>
+
+<script src="js/diagnosis.js"></script>
+</body>
+</html>

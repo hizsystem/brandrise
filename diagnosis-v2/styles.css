@@ -1,0 +1,451 @@
+/* ============ RESET & BASE ============ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'Pretendard Variable','Noto Sans KR',sans-serif;
+  background:#0a0a0a;color:#f8f8f8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+  min-height:100vh;
+}
+
+:root{
+  --orange:#E8700A;
+  --amber:#F5A623;
+  --lime:#C6FF3D; /* v2 BEST 액센트 1포인트 — 트리거/긴급/2026 격차 카드용 */
+  --dark:#0a0a0a;
+  --card:#161616;
+  --card-hover:#1e1e1e;
+  --cream:#F5F0E8;
+  --text:#f8f8f8;
+  --sub:#bbbbbb;
+  --muted:#777777;
+  --border:rgba(255,255,255,0.08);
+  --radius:16px;
+  --radius-sm:12px;
+  --body:'Pretendard Variable','Noto Sans KR',sans-serif;
+  --mono:'Space Grotesk',monospace;
+}
+
+/* ============ LAYOUT ============ */
+.container{
+  max-width:640px;
+  margin:0 auto;
+  padding:0 24px;
+}
+.container-wide{
+  max-width:800px;
+  margin:0 auto;
+  padding:0 24px;
+}
+section{
+  padding:80px 0;
+}
+
+/* ============ TYPOGRAPHY ============ */
+h1{font-size:clamp(28px,5vw,44px);font-weight:700;line-height:1.3;letter-spacing:-0.02em}
+h2{font-size:clamp(22px,4vw,32px);font-weight:700;line-height:1.35;letter-spacing:-0.01em}
+h3{font-size:clamp(17px,2.5vw,22px);font-weight:600;line-height:1.4}
+p,.body-text{font-size:clamp(15px,1.1vw,17px);line-height:1.7;color:var(--sub)}
+.text-sm{font-size:14px;color:var(--muted);line-height:1.6}
+.text-center{text-align:center}
+.orange{color:var(--orange)}
+.gradient-text{
+  background:linear-gradient(135deg,var(--orange),var(--amber));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+/* ============ BUTTONS ============ */
+.cta-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:18px 40px;border-radius:60px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,var(--orange),var(--amber));
+  color:#fff;font-size:17px;font-weight:600;font-family:var(--body);
+  transition:transform .25s,box-shadow .25s;
+  box-shadow:0 4px 24px rgba(232,112,10,0.35);
+  text-decoration:none;
+  width:100%;max-width:400px;
+}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(232,112,10,0.5)}
+
+.cta-btn-outline{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 32px;border-radius:60px;
+  border:1px solid rgba(232,112,10,0.4);
+  background:transparent;
+  color:var(--orange);font-size:15px;font-weight:500;font-family:var(--body);
+  cursor:pointer;transition:all .25s;
+  text-decoration:none;
+}
+.cta-btn-outline:hover{background:rgba(232,112,10,0.1);border-color:var(--orange)}
+
+/* ============ CARDS ============ */
+.card{
+  background:var(--card);border-radius:var(--radius);padding:28px;
+  border:1px solid var(--border);
+  transition:border-color .3s;
+}
+.card-highlight{
+  border-color:var(--orange);
+  box-shadow:0 0 0 1px rgba(232,112,10,0.3);
+}
+
+/* ============ ICONS GRID ============ */
+.icon-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+  margin:40px 0;
+}
+.icon-item{
+  text-align:center;padding:20px 12px;
+  border-radius:var(--radius-sm);
+  background:var(--card);border:1px solid var(--border);
+}
+.icon-item .icon{font-size:28px;margin-bottom:10px;display:block}
+.icon-item .label{font-size:14px;font-weight:500;color:var(--sub)}
+
+/* ============ CHECKS ============ */
+.check-list{
+  display:flex;flex-direction:column;gap:12px;
+  margin:32px 0;
+}
+.check-item{
+  display:flex;align-items:center;gap:10px;
+  font-size:15px;color:var(--sub);
+}
+.check-item::before{
+  content:'';display:block;width:20px;height:20px;flex-shrink:0;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--orange),var(--amber));
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath d='M8.5 13.3L5.2 10l-1.1 1.1 4.4 4.4 9.4-9.4-1.1-1.1z'/%3E%3C/svg%3E");
+  background-size:cover;
+}
+
+/* ============ PROGRESS BAR ============ */
+.progress-wrap{
+  width:100%;height:4px;background:rgba(255,255,255,0.08);
+  border-radius:2px;margin-bottom:40px;
+}
+.progress-bar{
+  height:100%;border-radius:2px;
+  background:linear-gradient(90deg,var(--orange),var(--amber));
+  transition:width .4s ease;
+}
+.step-label{
+  font-size:13px;color:var(--muted);font-weight:500;
+  margin-bottom:8px;font-family:var(--mono);
+  letter-spacing:0.05em;
+}
+
+/* ============ FORM ============ */
+.form-card{
+  min-height:360px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.question-text{
+  font-size:clamp(20px,3vw,26px);font-weight:600;
+  line-height:1.45;margin-bottom:32px;
+  letter-spacing:-0.01em;
+}
+.option-list{display:flex;flex-direction:column;gap:12px}
+.option-item{
+  padding:18px 24px;border-radius:var(--radius-sm);
+  background:var(--card);border:1px solid var(--border);
+  cursor:pointer;transition:all .2s;
+  font-size:15px;line-height:1.5;color:var(--sub);
+}
+.option-item:hover{
+  border-color:rgba(232,112,10,0.5);
+  background:var(--card-hover);color:var(--text);
+}
+.option-item.selected{
+  border-color:var(--orange);
+  background:rgba(232,112,10,0.08);
+  color:var(--text);
+}
+.option-item .hotkey{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:24px;height:24px;border-radius:6px;
+  background:rgba(255,255,255,0.06);
+  font-size:12px;font-weight:600;color:var(--muted);
+  margin-right:12px;font-family:var(--mono);
+  flex-shrink:0;
+}
+.option-item:hover .hotkey{color:var(--orange);background:rgba(232,112,10,0.15)}
+.option-item.selected .hotkey{color:#fff;background:var(--orange)}
+
+/* Checkbox style for Q7 (multi-select) */
+.option-item.multi{position:relative;padding-left:52px}
+.option-item.multi::before{
+  content:'';position:absolute;left:20px;top:50%;transform:translateY(-50%);
+  width:20px;height:20px;border-radius:6px;
+  border:1.5px solid rgba(255,255,255,0.2);
+  transition:all .2s;
+}
+.option-item.multi.selected::before{
+  background:var(--orange);border-color:var(--orange);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath d='M8.5 13.3L5.2 10l-1.1 1.1 4.4 4.4 9.4-9.4-1.1-1.1z'/%3E%3C/svg%3E");
+  background-size:cover;
+}
+
+/* Input fields */
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:14px;font-weight:500;color:var(--sub);margin-bottom:8px}
+.form-group label .required{color:var(--orange);margin-left:2px}
+.form-input{
+  width:100%;padding:14px 18px;border-radius:var(--radius-sm);
+  background:var(--card);border:1px solid var(--border);
+  color:var(--text);font-size:15px;font-family:var(--body);
+  transition:border-color .2s;outline:none;
+}
+.form-input:focus{border-color:var(--orange)}
+.form-input::placeholder{color:var(--muted)}
+
+select.form-input{
+  appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='%23777'%3E%3Cpath d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 16px center;
+  padding-right:40px;
+}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* Nav buttons */
+.nav-row{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:32px;
+}
+.nav-back{
+  background:none;border:none;color:var(--muted);
+  font-size:14px;cursor:pointer;font-family:var(--body);
+  padding:8px 0;transition:color .2s;
+}
+.nav-back:hover{color:var(--text)}
+
+/* ============ RESULT PAGE ============ */
+.score-section{text-align:center;margin-bottom:48px}
+.score-bar-wrap{
+  width:100%;max-width:320px;height:12px;
+  background:rgba(255,255,255,0.08);border-radius:6px;
+  margin:24px auto 16px;overflow:hidden;
+}
+.score-bar-fill{
+  height:100%;border-radius:6px;
+  background:linear-gradient(90deg,var(--orange),var(--amber));
+  transition:width 1s ease;
+}
+.score-number{
+  font-family:var(--mono);font-size:clamp(36px,6vw,52px);
+  font-weight:700;color:var(--text);letter-spacing:0.02em;
+}
+.score-total{color:var(--muted);font-weight:400}
+.grade-badge{
+  display:inline-block;padding:6px 20px;border-radius:60px;
+  font-size:15px;font-weight:600;margin:16px 0 8px;
+}
+.grade-D{background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3)}
+.grade-C{background:rgba(251,191,36,0.15);color:#fbbf24;border:1px solid rgba(251,191,36,0.3)}
+.grade-B{background:rgba(232,112,10,0.15);color:var(--orange);border:1px solid rgba(232,112,10,0.3)}
+.grade-A{background:rgba(34,197,94,0.15);color:#22c55e;border:1px solid rgba(34,197,94,0.3)}
+
+.grade-message{
+  font-size:16px;color:var(--sub);line-height:1.6;
+  max-width:360px;margin:0 auto;
+}
+
+/* Result cards */
+.result-cards{display:flex;flex-direction:column;gap:16px;margin-bottom:48px}
+.result-card{
+  background:var(--card);border-radius:var(--radius);
+  padding:24px;border:1px solid var(--border);
+}
+.result-card.weakest{border-color:var(--orange);box-shadow:0 0 0 1px rgba(232,112,10,0.2)}
+.result-card-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:16px;
+}
+.result-card-title{font-size:16px;font-weight:600}
+.result-card-dots{display:flex;gap:6px}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.12)}
+.dot.filled{background:var(--orange)}
+.dot.filled.green{background:#22c55e}
+
+.result-card-status{
+  font-size:14px;color:var(--muted);line-height:1.6;
+  margin-bottom:14px;padding-bottom:14px;
+  border-bottom:1px solid var(--border);
+}
+.result-card-action{font-size:15px;color:var(--sub);line-height:1.7}
+.result-card-action strong{color:var(--text);font-weight:500}
+.result-card .arrow{color:var(--orange);font-weight:600;margin-right:4px}
+
+/* CTA section */
+.cta-section{
+  text-align:center;padding:48px 0;
+  border-top:1px solid var(--border);
+}
+.cta-section .lead-text{
+  font-size:16px;color:var(--sub);line-height:1.7;
+  margin-bottom:32px;
+}
+.cta-section .lead-text strong{color:var(--text);font-weight:500}
+.cta-benefits{
+  display:flex;flex-direction:column;gap:8px;
+  margin-top:20px;
+}
+.cta-benefits .benefit{font-size:14px;color:var(--muted)}
+
+/* Share */
+.share-row{
+  text-align:center;margin-top:32px;padding-top:24px;
+  border-top:1px solid var(--border);
+}
+
+/* ============ HEADER ============ */
+.site-header{
+  padding:20px 0;text-align:center;
+  border-bottom:1px solid var(--border);
+}
+.logo{
+  font-size:18px;font-weight:600;letter-spacing:0.02em;
+  color:var(--text);text-decoration:none;
+}
+
+/* ============ FOOTER ============ */
+.site-footer{
+  padding:32px 0;text-align:center;
+  border-top:1px solid var(--border);
+  font-size:13px;color:var(--muted);
+}
+
+/* ============ ANIMATION ============ */
+.fade-in{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.slide-up{animation:slideUp .5s ease forwards}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:640px){
+  section{padding:60px 0}
+  .icon-grid{grid-template-columns:repeat(2,1fr)}
+  .form-row{grid-template-columns:1fr}
+  .container{padding:0 20px}
+}
+
+/* ============ V2 ADDITIONS — 트리거 진단서 ============ */
+
+/* 질문 메타 (섹션 라벨 + 2026 격차 태그) */
+.step-meta{
+  display:flex;align-items:center;gap:10px;margin-bottom:16px;
+}
+.step-section-label{
+  font-family:var(--mono);font-size:11px;font-weight:600;
+  letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* 질문 보조 설명 (subtitle) */
+.question-subtitle{
+  font-size:14px;line-height:1.6;color:var(--muted);
+  margin-top:-20px;margin-bottom:28px; /* question-text 32px 마진 일부 끌어올림 */
+}
+.question-text:has(+ .question-subtitle){margin-bottom:12px}
+
+
+/* C2 자유서술 textarea */
+.c2-textarea{
+  width:100%;min-height:120px;padding:18px 20px;
+  background:var(--card);border:1px solid var(--border);
+  color:var(--text);font-family:var(--body);font-size:16px;line-height:1.6;
+  border-radius:var(--radius-sm);resize:vertical;
+  transition:border-color .2s;
+}
+.c2-textarea:focus{outline:none;border-color:var(--orange)}
+.c2-textarea::placeholder{color:var(--muted);font-size:14px;line-height:1.6}
+.c2-counter{margin-top:8px;font-size:12px;color:var(--muted);text-align:right}
+
+/* 라임 트리거 라벨 (2026 격차 카드, 위험 신호) */
+.tag-lime{
+  display:inline-block;padding:4px 10px;border-radius:999px;
+  background:rgba(198,255,61,0.12);color:var(--lime);
+  font-size:11px;font-weight:600;letter-spacing:0.05em;
+  text-transform:uppercase;font-family:var(--mono);
+}
+
+/* 위험도 카드 (PART 2) */
+.risk-card{
+  padding:24px;background:var(--card);border-radius:var(--radius);
+  border:1px solid var(--border);margin-bottom:16px;
+}
+.risk-card-low{border-left:3px solid #4ade80}
+.risk-card-mid{border-left:3px solid var(--amber)}
+.risk-card-high{border-left:3px solid #ef4444}
+
+/* 격차 시각화 바 (현재 → 처방 후) */
+.gap-bar-row{display:flex;gap:12px;align-items:center;margin:12px 0}
+.gap-bar-label{min-width:60px;font-size:13px;color:var(--sub)}
+.gap-bar-track{flex:1;height:8px;background:rgba(255,255,255,0.05);border-radius:4px;overflow:hidden}
+.gap-bar-fill{height:100%;border-radius:4px;transition:width .8s ease}
+.gap-bar-fill-now{background:#666}
+.gap-bar-fill-after{background:linear-gradient(90deg,var(--orange),var(--lime))}
+.gap-bar-value{min-width:50px;font-family:var(--mono);font-weight:600;color:var(--text);text-align:right}
+
+/* 처방 카드 (PART 3) — 첫 단락 공개 + 컷오프 */
+.prescription-card{
+  padding:32px 28px;background:var(--card);border-radius:var(--radius);
+  border:1px solid rgba(232,112,10,0.2);
+  position:relative;overflow:hidden;
+}
+.prescription-card::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:80px;
+  background:linear-gradient(to bottom,transparent,var(--card) 80%);pointer-events:none;
+}
+.prescription-headline{font-size:22px;font-weight:700;line-height:1.4;color:var(--text);margin-bottom:16px}
+.prescription-body{font-size:15px;line-height:1.7;color:var(--sub)}
+
+/* TG형 자연 이탈 안내 (결과지 끝) */
+.tg-exit-notice{
+  padding:20px 24px;background:rgba(255,255,255,0.03);border-radius:var(--radius-sm);
+  border:1px dashed var(--border);font-size:14px;line-height:1.6;color:var(--muted);
+  margin-top:32px;
+}
+
+/* Hero 코드 + 별명 (시드 받기 전 placeholder 표시) */
+.hero-code{font-family:var(--mono);font-size:14px;letter-spacing:0.1em;color:var(--lime);margin-bottom:12px}
+.hero-nickname{font-size:clamp(28px,5vw,44px);font-weight:700;line-height:1.2;margin-bottom:16px}
+.hero-catchphrase{font-size:clamp(16px,2vw,19px);color:var(--sub);line-height:1.6}
+
+/* 진단표 점수 카드 (PART 1) */
+.score-card{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 20px;background:var(--card);border-radius:var(--radius-sm);
+  border:1px solid var(--border);margin-bottom:8px;
+}
+.score-card-name{font-size:15px;color:var(--text)}
+.score-card-value{font-family:var(--mono);font-weight:600;color:var(--orange)}
+.score-card-low{border-left:3px solid #ef4444}
+
+/* PART 헤더 (PART 1·2·3) */
+.part-header{
+  display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+  border-bottom:1px solid var(--border);padding-bottom:16px;
+}
+.part-label{
+  font-family:var(--mono);font-size:12px;font-weight:700;
+  letter-spacing:0.1em;color:var(--orange);
+  padding:4px 10px;border-radius:6px;
+  background:rgba(232,112,10,0.1);
+}
+.part-header h2{margin:0}
+
+/* 키보드 단축키 힌트 */
+.kbd-hint{
+  display:inline-block;padding:2px 8px;border-radius:4px;
+  background:rgba(255,255,255,0.06);border:1px solid var(--border);
+  font-family:var(--mono);font-size:11px;color:var(--muted);margin-left:8px;
+}
