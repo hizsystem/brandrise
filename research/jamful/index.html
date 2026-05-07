@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>잼플 (JAMFUL) - 진단 & 통합 제안 | BRANDRISE</title>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #444444;
+            --accent: #f07030;
+            --accent-light: #fff3ec;
+            --accent-soft: #fde8da;
+            --highlight: #f07030;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --muted: #f5f5f5;
+            --text: #1a1a1a;
+            --text-light: #999999;
+            --border: #eeeeee;
+            --success: #5a7a52;
+            --warning: #f07030;
+            --danger: #f07030;
+            --jamful-yellow: #FFD93D;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; word-break: keep-all; overflow-wrap: break-word; }
+        .header { background: #ffffff; color: var(--primary); padding: 60px 40px; text-align: center; border-bottom: 1px solid var(--border); }
+        .header-badge { display: inline-block; background: var(--accent-soft); border: 1px solid var(--accent); color: var(--accent); padding: 4px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 16px; letter-spacing: 1px; }
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; color: var(--primary); }
+        .header .subtitle { font-size: 16px; color: var(--secondary); font-weight: 300; }
+        .header .date { margin-top: 16px; font-size: 13px; color: var(--text-light); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        .toc { background: var(--card-bg); border-radius: 12px; padding: 32px; margin-bottom: 40px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+        .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }
+        .toc a { color: var(--accent); text-decoration: none; font-size: 14px; padding: 6px 0; display: block; transition: color 0.2s; }
+        .toc a:hover { color: var(--highlight); }
+        .section { background: var(--card-bg); border-radius: 12px; padding: 36px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section h2 { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--highlight); }
+        .section h3 { font-size: 17px; font-weight: 600; color: var(--secondary); margin: 20px 0 12px; }
+        .info-grid { display: grid; grid-template-columns: 160px 1fr; gap: 8px 16px; font-size: 14px; }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th { background: var(--muted); color: var(--primary); padding: 12px 16px; text-align: left; font-weight: 700; font-size: 13px; }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        tr:hover td { background: #f1f3f5; }
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin: 2px; }
+        .tag-red { background: var(--accent-soft); color: var(--accent); }
+        .tag-green { background: #eef3ec; color: #5a7a52; }
+        .tag-blue { background: var(--accent-light); color: var(--accent); }
+        .tag-yellow { background: #fff8d4; color: #8a6d00; }
+        .tag-gray { background: var(--muted); color: var(--secondary); }
+        .verdict { background: var(--accent); color: white; padding: 24px 32px; border-radius: 12px; text-align: center; margin: 24px 0; }
+        .verdict .label { font-size: 14px; opacity: 0.8; }
+        .verdict .value { font-size: 32px; font-weight: 800; margin: 8px 0; line-height: 1.3; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+        .tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+        .tier-card { border: 2px solid var(--border); border-radius: 12px; padding: 24px; position: relative; transition: transform 0.2s; }
+        .tier-card:hover { transform: translateY(-4px); }
+        .tier-card.recommended { border-color: var(--accent); box-shadow: 0 4px 20px rgba(240, 112, 48, 0.15); }
+        .tier-card .tier-badge { position: absolute; top: -12px; right: 16px; background: var(--highlight); color: white; padding: 2px 12px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+        .tier-card h4 { font-size: 16px; margin-bottom: 4px; }
+        .tier-card .price { font-size: 22px; font-weight: 800; color: var(--highlight); margin: 12px 0; }
+        .tier-card .duration { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+        .tier-card ul { list-style: none; padding: 0; }
+        .tier-card li { font-size: 13px; padding: 4px 0; padding-left: 18px; position: relative; line-height: 1.5; }
+        .tier-card li::before { content: "›"; position: absolute; left: 0; color: var(--highlight); font-weight: 700; }
+        .callout { background: var(--accent-light); border-left: 4px solid var(--accent); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 14px; }
+        .callout-info { background: var(--muted); border-left-color: var(--secondary); }
+        .callout-danger { background: var(--accent-soft); border-left-color: var(--accent); }
+        .callout-success { background: #eef3ec; border-left-color: #5a7a52; }
+        .callout-warn { background: #fff8d4; border-left-color: #b8860b; }
+        .leverage-box { background: var(--primary); color: white; padding: 32px; border-radius: 12px; margin: 24px 0; text-align: center; }
+        .leverage-box .quote { font-size: 20px; font-weight: 700; line-height: 1.5; margin: 16px 0; }
+        .flow-steps { display: flex; gap: 0; margin: 20px 0; overflow-x: auto; }
+        .flow-step { flex: 1; min-width: 160px; padding: 16px; background: #f1f3f5; position: relative; text-align: center; }
+        .flow-step:not(:last-child)::after { content: "›"; position: absolute; right: -8px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--highlight); font-weight: 700; z-index: 1; }
+        .flow-step .step-num { font-size: 11px; font-weight: 700; color: var(--highlight); margin-bottom: 4px; }
+        .flow-step .step-title { font-size: 13px; font-weight: 600; }
+        .flow-step .step-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .swot-item h4 { font-size: 15px; margin-bottom: 10px; }
+        .swot-item ul { padding-left: 18px; }
+        .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: #ffffff; border: 1px solid var(--border); }
+        .swot-w { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .swot-o { background: #ffffff; border: 1px solid var(--border); }
+        .swot-t { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+        .source-list a { color: var(--accent); text-decoration: none; }
+        .source-list a:hover { text-decoration: underline; }
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+        .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 8px 0; }
+        .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+        .summary-section { border-left: 4px solid var(--accent); background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%); }
+        .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; }
+        .kpi-card.kpi-dark { background: var(--muted); color: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--accent); color: white; }
+        .kpi-card.kpi-success { background: var(--accent-soft); color: var(--primary); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.7; }
+        .kpi-card .kpi-value { font-size: 24px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.7; }
+        .summary-oneliner { background: #0D0D0D; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+        .summary-oneliner .sol-text .hl { color: var(--highlight); }
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+        .diagnosis-section { border: 2px solid var(--accent); }
+        .diagnosis-section h2 { border-bottom-color: var(--accent); color: var(--accent); }
+        .diag-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .diag-box { padding: 16px; border-radius: 8px; }
+        .diag-box.diag-current { background: var(--accent-light); }
+        .diag-box.diag-ideal { background: #eef3ec; }
+        .diag-box .db-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .diag-box.diag-current .db-label { color: var(--accent); }
+        .diag-box.diag-ideal .db-label { color: #5a7a52; }
+        .diag-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+        .diag-note { font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: var(--accent-light); border-radius: 8px; }
+        .spin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .spin-card { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .spin-card h4 { font-size: 15px; margin-bottom: 10px; }
+        .spin-s { background: #ffffff; border: 1px solid var(--border); }
+        .spin-p { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .spin-i { background: var(--accent-soft); }
+        .spin-n { background: #ffffff; border: 1px solid var(--border); }
+        .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+        .pain-level { flex: 1; min-width: 200px; padding: 16px; border-radius: 10px; font-size: 13px; }
+        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .pain-l1 { background: var(--muted); }
+        .pain-l2 { background: var(--accent-light); }
+        .pain-l3 { background: var(--accent-soft); }
+        .pain-l4 { background: var(--accent); color: white; }
+        .script-block { background: #f8f9fa; border-left: 3px solid var(--accent); padding: 16px 20px; margin: 12px 0; border-radius: 0 8px 8px 0; font-size: 14px; color: var(--secondary); }
+        .script-block .quote-mark { color: var(--accent); font-weight: 800; margin-right: 6px; }
+        .question-card { background: #f8f9fa; border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+        .question-card .q-num { font-size: 12px; font-weight: 700; color: var(--highlight); }
+        .question-card .q-text { font-size: 15px; font-weight: 600; margin: 4px 0 8px; }
+        .question-card .q-intent { font-size: 13px; color: var(--text-light); }
+        .question-card .q-branch { font-size: 12px; color: var(--secondary); margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border); }
+        .timeline-phase { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .timeline-phase .phase-time { font-size: 13px; font-weight: 700; color: var(--highlight); text-align: center; padding-top: 4px; }
+        .timeline-phase .phase-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .timeline-phase .phase-content p { font-size: 13px; color: var(--text-light); margin-bottom: 6px; }
+        .timeline-phase .phase-content .phase-script { font-size: 13px; color: var(--secondary); background: var(--accent-light); padding: 8px 12px; border-radius: 6px; margin-top: 6px; }
+        .source-cite { font-size: 11px; color: var(--text-light); font-weight: 400; margin-left: 4px; }
+        .fact-warn { background: #fff8d4; border-left: 3px solid #b8860b; padding: 8px 12px; border-radius: 4px; margin: 8px 0; font-size: 13px; color: #6b5400; }
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .tier-cards { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-step:not(:last-child)::after { display: none; }
+            .channel-grid { grid-template-columns: 1fr; }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .diag-compare { grid-template-columns: 1fr; }
+            .spin-grid { grid-template-columns: 1fr; }
+            .pain-layer { flex-direction: column; }
+            .timeline-phase { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">NEW BUSINESS · 상담 준비 패키지</div>
+    <h1>잼플 (JAMFUL) / (주)크램</h1>
+    <div class="subtitle">Flexible Lifestyle Platform · 800+ 센터 통합 예약 + B2B 기업복지 · 김수민 대표</div>
+    <div class="date">작성일: 2026-05-07 · 상담 일정: 미정 · 메일 회신: 미회신 · Prepared by BRANDRISE</div>
+</div>
+
+<div class="container">
+
+    <!-- Executive Summary -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">법인 / 서비스</div>
+                <div class="sh-title">(주)크램(Kram) / 잼플(JAMFUL)</div>
+                <div class="sh-sub">피트니스 O2O 클래스 통합 예약(B2C) + 기업복지 SaaS(B2B) · 임직원 3명(추정)</div>
+            </div>
+            <div>
+                <div class="sh-label">대표 / 메일 회신</div>
+                <div class="sh-title">김수민 대표</div>
+                <div class="sh-sub">영국 IB 8년차 → 잼플 창업 · 사전 메일 미회신 (Phase 2 확대 분기 적용)</div>
+            </div>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">제휴 센터</div>
+                <div class="kpi-value">800+</div>
+                <div class="kpi-sub">jamful.co/b2b · ZDNet</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">도입 기업</div>
+                <div class="kpi-value">100+</div>
+                <div class="kpi-sub">중기이코노미(2025.12)</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">앱 평점</div>
+                <div class="kpi-value">4.7</div>
+                <div class="kpi-sub">Google Play · 리뷰 29건</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">인스타 팔로워</div>
+                <div class="kpi-value">452</div>
+                <div class="kpi-sub">게시물 166 / 도달 정체</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">한 줄 진단</div>
+            <div class="sol-text">잼플은 <span class="hl">"공급(800 센터·100 기업)은 확보, 수요(브랜드 자산)는 비대칭"</span>인 구조. 시리즈A IR 시점에 이 비대칭이 <b>밸류에이션 디스카운트로 이어진다</b>. 우리가 증명할 것은 <span class="hl">B2C/B2B 채널 분리 + 시리즈A 트랙션 라인 + 800 트레이너 자산화</span>를 6개월 안에 끝낼 수 있는 곳은 브랜드라이즈뿐이라는 것.</div>
+        </div>
+        <div class="summary-bottom">
+            ① <span class="hl">표면 요청 추정</span>: "인스타·콘텐츠·광고 잘해주세요" — 폼 미작성·메일 미회신 = "어디부터 정리해야 할지 모르는" 시그널.<br>
+            ② <span class="hl">진짜 니즈</span>: <b>B2B 우선 vs B2C 우선의 비즈니스 우선순위 합의</b>가 먼저, 그 위에서 채널·콘텐츠·광고가 정렬돼야 한다. 이게 L4(근본 원인).<br>
+            ③ <span class="hl">상담의 본질</span>: 60분 안에 김 대표 본인이 우선순위를 입으로 말하게 만드는 자리. <b>Professional 6개월 800만원대</b>가 자연스럽게 만나는 각.
+        </div>
+    </div>
+
+    <!-- 핵심 진단 -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 문제점 & 진단 — 상담 15분 안에 꺼낼 카드</h2>
+
+        <h3>진단 ① 메시지 분열 — "한 채널에 B2C·B2B를 같이 올리면 둘 다 잃는다"</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재</div>
+                <ul>
+                    <li>인스타 피드: 운동복 트렌드(B2C) + HR 세미나(B2B) + "남친의 착각"(라이프 릴스) <b>3트랙 혼재</b></li>
+                    <li>도메인: jamful.co(B2C) + jamful.co/b2b 분리 운영, 톤은 "자유" vs "효율" 양극</li>
+                    <li>알고리즘이 계정 페르소나를 못 잡음 → 도달 정체 (팔로워 452, 게시물 166)</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">필요한 것</div>
+                <ul>
+                    <li>채널 3축 분리: <b>인스타 = B2C 단일 페르소나 / 링크드인+블로그 = B2B HR / 잼플 웰니스 나이트 = 오프라인 PR</b></li>
+                    <li>B2B 콘텐츠는 인스타에서 빼고 LinkedIn·뉴스레터로 이전</li>
+                    <li>알고리즘이 "이 계정은 누구 타겟"인지 분류 가능한 일관성 회복</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>진단 ② 공급-수요 비대칭 — "800 센터 / 기업 100사 vs 팔로워 452 / 앱 1K+"</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재</div>
+                <ul>
+                    <li>공급: 800+ 센터 제휴, 도입 기업 100사, 50종목 운영</li>
+                    <li>수요: 인스타 팔로워 452, 앱 다운로드 1K+, 리뷰 29건 — 인프라 대비 1~2% 수준 (추정)</li>
+                    <li>외부 PR(중기이코노미·벤처스퀘어·ZDNet) 자산 보유, 그런데 디지털에서 재유통 안 됨</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">필요한 것</div>
+                <ul>
+                    <li><b>대표 IP 시리즈화</b>: 영국 IB 출신 창업 서사를 인스타·LinkedIn·뉴스레터에 3채널 재포맷</li>
+                    <li>B2C 페이드 테스트 (Meta CPI 기준선 1차 측정)</li>
+                    <li>B2B 케이스 스터디(ByteDance·Dr.Blet)를 jamful.co/b2b 상단 임베드</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>진단 ③ 미사용 자산 — "800 트레이너 = 마이크로 인플루언서 풀"</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재</div>
+                <ul>
+                    <li>제휴 센터 트레이너 평균 인스타 팔로워 2,000~5,000 보유 (추정)</li>
+                    <li>잼플이 이를 콘텐츠 협업으로 활성화한 흔적 미확인</li>
+                    <li>코니아랩플러스 윙크 제휴(2025.6)는 채널 파트너십 — 콘텐츠 자산 활용은 별개</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">필요한 것</div>
+                <ul>
+                    <li>"잼플 트레이너 50인" 분기 캠페인 → 트레이너 자기 채널에서 잼플 언급 (광고비 0)</li>
+                    <li>벤치: 동종 케이스 클래스파이는 강사 풀 활용으로 CAC -60% (추정)</li>
+                    <li>시리즈A IR에 "Network Effect 작동 중" 1줄로 환산</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="leverage-box">
+            <div style="font-size:13px;opacity:0.7">3개 진단을 관통하는 한 문장</div>
+            <div class="quote">"잼플은 콘텐츠가 부족한 게 아니라, <span style="color:var(--accent)">'누구에게 말하는 회사인지'</span>가 합의되지 않은 상태."</div>
+        </div>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+        <h2>목차</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 & 진단</a>
+            <a href="#section-1">1. 기업 기초 정보</a>
+            <a href="#section-2">2. 주력 서비스 & 모델</a>
+            <a href="#section-3">3. 디지털 프레즌스 진단</a>
+            <a href="#section-4">4. 경쟁사 분석</a>
+            <a href="#section-5">5. 시장 환경</a>
+            <a href="#section-6">6. 김수민 대표 프로필</a>
+            <a href="#section-7">7. SWOT 분석</a>
+            <a href="#section-8">8. 니즈 분석 (SPIN+JTBD)</a>
+            <a href="#section-9">9. 기회 적합도 평가</a>
+            <a href="#section-10">10. 3-Tier 견적</a>
+            <a href="#section-11">11. 상담 전략 & 코칭</a>
+            <a href="#section-12">12. 클로징 전략</a>
+            <a href="#sources">참고 링크</a>
+        </div>
+    </div>
+
+    <!-- 1. 기업 기초 정보 -->
+    <div class="section" id="section-1">
+        <h2>1. 기업 기초 정보</h2>
+        <div class="callout-warn fact-warn">
+            <b>⚠️ 사실 충돌</b>: 설립일이 출처마다 다릅니다 — <b>사람인 2023.6.9</b> vs <b>rocketpunch 2024.6.25</b>. 인터뷰에서 "2020년 시작"이라는 발언도 별도 존재. 상담 시 본인 확인 필요.
+        </div>
+        <div class="info-grid">
+            <div class="info-label">법인명</div>
+            <div class="info-value">주식회사 크램 (Kram) <span class="source-cite">[사람인 + innoforest + rocketpunch 3중 검증]</span></div>
+            <div class="info-label">서비스명</div>
+            <div class="info-value">잼플(JAMFUL) — "JAM(재미) + FULL(가득함)" <span class="source-cite">[중기이코노미 인터뷰]</span></div>
+            <div class="info-label">설립일</div>
+            <div class="info-value">⚠️ 2023.6.9 (사람인) / 2024.6.25 (rocketpunch) — 본인 확인 필요</div>
+            <div class="info-label">대표</div>
+            <div class="info-value">김수민 <span class="source-cite">[중기이코노미 + 벤처스퀘어 + rocketpunch 일치]</span></div>
+            <div class="info-label">소재지</div>
+            <div class="info-value">⚠️ 경기 성남(사람인) / 수원(인크루트) — 이중 등재 추정, 확인 필요</div>
+            <div class="info-label">임직원</div>
+            <div class="info-value">3명 <span class="source-cite">[사람인 4대보험 단일출처]</span></div>
+            <div class="info-label">연 매출</div>
+            <div class="info-value">4,884만원 <span class="source-cite">[사람인 단일출처 — 직전 연도 추정, 본인 확인 필요]</span></div>
+            <div class="info-label">투자 단계</div>
+            <div class="info-value">시드 완료 (추정) — 정확한 라운드/리드VC <b>미확인</b>, IR 자료/내부 컨펌 필요</div>
+            <div class="info-label">사업 모델</div>
+            <div class="info-value">B2C 앱(크레딧 충전형 클래스 예약) + B2B SaaS(기업 복지) 듀얼</div>
+            <div class="info-label">전략적 제휴</div>
+            <div class="info-value">코니아랩플러스(윙크) 2025.6.23 <span class="source-cite">[ZDNet 보도]</span></div>
+            <div class="info-label">채용 시그널</div>
+            <div class="info-value"><b>B2B Sales Lead 채용 中</b> — B2B 영업 가속 페이즈 진입 신호</div>
+        </div>
+        <div class="callout-info">
+            <b>해석</b>: 매출 4,884만원·직원 3명은 시드~프리A 초기 코어팀 구조. 그런데 사이트는 800+ 센터·100사·B2B 풀라인업 표방 — <b>공급(영업)은 풀가동, 운영/마케팅은 1~2인이 짊어지는 전형적 시드~프리A 구조</b>.
+        </div>
+    </div>
+
+    <!-- 2. 주력 서비스 & 모델 -->
+    <div class="section" id="section-2">
+        <h2>2. 주력 서비스 & 비즈니스 모델</h2>
+        <table>
+            <thead>
+                <tr><th width="20%">라인</th><th width="35%">B2C — 잼플 앱</th><th width="35%">B2B — 잼플 비즈니스</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>도메인</b></td>
+                    <td>jamful.co (메인)</td>
+                    <td>jamful.co/b2b</td>
+                </tr>
+                <tr>
+                    <td><b>헤드 카피</b></td>
+                    <td>"자유롭게 운동하는 방식, 잼플"</td>
+                    <td>"800+ centers nationwide / 월별 사용자 단위 과금"</td>
+                </tr>
+                <tr>
+                    <td><b>타겟</b></td>
+                    <td>20~30대 운동러, 멀티 카테고리 시도자</td>
+                    <td>HR 매니저·복지 담당·중소~중견 기업 의사결정자</td>
+                </tr>
+                <tr>
+                    <td><b>USP</b></td>
+                    <td>JAM 크레딧 시스템(필라테스 200·발레 350·요가 150) — 가격 직관성 우수</td>
+                    <td>"쓴 만큼만 과금"(active-only) + 베네피아·플렉스 대비 차별화</td>
+                </tr>
+                <tr>
+                    <td><b>지표</b></td>
+                    <td>앱 다운로드 1K+ / 평점 4.7 / 리뷰 29건 (Google Play)</td>
+                    <td>도입 100사 (2025.12 기준 단일출처)</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="callout">
+            <b>모델 무게중심 (수주 전략가 결론)</b>: 김수민 대표 본인이 "B2B부터 서비스 시작했다"고 밝힘 [중기이코노미]. 실제 블로그 콘텐츠도 HR 인사이트 60% 비중 추정. <b>B2B-우선 + B2C 앱은 인프라/트랙션 자산</b> 구조로 해석. 이 가설을 상담 Q1으로 직접 검증.
+        </div>
+    </div>
+
+    <!-- 3. 디지털 프레즌스 -->
+    <div class="section" id="section-3">
+        <h2>3. 디지털 프레즌스 진단</h2>
+        <div class="channel-grid">
+            <div class="channel-card">
+                <div class="ch-name">인스타 @jamful_official</div>
+                <div class="ch-stat">452</div>
+                <div class="ch-note">팔로워 / 게시물 166 / 팔로우 1<br>2~3년 운영 정체</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">잼플 앱 (Google Play)</div>
+                <div class="ch-stat">4.7★</div>
+                <div class="ch-note">다운로드 1K+ / 리뷰 29건<br>품질↑ 볼륨↓</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">블로그 (jamful.co/blog)</div>
+                <div class="ch-stat">B2B 60%</div>
+                <div class="ch-note">HR 인사이트 중심<br>SEO 강점 / B2C 키워드 약점</div>
+            </div>
+        </div>
+        <h3>채널별 진단</h3>
+        <table>
+            <thead>
+                <tr><th>채널</th><th>현재 상태</th><th>핵심 갭</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>웹사이트 B2C</b></td>
+                    <td>JAM 크레딧 가격 직관성 우수, CTA 3개 병렬(앱·B2B 문의·센터 입점)</td>
+                    <td>CTA 분산 → 첫 5초 의사결정 안 됨</td>
+                </tr>
+                <tr>
+                    <td><b>웹사이트 B2B</b></td>
+                    <td>"800+ centers" + "쓴 만큼만 과금" 척추 메시지 강함</td>
+                    <td>케이스 스터디(ByteDance·Dr.Blet)가 블로그에만, B2B 랜딩에 임베드 X → 신뢰자산 휘발</td>
+                </tr>
+                <tr>
+                    <td><b>인스타</b></td>
+                    <td>2년 11개월 운영, 게시물 166개 누적</td>
+                    <td>피드 톤 3분열(B2C 운동복 + B2B HR 세미나 + 라이프 릴스) → 알고리즘 분류 실패</td>
+                </tr>
+                <tr>
+                    <td><b>블로그</b></td>
+                    <td>4축(HR / 후기 / 웰니스 / 회사) — 시즌 키워드 적용</td>
+                    <td>B2B 영업 자료로 재활용 안 됨, B2C 검색 키워드 부재</td>
+                </tr>
+                <tr>
+                    <td><b>광고</b></td>
+                    <td>Meta 광고 라이브러리 / 네이버 검색광고 노출 미확인</td>
+                    <td>페이드 미가동 추정 → 상담에서 직접 확인</td>
+                </tr>
+                <tr>
+                    <td><b>외부 PR</b></td>
+                    <td>중기이코노미·벤처스퀘어·ZDNet 3건 보유</td>
+                    <td>인스타·블로그·B2B 랜딩에서 재유통 안 됨 (가장 아까운 자산)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 4. 경쟁사 -->
+    <div class="section" id="section-4">
+        <h2>4. 경쟁사 분석</h2>
+        <h3>B2C 직접 경쟁 — 멀티 짐 / 클래스 통합 예약</h3>
+        <table>
+            <thead>
+                <tr><th>경쟁사</th><th>투자 단계</th><th>차별점</th><th>잼플 대비</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><b>다짐</b></td><td>시리즈A 32억 (추정)</td><td>홈트 + 오프라인 결합</td><td>홈트 강세, 오프라인 약점</td></tr>
+                <tr><td><b>콰트(엔라이즈)</b></td><td>가입자 60만+</td><td>홈트 → 발레/요가 확장, 콘텐츠 진정성</td><td>B2B 진출 못함 — 잼플과 정반대 위치</td></tr>
+                <tr><td><b>버핏서울</b></td><td>시리즈B 100억 (추정)</td><td>그룹 PT 단일 카테고리 집중</td><td>카테고리 통합 약점, 깊이 강점</td></tr>
+                <tr><td><b>오붓</b></td><td>시드</td><td><b>잼플과 가장 유사 포지셔닝</b> (멤버십 기반 웰니스/피트니스)</td><td>직접 경쟁자 — 모니터링 필수</td></tr>
+            </tbody>
+        </table>
+        <h3>B2B 경쟁 — 기업 복지 플랫폼</h3>
+        <table>
+            <thead>
+                <tr><th>경쟁사</th><th>특징</th><th>잼플의 자리</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>베네피아·이로운·플렉스데이·비프렌즈</td><td>종합 복지 플랫폼, 운동은 옵션 1개</td><td>운동 버티컬 + 800 센터 + active-only 과금으로 차별화 가능</td></tr>
+                <tr><td>Wellhub(구 Gympass)</td><td>글로벌 B2B 복지 플랫폼, 한국 미진출</td><td>한국형 자리 가져갈 수 있는 윈도우 — Pre-A/A 골든타임</td></tr>
+            </tbody>
+        </table>
+        <div class="callout">
+            <b>인사이트</b>: 콰트(B2C 콘텐츠 강자)와 베네피아류(B2B 종합) 사이의 <b>"운동 버티컬 + B2B 복지 결합"</b>이 잼플의 빈 자리. 단, Wellhub가 한국 진출하면 후발 인식 차단 위험 — 6~12개월 골든타임.
+        </div>
+    </div>
+
+    <!-- 5. 시장 환경 -->
+    <div class="section" id="section-5">
+        <h2>5. 시장 환경</h2>
+        <table>
+            <thead>
+                <tr><th>축</th><th>2025</th><th>2030</th><th>CAGR</th><th>출처</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>글로벌 헬스/피트니스 클럽 시장</td><td>121.5억 USD</td><td>202.6억 USD</td><td>10.77%</td><td>Mordor Intelligence</td></tr>
+                <tr><td>글로벌 디지털 피트니스 앱</td><td>—</td><td>153.5억 USD (2026)</td><td>두 자릿수</td><td>2차 자료</td></tr>
+                <tr><td>국내 B2B 기업복지 디지털화</td><td>1조+ (추정)</td><td>—</td><td>—</td><td>업계 통계</td></tr>
+            </tbody>
+        </table>
+        <h3>3대 메가 트렌드와 잼플 적합도</h3>
+        <table>
+            <tbody>
+                <tr><td><b>일과 운동의 일상 결합</b></td><td>잼플 카피 "생존 루틴"과 정확히 일치</td><td class="tag-green tag">강한 적합</td></tr>
+                <tr><td><b>구독형 멀티패스</b></td><td>JAM 크레딧 = 한국형 ClassPass</td><td class="tag-green tag">강한 적합</td></tr>
+                <tr><td><b>B2B 복지 디지털화</b></td><td>active-only 과금 모델 = 종합 복지 대비 차별화</td><td class="tag-green tag">강한 적합</td></tr>
+                <tr><td><b>소셜 피트니스</b> (SOC, JAM GROUND, Running Crew)</td><td>인스타가 못 살리는 게 큰 손실 — 콘텐츠 자산이 풍부한 트렌드</td><td class="tag-yellow tag">기회 미사용</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 6. 대표 프로필 -->
+    <div class="section" id="section-6">
+        <h2>6. 김수민 대표 프로필</h2>
+        <div class="info-grid">
+            <div class="info-label">배경</div>
+            <div class="info-value">중국 청소년기 → 국제고 → 글로벌 경영학 → 영국 런던 사모펀드 8년차 (3,000억 달러+ 거래 경험) <span class="source-cite">[중기이코노미]</span></div>
+            <div class="info-label">창업 시점</div>
+            <div class="info-value">2020년 잼플 시작 (벤처스퀘어) / 2023~2024 법인화 — 출처 충돌</div>
+            <div class="info-label">현 단계</div>
+            <div class="info-value">"2026년 10배 성장" 공언, B2B Sales Lead 채용 中, 코니아랩플러스 제휴 발표</div>
+        </div>
+        <h3>Raw Quote — 콘텐츠/피칭에 그대로 인용 가능</h3>
+        <div class="script-block">
+            <span class="quote-mark">"</span>내가 하던 업무가 돈을 굴리는 일이고, 경제적으로 가치 있는 일이라는 생각이 들었기 때문에 재미가 있었다. <b>어느 순간 내가 이 일을 20~30년 한들 무슨 의미가 있지라는 의문이 들었다.</b><span class="quote-mark">"</span>
+            <div class="source-cite">— 중기이코노미</div>
+        </div>
+        <div class="script-block">
+            <span class="quote-mark">"</span>사람들이 하나의 운동센터에 묶이지 않고, <b>자유롭게 운동할 수 있도록 선택의 폭을 넓히는</b> 데 초점을 맞췄다.<span class="quote-mark">"</span>
+            <div class="source-cite">— 중기이코노미</div>
+        </div>
+        <div class="script-block">
+            <span class="quote-mark">"</span>복지의 기본 원칙은 <b>'더하기'여야 한다.</b> 기존의 권리를 뺏기는 느낌이 들면 임직원 만족도가 떨어진다.<span class="quote-mark">"</span>
+            <div class="source-cite">— 중기이코노미</div>
+        </div>
+        <div class="script-block">
+            <span class="quote-mark">"</span>운동은 선택이 아니라 바쁜 일상을 버티게 하는 필수 <b>'생존 루틴'</b>.<span class="quote-mark">"</span>
+            <div class="source-cite">— 벤처스퀘어 (2025.12.22)</div>
+        </div>
+        <div class="callout">
+            <b>의사결정 스타일 추정</b>:<br>
+            ① 금융권 출신 — 데이터·실사용 기반 ROI 강조. 제안서는 <b>가설→실험→측정</b> 구조로 가야 설득.<br>
+            ② "20~30년 해도 의미 있나" 발언 = <b>존재 의미를 묻는 창업자형</b>. ROAS 외 "한국 운동 문화 변화" 같은 미션 언어가 통할 가능성.<br>
+            ③ 본인이 직접 인터뷰·블로그까지 챙기는 스타일 → 디테일 까다로움 (수주 전략가 진단).
+        </div>
+    </div>
+
+    <!-- 7. SWOT -->
+    <div class="section" id="section-7">
+        <h2>7. SWOT 분석</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>S — 강점</h4>
+                <ul>
+                    <li>800+ 제휴 센터 공급망 (2년 만에 확보)</li>
+                    <li>도입 기업 100사 + active-only 과금 모델 차별화</li>
+                    <li>대표 IP: 영국 IB 출신 → 한국 운동 문화 창업 서사</li>
+                    <li>외부 PR 자산(중기·벤처스퀘어·ZDNet) 보유</li>
+                    <li>앱 평점 4.7 (품질 검증)</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>W — 약점</h4>
+                <ul>
+                    <li>인스타 팔로워 452 (인지도 정체)</li>
+                    <li>B2C/B2B 메시지 분열 — 한 인스타에 두 페르소나</li>
+                    <li>임직원 3명 (마케팅 전담 인력 부재 추정)</li>
+                    <li>케이스 스터디·인터뷰 자산 디지털 재유통 미숙</li>
+                    <li>페이드 광고 운영 흔적 미확인</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>O — 기회</h4>
+                <ul>
+                    <li>3대 메가 트렌드(일상 운동·구독 멀티패스·B2B 디지털 복지) 동시 작동</li>
+                    <li>Wellhub 한국 미진출 — 자리 가져갈 윈도우</li>
+                    <li>800 트레이너 = 마이크로 인플루언서 풀 (미사용)</li>
+                    <li>코니아랩플러스 제휴 = 시장 주목 시점</li>
+                    <li>시리즈A IR 골든타임 (6개월)</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>T — 위협</h4>
+                <ul>
+                    <li>콰트(B2C 강자)가 B2B 복지로 확장 시 후발 인식</li>
+                    <li>Wellhub 한국 진출 시 글로벌 자본 차이</li>
+                    <li>800 센터 측 "유저 안 들어옴" 이탈 리스크 (양면 마켓플레이스 죽음의 계곡)</li>
+                    <li>경쟁사 마케팅 강화 시 인지도 격차 가속</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. 니즈 분석 -->
+    <div class="section" id="section-8">
+        <h2>8. 니즈 분석 (SPIN + JTBD + Pain Hierarchy)</h2>
+
+        <h3>SPIN 4분면</h3>
+        <div class="spin-grid">
+            <div class="spin-card spin-s">
+                <h4>Situation — 객관 현재</h4>
+                설립 1~3년차, 수도권 800+ 센터·기업 100사 확보. 사이트 2개 분리, 인스타 게시물 166 / 팔로워 452. "내년 10배 성장" 공언.
+            </div>
+            <div class="spin-card spin-p">
+                <h4>Problem — 대표 인식</h4>
+                공급(센터 800+) 대비 수요(개인 유저) 발화가 비대칭. 콘텐츠 발행은 되지만 도달·전환이 안 나옴. (추정) 대표는 "콘텐츠/광고가 약하다"로 인식 중.
+            </div>
+            <div class="spin-card spin-i">
+                <h4>Implication — 방치 시</h4>
+                ① 시리즈A IR 시 "B2B 트랙션은 100사로 증명, B2C 자산 0"으로 디스카운트<br>② 800 센터 측 이탈 리스크<br>③ 팔로워 452 = HR 세일즈 신뢰도 깎임<br>④ 콰트의 B2B 확장 시 후발 인식
+            </div>
+            <div class="spin-card spin-n">
+                <h4>Need-Payoff — 해결 시</h4>
+                ① B2B 인바운드 엔진(블로그·웨비나·HR 콘텐츠)<br>② 시리즈A IR "공급+수요 양쪽 발화" 스토리<br>③ B2C 인스타 = 입소문 자산 + B2B 영업 시 신뢰자료<br>④ 1인 마케팅 의존도 해소
+            </div>
+        </div>
+
+        <h3>Pain Hierarchy (L1 → L4)</h3>
+        <div class="pain-layer">
+            <div class="pain-level pain-l1">
+                <span class="level-tag">L1 표면 요청</span>
+                "잼플 인스타 운영 좀 도와주세요 / 콘텐츠 퀄리티 높이고 싶어요 / 광고 효율 봐주세요"
+            </div>
+            <div class="pain-level pain-l2">
+                <span class="level-tag">L2 전술적 문제</span>
+                인스타 도달 1% 추정 / 콘텐츠 컨셉 일관성 없음 / B2C·B2B 자산 공유 안 됨 / 블로그-인스타 연계 X
+            </div>
+            <div class="pain-level pain-l3">
+                <span class="level-tag">L3 전략적 문제</span>
+                타겟 페르소나 2개로 갈라짐 + 채널 1개 운영 → 알고리즘이 대표 페르소나를 못 잡음. 콘텐츠 KPI(인지/리드/전환) 우선순위 미정의 (추정)
+            </div>
+            <div class="pain-level pain-l4">
+                <span class="level-tag" style="color:#fff8d4">L4 근본 원인</span>
+                "잼플은 누구를 위한 무엇인가"가 비즈니스 우선순위로 합의 안 됨. B2B SaaS인지(IR 표기) / B2C 마켓플레이스인지(메인 사이트) / 둘 다인지 — 우선순위가 없으면 어떤 외주도 비용 분산.
+            </div>
+        </div>
+
+        <h3>JTBD 3축</h3>
+        <table>
+            <thead>
+                <tr><th width="20%">축</th><th>Job</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Functional Job</b></td>
+                    <td>B2B 영업 미팅 들어갈 때 "브랜드는 이미 알아요" 들리게 하기 + 개인 유저 가입 곡선이 800 센터를 만족시킬 만큼 우상향 (추정)</td>
+                </tr>
+                <tr>
+                    <td><b>Social Job</b></td>
+                    <td>"10배 성장 공언"을 외부에 증명. 시리즈A IR에서 "콰트/Wellhub의 한국형"으로 포지셔닝되고 싶음. 영국 IB 서사 vs 잼플 브랜드 자산 격차에 대한 자의식 (추정)</td>
+                </tr>
+                <tr>
+                    <td><b>Emotional Job</b></td>
+                    <td>게시물 166개 누적했는데 팔로워 452 — "이만큼 했는데 왜 안 되지"의 자책 + 외주 여러 곳 거쳤을 가능성에서 오는 피로 + 본인은 사업 운영에 시간 없는 답답함 (추정)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>표면 vs 진짜 니즈 갭</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">표면 (대표가 의뢰서로 표현했을 법)</div>
+                <ul>
+                    <li>"인스타 콘텐츠 잘해주세요"</li>
+                    <li>"광고 운영 좀 봐주세요"</li>
+                    <li>"팔로워 늘리고 싶어요"</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">진짜 니즈 (브랜드라이즈가 끌어올릴 자리)</div>
+                <ul>
+                    <li>B2B 우선 vs B2C 우선의 비즈니스 우선순위 합의</li>
+                    <li>그에 맞춘 채널·페르소나·KPI 재정의</li>
+                    <li>인스타=B2C / 링크드인+블로그=B2B 분리 + 시리즈A IR 트랙션 라인 설계</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. 기회 적합도 -->
+    <div class="section" id="section-9">
+        <h2>9. 기회 적합도 평가 & 수주 시나리오</h2>
+        <table>
+            <thead>
+                <tr><th>항목</th><th>가중치</th><th>점수</th><th>근거</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>니즈-서비스 핏</b></td>
+                    <td>30%</td>
+                    <td>4/5</td>
+                    <td>채널 분리·브랜드 재정의·B2B 신뢰 자산 구축은 BRANDRISE 풀패키지와 정렬</td>
+                </tr>
+                <tr>
+                    <td><b>예산 적합성</b></td>
+                    <td>20%</td>
+                    <td>3/5</td>
+                    <td>시드+B2B Sales Lead 채용으로 고정비 증가, 월 500~800만원대 가능. 1,000만+ 무리</td>
+                </tr>
+                <tr>
+                    <td><b>의사결정 구조</b></td>
+                    <td>15%</td>
+                    <td>4/5</td>
+                    <td>김 대표 단독 결정 가능성 高 — 빠르되 디테일 까다로움</td>
+                </tr>
+                <tr>
+                    <td><b>긴급도</b></td>
+                    <td>15%</td>
+                    <td>4/5</td>
+                    <td>"10배 성장" 공언 + 시리즈A IR 시점 + 5월=상반기 골든타임</td>
+                </tr>
+                <tr>
+                    <td><b>성장 잠재력</b></td>
+                    <td>10%</td>
+                    <td>5/5</td>
+                    <td>B2B 1조 + B2C 피트니스 O2O 듀얼 TAM, 시리즈A 후 리테이너 2~3배 확장 가능</td>
+                </tr>
+                <tr>
+                    <td><b>레퍼런스 가치</b></td>
+                    <td>10%</td>
+                    <td>4/5</td>
+                    <td>F&B 편중 포트폴리오에 B2B SaaS·웰니스 플랫폼 추가 (HR테크 영업 자산)</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="verdict">
+            <div class="label">종합 점수</div>
+            <div class="value">3.95 / 5.0</div>
+            <div class="desc">GO — 단, "콘텐츠 대행"으로 들어가면 천장 600만/월. <b>"B2B 브랜드 신뢰 자산 구축 파트너"</b>로 프레이밍해야 800~1,000만 영역 진입 가능.</div>
+        </div>
+        <h3>수주 확률 시나리오</h3>
+        <table>
+            <thead>
+                <tr><th>시나리오</th><th>조건</th><th>예상 패키지</th><th>확률</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><b>A. 진단 파일럿 → 풀 컨버트</b></td><td>1개월 진단 단가 → 만족 시 Professional 자동 전환</td><td>Professional 6개월</td><td class="tag tag-green">中上 (40%)</td></tr>
+                <tr><td><b>B. 곧장 Professional</b></td><td>시리즈A IR 시점 압박이 강할 때</td><td>Professional 6개월</td><td class="tag tag-yellow">中 (30%)</td></tr>
+                <tr><td><b>C. Essential만</b></td><td>예산 압박 + B2C 단발성</td><td>Essential 3개월</td><td class="tag tag-yellow">中 (20%)</td></tr>
+                <tr><td><b>D. No deal</b></td><td>인하우스 채용 결정 또는 광고대행사 선택</td><td>—</td><td class="tag tag-red">下 (10%)</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 10. 3-Tier -->
+    <div class="section" id="section-10">
+        <h2>10. 3-Tier 견적 — 추천: Professional</h2>
+        <div class="tier-cards">
+            <div class="tier-card">
+                <h4>Essential</h4>
+                <div class="duration">콘텐츠 대행 / 3개월</div>
+                <div class="price">월 400만원대</div>
+                <ul>
+                    <li>인스타 운영 (월 12피드)</li>
+                    <li>블로그 카피 월 4편</li>
+                    <li>월간 성과 리포트 1회</li>
+                    <li><b>총 1,200만원대</b></li>
+                </ul>
+                <div class="callout-info" style="margin-top:12px;font-size:12px;">사내 콘텐츠 PM이 있을 때만 의미. 메시지 분열 상태에서는 6개월 뒤 같은 자리.</div>
+            </div>
+            <div class="tier-card recommended">
+                <div class="tier-badge">RECOMMENDED</div>
+                <h4>Professional ⭐</h4>
+                <div class="duration">B2B 브랜드 신뢰 시스템 / 6개월</div>
+                <div class="price">월 800~900만원대</div>
+                <ul>
+                    <li>브랜드 포지셔닝 재정의 (B2C/B2B 분리)</li>
+                    <li>채널 아키텍처 재설계 (인스타·LinkedIn·블로그·오프라인)</li>
+                    <li>콘텐츠 월 20개 (인스타 12 + 블로그 4 + 케이스 2 + LinkedIn 2)</li>
+                    <li>Meta + LinkedIn 광고 운영 (미디어비 별도)</li>
+                    <li>분기 IR/세일즈덱 업데이트 지원</li>
+                    <li><b>총 5,000만원대 + 미디어비</b></li>
+                </ul>
+                <div class="callout" style="margin-top:12px;font-size:12px;"><b>기대 성과</b>: 도입사 100→250 / 인스타 452→5K / LinkedIn HR 신규 1.5K / 시리즈A IR 트랙션 라인 1줄 확보</div>
+            </div>
+            <div class="tier-card">
+                <h4>Premium</h4>
+                <div class="duration">Series A 풀 GTM / 12개월</div>
+                <div class="price">월 1,200~1,500만원대</div>
+                <ul>
+                    <li>Professional 풀 패키지 +</li>
+                    <li>통합 IMC + 분기 웨비나</li>
+                    <li>B2B 세일즈 인에이블먼트 풀</li>
+                    <li>케이스스터디 8건</li>
+                    <li>글로벌 진출 사전 리서치</li>
+                </ul>
+                <div class="callout-info" style="margin-top:12px;font-size:12px;">시리즈A 클로징 직후 적정. 지금은 과함.</div>
+            </div>
+        </div>
+        <div class="leverage-box">
+            <div style="font-size:13px;opacity:0.7">가치 프레이밍</div>
+            <div class="quote">시리즈A 라운드 1억 차이는 <span style="color:var(--accent)">마케팅 트랙션 1줄</span>로 갈린다. <br>지금 6개월 5,000만 투자 = 라운드 밸류 5~10억 위로 = ROI 10배+</div>
+        </div>
+    </div>
+
+    <!-- 11. 상담 전략 & 코칭 -->
+    <div class="section" id="section-11">
+        <h2>11. 상담 전략 & 코칭 — 60분 타임라인</h2>
+        <div class="callout-warn fact-warn">
+            <b>미회신 분기 적용</b>: 사전 메일 회신이 없으므로 <b>Phase 2를 10→20분으로 확대</b>, Phase 3은 단축. 톤은 가벼움/탐색형으로.
+        </div>
+
+        <div class="timeline-phase">
+            <div class="phase-time">5분<br>Phase 1</div>
+            <div class="phase-content">
+                <h4>라포 형성 — 아이스브레이킹</h4>
+                <p>인터뷰 발췌 + 잼플 앱 직접 사용 후기 1줄로 시작</p>
+                <div class="phase-script">"대표님, 어제 잼플 앱으로 필라테스 한 클래스 잡아봤는데, 결제까지 정말 매끄럽더라고요. 다만 후기 쓰는 동선에서 한 번 막혔어요 — 이건 뒤에서 여쭤볼게요."</div>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">20분<br>Phase 2 ↑</div>
+            <div class="phase-content">
+                <h4>상황 확인 — SPIN S/P + 미회신 환기</h4>
+                <p>가벼운 톤으로 사전 메일 미회신 자연스럽게 다루기</p>
+                <div class="phase-script">"지난번 메일은 회신 안 주셔도 괜찮습니다. 대신 오늘 그 답을 같이 찾아가도 될까요? 먼저, 지금 잼플의 한 주를 시간 비중으로 나누면 B2B 영업 vs B2C 앱 운영이 어떻게 쪼개지나요?"</div>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">10분<br>Phase 3 ↓</div>
+            <div class="phase-content">
+                <h4>깊은 진단 — Implication + Paul Graham식 직진</h4>
+                <p>가설을 직접 던지고 빗나간 지점만 정정 받기</p>
+                <div class="phase-script">"솔직하게 말씀드리면, 인스타 팔로워 452는 도달의 문제가 아니라 '잼플이 누구에게 말하는 브랜드인지'가 합의 안 된 신호처럼 보입니다. 제 진단이 빗나갔다면 어디가 빗나갔을까요?"</div>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">10분<br>Phase 4</div>
+            <div class="phase-content">
+                <h4>인사이트 공유 — Challenger 3포인트</h4>
+                <p>가르쳐줄 인사이트 3개를 한 번에 던지고 반응 측정</p>
+                <div class="phase-script">"T1: 인스타 팔로워 1명 vs 링크드인 HR 1회 도달 = 1:35 격차예요. T2: B2C·B2B 한 채널에 섞으면 양쪽 도달 -40~60%로 깎입니다. T3: 800 트레이너가 이미 인플루언서 풀이에요. 클래스파이는 이걸로 CAC -60% 줄였고요."</div>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">10분<br>Phase 5</div>
+            <div class="phase-content">
+                <h4>솔루션 방향 — Professional 윤곽</h4>
+                <p>구체 견적은 D+7로, 오늘은 방향만</p>
+                <div class="phase-script">"구체 견적은 D+7에 드리는 게 맞고, 오늘은 방향만요. 6개월 동안 채널 분리 + IR 트랙션 라인 같이 짜는 구조로, 월 800만원대 윤곽입니다. 미디어비는 별도고요."</div>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">5분<br>Phase 6</div>
+            <div class="phase-content">
+                <h4>클로징 — 다음 단계 + Quick Tip</h4>
+                <p>오늘 합의 1포인트 정리 + Quick Tip 2개 무료 제공</p>
+                <div class="phase-script">"오늘 합의된 1포인트는 '비즈니스 우선순위 정의를 진단 1순위로 둔다'로 정리할게요. D+3에 진단 리포트 1장, D+7에 견적 드리겠습니다. 가시기 전에 무료 팁 2개만 드릴게요."</div>
+            </div>
+        </div>
+
+        <h3>필수 질문 5개</h3>
+        <div class="question-card">
+            <div class="q-num">Q1 — 비즈니스 우선순위 (우회)</div>
+            <div class="q-text">"내년에 직원 한 명만 더 뽑을 수 있다면, B2C 앱 그로스 PM과 B2B 엔터프라이즈 세일즈 중 어디 뽑으세요?"</div>
+            <div class="q-intent">의도: 직접 물으면 "둘 다요" 회피 — 우회로 진짜 1순위 끌어내기</div>
+            <div class="q-branch">분기: A) B2B → 가설 적중, 견적 B2B 비중 70% / B) B2C → 인터뷰와 충돌, "최근 바뀌신 거예요?" 재확인 / C) 둘 다 → "그 결정 자체를 같이 해보면 어떨까요?" 전환</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q2 — 자가 진단 (7초 침묵 활용)</div>
+            <div class="q-text">"@jamful_official 팔로워 452명, 대표님 본인은 이 숫자를 어떻게 해석하세요?"</div>
+            <div class="q-intent">의도: 위기감 자가진단 vs 방어 측정. <b>여기서 7초 침묵</b></div>
+            <div class="q-branch">분기: A) "낮다고 생각" → 동맹 형성 / B) "B2B라 안 중요" → T1 펀치 / C) "콘텐츠 부족" → 표면 진단, Implication 추가</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q3 — 미사용 자산 (트레이너)</div>
+            <div class="q-text">"800개 제휴 센터 트레이너 중 마케팅 협업 시도해보신 분 있으세요? 있다면 결과는요?"</div>
+            <div class="q-intent">의도: 자산 활용도 + 운영 역량 측정</div>
+            <div class="q-branch">분기: A) 시도 X → "여기가 가장 큰 미사용 자산" / B) 시도+실패 → 실패 원인 청취 / C) 시도+성공 → 케이스 확장 제안</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q4 — 시리즈A KPI</div>
+            <div class="q-text">"6개월 뒤 IR에서 보드에 보여줄 단 하나의 숫자를 꼽으면 뭐예요? MAU, 신규 계약사, GMV?"</div>
+            <div class="q-intent">의도: 시리즈A 트랙션 라인 정렬, 견적 KPI와 연결</div>
+            <div class="q-branch">분기: A) 신규 계약사 → B2B-우선 확정 / B) GMV → 양쪽 / C) MAU → 가설 재검토</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q5 — 의사결정 구조</div>
+            <div class="q-text">"마케팅 예산 집행은 대표님 단독 결정인가요, 아니면 공동창업자나 투자자 의견도 들어가나요?"</div>
+            <div class="q-intent">의도: 클로징 단계 의사결정자 매핑</div>
+            <div class="q-branch">분기: A) 단독 → 김 대표 1명 클로징 / B) 공동 → 다음 미팅 동석 제안 / C) 투자자 입김 → IR 트랙션 라인을 견적서 1page에 배치</div>
+        </div>
+
+        <h3>Challenger Teaching 3포인트</h3>
+        <div class="leverage-box">
+            <div style="font-size:13px;opacity:0.7;margin-bottom:12px">상담 Phase 4에서 한 번에 던질 인사이트</div>
+            <table style="background:transparent;color:white;border-collapse:collapse;width:100%;">
+                <tr><td style="border-bottom:1px solid rgba(255,255,255,0.2);padding:12px 0;text-align:left;width:60px;color:var(--accent);font-weight:800;">T1</td><td style="border-bottom:1px solid rgba(255,255,255,0.2);padding:12px 0;text-align:left;">팔로워 452 vs 링크드인 HR 1회 도달 = <b>1:35 격차</b>. B2B 의사결정자는 인스타 안 봅니다.</td></tr>
+                <tr><td style="border-bottom:1px solid rgba(255,255,255,0.2);padding:12px 0;text-align:left;color:var(--accent);font-weight:800;">T2</td><td style="border-bottom:1px solid rgba(255,255,255,0.2);padding:12px 0;text-align:left;">B2C·B2B 한 채널에 섞으면 양쪽 도달 <b>-40~60%</b> (동종 SaaS 추정). 화해(B2C)/화해프로(B2B) 분리 후 양쪽 회복 케이스.</td></tr>
+                <tr><td style="padding:12px 0;text-align:left;color:var(--accent);font-weight:800;">T3</td><td style="padding:12px 0;text-align:left;">800 트레이너 = 마이크로 인플루언서 풀. 클래스파이는 이 구조로 <b>CAC -60%</b> (추정).</td></tr>
+            </table>
+        </div>
+
+        <h3>위험 상황 대응 5개</h3>
+        <table>
+            <thead>
+                <tr><th width="30%">상황</th><th>대응 멘트</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>가격만 물을 때</td><td>"가격은 D+7에 정확히 드릴게요. 지금 드리면 무책임한 거예요. 윤곽은 월 800만원대고, 이게 비싼지 적당한지 판단 기준은 오늘 마지막 5분에 같이 만들어요."</td></tr>
+                <tr><td>"콘텐츠만 필요해요"</td><td>"콘텐츠는 도구고요, 도구 사기 전에 '누구에게 말할 건지'가 정해져야 같은 예산이 3배 일을 합니다. 5분만 그 부분 같이 보고, 그래도 콘텐츠만 필요하면 콘텐츠 견적으로 좁혀드릴게요."</td></tr>
+                <tr><td>"광고 대행사 견적도 받았다"</td><td>"좋은 비교군이세요. 다만 저희가 들어가는 자리는 미디어 집행이 아니라 채널 정의 + IR 트랙션 라인이고, 광고대행사 견적과는 항목 자체가 달라요. 비교표 D+7에 같이 드릴게요."</td></tr>
+                <tr><td>말이 너무 적을 때</td><td>(속도 늦추고) "대표님, 제가 너무 일방적으로 말씀드리고 있는 것 같네요. 지금까지 들으신 것 중에 동의 안 되시는 거 하나만 짚어주실래요?"</td></tr>
+                <tr><td><b>★ B2C/B2B 우선순위 답을 못 줄 때</b></td><td>"그 결정을 지금 자리에서 안 내셔도 됩니다. 오히려 <b>그 결정 자체를 같이 해보는 게 저희 첫 6주 작업</b>이면 어떨까요? 진단 리포트 1번 항목으로 넣을게요." (수주 기회로 전환)</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Trusted Advisor Quick Tip — 마무리 5분 무료 제공</h3>
+        <div class="callout-success">
+            <b>(a) 인스타 바이오 1줄 변경안</b><br>
+            현재: "JAMFUL | Flexible Lifestyle Platform"<br>
+            제안: <b>"하나의 센터에 묶이지 않는 운동 — 800+ 센터를 하나의 멤버십으로"</b><br>
+            <span style="font-size:12px;color:var(--text-light)">즉시 실행 이유: 30초 안에 변경 가능, 다음 30일 프로필 방문→팔로우 전환율 자체 측정 가능.</span>
+        </div>
+        <div class="callout-success">
+            <b>(c) B2B 케이스 스터디 임베드</b><br>
+            ZDNet·벤처스퀘어 기사 + 도입 100사 중 1개 케이스를 <b>jamful.co/b2b 상단에 30분 작업</b>으로 삽입.<br>
+            <span style="font-size:12px;color:var(--text-light)">즉시 실행 이유: 외부 PR 자산을 B2B 페이지 신뢰 자산으로 회수, 영업 사이클 단축에 직접 기여.</span>
+        </div>
+
+        <h3>아이스브레이킹 소재 후보 3개</h3>
+        <div class="script-block">
+            <span class="quote-mark">①</span> "대표님 중기이코노미 인터뷰에서 <b>'내가 이 일을 20~30년 한들 무슨 의미가 있지'</b> 그 한 줄이 인상적이었습니다. 잼플은 그 질문에 어떻게 답을 만들어가는 회사 같으세요?"
+        </div>
+        <div class="script-block">
+            <span class="quote-mark">②</span> "<b>'복지의 기본 원칙은 더하기'</b> — 이 문장이 B2B 영업할 때 HR 담당자한테 정말 잘 꽂힐 것 같은데, 실제 영업 자리에서 이 문장 그대로 쓰세요?"
+        </div>
+        <div class="script-block">
+            <span class="quote-mark">③</span> "<b>'운동은 선택이 아니라 생존 루틴'</b>이라고 하신 거, 어제 잼플 앱으로 필라테스 잡아보니 진짜 그 감각이더라고요. 이 카피, 인스타 바이오에 한번 옮겨보신 적 있어요?"
+        </div>
+    </div>
+
+    <!-- 12. 클로징 -->
+    <div class="section" id="section-12">
+        <h2>12. 클로징 전략 — D+0 → D+30</h2>
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="step-num">D+0</div>
+                <div class="step-title">상담 당일</div>
+                <div class="step-desc">3포인트 + Professional 윤곽 구두 합의 / 24h 내 후속 메일</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">D+3</div>
+                <div class="step-title">진단 리포트 1page</div>
+                <div class="step-desc">현 채널 분석 + 콰트·클래스파이 비교 + Quick Win 3개</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">D+7</div>
+                <div class="step-title">Professional 견적</div>
+                <div class="step-desc">6개월 로드맵 + 휴닉/이퀄리브/인셀라 레퍼런스 카드</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">D+10</div>
+                <div class="step-title">회신 마감</div>
+                <div class="step-desc">"이때까지 회신 = 6월 첫 주 킥오프 가능"</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">D+30</div>
+                <div class="step-title">미회신 follow-up</div>
+                <div class="step-desc">진단 PDF 추가 송부 + 30분 콜 제안 (톤다운)</div>
+            </div>
+        </div>
+
+        <h3>긴급성 요소 — 자연스럽게 환기</h3>
+        <table>
+            <tbody>
+                <tr><td><b>① 시리즈A IR 골든타임</b></td><td>"10배 성장" 공언 + 시드~브릿지 시점. 6개월 후 라운드 자료에 들어갈 트랙션은 지금 만들어야 함</td></tr>
+                <tr><td><b>② 상반기 마케팅 윈도우</b></td><td>5~7월 = HR 부서 하반기 복지 예산 검토 시즌. 이때 도달 못 하면 다음 윈도우 11월</td></tr>
+                <tr><td><b>③ 경쟁 환경</b></td><td>코니아랩플러스 제휴로 시장 주목 받는 지금이 인지도 굳히는 적기. 6개월 늦으면 후발 인식</td></tr>
+            </tbody>
+        </table>
+
+        <h3>리스크 제거 장치 — 1개월 진단 파일럿</h3>
+        <div class="callout">
+            <b>옵션</b>: Professional 6개월 곧장 컨버트 부담스러우면, <b>첫 1개월을 진단 + Quick Win 3개 단가 패키지(월 350~400만원대)</b>로 시작.<br>
+            <b>전환 인센티브</b>: 1개월 후 리뷰 미팅 → 만족 시 Professional 5개월 자동 전환, <b>1개월 진단비 50% 차감</b>.<br>
+            <b>리스크 제거</b>: 계약 해지 자유, 산출물은 클라이언트 자산 100% 귀속 → "잘못 사면 어떡하지" 공포 제거.
+        </div>
+
+        <h3>최후의 한 줄 (Phase 6 클로징)</h3>
+        <div class="leverage-box">
+            <div class="quote">"잼플은 지금 <span style="color:var(--accent)">'B2C 앱 잘 만든 회사'</span>에서 <span style="color:var(--accent)">'HR이 신뢰하는 웰니스 인프라 회사'</span>로 넘어가는 분기점입니다. 그 분기점에서 마케팅이 따라가지 못하면, 시리즈A 밸류가 정확히 그 차이만큼 깎입니다. 6개월 안에 정리하면 라운드 자료가 다르게 나와요. 1개월 진단부터 시작해보시죠."</div>
+        </div>
+
+        <h3>상담 후 액션 리스트</h3>
+        <table>
+            <thead>
+                <tr><th width="15%">시점</th><th width="25%">액션</th><th>핵심</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>D+0 (24h)</td><td>후속 메일 3줄</td><td>① 감사 ② 합의된 1포인트 ③ D+3 진단 리포트 송부 예정</td></tr>
+                <tr><td>D+3</td><td>진단 리포트 1page</td><td>현 채널 분석 + 콰트·클래스파이 비교 + Quick Win 3개</td></tr>
+                <tr><td>D+7</td><td>Professional 견적 + 6개월 로드맵</td><td>휴닉·이퀄리브·인셀라 레퍼런스 카드 동봉, 회신 D+10 마감 명시</td></tr>
+                <tr><td>D+10</td><td>회신 모니터링</td><td>회신 시 킥오프 일정 협의 / 미회신 시 D+30 follow-up 준비</td></tr>
+                <tr><td>D+30</td><td>미회신 follow-up</td><td>진단 PDF 추가 송부 + "30분 가벼운 콜만 잡아주실 수 있을까요?" 톤다운</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 참고 링크 -->
+    <div class="section" id="sources">
+        <h2>참고 링크</h2>
+        <h3>1차 자료 (사용자 전달)</h3>
+        <div class="source-list">
+            <a href="https://www.junggi.co.kr/news/articleView.html?idxno=35044">중기이코노미 — 김수민 잼플 대표 인터뷰 (2025.12.24)</a><br>
+            <a href="https://blog.naver.com/venturesquare_/224119611989">벤처스퀘어 블로그 (네이버 access deny — venturesquare.net 본문으로 대체)</a><br>
+            <a href="https://www.innoforest.co.kr/company/CP00022750/%ED%81%AC%EB%9E%A8">이노포레스트 — (주)크램 기업정보</a><br>
+            <a href="https://www.jamful.co/">잼플 메인</a> · <a href="https://www.jamful.co/b2b">B2B</a> · <a href="https://www.jamful.co/blog">블로그</a>
+        </div>
+        <h3>2차 자료 (에이전트 보강 검색)</h3>
+        <div class="source-list">
+            <a href="https://www.venturesquare.net/1020704">벤처스퀘어 — Building Flexible Fitness Infrastructure (2025.12.22)</a><br>
+            <a href="https://zdnet.co.kr/view/?no=20250623150352">ZDNet — 코니아랩플러스-크램 협력 (2025.6.23)</a><br>
+            <a href="https://m.saramin.co.kr/job-search/company-info-view/csn/YWxQSFMxQktvTzgvQlltcVNDQ00rdz09/company_nm/(%EC%A3%BC)%ED%81%AC%EB%9E%A8">사람인 — (주)크램 기업정보 (직원 3명, 매출 4,884만원)</a><br>
+            <a href="https://www.incruit.com/company/1689213025/">인크루트 — (주)크램 채용정보</a><br>
+            <a href="https://www.rocketpunch.com/companies/kram-1">로켓펀치 — 크램 (설립 2024.6.25 표기)</a><br>
+            <a href="https://play.google.com/store/apps/details?id=co.jamful.jamful">Google Play — 잼플 앱 (4.7점/리뷰 29/다운 1K+)</a><br>
+            <a href="https://disquiet.io/product/%EC%9E%BC%ED%94%8C-jamful">Disquiet — 잼플 메이커 페이지</a><br>
+            <a href="https://litt.ly/jamful">Linktree — jamful</a>
+        </div>
+        <h3>벤치마크/유사 사례</h3>
+        <div class="source-list">
+            <a href="https://quat.life/">콰트(엔라이즈) — 콘텐츠 진정성 사례</a><br>
+            <a href="https://cityhoppers.co/content/story/classpass">시티호퍼스 — ClassPass/Wellhub 시장 분석</a><br>
+            <a href="https://brunch.co.kr/@hyunn2/12">브런치 — 콰트 QUAT 문제 정의</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        BRANDRISE × 잼플(JAMFUL) New Business 상담 준비 패키지<br>
+        Prepared by: BRANDRISE 4-Agent Team (🔎 Profiler · 🧠 Needs · 💼 Deal · 🎤 Coach) · 2026-05-07
+    </div>
+
+</div>
+
+</body>
+</html>
