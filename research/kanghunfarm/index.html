@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>강훈목장 (KANGHUNFARM) - New Business 상담 준비 | HIZ</title>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #444444;
+            --accent: #f07030;
+            --accent-light: #fff3ec;
+            --accent-soft: #fde8da;
+            --highlight: #f07030;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --muted: #f5f5f5;
+            --text: #1a1a1a;
+            --text-light: #999999;
+            --border: #eeeeee;
+            --success: #f07030;
+            --warning: #f07030;
+            --danger: #f07030;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+
+        .header {
+            background: #ffffff;
+            color: var(--primary);
+            padding: 60px 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: var(--accent-soft);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; color: var(--primary); }
+        .header .subtitle { font-size: 16px; color: var(--secondary); font-weight: 300; }
+        .header .date { margin-top: 16px; font-size: 13px; color: var(--text-light); }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        .toc {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 8px;
+        }
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 0;
+            display: block;
+            transition: color 0.2s;
+        }
+        .toc a:hover { color: var(--highlight); }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--highlight);
+        }
+        .section h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 20px 0 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 8px 16px;
+            font-size: 14px;
+        }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th {
+            background: var(--muted);
+            color: var(--primary);
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 13px;
+        }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+        tr:hover td { background: #f1f3f5; }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 2px;
+        }
+        .tag-red { background: var(--accent-soft); color: var(--accent); }
+        .tag-green { background: #eef3ec; color: #5a7a52; }
+        .tag-blue { background: var(--accent-light); color: var(--accent); }
+        .tag-yellow { background: var(--accent-light); color: var(--secondary); }
+        .tag-gray { background: var(--muted); color: var(--secondary); }
+
+        .verdict {
+            background: var(--accent);
+            color: white;
+            padding: 24px 32px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 24px 0;
+        }
+        .verdict .label { font-size: 14px; opacity: 0.8; }
+        .verdict .value { font-size: 36px; font-weight: 800; margin: 8px 0; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+
+        .tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+        .tier-card {
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .tier-card:hover { transform: translateY(-4px); }
+        .tier-card.recommended {
+            border-color: var(--accent);
+            box-shadow: 0 4px 20px rgba(240, 112, 48, 0.15);
+        }
+        .tier-card .tier-badge {
+            position: absolute;
+            top: -12px;
+            right: 16px;
+            background: var(--highlight);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .tier-card h4 { font-size: 16px; margin-bottom: 4px; }
+        .tier-card .price { font-size: 24px; font-weight: 800; color: var(--highlight); margin: 12px 0; }
+        .tier-card .duration { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+        .tier-card ul { list-style: none; padding: 0; }
+        .tier-card li { font-size: 13px; padding: 4px 0; padding-left: 20px; position: relative; }
+        .tier-card li::before { content: ">"; position: absolute; left: 0; color: var(--highlight); font-weight: 700; }
+
+        .callout {
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+        .callout-info { background: var(--muted); border-left-color: var(--secondary); }
+        .callout-danger { background: var(--accent-soft); border-left-color: var(--accent); }
+        .callout-success { background: #eef3ec; border-left-color: #5a7a52; }
+
+        .leverage-box {
+            background: var(--primary);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        .leverage-box .quote { font-size: 20px; font-weight: 700; line-height: 1.5; margin: 16px 0; }
+
+        .flow-steps { display: flex; gap: 0; margin: 20px 0; overflow-x: auto; }
+        .flow-step {
+            flex: 1;
+            min-width: 160px;
+            padding: 16px;
+            background: #f1f3f5;
+            position: relative;
+            text-align: center;
+        }
+        .flow-step:not(:last-child)::after {
+            content: ">";
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: var(--highlight);
+            font-weight: 700;
+            z-index: 1;
+        }
+        .flow-step .step-num { font-size: 11px; font-weight: 700; color: var(--highlight); margin-bottom: 4px; }
+        .flow-step .step-title { font-size: 13px; font-weight: 600; }
+        .flow-step .step-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .swot-item h4 { font-size: 15px; margin-bottom: 10px; }
+        .swot-item ul { padding-left: 18px; }
+        .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: #ffffff; border: 1px solid var(--border); }
+        .swot-w { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .swot-o { background: #ffffff; border: 1px solid var(--border); }
+        .swot-t { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+        .source-list a { color: var(--accent); text-decoration: none; }
+        .source-list a:hover { text-decoration: underline; }
+
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+        .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 8px 0; }
+        .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+
+        /* Executive Summary */
+        .summary-section { border-left: 4px solid var(--accent); background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%); }
+        .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; }
+        .kpi-card.kpi-dark { background: var(--muted); color: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--accent); color: white; }
+        .kpi-card.kpi-success { background: var(--accent-soft); color: var(--primary); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.7; }
+        .kpi-card .kpi-value { font-size: 24px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.7; }
+
+        .summary-oneliner { background: #0D0D0D; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+        .summary-oneliner .sol-text .hl { color: var(--highlight); }
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+
+        /* Diagnosis */
+        .diagnosis-section { border: 2px solid var(--accent); }
+        .diagnosis-section h2 { border-bottom-color: var(--accent); color: var(--accent); }
+        .diag-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .diag-box { padding: 16px; border-radius: 8px; }
+        .diag-box.diag-current { background: var(--accent-light); }
+        .diag-box.diag-ideal { background: #eef3ec; }
+        .diag-box .db-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .diag-box.diag-current .db-label { color: var(--accent); }
+        .diag-box.diag-ideal .db-label { color: #5a7a52; }
+        .diag-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+        .diag-note { font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: var(--accent-light); border-radius: 8px; }
+
+        /* SPIN & JTBD */
+        .spin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .spin-card { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .spin-card h4 { font-size: 15px; margin-bottom: 10px; }
+        .spin-s { background: #ffffff; border: 1px solid var(--border); }
+        .spin-p { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .spin-i { background: var(--accent-soft); }
+        .spin-n { background: #ffffff; border: 1px solid var(--border); }
+
+        .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+        .pain-level { flex: 1; min-width: 200px; padding: 16px; border-radius: 10px; font-size: 13px; }
+        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .pain-l1 { background: var(--muted); }
+        .pain-l2 { background: var(--accent-light); }
+        .pain-l3 { background: var(--accent-soft); }
+        .pain-l4 { background: var(--accent); color: white; }
+
+        /* Script & Coaching */
+        .script-block {
+            background: #f8f9fa;
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            font-style: italic;
+            color: var(--secondary);
+        }
+        .question-card { background: #f8f9fa; border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+        .question-card .q-num { font-size: 12px; font-weight: 700; color: var(--highlight); }
+        .question-card .q-text { font-size: 15px; font-weight: 600; margin: 4px 0 8px; }
+        .question-card .q-intent { font-size: 13px; color: var(--text-light); }
+
+        .timeline-phase { display: grid; grid-template-columns: 100px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .timeline-phase .phase-time { font-size: 13px; font-weight: 700; color: var(--highlight); text-align: center; padding-top: 4px; }
+        .timeline-phase .phase-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .timeline-phase .phase-content p { font-size: 13px; color: var(--text-light); }
+
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .tier-cards { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-step:not(:last-child)::after { display: none; }
+            .channel-grid { grid-template-columns: repeat(2, 1fr); }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .diag-compare { grid-template-columns: 1fr; }
+            .spin-grid { grid-template-columns: 1fr; }
+            .pain-layer { flex-direction: column; }
+            .timeline-phase { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">NEW BUSINESS 상담 준비 패키지</div>
+    <h1>강훈목장 (KANGHUNFARM)</h1>
+    <div class="subtitle">농가 직영 프리미엄 유가공 | 1A 1등급 원유 | 2026 농촌융복합 스케일업 선정</div>
+    <div class="date">작성일: 2026-05-08 | 상담 단계: 1차 탐색 | Prepared by HIZ MarketingOS</div>
+</div>
+
+<div class="container">
+
+    <!-- Executive Summary -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">브랜드</div>
+                <div class="sh-title">강훈목장 / (주)강훈농업회사법인 + 강훈영농조합법인</div>
+                <div class="sh-sub">경북 구미 선산 | 가족경영 2대 | 수직통합형 프리미엄 유가공</div>
+            </div>
+            <div>
+                <div class="sh-label">담당자</div>
+                <div class="sh-title">조규제 대표 (2세, 유가공 전담)</div>
+                <div class="sh-sub">부친 조영훈(원유 / 강훈목장) + 모친·아들(가공 / 영농조합법인)</div>
+            </div>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">연 매출</div>
+                <div class="kpi-value">60억</div>
+                <div class="kpi-sub">일 5톤 / 연 1,600톤</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">신축 가공장 캐파</div>
+                <div class="kpi-value">+119%</div>
+                <div class="kpi-sub">2025.9 70억 투자, 풀가동 시 3,500톤</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">오아시스 후기</div>
+                <div class="kpi-value">3,937</div>
+                <div class="kpi-sub">평점 4.9 / 월 5,800개 판매</div>
+            </div>
+            <div class="kpi-card kpi-success">
+                <div class="kpi-label">정부지원 트랙</div>
+                <div class="kpi-value">스케일업</div>
+                <div class="kpi-sub">2026 농촌융복합 / 6개월 보육</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                품질·매출·가공 캐파·후기 자산·정부지원 트랙까지 다 갖춘 회사이나,<br>
+                <span class="hl">자사몰 About 1점 · 후기 회수 0% · 인스타 운영 약함</span>으로 이미 가진 자산이 외부에 보이지 않는 상태.
+            </div>
+        </div>
+        <div class="summary-bottom">
+            <strong>기회 적합도:</strong> <span class="hl">23 / 30 = 76.7% (공격 / Attack)</span> &nbsp;|&nbsp;
+            <strong>추천 Tier:</strong> Professional (월 700~900만, 광고비 별도) &nbsp;|&nbsp;
+            <strong>1차 상담 KPI:</strong> 견적 클로징 X, "농장 방문 + 부모 동석" 합의 O
+        </div>
+    </div>
+
+    <!-- 핵심 문제점 & 진단 -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 문제점 & 진단</h2>
+
+        <h3>1. 자사몰 About · 브랜드 스토리 부재 (Critical)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재 상태</div>
+                <ul>
+                    <li>자사몰 About Us 페이지에 회사 연혁·대표 인사말·농장 스토리 부재</li>
+                    <li>"세균 1A · 체세포 1등급" 텍스트만 있고 의미 설명 없음</li>
+                    <li>가족경영 2대 내러티브(부친 30년 + 아들 다음 30년) 미전개</li>
+                    <li>인증·시각화 인포그래픽 없음 (HACCP 마크 노출 약함)</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">이상적 상태</div>
+                <ul>
+                    <li>"아버지가 키운 소, 아들이 빚는 우유" 휴먼 스토리 1편</li>
+                    <li>1A·1등급·96.998% 정량 자산을 인포그래픽화한 트러스트 마크</li>
+                    <li>학교급식 11/23 시군 = 학부모 신뢰 사회증명 배너</li>
+                    <li>가공장 자동화 30초 영상이 첫 화면 임베드</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2. D2C 후기 자산 회수 0% (Critical)</h3>
+        <div class="diag-note">
+            오아시스마켓 단일 SKU에서 후기 <strong>3,937개·평점 4.9·월 5,800개 판매</strong>라는 D2C 검증 자산이 이미 존재. 그러나 이 후기가
+            <strong>자사몰·인스타·블로그 어디에도 회수되어 있지 않음</strong>. 신규 콘텐츠 제작 거의 없이도 30일 안에 가장 큰 자산이 됨.
+        </div>
+
+        <h3>3. 인스타 운영 약함 + 콘텐츠 빈도 저조 (High)</h3>
+        <div class="diag-note">
+            @kanghun_milking_official 검색 노출 약함. 가공장·로봇 착유·산지 일상이라는 콘텐츠 자산이 풍부한데도 게시 빈도 저조.
+            도달 회복 + 신제품 라인(무가당 그릭·고단백 헬스식) 런칭에 모두 영향.
+        </div>
+
+        <h3>영역별 진단 요약</h3>
+        <table>
+            <tr><th>영역</th><th>현재 상태</th><th>심각도</th><th>GAP</th></tr>
+            <tr><td>자사몰 About / 브랜드 스토리</td><td>1점 — 사실상 0점</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>고객리뷰 자산 활용</td><td>오아시스 4천 후기 자사몰 회수 0%</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>인증 시각화</td><td>1A·1등급 텍스트만, 인포그래픽 부재</td><td><span class="tag tag-red">High</span></td><td><span class="tag tag-red">큼</span></td></tr>
+            <tr><td>인스타그램 운영</td><td>2점 — 검색 노출 약함, 빈도 낮음</td><td><span class="tag tag-yellow">High</span></td><td><span class="tag tag-yellow">중간~큼</span></td></tr>
+            <tr><td>검색 SEO</td><td>"강훈목장" 외 카테고리 키워드 노출 약함</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-yellow">중간</span></td></tr>
+            <tr><td>패키지 디자인</td><td>깔끔하나 카테고리 차별화 약함</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-yellow">중간</span></td></tr>
+            <tr><td>채널 다각화</td><td>쿠팡·대형마트·오아시스·사이소·자사몰·로컬푸드·학교급식</td><td><span class="tag tag-green">Low</span></td><td><span class="tag tag-green">작음 (만점)</span></td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>진단 결론:</strong> 강훈목장은 "품질·인증·캐파·매출·정부지원·후기 자산까지 다 갖췄으나 그것을 보여주는 콘텐츠가 0인" 전형적인 농가형 D2C의 <strong>스케일업 진입 전환점</strong>에 있습니다.
+            2026 농촌융복합 스케일업 6개월 보육 윈도우(6월~11월)가 신제품 D2C 런칭과 정확히 겹치는 골든 타이밍입니다.
+        </div>
+    </div>
+
+    <!-- 목차 -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 & 진단</a>
+            <a href="#company-info">1. 기업 기초 정보</a>
+            <a href="#product-lineup">2. 주력 제품 & 채널</a>
+            <a href="#digital-presence">3. 디지털 프레즌스 & D2C 분석</a>
+            <a href="#competitors">4. 경쟁사 분석</a>
+            <a href="#market">5. 시장 환경</a>
+            <a href="#ceo-background">6. 대표자 프로필</a>
+            <a href="#swot">7. SWOT 분석</a>
+            <a href="#needs-analysis">8. 니즈 분석 (SPIN + JTBD)</a>
+            <a href="#gap-analysis">9. GAP 분석 & 기회 평가</a>
+            <a href="#quote">10. 3-Tier 견적 초안</a>
+            <a href="#strategy">11. 상담 전략 & 코칭</a>
+            <a href="#closing">12. 클로징 전략</a>
+        </div>
+    </div>
+
+    <!-- 1. 기업 기초 정보 -->
+    <div class="section" id="company-info">
+        <h2>1. 기업 기초 정보</h2>
+        <div class="info-grid">
+            <div class="info-label">법인 구조</div><div class="info-value">강훈목장(원유 생산, 부친 조영훈) + 강훈영농조합법인 / (주)강훈농업회사법인(유가공, 모친+아들)</div>
+            <div class="info-label">브랜드명</div><div class="info-value">강훈목장 (KANGHUNFARM)</div>
+            <div class="info-label">대표 (상담자)</div><div class="info-value">조규제 (아들, 2세 / 유가공 전담)</div>
+            <div class="info-label">소재지</div><div class="info-value">경상북도 구미시 선산읍 북산8길 116-76</div>
+            <div class="info-label">사업자등록</div><div class="info-value">345-87-00068 / 통신판매 제2019-경북구미-0939호</div>
+            <div class="info-label">연락처</div><div class="info-value">010-3813-5721 / cow5721@hanmail.net</div>
+            <div class="info-label">자사몰</div><div class="info-value">https://kanghunfarm.com/ (현대형) + https://kanghunfarm.modoo.at/ (구버전)</div>
+            <div class="info-label">인스타그램</div><div class="info-value">@kanghun_milking_official</div>
+            <div class="info-label">팀 규모</div><div class="info-value">가족경영 2대 분업 + 가공장 운영 인력 (정확 인원 미확인)</div>
+            <div class="info-label">사업 모델</div><div class="info-value">B2B 학교급식·로컬푸드·쿠팡·대형마트 + D2C 자사몰·오아시스마켓·사이소</div>
+            <div class="info-label">생산 규모</div><div class="info-value">일 5톤 / 연 1,600톤 (현재) → 풀가동 시 연 3,500톤 (+119%)</div>
+            <div class="info-label">2026 정부지원</div><div class="info-value"><span class="tag tag-red">농촌융복합산업 민간투자 기반 스케일업 사업 선정</span> — 6월~11월 6개월 보육</div>
+        </div>
+        <div class="callout callout-info" style="margin-top:20px">
+            <strong>핵심 팩트:</strong> 구미 선산 가족경영 농가 직영. 부친 30년 원유 생산 + 2세가 가공장 70억 투자(2025.9 신축) 결단.
+            2026 스케일업 사업 선정 = <strong>민간 투자자가 사업성을 먼저 검증한 회사</strong>라는 객관 시그널.
+            "초기 농가"가 아닌 "투자검증 받은 스케일업 단계 푸드테크"로 톤을 잡아야 함.
+        </div>
+    </div>
+
+    <!-- 2. 주력 제품 & 채널 -->
+    <div class="section" id="product-lineup">
+        <h2>2. 주력 제품 & 채널</h2>
+        <h3>현재 SKU 라인업</h3>
+        <table>
+            <tr><th>제품</th><th>가격</th><th>특징</th></tr>
+            <tr><td><strong>수제 플레인 요거트 500ml</strong></td><td>5,000원 (소비자가 10,000원)</td><td>핵심 D2C SKU. 오아시스 후기 4천 핵심 SKU 후보</td></tr>
+            <tr><td><strong>그릭요거트 시그니처 100g 3개입</strong></td><td>11,800원</td><td>그릭 카테고리 진입 SKU. 100g 환산 약 3,933원</td></tr>
+            <tr><td>수제우유 1000ml</td><td>3,900원</td><td>핵심 가성비 SKU</td></tr>
+            <tr><td>치즈 라인</td><td>가격대 다양</td><td>보조 가공품 라인</td></tr>
+            <tr style="background:var(--accent-light);"><td><strong>무가당 그릭요거트 (대용량)</strong> <span class="tag tag-red">NEW</span></td><td>미정</td><td>🆕 스케일업 트랙 핵심 신제품. "구조적 공급 부족" 틈새시장 공략</td></tr>
+            <tr style="background:var(--accent-light);"><td><strong>고단백 헬스 식단식 요거트</strong> <span class="tag tag-red">NEW</span></td><td>미정</td><td>🆕 D2C 카테고리 호황 영역 신규 진입</td></tr>
+        </table>
+
+        <h3>품질 시그널 (정량 자산)</h3>
+        <table>
+            <tr><th>항목</th><th>강훈목장</th><th>의미</th></tr>
+            <tr><td>세균 등급</td><td>1A</td><td>국내 착유 등급 최상위</td></tr>
+            <tr><td>체세포 등급</td><td>1등급</td><td>젖소 건강·위생 최상</td></tr>
+            <tr><td>원유 함량(수제 요거트)</td><td>96.998%</td><td>"물 안 섞은 진짜 요거트" 카피 헤드라인 자산</td></tr>
+            <tr><td>HACCP</td><td>인증 보유</td><td>식품안전 표준 충족</td></tr>
+            <tr><td>가공장 규모</td><td>4,500㎡ (2025.9 신축)</td><td>전 과정 자동화·첨단화</td></tr>
+            <tr><td>착유 시스템</td><td>로봇 착유</td><td>"사람 손 안 닿는 위생" 콘텐츠 자산</td></tr>
+        </table>
+
+        <h3>입점 / 판매 채널</h3>
+        <div class="channel-grid">
+            <div class="channel-card">
+                <div class="ch-name">자사몰</div>
+                <div class="ch-stat">kanghunfarm.com</div>
+                <div class="ch-note">현대형 + modoo 구버전<br>D2C 핵심 채널</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">오아시스마켓</div>
+                <div class="ch-stat">3,937 후기</div>
+                <div class="ch-note">평점 4.9 / 월 5,800개 판매<br>D2C 자산 적립처</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">사이소 (경북고향장터)</div>
+                <div class="ch-stat">입점</div>
+                <div class="ch-note">지역 농가 직거래</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">쿠팡 / 대형마트</div>
+                <div class="ch-stat">입점</div>
+                <div class="ch-note">B2B 대량 채널</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">로컬푸드 직매장</div>
+                <div class="ch-stat">10곳</div>
+                <div class="ch-note">지역 B2B 정기 납품</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">경북 학교급식</div>
+                <div class="ch-stat">11 / 23 시군</div>
+                <div class="ch-note">학부모 신뢰 채널<br>잔여 12개 시군 미개척</div>
+            </div>
+        </div>
+
+        <div class="callout">
+            <strong>매출 비중 추정 [추정]:</strong> B2B 대량(쿠팡·대형마트·로컬푸드) 50~60% / B2B 학교급식 15~20% / D2C 20~30%.
+            마케팅 ROI 계산 시 <strong>"D2C 직접매출"</strong> + <strong>"B2B 협상력 강화"</strong> 두 트랙으로 분리해서 본다.
+        </div>
+    </div>
+
+    <!-- 3. 디지털 프레즌스 & D2C 분석 -->
+    <div class="section" id="digital-presence">
+        <h2>3. 디지털 프레즌스 & D2C 분석</h2>
+
+        <div class="channel-grid">
+            <div class="channel-card">
+                <div class="ch-name">자사몰</div>
+                <div class="ch-stat">현대형</div>
+                <div class="ch-note">UX 3점, About 1점<br>매거진·스토리 부재</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">인스타그램</div>
+                <div class="ch-stat">@kanghun_milking</div>
+                <div class="ch-note">검색 노출 약함<br>운영 빈도 저조</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">메타 광고 운영</div>
+                <div class="ch-stat">미가동 [추정]</div>
+                <div class="ch-note">페이드 트랙 부재<br>스케일업 자금으로 진입 가능</div>
+            </div>
+        </div>
+
+        <h3>마케팅 성숙도 진단 (10항목 평균 2.6/5)</h3>
+        <table>
+            <tr><th>#</th><th>항목</th><th>점수</th><th>근거</th></tr>
+            <tr><td>1</td><td>자사몰 UX</td><td><span class="tag tag-yellow">3</span></td><td>현대형 디자인 OK, 카테고리·결제 정상</td></tr>
+            <tr style="background:var(--accent-soft);"><td>2</td><td><strong>About / 브랜드 스토리</strong></td><td><span class="tag tag-red">1</span></td><td>회사 연혁·대표 인사말·농장 스토리 부재</td></tr>
+            <tr><td>3</td><td>인스타그램 운영</td><td><span class="tag tag-red">2</span></td><td>검색 노출 약함, 후기 검색 결과 거의 없음</td></tr>
+            <tr><td>4</td><td>검색 SEO</td><td><span class="tag tag-red">2</span></td><td>"강훈목장" 외 일반 키워드 노출 약함</td></tr>
+            <tr><td>5</td><td>PR / 언론 보도</td><td><span class="tag tag-yellow">3</span></td><td>대구일보 1건, 소담소담 콘서트 1건</td></tr>
+            <tr><td>6</td><td>패키지 디자인</td><td><span class="tag tag-yellow">3</span></td><td>깔끔하나 카테고리 차별화 약함</td></tr>
+            <tr style="background:var(--accent-soft);"><td>7</td><td><strong>인증 시각화</strong></td><td><span class="tag tag-red">2</span></td><td>"1A·1등급" 텍스트만, 인포그래픽 부재</td></tr>
+            <tr style="background:var(--accent-soft);"><td>8</td><td><strong>고객리뷰 자산 활용</strong></td><td><span class="tag tag-red">2</span></td><td>오아시스 3,937개 후기 자사몰·인스타로 회수 0%</td></tr>
+            <tr><td>9</td><td>프로모션 일관성</td><td><span class="tag tag-yellow">3</span></td><td>시즌·캠페인 메시지 부재</td></tr>
+            <tr><td>10</td><td>채널 다각화</td><td><span class="tag tag-green">5</span></td><td>쿠팡·대형마트·오아시스·사이소·자사몰·로컬푸드·학교급식</td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>가장 시급한 3개:</strong> #2 About(1점) + #8 후기 회수(2점) + #7 인증 시각화(2점) — 신규 콘텐츠 제작 거의 없이도
+            <strong>30일 내 +6점</strong> 끌어올릴 수 있는 Quick Win 후크. 1차 상담의 첫 카드로 사용 가능.
+        </div>
+    </div>
+
+    <!-- 4. 경쟁사 분석 -->
+    <div class="section" id="competitors">
+        <h2>4. 경쟁사 분석</h2>
+        <table>
+            <tr><th>브랜드</th><th>가격(요거트 100g)</th><th>신선도·생산방식</th><th>인증/품질</th><th>브랜드 스토리</th></tr>
+            <tr style="background:var(--accent-light);"><td><strong>강훈목장</strong></td><td>약 1,000원 / 그릭 약 3,933원</td><td><strong>자체 농가→자체 가공, 1A·1등급, 96.998% 원유</strong></td><td>HACCP, 1A/1등급, 첨가물 NO</td><td><span class="tag tag-red">부재 (1점)</span></td></tr>
+            <tr><td>매일유업 상하목장</td><td>1,200~1,500원</td><td>위탁 농가, 유기농 라인</td><td>유기농·동물복지</td><td>"유기농 우유" 강력</td></tr>
+            <tr><td>연세우유</td><td>800~1,000원</td><td>OEM 중심</td><td>1등급</td><td>연세 IP 라이센스</td></tr>
+            <tr><td>풀무원다논 (그릭)</td><td>2,500~3,500원</td><td>대량 공정</td><td>KS·HACCP</td><td>다논 글로벌 IP</td></tr>
+            <tr><td>일동후디스 그릭</td><td>2,000~3,000원</td><td>대량 공정</td><td>HACCP</td><td>후디스 모브랜드</td></tr>
+            <tr><td>내추럴플러스 (요거트랜드)</td><td>3,000~5,000원</td><td>가공 전문</td><td>HACCP</td><td>"수제·그릭" 카테고리 선점</td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>한 줄 결론:</strong> 강훈목장은 <strong>품질 기준에서 매일유업 상하목장 동급 또는 상회</strong>이지만 브랜드 자산은 사이소 입점 농가 평균 수준.
+            이 갭이 곧 마케팅 기회의 크기. 다논·일동·내추럴플러스가 점령한 그릭 카테고리에서
+            <strong>"무가당 + 농가 직영 1A 원유"</strong>는 다른 누구도 가지지 못한 고유 포지션.
+        </div>
+    </div>
+
+    <!-- 5. 시장 환경 -->
+    <div class="section" id="market">
+        <h2>5. 시장 환경</h2>
+        <table>
+            <tr><th>항목</th><th>규모/트렌드</th><th>강훈목장 영향</th></tr>
+            <tr><td>국내 그릭요거트 시장</td><td>2024~2026 연평균 두 자릿수 성장</td><td>카테고리 골든타임 진입 구간</td></tr>
+            <tr style="background:var(--accent-light);"><td><strong>무가당 그릭요거트</strong></td><td><strong>구조적 공급 부족</strong></td><td><strong>강훈목장 핵심 공략 틈새시장</strong></td></tr>
+            <tr><td>고단백 D2C 카테고리</td><td>최근 2~3년 D2C 최고 성장 영역</td><td>객단가↑·재구매율↑ — 신제품 라인 fit</td></tr>
+            <tr><td>산지 직송 / 농가 직영 내러티브</td><td>D2C에서 빠르게 자리잡는 중</td><td>강훈목장 정체성과 정확히 매칭</td></tr>
+            <tr><td>동물복지·1A·국산원유 정책 강화</td><td>정부 정책 상시 강화 중</td><td>이미 1A/1등급 + HACCP 보유 → 정책 수혜자</td></tr>
+            <tr style="background:var(--accent-light);"><td><strong>2026 명절 시즌</strong></td><td>가공장 준공 후 첫 풀시즌</td><td>건강 선물세트 카테고리 신규 진입 무대</td></tr>
+            <tr><td>학교급식 시장</td><td>경북 23개 시군 중 11개 납품</td><td>잔여 12개 시군 (52%) 미개척 입찰 기회</td></tr>
+            <tr style="background:var(--accent-light);"><td><strong>2026 농촌융복합 스케일업</strong></td><td>한국농어촌공사 / 6개월 보육 / 1:1 매칭 최대 5억</td><td><strong>강훈영농조합법인 선정 — 6월~11월 골든 윈도우</strong></td></tr>
+        </table>
+    </div>
+
+    <!-- 6. 대표자 프로필 -->
+    <div class="section" id="ceo-background">
+        <h2>6. 대표자 프로필</h2>
+        <div class="info-grid">
+            <div class="info-label">대표자</div><div class="info-value">조규제 (아들, 2세 후계자)</div>
+            <div class="info-label">연령</div><div class="info-value"><span class="tag tag-yellow">30대 후반 ~ 40대 초반 추정</span></div>
+            <div class="info-label">교육 이력</div><div class="info-value">경북대구낙협 · 충남대 · 순천대 유가공 교육 이수</div>
+            <div class="info-label">법인 직책</div><div class="info-value">(주)강훈농업회사법인 대표 + 강훈영농조합법인 모친과 공동</div>
+            <div class="info-label">디지털 친화도</div><div class="info-value">한메일(cow5721@hanmail.net) 사용 — 디지털 외주 의존 가능성</div>
+            <div class="info-label">의사결정 구조</div><div class="info-value">부친(원유, ROI) + 본인(2세, 브랜드) + 모친(가공·유통, 안정) 3자 합의 가능성</div>
+            <div class="info-label">확보된 raw quote</div><div class="info-value">"가공부터 포장까지 전 과정을 자동화·첨단화했으며, 안전하고 신뢰할 수 있는 유제품을 안정적으로 공급하겠다." (대구일보 2025.9.10)</div>
+            <div class="info-label">투자 결단 이력</div><div class="info-value">2025.9 가공장 70억 신축 + 2026 농촌융복합 스케일업 사업 선정</div>
+        </div>
+        <div class="callout" style="margin-top:16px">
+            <strong>상담 키포인트:</strong> 가족경영 2세에게 필요한 건 "초기 농가 사장님"으로 보이는 게 아니라
+            <strong>"투자검증 받은 스케일업 단계 푸드테크 대표"</strong>로 인정받는 것. 부친 세대에 대한 존경 + 본인 세대의 디지털 감각 둘 다 인정하는 톤이 핵심.
+            첫 상담에서 클로징 시도 X — 농장 방문 + 부모 동석 합의가 진짜 KPI.
+        </div>
+    </div>
+
+    <!-- 7. SWOT 분석 -->
+    <div class="section" id="swot">
+        <h2>7. SWOT 분석</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>Strength (강점)</h4>
+                <ul>
+                    <li>세균 1A · 체세포 1등급 원유 (착유 등급 최상위)</li>
+                    <li>96.998% 원유 함량 수제 요거트 (정량 자산)</li>
+                    <li>로봇 착유 + 4,500㎡ 신축 가공장 (2025.9, 70억)</li>
+                    <li>학교급식 11/23 시군 납품 (학부모 신뢰)</li>
+                    <li>오아시스마켓 후기 3,937개·평점 4.9·월 5,800개</li>
+                    <li>채널 다각화 만점 (쿠팡·대형마트·오아시스·사이소·로컬푸드)</li>
+                    <li>2026 농촌융복합 스케일업 선정 (민간투자 검증)</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>Weakness (약점)</h4>
+                <ul>
+                    <li>자사몰 About / 브랜드 스토리 사실상 0점</li>
+                    <li>오아시스 4천 후기 자사몰·인스타로 회수 0%</li>
+                    <li>인증·등급 시각화 인포그래픽 부재</li>
+                    <li>인스타 운영 빈도·검색 노출 약함</li>
+                    <li>메타·구글 광고 미가동 [추정]</li>
+                    <li>대표 한메일 사용 — 디지털 인프라 약함</li>
+                    <li>가족경영 3자 합의 의사결정 구조 (의사결정 속도 변수)</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>Opportunity (기회)</h4>
+                <ul>
+                    <li>2026 스케일업 6개월 보육 윈도우 (6~11월)</li>
+                    <li>무가당 그릭요거트 — 시장의 구조적 공급 부족</li>
+                    <li>고단백 헬스식 D2C 카테고리 호황 (객단가↑·재구매율↑)</li>
+                    <li>가공장 풀가동 캐파 +119% 미래 수요</li>
+                    <li>잔여 학교급식 12개 시군 미개척 입찰 기회</li>
+                    <li>2026 추석·연말 명절 시즌 (가공장 후 첫 풀시즌)</li>
+                    <li>1:1 민간투자 매칭 최대 5억 사업화 자금</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>Threat (위협)</h4>
+                <ul>
+                    <li>다논·일동·풀무원·내추럴플러스 그릭 4강 굳어지기</li>
+                    <li>매일유업 상하목장의 "유기농 우유" IP 우위</li>
+                    <li>학교급식 단가 압박 (학생 수 감소 추세)</li>
+                    <li>스케일업 6개월 KPI 미달성 시 다음 라운드 IR 압박</li>
+                    <li>가족경영 의사결정 속도 변수 (부친 동의)</li>
+                    <li>식품 표시광고법 (무가당·고단백 표현 검수 필요)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. 니즈 분석 -->
+    <div class="section" id="needs-analysis">
+        <h2>8. 니즈 분석 (SPIN + JTBD)</h2>
+
+        <h3>8-1. SPIN 기반 니즈 레이어링</h3>
+        <div class="spin-grid">
+            <div class="spin-card spin-s">
+                <h4>S — Situation (현재 상태)</h4>
+                <ul style="padding-left:16px;">
+                    <li>연 매출 60억, 일 5톤 처리 / 연 1,600톤</li>
+                    <li>2025.9 가공장 70억 신축 → 2026 풀가동 시 3,500톤(+119%)</li>
+                    <li>2026 농촌융복합 스케일업 사업 선정 (6월~11월)</li>
+                    <li>D2C 자사몰 + 오아시스 + 사이소 / B2B 학교급식 11/23 시군</li>
+                    <li>마케팅·콘텐츠 인하우스 인력 [추정] 0~1명</li>
+                </ul>
+            </div>
+            <div class="spin-card spin-p">
+                <h4>P — Problem (인식한 문제)</h4>
+                <ul style="padding-left:16px;">
+                    <li>자사몰 About 비어있음, 브랜드 스토리 미전개</li>
+                    <li>오아시스 후기 4천이 자사몰로 회수 안 됨</li>
+                    <li>인스타 운영 빈도·검색 노출 약함</li>
+                    <li>무가당 그릭·고단백 헬스식 신제품 D2C 런칭 인프라 부재</li>
+                    <li>가공장 캐파 +119%를 채울 채널 전략 미정립</li>
+                </ul>
+            </div>
+            <div class="spin-card spin-i">
+                <h4>I — Implication (방치 시 파급)</h4>
+                <ul style="padding-left:16px;">
+                    <li>스케일업 6개월 KPI 미달성 → 다음 IR·B2B 영업 카드 약화</li>
+                    <li>그릭 1·2위 굳어진 후 진입 → 광고비 3배</li>
+                    <li>About·스토리 부재 → 신규 방문자 전환율 1% 천장</li>
+                    <li>가공장 풀가동 지연 → 70억 투자 회수 속도 저하</li>
+                    <li>학교급식 단가 협상력 약화 (D2C 비중 낮으면 협상 카드 부재)</li>
+                </ul>
+            </div>
+            <div class="spin-card spin-n">
+                <h4>N — Need-Payoff (해결 시 가치)</h4>
+                <ul style="padding-left:16px;">
+                    <li>About + 후기 회수 + 인증 시각화로 30일 내 전환율 2배</li>
+                    <li>무가당 그릭·고단백 D2C 런칭으로 카테고리 자리 확보</li>
+                    <li>스케일업 6개월 KPI 달성 → 다음 라운드 IR·B2B 자산</li>
+                    <li>가공품 매출 비중 30%→50%로 가공장 풀가동 회수</li>
+                    <li>2026 명절 시즌 선물세트 진입 → 다음 해 영업 자산</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>8-2. 고민 계층 분석 (Pain Hierarchy)</h3>
+        <div class="pain-layer">
+            <div class="pain-level pain-l1">
+                <span class="level-tag" style="color:var(--secondary);">L1 표면 요청</span>
+                "브랜드 알리고 싶어요"<br>"인스타 좀 살려주세요"
+            </div>
+            <div class="pain-level pain-l2">
+                <span class="level-tag" style="color:var(--accent);">L2 전술적 문제</span>
+                자사몰 About 비어있음<br>후기 회수 0%<br>인스타 운영 약함
+            </div>
+            <div class="pain-level pain-l3">
+                <span class="level-tag" style="color:var(--accent);">L3 전략적 문제</span>
+                무가당 그릭·고단백 신제품 런칭 인프라 부재<br>가공장 +119% 캐파 채널 전략 부재<br>D2C 카테고리 진입 타이밍
+            </div>
+            <div class="pain-level pain-l4">
+                <span class="level-tag" style="color:var(--primary);">L4 근본 원인</span>
+                <strong>2세 승계 + 70억 투자 + 스케일업 선정으로<br>회사가 "농가 사장님"에서 "스케일업<br>푸드테크"로 전환되는 한 분기</strong>
+            </div>
+        </div>
+
+        <h3>8-3. JTBD (Jobs-to-be-Done)</h3>
+        <table>
+            <tr><th>Job 유형</th><th>내용</th></tr>
+            <tr>
+                <td><span class="tag tag-blue">Functional</span></td>
+                <td>학교급식 의존도 다이어트 + 자체브랜드 D2C·일반 B2B 매출 다각화<br>가공장 +119% 캐파 풀가동을 위한 채널 전략 수립</td>
+            </tr>
+            <tr>
+                <td><span class="tag tag-green">Social</span></td>
+                <td>"부모 세대가 일군 강훈목장을 잘 물려받은 후계자"로 인정받기<br>가족·지역사회·업계에서 2세 후계 승계 정당성 확보</td>
+            </tr>
+            <tr>
+                <td><span class="tag tag-red">Emotional</span></td>
+                <td>"전문가에게 맡겨도 되는 일과 내가 해야 하는 일을 분리받기"<br>"외주 줘도 자존심 안 상한다"는 안전감 = 클로징 결정 변수</td>
+            </tr>
+        </table>
+
+        <h3>8-4. 가설 니즈 5종 (Top 3 + 잠재 2)</h3>
+        <table>
+            <tr><th>#</th><th>표면 → 진짜 니즈</th><th>가능성</th><th>검증 신호</th></tr>
+            <tr><td><strong>N1</strong></td><td>학교급식 의존도 다이어트 → "비중 50~70% → 30~40%대로"</td><td><span class="tag tag-red">5/5</span></td><td>학교급식 50%↑ / "단가 협상 어렵다" / "자체브랜드 키우고 싶다"</td></tr>
+            <tr style="background:var(--accent-light);"><td><strong>N2</strong></td><td>D2C 카테고리 진입 타이밍 → "무가당 그릭·고단백 헬스식 D2C 런칭"</td><td><span class="tag tag-red">5/5 (확정)</span></td><td><strong>스케일업 사업 선정으로 확정 — 신제품 라인 명시됨</strong></td></tr>
+            <tr><td><strong>N3</strong></td><td>사장 손 떼도 굴러가는 콘텐츠 운영 → "월 8~12개 자동 운영"</td><td><span class="tag tag-blue">4/5</span></td><td>"내가/와이프가 짬짬이" / 인스타 마지막 게시물 2~4주 비어있음</td></tr>
+            <tr><td><strong>N4</strong></td><td>가족경영 2세 의사결정 정당성 → "결과를 숫자·미디어 노출로 가시화"</td><td><span class="tag tag-yellow">3/5</span></td><td>"부모님이랑 상의해야" / 마케팅 예산 결재 권한 모호</td></tr>
+            <tr style="background:var(--accent-light);"><td><strong>N5</strong></td><td>정부지원·인증 매칭 → "스케일업 6개월 트랙 + 마케팅 매칭 활용"</td><td><span class="tag tag-red">5/5 (확정)</span></td><td><strong>스케일업 자금 1:1 매칭 최대 5억 — 마케팅비 일부 충당 가능</strong></td></tr>
+        </table>
+
+        <div class="callout callout-info">
+            <strong>핵심 결론:</strong> 강훈목장의 진짜 니즈는 "브랜드 알리기"가 아니라
+            <strong>"스케일업 6개월 윈도우 안에 무가당 그릭·고단백 헬스식 D2C를 런칭하고, 다음 IR·B2B·미디어 노출까지 동시에 굴리는 인프라 구축"</strong>.
+        </div>
+    </div>
+
+    <!-- 9. GAP 분석 & 기회 평가 -->
+    <div class="section" id="gap-analysis">
+        <h2>9. GAP 분석 & 기회 평가 (적합도 6축)</h2>
+        <table>
+            <tr><th>축</th><th>점수</th><th>근거</th></tr>
+            <tr><td>카테고리 매칭 (식품/D2C 경험)</td><td><span class="tag tag-green">5/5</span></td><td>휴닉(베지어트) 고단백 식물성 D2C + 미례국밥 + 식품 규제 어드바이저 — HIZ 가장 강한 카테고리</td></tr>
+            <tr><td>매출 규모 적합성</td><td><span class="tag tag-yellow">3/5</span></td><td>연 60억 + 스케일업 자금 매칭 → Standard~Professional fit. 부친 동의가 변수</td></tr>
+            <tr><td>의사결정 단순성 (가족경영)</td><td><span class="tag tag-yellow">2/5</span></td><td>가족경영=의사결정자 적음(+) but 부친·모친·아들 3자 합의 필요(-)</td></tr>
+            <tr><td>콘텐츠 자산 잠재력</td><td><span class="tag tag-green">5/5</span></td><td>1A·1등급·로봇 착유·96.998%·학교급식 11/23·후기 4천 — 신뢰지표 다 있는데 시각화만 안 됨</td></tr>
+            <tr><td>6개월 내 ROI 가시성</td><td><span class="tag tag-yellow">3/5</span></td><td>자사몰 베이스라인 낮을 가능성. 단 스케일업 6개월 윈도우 = ROI 가시성 강한 자연 데드라인</td></tr>
+            <tr><td>케이스 스터디 가치</td><td><span class="tag tag-green">5/5</span></td><td>"산지 직거래 농가 D2C 브랜드화" 케이스 부재. 베지어트(식물성)+미례국밥(외식)+강훈목장(낙농) 식품 포트폴리오 완성</td></tr>
+        </table>
+
+        <div class="verdict">
+            <div class="label">종합 기회 적합도</div>
+            <div class="value">23 / 30 (76.7%)</div>
+            <div class="desc">공격(Attack) — 1차 상담 임무는 견적 클로징 X, "농장 방문 + 부모 동석" 합의 O</div>
+        </div>
+
+        <h3>수주 시나리오 5종 (가중평균 3,235만원[추정])</h3>
+        <table>
+            <tr><th>#</th><th>시나리오</th><th>확률</th><th>월 단가</th><th>트리거 신호</th></tr>
+            <tr style="background:var(--accent-light);"><td><strong>S1</strong></td><td><strong>D2C 풀스택 6개월 (스케일업 동기화)</strong></td><td><span class="tag tag-red">45~55%</span></td><td><strong>700~1,200만</strong></td><td>스케일업 6개월 윈도우와 정확히 매칭. 신제품 D2C 런칭 의지 / 단독 결재</td></tr>
+            <tr><td>S2</td><td>D2C+B2B 통합 12개월</td><td>15%</td><td>600~900만</td><td>"학교급식 외 B2B 늘리고 싶다" / 부친 동의</td></tr>
+            <tr><td>S3</td><td>콘텐츠 단발 3개월</td><td>20%</td><td>총 1,500~2,500만</td><td>"일단 인스타·영상부터" / 예산 작음</td></tr>
+            <tr><td>S4</td><td>컨설팅+설계만 2개월</td><td>5%</td><td>800~1,500만(총액)</td><td>"내부에서 직접" / 인하우스 채용 예정</td></tr>
+            <tr><td>S5</td><td>회피 (PASS)</td><td>15%</td><td>0</td><td>"정보 수집"만 / 부친 거부 / 자금 매칭 불가</td></tr>
+        </table>
+
+        <div class="callout callout-success">
+            <strong>핵심:</strong> 스케일업 사업 선정 = <strong>S1 직진 시나리오 확률 25% → 45~55%로 격상</strong>.
+            6개월 보육 윈도우(6~11월)와 D2C 풀스택 6개월이 자연 동기화. 1차 상담의 무게중심을 S1으로 배치.
+        </div>
+    </div>
+
+    <!-- 10. 3-Tier 견적 초안 -->
+    <div class="section" id="quote">
+        <h2>10. 3-Tier 견적 초안</h2>
+        <div class="tier-cards">
+            <div class="tier-card">
+                <h4>Essential</h4>
+                <div style="font-size:13px; color:var(--text-light);">산지 스토리텔링 부스터</div>
+                <div class="price">월 350~500만</div>
+                <div class="duration">광고비 별도 / 3~6개월</div>
+                <ul>
+                    <li>About 페이지 리빌딩 (자사몰·인스타 프로필 통합)</li>
+                    <li>브랜드 스토리북 1종 (가족 2대·산지 다큐 톤)</li>
+                    <li>인스타 월 12피드 + 4릴스</li>
+                    <li>블로그 월 4건 (NP·검색 노출 겸용)</li>
+                    <li>인증 시각화 디자인 (1A·1등급·96.998% 인포그래픽)</li>
+                    <li>식품 규제 검수 (전 콘텐츠 카피 법적 리스크)</li>
+                    <li style="color:var(--accent);">X 메타 광고 운영 미포함</li>
+                    <li style="color:var(--accent);">X 패키지 리뉴얼 미포함</li>
+                </ul>
+            </div>
+            <div class="tier-card recommended">
+                <div class="tier-badge">RECOMMENDED</div>
+                <h4>Professional</h4>
+                <div style="font-size:13px; color:var(--text-light);">무가당 그릭·고단백 D2C 런칭 + 스케일업 6개월 트랙</div>
+                <div class="price">월 700~900만</div>
+                <div class="duration">광고비 별도 / 6개월 권장</div>
+                <ul>
+                    <li>Essential 전 항목 +</li>
+                    <li><strong>스케일업 6개월 캠페인 캘린더 (6~11월)</strong></li>
+                    <li>무가당 그릭·고단백 헬스식 신제품 런칭 패키지</li>
+                    <li>메타·구글 광고 운영 (광고비 별도 200~500만 권장)</li>
+                    <li>자사몰 CRO (구매 퍼널·객단가·재구매)</li>
+                    <li>패키지 디자인 리뉴얼 (요거트 SKU 1~2종)</li>
+                    <li>인플루언서 시딩 (월 5~10명, 식품 큐레이션)</li>
+                    <li>CRM (이메일/카톡, 재구매 시퀀스)</li>
+                    <li>월간 성과 보고서 + 분기 전략 회의</li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>Premium</h4>
+                <div style="font-size:13px; color:var(--text-light);">프리미엄 농장 브랜드 풀스택</div>
+                <div class="price">월 1,000~1,500만</div>
+                <div class="duration">광고비 별도 / 12개월</div>
+                <ul>
+                    <li>Professional 전 항목 +</li>
+                    <li>브랜드 리빌딩 (BI·VI·패키지 시스템)</li>
+                    <li>B2B 신규 발굴 (호텔·베이커리·카페 5~10곳)</li>
+                    <li>산지 다큐 영상 1편 (5~10분 + 숏폼 12개 컷)</li>
+                    <li>글로벌 진출 사전 검토 (HS코드·1차 시장 파일럿)</li>
+                    <li>분기 임원 보고 + 데이터 대시보드</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="leverage-box">
+            <div style="font-size:14px; opacity:0.7;">가치 프레이밍</div>
+            <div class="quote">
+                "월 800만 × 6개월 = 4,800만.<br>
+                자사몰 매출 4배(월 500→2,000만) 시 누적 +9,000만 / 순증 +4,200만.<br>
+                스케일업 자금 매칭 활용 시 자비 부담은 그 절반 이하."
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. 상담 전략 & 코칭 -->
+    <div class="section" id="strategy">
+        <h2>11. 상담 전략 & 코칭</h2>
+
+        <h3>상담 전 필수 확인 — 결정질문 7선</h3>
+        <div class="callout callout-info">
+            대표 답변에 따라 시나리오 분기·제안서 구조·예산 규모가 갈라지는 핵심 데이터.
+        </div>
+        <div class="question-card" style="border-left: 4px solid var(--highlight);">
+            <div class="q-num">Q1. 신청 사유</div>
+            <div class="q-text">"오늘 왜 저희를 부르셨어요? 어떤 부분이 가장 답답하셔서 외부 도움을 찾으셨어요?"</div>
+            <div class="q-intent">A) 매출/B2C 확장 → Tier 2 / B) 브랜드 정체성 → Tier 1 / C) 인스타·SNS → Tier 1, SPIN으로 한 번 더 검증</div>
+        </div>
+        <div class="question-card" style="border-left: 4px solid var(--highlight);">
+            <div class="q-num">Q2. 매출 구조</div>
+            <div class="q-text">"학교급식이 8할이세요, 자사몰이 8할이세요, 반반쯤이세요?"</div>
+            <div class="q-intent">학교급식 70%↑ → "리스크 분산" / 자사몰 50%↑ → 매출 드라이브 직진 / 모름 → 부친 결재 가설 강화</div>
+        </div>
+        <div class="question-card" style="border-left: 4px solid var(--highlight);">
+            <div class="q-num">Q3. 결재 구조</div>
+            <div class="q-text">"이런 외부 협업은 대표님 단독 결정이세요, 부모님이랑 상의하시는 자리가 있으세요?"</div>
+            <div class="q-intent">단독 = +10%p 직속 클로징 / 합의 = -15%p, 2차에 부모 동석 카드 명확히</div>
+        </div>
+        <div class="question-card" style="border-left: 4px solid var(--highlight);">
+            <div class="q-num">Q4. 스케일업 6개월 KPI</div>
+            <div class="q-text">"스케일업 6개월 동안 어디까지 가야 '잘 했다'라고 하실까요? 자사몰 매출, 신제품 SKU, 다음 라운드 투자, 가족 만족 — 어느 쪽이세요?"</div>
+            <div class="q-intent">매출 → KPI 명확, Tier 2 직진 / 브랜드 → Tier 1, "측정 어떻게?" 후속 / 가족 만족 → 정성 KPI도 OK</div>
+        </div>
+        <div class="question-card" style="border-left: 4px solid var(--highlight);">
+            <div class="q-num">Q5. 예산 범위 힌트</div>
+            <div class="q-text">"강훈목장 사이즈에서는 월 몇백만도 천 단위도 가능한데, 머릿속에 대략 어느 범위세요? 스케일업 자금 활용은 가능하신가요?"</div>
+            <div class="q-intent">구체 숫자 → 견적 직진 / "제안서 보고" → 1·2·3 동시 / "최소로" → Tier 1 / 자금 매칭 가능 → Tier 2 직진</div>
+        </div>
+        <div class="question-card" style="border-left: 4px solid var(--highlight);">
+            <div class="q-num">Q6. 기존 외주 경험</div>
+            <div class="q-text">"외부 디자인이나 마케팅 도움 받아보신 적 있으세요? 좋았던 점·아쉬웠던 점?"</div>
+            <div class="q-intent">좋았다 → 그 부분 살리기 / 안 좋았다 → 무엇이 안 좋았는지 반드시 파고든다 / 처음 → 단발성 작은 프로젝트부터</div>
+        </div>
+        <div class="question-card" style="border-left: 4px solid var(--highlight);">
+            <div class="q-num">Q7. 타이밍</div>
+            <div class="q-text">"같이 일하기로 결정되면, 언제부터 시작할 수 있는 상황이세요? 스케일업 6월 시작에 맞추시는 게 맞을까요?"</div>
+            <div class="q-intent">빠를수록 → 긴급도 高, 2차 1주 내 / 분기·내년 → 긴급도 低, D+30 핑 / 모름 → 결재 구조 한 번 더 의심</div>
+        </div>
+
+        <h3>60분 상담 타임라인</h3>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 1<br>0~5분</div>
+            <div class="phase-content">
+                <h4>라포 형성 — 스케일업 선정 축하 + 사전 학습 시그널</h4>
+                <p><strong>오프닝:</strong> "대표님, 안녕하세요. 만나뵙기 전에 자사몰이랑 학교급식 납품 시군 리스트, 로봇 착유 자료 좀 봤습니다. 그리고 농촌융복합 스케일업 사업 선정도 봤어요. 진심으로 축하드립니다."</p>
+                <p><strong>지역 친밀감:</strong> "구미 선산이면 차로 3시간… 다음에 한 번 직접 농장에 가보고 싶다는 생각이 먼저 들었어요."</p>
+                <p><strong>의도 선언:</strong> "오늘은 뭘 팔러 온 자리 아니고, 1시간 동안 강훈목장이 어디 서 있고 뭐가 답답하신지 듣고 싶습니다."</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 2<br>5~15분</div>
+            <div class="phase-content">
+                <h4>회사 현황·매출 구조 청취 (Q1·Q2 확보)</h4>
+                <p>"학교급식이 8할이세요, 자사몰이 8할이세요?" / "원유는 부친께서, 유가공·자사몰은 대표님께서 — 이렇게 이해해도 될까요?" / "올해 시간 가장 많이 쓰시는 일은?"</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 3<br>15~25분</div>
+            <div class="phase-content">
+                <h4>SPIN 질문 — Top 3 니즈 검증 (Q4·Q3 확보)</h4>
+                <p>S "자사몰 트래픽·인스타 팔로워 규모?" / P "About 비어있는 게 마음에 걸리세요, 다른 게 더 크세요?" / I "1년 더 가면 매출 걱정이세요, 다음 세대 정체성 걱정이세요?" / N "스케일업 6개월 후 '잘 됐다' 모습은?"</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 4<br>25~40분</div>
+            <div class="phase-content">
+                <h4>HIZ 1분 자기소개 + 미트볼 3개 방향성 (Q5 확보)</h4>
+                <p>휴닉 베지어트(고단백 식물성 D2C) + 미례국밥(전통 산지 디지털 전환) + 이퀄리브(D2C 풀서비스) 30초 / 강훈목장 적용 30초 / Tier 1·2·3 미트볼 → "이 셋 중에 가장 가까운 그림이 어느 쪽이세요?" → 5초 침묵 유지</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 5<br>40~50분</div>
+            <div class="phase-content">
+                <h4>적합성 양방향 검증 (Q6 확보)</h4>
+                <p>HIZ→고객: "솔직히 낙농·원유는 처음입니다. 첫 1~2개월은 학습 비용 있어요." / 고객→HIZ: "저희한테 묻고 싶은 건 가격이세요, 레퍼런스세요, 우리 농장 이해세요?" → 5초 침묵</p>
+            </div>
+        </div>
+        <div class="timeline-phase" style="border-bottom:none;">
+            <div class="phase-time">Phase 6<br>50~60분</div>
+            <div class="phase-content">
+                <h4>차후 계획 합의 + 농장 방문 카드 + 부모 동석 타진 (Q7 확보)</h4>
+                <p>합의 3줄 요약 → D+0 메일 → D+7~10 제안서 → 2차 미팅 옵션 A 서울 vs <strong>옵션 B 농장 방문</strong> → "부친·모친 짧게라도 인사드리는 자리, 30분도 안 걸려요"</p>
+            </div>
+        </div>
+
+        <h3>Challenger Teaching 포인트 4가지</h3>
+        <div class="leverage-box">
+            <div style="font-size:13px; opacity:0.7;">Teaching #1 — 스케일업 6개월 = 다음 3년을 결정하는 한 분기</div>
+            <div class="quote">
+                "스케일업 보육 6개월의 결과 한 장이<br>
+                다음 라운드 IR · B2B 영업 · 미디어 노출까지 동시에 굴립니다.<br>
+                이 6개월을 어떻게 채우느냐가 강훈목장의 다음 3년을 결정합니다."
+            </div>
+        </div>
+        <div class="leverage-box" style="background: var(--primary);">
+            <div style="font-size:13px; opacity:0.7;">Teaching #2 — 후기 4천이 자사몰에 없습니다</div>
+            <div class="quote">
+                "오아시스마켓 후기 3,937개·평점 4.9가 이미 있어요.<br>
+                그런데 자사몰·인스타 어디에도 그 후기가 회수되어 있지 않습니다.<br>
+                이건 신규 콘텐츠 제작 거의 없이도 30일 안에 가장 큰 자산이 됩니다."
+            </div>
+        </div>
+        <div class="leverage-box" style="background: var(--primary);">
+            <div style="font-size:13px; opacity:0.7;">Teaching #3 — 무가당 그릭은 강훈목장만의 자리</div>
+            <div class="quote">
+                "다논·일동·풀무원이 점령한 그릭 시장에서<br>
+                '농가 직영 1A 원유 무가당'이라는 한 줄을 가진 브랜드는 강훈목장뿐입니다.<br>
+                후발 브랜드가 채우기 전에 이 빈자리에 먼저 들어가는 게 가장 적은 비용으로 가장 큰 자리를 차지하는 길입니다."
+            </div>
+        </div>
+        <div class="leverage-box" style="background: linear-gradient(135deg, #1a1b18 0%, #636569 100%);">
+            <div style="font-size:13px; opacity:0.7;">Teaching #4 — 부친 세대는 적이 아니라 자산</div>
+            <div class="quote">
+                "부친께서 30년 동안 한 단어 광고 없이 품질로만 키워오셨잖아요.<br>
+                저희가 하려는 건 광고를 새로 만드는 게 아니라,<br>
+                <strong>그 30년의 가치를 다음 세대 눈높이로 옮기는 일</strong>입니다."
+            </div>
+        </div>
+
+        <h3>예상 반론 & 대응</h3>
+        <table>
+            <tr><th>반론</th><th>대응 전략</th></tr>
+            <tr>
+                <td><strong>"마케팅 비용 쓸 여유가 없어요"</strong></td>
+                <td>"오늘은 견적 빼고 1년 안에 뭘 바꾸고 싶으신지만 듣고 가요. 비용은 그림 정해지면 가장 가벼운 방식부터 가져옵니다. 그리고 스케일업 자금 매칭이 가능한 항목도 같이 보겠습니다."</td>
+            </tr>
+            <tr>
+                <td><strong>"이미 다른 대행사와 이야기 중이에요"</strong></td>
+                <td>"잘 하셨어요. 진지하게 알아보고 계신 거니까요. 오늘은 비교 자료 한 장 더 드리는 자리예요." (경쟁사 험담 절대 금지)</td>
+            </tr>
+            <tr>
+                <td><strong>"아버지께서 이런 거 별로 안 좋아하세요"</strong></td>
+                <td>"30년 동안 한 단어 광고 없이 품질로 키워오셨잖아요. 저희는 광고를 새로 만드는 게 아니라 그 30년의 가치를 다음 세대 눈높이로 옮기는 일이에요." → "부친 직접 한 번 들어보시는 자리, 농장에서 짧게 가능하실까요?"</td>
+            </tr>
+            <tr>
+                <td><strong>"그냥 인플루언서 무료로 보내면 되지 않나요"</strong></td>
+                <td>"그것도 효과 있어요. 단발 인지도는 그게 빠르거든요. 그런데 1년 뒤 자사몰 매출 두 배 되는 거랑은 다른 게임이에요. 어떤 게임을 하고 싶으신지가 먼저예요."</td>
+            </tr>
+            <tr>
+                <td><strong>"지역 농가라 서울 비용 감당 어려워"</strong></td>
+                <td>"휴닉(대전)·미례국밥(부산) — 지방 클라이언트가 저희 강점입니다. 첫 달 산지 직접 방문 2회 포함됩니다."</td>
+            </tr>
+        </table>
+
+        <h3>분기 시나리오 대응 (실전 대화체)</h3>
+        <table>
+            <tr><th>상황</th><th>대응 멘트</th></tr>
+            <tr style="background:var(--accent-light);">
+                <td><strong>매우 적극적<br>("바로 시작하고 싶다")</strong><br><span class="tag tag-green">스케일업 6월 시작 동기화</span></td>
+                <td>"의지가 확실하시니 저희도 제대로 드리고 싶어요. 오늘 대화 정리해서 다음 주까지 방향 제안 드릴게요. 스케일업 6월 시작과 발 맞춰서, 5월 후반 킥오프하면 가장 자연스러운 그림입니다."</td>
+            </tr>
+            <tr>
+                <td><strong>관망 모드<br>("정보만 수집")</strong></td>
+                <td>"충분히 이해합니다. 오늘은 저도 배우는 시간이었고요. 상담 정리 + 인스타·자사몰 간단 진단 붙여서 메일 드릴게요. 보시고 궁금한 거 있으시면 편하게 연락 주세요."</td>
+            </tr>
+            <tr>
+                <td><strong>가격부터 물어볼 때</strong></td>
+                <td>"아직 강훈목장에 필요한 게 다 파악이 안 된 상태에서 숫자를 말씀드리면 오히려 실례일 것 같아요. 방향만 말씀드리면 보통 월 350만에서 시작해서 조정하는 구조입니다. 오늘 대화 끝나고 맞춤 범위로 정리해드릴게요."</td>
+            </tr>
+            <tr>
+                <td><strong>"다른 데도 알아보는 중"</strong></td>
+                <td>"당연히 그러셔야죠. 70억 가공장 + 스케일업 사업 선정까지 결단하신 회사인데 파트너 고르는 건 신중할수록 좋습니다. 저희가 다른 곳과 다른 점은 식품 카테고리에서 브랜드 서사를 만들고 전 채널에 일관 적용하는 구조입니다."</td>
+            </tr>
+        </table>
+
+        <h3>콜미팅 환경 대비</h3>
+        <div class="callout callout-info">
+            <strong>화면 공유 자료 2장만 준비:</strong> ① 마케팅 성숙도 진단 10항목 (가장 시급한 3개 강조) ② 스케일업 6개월 캠페인 캘린더 미트볼.
+            <strong>콜 시작:</strong> "혹시 화면 공유 가능하신 환경이세요? 자료가 있긴 한데 없어도 상관없습니다."<br>
+            <strong>침묵 대처:</strong> 5초+ 침묵에 "혹시 다른 관점이 있으세요?" 정도로만. 절대 침묵을 채우려 말 늘리지 않기.<br>
+            <strong>목소리 톤:</strong> 차분하고 확신 있게, 속도는 평소보다 10% 느리게.
+        </div>
+
+        <h3>Trusted Advisor Quick Tip (무료로 줄 팁 2개)</h3>
+        <div class="callout callout-success">
+            <strong>Tip 1 — About 페이지 한 줄:</strong> 자사몰 첫 화면에 "경상북도 학교급식 11/23 시군이 선택한 1A 등급 원유" 한 줄만 박으셔도 신규 고객 첫 의심이 절반으로 줄어들 거예요.<br><br>
+            <strong>Tip 2 — 오아시스 후기 회수:</strong> 오아시스 후기 4천 개 중 인상 깊은 5개를 골라서 자사몰 상세페이지에 캡처 박스로 박는 작업, 1주 안에 가능합니다. 트래픽이 그대로여도 전환율이 1.5~2배 됩니다.
+        </div>
+    </div>
+
+    <!-- 12. 클로징 전략 -->
+    <div class="section" id="closing">
+        <h2>12. 클로징 전략</h2>
+
+        <h3>클로징 플로우</h3>
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="step-num">D+0</div>
+                <div class="step-title">상담 당일</div>
+                <div class="step-desc">자정 전 써머리 메일<br>+ Quick Tip 2개</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">D+3</div>
+                <div class="step-title">방향성 미트볼</div>
+                <div class="step-desc">Tier 1·2·3 컨셉 슬라이드<br>"확정안 아닌 출발점"</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">D+7~10</div>
+                <div class="step-title">확정 제안서</div>
+                <div class="step-desc">선택 Tier + 옵션 2개<br>스케일업 자금 매칭 명시</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">D+10~14</div>
+                <div class="step-title">2차 미팅 (농장)</div>
+                <div class="step-desc">농장 방문 + 부모 동석<br>시식 + 가공장 견학</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">D+21</div>
+                <div class="step-title">계약 결정</div>
+                <div class="step-desc">5월 후반 킥오프<br>스케일업 6월과 동기화</div>
+            </div>
+        </div>
+
+        <div class="callout">
+            <strong>핵심 마인드셋:</strong> 1차 상담의 성공은 "수주"가 아니라 <strong>"이 사람은 강훈목장을 이해한다"는 인식을 심는 것 + 농장 방문·부모 동석 합의를 받는 것</strong>.
+            견적 들이밀지 않은 게 답답하셨을 수 있다는 것을 마지막에 인정하는 것 자체가 신뢰 시그널.
+        </div>
+
+        <h3>스케일업 타이밍 긴급성 프레이밍</h3>
+        <div class="callout">
+            <strong>핵심 멘트:</strong> "스케일업 6월 시작에 맞춰 5월 후반 킥오프하면 자연스럽게 갑니다.
+            6월에 시작하면 보육 첫 달이 사실상 셋업으로 사라지고, 7월부터 캠페인 돌리면 추석(9월) 전까지 7주만 남습니다."<br>
+            <strong>꺼내는 타이밍:</strong> Q4(스케일업 6개월 KPI) 이야기 나올 때 자연스럽게.
+        </div>
+
+        <h3>가격 포지션 벤치마크</h3>
+        <table>
+            <tr><th>비교 기준</th><th>월 비용</th><th>비고</th></tr>
+            <tr><td>소형 대행사 (실행 위주)</td><td>250~400만</td><td>전략 미포함</td></tr>
+            <tr><td><strong>HIZ Essential</strong></td><td>월 350~500만</td><td>스토리텔링 부스터</td></tr>
+            <tr style="background:var(--accent-light);"><td><strong>HIZ Professional (RECOMMENDED)</strong></td><td><strong>월 700~900만</strong></td><td>D2C 런칭 + 스케일업 6개월 트랙</td></tr>
+            <tr><td>인하우스 마케터 1명</td><td>500~600만+</td><td>연봉+4대보험+장비+교육</td></tr>
+            <tr><td>전문 브랜딩 에이전시 풀서비스</td><td>1,000~1,500만+</td><td>HIZ Premium 동급</td></tr>
+        </table>
+
+        <h3>파일럿 옵션 (리스크 제거 장치)</h3>
+        <div class="callout callout-success">
+            <strong>가족경영 의사결정 구조 대응:</strong> "2~3주 파일럿(About 리빌딩 + 후기 회수 + 인증 시각화 1차)을 200~300만에 진행하고, 결과 보시고 본 계약 결정하시죠."
+            상담 자리에서 계약 확정 시도 X → 후속 문서(D+3 미트볼 + D+7 제안서)가 실질적 설득 도구.
+        </div>
+
+        <h3>추천 착지 시나리오</h3>
+        <table>
+            <tr><th>시나리오</th><th>확률</th><th>금액</th><th>비고</th></tr>
+            <tr style="background:var(--accent-light);"><td><strong>Professional (월 800만) 직행</strong></td><td><strong>45~55%</strong></td><td><strong>월 800만 × 6개월</strong></td><td>스케일업 6개월 윈도우 동기화. 가장 자연스러운 그림</td></tr>
+            <tr><td>Essential(월 400만) 파일럿 → Professional 전환</td><td>20%</td><td>월 400만 → 800만</td><td>신뢰 구축 후 확장. 첫 달 산출물로 체감 유도</td></tr>
+            <tr><td>Premium (월 1,200만)</td><td>10%</td><td>월 1,200만</td><td>예산 의지 강한 경우 (스케일업 자금 적극 매칭)</td></tr>
+            <tr><td>No-Go</td><td>15%</td><td>-</td><td>부친 거부 / 자금 매칭 불가 / 타이밍 미스</td></tr>
+        </table>
+
+        <h3>상담 후 액션 리스트</h3>
+        <table>
+            <tr><th>타이밍</th><th>액션</th></tr>
+            <tr><td><strong>당일 자정 전</strong></td><td>D+0 써머리 메일 (인상 깊었던 대표님 말씀 인용) + Quick Tip 2개 정리 + 스케일업 선정 축하 첫 단락</td></tr>
+            <tr><td><strong>D+3</strong></td><td>방향성 미트볼 슬라이드 3종 (Tier 1·2·3 컨셉, 가격 레인지만)</td></tr>
+            <tr><td><strong>D+7~10</strong></td><td>확정 제안서 + 견적서 (선택 Tier + 옵션 2개, 6개월 ROI, 스케일업 자금 매칭 항목 명시)</td></tr>
+            <tr><td><strong>D+10~14</strong></td><td>2차 미팅 — <strong>농장 방문 + 부모 동석</strong>이 진짜 클로징 자리</td></tr>
+            <tr><td><strong>D+21 무응답 시</strong></td><td>부드러운 팔로업 + 스케일업 6월 시작 임박 환기 + 업계 인사이트 1개 무료 제공</td></tr>
+        </table>
+    </div>
+
+    <!-- 참고 링크 -->
+    <div class="section">
+        <h2>참고 링크</h2>
+        <div class="source-list" style="font-size:14px; line-height:2;">
+            <a href="https://kanghunfarm.com/" target="_blank">강훈목장 자사몰 (현대형)</a><br>
+            <a href="https://kanghunfarm.modoo.at/" target="_blank">강훈목장 modoo 구버전</a><br>
+            <a href="https://www.instagram.com/kanghun_milking_official/" target="_blank">강훈목장 인스타그램 (@kanghun_milking_official)</a><br>
+            <a href="https://m.oasis.co.kr/product/detail/67001" target="_blank">강훈목장 수제 요거트 — 오아시스마켓 (후기 3,937개·평점 4.9)</a><br>
+            <a href="https://www.cyso.co.kr/shop/item.php?it_id=1570798569" target="_blank">강훈목장 — 사이소 (경북고향장터)</a><br>
+            <a href="https://www.idaegu.com/news/articleView.html?idxno=647907" target="_blank">구미 강훈목장 가공장 준공 — 대구일보 2025.9.10</a><br>
+            <a href="https://www.youtube.com/watch?v=V7swZ4eVBjA" target="_blank">소담소담 콘서트 제4편 강훈목장 조규제 대표 — YouTube</a><br>
+            <a href="https://biz.heraldcorp.com/article/10720277" target="_blank">농촌융복합 창업, '스케일업+투자유치' 투트랙 지원 본격화 — 헤럴드경제</a><br>
+            <a href="https://www.korea.kr/briefing/pressReleaseView.do?newsId=156683018" target="_blank">농촌 유니콘기업 육성 민간투자자+정부 — 정책브리핑</a><br>
+            <a href="https://www.getnews.co.kr/news/articleView.html?idxno=815959" target="_blank">민간투자기반 스케일업 — 화순 영글어농장 선정 사례</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>HIZ MarketingOS — New Business 상담 준비 패키지</p>
+    <p>이 문서는 상담 준비 목적으로 작성되었으며, 외부 공유를 금합니다.</p>
+</div>
+
+</body>
+</html>

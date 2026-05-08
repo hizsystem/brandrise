@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>강훈목장 1차 상담 후 랩업 — HIZ × 강훈목장 (2026-05-08)</title>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #444444;
+            --accent: #f07030;
+            --accent-light: #fff3ec;
+            --accent-soft: #fde8da;
+            --highlight: #f07030;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --muted: #f5f5f5;
+            --text: #1a1a1a;
+            --text-light: #999999;
+            --border: #eeeeee;
+            --success: #f07030;
+            --warning: #f07030;
+            --danger: #f07030;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+
+        .header {
+            background: #ffffff;
+            color: var(--primary);
+            padding: 60px 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: var(--accent-soft);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header h1 { font-size: 34px; font-weight: 800; margin-bottom: 8px; color: var(--primary); }
+        .header .subtitle { font-size: 16px; color: var(--secondary); font-weight: 300; }
+        .header .date { margin-top: 16px; font-size: 13px; color: var(--text-light); }
+        .header .related { margin-top: 8px; font-size: 12px; color: var(--accent); }
+        .header .related a { color: var(--accent); text-decoration: none; }
+        .header .related a:hover { text-decoration: underline; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        .toc {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 8px;
+        }
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 0;
+            display: block;
+            transition: color 0.2s;
+        }
+        .toc a:hover { color: var(--highlight); }
+        .toc .toc-section { font-size: 13px; font-weight: 700; color: var(--secondary); margin-top: 8px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--highlight);
+        }
+        .section h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 20px 0 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 8px 16px;
+            font-size: 14px;
+        }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th {
+            background: var(--muted);
+            color: var(--primary);
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 13px;
+        }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        tr:hover td { background: #f1f3f5; }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 2px;
+        }
+        .tag-red { background: var(--accent-soft); color: var(--accent); }
+        .tag-green { background: #eef3ec; color: #5a7a52; }
+        .tag-blue { background: var(--accent-light); color: var(--accent); }
+        .tag-yellow { background: var(--accent-light); color: var(--secondary); }
+        .tag-gray { background: var(--muted); color: var(--secondary); }
+
+        .verdict {
+            background: var(--accent);
+            color: white;
+            padding: 24px 32px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 24px 0;
+        }
+        .verdict .label { font-size: 14px; opacity: 0.8; }
+        .verdict .value { font-size: 36px; font-weight: 800; margin: 8px 0; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+
+        .callout {
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+        .callout-info { background: var(--muted); border-left-color: var(--secondary); }
+        .callout-danger { background: var(--accent-soft); border-left-color: var(--accent); }
+        .callout-success { background: #eef3ec; border-left-color: #5a7a52; }
+
+        .leverage-box {
+            background: var(--primary);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        .leverage-box .quote { font-size: 18px; font-weight: 700; line-height: 1.6; margin: 16px 0; }
+        .leverage-box .quote-source { font-size: 13px; opacity: 0.7; margin-top: 8px; }
+
+        .flow-steps { display: flex; gap: 0; margin: 20px 0; overflow-x: auto; }
+        .flow-step {
+            flex: 1;
+            min-width: 160px;
+            padding: 16px;
+            background: #f1f3f5;
+            position: relative;
+            text-align: center;
+        }
+        .flow-step:not(:last-child)::after {
+            content: ">";
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: var(--highlight);
+            font-weight: 700;
+            z-index: 1;
+        }
+        .flow-step .step-num { font-size: 11px; font-weight: 700; color: var(--highlight); margin-bottom: 4px; }
+        .flow-step .step-title { font-size: 13px; font-weight: 600; }
+        .flow-step .step-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+        .source-list a { color: var(--accent); text-decoration: none; }
+        .source-list a:hover { text-decoration: underline; }
+
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+
+        /* Executive Summary 스타일 (prep과 동일) */
+        .summary-section { border-left: 4px solid var(--accent); background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%); }
+        .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; }
+        .kpi-card.kpi-dark { background: var(--muted); color: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--accent); color: white; }
+        .kpi-card.kpi-success { background: var(--accent-soft); color: var(--primary); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.7; }
+        .kpi-card .kpi-value { font-size: 24px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.7; }
+
+        .summary-oneliner { background: #0D0D0D; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+        .summary-oneliner .sol-text .hl { color: var(--highlight); }
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+
+        /* SPIN/Pain 스타일 (랩업 PART 분리에 활용) */
+        .part-banner {
+            background: var(--primary);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 8px;
+            margin: 32px 0 16px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .part-banner .part-tag { color: var(--accent); margin-right: 12px; font-size: 12px; }
+
+        .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+        .pain-level { flex: 1; min-width: 200px; padding: 16px; border-radius: 10px; font-size: 13px; }
+        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .pain-l1 { background: var(--muted); }
+        .pain-l2 { background: var(--accent-light); }
+        .pain-l3 { background: var(--accent-soft); }
+        .pain-l4 { background: var(--accent); color: white; }
+
+        /* 메일 본문 / 인용 */
+        .mail-block {
+            background: #ffffff;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            padding: 28px 32px;
+            margin: 16px 0;
+            font-size: 14px;
+            line-height: 1.85;
+            color: var(--text);
+        }
+        .mail-block .mail-meta {
+            font-size: 12px;
+            color: var(--text-light);
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+            border-bottom: 1px dashed var(--border);
+        }
+        .mail-block .mail-subject { font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+        .mail-block p { margin-bottom: 12px; }
+        .mail-block hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+        .mail-block strong { color: var(--primary); }
+        .mail-block ul { padding-left: 20px; margin-bottom: 12px; }
+        .mail-block li { margin-bottom: 4px; }
+        .mail-block .mail-signature { font-size: 13px; color: var(--secondary); margin-top: 16px; }
+
+        .kakao-block {
+            background: #fef01b;
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin: 16px 0;
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--primary);
+            max-width: 480px;
+        }
+        .kakao-block .kakao-meta { font-size: 11px; color: var(--secondary); margin-bottom: 8px; }
+
+        .quote-card {
+            background: #f8f9fa;
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+        }
+        .quote-card .q-num { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+        .quote-card .q-text { font-size: 15px; font-weight: 600; margin: 4px 0 8px; color: var(--primary); font-style: italic; }
+        .quote-card .q-meaning { font-size: 13px; color: var(--text-light); }
+
+        .checkbox-list { list-style: none; padding-left: 0; }
+        .checkbox-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .checkbox-list li::before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent);
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .timeline-phase { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .timeline-phase:last-child { border-bottom: none; }
+        .timeline-phase .phase-time { font-size: 13px; font-weight: 700; color: var(--highlight); padding-top: 4px; }
+        .timeline-phase .phase-content h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--primary); }
+        .timeline-phase .phase-content ul { padding-left: 0; list-style: none; font-size: 13px; color: var(--secondary); }
+        .timeline-phase .phase-content li { padding: 3px 0; padding-left: 16px; position: relative; }
+        .timeline-phase .phase-content li::before { content: "·"; position: absolute; left: 4px; color: var(--accent); font-weight: 700; }
+
+        .opp-risk-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .opp-risk-card { padding: 18px 20px; border-radius: 10px; }
+        .opp-risk-card h4 { font-size: 14px; margin-bottom: 10px; }
+        .opp-risk-card ul { font-size: 13px; padding-left: 16px; }
+        .opp-risk-card li { margin-bottom: 4px; line-height: 1.5; }
+        .opp-card { background: #eef3ec; border: 1px solid #c7d6c0; }
+        .opp-card h4 { color: #5a7a52; }
+        .risk-card { background: var(--accent-soft); border: 1px solid var(--accent); }
+        .risk-card h4 { color: var(--accent); }
+        .uncertain-card { background: var(--muted); border: 1px solid var(--border); }
+        .uncertain-card h4 { color: var(--secondary); }
+
+        .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .price-card { padding: 16px 18px; border-radius: 8px; text-align: center; border: 1px solid var(--border); }
+        .price-card .price-label { font-size: 11px; color: var(--text-light); font-weight: 600; }
+        .price-card .price-val { font-size: 17px; font-weight: 800; color: var(--primary); margin: 6px 0 4px; }
+        .price-card .price-sub { font-size: 12px; color: var(--text-light); }
+        .price-card.recommended { background: var(--accent-light); border: 2px solid var(--accent); }
+        .price-card.recommended .price-val { color: var(--accent); }
+
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .opp-risk-grid { grid-template-columns: 1fr; }
+            .price-grid { grid-template-columns: 1fr; }
+            .pain-layer { flex-direction: column; }
+            .timeline-phase { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-step:not(:last-child)::after { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">1차 상담 후 랩업 · POST-MEETING</div>
+    <h1>강훈목장 × HIZ — 1차 상담 후 랩업</h1>
+    <div class="subtitle">조규제 대표 / 강훈영농조합법인 · 부회장 매칭 3자 미팅</div>
+    <div class="date">상담일: 2026-05-08 (어버이날, 21:00경 ~ 23:00 가까이) | 작성: 2026-05-08 자정 전 | Prepared by HIZ</div>
+    <div class="related">관련 문서: <a href="../">1차 상담 준비 패키지 (prep)</a></div>
+</div>
+
+<div class="container">
+
+    <!-- Executive Summary -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">상담 형태</div>
+                <div class="sh-title">부회장 매칭 3자 미팅</div>
+                <div class="sh-sub">HIZ 포트폴리오 PT + 강훈목장 현황 청취 + 다음 스텝 합의</div>
+            </div>
+            <div>
+                <div class="sh-label">참석</div>
+                <div class="sh-title">부회장 / 우성민 Green / 조규제 대표</div>
+                <div class="sh-sub">어버이날 저녁임에도 23시 가까이까지 미팅 유지</div>
+            </div>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">수주 확률</div>
+                <div class="kpi-value">75~85%</div>
+                <div class="kpi-sub">사전 65~70% → 격상</div>
+            </div>
+            <div class="kpi-card kpi-success">
+                <div class="kpi-label">추천 Tier</div>
+                <div class="kpi-value">1 Plus</div>
+                <div class="kpi-sub">월 350~500만 (브랜딩 우선)</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">대표 자발 가격</div>
+                <div class="kpi-value">월 200만</div>
+                <div class="kpi-sub">"제발로 가요" 발화</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">신규 인사이트</div>
+                <div class="kpi-value">2종</div>
+                <div class="kpi-sub">CJ OEM + 외주 학습</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 결론 한 줄</div>
+            <div class="sol-text">
+                B2B 60억 매출 회사가 D2C 전환 의지를 명시적으로 드러낸 자리.<br>
+                <span class="hl">어버이날 23시까지 미팅 유지 + 자발 가격 제시 + 부회장 강력 매칭</span> = 사전 리서치로는 잡히지 않는 무게.
+            </div>
+        </div>
+        <div class="summary-bottom">
+            <strong>1차 진입 추천:</strong> <span class="hl">Tier 1 Plus (월 350~500만, 브랜딩 우선, 6개월)</span> &nbsp;|&nbsp;
+            <strong>업셀링 경로:</strong> 6개월 후 Tier 2 (월 700~900만, D2C 그로스) &nbsp;|&nbsp;
+            <strong>킬링 메시지:</strong> "B2B 60억 회사의 B2C 전환점 = 투자자 어필 작업 포인트" (부회장 발화)
+        </div>
+    </div>
+
+    <!-- 목차 -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-section">📋 PART 1. 내부 랩업 (사내 공유용)</div>
+        <div class="toc-grid">
+            <a href="#core-summary">1. 미팅 핵심 요약 (3줄)</a>
+            <a href="#hypothesis-check">2. 사전 가설 vs 실제 검증</a>
+            <a href="#temperature">3. 대표 온도 평가</a>
+            <a href="#strategy-update">4. 수주 전략 업데이트</a>
+            <a href="#risk-opp">5. 리스크 & 기회</a>
+            <a href="#actions">6. 다음 액션 아이템</a>
+            <a href="#raw-quotes">7. raw quote 인용</a>
+        </div>
+        <div class="toc-section">✉️ PART 2. 대표 발송 자료 (당일 자정 전)</div>
+        <div class="toc-grid">
+            <a href="#mail">메일 본문</a>
+            <a href="#kakao">카카오톡 / 문자 짧은 버전</a>
+            <a href="#self-check">발송 자가 검증</a>
+        </div>
+        <div class="toc-section">✅ PART 3. D+0~D+14 액션 체크리스트</div>
+        <div class="toc-grid">
+            <a href="#action-flow">액션 플로우</a>
+            <a href="#price-signals">가격 진입 시그널</a>
+            <a href="#followup-flags">재확인 플래그</a>
+        </div>
+    </div>
+
+    <!-- ===== PART 1 ===== -->
+    <div class="part-banner"><span class="part-tag">PART 1</span>내부 랩업 (사내 공유용 · 미화 X)</div>
+
+    <!-- 1. 미팅 핵심 요약 -->
+    <div class="section" id="core-summary">
+        <h2>1. 미팅 핵심 요약 (3줄)</h2>
+        <ol style="padding-left:20px; font-size:14.5px; line-height:1.85;">
+            <li><strong>B2B 60억 매출 회사가 D2C 전환 의지를 명시적으로 드러낸 자리</strong> — 어버이날 저녁 23시 가까이까지 미팅이 유지된 것 자체가 가장 강한 시그널이고, 대표가 "변화가 필요하다, 이쪽이 전문 아니라 보니까"를 자발 발화함.</li>
+            <li><strong>사전 가설 핵심은 거의 다 맞았고, 신규 인사이트 2개 추가</strong> — CJ제일제당 OEM 공급사(그리카야, 5월 2억 예산)와 그로스마케팅 외주 경험(월 140만, 만족도 낮음, 외주 학습 완료 상태).</li>
+            <li><strong>수주 확률 75~85%로 격상, 추천 Tier는 하향(Tier 2 → Tier 1 Plus)</strong> — 대표 자발 가격 시그널 200만 + HIZ 측 "제일 싸게 쓰는 건 브랜딩"이라는 진입 코멘트가 정합. 6개월 후 자사몰 베이스라인 확보되면 Tier 2 업셀링이 자연스러운 경로.</li>
+        </ol>
+    </div>
+
+    <!-- 2. 사전 가설 vs 실제 검증 -->
+    <div class="section" id="hypothesis-check">
+        <h2>2. 사전 가설 vs 실제 검증</h2>
+        <table>
+            <tr><th style="width:30%;">사전 가설 (브리프)</th><th style="width:50%;">실제 발화</th><th>판정</th></tr>
+            <tr><td>매출 60억, 70억 가공장, 96.998% 원유, 스케일업 선정</td><td>모두 직접 확인</td><td><span class="tag tag-green">일치</span></td></tr>
+            <tr><td>쿠팡 의존도 50%↑</td><td>"가장 큰 채널은 쿠팡, 한 달에 3억에서 4억"</td><td><span class="tag tag-green">적중 (실측 더 큼)</span></td></tr>
+            <tr><td>컬리·GS 등 채널 다각화</td><td>"컬리가 월에 1억", "GS리테일 5천~1억"</td><td><span class="tag tag-green">일치</span></td></tr>
+            <tr style="background:var(--accent-light);"><td>OEM 비중 상당</td><td>"OEM도 좋게 있죠. 우리 브랜드 다 OEM" + <strong>CJ제일제당 그리카야 신상사업팀(김숙진) 5월 2억 예산</strong></td><td><span class="tag tag-red">신규 발견</span></td></tr>
+            <tr style="background:var(--accent-light);"><td>마케팅 외주 의존</td><td>"그로스메이커 팀이랑 한번 해보니까… 디테일한 실물적인 것은 저희가 해야 되더라" — 월 140만 지출 중</td><td><span class="tag tag-red">신규 발견</span></td></tr>
+            <tr><td>마케팅 인하우스 0명</td><td>"지금 마케팅을 할 수 있는 직원이 아무도 없어요"</td><td><span class="tag tag-green">일치</span></td></tr>
+            <tr><td>자사몰 객단가 낮음·키우고 싶음</td><td>"결국에는 자사몰을 키우고 싶은 거고" — 인지 명확</td><td><span class="tag tag-green">일치</span></td></tr>
+            <tr style="background:var(--accent-soft);"><td>대표 변화 의지 (잠재 가설)</td><td>"저도 변화가 필요한 그런 느낌이 있네요. 계속 이렇게 할 수는 없다" + "이것도 어찌보면 기회다"</td><td><span class="tag tag-red">잠재 → 확정</span></td></tr>
+            <tr><td>신제품 라인 진행</td><td>무가당 그릭·고단백 헬스식 = 스케일업 패키지 창립 진행 중</td><td><span class="tag tag-green">일치</span></td></tr>
+            <tr><td>가격 진입점 (Tier 2 = 월 700~900)</td><td>대표 자발 "최대한 2,000원(만원) 제발로 가요"</td><td><span class="tag tag-yellow">사전 추정보다 낮음</span></td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>핵심 신규 인사이트 2개</strong><br>
+            ① <strong>CJ제일제당 OEM 공급사 지위</strong> — 60억 매출의 안정적 백본. D2C 실험 자금 여력의 근거. 김숙진 신상사업팀 라인.<br>
+            ② <strong>그로스마케팅 외주 학습 완료</strong> — "외주는 답 아니다"를 대표가 이미 체득. HIZ가 "사무실에 들어오는 게 빠르다"를 자연스럽게 어필 가능한 토양.
+        </div>
+    </div>
+
+    <!-- 3. 대표 온도 평가 -->
+    <div class="section" id="temperature">
+        <h2>3. 대표 온도 평가</h2>
+        <table>
+            <tr><th>항목</th><th>평가</th><th>근거</th></tr>
+            <tr><td>관심도</td><td><span class="tag tag-red">매우 높음 (9/10)</span></td><td>어버이날 저녁 미팅을 23시 가까이까지 유지</td></tr>
+            <tr><td>긴급도</td><td><span class="tag tag-yellow">높음 (7/10)</span></td><td>신축 가공장 가동 손실 흡수 단계 + 스케일업 신제품 라인 동시 진행, 마케팅 부재 자각</td></tr>
+            <tr><td>예산 의지</td><td><span class="tag tag-yellow">중상 (7/10)</span></td><td>자발 시작점 200만 — 적지만 명시적 의사. 부회장 "내 돈으로 답 안 나온다, 지원사업 활용" 코칭 수용</td></tr>
+            <tr style="background:var(--accent-light);"><td><strong>수주 확률</strong></td><td><span class="tag tag-red">75~85%</span></td><td>미팅 유지 + 변화 의지 명시 + 부회장 강력 매칭 + 자발 가격 제시</td></tr>
+            <tr><td>의사결정 스타일</td><td>신중·자성형</td><td>"원래 말 잘 안 듣는데 이번에 딱 그렇게 연기가 됐네요" — 3년간 부회장 조언 미수용 자성. 한번 결심하면 무게감 있게 진행</td></tr>
+            <tr><td>핵심 관심사</td><td>① 자사몰 베이스라인 ② B2B 종속 탈피 ③ 인하우스 마케팅 내재화</td><td>직접 발화</td></tr>
+        </table>
+
+        <div class="leverage-box">
+            <div style="font-size:13px; opacity:0.7;">결정적 시그널</div>
+            <div class="quote">
+                "어버이날 가족 시간을 포기하고 23시까지 미팅 유지한 행위 자체.<br>
+                사전 리서치로는 절대 잡히지 않는 무게."
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. 수주 전략 업데이트 -->
+    <div class="section" id="strategy-update">
+        <h2>4. 수주 전략 업데이트 (사전 → 사후)</h2>
+
+        <h3>추천 Tier 변경: Tier 2 → Tier 1 Plus + 단계적 Tier 2 업셀링</h3>
+        <table>
+            <tr><th>구분</th><th>사전 (월)</th><th>사후 (월)</th><th>근거</th></tr>
+            <tr style="background:var(--accent-light);"><td>1차 진입 (M1~M6)</td><td>Tier 2 = 700~900만</td><td><strong>Tier 1 Plus = 350~500만 (브랜딩 우선)</strong></td><td>대표 자발 200만 + HIZ "제일 싸게 쓰는 건 브랜딩" 명시</td></tr>
+            <tr><td>6개월 후 (M7~M12)</td><td>—</td><td>Tier 2 = 700~900만 (자사몰 그로스)</td><td>자사몰 베이스라인 확보 후 D2C 그로스 진입</td></tr>
+            <tr><td>동시 진행</td><td>—</td><td><strong>마케팅 인하우스 직원 채용 동반</strong></td><td>"직원도 같이 뽑고" — Green 적극 개입 의지</td></tr>
+        </table>
+
+        <h3>Tier 1 Plus 패키지 구성안 (6개월)</h3>
+        <ol style="padding-left:24px; font-size:14px; line-height:1.85;">
+            <li><strong>브랜드 리빌딩</strong> (메인): 강훈목장 본 브랜드 + 1~2개 제품 브랜드 정리, B2C 페이스 정립, 5년 된 패키지 리뉴얼</li>
+            <li><strong>자사몰 베이스 구축</strong>: 카페24 팀 협업으로 IA·UX·콘텐츠 구조 (HIZ 외 카페24 영업팀 매칭)</li>
+            <li><strong>인플루언서 시딩 1차</strong>: 데이나 팀 매칭, 농장 콘텐츠 자산화 (로봇 착유·자체 가공장)</li>
+            <li><strong>인하우스 마케터 채용 지원</strong>: JD 작성·면접 동행·온보딩 6주</li>
+            <li><strong>CJ OEM 스토리 자산화</strong>: B2B 신뢰 자산을 D2C 광고 소재로 전환</li>
+        </ol>
+
+        <h3>킬링 메시지 (제안서 척추)</h3>
+        <div class="leverage-box">
+            <div style="font-size:13px; opacity:0.7;">부회장 발화 (제안서 첫 페이지 인용 후보)</div>
+            <div class="quote">
+                "B2B 60억 회사가 B2C로 전환하는 케이스는 거의 없다.<br>
+                그 전환점 자체가 투자자 어필의 가장 큰 작업 포인트다."
+            </div>
+            <div class="quote-source">— 부회장님, 2026-05-08 미팅 중</div>
+        </div>
+
+        <h3>수주 정당화 3축</h3>
+        <div class="pain-layer">
+            <div class="pain-level pain-l1">
+                <span class="level-tag" style="color:var(--secondary);">축 1 · 외부 신뢰</span>
+                부회장 매칭 + 농장 동행 의사 + 아버님 면담 희망 — <strong>3자 신뢰 라인 견고</strong>
+            </div>
+            <div class="pain-level pain-l2">
+                <span class="level-tag" style="color:var(--accent);">축 2 · 내부 인지</span>
+                대표가 "외주는 답 아니다, 사무실 들어오는 게 빠르다"를 이미 받아들임 — <strong>그로스 외주 실패 학습 완료</strong>
+            </div>
+            <div class="pain-level pain-l4">
+                <span class="level-tag" style="color:white;">축 3 · 자금 매칭</span>
+                스케일업 지원사업 + CJ OEM 매출 백업 + 70억 신축 가공장 투자 의지
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. 리스크 & 기회 -->
+    <div class="section" id="risk-opp">
+        <h2>5. 리스크 & 기회</h2>
+        <div class="opp-risk-grid">
+            <div class="opp-risk-card opp-card">
+                <h4>🟢 기회 (수주 가속)</h4>
+                <ul>
+                    <li>부회장 강력 매칭 + 농장 동행 + 아버님 면담 희망</li>
+                    <li>어버이날 미팅 유지 = 가족 시간 대비 우선순위</li>
+                    <li>CJ제일제당 OEM 매출 백본 = 실험 자금 여력</li>
+                    <li>스케일업 지원사업 자금 매칭 가능</li>
+                    <li>농장 견학 카드 = 콘텐츠 자산화 자연 진입점</li>
+                    <li>자체 가공장(70억) + 로봇 착유 = 콘텐츠 자산 이미 존재</li>
+                    <li>그로스 외주 실패 = HIZ 차별화 어필 토양</li>
+                </ul>
+            </div>
+            <div class="opp-risk-card risk-card">
+                <h4>🔴 리스크 (수주/진행 저해)</h4>
+                <ul>
+                    <li>가격 민감: 자발 200만 → Tier 1 Plus(350~500) 협상 필요</li>
+                    <li>지방 위치(구미): "구미는 출근 안 하려고" 직접 발화 — 원격·정기 방문 모델 필수</li>
+                    <li>마케팅 직원 채용 동반 부담 = 견적 외 공수 증가</li>
+                    <li>부친 합의 변수 — 2세 단독 결정 한계</li>
+                    <li>OEM vs D2C 채널 충돌 회피 위한 브랜드 분리 설계 필수</li>
+                </ul>
+            </div>
+            <div class="opp-risk-card uncertain-card">
+                <h4>🟡 불확실 (조속 확인)</h4>
+                <ul>
+                    <li>OEM 매출 비중 절대값 (60억 중)</li>
+                    <li>자사몰 매출 베이스라인 (객단가·MAU·전환율)</li>
+                    <li>무가당 그릭·고단백 런칭 일정</li>
+                    <li>마케팅 직원 채용 일정·예산</li>
+                    <li>마스터시트 회신 속도 = 대표 실행 의지의 1차 검증</li>
+                    <li>연령 정보 재확인 (부친·대표 출생연도 논리 모순)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. 액션 아이템 -->
+    <div class="section" id="actions">
+        <h2>6. 다음 액션 아이템</h2>
+
+        <div class="timeline-phase">
+            <div class="phase-time">즉시 (24h)<br><span style="font-size:11px;font-weight:400;">~5/9 금</span></div>
+            <div class="phase-content">
+                <h4>당일 자정 전 발송 + 익일 가이드 발송</h4>
+                <ul>
+                    <li>Green — 1차 제안 써머리 메일 발송 (cow5721@hanmail.net)</li>
+                    <li>Green — 마스터시트 작성 가이드 별도 메일 발송</li>
+                    <li>Green — 카톡 짧은 알림 메시지 (메일 직후 5분 내)</li>
+                    <li>Green — BC3T에 "강훈목장 D2C 전환 6개월 파트너십 견적서 초안" 태스크 등록 (마감 5/15)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="timeline-phase">
+            <div class="phase-time">이번 주<br><span style="font-size:11px;font-weight:400;">5/9~5/12</span></div>
+            <div class="phase-content">
+                <h4>강훈목장 데이터 수신 + 견적서 초안</h4>
+                <ul>
+                    <li>강훈목장 — 매출 분포 시트(브랜드별·월별·채널별) 회신</li>
+                    <li>강훈목장 — 제품 포트폴리오(분류·SKU·용량·가격·특징·공구리뷰) 회신</li>
+                    <li>강훈목장 — 사업 목표 회신</li>
+                    <li>Green — 회신 수신 후 "가장 싸고 성과 나는 일 1개" 선정. 견적서 v1 작성</li>
+                    <li>Green — 부회장 중간점검 일정 사전 동기화 (농장 동행)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="timeline-phase">
+            <div class="phase-time">다음 주<br><span style="font-size:11px;font-weight:400;">5/13~5/19</span></div>
+            <div class="phase-content">
+                <h4>견적서 발송 + 농장 방문 조율</h4>
+                <ul>
+                    <li>Green — 견적서 v1 부회장 사전 검토 → 강훈목장 발송</li>
+                    <li>Green — 카페24 팀 매칭 미팅 (자사몰 + 영업팀 결합 모델)</li>
+                    <li>Green — 인플루언서 데이나 팀 매칭 (농장 콘텐츠 자산화 사전 협의)</li>
+                    <li>Green + 부회장 — 농장 방문 일정 조율 (부친 자연 동석 가능 시점)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. raw quotes -->
+    <div class="section" id="raw-quotes">
+        <h2>7. 핵심 raw quote 인용 (대표 발화 5개 + 부회장 보너스)</h2>
+
+        <div class="quote-card">
+            <div class="q-num">QUOTE 01 · 변화 의지 명시 발화</div>
+            <div class="q-text">"저도 변화가 필요한 그런 느낌이 있네요. 계속 이렇게 할 수는 없다고 생각합니다. 저도 아닌 게 이쪽이 전문, 이쪽이 아니라 보니까."</div>
+            <div class="q-meaning">→ 제안서 첫 페이지 인용 후보. 모든 후속 자료의 출발점.</div>
+        </div>
+
+        <div class="quote-card">
+            <div class="q-num">QUOTE 02 · 비용을 기회비용으로 인식 전환</div>
+            <div class="q-text">"어찌 보면 이게 저한테는 아깝다 생각은 안 나고 이것도 어찌보면 기회다."</div>
+            <div class="q-meaning">→ 가격 협상 시 이 발화를 인용. 비용 저항선이 이미 풀린 상태.</div>
+        </div>
+
+        <div class="quote-card">
+            <div class="q-num">QUOTE 03 · 의사결정 스타일</div>
+            <div class="q-text">"원래 말 잘 안 듣는데 이번에 딱 그렇게 연기가 됐네요."</div>
+            <div class="q-meaning">→ 3년간 부회장 조언 미수용 자성. 한번 결심하면 무겁게 진행할 의사결정 스타일 시그널.</div>
+        </div>
+
+        <div class="quote-card">
+            <div class="q-num">QUOTE 04 · 자발 가격 시그널</div>
+            <div class="q-text">"최대한 한 2,000원(만원) 제발로 가요."</div>
+            <div class="q-meaning">→ 협상의 하한선이자 신뢰 베이스. Tier 1 Plus(월 350~500)는 이 위에 얹는 협상.</div>
+        </div>
+
+        <div class="quote-card">
+            <div class="q-num">QUOTE 05 · 6개월 목표 정리</div>
+            <div class="q-text">"결국에는 자사몰을 키우고 싶은 거고, 영업 인들을 쿠팡이나 컬리 들고 이끌어와서."</div>
+            <div class="q-meaning">→ Tier 1 Plus → Tier 2 업셀링 경로의 정당성 근거.</div>
+        </div>
+
+        <div class="quote-card" style="border-left-color: var(--primary); background: var(--accent-light);">
+            <div class="q-num" style="color: var(--primary);">BONUS · 부회장 (전략 척추)</div>
+            <div class="q-text">"B2B에 특화되어 있는 기업이 B2C로 전환되는 케이스가 별로 없기 때문에, 그 계기에서 우리가 투자자들한테 어필할 수 있는 작업 포인트가 엄청나요."</div>
+            <div class="q-meaning">→ 제안서·견적서 첫 페이지 킬링 메시지로 박을 한 문장.</div>
+        </div>
+    </div>
+
+    <!-- ===== PART 2 ===== -->
+    <div class="part-banner"><span class="part-tag">PART 2</span>대표 발송 자료 (당일 자정 전 발송)</div>
+
+    <!-- 메일 본문 -->
+    <div class="section" id="mail">
+        <h2>메일 본문</h2>
+
+        <div class="mail-block">
+            <div class="mail-meta">
+                수신: 조규제 대표 (cow5721@hanmail.net) &nbsp;|&nbsp;
+                발신: 우성민 (Green) / HIZ Lead PM &nbsp;|&nbsp;
+                발송 예정: 2026-05-08 자정 전
+            </div>
+            <div class="mail-subject">[HIZ] 조규제 대표님, 오늘 상담 내용 정리해서 먼저 보내드립니다</div>
+
+            <p>조규제 대표님, 안녕하세요.<br>HIZ 우성민입니다.</p>
+
+            <p>어버이날 저녁 귀한 시간 내주셔서 감사합니다. 부회장님께서 자리 만들어주신 덕에 강훈목장이 어떤 자리에 와 있는지, 다음 한 분기에 어떤 결정을 내려야 하는지 충분히 들여다볼 수 있는 시간이었습니다. 오늘 안에 정리해서 보내드리겠다고 약속드린 메모를, 자정 전에 먼저 보내드립니다.</p>
+
+            <p>대표님께서 <em>"저도 변화가 필요한 그런 느낌이 있다, 계속 이렇게 할 수는 없다고 생각한다"</em>고 말씀하신 대목이 오래 남았습니다. 그 한마디가 오늘 상담의 출발점이자 결론이었다고 생각합니다.</p>
+
+            <hr>
+
+            <p><strong>오늘 함께 확인한 강훈목장의 핵심 과제 세 가지</strong></p>
+            <p>오늘 나눈 이야기를 정리하면, 강훈목장의 다음 한 분기를 결정할 핵심 과제는 다음 세 가지로 모입니다.</p>
+            <ol>
+                <li><strong>채널 의존도 분산</strong> — 쿠팡 비중이 월 매출의 절반을 넘는 구조에서 자사몰·자체브랜드로 매출을 회수하면서 단가 협상력을 되찾는 일.</li>
+                <li><strong>브랜드 리뉴얼</strong> — 5년 된 패키지, 약한 자사몰·인스타 채널을 1A 등급 원유와 학교급식 납품 실적에 걸맞은 수준으로 끌어올리는 일.</li>
+                <li><strong>신제품 D2C 런칭</strong> — 농촌융복합 스케일업 사업 보육 기간(6~11월) 안에 무가당 그릭·고단백 헬스식 라인을 D2C로 안착시켜, 11월 종료 시점에 결과 한 장이 남도록 하는 일.</li>
+            </ol>
+
+            <hr>
+
+            <p><strong>저희가 강훈목장에서 본 자산 세 가지</strong></p>
+            <ul>
+                <li><strong>품질 자산</strong>: 세균 1A·체세포 1등급 원유, 96.998% 원유 함량, 95% 자체 목장 원유 사용</li>
+                <li><strong>사회증명 자산</strong>: 경상북도 학교급식 11/23 시군 납품, 오아시스마켓 후기 3,937개·평점 4.9</li>
+                <li><strong>시점 자산</strong>: 2026 농촌융복합 민간투자 스케일업 사업 선정, 4,500㎡ 신축 가공장, CJ제일제당 그리카야 OEM 공급 레퍼런스</li>
+            </ul>
+            <p>보유는 모두 되어 있는데, 이것을 외부에 보여주는 콘텐츠와 채널 인프라가 비어 있다는 것 — 오늘 함께 확인한 그림이 그것이었습니다. 다른 회사들은 자산을 만드는 데 시간이 걸리지만, 강훈목장은 자산을 회수하는 데 시간이 걸리는 단계입니다. 이 차이가 비용 구조를 결정합니다.</p>
+
+            <hr>
+
+            <p><strong>저희가 추천드리는 방향</strong></p>
+            <p style="background:var(--accent-light); padding:14px 18px; border-radius:8px; border-left:3px solid var(--accent);">
+                <strong>브랜드 리빌딩 + 자사몰 강화 + 스케일업 6개월 캠페인 캘린더를 1단계로 먼저 잡고, 메타 광고와 퍼포먼스 마케팅은 6개월 뒤 인하우스 인력과 함께 가져가시는 2단계 전략</strong> — 이것이 강훈목장이 가장 적은 비용으로 가장 큰 자리를 잡을 수 있는 길이라고 봅니다.
+            </p>
+            <p>근거를 짧게 말씀드리면,</p>
+            <ul>
+                <li>강훈목장은 이미 검증된 D2C 자산(오아시스 후기 4천 개)이 있기 때문에, 새로 만드는 게 아니라 <strong>회수</strong>만 해도 30일 안에 자사몰 전환율에 변화가 보입니다. 처음부터 광고비를 태워야 하는 브랜드와는 출발선이 다릅니다.</li>
+                <li>무가당 그릭·고단백 헬스식 카테고리는 지금 시장에 구조적 공백이 있습니다. 이 공백을 후발 진입자가 채우기 전에 1A 등급 원유 기반 라인이 먼저 들어가는 것이, 광고비로 인지도를 사는 것보다 훨씬 적은 비용입니다.</li>
+                <li>6개월 후에 남는 결과물은 자사몰 매출·브랜디드 검색량·신제품 런칭 성적표 한 장이 됩니다. 이 한 장이 다음 IR, B2B 영업 미팅, 미디어 노출에서 그대로 자산이 됩니다.</li>
+            </ul>
+            <p>구체적인 업무 범위와 투자 규모는 보내주실 데이터를 받아본 후, 강훈목장에 맞춰 정리한 제안서로 다시 말씀드리겠습니다.</p>
+
+            <hr>
+
+            <p><strong>바로 실행해보실 수 있는 Quick Win 한 가지</strong></p>
+            <p>참고로, 오늘 자료 보면서 발견한 것 중에 비용 거의 들이지 않고 이번 주 안에 바로 적용해보실 수 있는 한 가지를 먼저 드립니다.</p>
+            <p>자사몰 첫 화면 상단에 한 줄 — <strong>"경상북도 학교급식 11/23 시군이 선택한 1A 등급 원유"</strong> — 를 배너 카피로 올려보시는 것입니다. 또는 오아시스마켓 후기 3,937개 중 인상 깊은 5개를 골라 자사몰 제품 상세페이지에 캡처 박스로 넣어보시면, 트래픽을 그대로 유지하셔도 전환율이 체감 수준으로 바뀝니다. 보통 1.5~2배 구간을 봅니다.</p>
+            <p>손해 볼 게 없는 변경이니, 마음 편히 먼저 시도해보셔도 좋겠습니다.</p>
+
+            <hr>
+
+            <p><strong>다음 단계 안내</strong></p>
+            <ul>
+                <li><strong>강훈목장 측</strong>: ① 매출 분포 시트(브랜드별·채널별·월별) ② 제품 포트폴리오(분류·SKU·용량·가격·특징·공구 리뷰) ③ 사업 목표 — 세 가지를 작성해주시면 됩니다. 작성을 도와드릴 마스터시트 양식은 별도 메일로 곧 보내드립니다.</li>
+                <li><strong>HIZ 측</strong>: 데이터 받는 대로 <strong>5월 둘째 주 안에</strong> 강훈목장 맞춤 1차 방향성 자료와 견적을 정리해서 다시 보내드리겠습니다.</li>
+                <li><strong>농장 방문</strong>: 부회장님 중간점검 일정이 잡히는 대로 저도 함께 농장에 직접 찾아뵙고 싶습니다. 부친께 자연스럽게 인사드릴 수 있는 자리가 함께 마련된다면 더 좋겠습니다.</li>
+            </ul>
+            <p>궁금하신 점이나 중간에 짚고 가실 부분이 있으시면, 메일·카카오톡·전화 어느 쪽이든 편하신 채널로 편하게 연락 주십시오.</p>
+
+            <hr>
+
+            <p>오늘 대표님께서 해주신 <em>"이것도 어찌 보면 기회다"</em>라는 말씀, 저희도 같은 마음으로 받았습니다. 강훈목장의 다음 한 분기를 함께 만들어가는 자리, 잘 준비해서 다시 인사드리겠습니다.</p>
+            <p>어버이날, 가족과 따뜻하게 마무리하시기 바랍니다.</p>
+            <p>감사합니다.</p>
+
+            <div class="mail-signature">
+                우성민 (Green)<br>
+                HIZ Lead PM
+            </div>
+        </div>
+    </div>
+
+    <!-- 카톡 -->
+    <div class="section" id="kakao">
+        <h2>카카오톡 / 문자 짧은 버전</h2>
+        <div class="kakao-block">
+            <div class="kakao-meta">메일 발송 직후 5분 내, 친근한 알림 메시지</div>
+            대표님, HIZ 우성민입니다.<br>
+            어버이날 늦은 시간 시간 내주셔서 감사합니다. 약속드린 오늘 상담 정리 메모, 방금 메일(cow5721@hanmail.net)로 보내드렸습니다. 편하실 때 보시고 연락 주세요.<br>
+            어버이날 따뜻하게 마무리하시길 바랍니다.
+        </div>
+    </div>
+
+    <!-- 발송 자가 검증 -->
+    <div class="section" id="self-check">
+        <h2>발송 자가 검증 체크리스트 (룰 반영)</h2>
+        <ul class="checkbox-list">
+            <li>가격 명시 X — 자발 200만 받았어도 메일에는 가격 0개</li>
+            <li>내부 어휘(v1/Tier/트로이 목마/수주 확률) X</li>
+            <li>구어체("예쁘다·엄청·진짜") X</li>
+            <li>이모지 0개 (절제 룰 준수)</li>
+            <li>raw quote 인용 1개 ("저도 변화가 필요한 그런 느낌이 있네요")</li>
+            <li>부친 멘션: "자연스럽게 인사드릴 수 있는 자리가 함께 마련된다면" — 강요 X</li>
+            <li>채널 분리: 메일·카톡·전화 명시</li>
+            <li>컨펌 마감일: "5월 둘째 주 안에" 명시 (변팀장 커뮤니케이션 룰)</li>
+        </ul>
+    </div>
+
+    <!-- ===== PART 3 ===== -->
+    <div class="part-banner"><span class="part-tag">PART 3</span>D+0 ~ D+14 액션 체크리스트</div>
+
+    <!-- 액션 플로우 -->
+    <div class="section" id="action-flow">
+        <h2>액션 플로우 (D+0 → D+14)</h2>
+
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="step-num">D+0 (5/8)</div>
+                <div class="step-title">당일 자정 전</div>
+                <div class="step-desc">메일 + 카톡 + 마스터시트 가이드 발송</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">D+1~3</div>
+                <div class="step-title">5/9~5/11</div>
+                <div class="step-desc">부회장 별도 보고 + 카페24·데이나 팀 사전 조율</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">D+4~7</div>
+                <div class="step-title">5/12~5/15</div>
+                <div class="step-desc">데이터 수신 + 견적서 v1 작성 + 부회장 사전 리뷰</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">D+8~14</div>
+                <div class="step-title">5/16~5/22</div>
+                <div class="step-desc">견적서 발송 + 농장 방문 일정 조율 + 2차 미팅 합의</div>
+            </div>
+        </div>
+
+        <h3>오늘 (5/8 자정 전)</h3>
+        <ul class="checkbox-list">
+            <li>1차 제안 써머리 메일 발송 (cow5721@hanmail.net)</li>
+            <li>마스터시트 작성 가이드 별도 메일 발송</li>
+            <li>카톡 짧은 알림 메시지 (메일 직후 5분 내)</li>
+            <li>본 랩업 BC3T 태스크 등록</li>
+        </ul>
+
+        <h3>D+1~3 (5/9~5/11)</h3>
+        <ul class="checkbox-list">
+            <li>부회장님 별도 보고 (수주 확률 격상·다음 스텝)</li>
+            <li>카페24 팀 매칭 사전 조율</li>
+            <li>인플루언서 데이나 팀 매칭 사전 조율</li>
+        </ul>
+
+        <h3>D+4~7 (5/12~5/15)</h3>
+        <ul class="checkbox-list">
+            <li>강훈목장 데이터 수신 확인 + 마스터시트 1차 검토</li>
+            <li>Tier 1 Plus 견적서 v1 작성 (부회장 사전 리뷰)</li>
+            <li>1차 방향성 슬라이드 (HTML 8~10장) 사전 준비</li>
+        </ul>
+
+        <h3>D+8~14 (5/16~5/22)</h3>
+        <ul class="checkbox-list">
+            <li>견적서 + 1차 방향성 자료 발송</li>
+            <li>농장 방문 일정 조율 (부친 자연 동석 가능 시점)</li>
+            <li>2차 미팅 일정 합의 (서울 vs 농장)</li>
+        </ul>
+    </div>
+
+    <!-- 가격 진입 -->
+    <div class="section" id="price-signals">
+        <h2>가격 진입 시그널</h2>
+        <div class="price-grid">
+            <div class="price-card">
+                <div class="price-label">대표 자발 시작점</div>
+                <div class="price-val">월 200만</div>
+                <div class="price-sub">"제발로 가요" 발화</div>
+            </div>
+            <div class="price-card recommended">
+                <div class="price-label">HIZ 1차 견적 (RECOMMENDED)</div>
+                <div class="price-val">월 350~500만</div>
+                <div class="price-sub">Tier 1 Plus, 브랜딩 우선, 6개월</div>
+            </div>
+            <div class="price-card">
+                <div class="price-label">6개월 후 업셀링</div>
+                <div class="price-val">월 700~900만</div>
+                <div class="price-sub">Tier 2, D2C 그로스, 자사몰 베이스 후</div>
+            </div>
+        </div>
+
+        <div class="callout">
+            <strong>가격 협상 룰:</strong> 자발 200만은 협상의 하한선·신뢰 베이스이지 최종 가격 아님. Tier 1 Plus 350~500은 "스케일업 자금 매칭 가능 항목 명시"로 정당화. 350만에서 시작해 4~5개월 후 결과 가시화 시점에 Tier 2 자연 업셀링 경로.
+        </div>
+    </div>
+
+    <!-- 재확인 플래그 -->
+    <div class="section" id="followup-flags">
+        <h2>재확인 플래그 (다음 미팅 전 1순위 해소)</h2>
+
+        <div class="callout callout-danger">
+            <strong>플래그 1 — 연령 정보 논리 모순</strong><br>
+            미팅 중 부회장 발화 "아버님이 65년생, 대표가 62년생"은 논리상 부친이 더 어림. <strong>대표가 65년생, 부친이 62년생일 가능성 높음</strong> — 다음 미팅에서 1차 확인 필수.
+        </div>
+
+        <div class="callout callout-info">
+            <strong>플래그 2 — OEM 매출 비중 미확정</strong><br>
+            60억 매출 중 OEM (CJ 그리카야 등) / 일반 B2B (쿠팡·컬리·GS) / 자사몰 비중 절대값 — 마스터시트 회신으로 1차 확정. 견적서 v1 작성 전 필수 데이터.
+        </div>
+
+        <div class="callout callout-info">
+            <strong>플래그 3 — 단가 협상 카드 부재</strong><br>
+            대표 발화 "쿠팡이 광고를 계속 쓰게끔 하는 구조"에 대한 직접 카드 없음. Tier 1 Plus 단계에선 다루지 않고, Tier 2 진입 시 별도 의제로 분리 권장.
+        </div>
+    </div>
+
+    <!-- 관련 문서 -->
+    <div class="section">
+        <h2>관련 문서</h2>
+        <div class="source-list" style="font-size:14px; line-height:2;">
+            <a href="../" target="_blank">강훈목장 1차 상담 준비 패키지 (prep)</a> — 사전 12섹션 풀 패키지<br>
+            <a href="https://kanghunfarm.com/" target="_blank">강훈목장 자사몰</a><br>
+            <a href="https://m.oasis.co.kr/product/detail/67001" target="_blank">강훈목장 수제 요거트 — 오아시스마켓 (후기 3,937개·평점 4.9)</a><br>
+            <a href="https://www.idaegu.com/news/articleView.html?idxno=647907" target="_blank">구미 강훈목장 가공장 준공 — 대구일보 2025.9.10</a><br>
+            <a href="https://biz.heraldcorp.com/article/10720277" target="_blank">농촌융복합 민간투자 기반 스케일업 사업 — 헤럴드경제</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>HIZ MarketingOS — 1차 상담 후 랩업 (post-meeting wrap)</p>
+    <p>이 문서는 내부 분석 + 대표 발송 자료 통합본입니다. 외부 공유를 금합니다.</p>
+    <p style="margin-top:8px; font-size:11px;">v1 · 2026-05-08 · 다음 업데이트: 마스터시트 회신 후 견적서 v1과 동시 (5/15 전후)</p>
+</div>
+
+</body>
+</html>
