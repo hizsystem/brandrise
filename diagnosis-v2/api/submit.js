@@ -7,12 +7,12 @@
  * Slack 메시지: 코드(별명 매핑) + 6영역 점수 + C1·C2 인용 + 단계·팀 (TG 자연 이탈 라벨 포함)
  */
 
-// 코드 → 별명 매핑 (워크샵 1 산출물 받기 전 placeholder. 시드 받으면 교체)
+// 코드 → 별명 매핑 (워크샵 v1 시드 / 2026-05-11, specs/2026-05-11-workshop-output-v1-draft.md 1순위)
 const CODE_NICKNAMES = {
-  FS: '{TBD: 워크샵 1 시드 — FS 별명}',
-  FG: '{TBD: 워크샵 1 시드 — FG 별명}',
-  TS: '{TBD: 워크샵 1 시드 — TS 별명 (★ 골든 타겟)}',
-  TG: '{TBD: 워크샵 1 시드 — TG 별명}',
+  FS: '무대뽐내는 1인극',
+  FG: '그래프 평행선 컴퍼니',
+  TS: '검증 못하는 위임자',
+  TG: '다음 한 뼘 미아',
 };
 
 const AREA_LABELS = {
