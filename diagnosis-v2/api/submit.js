@@ -7,12 +7,12 @@
  * Slack 메시지: 코드(별명 매핑) + 6영역 점수 + C1·C2 인용 + 단계·팀 (TG 자연 이탈 라벨 포함)
  */
 
-// 코드 → 별명 매핑 (워크샵 v1 시드 / 2026-05-11, specs/2026-05-11-workshop-output-v1-draft.md 1순위)
+// 코드 → 별명 매핑 (워크샵 1 확정 시드 / 2026-05-13, specs/2026-05-12-chatgpt-workshop-1-nickname-catchphrase.md)
 const CODE_NICKNAMES = {
-  FS: '무대뽐내는 1인극',
-  FG: '그래프 평행선 컴퍼니',
-  TS: '검증 못하는 위임자',
-  TG: '다음 한 뼘 미아',
+  FS: '감각 운영자',
+  FG: '성장 설계자',
+  TS: '성과 확인형',
+  TG: '다음 체계 설계자',
 };
 
 const AREA_LABELS = {

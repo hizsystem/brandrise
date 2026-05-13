@@ -1,20 +1,32 @@
 # 모수 v2 트리거 진단서 — 빌드 현황
 
-> 5/6 보류 결정 5개 컨펌 + v2 골격 빌드. 5/11 워크샵 v1 시드 박음(클로드 생성, 검수 대기). 베타 5/12 목표.
+> 5/6 보류 결정 5개 컨펌 + v2 골격 빌드. 5/13 우성민 챗GPT 워크샵 1 확정 시드 박힘 (별명·캐치·24개 매트릭스). 베타 즉시 가능.
 > 상위 spec: `../diagnosis/specs/2026-05-04-trigger-diagnosis-spec-v1.md`
 > 12문항 spec: `specs/2026-05-06-questions-v1.md`
-> 워크샵 v1 시드: `specs/2026-05-11-workshop-output-v1-draft.md`
+> 워크샵 1 확정 시드: `specs/2026-05-12-chatgpt-workshop-1-nickname-catchphrase.md`
+> 워크샵 v1 후보 (Claude 생성, 비교 기준선): `specs/2026-05-11-workshop-output-v1-draft.md`
 
 ## 상태
 
 | 영역 | 상태 | 시드 상태 |
 |------|-----|----------|
-| 진입 랜딩 (`index.html`) | ✅ 완료 | v1 광고 카피 박힘 (검수 대기) |
+| 진입 랜딩 (`index.html`) | ✅ 완료 | Hero H1 = TS 캐치카피 박힘 (5/13 확정) |
 | 진단 폼 (`diagnosis.html` + `js/diagnosis.js`) | ✅ 완료 | — |
-| 결과지 (`result.html` + `js/result.js`) | ✅ 완료 | v1 시드 박힘: 별명·캐치·24개 매트릭스·TRAP (검수 대기) |
-| 응답 수집 API (`api/submit.js`) | ✅ 완료 | v1 CODE_NICKNAMES 박힘 (검수 대기) |
+| 결과지 (`result.html` + `js/result.js`) | ✅ 완료 | 별명·캐치·24개 매트릭스·TRAP 박힘 (5/13 확정) |
+| 응답 수집 API (`api/submit.js`) | ✅ 완료 | CODE_NICKNAMES 박힘 (5/13 확정) |
 | 디자인 시스템 (`styles.css`) | ✅ 완료 | — |
 | 배포 설정 (`vercel.json`, `package.json`) | ✅ 완료 | — |
+
+## 확정 시드 (2026-05-13)
+
+| 코드 | 별명 | 한줄 캐치 (= 결과지 Hero) |
+|------|------|--------------------------|
+| FS | 감각 운영자 | 올리고 있지만, 쌓이고 있지는 않습니다 |
+| FG | 성장 설계자 | 광고비는 늘었는데 성장 곡선은 평평합니다 |
+| TS ★ 골든 | 성과 확인형 | 마케팅은 돌아가는데, 매출 연결이 안 보입니다 |
+| TG | 다음 체계 설계자 | 다음 성장은 실행보다 시스템에서 나옵니다 |
+
+TS 캐치 = 랜딩 Hero H1 = Meta 광고 메인 카피 통일. 별도 광고 카피 도출 불필요.
 
 ## 부분 교체 위치 (검수 후 키만 바꿔도 갱신)
 
@@ -99,17 +111,21 @@ TS형 = 골든 타겟 (시뮬레이션 9·9·1·9, 1:1 전환의 60%+ 추정).
 | 광고 타게팅 | 전 단계 | 시리즈A+ / 마케팅팀 3+ 제외 (Decision B) |
 | KPI | 미정 | 1:1 신청률 + 진단 완료율 (Decision C) |
 
-## 5/11~5/13 남은 일
+## 5/11~5/13 진행 이력 + 남은 일
 
-- [x] ~~우성민 챗GPT 워크샵 50분~~ → 클로드코드가 v1 후보 생성 (5/11, `specs/2026-05-11-workshop-output-v1-draft.md`)
+- [x] ~~우성민 챗GPT 워크샵 50분~~ → 클로드코드가 v1 후보 33개 생성 (5/11, `specs/2026-05-11-workshop-output-v1-draft.md`)
 - [x] 시드 v1 → 3개 파일 데이터 객체 박음 (5/11)
-- [x] PART 3 24개 처방 매트릭스 변주 (TS·FS·FG·TG 각 6개) (5/11)
-- [ ] **🔴 우성민 시드 검수** — 별명·캐치·처방 1순위 OK 또는 부분 교체 회신
-- [ ] 베타 테스트 (지인 3명, 검수 통과 후)
+- [x] PART 3 24개 처방 매트릭스 변주 v1 (TS·FS·FG·TG 각 6개) (5/11)
+- [x] **우성민 시드 검수 보류 — 별명 아이데이션 추가 필요 판단 (5/12)**
+- [x] 워크샵 1 전용 패키지 생성 (`specs/2026-05-12-chatgpt-workshop-1-nickname-catchphrase.md`, 5/12)
+- [x] 우성민 챗GPT 별창 워크샵 1 30분 진행 → 별명 4 + 캐치 4 확정 회신 (5/13)
+- [x] 4개 파일 확정 시드로 부분 교체 + 24개 매트릭스 새 톤(단정문·자존감 인정·결핍 호명)으로 통째 변주 (5/13)
+- [ ] 베타 테스트 (지인 3명, 4유형 시나리오)
 - [ ] 환경변수 설정: `SLACK_WEBHOOK_URL` + Meta Pixel ID (3개 파일: index/diagnosis/result)
 - [ ] 1:1 예약 CTA URL을 캘린더 링크로 교체 (현재 `mailto:hi@brandrise.kr`)
 - [ ] OG 동적 카드 생성 (vercel og 또는 별도 endpoint, P2)
 - [ ] Vercel 배포 + diagnosis.brandrise.kr 또는 brandrise.kr/diagnosis-v2 라우팅
+- [ ] 베타 1~3명을 케이스 1호 후보로 동시 추적 (클라이언트 0건 상태 → 진단서 = 케이스 파이프라인 입구)
 
 ## 베타 테스트 체크리스트
 
