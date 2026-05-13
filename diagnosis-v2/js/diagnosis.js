@@ -251,10 +251,9 @@ function renderQuestion(q) {
     bodyHtml = `
       <div class="option-list" id="multiOptions">
         ${q.options.map((opt, i) => `
-          <label class="option-item multi ${selected.has(opt.value) ? 'selected' : ''}" data-value="${opt.value}">
-            <input type="checkbox" name="${q.id}" value="${opt.value}" ${selected.has(opt.value) ? 'checked' : ''} hidden>
+          <div class="option-item multi ${selected.has(opt.value) ? 'selected' : ''}" data-value="${opt.value}">
             ${opt.label}
-          </label>
+          </div>
         `).join('')}
       </div>
       <p class="text-sm" style="margin-top:12px;text-align:center">최대 2개까지 선택할 수 있습니다.</p>
@@ -345,14 +344,11 @@ function attachHandlers(q) {
     };
     cards.forEach(card => {
       card.addEventListener('click', () => {
-        const value = card.dataset.value;
         const selected = formContainer.querySelectorAll('#multiOptions .option-item.selected');
         if (card.classList.contains('selected')) {
           card.classList.remove('selected');
-          card.querySelector('input').checked = false;
         } else if (selected.length < q.maxSelect) {
           card.classList.add('selected');
-          card.querySelector('input').checked = true;
         }
         updateBtn();
       });
