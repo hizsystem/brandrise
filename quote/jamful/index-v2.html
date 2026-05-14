@@ -74,25 +74,47 @@
     .sec-desc strong { color: var(--text); font-weight: 600; }
     hr { border: none; border-top: 1px solid var(--gray-200); }
 
-    /* WHY — 본문 강조 카드 */
+    /* WHY CARD */
     .why-card {
       background: var(--white);
       border: 1px solid var(--gray-200);
       border-radius: 16px;
-      padding: 36px 40px;
+      padding: 40px 44px;
       margin-top: 8px;
-      max-width: 720px;
+      max-width: 820px;
     }
-    .why-card p {
-      font-size: 15px; color: var(--gray-700);
-      line-height: 1.9; margin-bottom: 14px;
-    }
-    .why-card p:last-child { margin-bottom: 0; }
-    .why-card strong { color: var(--accent); font-weight: 700; }
-    .why-card .lead {
+    .why-lead {
       font-size: 17px; font-weight: 700; color: var(--black);
-      line-height: 1.7; margin-bottom: 16px;
+      line-height: 1.7;
     }
+    .why-lead strong { color: var(--accent); font-weight: 800; }
+    .why-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; margin: 28px 0;
+    }
+    .why-box {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 22px 24px;
+      border-left: 3px solid var(--accent);
+    }
+    .why-key {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 10px;
+    }
+    .why-title {
+      font-size: 15px; font-weight: 700; color: var(--text);
+      line-height: 1.5; margin-bottom: 10px;
+    }
+    .why-text {
+      font-size: 13px; color: var(--gray-500); line-height: 1.75;
+    }
+    .why-conclude {
+      font-size: 15px; color: var(--text); font-weight: 500;
+      line-height: 1.75; padding-top: 24px;
+      border-top: 1px solid var(--gray-200);
+    }
+    .why-conclude strong { color: var(--accent); font-weight: 700; }
 
     /* SCOPE CARDS */
     .scope-grid {
@@ -230,6 +252,7 @@
       .phase-grid { grid-template-columns: 1fr; }
       .outcome-table td:first-child { width: auto; }
       .why-card { padding: 28px 24px; }
+      .why-grid { grid-template-columns: 1fr; }
     }
 
     @media print {
@@ -244,7 +267,7 @@
   <div class="container">
     <div class="label">Marketing Operation Partnership</div>
     <h1>잼플의 3개월<br><em>마케팅 운영 파트너십</em></h1>
-    <p class="sub"><strong>B2C 시장 진입의 두 채널, 인스타그램과 메타 광고.</strong><br>3개월간 한 팀이 통합 운영해, 잼플의 B2C 첫 측정 윈도우를 만듭니다.</p>
+    <p class="sub"><strong>잼플이 B2C 시장에 자리잡으려면 인스타그램과 메타 광고가 필요합니다.</strong><br>두 채널을 3개월간 한 팀이 운영해, '잼플은 어떤 브랜드인가'와 '첫 고객은 어디서 오는가'에 답을 만듭니다.</p>
     <div class="hero-meta">
       <div class="hero-meta-item"><div class="k">공급자</div><div class="v">브랜드라이즈 by HIZ</div></div>
       <div class="hero-meta-item"><div class="k">수신</div><div class="v">(주)크램 김수민 대표</div></div>
@@ -261,10 +284,22 @@
     <h2>왜 이 제안인가</h2>
 
     <div class="why-card">
-      <p class="lead">잼플의 B2B는 이미 검증된 라인입니다 (도입 100사+, 제휴 센터 900+).<br>다음 단계는 <strong>B2C 시장 진입</strong>이고, 그 결정 변수는 두 가지로 좁혀집니다.</p>
-      <p>하나는 <strong>인스타그램에서 잼플이 어떻게 보이는가</strong> — '원하는 시간, 원하는 장소' 메시지가 B2C 브랜드의 정체성으로 정렬되어 있는가.</p>
-      <p>다른 하나는 <strong>메타 광고로 첫 모수를 측정할 수 있는가</strong> — 신요금제 출시 후 CAC·전환율을 측정할 인프라가 있는가.</p>
-      <p>본 제안은 이 두 채널에만 집중해, 3개월 안에 잼플의 B2C 측정 윈도우를 확보합니다.</p>
+      <p class="why-lead">잼플의 B2B는 이미 검증된 라인입니다 (도입 100사+, 제휴 센터 900+).<br>다음 단계는 <strong>B2C 시장 진입</strong>이고, 그 결정 변수는 두 가지로 좁혀집니다.</p>
+
+      <div class="why-grid">
+        <div class="why-box">
+          <div class="why-key">하나</div>
+          <div class="why-title">잼플이 B2C 브랜드로 어떻게 보이는가</div>
+          <div class="why-text">'원하는 시간, 원하는 장소' 메시지가 인스타그램에서 잼플의 정체성으로 보이고 있는가.</div>
+        </div>
+        <div class="why-box">
+          <div class="why-key">둘</div>
+          <div class="why-title">첫 고객이 어디서 오는지 보이는가</div>
+          <div class="why-text">신요금제 출시 후 광고비 대비 가입이 어떻게 일어나는지 측정할 수 있는 환경이 있는가.</div>
+        </div>
+      </div>
+
+      <p class="why-conclude">본 제안은 이 두 채널에만 집중해, <strong>3개월 안에 잼플의 B2C 채널이 정상 가동되는 상태</strong>를 만듭니다.</p>
     </div>
   </div>
 </section>
@@ -276,7 +311,7 @@
   <div class="container">
     <div class="sec-label">Operation Scope</div>
     <h2>운영 범위</h2>
-    <p class="sec-desc">3트랙을 한 팀이 통합 운영하는 월 정액 패키지입니다.<br>광고 실집행비는 잼플 직결제로 별도 집행합니다.</p>
+    <p class="sec-desc">3트랙을 한 팀이 통합 운영하는 월 정액 패키지입니다.<br>광고비는 별도로 운영합니다.</p>
 
     <div class="scope-grid">
 
@@ -284,7 +319,7 @@
         <div class="sc-num">Track 01</div>
         <div class="sc-body">
           <div class="sc-title">채널 운영</div>
-          <div class="sc-desc">잼플의 인스타그램을 'B2C 브랜드'로 보이는 상태로 만듭니다. 톤앤매너 일관성 유지 · 게시 · 해시태그 · 댓글 · DM 응대까지.</div>
+          <div class="sc-desc">잼플의 인스타그램이 'B2C 브랜드'로 보이는 상태로 만듭니다. 톤앤매너 일관성 유지 · 게시 · 해시태그 · 댓글 · DM 응대까지.</div>
         </div>
         <div class="sc-meta">
           <div class="sc-price">월 150<span>만원</span></div>
@@ -296,7 +331,7 @@
         <div class="sc-num">Track 02</div>
         <div class="sc-body">
           <div class="sc-title">콘텐츠 기획·제작</div>
-          <div class="sc-desc">잼플의 B2C 첫인상을 결정하는 콘텐츠. '운동 멤버십'을 어떻게 보여줄 것인가의 시리즈 컨셉 정의부터, 광고 소재로 재활용 가능한 구조로 제작까지.</div>
+          <div class="sc-desc">잼플의 B2C 첫인상을 결정하는 콘텐츠 기획. 시리즈 컨셉 · 무드보드 · 월간 콘텐츠 캘린더 템플릿 제공 + 광고 소재로 재활용 가능한 구조의 제작까지.</div>
         </div>
         <div class="sc-meta">
           <div class="sc-price">월 250<span>만원</span></div>
@@ -308,7 +343,7 @@
         <div class="sc-num">Track 03</div>
         <div class="sc-body">
           <div class="sc-title">메타 광고 셋업 & 운영</div>
-          <div class="sc-desc">잼플의 B2C 모수 첫 측정을 만드는 광고 채널. 픽셀·이벤트·UTM 셋업부터 소재 A/B · 타겟·예산 최적화까지. 광고 실집행비는 잼플 직결제.</div>
+          <div class="sc-desc">잼플의 B2C 첫 고객이 어디서 오는지 측정 가능하게 만드는 광고 채널. 픽셀·이벤트·UTM 셋업부터 소재 A/B · 타겟·예산 최적화까지. 광고비는 별도로 운영.</div>
         </div>
         <div class="sc-meta">
           <div class="sc-price">월 100<span>만원</span></div>
@@ -321,7 +356,7 @@
     <div class="total-box">
       <div>
         <div class="tl">월 정액 패키지 · 3트랙 묶음</div>
-        <div class="ts">VAT 별도 · 광고 실집행비 별도 (잼플 직결제 권장)</div>
+        <div class="ts">VAT 별도 · 광고비는 별도로 운영</div>
       </div>
       <div class="ta">월 500<span>만원</span></div>
     </div>
@@ -359,7 +394,7 @@
           <tr>
             <td>메타 광고</td>
             <td>미가동</td>
-            <td class="accent">픽셀·이벤트 안정화 · CAC·ROAS 기준선 확보</td>
+            <td class="accent">픽셀·이벤트 안정화 · 광고비 대비 가입 측정 가능</td>
           </tr>
           <tr>
             <td>광고 소재</td>
@@ -369,7 +404,7 @@
           <tr>
             <td>B2C 측정 인프라</td>
             <td>없음</td>
-            <td class="accent">전환율 측정 가능 · 광고 스케일업 의사결정 기반</td>
+            <td class="accent">첫 고객이 어디서 오는지 측정 가능 · 광고 스케일업 의사결정 기반</td>
           </tr>
         </tbody>
       </table>
@@ -419,14 +454,9 @@
     <div class="total-box">
       <div>
         <div class="tl">본 견적 합계 · Option B 기준</div>
-        <div class="ts">VAT 별도 · 광고 실집행비 별도 (잼플 직결제 권장)</div>
+        <div class="ts">VAT 별도 · 광고비는 별도로 운영</div>
       </div>
       <div class="ta">15,000,000<span>원</span></div>
-    </div>
-
-    <div class="info-box">
-      <strong>청년창업사관학교 자금 활용:</strong> 사업화자금 · 마케팅비 인정 비목.<br>
-      잼플 잔여 한도와 인정 비율이 확정되면 결제 분할·선납 조건을 잼플 자금 집행 일정에 맞춰 재설계해 드립니다.
     </div>
   </div>
 </section>
@@ -449,9 +479,8 @@
       </thead>
       <tbody>
         <tr><td>5/14 (목)</td><td>견적서 송부 · 김 대표님 검토</td></tr>
-        <tr><td>5/16 (금)</td><td>팔로업 콜 — 추가 질문 수렴</td></tr>
-        <tr><td>5/19 (월)</td><td>계약 의향 회신 · 청창사 자금 확정 시 결제 조건 동시 협의</td></tr>
-        <tr><td>5/20~5/22</td><td>계약서 교환</td></tr>
+        <tr><td>5/19 (화)</td><td>계약 의향 회신</td></tr>
+        <tr><td>5/21 (목)~5/22 (금)</td><td>계약서 교환</td></tr>
         <tr><td>5월 중</td><td>킥오프 미팅 · 1개월 진단 파일럿 가동</td></tr>
       </tbody>
     </table>
