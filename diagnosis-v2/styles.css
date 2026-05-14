@@ -437,6 +437,47 @@ select.form-input{
 .hero-nickname{font-size:clamp(28px,5vw,44px);font-weight:700;line-height:1.2;margin-bottom:16px}
 .hero-catchphrase{font-size:clamp(16px,2vw,19px);color:var(--sub);line-height:1.6}
 
+/* 랜딩 풀스크린 표지 (index.html) */
+.hero-section{min-height:88vh;display:flex;align-items:center;padding:60px 0}
+.hero-eyebrow{
+  display:inline-block;padding:6px 14px;border:1px solid var(--border);
+  border-radius:999px;font-size:11px;letter-spacing:0.12em;
+  font-family:var(--mono);color:var(--sub);
+  text-transform:uppercase;margin-bottom:28px;
+}
+
+/* 2x2 4유형 매트릭스 (랜딩 표지) */
+.type-matrix-axis{
+  font-size:12px;color:var(--muted);font-family:var(--mono);
+  letter-spacing:0.05em;line-height:1.6;margin:24px auto 12px;max-width:520px;
+}
+.type-matrix-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+  max-width:520px;margin:0 auto;
+}
+.type-card{
+  padding:22px 18px;background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius-sm);text-align:center;
+  transition:border-color .2s, transform .2s;
+}
+.type-card:hover{transform:translateY(-2px);border-color:rgba(232,112,10,0.3)}
+.type-card-code{
+  font-family:var(--mono);font-size:12px;letter-spacing:0.08em;
+  color:var(--sub);text-transform:uppercase;
+}
+.type-card-name{font-size:15px;font-weight:600;color:var(--text);margin-top:6px}
+.type-card-golden{
+  border-color:rgba(198,255,61,0.35);
+  background:rgba(198,255,61,0.04);
+}
+.type-card-golden .type-card-code{color:var(--lime)}
+
+/* sophistication 시그널 (랜딩) */
+.hero-signal{
+  font-size:13px;color:var(--muted);font-family:var(--mono);
+  letter-spacing:0.05em;margin-top:28px;
+}
+
 /* 진단표 점수 카드 (PART 1) */
 .score-card{
   display:flex;justify-content:space-between;align-items:center;

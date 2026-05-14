@@ -34,22 +34,51 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
   </div>
 </header>
 
-<!-- Hero -->
-<section style="padding-top:100px;padding-bottom:60px">
+<!-- Hero (표지) -->
+<section class="hero-section">
   <div class="container text-center">
     <!-- 워크샵 1 확정 시드 (2026-05-13): TS형 캐치카피 = Hero H1 = Meta 광고 메인 카피 통일 — specs/2026-05-12-chatgpt-workshop-1-nickname-catchphrase.md -->
+    <span class="hero-eyebrow">MOSU · 트리거 진단서 v2026</span>
+
     <h1>
       마케팅은 돌아가는데,<br>
       <span class="gradient-text">매출 연결</span>이 안 보입니다
     </h1>
-    <p style="margin-top:20px;font-size:17px">
-      3분 트리거 진단.<br>
-      우리 회사 마케팅의 진짜 막힌 지점을 처방전으로 받아보세요.
+
+    <p style="margin-top:20px;font-size:17px;color:var(--sub);line-height:1.6">
+      당신의 회사는 4가지 처방 유형 중 어디인가요?<br>
+      운영 방식(F · Founder ↔ T · Team) × 성장 단계(S · 생존 ↔ G · 성장)<br>
+      2축 진단으로 우리 회사의 진짜 막힌 지점을 처방전으로 받아보세요.
     </p>
-    <div style="margin-top:40px">
+
+    <!-- 2x2 4유형 매트릭스 -->
+    <p class="type-matrix-axis">F · 대표 직접 운영 ↔ T · 마케터 위임  /  S · 생존 단계 ↔ G · 성장 단계</p>
+    <div class="type-matrix-grid">
+      <div class="type-card">
+        <div class="type-card-code">FS</div>
+        <div class="type-card-name">감각 운영자</div>
+      </div>
+      <div class="type-card type-card-golden">
+        <div class="type-card-code">TS · ★</div>
+        <div class="type-card-name">성과 확인형</div>
+      </div>
+      <div class="type-card">
+        <div class="type-card-code">FG</div>
+        <div class="type-card-name">성장 설계자</div>
+      </div>
+      <div class="type-card">
+        <div class="type-card-code">TG</div>
+        <div class="type-card-name">다음 체계 설계자</div>
+      </div>
+    </div>
+
+    <p class="hero-signal">6영역 × 4유형 = 24개 정밀 처방 매트릭스</p>
+
+    <div style="margin-top:32px">
       <a href="diagnosis.html" class="cta-btn">3분 진단 시작</a>
     </div>
-    <div class="check-list" style="margin-top:40px;display:inline-flex;flex-direction:column;align-items:flex-start">
+
+    <div class="check-list" style="margin-top:32px;display:inline-flex;flex-direction:column;align-items:flex-start">
       <div class="check-item">12문항 · 3분 · 무료</div>
       <div class="check-item">진단 결과지 + 30분 1:1 무료 처방 안내</div>
       <div class="check-item">1:1 상담 신청 여부는 진단 후 결정하셔도 됩니다</div>
