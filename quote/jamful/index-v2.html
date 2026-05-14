@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>잼플(JAMFUL) 마케팅 파트너십 견적서 — 브랜드라이즈 by HIZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0D0D0D;
+      --white: #FFFFFF;
+      --bg: #F7F6F2;
+      --accent: #FF6B00;
+      --accent-light: #FFF7ED;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-500: #6B7280;
+      --gray-700: #374151;
+      --text: #111827;
+    }
+    body {
+      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 48px; }
+
+    /* HERO */
+    .hero { background: var(--black); color: var(--white); padding: 100px 0 80px; }
+    .hero .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: 52px; font-weight: 900; line-height: 1.15;
+      letter-spacing: -0.025em; margin-bottom: 28px;
+    }
+    .hero h1 em { color: var(--accent); font-style: normal; }
+    .hero .sub {
+      font-size: 16px; color: rgba(255,255,255,0.55);
+      font-weight: 300; max-width: 580px; line-height: 1.85;
+    }
+    .hero-meta {
+      display: flex; gap: 56px; margin-top: 64px;
+      padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);
+      flex-wrap: wrap;
+    }
+    .hero-meta-item .k {
+      font-size: 10px; letter-spacing: 0.12em; color: rgba(255,255,255,0.35);
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .hero-meta-item .v { font-size: 14px; font-weight: 600; }
+
+    /* SECTIONS */
+    section { padding: 88px 0; }
+    .sec-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 14px;
+    }
+    h2 {
+      font-size: 36px; font-weight: 900; letter-spacing: -0.025em;
+      line-height: 1.25; margin-bottom: 16px; color: var(--black);
+    }
+    .sec-desc {
+      font-size: 15px; color: var(--gray-500); max-width: 600px;
+      line-height: 1.85; margin-bottom: 52px;
+    }
+    hr { border: none; border-top: 1px solid var(--gray-200); }
+
+    /* DATA GRID */
+    .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 44px; }
+    .d-card {
+      background: var(--white); border-radius: 14px; padding: 30px;
+      border: 1px solid var(--gray-200);
+    }
+    .d-card .num {
+      font-size: 36px; font-weight: 900; color: var(--black);
+      letter-spacing: -0.03em; margin-bottom: 6px;
+    }
+    .d-card .num em { color: var(--accent); font-style: normal; }
+    .d-card .ct { font-size: 13px; font-weight: 600; color: var(--gray-500); margin-bottom: 4px; }
+    .d-card .cd { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+    .d-card.wide { grid-column: 1 / -1; }
+    .d-card.dark {
+      background: var(--black); border-color: var(--black);
+    }
+    .d-card.dark .num { color: var(--white); }
+    .d-card.dark .ct { color: rgba(255,255,255,0.5); }
+    .d-card.dark .cd { color: rgba(255,255,255,0.45); }
+
+    /* COMPARE TABLE */
+    .cmp-wrap { margin-top: 36px; border-radius: 14px; overflow: hidden; border: 1px solid var(--gray-200); }
+    .cmp-table { width: 100%; border-collapse: collapse; background: var(--white); }
+    .cmp-table th {
+      padding: 16px 22px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; color: rgba(0,0,0,0.4);
+      text-align: left; text-transform: uppercase;
+      background: var(--gray-100); border-bottom: 1px solid var(--gray-200);
+    }
+    .cmp-table th.hi { color: var(--accent); background: var(--accent-light); }
+    .cmp-table td {
+      padding: 14px 22px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); vertical-align: top; line-height: 1.65;
+      color: var(--gray-500);
+    }
+    .cmp-table td:first-child { color: var(--text); font-weight: 500; }
+    .cmp-table tr:last-child td { border-bottom: none; }
+    .cmp-table .accent { color: var(--accent); font-weight: 700; }
+
+    /* TRACK SECTIONS */
+    .track-bg { background: var(--black); padding: 88px 0; }
+    .track-bg h2 { color: var(--white); }
+    .track-bg .sec-label { color: rgba(255,255,255,0.35); }
+    .track-bg .sec-desc { color: rgba(255,255,255,0.45); }
+
+    .track-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 52px; }
+    .tr-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px; padding: 38px 30px;
+      position: relative;
+    }
+    .tr-card.rec {
+      background: var(--accent); border-color: var(--accent);
+    }
+    .tr-card.full { grid-column: 1 / -1; }
+    .rec-badge {
+      position: absolute; top: -13px; left: 30px;
+      background: var(--white); color: var(--accent);
+      font-size: 10px; font-weight: 900; letter-spacing: 0.12em;
+      padding: 4px 16px; border-radius: 20px; text-transform: uppercase; white-space: nowrap;
+    }
+    .tr-name {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 10px;
+    }
+    .tr-title { font-size: 22px; font-weight: 800; color: var(--white); line-height: 1.3; margin-bottom: 20px; }
+    .tr-price { font-size: 40px; font-weight: 900; color: var(--white); letter-spacing: -0.03em; }
+    .tr-price span { font-size: 18px; font-weight: 600; }
+    .tr-period { font-size: 12px; color: rgba(255,255,255,0.4); margin: 6px 0 24px; }
+    .tr-feats { list-style: none; }
+    .tr-feat {
+      font-size: 13px; color: rgba(255,255,255,0.65);
+      padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .tr-feat:last-child { border-bottom: none; }
+    .tr-feat::before { content: "→"; color: rgba(255,255,255,0.3); flex-shrink: 0; margin-top: 1px; }
+
+    /* DETAIL */
+    .det { padding: 88px 0; border-bottom: 1px solid var(--gray-200); }
+    .det:last-of-type { border-bottom: none; }
+    .det-head {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 48px; margin-bottom: 52px; flex-wrap: wrap;
+    }
+    .det-head-l { flex: 1; min-width: 280px; }
+    .det-head-l h2 { margin-bottom: 14px; }
+    .price-box {
+      background: var(--black); color: var(--white);
+      border-radius: 18px; padding: 30px 40px; text-align: right; flex-shrink: 0;
+    }
+    .price-box .pl { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; margin-bottom: 8px; text-transform: uppercase; }
+    .price-box .pa { font-size: 34px; font-weight: 900; letter-spacing: -0.03em; }
+    .price-box .ps { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 4px; }
+
+    .dblock { background: var(--white); border-radius: 14px; border: 1px solid var(--gray-200); overflow: hidden; margin-bottom: 14px; }
+    .dblock-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 24px; background: var(--gray-100); border-bottom: 1px solid var(--gray-200);
+      gap: 16px;
+    }
+    .dblock-head .bt { font-size: 14px; font-weight: 700; color: var(--black); }
+    .dblock-head .bp { font-size: 14px; font-weight: 800; color: var(--accent); white-space: nowrap; }
+    .dtable { width: 100%; border-collapse: collapse; }
+    .dtable td {
+      padding: 14px 24px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); vertical-align: top; line-height: 1.7;
+    }
+    .dtable tr:last-child td { border-bottom: none; }
+    .dtable td:first-child { font-weight: 600; color: var(--black); width: 200px; white-space: nowrap; }
+    .dtable td:last-child { color: var(--gray-500); }
+
+    .total-bar {
+      background: var(--black); color: var(--white); padding: 26px 36px;
+      border-radius: 14px; display: flex; align-items: center;
+      justify-content: space-between; margin-top: 24px;
+    }
+    .total-bar .tl { font-size: 13px; color: rgba(255,255,255,0.5); }
+    .total-bar .ts { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+    .total-bar .ta { font-size: 38px; font-weight: 900; letter-spacing: -0.03em; }
+
+    .info-box {
+      background: var(--accent-light); border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0; padding: 22px 28px; margin-top: 20px;
+      font-size: 13px; color: var(--gray-700); line-height: 1.8;
+    }
+    .info-box strong { color: var(--accent); }
+
+    /* PHASE */
+    .phase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 44px; }
+    .ph-card {
+      background: var(--white); border-radius: 18px; padding: 38px 30px;
+      border: 1px solid var(--gray-200); position: relative;
+    }
+    .ph-card.rec { border: 2px solid var(--accent); }
+    .ph-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 10px;
+    }
+    .ph-title { font-size: 20px; font-weight: 800; color: var(--black); margin-bottom: 6px; }
+    .ph-price { font-size: 36px; font-weight: 900; color: var(--black); letter-spacing: -0.03em; }
+    .ph-price span { font-size: 16px; font-weight: 600; }
+    .ph-desc { font-size: 13px; color: var(--gray-500); margin: 16px 0; line-height: 1.7; }
+    .ph-items { list-style: none; }
+    .ph-items li {
+      font-size: 13px; color: var(--gray-700); padding: 6px 0;
+      display: flex; gap: 8px;
+    }
+    .ph-items li::before { content: "→"; color: var(--accent); flex-shrink: 0; }
+
+    /* QUICK WIN */
+    .qw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 36px; }
+    .qw-card {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: 14px; padding: 28px;
+    }
+    .qw-card.rec { border: 2px solid var(--accent); background: var(--accent-light); }
+    .qw-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      color: var(--gray-500); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .qw-card.rec .qw-label { color: var(--accent); }
+    .qw-text { font-size: 14px; color: var(--text); line-height: 1.75; font-weight: 500; }
+
+    /* NEXT STEPS */
+    .step-table { width: 100%; border-collapse: collapse; background: var(--white); margin-top: 36px; border-radius: 14px; overflow: hidden; border: 1px solid var(--gray-200); }
+    .step-table th {
+      padding: 16px 22px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; color: rgba(0,0,0,0.4);
+      text-align: left; text-transform: uppercase;
+      background: var(--gray-100); border-bottom: 1px solid var(--gray-200);
+    }
+    .step-table td {
+      padding: 14px 22px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); vertical-align: top; line-height: 1.7;
+      color: var(--gray-500);
+    }
+    .step-table td:first-child { color: var(--text); font-weight: 700; width: 200px; white-space: nowrap; }
+    .step-table tr:last-child td { border-bottom: none; }
+    .step-table tr.hi td { background: var(--accent-light); color: var(--text); }
+    .step-table tr.hi td:first-child { color: var(--accent); }
+
+    /* FOOTER */
+    .footer { background: var(--black); color: rgba(255,255,255,0.4); padding: 72px 0; text-align: center; }
+    .footer .brand { font-size: 20px; font-weight: 900; color: var(--white); margin-bottom: 6px; letter-spacing: -0.02em; }
+    .footer .tag { font-size: 13px; margin-bottom: 36px; }
+    .footer .meta { font-size: 12px; line-height: 2.2; }
+
+    @media (max-width: 720px) {
+      .container { padding: 0 24px; }
+      .hero { padding: 72px 0 56px; }
+      .hero h1 { font-size: 36px; }
+      h2 { font-size: 28px; }
+      section, .det, .track-bg { padding: 64px 0; }
+      .data-grid, .track-cards, .phase-grid, .qw-grid { grid-template-columns: 1fr; }
+      .det-head { flex-direction: column; }
+      .price-box { width: 100%; text-align: left; }
+      .dtable td:first-child { width: auto; white-space: normal; }
+    }
+
+    @media print {
+      .hero, .track-bg, .footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="label">Brand + Marketing Proposal</div>
+    <h1>5/15 D-day,<br><em>잼플의 모멘텀 윈도우</em></h1>
+    <p class="sub">5/15 신요금제 출시 D-day, 그 7일과 이어지는 6개월 안에<br>B2B 도입사 100→200사, B2C 멤버십 첫 1,000명,<br>인스타그램 팔로워 452→3,000을 만듭니다.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="k">공급자</div><div class="v">브랜드라이즈 by HIZ</div></div>
+      <div class="hero-meta-item"><div class="k">수신</div><div class="v">(주)크램 김수민 대표</div></div>
+      <div class="hero-meta-item"><div class="k">기준일</div><div class="v" id="today-date"></div></div>
+      <div class="hero-meta-item"><div class="k">유효기간</div><div class="v">발행일로부터 30일</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY — 숫자 기반 진단 -->
+<section>
+  <div class="container">
+    <div class="sec-label">Current Numbers</div>
+    <h2>지금, 잼플의 숫자</h2>
+    <p class="sec-desc">시드 단계에서 보기 드물게 시점 한정 모멘텀 4개가<br>동시에 열려 있습니다. 빠진 건 하나 — 그 모멘텀을<br>자산으로 쌓을 운영 체계.</p>
+
+    <div class="data-grid">
+      <div class="d-card">
+        <div class="ct">B2B 도입사</div>
+        <div class="num">100<em>사+</em></div>
+        <div class="cd">제휴 센터 900+ · 매출 라인 이미 검증</div>
+      </div>
+      <div class="d-card">
+        <div class="ct">5/15 신요금제 출시</div>
+        <div class="num">D-<em>1</em></div>
+        <div class="cd">B2C 본격 시장 진입 D-day · 첫 측정 윈도우 오픈</div>
+      </div>
+      <div class="d-card">
+        <div class="ct">인스타그램 팔로워</div>
+        <div class="num">452</div>
+        <div class="cd">피드 166편 · 정체성 정렬 0 · 운영 의지 0</div>
+      </div>
+      <div class="d-card">
+        <div class="ct">B2C 멤버십 회원</div>
+        <div class="num">0<em>명</em></div>
+        <div class="cd">5/15 출시 후 누적 · CAC 기준선 미측정</div>
+      </div>
+      <div class="d-card dark wide">
+        <div class="ct">문제</div>
+        <div class="num" style="font-size:24px; line-height:1.4;">검증된 라인은 있다.<br><em>모멘텀이 자산으로 쌓이지 않을 뿐.</em></div>
+        <div class="cd" style="margin-top:12px;">외부 PR 자산 3건은 자사 채널로 환류되지 않습니다.<br>메타 광고는 미가동, 마케팅 운영 인력은 0명.<br>5/15 출시 직후 첫 30일이 잼플의 모수 첫 측정 윈도우 — 이 30일이 CAC를 결정합니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- 6개월 후 -->
+<section>
+  <div class="container">
+    <div class="sec-label">6-Month Outcome</div>
+    <h2>지금 vs<br>6개월 후</h2>
+    <p class="sec-desc">5/15 D-day와 그 다음 6개월이 만들 변곡점.<br>같은 시드 단계인데, 운영 체계가 있느냐 없느냐의 차이.</p>
+
+    <div class="cmp-wrap">
+      <table class="cmp-table">
+        <thead>
+          <tr>
+            <th style="width:200px">지표</th>
+            <th>지금</th>
+            <th class="hi">6개월 후</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>B2B 도입사</td>
+            <td>100사</td>
+            <td class="accent">200사</td>
+          </tr>
+          <tr>
+            <td>B2C 멤버십 첫 회원</td>
+            <td>0명</td>
+            <td class="accent">1,000명 (5/15 출시 후 누적)</td>
+          </tr>
+          <tr>
+            <td>인스타그램</td>
+            <td>팔로워 452 · 피드 166 · 운영 의지 0</td>
+            <td class="accent">톤앤매너 완성 · 피드 +36 · 릴스 +23 · 팔로워 3,000</td>
+          </tr>
+          <tr>
+            <td>B2B 블로그 검색 유입</td>
+            <td>베이스라인 미측정</td>
+            <td class="accent">M1 베이스라인 + 3배 확장</td>
+          </tr>
+          <tr>
+            <td>메타 광고</td>
+            <td>미가동</td>
+            <td class="accent">픽셀·이벤트 안정화 · ROAS 기준선 확보 · CAC 측정 가능</td>
+          </tr>
+          <tr>
+            <td>광고 자산</td>
+            <td>0</td>
+            <td class="accent">인플루언서 UGC 8명분 + 광고 학습 데이터 1식</td>
+          </tr>
+          <tr>
+            <td>5/15 신요금제 출시 진입 상태</td>
+            <td>예정</td>
+            <td class="accent">사전 톤 정렬 · 메타 광고 시동 완료</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="info-box" style="margin-top:24px;">
+      <strong>핵심 가설:</strong> 잼플은 시드 단계 브랜드 중 드물게 <strong>시점 한정 모멘텀 4개</strong>(5/15 출시·통상임금 KSP·청창사 자금·Move Together 데이터 레일)를 동시에 가진 상태입니다.<br>
+      이 4개가 동시에 열려 있는 윈도우는 길어야 6개월. 그 안에 운영 체계를 깔지 못하면, 모멘텀은 자산이 되지 못하고 시간만 지납니다.
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- 제안 구조 -->
+<div class="track-bg">
+  <div class="container">
+    <div class="sec-label">Proposal Structure</div>
+    <h2 style="color:var(--white)">양트랙 + 공통 시동</h2>
+    <p class="sec-desc">B2C와 B2B는 한 번에 갑니다.<br>5/12~5/18 게릴라 시동이 양트랙의 첫 30일 CAC를 결정합니다.</p>
+
+    <div class="track-cards">
+      <div class="tr-card rec full">
+        <div class="rec-badge">5/15 D-day 시동</div>
+        <div class="tr-name">Phase 0 · 게릴라 + 진단</div>
+        <div class="tr-title">5/15 출시 게릴라 스프린트 + M1 진단 파일럿</div>
+        <div class="tr-price">350<span>만원</span></div>
+        <div class="tr-period">VAT 별도 · 단월 (5/12~6/14)</div>
+        <ul class="tr-feats">
+          <li class="tr-feat">5/12~5/18 게릴라 7일 — 인스타 정렬·D-day 카드·메타 시동·B2B 보도자료</li>
+          <li class="tr-feat">5/19~6/14 M1 진단 파일럿 — 가설 시트 4종·GA4·픽셀·UTM 표준</li>
+          <li class="tr-feat">B2B/B2C 양트랙 공통 인프라 — 6/14 종료 리뷰까지</li>
+        </ul>
+      </div>
+
+      <div class="tr-card">
+        <div class="tr-name">Track 1 · B2C</div>
+        <div class="tr-title">인스타그램 + 메타 광고 + 시딩</div>
+        <div class="tr-price">3,950<span>만원</span></div>
+        <div class="tr-period">VAT 별도 · M2~M6</div>
+        <ul class="tr-feats">
+          <li class="tr-feat">인스타그램 정체성 재구축 + 월간 운영</li>
+          <li class="tr-feat">B2C 메타 광고 운영 (광고비 별도)</li>
+          <li class="tr-feat">인플루언서 시딩 8명 + UGC 광고 재활용</li>
+        </ul>
+      </div>
+
+      <div class="tr-card">
+        <div class="tr-name">Track 2 · B2B</div>
+        <div class="tr-title">콘텐츠 + 검색·LinkedIn 광고</div>
+        <div class="tr-price">1,250<span>만원</span></div>
+        <div class="tr-period">VAT 별도 · M2~M6</div>
+        <ul class="tr-feats">
+          <li class="tr-feat">블로그 월 4편 — 통상임금 KSP 척추</li>
+          <li class="tr-feat">네이버·구글 검색 + LinkedIn HR 타겟팅</li>
+          <li class="tr-feat">IR덱·세일즈덱·케이스 스터디 업데이트</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 0 상세 -->
+<section class="det">
+  <div class="container">
+    <div class="sec-label">Phase 0 · 5/15 시동</div>
+    <div class="det-head">
+      <div class="det-head-l">
+        <h2>5/15 출시 게릴라 + 진단 파일럿</h2>
+        <p class="sec-desc" style="margin-bottom:0">킥오프와 출시 사이의 갭을 게릴라 7일로 메워서<br>첫 달 체감 가치를 만듭니다. 5/12 계약 기준 3일 안에 가동.</p>
+      </div>
+      <div class="price-box">
+        <div class="pl">Phase 0 Total</div>
+        <div class="pa">3,500,000</div>
+        <div class="ps">VAT 별도 · 단월</div>
+      </div>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">① 5/12~5/18 게릴라 7일</span>
+        <span class="bp">출시 D-day 시동</span>
+      </div>
+      <table class="dtable">
+        <tr><td>인스타그램 정렬</td><td>바이오·하이라이트·프로필 정렬 (소개서 첫 페이지 카피 기준)</td></tr>
+        <tr><td>D-day 카드 3장</td><td>출시 전날·당일·다음 날 카드 / 메시지 일관성 회복</td></tr>
+        <tr><td>메타 광고 시동</td><td>소재 2종 + 일 5만 × 7일 시동 (잼플 자체 카피 차용)</td></tr>
+        <tr><td>B2B 출시 보도자료</td><td>블로그·외부 매체 노출용 1편</td></tr>
+        <tr><td>KPI 측정 시트</td><td>첫 7일 일자별 가설·실측 시트</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">② 5/19~6/14 M1 진단 파일럿</span>
+        <span class="bp">측정 인프라 구축</span>
+      </div>
+      <table class="dtable">
+        <tr><td>가설 시트 4종</td><td>B2B/B2C × 콘텐츠/광고 가설 분리 정리</td></tr>
+        <tr><td>측정 표준</td><td>GA4 이벤트 · 메타 픽셀 · UTM 표준 · 주간 대시보드</td></tr>
+        <tr><td>인스타그램</td><td>콘텐츠 시리즈 정의서 (M2 본운영 진입 준비)</td></tr>
+        <tr><td>B2B</td><td>검색 광고 + 블로그 SEO 1차 셋업 (키워드 50개)</td></tr>
+        <tr><td>광고 운영</td><td>첫 30일 광고 운영 + 주간 리뷰 4회</td></tr>
+        <tr><td>종료 리뷰</td><td>6/14 M1 종료 리뷰 미팅 + M2~M6 자동전환 결정</td></tr>
+      </table>
+    </div>
+
+    <div class="total-bar">
+      <div><div class="tl">PHASE 0 TOTAL</div><div class="ts">VAT 별도 · 단월</div></div>
+      <div class="ta">3,500,000원</div>
+    </div>
+
+    <div class="info-box">
+      <strong>왜 게릴라 7일이 결정 변수인가:</strong> 5/15 출시 직후 첫 30일이 잼플의 모수 첫 측정 윈도우입니다.<br>
+      마케팅 인프라 0인 상태로 출시에 진입하는 것과, 4명이 7일간 게릴라로 깔아둔 상태로 진입하는 것의 차이가 <strong>첫 30일 CAC</strong>를 결정합니다.<br>
+      M1 종료 시점(6/14)에 M2~M6 자동전환 여부를 함께 결정합니다.
+    </div>
+  </div>
+</section>
+
+<!-- TRACK 1 상세 -->
+<section class="det">
+  <div class="container">
+    <div class="sec-label">Track 1 · B2C</div>
+    <div class="det-head">
+      <div class="det-head-l">
+        <h2>B2C — 인스타그램 + 메타 광고 + 시딩</h2>
+        <p class="sec-desc" style="margin-bottom:0">"원하는 시간, 원하는 장소, 하나의 운동 멤버십"을<br>인스타그램에 옮기고, 메타 광고로 첫 1,000 멤버십을 만들고,<br>인플루언서 UGC로 광고 풀을 확장합니다.</p>
+      </div>
+      <div class="price-box">
+        <div class="pl">Track 1 Total</div>
+        <div class="pa">39,500,000</div>
+        <div class="ps">VAT 별도 · M2~M6</div>
+      </div>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">① 인스타그램 정체성 재구축 + 운영 (M2~M6)</span>
+        <span class="bp">17,500,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>톤앤매너 정렬 (M2)</td><td>피드 그리드 설계 · 컬러·타이포 가이드 · 무드보드 · 캡션 톤</td></tr>
+        <tr><td>콘텐츠 기획</td><td>월간 콘텐츠 캘린더 · 릴스/세로형 중심 · Move Together 데이터 자산화</td></tr>
+        <tr><td>콘텐츠 제작</td><td>피드 6편/월 + 릴스 4편/월 + 스토리 20편/월 + 카피 + 해시태그</td></tr>
+        <tr><td>채널 운영</td><td>게시 · 해시태그 · 댓글 · DM 응대 가이드</td></tr>
+        <tr><td>성과 리포팅</td><td>주간 인사이트 + 월간 성과 리포트</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">② B2C 메타 광고 운영 Fee (M2~M6)</span>
+        <span class="bp">10,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>계정 세팅</td><td>광고 계정 · 픽셀 · 전환 이벤트(가입·결제) 세팅</td></tr>
+        <tr><td>캠페인 설계</td><td>타겟 오디언스(운동·라이프스타일 · 900+ 센터 지역 거주자), 미디어 믹스, 예산 배분</td></tr>
+        <tr><td>소재 제작</td><td>인스타 콘텐츠 + 인플루언서 UGC → 광고용 편집, A/B 테스트</td></tr>
+        <tr><td>최적화</td><td>타겟·소재·배치 최적화, M5부터 리타겟팅 본격화</td></tr>
+        <tr><td>리포팅</td><td>주간 광고 리포트 + 월간 ROAS 리뷰 (광고 실집행비 별도)</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">③ 인플루언서 시딩 (M3·M5 분산)</span>
+        <span class="bp">12,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>티어 구성</td><td>마이크로(1~3만) 5명 · 나노(1만 이하) 3명 / 라이프스타일·운동 카테고리</td></tr>
+        <tr><td>운영</td><td>기획 · 섭외 · 가이드 · QC · UGC 재활용 편집 (저작권 계약서 포함)</td></tr>
+        <tr><td>UGC 재활용</td><td>원본 콘텐츠를 메타 광고 소재로 재활용 (광고 소재 풀 자연 확장)</td></tr>
+        <tr><td>분산 집행</td><td>M3 4명 + M5 4명 — 광고 학습 사이클과 맞물림 (시딩 제품 원가 별도)</td></tr>
+      </table>
+    </div>
+
+    <div class="total-bar">
+      <div><div class="tl">TRACK 1 TOTAL</div><div class="ts">VAT 별도 · M2~M6</div></div>
+      <div class="ta">39,500,000원</div>
+    </div>
+
+    <div class="info-box">
+      <strong>예상 산출물:</strong> 인스타 피드 34 + 릴스 23 + 스토리 112 = 콘텐츠 <strong>169개</strong> + 인플루언서 UGC 8명분 + 광고 학습 데이터 1식<br>
+      <strong>도달 가설:</strong> 메타 광고 일 5~10만 운영 기준 CPI·CAC 기준선 확보 / M5부터 리타겟팅 본격화 / 첫 1,000 멤버십 누적<br>
+      <strong>자산화:</strong> 광고 중단 후에도 인스타 169개·UGC 8명분은 채널 자산으로 남습니다.
+    </div>
+  </div>
+</section>
+
+<!-- TRACK 2 상세 -->
+<section class="det">
+  <div class="container">
+    <div class="sec-label">Track 2 · B2B</div>
+    <div class="det-head">
+      <div class="det-head-l">
+        <h2>B2B — 콘텐츠 + 검색·LinkedIn</h2>
+        <p class="sec-desc" style="margin-bottom:0">잼플의 B2B는 이미 검증된 라인입니다.<br>모수만 늘리면 전환 곡선이 보장됩니다. 통상임금 대법 판결(2024.12) KSP를 척추로.</p>
+      </div>
+      <div class="price-box">
+        <div class="pl">Track 2 Total</div>
+        <div class="pa">12,500,000</div>
+        <div class="ps">VAT 별도 · M2~M6</div>
+      </div>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">B2B 콘텐츠 + 검색·LinkedIn 광고 (M2~M6)</span>
+        <span class="bp">12,500,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>블로그 콘텐츠</td><td>월 4편 (총 22편) — "기업복지·직원만족도·통상임금 대응" 키워드 점유</td></tr>
+        <tr><td>네이버·구글 검색 광고</td><td>키워드 50개 운영 · 랜딩 점검 · CPC·전환율 주간 추적</td></tr>
+        <tr><td>LinkedIn HR 타겟팅</td><td>M3부터 추가 — 인사·총무·노무팀 직책 타겟 · 통상임금 KSP 콘텐츠 노출</td></tr>
+        <tr><td>IR/세일즈덱 업데이트</td><td>M4 IR덱 업데이트 · M5 세일즈덱 업데이트 · M6 케이스 스터디 1편</td></tr>
+        <tr><td>주간 리포트</td><td>검색 유입 · 블로그 트래픽 · LinkedIn 클릭 · B2B 도입 문의 통합 리포트</td></tr>
+      </table>
+    </div>
+
+    <div class="total-bar">
+      <div><div class="tl">TRACK 2 TOTAL</div><div class="ts">VAT 별도 · M2~M6</div></div>
+      <div class="ta">12,500,000원</div>
+    </div>
+
+    <div class="info-box">
+      <strong>왜 통상임금 KSP인가:</strong> 2024년 12월 대법 판결로 통상임금 대응이 B2B HR 부서의 1순위 의제로 올라왔습니다.<br>
+      이 윈도우는 길어야 12~18개월. <strong>판결 후 1년 안에 검색 인덱스를 선점</strong>하면, 이후 B2B 영업의 척추 콘텐츠가 됩니다.<br>
+      <strong>예상 산출물:</strong> 블로그 22편 + IR덱 업데이트 + 세일즈덱 업데이트 + 케이스 스터디 1편 + 검색·LinkedIn 학습 데이터 1식
+    </div>
+  </div>
+</section>
+
+
+<hr>
+
+<!-- Quick Win -->
+<section>
+  <div class="container">
+    <div class="sec-label">Quick Win</div>
+    <h2>오늘 30초 안에</h2>
+    <p class="sec-desc">계약 전, 잼플 인스타그램 바이오 한 줄을 먼저 드립니다.<br>잼플 소개서 첫 페이지 카피를 그대로 옮긴 것입니다.</p>
+
+    <div class="qw-grid">
+      <div class="qw-card">
+        <div class="qw-label">현재 바이오</div>
+        <div class="qw-text">JAMFUL | Flexible Lifestyle Platform<br>800+ 센터, 클래스 조회와 예약을 한번에!</div>
+      </div>
+      <div class="qw-card rec">
+        <div class="qw-label">변경 제안</div>
+        <div class="qw-text">원하는 시간, 원하는 장소, 하나의 운동 멤버십<br>전국 900+ 센터를 잼플 하나로</div>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top:24px;">
+      <strong>이유 두 가지:</strong> ① 소개서 첫 페이지 카피를 그대로 옮긴 것이라 메시지 일관성이 즉시 회복됩니다. ② "900+" 최신 숫자가 반영되어 신뢰 신호가 강해집니다.<br>
+      <strong>측정:</strong> 30일 후 프로필 방문 → 팔로우 전환율을 자체적으로 측정하실 수 있습니다.
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- 합계 + 결제 옵션 -->
+<section>
+  <div class="container">
+    <div class="sec-label">Total + Investment Option</div>
+    <h2>합계 및 결제 옵션</h2>
+    <p class="sec-desc">M1 진단 종료 후 6/14 리뷰에서 M2~M6 자동전환을 결정하실 수 있습니다.<br>다만 6개월 풀 진행이 광고 학습·시딩 분산·전략 연속성 면에서 효율적입니다.</p>
+
+    <div class="phase-grid">
+      <div class="ph-card">
+        <div class="ph-label">Option A · 단일 시동</div>
+        <div class="ph-title">Phase 0 단월</div>
+        <div class="ph-price">350<span>만원</span></div>
+        <div class="ph-desc">M0 게릴라 + M1 진단 파일럿까지<br>6/14 리뷰 후 본운영 진입 여부 결정</div>
+        <ul class="ph-items">
+          <li>Phase 0 전체</li>
+          <li>6/14 종료 리뷰 미팅</li>
+        </ul>
+      </div>
+      <div class="ph-card rec">
+        <div class="ph-label">Option B · 권장 6개월 풀</div>
+        <div class="ph-title">Phase 0 + Track 1 + Track 2</div>
+        <div class="ph-price">5,550<span>만원</span></div>
+        <div class="ph-desc">5/15 D-day부터 10/14 6개월 결산까지<br>광고 학습·시딩 분산·전략 연속성 확보</div>
+        <ul class="ph-items">
+          <li>Phase 0 · 게릴라 + 진단 (350만)</li>
+          <li>Track 1 · B2C (3,950만)</li>
+          <li>Track 2 · B2B (1,250만)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top:24px;">
+      <strong>직접 집행 권장 (별도):</strong> 메타 광고비 · 네이버·구글·LinkedIn 광고비 · 인플루언서 제품 시딩 원가 합계 약 1,200만원<br>
+      잼플 명의 직결제가 세금계산서·ROAS 투명성 면에서 유리합니다 (대행비 미포함).<br><br>
+      <strong>총 사업비:</strong> Option B 5,550만 + 직접 집행 1,200만 = <strong>6,750만 (VAT 별도)</strong><br>
+      <strong>청창사 자금 활용:</strong> 사업화자금 최대 1억 · 총사업비 70% 이내 · 마케팅비 인정 비목. 잔여 한도와 인정 비율 확정 시 결제 분할·선납 조건을 잼플 자금 집행 일정에 맞춰 재설계해 드립니다.
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- 다음 스텝 -->
+<section>
+  <div class="container">
+    <div class="sec-label">Next Steps</div>
+    <h2>다음 스텝</h2>
+    <p class="sec-desc">5/12 킥오프가 5/15 출시 모멘텀의 결정 변수입니다.<br>검토 직후 회신 주시면 계약 절차를 패스트트랙으로 진행합니다.</p>
+
+    <table class="step-table">
+      <thead>
+        <tr>
+          <th>일정</th>
+          <th>내용</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>5/14 (목)</td><td>견적서·제안서 송부 / 김 대표님 검토</td></tr>
+        <tr><td>5/16 (금)</td><td>팔로업 콜 — 제안서 Q&amp;A, 추가 질문 수렴</td></tr>
+        <tr><td>5/19 (월)</td><td>계약 의향 회신 / 청창사 자금 한도 확정 시 결제 조건 동시 협의</td></tr>
+        <tr><td>5/20~5/22</td><td>계약서 교환</td></tr>
+        <tr class="hi"><td>5/12 (월) ★</td><td>킥오프 미팅 + 5/15 출시 게릴라 스프린트 가동</td></tr>
+      </tbody>
+    </table>
+
+    <div class="info-box" style="margin-top:24px;">
+      궁금하신 점이나 조율할 부분 있으시면 편하게 말씀 주세요. 메일도 좋고 전화도 좋습니다.<br>
+      <strong>문의:</strong> 브랜드라이즈 by HIZ · 우성민
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="container">
+    <div class="brand">브랜드라이즈 by HIZ</div>
+    <div class="tag">스타트업을 위한 마케팅 코칭 파트너</div>
+    <div class="meta">
+      본 견적서의 유효기간은 발행일로부터 30일입니다.<br>
+      위 금액은 모두 VAT 별도 기준입니다.<br>
+      Phase 0 단월 시동 후 Track 1·Track 2 분리 집행도 가능하며, 항목 조정은 협의 가능합니다.<br>
+      문의: 브랜드라이즈 by HIZ · <span id="footer-date"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var d = new Date();
+    var y = d.getFullYear();
+    var m = String(d.getMonth() + 1).padStart(2, '0');
+    var day = String(d.getDate()).padStart(2, '0');
+    var formatted = y + '. ' + m + '. ' + day;
+    document.getElementById('today-date').textContent = formatted;
+    document.getElementById('footer-date').textContent = formatted;
+  })();
+</script>
+</body>
+</html>
