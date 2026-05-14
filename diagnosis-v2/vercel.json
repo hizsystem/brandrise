@@ -3,11 +3,6 @@
     { "source": "/diagnosis", "destination": "/diagnosis.html" },
     { "source": "/result", "destination": "/result.html" }
   ],
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "@vercel/node@3"
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
