@@ -166,10 +166,10 @@ const PRESCRIPTIONS = {
 
 // 4유형별 함정 한 줄 (PART 1 하단)
 const TRAP_DIAGNOSIS = {
-  FS: '1인 다역으로 굴리는 회사는, 사장님의 체력과 시간에 매출 곡선이 묶여 있습니다.',
-  FG: '광고비로 끌어올린 매출은 데이터 기반 의사결정이 안 깔리면 12개월 안에 다시 정체에 도착합니다.',
-  TS: '위임은 했지만 검증 도구가 없는 상태가 6개월 이상이면, 마케터 교체보다 검증 시스템 부재가 원인일 가능성이 큽니다.',
-  TG: '팀 규모는 갖췄지만 다음 단계 가설이 비어있는 회사는 셀프 진단보다 정밀 자문이 어울립니다.',
+  FS: '대표 한 명이 마케팅·영업·운영을 1인 다역으로 굴리는 회사는, 사장님의 체력과 시간에 매출 곡선이 묶여 있습니다. 사장님이 멈출 때 회사 마케팅도 멈춥니다.',
+  FG: '광고비로 끌어올린 매출은, 사장님이 매주 볼 데이터·대시보드가 깔려 있지 않으면 12개월 안에 다시 정체 구간으로 돌아옵니다. 광고가 만든 성장은 광고가 멈출 때 같이 멈춥니다.',
+  TS: '대표가 마케터에게 마케팅을 위임한 지 6개월이 지났는데도 사장님이 매주 볼 검증 도구(대시보드·리포트)가 비어 있다면, 사장님이 느끼는 답답함의 원인은 마케터 역량이 아니라 검증 시스템 부재일 가능성이 큽니다.',
+  TG: '마케팅 팀 3인 이상·시리즈A+ 단계 회사는 다음 단계(브랜드·확장·해외) 가설을 셀프 진단으로 짚기에 입력 정보가 부족합니다. 1:1 정밀 자문이 더 정확합니다.',
 };
 
 // 위험 신호 본문 (4유형 × 위험도)
@@ -211,10 +211,9 @@ function renderPart1() {
   wrap.innerHTML = sorted.map(([id, val]) => {
     const meta = AREA_META[id];
     const lowClass = val <= 2 ? 'score-card-low' : '';
-    const tag = meta.tag2026 ? '<span class="tag-lime" style="margin-left:8px">2026</span>' : '';
     return `
       <div class="score-card ${lowClass}">
-        <span class="score-card-name">${meta.name}${tag}</span>
+        <span class="score-card-name">${meta.name}</span>
         <span class="score-card-value">${val} / 4</span>
       </div>
     `;
@@ -257,24 +256,27 @@ function renderPart2() {
     document.getElementById('trendGapCard').style.display = 'block';
   }
 
-  // C2 키워드 인용 카드 3장 (placeholder — 키워드 추출은 시드 받은 뒤 정교화)
-  const c2Excerpt = c2 ? `"${c2.slice(0, 60)}${c2.length > 60 ? '…' : ''}"` : '(C2 응답 없음)';
-  const cards = [
-    {
-      label: '본인이 쓴 답에서',
-      body: c2Excerpt + ' — 이 한 줄 안에 우리가 본 핵심 신호가 있습니다.'
-    },
-    {
-      label: '점수 패턴에서',
-      body: `${AREA_META[Object.entries(scores).sort((a, b) => a[1] - b[1])[0][0]].name}이 가장 낮은 패턴은 ${code}형에서 자주 보입니다.`
-    },
-    {
+  // 진단 카드 — 응답이 있을 때만 카드를 만든다 (내부 코드/빈 응답 노출 금지)
+  const lowestArea = AREA_META[Object.entries(scores).sort((a, b) => a[1] - b[1])[0][0]].name;
+  const cards = [];
+  if (c2 && c2.trim().length > 0) {
+    const c2Excerpt = `"${c2.slice(0, 60)}${c2.length > 60 ? '…' : ''}"`;
+    cards.push({
+      label: '직접 쓰신 답에서',
+      body: `${c2Excerpt} — 이 한 줄 안에 사장님이 지금 느끼는 답답함의 핵심 신호가 들어 있습니다.`
+    });
+  }
+  cards.push({
+    label: '점수 패턴에서',
+    body: `6개 영역 중 ${lowestArea} 점수가 가장 낮은 패턴은 ${code}형에서 자주 보입니다.`
+  });
+  if (c1.length > 0) {
+    const c1Labels = c1.map(id => ({ inflow: '신규 고객 유입', roas: '광고 ROAS', content: '콘텐츠 반응', data: '데이터·시스템', verify: '마케터 검증', next: '다음 단계' })[id] || id).join('", "');
+    cards.push({
       label: '시급 과제 선택에서',
-      body: c1.length > 0
-        ? `"${c1.map(id => ({ inflow: '신규 고객 유입', roas: '광고 ROAS', content: '콘텐츠 반응', data: '데이터·시스템', verify: '마케터 검증', next: '다음 단계' })[id] || id).join('", "')}" — 이건 위 ${AREA_META[Object.entries(scores).sort((a, b) => a[1] - b[1])[0][0]].name} 점수와 직결됩니다.`
-        : '시급 과제를 선택하지 않으셨습니다.'
-    },
-  ];
+      body: `사장님이 고른 "${c1Labels}" — 이건 위 ${lowestArea} 점수와 직결됩니다.`
+    });
+  }
   document.getElementById('diagnosticCards').innerHTML = cards.map(c => `
     <div class="risk-card" style="border-left:3px solid var(--orange)">
       <div style="font-size:12px;color:var(--orange);font-family:var(--mono);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px">${c.label}</div>
@@ -305,17 +307,28 @@ function renderPart2() {
 }
 
 function renderPart3() {
-  // 1순위 처방: 가장 낮은 영역
-  const lowest = Object.entries(scores).sort((a, b) => a[1] - b[1])[0];
-  const [areaId] = lowest;
-  const prescription = PRESCRIPTIONS[code]?.[areaId] || PRESCRIPTIONS.TS?.[areaId] || {
-    headline: `${AREA_META[areaId].name} 영역의 다음 한 수가 비어 있습니다`,
-    body: '진단 결과를 바탕으로 한 정밀 처방은 30분 1:1에서 이어집니다.'
-  };
+  // 1·2·3순위 처방: 점수 낮은 영역 순으로 상위 3개
+  const ranked = Object.entries(scores).sort((a, b) => a[1] - b[1]).slice(0, 3);
 
-  document.getElementById('prescriptionArea').textContent = `1순위 · ${AREA_META[areaId].name}`;
-  document.getElementById('prescriptionHeadline').textContent = prescription.headline;
-  document.getElementById('prescriptionBody').textContent = prescription.body;
+  const list = document.getElementById('prescriptionList');
+  list.innerHTML = ranked.map(([areaId, val], idx) => {
+    const rank = idx + 1;
+    const prescription = PRESCRIPTIONS[code]?.[areaId] || PRESCRIPTIONS.TS?.[areaId] || {
+      headline: `${AREA_META[areaId].name} 영역의 다음 한 수가 비어 있습니다`,
+      body: '진단 결과를 바탕으로 한 정밀 처방은 30분 1:1에서 이어집니다.'
+    };
+    // 1순위만 lime 강조, 2·3순위는 톤 다운
+    const isPrimary = rank === 1;
+    const cardClass = isPrimary ? 'prescription-card' : 'prescription-card prescription-card-sub';
+    const tagClass = isPrimary ? 'tag-lime' : 'tag-sub';
+    return `
+      <div class="${cardClass}">
+        <span class="${tagClass}">${rank}순위 · ${AREA_META[areaId].name} (${val}/4)</span>
+        <h3 class="prescription-headline" style="margin-top:12px">${prescription.headline}</h3>
+        <p class="prescription-body">${prescription.body}</p>
+      </div>
+    `;
+  }).join('');
 
   // TG형 자연 이탈 안내
   if (code === 'TG' || stage === 'series-a-plus' || team === '3+') {
