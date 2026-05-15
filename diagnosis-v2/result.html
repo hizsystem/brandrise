@@ -51,7 +51,7 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
     <div id="part1Scores" style="margin-top:24px">
       <!-- 6영역 점수 카드, 낮은 순 정렬, JS 렌더 -->
     </div>
-    <div id="part1Total" style="margin-top:24px;padding:20px 24px;background:rgba(255,255,255,0.03);border-radius:var(--radius-sm);text-align:center">
+    <div id="part1Total" style="margin-top:24px;padding:20px 24px;background:var(--card-soft);border-radius:var(--radius-sm);text-align:center">
       <span style="font-size:13px;color:var(--muted);font-family:var(--mono);letter-spacing:0.05em">TOTAL</span>
       <div style="font-size:32px;font-weight:700;color:var(--text);margin-top:4px"><span id="totalScore">—</span> / 24</div>
     </div>
@@ -62,7 +62,7 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
 </section>
 
 <!-- PART 2: 위험 신호 진단 -->
-<section style="padding:40px 0;background:rgba(255,255,255,0.015)">
+<section style="padding:40px 0;background:var(--card-soft)">
   <div class="container">
     <div class="part-header">
       <span class="part-label">PART 2</span>
@@ -78,7 +78,7 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
     </div>
 
     <!-- 2026 트렌드 격차 카드 (B2 또는 B5 1~2점 시 표시) -->
-    <div id="trendGapCard" style="display:none;margin-top:24px;padding:24px;background:rgba(198,255,61,0.05);border:1px solid rgba(198,255,61,0.2);border-radius:var(--radius)">
+    <div id="trendGapCard" style="display:none;margin-top:24px;padding:24px;background:var(--green-soft);border:1px solid var(--green);border-radius:var(--radius)">
       <span class="tag-lime">2026 핵심 격차</span>
       <h3 style="margin-top:12px;color:var(--text)" id="trendGapHeadline"></h3>
       <p style="margin-top:8px;font-size:14px;line-height:1.6;color:var(--sub)" id="trendGapBody"></p>

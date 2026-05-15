@@ -398,8 +398,8 @@ function renderPart2() {
     });
   }
   document.getElementById('diagnosticCards').innerHTML = cards.map(c => `
-    <div class="risk-card" style="border-left:3px solid var(--orange)">
-      <div style="font-size:12px;color:var(--orange);font-family:var(--mono);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px">${c.label}</div>
+    <div class="risk-card" style="border-left:3px solid var(--green)">
+      <div style="font-size:12px;color:var(--green);font-family:var(--mono);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px">${c.label}</div>
       <p style="font-size:14px;line-height:1.6;color:var(--text);margin:0">${c.body}</p>
     </div>
   `).join('');
