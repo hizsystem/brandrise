@@ -315,7 +315,7 @@ const TREND_GAP = {
 // ============ 렌더 ============
 
 function renderHero() {
-  document.getElementById('heroCode').textContent = `${code} · 코드`;
+  document.getElementById('heroCode').textContent = '당신의 처방 유형';
   document.getElementById('heroNickname').textContent = NICKNAMES[code] || code;
   document.getElementById('heroCatchphrase').textContent = CATCHPHRASES[code] || '';
 
@@ -325,16 +325,31 @@ function renderHero() {
 }
 
 function renderPart1() {
-  // 점수 카드, 낮은 순 정렬
+  // 점수 카드, 낮은 순 정렬 (위험할수록 빨강·점 그래프 추가)
   const sorted = Object.entries(scores).sort((a, b) => a[1] - b[1]);
   const wrap = document.getElementById('part1Scores');
   wrap.innerHTML = sorted.map(([id, val]) => {
     const meta = AREA_META[id];
-    const lowClass = val <= 2 ? 'score-card-low' : '';
+    // 점수 등급별 색·강조
+    let levelClass = '';
+    if (val <= 1) levelClass = 'score-card-danger';        // 0~1 빨강 (위험)
+    else if (val === 2) levelClass = 'score-card-warn';     // 2 주황 (경고)
+    else if (val === 3) levelClass = 'score-card-ok';       // 3 그린 (양호)
+    else levelClass = 'score-card-strong';                   // 4 진그린 (강함)
+
+    // 4점 도트 그래프
+    const dots = Array.from({ length: 4 }, (_, i) => {
+      const filled = i < val;
+      return `<span class="score-dot ${filled ? 'filled' : ''}"></span>`;
+    }).join('');
+
     return `
-      <div class="score-card ${lowClass}">
-        <span class="score-card-name">${meta.name}</span>
-        <span class="score-card-value">${val} / 4</span>
+      <div class="score-card ${levelClass}">
+        <div class="score-card-left">
+          <span class="score-card-name">${meta.name}</span>
+          <span class="score-card-dots">${dots}</span>
+        </div>
+        <span class="score-card-value">${val} <span class="score-card-total">/ 4</span></span>
       </div>
     `;
   }).join('');
@@ -455,8 +470,21 @@ function renderPart3() {
     document.getElementById('tgExitNotice').style.display = 'block';
   }
 
-  // 1:1 예약 CTA URL — 추후 캘린더 링크로 교체
-  document.getElementById('bookingCta').href = `mailto:hi@brandrise.kr?subject=${encodeURIComponent(`[1:1 처방] ${code} · ${company || '진단자'}`)}&body=${encodeURIComponent('진단 결과 PDF를 보고 1:1 처방 받고 싶습니다.\n\n코드: ' + code + '\n회사: ' + company)}`;
+  // 1:1 예약 CTA — 구글폼 URL이 설정되면 prefill로, 없으면 mailto fallback
+  // BOOKING_FORM_URL: 구글폼 생성 후 entry.xxxx prefill 파라미터 박을 위치
+  const BOOKING_FORM_URL = ''; // 예: 'https://docs.google.com/forms/d/e/.../viewform?usp=pp_url&entry.123=CODE'
+  const bookingEl = document.getElementById('bookingCta');
+  if (BOOKING_FORM_URL) {
+    // 구글폼 prefill (코드·회사명 자동 입력)
+    bookingEl.href = BOOKING_FORM_URL
+      .replace('CODE', encodeURIComponent(code))
+      .replace('COMPANY', encodeURIComponent(company || ''));
+    bookingEl.target = '_blank';
+    bookingEl.rel = 'noopener';
+  } else {
+    // Fallback: mailto
+    bookingEl.href = `mailto:hi@brandrise.kr?subject=${encodeURIComponent(`[1:1 처방] ${NICKNAMES[code] || code} · ${company || '진단자'}`)}&body=${encodeURIComponent('진단 결과를 보고 1:1 처방 받고 싶습니다.\n\n유형: ' + (NICKNAMES[code] || code) + '\n회사: ' + (company || '-'))}`;
+  }
 }
 
 function renderShare() {

@@ -111,7 +111,6 @@ const QUESTIONS = [
   {
     id: 'C2', section: 'C', type: 'textarea', minLen: 30, maxLen: 80,
     title: '한 줄로, 지금 가장 답답한 것은 무엇인가요?',
-    subtitle: '결과지 PART 2의 "우리 진단가의 눈에 보이는 것" 카드에 직접 인용됩니다.',
     placeholder: '예) 광고비는 매달 200만 쓰는데 신규 매출이 200만이 안 늘어요'
   },
 
@@ -119,7 +118,6 @@ const QUESTIONS = [
   {
     id: 'P1', section: 'P',
     title: '우리 회사 매출, 지금 어떻게 굴러가나요?',
-    subtitle: 'PMF(제품-시장 적합도) 단계를 행동으로 묻습니다. 진단 결과 유형 분기에 사용됩니다.',
     options: [
       { label: '아직 들쭉날쭉 — 어떤 고객이 왜 사는지 가설 단계입니다', value: 'pre' },
       { label: '반복 구매가 발생 — 핵심 고객이 어느 정도 명확합니다', value: 'post' },

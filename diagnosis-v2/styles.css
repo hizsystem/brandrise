@@ -172,7 +172,7 @@ p,.body-text{font-size:clamp(15px,1.05vw,17px);line-height:1.7;color:var(--text-
 }
 .question-text{
   font-size:clamp(19px,2.4vw,25px);font-weight:700;color:var(--text);
-  line-height:1.45;margin-bottom:32px;
+  line-height:1.55;margin-bottom:32px;
   letter-spacing:-0.005em;
   word-break:keep-all;overflow-wrap:break-word;
 }
@@ -364,10 +364,51 @@ select.form-input{
 /* ============ RESPONSIVE ============ */
 @media(max-width:768px){
   section{padding:60px 0}
-  .icon-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+  .icon-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .icon-item{padding:24px 14px}
   .form-row{grid-template-columns:1fr}
   .container{padding:0 20px}
   .container-wide{padding:0 20px}
+
+  /* 랜딩 hero 모바일 */
+  .hero-section{min-height:auto;padding:60px 0 80px}
+  .hero-eyebrow{margin-bottom:20px}
+  .type-matrix-grid{grid-template-columns:1fr;gap:12px;margin-top:36px}
+  .type-card{padding:22px 20px}
+  .hero-signal{margin-top:24px}
+
+  /* 결과지 hero 모바일 */
+  .result-hero-block{padding:48px 24px;border-radius:16px}
+  .hero-nickname{font-size:32px}
+  .hero-catchphrase{font-size:16px}
+
+  /* 폼 모바일 */
+  .question-text{margin-bottom:24px}
+  .option-item{padding:16px 18px;font-size:14px}
+  .form-card{min-height:280px}
+
+  /* 결과지 카드 모바일 */
+  .prescription-card{padding:28px 22px}
+  .prescription-card-sub{padding:22px 20px}
+  .risk-card{padding:22px}
+  .score-card{padding:16px 18px}
+
+  /* CTA 버튼 풀 폭 */
+  .cta-btn{width:100%;max-width:none}
+
+  /* 헤더/푸터 */
+  .site-header{padding:18px 0}
+  .site-footer{padding:36px 0}
+}
+
+@media(max-width:480px){
+  section{padding:48px 0}
+  .container{padding:0 16px}
+  .container-wide{padding:0 16px}
+  .icon-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .icon-item{padding:20px 12px}
+  .icon-item .icon{font-size:26px}
+  .icon-item .label{font-size:13px}
 }
 
 /* ============ V2 ADDITIONS — 트리거 진단서 ============ */
@@ -384,10 +425,11 @@ select.form-input{
 
 /* 질문 보조 설명 */
 .question-subtitle{
-  font-size:15px;line-height:1.6;color:var(--sub);
-  margin-top:-20px;margin-bottom:28px;
+  font-size:14px;line-height:1.7;color:var(--sub);
+  margin-top:0;margin-bottom:32px;
+  word-break:keep-all;overflow-wrap:break-word;
 }
-.question-text:has(+ .question-subtitle){margin-bottom:12px}
+.question-text:has(+ .question-subtitle){margin-bottom:10px}
 
 /* C2 자유서술 textarea */
 .c2-textarea{
@@ -467,10 +509,20 @@ select.form-input{
   margin-top:32px;
 }
 
-/* Hero 코드 + 별명 (결과지 placeholder) */
-.hero-code{font-family:var(--mono);font-size:13px;letter-spacing:0.1em;color:var(--green);margin-bottom:14px;font-weight:600}
-.hero-nickname{font-size:clamp(28px,4.5vw,44px);font-weight:700;line-height:1.3;letter-spacing:-0.01em;margin-bottom:18px;color:var(--text);word-break:keep-all;overflow-wrap:break-word}
-.hero-catchphrase{font-size:clamp(16px,1.6vw,19px);color:var(--text-body);line-height:1.6;font-weight:500;word-break:keep-all;overflow-wrap:break-word}
+/* 결과지 hero — 다크 풀폭 밴드 (임팩트 카드) */
+.result-hero{
+  background:#0A0A0A;
+  padding:80px 0;
+  margin-bottom:24px;
+}
+.result-hero .hero-code{color:#22C55E;margin-bottom:18px}
+.result-hero .hero-nickname{color:#FFFFFF;margin-bottom:20px}
+.result-hero .hero-catchphrase{color:#D4D4D4;font-weight:400;max-width:640px;margin:0 auto}
+
+/* Hero 코드 + 별명 텍스트 (다크 hero 내부) */
+.hero-code{font-family:var(--mono);font-size:13px;letter-spacing:0.12em;font-weight:600;text-transform:uppercase}
+.hero-nickname{font-size:clamp(32px,5vw,52px);font-weight:700;line-height:1.25;letter-spacing:-0.015em;word-break:keep-all;overflow-wrap:break-word}
+.hero-catchphrase{font-size:clamp(17px,1.8vw,21px);line-height:1.6;font-weight:500;word-break:keep-all;overflow-wrap:break-word}
 
 /* 랜딩 풀스크린 표지 (index.html) */
 .hero-section{min-height:90vh;display:flex;align-items:center;padding:80px 0}
@@ -507,12 +559,17 @@ select.form-input{
   word-break:keep-all;overflow-wrap:break-word;
 }
 .type-card-golden{
-  border:2px solid var(--green);
-  background:var(--green-soft);
-  box-shadow:var(--shadow-md);
+  border:1px solid var(--border);
+  background:var(--card);
+  position:relative;
 }
-.type-card-golden .type-card-name{color:var(--green)}
-.type-card-golden:hover{border-color:var(--green);transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.type-card-golden::before{
+  content:'★';position:absolute;top:10px;right:12px;
+  font-size:13px;color:var(--green);font-weight:700;
+  line-height:1;
+}
+.type-card-golden .type-card-name{color:var(--text)}
+.type-card-golden:hover{border-color:var(--text);transform:translateY(-2px);box-shadow:var(--shadow-md)}
 
 /* sophistication 시그널 */
 .hero-signal{
@@ -520,16 +577,51 @@ select.form-input{
   letter-spacing:0.05em;margin-top:32px;font-weight:500;
 }
 
-/* 진단표 점수 카드 (PART 1) */
+/* 진단표 점수 카드 (PART 1) — 위험할수록 빨강 단계화 + 도트 그래프 */
 .score-card{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:20px 24px;background:var(--card);border-radius:var(--radius-sm);
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:18px 22px;background:var(--card);border-radius:var(--radius-sm);
   border:1px solid var(--border);margin-bottom:10px;
   box-shadow:var(--shadow-sm);
 }
-.score-card-name{font-size:14px;color:var(--text);font-weight:500}
-.score-card-value{font-family:var(--mono);font-weight:700;color:var(--green);font-size:14px}
-.score-card-low{border-left:3px solid #EF4444}
+.score-card-left{display:flex;align-items:center;gap:16px;flex:1;min-width:0}
+.score-card-name{font-size:14px;color:var(--text);font-weight:600;flex-shrink:0}
+.score-card-dots{display:inline-flex;gap:5px;margin-left:auto}
+.score-dot{
+  width:9px;height:9px;border-radius:50%;
+  background:var(--border-strong);
+  display:inline-block;
+}
+.score-card-value{font-family:var(--mono);font-weight:700;font-size:15px;flex-shrink:0;letter-spacing:-0.01em}
+.score-card-total{color:var(--muted);font-weight:500;font-size:13px}
+
+/* 점수 등급별 색 단계 (위험할수록 빨강) */
+.score-card-danger{
+  border-left:4px solid #EF4444;background:#FEF2F2;
+}
+.score-card-danger .score-card-value{color:#DC2626}
+.score-card-danger .score-dot.filled{background:#DC2626}
+
+.score-card-warn{
+  border-left:4px solid #F59E0B;background:#FFFBEB;
+}
+.score-card-warn .score-card-value{color:#D97706}
+.score-card-warn .score-dot.filled{background:#F59E0B}
+
+.score-card-ok{
+  border-left:4px solid var(--green);
+}
+.score-card-ok .score-card-value{color:var(--green)}
+.score-card-ok .score-dot.filled{background:var(--green-light)}
+
+.score-card-strong{
+  border-left:4px solid var(--green);
+}
+.score-card-strong .score-card-value{color:var(--green)}
+.score-card-strong .score-dot.filled{background:var(--green)}
+
+/* legacy 호환 (잔존 호출 안전망) */
+.score-card-low{border-left:4px solid #EF4444;background:#FEF2F2}
 
 /* PART 헤더 */
 .part-header{
