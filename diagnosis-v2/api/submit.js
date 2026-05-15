@@ -7,12 +7,17 @@
  * Slack 메시지: 코드(별명 매핑) + 6영역 점수 + C1·C2 인용 + 단계·팀 (TG 자연 이탈 라벨 포함)
  */
 
-// 코드 → 별명 매핑 (워크샵 1 확정 시드 / 2026-05-13, specs/2026-05-12-chatgpt-workshop-1-nickname-catchphrase.md)
+// 코드 → 별명 매핑 (워크샵 2 확정 시드 / 2026-05-15, specs/2026-05-15-workshop-2-8type-axis-candidates.md)
+// 8유형: F/T × S/G × P(Pre-PMF)/M(Post-PMF)
 const CODE_NICKNAMES = {
-  FS: '감각 운영자',
-  FG: '성장 설계자',
-  TS: '성과 확인형',
-  TG: '다음 체계 설계자',
+  FSP: '감각 탐색형',
+  FSM: '단독 견인자',
+  FGP: '성장 가속형',
+  FGM: '성장 설계자',
+  TSP: '위임 관찰형',
+  TSM: '성과 확인형',
+  TGP: '확장 운영형',
+  TGM: '다음 체계 설계자',
 };
 
 const AREA_LABELS = {
@@ -63,8 +68,8 @@ export default async function handler(req, res) {
     if (slackUrl) {
       const code = data.code;
       const nickname = CODE_NICKNAMES[code] || code;
-      const isTGRisk = code === 'TG' || data.stage === 'series-a-plus' || data.team === '3+';
-      const isGoldenTS = code === 'TS';
+      const isTGRisk = code === 'TGM' || code === 'TGP' || data.stage === 'series-a-plus' || data.team === '3+';
+      const isGoldenTS = code === 'TSP' || code === 'TSM';
       const total = Object.values(data.scores).reduce((a, b) => a + b, 0);
 
       const scoreDetail = Object.entries(data.scores)

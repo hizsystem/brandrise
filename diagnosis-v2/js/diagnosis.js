@@ -115,6 +115,17 @@ const QUESTIONS = [
     placeholder: '예) 광고비는 매달 200만 쓰는데 신규 매출이 200만이 안 늘어요'
   },
 
+  // ----- P. PMF 단계 (2026-05-15 신규 축, 8유형 확장) -----
+  {
+    id: 'P1', section: 'P',
+    title: '우리 회사 매출, 지금 어떻게 굴러가나요?',
+    subtitle: 'PMF(제품-시장 적합도) 단계를 행동으로 묻습니다. 진단 결과 유형 분기에 사용됩니다.',
+    options: [
+      { label: '아직 들쭉날쭉 — 어떤 고객이 왜 사는지 가설 단계입니다', value: 'pre' },
+      { label: '반복 구매가 발생 — 핵심 고객이 어느 정도 명확합니다', value: 'post' },
+    ]
+  },
+
   // ----- G. 결과지 진입 게이트 (회사 정보) -----
   {
     id: 'G1', section: 'G',
@@ -191,7 +202,7 @@ function render() {
   if (!q) return submit();
 
   // Progress
-  const totalDiagnosis = 12; // A+B+C = 12, G는 게이트로 별도 표기
+  const totalDiagnosis = 13; // A+B+C = 12, G는 게이트로 별도 표기
   const isGate = q.section === 'G';
   if (isGate) {
     const gateIdx = state.step - totalDiagnosis + 1; // 1~4
@@ -418,7 +429,8 @@ function calculateType(responses) {
   });
   const ft = F >= T ? 'F' : 'T'; // 동률 시 F (A1 우선)
   const sg = S >= G ? 'S' : 'G';
-  return ft + sg;
+  const pmf = responses.P1?.value === 'post' ? 'M' : 'P'; // P1 미응답 시 Pre-PMF 기본
+  return ft + sg + pmf;
 }
 
 function calculateScores(responses) {
