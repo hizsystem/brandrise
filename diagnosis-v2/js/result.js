@@ -470,21 +470,15 @@ function renderPart3() {
     document.getElementById('tgExitNotice').style.display = 'block';
   }
 
-  // 1:1 예약 CTA — 구글폼 URL이 설정되면 prefill로, 없으면 mailto fallback
-  // BOOKING_FORM_URL: 구글폼 생성 후 entry.xxxx prefill 파라미터 박을 위치
-  const BOOKING_FORM_URL = ''; // 예: 'https://docs.google.com/forms/d/e/.../viewform?usp=pp_url&entry.123=CODE'
+  // 1:1 예약 CTA — 구글폼 외부 링크
+  // forms.gle 단축 URL은 prefill 미지원. 향후 사전채우기 full URL 받으면 placeholder(CODE/COMPANY) 자동 동작
+  const BOOKING_FORM_URL = 'https://forms.gle/R5FaijsFD4VoTEsj9';
   const bookingEl = document.getElementById('bookingCta');
-  if (BOOKING_FORM_URL) {
-    // 구글폼 prefill (코드·회사명 자동 입력)
-    bookingEl.href = BOOKING_FORM_URL
-      .replace('CODE', encodeURIComponent(code))
-      .replace('COMPANY', encodeURIComponent(company || ''));
-    bookingEl.target = '_blank';
-    bookingEl.rel = 'noopener';
-  } else {
-    // Fallback: mailto
-    bookingEl.href = `mailto:hi@brandrise.kr?subject=${encodeURIComponent(`[1:1 처방] ${NICKNAMES[code] || code} · ${company || '진단자'}`)}&body=${encodeURIComponent('진단 결과를 보고 1:1 처방 받고 싶습니다.\n\n유형: ' + (NICKNAMES[code] || code) + '\n회사: ' + (company || '-'))}`;
-  }
+  bookingEl.href = BOOKING_FORM_URL
+    .replace('CODE', encodeURIComponent(code))
+    .replace('COMPANY', encodeURIComponent(company || ''));
+  bookingEl.target = '_blank';
+  bookingEl.rel = 'noopener';
 }
 
 function renderShare() {
