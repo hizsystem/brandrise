@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>VEGGIET × HUENIC — K-Active Sunsik Morning Kit v3.2 (내부)</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0; padding: 0;
+  background: #f4f7f9;
+  color: #1a1b18;
+  line-height: 1.7;
+  font-size: 15px;
+}
+.toolbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: #0D0D0D; color: #f4f7f9;
+  height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px;
+  z-index: 100;
+  font-size: 13px;
+}
+.toolbar-left { display: flex; align-items: center; gap: 10px; }
+.toolbar-logo { color: #16a34a; font-weight: 700; letter-spacing: 0.5px; }
+.toolbar-sep { color: #525252; }
+.toolbar-title { color: #f4f7f9; font-weight: 400; }
+.toolbar-badge {
+  background: #fbbf24; color: #0D0D0D;
+  padding: 3px 10px; border-radius: 4px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
+}
+.btn-toolbar {
+  background: #16a34a; color: #fff; border: none;
+  padding: 8px 16px; border-radius: 6px;
+  font-family: inherit; font-size: 12px; font-weight: 600;
+  cursor: pointer;
+}
+.btn-toolbar:hover { background: #15803d; }
+.container { max-width: 920px; margin: 0 auto; padding: 80px 24px 60px; }
+.report-header {
+  background: #fff; border-radius: 12px;
+  padding: 48px; margin-bottom: 24px;
+  border: 1px solid #e8edf1;
+}
+.report-header h1 {
+  margin: 0 0 12px; font-size: 30px; font-weight: 900;
+  letter-spacing: -0.5px; color: #0D0D0D;
+}
+.report-header .subtitle {
+  font-size: 16px; color: #525252; font-weight: 400; margin-bottom: 20px;
+}
+.report-header .meta {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 16px; padding-top: 20px; border-top: 1px solid #e8edf1;
+}
+.meta-item { font-size: 12px; }
+.meta-item .label { color: #999; font-weight: 500; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.meta-item .value { color: #1a1b18; font-weight: 600; }
+.section {
+  background: #fff; border-radius: 12px;
+  padding: 36px; margin-bottom: 20px;
+  border: 1px solid #e8edf1;
+}
+.section h2 {
+  margin: 0 0 8px; font-size: 22px; font-weight: 800;
+  color: #0D0D0D; letter-spacing: -0.3px;
+}
+.section h2 .num {
+  display: inline-block; background: #16a34a; color: #fff;
+  width: 32px; height: 32px; line-height: 32px;
+  border-radius: 50%; text-align: center;
+  font-size: 14px; font-weight: 700;
+  margin-right: 12px; vertical-align: middle;
+}
+.section h3 {
+  margin: 24px 0 10px; font-size: 16px; font-weight: 700;
+  color: #1a1b18;
+}
+.section h3 .axis-tag {
+  display: inline-block; background: #fef3c7; color: #b45309;
+  padding: 2px 10px; border-radius: 4px;
+  font-size: 11px; font-weight: 700;
+  margin-right: 8px; vertical-align: middle;
+}
+.section p { margin: 8px 0; color: #1a1b18; }
+.lead { font-size: 17px; line-height: 1.6; color: #0D0D0D; font-weight: 500; }
+.highlight-box {
+  background: #0D0D0D; color: #f4f7f9;
+  padding: 24px 28px; border-radius: 8px;
+  margin: 20px 0; font-size: 15px;
+}
+.highlight-box .label {
+  color: #fbbf24; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;
+}
+.highlight-box .body { color: #f4f7f9; line-height: 1.7; }
+.mode-card {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  color: #fff; padding: 28px; border-radius: 10px;
+  margin: 16px 0;
+}
+.mode-card .tag {
+  background: rgba(255,255,255,0.2); color: #fff;
+  padding: 4px 12px; border-radius: 4px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
+  display: inline-block; margin-bottom: 12px;
+}
+.mode-card h3 { color: #fff; margin: 0 0 10px; font-size: 18px; }
+.mode-card p { color: rgba(255,255,255,0.95); margin: 0; }
+table {
+  width: 100%; border-collapse: collapse;
+  margin: 16px 0; font-size: 13.5px;
+}
+th, td {
+  text-align: left; padding: 10px 12px;
+  border-bottom: 1px solid #e8edf1; vertical-align: top;
+}
+th {
+  background: #f4f7f9; font-weight: 700;
+  color: #525252; font-size: 12px;
+  text-transform: uppercase; letter-spacing: 0.3px;
+}
+td { color: #1a1b18; }
+td .id { font-weight: 700; color: #b45309; }
+td .star { color: #fbbf24; letter-spacing: 1px; }
+td .strike { text-decoration: line-through; color: #999; }
+.kit-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 12px; margin: 20px 0;
+}
+.kit-item {
+  background: #f4f7f9; border: 1px solid #e8edf1;
+  border-radius: 8px; padding: 16px; text-align: center;
+}
+.kit-item .num {
+  background: #16a34a; color: #fff;
+  width: 28px; height: 28px; line-height: 28px;
+  border-radius: 50%; font-size: 13px; font-weight: 700;
+  margin: 0 auto 10px;
+}
+.kit-item .name { font-size: 13px; font-weight: 700; color: #0D0D0D; line-height: 1.4; }
+.kit-item .role { font-size: 11px; color: #636569; margin-top: 4px; }
+.callout {
+  border-left: 4px solid #16a34a;
+  background: #f0fdf4; padding: 14px 18px;
+  border-radius: 0 8px 8px 0; margin: 16px 0;
+}
+.callout.warn { border-left-color: #b45309; background: #fef3c7; }
+.callout.dark { border-left-color: #0D0D0D; background: #f4f7f9; }
+.callout strong { color: #0D0D0D; }
+.scenario-card {
+  border-left: 5px solid #16a34a;
+  background: #f4f7f9; padding: 18px 22px;
+  border-radius: 0 8px 8px 0; margin: 14px 0;
+}
+.scenario-card h4 { margin: 0 0 6px; font-size: 15px; color: #0D0D0D; }
+.scenario-card p { margin: 0; color: #525252; font-size: 14px; }
+.trend-card {
+  background: #fff; border: 1px solid #e8edf1;
+  border-radius: 8px; padding: 18px 20px; margin: 12px 0;
+  display: grid; grid-template-columns: 60px 1fr 180px;
+  gap: 16px; align-items: start;
+}
+.trend-rank {
+  background: #0D0D0D; color: #fbbf24;
+  width: 44px; height: 44px; line-height: 44px;
+  border-radius: 50%; text-align: center;
+  font-size: 18px; font-weight: 900;
+}
+.trend-body h4 { margin: 0 0 4px; font-size: 16px; color: #0D0D0D; }
+.trend-body p { margin: 0; font-size: 13.5px; color: #525252; }
+.trend-mapping {
+  background: #f0fdf4; padding: 8px 12px;
+  border-radius: 6px; border: 1px dashed #16a34a;
+  font-size: 12px; color: #15803d; font-weight: 600;
+}
+ul.clean { padding-left: 20px; }
+ul.clean li { margin: 6px 0; }
+.slack-quote {
+  background: #f8f9fa; border: 1px solid #e8edf1;
+  border-radius: 8px; padding: 20px 24px; margin: 16px 0;
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px; line-height: 1.6; color: #1a1b18;
+  white-space: pre-wrap;
+}
+.footer-meta {
+  margin-top: 30px; padding-top: 20px;
+  border-top: 1px solid #e8edf1;
+  font-size: 12px; color: #999; text-align: center;
+}
+.footer-meta a { color: #16a34a; text-decoration: none; }
+
+@media (max-width: 768px) {
+  .toolbar { font-size: 11px; padding: 0 12px; height: 50px; }
+  .toolbar-title { display: none; }
+  .container { padding: 70px 14px 40px; }
+  .report-header { padding: 28px 20px; }
+  .report-header h1 { font-size: 22px; }
+  .report-header .meta { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .section { padding: 22px 18px; }
+  .section h2 { font-size: 18px; }
+  table { font-size: 12px; }
+  th, td { padding: 8px 6px; }
+  .kit-grid { grid-template-columns: 1fr 1fr; }
+  .trend-card { grid-template-columns: 1fr; }
+  .trend-rank { width: 36px; height: 36px; line-height: 36px; font-size: 14px; }
+}
+@media print {
+  .toolbar { display: none; }
+  body { background: #fff; }
+  .container { padding: 20px; max-width: 100%; }
+  .section, .report-header { border: 1px solid #ddd; box-shadow: none; page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="toolbar-left">
+    <span class="toolbar-logo">VEGGIET × HUENIC</span>
+    <span class="toolbar-sep">|</span>
+    <span class="toolbar-title">NA GWP v3.2 · Modern Sunsik · 내부 검토용</span>
+    <span class="toolbar-sep">|</span>
+    <span class="toolbar-badge">INTERNAL ONLY</span>
+  </div>
+  <button class="btn-toolbar" onclick="window.print()">PDF 저장</button>
+</div>
+
+<div class="container">
+
+  <div class="report-header">
+    <h1>K-Active Sunsik Morning Kit — v3.2</h1>
+    <div class="subtitle">베지어트 북미 런칭 GWP — Modern Sunsik 포지셔닝 + 외국인 힙 K-trend 1:1 매핑</div>
+    <div class="meta">
+      <div class="meta-item"><div class="label">버전</div><div class="value">v3.2 (active + sunsik pivot)</div></div>
+      <div class="meta-item"><div class="label">작성</div><div class="value">2026-05-21</div></div>
+      <div class="meta-item"><div class="label">전제</div><div class="value">v2 48개 풀 회피 + 액티브 페르소나</div></div>
+      <div class="meta-item"><div class="label">기준 페이지</div><div class="value">OMA Welcome Kit 1:1 미러</div></div>
+    </div>
+  </div>
+
+  <!-- §1 -->
+  <div class="section">
+    <h2><span class="num">1</span>한 줄 요지</h2>
+    <p class="lead">베지어트 = <strong>Modern Sunsik(선식)</strong>. 외국인이 요즘 힙해하는 K-trend 6개(미숫가루·정관장 인삼·죽염·쑥·약과·사찰음식)와 결이 정확히 맞고, AG1·스윗그린·홀블랜딩 사이에서 "한국 곡물 헤리티지로 풀어낸 daily protein"이라는 빈자리를 잡는다.</p>
+    <div class="highlight-box">
+      <div class="label">OMA Welcome Kit 1:1 미러 (5점)</div>
+      <div class="body">박스(식품) → <strong>베지어트 스파우트 7포</strong> · 보온병 → <strong>분청 다완 텀블러 250ml</strong> · 나무 스푼 → <strong>삼베 손목 스웻밴드 2p</strong> · 레시피북 → <strong>30일 K-Sunsik Morning Challenge 핸드북</strong> · 박스 그래픽 → <strong>한국 산수(山水) 한지 외포장</strong> · (5번째) <strong>Modern Sunsik 헤리티지 곡물 6종 미니 봉지</strong> — K-원료를 baseline에 깔아 매일 베지어트 한 잔이 "오래된 한국 선식 모닝 의식"이 되게.</div>
+    </div>
+  </div>
+
+  <!-- §2 -->
+  <div class="section">
+    <h2><span class="num">2</span>v3.0/v3.1 자기점검</h2>
+    <p>이전 두 버전을 짧게 정리:</p>
+    <table>
+      <thead><tr><th>버전</th><th>풀</th><th>판정</th></tr></thead>
+      <tbody>
+        <tr><td><strong>v3.0</strong></td><td>다완·다선·24절기·향낭·옥 단전봉·자개·부적 카드 (정적 hanbang 명상)</td><td><span class="strike">베지어트와 절반만 어울림</span> — TPO 미스</td></tr>
+        <tr><td><strong>v3.1</strong></td><td>다완 텀블러·삼베 스웻밴드·30일 챌린지 (액티브 페르소나)</td><td>OK, 단 <strong>K-모닝·K-리추얼·K-헤리티지</strong> 약함</td></tr>
+        <tr><td><strong>v3.2</strong> (현재)</td><td>액티브 + <strong>Modern Sunsik</strong> + 외국인 힙 K-trend 1:1</td><td>채택</td></tr>
+      </tbody>
+    </table>
+    <p><strong>피벗 요인:</strong> "한국의 오래 된 선식 모닝 루틴 / 선식으로 건강을 챙기는 K-모닝, K-리추얼 & 헤리티지"가 슬랙 원문의 핵심 키워드. AG1·스윗그린 톤은 액티브, 정관장·미숫가루는 K-헤리티지. 두 코드를 합친 것이 v3.2.</p>
+  </div>
+
+  <!-- §3 -->
+  <div class="section">
+    <h2><span class="num">3</span>외국인 힙 K-trend 6개 (2026 라이브)</h2>
+    <p>2026년 5월 검증. 모두 NYT·WWD·Vogue·Netflix·NPEW Anaheim 노출. 베지어트 굿즈와 1:1 매핑.</p>
+
+    <div class="trend-card">
+      <div class="trend-rank">1</div>
+      <div class="trend-body">
+        <h4>Misugaru / Sunsik (미숫가루·선식)</h4>
+        <p><strong>증거:</strong> Damtuh USA 미수가루 라떼 sticks 12개입 미국 D2C 진입 · 신세계 Twelve가 Erewhon copy 논란 일 정도로 한국 wellness drink 시장 폭발 · 검색결과: "caffeine-free meal replacement, rich in fiber/protein/minerals" = 베지어트 포지셔닝과 정확히 동일</p>
+      </div>
+      <div class="trend-mapping">→ 메인 키트 #5<br>Modern Sunsik 곡물 6종</div>
+    </div>
+
+    <div class="trend-card">
+      <div class="trend-rank">2</div>
+      <div class="trend-body">
+        <h4>Korean Red Ginseng (정관장 모델)</h4>
+        <p><strong>증거:</strong> JungKwanJang 127년 헌신, 2026 Natural Products Expo West (Anaheim, 3/4-6) 미국 진입 · WWD: Korean brands US health sales 15%, YoY <strong>+50%</strong> · Ulta·Walmart·Target K-wellness 동시 확장 · Sun Potion이 한국 인삼 카피 중</p>
+      </div>
+      <div class="trend-mapping">→ Add-on A5.3<br>인삼 분말 페어링 7p</div>
+    </div>
+
+    <div class="trend-card">
+      <div class="trend-rank">3</div>
+      <div class="trend-body">
+        <h4>Bamboo Salt (죽염)</h4>
+        <p><strong>증거:</strong> 2026 wellness ingredient 톱 트렌드 (WWD 정관장 기사) · Leverden 보도: "Chef Kwan celebrates Bamboo Salt" · ginseng·mugwort·bamboo sap이 K-wellness 핵심 3종</p>
+      </div>
+      <div class="trend-mapping">→ Add-on A4.3<br>죽염 미니 jar (백자 보틀)</div>
+    </div>
+
+    <div class="trend-card">
+      <div class="trend-rank">4</div>
+      <div class="trend-body">
+        <h4>Mugwort (쑥, 艾草)</h4>
+        <p><strong>증거:</strong> 동일 WWD 기사에서 ginseng·bamboo salt와 함께 2026 핵심 wellness ingredient · 온돌·찜질방 wellness와 결합 (Goop 노출)</p>
+      </div>
+      <div class="trend-mapping">→ Add-on A2.2<br>쑥 발열 찜질 패드 미니 4p</div>
+    </div>
+
+    <div class="trend-card">
+      <div class="trend-rank">5</div>
+      <div class="trend-body">
+        <h4>Yakgwa / Hangwa (약과·한과)</h4>
+        <p><strong>증거:</strong> 2026 한국 "halmaenial desserts(할매니얼)" 붐 — 젊은 한국인이 약과를 modern café snack으로 재발견 · "Yak-geting"(약과 ticketing) 신조어 · Yahoo Lifestyle "Hangwa for the Holidays" 미국 노출 · "rice·grains·honey·malt syrup" 단순 성분 어필</p>
+      </div>
+      <div class="trend-mapping">→ Add-on 신규<br>모던 약과 미니 3p</div>
+    </div>
+
+    <div class="trend-card">
+      <div class="trend-rank">6</div>
+      <div class="trend-body">
+        <h4>Temple Food / Jeong Kwan (사찰음식)</h4>
+        <p><strong>증거:</strong> Netflix Chef's Table Season 3 글로벌 영향력 유지 · SCMP "Why temple food could be the next global wellness trend" · Sakara·Goop·Erewhon 인근 코드</p>
+      </div>
+      <div class="trend-mapping">→ Add-on N1.1<br>발우(鉢盂) 4종 미니 회복 의식</div>
+    </div>
+
+    <div class="callout">
+      <strong>핵심:</strong> 6개 trend가 모두 베지어트 굿즈와 1:1 매핑됨. "외국인 눈에 힙한 한국 것"이 단지 데코가 아니라 베지어트 비즈니스의 retention/UGC 도구로 직접 기능.
+    </div>
+  </div>
+
+  <!-- §4 -->
+  <div class="section">
+    <h2><span class="num">4</span>페르소나 — Maya R. (Daily Active)</h2>
+    <p>v3.0의 Lauren M.(weekend Pilates+Sakara+matcha)에서 피벗. 베지어트 retention/LTV 코어는 <strong>매일 운동 후 마시는 사람</strong>.</p>
+    <table>
+      <thead><tr><th>항목</th><th>Maya R.</th></tr></thead>
+      <tbody>
+        <tr><td>거주·소득</td><td>NYC Brooklyn / Williamsburg, 30세, $150K HHI</td></tr>
+        <tr><td>주간 루틴</td><td>5:30am wake → 6am <strong>Tracksmith run club</strong> + 리프팅 2x + 필라테스 1x (총 4x/week)</td></tr>
+        <tr><td>음료</td><td>AG1 daily + 운동 후 protein shake (weekday는 espresso, weekend ceremonial matcha)</td></tr>
+        <tr><td>운동 의류</td><td>Lululemon × Tracksmith × Bandit Running × Satisfy × Allbirds</td></tr>
+        <tr><td>미디어</td><td>Strava authors · Substack The Edit · Running newsletters · NYT Wellness · Vogue · WWD K-wellness</td></tr>
+        <tr><td>한국 코드</td><td><strong>Beauty of Joseon</strong>(스킨케어) + <strong>JungKwanJang ginseng</strong>(active fuel) + <strong>misugaru latte</strong>(weekday breakfast)</td></tr>
+        <tr><td>베지어트 use case</td><td><strong>매일 운동 후 1잔</strong> — daily needs, retention의 핵심</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- §5 -->
+  <div class="section">
+    <h2><span class="num">5</span>OMA 1:1 미러 — K-Active Sunsik Morning Kit ($99)</h2>
+    <p>OMA Welcome Kit 4점 구조를 액티브 + Sunsik 코드로 매핑. <strong>5점 키트</strong> + 외포장.</p>
+
+    <div class="kit-grid">
+      <div class="kit-item">
+        <div class="num">1</div>
+        <div class="name">베지어트 스파우트 7포</div>
+        <div class="role">OMA 박스 자리<br>(식품 본체)</div>
+      </div>
+      <div class="kit-item">
+        <div class="num">2</div>
+        <div class="name">분청 다완 텀블러<br>250ml (단열)</div>
+        <div class="role">OMA 보온병 자리<br>(매일 utility)</div>
+      </div>
+      <div class="kit-item">
+        <div class="num">3</div>
+        <div class="name">삼베(麻) 손목<br>스웻밴드 2p</div>
+        <div class="role">OMA 나무 스푼 자리<br>(액티브 보조)</div>
+      </div>
+      <div class="kit-item">
+        <div class="num">4</div>
+        <div class="name">30일 K-Sunsik<br>Morning 핸드북</div>
+        <div class="role">OMA 레시피북 자리<br>(영문, 챌린지)</div>
+      </div>
+      <div class="kit-item">
+        <div class="num">5</div>
+        <div class="name">Modern Sunsik<br>곡물 6종 미니봉지</div>
+        <div class="role">K-헤리티지 직타<br>(서리태·찐콩·들깨·찹쌀·보리·옥수수)</div>
+      </div>
+    </div>
+
+    <div class="callout dark">
+      <strong>외포장</strong> · 한국 산수(山水) 일러스트 한지 박스 — 한라산·설악산·지리산 윤곽. v2의 Bojagi 회피, 액티브(러닝·산) 코드.
+    </div>
+
+    <h3>키트 5점 상세</h3>
+    <table>
+      <thead><tr><th>#</th><th>아이템</th><th>한국적 코드</th><th>제작 / 가격</th></tr></thead>
+      <tbody>
+        <tr><td><span class="id">K1</span></td><td>베지어트 스파우트 45g × 7포</td><td>현재 SKU 그대로</td><td>자체 / 단가 그대로</td></tr>
+        <tr><td><span class="id">K2</span></td><td>분청 다완 텀블러 250ml (단열, 분청·세이지 톤)</td><td>분청 도예 + Aesop/Goop 코드</td><td>도예 콜라보 또는 단열 OEM / $34-44</td></tr>
+        <tr><td><span class="id">K3</span></td><td>삼베(麻) 손목 스웻밴드 2p (이마/손목 듀얼)</td><td>안동 삼베, Korean linen, Tracksmith급</td><td>안동 OEM / $14-22</td></tr>
+        <tr><td><span class="id">K4</span></td><td>30일 K-Sunsik Morning Challenge 핸드북 (영문, A5 32p, 한국 산 윤곽 일러스트)</td><td>한국 명산 12경 + 곡물 페어링 + 단전호흡 4분</td><td>이수민 디자인+번역 외주 / $18-24</td></tr>
+        <tr><td><span class="id">K5</span></td><td>Modern Sunsik 곡물 6종 미니 봉지 (서리태·찐콩·들깨·찹쌀·보리·옥수수 7g × 6봉)</td><td>전통 미숫가루 헤리티지 + 베지어트 페어링</td><td>국내 곡물 OEM / $22-32</td></tr>
+        <tr><td><span class="id">K0</span></td><td>한국 산수 한지 외포장 박스</td><td>한라산·설악산·지리산 윤곽 + 일출 컬러</td><td>안동·전주 한지 인쇄 / 박스단가 +$5</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>가격 앵커:</strong> $99 (AG1 30-day $99, Sakara 7-day $90, JungKwanJang Everytime 30포 $89 — 미국 정관장 SKU 기준)</p>
+  </div>
+
+  <!-- §6 -->
+  <div class="section">
+    <h2><span class="num">6</span>v2 48개 풀과의 겹침 회피</h2>
+    <table>
+      <thead><tr><th>소재·코드</th><th>v2 사용</th><th>v3.2 처리</th></tr></thead>
+      <tbody>
+        <tr><td>한지(무지·꽃)</td><td>다수 (카드·저널·외포장)</td><td>한국 산수·일출 일러스트만 한정</td></tr>
+        <tr><td>옹기</td><td>머그·캐니스터·발효</td><td>안 씀</td></tr>
+        <tr><td>황동(스푼·메달·인장)</td><td>다수</td><td>안 씀 — 백자·분청·옥으로 대체</td></tr>
+        <tr><td>보자기(Bojagi)</td><td>Wrap</td><td>안 씀 — 한지 산수 박스로 대체</td></tr>
+        <tr><td>약초차·식혜·매실청</td><td>다수</td><td>안 씀 (음용 약초) — 매실청은 add-on 1포 형태로만</td></tr>
+        <tr><td>박진아 손글씨·NFC·4대 모녀</td><td>다수</td><td>안 씀 — 장인 사인·일련번호로 트로피</td></tr>
+        <tr><td>분청 보울(20cm)</td><td>Phase 1 컨셉</td><td>다완 텀블러(250ml + 단열)로 사이즈·기능 차별</td></tr>
+        <tr><td>한국 콩 6종(legume)</td><td>6봉지 패키지</td><td>곡물(grain) 6종으로 카테고리 차별 — 미숫가루 코드</td></tr>
+        <tr><td>셰이커·토트백</td><td>폐기</td><td>일관 폐기</td></tr>
+        <tr><td><strong>신규 소재</strong></td><td>—</td><td>삼베·모시·옥·쑥·소나무·서리태·인삼·죽염·곡물·한국 산수</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- §7 -->
+  <div class="section">
+    <h2><span class="num">7</span>6축 신규 풀 — Add-on 18개</h2>
+    <p>메인 키트와 별개 단품 SKU 또는 시즌 박스 add-on. 모두 외국인 힙 K-trend와 매핑.</p>
+
+    <h3><span class="axis-tag">A1</span>액티브 모닝 의식 (Daily Ritual)</h3>
+    <table>
+      <thead><tr><th>ID</th><th>아이템</th><th>한국적 코드</th><th>가격</th></tr></thead>
+      <tbody>
+        <tr><td><span class="id">A1.1</span></td><td>30일 K-Sunsik Morning Challenge 핸드북 단독판</td><td>30일 챌린지 + 명산 12경 + 단전호흡 4분</td><td>$18-24</td></tr>
+        <tr><td><span class="id">A1.2</span></td><td>한국 명산 12경 챌린지 카드 12장</td><td>한라산·설악산·지리산·북한산 등 Strava 친화</td><td>$14-18</td></tr>
+        <tr><td><span class="id">A1.3</span></td><td>단전호흡 4단계 카드 (운동 전 4분)</td><td>hanbang 호흡 + 영문 가이드</td><td>$8-12</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="axis-tag">A2</span>운동 후 회복 (Recovery)</h3>
+    <table>
+      <thead><tr><th>ID</th><th>아이템</th><th>한국적 코드</th><th>가격</th></tr></thead>
+      <tbody>
+        <tr><td><span class="id">A2.1</span></td><td>옥(玉) 근막 마사지 봉 7cm</td><td>hanbang 옥 마사지 · Theragun adjacent</td><td>$24-34</td></tr>
+        <tr><td><span class="id">A2.2</span></td><td>쑥(艾草) 발열 찜질 패드 미니 4p</td><td>찜질방 wellness · 2026 ingredient #4 매핑</td><td>$12-18</td></tr>
+        <tr><td><span class="id">A2.3</span></td><td>소나무 우드 마사지 롤러 미니 (발 셀프)</td><td>Korean pine · 운동 후 회복</td><td>$18-26</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="axis-tag">A3</span>운동 액세서리 (Korean fiber × Athletic)</h3>
+    <table>
+      <thead><tr><th>ID</th><th>아이템</th><th>한국적 코드</th><th>가격</th></tr></thead>
+      <tbody>
+        <tr><td><span class="id">A3.1</span></td><td>삼베 손목 스웻밴드 2p (단품)</td><td>안동 삼베 · Tracksmith급</td><td>$14-22</td></tr>
+        <tr><td><span class="id">A3.2</span></td><td>모시 헤어밴드 2p (모닝 운동)</td><td>모시 자연 섬유 · Lululemon급</td><td>$14-22</td></tr>
+        <tr><td><span class="id">A3.3</span></td><td>한 글자 자수 러닝 캡 (走 / 빛 / 달림 중 1자)</td><td>hanbang 2.0 시그니처 · identity costume X</td><td>$26-38</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="axis-tag">A4</span>휴대 Utility (On-the-go)</h3>
+    <table>
+      <thead><tr><th>ID</th><th>아이템</th><th>한국적 코드</th><th>가격</th></tr></thead>
+      <tbody>
+        <tr><td><span class="id">A4.1</span></td><td>분청 다완 텀블러 250ml (단품)</td><td>메인 키트 분리 SKU</td><td>$34-44</td></tr>
+        <tr><td><span class="id">A4.2</span></td><td>한국 도자기 미니 보틀 60ml + 한지 케이스</td><td>운동 가방 in-pocket 가루 보틀</td><td>$22-32</td></tr>
+        <tr><td><span class="id">A4.3</span></td><td>죽염(竹鹽) 미니 jar 15ml (백자 보틀)</td><td>2026 ingredient #3 매핑 · WWD 검증</td><td>$14-22</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="axis-tag">A5</span>K-원료 페어링 (Heritage Active Fuel)</h3>
+    <table>
+      <thead><tr><th>ID</th><th>아이템</th><th>한국적 코드</th><th>가격</th></tr></thead>
+      <tbody>
+        <tr><td><span class="id">A5.1</span></td><td>서리태 트레일 미니 7p</td><td>베지어트 원료 노출 · K-superfood</td><td>$14-22</td></tr>
+        <tr><td><span class="id">A5.2</span></td><td>매실청 운동 후 미니 샷 7p (7ml)</td><td>hanbang 음료 · post-workout</td><td>$18-26</td></tr>
+        <tr><td><span class="id">A5.3</span></td><td>인삼 분말 페어링 미니 7p (1g)</td><td>2026 trend #2 · JungKwanJang 모델</td><td>$22-32</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="axis-tag">A6</span>UGC·SNS (Visual Signature)</h3>
+    <table>
+      <thead><tr><th>ID</th><th>아이템</th><th>한국적 코드</th><th>가격</th></tr></thead>
+      <tbody>
+        <tr><td><span class="id">A6.1</span></td><td>한국 산 도자기 챌린지 메달 (30일 트로피)</td><td>한국 명산 윤곽 양각 · Strava 친화</td><td>$24-34</td></tr>
+        <tr><td><span class="id">A6.2</span></td><td>한 글자 자수 패치 3p (走 / 뛰 / 빛)</td><td>hanbang 2.0 시그니처 · 옷·가방 attach</td><td>$12-18</td></tr>
+        <tr><td><span class="id">A6.3</span></td><td>일출 한지 폴라로이드 프레임 8p</td><td>운동 후 UGC · Instagram-ready</td><td>$14-22</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="axis-tag">신규</span>K-trend 직접 매핑 (외국인 힙 코드)</h3>
+    <table>
+      <thead><tr><th>ID</th><th>아이템</th><th>한국적 코드</th><th>가격</th></tr></thead>
+      <tbody>
+        <tr><td><span class="id">N1.1</span></td><td>발우(鉢盂) 4종 미니 세트 (밥·국·찬·청수)</td><td>Trend #6 사찰음식 · Jeong Kwan 코드</td><td>$44-64</td></tr>
+        <tr><td><span class="id">N2.1</span></td><td>모던 약과 미니 3p (할매니얼 코드)</td><td>Trend #5 · "yak-geting" · NYC 카페 진입</td><td>$8-14</td></tr>
+        <tr><td><span class="id">N3.1</span></td><td>Modern Sunsik 곡물 6종 미니 봉지 (단품)</td><td>Trend #1 · 메인 키트 분리 SKU</td><td>$22-32</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- §8 -->
+  <div class="section">
+    <h2><span class="num">8</span>Top 5 OMA 미러 강도</h2>
+    <table>
+      <thead><tr><th>순위</th><th>아이템</th><th>OMA 미러</th><th>Maya R. 매칭</th><th>K-trend</th><th>가격</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1</strong></td><td>분청 다완 텀블러 250ml</td><td class="star">★★★★★</td><td class="star">★★★★★</td><td>—</td><td>$34-44</td></tr>
+        <tr><td><strong>2</strong></td><td>Modern Sunsik 곡물 6종</td><td class="star">★★★★</td><td class="star">★★★★</td><td>Trend #1</td><td>$22-32</td></tr>
+        <tr><td><strong>3</strong></td><td>삼베 손목 스웻밴드 2p</td><td class="star">★★★★★</td><td class="star">★★★★★</td><td>—</td><td>$14-22</td></tr>
+        <tr><td><strong>4</strong></td><td>30일 K-Sunsik 핸드북</td><td class="star">★★★★★</td><td class="star">★★★★★</td><td>—</td><td>$18-24</td></tr>
+        <tr><td><strong>5</strong></td><td>인삼 분말 페어링 7p</td><td class="star">★★★</td><td class="star">★★★★★</td><td>Trend #2</td><td>$22-32</td></tr>
+        <tr><td>6</td><td>죽염 미니 jar (백자)</td><td class="star">★★★</td><td class="star">★★★★</td><td>Trend #3</td><td>$14-22</td></tr>
+        <tr><td>7</td><td>옥 근막 마사지 봉</td><td class="star">★★</td><td class="star">★★★★★</td><td>—</td><td>$24-34</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <strong>5점 Welcome Kit</strong> = K1+K2+K3+K4+K5 → <strong>$99</strong> (AG1 $99, JungKwanJang $89 앵커 안)<br>
+      <strong>7점 Premium Kit</strong> = + 인삼 페어링 + 죽염 jar → <strong>$129-139</strong> (Founder's Edition)
+    </div>
+  </div>
+
+  <!-- §9 -->
+  <div class="section">
+    <h2><span class="num">9</span>스토리 라인 — K-Sunsik Morning Ritual</h2>
+    <p>"오래 된 한국 선식 모닝 루틴"을 외국인 액티브 페르소나(Maya R.)가 매일 받아드는 형태로 풀어낸다.</p>
+
+    <div class="mode-card">
+      <span class="tag">CORE NARRATIVE</span>
+      <h3>5:30am · Brooklyn Williamsburg</h3>
+      <p>Maya는 Tracksmith run을 마치고 돌아온다. 분청 다완 텀블러에 베지어트 한 포를 푼다. 단열 텀블러라 운동 가방에서 미지근하지 않다. 한국 곡물 6종 봉지에서 한 봉을 골라 함께 부어 흔든다. <strong>"이건 1300년 된 한국 사찰의 morning 선식이야"</strong> — 30일 핸드북이 그렇게 말한다. 그 한 잔은 단순한 protein shake가 아니라 의식이 된다.</p>
+    </div>
+
+    <div class="scenario-card">
+      <h4>K-Morning Ritual (매일 5분)</h4>
+      <p>다완 텀블러 → 베지어트 1포 + 곡물 1봉 → 단전호흡 4단계 카드 → 한 잔 — AG1의 30일 챌린지 모델 + 한국 선식의 1300년 헤리티지</p>
+    </div>
+    <div class="scenario-card">
+      <h4>K-Heritage Story (인쇄물에 깔린 배경)</h4>
+      <p>미숫가루 = 신라·고려 사찰 승려가 산속에서 들고 다녔던 휴대용 선식 · 정관장 인삼 = 127년 헌신 (NPEW 2026) · 죽염 = WWD 2026 wellness ingredient 톱 · 사찰음식 = Jeong Kwan Chef's Table</p>
+    </div>
+    <div class="scenario-card">
+      <h4>K-Active Wellness (페르소나)</h4>
+      <p>매일 운동 후 1잔 · 매주 4회 baseline · 30일 챌린지 → 1년 retention · 한국 명산 12경 collect (Strava 친화)</p>
+    </div>
+  </div>
+
+  <!-- §10 -->
+  <div class="section">
+    <h2><span class="num">10</span>Slack 답변 초안 v3.2</h2>
+    <p>Green이 그대로 받아서 진아 대표에게 답변할 수 있는 톤.</p>
+    <div class="slack-quote">진아 대표님, 좋은 질문 감사합니다 :woman-bowing::green_heart:
+
+먼저 OMA Welcome Kit 모델을 뜯어보면 "단회용 식품 + 매일 쓰는 보온병 + 보조 도구 + 레시피북" 4점 키트 구성인데,
+베지어트 단회용 스파우트 런칭에 맞춰 1:1 미러로 옮기되, 슬랙에 주신 키워드 **"K-모닝 / K-리추얼 / K-헤리티지 / 선식"**을 메인 스토리로 깔았어요.
+
+페르소나는 매일 운동 후 마시는 사람(NYC Brooklyn 30, Tracksmith run club + lifting 주 4회, AG1 daily, Beauty of Joseon, JungKwanJang ginseng) — Maya R.
+
+[베지어트 K-Active Sunsik Morning Kit, $99]
+1) 베지어트 스파우트 7포 (OMA 박스 자리)
+2) 분청 다완 텀블러 250ml 단열 (OMA 보온병 자리) — 운동 가방에 바로
+3) 삼베 손목 스웻밴드 2p (OMA 나무 스푼 자리) — Korean linen, Tracksmith급
+4) 30일 K-Sunsik Morning Challenge 핸드북 (OMA 레시피북 자리) — AG1 챌린지 모델 + 한국 명산 12경 + 단전호흡 4분
+5) **Modern Sunsik 곡물 6종 미니 봉지** (서리태·찐콩·들깨·찹쌀·보리·옥수수) — K-헤리티지 직타. 베지어트 한 포에 한 곡물 페어링하는 매일 의식.
++ 외포장: 한국 산수(한라산·설악산·지리산) 일러스트 한지 박스
+
+[외국인 힙 K-trend 6개와 1:1 매핑]
+1) 미숫가루·선식 (Damtuh USA D2C, Erewhon copy 화제) → 메인 키트 #5
+2) 정관장 홍삼 (2026 NPEW Anaheim, WWD K-wellness +50% YoY) → Add-on 인삼 페어링
+3) 죽염 (2026 WWD wellness ingredient 톱) → Add-on 죽염 미니 jar
+4) 쑥 (동일) → Add-on 쑥 발열 패드
+5) 약과 (할매니얼 붐, NYC 카페 진입) → Add-on 모던 약과 미니
+6) 사찰음식 / Jeong Kwan (Chef's Table) → Add-on 발우 4종 미니
+
+전체 풀(메인 키트 + Add-on 21개) GitHub Pages 배포:
+https://hizsystem.github.io/brandrise/research/veggiet-northam-goods-v3-active/
+
+언제 한 번 미팅 잡고 함께 보면 좋을 것 같습니다.</div>
+  </div>
+
+  <!-- §11 -->
+  <div class="section">
+    <h2><span class="num">11</span>결정 필요 사항</h2>
+    <ul class="clean">
+      <li><strong>키트 SKU 사이즈:</strong> 5점($99) 단독 vs 7점 Premium($129) 동시 런칭</li>
+      <li><strong>다완 텀블러 콜라보:</strong> 도예가 핸드메이드(Adam Field Montana 등) vs 한국 OEM 단열 텀블러(대량)</li>
+      <li><strong>곡물 6종 OEM:</strong> 단일 곡물 공급사(서리태·찐콩·들깨·찹쌀·보리·옥수수 7g × 6) vs 미숫가루 OEM에 라벨링</li>
+      <li><strong>30일 핸드북 영문 카피라이팅:</strong> Maya R. 톤(러닝 community voice) vs hanbang voice (정관장 인삼 카피라이팅)</li>
+      <li><strong>1차 Add-on 3~5개 선정:</strong> A2.1 옥 근막봉 / A4.3 죽염 jar / A5.3 인삼 / N1.1 발우 / N2.1 모던 약과 중 선택</li>
+      <li><strong>Lauren M. Slow Sunday Kit Phase 2 분리:</strong> Active 단독 vs 페르소나 페어</li>
+    </ul>
+  </div>
+
+  <!-- §12 -->
+  <div class="section">
+    <h2><span class="num">12</span>다음 액션</h2>
+    <ul class="clean">
+      <li>진아 대표·인국·예랑에게 v3.2 키트 컨셉 공유 (Slack §10 초안)</li>
+      <li>다완 텀블러 콜라보 영문 컨택 메일 (도예가 vs OEM 결정 후)</li>
+      <li>30일 핸드북 영문 샘플 1주차 시안 제작 (이수민 디자인 합류)</li>
+      <li>곡물 6종 OEM 견적 (서리태는 베지어트 원료 공급사와 동일 라인 가능)</li>
+      <li>한지 산수 박스 인쇄 견적 (안동·전주)</li>
+      <li>K-trend 1~6 인증 보강: 정관장 NPEW Anaheim 부스 영상 자료 확보</li>
+      <li>Phase 1 (단회용 스파우트) → Phase 2 (810g 대용량) 키트 진화 시나리오 PPTX화</li>
+    </ul>
+  </div>
+
+  <div class="footer-meta">
+    VEGGIET × HUENIC · BC3팀 · Internal Backup Library v3.2 · 2026-05-21<br>
+    프로젝트 인덱스: <a href="https://hizsystem.github.io/brandrise/">brandrise research</a> · 이전 버전: <a href="https://hizsystem.github.io/brandrise/research/veggiet-northam-goods-v2-internal/">v2 expansion</a>
+  </div>
+
+</div>
+</body>
+</html>
