@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Veggiet 북미 굿즈 v2 expansion — 내부 백업 라이브러리</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif; background: #f4f7f9; color: #1a1b18; line-height: 1.7; font-size: 14px; word-break: keep-all; overflow-wrap: break-word; }
+
+.toolbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #0D0D0D; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
+.toolbar-logo { font-size: 13px; font-weight: 700; color: #16a34a; letter-spacing: 0.05em; }
+.toolbar-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.15); margin: 0 16px; display: inline-block; vertical-align: middle; }
+.toolbar-title { font-size: 14px; font-weight: 500; color: #fff; }
+.toolbar-left { display: flex; align-items: center; gap: 0; }
+.toolbar-badge { font-size: 10px; font-weight: 800; color: #fbbf24; background: rgba(251,191,36,0.15); padding: 4px 8px; border-radius: 4px; letter-spacing: 0.06em; }
+.btn-toolbar { padding: 7px 16px; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; background: transparent; color: #fff; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+.btn-toolbar:hover { background: rgba(255,255,255,0.1); }
+
+.container { max-width: 880px; margin: 0 auto; padding: 80px 24px 60px; }
+
+.report-header { background: #fff; border-radius: 12px; padding: 48px 44px; margin-bottom: 18px; border: 1px solid #e8edf1; }
+.report-header .label { font-size: 11px; font-weight: 700; color: #b45309; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
+.report-header h1 { font-size: 28px; font-weight: 900; line-height: 1.35; letter-spacing: -0.02em; margin-bottom: 12px; }
+.report-header h1 em { color: #16a34a; font-style: normal; }
+.report-header .lede { font-size: 15px; color: #525252; line-height: 1.75; margin-top: 18px; }
+.meta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 28px; padding-top: 24px; border-top: 1px solid #e8edf1; }
+.meta-item .mk { font-size: 11px; color: #999; letter-spacing: 0.04em; margin-bottom: 4px; }
+.meta-item .mv { font-size: 13px; font-weight: 600; }
+.meta-item .mv em { color: #16a34a; font-style: normal; font-weight: 800; }
+
+.section { background: #fff; border-radius: 12px; padding: 32px 40px; margin-bottom: 18px; border: 1px solid #e8edf1; }
+.section h2 { font-size: 19px; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.02em; }
+.section h2 em { color: #16a34a; font-style: normal; }
+.section .sec-sub { font-size: 13px; color: #999; margin-bottom: 22px; }
+.section h3 { font-size: 15px; font-weight: 800; margin-top: 22px; margin-bottom: 4px; color: #1a1b18; letter-spacing: -0.01em; }
+.section h3 em { color: #b45309; font-style: normal; }
+.section h3 .h3-sub { font-size: 12px; font-weight: 500; color: #94a3b8; margin-left: 8px; letter-spacing: 0; }
+
+.highlight-box { background: #0D0D0D; border-radius: 12px; padding: 32px 40px; margin-bottom: 18px; color: #fff; }
+.highlight-box .hl-label { font-size: 11px; font-weight: 700; color: #fbbf24; letter-spacing: 0.08em; margin-bottom: 14px; }
+.highlight-box .hl-text { font-size: 16px; font-weight: 500; line-height: 1.85; }
+.highlight-box .hl-text em { color: #fbbf24; font-style: normal; }
+.highlight-box .hl-text strong { color: #fff; font-weight: 800; }
+
+.info-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 0 8px 8px 0; padding: 16px 22px; margin-top: 18px; font-size: 13px; color: #525252; line-height: 1.8; }
+.info-box strong { color: #1a1b18; }
+.info-box.warm { background: #fffbeb; border-left-color: #b45309; }
+.info-box.warm strong { color: #92400e; }
+
+.raw-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 12.5px; }
+.raw-table th { background: #f8fafb; padding: 10px 10px; text-align: left; font-weight: 800; color: #525252; border-bottom: 2px solid #e8edf1; font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; }
+.raw-table th.t-narrow { width: 36px; text-align: center; }
+.raw-table th.t-id { width: 50px; }
+.raw-table th.t-meta { width: 80px; text-align: center; font-size: 10px; }
+.raw-table td { padding: 11px 10px; border-bottom: 1px solid #f0f2f5; color: #1a1b18; line-height: 1.55; vertical-align: top; font-size: 12.5px; }
+.raw-table td.t-narrow { text-align: center; font-size: 14px; }
+.raw-table td.t-id { font-weight: 800; color: #16a34a; white-space: nowrap; font-size: 11.5px; }
+.raw-table td .rname { font-weight: 800; color: #1a1b18; display: block; margin-bottom: 3px; }
+.raw-table td .rdesc { color: #525252; font-size: 12px; line-height: 1.55; }
+.raw-table td.t-meta { text-align: center; font-size: 11.5px; color: #636569; white-space: nowrap; }
+.raw-table td.t-meta strong { color: #16a34a; font-weight: 700; }
+.raw-table tr:hover td { background: #fafbfc; }
+.raw-table tbody tr:last-child td { border-bottom: none; }
+
+.scenario-card { background: #fff; border: 1px solid #e8edf1; border-radius: 12px; padding: 22px 26px; margin-bottom: 12px; border-left: 5px solid #16a34a; }
+.scenario-card .sc-tag { font-size: 11px; font-weight: 800; color: #16a34a; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+.scenario-card .sc-title { font-size: 15px; font-weight: 900; color: #1a1b18; letter-spacing: -0.01em; margin-bottom: 8px; }
+.scenario-card .sc-text { font-size: 13px; color: #525252; line-height: 1.7; margin-bottom: 8px; }
+.scenario-card .sc-pickup { background: #f0fdf4; border-radius: 8px; padding: 12px 16px; font-size: 12.5px; color: #15803d; line-height: 1.7; font-weight: 600; }
+.scenario-card .sc-pickup strong { color: #14532d; }
+.scenario-card.sc-warn { border-left-color: #b45309; }
+.scenario-card.sc-warn .sc-tag { color: #b45309; }
+
+.mode-card { background: linear-gradient(135deg, #f0fdf4 0%, #fef9ee 100%); border-radius: 14px; padding: 24px 28px; margin-bottom: 12px; border: 1px solid #86efac; border-left: 5px solid #16a34a; }
+.mode-card .mc-tag { font-size: 11px; font-weight: 800; color: #15803d; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+.mode-card h3 { font-size: 16px; font-weight: 900; color: #15803d; letter-spacing: -0.02em; margin-bottom: 8px; margin-top: 0; }
+.mode-card .mc-desc { font-size: 13px; color: #525252; line-height: 1.75; margin-bottom: 8px; }
+.mode-card .mc-desc strong { color: #15803d; }
+.mode-card .mc-example { background: rgba(255,255,255,0.7); border-radius: 8px; padding: 10px 14px; font-size: 12px; color: #525252; }
+.mode-card .mc-example strong { color: #15803d; }
+
+.legend { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 14px; padding: 12px 18px; background: #f8fafb; border-radius: 8px; font-size: 12px; color: #636569; }
+.legend strong { color: #1a1b18; font-weight: 800; }
+
+.footer { text-align: center; padding: 36px 0 20px; color: #999; font-size: 12px; line-height: 2; }
+.footer .brand { font-size: 15px; font-weight: 800; color: #1a1b18; margin-bottom: 4px; }
+.footer .warn { color: #b45309; font-weight: 700; }
+
+@media (max-width: 768px) {
+  .container { padding: 70px 16px 40px; }
+  .meta-grid { grid-template-columns: repeat(2, 1fr); }
+  .section, .scenario-card, .mode-card, .report-header { padding: 22px 18px; }
+  .report-header h1 { font-size: 22px; }
+  .raw-table { font-size: 11.5px; }
+  .raw-table th, .raw-table td { padding: 8px 6px; }
+  .raw-table th.t-meta, .raw-table td.t-meta { font-size: 10px; }
+}
+@media print {
+  .toolbar { display: none !important; }
+  .container { padding: 20px; max-width: 100%; }
+  body { background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .section, .report-header, .highlight-box, .scenario-card, .mode-card { page-break-inside: avoid; box-shadow: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="toolbar-left">
+    <span class="toolbar-logo">VEGGIET × HUENIC</span>
+    <span class="toolbar-sep"></span>
+    <span class="toolbar-title">북미 굿즈 v2 expansion · 내부 백업 라이브러리</span>
+    <span class="toolbar-sep"></span>
+    <span class="toolbar-badge">INTERNAL ONLY</span>
+  </div>
+  <button class="btn-toolbar" onclick="window.print()">PDF 저장</button>
+</div>
+
+<div class="container">
+
+  <!-- 표지 -->
+  <div class="report-header">
+    <div class="label">INTERNAL BACKUP POOL · 2026.05.21 · v2 EXPANSION</div>
+    <h1>북미 굿즈 <em>v2 expansion</em><br>51 raw 백업 풀</h1>
+    <div class="lede">
+      박진아 발송 v3 (5/22 오전) 옆에 둘 <strong>내부 라이브러리</strong>입니다. v1 60~70 raw → 4 매핑 *수렴 사이클* 후, *발산 사이클*로 51 신규 raw 풀 확장. 박진아 답변 도착 시 시나리오 A~E 매핑으로 즉시 트리거. <strong>내부 팀이 함께 좁히는 자리</strong>이지 박진아 대표 발송 자료 X.
+    </div>
+    <div class="meta-grid">
+      <div class="meta-item"><div class="mk">신규 raw</div><div class="mv"><em>51</em>개</div></div>
+      <div class="meta-item"><div class="mk">v1+v2 통합</div><div class="mv"><em>~110</em> unique</div></div>
+      <div class="meta-item"><div class="mk">🔴 강력 추천</div><div class="mv"><em>13</em>개 (v2 신규)</div></div>
+      <div class="meta-item"><div class="mk">시나리오 매핑</div><div class="mv"><em>A~E</em> 5종</div></div>
+    </div>
+  </div>
+
+  <!-- 작업 배경 -->
+  <div class="highlight-box">
+    <div class="hl-label">왜 v2 expansion인가</div>
+    <div class="hl-text">
+      박진아 발송 v3는 사연 4단↔굿즈 4점 1:1 매핑으로 좁힌 *수렴 사이클*입니다. 답이 도착했을 때 <em>"Option 2 말고 다른 모닝 도구 없나"</em> 또는 <em>"다른 *방향*은 없나"</em>라고 물으시면 즉시 던질 <strong>백업 라이브러리</strong>가 필요합니다.<br><br>
+      v1 freeze는 그대로 유지하고 v2는 별도 파일로 분리 — 박진아 발송 추적성을 깨지 않으면서 *발산 사이클*로 51 신규 raw 풀을 확장했습니다. 시나리오 A~E 매핑 가이드를 박아뒀으니 답 도착 시 다시 좁히는 작업 0초.
+    </div>
+  </div>
+
+  <!-- 평가 축 범례 -->
+  <div class="section">
+    <h2>평가 축 <em>범례</em></h2>
+    <div class="sec-sub">v1과 동일 유지 — 인지 비용 0 위해 새 축 도입 X</div>
+    <div class="legend">
+      <span><strong>⭐ 표시</strong> 🔴=강력 추천 / 🟡=중간 / ⚪=raw 옵션</span>
+      <span><strong>OMA 매핑</strong> 기능×디자인×헤리티지 3중 매칭 (3점 만점)</span>
+      <span><strong>난이도</strong> ★1=즉시 OEM / ★3=특수 OEM / ★5=무형문화재급</span>
+    </div>
+    <div class="info-box">
+      <strong>옵션 풍부 룰</strong>(<em>idea_proposal_breadth</em>) — Claude는 raw material 공급자, 엄선은 우성민 + 내부 팀. 평가 축은 *좁히는 도구 X*, *정렬·매핑 도구*. 51 raw를 순위만 매기고 자르지 않았습니다.
+    </div>
+  </div>
+
+  <!-- 섹션 1: 사연 4단 대안 -->
+  <div class="section">
+    <h2>섹션 1 · 사연 4단 <em>대안</em> 풀 (15 raw)</h2>
+    <div class="sec-sub">v3 발송 4 옵션 각각의 alternate 3~4개. 박진아 "이 자리에 다른 후보 없나" 대응 백업</div>
+
+    <h3>Option 1 대안 <span class="h3-sub">— Page 1 첫 돌봄의 의식 (할머니·검은콩 미숫가루)</span></h3>
+    <table class="raw-table">
+      <thead><tr>
+        <th class="t-narrow">⭐</th>
+        <th class="t-id">ID</th>
+        <th>후보 · 1줄 설명</th>
+        <th class="t-meta">OMA</th>
+        <th class="t-meta">난이도</th>
+        <th class="t-meta">USP</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="t-narrow">🔴</td><td class="t-id">1A</td><td><span class="rname">박진아 할머니 손글씨 레시피 카드</span><span class="rdesc">한지 카드 5장, "검은콩 비율 1:7" 정량화 + 박진아 어린시절 기억 인용</span></td><td class="t-meta"><strong>3/3</strong></td><td class="t-meta">★1</td><td class="t-meta">박진아·헤리티지</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">1B</td><td><span class="rname">6대 한국 콩 시그니처 패키지</span><span class="rdesc">서리태·흑태·백태·강낭·완두·녹두 6봉지 + 한지 라벨 + 박진아 사연</span></td><td class="t-meta"><strong>3/3</strong></td><td class="t-meta">★2</td><td class="t-meta">헤리티지·박진아</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">1C</td><td><span class="rname">미니 무쇠솥 화로 모티프 도자기 (빈 통)</span><span class="rdesc">할머니 부엌 풍경 모티프, 미숫가루 안 담는 콘셉트 - *채우는 의식*이 굿즈</span></td><td class="t-meta"><strong>3/3</strong></td><td class="t-meta">★4</td><td class="t-meta">헤리티지·K-리추얼</td></tr>
+        <tr><td class="t-narrow">⚪</td><td class="t-id">1D</td><td><span class="rname">4대 모녀 한지 사진 카드</span><span class="rdesc">박진아 할머니·어머니·박진아·딸 가상 4대 라인 + 손글씨 메시지</span></td><td class="t-meta">2/3</td><td class="t-meta">★1</td><td class="t-meta">박진아·K-리추얼</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Option 2 대안 <span class="h3-sub">— Page 4 현재의 의식 (5:30 모닝·옹기 머그)</span></h3>
+    <table class="raw-table">
+      <thead><tr>
+        <th class="t-narrow">⭐</th>
+        <th class="t-id">ID</th>
+        <th>후보 · 1줄 설명</th>
+        <th class="t-meta">OMA</th>
+        <th class="t-meta">난이도</th>
+        <th class="t-meta">USP</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="t-narrow">🔴</td><td class="t-id">2A</td><td><span class="rname">황동 모닝 측정 스푼 3개 세트</span><span class="rdesc">3개=3스푼/250ml 박진아 본인 비율. 손글씨 음각, 트로피</span></td><td class="t-meta"><strong>3/3</strong></td><td class="t-meta">★2</td><td class="t-meta">K-모닝·박진아</td></tr>
+        <tr><td class="t-narrow">🔴</td><td class="t-id">2B</td><td><span class="rname">한지 모닝 저널 (30일 트래커)</span><span class="rdesc">5:30 → 9시 4시간 의식 체크, 박진아 사인 표지 + 손글씨 격언</span></td><td class="t-meta">2/3</td><td class="t-meta">★2</td><td class="t-meta">K-모닝·박진아</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">2C</td><td><span class="rname">동백나무 티스푼 + 옹기 잔 콤보</span><span class="rdesc">한국 자생 활엽수, sage green 마감, 잔과 함께 묶음</span></td><td class="t-meta"><strong>3/3</strong></td><td class="t-meta">★3</td><td class="t-meta">K-모닝·헤리티지</td></tr>
+        <tr><td class="t-narrow">⚪</td><td class="t-id">2D</td><td><span class="rname">황동 모래시계 (5분)</span><span class="rdesc">5분 우려내기 의식. 옹기 모티프 베이스 + sage green</span></td><td class="t-meta">2/3</td><td class="t-meta">★3</td><td class="t-meta">K-모닝</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Option 3 대안 <span class="h3-sub">— Page 2 증명의 사건 (남편 회복·일반화 변형)</span></h3>
+    <table class="raw-table">
+      <thead><tr>
+        <th class="t-narrow">⭐</th>
+        <th class="t-id">ID</th>
+        <th>후보 · 1줄 설명</th>
+        <th class="t-meta">OMA</th>
+        <th class="t-meta">난이도</th>
+        <th class="t-meta">USP</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="t-narrow">🔴</td><td class="t-id">3A</td><td><span class="rname">"회복" 한지 명상 카드 8장</span><span class="rdesc">사건 명시 X, 박진아 손글씨 영문 명언 8개. 회복 정서 응축</span></td><td class="t-meta">2/3</td><td class="t-meta">★1</td><td class="t-meta">K-리추얼·박진아</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">3B</td><td><span class="rname">PURIS 완두 씨앗 봉지 + 토분 미니</span><span class="rdesc">Plantable. 실제 발아 가능. 환경 + 치유 정서</span></td><td class="t-meta"><strong>3/3</strong></td><td class="t-meta">★1</td><td class="t-meta">환경·박진아</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">3C</td><td><span class="rname">한국 약초 차 4종 키트</span><span class="rdesc">쑥·뽕잎·연잎·생강. 한지 봉지 4매. 회복기 차 의식</span></td><td class="t-meta">2/3</td><td class="t-meta">★2</td><td class="t-meta">헤리티지·K-리추얼</td></tr>
+        <tr><td class="t-narrow">⚪</td><td class="t-id">3D</td><td><span class="rname">옹기 미니 발효 항아리</span><span class="rdesc">DIY 발효 30일 루틴. 콩물 발효 가이드 한지 카드 동봉</span></td><td class="t-meta"><strong>3/3</strong></td><td class="t-meta">★4</td><td class="t-meta">헤리티지·K-리추얼</td></tr>
+      </tbody>
+    </table>
+    <div class="info-box warm">
+      <strong>박진아 사적 영역 컨펌 필수</strong> — Option 3 자체가 남편 사건이라 컨펌 게이트. 대안 풀은 *사건 명시 X*, *회복 정서*만 살린 변형 우선 박았습니다.
+    </div>
+
+    <h3>Option 4 대안 <span class="h3-sub">— Page 3 조용한 약속 (0.2kg 탄소 한지 포스터)</span></h3>
+    <table class="raw-table">
+      <thead><tr>
+        <th class="t-narrow">⭐</th>
+        <th class="t-id">ID</th>
+        <th>후보 · 1줄 설명</th>
+        <th class="t-meta">OMA</th>
+        <th class="t-meta">난이도</th>
+        <th class="t-meta">USP</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="t-narrow">🔴</td><td class="t-id">4A</td><td><span class="rname">0.2kg 탄소 한지 명함 100매</span><span class="rdesc">포스터 대신 명함. *한 장 = 한 입의 약속*. 배포·공유 굿즈</span></td><td class="t-meta">2/3</td><td class="t-meta">★1</td><td class="t-meta">환경·박진아</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">4B</td><td><span class="rname">Plantable 한지 카드</span><span class="rdesc">씨앗 박힌 한지, 박진아 사인 + 0.2kg 메시지, 심으면 발아</span></td><td class="t-meta"><strong>3/3</strong></td><td class="t-meta">★2</td><td class="t-meta">환경</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">4C</td><td><span class="rname">재사용 린넨 토트백 + 0.2kg 자수</span><span class="rdesc">sage green, 한글 "베지어트" + 영문 "0.2kg less per meal"</span></td><td class="t-meta">2/3</td><td class="t-meta">★1</td><td class="t-meta">환경·헤리티지</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 섹션 2: 새 축 신설 -->
+  <div class="section">
+    <h2>섹션 2 · 5번째·6번째 <em>축 신설</em> (12 raw)</h2>
+    <div class="sec-sub">박진아 사연 4단 외 추가 차원. "다른 *방향*은 없나"에 새 축으로 점프 가능</div>
+
+    <h3>축 5 — 공동체·선물 모드 <span class="h3-sub">박진아 Q1 "첫 돌봄의 의식"의 *주는 방향* 확장</span></h3>
+    <table class="raw-table">
+      <thead><tr>
+        <th class="t-narrow">⭐</th>
+        <th class="t-id">ID</th>
+        <th>후보 · 1줄 설명</th>
+        <th class="t-meta">OMA</th>
+        <th class="t-meta">난이도</th>
+        <th class="t-meta">USP</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="t-narrow">🔴</td><td class="t-id">5A</td><td><span class="rname">"Gift to Mother" 시즌 박스</span><span class="rdesc">어머니날·추석 한정. 모녀 옹기 머그 2개 + 박진아 손편지 + 한지 라벨</span></td><td class="t-meta"><strong>3/3</strong></td><td class="t-meta">★2</td><td class="t-meta">공동체·K-리추얼</td></tr>
+        <tr><td class="t-narrow">🔴</td><td class="t-id">5B</td><td><span class="rname">"Veggie Family Starter Kit" - 친구 추천용</span><span class="rdesc">2인분 샘플 + 사연 카드, 친구 건네는 형식. 바이럴 굿즈</span></td><td class="t-meta">2/3</td><td class="t-meta">★1</td><td class="t-meta">공동체</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">5C</td><td><span class="rname">공동 식사 4인 패키지</span><span class="rdesc">4인분 베지어트 + 옹기 잔 4개. "함께 마시기" 의식</span></td><td class="t-meta"><strong>3/3</strong></td><td class="t-meta">★3</td><td class="t-meta">공동체·K-모닝</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">5D</td><td><span class="rname">"Korean Generations" 사진 카드 세트</span><span class="rdesc">할머니·어머니·박진아·딸 4대 한국 여성 + 사연 카드 4장</span></td><td class="t-meta">2/3</td><td class="t-meta">★1</td><td class="t-meta">박진아·헤리티지</td></tr>
+        <tr><td class="t-narrow">⚪</td><td class="t-id">5E</td><td><span class="rname">박진아 영상 메시지 NFC 카드</span><span class="rdesc">핸드폰 터치 → 1분 박진아 영상. 디지털 트로피</span></td><td class="t-meta">1/3</td><td class="t-meta">★2</td><td class="t-meta">박진아·수집</td></tr>
+        <tr><td class="t-narrow">⚪</td><td class="t-id">5F</td><td><span class="rname">한국 명절 한정 박스 (4회/년)</span><span class="rdesc">설·대보름·추석·동지 각 명절 의식 도구 + 사연</span></td><td class="t-meta"><strong>3/3</strong></td><td class="t-meta">★3</td><td class="t-meta">헤리티지·K-리추얼</td></tr>
+      </tbody>
+    </table>
+
+    <h3>축 6 — 빙커 시너지·캐나다 인프라 <span class="h3-sub">4/6 밴쿠버 데모 + Community Natural Foods 입점 인프라</span></h3>
+    <table class="raw-table">
+      <thead><tr>
+        <th class="t-narrow">⭐</th>
+        <th class="t-id">ID</th>
+        <th>후보 · 1줄 설명</th>
+        <th class="t-meta">OMA</th>
+        <th class="t-meta">난이도</th>
+        <th class="t-meta">USP</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">6A</td><td><span class="rname">Veggiet × Vinker Family Tote</span><span class="rdesc">캔버스, 양 브랜드 자수, 캐나다 데모 부스 발송용</span></td><td class="t-meta">2/3</td><td class="t-meta">★1</td><td class="t-meta">공동체·환경</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">6B</td><td><span class="rname">"Korean Plant-Based Family" 인사 카드</span><span class="rdesc">두 브랜드 합본 소개. 박진아 손편지 형태. 빙커 인국 합본 사인</span></td><td class="t-meta">2/3</td><td class="t-meta">★1</td><td class="t-meta">박진아·공동체</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">6C</td><td><span class="rname">BC Lifestyle 한정 머그</span><span class="rdesc">밴쿠버 풍경 일러스트, 베지어트+빙커 양각, 캐나다 한정</span></td><td class="t-meta"><strong>3/3</strong></td><td class="t-meta">★3</td><td class="t-meta">헤리티지·공동체</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">6D</td><td><span class="rname">빙커 콩파스타 + 베지어트 셰이크 1주 미트 플랜 카드</span><span class="rdesc">한주 동안 양 브랜드 식단 카드 7장. 캐나다 매장 무료 배포</span></td><td class="t-meta">2/3</td><td class="t-meta">★1</td><td class="t-meta">공동체·K-리추얼</td></tr>
+        <tr><td class="t-narrow">⚪</td><td class="t-id">6E</td><td><span class="rname">Vegan Friendly 황동 인장 (씰)</span><span class="rdesc">1.5cm 미니 도장, 두 브랜드 공용</span></td><td class="t-meta">2/3</td><td class="t-meta">★3</td><td class="t-meta">헤리티지</td></tr>
+        <tr><td class="t-narrow">⚪</td><td class="t-id">6F</td><td><span class="rname">캐나다 한정 단풍 한지 카드</span><span class="rdesc">메이플 + 한지 합본, BC 시즌 한정. Community Natural Foods 매장 굿즈</span></td><td class="t-meta">1/3</td><td class="t-meta">★1</td><td class="t-meta">공동체·환경</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 섹션 3: D2C 확장 -->
+  <div class="section">
+    <h2>섹션 3 · 글로벌 D2C <em>차용 확장</em> (12 raw)</h2>
+    <div class="sec-sub">v1 차용 4개(AG1·Truvani·Graza·Huel) 외 8개. 인국 Q1 "AG1 같은 감도 + 스토리 + 사람 냄새" 직접 응답</div>
+
+    <table class="raw-table">
+      <thead><tr>
+        <th class="t-narrow">⭐</th>
+        <th class="t-id">ID</th>
+        <th>후보 · 차용 브랜드 · 1줄 설명</th>
+        <th class="t-meta">OMA</th>
+        <th class="t-meta">난이도</th>
+        <th class="t-meta">USP</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="t-narrow">🔴</td><td class="t-id">D1</td><td><span class="rname">Korean Cereal + Veggiet Box <span style="color:#16a34a;font-weight:600;">· Magic Spoon</span></span><span class="rdesc">한국 쌀과자 시리얼 + 베지어트 가루 토핑. 시리얼 콜라보</span></td><td class="t-meta">2/3</td><td class="t-meta">★3</td><td class="t-meta">K-모닝·공동체</td></tr>
+        <tr><td class="t-narrow">🔴</td><td class="t-id">D2</td><td><span class="rname">옹기병 한정 식혜·수정과·매실청 <span style="color:#16a34a;font-weight:600;">· Olipop</span></span><span class="rdesc">Olipop 옹기 한국 음료 한정 SKU. 한국 음료 진입 트로피</span></td><td class="t-meta"><strong>3/3</strong></td><td class="t-meta">★4</td><td class="t-meta">헤리티지·수집</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">D3</td><td><span class="rname">"Death to Hunger, Hello Veggiet" 옹기 텀블러 <span style="color:#16a34a;font-weight:600;">· Liquid Death</span></span><span class="rdesc">강한 카피 + 한국 옹기 모티프. 유머·반어 톤</span></td><td class="t-meta">2/3</td><td class="t-meta">★2</td><td class="t-meta">수집·환경</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">D4</td><td><span class="rname">"Korean Welcome Kit" 5점 박스 <span style="color:#16a34a;font-weight:600;">· Athletic Greens</span></span><span class="rdesc">스푼·머그·셰이커·레시피·인사카드 5점. AG1 Welcome Kit 한국화</span></td><td class="t-meta"><strong>3/3</strong></td><td class="t-meta">★2</td><td class="t-meta">K-모닝·박진아</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">D5</td><td><span class="rname">"Founder's Hands" 한지 미니 책 <span style="color:#16a34a;font-weight:600;">· Heimish</span></span><span class="rdesc">박진아 자서전 8p. 한지 표지 + 손글씨 + 사연 4단 응축</span></td><td class="t-meta">2/3</td><td class="t-meta">★2</td><td class="t-meta">박진아·헤리티지</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">D6</td><td><span class="rname">"Calm Korean Morning" 명상 카드 + 셰이크 <span style="color:#16a34a;font-weight:600;">· Recess</span></span><span class="rdesc">명상 카드 덱 + 셰이크 콤보. 각성 vs 명상 듀얼</span></td><td class="t-meta">2/3</td><td class="t-meta">★2</td><td class="t-meta">K-리추얼·K-모닝</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">D7</td><td><span class="rname">"Veggiet for Couples" 1:1 박스 <span style="color:#16a34a;font-weight:600;">· Hims/Hers</span></span><span class="rdesc">남·여 셰이커 2종 + 사연 합본. 커플 D2C 패턴</span></td><td class="t-meta">2/3</td><td class="t-meta">★2</td><td class="t-meta">공동체</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">D8</td><td><span class="rname">"Your Korean Plant Profile" 진단 카드 <span style="color:#16a34a;font-weight:600;">· Curology</span></span><span class="rdesc">DNA 아닌 *식습관 진단*. 한지 카드 + 추천 SKU 매칭</span></td><td class="t-meta">2/3</td><td class="t-meta">★2</td><td class="t-meta">K-리추얼·K-모닝</td></tr>
+        <tr><td class="t-narrow">⚪</td><td class="t-id">D9</td><td><span class="rname">Bojagi + Sage Pouch <span style="color:#16a34a;font-weight:600;">· Glossier</span></span><span class="rdesc">Glossier Pink Pouch 한국화. Sage green Bojagi 미니 파우치</span></td><td class="t-meta">2/3</td><td class="t-meta">★1</td><td class="t-meta">환경·헤리티지</td></tr>
+        <tr><td class="t-narrow">⚪</td><td class="t-id">D10</td><td><span class="rname">한지+울 토트 <span style="color:#16a34a;font-weight:600;">· Allbirds</span></span><span class="rdesc">한국 자생 양털 + 한지 라이닝. 친환경 + 헤리티지</span></td><td class="t-meta">2/3</td><td class="t-meta">★3</td><td class="t-meta">환경·헤리티지</td></tr>
+        <tr><td class="t-narrow">⚪</td><td class="t-id">D11</td><td><span class="rname">Coffee 대신 미숫가루 Subscription Kit <span style="color:#16a34a;font-weight:600;">· Death Wish Coffee</span></span><span class="rdesc">매월 한국 콩 다른 종류 5g 봉지 + 한지 라벨 + 사연 카드</span></td><td class="t-meta">2/3</td><td class="t-meta">★2</td><td class="t-meta">K-모닝·박진아</td></tr>
+        <tr><td class="t-narrow">⚪</td><td class="t-id">D12</td><td><span class="rname">"Veggie Member ID" 메탈 카드 <span style="color:#16a34a;font-weight:600;">· Apple Card</span></span><span class="rdesc">메탈 카드, 일련번호, NFC. *Founding Member* ID 트로피</span></td><td class="t-meta">1/3</td><td class="t-meta">★3</td><td class="t-meta">수집</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 섹션 4: 시즌 마스터 -->
+  <div class="section">
+    <h2>섹션 4 · 시즌·한정 <em>마스터플랜</em> (12 raw)</h2>
+    <div class="sec-sub">5/8/11월 × 번들/단품/컬렉션 3모드 + 상시 3 SKU = 북미 1년 프랜차이즈 마스터</div>
+
+    <h3>5월 — 런칭/봄 시즌</h3>
+    <table class="raw-table">
+      <thead><tr>
+        <th class="t-narrow">⭐</th>
+        <th class="t-id">ID</th>
+        <th>SKU · 모드 · 1줄 설명</th>
+        <th class="t-meta">단가</th>
+        <th class="t-meta">USP</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="t-narrow">🔴</td><td class="t-id">M1</td><td><span class="rname">Launch Welcome Kit <span style="color:#b45309;font-weight:600;">· 번들</span></span><span class="rdesc">옹기 머그 + 황동 스푼 + 한지 카드 + 린넨 토트 + 미숫가루 미니</span></td><td class="t-meta"><strong>$54.99</strong></td><td class="t-meta">K-모닝·박진아</td></tr>
+        <tr><td class="t-narrow">🔴</td><td class="t-id">M2</td><td><span class="rname">Founder's Edition 옹기 머그 <span style="color:#b45309;font-weight:600;">· 단품</span></span><span class="rdesc">한정 500매, 밑면 일련번호, 박진아 사인</span></td><td class="t-meta"><strong>$39.99</strong></td><td class="t-meta">수집·K-모닝</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">M3</td><td><span class="rname">K-Morning 6 piece Spring <span style="color:#b45309;font-weight:600;">· 컬렉션</span></span><span class="rdesc">각 USP 1개 + 사연 1개 + 환경 1개 = 6점 시즌 패키지</span></td><td class="t-meta"><strong>$74.99</strong></td><td class="t-meta">K-모닝·헤리티지</td></tr>
+      </tbody>
+    </table>
+
+    <h3>8월 — 여름·추석 진입</h3>
+    <table class="raw-table">
+      <thead><tr>
+        <th class="t-narrow">⭐</th>
+        <th class="t-id">ID</th>
+        <th>SKU · 모드 · 1줄 설명</th>
+        <th class="t-meta">단가</th>
+        <th class="t-meta">USP</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">M4</td><td><span class="rname">Korean Summer Cool Kit <span style="color:#b45309;font-weight:600;">· 번들</span></span><span class="rdesc">옹기 텀블러 + 식혜 봉지 + 한지 부채 + 매실청 미니</span></td><td class="t-meta"><strong>$44.99</strong></td><td class="t-meta">K-리추얼·헤리티지</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">M5</td><td><span class="rname">Chuseok Limited 한지 명상 카드 <span style="color:#b45309;font-weight:600;">· 단품</span></span><span class="rdesc">박진아 사인, 추석 한정 8장 한지 카드</span></td><td class="t-meta"><strong>$24.99</strong></td><td class="t-meta">K-리추얼·박진아</td></tr>
+        <tr><td class="t-narrow">🔴</td><td class="t-id">M6</td><td><span class="rname">Korean Heritage 8 piece Autumn <span style="color:#b45309;font-weight:600;">· 컬렉션</span></span><span class="rdesc">옹기·놋·한지·매듭·자수 8종 컬렉션. 헤리티지 풀세트</span></td><td class="t-meta"><strong>$99.99</strong></td><td class="t-meta">헤리티지·수집</td></tr>
+      </tbody>
+    </table>
+
+    <h3>11월 — 년말 선물 시즌</h3>
+    <table class="raw-table">
+      <thead><tr>
+        <th class="t-narrow">⭐</th>
+        <th class="t-id">ID</th>
+        <th>SKU · 모드 · 1줄 설명</th>
+        <th class="t-meta">단가</th>
+        <th class="t-meta">USP</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="t-narrow">🔴</td><td class="t-id">M7</td><td><span class="rname">Year-End Gift Box <span style="color:#b45309;font-weight:600;">· 번들</span></span><span class="rdesc">Bojagi 보자기 + 옹기 머그 2개 + 박진아 손편지 4장</span></td><td class="t-meta"><strong>$69.99</strong></td><td class="t-meta">공동체·K-리추얼</td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">M8</td><td><span class="rname">1st Anniversary Edition 황동 메달 <span style="color:#b45309;font-weight:600;">· 단품</span></span><span class="rdesc">일련번호 음각, 목걸이 가능. 1주년 트로피</span></td><td class="t-meta"><strong>$49.99</strong></td><td class="t-meta">수집·박진아</td></tr>
+        <tr><td class="t-narrow">🔴</td><td class="t-id">M9</td><td><span class="rname">Holiday Heritage 12 piece <span style="color:#b45309;font-weight:600;">· 컬렉션</span></span><span class="rdesc">Family/Friend/Self 3 trio × 4 시즌 = 12점 풀세트</span></td><td class="t-meta"><strong>$124.99</strong></td><td class="t-meta">공동체·헤리티지</td></tr>
+      </tbody>
+    </table>
+
+    <h3>상시 — Always-on Add-on</h3>
+    <table class="raw-table">
+      <thead><tr>
+        <th class="t-narrow">⭐</th>
+        <th class="t-id">ID</th>
+        <th>SKU · 1줄 설명</th>
+        <th class="t-meta" colspan="2">단가</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="t-narrow">🔴</td><td class="t-id">M10</td><td><span class="rname">Refer-a-Friend Card</span><span class="rdesc">구매시 친구 1장 동봉. 2인용 샘플 코드. 바이럴 굿즈</span></td><td class="t-meta" colspan="2"><strong>무료</strong></td></tr>
+        <tr><td class="t-narrow">🟡</td><td class="t-id">M11</td><td><span class="rname">Bojagi Wrap-only Add-on</span><span class="rdesc">모든 박스에 +$4.99 보자기 옵션. 외포장 메타 레이어</span></td><td class="t-meta" colspan="2"><strong>+$4.99</strong></td></tr>
+        <tr><td class="t-narrow">⚪</td><td class="t-id">M12</td><td><span class="rname">Founder's Voice NFC Card</span><span class="rdesc">핸드폰 터치 → 박진아 1분 영상. 디지털 트로피</span></td><td class="t-meta" colspan="2"><strong>+$12.99</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 시나리오 매핑 가이드 -->
+  <div class="section">
+    <h2>박진아 답변 <em>시나리오별 매핑</em> 가이드</h2>
+    <div class="sec-sub">5/22 발송 후 답 도착 시 즉시 트리거할 라인업 · 다시 좁히는 작업 0초</div>
+
+    <div class="scenario-card">
+      <div class="sc-tag">시나리오 A — 단순 선택</div>
+      <div class="sc-title">"Option N 좋아요"</div>
+      <div class="sc-text">v1 발송 그대로 진행. v2 백업으로만 유지 (이번 라운드 발화 X).</div>
+      <div class="sc-pickup"><strong>액션</strong> · 선택된 Option의 OEM Track 1 + 시각 Track 2 + 시딩 Track 3 즉시 트리거</div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="sc-tag">시나리오 B — 대안 요청</div>
+      <div class="sc-title">"이 자리에 다른 후보 없어?"</div>
+      <div class="sc-text">섹션 1 사연 4단 대안 풀에서 해당 단의 alternate 3~4개 즉시 매핑.</div>
+      <div class="sc-pickup"><strong>Option 1 자리</strong> → 1A·1B·1C·1D / <strong>Option 2 자리</strong> → 2A·2B·2C·2D / <strong>Option 3 자리</strong> → 3A·3B·3C·3D / <strong>Option 4 자리</strong> → 4A·4B·4C</div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="sc-tag">시나리오 C — 새 차원 요청</div>
+      <div class="sc-title">"다른 *방향*은 없나?"</div>
+      <div class="sc-text">섹션 2 새 축 5·6번째 제안. 공동체·선물 모드 또는 빙커 시너지 트랙으로 점프.</div>
+      <div class="sc-pickup"><strong>축 5 공동체</strong> → 5A "Gift to Mother" 박스 + 5B Family Starter Kit / <strong>축 6 빙커</strong> → 6A·6B·6C 베지어트×빙커 합본</div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="sc-tag">시나리오 D — D2C 강조</div>
+      <div class="sc-title">"AG1 같은 감도로 더 글로벌하게"</div>
+      <div class="sc-text">섹션 3 D2C 확장. Magic Spoon·Olipop·Athletic Greens·Heimish 패턴 차용.</div>
+      <div class="sc-pickup"><strong>핵심</strong> → D1 Korean Cereal Box + D2 옹기병 한국음료 + D4 Welcome Kit 5점 + D5 Founder's Hands 미니 책</div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="sc-tag">시나리오 E — 마스터플랜 요청</div>
+      <div class="sc-title">"1년 전체 SKU 캘린더로 보고 싶다"</div>
+      <div class="sc-text">섹션 4 시즌 마스터 9 SKU + 상시 3 SKU. 5/8/11월 × 번들/단품/컬렉션 3모드 전체 캘린더.</div>
+      <div class="sc-pickup"><strong>5월 런칭</strong> M1·M2·M3 / <strong>8월 여름·추석</strong> M4·M5·M6 / <strong>11월 년말</strong> M7·M8·M9 / <strong>상시</strong> M10·M11·M12</div>
+    </div>
+
+    <div class="scenario-card sc-warn">
+      <div class="sc-tag">시나리오 F — 무응답 (Plan C)</div>
+      <div class="sc-title">5/26까지 답 X → 5/27 월간 미팅 흡수</div>
+      <div class="sc-text">5/26 슬랙 thread 핑 1회 ("OEM 인콰이어리 5/27 트리거하려는데 1줄만 부탁드립니다"). 그래도 무응답 시 5/27 월간 미팅에서 자연스럽게 의제로 흡수.</div>
+      <div class="sc-pickup"><strong>액션</strong> · OEM 트랙은 5/27 답 도착까지 대기. 시각·시딩 트랙은 *옵션 가설 1·2 병렬*로 무드보드만 미리 준비</div>
+    </div>
+  </div>
+
+  <!-- 우성민 + 내부 팀 좁히기 가이드 -->
+  <div class="section">
+    <h2>우성민 + 내부 팀 <em>좁히기</em> 3 모드</h2>
+    <div class="sec-sub">v1 + v2 통합 110 raw에서 박진아 발송 외 *마스터 SKU 라인업*을 좁히고 싶다면 다음 3 모드 중 택1</div>
+
+    <div class="mode-card">
+      <div class="mc-tag">MODE 1 · 번들 모드</div>
+      <h3>3~5개 굿즈를 하나의 박스에 동봉</h3>
+      <div class="mc-desc">OMA 보온병+나무스푼+레시피북 패턴. <strong>박진아 발송 v3의 4 후보 중 1개 + Bojagi + 헤리티지 1개 + 환경 1개</strong> 4점 번들이 가장 자연스럽습니다.</div>
+      <div class="mc-example"><strong>예시</strong> · 옹기 머그(v3 Option 2) + 황동 스푼(2A) + 한지 손편지(v1 K-리추얼) + 린넨 토트(4C) = $44.99~54.99</div>
+    </div>
+
+    <div class="mode-card">
+      <div class="mc-tag">MODE 2 · 단품 트로피 모드</div>
+      <h3>1개 굿즈를 *수집가치* 중심으로</h3>
+      <div class="mc-desc">Founder's Edition 한정 500매. <strong>일련번호 + 박진아 사인 + Bojagi 외포장</strong>으로 트로피 가치 극대화.</div>
+      <div class="mc-example"><strong>예시</strong> · Launch Edition 옹기 머그 1점 + Founder 한지 카드 + Bojagi = $34.99~39.99 (시즌 마스터 M2 라인)</div>
+    </div>
+
+    <div class="mode-card">
+      <div class="mc-tag">MODE 3 · 컬렉션 모드</div>
+      <h3>카테고리별 1개씩, 6~8개 시즌 컬렉션</h3>
+      <div class="mc-desc">AG1 Welcome Kit 패턴. <strong>각 USP 1개씩 + 박진아 사연 1개 + 환경 1개</strong>로 풀세트 구성. 시즌 마스터 M3·M6·M9 라인.</div>
+      <div class="mc-example"><strong>예시</strong> · K-모닝 1개(2A) + K-리추얼 1개(3A) + 헤리티지 1개(v1) + 사연 1개(1A) + 환경 1개(4C) + 공동체 1개(5A) = $59.99~74.99</div>
+    </div>
+
+    <div class="info-box warm">
+      <strong>5/22 발송에서는 모드 1개 추천 안 함</strong> — 박진아 v3는 *단일 장면 = 단일 굿즈 1:1 매핑*까지만 제시. 모드 결정은 박진아 답 도착 후 별도 라운드로. 위 3 모드는 *내부 팀 좁히기*가 끝난 다음 박진아에게 2차 제안 형태로 들어가는 자리.
+    </div>
+  </div>
+
+  <!-- 컨텍스트 의존성 -->
+  <div class="section">
+    <h2>컨텍스트 <em>의존성</em></h2>
+    <div class="sec-sub">v2 expansion 작성 시 참조한 1차 자료 + 영구 학습</div>
+
+    <div class="raw-table" style="margin-top:14px;">
+      <table class="raw-table">
+        <thead><tr>
+          <th style="width:200px;">자료</th>
+          <th>역할</th>
+        </tr></thead>
+        <tbody>
+          <tr><td><span class="rname">goods-catalog-v1.md</span></td><td><span class="rdesc">5/20 freeze, 60~70 raw + 8 카테고리 + Bojagi 외포장 메타. 박진아 발송 v3의 기반</span></td></tr>
+          <tr><td><span class="rname">slack-message-v3.md</span></td><td><span class="rdesc">박진아 발송 슬랙 thread reply 본문 (URL 첨부 형태). 5/22 오전 발송 대기</span></td></tr>
+          <tr><td><span class="rname">brand-deep-interview.md</span></td><td><span class="rdesc">박진아 1차 자료 (172줄). 사연 4단 출처</span></td></tr>
+          <tr><td><span class="rname">brand-interview-responses-20260323.md</span></td><td><span class="rdesc">3/23 인터뷰 답변 (181줄). 박진아 본인 단어 라이브러리</span></td></tr>
+          <tr><td><span class="rname">research/oma-market-intel.md</span></td><td><span class="rdesc">OMA ARR ~$1M 정찰. 굿즈는 결과지 원인 아님 발견</span></td></tr>
+          <tr><td><span class="rname">research/2026-k-wellness-goods-trends.md</span></td><td><span class="rdesc">Bojagi commodity화 발견. Eric Kim 쿡북 5 미디어 인정</span></td></tr>
+          <tr><td><span class="rname">feedback_idea_proposal_breadth</span></td><td><span class="rdesc">5/20 신설 메모리. v2 expansion 작성의 룰 근거</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="brand">VEGGIET × HUENIC</div>
+    북미 굿즈 v2 expansion · 내부 백업 라이브러리 · 2026.05.21 · 우성민 LEAD PM<br>
+    <span class="warn">⚠ INTERNAL ONLY · 박진아 대표 발송 자료 X · 내부 팀 좁히기 자리</span><br>
+    원본 마크다운: clients/huenic/veggiet/brand-share/ideas/goods-catalog-v2-expansion.md (commit e435bde)
+  </div>
+
+</div>
+
+</body>
+</html>
