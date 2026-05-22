@@ -28,16 +28,17 @@ SLUG_TIER = {
     "allwell": "A", "yrim": "A",
     "pap": "B", "tnr-biofab": "B", "ciklux": "B", "whatsup-house": "B",
     "mk": "B", "langs-enter": "B", "atw-korea": "B", "summerin": "B",
-    "wayd": "C", "zenni-global": "C", "todays": "C", "thenewcompany": "C",
-    "lilliger": "C", "chobibooks": "C", "family-company": "C",
-    "findercorp": "C", "mer": "C",
+    "wayd": "C", "thenewcompany": "C", "lilliger": "C", "mer": "C",
+    "zenni-global": "B", "todays": "B", "chobibooks": "B", "family-company": "B",
+    "findercorp": "A",  # ↑ 2차 리서치 결과 승급 (5/22 재검토)
     # ── 2026-05-22 고벤처 행사 배치 (22건) ──
     "nodaji-pi-labs": "S",
     "healernet": "A", "daynesta": "A", "youngeyed-project": "A", "risanghoe": "A",
     "blupino": "A", "moolsoo": "A", "stylegrapher": "A",
     "boreumi": "B", "welisson": "B", "nunsarang": "B",
-    "kingdom-square": "C", "spicyspice": "C", "penther": "C", "everyday-christmas": "C",
-    "yousomi": "C", "yuan-corp": "C", "briyl": "C", "gelato-wayou": "C",
+    "spicyspice": "B", "penther": "B", "yuan-corp": "B",  # ↑ 2차 리서치 결과 승급
+    "kingdom-square": "C", "everyday-christmas": "C",
+    "yousomi": "C", "briyl": "C", "gelato-wayou": "C",
     "j-and": "C", "esam": "C", "kim-yeoreum": "C",
 }
 
@@ -128,15 +129,15 @@ HOOKS = {
     "langs-enter": "대표 부재 리스크, 2차 미팅 필수",
     "atw-korea": "해외 브랜드 한국법인 가능성, 사업 확인 1순위",
     "summerin": "violetherz vs summerin 브랜드 아키텍처 정리",
-    "wayd": "동명 3건 충돌",
-    "zenni-global": "공식 자산 부재",
-    "todays": "동명 4건 충돌",
-    "thenewcompany": "THENEW 아트 플랫폼 충돌",
-    "lilliger": "영문 표기 해외 충돌",
-    "chobibooks": "정보 부족",
-    "family-company": "정보 부족",
-    "findercorp": "findercorp.kr 비공개",
-    "mer": "naver 메일, 1인 운영 가능성",
+    "wayd": "동명 3건 충돌 + 2차에도 매칭 실패",
+    "zenni-global": "↑ 2차: 사업자 확정 (용인 기흥, 7개월차 1인 e-커머스 셀러)",
+    "todays": "↑ 2차: 사업자 확정 (용인 수지, 14개월차 + 토스페이먼츠 결제링크)",
+    "thenewcompany": "THENEW 아트 플랫폼 충돌 + 2차에도 매칭 실패",
+    "lilliger": "영문 표기 해외 충돌 + 2차에도 매칭 실패",
+    "chobibooks": "↑ 2차: 초비북스 출판사 확정, 이효재 작가 5종 출간 (2025-09~)",
+    "family-company": "↑ 2차: 최미진·조남혁 공동대표 신생 4주차 D2C (정읍/파주)",
+    "findercorp": "↑↑ 2차: W'GREEN 규조토 발매트 D2C 운영사, 1.5년차·자사몰+후기 1.5만 — 강력 매칭 A 승급",
+    "mer": "naver 메일, 1인 운영 가능성 + 2차에도 매칭 실패",
     # ── 2026-05-22 고벤처 행사 배치 (22건) ──
     "nodaji-pi-labs": "기존 정식 리서치 GO 4.0/5.0, Pre-launch D-50, T2 8주 압축런",
     "healernet": "AI 활성물질 + 진세노사이드 소재 + 요프리Rh2 D2C, CSO·대표 라인 확인",
@@ -149,17 +150,17 @@ HOOKS = {
     "boreumi": "B2B 기프트·판촉물 에이전시, 대기업 레퍼런스 보유",
     "welisson": "약사 D2C 헬스케어 가설 = 케어비네스트·바디노트 인접",
     "nunsarang": "동물 안과 — HIZ D2C SOP 핏 검증 필수",
-    "kingdom-square": "사업 정체 식별 불가, 동음 다수",
-    "spicyspice": "K-spice 글로벌 가설, 카테고리 확정 필요",
-    "penther": "이메일 오타 시그널, 운영 디테일 진단",
-    "everyday-christmas": "기독교 시그널, 동음 한국 브랜드 4개 점유",
-    "yousomi": "정보 부족, 디렉터 직책 = 대표 별도 가능성",
-    "yuan-corp": "정보 부족, B2C 보유 여부가 GO 분기",
-    "briyl": "캐나다 시그널, 본진 시장 확인 필요",
-    "gelato-wayou": "23세 청년 F&B, Tier 0 진단형 매칭",
-    "j-and": "사명 매우 짧음, 동명 충돌 다수",
-    "esam": "사명 다의어, 1인 사업자 가설",
-    "kim-yeoreum": "회사명 없음, 사업 정의 워크샵 진입",
+    "kingdom-square": "↗ 2차: 사업자 확인 (강남 봉은사로, 정보통신업), 박선정 대표자 매칭 보류",
+    "spicyspice": "↑ 2차: 사업자 정상 등록 (충남 청양 e-커머스), 청양고추 가공품 글로벌 D2C 가설",
+    "penther": "↑ 2차: (주)펜써 법인 확정 (서울 관악), 0→1 단계 — T1 Foundation 핏",
+    "everyday-christmas": "동음 6건 모두 김승용 매칭 0 — PASS 가능성 검토",
+    "yousomi": "정보 부족, 디렉터 직책 = 대표 별도 가능성 + 2차에도 매칭 실패",
+    "yuan-corp": "↑ 2차: 개인사업자 확정 (고양), B2C e-커머스 셀러 — PB 보유 여부가 GO 분기",
+    "briyl": "캐나다 시그널, 본진 시장 확인 필요 + 2차에도 매칭 실패",
+    "gelato-wayou": "23세 청년 F&B, 외부 풋프린트 0 — Tier 0 진단형",
+    "j-and": "사명 매우 짧음, 동명 충돌 — @jand_official 후보 1건(매칭 보류)",
+    "esam": "사명 다의어, 1인 사업자 가설 + 2차에도 매칭 실패",
+    "kim-yeoreum": "회사명 없음, 사업 정의 워크샵 진입 + 2차에도 매칭 실패",
 }
 
 
@@ -688,9 +689,9 @@ HUB_TEMPLATE = """<!DOCTYPE html>
     <div class="hero-stats">
       <div class="hero-stat"><div class="k">총 브랜드</div><div class="v">49 <small>(상담 27 · 행사 22)</small></div></div>
       <div class="hero-stat"><div class="k">S · 즉시 GO</div><div class="v" style="color: #7FB89F;">5</div></div>
-      <div class="hero-stat"><div class="k">A · 명확</div><div class="v" style="color: #93C5FD;">13</div></div>
-      <div class="hero-stat"><div class="k">B · 검증 후</div><div class="v" style="color: #FDBA74;">11</div></div>
-      <div class="hero-stat"><div class="k">C · 정보 부족</div><div class="v" style="color: rgba(255,255,255,0.5);">20</div></div>
+      <div class="hero-stat"><div class="k">A · 명확</div><div class="v" style="color: #93C5FD;">14</div></div>
+      <div class="hero-stat"><div class="k">B · 검증 후</div><div class="v" style="color: #FDBA74;">18</div></div>
+      <div class="hero-stat"><div class="k">C · 정보 부족</div><div class="v" style="color: rgba(255,255,255,0.5);">12</div></div>
     </div>
   </div>
 </header>

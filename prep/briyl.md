@@ -39,3 +39,19 @@ source: govent
 - 동명 충돌 식별용:
   - [BRIY LLC briybrand.com](https://briybrand.com/) — 미국 LLC, 키즈 어패럴, 다른 브랜드
   - [브리에 briier.kr](https://briier.kr/) — 한국 패션 브랜드, 다른 법인
+
+## 2차 심층 검색 결과 (2026-05-22)
+**식별 실패 — 추가 단서 0건, Tier 의견 변동 없음**
+
+다음 각도 모두 시도, 직접 매칭 실패:
+- **캐나다 LinkedIn ("MJ Lee" / "Minji Lee" + BRIYL)**: 동명 프로필 10건+ 다수 검색되나 BRIYL 소속·언급 어디에도 없음. 토론토·밴쿠버·UBC·Ithaca NY 등 광범위 분포. 카테고리·소속·졸업 단서 2개 이상 일치하는 프로필 없음 → **노다지 오식별 학습 반영, 매칭 보류**
+- **인스타 "briyl" 직접 핸들 검색**: @brihallofficial·@brielle_officielle·@bri8l 등 유사명만 노출, BRIYL 일치 계정 없음
+- **펀딩 플랫폼 (와디즈·텀블벅·킥스타터·인디고고) "BRIYL"**: 결과 0건
+- **USPTO·WIPO Global Brand Database "BRIYL"**: 일치 등록 없음, 유사 "BRLLY"(중국 의류 LLC, Chen Wei 소유) 만 검색 — 다른 브랜드
+- **KIPRIS 직접 검색 UI**: 외부 검색 엔진을 통한 사전 정찰 단계에서 일치 결과 노출 없음 (DB 직접 접속 필요, 미팅 시 확인 권장)
+- **briyl.com / briyl.ca / briyl.co.kr DNS 조회**: 환경 제약(curl resolve 실패)으로 직접 확인 불가, 외부 LookUp 도구는 1차에서 403 Forbidden 보고됨 → 한국 IP 차단 또는 WAF 가능성 잔존
+- **카테고리 추론 (패션/뷰티/주얼리 + Korean Canadian)**: BRISKIN(스킨케어, 다른 브랜드)·BRILOVE(주얼리, 미국)·BriJewels(주얼리) 등 유사 명칭만 확인, BRIYL 직접 단서 없음
+
+**Tier 재평가**: 기존 HOLD 유지. 미팅 전 추가 식별 불가 — 미팅 시 첫 5분 안에 카테고리·시장·법인지 청취 필수.
+
+**여전히 확인 필요**: 신청자 한국명(김민지 vs 이민지) / BRIYL 카테고리 / 캐나다 본진 vs 한국 본진 / 공식 도메인 1개.

@@ -39,3 +39,19 @@ source: govent
 - [(주)제이앤 - 사람인](https://www.saramin.co.kr/zf_user/company-info/view/csn/MTF5MmVYa0RGV01TSk5VQ2psZm9aUT09/company_nm/(%EC%A3%BC)%EC%A0%9C%EC%9D%B4%EC%95%A4%EC%9D%B4) — 동명 법인 식별용
 - [(주)I&J 컴퍼니](https://www.i-jcompany.com/) — 유사명 법인 식별용
 - 이주현 본인 식별 검증 실패 — 동명이인 다수, 미팅 시 사명·법인등록번호 확인 필요
+
+## 2차 심층 검색 결과 (2026-05-22)
+**식별 실패 — 단서 1건 추정 후보 발견하였으나 매칭 증거 부족, Tier 의견 변동 없음**
+
+다음 각도 모두 시도:
+- **인스타 핸들 직접 (`jand_official`·`j_and_official`·`jand.kr`)**: `@jand_official` 계정 발견 = **"NON NEGOTIABLE"** 표기, bio "God is pure Meanwhile, Jand is super Hot. Also Best Dressed Generation Z", 31K 팔로워 → **Z세대 패션 인플루언서·스트리트웨어 추정**. 하지만 이주현 연결 직접 증거 없음, 동일인 단정 불가 → **노다지 오식별 학습 반영, 매칭 보류**. 미팅 시 본인 확인 1순위
+- **사람인 saramin.co.kr "이주현" + 제이앤 / J&**: 동명 법인 다수(제이앤·제이앤이·제이앤컴퍼니·제이앤글로리·제이앤케이사이언스·제이앤에스미디어·제이앤케이씨 등) 노출되나 **이주현 본인 매칭 0건**
+- **YouTube "JAND OFFICIAL"**: 동일 인스타 운영자 추정 채널 존재 (자기계발·하우투 콘텐츠), 한국어 사용 여부·운영자 본명 미확인
+- **이메일 핸들 "sh5448" 역추적**: SH 이니셜 = 이주현(JH)과 불일치 → **본인 메일이 아닐 가능성** (가족·동업자·이전 운영자 메일 의심) 또는 다른 한글명 표기 가능. 외부 노출 0건
+- **NON NEGOTIABLE 한국 streetwear 보도/리뷰**: 한국 패션 미디어 검색 결과 없음, MUSINSA·W CONCEPT 등 입점 흔적 미확인 → **인스타 중심 1인 패션 인플루언서·스몰 브랜드** 가설 강화 (단, 본 신청자와 동일인 단정 불가)
+
+**Tier 재평가**: 기존 "미팅 후 판단" 유지. **만약** 미팅에서 `@jand_official = 본 신청자`로 확인되면 → **Z세대 패션 인플루언서 브랜드 = 채널/콘텐츠 시스템화 + 자사몰 v1 + 입점 전략 핏 → GO 가능성, Tier 1~2 (500~1500만)** 매칭. 다른 법인이라면 사명·카테고리 재청취 후 판단.
+
+**여전히 확인 필요**: 정식 사명 / `@jand_official` 본인 운영 여부 / 카테고리 (패션 streetwear 맞는지) / 이메일 sh5448의 의미 / 매출·팀 규모.
+
+**핵심 미팅 첫 질문**: "혹시 인스타그램 @jand_official (NON NEGOTIABLE) 운영 중이신가요?" — 본인 매칭 1초 확인 가능.
