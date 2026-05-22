@@ -358,6 +358,69 @@ PREP_TEMPLATE = """<!DOCTYPE html>
       line-height: 1.85; margin-bottom: 36px;
     }}
 
+    /* EXECUTIVE SUMMARY */
+    .exec-section {{ background: var(--bg); padding: 56px 0 0; }}
+    .exec-wrap {{
+      background: var(--white); border-radius: 18px;
+      border: 1px solid var(--gray-200);
+      padding: 40px 44px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+    }}
+    .exec-head {{
+      padding-bottom: 22px; border-bottom: 1px solid var(--gray-200); margin-bottom: 26px;
+    }}
+    .exec-head h2 {{ font-size: 22px; font-weight: 900; letter-spacing: -0.02em; color: var(--black); }}
+    .exec-meta {{
+      display: grid; grid-template-columns: 1.4fr 1fr;
+      gap: 32px; margin-bottom: 28px;
+    }}
+    .exec-meta-block .k {{
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gray-500); margin-bottom: 8px;
+    }}
+    .exec-meta-block .v {{ font-size: 14px; line-height: 1.65; color: var(--text); }}
+    .exec-meta-block .v .name {{ font-size: 17px; font-weight: 800; color: var(--black); display: block; margin-bottom: 6px; letter-spacing: -0.01em; }}
+    .exec-cards {{
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin-bottom: 24px;
+    }}
+    .exec-mini {{ border-radius: 12px; padding: 22px 20px; text-align: center; min-height: 110px; display: flex; flex-direction: column; justify-content: center; }}
+    .exec-mini .mlabel {{
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 10px; opacity: 0.75;
+    }}
+    .exec-mini .mvalue {{ font-size: 15px; font-weight: 900; letter-spacing: -0.01em; line-height: 1.4; }}
+    .exec-mini.c1 {{ background: var(--accent); color: white; }}
+    .exec-mini.c2 {{ background: var(--black); color: white; }}
+    .exec-mini.c3 {{ background: #786E5C; color: white; }}
+    .exec-mini.c4 {{ background: #B89B6B; color: white; }}
+    .exec-diagnosis {{
+      background: var(--black); color: white;
+      border-radius: 14px; padding: 26px 32px; margin-bottom: 22px;
+    }}
+    .exec-diagnosis .dlabel {{
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      color: var(--accent-soft); text-transform: uppercase; margin-bottom: 12px;
+    }}
+    .exec-diagnosis .dtext {{ font-size: 14px; line-height: 1.85; }}
+    .exec-diagnosis .dtext strong {{ color: var(--accent-soft); }}
+    .exec-judgment {{
+      display: flex; flex-wrap: wrap; gap: 10px 22px;
+      padding-top: 20px; border-top: 1px solid var(--gray-200);
+      font-size: 13px; color: var(--gray-700); line-height: 1.7;
+    }}
+    .exec-judgment strong {{ color: var(--accent); font-weight: 800; }}
+    @media (max-width: 720px) {{
+      .exec-wrap {{ padding: 28px 22px; }}
+      .exec-meta {{ grid-template-columns: 1fr; gap: 20px; }}
+      .exec-cards {{ grid-template-columns: repeat(2, 1fr); }}
+    }}
+    @media print {{
+      .exec-section {{ padding: 24px 0 0; }}
+      .exec-wrap {{ box-shadow: none; border-color: var(--gray-300); padding: 24px; }}
+      .exec-mini {{ min-height: auto; padding: 14px 12px; }}
+    }}
+
     /* CARDS */
     .card {{
       background: var(--white); border-radius: 14px;
@@ -462,6 +525,8 @@ PREP_TEMPLATE = """<!DOCTYPE html>
   </div>
 </header>
 
+{exec_summary_html}
+
 {sections_html}
 
 <footer class="footer">
@@ -497,6 +562,64 @@ SECTION_RENDER_ORDER = [
 ]
 
 
+def build_exec_summary_html(brand: str, fm: dict) -> str:
+    """frontmatter에 exec_* 필드 있으면 Executive Summary 카드 HTML 생성."""
+    if not fm.get("exec_business"):
+        return ""
+
+    rep_full = fm.get("exec_representative", "")
+    rep_head, _, rep_sub = rep_full.partition("—")
+    if not rep_sub:
+        rep_head, _, rep_sub = rep_full.partition("·")
+    rep_head = rep_head.strip() or rep_full
+    rep_sub = rep_sub.strip()
+
+    judgment = md_inline_to_html(fm.get("exec_judgment", ""))
+    diagnosis = md_inline_to_html(fm.get("exec_diagnosis", ""))
+
+    return f"""
+<section class="exec-section">
+  <div class="container">
+    <div class="exec-wrap">
+      <div class="exec-head"><h2>Executive Summary</h2></div>
+      <div class="exec-meta">
+        <div class="exec-meta-block">
+          <div class="k">기업 / 브랜드</div>
+          <div class="v"><span class="name">{html.escape(brand)}</span>{md_inline_to_html(fm.get("exec_business", ""))}</div>
+        </div>
+        <div class="exec-meta-block">
+          <div class="k">대표이사</div>
+          <div class="v"><span class="name">{html.escape(rep_head)}</span>{md_inline_to_html(rep_sub)}</div>
+        </div>
+      </div>
+      <div class="exec-cards">
+        <div class="exec-mini c1">
+          <div class="mlabel">{html.escape(fm.get("exec_card_1_label", ""))}</div>
+          <div class="mvalue">{md_inline_to_html(fm.get("exec_card_1_value", ""))}</div>
+        </div>
+        <div class="exec-mini c2">
+          <div class="mlabel">{html.escape(fm.get("exec_card_2_label", ""))}</div>
+          <div class="mvalue">{md_inline_to_html(fm.get("exec_card_2_value", ""))}</div>
+        </div>
+        <div class="exec-mini c3">
+          <div class="mlabel">{html.escape(fm.get("exec_card_3_label", ""))}</div>
+          <div class="mvalue">{md_inline_to_html(fm.get("exec_card_3_value", ""))}</div>
+        </div>
+        <div class="exec-mini c4">
+          <div class="mlabel">{html.escape(fm.get("exec_card_4_label", ""))}</div>
+          <div class="mvalue">{md_inline_to_html(fm.get("exec_card_4_value", ""))}</div>
+        </div>
+      </div>
+      <div class="exec-diagnosis">
+        <div class="dlabel">핵심 진단 한 줄 요약</div>
+        <div class="dtext">{diagnosis}</div>
+      </div>
+      <div class="exec-judgment">{judgment}</div>
+    </div>
+  </div>
+</section>"""
+
+
 def render_brand_html(md_path: Path, slug: str, applicant_meta: tuple) -> str:
     parsed = parse_md(md_path)
     fm = parsed["frontmatter"]
@@ -512,6 +635,8 @@ def render_brand_html(md_path: Path, slug: str, applicant_meta: tuple) -> str:
     tier = SLUG_TIER.get(slug, "C")
     tier_meta = TIER_MAP[tier]
     hook = HOOKS.get(slug, "사전상담 준비 PREP")
+
+    exec_summary_html = build_exec_summary_html(brand_title, fm)
 
     # Render sections in order
     blocks = []
@@ -582,6 +707,7 @@ def render_brand_html(md_path: Path, slug: str, applicant_meta: tuple) -> str:
         applied_date=html.escape(applied_date),
         participants=html.escape(str(participants)),
         confirmed=confirmed,
+        exec_summary_html=exec_summary_html,
         sections_html=sections_html,
     )
 

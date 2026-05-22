@@ -96,6 +96,69 @@
       line-height: 1.85; margin-bottom: 36px;
     }
 
+    /* EXECUTIVE SUMMARY */
+    .exec-section { background: var(--bg); padding: 56px 0 0; }
+    .exec-wrap {
+      background: var(--white); border-radius: 18px;
+      border: 1px solid var(--gray-200);
+      padding: 40px 44px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+    }
+    .exec-head {
+      padding-bottom: 22px; border-bottom: 1px solid var(--gray-200); margin-bottom: 26px;
+    }
+    .exec-head h2 { font-size: 22px; font-weight: 900; letter-spacing: -0.02em; color: var(--black); }
+    .exec-meta {
+      display: grid; grid-template-columns: 1.4fr 1fr;
+      gap: 32px; margin-bottom: 28px;
+    }
+    .exec-meta-block .k {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gray-500); margin-bottom: 8px;
+    }
+    .exec-meta-block .v { font-size: 14px; line-height: 1.65; color: var(--text); }
+    .exec-meta-block .v .name { font-size: 17px; font-weight: 800; color: var(--black); display: block; margin-bottom: 6px; letter-spacing: -0.01em; }
+    .exec-cards {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin-bottom: 24px;
+    }
+    .exec-mini { border-radius: 12px; padding: 22px 20px; text-align: center; min-height: 110px; display: flex; flex-direction: column; justify-content: center; }
+    .exec-mini .mlabel {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 10px; opacity: 0.75;
+    }
+    .exec-mini .mvalue { font-size: 15px; font-weight: 900; letter-spacing: -0.01em; line-height: 1.4; }
+    .exec-mini.c1 { background: var(--accent); color: white; }
+    .exec-mini.c2 { background: var(--black); color: white; }
+    .exec-mini.c3 { background: #786E5C; color: white; }
+    .exec-mini.c4 { background: #B89B6B; color: white; }
+    .exec-diagnosis {
+      background: var(--black); color: white;
+      border-radius: 14px; padding: 26px 32px; margin-bottom: 22px;
+    }
+    .exec-diagnosis .dlabel {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      color: var(--accent-soft); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .exec-diagnosis .dtext { font-size: 14px; line-height: 1.85; }
+    .exec-diagnosis .dtext strong { color: var(--accent-soft); }
+    .exec-judgment {
+      display: flex; flex-wrap: wrap; gap: 10px 22px;
+      padding-top: 20px; border-top: 1px solid var(--gray-200);
+      font-size: 13px; color: var(--gray-700); line-height: 1.7;
+    }
+    .exec-judgment strong { color: var(--accent); font-weight: 800; }
+    @media (max-width: 720px) {
+      .exec-wrap { padding: 28px 22px; }
+      .exec-meta { grid-template-columns: 1fr; gap: 20px; }
+      .exec-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media print {
+      .exec-section { padding: 24px 0 0; }
+      .exec-wrap { box-shadow: none; border-color: var(--gray-300); padding: 24px; }
+      .exec-mini { min-height: auto; padding: 14px 12px; }
+    }
+
     /* CARDS */
     .card {
       background: var(--white); border-radius: 14px;
@@ -199,6 +262,8 @@
     <div class="confidential">Internal · 브랜드라이즈 팀 전용</div>
   </div>
 </header>
+
+
 
 
 <section style="padding-top: 36px; padding-bottom: 0; border-bottom: none;">

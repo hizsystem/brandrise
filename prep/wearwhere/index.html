@@ -96,6 +96,69 @@
       line-height: 1.85; margin-bottom: 36px;
     }
 
+    /* EXECUTIVE SUMMARY */
+    .exec-section { background: var(--bg); padding: 56px 0 0; }
+    .exec-wrap {
+      background: var(--white); border-radius: 18px;
+      border: 1px solid var(--gray-200);
+      padding: 40px 44px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+    }
+    .exec-head {
+      padding-bottom: 22px; border-bottom: 1px solid var(--gray-200); margin-bottom: 26px;
+    }
+    .exec-head h2 { font-size: 22px; font-weight: 900; letter-spacing: -0.02em; color: var(--black); }
+    .exec-meta {
+      display: grid; grid-template-columns: 1.4fr 1fr;
+      gap: 32px; margin-bottom: 28px;
+    }
+    .exec-meta-block .k {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gray-500); margin-bottom: 8px;
+    }
+    .exec-meta-block .v { font-size: 14px; line-height: 1.65; color: var(--text); }
+    .exec-meta-block .v .name { font-size: 17px; font-weight: 800; color: var(--black); display: block; margin-bottom: 6px; letter-spacing: -0.01em; }
+    .exec-cards {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin-bottom: 24px;
+    }
+    .exec-mini { border-radius: 12px; padding: 22px 20px; text-align: center; min-height: 110px; display: flex; flex-direction: column; justify-content: center; }
+    .exec-mini .mlabel {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 10px; opacity: 0.75;
+    }
+    .exec-mini .mvalue { font-size: 15px; font-weight: 900; letter-spacing: -0.01em; line-height: 1.4; }
+    .exec-mini.c1 { background: var(--accent); color: white; }
+    .exec-mini.c2 { background: var(--black); color: white; }
+    .exec-mini.c3 { background: #786E5C; color: white; }
+    .exec-mini.c4 { background: #B89B6B; color: white; }
+    .exec-diagnosis {
+      background: var(--black); color: white;
+      border-radius: 14px; padding: 26px 32px; margin-bottom: 22px;
+    }
+    .exec-diagnosis .dlabel {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      color: var(--accent-soft); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .exec-diagnosis .dtext { font-size: 14px; line-height: 1.85; }
+    .exec-diagnosis .dtext strong { color: var(--accent-soft); }
+    .exec-judgment {
+      display: flex; flex-wrap: wrap; gap: 10px 22px;
+      padding-top: 20px; border-top: 1px solid var(--gray-200);
+      font-size: 13px; color: var(--gray-700); line-height: 1.7;
+    }
+    .exec-judgment strong { color: var(--accent); font-weight: 800; }
+    @media (max-width: 720px) {
+      .exec-wrap { padding: 28px 22px; }
+      .exec-meta { grid-template-columns: 1fr; gap: 20px; }
+      .exec-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media print {
+      .exec-section { padding: 24px 0 0; }
+      .exec-wrap { box-shadow: none; border-color: var(--gray-300); padding: 24px; }
+      .exec-mini { min-height: auto; padding: 14px 12px; }
+    }
+
     /* CARDS */
     .card {
       background: var(--white); border-radius: 14px;
@@ -201,6 +264,48 @@
 </header>
 
 
+<section class="exec-section">
+  <div class="container">
+    <div class="exec-wrap">
+      <div class="exec-head"><h2>Executive Summary</h2></div>
+      <div class="exec-meta">
+        <div class="exec-meta-block">
+          <div class="k">기업 / 브랜드</div>
+          <div class="v"><span class="name">wearwhere (웨어웨어) + mimic lens (미믹렌즈)</span>㈜웨어컴퍼니 · 2024-09 설립 (한국 8개월차) · 한·일 듀얼 법인 (KR ㈜웨어컴퍼니 + JP Wear Company Japan, Inc) · wearwhere 아이웨어 + MIMIC LENS 컬러콘택트렌즈 멀티브랜드</div>
+        </div>
+        <div class="exec-meta-block">
+          <div class="k">대표이사</div>
+          <div class="v"><span class="name">황현우 (KR ㈜웨어컴퍼니 대표) / NAKANISHI RINA (JP 대표)</span>신청자 이사/임원 소속 법인 확인 필요</div>
+        </div>
+      </div>
+      <div class="exec-cards">
+        <div class="exec-mini c1">
+          <div class="mlabel">추정 단계</div>
+          <div class="mvalue">시드~초기 (한국 8개월차 / 직원 3명)</div>
+        </div>
+        <div class="exec-mini c2">
+          <div class="mlabel">추천 Tier</div>
+          <div class="mvalue">T1→T2 단계적 (1,000만 진단 후 2,500만 빌드)</div>
+        </div>
+        <div class="exec-mini c3">
+          <div class="mlabel">핵심 자산</div>
+          <div class="mvalue">한·일 듀얼 거점 + 일본 의료기기 라이센스 NY00072호</div>
+        </div>
+        <div class="exec-mini c4">
+          <div class="mlabel">핵심 리스크</div>
+          <div class="mvalue">의사결정 라인 불명 + 의료기기 광고법 + 사명 분산</div>
+        </div>
+      </div>
+      <div class="exec-diagnosis">
+        <div class="dlabel">핵심 진단 한 줄 요약</div>
+        <div class="dtext">한국법인 8개월차+3인 슬림 운영 + 일본 mimic lens 의료기기 라이센스(NY00072호) 보유 = 한·일 듀얼 그룹 브랜드 아키텍처 정의가 1순위 컨설팅 의제. 단일 시장(한국) 전제 HIZ SOP 외 영역으로 핏 검증 필수.</div>
+      </div>
+      <div class="exec-judgment">T1 Foundation 1,000~1,500만/4주 진단 → T2 Build 2,500~4,000만/3개월 단계적 승급 / Entry Move T1 검증 / 레버 일본 mimic lens 매출 자산화</div>
+    </div>
+  </div>
+</section>
+
+
 <section>
   <div class="container">
     <div class="sec-label">ONE-LINER</div>
@@ -236,9 +341,8 @@
 | <strong>[KR] 사업자</strong> | 488-88-02884 / 법인 120111-1361766 | bizno.net |
 | <strong>[KR] 설립</strong> | 2024-09-02 (8개월차) | bizno.net |
 | <strong>[KR] 직원</strong> | 3명 | bizno.net |
-| <strong>[KR] 본점</strong> | 인천 서구 염곡로464번길 15 쓰리엠타워 8층 (가정동) | bizno.net |
+| <strong>[KR] 본점</strong> | 인천 서구 염곡로464번길 15 쓰리엠타워 8층 | bizno.net |
 | <strong>[KR] 통신판매업</strong> | 2025-인천서구-0405호 | wearwhere.co.kr 푸터 |
-| <strong>[KR] CS</strong> | 032-575-0095 | 공식몰 |
 | <strong>[KR] 도메인</strong> | wearwhere.co.kr / wearwhere.shop | 검색 |
 | <strong>[KR] 제품</strong> | Deep Life Series(수면관리·집중관리·데일리케어), Sunglasses MOTION, Glasses — 59,000~99,000원 | 공식몰 |
 | <strong>[JP] 법인명</strong> | Wear Company Japan, Inc | mimiclens.com |
@@ -247,11 +351,10 @@
 | <strong>[JP] 본점</strong> | 大阪府八尾市高美町4-13-24 | mimiclens.com |
 | <strong>[JP] 의료기기 허가</strong> | 고도관리 의료기기 판매허가 NY00072호 | mimiclens.com |
 | <strong>[JP] 도메인</strong> | mimiclens.com / mimiclens.jp | 검색 |
-| <strong>[JP] 제품</strong> | 1개월 컬러콘택트렌즈 (Lolipop 시리즈 — Brown/Gray/Olive), 8K 기술·세계 최초 특허 마케팅 | mimiclens.com / Qoo10 |
+| <strong>[JP] 제품</strong> | 1개월 컬러콘택트렌즈 (Lolipop 시리즈), 8K 기술·세계 최초 특허 마케팅 | mimiclens.com / Qoo10 |
 | <strong>[JP] 채널</strong> | 자사몰 + Qoo10 일본 + LIPS 후기 매체 | 검색 |
 | <strong>공통 메일</strong> | w@wearwhereyou.com / mimic@wearwhereyou.com | 양사 사이트 |
-| <strong>동명 충돌</strong> | wherewear.kr (별개 여성의류 브랜드), wearb.co.kr — 한국 동명 다수 | 검색 |
-| 신청자 매칭 | 매칭 시도 없음 — 미팅 시 청취 | 자료 부재 |</p>
+| <strong>신청자 매칭</strong> | 매칭 시도 없음 — 미팅 시 청취 (한·일 어느 법인 임원인지 확인 필수) | 자료 부재 |</p>
     </div>
   </div>
 </section>
@@ -268,6 +371,24 @@
       <li><strong>리솔츠 / 위타민</strong>: 뷰티·아이웨어·렌즈 = "외모 직결 D2C" 카테고리라는 점에서 콘텐츠 전략 인접도 있음. 단 의료기기(콘택트렌즈) = 광고법(의료기기법) 추가 제약 = HIZ 미경험 영역.</li>
       <li><strong>WAYD / 위타민 초기</strong>: 사명 동명 충돌 다수 케이스 = 브랜드 정체성·검색 점유 1순위 페인 인접.</li>
     </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">NAME COLLISION</div>
+    <h2>동명 충돌 식별</h2>
+    <p class="sec-desc">동일·유사 사명 식별 결과</p>
+    <div class="card">
+    <p>한·일 듀얼 법인 + 영문 사명 = 글로벌 SEO·상표 충돌 위험 중. 식별 결과:</p>
+    <p>| 충돌 대상 | 카테고리 | 출처 | 본 신청자 무관 여부 |
+|---|---|---|---|
+| WHERE WEAR (wherewear.kr) | 여성의류 브랜드 | wherewear.kr | 무관 (별개 회사) |
+| WEAR.B (wearb.co.kr) | 의류 브랜드 | wearb.co.kr | 무관 |
+| whatwewear · whatwear | 의류·잡화 동음 다수 | 검색 | 무관 |
+| WearWhere(미국) | 일부 SEO 노출 | 검색 | 무관 (별개) |</p>
+    <p>→ "WearWhere"의 의미 전달 자체가 모호 + 한국 동명 다수 = <strong>브랜드 정체성 한 줄·검색 점유 전략 1순위 컨설팅 의제</strong>. 글로벌 진출 시 KR/JP/EN 사명 통합 의사결정 필요.</p>
     </div>
   </div>
 </section>
@@ -315,23 +436,6 @@
       <li>일본 mimic lens 매출이 한국법인 대비 크고 그룹 차원 마케팅 예산 흡수력 있다면 → <strong>T2 Build(2,500~4,000만/3개월)</strong> 바로 진입 가능</li>
       <li>한·일 동시 글로벌 시스템 구축 + 의료기기 인허가 자문까지 → <strong>T3 Scale(7,000만+/6개월+)</strong> — 단, HIZ 단독 풀스코프 어려움(법무·인허가 파트너 필요)</li>
       <li><strong>Tier 기준선</strong>: T0 100~300만/2주 · T1 500~1,500만/4주 · T2 2,000~5,000만/8~12주 · T3 7,000만+/16주+</li>
-    </ul>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="sec-label">RISK SIGNALS</div>
-    <h2>리스크 시그널</h2>
-    <p class="sec-desc">GO 분기점 — 의사결정·핏·예산·동명·운영 5종</p>
-    <div class="card">
-    <ul>
-      <li><strong>의사결정 라인 불명</strong> — 신청자 "이사/임원" = 한국 ㈜웨어컴퍼니인지 일본법인 측인지 미확인. 황현우 대표 직접 결재 vs 임원 위임 범위 확인 필수.</li>
-      <li><strong>법인 매출·예산 흡수력 미확인</strong> — 8개월차 + 3인 운영 = T2 풀패키지 흡수 가능성 미검증. 미팅에서 한·일 합산 그룹 매출 규모 청취 필요.</li>
-      <li><strong>카테고리 핏 한계</strong> — 의료기기(콘택트렌즈) = HIZ 표준 D2C SOP 외 영역. 광고법·의료기기법·일본 약기법 등 규제 자문은 HIZ 단독 어렵고 외부 법무 파트너 필요.</li>
-      <li><strong>그룹 사명 분산 위험</strong> — Wear Company / wearwhere / mimic lens / wearwhereyou(도메인 메인) = 외부 인지 분산. 브랜드 아키텍처 합의 없으면 마케팅 ROI 떨어짐.</li>
-      <li><strong>동명 충돌 다수</strong> — wherewear.kr, wearb, whatwewear 등과 검색·SEO 경쟁. 신청 브랜드의 차별화 한 줄 미확정 시 GTM 비용 큼.</li>
     </ul>
     </div>
   </div>

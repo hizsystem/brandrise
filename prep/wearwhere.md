@@ -7,6 +7,18 @@ applied_date: 2026-05-23
 participants: 1
 confirmed: N
 source: govent
+exec_business: ㈜웨어컴퍼니 · 2024-09 설립 (한국 8개월차) · 한·일 듀얼 법인 (KR ㈜웨어컴퍼니 + JP Wear Company Japan, Inc) · wearwhere 아이웨어 + MIMIC LENS 컬러콘택트렌즈 멀티브랜드
+exec_representative: 황현우 (KR ㈜웨어컴퍼니 대표) / NAKANISHI RINA (JP 대표) — 신청자 이사/임원 소속 법인 확인 필요
+exec_card_1_label: 추정 단계
+exec_card_1_value: 시드~초기 (한국 8개월차 / 직원 3명)
+exec_card_2_label: 추천 Tier
+exec_card_2_value: T1→T2 단계적 (1,000만 진단 후 2,500만 빌드)
+exec_card_3_label: 핵심 자산
+exec_card_3_value: 한·일 듀얼 거점 + 일본 의료기기 라이센스 NY00072호
+exec_card_4_label: 핵심 리스크
+exec_card_4_value: 의사결정 라인 불명 + 의료기기 광고법 + 사명 분산
+exec_diagnosis: 한국법인 8개월차+3인 슬림 운영 + 일본 mimic lens 의료기기 라이센스(NY00072호) 보유 = 한·일 듀얼 그룹 브랜드 아키텍처 정의가 1순위 컨설팅 의제. 단일 시장(한국) 전제 HIZ SOP 외 영역으로 핏 검증 필수.
+exec_judgment: T1 Foundation 1,000~1,500만/4주 진단 → T2 Build 2,500~4,000만/3개월 단계적 승급 / Entry Move T1 검증 / 레버 일본 mimic lens 매출 자산화
 ---
 
 # wearwhere + mimic lens · 사전상담 PREP
@@ -32,9 +44,8 @@ source: govent
 | **[KR] 사업자** | 488-88-02884 / 법인 120111-1361766 | bizno.net |
 | **[KR] 설립** | 2024-09-02 (8개월차) | bizno.net |
 | **[KR] 직원** | 3명 | bizno.net |
-| **[KR] 본점** | 인천 서구 염곡로464번길 15 쓰리엠타워 8층 (가정동) | bizno.net |
+| **[KR] 본점** | 인천 서구 염곡로464번길 15 쓰리엠타워 8층 | bizno.net |
 | **[KR] 통신판매업** | 2025-인천서구-0405호 | wearwhere.co.kr 푸터 |
-| **[KR] CS** | 032-575-0095 | 공식몰 |
 | **[KR] 도메인** | wearwhere.co.kr / wearwhere.shop | 검색 |
 | **[KR] 제품** | Deep Life Series(수면관리·집중관리·데일리케어), Sunglasses MOTION, Glasses — 59,000~99,000원 | 공식몰 |
 | **[JP] 법인명** | Wear Company Japan, Inc | mimiclens.com |
@@ -43,11 +54,22 @@ source: govent
 | **[JP] 본점** | 大阪府八尾市高美町4-13-24 | mimiclens.com |
 | **[JP] 의료기기 허가** | 고도관리 의료기기 판매허가 NY00072호 | mimiclens.com |
 | **[JP] 도메인** | mimiclens.com / mimiclens.jp | 검색 |
-| **[JP] 제품** | 1개월 컬러콘택트렌즈 (Lolipop 시리즈 — Brown/Gray/Olive), 8K 기술·세계 최초 특허 마케팅 | mimiclens.com / Qoo10 |
+| **[JP] 제품** | 1개월 컬러콘택트렌즈 (Lolipop 시리즈), 8K 기술·세계 최초 특허 마케팅 | mimiclens.com / Qoo10 |
 | **[JP] 채널** | 자사몰 + Qoo10 일본 + LIPS 후기 매체 | 검색 |
 | **공통 메일** | w@wearwhereyou.com / mimic@wearwhereyou.com | 양사 사이트 |
-| **동명 충돌** | wherewear.kr (별개 여성의류 브랜드), wearb.co.kr — 한국 동명 다수 | 검색 |
-| 신청자 매칭 | 매칭 시도 없음 — 미팅 시 청취 | 자료 부재 |
+| **신청자 매칭** | 매칭 시도 없음 — 미팅 시 청취 (한·일 어느 법인 임원인지 확인 필수) | 자료 부재 |
+
+## 동명 충돌 식별
+한·일 듀얼 법인 + 영문 사명 = 글로벌 SEO·상표 충돌 위험 중. 식별 결과:
+
+| 충돌 대상 | 카테고리 | 출처 | 본 신청자 무관 여부 |
+|---|---|---|---|
+| WHERE WEAR (wherewear.kr) | 여성의류 브랜드 | wherewear.kr | 무관 (별개 회사) |
+| WEAR.B (wearb.co.kr) | 의류 브랜드 | wearb.co.kr | 무관 |
+| whatwewear · whatwear | 의류·잡화 동음 다수 | 검색 | 무관 |
+| WearWhere(미국) | 일부 SEO 노출 | 검색 | 무관 (별개) |
+
+→ "WearWhere"의 의미 전달 자체가 모호 + 한국 동명 다수 = **브랜드 정체성 한 줄·검색 점유 전략 1순위 컨설팅 의제**. 글로벌 진출 시 KR/JP/EN 사명 통합 의사결정 필요.
 
 ## 유사 케이스 인접도
 - **참고 케이스 풀에 정확한 매칭 없음 — 핏 검증 필수.** HIZ 표준 D2C SOP는 단일 시장(한국) 전제. 한·일 듀얼 브랜드 + 의료기기(콘택트렌즈) 카테고리는 신규 영역.
@@ -75,12 +97,14 @@ source: govent
   - 한·일 동시 글로벌 시스템 구축 + 의료기기 인허가 자문까지 → **T3 Scale(7,000만+/6개월+)** — 단, HIZ 단독 풀스코프 어려움(법무·인허가 파트너 필요)
 - **Tier 기준선**: T0 100~300만/2주 · T1 500~1,500만/4주 · T2 2,000~5,000만/8~12주 · T3 7,000만+/16주+
 
-## 리스크 시그널
-- **의사결정 라인 불명** — 신청자 "이사/임원" = 한국 ㈜웨어컴퍼니인지 일본법인 측인지 미확인. 황현우 대표 직접 결재 vs 임원 위임 범위 확인 필수.
-- **법인 매출·예산 흡수력 미확인** — 8개월차 + 3인 운영 = T2 풀패키지 흡수 가능성 미검증. 미팅에서 한·일 합산 그룹 매출 규모 청취 필요.
-- **카테고리 핏 한계** — 의료기기(콘택트렌즈) = HIZ 표준 D2C SOP 외 영역. 광고법·의료기기법·일본 약기법 등 규제 자문은 HIZ 단독 어렵고 외부 법무 파트너 필요.
-- **그룹 사명 분산 위험** — Wear Company / wearwhere / mimic lens / wearwhereyou(도메인 메인) = 외부 인지 분산. 브랜드 아키텍처 합의 없으면 마케팅 ROI 떨어짐.
-- **동명 충돌 다수** — wherewear.kr, wearb, whatwewear 등과 검색·SEO 경쟁. 신청 브랜드의 차별화 한 줄 미확정 시 GTM 비용 큼.
+## 리스크 시그널 (5종 표준 체크리스트)
+| # | 항목 | 본 건 |
+|---|---|---|
+| 1 | **의사결정 라인** | ⚠️ 불명 — 신청자 "이사/임원"이 KR ㈜웨어컴퍼니 vs JP Wear Company Japan 어느 쪽 임원인지 미확인. 황현우 대표 직접 결재 vs 임원 위임 범위 미팅 시 확인 필수 |
+| 2 | **매출·예산 흡수력** | ⚠️ 미검증 — 한국법인 8개월차 + 3인 운영, KR 단독 매출은 작을 가능성. 일본 mimic lens 매출 규모와 그룹 합산 예산 흡수력 미팅에서 청취 필요 |
+| 3 | **카테고리 핏 거리** | ⚠️ 거리 있음 — 의료기기(콘택트렌즈) = HIZ 표준 D2C SOP 외 영역. 일본 약기법·한국 의료기기법 자문은 HIZ 단독 어려움, 외부 법무 파트너 필요 |
+| 4 | **동명·사명 분산** | ⚠️ 다중 — 그룹 4종 명칭(Wear Company/wearwhere/mimic lens/wearwhereyou) + 한국 동명 4종(WHERE WEAR·WEAR.B 등) = 마케팅 ROI 저하 위험 |
+| 5 | **운영 흡수력** | ⚠️ 슬림 — 한국 직원 3명 + 일본법인 분리 운영, 인하우스 마케팅 인력 거의 없음. 컨설팅 산출물 운영 주체 합의 필요 |
 
 ## 미팅 시 확인 질문
 1. **(1순위)** 신청자 성함·소속 법인(한국 ㈜웨어컴퍼니 vs 일본 Wear Company Japan)·직급·의사결정 권한? 황현우 대표 본인 결재 시 동행 가능 여부?
