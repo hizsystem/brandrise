@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>절대콜라겐 (Absolute Collagen, 한국) · 사전상담 PREP — 브랜드라이즈 by HIZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #14181A;
+      --white: #FFFFFF;
+      --bg: #F5F2EC;
+      --accent: #2E5D4F;
+      --accent-light: #ECF2EE;
+      --accent-soft: #7FB89F;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-300: #D1D5DB;
+      --gray-500: #6B7280;
+      --gray-700: #374151;
+      --text: #111827;
+      --tier-color: #0066CC;
+      --tier-bg: #EBF4FF;
+    }
+    body {
+      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 48px; }
+    a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-light); }
+    a:hover { color: var(--black); border-bottom-color: var(--black); }
+    code { background: var(--gray-100); padding: 1px 6px; border-radius: 4px; font-size: 0.9em; font-family: 'SF Mono', Menlo, monospace; }
+
+    /* TOP NAV */
+    .topnav { background: var(--black); color: rgba(255,255,255,0.55); padding: 14px 0; font-size: 12px; }
+    .topnav .container { display: flex; justify-content: space-between; align-items: center; }
+    .topnav a { color: rgba(255,255,255,0.55); border: none; }
+    .topnav a:hover { color: var(--white); }
+    .topnav .brand { font-weight: 800; letter-spacing: -0.02em; color: var(--white); }
+
+    /* HERO */
+    .hero { background: var(--black); color: var(--white); padding: 80px 0 64px; }
+    .hero .tier-badge {
+      display: inline-block; background: var(--tier-bg); color: var(--tier-color);
+      font-size: 11px; font-weight: 800; letter-spacing: 0.12em;
+      padding: 6px 14px; border-radius: 20px; text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      color: var(--accent-soft); text-transform: uppercase; margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: 48px; font-weight: 900; line-height: 1.15;
+      letter-spacing: -0.025em; margin-bottom: 20px;
+    }
+    .hero .sub {
+      font-size: 15px; color: rgba(255,255,255,0.6);
+      font-weight: 300; max-width: 680px; line-height: 1.85;
+    }
+    .hero-meta {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 28px; margin-top: 48px;
+      padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-meta-item .k {
+      font-size: 10px; letter-spacing: 0.12em; color: rgba(255,255,255,0.35);
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .hero-meta-item .v { font-size: 14px; font-weight: 600; }
+
+    .confidential {
+      display: inline-block; margin-top: 28px;
+      padding: 5px 12px; border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px; font-size: 10px; letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.55); text-transform: uppercase;
+    }
+
+    /* SECTIONS */
+    section { padding: 72px 0; border-bottom: 1px solid var(--gray-200); }
+    section:last-of-type { border-bottom: none; }
+    .sec-label {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.18em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 14px;
+    }
+    h2 {
+      font-size: 30px; font-weight: 900; letter-spacing: -0.025em;
+      line-height: 1.25; margin-bottom: 14px; color: var(--black);
+    }
+    .sec-desc {
+      font-size: 15px; color: var(--gray-500); max-width: 620px;
+      line-height: 1.85; margin-bottom: 36px;
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--white); border-radius: 14px;
+      border: 1px solid var(--gray-200); padding: 32px 36px;
+    }
+    .card p { margin-bottom: 12px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul, .card ol { padding-left: 22px; }
+    .card ul li, .card ol li { padding: 6px 0; line-height: 1.75; }
+    .card ul li::marker { color: var(--accent); }
+    .card ol li::marker { color: var(--accent); font-weight: 700; }
+    .card strong { color: var(--black); }
+
+    .card-dark {
+      background: var(--black); color: var(--white);
+      border-color: var(--black);
+    }
+    .card-dark strong { color: var(--accent-soft); }
+    .card-dark a { color: var(--accent-soft); border-color: rgba(127,184,159,0.3); }
+    .card-dark a:hover { color: var(--white); }
+    .card-dark ul li::marker, .card-dark ol li::marker { color: var(--accent-soft); }
+
+    /* QUESTIONS as numbered cards */
+    .q-grid { display: grid; gap: 12px; }
+    .q-item {
+      background: var(--white); border-radius: 12px;
+      border: 1px solid var(--gray-200); padding: 18px 24px;
+      display: flex; gap: 18px; align-items: flex-start;
+    }
+    .q-num {
+      flex-shrink: 0; width: 32px; height: 32px;
+      background: var(--accent-light); color: var(--accent);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 13px;
+    }
+    .q-text { flex: 1; font-size: 14px; line-height: 1.7; }
+    .q-text strong { color: var(--accent); }
+
+    /* SOURCES */
+    .src-list { list-style: none; padding: 0; }
+    .src-list li {
+      padding: 10px 0; border-bottom: 1px dashed var(--gray-200);
+      font-size: 13px; color: var(--gray-700);
+    }
+    .src-list li:last-child { border-bottom: none; }
+    .src-list a { word-break: break-all; }
+
+    /* FOOTER */
+    .footer { background: var(--black); color: rgba(255,255,255,0.4); padding: 56px 0; text-align: center; }
+    .footer .brand { font-size: 18px; font-weight: 900; color: var(--white); margin-bottom: 6px; letter-spacing: -0.02em; }
+    .footer .tag { font-size: 12px; margin-bottom: 28px; }
+    .footer .meta { font-size: 11px; line-height: 2; }
+    .footer a { color: rgba(255,255,255,0.55); border: none; }
+    .footer a:hover { color: var(--white); }
+
+    @media (max-width: 720px) {
+      .hero h1 { font-size: 34px; }
+      .container { padding: 0 24px; }
+      section { padding: 52px 0; }
+      .card { padding: 24px 22px; }
+    }
+
+    @media print {
+      body { background: var(--white); font-size: 11px; }
+      .topnav, .footer { display: none; }
+      .hero { background: var(--white); color: var(--black); padding: 32px 0; }
+      .hero h1 { color: var(--black); font-size: 28px; }
+      .hero .sub, .hero-meta-item .v { color: var(--gray-700); }
+      .hero-meta-item .k { color: var(--gray-500); }
+      .hero-meta { border-top-color: var(--gray-300); }
+      .hero .label { color: var(--accent); }
+      .confidential { color: var(--gray-700); border-color: var(--gray-300); }
+      section { padding: 28px 0; page-break-inside: avoid; }
+      h2 { font-size: 18px; }
+      .card-dark { background: var(--gray-100); color: var(--black); border-color: var(--gray-200); }
+      .card-dark strong, .card-dark a { color: var(--accent); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topnav">
+  <div class="container">
+    <a href="../" class="brand">BRANDRISE · PREP</a>
+    <span>2026 Q2 · 사전상담 PREP 배치</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="container">
+    <span class="tier-badge">A · 명확</span>
+    <div class="label">사전상담 PREP — 2026 Q2</div>
+    <h1>절대콜라겐 (Absolute Collagen, 한국)</h1>
+    <p class="sub">저분자 어류 콜라겐펩타이드 D2C — 네이버 콜라겐 카테고리 후기 19만+ 1위, T2~T3 핏 (영국 동명 상표 충돌은 글로벌 리스크)</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="k">신청자</div><div class="v">대표/CEO</div></div>
+      <div class="hero-meta-item"><div class="k">신청일</div><div class="v">2026-05-23</div></div>
+      <div class="hero-meta-item"><div class="k">참여 인원</div><div class="v">1명</div></div>
+      <div class="hero-meta-item"><div class="k">참여 확정</div><div class="v">예정</div></div>
+    </div>
+    <div class="confidential">Internal · 브랜드라이즈 팀 전용</div>
+  </div>
+</header>
+
+
+<section>
+  <div class="container">
+    <div class="sec-label">ONE-LINER</div>
+    <h2>한 줄 요약</h2>
+    <p class="sec-desc">사업 본질 한 줄</p>
+    <div class="card">
+    <p><strong>저분자 어류 콜라겐펩타이드 D2C 건강기능식품 브랜드</strong> — 운영사 ㈜서우코리아(대표 주영훈, 2013년 설립). 네이버 콜라겐 카테고리 누적 후기 <strong>19만+ 1위 유지</strong>, 식약처 주름 개선 기능성 인증 안티링클패치 보유. <strong>영국 Absolute Collagen(2017년 Maxine Laceby 창업)과 동명 별개 회사 — 사명 충돌 식별 완료, 한국 토종 자체 브랜드.</strong></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">STAGE</div>
+    <h2>추정 단계</h2>
+    <p class="sec-desc">현재 추정 단계</p>
+    <div class="card">
+    <p><strong>스케일 안정기 (12년차 건기식 D2C 강자).</strong> 2013-12-16 설립, 네이버 콜라겐 카테고리 누적 후기 19만+ = 한국 단일 카테고리 최상위. 통신판매업 2013-서울송파-1197호 = 초창기부터 D2C. 다만 잡코리아 공시 직원 3명 = <strong>D2C 매출 규모 대비 슬림 본사 구조</strong> = 외주 의존도 높을 추정.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">QUANTITATIVE SIGNALS</div>
+    <h2>정량 시그널</h2>
+    <p class="sec-desc">검색으로 확보된 정량 데이터 (매출·인력·SNS·인증·펀딩)</p>
+    <div class="card">
+    <p>| 항목 | 값 | 출처 |
+|---|---|---|
+| 법인명 | 주식회사 서우코리아 | bizno.net |
+| 대표 | 주영훈 | bizno.net / 공식몰 |
+| 사업자번호 | 215-87-62934 / 법인 110111-4768581 | bizno.net |
+| 설립일 | 2013-12-16 (12년차) | bizno.net |
+| 직원수 | 3명 | bizno.net / 잡코리아 |
+| 본사 | 서울 송파구 올림픽로 336, 1402호(방이동, 대우유토피아오피스텔) | bizno.net |
+| 통신판매업 | 2013-서울송파-1197호 (초창기) | 공식몰 |
+| 업종 | 가공식품 도매업 (건강기능식품) | bizno.net |
+| 자사몰 | absolutecollagen.co.kr | 검색 |
+| 자매몰 | shop2.seowookr.cafe24.com (절대보이차) | 검색 — 멀티 브랜드 운영 시그널 |
+| 누적 후기 | 네이버 콜라겐 카테고리 19만+ 1위 유지 (다년 연속) | 공식·외부 인용 |
+| 인스타 | @absolute.collagen (운영 확인) | 검색 |
+| 주력 제품 | 절대콜라겐 플러스 (1g당 990mg 1,000Dalton 어류 콜라겐펩타이드 + 비타민C 10mg) | 공식몰 |
+| 기능성 인증 | 절대콜라겐 안티링클패치 — 식약처 주름개선 기능성 인증 | 공식몰 |
+| CS | 02-2400-7099 (평일 11~5pm, 토일 휴무) | 공식몰 |
+| 동명 (영국) | Absolute Collagen UK / Maxine Laceby 2017 / absolutecollagen.com — UK #1 콜라겐 D2C | 검색 |
+| 신청자 매칭 | 매칭 시도 없음 — 미팅 시 청취 | 자료 부재 |</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">ANALOG CASES</div>
+    <h2>유사 케이스 인접도</h2>
+    <p class="sec-desc">HIZ 기존 케이스 풀과의 매핑</p>
+    <div class="card">
+    <ul>
+      <li><strong>케어비네스트 (가장 가까움)</strong>: 건기식 D2C + 단일 카테고리 강자 + 자사몰 자산 보유 = 구조 거의 동일. 다만 절대콜라겐은 <strong>12년차·후기 19만+ = 케어비네스트보다 훨씬 스케일 위 단계</strong>.</li>
+      <li><strong>바디노트</strong>: 건기식·웰니스 D2C, 단 바디노트는 기업 B2B 구독 모델 = 비즈모델 다름.</li>
+      <li><strong>위타민(우르실)</strong>: 건기식+뷰티 융합 자사몰 + 글로벌 진출 시점 = 진출 전략 측면에서 인접.</li>
+      <li><strong>네츄럴굿띵스</strong>: 자연주의 식품·건기식 D2C — 카테고리 인접도 일부.</li>
+      <li><strong>요약</strong>: HIZ 컨설팅 풀에 가장 가까운 케이스. 단 <strong>절대콜라겐은 이미 카테고리 1위 = 신규 성장 동력(글로벌·신규 SKU·B2B)을 어떻게 만들지가 핵심.</strong></li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">PAIN POINTS</div>
+    <h2>핵심 페인 (가설)</h2>
+    <p class="sec-desc">사전 검색 기반 가설 페인</p>
+    <div class="card">
+    <ul>
+      <li><strong>국내 카테고리 1위 = 신규 성장 동력 부재 위기.</strong> 후기 19만+ 누적은 강력한 모트, 다만 국내 콜라겐 카테고리 자체 성장률 둔화·경쟁 격화(더코리아콜라겐·뷰티콜라겐·코스트코 PB 등) → <strong>글로벌·신규 카테고리·B2B 등 다음 성장 축 미정</strong> 추정.</li>
+      <li><strong>브랜드 자산 = 후기 중심 vs 브랜드 스토리·아이덴티티 약함.</strong> "절대콜라겐"이라는 직설적 사명·일관성 있는 카피·BI는 확보되어 있으나, 12년 누적 자산을 활용한 <strong>콘텐츠·인플루언서·PR 시스템</strong>은 후기 의존으로 추정 약함.</li>
+      <li><strong>직원 3명 = 본사 슬림 + 매출 규모 vs 인력 격차</strong> → 마케팅·콘텐츠·운영 외주 의존도 높음. 외주사 교체나 인하우스화 검토 시점 가능성.</li>
+      <li><strong>글로벌 진출 = 영국 Absolute Collagen 사명 충돌 = 영문 자산 구축 시 1순위 장애물.</strong> 영문몰·아마존·해외 SEO에서 두 브랜드 식별 비용 매우 큼.</li>
+      <li><strong>자매 브랜드(절대보이차) 분산</strong> = 그룹 마스터 브랜드 전략 미정 추정.</li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">CONSULTING HYPOTHESIS</div>
+    <h2>컨설팅 가설 (브랜드라이즈가 풀 수 있는 것)</h2>
+    <p class="sec-desc">브랜드라이즈가 풀 수 있는 것</p>
+    <div class="card card-dark">
+    <p>6영역 중 <strong>브랜드 정체성(스토리 재정의) + 콘텐츠 시스템(후기 19만+ 자산 활용) + 채널 확장(글로벌·B2B) + 데이터 대시보드</strong> 4개 동시 핏. 1위 브랜드의 다음 단계 = HIZ가 가장 잘하는 "스케일 전환" 영역.
+- <strong>30일</strong>: 브랜드 진단 — 12년 자산 인벤토리(후기 19만+·기능성 인증·재구매·KOL), 영국 동명 충돌 매핑, 차세대 성장 축 옵션 정리(글로벌/신규 SKU/B2B)
+- <strong>90일</strong>: 콘텐츠 시스템(후기 카드뉴스·셀럽·전문가 PR·기능성 임상 콘텐츠), 영문 자산 구축 v1 + 영국 동명 차별화 한 줄
+- <strong>180일</strong>: 신규 SKU 런칭 캠페인(예: 음용 콜라겐 외 패치·앰플·이너뷰티 확장) + 글로벌 채널 v1(미국·일본·동남아 중 1개국 우선) + ROAS 대시보드</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">TIER ESTIMATE</div>
+    <h2>추정 Tier 견적 범위</h2>
+    <p class="sec-desc">예상 견적 Tier·단가 범위 + 단계적 접근 옵션</p>
+    <div class="card card-dark">
+    <ul>
+      <li><strong>추천 Tier</strong>: <strong>T2 Build (3,000~5,000만 / 3~4개월) → T3 Scale 승급 가능성 높음</strong></li>
+      <li><strong>근거</strong>: 12년차 + 카테고리 1위 + 후기 19만+ = 진단(T1) 단계 이미 통과. 빌드(T2) 풀스코프로 콘텐츠·채널·데이터 동시 구축 필요. 매출 규모 대비 직원 3명 = 외주 마케팅 예산 흡수 충분.</li>
+      <li><strong>대안</strong>:</li>
+      <li>글로벌 진출(영국 동명 해결 + 미·일·동남아 영문 자산·해외 인플루언서 시드) 동시 추진 → <strong>T3 Scale(7,000만+/6~12개월)</strong> 적극 권장</li>
+      <li>미팅 결과 의사결정이 단발성 신규 SKU 런칭 캠페인 단위면 → T1 Foundation(1,000~1,500만/4주) 진단부터</li>
+      <li><strong>Tier 기준선</strong>: T0 100~300만/2주 · T1 500~1,500만/4주 · T2 2,000~5,000만/8~12주 · T3 7,000만+/16주+</li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">RISK SIGNALS</div>
+    <h2>리스크 시그널</h2>
+    <p class="sec-desc">GO 분기점 — 의사결정·핏·예산·동명·운영 5종</p>
+    <div class="card">
+    <ul>
+      <li><strong>신청자 직책 = "대표/CEO" 표기</strong> — 주영훈 대표 본인일 가능성 높음 = 의사결정 라인 클린. 단 이름 미공개이므로 미팅 시 본인 확인 1순위.</li>
+      <li><strong>카테고리 1위 = 컨설팅 효용 의문 위험</strong> — "이미 잘되는데 왜 컨설팅?" 반론 예상. 미팅 시 <strong>"국내 1위 → 글로벌·다음 카테고리"</strong> 프레임으로 가치 제안 필요.</li>
+      <li><strong>영국 Absolute Collagen 사명 충돌</strong> = 글로벌 진출 시 법적·SEO 리스크. 미팅 전 상표 등록 현황 사전 확인 권장.</li>
+      <li><strong>자매 브랜드(절대보이차) 운영</strong> = 그룹 브랜드 전략 정리 필요. 컨설팅 범위 합의 필수.</li>
+      <li><strong>직원 3명 = 운영 흡수력 의문</strong> — 빌드된 시스템 운영 주체(인하우스 vs HIZ 위탁 운영) 명확화 필요. T2/T3 견적 시 운영 위탁 비용 별도 고려.</li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">MEETING QUESTIONS</div>
+    <h2>미팅 시 확인 질문</h2>
+    <p class="sec-desc">사전상담 도입 5분 어젠다 + 정량 진단</p>
+    <div class="q-grid">
+      <div class="q-item"><div class="q-num">1</div><div class="q-text"><strong>(1순위)</strong> 신청자 성함 = 주영훈 대표 본인인지 확인? 의사결정 권한·동행 인원·예산 결재 라인?</div></div>
+      <div class="q-item"><div class="q-num">2</div><div class="q-text">12년 누적 매출 규모·현재 월 매출 / 자사몰 vs 네이버·쿠팡·올리브영 등 외부 채널 매출 비중 / 누적 회원 수·재구매율?</div></div>
+      <div class="q-item"><div class="q-num">3</div><div class="q-text">영국 Absolute Collagen 인지 여부 + 해외 진출 계획·우선 국가? "Absolute Collagen" 영문 상표 등록 현황?</div></div>
+      <div class="q-item"><div class="q-num">4</div><div class="q-text">자매 브랜드 "절대보이차" 외 추가 브랜드 운영·계획? 그룹 마스터 브랜드 전략?</div></div>
+      <div class="q-item"><div class="q-num">5</div><div class="q-text">컨설팅 후 6~12개월 1순위 기대 — 글로벌 진출? 신규 SKU 런칭? B2B/홈쇼핑/오프라인? 매출 ○배? 가용 월 예산 범위?</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">FULL RESEARCH ROADMAP</div>
+    <h2>정식 리서치 승급 시 우선 파야 할 영역</h2>
+    <p class="sec-desc">정식 승급 시 심화 영역</p>
+    <div class="card">
+    <ul>
+      <li><strong>매출 분해</strong>: 자사몰 vs 네이버 vs 쿠팡 vs 올리브영 vs B2B 매출 비중 / SKU별(분말·패치·기타) 마진 / 12년 누적 매출 추이</li>
+      <li><strong>경쟁 3사 분석</strong>:</li>
+      <li>더코리아콜라겐(300달톤 초저분자 프리미엄)</li>
+      <li>뷰티콜라겐(발효나노 콜라겐, 의료용 강조)</li>
+      <li>코스트코 콜라겐 PB (가격경쟁)</li>
+      <li>영국 Absolute Collagen UK (글로벌 진출 시 직접 경쟁)</li>
+      <li><strong>글로벌 진출 전략</strong>:</li>
+      <li>영국 동명 상표 분석·차별화 네이밍(영문 보조명 필요 여부)</li>
+      <li>우선순위 국가 선정(일본 약기법·미국 FDA·동남아 식약 인증 트랙)</li>
+      <li>영문 자산 보유 상태 진단</li>
+      <li><strong>재구매·LTV 시스템 진단</strong>: 후기 19만+ 자산 → 충성고객 LTV → 신규 SKU 크로스셀 시스템화 가능성</li>
+      <li><strong>(선택) 정부지원 트랙</strong>: 농식품수출지원, 콘진원 K-푸드/뷰티 글로벌, 중기부 글로벌강소기업, 식약처 기능성 추가 인증</li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">SOURCES</div>
+    <h2>출처</h2>
+    <p class="sec-desc">참고 출처</p>
+    <ul class="src-list">
+      <li><a href="https://absolutecollagen.co.kr/" target="_blank" rel="noopener">공식몰 absolutecollagen.co.kr</a></li>
+      <li><a href="https://www.bizno.net/article/2158762934" target="_blank" rel="noopener">bizno.net — ㈜서우코리아 사업자정보</a></li>
+      <li><a href="https://www.jobkorea.co.kr/Recruit/Co_Read/C/seowookr/Company_name/%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%20%EC%84%9C%EC%9A%B0%EC%BD%94%EB%A6%AC%EC%95%84" target="_blank" rel="noopener">잡코리아 — ㈜서우코리아 기업정보</a></li>
+      <li><a href="https://absolutecollagen.co.kr/product/%EC%A0%95%EC%83%81%EA%B0%80%EC%A0%88%EB%8C%80%EC%BD%9C%EB%9D%BC%EA%B2%90-%ED%94%8C%EB%9F%AC%EC%8A%A4/42/" target="_blank" rel="noopener">절대콜라겐 플러스 제품 상세</a></li>
+      <li><a href="https://www.hwahae.com/en/products/%EC%A0%88%EB%8C%80%EC%BD%9C%EB%9D%BC%EA%B2%90-Absolute-Collagen-Plus/2068846/ingredients" target="_blank" rel="noopener">화해 (Hwahae) — 절대콜라겐 Plus 성분 분석</a></li>
+      <li><a href="http://shop2.seowookr.cafe24.com/" target="_blank" rel="noopener">자매몰 절대보이차 (서우코리아 운영)</a></li>
+      <li><a href="https://www.absolutecollagen.com/" target="_blank" rel="noopener">영국 Absolute Collagen — UK #1 (동명 식별용)</a></li>
+      <li><a href="https://www.maxinelaceby.com/pages/about-absolute-collagen" target="_blank" rel="noopener">영국 Maxine Laceby 창업 스토리 (동명 식별용)</a></li>
+      <li>신청자 매칭 직접 출처 부재 — 미팅 시 청취 필수</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="brand">BRANDRISE</div>
+    <div class="tag">브랜드의 성장을 설계합니다.</div>
+    <div class="meta">
+      <a href="../">← PREP 배치 허브</a> · <a href="https://hizsystem.github.io/brandrise/">brandrise 메인</a><br>
+      D2C·자영업·시드~Pre-A 진단·컨설팅 · @brandrise_kr
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -40,6 +40,10 @@ SLUG_TIER = {
     "kingdom-square": "C", "everyday-christmas": "C",
     "yousomi": "C", "briyl": "C", "gelato-wayou": "C",
     "j-and": "C", "esam": "C", "kim-yeoreum": "C",
+    # ── 2026-05-23 신규 3건 (강화 포맷 v2 첫 적용) ──
+    "hayejin-cosmetic": "A",  # 매출 27.5억·11년차·8개 지역 글로벌 = T2 흡수력
+    "absolute-collagen": "A",  # 콜라겐 카테고리 1위·후기 19만+·식약처 인증 = T2~T3
+    "wearwhere": "B",  # 한·일 듀얼 법인이지만 8개월차·3명 = T1 진단부터
 }
 
 # Slug → source batch (sangdam = 사전상담 신청자, govent = 고벤처 행사)
@@ -52,6 +56,8 @@ SLUG_SOURCE = {
     "spicyspice": "govent", "penther": "govent", "everyday-christmas": "govent",
     "yousomi": "govent", "yuan-corp": "govent", "briyl": "govent",
     "gelato-wayou": "govent", "j-and": "govent", "esam": "govent", "kim-yeoreum": "govent",
+    # 2026-05-23 신규 3건
+    "hayejin-cosmetic": "govent", "wearwhere": "govent", "absolute-collagen": "govent",
 }
 # default = sangdam (기존 27건)
 
@@ -107,6 +113,10 @@ DISPLAY_ORDER = [
     ("nunsarang", "윤태원", "눈사랑 안과 동물병원", "2026-05-22", 1, "N"),
     ("welisson", "신민경", "(주)웰리스온", "2026-05-22", 1, "N"),
     ("kim-yeoreum", "김여름", "개인사업자 (김여름)", "2026-05-22", 1, "N"),
+    # ── 2026-05-23 신규 3건 (강화 포맷 v2 첫 적용) ──
+    ("hayejin-cosmetic", "마케팅 팀장", "하예진코스메틱 (Hayejin Cosmetic)", "2026-05-23", 1, "N"),
+    ("wearwhere", "이사/임원", "wearwhere + MIMIC LENS", "2026-05-23", 1, "N"),
+    ("absolute-collagen", "대표/CEO", "절대콜라겐 (Absolute Collagen)", "2026-05-23", 1, "N"),
 ]
 
 # Curation hooks (from README)
@@ -161,6 +171,10 @@ HOOKS = {
     "j-and": "사명 매우 짧음, 동명 충돌 — @jand_official 후보 1건(매칭 보류)",
     "esam": "사명 다의어, 1인 사업자 가설 + 2차에도 매칭 실패",
     "kim-yeoreum": "회사명 없음, 사업 정의 워크샵 진입 + 2차에도 매칭 실패",
+    # ── 2026-05-23 신규 3건 (강화 포맷 v2 첫 적용) ──
+    "hayejin-cosmetic": "비건 클린 뷰티 K-코스메틱 (씨아이에스인터내셔날서비스㈜·매출 27.5억·11년차·8개 지역 글로벌) — T2 흡수력 명확",
+    "wearwhere": "한·일 듀얼 법인 멀티브랜드 (wearwhere 아이웨어 + MIMIC LENS 컬러콘택트렌즈) — T1 진단 후 T2 단계적 승급",
+    "absolute-collagen": "저분자 어류 콜라겐펩타이드 D2C — 네이버 콜라겐 카테고리 후기 19만+ 1위, T2~T3 핏 (영국 동명 상표 충돌은 글로벌 리스크)",
 }
 
 
@@ -465,14 +479,20 @@ PREP_TEMPLATE = """<!DOCTYPE html>
 </html>
 """
 
-# Order and labels for sections in HTML
+# Order and labels for sections in HTML (v2 강화 포맷 — 11섹션 + 동명 충돌 옵션)
 SECTION_RENDER_ORDER = [
     ("한 줄 요약", "ONE-LINER", "사업 본질 한 줄", "card"),
     ("추정 단계", "STAGE", "현재 추정 단계", "card"),
+    ("정량 시그널", "QUANTITATIVE SIGNALS", "검색으로 확보된 정량 데이터 (매출·인력·SNS·인증·펀딩)", "card"),
+    ("유사 케이스 인접도", "ANALOG CASES", "HIZ 기존 케이스 풀과의 매핑", "card"),
+    ("동명 충돌 식별", "NAME COLLISION", "동일·유사 사명 식별 결과", "card"),
     ("핵심 페인 (가설)", "PAIN POINTS", "사전 검색 기반 가설 페인", "card"),
     ("핵심 페인 (가설·리서치 검증됨)", "PAIN POINTS", "리서치 검증 페인", "card"),
     ("컨설팅 가설 (브랜드라이즈가 풀 수 있는 것)", "CONSULTING HYPOTHESIS", "브랜드라이즈가 풀 수 있는 것", "card-dark"),
+    ("추정 Tier 견적 범위", "TIER ESTIMATE", "예상 견적 Tier·단가 범위 + 단계적 접근 옵션", "card-dark"),
+    ("리스크 시그널", "RISK SIGNALS", "GO 분기점 — 의사결정·핏·예산·동명·운영 5종", "card"),
     ("미팅 시 확인 질문", "MEETING QUESTIONS", "사전상담 도입 5분 어젠다 + 정량 진단", "questions"),
+    ("정식 리서치 승급 시 우선 파야 할 영역", "FULL RESEARCH ROADMAP", "정식 승급 시 심화 영역", "card"),
     ("출처", "SOURCES", "참고 출처", "sources"),
 ]
 
@@ -683,14 +703,14 @@ HUB_TEMPLATE = """<!DOCTYPE html>
 
 <header class="hero">
   <div class="container">
-    <div class="label">2026 Q2 · 사전상담 + 고벤처 PREP 통합 배치</div>
-    <h1>49개 브랜드<br><em>1-page PREP</em></h1>
-    <p class="sub">2026-05-11 ~ 22 사이 <strong style="color: #93C5FD;">사전상담 27건</strong> + <strong style="color: #FCD34D;">고벤처 행사 22건</strong> = 49개 브랜드 1-page PREP 패키지. 단계 추정·핵심 페인·컨설팅 가설·미팅 진입 질문 5개·출처를 견적서 톤으로 정리. 카드 우측 뱃지로 신청 경로 구분.</p>
+    <div class="label">2026 Q2 · 사전상담 + 고벤처 PREP 통합 배치 (v2 강화 포맷)</div>
+    <h1>52개 브랜드<br><em>1-page PREP</em></h1>
+    <p class="sub">2026-05-11 ~ 23 사이 <strong style="color: #93C5FD;">사전상담 27건</strong> + <strong style="color: #FCD34D;">고벤처 행사 25건</strong> = 52개 브랜드 PREP 패키지. <strong style="color: #7FB89F;">2026-05-23부터 강화 포맷 v2 (11섹션)</strong> 적용: 정량 시그널·유사 케이스 인접도·추정 Tier 견적·리스크 시그널·정식 승급 가이드 추가. 카드 우측 뱃지로 신청 경로 구분.</p>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="k">총 브랜드</div><div class="v">49 <small>(상담 27 · 행사 22)</small></div></div>
+      <div class="hero-stat"><div class="k">총 브랜드</div><div class="v">52 <small>(상담 27 · 행사 25)</small></div></div>
       <div class="hero-stat"><div class="k">S · 즉시 GO</div><div class="v" style="color: #7FB89F;">5</div></div>
-      <div class="hero-stat"><div class="k">A · 명확</div><div class="v" style="color: #93C5FD;">14</div></div>
-      <div class="hero-stat"><div class="k">B · 검증 후</div><div class="v" style="color: #FDBA74;">18</div></div>
+      <div class="hero-stat"><div class="k">A · 명확</div><div class="v" style="color: #93C5FD;">16</div></div>
+      <div class="hero-stat"><div class="k">B · 검증 후</div><div class="v" style="color: #FDBA74;">19</div></div>
       <div class="hero-stat"><div class="k">C · 정보 부족</div><div class="v" style="color: rgba(255,255,255,0.5);">12</div></div>
     </div>
   </div>
@@ -710,7 +730,7 @@ HUB_TEMPLATE = """<!DOCTYPE html>
   <div class="container">
     <div class="sec-label">MEETING OPERATIONS</div>
     <h2>미팅 운영 표준</h2>
-    <p class="sec-desc">49건 공통 도입부 5분 어젠다. 그 다음 24문항 6영역 진단(브랜드 정체성 / 콘텐츠 / 채널 / 퍼포먼스 / 데이터 / 고객 관계) 진입.</p>
+    <p class="sec-desc">52건 공통 도입부 5분 어젠다. 그 다음 24문항 6영역 진단(브랜드 정체성 / 콘텐츠 / 채널 / 퍼포먼스 / 데이터 / 고객 관계) 진입.</p>
     <div class="ops-card">
       <h3>도입부 5분 · 공통 어젠다</h3>
       <ol>

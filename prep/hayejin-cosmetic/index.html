@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>하예진코스메틱 (HAYEJIN / Hayejin Cosmetic) · 사전상담 PREP — 브랜드라이즈 by HIZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #14181A;
+      --white: #FFFFFF;
+      --bg: #F5F2EC;
+      --accent: #2E5D4F;
+      --accent-light: #ECF2EE;
+      --accent-soft: #7FB89F;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-300: #D1D5DB;
+      --gray-500: #6B7280;
+      --gray-700: #374151;
+      --text: #111827;
+      --tier-color: #0066CC;
+      --tier-bg: #EBF4FF;
+    }
+    body {
+      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 48px; }
+    a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-light); }
+    a:hover { color: var(--black); border-bottom-color: var(--black); }
+    code { background: var(--gray-100); padding: 1px 6px; border-radius: 4px; font-size: 0.9em; font-family: 'SF Mono', Menlo, monospace; }
+
+    /* TOP NAV */
+    .topnav { background: var(--black); color: rgba(255,255,255,0.55); padding: 14px 0; font-size: 12px; }
+    .topnav .container { display: flex; justify-content: space-between; align-items: center; }
+    .topnav a { color: rgba(255,255,255,0.55); border: none; }
+    .topnav a:hover { color: var(--white); }
+    .topnav .brand { font-weight: 800; letter-spacing: -0.02em; color: var(--white); }
+
+    /* HERO */
+    .hero { background: var(--black); color: var(--white); padding: 80px 0 64px; }
+    .hero .tier-badge {
+      display: inline-block; background: var(--tier-bg); color: var(--tier-color);
+      font-size: 11px; font-weight: 800; letter-spacing: 0.12em;
+      padding: 6px 14px; border-radius: 20px; text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      color: var(--accent-soft); text-transform: uppercase; margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: 48px; font-weight: 900; line-height: 1.15;
+      letter-spacing: -0.025em; margin-bottom: 20px;
+    }
+    .hero .sub {
+      font-size: 15px; color: rgba(255,255,255,0.6);
+      font-weight: 300; max-width: 680px; line-height: 1.85;
+    }
+    .hero-meta {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 28px; margin-top: 48px;
+      padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-meta-item .k {
+      font-size: 10px; letter-spacing: 0.12em; color: rgba(255,255,255,0.35);
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .hero-meta-item .v { font-size: 14px; font-weight: 600; }
+
+    .confidential {
+      display: inline-block; margin-top: 28px;
+      padding: 5px 12px; border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px; font-size: 10px; letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.55); text-transform: uppercase;
+    }
+
+    /* SECTIONS */
+    section { padding: 72px 0; border-bottom: 1px solid var(--gray-200); }
+    section:last-of-type { border-bottom: none; }
+    .sec-label {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.18em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 14px;
+    }
+    h2 {
+      font-size: 30px; font-weight: 900; letter-spacing: -0.025em;
+      line-height: 1.25; margin-bottom: 14px; color: var(--black);
+    }
+    .sec-desc {
+      font-size: 15px; color: var(--gray-500); max-width: 620px;
+      line-height: 1.85; margin-bottom: 36px;
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--white); border-radius: 14px;
+      border: 1px solid var(--gray-200); padding: 32px 36px;
+    }
+    .card p { margin-bottom: 12px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul, .card ol { padding-left: 22px; }
+    .card ul li, .card ol li { padding: 6px 0; line-height: 1.75; }
+    .card ul li::marker { color: var(--accent); }
+    .card ol li::marker { color: var(--accent); font-weight: 700; }
+    .card strong { color: var(--black); }
+
+    .card-dark {
+      background: var(--black); color: var(--white);
+      border-color: var(--black);
+    }
+    .card-dark strong { color: var(--accent-soft); }
+    .card-dark a { color: var(--accent-soft); border-color: rgba(127,184,159,0.3); }
+    .card-dark a:hover { color: var(--white); }
+    .card-dark ul li::marker, .card-dark ol li::marker { color: var(--accent-soft); }
+
+    /* QUESTIONS as numbered cards */
+    .q-grid { display: grid; gap: 12px; }
+    .q-item {
+      background: var(--white); border-radius: 12px;
+      border: 1px solid var(--gray-200); padding: 18px 24px;
+      display: flex; gap: 18px; align-items: flex-start;
+    }
+    .q-num {
+      flex-shrink: 0; width: 32px; height: 32px;
+      background: var(--accent-light); color: var(--accent);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 13px;
+    }
+    .q-text { flex: 1; font-size: 14px; line-height: 1.7; }
+    .q-text strong { color: var(--accent); }
+
+    /* SOURCES */
+    .src-list { list-style: none; padding: 0; }
+    .src-list li {
+      padding: 10px 0; border-bottom: 1px dashed var(--gray-200);
+      font-size: 13px; color: var(--gray-700);
+    }
+    .src-list li:last-child { border-bottom: none; }
+    .src-list a { word-break: break-all; }
+
+    /* FOOTER */
+    .footer { background: var(--black); color: rgba(255,255,255,0.4); padding: 56px 0; text-align: center; }
+    .footer .brand { font-size: 18px; font-weight: 900; color: var(--white); margin-bottom: 6px; letter-spacing: -0.02em; }
+    .footer .tag { font-size: 12px; margin-bottom: 28px; }
+    .footer .meta { font-size: 11px; line-height: 2; }
+    .footer a { color: rgba(255,255,255,0.55); border: none; }
+    .footer a:hover { color: var(--white); }
+
+    @media (max-width: 720px) {
+      .hero h1 { font-size: 34px; }
+      .container { padding: 0 24px; }
+      section { padding: 52px 0; }
+      .card { padding: 24px 22px; }
+    }
+
+    @media print {
+      body { background: var(--white); font-size: 11px; }
+      .topnav, .footer { display: none; }
+      .hero { background: var(--white); color: var(--black); padding: 32px 0; }
+      .hero h1 { color: var(--black); font-size: 28px; }
+      .hero .sub, .hero-meta-item .v { color: var(--gray-700); }
+      .hero-meta-item .k { color: var(--gray-500); }
+      .hero-meta { border-top-color: var(--gray-300); }
+      .hero .label { color: var(--accent); }
+      .confidential { color: var(--gray-700); border-color: var(--gray-300); }
+      section { padding: 28px 0; page-break-inside: avoid; }
+      h2 { font-size: 18px; }
+      .card-dark { background: var(--gray-100); color: var(--black); border-color: var(--gray-200); }
+      .card-dark strong, .card-dark a { color: var(--accent); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topnav">
+  <div class="container">
+    <a href="../" class="brand">BRANDRISE · PREP</a>
+    <span>2026 Q2 · 사전상담 PREP 배치</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="container">
+    <span class="tier-badge">A · 명확</span>
+    <div class="label">사전상담 PREP — 2026 Q2</div>
+    <h1>하예진코스메틱 (HAYEJIN / Hayejin Cosmetic)</h1>
+    <p class="sub">비건 클린 뷰티 K-코스메틱 (씨아이에스인터내셔날서비스㈜·매출 27.5억·11년차·8개 지역 글로벌) — T2 흡수력 명확</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="k">신청자</div><div class="v">마케팅 팀장</div></div>
+      <div class="hero-meta-item"><div class="k">신청일</div><div class="v">2026-05-23</div></div>
+      <div class="hero-meta-item"><div class="k">참여 인원</div><div class="v">1명</div></div>
+      <div class="hero-meta-item"><div class="k">참여 확정</div><div class="v">예정</div></div>
+    </div>
+    <div class="confidential">Internal · 브랜드라이즈 팀 전용</div>
+  </div>
+</header>
+
+
+<section>
+  <div class="container">
+    <div class="sec-label">ONE-LINER</div>
+    <h2>한 줄 요약</h2>
+    <p class="sec-desc">사업 본질 한 줄</p>
+    <div class="card">
+    <p><strong>비건 클린 뷰티 K-코스메틱 브랜드</strong> — 운영사 씨아이에스인터내셔날서비스㈜(대표 최재근, 2015년 설립). 영국 Vegan Society 인증 비건 라인 운영, 일본·인도네시아·미국·유럽 등 멀티 글로벌 인스타 채널 보유. "하예진"은 <strong>인플루언서 IP가 아닌 자체 개발 브랜드 네이밍</strong>("하늘처럼 깊고 아름다운 마음"의 한국어 표현 — 공식 브랜드 스토리).</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">STAGE</div>
+    <h2>추정 단계</h2>
+    <p class="sec-desc">현재 추정 단계</p>
+    <div class="card">
+    <p><strong>얼리 그로스 → 스케일 전환기 (11년차 K-뷰티 수출 도매상사 + 자사 브랜드 운영).</strong> 잡코리아 공시 기준 직원 12명·매출 27.5억(2025-12-31 기준), 2015년 설립 → 2018년 카자흐스탄 100만 달러 첫 수출 → 2020년 매출 50억(과거 보도) → 현재 글로벌 다채널 운영. 자체 브랜드 + 타 K-뷰티 수출도매 병행 비즈모델. 인스타 본 계정 12K 팔로워.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">QUANTITATIVE SIGNALS</div>
+    <h2>정량 시그널</h2>
+    <p class="sec-desc">검색으로 확보된 정량 데이터 (매출·인력·SNS·인증·펀딩)</p>
+    <div class="card">
+    <p>| 항목 | 값 | 출처 |
+|---|---|---|
+| 법인명 | 씨아이에스인터내셔날서비스㈜ | bizno / 잡코리아 |
+| 대표자 | 최재근 | 공식몰 |
+| 사업자번호 | 668-88-00255 | 공식몰 푸터 |
+| 통신판매업 | 제2021-서울금천-1474호 | 공식몰 |
+| 설립일 | 2015-10-27 (11년차) | 잡코리아 |
+| 직원수 | 12명 (2022-01 기준) / 8~10명(타 출처) | 잡코리아·사람인 |
+| 매출 | 27.5억 (2025-12-31 추정 표기) / 과거 50억(2020) | 잡코리아 / 디조TV(2018) |
+| 본사 | 서울 금천구 가산디지털1로 25 대륭테크노타운17차 301호 | 공식몰 |
+| 자사몰 | hayejincosmetics.com / hayejincosmetic.com / en.hayejincosmetics.com | 검색 |
+| 인스타 본계정 | @hayejin.official_ 12K 팔로워 / 371 게시물 | Instagram |
+| 인스타 멀티지역 | @hayejin.id (인도네시아) / @hayejin.us (미국) / @hayejin_japan (일본) / @hayejin_online | Instagram |
+| 글로벌 입점 | StyleKorean, Jolse, BeautyKoreaMall, Skin-Seoul, Yaksok, UMMA(B2B 도매), Hayejin Europe | 각 사이트 |
+| 비건 인증 | The Vegan Society (UK) | 공식 브랜드 페이지 |
+| 제품 카테고리 | 새싹세럼, 라이스브랜 페이스워시 등 비건 스킨케어 | 공식몰 |
+| 신청자 매칭 | 매칭 시도 없음 — 미팅 시 청취 | 자료 부재 |</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">ANALOG CASES</div>
+    <h2>유사 케이스 인접도</h2>
+    <p class="sec-desc">HIZ 기존 케이스 풀과의 매핑</p>
+    <div class="card">
+    <ul>
+      <li><strong>위타민(우르실) / 리솔츠</strong>: 자사 뷰티·웰니스 브랜드 + 자사몰 + 글로벌 확장 시점이라는 점에서 구조 유사. 다만 하예진은 <strong>이미 11년차 + 매출 27.5억 + 멀티 지역 채널 보유</strong> = 위타민/리솔츠보다 1단계 위 스테이지(스케일 전환기).</li>
+      <li><strong>레베로(LEVERO)</strong>: 비건 라이프케어 + 멀티 SKU + 글로벌 채널 진입 단계 측면에서 인접. HIZ가 비건 카테고리 컨설팅 케이스 보유한 점에서 핏 양호.</li>
+      <li><strong>마케소울/제이엘코스메틱</strong> 등 K-뷰티 수출도매 + 자사 브랜드 병행 케이스 — 비즈모델 일치도 가장 높음 (HIZ 기존 케이스 풀에 정확히 매칭되는 사례는 없음, 인접 신규 카테고리).</li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">PAIN POINTS</div>
+    <h2>핵심 페인 (가설)</h2>
+    <p class="sec-desc">사전 검색 기반 가설 페인</p>
+    <div class="card">
+    <ul>
+      <li><strong>글로벌 다채널 동시 운영 부담</strong> — 8개+ 지역별 인스타 계정 분산 운영 중 → <strong>브랜드 메시지·비주얼 일관성 + 현지화 톤 균형</strong> 시스템화 미흡 가능성. 일본·미국·인도네시아·EU 멀티 톤 관리 = 콘텐츠·운영 리소스 분산.</li>
+      <li><strong>본 계정 12K 팔로워 = 11년차·매출 27.5억 대비 인지도 약함</strong> — B2B 수출도매 매출 비중이 크고 D2C 자사몰·SNS 마케팅이 후순위였을 가능성. 자사몰 트래픽·전환·LTV 데이터 시스템 미구축 추정.</li>
+      <li><strong>자체 브랜드(하예진) vs 수출도매(타 K-뷰티)</strong> 두 비즈 라인 분리 — 브랜드 자체 가치 극대화 전략 부재 가능성, "도매상사가 운영하는 브랜드" 정체성에 갇힘.</li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">CONSULTING HYPOTHESIS</div>
+    <h2>컨설팅 가설 (브랜드라이즈가 풀 수 있는 것)</h2>
+    <p class="sec-desc">브랜드라이즈가 풀 수 있는 것</p>
+    <div class="card card-dark">
+    <p>6영역 중 <strong>콘텐츠 시스템 + 채널 운영 통합 + 데이터 대시보드</strong>가 1순위. 브랜드 정체성·BI는 이미 정착된 단계로 추정.
+- <strong>30일</strong>: 브랜드 진단 (8개 지역 채널 메시지 일관성 진단 / 자사몰 ASO·전환 진단 / 본 계정 12K 인게이지먼트 분석)
+- <strong>90일</strong>: 글로벌 콘텐츠 SOP 수립 (지역별 톤 가이드 + 본사 콘텐츠 풀 → 지역 큐레이션 시스템), 본 계정 인스타·유튜브 콘텐츠 빈도 정상화
+- <strong>180일</strong>: 자사몰 → 채널별 매출 분해 대시보드 + 비건 카테고리 인플루언서 글로벌 시드(미국·일본·EU 각 10명), 본 계정 30K+ 목표</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">TIER ESTIMATE</div>
+    <h2>추정 Tier 견적 범위</h2>
+    <p class="sec-desc">예상 견적 Tier·단가 범위 + 단계적 접근 옵션</p>
+    <div class="card card-dark">
+    <ul>
+      <li><strong>추천 Tier</strong>: <strong>T2 Build (3,000~5,000만 / 3~4개월)</strong></li>
+      <li><strong>근거</strong>: 11년차 + 매출 27.5억 + 8개+ 지역 채널 = 진단형(T1)으로는 부족, 글로벌 콘텐츠 시스템·데이터 대시보드 구축까지 가야 효과. 매출 27.5억 대비 마케팅 예산 흡수력 충분.</li>
+      <li><strong>대안</strong>:</li>
+      <li>미팅 결과 <strong>자사 브랜드 vs 도매 매출 비중</strong>이 도매 우위면 → T1 Foundation(500~1,500만/4주)으로 D2C 정체성 재정의부터 시작</li>
+      <li>글로벌 멀티지역 콘텐츠 시스템 + 본격 퍼포먼스 광고까지 가면 → <strong>T3 Scale(7,000만+/6개월+)</strong></li>
+      <li><strong>Tier 기준선</strong>: T0 100~300만/2주 · T1 500~1,500만/4주 · T2 2,000~5,000만/8~12주 · T3 7,000만+/16주+</li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">RISK SIGNALS</div>
+    <h2>리스크 시그널</h2>
+    <p class="sec-desc">GO 분기점 — 의사결정·핏·예산·동명·운영 5종</p>
+    <div class="card">
+    <ul>
+      <li><strong>의사결정 라인 불명</strong> — 신청자가 마케팅 팀장/책임자(이름 미공개), 대표 최재근의 의사결정 권한 위임 범위 미확인. 11년차 중소기업 = 대표 직접 결재 가능성 높음.</li>
+      <li><strong>B2B 도매 매출 의존</strong> — 자체 브랜드 + 수출도매 병행 비즈모델에서 <strong>자체 브랜드 D2C 마케팅 투자 우선순위가 낮을 위험</strong>. T2 흡수력은 충분하나 의사결정 의지 별개.</li>
+      <li><strong>글로벌 멀티 채널 = 컨설팅 스코프 비대화 위험</strong> — 8개 지역 동시 핸들링 시 HIZ 표준 D2C SOP 범위 초과. 미팅 시 <strong>우선 지역 3개 이내</strong>로 압축 합의 필요.</li>
+      <li><strong>신청자 이름·연락처 미공개</strong> — 사전 매칭 불가. 미팅 시 1순위로 신원·직책 확인.</li>
+      <li><strong>자사몰 도메인 분산</strong> (hayejincosmetics.com / hayejincosmetic.com / en.hayejincosmetics.com / hayejineurope.com) — SEO·브랜드 자산 분산 위험, 단일 도메인 전략 점검 필요.</li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">MEETING QUESTIONS</div>
+    <h2>미팅 시 확인 질문</h2>
+    <p class="sec-desc">사전상담 도입 5분 어젠다 + 정량 진단</p>
+    <div class="q-grid">
+      <div class="q-item"><div class="q-num">1</div><div class="q-text"><strong>(1순위)</strong> 신청자 성함·직책·의사결정 권한 범위? 대표 최재근 본인 결재 vs 마케팅 부서 위임?</div></div>
+      <div class="q-item"><div class="q-num">2</div><div class="q-text">자체 브랜드 "하예진" vs K-뷰티 수출도매 매출 비중 (현재 27.5억 중)? 향후 3년 자체 브랜드 비중 목표?</div></div>
+      <div class="q-item"><div class="q-num">3</div><div class="q-text">8개+ 지역 인스타 채널의 운영 주체(본사 인하우스 vs 지역 파트너 위탁)? 콘텐츠 일관성 관리 시스템 있는지?</div></div>
+      <div class="q-item"><div class="q-num">4</div><div class="q-text">자사몰 vs 글로벌 도매(StyleKorean·Jolse·UMMA·Yaksok 등) 매출 비중? 자사몰 월 MAU/전환율/객단가?</div></div>
+      <div class="q-item"><div class="q-num">5</div><div class="q-text">컨설팅 후 6~12개월 1순위 기대 — 글로벌 D2C 확장? 본 계정 인지도 폭발? 신규 SKU 런칭? 가용 월 예산 범위?</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">FULL RESEARCH ROADMAP</div>
+    <h2>정식 리서치 승급 시 우선 파야 할 영역</h2>
+    <p class="sec-desc">정식 승급 시 심화 영역</p>
+    <div class="card">
+    <ul>
+      <li><strong>매출 분해</strong>: 자체 브랜드 vs 도매 비중 / 자사몰 vs 글로벌 입점몰 vs B2B / 지역별(한국·일본·인니·미국·EU) 매출 비중 / SKU별 마진</li>
+      <li><strong>글로벌 채널 운영 진단</strong>: 8개 인스타 계정 + 도메인 4개의 운영 주체·콘텐츠 흐름·트래픽 매핑 → 단일 시스템 vs 지역별 분권 전략 의사결정</li>
+      <li><strong>경쟁 3사 분석</strong>: 비건 K-스킨케어 동일 카테고리 직접 경쟁사 3개 (예: 동물 미실시·Vegan Society 인증·글로벌 진출 보유 브랜드)</li>
+      <li><strong>인플루언서/PR 자산 인벤토리</strong>: 11년 운영 누적 KOL·미디어 노출·후기 자산 정리 → 콘텐츠 풀 재활용 전략</li>
+      <li><strong>(선택) 비건 인증·정부지원</strong>: 환경부 EL, 농식품수출지원, 콘진원 글로벌 K-콘텐츠, 중소벤처 글로벌강소기업 등 신청 이력·계획</li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">SOURCES</div>
+    <h2>출처</h2>
+    <p class="sec-desc">참고 출처</p>
+    <ul class="src-list">
+      <li><a href="https://www.hayejincosmetics.com/about.html" target="_blank" rel="noopener">공식몰 hayejincosmetics.com — 회사 정보</a></li>
+      <li><a href="https://en.hayejincosmetics.com/" target="_blank" rel="noopener">영문 공식몰 en.hayejincosmetics.com</a></li>
+      <li><a href="https://www.instagram.com/hayejin.official_/" target="_blank" rel="noopener">Instagram @hayejin.official_ — 본 계정 12K</a></li>
+      <li><a href="https://www.jobkorea.co.kr/recruit/co_read/c/cisinternational" target="_blank" rel="noopener">잡코리아 — 씨아이에스인터내셔날서비스㈜ 기업정보 (직원 12·매출 27.5억)</a></li>
+      <li><a href="https://www.saramin.co.kr/zf_user/company-info/view/csn/VC9aMWg4ZCtJZmJCcXRWblRmUmtoQT09/" target="_blank" rel="noopener">사람인 — (주)씨아이에스인터내셔날 기업정보</a></li>
+      <li><a href="https://www.dizzotv.com/site/data/html_dir/2018/05/15/2018051502028.html" target="_blank" rel="noopener">디조TV (2018) — 인코아 카자흐스탄 화장품 수출 100만$ 보도</a></li>
+      <li><a href="https://www.stylekorean.com/brands/730/hayejin" target="_blank" rel="noopener">STYLEKOREAN HAYEJIN 브랜드페이지</a></li>
+      <li><a href="https://umma.io/blog/vegan-clean-beauty-hayejin-wholesale" target="_blank" rel="noopener">UMMA — Vegan Clean Beauty HAYEJIN Wholesale</a></li>
+      <li>신청자 매칭 직접 출처 부재 — 미팅 시 청취 필수</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="brand">BRANDRISE</div>
+    <div class="tag">브랜드의 성장을 설계합니다.</div>
+    <div class="meta">
+      <a href="../">← PREP 배치 허브</a> · <a href="https://hizsystem.github.io/brandrise/">brandrise 메인</a><br>
+      D2C·자영업·시드~Pre-A 진단·컨설팅 · @brandrise_kr
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
