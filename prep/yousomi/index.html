@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>유쏘미 (Yousomi) · 사전상담 PREP — 브랜드라이즈 by HIZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #14181A;
+      --white: #FFFFFF;
+      --bg: #F5F2EC;
+      --accent: #2E5D4F;
+      --accent-light: #ECF2EE;
+      --accent-soft: #7FB89F;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-300: #D1D5DB;
+      --gray-500: #6B7280;
+      --gray-700: #374151;
+      --text: #111827;
+      --tier-color: #6B7280;
+      --tier-bg: #F3F4F6;
+    }
+    body {
+      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 48px; }
+    a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-light); }
+    a:hover { color: var(--black); border-bottom-color: var(--black); }
+    code { background: var(--gray-100); padding: 1px 6px; border-radius: 4px; font-size: 0.9em; font-family: 'SF Mono', Menlo, monospace; }
+
+    /* TOP NAV */
+    .topnav { background: var(--black); color: rgba(255,255,255,0.55); padding: 14px 0; font-size: 12px; }
+    .topnav .container { display: flex; justify-content: space-between; align-items: center; }
+    .topnav a { color: rgba(255,255,255,0.55); border: none; }
+    .topnav a:hover { color: var(--white); }
+    .topnav .brand { font-weight: 800; letter-spacing: -0.02em; color: var(--white); }
+
+    /* HERO */
+    .hero { background: var(--black); color: var(--white); padding: 80px 0 64px; }
+    .hero .tier-badge {
+      display: inline-block; background: var(--tier-bg); color: var(--tier-color);
+      font-size: 11px; font-weight: 800; letter-spacing: 0.12em;
+      padding: 6px 14px; border-radius: 20px; text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      color: var(--accent-soft); text-transform: uppercase; margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: 48px; font-weight: 900; line-height: 1.15;
+      letter-spacing: -0.025em; margin-bottom: 20px;
+    }
+    .hero .sub {
+      font-size: 15px; color: rgba(255,255,255,0.6);
+      font-weight: 300; max-width: 680px; line-height: 1.85;
+    }
+    .hero-meta {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 28px; margin-top: 48px;
+      padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-meta-item .k {
+      font-size: 10px; letter-spacing: 0.12em; color: rgba(255,255,255,0.35);
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .hero-meta-item .v { font-size: 14px; font-weight: 600; }
+
+    .confidential {
+      display: inline-block; margin-top: 28px;
+      padding: 5px 12px; border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px; font-size: 10px; letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.55); text-transform: uppercase;
+    }
+
+    /* SECTIONS */
+    section { padding: 72px 0; border-bottom: 1px solid var(--gray-200); }
+    section:last-of-type { border-bottom: none; }
+    .sec-label {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.18em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 14px;
+    }
+    h2 {
+      font-size: 30px; font-weight: 900; letter-spacing: -0.025em;
+      line-height: 1.25; margin-bottom: 14px; color: var(--black);
+    }
+    .sec-desc {
+      font-size: 15px; color: var(--gray-500); max-width: 620px;
+      line-height: 1.85; margin-bottom: 36px;
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--white); border-radius: 14px;
+      border: 1px solid var(--gray-200); padding: 32px 36px;
+    }
+    .card p { margin-bottom: 12px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul, .card ol { padding-left: 22px; }
+    .card ul li, .card ol li { padding: 6px 0; line-height: 1.75; }
+    .card ul li::marker { color: var(--accent); }
+    .card ol li::marker { color: var(--accent); font-weight: 700; }
+    .card strong { color: var(--black); }
+
+    .card-dark {
+      background: var(--black); color: var(--white);
+      border-color: var(--black);
+    }
+    .card-dark strong { color: var(--accent-soft); }
+    .card-dark a { color: var(--accent-soft); border-color: rgba(127,184,159,0.3); }
+    .card-dark a:hover { color: var(--white); }
+    .card-dark ul li::marker, .card-dark ol li::marker { color: var(--accent-soft); }
+
+    /* QUESTIONS as numbered cards */
+    .q-grid { display: grid; gap: 12px; }
+    .q-item {
+      background: var(--white); border-radius: 12px;
+      border: 1px solid var(--gray-200); padding: 18px 24px;
+      display: flex; gap: 18px; align-items: flex-start;
+    }
+    .q-num {
+      flex-shrink: 0; width: 32px; height: 32px;
+      background: var(--accent-light); color: var(--accent);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 13px;
+    }
+    .q-text { flex: 1; font-size: 14px; line-height: 1.7; }
+    .q-text strong { color: var(--accent); }
+
+    /* SOURCES */
+    .src-list { list-style: none; padding: 0; }
+    .src-list li {
+      padding: 10px 0; border-bottom: 1px dashed var(--gray-200);
+      font-size: 13px; color: var(--gray-700);
+    }
+    .src-list li:last-child { border-bottom: none; }
+    .src-list a { word-break: break-all; }
+
+    /* FOOTER */
+    .footer { background: var(--black); color: rgba(255,255,255,0.4); padding: 56px 0; text-align: center; }
+    .footer .brand { font-size: 18px; font-weight: 900; color: var(--white); margin-bottom: 6px; letter-spacing: -0.02em; }
+    .footer .tag { font-size: 12px; margin-bottom: 28px; }
+    .footer .meta { font-size: 11px; line-height: 2; }
+    .footer a { color: rgba(255,255,255,0.55); border: none; }
+    .footer a:hover { color: var(--white); }
+
+    @media (max-width: 720px) {
+      .hero h1 { font-size: 34px; }
+      .container { padding: 0 24px; }
+      section { padding: 52px 0; }
+      .card { padding: 24px 22px; }
+    }
+
+    @media print {
+      body { background: var(--white); font-size: 11px; }
+      .topnav, .footer { display: none; }
+      .hero { background: var(--white); color: var(--black); padding: 32px 0; }
+      .hero h1 { color: var(--black); font-size: 28px; }
+      .hero .sub, .hero-meta-item .v { color: var(--gray-700); }
+      .hero-meta-item .k { color: var(--gray-500); }
+      .hero-meta { border-top-color: var(--gray-300); }
+      .hero .label { color: var(--accent); }
+      .confidential { color: var(--gray-700); border-color: var(--gray-300); }
+      section { padding: 28px 0; page-break-inside: avoid; }
+      h2 { font-size: 18px; }
+      .card-dark { background: var(--gray-100); color: var(--black); border-color: var(--gray-200); }
+      .card-dark strong, .card-dark a { color: var(--accent); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topnav">
+  <div class="container">
+    <a href="../" class="brand">BRANDRISE · PREP</a>
+    <span>2026 Q2 · 사전상담 PREP 배치</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="container">
+    <span class="tier-badge">C · 정보 부족</span>
+    <div class="label">사전상담 PREP — 2026 Q2</div>
+    <h1>유쏘미 (Yousomi)</h1>
+    <p class="sub">정보 부족, 디렉터 직책 = 대표 별도 가능성</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="k">신청자</div><div class="v">윤소민</div></div>
+      <div class="hero-meta-item"><div class="k">신청일</div><div class="v">2026-05-22</div></div>
+      <div class="hero-meta-item"><div class="k">참여 인원</div><div class="v">1명</div></div>
+      <div class="hero-meta-item"><div class="k">참여 확정</div><div class="v">예정</div></div>
+    </div>
+    <div class="confidential">Internal · 브랜드라이즈 팀 전용</div>
+  </div>
+</header>
+
+
+<section>
+  <div class="container">
+    <div class="sec-label">ONE-LINER</div>
+    <h2>한 줄 요약</h2>
+    <p class="sec-desc">사업 본질 한 줄</p>
+    <div class="card">
+    <p>정보 부족 — 공개 검색에서 "유쏘미/Yousomi"라는 정확한 브랜드의 카테고리·운영 현황·홈페이지·인스타 계정이 식별되지 않음. 신청자 직책이 "디렉터"(대표 아님) = <strong>의사결정권자·예산권자가 별도</strong> 가능성, 미팅 시 핵심 확인 필요.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">STAGE</div>
+    <h2>추정 단계</h2>
+    <p class="sec-desc">현재 추정 단계</p>
+    <div class="card">
+    <p>정보 부족 — 미팅 시 확인. (네이버 이메일 + 전화번호 끝자리 9360과 이메일 끝자리 9360 일치 = 본인 메일 확인됨. "디렉터" 직책 = 1인 운영자 아닐 가능성, 별도 대표/투자자 존재 가설)</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">PAIN POINTS</div>
+    <h2>핵심 페인 (가설)</h2>
+    <p class="sec-desc">사전 검색 기반 가설 페인</p>
+    <div class="card">
+    <ul>
+      <li><strong>브랜드명 식별/검색 노출 문제</strong> — "유쏘미"가 일반 검색 결과에서 동음·유사 핸들(yousom·yoyomi·somimi·yunsom 등)에 묻힘. 네이밍·SEO 점유 단계 미진 가능성</li>
+      <li><strong>디렉터 직책 = 의사결정 단계가 1단계 더 있음</strong> — 컨설팅 도입 결정 시 대표/오너 설득 단계 추가 필요. 사전상담 단계에서 의사결정자 동석/대리 여부 명확화 필요</li>
+      <li>카테고리(패션/뷰티/F&amp;B/콘텐츠) 자체가 외부에 드러나지 않음 — 포지셔닝·런칭 전 단계 가설</li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">CONSULTING HYPOTHESIS</div>
+    <h2>컨설팅 가설 (브랜드라이즈가 풀 수 있는 것)</h2>
+    <p class="sec-desc">브랜드라이즈가 풀 수 있는 것</p>
+    <div class="card card-dark">
+    <ul>
+      <li>6영역 중 <strong>브랜드 정체성(네이밍·검색 점유 해소) + 채널(런칭 채널 1개 정착)</strong> 1순위 약점 가능. 단, <strong>카테고리 확인 전까지 견적 추정 불가</strong></li>
+      <li>30일: 카테고리·타겟·예산 진단 → 의사결정 구조 파악 / 90일: 정체성 메시지·핵심 채널 1개 정착 / 180일: 콘텐츠 시스템화</li>
+      <li><strong>HOLD</strong> — 카테고리·디렉터 권한·예산 확인 후 GO/PASS 재판단</li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">MEETING QUESTIONS</div>
+    <h2>미팅 시 확인 질문</h2>
+    <p class="sec-desc">사전상담 도입 5분 어젠다 + 정량 진단</p>
+    <div class="q-grid">
+      <div class="q-item"><div class="q-num">1</div><div class="q-text"><strong>(가장 중요)</strong> 유쏘미의 정확한 카테고리(패션/뷰티/F&amp;B/콘텐츠/서비스)와 현재 매출 규모, 운영 단계(런칭 전/후)는?</div></div>
+      <div class="q-item"><div class="q-num">2</div><div class="q-text">"디렉터" 직책의 의사결정 범위 — 컨설팅 도입·예산 집행 단독 결정 가능한가, 별도 대표/오너 승인이 필요한가?</div></div>
+      <div class="q-item"><div class="q-num">3</div><div class="q-text">운영 중인 공식 SNS·홈페이지 URL을 알려주실 수 있나요? (현재 공개 검색에서 식별 불가)</div></div>
+      <div class="q-item"><div class="q-num">4</div><div class="q-text">최근 6개월 시도한 마케팅 채널과 결과, 월 가용 예산 규모는?</div></div>
+      <div class="q-item"><div class="q-num">5</div><div class="q-text">컨설팅 종료 후 6개월 시점에 가장 보고 싶은 변화 1가지는?</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">SOURCES</div>
+    <h2>출처</h2>
+    <p class="sec-desc">참고 출처</p>
+    <ul class="src-list">
+      <li>직접 매칭되는 공개 출처 확보 실패 (브랜드 카테고리·홈페이지·공식 SNS 미식별)</li>
+      <li>동음 이슈 식별용: <a href="https://kpopping.com/profiles/idol/Yousom" target="_blank" rel="noopener">yousom LOVEONE 프로필 kpopping</a>, <a href="https://www.instagram.com/yunssom/" target="_blank" rel="noopener">윤소미 @yunssom 인스타</a> — 신청 브랜드와 무관, 검색 충돌 케이스</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="brand">BRANDRISE</div>
+    <div class="tag">브랜드의 성장을 설계합니다.</div>
+    <div class="meta">
+      <a href="../">← PREP 배치 허브</a> · <a href="https://hizsystem.github.io/brandrise/">brandrise 메인</a><br>
+      D2C·자영업·시드~Pre-A 진단·컨설팅 · @brandrise_kr
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

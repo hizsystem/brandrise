@@ -22,6 +22,7 @@ TIER_MAP = {
 
 # Slug → tier mapping
 SLUG_TIER = {
+    # ── 2026-05-11~18 사전상담 배치 (27건) ──
     "cura-pulse": "S", "bowlbox": "S", "naturalgoodthings": "S", "diang": "S",
     "orbrand": "A", "mixroom": "A", "ashuniverse": "A", "living-sense": "A",
     "allwell": "A", "yrim": "A",
@@ -30,7 +31,28 @@ SLUG_TIER = {
     "wayd": "C", "zenni-global": "C", "todays": "C", "thenewcompany": "C",
     "lilliger": "C", "chobibooks": "C", "family-company": "C",
     "findercorp": "C", "mer": "C",
+    # ── 2026-05-22 고벤처 행사 배치 (22건) ──
+    "nodaji-pi-labs": "S",
+    "healernet": "A", "daynesta": "A", "youngeyed-project": "A", "risanghoe": "A",
+    "blupino": "A", "moolsoo": "A", "stylegrapher": "A",
+    "boreumi": "B", "welisson": "B", "nunsarang": "B",
+    "kingdom-square": "C", "spicyspice": "C", "penther": "C", "everyday-christmas": "C",
+    "yousomi": "C", "yuan-corp": "C", "briyl": "C", "gelato-wayou": "C",
+    "j-and": "C", "esam": "C", "kim-yeoreum": "C",
 }
+
+# Slug → source batch (sangdam = 사전상담 신청자, govent = 고벤처 행사)
+SLUG_SOURCE = {
+    # govent (22건)
+    "nodaji-pi-labs": "govent", "healernet": "govent", "daynesta": "govent",
+    "youngeyed-project": "govent", "risanghoe": "govent", "blupino": "govent",
+    "moolsoo": "govent", "stylegrapher": "govent", "boreumi": "govent",
+    "welisson": "govent", "nunsarang": "govent", "kingdom-square": "govent",
+    "spicyspice": "govent", "penther": "govent", "everyday-christmas": "govent",
+    "yousomi": "govent", "yuan-corp": "govent", "briyl": "govent",
+    "gelato-wayou": "govent", "j-and": "govent", "esam": "govent", "kim-yeoreum": "govent",
+}
+# default = sangdam (기존 27건)
 
 # Display order — matches sheet row order (applicant order)
 DISPLAY_ORDER = [
@@ -61,6 +83,29 @@ DISPLAY_ORDER = [
     ("allwell", "이현정", "(주)올웰", "2026-05-18", 1, "N"),
     ("mer", "정지원", "메르", "2026-05-18", 1, "N"),
     ("yrim", "권기진", "와이림 (Y-Rim)", "2026-05-18", 1, "N"),
+    # ── 2026-05-22 고벤처 행사 배치 (22건) ──
+    ("moolsoo", "강수지", "물수", "2026-05-22", 1, "N"),
+    ("yousomi", "윤소민", "유쏘미", "2026-05-22", 1, "N"),
+    ("healernet", "김종우", "(주)힐러넷 (Healernet)", "2026-05-22", 1, "N"),
+    ("kingdom-square", "박선정", "킹덤스퀘어", "2026-05-22", 1, "N"),
+    ("risanghoe", "이정하", "리상회", "2026-05-22", 1, "N"),
+    ("daynesta", "YEONGJUN YUN", "DAYNESTA LLC", "2026-05-22", 1, "N"),
+    ("j-and", "이주현", "J&", "2026-05-22", 1, "N"),
+    ("spicyspice", "김경주", "스파이시스파이스", "2026-05-22", 1, "N"),
+    ("penther", "김정윤", "(주)펜써", "2026-05-22", 1, "N"),
+    ("blupino", "이석모", "블루피노 (BLUPINO)", "2026-05-22", 1, "N"),
+    ("stylegrapher", "이사금", "스타일그래퍼", "2026-05-22", 1, "N"),
+    ("everyday-christmas", "김승용", "에브리데이 크리스마스", "2026-05-22", 1, "N"),
+    ("nodaji-pi-labs", "최명수", "노다지파이랩스", "2026-05-22", 1, "N"),
+    ("yuan-corp", "강구현", "유안코퍼레이션", "2026-05-22", 1, "N"),
+    ("briyl", "김민지", "BRIYL", "2026-05-22", 1, "N"),
+    ("boreumi", "윤정은", "보르미(주)", "2026-05-22", 1, "N"),
+    ("youngeyed-project", "이세빈", "영아이드프로젝트", "2026-05-22", 1, "N"),
+    ("gelato-wayou", "김경민", "젤라또와유", "2026-05-22", 1, "N"),
+    ("esam", "김성은", "esam", "2026-05-22", 1, "N"),
+    ("nunsarang", "윤태원", "눈사랑 안과 동물병원", "2026-05-22", 1, "N"),
+    ("welisson", "신민경", "(주)웰리스온", "2026-05-22", 1, "N"),
+    ("kim-yeoreum", "김여름", "개인사업자 (김여름)", "2026-05-22", 1, "N"),
 ]
 
 # Curation hooks (from README)
@@ -92,6 +137,29 @@ HOOKS = {
     "family-company": "정보 부족",
     "findercorp": "findercorp.kr 비공개",
     "mer": "naver 메일, 1인 운영 가능성",
+    # ── 2026-05-22 고벤처 행사 배치 (22건) ──
+    "nodaji-pi-labs": "기존 정식 리서치 GO 4.0/5.0, Pre-launch D-50, T2 8주 압축런",
+    "healernet": "AI 활성물질 + 진세노사이드 소재 + 요프리Rh2 D2C, CSO·대표 라인 확인",
+    "daynesta": "관절 라이프스타일 건기식 D2C, 한미 동시 진출 — 위타민·케어비네스트 인접",
+    "youngeyed-project": "라이프스타일+세라믹+아트 플랫폼, 29CM·CJ온스타일 입점",
+    "risanghoe": "(주)리비트 안주 D2C, 모회사 듀얼 구조 정리가 1순위",
+    "blupino": "무첨가 사과 탄산음료 D2C, 청송 농업회사법인 — 마키노차야 인접",
+    "moolsoo": "한국 전통 섬유(모시·실크) 샤워타월 D2C, 와디즈+USPTO 출원",
+    "stylegrapher": "압구정 1인 스타일링 스튜디오, 시스템화·온라인 확장 레버리지",
+    "boreumi": "B2B 기프트·판촉물 에이전시, 대기업 레퍼런스 보유",
+    "welisson": "약사 D2C 헬스케어 가설 = 케어비네스트·바디노트 인접",
+    "nunsarang": "동물 안과 — HIZ D2C SOP 핏 검증 필수",
+    "kingdom-square": "사업 정체 식별 불가, 동음 다수",
+    "spicyspice": "K-spice 글로벌 가설, 카테고리 확정 필요",
+    "penther": "이메일 오타 시그널, 운영 디테일 진단",
+    "everyday-christmas": "기독교 시그널, 동음 한국 브랜드 4개 점유",
+    "yousomi": "정보 부족, 디렉터 직책 = 대표 별도 가능성",
+    "yuan-corp": "정보 부족, B2C 보유 여부가 GO 분기",
+    "briyl": "캐나다 시그널, 본진 시장 확인 필요",
+    "gelato-wayou": "23세 청년 F&B, Tier 0 진단형 매칭",
+    "j-and": "사명 매우 짧음, 동명 충돌 다수",
+    "esam": "사명 다의어, 1인 사업자 가설",
+    "kim-yeoreum": "회사명 없음, 사업 정의 워크샵 진입",
 }
 
 
@@ -504,7 +572,7 @@ HUB_TEMPLATE = """<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2026 Q2 사전상담 PREP 배치 — 브랜드라이즈 by HIZ</title>
+  <title>2026 Q2 PREP 배치 (사전상담 + 고벤처) — 브랜드라이즈 by HIZ</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
@@ -568,9 +636,17 @@ HUB_TEMPLATE = """<!DOCTYPE html>
     .b-card .br {{ font-size: 12px; color: var(--gray-500); margin-bottom: 12px; }}
     .b-card .bh {{ font-size: 12px; color: var(--gray-700); line-height: 1.65; }}
     .b-card .bm {{
-      display: flex; gap: 12px; margin-top: 12px; padding-top: 12px;
+      display: flex; gap: 8px; margin-top: 12px; padding-top: 12px;
       border-top: 1px dashed var(--gray-200); font-size: 10px; color: var(--gray-500);
+      align-items: center; flex-wrap: wrap;
     }}
+    .src-badge {{
+      display: inline-block; font-size: 9px; font-weight: 700;
+      letter-spacing: 0.06em; padding: 2px 7px; border-radius: 10px;
+      text-transform: uppercase;
+    }}
+    .src-badge.govent {{ background: #FEF3C7; color: #92400E; }}
+    .src-badge.sangdam {{ background: #DBEAFE; color: #1E40AF; }}
 
     .ops-card {{
       background: var(--black); color: var(--white); border-radius: 18px;
@@ -606,15 +682,15 @@ HUB_TEMPLATE = """<!DOCTYPE html>
 
 <header class="hero">
   <div class="container">
-    <div class="label">2026 Q2 · 사전상담 PREP 배치</div>
-    <h1>27개 브랜드<br><em>1-page PREP</em></h1>
-    <p class="sub">2026-05-11 ~ 05-18 사이 사전상담 신청자 27개 브랜드(29건, 믹스룸·와썹하우스 각 2명 통합)를 위한 1-page PREP 패키지. 단계 추정·핵심 페인·컨설팅 가설·미팅 진입 질문 5개·출처를 견적서 톤으로 정리.</p>
+    <div class="label">2026 Q2 · 사전상담 + 고벤처 PREP 통합 배치</div>
+    <h1>49개 브랜드<br><em>1-page PREP</em></h1>
+    <p class="sub">2026-05-11 ~ 22 사이 <strong style="color: #93C5FD;">사전상담 27건</strong> + <strong style="color: #FCD34D;">고벤처 행사 22건</strong> = 49개 브랜드 1-page PREP 패키지. 단계 추정·핵심 페인·컨설팅 가설·미팅 진입 질문 5개·출처를 견적서 톤으로 정리. 카드 우측 뱃지로 신청 경로 구분.</p>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="k">총 신청 건수</div><div class="v">29 <small>(27 brands)</small></div></div>
-      <div class="hero-stat"><div class="k">S · 즉시 GO</div><div class="v" style="color: #7FB89F;">4</div></div>
-      <div class="hero-stat"><div class="k">A · 명확</div><div class="v" style="color: #93C5FD;">6</div></div>
-      <div class="hero-stat"><div class="k">B · 검증 후</div><div class="v" style="color: #FDBA74;">8</div></div>
-      <div class="hero-stat"><div class="k">C · 정보 부족</div><div class="v" style="color: rgba(255,255,255,0.5);">9</div></div>
+      <div class="hero-stat"><div class="k">총 브랜드</div><div class="v">49 <small>(상담 27 · 행사 22)</small></div></div>
+      <div class="hero-stat"><div class="k">S · 즉시 GO</div><div class="v" style="color: #7FB89F;">5</div></div>
+      <div class="hero-stat"><div class="k">A · 명확</div><div class="v" style="color: #93C5FD;">13</div></div>
+      <div class="hero-stat"><div class="k">B · 검증 후</div><div class="v" style="color: #FDBA74;">11</div></div>
+      <div class="hero-stat"><div class="k">C · 정보 부족</div><div class="v" style="color: rgba(255,255,255,0.5);">20</div></div>
     </div>
   </div>
 </header>
@@ -633,7 +709,7 @@ HUB_TEMPLATE = """<!DOCTYPE html>
   <div class="container">
     <div class="sec-label">MEETING OPERATIONS</div>
     <h2>미팅 운영 표준</h2>
-    <p class="sec-desc">27건 공통 도입부 5분 어젠다. 그 다음 24문항 6영역 진단(브랜드 정체성 / 콘텐츠 / 채널 / 퍼포먼스 / 데이터 / 고객 관계) 진입.</p>
+    <p class="sec-desc">49건 공통 도입부 5분 어젠다. 그 다음 24문항 6영역 진단(브랜드 정체성 / 콘텐츠 / 채널 / 퍼포먼스 / 데이터 / 고객 관계) 진입.</p>
     <div class="ops-card">
       <h3>도입부 5분 · 공통 어젠다</h3>
       <ol>
@@ -685,12 +761,14 @@ def render_hub() -> str:
         for slug, applicant, brand, date, participants, confirmed in tier_groups[tier]:
             hook = HOOKS.get(slug, "")
             confirmed_label = "참여확정" if confirmed.strip("()").startswith("Y") else "예정"
+            source = SLUG_SOURCE.get(slug, "sangdam")
+            source_label = "행사" if source == "govent" else "상담"
             cards.append(f'''
       <a href="{slug}/" class="b-card">
         <div class="bn">{html.escape(brand)}</div>
         <div class="br">{html.escape(applicant)}</div>
         <div class="bh">{html.escape(hook)}</div>
-        <div class="bm"><span>{date}</span><span>·</span><span>{participants}명</span><span>·</span><span>{confirmed_label}</span></div>
+        <div class="bm"><span class="src-badge {source}">{source_label}</span><span>{date}</span><span>·</span><span>{participants}명</span><span>·</span><span>{confirmed_label}</span></div>
       </a>''')
         block = f'''
     <div class="tier-block">
