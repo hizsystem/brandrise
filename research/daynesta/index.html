@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>DAYNESTA (데이네스타) - New Business 상담 준비 | BRANDRISE</title>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #444444;
+            --accent: #f07030;
+            --accent-light: #fff3ec;
+            --accent-soft: #fde8da;
+            --highlight: #f07030;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --muted: #f5f5f5;
+            --text: #1a1a1a;
+            --text-light: #999999;
+            --border: #eeeeee;
+            --success: #f07030;
+            --warning: #f07030;
+            --danger: #f07030;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; word-break: keep-all; overflow-wrap: break-word; }
+        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+        .header { background: #ffffff; color: var(--primary); padding: 60px 40px; text-align: center; border-bottom: 1px solid var(--border); }
+        .header-badge { display: inline-block; background: var(--accent-soft); border: 1px solid var(--accent); color: var(--accent); padding: 4px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 16px; letter-spacing: 1px; }
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; color: var(--primary); }
+        .header .subtitle { font-size: 16px; color: var(--secondary); font-weight: 300; }
+        .header .date { margin-top: 16px; font-size: 13px; color: var(--text-light); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        .toc { background: var(--card-bg); border-radius: 12px; padding: 32px; margin-bottom: 40px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+        .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }
+        .toc a { color: var(--accent); text-decoration: none; font-size: 14px; padding: 6px 0; display: block; transition: color 0.2s; }
+        .toc a:hover { color: var(--highlight); }
+        .section { background: var(--card-bg); border-radius: 12px; padding: 36px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section h2 { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--highlight); }
+        .section h3 { font-size: 17px; font-weight: 600; color: var(--secondary); margin: 20px 0 12px; }
+        .info-grid { display: grid; grid-template-columns: 160px 1fr; gap: 8px 16px; font-size: 14px; }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th { background: var(--muted); color: var(--primary); padding: 12px 16px; text-align: left; font-weight: 700; font-size: 13px; }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+        tr:hover td { background: #f1f3f5; }
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin: 2px; }
+        .tag-red { background: var(--accent-soft); color: var(--accent); }
+        .tag-green { background: #eef3ec; color: #5a7a52; }
+        .tag-blue { background: var(--accent-light); color: var(--accent); }
+        .tag-yellow { background: var(--accent-light); color: var(--secondary); }
+        .tag-gray { background: var(--muted); color: var(--secondary); }
+        .verdict { background: var(--accent); color: white; padding: 24px 32px; border-radius: 12px; text-align: center; margin: 24px 0; }
+        .verdict .label { font-size: 14px; opacity: 0.8; }
+        .verdict .value { font-size: 36px; font-weight: 800; margin: 8px 0; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+        .tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+        .tier-card { border: 2px solid var(--border); border-radius: 12px; padding: 24px; position: relative; transition: transform 0.2s; }
+        .tier-card:hover { transform: translateY(-4px); }
+        .tier-card.recommended { border-color: var(--accent); box-shadow: 0 4px 20px rgba(240, 112, 48, 0.15); }
+        .tier-card .tier-badge { position: absolute; top: -12px; right: 16px; background: var(--highlight); color: white; padding: 2px 12px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+        .tier-card h4 { font-size: 16px; margin-bottom: 4px; }
+        .tier-card .price { font-size: 22px; font-weight: 800; color: var(--highlight); margin: 12px 0; }
+        .tier-card .duration { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+        .tier-card ul { list-style: none; padding: 0; }
+        .tier-card li { font-size: 13px; padding: 4px 0; padding-left: 20px; position: relative; }
+        .tier-card li::before { content: ">"; position: absolute; left: 0; color: var(--highlight); font-weight: 700; }
+        .callout { background: var(--accent-light); border-left: 4px solid var(--accent); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 14px; }
+        .callout-info { background: var(--muted); border-left-color: var(--secondary); }
+        .callout-danger { background: var(--accent-soft); border-left-color: var(--accent); }
+        .callout-success { background: #eef3ec; border-left-color: #5a7a52; }
+        .leverage-box { background: var(--primary); color: white; padding: 32px; border-radius: 12px; margin: 24px 0; text-align: center; }
+        .leverage-box .quote { font-size: 19px; font-weight: 700; line-height: 1.5; margin: 16px 0; }
+        .flow-steps { display: flex; gap: 0; margin: 20px 0; overflow-x: auto; }
+        .flow-step { flex: 1; min-width: 150px; padding: 16px; background: #f1f3f5; position: relative; text-align: center; }
+        .flow-step:not(:last-child)::after { content: ">"; position: absolute; right: -8px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--highlight); font-weight: 700; z-index: 1; }
+        .flow-step .step-num { font-size: 11px; font-weight: 700; color: var(--highlight); margin-bottom: 4px; }
+        .flow-step .step-title { font-size: 13px; font-weight: 600; }
+        .flow-step .step-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .swot-item h4 { font-size: 15px; margin-bottom: 10px; }
+        .swot-item ul { padding-left: 18px; }
+        .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: #ffffff; border: 1px solid var(--border); }
+        .swot-w { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .swot-o { background: #ffffff; border: 1px solid var(--border); }
+        .swot-t { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+        .source-list a { color: var(--accent); text-decoration: none; }
+        .source-list a:hover { text-decoration: underline; }
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+        .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 8px 0; }
+        .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+        .summary-section { border-left: 4px solid var(--accent); background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%); }
+        .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; }
+        .kpi-card.kpi-dark { background: var(--muted); color: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--accent); color: white; }
+        .kpi-card.kpi-success { background: var(--accent-soft); color: var(--primary); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.7; }
+        .kpi-card .kpi-value { font-size: 24px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.7; }
+        .summary-oneliner { background: #0D0D0D; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+        .summary-oneliner .sol-text .hl { color: var(--highlight); }
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+        .diagnosis-section { border: 2px solid var(--accent); }
+        .diagnosis-section h2 { border-bottom-color: var(--accent); color: var(--accent); }
+        .diag-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .diag-box { padding: 16px; border-radius: 8px; }
+        .diag-box.diag-current { background: var(--accent-light); }
+        .diag-box.diag-ideal { background: #eef3ec; }
+        .diag-box .db-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .diag-box.diag-current .db-label { color: var(--accent); }
+        .diag-box.diag-ideal .db-label { color: #5a7a52; }
+        .diag-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+        .diag-note { font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: var(--accent-light); border-radius: 8px; }
+        .spin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .spin-card { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .spin-card h4 { font-size: 15px; margin-bottom: 10px; }
+        .spin-s { background: #ffffff; border: 1px solid var(--border); }
+        .spin-p { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .spin-i { background: var(--accent-soft); }
+        .spin-n { background: #ffffff; border: 1px solid var(--border); }
+        .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+        .pain-level { flex: 1; min-width: 200px; padding: 16px; border-radius: 10px; font-size: 13px; }
+        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .pain-l1 { background: var(--muted); }
+        .pain-l2 { background: var(--accent-light); }
+        .pain-l3 { background: var(--accent-soft); }
+        .pain-l4 { background: var(--accent); color: white; }
+        .script-block { background: #f8f9fa; border-left: 3px solid var(--accent); padding: 16px 20px; margin: 12px 0; border-radius: 0 8px 8px 0; font-size: 14px; font-style: italic; color: var(--secondary); }
+        .question-card { background: #f8f9fa; border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+        .question-card .q-num { font-size: 12px; font-weight: 700; color: var(--highlight); }
+        .question-card .q-text { font-size: 15px; font-weight: 600; margin: 4px 0 8px; }
+        .question-card .q-intent { font-size: 13px; color: var(--text-light); }
+        .timeline-phase { display: grid; grid-template-columns: 100px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .timeline-phase .phase-time { font-size: 13px; font-weight: 700; color: var(--highlight); text-align: center; padding-top: 4px; }
+        .timeline-phase .phase-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .timeline-phase .phase-content p { font-size: 13px; color: var(--text-light); }
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; } .header h1 { font-size: 24px; } .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; } .tier-cards { grid-template-columns: 1fr; } .swot-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; } .flow-step:not(:last-child)::after { display: none; } .channel-grid { grid-template-columns: repeat(2, 1fr); }
+            .summary-header { grid-template-columns: 1fr; } .kpi-grid { grid-template-columns: repeat(2, 1fr); } .diag-compare { grid-template-columns: 1fr; }
+            .spin-grid { grid-template-columns: 1fr; } .pain-layer { flex-direction: column; } .timeline-phase { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">NEW BUSINESS 상담 준비 패키지</div>
+    <h1>DAYNESTA (데이네스타)</h1>
+    <div class="subtitle">관절·회복 건강기능식품 D2C | 운동인 라이프스타일 | "하루 한 알, 루틴 시작하기"</div>
+    <div class="date">작성일: 2026-05-26 | 대표: 윤영준 | 신청일: 2026-05-22 | Prepared by BRANDRISE</div>
+</div>
+
+<div class="container">
+
+    <!-- Executive Summary -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">브랜드</div>
+                <div class="sh-title">DAYNESTA / 한국 (주)와이제이와이컴퍼니 + 미국 LLC</div>
+                <div class="sh-sub">관절·회복 건기식 D2C | 런칭 1년 미만 신생 | 서울 중구</div>
+            </div>
+            <div>
+                <div class="sh-label">담당자</div>
+                <div class="sh-title">윤영준 CEO (본인 신청, 명확 매칭)</div>
+                <div class="sh-sub">인테이크 상세 회신 = 준비된 대표 · 한미 듀얼 법인</div>
+            </div>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">타겟 (대표 명시)</div>
+                <div class="kpi-value">30-40 여성</div>
+                <div class="kpi-sub">러닝·헬스 운동인 · 관절·회복</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">운영 채널</div>
+                <div class="kpi-value">4채널</div>
+                <div class="kpi-sub">와디즈·쿠팡·스마트스토어·자사몰</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">시장</div>
+                <div class="kpi-value">6.4조</div>
+                <div class="kpi-sub">한국 건기식(2025) · 관절 MZ 성장</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">외부 인지도 / 인스타</div>
+                <div class="kpi-value">≈ 0</div>
+                <div class="kpi-sub">보도 0건 · 인스타 실측 불가(신생)</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                대표는 "한국에서 신뢰·감도·팬층"을 사러 왔다.<br>
+                <span class="hl">그 답은 (a)운동인 니치 포지셔닝 + (c)신뢰장치를 먼저 세우고 → (b)러닝 커뮤니티·앰배서더로 점화</span>하는 순서. 4라인·한미 동시는 잠시 좁혀야 한다.
+            </div>
+        </div>
+        <div class="summary-bottom">
+            <strong>기회 적합도:</strong> <span class="hl">3.90 / 5.0 (조건부 GO · 한국 단독 확정 시 4.05 Go)</span> &nbsp;|&nbsp;
+            <strong>추천 Tier:</strong> T1 진단 → T2 Build (팬층 시스템) &nbsp;|&nbsp;
+            <strong>클로징 선결:</strong> 한미 계약·예산 주체 확정
+        </div>
+    </div>
+
+    <!-- 핵심 문제점 & 진단 -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 문제점 & 진단</h2>
+
+        <div class="callout callout-danger">
+            <strong>🔴 약식 prep vs 대표 인테이크 원문 갭 (진단 1순위):</strong> prep은 "4 페르소나 + 한미 듀얼 + 라인 압축"을 핵심 의제로 봤으나, <strong>대표가 직접 보낸 RFP는 훨씬 좁고 명확</strong>하다 — "한국 시장에서 운동인(러닝·헬스 30-40대 여성) 관절·회복 브랜드의 <strong>신뢰 구축 + 브랜드 감도 + 팬층 형성</strong>." 즉 대표는 <strong>구조(라인/법인)가 아니라 자산(신뢰·감도·팬층)을 사러 왔다.</strong> 라인 압축·한미 노선은 별도 의제가 아니라 "팬층을 쌓으려면 거쳐야 하는 선결 조건"으로 종속 배치해야 한다.
+        </div>
+
+        <h3>1. 신뢰 적자 (Critical · 대표가 직접 호소한 1순위)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재 상태</div>
+                <ul>
+                    <li>신생 1년차 + 외부 보도·리뷰·인지도 0</li>
+                    <li>건기식 = "효능 못 믿으면 안 사는" 카테고리</li>
+                    <li>임상·인증·실사용 후기·전문가 보증이 표면에 안 보임 [추정]</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">이상적 상태</div>
+                <ul>
+                    <li>검증 가능한 사회적 증거 시스템(성분·전문가 + 구조화된 후기·UGC)</li>
+                    <li>"운동하는 사람이 직접 효과 봤다"는 증명</li>
+                    <li>규제 안전 범위 내 신뢰 카피</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2. 메시지·채널 과분산 (Critical)</h3>
+        <div class="diag-note">
+            신생 1년차가 <strong>4 페르소나(Desk/Active/Slow Aging/Woman) × 4채널(와디즈·쿠팡·스마트스토어·자사몰)</strong>을 동시 운영 = 어느 페르소나에도 깊이 못 박힘.
+            대표 원문이 이미 <strong>"운동인 30-40대 여성"으로 1차 수렴</strong>을 가리킴 — Active Life + Woman 한 축에 먼저 깃발을 꽂아야 팬이 생긴다.
+        </div>
+
+        <h3>3. 팬층/감도 부재 (High)</h3>
+        <div class="diag-note">
+            인스타 @daynesta_official footprint 실측 불가 수준(Apify not_found = 신생·콘텐츠 미축적) = UGC·커뮤니티·재구매 루프 미구축.
+            운동인 타겟은 <strong>러닝크루·헬스 커뮤니티 시딩</strong>으로 팬을 만드는 게 정석인데 그 장치가 안 보임. "브랜드 감도"는 디자인 요청이 아니라 <strong>운동 정체성과 정렬된 포지셔닝 언어</strong>다.
+        </div>
+
+        <h3>영역별 진단 요약</h3>
+        <table>
+            <tr><th>영역</th><th>현재 상태</th><th>심각도</th><th>GAP</th></tr>
+            <tr><td>신뢰 장치</td><td>보도·후기·인증 표면화 0 (신생)</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>니치 포지셔닝</td><td>4라인 분산, 운동인 니치 미점유</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>팬층/커뮤니티</td><td>인스타 footprint 거의 0</td><td><span class="tag tag-red">High</span></td><td><span class="tag tag-red">큼</span></td></tr>
+            <tr><td>한미 의사결정·계약주체</td><td>🔴 불명 (북미 LLC 메인 + 한국 직구)</td><td><span class="tag tag-red">High</span></td><td><span class="tag tag-red">클로징 선결</span></td></tr>
+            <tr><td>건기식 표시광고 규제</td><td>질병 치료·효능 과장 표현 리스크</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-yellow">상시 관리</span></td></tr>
+            <tr><td>타겟 명확성</td><td>운동인 30-40대 여성 = 대표가 직접 좁힘</td><td><span class="tag tag-green">Low</span></td><td><span class="tag tag-green">작음 (강점)</span></td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>진단 결론:</strong> DAYNESTA의 진짜 과제는 "마케팅"이 아니라 <strong>"신생 브랜드를 운동인이 믿고 좋아하게 만드는 자산(신뢰+포지셔닝+커뮤니티)을 0에서 세우는 것"</strong>입니다.
+            대형 종합 건기식(고려은단·종근당·정관장)과 정면 승부 대신, <strong>"러닝·헬스하는 30-40대 여성의 관절·회복"이라는 대형사가 비워둔 니치를 먼저 점유</strong>하는 것이 살길입니다.
+        </div>
+    </div>
+
+    <!-- 목차 -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 & 진단</a>
+            <a href="#company-info">1. 기업 기초 정보</a>
+            <a href="#product-lineup">2. 주력 제품 & 채널</a>
+            <a href="#digital-presence">3. 디지털 프레즌스 진단</a>
+            <a href="#competitors">4. 경쟁사 분석</a>
+            <a href="#market">5. 시장 환경</a>
+            <a href="#ceo-background">6. 대표자 프로필</a>
+            <a href="#swot">7. SWOT 분석</a>
+            <a href="#needs-analysis">8. 니즈 분석 (SPIN + JTBD)</a>
+            <a href="#gap-analysis">9. GAP 분석 & 기회 평가</a>
+            <a href="#quote">10. 3-Tier 견적 초안</a>
+            <a href="#strategy">11. 상담 전략 & 코칭</a>
+            <a href="#closing">12. 클로징 전략</a>
+        </div>
+    </div>
+
+    <!-- 1. 기업 기초 정보 -->
+    <div class="section" id="company-info">
+        <h2>1. 기업 기초 정보</h2>
+        <div class="info-grid">
+            <div class="info-label">한국 법인</div><div class="info-value">(주)와이제이와이컴퍼니 (WYJ Company) · 사업자 175-56-00752</div>
+            <div class="info-label">미국 법인</div><div class="info-value">DAYNESTA LLC (공개 자료 부재 — 미팅 청취)</div>
+            <div class="info-label">대표</div><div class="info-value">윤영준 (YEONGJUN YUN) / team@daynesta.co.kr / 010-5562-5955</div>
+            <div class="info-label">단계</div><div class="info-value">통신판매업 2025-서울중구-1034 → 런칭 1년 미만 시드/초기</div>
+            <div class="info-label">본사</div><div class="info-value">서울 중구 마장로 19 지하 1층 (슬림 규모 [추정])</div>
+            <div class="info-label">사업 모델</div><div class="info-value">D2C 건기식 — <strong>북미 LLC 기반 운영 + 한국은 해외직구 판매</strong> (대표 원문)</div>
+            <div class="info-label">주력 제품</div><div class="info-value">"JOINT Daily Flow" — MSM·콜라겐·허브 복합 관절 데일리 케어</div>
+            <div class="info-label">라인업</div><div class="info-value">4 페르소나(Desk/Active/Slow Aging/Woman) → 대표 원문 타겟은 운동인으로 수렴</div>
+            <div class="info-label">판매 채널</div><div class="info-value">와디즈·쿠팡·스마트스토어·자사몰(daynesta.co.kr) 4채널 동시</div>
+            <div class="info-label">매출/투자/인력</div><div class="info-value">공개 0 — 미팅 청취 1순위</div>
+        </div>
+        <div class="callout callout-info" style="margin-top:20px">
+            <strong>핵심 팩트:</strong> 인테이크를 상세히 회신한 <strong>준비된 대표</strong> = 데이터 기반 깊은 진단 가능. 단 미국 LLC 메인 + 한국 직구 구조라 <strong>식약처 건기식 정식 수입·통관·표시 규제</strong>가 적용 — "관절 효능" 표현·기능성 표시에 제약. 신뢰장치 설계 시 법적 표현 한계를 반드시 청취.
+        </div>
+    </div>
+
+    <!-- 2. 주력 제품 & 채널 -->
+    <div class="section" id="product-lineup">
+        <h2>2. 주력 제품 & 채널</h2>
+        <h3>제품 라인업</h3>
+        <table>
+            <tr><th>라인</th><th>페르소나</th><th>상담 시 권장</th></tr>
+            <tr style="background:#eef3ec;"><td><strong>Active Life</strong></td><td>액티브·운동인</td><td>★ 대표 원문 1순위 — 운동인 관절·회복 집중 축</td></tr>
+            <tr style="background:#eef3ec;"><td><strong>Woman</strong></td><td>여성 전용</td><td>★ 30-40대 여성 타겟과 결합</td></tr>
+            <tr><td>Desk Life</td><td>오피스 워커</td><td>2순위 — 압축 시 후순위</td></tr>
+            <tr><td>Slow Aging</td><td>슬로우 에이징</td><td>2순위 — 압축 시 후순위</td></tr>
+            <tr><td><strong>JOINT Daily Flow</strong> (메인 SKU)</td><td>공통</td><td>MSM·콜라겐·허브 복합 — 신뢰장치(성분 근거) 핵심</td></tr>
+        </table>
+
+        <h3>판매 채널 (4채널 동시 — 신생에 분산)</h3>
+        <div class="channel-grid">
+            <div class="channel-card"><div class="ch-name">자사몰</div><div class="ch-stat">daynesta.co.kr</div><div class="ch-note">팬층·재구독 허브 역할</div></div>
+            <div class="channel-card"><div class="ch-name">와디즈</div><div class="ch-stat">펀딩</div><div class="ch-note">검증 아닌 일회성 얼리어답터 수요</div></div>
+            <div class="channel-card"><div class="ch-name">쿠팡·스마트스토어</div><div class="ch-stat">유입</div><div class="ch-note">플랫폼 유입 → 자사몰 전환 설계 필요</div></div>
+        </div>
+        <div class="callout">
+            <strong>포인트:</strong> 4채널 역할 분리가 안 되면 신생 인력으로 다 어중간해짐. <strong>자사몰을 팬층 허브로, 플랫폼을 유입으로</strong> 역할을 나누고, 와디즈 펀딩 고객을 재구매·팬으로 전환하는 리텐션 장치(구독·후기·커뮤니티)가 1순위.
+        </div>
+    </div>
+
+    <!-- 3. 디지털 프레즌스 진단 -->
+    <div class="section" id="digital-presence">
+        <h2>3. 디지털 프레즌스 진단</h2>
+
+        <div class="channel-grid">
+            <div class="channel-card"><div class="ch-name">자사몰 daynesta.co.kr</div><div class="ch-stat">루틴 프레임</div><div class="ch-note">"하루 한 알, 루틴 시작하기"<br>운동·회복 내러티브 O</div></div>
+            <div class="channel-card"><div class="ch-name">인스타 @daynesta_official</div><div class="ch-stat">실측 불가</div><div class="ch-note">Apify not_found<br>= 신생·콘텐츠 미축적</div></div>
+            <div class="channel-card"><div class="ch-name">언론·검색 노출</div><div class="ch-stat">0건</div><div class="ch-note">브랜드 관련 보도 없음<br>외부 인지도 ≈ 0</div></div>
+        </div>
+
+        <h3>웹사이트 (daynesta.co.kr) 진단 (실측)</h3>
+        <table>
+            <tr><th>항목</th><th>현재 상태</th><th>해석</th></tr>
+            <tr><td>태그라인</td><td>"하루 한 알, 루틴 시작하기"</td><td>약식 prep("관절 완벽 설계")과 달리 <strong>루틴 프레임</strong>으로 이동</td></tr>
+            <tr><td>포지셔닝</td><td>"새벽의 러닝부터 늦은 밤 몰입까지"</td><td>운동·회복 라이프스타일 내러티브 이미 존재 (대표 인테이크와 일치)</td></tr>
+            <tr><td>강점</td><td>라이프스타일 내러티브 + 7대 성분</td><td>포지셔닝 씨앗 있음</td></tr>
+            <tr><td>약점</td><td>신뢰 자산(임상·인증·리뷰·후기) 표면화 안 됨 [추정]</td><td>신뢰 적자 = 진단 1순위</td></tr>
+        </table>
+
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재: 거래만, 관계 없음</div>
+                <ul>
+                    <li>채널 4개 깔았으나 "좋아하는 사람"이 안 생김</li>
+                    <li>인스타가 카탈로그에 머물고 팬 엔진 아님</li>
+                    <li>신뢰 근거가 채널 표면에 안 보임</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">필요: 팬 엔진</div>
+                <ul>
+                    <li>운동인 후기·UGC 구조화 (사회적 증거)</li>
+                    <li>러닝크루·헬스 앰배서더 시딩</li>
+                    <li>자사몰 재구독·커뮤니티 전환 루프</li>
+                </ul>
+            </div>
+        </div>
+        <div class="script-block">
+            상담 시 활용: "사이트 보니까 '새벽 러닝부터 늦은 밤 몰입까지'라는 운동 라이프스타일 내러티브가 이미 있으세요. 좋은 씨앗이에요. 그런데 신생 건기식에서 사람들이 제일 먼저 보는 건 '운동하는 같은 사람이 효과 봤나'예요. 지금은 그 증거가 채널 표면에 안 보여요 — 그게 대표님이 '신뢰를 어떻게 만드나' 물으신 답입니다."
+        </div>
+    </div>
+
+    <!-- 4. 경쟁사 분석 -->
+    <div class="section" id="competitors">
+        <h2>4. 경쟁사 분석</h2>
+        <table>
+            <tr><th>구분</th><th>브랜드</th><th>포지션 / 시사점</th></tr>
+            <tr style="background:var(--accent-soft);"><td>대형 (정면 X)</td><td><strong>고려은단·종근당건강·정관장·내츄럴플러스</strong></td><td>시니어·종합 관절 점유, 브랜드 신뢰·유통 압도. <strong>신생 정면승부 불리</strong></td></tr>
+            <tr style="background:#eef3ec;"><td>니치 (DAYNESTA 자리)</td><td><strong>"운동인 회복" 세그먼트</strong></td><td>대형사가 시니어에 포지션 → <strong>러닝·헬스 30-40대 여성은 비어 있는 틈</strong>. 측면 진입이 정답</td></tr>
+            <tr><td>인접</td><td>단백질 보충제(킹콩팩토리 등)·러닝 브랜드(andar·에이더 러닝)</td><td>운동인 라이프스타일 접점 경쟁</td></tr>
+            <tr><td>벤치마크</td><td>미국 D2C(Ritual·HUM·Care/of)</td><td>투명 성분·구독·커뮤니티 모델 — 신뢰장치 참고</td></tr>
+            <tr><td>감도 벤치마크</td><td>룰루레몬·alo·새티스파이</td><td>운동 정체성의 일부로 소비되는 라이프스타일 브랜드 = "브랜드 감도"의 실체</td></tr>
+        </table>
+        <div class="callout callout-danger">
+            <strong>🚨 핵심 시사점:</strong> 한국 관절 건기식은 대형사가 점유한 레드오션이고, <strong>글루코사민은 "경쟁 과열 2세대 원료"로 대형사도 투자 축소 중</strong>. 신생이 "전 국민 관절"로 가면 광고비만 태웁니다.
+            DAYNESTA의 진짜 무기는 <strong>"30-40대 러닝·헬스하는 사람의 회복"이라는 니치</strong> — 대형사가 안 건드리는 운동인 세그먼트에서 1등을 먼저 먹는 전략. 룰루레몬이 광고가 아니라 요가강사 앰배서더로 커뮤니티를 만든 것처럼.
+        </div>
+    </div>
+
+    <!-- 5. 시장 환경 -->
+    <div class="section" id="market">
+        <h2>5. 시장 환경</h2>
+        <table>
+            <tr><th>지표</th><th>값</th><th>DAYNESTA 영향</th></tr>
+            <tr><td>한국 건기식 시장(2025)</td><td>약 6.4조 원 (+5.2%), 2028년 7.5조 전망</td><td>성장 시장</td></tr>
+            <tr style="background:var(--accent-light);"><td>관절·뼈 카테고리</td><td>초고령화 + <strong>MZ세대 주도 급성장</strong></td><td>운동인(30-40대) 니치 = MZ 흐름과 정렬</td></tr>
+            <tr><td>MSM 원료</td><td>2021년 663억 (전년比 +94.8%) 고성장</td><td>메인 SKU 핵심 성분 = 트렌드 부합</td></tr>
+            <tr style="background:#eef3ec;"><td>러닝 인구</td><td>국내 약 1,000만 · 룰루레몬/alo 착용 트렌드</td><td>운동인 타겟에 강한 순풍</td></tr>
+            <tr><td>글로벌 D2C</td><td>보충제 판매 48%가 이커머스, 구독·커뮤니티 주도</td><td>D2C·앰배서더 모델 유효</td></tr>
+            <tr style="background:var(--accent-soft);"><td>경쟁 가속</td><td>새티스파이 등 프리미엄 러닝 브랜드 상륙</td><td>"운동인 라이프스타일" 진입 창이 길지 않음 = 클로징 긴급성</td></tr>
+        </table>
+        <div class="callout callout-success">
+            <strong>전략 핵심:</strong> 러닝 1,000만 인구 + 룰루레몬/alo 운동 정체성 소비 트렌드는 DAYNESTA에 강한 순풍. 단 진입 창이 길지 않으니, <strong>운동인 관절·회복 니치에 지금 깃발을 꽂고 러닝 커뮤니티 팬층을 선점</strong>하는 것이 핵심.
+        </div>
+    </div>
+
+    <!-- 6. 대표자 프로필 -->
+    <div class="section" id="ceo-background">
+        <h2>6. 대표자 프로필</h2>
+        <div class="info-grid">
+            <div class="info-label">대표자</div><div class="info-value">윤영준 (YEONGJUN YUN) · 글로벌 창업자 (미국 LLC + 한국 법인)</div>
+            <div class="info-label">공개 정보</div><div class="info-value"><span class="tag tag-yellow">거의 없음</span> 율촌 변호사 윤영준 = 동명이인 (별개)</div>
+            <div class="info-label">매칭</div><div class="info-value">이메일·전화가 자사몰 CS와 일치 = 본인 명확 매칭 → 한국법인 직접 결재 시그널</div>
+            <div class="info-label">준비도</div><div class="info-value">인테이크 상세 회신 = 준비된 대표. "운동인/러닝/헬스 여성"으로 스스로 타겟 좁힘</div>
+            <div class="info-label">의사결정 스타일</div><div class="info-value">[추정] 검증형 — 미국 LLC까지 세운 글로벌 창업자, "설명 들으러"가 아니라 "검증하러" 옴</div>
+            <div class="info-label">미해결</div><div class="info-value">🔴 미국 LLC 측 역할·자금·계약 주체 = 클로징 선결 청취</div>
+        </div>
+        <div class="callout" style="margin-top:16px">
+            <strong>상담 키포인트:</strong> 이미 미국 LLC까지 세운 대표는 가르치려 들면 닫힌다. <strong>그의 결정을 한 단계 더 날카롭게 정리해주는 "거울" 역할</strong>일 때 신뢰가 붙는다.
+            대표가 인테이크에서 이미 "운동인 여성"으로 좁혔으니, 우리가 라인 압축을 강요하는 게 아니라 <strong>그의 말을 거울로 비춰 합의</strong>하는 구도로.
+        </div>
+    </div>
+
+    <!-- 7. SWOT 분석 -->
+    <div class="section" id="swot">
+        <h2>7. SWOT 분석</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>Strength (강점)</h4>
+                <ul>
+                    <li>타겟 명확 (운동인 30-40대 여성 — 대표가 직접 좁힘)</li>
+                    <li>운동·회복 라이프스타일 내러티브 이미 보유</li>
+                    <li>MSM·콜라겐 = 고성장 트렌드 성분</li>
+                    <li>한미 듀얼 = 향후 글로벌 확장 경로</li>
+                    <li>준비된 대표 + 직접 결재 가능</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>Weakness (약점)</h4>
+                <ul>
+                    <li>신뢰 적자 (보도·후기·인증 표면화 0)</li>
+                    <li>4 페르소나 × 4채널 과분산</li>
+                    <li>인스타 footprint 거의 0 (신생)</li>
+                    <li>한미 계약·예산 주체 불명</li>
+                    <li>한국 직구 구조 = 건기식 표시 규제 제약</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>Opportunity (기회)</h4>
+                <ul>
+                    <li>운동인 관절 니치 = 대형사 비운 틈</li>
+                    <li>러닝 1,000만 인구 + 운동 정체성 소비 순풍</li>
+                    <li>러닝크루·앰배서더 = 신생 최단 팬층 경로</li>
+                    <li>관절 카테고리 MZ 주도 성장</li>
+                    <li>한국 팬층 → 미국 진출 시 글로벌 레퍼런스 역수출</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>Threat (위협)</h4>
+                <ul>
+                    <li>대형 종합 건기식 신뢰·유통 압도</li>
+                    <li>새티스파이 등 프리미엄 러닝 브랜드 상륙(진입 창 짧음)</li>
+                    <li>건기식 표시광고법(효능 과장 금지) 함정</li>
+                    <li>DAYNESTA 영문 = K-pop DAY6 음운 SEO 충돌</li>
+                    <li>한미 동시 운영 시 자원 분산</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. 니즈 분석 -->
+    <div class="section" id="needs-analysis">
+        <h2>8. 니즈 분석 (SPIN + JTBD)</h2>
+        <div class="callout callout-info">
+            <strong>대표 인테이크 원문이 1차 입력:</strong> "한국 시장에서 신뢰를 만들고 브랜드 감도와 팬층을 어떻게 쌓을지 상담받고 싶다." 표면 요청이 명확해 가설 의존도가 낮음. prep의 "라인 압축·한미 노선"은 진짜 의제가 아니라 <strong>팬층 쌓기의 종속 선결 조건</strong>으로 재배치.
+        </div>
+
+        <h3>8-1. SPIN 기반 니즈 레이어링</h3>
+        <div class="spin-grid">
+            <div class="spin-card spin-s">
+                <h4>S — Situation (현재 상태)</h4>
+                <ul style="padding-left:16px;">
+                    <li>북미 LLC 메인 + 한국 해외직구 판매</li>
+                    <li>와디즈·쿠팡·스마트스토어·자사몰 4채널</li>
+                    <li>관절·회복 단일 카테고리, 타겟 명확(운동인 30-40대 여성)</li>
+                    <li>런칭 1년 미만 신생, 인스타 KPI 미확인</li>
+                </ul>
+            </div>
+            <div class="spin-card spin-p">
+                <h4>P — Problem (인식한 문제)</h4>
+                <ul style="padding-left:16px;">
+                    <li>채널은 깔았는데 브랜드로 인식 안 됨</li>
+                    <li>거래는 있어도 "좋아하는 사람"이 안 생김</li>
+                    <li>레드오션에서 "왜 우리 것?"의 답 부재</li>
+                </ul>
+            </div>
+            <div class="spin-card spin-i">
+                <h4>I — Implication (방치 시 파급)</h4>
+                <ul style="padding-left:16px;">
+                    <li>광고 끄면 매출 0 (재구매·구전 엔진 없음)</li>
+                    <li>CAC 누적 + 4채널 운영비가 마진 잠식</li>
+                    <li>운동인 니치를 대형사가 흡수하면 진입 창 닫힘</li>
+                </ul>
+            </div>
+            <div class="spin-card spin-n">
+                <h4>N — Need-Payoff (해결 가치)</h4>
+                <ul style="padding-left:16px;">
+                    <li>팬층 → 재구매·UGC·앰배서더 무료 도달 엔진</li>
+                    <li>CAC↓·LTV↑, "운동인 관절 = DAYNESTA" 점유</li>
+                    <li>한국 팬층이 미국 진출 시 소셜 프루프로 역수출</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>8-2. 고민 계층 분석 (Pain Hierarchy)</h3>
+        <div class="pain-layer">
+            <div class="pain-level pain-l1">
+                <span class="level-tag" style="color:var(--secondary);">L1 표면 요청</span>
+                "한국에서 신뢰·브랜드 감도·팬층을 쌓고 싶다" (대표 원문 명시 ★★★★★)
+            </div>
+            <div class="pain-level pain-l2">
+                <span class="level-tag" style="color:var(--accent);">L2 전술적 문제</span>
+                4채널 깔았으나 콘텐츠·후기·커뮤니티 시스템 없어 거래만 있고 관계 없음
+            </div>
+            <div class="pain-level pain-l3">
+                <span class="level-tag" style="color:var(--accent);">L3 전략적 문제</span>
+                운동인 관절 니치를 또렷한 포지셔닝·신뢰 근거로 점유 못함
+            </div>
+            <div class="pain-level pain-l4">
+                <span class="level-tag" style="color:#fff;">L4 근본 원인</span>
+                <strong>북미 메인·한국 직구·4라인 분산 구조가 "한국 운동인을 위한 한 브랜드" 정체성을 흐림</strong>
+            </div>
+        </div>
+        <div class="callout">
+            <strong>핵심 통찰:</strong> 대표가 말한 L1(팬층)을 풀려면 반드시 L3(니치 포지셔닝)과 L4(구조 정리=라인 압축)를 건드려야 함. <strong>즉 "라인 압축"은 별개 의제가 아니라 "팬층 쌓기"의 하위 종속 조건.</strong> 이 인과를 대표가 스스로 깨닫게 하는 것이 클로징 핵심.
+        </div>
+
+        <h3>8-3. JTBD (Jobs-to-be-Done)</h3>
+        <table>
+            <tr><th>Job 유형</th><th>내용</th></tr>
+            <tr><td><span class="tag tag-blue">Functional</span></td><td>운동인 여성이 신뢰하고 반복 구매하는 <strong>콘텐츠·후기·커뮤니티 시스템</strong>. 광고 없이도 도는 도달·재구매 엔진</td></tr>
+            <tr><td><span class="tag tag-green">Social ⭐</span></td><td><strong>"운동하는 사람들 사이에서 인정받는 감도 있는 브랜드"</strong>로 보이기. 약통 이미지가 아니라 룰루레몬처럼 운동 정체성의 일부로 소비 = 대표가 "브랜드 감도"로 표현한 진짜 욕구</td></tr>
+            <tr><td><span class="tag tag-red">Emotional ⭐</span></td><td>"좋은 제품 만들었는데 아무도 안 알아준다"는 막막함에서 벗어나기. "이 브랜드 좋아요"라는 팬의 목소리로 <strong>진짜라는 확인(validation)</strong> 받기 [추정]</td></tr>
+        </table>
+
+        <h3>8-4. 표면 vs 진짜 니즈 갭</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">대표가 말한 표면 (L1)</div>
+                <ul>
+                    <li>"신뢰를 만들고 싶다"</li>
+                    <li>"브랜드 감도를 쌓고 싶다"</li>
+                    <li>"팬층을 쌓고 싶다"</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">진짜 니즈 (추정)</div>
+                <ul>
+                    <li>신뢰 = <strong>검증 가능한 사회적 증거 시스템</strong> (광고 카피 아님)</li>
+                    <li>감도 = <strong>운동인 정체성과 정렬된 포지셔닝 언어</strong> (디자인 아님)</li>
+                    <li>팬층 = <strong>러닝 커뮤니티·앰배서더 소속 자산</strong> (팔로워 수 아님)</li>
+                    <li>(숨은 전제) <strong>니치 압축 + 한국 단독 집중</strong> — 분산으론 팬 안 생김</li>
+                </ul>
+            </div>
+        </div>
+        <div class="callout callout-info">
+            <strong>🔴 우선순위 판정:</strong> (a) 니치 포지셔닝이 논리적 1순위, (c) 신뢰장치와 <strong>동시 착수</strong>. (b) 커뮤니티·앰배서더는 (a)(c) 위에서만 작동하는 <strong>증폭기 = 90일 차에 점화</strong>. 순서를 거꾸로 해 (b)부터 뿌리면 "이게 뭐 하는 브랜드?"에서 도달이 새고 비용만 태움.
+        </div>
+    </div>
+
+    <!-- 9. GAP 분석 & 기회 평가 -->
+    <div class="section" id="gap-analysis">
+        <h2>9. GAP 분석 & 기회 평가</h2>
+        <table>
+            <tr><th>항목</th><th>가중치</th><th>점수</th><th>근거</th></tr>
+            <tr><td>니즈-서비스 핏</td><td>30%</td><td><span class="tag tag-green">5/5</span></td><td>"신뢰·감도·팬층" = 브랜드 정체성+콘텐츠+커뮤니티 = HIZ 풀스코프 정중앙. 건기식 SOP 보유</td></tr>
+            <tr><td>예산 적합성</td><td>20%</td><td><span class="tag tag-yellow">3/5</span></td><td>폼 미입력 [추정]. 1년차 미만·매출 미검증. T1(1,000~1,500만)은 흡수 가능</td></tr>
+            <tr><td>의사결정 구조</td><td>15%</td><td><span class="tag tag-yellow">3/5</span></td><td>윤 CEO 본인 매칭 = 한국 직접 결재 가능. <strong>단 미국 LLC 예산·계약 주체 불명 = 감점</strong></td></tr>
+            <tr><td>긴급도</td><td>15%</td><td><span class="tag tag-yellow">3/5</span></td><td>신생 브랜드 구축 니즈 실재. 한미 노선 미결정이 착수 지연 요인</td></tr>
+            <tr><td>성장 잠재력</td><td>10%</td><td><span class="tag tag-green">5/5</span></td><td>T1→T2→(T3 미국) 확장 경로 명확. 리테이너 전환 잠재 큼</td></tr>
+            <tr><td>레퍼런스 가치</td><td>10%</td><td><span class="tag tag-green">4/5</span></td><td>"운동인 니치 건기식 D2C 신뢰·팬층 구축" = 차별 포트폴리오</td></tr>
+        </table>
+
+        <div class="verdict">
+            <div class="label">종합 기회 적합도</div>
+            <div class="value">3.90 / 5.0</div>
+            <div class="desc">Conditional Go — 한국 단독 노선 확정 시 의사결정 3→4 상승, 종합 4.05 = 명확 Go</div>
+        </div>
+
+        <h3>착지 시나리오 확률 [추정]</h3>
+        <table>
+            <tr><th>시나리오</th><th>확률</th><th>조건</th></tr>
+            <tr style="background:var(--accent-light);"><td><strong>본命 (한국 단독 집중) T1→T2 승급</strong></td><td><strong>55%</strong></td><td>윤 CEO 한국법인 직접 결재 + 라인 압축 합의</td></tr>
+            <tr><td>T1 단발 진단</td><td>25%</td><td>예산 보수적 + 미국 노선 미결정</td></tr>
+            <tr><td>한미 동시 풀스코프 T2 직행</td><td>10%</td><td>미국 LLC 자금 풀 명확</td></tr>
+            <tr><td>보류·결렬</td><td>10%</td><td>한미 계약 주체 미정 장기화 / 인하우스 결정</td></tr>
+        </table>
+        <div class="callout callout-success">
+            <strong>종합 수주 확률 [추정] ≈ 75%</strong> (T1 또는 T2 어느 형태로든 착지). 단발이라도 T1 진입 후 T2 자연 확장 경로 살아있음. 미팅 1순위 = <strong>한미 계약·예산 주체 확정(클로징 선결)</strong>.
+        </div>
+    </div>
+
+    <!-- 10. 3-Tier 견적 초안 -->
+    <div class="section" id="quote">
+        <h2>10. 3-Tier 견적 초안</h2>
+        <div class="callout callout-info">
+            ⚠️ 가격은 Tier 기준선 기반 <strong>추정 구간(대 수준)</strong>. 대표 원문대로 "미국 진출"을 후순위(가설 검증)로 내리고 <strong>한국 신뢰·감도·팬층 구축을 메인 축</strong>으로 재구성.
+        </div>
+        <div class="tier-cards">
+            <div class="tier-card">
+                <h4>Essential — T1 Foundation</h4>
+                <div style="font-size:13px; color:var(--text-light);">진단·압축·신뢰장치</div>
+                <div class="price">1,000~1,500만</div>
+                <div class="duration">4주</div>
+                <ul>
+                    <li>4라인 포지셔닝 진단 → 운동인 니치(Active+Woman) 1~2개 압축</li>
+                    <li>신뢰 장치 진단(성분·인증·전문가·후기 구조)</li>
+                    <li>채널 우선순위 결정(자사몰 허브 vs 플랫폼 유입)</li>
+                    <li>DAYNESTA 사명·디스크립터 SEO 진단(DAY6 충돌 해소)</li>
+                </ul>
+            </div>
+            <div class="tier-card recommended">
+                <div class="tier-badge">RECOMMENDED</div>
+                <h4>Professional — T2 Build</h4>
+                <div style="font-size:13px; color:var(--text-light);">팬층 시스템</div>
+                <div class="price">3,000~5,000만</div>
+                <div class="duration">3개월</div>
+                <ul>
+                    <li>Essential 전체 포함</li>
+                    <li>운동인 페르소나 콘텐츠 시스템(러닝/헬스 회복 서사)</li>
+                    <li>앰배서더·커뮤니티 프로그램(러닝크루·마이크로 인플루언서 10~15명)</li>
+                    <li>자사몰 전환 최적화(플랫폼 유입→재구독)</li>
+                    <li>니치 키워드 퍼포먼스 ROAS v1</li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>Premium — T2 풀 + 미국 검증</h4>
+                <div style="font-size:13px; color:var(--text-light);">한국 안정화 + 미국 진입로</div>
+                <div class="price">5,000~7,000만+</div>
+                <div class="duration">4~6개월</div>
+                <ul>
+                    <li>Professional 전체 포함</li>
+                    <li>한국 KPI 안정화 후 미국 채널 가설 검증(Amazon US·Meta US 진단)</li>
+                    <li>영문 자산 + DAYNESTA LLC 역할 정리</li>
+                    <li>(본격 미국 진출은 현지 파트너 매칭 전제 T3 별도)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="leverage-box">
+            <div style="font-size:14px; opacity:0.7;">가치 프레이밍</div>
+            <div class="quote">
+                "T1은 '어디에 돈 쓰지 말지'를 먼저 정해 광고 낭비를 막는 단계입니다.<br>
+                건기식의 진짜 해자는 광고 ROAS가 아니라 <strong>재구매·UGC가 자가증식하는 팬층</strong>이에요.<br>
+                룰루레몬이 광고가 아니라 앰배서더로 1,300만 회원을 만든 것처럼요."
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. 상담 전략 & 코칭 -->
+    <div class="section" id="strategy">
+        <h2>11. 상담 전략 & 코칭</h2>
+
+        <h3>60분 상담 타임라인 (상세 회신 = 준비된 대표 → 진단/솔루션에 무게)</h3>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 1<br>0~4분</div>
+            <div class="phase-content">
+                <h4>라포 (단축) — 셋업의 야심에 진심 어린 관심</h4>
+                <p>"마장로 지하에서 4개 라인 + 미국 LLC까지 직접 굴리시는 거 보고 준비 많이 하신 분이라 느꼈습니다." 아첨 X, 구체적 관심.</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 2<br>4~12분</div>
+            <div class="phase-content">
+                <h4>상황 확인 (단축) — 회신 상세하니 재질문 X</h4>
+                <p>"보내주신 내용 잘 봤습니다" 후 한미 구조 + 4라인 매출 비중 빠르게. "제대로 이해했는지 확인" 프레이밍.</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 3<br>12~30분</div>
+            <div class="phase-content">
+                <h4>깊은 진단 ★ (18분) — 핵심 가치 구간</h4>
+                <p>한미 의사결정 라인 + 4라인 압축 의향 + 6개월 1순위 KPI. 침묵 3~5초, 70% 듣기.</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 4<br>30~42분</div>
+            <div class="phase-content">
+                <h4>인사이트 공유 (12분) — Challenger Teaching 3개</h4>
+                <p>레드오션 정면승부 위험 / 펀딩 성공 ≠ 브랜드 성공 / 팬층 = 앰배서더·커뮤니티 자산.</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 5<br>42~52분</div>
+            <div class="phase-content">
+                <h4>솔루션 방향 — T1 진단→T2 빌드, 가격 단정 X</h4>
+                <p>"제안서로 정리해 드릴게요."</p>
+            </div>
+        </div>
+        <div class="timeline-phase" style="border-bottom:none;">
+            <div class="phase-time">Phase 6<br>52~60분</div>
+            <div class="phase-content">
+                <h4>클로징 — 요약 복창 + Quick Tip 선물</h4>
+                <p>한미 계약 주체/우선순위 라인/6개월 KPI 3줄 복창 + 무료 Tip 1~2개.</p>
+            </div>
+        </div>
+
+        <h3>핵심 질문 Top 5</h3>
+        <div class="question-card">
+            <div class="q-num">Q1. 한미 계약·예산 주체 (★ 1순위·클로징 선결)</div>
+            <div class="q-text">"한국 와이제이와이컴퍼니랑 미국 DAYNESTA LLC 두 법인이 있으신데, 이번 마케팅 의사결정과 예산 집행은 어느 쪽에서 하시나요? 컨설팅 계약 주체도 한국법인으로 보면 될까요?"</div>
+            <div class="q-intent">의도: 스코프·견적·계약 명의가 여기서 갈림. 안 짚으면 제안이 허공에 뜸</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q2. 니치 압축 의향 (가장 중요)</div>
+            <div class="q-text">"인테이크에 '운동인·러닝·헬스 30-40대 여성'을 콕 집어 주셨는데, 향후 6개월은 Active Life·Woman 한 축에 집중하고 나머지는 잠시 접어두는 게 빠른데, 그렇게 좁힐 의향이 있으신가요?"</div>
+            <div class="q-intent">의도: L4 분산 구조 정리 의사. 대표 본인 발화를 거울로 비춰 압축 합의 유도 (강요 X)</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q3. 신뢰장치 자산</div>
+            <div class="q-text">"지금 신뢰 근거 — 성분 임상자료·전문가 추천·실사용 후기 중 가지고 계신 게 뭔가요? 후기는 몇 건이고 어디에 쌓여 있나요?"</div>
+            <div class="q-intent">의도: (c) 신뢰장치를 0에서 만들지, 있는 자산을 구조화할지 = 30일 스코프 분기</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q4. 현 마케팅 실측 + 팬 정의</div>
+            <div class="q-text">"최근 6개월 인스타 도달·팔로워, 자사몰 vs 쿠팡/스마트스토어 매출 비중, ROAS·CAC는요? 자발적으로 후기 올려주거나 앰배서더로 묶을 분이 이미 계신가요? 마케팅·콘텐츠 인력은 몇 분이세요?"</div>
+            <div class="q-intent">의도: L2 시스템 부재 정도 + 운영 흡수력 + 팬층 시드 풀 유무</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q5. 6개월 1순위 KPI + 창업 스토리</div>
+            <div class="q-text">"6개월 후 딱 하나만 좋아진다면 한국 매출 안정화·미국 진출 본격화·브랜드 인지도 중 뭘 고르시겠어요? 그리고 왜 하필 관절·회복으로 미국 법인까지 세우셨는지, DAYNESTA 이름엔 어떤 의미가 있나요?"</div>
+            <div class="q-intent">의도: KPI 우선순위(견적 Tier 결정) + 창업 스토리(콘텐츠·포지셔닝 RFP 원료 + 라포 정점)</div>
+        </div>
+
+        <h3>Challenger Teaching 포인트 3가지</h3>
+        <div class="leverage-box">
+            <div style="font-size:13px; opacity:0.7;">Teaching #1 — 레드오션 정면승부는 진다, 운동인 니치가 살길</div>
+            <div class="quote">
+                "한국 건기식 6.4조, 관절 카테고리는 고려은단·종근당·정관장이 점유해요.<br>
+                글루코사민은 대형사도 투자 축소하는 과열 원료고요.<br>
+                대표님 무기는 '30-40대 러닝·헬스하는 사람의 회복'이라는 니치 — 대형사가 안 건드리는 틈에서 1등을 먼저 먹는 겁니다."
+            </div>
+        </div>
+        <div class="leverage-box">
+            <div style="font-size:13px; opacity:0.7;">Teaching #2 — 펀딩 성공을 브랜드 성공으로 착각하지 마라</div>
+            <div class="quote">
+                "와디즈 펀딩 성공은 '검증'이 아니라 '일회성 얼리어답터 수요'예요.<br>
+                신생이 여기서 가장 많이 하는 실수가 리텐션 장치 없이 광고로 신규만 계속 사는 겁니다.<br>
+                건기식은 재구매가 LTV의 본질 — 펀딩 고객을 팬으로 전환하는 시스템이 1순위입니다."
+            </div>
+        </div>
+        <div class="leverage-box">
+            <div style="font-size:13px; opacity:0.7;">Teaching #3 — 팬층 = 막연한 단어가 아니라 앰배서더·커뮤니티 자산</div>
+            <div class="quote">
+                "룰루레몬은 광고가 아니라 요가강사·앰배서더 커뮤니티로 1,300만 회원을 만들었어요.<br>
+                운동 카테고리는 '운동을 진짜 하는 사람이 쓴다'는 증명이 결정적입니다.<br>
+                러닝크루·헬스 마이크로 인플루언서를 앰배서더로 묶으면 UGC·구전이 CAC를 구조적으로 낮춥니다."
+            </div>
+        </div>
+
+        <h3>예상 반론 & 대응</h3>
+        <table>
+            <tr><th>반론</th><th>대응 전략</th></tr>
+            <tr><td><strong>"비싸다 / 예산 빠듯"</strong></td><td>"T1(1,000~1,500만/4주)부터요. 풀스코프 강요 안 합니다. T1은 '어디에 돈 쓰지 말지'를 먼저 정해 광고 낭비를 막는 단계라 사실상 비용 절감 투자예요"</td></tr>
+            <tr><td><strong>"와디즈로 이미 검증됐는데?"</strong></td><td>"펀딩 거래액 급증은 시장 열기지 브랜드 검증이 아니에요. 펀딩 고객의 재구매율·자사몰 전환율을 먼저 봐야 합니다 — 검증된 건 '수요'고, 우리가 만들 건 '팬층'이에요"</td></tr>
+            <tr><td><strong>"미국이 본진 아닌가"</strong></td><td>"인테이크에 '한국에서 신뢰·팬층'이라고 적어주셨어요. 한미 동시는 신생 1년차 자원으로 법규(식약처 vs FDA) 이중 운영이라 둘 다 어중간해져요. 한국에서 팬층·재구매 모델을 먼저 증명하고 그 플레이북을 미국에 이식하는 게 자본 효율 높습니다 — 한국이 부수가 아니라 미국 진출의 실험실"</td></tr>
+            <tr><td><strong>"인하우스로 직접 해볼게요"</strong></td><td>"4라인 페르소나 콘텐츠 + 앰배서더 10~15명 운영은 신생팀 인력으로 동시 흡수 불가예요. 시스템을 깔아드리고 운영을 이관 — 직접 하실 수 있게 만드는 게 목표입니다"</td></tr>
+            <tr><td><strong>"건기식 광고 규제 부담"</strong></td><td>"정확히 그래서 전문 파트너가 필요해요. 표시광고법(질병 치료·효능 과장 금지)은 신생이 가장 자주 걸리는 함정 — T1 신뢰장치 진단에 규제 안전 카피 가이드를 포함합니다"</td></tr>
+        </table>
+
+        <h3>경청 기법 (글로벌 창업자·준비된 대표 맞춤)</h3>
+        <div class="callout callout-info">
+            <strong>핵심:</strong> 미국 LLC까지 세운 대표는 '설명 들으러'가 아니라 '검증하러' 온다. 우리는 <strong>그의 결정을 한 단계 더 날카롭게 정리해주는 거울</strong>일 때 신뢰가 붙는다.<br>
+            <strong>미러링:</strong> 영어 라인명·전문어 그대로 받기 ("Active Life가 핵심이시군요"). <strong>라벨링:</strong> "두 법인 동시 굴리시느라 의사결정이 꽤 무거우셨을 것 같아요." <strong>요약 확인(필수):</strong> "정리하면 미국이 본진, 한국은 신뢰·팬층 빌드, 운동인 라인 1순위 — 맞으시죠?" <strong>침묵:</strong> KPI·예산 질문 후 3~5초.
+        </div>
+
+        <h3>Trusted Advisor Quick Tip (무료로 줄 팁)</h3>
+        <div class="callout callout-success">
+            <strong>Tip 1 — 운동인 후기 자산화:</strong> "운동하는 분들은 '성분'보다 '같은 러너가 효과 봤다'는 후기에 움직여요. 기존 구매자께 <strong>'러닝 며칠째 / 회복 어땠는지' 한 줄 + 사진</strong> 요청 카톡 한 통만 돌려보세요. 그게 인스타 콘텐츠·광고 크리에이티브 자산이 됩니다. 비용 0, 이번 주에 바로."<br><br>
+            <strong>Tip 2 — 앰배서더 시드:</strong> "지금 자발적으로 후기 올려준 분 3~5명만 추려서 '앰배서더' 호칭 + 정기 발송만 해도 팬층 코어가 생겨요. <strong>DM으로 '저희 1기 앰배서더로 모시고 싶다'</strong> 한 줄이면 시작됩니다."
+        </div>
+
+        <div class="callout callout-danger">
+            <strong>⚖️ 건기식 표시광고법 주의:</strong> 상담·제안 어디서도 관절 <strong>"치료·완치·통증 완화·개선 보장"</strong> 단정 금지. "도움을 줄 수 있음" 등 <strong>기능성 인정 범위 표현 + 사전 자율심의(한국건강기능식품협회)</strong> 내에서만. 한국 직구 구조라 식약처 수입·표시 규제도 적용 — T1 신뢰장치 단계부터 규제 안전 카피 가이드 의무 포함.
+        </div>
+    </div>
+
+    <!-- 12. 클로징 전략 -->
+    <div class="section" id="closing">
+        <h2>12. 클로징 전략</h2>
+
+        <div class="callout callout-danger">
+            <strong>🔴 선결 조건 (클로징 전 필수):</strong> 한미 계약·예산 주체 확정. "오늘 결정에 앞서, 컨설팅 계약·예산 집행이 한국 와이제이와이컴퍼니인지 미국 DAYNESTA LLC인지부터 정리하자." 이걸 안 짚으면 제안 자체가 허공에 뜬다.
+        </div>
+
+        <h3>클로징 플로우</h3>
+        <div class="flow-steps">
+            <div class="flow-step"><div class="step-num">STEP 1</div><div class="step-title">상담 당일 (D+0)</div><div class="step-desc">감사 + 한미주체/우선순위라인/KPI 3줄 복창</div></div>
+            <div class="flow-step"><div class="step-num">STEP 2</div><div class="step-title">D+1~2</div><div class="step-desc">약속 자료(후기 템플릿·콘텐츠 레퍼런스) Quick Tip 실물화</div></div>
+            <div class="flow-step"><div class="step-num">STEP 3</div><div class="step-title">D+3~5</div><div class="step-desc">제안서 착수<br>T1 진단→T2 빌드 구조</div></div>
+            <div class="flow-step"><div class="step-num">STEP 4</div><div class="step-title">D+7 전후</div><div class="step-desc">제안서 발송<br>상담 청취값으로 Tier 확정</div></div>
+            <div class="flow-step"><div class="step-num">STEP 5</div><div class="step-title">D+10~14</div><div class="step-desc">팔로업 콜<br>클로징 타진</div></div>
+        </div>
+
+        <div class="callout">
+            <strong>핵심 마인드셋:</strong> 이 상담의 승부처는 <strong>Q1(한미 계약 주체)</strong> 하나다. 여기가 안 풀리면 견적·계약서·스코프가 전부 공중에 뜬다. Phase 3 첫 질문으로 못 박을 것.
+            대표가 인테이크에서 이미 "운동인 여성"으로 스스로 좁혔으니, 우리가 4라인 압축을 강요하는 게 아니라 그의 말을 거울로 비춰 합의하는 구도로 가면 저항 0.
+        </div>
+
+        <h3>긴급성 프레이밍</h3>
+        <div class="callout">
+            "런칭 직후 신생은 첫 6개월의 포지셔닝이 브랜드 각인을 결정합니다. 4개 라인으로 분산된 채 광고를 더 돌릴수록 식별 비용(DAY6 SEO 충돌 포함)만 누적돼요. 그리고 새티스파이 같은 프리미엄 러닝 브랜드가 들어오는 중이라 운동인 라이프스타일 진입 창이 길지 않습니다 — 지금 정렬해야 합니다."
+        </div>
+
+        <h3>상담 후 액션 리스트</h3>
+        <table>
+            <tr><th>타이밍</th><th>액션</th></tr>
+            <tr><td><strong>당일 2시간 내</strong></td><td>감사 메시지 + 한미 계약 주체/우선순위 라인/6개월 KPI 3줄 요약 회신 (정확히 들었다는 증거)</td></tr>
+            <tr><td><strong>D+1~2</strong></td><td>약속 자료(운동인 콘텐츠 레퍼런스, 후기 요청 템플릿) — Quick Tip을 1장으로 실물화</td></tr>
+            <tr><td><strong>D+3~5</strong></td><td>제안서 착수 — T1 Foundation(1,000~1,500만/4주)→T2 Build 구조. 미국 자금 풀 명확시 T2 직행안 병기</td></tr>
+            <tr><td><strong>D+7 전후</strong></td><td>제안서 발송 (상담 청취값으로 Tier 확정). 발송 전 /grill-me 자가검증</td></tr>
+            <tr><td><strong>D+10~14</strong></td><td>팔로업 콜/미팅 — "제안서 받아보시고 궁금한 점" + 클로징 타진</td></tr>
+        </table>
+    </div>
+
+    <!-- 참고 링크 -->
+    <div class="section">
+        <h2>참고 링크</h2>
+        <div class="source-list" style="font-size:14px; line-height:2;">
+            <a href="https://daynesta.co.kr/" target="_blank" rel="noopener">DAYNESTA 한국 공식몰 (daynesta.co.kr)</a><br>
+            <a href="https://daynesta.co.kr/pages/about" target="_blank" rel="noopener">DAYNESTA About (4 페르소나 라인)</a><br>
+            <a href="https://www.instagram.com/daynesta_official/" target="_blank" rel="noopener">인스타그램 @daynesta_official (실측 불가 = 신생)</a><br>
+            <span style="color:var(--text-light);">시장: HealthU 2026 건기식 시장 / 식품저널 2026 트렌드 / mknews 관절·뼈 / 오픈서베이 건기식 트렌드 2025</span><br>
+            <span style="color:var(--text-light);">커뮤니티: 패션비즈 러닝 커뮤니티 / 채널톡 D2C 성공요인 / 아보카도자이언트 앰배서더 / 와디즈 푸드펀딩 132%↑</span><br>
+            <span style="color:var(--text-light);">규제: easylaw.go.kr 건기식 표시광고 / kfia.or.kr 자율심의</span>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>BRANDRISE (MarketingOS) — New Business 상담 준비 패키지</p>
+    <p>이 문서는 상담 준비 목적으로 작성되었으며, 외부 공유를 금합니다.</p>
+</div>
+
+</body>
+</html>
