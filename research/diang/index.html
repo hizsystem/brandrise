@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>디앙 (Diang) / (주)동일프라텍 - New Business 상담 준비 | BRANDRISE</title>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #444444;
+            --accent: #f07030;
+            --accent-light: #fff3ec;
+            --accent-soft: #fde8da;
+            --highlight: #f07030;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --muted: #f5f5f5;
+            --text: #1a1a1a;
+            --text-light: #999999;
+            --border: #eeeeee;
+            --success: #f07030;
+            --warning: #f07030;
+            --danger: #f07030;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; word-break: keep-all; overflow-wrap: break-word; }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: #ffffff;
+            color: var(--primary);
+            padding: 60px 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: var(--accent-soft);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; color: var(--primary); }
+        .header .subtitle { font-size: 16px; color: var(--secondary); font-weight: 300; }
+        .header .date { margin-top: 16px; font-size: 13px; color: var(--text-light); }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        .toc {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 8px;
+        }
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 0;
+            display: block;
+            transition: color 0.2s;
+        }
+        .toc a:hover { color: var(--highlight); }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--highlight);
+        }
+        .section h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 20px 0 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 8px 16px;
+            font-size: 14px;
+        }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th {
+            background: var(--muted);
+            color: var(--primary);
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 13px;
+        }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+        tr:hover td { background: #f1f3f5; }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 2px;
+        }
+        .tag-red { background: var(--accent-soft); color: var(--accent); }
+        .tag-green { background: #eef3ec; color: #5a7a52; }
+        .tag-blue { background: var(--accent-light); color: var(--accent); }
+        .tag-yellow { background: var(--accent-light); color: var(--secondary); }
+        .tag-gray { background: var(--muted); color: var(--secondary); }
+
+        .verdict {
+            background: var(--accent);
+            color: white;
+            padding: 24px 32px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 24px 0;
+        }
+        .verdict .label { font-size: 14px; opacity: 0.8; }
+        .verdict .value { font-size: 36px; font-weight: 800; margin: 8px 0; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+
+        .tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+        .tier-card {
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .tier-card:hover { transform: translateY(-4px); }
+        .tier-card.recommended {
+            border-color: var(--accent);
+            box-shadow: 0 4px 20px rgba(240, 112, 48, 0.15);
+        }
+        .tier-card .tier-badge {
+            position: absolute;
+            top: -12px;
+            right: 16px;
+            background: var(--highlight);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .tier-card h4 { font-size: 16px; margin-bottom: 4px; }
+        .tier-card .price { font-size: 22px; font-weight: 800; color: var(--highlight); margin: 12px 0; }
+        .tier-card .duration { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+        .tier-card ul { list-style: none; padding: 0; }
+        .tier-card li { font-size: 13px; padding: 4px 0; padding-left: 20px; position: relative; }
+        .tier-card li::before { content: ">"; position: absolute; left: 0; color: var(--highlight); font-weight: 700; }
+
+        .callout {
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+        .callout-info { background: var(--muted); border-left-color: var(--secondary); }
+        .callout-danger { background: var(--accent-soft); border-left-color: var(--accent); }
+        .callout-success { background: #eef3ec; border-left-color: #5a7a52; }
+
+        .leverage-box {
+            background: var(--primary);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        .leverage-box .quote { font-size: 19px; font-weight: 700; line-height: 1.5; margin: 16px 0; }
+
+        .flow-steps { display: flex; gap: 0; margin: 20px 0; overflow-x: auto; }
+        .flow-step {
+            flex: 1;
+            min-width: 150px;
+            padding: 16px;
+            background: #f1f3f5;
+            position: relative;
+            text-align: center;
+        }
+        .flow-step:not(:last-child)::after {
+            content: ">";
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: var(--highlight);
+            font-weight: 700;
+            z-index: 1;
+        }
+        .flow-step .step-num { font-size: 11px; font-weight: 700; color: var(--highlight); margin-bottom: 4px; }
+        .flow-step .step-title { font-size: 13px; font-weight: 600; }
+        .flow-step .step-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .swot-item h4 { font-size: 15px; margin-bottom: 10px; }
+        .swot-item ul { padding-left: 18px; }
+        .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: #ffffff; border: 1px solid var(--border); }
+        .swot-w { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .swot-o { background: #ffffff; border: 1px solid var(--border); }
+        .swot-t { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+        .source-list a { color: var(--accent); text-decoration: none; }
+        .source-list a:hover { text-decoration: underline; }
+
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+        .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 8px 0; }
+        .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+
+        /* Executive Summary */
+        .summary-section { border-left: 4px solid var(--accent); background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%); }
+        .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; }
+        .kpi-card.kpi-dark { background: var(--muted); color: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--accent); color: white; }
+        .kpi-card.kpi-success { background: var(--accent-soft); color: var(--primary); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.7; }
+        .kpi-card .kpi-value { font-size: 24px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.7; }
+
+        .summary-oneliner { background: #0D0D0D; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+        .summary-oneliner .sol-text .hl { color: var(--highlight); }
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+
+        /* Diagnosis */
+        .diagnosis-section { border: 2px solid var(--accent); }
+        .diagnosis-section h2 { border-bottom-color: var(--accent); color: var(--accent); }
+        .diag-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .diag-box { padding: 16px; border-radius: 8px; }
+        .diag-box.diag-current { background: var(--accent-light); }
+        .diag-box.diag-ideal { background: #eef3ec; }
+        .diag-box .db-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .diag-box.diag-current .db-label { color: var(--accent); }
+        .diag-box.diag-ideal .db-label { color: #5a7a52; }
+        .diag-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+        .diag-note { font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: var(--accent-light); border-radius: 8px; }
+
+        /* SPIN & JTBD */
+        .spin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .spin-card { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .spin-card h4 { font-size: 15px; margin-bottom: 10px; }
+        .spin-s { background: #ffffff; border: 1px solid var(--border); }
+        .spin-p { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .spin-i { background: var(--accent-soft); }
+        .spin-n { background: #ffffff; border: 1px solid var(--border); }
+
+        .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+        .pain-level { flex: 1; min-width: 200px; padding: 16px; border-radius: 10px; font-size: 13px; }
+        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .pain-l1 { background: var(--muted); }
+        .pain-l2 { background: var(--accent-light); }
+        .pain-l3 { background: var(--accent-soft); }
+        .pain-l4 { background: var(--accent); color: white; }
+
+        /* Script & Coaching */
+        .script-block {
+            background: #f8f9fa;
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            font-style: italic;
+            color: var(--secondary);
+        }
+        .question-card { background: #f8f9fa; border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+        .question-card .q-num { font-size: 12px; font-weight: 700; color: var(--highlight); }
+        .question-card .q-text { font-size: 15px; font-weight: 600; margin: 4px 0 8px; }
+        .question-card .q-intent { font-size: 13px; color: var(--text-light); }
+
+        .timeline-phase { display: grid; grid-template-columns: 100px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .timeline-phase .phase-time { font-size: 13px; font-weight: 700; color: var(--highlight); text-align: center; padding-top: 4px; }
+        .timeline-phase .phase-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .timeline-phase .phase-content p { font-size: 13px; color: var(--text-light); }
+
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .tier-cards { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-step:not(:last-child)::after { display: none; }
+            .channel-grid { grid-template-columns: repeat(2, 1fr); }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .diag-compare { grid-template-columns: 1fr; }
+            .spin-grid { grid-template-columns: 1fr; }
+            .pain-layer { flex-direction: column; }
+            .timeline-phase { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">NEW BUSINESS 상담 준비 패키지</div>
+    <h1>디앙 (Diang) / (주)동일프라텍</h1>
+    <div class="subtitle">친환경 카페용품 제조 | 옥수수 유래 PLA 생분해 빨대 | "음료보다 먼저 닿은 스트로우"</div>
+    <div class="date">작성일: 2026-05-26 | 대표: 김지현 | 신청일: 2026-05-14 | Prepared by BRANDRISE</div>
+</div>
+
+<div class="container">
+
+    <!-- Executive Summary -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">브랜드</div>
+                <div class="sh-title">디앙 (Diang) / (주)동일프라텍</div>
+                <div class="sh-sub">친환경 카페용품 제조 | 18년차 제조 강소기업 | 경기 파주 [추정]</div>
+            </div>
+            <div>
+                <div class="sh-label">담당자</div>
+                <div class="sh-title">김지현 대표 (의사결정권자 본인)</div>
+                <div class="sh-sub">800평 공장 운영 · 인스타 "빨대공장 김사장" 직접 운영 · 폼/메일 미회신</div>
+            </div>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">사업 연혁</div>
+                <div class="kpi-value">18년</div>
+                <div class="kpi-sub">2008 설립 · 매출 19.2억(2023)</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">인증 자산</div>
+                <div class="kpi-value">EL724</div>
+                <div class="kpi-sub">국내 제조사 최초 · TUV · FSSC22000</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">인스타 팔로워</div>
+                <div class="kpi-value">1,465</div>
+                <div class="kpi-sub">게시물 475개 대비 극저 · 1년+ 공백</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">유료광고 / 전담인력</div>
+                <div class="kpi-value">0</div>
+                <div class="kpi-sub">광고 미집행 · 대표가 직접 SNS 운영</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                제품·인증·PR이라는 신뢰자산은 업계 최상위로 확립됐으나,<br>
+                <span class="hl">이를 시장 언어로 번역·증폭하는 마케팅 레이어가 통째로 비어 있는</span> 18년차 제조 강소기업.
+            </div>
+        </div>
+        <div class="summary-bottom">
+            <strong>기회 적합도:</strong> <span class="hl">4.5 / 5.0 (GO · 적극 수주)</span> &nbsp;|&nbsp;
+            <strong>추천 Tier:</strong> Professional (글로벌 진출 척추, 3개월) &nbsp;|&nbsp;
+            <strong>1차 검증:</strong> B2B/B2C/글로벌 3축 중 진짜 1순위 + 예산·타임라인
+        </div>
+    </div>
+
+    <!-- 핵심 문제점 & 진단 -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 문제점 & 진단</h2>
+
+        <h3>1. B2B · B2C · 글로벌 3축 정체성 미정렬 (Critical · 근본 원인)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재 상태</div>
+                <ul>
+                    <li>B2B 납품(카페·프랜차이즈·OEM)이 매출 핵심이나, 자사몰·인스타·블로그를 B2C 채널로 구축해 둠</li>
+                    <li>글로벌 진출 "의지"는 인터뷰마다 언급, 그러나 영문 자산·해외 채널은 미정비 [추정]</li>
+                    <li>세 갈래가 모두 열려 있으나 <strong>회사 차원의 1순위 합의 부재</strong> → 마케팅 의사결정이 산발적</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">이상적 상태</div>
+                <ul>
+                    <li>3축 우선순위 정렬 → 자원·예산이 한 방향으로 집중</li>
+                    <li>1순위 축에 맞춘 브랜드 자산·채널·메시지 설계</li>
+                    <li>한 축의 성공 사례 자산을 나머지 두 축에 재활용하는 구조</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2. 검증된 신뢰자산의 마케팅 미번역 (Critical)</h3>
+        <div class="diag-note">
+            국내 제조사 <strong>최초 환경부 EL724</strong> + 유럽 TUV OK Compost + FSSC22000, 거기에 <strong>대표가 직접 밭에 묻어 분해를 실증</strong>하는 압도적 신뢰 콘텐츠까지 보유.
+            그러나 이 자산이 <strong>B2B 영업 PDF·인증 배지에만 갇혀</strong> 있고, 소비자가 보는 언어("EL724" 코드 그대로)로 번역되지 못함.
+            인스타 게시물 <strong>475개에 팔로워 1,465명</strong> — 노력은 했으나 전략·일관성 부재로 성과 미연결.
+        </div>
+
+        <h3>3. 규제 역풍 + 빨대 단일 품목 의존 (High · 외부 변수)</h3>
+        <div class="diag-note">
+            ⚠️ <strong>결정적 인사이트:</strong> 국내 일회용품 규제 후퇴(빨대 규제 무기한 유예, 종이빨대 업체 17→6개 도산)로 <strong>내수 역풍</strong>.
+            EU SUP 지침은 PLA 등 바이오플라스틱 빨대도 <strong>예외 없이 금지</strong>. 즉 "PLA 빨대 단일 품목" 프레이밍은 국내·EU 양쪽에서 막힘.
+            <strong>진짜 기회는 컴포스터블 식기류 글로벌 수출</strong> — 미국 30개 주 플라스틱 식기 금지, 수입 +23%, 식기류 시장 CAGR 10.8%(빨대 5.3%의 2배).
+        </div>
+
+        <h3>영역별 진단 요약</h3>
+        <table>
+            <tr><th>영역</th><th>현재 상태</th><th>심각도</th><th>GAP</th></tr>
+            <tr><td>3축 정체성 정렬</td><td>B2B/B2C/글로벌 우선순위 미합의</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>인증·신뢰자산 활용</td><td>영업 PDF·인증 배지에만 갇힘</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>SNS / 콘텐츠</td><td>게시물 475 / 팔로워 1,465 · 1년+ 공백</td><td><span class="tag tag-red">High</span></td><td><span class="tag tag-red">큼</span></td></tr>
+            <tr><td>유료광고 / 퍼널</td><td>미착수 (광고 흔적 없음)</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-yellow">중간</span></td></tr>
+            <tr><td>글로벌 영문 자산</td><td>영문 웹·카탈로그·바이어 deck 미비 [추정]</td><td><span class="tag tag-red">High</span></td><td><span class="tag tag-red">큼</span></td></tr>
+            <tr><td>제품·기술·인증</td><td>국내 최초 EL724·TUV·FSSC22000</td><td><span class="tag tag-green">Low</span></td><td><span class="tag tag-green">작음 (강점)</span></td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>진단 결론:</strong> 디앙은 "제품·인증은 확립됐으나 브랜드/마케팅은 시행착오기"인 <strong>제조 강소기업의 B2C·글로벌 전환점</strong>에 있습니다.
+            기술 부족이 아니라 <strong>이미 가진 신뢰자산을 시장 언어로 번역하고, 3축 중 한 곳에 집중하는 구조</strong>가 지금의 핵심 과제입니다.
+        </div>
+    </div>
+
+    <!-- 목차 -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 & 진단</a>
+            <a href="#company-info">1. 기업 기초 정보</a>
+            <a href="#product-lineup">2. 주력 제품 & 채널</a>
+            <a href="#digital-presence">3. 디지털 프레즌스 진단</a>
+            <a href="#competitors">4. 경쟁사 분석</a>
+            <a href="#market">5. 시장 환경</a>
+            <a href="#ceo-background">6. 대표자 프로필</a>
+            <a href="#swot">7. SWOT 분석</a>
+            <a href="#needs-analysis">8. 니즈 분석 (SPIN + JTBD)</a>
+            <a href="#gap-analysis">9. GAP 분석 & 기회 평가</a>
+            <a href="#quote">10. 3-Tier 견적 초안</a>
+            <a href="#strategy">11. 상담 전략 & 코칭</a>
+            <a href="#closing">12. 클로징 전략</a>
+        </div>
+    </div>
+
+    <!-- 1. 기업 기초 정보 -->
+    <div class="section" id="company-info">
+        <h2>1. 기업 기초 정보</h2>
+        <div class="info-grid">
+            <div class="info-label">법인명</div><div class="info-value">(주)동일프라텍</div>
+            <div class="info-label">브랜드명</div><div class="info-value">디앙 (Diang)</div>
+            <div class="info-label">대표</div><div class="info-value">김지현 (ceojulie@diang.co.kr / 010-9463-7119)</div>
+            <div class="info-label">설립</div><div class="info-value">2008년 설립 / 2010~2011년 법인 전환 (인터뷰별 표기 상이, ⚠️ 확인 필요)</div>
+            <div class="info-label">소재지</div><div class="info-value">경기도 파주시 [추정] · 약 800평 공장 운영</div>
+            <div class="info-label">팀 규모</div><div class="info-value">직원 19명 (제조 중심 중소기업)</div>
+            <div class="info-label">매출</div><div class="info-value">2023년 약 19.2억 원 · 자본금 4.5억</div>
+            <div class="info-label">사업 모델</div><div class="info-value">B2B 제조(OEM 포함) 중심 + B2C 자사몰 병행. 카페 프랜차이즈·호텔·항공사·의료기관 납품</div>
+            <div class="info-label">슬로건</div><div class="info-value">"음료보다 먼저 닿은 스트로우" — 위생·안전·친환경</div>
+            <div class="info-label">인증</div><div class="info-value">국내 제조사 최초 환경표지인증(EL724) · 유럽 TUV OK Compost · FSSC22000(ISO22000+HACCP)</div>
+        </div>
+        <div class="callout callout-info" style="margin-top:20px">
+            <strong>핵심 팩트:</strong> 스타트업이 아닌 18년차 제조 강소기업. "검증된 제품을 가졌으나 브랜드로 안 팔리는" 전형.
+            상담 눈높이를 시드 스타트업이 아닌 <strong>사업가 대표</strong>에 맞춰야 함. 인증·기술 자부심이 강하므로 진단은 "지적"이 아닌 "다음 단계 동반자"로 프레이밍.
+        </div>
+    </div>
+
+    <!-- 2. 주력 제품 & 채널 -->
+    <div class="section" id="product-lineup">
+        <h2>2. 주력 제품 & 채널</h2>
+        <h3>제품 라인업</h3>
+        <table>
+            <tr><th>제품</th><th>구분</th><th>특징</th></tr>
+            <tr style="background:var(--accent-light);"><td><strong>PLA 생분해 빨대</strong></td><td>주력</td><td>옥수수 유래. 국내 최초 EL724. 대형 카페 프랜차이즈 OEM 수주</td></tr>
+            <tr><td>종이/투명컵 · 리드</td><td>확장 라인</td><td>친환경 카페용품 풀라인업의 핵심 축</td></tr>
+            <tr><td>홀더 / 캐리어 / 리유저블컵</td><td>확장 라인</td><td>카페 운영 토털 솔루션 지향</td></tr>
+            <tr style="background:#eef3ec;"><td><strong>푸드용기 · 커트러리 · 생분해 봉투</strong></td><td>수출 잠재 ★</td><td>컴포스터블 식기류 — 글로벌 수출 시장이 빨대보다 2배 빠르게 성장</td></tr>
+        </table>
+
+        <h3>판매 채널</h3>
+        <div class="channel-grid">
+            <div class="channel-card">
+                <div class="ch-name">B2B 납품 (핵심)</div>
+                <div class="ch-stat">매출 중심</div>
+                <div class="ch-note">카페 프랜차이즈·호텔<br>항공사·의료기관 OEM</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">자사몰</div>
+                <div class="ch-stat">diang.co.kr</div>
+                <div class="ch-note">B2C 커머스 UI<br>실매출 비중 ⚠️ 확인 필요</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">글로벌</div>
+                <div class="ch-stat">의지 단계</div>
+                <div class="ch-note">13개국 시장조사 완료<br>영문 자산 미비 [추정]</div>
+            </div>
+        </div>
+        <div class="callout">
+            <strong>포인트:</strong> 제품 포트폴리오는 이미 "빨대 → 친환경 카페용품 풀라인업"으로 넓음.
+            규제 역풍을 받는 빨대보다 <strong>컴포스터블 식기류(푸드용기·커트러리)를 글로벌 수출 축으로 재배치</strong>하는 것이 시장 성장률·규제 양쪽에서 유리.
+        </div>
+    </div>
+
+    <!-- 3. 디지털 프레즌스 진단 -->
+    <div class="section" id="digital-presence">
+        <h2>3. 디지털 프레즌스 진단</h2>
+
+        <div class="channel-grid">
+            <div class="channel-card">
+                <div class="ch-name">인스타 @diang.official</div>
+                <div class="ch-stat">1,465</div>
+                <div class="ch-note">게시물 475개<br>최근글 좋아요 37·댓글 1</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">대표 개인계정</div>
+                <div class="ch-stat">@hello_diang</div>
+                <div class="ch-note">"빨대공장 김사장"<br>대표 직접 운영 = 전담 부재</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">블로그 / 유튜브</div>
+                <div class="ch-stat">보유</div>
+                <div class="ch-note">blog.naver.com/diang_<br>@diangtv2021 (활동도 확인 필요)</div>
+            </div>
+        </div>
+
+        <h3>웹사이트 (diang.co.kr) 진단</h3>
+        <table>
+            <tr><th>항목</th><th>현재 상태</th><th>문제점</th></tr>
+            <tr><td><strong>구조</strong></td><td>카페24류 B2C 커머스 UI</td><td>실매출 핵심은 B2B인데 채널은 B2C 형태 → 정체성 혼재</td></tr>
+            <tr><td><strong>메시징</strong></td><td>"친환경 일반론" 수준</td><td>"왜 디앙인가" 차별점이 약함. 인증을 코드로만 노출</td></tr>
+            <tr><td><strong>인증 노출</strong></td><td>EL724·TUV·FSSC22000 배지 전면 배치</td><td>강점 자산이나 소비자 언어로 번역 안 됨</td></tr>
+            <tr><td><strong>영문 자산</strong></td><td>미비 [추정]</td><td>글로벌 진출 의지 대비 바이어 대응 자료 부재</td></tr>
+        </table>
+
+        <h3>SNS 진단 (Apify 실측 · 2026-05-25)</h3>
+        <div class="callout callout-danger">
+            <strong>진단 결과: 노력은 했으나 전략·일관성 부재 — "양 ≠ 성과"의 전형</strong>
+        </div>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재: 산발적 운영</div>
+                <ul>
+                    <li>게시물 475개인데 팔로워 1,465명 (전환 실패)</li>
+                    <li>2024-09 → 2026-05 사이 <strong>1년+ 공백</strong> 후 5월 재개</li>
+                    <li>비즈니스 계정 미전환 · 인게이지먼트 미미(좋아요 37)</li>
+                    <li>유료광고 0 · 대표가 개인계정으로 직접 운영</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">필요: 자산 기반 운영</div>
+                <ul>
+                    <li>인증·밭 실증을 핵심 콘텐츠 자산으로 시리즈화</li>
+                    <li>비즈니스 계정 전환 + 일관된 발행 리듬</li>
+                    <li>1순위 축(글로벌/B2C)에 맞춘 콘텐츠 전략</li>
+                    <li>검증 후 소액 퍼포먼스 광고로 증폭</li>
+                </ul>
+            </div>
+        </div>
+        <div class="script-block">
+            상담 시 활용: "인스타 보니까 게시물을 475개나 올리셨더라고요. 이거 엄청난 노력이거든요. 근데 팔로워가 1,465명에 머문 건 콘텐츠가 부족해서가 아니라, '무엇을 일관되게 전달할지'가 안 잡혀서예요. 대표님이 직접 밭에 빨대 묻어서 분해 실증하신 거, 그게 사실 돈 주고도 못 만드는 콘텐츠인데 묻혀 있어요."
+        </div>
+    </div>
+
+    <!-- 4. 경쟁사 분석 -->
+    <div class="section" id="competitors">
+        <h2>4. 경쟁사 분석</h2>
+        <table>
+            <tr><th>브랜드</th><th>포지셔닝</th><th>차별점 / 위협도</th></tr>
+            <tr style="background:var(--accent-soft);"><td><strong>에콜그린(에콜그린텍)</strong></td><td>"국내 유일 생분해 생활용품 브랜드" 표방</td><td><span class="tag tag-red">최우선 위협</span> PLA 20년 기술력, 50여 아이템 7개 카테고리 — <strong>브랜드화 가장 앞섬</strong></td></tr>
+            <tr><td><strong>레스랩스(less-labs)</strong></td><td>PLA 빨대·아이스컵 대량 유통</td><td>깔끔한 커머스 브랜딩, D2C 감각</td></tr>
+            <tr><td><strong>아이엠그린마켓 / 컬러컵</strong></td><td>친환경 카페용품 유통·제조</td><td>중위권 유통 경쟁사</td></tr>
+            <tr><td><strong>대기업 소재군</strong></td><td>LG화학·롯데케미칼·SKC·CJ(PHA)</td><td>원료 상류. 직접 경쟁 X but <strong>PHA 전환 시 차별화 압박</strong></td></tr>
+            <tr style="background:var(--accent-light);"><td><strong>디앙 (Diang)</strong></td><td>친환경 카페용품 풀라인 제조</td><td><span class="tag tag-green">국내 최초 EL724·TUV·FSSC22000</span> 인증 스택은 최상위, 브랜드화는 후순위</td></tr>
+        </table>
+        <div class="callout callout-danger">
+            <strong>🚨 긴급 시사점 — 에콜그린의 브랜드화 선점:</strong> 동일한 친환경 생활용품 카테고리에서 에콜그린이 "국내 유일 생분해 생활용품 브랜드"를 표방하며 <strong>브랜드 내러티브를 먼저 차지</strong>하고 있음.
+            디앙은 인증·기술에서 앞서지만(국내 최초 EL724), <strong>그 우위를 시장 언어로 자산화하지 못하면</strong> "기술은 디앙, 브랜드는 에콜그린"으로 인식이 굳어질 위험.
+            카테고리 자체가 미성숙해 <strong>아직 선점할 공백이 크다는 것이 기회</strong>.
+        </div>
+    </div>
+
+    <!-- 5. 시장 환경 -->
+    <div class="section" id="market">
+        <h2>5. 시장 환경</h2>
+        <table>
+            <tr><th>항목</th><th>규모/트렌드</th><th>디앙 영향</th></tr>
+            <tr><td>글로벌 생분해 플라스틱</td><td>2021 ~100조 → 2026 ~303조 (CAGR 24.8%)</td><td>시장 자체 폭발 성장</td></tr>
+            <tr style="background:#eef3ec;"><td><strong>컴포스터블 식기류</strong></td><td>148억 달러(2025) → 274억 달러(2031), <strong>CAGR 10.8%</strong></td><td>빨대(5.3%)의 2배 — <strong>진짜 성장 축</strong></td></tr>
+            <tr style="background:#eef3ec;"><td><strong>미국 수출 기회</strong></td><td>30개 주 플라스틱 식기 금지, 수입 +23%, 시장 +24%</td><td>한국 제조사에 열린 수출 문</td></tr>
+            <tr><td>국내 카페 시장</td><td>약 10만 개 중 생분해 빨대 사용률 5% 미만</td><td>침투 여지 막대 but 가격 장벽</td></tr>
+            <tr style="background:var(--accent-soft);"><td><strong>국내 규제 (역풍)</strong></td><td>빨대 규제 무기한 유예, 종이빨대 업체 17→6개 도산</td><td>⚠️ 내수 역풍 — 빨대 단일 의존 위험</td></tr>
+            <tr style="background:var(--accent-soft);"><td><strong>EU SUP 지침</strong></td><td>PLA 등 바이오플라스틱 빨대도 예외 없이 금지</td><td>⚠️ EU에 PLA 빨대 직수출 불가</td></tr>
+            <tr><td>EU 식기류 수요</td><td>같은 지침이 컴포스터블 식기·집기 수요는 폭증시킴</td><td>인증 자산을 식기류로 옮기면 규제가 영업 무기</td></tr>
+        </table>
+        <div class="callout callout-success">
+            <strong>전략 핵심:</strong> "PLA 빨대"만 보면 규제가 적이지만, <strong>인증 자산(EL724 최초·TUV·FSSC)을 컴포스터블 식기류 글로벌 카테고리로 옮기면 규제가 가장 강력한 영업 무기</strong>가 됩니다.
+            국내 빨대 내수 경쟁이 아니라 <strong>친환경 식기류 글로벌 수출 브랜드</strong>로 포지셔닝을 옮기는 것이 성장 곡선에 올라타는 길.
+        </div>
+    </div>
+
+    <!-- 6. 대표자 프로필 -->
+    <div class="section" id="ceo-background">
+        <h2>6. 대표자 프로필</h2>
+        <div class="info-grid">
+            <div class="info-label">대표자</div><div class="info-value">김지현 (여성 대표 · 800평 공장 운영)</div>
+            <div class="info-label">창업 철학</div><div class="info-value">"빨대의 스탠더드를 높이고 싶었다" → "디앙이 빨대의 대명사가 되면 좋겠다" — 카테고리 1등 야망</div>
+            <div class="info-label">미션 성향</div><div class="info-value">생분해 퇴비 → 친환경 농업까지 잇는 비전. 단순 제조업자가 아닌 미션 드리븐</div>
+            <div class="info-label">의사결정 스타일</div><div class="info-value"><span class="tag tag-yellow">[추정] 꼼꼼·근거 중시형</span> 13개국 시장조사·인증 다수 확보. 동시에 SNS 직접 운영하는 실무 밀착형</div>
+            <div class="info-label">자기 정체성</div><div class="info-value">인스타 바이오 "빨대공장 김사장" — 격식보다 진솔·현장형 화법 선호</div>
+            <div class="info-label">위기감 시그널</div><div class="info-value">2026-01 인터뷰: 일회용품 규제 혼선·저가 플라스틱 회귀 비판 → 규제 환경에 답답함·위기감</div>
+            <div class="info-label">신뢰 콘텐츠</div><div class="info-value">직접 밭에 빨대 묻어 분해 실증 — 돈 주고 못 만드는 콘텐츠 자산</div>
+        </div>
+        <div class="callout" style="margin-top:16px">
+            <strong>상담 키포인트:</strong> 대표의 <strong>"대명사가 되고 싶다"는 야망</strong>을 마케팅 목표로 환산해 제시하면 강하게 공명.
+            18년 자기 사업 자부심이 강하므로 <strong>"이미 잘 아시겠지만", "현장에서 더 잘 느끼셨겠지만"</strong> 쿠션 필수.
+            "여사장님" 호칭 금지 → "대표님". 가르치지 말고 <strong>거들어라</strong>.
+        </div>
+    </div>
+
+    <!-- 7. SWOT 분석 -->
+    <div class="section" id="swot">
+        <h2>7. SWOT 분석</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>Strength (강점)</h4>
+                <ul>
+                    <li>국내 제조사 최초 EL724 + TUV OK Compost + FSSC22000 인증 스택</li>
+                    <li>18년 제조 노하우 · 800평 자체 생산 설비</li>
+                    <li>대형 카페·호텔·항공·의료기관 OEM 납품 실적</li>
+                    <li>두꺼운 PR 자산(한경TV·머니투데이·인터뷰M 등)</li>
+                    <li>대표의 밭 퇴비 직접 실증 = 최고의 신뢰 콘텐츠</li>
+                    <li>친환경 카페용품 풀라인업 (빨대 너머 식기류까지)</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>Weakness (약점)</h4>
+                <ul>
+                    <li>3축(B2B/B2C/글로벌) 정체성 1순위 미합의</li>
+                    <li>인증·신뢰자산이 시장 언어로 미번역</li>
+                    <li>인스타 1,465 · 1년+ 공백 · 유료광고 0</li>
+                    <li>마케팅 전담 인력 부재 (대표 직접 운영)</li>
+                    <li>영문 브랜드 자산·해외 채널 미비 [추정]</li>
+                    <li>자사몰이 B2B 실매출과 정체성 혼재</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>Opportunity (기회)</h4>
+                <ul>
+                    <li>컴포스터블 식기류 글로벌 시장 CAGR 10.8%</li>
+                    <li>미국 30개 주 식기 금지·수입 +23% = 수출 문</li>
+                    <li>카테고리 미성숙 → 브랜드 선점 공백 큼</li>
+                    <li>ESG·가치소비 트렌드와 인증 자산 부합</li>
+                    <li>밭 실증·"국내 최초"는 복제 불가 차별점</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>Threat (위협)</h4>
+                <ul>
+                    <li>에콜그린이 브랜드 내러티브 선점 중</li>
+                    <li>국내 일회용품 규제 후퇴 → 빨대 내수 역풍</li>
+                    <li>EU PLA 빨대 전면 금지 (직수출 불가)</li>
+                    <li>대형 화학사(LG·롯데·SKC) 생분해 진입 → 단가 압박</li>
+                    <li>commodity화 → 가격경쟁 함정</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. 니즈 분석 -->
+    <div class="section" id="needs-analysis">
+        <h2>8. 니즈 분석 (SPIN + JTBD)</h2>
+        <div class="callout callout-info">
+            ⚠️ <strong>데이터 한계:</strong> 인테이크 폼 미입력 + 메일 미회신. 본 분석은 약식 prep·웹리서치 기반 <strong>추정(약 60%)</strong>이며, 핵심 결론은 상담 검증 질문으로 확정해야 함.
+        </div>
+
+        <h3>8-1. SPIN 기반 니즈 레이어링</h3>
+        <div class="spin-grid">
+            <div class="spin-card spin-s">
+                <h4>S — Situation (현재 상태)</h4>
+                <ul style="padding-left:16px;">
+                    <li>18년차, 19명, 매출 19.2억 안정기 제조 중견</li>
+                    <li>B2B 빨대 OEM/납품 중심 매출 구조</li>
+                    <li>EL724·FSSC22000 등 기술·인증 최상위</li>
+                    <li>B2C/D2C 인지·자산은 미미 [추정]</li>
+                    <li>글로벌 의지 있으나 영문 자산 미정비 [추정]</li>
+                </ul>
+            </div>
+            <div class="spin-card spin-p">
+                <h4>P — Problem (인식한 문제)</h4>
+                <ul style="padding-left:16px;">
+                    <li>인증·품질이 매출 프리미엄으로 전환 안 됨</li>
+                    <li>친환경 시장이 규제 흐름에 수동적으로 끌려감</li>
+                    <li>"국내 최초"가 시장 언어로 확산 안 됨</li>
+                    <li>B2B 거래처가 곧 매출 천장</li>
+                    <li>대형사 진입 → 가격·물량 경쟁 압박</li>
+                </ul>
+            </div>
+            <div class="spin-card spin-i">
+                <h4>I — Implication (방치 시 파급)</h4>
+                <ul style="padding-left:16px;">
+                    <li>브랜드 자산 없으면 단가 후려치기 함정 (commodity화)</li>
+                    <li>규제 의존 매출 → 규제 변동 시 직격</li>
+                    <li>글로벌 미진출 지속 → 국내 19억대 천장 고착</li>
+                    <li>인증 ROI 미환산 → 후속 투자 정당화 약화</li>
+                    <li>자체 브랜드 부재 → 출구전략 시 기업가치 디스카운트 [추정]</li>
+                </ul>
+            </div>
+            <div class="spin-card spin-n">
+                <h4>N — Need-Payoff (해결 시 가치)</h4>
+                <ul style="padding-left:16px;">
+                    <li>"국내 최초 인증"을 브랜드 스토리로 자산화 → 가치로 팔림</li>
+                    <li>B2C 인지 확보 → B2B 영업 시 레버리지</li>
+                    <li>영문 자산 → 수출 상담 전환율 상승</li>
+                    <li>콘텐츠 자산화 → PR 단발성을 누적 자산으로</li>
+                    <li>명료한 포지션 → commodity 경쟁 이탈, 프리미엄 니치</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>8-2. 고민 계층 분석 (Pain Hierarchy)</h3>
+        <div class="pain-layer">
+            <div class="pain-level pain-l1">
+                <span class="level-tag" style="color:var(--secondary);">L1 표면 요청</span>
+                "마케팅/브랜딩을 강화하고 싶다"<br>(폼 미입력 — 신청 행위로 추론)
+            </div>
+            <div class="pain-level pain-l2">
+                <span class="level-tag" style="color:var(--accent);">L2 전술적 문제</span>
+                SNS·콘텐츠·D2C 약함<br>영문 자산 없음<br>무엇부터 할지 모름
+            </div>
+            <div class="pain-level pain-l3">
+                <span class="level-tag" style="color:var(--accent);">L3 전략적 문제</span>
+                기술·인증은 최상인데<br>시장 언어 번역·자산화 부재<br>→ 가격경쟁 노출
+            </div>
+            <div class="pain-level pain-l4">
+                <span class="level-tag" style="color:#fff;">L4 근본 원인</span>
+                <strong>"B2B 제조사 / B2C 브랜드 / 글로벌 수출"<br>3축 1순위 회사 차원 합의 부재</strong>
+            </div>
+        </div>
+        <div class="callout">
+            <strong>핵심:</strong> L4까지 가면 프로젝트가 "SNS 운영 대행"에서 <strong>"3축 정체성 정렬 → 그에 맞는 브랜드 자산 설계"</strong>로 완전히 달라짐. 이 케이스의 진짜 가치는 L4의 3축 교통정리에 있다.
+        </div>
+
+        <h3>8-3. JTBD (Jobs-to-be-Done)</h3>
+        <table>
+            <tr><th>Job 유형</th><th>내용</th></tr>
+            <tr>
+                <td><span class="tag tag-blue">Functional</span></td>
+                <td>친환경 빨대/식기류를 <strong>팔리게 하는</strong> 마케팅 자산(브랜드 스토리·콘텐츠·영문 소개서·D2C/채널) 구축해 매출 천장 돌파</td>
+            </tr>
+            <tr>
+                <td><span class="tag tag-green">Social</span></td>
+                <td>거래처·해외 바이어·업계에 <strong>"국내 최초 EL724 인증의 진짜 친환경 리더 브랜드"</strong>로 인식되기. 대형 화학사 틈에서 "기술력 있는 정통 강소기업"으로 보이기</td>
+            </tr>
+            <tr>
+                <td><span class="tag tag-red">Emotional</span></td>
+                <td>18년 쌓은 기술·인증이 <strong>시장에서 제값 못 받는 저평가감</strong>에서 벗어나기. 정체된 성장에 "다음 한 수"가 있다는 <strong>방향 확신</strong> 얻기</td>
+            </tr>
+        </table>
+        <div class="callout callout-info">
+            💡 <strong>구매 트리거:</strong> 이 케이스의 <strong>Emotional Job(저평가감 해소 + 방향 확신)</strong>이 진짜 결정 트리거일 가능성. 상담에서 "기술은 최고인데 시장이 못 따라온 게 아깝다"는 정서를 건드리면 라포 급상승.
+        </div>
+
+        <h3>8-4. 표면 vs 진짜 니즈 갭</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">표면 요청</div>
+                <ul>
+                    <li>"SNS·콘텐츠 마케팅 해주세요"</li>
+                    <li>"D2C 몰·인스타 만들고 싶다"</li>
+                    <li>"해외 채널 뚫고 싶다"</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">진짜 니즈 (추정)</div>
+                <ul>
+                    <li><strong>3축 정체성 1순위 정렬</strong> (실행 대행이 아닌 정체성 교통정리)</li>
+                    <li><strong>채널 전에 브랜드 신뢰 자산 선행</strong> (D2C는 인지 없으면 매출 0)</li>
+                    <li><strong>영문 브랜드·인증 신뢰 패키지</strong> (수출은 채널보다 증빙 자산이 병목)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. GAP 분석 & 기회 평가 -->
+    <div class="section" id="gap-analysis">
+        <h2>9. GAP 분석 & 기회 평가</h2>
+        <table>
+            <tr><th>항목</th><th>가중치</th><th>점수</th><th>근거</th></tr>
+            <tr><td>니즈-서비스 핏</td><td>30%</td><td><span class="tag tag-green">5/5</span></td><td>B2B→B2C/글로벌 전환 = 브랜드전략+GTM+D2C+ESG 콘텐츠, 브랜드라이즈 풀라인업 정중앙</td></tr>
+            <tr><td>예산 적합성</td><td>20%</td><td><span class="tag tag-yellow">4/5</span></td><td>매출 19억 제조 중견 → B2B 8~11% 벤치마크 시 연 1.5~2.1억 여력 [추정]. 폼 미입력으로 1점 보류</td></tr>
+            <tr><td>의사결정 구조</td><td>15%</td><td><span class="tag tag-green">5/5</span></td><td>대표 김지현 본인 신청 = 단일 의사결정자. 품의·위원회 없음, 상담→계약 최단거리</td></tr>
+            <tr><td>긴급도</td><td>15%</td><td><span class="tag tag-yellow">3/5</span></td><td>의지 있으나 폼/메일 미회신 = 절박함 미검증. EU/미국 규제 시계가 외부 긴급성 제공</td></tr>
+            <tr><td>성장 잠재력</td><td>10%</td><td><span class="tag tag-green">5/5</span></td><td>브랜드 자산→글로벌 GTM→D2C 운영 리테이너 자연 확장. 다년 파트너십 잠재</td></tr>
+            <tr><td>레퍼런스 가치</td><td>10%</td><td><span class="tag tag-green">5/5</span></td><td>EL724 최초·FSSC22000 = ESG 스토리 강력. "제조사 B2C 전환 성공" 포트폴리오 희소</td></tr>
+        </table>
+
+        <div class="verdict">
+            <div class="label">종합 기회 적합도</div>
+            <div class="value">4.50 / 5.0</div>
+            <div class="desc">GO (적극 수주) — 긴급도·예산만 첫 상담에서 검증되면 만점급</div>
+        </div>
+
+        <h3>수주 확률 시나리오</h3>
+        <table>
+            <tr><th>시나리오</th><th>확률 [추정]</th><th>트리거 조건</th></tr>
+            <tr style="background:var(--accent-light);"><td><strong>Professional 3개월 직행</strong></td><td><strong>40%</strong></td><td>글로벌 타임라인 절박 + 예산 1.5억대 확인</td></tr>
+            <tr style="background:var(--accent-light);"><td><strong>Essential 파일럿 → Professional 전환</strong></td><td><strong>35%</strong></td><td>예산 신중·첫 거래 위험 회피 → Quick Win 후 확장</td></tr>
+            <tr><td>Premium 다년 파트너십</td><td>5%</td><td>전환 올인 의지 + 예산 여유 명확</td></tr>
+            <tr><td>상담 후 보류/검토</td><td>15%</td><td>긴급도 낮음 노출, "내부 검토" 회귀</td></tr>
+            <tr><td>No-Go</td><td>5%</td><td>"제조 본업" 반론 미해소 또는 자체 수행</td></tr>
+        </table>
+        <div class="callout callout-success">
+            <strong>핵심:</strong> 폼/메일 미회신 상태이므로 첫 상담의 목표는 "클로징"이 아니라 <strong>절박함 점화 + 파일럿 합의</strong>.
+            가장 현실적인 착지는 <strong>Essential 파일럿(브랜드 골격) → Professional 전환(35%)</strong> 경로.
+        </div>
+    </div>
+
+    <!-- 10. 3-Tier 견적 초안 -->
+    <div class="section" id="quote">
+        <h2>10. 3-Tier 견적 초안</h2>
+        <div class="callout callout-info">
+            ⚠️ 가격은 매출 19억 제조 중견 + B2B 마케팅 예산 8~11%(연 1.5~2.1억) 벤치마크에서 역산한 <strong>추정 구간(대 수준)</strong>. 폼 미입력이므로 상담에서 보정.
+        </div>
+        <div class="tier-cards">
+            <div class="tier-card">
+                <h4>Essential</h4>
+                <div style="font-size:13px; color:var(--text-light);">브랜드 골격 세우기 (Quick Win)</div>
+                <div class="price">800~1,200만</div>
+                <div class="duration">일시불 / 4~6주 프로젝트</div>
+                <ul>
+                    <li>B2B/B2C/글로벌 3축 포지셔닝 정의</li>
+                    <li>한·영 브랜드 메시지 체계</li>
+                    <li>ESG 인증(EL724·FSSC) 자산화 1차 (스토리텔링 카피+비주얼 가이드)</li>
+                    <li style="color:var(--accent);">X 채널 운영 미포함</li>
+                    <li style="color:var(--accent);">X 영문 풀세트 미포함</li>
+                </ul>
+            </div>
+            <div class="tier-card recommended">
+                <div class="tier-badge">RECOMMENDED</div>
+                <h4>Professional</h4>
+                <div style="font-size:13px; color:var(--text-light);">글로벌 진출 척추</div>
+                <div class="price">월 500~800만</div>
+                <div class="duration">3개월 (1,500~2,400만) + 옵션 연장</div>
+                <ul>
+                    <li>Essential 전체 포함</li>
+                    <li>영문 브랜드 자산 풀세트 (글로벌 웹·영문 카탈로그·바이어 deck)</li>
+                    <li>타깃 시장(미국·일본 우선) GTM 전략</li>
+                    <li>D2C 채널 셋업 1차 (자사몰 구조+런칭 콘텐츠)</li>
+                    <li>ESG 콘텐츠 시리즈 (인증·밭 실증 → 바이럴 자산)</li>
+                    <li><strong>해외 바이어 대응 자산 완비</strong></li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>Premium</h4>
+                <div style="font-size:13px; color:var(--text-light);">전환 올인 파트너십</div>
+                <div class="price">월 1,000~1,500만</div>
+                <div class="duration">6개월~ 다년 파트너십</div>
+                <ul>
+                    <li>Professional 전체 포함</li>
+                    <li>D2C 풀운영 리테이너 (퍼포먼스 광고+자사몰 운영)</li>
+                    <li>다국가(미·일·EU 식기류) 동시 GTM</li>
+                    <li>분기 ESG 리포트·콘텐츠 상시 운영</li>
+                    <li>전담 PM 배정</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="leverage-box">
+            <div style="font-size:14px; opacity:0.7;">가치 프레이밍</div>
+            <div class="quote">
+                "동종 B2B 제조사는 매출의 8~11%(연 1.5~2.1억)를 마케팅에 씁니다.<br>
+                Professional은 그 절반 이하로 <strong>글로벌 진출 척추 전체</strong>를 세웁니다."
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. 상담 전략 & 코칭 -->
+    <div class="section" id="strategy">
+        <h2>11. 상담 전략 & 코칭</h2>
+
+        <h3>상담 전 필수 확인 — 핵심 질문 3가지</h3>
+        <div class="callout callout-info">
+            이 3가지가 프로젝트 범위와 처방을 가릅니다. Phase 3에서 반드시 확인. 특히 Q1·Q2가 결정 질문.
+        </div>
+        <div class="question-card" style="border-left: 4px solid var(--highlight);">
+            <div class="q-num">핵심 Q1. 3축 우선순위</div>
+            <div class="q-text">"내년 매출이 50% 더 늘어난다면, 그 늘어난 매출이 B2B·B2C·글로벌 중 어디서 나오는 게 제일 기분 좋으실 것 같으세요?"</div>
+            <div class="q-intent">"어디 집중?"으로 직접 물으면 "다 중요"로 방어. 상상 속 성공의 출처를 물으면 진짜 1순위가 무의식적으로 튀어나옴. → 프로젝트 방향 결정</div>
+        </div>
+        <div class="question-card" style="border-left: 4px solid var(--highlight);">
+            <div class="q-num">핵심 Q2. 인증 자산화 여부</div>
+            <div class="q-text">"국내 최초 EL724에 TUV·FSSC22000까지 갖추셨는데, 이 인증들이 지금 영업 제안서 안에만 있나요, 소비자가 보는 채널에도 노출되고 있나요?"</div>
+            <div class="q-intent">십중팔구 "B2B PDF에만." 자산이 돈 안 되는 곳에 갇혀 있음을 대표 스스로 깨닫게 함. Phase 4 Teach + Phase 6 무료 팁의 포석</div>
+        </div>
+        <div class="question-card" style="border-left: 4px solid var(--highlight);">
+            <div class="q-num">핵심 Q3. 예산·타임라인</div>
+            <div class="q-text">"글로벌 진출은 지금 어느 단계예요 — 문의는 오는데 영문 자료가 없어서 못 받는 상황인가요, 아직 시작 전인가요?"</div>
+            <div class="q-intent">긴급도(현재 3점) 검증. "문의는 오는데 자료가 없다"면 quick-win 자산 구축으로 빠른 첫 성과 가능 → 클로징 레버</div>
+        </div>
+
+        <h3>60분 상담 타임라인 (메일 미회신 → Phase 2 충분히)</h3>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 1<br>0~5분</div>
+            <div class="phase-content">
+                <h4>라포 형성 — 800평 공장·국내 최초 인증·밭 실증 인정</h4>
+                <p><strong>소재 A:</strong> "직접 빨대 써봤는데, 국내 제조사 최초로 EL724 받으신 거 맞죠? 이 정도 인증 스택 갖춘 빨대 회사가 국내에 거의 없더라고요."</p>
+                <p><strong>소재 B:</strong> "기사에서 직접 밭에 빨대 묻어서 분해 실증하신 거 봤어요. 그게 사실 돈 주고도 못 만드는 콘텐츠예요."</p>
+                <p style="color:var(--accent);">⚠️ "여사장님" 호칭 금지 → "대표님". 아첨 X, 구체 사실로.</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 2<br>5~15분</div>
+            <div class="phase-content">
+                <h4>상황 확인 (10분 확보) — 폼/메일 공백 메우기</h4>
+                <p>채널/성과/목표 + 현재 영업이 B2B 직거래인지 확인. "제가 이해한 게 맞는지 확인차" 프레임. 제조 중견은 빠른 질문 폭격 싫어함 → 천천히.</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 3<br>15~30분</div>
+            <div class="phase-content">
+                <h4>깊은 진단 ★ — 3축 우선순위 + 인증 자산화 현황</h4>
+                <p>핵심 Q1~Q3 여기서. 여기가 본판. 침묵 활용. 답을 주려 들지 말고 끌어내기. Q1 후 3~5초 침묵 유지.</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 4<br>30~40분</div>
+            <div class="phase-content">
+                <h4>인사이트 공유 — Challenger Teaching</h4>
+                <p>"인증이 영업자료에만 갇혀 있다" + "진짜 시장은 국내 빨대가 아니라 컴포스터블 식기류 글로벌 수출." "이미 잘 아시겠지만" 쿠션.</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">Phase 5<br>40~50분</div>
+            <div class="phase-content">
+                <h4>솔루션 방향 — 합의된 1순위 축 중심</h4>
+                <p>3축 중 합의된 1순위에 맞춰 방향 1~2개. 가격·범위 디테일 X. "제안서로 정리해 드리겠다"로 연결.</p>
+            </div>
+        </div>
+        <div class="timeline-phase" style="border-bottom:none;">
+            <div class="phase-time">Phase 6<br>50~60분</div>
+            <div class="phase-content">
+                <h4>클로징 — 1줄 요약 + 즉시 무료 팁</h4>
+                <p>핵심 1줄 요약 + 제안서 마감일(날짜로 못박기) + Quick Tip 1개로 신뢰 마무리.</p>
+            </div>
+        </div>
+
+        <h3>필수 질문 Top 5</h3>
+        <div class="question-card">
+            <div class="q-num">Q1. 3축 우선순위 (★ 핵심)</div>
+            <div class="q-text">"내년 매출이 50% 늘면 그 매출이 B2B·B2C·글로벌 중 어디서 나오는 게 제일 좋으세요?"</div>
+            <div class="q-intent">의도: 상상 속 성공 출처로 진짜 우선순위 추출. 프로젝트 방향 결정</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q2. 인증 자산화</div>
+            <div class="q-text">"EL724·TUV·FSSC 인증이 지금 어디에 쓰이고 있나요? 영업 PDF 안에만요, 소비자 채널에도요?"</div>
+            <div class="q-intent">의도: 최강 무기가 돈 안 되는 곳에 갇혀 있음을 자각하게 함</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q3. 진짜 고민의 시급성</div>
+            <div class="q-text">"요즘 제일 자주 떠오르는 숙제가 '더 많이 만드는 것'인가요, '만든 걸 어떻게 더 알리고 파느냐'인가요?"</div>
+            <div class="q-intent">의도: 제조 역량은 완성형. 고민이 수요창출·브랜딩 쪽임을 대표 입으로 말하게</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q4. 글로벌 의지의 실체</div>
+            <div class="q-text">"글로벌이 막연한 바람이세요, 이미 어느 나라·바이어랑 얘기가 오가는 구체적 그림이 있으세요?"</div>
+            <div class="q-intent">의도: 비전 vs 진행 중 딜 구분. 3축 우선순위의 결정타</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q5. 실행 구조</div>
+            <div class="q-text">"지금 온라인·콘텐츠는 누가 챙기세요? 대표님이 직접요, 내부 담당이 따로 있나요?"</div>
+            <div class="q-intent">의도: 전담 부재 확인 = 외주 정당화 + 의사결정자가 대표 본인임을 확인(클로징 단축)</div>
+        </div>
+
+        <h3>Challenger Teaching 포인트 3가지</h3>
+        <div class="leverage-box">
+            <div style="font-size:13px; opacity:0.7;">Teaching #1 — 당신의 진짜 시장은 국내 빨대가 아니다</div>
+            <div class="quote">
+                "PLA 빨대 시장은 CAGR 5.3%로 느린데, 컴포스터블 식기류는 10.8%로 2배 빠릅니다.<br>
+                미국은 30개 주가 플라스틱 식기를 금지하고 수입이 +23%예요.<br>
+                빨대 단일 품목 국내 경쟁이 아니라, <strong>친환경 식기류 글로벌 수출 브랜드</strong>로 가야 성장에 올라탑니다."
+            </div>
+        </div>
+        <div class="leverage-box">
+            <div style="font-size:13px; opacity:0.7;">Teaching #2 — 인증이 영업 PDF에 잠들어 있다</div>
+            <div class="quote">
+                "기술 신뢰는 바이어·소비자가 검증할 방법(영문 자료·스토리)이 있을 때만 무기입니다.<br>
+                'EL724 최초 인증'을 한 줄로 설명 못 하면 없는 것과 같아요.<br>
+                <strong>우리가 그 번역을 합니다.</strong>"
+            </div>
+        </div>
+        <div class="leverage-box">
+            <div style="font-size:13px; opacity:0.7;">Teaching #3 — 규제는 적이 아니라 무기</div>
+            <div class="quote">
+                "PLA 빨대만 보면 EU 금지·국내 유예가 적이지만,<br>
+                같은 규제가 <strong>컴포스터블 식기류 수요는 폭증</strong>시킵니다.<br>
+                인증 자산을 식기류로 옮기면 규제가 가장 강력한 영업 무기가 됩니다."
+            </div>
+        </div>
+
+        <h3>예상 반론 & 대응 (제조 중견 특유)</h3>
+        <table>
+            <tr><th>반론</th><th>대응 전략</th></tr>
+            <tr>
+                <td><strong>"제조가 본업인데 마케팅이 굳이?"</strong></td>
+                <td>"B2B 납품만으론 매출이 바이어 결정에 종속됩니다. 19억에서 정체된 게 '제품은 있는데 기업이 안 보여서'예요. 마케팅은 비용이 아니라 단가·협상력을 올리는 자산입니다"</td>
+            </tr>
+            <tr>
+                <td><strong>"내부에서 하면 되지 않나"</strong></td>
+                <td>"ESG 콘텐츠·영문 자산·해외 GTM은 19명 제조 조직에 없는 기능입니다. 채용 1명 연봉 5천+학습 6개월 vs 검증된 팀이 3개월에 자산 완성 — 속도와 기회비용 문제입니다"</td>
+            </tr>
+            <tr>
+                <td><strong>"수출은 전시회로 충분"</strong></td>
+                <td>"전시회는 연 2~3회 단발 접점. 미국 수입 +23%는 상시 디지털 인바운드로 들어옵니다. 명함 받은 바이어가 검색했을 때 보일 게 있어야 계약이 됩니다"</td>
+            </tr>
+            <tr>
+                <td><strong>"비싸다 / 예산이 없다"</strong></td>
+                <td>"동종 B2B는 매출의 8~11%를 마케팅에 씁니다(연 1.5~2.1억). Professional은 그 절반 이하로 글로벌 척추 전체를 세웁니다. 그리고 파일럿부터 작게 시작하면 됩니다"</td>
+            </tr>
+            <tr>
+                <td><strong>"인증·기술은 최고인데 왜 안 팔리나"</strong></td>
+                <td>"기술 신뢰는 검증할 방법이 있을 때만 무기예요. EL724를 영문 한 줄로 설명 못 하면 없는 것과 같습니다. 그 번역을 우리가 합니다"</td>
+            </tr>
+        </table>
+
+        <h3>위험 상황 대응 (실전 대화체)</h3>
+        <table>
+            <tr><th>상황</th><th>대응 멘트</th></tr>
+            <tr>
+                <td><strong>가격만 물을 때</strong></td>
+                <td>"범위에 따라 많이 달라져서요 — 3축 중 어디 먼저 힘 주실지 정해지면 가장 합리적인 안으로 정리해 드릴게요. 그게 대표님께도 안 새는 예산이라서요"</td>
+            </tr>
+            <tr style="background:var(--accent-light);">
+                <td><strong>"마케팅은 잘 몰라요"</strong><br><span class="tag tag-green">가장 가능성 높음</span></td>
+                <td>"그게 정상이에요. 18년을 좋은 제품 만드는 데 쓰셨으니까요. 그 영역은 저희가 채우는 거고, 대표님은 제품과 방향만 잡아주시면 됩니다"</td>
+            </tr>
+            <tr>
+                <td><strong>3축 다 하겠다 욕심</strong></td>
+                <td>"마음은 백번 이해해요. 근데 셋 다 동시에 하면 셋 다 어중간해져요. 한 축에서 성공 사례 하나 만들면 나머지 둘은 그 자산을 재활용하면 됩니다"</td>
+            </tr>
+            <tr>
+                <td><strong>말을 안 함 / 단답</strong></td>
+                <td>"지금 디앙 하면서 제일 풀고 싶은 거 딱 한 단어로 하면 뭐예요?" (부담 없는 한 단어로 물꼬)</td>
+            </tr>
+        </table>
+
+        <h3>경청 기법 — 제조 중견 18년차 대표 맞춤</h3>
+        <div class="callout callout-info">
+            <strong>핵심 원칙:</strong> 이분은 "설명 들으러"가 아니라 "내 회사를 이해하는 사람인지 보러" 왔다. <strong>듣기 70 / 말하기 30.</strong><br>
+            <strong>미러링:</strong> 답 끝 2~3단어 반복 ("…수출까지요…" + 멈춤). <strong>라벨링:</strong> "인증을 이렇게 받으셨는데 소비자가 모르는 게 좀 억울하실 것 같기도 하고요."<br>
+            <strong>요약 확인:</strong> "정리하면, 만드는 건 자신 있는데 알리는 채널이 약하다 — 이게 핵심이신 거죠?" <strong>침묵:</strong> Q1·Q4 후 3~5초 먼저 안 채움.<br>
+            <strong>존중 쿠션 필수:</strong> "이미 잘 아시겠지만", "현장에서 더 잘 느끼셨겠지만". 추상적 "브랜딩"보다 "EL724를 소비자가 보게 하는 법" 같은 구체.
+        </div>
+
+        <h3>Trusted Advisor Quick Tip (무료로 줄 팁)</h3>
+        <div class="callout callout-success">
+            <strong>Tip 1 — 인증을 '소비자 언어'로 번역:</strong> 지금 채널에 'EL724', 'TUV OK Compost'가 코드로만 적혀 있는데, 소비자는 그게 뭔지 모릅니다.
+            "국내 제조사 <strong>최초</strong> 환경부 인증", <strong>"땅에 묻으면 180일 안에 자연으로 돌아가는"</strong> 한 줄로만 바꿔도 카페 사장님들이 디앙을 고르는 이유가 생깁니다. 인증 새로 딸 필요 없이 가진 걸 말로 푸는 것만으로.<br><br>
+            <strong>Tip 2 — 밭 퇴비 실증이 최고의 콘텐츠:</strong> 대표님이 직접 밭에 묻어 분해 실증하신 거, 돈 주고도 못 만드는 콘텐츠예요.
+            "진짜 분해되나?"라는 소비자 최대 의심을 <strong>대표님이 직접 증명하는</strong> 영상 하나면 신뢰가 한 방에 잡힙니다. 새로 찍을 필요도 없이 그 장면이 핵심 자산.
+        </div>
+    </div>
+
+    <!-- 12. 클로징 전략 -->
+    <div class="section" id="closing">
+        <h2>12. 클로징 전략</h2>
+
+        <h3>클로징 플로우</h3>
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="step-num">STEP 1</div>
+                <div class="step-title">상담 당일 (D+0)</div>
+                <div class="step-desc">감사 메일 + 무료 팁 1장<br>경청 증명 한 줄</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 2</div>
+                <div class="step-title">D+1~2</div>
+                <div class="step-desc">내부 랩업<br>3축 1순위 결론 + 방향 확정</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 3</div>
+                <div class="step-title">D+3~5</div>
+                <div class="step-desc">1차 제안서 작성<br>1순위 축 중심 + 인증 자산화</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 4</div>
+                <div class="step-title">D+5~7</div>
+                <div class="step-desc">제안서 발송<br>3-Tier + 일본 선행 GTM 스케치</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 5</div>
+                <div class="step-title">D+10~14</div>
+                <div class="step-desc">팔로업 (전화 우선)<br>결정 or 넛지</div>
+            </div>
+        </div>
+
+        <div class="callout">
+            <strong>핵심 마인드셋:</strong> 폼/메일 미회신 상태이므로 첫 상담의 성공은 "수주"가 아니라 <strong>"이 사람은 디앙을 이해한다 + 다음 한 수가 보인다"는 인식을 심는 것</strong>.
+            18년 제조 대표에게 필요한 건 영업이 아니라, 저평가감을 풀어주고 방향 확신을 주는 동반자 경험. 그 경험이 되면 수주는 따라온다.
+        </div>
+
+        <h3>긴급성 프레이밍 (외부 시계로)</h3>
+        <div class="callout">
+            <strong>핵심 멘트:</strong> "미국 30개 주 플라스틱 식기 금지가 진행 중이고 수입이 +23%인데, 지금 영문 자산이 없으면 이 수요를 중국·인도(생산 78%) 경쟁사에 뺏깁니다. 국내 규제는 후퇴 중이라 수출 전환은 선택이 아니라 생존이에요."<br>
+            <strong>꺼내는 타이밍:</strong> 글로벌 얘기 나올 때 자연스럽게. 협박이 아닌 데이터로만 (자부심 강한 대표는 공포 마케팅에 역반응).
+        </div>
+
+        <h3>리스크 제거 장치 (제조 중견 맞춤)</h3>
+        <div class="callout callout-success">
+            <strong>파일럿 진입:</strong> Professional 풀계약 전 Essential(브랜드 골격 4~6주)을 <strong>검증 파일럿</strong>으로 제시.
+            "성과 보고 확장 결정" → 제조인 언어('검증 후 양산')로 번역하면 실패 위험 회피 심리 직접 해소.
+            상담 자리에서 계약 확정 시도 X → 후속 제안서가 실질적 설득 도구.
+        </div>
+
+        <h3>상담 후 액션 리스트</h3>
+        <table>
+            <tr><th>타이밍</th><th>액션</th></tr>
+            <tr><td><strong>당일 3시간 내</strong></td><td>감사 메일 (인상 깊었던 대표님 말씀 인용) + 무료 팁 2개 1장으로 정리</td></tr>
+            <tr><td><strong>D+1~2</strong></td><td>내부 랩업 (/post-meeting): 3축 1순위 결론 + 수주 적합도 + 제안 방향 확정</td></tr>
+            <tr><td><strong>D+3~5</strong></td><td>1차 제안서 작성 (정식 12섹션, 합의된 1순위 축 중심, ROI·검증 단계 명확히)</td></tr>
+            <tr><td><strong>D+5~7</strong></td><td>제안서 발송 + "받으시면 한 번 더 통화 잡자" 메일 (마감일 엄수)</td></tr>
+            <tr><td><strong>D+10~14 무응답 시</strong></td><td>전화 팔로업 (메일 미회신 이력 → 전화가 더 효과적) + 업계 인사이트 1개 무료 제공</td></tr>
+        </table>
+    </div>
+
+    <!-- 참고 링크 -->
+    <div class="section">
+        <h2>참고 링크</h2>
+        <div class="source-list" style="font-size:14px; line-height:2;">
+            <a href="https://www.diang.co.kr/" target="_blank" rel="noopener">디앙 공식몰 (diang.co.kr)</a><br>
+            <a href="http://www.interviewm.com/news/articleView.html?idxno=1288" target="_blank" rel="noopener">월간 인터뷰 — 동일프라텍 김지현 대표 글로벌 브랜드 도약</a><br>
+            <a href="http://www.plastics.kr/news/articleView.html?idxno=1264" target="_blank" rel="noopener">플라스틱코리아 — 김지현 대표 포부·시장전망·글로벌 진출</a><br>
+            <a href="https://www.job-post.co.kr/news/articleView.html?idxno=202953" target="_blank" rel="noopener">잡포스트 2026-01 — 빨대 규제 혼선 인터뷰</a><br>
+            <a href="https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A201912110294" target="_blank" rel="noopener">한국경제TV — 디앙 친환경 빨대의 조용한 반란</a><br>
+            <a href="https://news.mt.co.kr/mtview.php?no=2025020819595668736" target="_blank" rel="noopener">머니투데이 — 종이빨대 사형선고, 땅에 파묻는 사장님</a><br>
+            <a href="https://www.yhtoday.co.kr/news/articleView.html?idxno=5723" target="_blank" rel="noopener">연합투데이 — 국내최초 친환경 인증 생분해 스트로우</a><br>
+            <a href="https://www.youtube.com/watch?v=8PEuA2joL18" target="_blank" rel="noopener">YouTube — 800평 빨대공장 운영하는 사장님 이야기</a><br>
+            <a href="https://ecolgreen.com/" target="_blank" rel="noopener">에콜그린 (경쟁사)</a> · <a href="https://less-labs.com/" target="_blank" rel="noopener">레스랩스 (경쟁사)</a><br>
+            <span style="color:var(--text-light);">시장 수치: Verified Market Research(생분해 빨대), Towards Packaging(컴포스터블 식기류), European Commission(EU SUP), 한국경제매거진·세계일보(국내 규제 후퇴) · Instagram 메트릭: Apify 실측 2026-05-25</span>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>BRANDRISE (MarketingOS) — New Business 상담 준비 패키지</p>
+    <p>이 문서는 상담 준비 목적으로 작성되었으며, 외부 공유를 금합니다.</p>
+</div>
+
+</body>
+</html>
