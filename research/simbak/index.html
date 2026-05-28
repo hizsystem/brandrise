@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>농업회사법인 (주)심박 (SIMBAK) - New Business 상담 준비 | BRANDRISE</title>
+    <style>
+        :root {
+            --primary: #0D0D0D;
+            --secondary: #1a1b18;
+            --accent: #EA580C;
+            --highlight: #EA580C;
+            --bg: #f4f7f9;
+            --card-bg: #ffffff;
+            --text: #1a1b18;
+            --text-light: #636569;
+            --border: #e8edf1;
+            --success: #00b894;
+            --warning: #EA580C;
+            --danger: #dc2626;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(233, 69, 96, 0.2);
+            border: 1px solid var(--highlight);
+            color: var(--highlight);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+        .header .subtitle { font-size: 16px; opacity: 0.7; font-weight: 300; }
+        .header .date { margin-top: 16px; font-size: 13px; opacity: 0.5; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        .toc {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 8px;
+        }
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 0;
+            display: block;
+            transition: color 0.2s;
+        }
+        .toc a:hover { color: var(--highlight); }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--highlight);
+        }
+        .section h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 20px 0 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 8px 16px;
+            font-size: 14px;
+        }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th {
+            background: var(--primary);
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+        tr:hover td { background: #f1f3f5; }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 2px;
+        }
+        .tag-red { background: #ffe0e0; color: #d63031; }
+        .tag-green { background: #d4f5e9; color: #00b894; }
+        .tag-blue { background: #dfe6fd; color: #EA580C; }
+        .tag-yellow { background: #fff3cd; color: #856404; }
+        .tag-gray { background: #e9ecef; color: #495057; }
+
+        .score-bar { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+        .score-bar .bar { flex: 1; height: 8px; background: #e9ecef; border-radius: 4px; overflow: hidden; }
+        .score-bar .fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
+        .fill-high { background: var(--success); }
+        .fill-mid { background: var(--warning); }
+        .fill-low { background: var(--danger); }
+
+        .verdict {
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            color: white;
+            padding: 24px 32px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 24px 0;
+        }
+        .verdict .label { font-size: 14px; opacity: 0.8; }
+        .verdict .value { font-size: 36px; font-weight: 800; margin: 8px 0; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+
+        .tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+        .tier-card {
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .tier-card:hover { transform: translateY(-4px); }
+        .tier-card.recommended {
+            border-color: var(--highlight);
+            box-shadow: 0 4px 20px rgba(233, 69, 96, 0.15);
+        }
+        .tier-card .tier-badge {
+            position: absolute;
+            top: -12px;
+            right: 16px;
+            background: var(--highlight);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .tier-card h4 { font-size: 16px; margin-bottom: 4px; }
+        .tier-card .price { font-size: 24px; font-weight: 800; color: var(--highlight); margin: 12px 0; }
+        .tier-card .duration { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+        .tier-card ul { list-style: none; padding: 0; }
+        .tier-card li { font-size: 13px; padding: 4px 0; padding-left: 20px; position: relative; }
+        .tier-card li::before { content: ">"; position: absolute; left: 0; color: var(--highlight); font-weight: 700; }
+
+        .callout {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+        .callout-info { background: #e3f2fd; border-left-color: #2196f3; }
+        .callout-danger { background: #fce4ec; border-left-color: #e53935; }
+        .callout-success { background: #e8f5e9; border-left-color: #00b894; }
+
+        .leverage-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        .leverage-box .quote { font-size: 20px; font-weight: 700; line-height: 1.5; margin: 16px 0; }
+
+        .flow-steps { display: flex; gap: 0; margin: 20px 0; overflow-x: auto; }
+        .flow-step {
+            flex: 1;
+            min-width: 160px;
+            padding: 16px;
+            background: #f1f3f5;
+            position: relative;
+            text-align: center;
+        }
+        .flow-step:not(:last-child)::after {
+            content: ">";
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: var(--highlight);
+            font-weight: 700;
+            z-index: 1;
+        }
+        .flow-step .step-num { font-size: 11px; font-weight: 700; color: var(--highlight); margin-bottom: 4px; }
+        .flow-step .step-title { font-size: 13px; font-weight: 600; }
+        .flow-step .step-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .swot-item h4 { font-size: 15px; margin-bottom: 10px; }
+        .swot-item ul { padding-left: 18px; }
+        .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: #d4f5e9; }
+        .swot-w { background: #ffe0e0; }
+        .swot-o { background: #dfe6fd; }
+        .swot-t { background: #fff3cd; }
+
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+        .source-list a { color: var(--accent); text-decoration: none; }
+        .source-list a:hover { text-decoration: underline; }
+
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+        .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 8px 0; }
+        .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+
+        /* Executive Summary */
+        .summary-section { border-left: 4px solid var(--highlight); background: linear-gradient(135deg, #fff 0%, #fff5f7 100%); }
+        .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; color: white; }
+        .kpi-card.kpi-dark { background: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--danger); }
+        .kpi-card.kpi-success { background: var(--success); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.7; }
+        .kpi-card .kpi-value { font-size: 24px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.7; }
+
+        .summary-oneliner { background: #0D0D0D; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+        .summary-oneliner .sol-text .hl { color: var(--highlight); }
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+
+        /* Diagnosis */
+        .diagnosis-section { border: 2px solid var(--danger); }
+        .diagnosis-section h2 { border-bottom-color: var(--danger); color: var(--danger); }
+        .diag-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .diag-box { padding: 16px; border-radius: 8px; }
+        .diag-box.diag-current { background: #fce4ec; }
+        .diag-box.diag-ideal { background: #e8f5e9; }
+        .diag-box .db-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .diag-box.diag-current .db-label { color: var(--danger); }
+        .diag-box.diag-ideal .db-label { color: var(--success); }
+        .diag-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+        .diag-note { font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: #fff3e0; border-radius: 8px; }
+
+        /* SPIN & JTBD */
+        .spin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .spin-card { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .spin-card h4 { font-size: 15px; margin-bottom: 10px; }
+        .spin-s { background: #e3f2fd; }
+        .spin-p { background: #fce4ec; }
+        .spin-i { background: #fff3e0; }
+        .spin-n { background: #e8f5e9; }
+
+        .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+        .pain-level { flex: 1; min-width: 200px; padding: 16px; border-radius: 10px; font-size: 13px; }
+        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .pain-l1 { background: #e3f2fd; }
+        .pain-l2 { background: #fff3e0; }
+        .pain-l3 { background: #fce4ec; }
+        .pain-l4 { background: #f3e5f5; }
+
+        /* Script & Coaching */
+        .script-block {
+            background: #f8f9fa;
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            font-style: italic;
+            color: var(--secondary);
+        }
+        .question-card { background: #f8f9fa; border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+        .question-card .q-num { font-size: 12px; font-weight: 700; color: var(--highlight); }
+        .question-card .q-text { font-size: 15px; font-weight: 600; margin: 4px 0 8px; }
+        .question-card .q-intent { font-size: 13px; color: var(--text-light); }
+
+        .timeline-phase { display: grid; grid-template-columns: 100px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .timeline-phase .phase-time { font-size: 13px; font-weight: 700; color: var(--highlight); text-align: center; padding-top: 4px; }
+        .timeline-phase .phase-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .timeline-phase .phase-content p { font-size: 13px; color: var(--text-light); }
+
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .tier-cards { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-step:not(:last-child)::after { display: none; }
+            .channel-grid { grid-template-columns: repeat(2, 1fr); }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .diag-compare { grid-template-columns: 1fr; }
+            .spin-grid { grid-template-columns: 1fr; }
+            .pain-layer { flex-direction: column; }
+            .timeline-phase { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">NEW BUSINESS 상담 준비 패키지</div>
+    <h1>농업회사법인 (주)심박 (SIMBAK)</h1>
+    <div class="subtitle">영천 샤인머스켓 프리미엄 가공식품 | 수출형 6차산업 D2C · 잠긴 신뢰자산 · 프리미엄 재포지셔닝</div>
+    <div class="date">작성일: 2026-05-28 | Prepared by BRANDRISE (MarketingOS)</div>
+</div>
+
+<div class="container">
+
+    <!-- ============================================================ -->
+    <!-- Executive Summary -->
+    <!-- ============================================================ -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">회사</div>
+                <div class="sh-title">농업회사법인 (주)심박</div>
+                <div class="sh-sub">영천 샤인머스켓 가공식품(빵·주스·콤부차) | 2022 설립</div>
+            </div>
+            <div>
+                <div class="sh-label">대표이사</div>
+                <div class="sh-title">박문수</div>
+                <div class="sh-sub">IT 개발자 10년+ → 농식품 전환 | K-농식품 세계화·고향 보육원 명분</div>
+            </div>
+        </div>
+        <!-- KPI 카드: 핵심 지표 3개 + 문제 지표 1개 (kpi-danger) -->
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">수출국</div>
+                <div class="kpi-value">10개국+</div>
+                <div class="kpi-sub">미·중·캐나다·두바이 등</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">지식재산권</div>
+                <div class="kpi-value">20건+</div>
+                <div class="kpi-sub">특허 2건 포함</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">국내 유통</div>
+                <div class="kpi-value">백화점·면세점</div>
+                <div class="kpi-sub">신세계·롯데·현대·인천공항</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">상시 할인율 (문제)</div>
+                <div class="kpi-value">30~58%</div>
+                <div class="kpi-sub">프리미엄 가치 자기부정</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                수출 10개국·특허 20건·백화점/면세점이라는 최상위 신뢰자산을 갖췄으나,<br>
+                <span class="hl">이 자산이 B2C 자사몰·SNS 전환에 거의 안 쓰이는 '잠긴 자산' 상태</span>가 성장의 최대 병목이 되고 있음.
+            </div>
+        </div>
+        <div class="summary-bottom">
+            <strong>기회 적합도:</strong> <span class="hl">4.0 / 5.0 (조건부 GO)</span> &nbsp;|&nbsp;
+            <strong>추천 Tier:</strong> Professional (월 수백만 원 대, 3~6개월) &nbsp;|&nbsp;
+            <strong>1순위 과제:</strong> 상담 Q1~Q3로 진짜 페인·예산 확정 (인테이크 미제공)
+        </div>
+        <div class="callout callout-info" style="margin-top:16px;">
+            <strong>⚠️ 이 건의 특수성:</strong> 소개/레퍼럴 유입 + 인테이크에 페인·예산·희망서비스 전부 미제공. 본 브리프의 페인·가격은 회사 실측·시장 데이터 기반 <strong>작업가설(추정)</strong>이며, 상담의 1순위 목표는 "진짜 고민을 대표 입으로 확정"하는 것. 가설을 정답처럼 들이밀면 신뢰가 깨진다.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 핵심 문제점 & 진단 -->
+    <!-- ============================================================ -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 문제점 & 진단</h2>
+
+        <h3>1. 보유 신뢰자산의 B2C 미전환 — '잠긴 자산' (Critical)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재 상태</div>
+                <ul>
+                    <li>수출 10개국·특허 20건·백화점/면세점 입점 = 돈 주고 못 사는 소셜프루프 보유</li>
+                    <li>그러나 자사몰·SNS 구매 결정 순간엔 이 자산이 거의 안 보임 (추정)</li>
+                    <li>"좋은 제품인데 안 팔리는" 전형적 농식품 함정</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">이상적 상태</div>
+                <ul>
+                    <li>"세계 10개국이 선택한 K-디저트" 프레임으로 국내 신뢰 부트스트랩</li>
+                    <li>상세페이지·SNS 바이오·신뢰 배지로 잠긴 자산을 소비자 언어로 번역</li>
+                    <li>전환율·재구매로 직결되는 가장 빠른 레버</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2. 프리미엄 가치 정당화 실패 — '비싼 델리만주' 인식 리스크 (Critical)</h3>
+        <div class="diag-note">동결건조 분말+강낭콩 앙금 구조에 대한 기대 불일치 부정 리뷰 노출 + 상시 30~58% 고할인. 특허·동결건조·GAP·수출이라는 프리미엄 근거가 가격으로 <strong>자기부정</strong>되어, 소비자가 "왜 비싼가"를 체감하지 못함 → 객단가·재구매 한계.</div>
+
+        <h3>3. 강한 시즌성 + 콘텐츠/바이럴 엔진 부재 (High)</h3>
+        <div class="diag-note">샤인머스켓 8~10월 강시즌 + 자체 콘텐츠 발행·릴스·인플루언서 시딩 흔적 미약. 비시즌 가공 SKU(콤부차·주스·빵) 포트폴리오는 갖췄으나 이를 끌고 갈 콘텐츠·퍼포먼스 운영이 미가동 → 연중 매출 평준화 실패 위험.</div>
+
+        <h3>영역별 진단 요약</h3>
+        <table>
+            <tr><th>영역</th><th>현재 상태</th><th>심각도</th><th>GAP</th></tr>
+            <tr><td>신뢰자산 B2C 전환</td><td>수출·특허·인증 풍부하나 전환 페이지에 미통합</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>프리미엄 가격 정책</td><td>상시 30~58% 할인 상시 노출</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>SNS·콘텐츠 운영</td><td>채널은 보유, 운영 깊이·전환장치 약함</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-yellow">큼</span></td></tr>
+            <tr><td>매출 구조 (D2C)</td><td>B2B·수출 의존, 원물 가격 폭락 리스크 노출</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-yellow">큼</span></td></tr>
+            <tr><td>브랜드 아이덴티티</td><td>3개 브랜드명(심박/토곰이/이순간) 분산</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-yellow">중간</span></td></tr>
+            <tr><td>유료광고 운영</td><td>메타·네이버 집행 흔적 미약 (미개척)</td><td><span class="tag tag-green">Low</span></td><td><span class="tag tag-green">기회</span></td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>진단 결론:</strong> 심박은 "없는 걸 만들어야 하는" 회사가 아니라 <strong>"이미 가진 최상위 자산이 잠겨 있는"</strong> 회사다. 가장 확신도 높은 객관적 페인은 L3(B2B·수출 의존 + 샤인머스켓 생과 45% 폭락 노출, 확신도 70%). 우리 역할은 잠긴 신뢰자산을 소비자 언어로 번역하고, 상시 할인으로 무너진 프리미엄을 재정렬해 D2C 직접 수요라는 "가격·바이어 리스크 방어선"을 세우는 것.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 목차 -->
+    <!-- ============================================================ -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 & 진단</a>
+            <a href="#company-info">1. 기업 기초 정보</a>
+            <a href="#product-lineup">2. 주력 제품/서비스</a>
+            <a href="#digital-presence">3. 디지털 프레즌스 진단</a>
+            <a href="#competitors">4. 경쟁사 분석</a>
+            <a href="#market">5. 시장 환경</a>
+            <a href="#ceo-background">6. 대표자/경영진 프로필</a>
+            <a href="#swot">7. SWOT 분석</a>
+            <a href="#needs-analysis">8. 니즈 분석 (SPIN + JTBD)</a>
+            <a href="#gap-analysis">9. GAP 분석 & 기회 평가</a>
+            <a href="#quote">10. 3-Tier 견적 초안</a>
+            <a href="#strategy">11. 상담 전략 & 코칭</a>
+            <a href="#closing">12. 클로징 전략</a>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 1. 기업 기초 정보 -->
+    <!-- ============================================================ -->
+    <div class="section" id="company-info">
+        <h2>1. 기업 기초 정보</h2>
+        <div class="info-grid">
+            <div class="info-label">법인명</div><div class="info-value">농업회사법인 (주)심박 (사업자 705-86-02198)</div>
+            <div class="info-label">대표이사</div><div class="info-value">박문수</div>
+            <div class="info-label">설립 / 소재</div><div class="info-value">2022년 / 경북 영천시 금호읍 (대구대 창업보육센터 입주)</div>
+            <div class="info-label">사업 모델</div><div class="info-value">영천 직접재배 샤인머스켓을 원물로 한 6차산업형 가공식품 D2C (농산물 → 동결건조 분말 → 프리미엄 가공식품)</div>
+            <div class="info-label">인증 / IP</div><div class="info-value">벤처기업·HACCP·ISO9001·6차산업 인증 + 지식재산권 20건+(특허 2건 포함), GAP 원물</div>
+            <div class="info-label">유통 / 수출</div><div class="info-value">국내 신세계·롯데·현대백화점·인천공항면세점·호텔/리조트, 수출 10개국+(미·중·캐나다·필리핀·두바이·인도·싱가포르·베트남 등), KOTRA 경북 CIS 무역사절단(2025.4)</div>
+        </div>
+        <div class="callout callout-info">
+            <strong>한눈에:</strong> 신생(2022)이지만 인증·특허·수출·백화점 입점까지 갖춘 "인프라·신뢰자산 최상위" 6차산업 D2C. 단 실매출·자사몰 전환율은 <span class="tag tag-gray">⚠️ 미확인</span> — 상담 청취 1순위.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 2. 주력 제품/서비스 -->
+    <!-- ============================================================ -->
+    <div class="section" id="product-lineup">
+        <h2>2. 주력 제품/서비스</h2>
+        <table>
+            <tr><th>브랜드 / 제품</th><th>구성</th><th>가격대 (정가 → 상시 판매가)</th><th>비고</th></tr>
+            <tr><td><strong>영천샤인머스켓빵</strong> (주력)</td><td>포도송이 모양·동결건조 분말 앙금</td><td>6개입 20,000 → 14,000 (30%↓) / 12개입 30,000 → 24,000</td><td>시그니처</td></tr>
+            <tr><td>3종 선물세트</td><td>빵+가공품 구성</td><td>65,000 → 27,000 <span class="tag tag-red">58%↓</span></td><td>할인폭 과대</td></tr>
+            <tr><td>심박한 토곰이의 샤인머스켓</td><td>주스 300ml</td><td>RTD</td><td>비시즌 브리지</td></tr>
+            <tr><td>이순간 샤인머스켓 콤부차</td><td>프로틴·무설탕</td><td>RTD</td><td>헬시플레저</td></tr>
+            <tr><td>기타</td><td>초콜릿·쉐이크, 포도(머루·블랙사파이어·마이하트)</td><td>—</td><td>SKU 다양</td></tr>
+        </table>
+        <div class="callout callout-danger">
+            <strong>제품 진단:</strong> 빵·주스·콤부차·초콜릿으로 <strong>시즌(생과)–비시즌(가공) 브리지 포트폴리오</strong>는 이미 갖췄음. 그러나 ① 상시 30~58% 할인이 프리미엄 톤을 훼손하고 ② 브랜드명 3종(심박/토곰이/이순간)이 분산되어 아이덴티티가 산만. 제품이 아니라 <strong>가격 정책·브랜드 정렬</strong>이 1차 손볼 곳.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 3. 디지털 프레즌스 진단 -->
+    <!-- ============================================================ -->
+    <div class="section" id="digital-presence">
+        <h2>3. 디지털 프레즌스 진단</h2>
+        <div class="channel-grid">
+            <div class="channel-card">
+                <div class="ch-name">자사몰 simbak.co.kr</div>
+                <div class="ch-stat">국·영문</div>
+                <div class="ch-note">국제배송 / 카페24 추정. 상시 큰 할인·소셜프루프 빈약 (⚠️ 전환퍼널 미확인)</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">인스타 @shinemuscat_bread</div>
+                <div class="ch-stat">⚠️ 미확인</div>
+                <div class="ch-note">계정 존재(FACT). 팔로워·발행빈도·전환장치(프로필 허브/CTA) 미흡 추정</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">블로그·유튜브·외부몰</div>
+                <div class="ch-stat">보유</div>
+                <div class="ch-note">네이버 블로그(pms4181)·유튜브·스마트스토어·오아시스·사이소. 자체 콘텐츠 주기 ⚠️ 미확인</div>
+            </div>
+        </div>
+        <table>
+            <tr><th>진단 항목</th><th>현재 상태</th><th>판정</th></tr>
+            <tr><td>채널 보유</td><td>자사몰·스마트스토어·외부몰·인스타·블로그·유튜브 멀티채널</td><td><span class="tag tag-green">양호</span></td></tr>
+            <tr><td>전환 장치</td><td>상세페이지 신뢰자산 통합 약함, CTA·리뷰/UGC 소셜프루프 빈약 (추정)</td><td><span class="tag tag-red">취약</span></td></tr>
+            <tr><td>가격 일관성</td><td>상시 30~58% 할인 노출 → 프리미엄 톤 훼손</td><td><span class="tag tag-red">취약</span></td></tr>
+            <tr><td>콘텐츠 운영</td><td>PR·수출 노출은 풍부, B2C 바이럴/입소문 약함</td><td><span class="tag tag-yellow">미흡</span></td></tr>
+            <tr><td>유료광고</td><td>메타·네이버 집행 흔적 미약 (⚠️ 미확인, 미개척)</td><td><span class="tag tag-yellow">미개척</span></td></tr>
+        </table>
+        <div class="callout">
+            <strong>리스크 신호:</strong> 외부 블로그 리뷰에서 "껍데기만 갈아 끼운 델리만주" 평가 노출 — 제품 인식·가치 정당화가 핵심 리스크. <em>상담에서 직접 들이대지 말 것</em>, "프리미엄 가치 정당화" 화제로만 우회 활용.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 4. 경쟁사 분석 -->
+    <!-- ============================================================ -->
+    <div class="section" id="competitors">
+        <h2>4. 경쟁사 분석</h2>
+        <table>
+            <tr><th>경쟁군</th><th>설명</th><th>심박의 상대 위치</th></tr>
+            <tr><td>① 영천·상주 산지연계 로컬 베이커리</td><td>직접 경쟁, 지리적 브랜딩 동일 축</td><td><span class="tag tag-green">우위</span> 수출·IP·인증·동결건조 기술로 차별화</td></tr>
+            <tr><td>② 백화점·프리미엄 베이커리 시즌 디저트</td><td>성수·청담 등 시즌 과일 디저트</td><td><span class="tag tag-yellow">열위</span> 소비자 인지·SNS 바이럴 약함</td></tr>
+            <tr><td>③ 프랜차이즈 카페 샤인머스켓 메뉴</td><td>시즌 대체재</td><td><span class="tag tag-yellow">대체재 위협</span></td></tr>
+            <tr><td>④ RTD 콤부차·스파클링 과일음료 브랜드</td><td>콤부차 SKU 경쟁</td><td><span class="tag tag-gray">중립</span></td></tr>
+            <tr><td>⑤ 호텔 애프터눈티</td><td>고급 이미지·SNS 바이럴</td><td><span class="tag tag-yellow">인식 열위</span></td></tr>
+        </table>
+        <div class="callout callout-info">
+            <strong>경쟁 결론:</strong> 직접 경쟁군(①)에서는 "수출·기술·IP"로 압도적 우위. 그러나 "소비자 인지·콘텐츠·바이럴"은 로컬 SNS 강자 대비 열위. <strong>보유 자산(수출국·백화점·특허)을 B2C 신뢰 자산으로 전환하는 것이 미사용 레버리지</strong>이자 가장 빠른 차별화 축.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 5. 시장 환경 -->
+    <!-- ============================================================ -->
+    <div class="section" id="market">
+        <h2>5. 시장 환경</h2>
+        <table>
+            <tr><th>구분</th><th>규모/내용 (추정)</th><th>근거</th></tr>
+            <tr><td>TAM</td><td>국내 프리미엄 과일 디저트·가공 니치 (수백억~수천억 대, 통계 미분리)</td><td>⚠️ 추정</td></tr>
+            <tr><td>SAM</td><td>샤인머스켓 가공 디저트+선물세트 (연 10%+ 성장 니치)</td><td>가공식품 성장세</td></tr>
+            <tr><td>SOM</td><td>산지연계 샤인머스켓빵 D2C 선두권 (수억~수십억 매출대)</td><td>⚠️ 심박 실매출 미확인</td></tr>
+        </table>
+        <table>
+            <tr><th>트렌드 / 시장 동향</th><th>시사점</th></tr>
+            <tr><td>샤인머스켓 생과 공급과잉·가격 45% 폭락 (2025 도매가 kg 4,290원, 5년 평균 7,760원)</td><td>"흔하고 싸진 포도" 인식 → 가공품 동반 추락 위험 + 가공 원가 경쟁력↑</td></tr>
+            <tr><td>포도 수출 2025년 6,330만 달러(+42%), 가공식품이 농식품 수출 성장 견인(충북 85%)</td><td>가공·브랜드화 성장세가 생과보다 가파름</td></tr>
+            <tr><td>식감 재미·로컬 현대화·헬시플레저·명절 선물세트 프리미엄화·UGC 바이럴</td><td>D2C 성공공식 = 산지 스토리 + 자사몰 + 정기배송 + 레시피 콘텐츠</td></tr>
+        </table>
+        <div class="callout callout-danger">
+            <strong>핵심:</strong> 생과 45% 폭락 = "샤인머스켓 = 싼 포도" 인식 확산. <strong>가공·브랜드화는 원물 가격과 디커플링 가능한 유일한 방어선.</strong> 지금이 프리미엄 재포지셔닝 골든타임.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 6. 대표자/경영진 프로필 -->
+    <!-- ============================================================ -->
+    <div class="section" id="ceo-background">
+        <h2>6. 대표자/경영진 프로필</h2>
+        <div class="info-grid">
+            <div class="info-label">대표</div><div class="info-value">박문수 — IT 개발자 10년+ 경력 후 농식품 사업 전환 (2022 창업)</div>
+            <div class="info-label">비전</div><div class="info-value">"농산물 고부가가치화로 K-농식품 세계화"</div>
+            <div class="info-label">개인 미션</div><div class="info-value">고향 영천에 보육원 설립 — 사업 너머 사회환원 동기 명확</div>
+            <div class="info-label">멘탈모델</div><div class="info-value">엔지니어 출신 = 논리·데이터·통제 욕구. 제품·기술·IP·수출은 강하나 B2C 마케팅·콘텐츠·퍼포먼스 운영은 상대적 약함 (추정)</div>
+        </div>
+        <div class="callout callout-info">
+            <strong>공략 포인트:</strong> 관계형·가치공감형 커뮤니케이션이 잘 통할 대표 유형. "팔로워 늘려드립니다"가 아니라 <strong>명분에 걸맞은 브랜드 설계 + 매월 숫자로 보고(엔지니어 신뢰 지표)</strong>로 접근.
+        </div>
+        <div class="callout">
+            <strong>⚠️ 동명이인 주의:</strong> "박문수 센도리 대표"(냉동공조, kharn.kr 인터뷰)는 <strong>별개 인물</strong>. 상담에서 그쪽 내용 절대 언급 금지(망신). 심박 박문수 대표 직접 인터뷰 기사는 미발굴 → 본인 서사 직접 청취 권장.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 7. SWOT 분석 -->
+    <!-- ============================================================ -->
+    <div class="section" id="swot">
+        <h2>7. SWOT 분석</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>Strengths (강점)</h4>
+                <ul>
+                    <li>수출 10개국+·특허 20건+·백화점/면세점 입점 = 최상위 신뢰자산</li>
+                    <li>HACCP·벤처·ISO·6차산업 인증 + GAP 원물</li>
+                    <li>동결건조 분말 공법·시즌–비시즌 브리지 SKU 포트폴리오</li>
+                    <li>IT→농식품 전환 대표 서사 + K-농식품/보육원 명분 (내러티브 자산)</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>Weaknesses (약점)</h4>
+                <ul>
+                    <li>신뢰자산이 B2C 전환에 미통합 ('잠긴 자산')</li>
+                    <li>상시 30~58% 할인으로 프리미엄 가치 자기부정</li>
+                    <li>브랜드명 3종 분산, SNS 운영 깊이·전환장치 약함</li>
+                    <li>B2C 마케팅·콘텐츠·퍼포먼스 운영 엔진 부재</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>Opportunities (기회)</h4>
+                <ul>
+                    <li>가공·브랜드화가 농식품 수출 성장 견인, 디저트 니치 연 10%+ 성장</li>
+                    <li>"세계가 인정한 K-디저트" 국내 신뢰 부트스트랩 카드</li>
+                    <li>유료광고 미개척 = 즉시 레버 가능</li>
+                    <li>정기배송/구독·수출-국내 데이터 투트랙 확장 룸</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>Threats (위협)</h4>
+                <ul>
+                    <li>샤인머스켓 생과 45% 폭락 → "흔한 포도" 인식 동반 추락</li>
+                    <li>B2B·수출 의존 → 바이어 이탈 시 매출 출렁</li>
+                    <li>로컬 베이커리·프랜차이즈 시즌 메뉴 등 대체재</li>
+                    <li>강한 시즌성(8~10월) → 비시즌 매출 공백</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 8. 니즈 분석 (SPIN + JTBD) -->
+    <!-- ============================================================ -->
+    <div class="section" id="needs-analysis">
+        <h2>8. 니즈 분석 (SPIN + JTBD)</h2>
+        <div class="callout callout-danger">
+            <strong>⚠️ 전제:</strong> 인테이크에 페인 0건(소개/레퍼럴, "리서치로 추정") + 메일 미회신. 아래는 회사 행동 단서·시장 데이터에서 도출한 <strong>가장 개연성 높은 페인 가설</strong>이며, 상담 1차 목표는 진짜 고민 확정이다.
+        </div>
+
+        <h3>SPIN 레이어링 (추정 페인: "수출·B2B는 강한데 국내 B2C·D2C가 약하다")</h3>
+        <div class="spin-grid">
+            <div class="spin-card spin-s">
+                <h4>S — 상황 (실측)</h4>
+                영천 샤인머스켓 가공식품 제조(2022). 유통=자사몰+스마트스토어+B2B(백화점/면세점/호텔)+수출 10개국. SNS 채널 보유하나 운영 깊이 약함.
+            </div>
+            <div class="spin-card spin-p">
+                <h4>P — 표면 문제 (추정)</h4>
+                자사몰·스마트스토어 전환이 B2B 매출 대비 낮음. SNS 도달이 인증/수출 위상 대비 빈약. 명절·시즌 외 매출 빠짐.
+            </div>
+            <div class="spin-card spin-i">
+                <h4>I — 방치 시 파장 (진짜 아픔)</h4>
+                생과 45% 폭락이 회사 리스크로 직결. B2B·수출은 바이어 1~2곳 이탈에 매출 출렁. 인증·특허 투자가 소비자에 안 닿으면 "좋은데 안 팔리는 함정" 고착.
+            </div>
+            <div class="spin-card spin-n">
+                <h4>N — 해결 시 보상</h4>
+                "심박 = 영천 프리미엄 과일 디저트" 인식 전환 → 원물 가격과 디커플링. D2C 직접 수요 = B2B/수출 협상 레버리지. 콘텐츠 자산은 해외 바이어/팝업에 재활용.
+            </div>
+        </div>
+
+        <h3>Pain Hierarchy (L1 표면 → L4 근본)</h3>
+        <div class="pain-layer">
+            <div class="pain-level pain-l1">
+                <span class="level-tag">L1 표면 · 확신도 60%</span>
+                "SNS/온라인이 약하다, 자사몰이 안 판다" — 채널 보유 vs 깊이 약함 갭. 본인 언어화 여부 불명.
+            </div>
+            <div class="pain-level pain-l2">
+                <span class="level-tag">L2 기능 · 확신도 65%</span>
+                "국내 B2C 인지도가 인증·수출 위상에 비해 현저히 낮다" — 소개 추천 사실이 페인 존재 방증.
+            </div>
+            <div class="pain-level pain-l3">
+                <span class="level-tag">L3 구조 · 확신도 70% ★</span>
+                "B2B·수출 의존 구조라 원물 45% 폭락·바이어 이탈 리스크에 그대로 노출. 직접 수요 방어선이 없다" — 가장 확신도 높은 객관적 아픔.
+            </div>
+            <div class="pain-level pain-l4">
+                <span class="level-tag">L4 근본 · 확신도 55%</span>
+                "엔지니어로서 '제품·기술은 완벽한데 왜 시장이 몰라주나'에 대한 답이 없다. 막연함·통제 불능감." 상담에서 건드리면 신뢰 급상승.
+            </div>
+        </div>
+
+        <h3>JTBD (마케팅 파트너를 '고용'하려는 진짜 이유)</h3>
+        <table>
+            <tr><th>Job</th><th>내용</th></tr>
+            <tr><td><strong>Functional</strong></td><td>명절·시즌 선물세트를 넘어 <strong>연중 찾는 브랜드 매출</strong>을 만들고 싶다. 자사몰·SNS가 실제 매출로 연결되게.</td></tr>
+            <tr><td><strong>Social</strong></td><td>수출 10개국·특허 20건인데 <strong>국내선 무명</strong>인 게 자존심 상한다. "영천에 제대로 된 프리미엄 과일 디저트 브랜드가 있다"고 알아주길. (소개해준 사람 앞에서도 면이 서야 함.)</td></tr>
+            <tr><td><strong>Emotional ★ 구매 버튼</strong></td><td>마케팅이 막연하고 통제가 안 돼 불안하다. <strong>명확한 로드맵 + 믿고 맡길 파트너</strong>가 있으면 마음이 놓이겠다. 이 사업이 '돈벌이'가 아니라 <strong>K-농식품·고향 환원 명분에 걸맞은 브랜드</strong>가 되었으면.</td></tr>
+        </table>
+
+        <h3>표면 고민 vs 진짜 니즈</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">표면 (말할 법한 것)</div>
+                <ul><li>"SNS/자사몰이 약하다, 팔로워를 늘리고 싶다"</li></ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">진짜 니즈 (가설)</div>
+                <ul><li>"흔해진 샤인머스켓 속에서 <strong>심박만 프리미엄으로 살아남는 브랜드 설계</strong> + 막연함을 숫자로 풀어줄 파트너"</li></ul>
+            </div>
+        </div>
+        <div class="callout callout-info">
+            <strong>프레이밍:</strong> 단순 "팔로워 늘려드립니다"가 아니라 <strong>"흔해진 샤인머스켓 시장에서 심박만 프리미엄으로 살아남는 브랜드 설계"</strong>로 꽂아야 함. 이미 가진 강점(인증·특허·수출·스토리)을 안 쓰는 게 최대 낭비 — 우리 역할은 "없는 걸 만들기"가 아니라 "있는 자산을 소비자 언어로 번역·노출".
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 9. GAP 분석 & 기회 평가 -->
+    <!-- ============================================================ -->
+    <div class="section" id="gap-analysis">
+        <h2>9. GAP 분석 & 기회 평가</h2>
+        <h3>기회 적합도 평가 (6항목 가중)</h3>
+        <table>
+            <tr><th>항목</th><th>가중</th><th>점수</th><th>근거</th></tr>
+            <tr><td>니즈-서비스 핏</td><td>30%</td><td>4.5</td><td>"있는 자산 번역 + D2C 전환엔진"이 브랜드라이즈 핵심 역량과 정밀 일치. 잠긴 걸 푸는 작업 = 단기 가시성 큼</td></tr>
+            <tr><td>예산</td><td>20%</td><td>3.0 <span class="tag tag-gray">⚠️</span></td><td>미확인 → 중립. 인프라 투자 여력 있으나 신생·보육센터 = 월 수백만 대 중형 리테이너 현실적. 상담 확정 필수</td></tr>
+            <tr><td>의사결정 구조</td><td>15%</td><td>4.5</td><td>대표 1인 단독 결정 추정. 엔지니어=논리·데이터로 설득되면 빠른 결정. 클로징 단순</td></tr>
+            <tr><td>긴급도</td><td>15%</td><td>3.5 <span class="tag tag-gray">⚠️</span></td><td>8~10월 시즌 전 착수해야 = 자연 데드라인. 단 본인 체감 긴급도 미확인(잠복형 가능)</td></tr>
+            <tr><td>성장 잠재력</td><td>10%</td><td>4.5</td><td>가공식품 수출 견인·멀티 SKU·수출 인프라 → 확장·정기배송·해외몰 업셀 룸 큼</td></tr>
+            <tr><td>레퍼런스 가치</td><td>10%</td><td>4.0</td><td>"수출형 농식품의 국내 D2C 전환" = 신규 카테고리 사례. 6차산업·지자체 연계 확장 앵커</td></tr>
+        </table>
+        <div class="verdict">
+            <div class="label">기회 적합도 종합 점수</div>
+            <div class="value">4.0 / 5.0</div>
+            <div class="desc">🟢 조건부 GO — 핏·의사결정·성장 최상위. 변수는 예산(중립)·긴급도 체감. 상담 Q1~Q3로 페인 L3 확정 시 <strong>Strong GO</strong></div>
+        </div>
+        <h3>수주 확률 시나리오</h3>
+        <table>
+            <tr><th>시나리오</th><th>조건</th><th>대응</th></tr>
+            <tr><td><span class="tag tag-green">Strong GO</span></td><td>Q3에서 생과 폭락 = 실제 통증 확정 (L3)</td><td>Professional 3개월 파일럿, "방어선" 프레임 직격</td></tr>
+            <tr><td><span class="tag tag-blue">GO</span></td><td>인지도(L2) 페인 확정</td><td>Professional, "잠긴 자산 번역" 프레임</td></tr>
+            <tr><td><span class="tag tag-yellow">조건부</span></td><td>페인 L1(SNS만) + 예산 보수</td><td>Essential 진입 다리 → 성과 후 업셀</td></tr>
+            <tr><td><span class="tag tag-gray">보류</span></td><td>예산 전혀 안 맞음</td><td>Essential 단발 진단 or 관계 유지(레퍼럴 신뢰 보존)</td></tr>
+        </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 10. 3-Tier 견적 초안 -->
+    <!-- ============================================================ -->
+    <div class="section" id="quote">
+        <h2>10. 3-Tier 견적 초안</h2>
+        <p style="font-size:14px;color:var(--text-light);">설계 원칙: 심박의 핵심은 <strong>"있는 자산 번역 + D2C 전환엔진"</strong>. 가격은 "대" 수준만(광고비·외주 실비 별도), 정밀 견적은 진단 후 정식 제안서로. <span class="tag tag-gray">⚠️ 예산 미확인 전제, 상담 후 조정</span></p>
+        <div class="tier-cards">
+            <div class="tier-card">
+                <h4>🟦 Essential</h4>
+                <div class="price">백만 원 대 후반~</div>
+                <div class="duration">브랜드 번역 + 진단 · 1~2개월 단발</div>
+                <ul>
+                    <li>브랜드 메시지·포지셔닝 정리 (3종 → 통합 아키텍처)</li>
+                    <li>잠긴 신뢰자산 → 소비자 언어 번역(상세·바이오 카피·신뢰 배지)</li>
+                    <li>디지털 진단 리포트 + 90일 로드맵</li>
+                    <li>운영 엔진 미포함 (직접 실행) — "직접 해볼게요" 성향 진입장벽 ↓</li>
+                </ul>
+            </div>
+            <div class="tier-card recommended">
+                <div class="tier-badge">⭐ 권장</div>
+                <h4>🟩 Professional</h4>
+                <div class="price">수백만 원 대 (중간)</div>
+                <div class="duration">D2C 전환엔진 가동 · 3~6개월 리테이너</div>
+                <ul>
+                    <li>브랜드 메시지 + <strong>프리미엄 가치 정당화 스토리</strong>("왜 비싼가"의 답)</li>
+                    <li>자사몰/SNS 전환 구조 설계(상세 신뢰자산 통합·CTA·UGC·프로필 허브)</li>
+                    <li><strong>상시 할인 → 프리미엄 가격 일관성 정책 재설계</strong></li>
+                    <li>월 콘텐츠 캘린더 운영(산지·대표 서사·레시피·시즌 브리지) + 리포팅</li>
+                    <li>→ <strong>8~10월 가을 시즌 피크 전 엔진 완성</strong> (5월 착수 시 정합)</li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>🟪 Premium</h4>
+                <div class="price">수백만 원 대 상단~천만 원 대</div>
+                <div class="duration">풀 그로스 + 퍼포먼스 + 수출연계 · 6개월+</div>
+                <ul>
+                    <li>Professional 전체 +</li>
+                    <li>퍼포먼스 광고 운영(메타·네이버, 미개척 레버)</li>
+                    <li>정기배송/구독 설계(객단가·LTV↑)</li>
+                    <li>CRM·리텐션 + 국내 B2C 데이터 → 수출 연계 투트랙</li>
+                </ul>
+            </div>
+        </div>
+        <div class="leverage-box">
+            <div class="sol-label" style="opacity:0.7;font-size:13px;">가치 프레이밍</div>
+            <div class="quote">"이미 새고 있는 돈을 보여드립니다 —<br>선물세트 58% 할인 = 1개당 38,000원을 이미 지불 중.<br>그 절반만 프리미엄 정당화에 쓰면 할인 안 해도 팔립니다."</div>
+        </div>
+        <div class="callout callout-info">
+            <strong>벤치마크:</strong> 한국 SNS 운영 대행 월 100만~수백만 원대 일반, 자사몰 풀운영(사이트+SNS+광고+디자인)은 인력만 월 1천만+, 광고대행비는 광고비의 10~20%. → Professional이 중소 농식품 기업에 "효과 대비 합리적" 구간으로 자연 안착.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 11. 상담 전략 & 코칭 -->
+    <!-- ============================================================ -->
+    <div class="section" id="strategy">
+        <h2>11. 상담 전략 & 코칭</h2>
+        <div class="callout callout-danger">
+            <strong>🔴 1순위 원칙:</strong> "오늘은 못 판다, 진단만 한다." 레퍼럴 + 페인 미확정 → P2+P3(30분, 절반)이 페인 확정 구간. 가설을 정답처럼 들이밀면 신뢰가 깨진다.
+        </div>
+
+        <h3>60분 타임라인</h3>
+        <div class="timeline-phase"><div class="phase-time">0~5분<br>P1</div><div class="phase-content"><h4>라포 — 신뢰 온도 올리기</h4><p>소개자 언급 + "IT 10년 → 농식품" 대표 서사 라포. 영업 모드 신호(회사 자랑) 금지. "오늘은 뭘 팔러 온 게 아니라 진단부터 보여드린다" 프레이밍.</p></div></div>
+        <div class="timeline-phase"><div class="phase-time">5~20분<br>P2</div><div class="phase-content"><h4>상황 확인 (15분, 미회신 보정)</h4><p>메일 미회신으로 빈 정보(매출 구조·채널 비중·예산 감각·과거 경험) 채우기. 듣기 70/말하기 30. Q1→Q2→과거 경험→채널 현황.</p></div></div>
+        <div class="timeline-phase"><div class="phase-time">20~35분<br>P3</div><div class="phase-content"><h4>🔴 깊은 진단 (15분) — 페인 확정 구간</h4><p>Q3(생과 폭락 통증)·Q4(Social/Emotional Job)에 시간 배분. 라벨링·미러링으로 감정 표면화. 진짜 페인 레이어를 대표 입으로 확정. 여기서도 솔루션 금지.</p></div></div>
+        <div class="timeline-phase"><div class="phase-time">35~45분<br>P4</div><div class="phase-content"><h4>인사이트 공유 (10분) — Teaching</h4><p>확정된 페인에 맞는 Teaching만 골라서. 진단 스케치 1장 화면공유. "비판"이 아니라 "잠긴 보물 발견" 톤.</p></div></div>
+        <div class="timeline-phase"><div class="phase-time">45~55분<br>P5</div><div class="phase-content"><h4>솔루션 방향 (10분)</h4><p>3-Tier를 "가격표" 아닌 "단계적 로드맵"으로. Professional 중심 + Essential 진입 다리. "번역가지 대체자 아님" + "매월 숫자 보고" 프레임.</p></div></div>
+        <div class="timeline-phase"><div class="phase-time">55~60분<br>P6</div><div class="phase-content"><h4>클로징 (5분) — Micro-commitment</h4><p>진단 합의 복창 → Quick Tip 무료 선물 → "90일 진단 스케치 발송 + 차주 5분 통화" 다음 계단. 신뢰 쌓였으면 명분 정서 훅.</p></div></div>
+
+        <h3>핵심 질문 스크립트 (반드시 물을 5개)</h3>
+        <div class="question-card">
+            <div class="q-num">Q1 · 최우선 (P2)</div>
+            <div class="q-text">"심박은 인증·특허·수출까지 다 갖춘 회사잖아요. 요즘 사업하시면서 '이 부분만 풀리면 한 단계 도약하겠다' 싶은, 가장 답답한 한 가지가 뭐예요?"</div>
+            <div class="q-intent">의도: 폼에 없던 진짜 페인을 대표 입으로. L1~L4 첫 분기. 침묵/회피 시 라벨링+3초 침묵.</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q2 · 매출 구조 (P2)</div>
+            <div class="q-text">"지금 매출에서 B2B·수출 대 자사몰·D2C 비중이 대략 어떻게 되세요? 그 비중이 대표님이 원하시는 방향이랑 맞나요?"</div>
+            <div class="q-intent">의도: L3(B2B 의존) 70% 검증 + 예산 여력 간접 가늠. 함구 시 깊이 캐지 말 것(레퍼럴 톤).</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q3 · 🔴 페인 확정 결정타 (P3)</div>
+            <div class="q-text">"샤인머스켓 생과 가격이 작년에 크게 떨어졌잖아요. 그게 심박 가공품 판매나 가격 책정에 영향 주고 있나요? 소비자가 '샤인머스켓=흔한 포도'로 보는 분위기, 체감하세요?"</div>
+            <div class="q-intent">의도: L3 구조 리스크가 실제 통증인지 확인. "맞다" → Strong GO, Teaching 3 메인. "별개다" → 인지도(L2) 트랙 선회.</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q4 · Social/Emotional Job (P3)</div>
+            <div class="q-text">"국내에서 '심박'이라는 이름을 소비자가 얼마나 안다고 보세요? 심박이 '어떤 브랜드로 기억되면' 가장 뿌듯하실 것 같아요?"</div>
+            <div class="q-intent">의도: 구매 버튼(무명 자존심 + 명분 브랜드 열망) 검증. K-농식품/보육원으로 흐르면 스토리 브랜딩이 클로징 훅.</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q5 · 클로징 준비 (P5 직전)</div>
+            <div class="q-text">"마케팅을 외부와 함께해 보신 적 있으세요? 있다면 뭐가 제일 아쉬우셨고, 이번엔 파트너한테 6개월 뒤에 어떤 변화를 기대하세요?"</div>
+            <div class="q-intent">의도: L4(과거 막연함) + 기대 KPI + 예산 감각 동시 탐색. "아쉬웠던 점"이 곧 우리 차별화 포인트.</div>
+        </div>
+
+        <h3>Challenger Teaching 포인트 3 (팔지 말고 가르쳐라)</h3>
+        <div class="leverage-box">
+            <div class="quote" style="font-size:17px;">① "상시 30~58% 할인이 프리미엄을 죽이고 있습니다"<br>② "수출 10개국·특허 20건 신뢰자산이 국내 자사몰에서 0원으로 잠겨 있습니다"<br>③ "샤인머스켓 생과 45% 폭락 = 가공·브랜드가 유일한 방어선입니다"</div>
+        </div>
+
+        <h3>예상 반론 & 대응</h3>
+        <table>
+            <tr><th>반론</th><th>대응</th></tr>
+            <tr><td>"비싸다 / 우리 규모엔 부담"</td><td>Essential 진입→업셀 계단 + "이미 새는 돈"(할인 58%=1개당 38,000원 지불 중) 손익 프레임</td></tr>
+            <tr><td>🔴 "직접 해볼게요" (엔지니어 통제 성향)</td><td><strong>정면 인정</strong>("제품·기술·수출은 직접, 저흰 소비자 언어 번역만") + 통제권 보장("번역가지 대체자 아님") + "시즌 타이밍이 돈" + 매월 숫자 보고</td></tr>
+            <tr><td>"다른 데도 알아보는 중"</td><td>레퍼럴 신뢰 카드 + 차별화(농식품 D2C 전환 특화) + 비교 프레임을 "우리 잠긴 자산을 가장 잘 읽어낸 곳"으로</td></tr>
+        </table>
+
+        <div class="callout callout-success">
+            <strong>🎁 Quick Tip (무료 선물):</strong> "자사몰 첫 화면에서 상시 할인 배지 1개만 떼고, 그 자리에 '<strong>영천 직접 재배 + 동결건조 분말, 10개국이 선택한 프리미엄</strong>' 한 줄을 넣어보세요. 한 상품만 이번 주에 테스트하고 전환율 변화를 보세요." → Teaching 1의 즉시 실행 버전 = Essential→Professional 자연 다리. (페인이 L2면 대안: 인스타 바이오에 "수출 10개국·특허 20건" + 자사몰 링크 1개.)
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 12. 클로징 전략 -->
+    <!-- ============================================================ -->
+    <div class="section" id="closing">
+        <h2>12. 클로징 전략</h2>
+        <h3>Micro-commitment 계단 (계약 X → 다음 단계 합의)</h3>
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="step-num">STEP 1</div>
+                <div class="step-title">진단 합의</div>
+                <div class="step-desc">Q1~Q3로 진짜 페인 확정, 대표 입으로 "그게 문제 맞다"</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 2</div>
+                <div class="step-title">90일 진단 스케치 1장</div>
+                <div class="step-desc">할인구조·잠긴자산·시즌 갭 시각화 (그 자리 산출물)</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 3</div>
+                <div class="step-title">Professional 3개월 파일럿</div>
+                <div class="step-desc">"가을 시즌 전 엔진 완성" 시간 프레임</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 4</div>
+                <div class="step-title">차주 5분 통화</div>
+                <div class="step-desc">Quick Tip 결과 청취 → 자연스러운 제안 진입</div>
+            </div>
+        </div>
+
+        <h3>긴급성 레버 (자연 데드라인 2종, 인위적 압박 X)</h3>
+        <table>
+            <tr><th>레버</th><th>메시지</th></tr>
+            <tr><td>시즌성</td><td>"8~10월 샤인머스켓 피크 전에 전환엔진·콘텐츠가 돌아가야 효과 극대화. 지금(5월말) 착수 = 약 3개월 셋업 후 피크 정합. 6월 넘기면 가을 한 시즌 통째로 놓침."</td></tr>
+            <tr><td>생과 가격</td><td>"생과 45% 폭락이 진행 중인 지금이 프리미엄 재포지셔닝 골든타임. 인식이 더 굳기 전에."</td></tr>
+        </table>
+
+        <h3>리스크 제거 & 내부 챔피언(대표) 공략</h3>
+        <table>
+            <tr><th>레버</th><th>실행</th></tr>
+            <tr><td>단계적 진입</td><td>Essential(1~2개월) 작게 시작 → 성과 데이터 보고 Professional 확장. "큰 약정 없이 검증부터"</td></tr>
+            <tr><td>명확한 KPI·리포팅</td><td>자사몰 전환율·도달/저장/유입·매출 기여를 매월 숫자로 보고 (엔지니어 신뢰 지표 = L4 막연함 직접 해소)</td></tr>
+            <tr><td>통제권 보장</td><td>메시지·가격정책은 대표 승인 게이트. "저흰 번역가지 대체자가 아닙니다"</td></tr>
+            <tr><td>명분 공감 카드</td><td>"심박을 단순 매출이 아니라 대표님 명분(K-농식품·보육원)에 걸맞은 브랜드로" + "소개해준 분 앞에서 면 서는 브랜드" (Social Job)</td></tr>
+        </table>
+
+        <h3>상담 후 액션 리스트</h3>
+        <table>
+            <tr><th>시점</th><th>액션</th></tr>
+            <tr><td>당일~24h</td><td>감사 메시지(소개자 재언급) + 확정 페인 1줄 기록 + 90일 진단 스케치 발송(미회신 이력 → 카톡/문자 병행)</td></tr>
+            <tr><td>3일 내</td><td>내부 디브리프(확정 페인 기준 Tier 재조정) + 정식 제안서 착수 결정(/proposal)</td></tr>
+            <tr><td>1주 내</td><td>5분 후속 통화(Quick Tip 결과 청취) + 차주 데드라인 인지(6월 넘기면 가을 셋업 빠듯)</td></tr>
+            <tr><td>보류/No 시</td><td>Essential 단발 진단 or 관계 유지 모드. 강매 금지 — 레퍼럴 신뢰 자산 보존</td></tr>
+        </table>
+
+        <div class="leverage-box">
+            <div class="quote">"오늘은 못 판다, 진단만 한다.<br>구매 버튼은 명분(K-농식품·보육원)과 '소개자 앞에서 면 서는 브랜드'다."</div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 참고 링크 -->
+    <!-- ============================================================ -->
+    <div class="section">
+        <h2>참고 링크</h2>
+        <div class="source-list">
+            <p>• 심박 자사몰: <a href="https://simbak.co.kr/">simbak.co.kr</a> / 스마트스토어: smartstore.naver.com/simbak / 인스타: @shinemuscat_bread</p>
+            <p>• 경북일보 기사: <a href="https://www.kyongbuk.co.kr/news/articleView.html?idxno=4040326">심박 소개 기사</a></p>
+            <p>• 샤인머스켓 생과 가격 폭락: <a href="https://www.imaeil.com/page/view/2025090915324195226">매일신문</a>, <a href="https://www.nongmin.com/article/20251029500650">농민신문</a></p>
+            <p>• 농식품 D2C/마케팅 예산 벤치마크: Ballast, 아이보스, 롱블랙(농산물 브랜딩), NHN커머스(곡물집 사례)</p>
+            <p>• 1차 리서치: Perplexity sonar-pro(시장·경쟁) + Grok(인플루언서·트렌드), 2026-05-28 수집</p>
+            <p style="margin-top:8px;color:#999;">※ 4인 전담팀(기업 프로파일러·니즈 분석가·수주 전략가·상담 코치) 산출물 종합. 중간 산출물은 _workspace/ 보존.</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>BRANDRISE (MarketingOS) — New Business 상담 준비 패키지</p>
+    <p>이 문서는 상담 준비 목적으로 작성되었으며, 외부 공유를 금합니다.</p>
+</div>
+
+</body>
+</html>
