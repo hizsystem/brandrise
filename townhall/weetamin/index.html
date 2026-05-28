@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>위타민(weetamin) — AI 활용 & 레슨런</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+      background: #f5f5f5;
+      color: #1a1a1a;
+      font-size: 15px;
+      line-height: 1.8;
+      overflow-x: hidden;
+      word-break: keep-all;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: #14233f;
+      color: #fff;
+      padding: 56px 40px 40px;
+      text-align: center;
+    }
+    .header .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 12px;
+      letter-spacing: 2px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    .header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .header h1 span { color: rgba(255,255,255,0.55); font-weight: 400; }
+    .header p {
+      font-size: 15px;
+      opacity: 0.75;
+      margin: 0 auto;
+    }
+
+    /* ── META BAR ── */
+    .meta-bar {
+      background: #0e1a30;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 16px 40px;
+      flex-wrap: wrap;
+    }
+    .meta-bar span {
+      color: rgba(255,255,255,0.6);
+      font-size: 13px;
+    }
+    .meta-bar strong {
+      color: #fff;
+      font-size: 13px;
+    }
+
+    /* ── CONTAINER ── */
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 60px 48px;
+      background: white;
+    }
+
+    /* ── SECTION ── */
+    .section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+    .section-num {
+      width: 28px; height: 28px; background: #14233f; color: white;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800; flex-shrink: 0;
+    }
+    .section-title { font-size: 19px; font-weight: 800; letter-spacing: -0.5px; }
+    .sub-title { font-size: 13px; font-weight: 700; color: #444; margin: 22px 0 10px; }
+
+    /* ── TABLE ── */
+    table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 10px 0 20px; }
+    th { background: #f5f5f5; padding: 13px 16px; text-align: left; font-weight: 700; border: 1px solid #e0e0e0; font-size: 14px; }
+    td { padding: 13px 16px; border: 1px solid #e0e0e0; vertical-align: top; font-size: 15px; }
+    td:first-child { color: #555; font-weight: 600; width: 26%; font-size: 14px; }
+
+    /* ── CALLOUT ── */
+    .callout {
+      background: #f9f9f9; border-left: 4px solid #14233f;
+      padding: 20px 24px; border-radius: 0 10px 10px 0;
+      font-size: 15px; line-height: 1.9; color: #222; margin-bottom: 20px;
+    }
+    .callout strong { color: #14233f; }
+
+    /* ── STAT CARDS ── */
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin: 0 0 20px;
+    }
+    .stat-card {
+      border: 1px solid #e8e8e8; border-radius: 12px;
+      padding: 20px 14px; text-align: center;
+    }
+    .stat-label { font-size: 12px; color: #999; margin-bottom: 8px; font-weight: 600; }
+    .stat-val { font-size: 26px; font-weight: 900; color: #14233f; line-height: 1; letter-spacing: -1px; }
+    .stat-val.text { font-size: 16px; font-weight: 800; letter-spacing: -0.3px; line-height: 1.3; }
+    .stat-sub { font-size: 12px; color: #bbb; margin-top: 6px; }
+    .stat-total {
+      background: #eef2f8; border: 1px solid #14233f; border-radius: 10px;
+      padding: 14px 20px; margin-bottom: 20px; font-size: 15px; color: #14233f;
+    }
+    .stat-total strong { color: #14233f; font-weight: 900; font-size: 17px; }
+    .stat-total span { color: #888; font-size: 12.5px; }
+
+    /* ── EXPAND (land & expand) CARDS ── */
+    .expand-grid {
+      display: grid; grid-template-columns: 1fr auto 1.4fr;
+      gap: 14px; align-items: stretch; margin: 14px 0;
+    }
+    .expand-card {
+      border: 1px solid #e8e8e8; border-radius: 12px; padding: 20px;
+    }
+    .expand-card.start { background: #fafafa; }
+    .expand-card.grow { border-color: #14233f; background: #eef2f8; }
+    .expand-card .tag {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 4px; margin-bottom: 10px;
+      background: #14233f; color: #fff;
+    }
+    .expand-card.grow .tag { background: #14233f; }
+    .expand-card h4 { font-size: 15px; font-weight: 800; margin-bottom: 6px; color: #1a1a1a; }
+    .expand-card p { font-size: 13.5px; color: #555; line-height: 1.55; }
+    .expand-arrow {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; font-weight: 900; color: #14233f;
+    }
+
+    /* ── FEED GRID ── */
+    .feed-meta { font-size: 13px; color: #777; margin: 0 0 12px; line-height: 1.7; }
+    .feed-meta strong { color: #14233f; }
+    .feed-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 6px; margin: 6px 0 4px;
+    }
+    .feed-grid img {
+      width: 100%; aspect-ratio: 3 / 4; object-fit: cover;
+      border-radius: 8px; display: block; background: #f0f0f0;
+    }
+
+    /* ── AI TOOL CARDS ── */
+    .ai-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px; margin: 14px 0;
+    }
+    .ai-card {
+      border: 1px solid #e8e8e8; border-radius: 12px;
+      padding: 20px; position: relative;
+    }
+    .ai-card .num {
+      font-size: 11px; font-weight: 800; color: #aaa;
+      letter-spacing: 1px; margin-bottom: 8px;
+    }
+    .ai-tag {
+      position: absolute; top: 16px; right: 16px;
+      background: #f0f0f0; color: #888;
+      font-size: 10px; font-weight: 700;
+      padding: 2px 8px; border-radius: 4px;
+    }
+    .ai-tag.sold { background: #e6edf6; color: #14233f; }
+    .ai-card h4 {
+      font-size: 16px; font-weight: 800;
+      margin-bottom: 8px; color: #1a1a1a; padding-right: 64px;
+    }
+    .ai-card p { font-size: 14px; color: #555; line-height: 1.7; }
+    .ai-card a {
+      display: inline-block; margin-top: 10px;
+      font-size: 12px; color: #444; text-decoration: none;
+      border-bottom: 1px solid #ccc;
+    }
+
+    /* ── EFFICIENCY TABLE ── */
+    .eff-good { color: #14233f; font-weight: 600; }
+    .eff-bad  { color: #888; font-weight: 600; }
+
+    /* ── LESSON CARDS ── */
+    .lesson-card {
+      border: 1px solid #e8e8e8; border-radius: 12px;
+      padding: 28px; margin-bottom: 14px;
+    }
+    .lesson-card.hero { border-color: #14233f; background: #eef2f8; }
+    .lesson-num {
+      font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
+      color: #aaa; text-transform: uppercase; margin-bottom: 10px;
+    }
+    .lesson-card.hero .lesson-num { color: #14233f; }
+    .lesson-card h3 {
+      font-size: 17px; font-weight: 800;
+      margin-bottom: 14px; line-height: 1.5; color: #111;
+    }
+    .lesson-quote {
+      background: #f9f9f9; border-left: 4px solid #14233f;
+      padding: 14px 18px; font-size: 14px; font-style: italic;
+      color: #333; margin-bottom: 14px; line-height: 1.8;
+      border-radius: 0 8px 8px 0;
+    }
+    .lesson-card.hero .lesson-quote { border-left-color: #14233f; background: #fff; }
+    .lesson-card p { font-size: 14px; color: #555; line-height: 1.8; }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 60px; padding-top: 20px;
+      border-top: 2px solid #14233f;
+      font-size: 12px; color: #bbb;
+      display: flex; justify-content: space-between;
+    }
+
+    @media (max-width: 600px) {
+      .ai-grid { grid-template-columns: 1fr; }
+      .expand-grid { grid-template-columns: 1fr; }
+      .expand-arrow { transform: rotate(90deg); padding: 4px 0; }
+      .meta-bar { gap: 12px; padding: 14px 16px; }
+      .meta-bar span { font-size: 12px; }
+      .header { padding: 36px 20px 28px; }
+      .header h1 { font-size: 22px; }
+      .header p { font-size: 13px; }
+      .container { padding: 32px 16px 60px; }
+      .section-title { font-size: 15px; }
+      table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      td, th { font-size: 13px; padding: 10px 12px; }
+      td:first-child { width: auto; min-width: 80px; }
+      .callout { font-size: 13px; padding: 14px 16px; }
+      .lesson-card { padding: 20px 16px; }
+      .ai-card, .expand-card { padding: 16px; }
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="badge">타운홀 2026 · AI 활용 사례</div>
+  <h1>위타민 <span>weetamin</span></h1>
+  <p>약사가 연구하고 만드는 비타민·건기식 브랜드 — 월간 미팅과 작은 촬영에서 시작해 IMC 전략 파트너십까지 확장한 프로젝트</p>
+</div>
+
+<!-- META BAR -->
+<div class="meta-bar">
+  <span><strong>기간</strong>&nbsp; 2026.02 — 진행 중</span>
+  <span><strong>클라이언트</strong>&nbsp; 위타민 / (주)아르케웰</span>
+  <span><strong>협업</strong>&nbsp; HIZ × 프론트킷</span>
+  <span><strong>담당</strong>&nbsp; 이슬기</span>
+</div>
+
+<div class="container">
+
+  <!-- ① 프로젝트 개요 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">프로젝트 개요</div>
+    </div>
+
+    <table>
+      <tr><td>클라이언트</td><td>위타민(weetamin) / (주)아르케웰 · 대표 제은경(약사) — <strong>"약사가 연구하고 만듭니다"</strong></td></tr>
+      <tr><td>주요 과업</td><td>브랜드 컨설팅 &nbsp;→&nbsp; <strong>IMC 전략 파트너십</strong> 확장</td></tr>
+      <tr><td>KPI</td><td>브랜드 리뉴얼로 <strong>연매출 70억 → 100억</strong> 브랜드 도약</td></tr>
+    </table>
+
+    <div class="sub-title">프로젝트 성과 · 수주 흐름</div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label">1차 수주</div>
+        <div class="stat-val">4,707만</div>
+        <div class="stat-sub">전략 파트너십 + 리뉴얼</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">추가 수주 · 촬영</div>
+        <div class="stat-val">500만</div>
+        <div class="stat-sub">라이프스타일 촬영</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">추가 수주</div>
+        <div class="stat-val">~6,000만</div>
+        <div class="stat-sub">디자인 리뉴얼 · 인스타 운영</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">피그마 세팅</div>
+        <div class="stat-val text">디자인 가이드</div>
+        <div class="stat-sub">판매 가능 상품으로 세팅</div>
+      </div>
+    </div>
+    <div class="stat-total">시작은 작게 → <strong>누적 약 1.12억</strong> 수주로 확장 &nbsp;<span>(1차 4,707만 + 촬영 500만 + 리뉴얼·운영 약 6,000만 · 피그마 세팅은 1차 수주에 포함)</span></div>
+
+    <div class="expand-grid">
+      <div class="expand-card start">
+        <div class="tag">시작 · 작은 단위</div>
+        <h4>월간 미팅 + 라이프스타일 촬영</h4>
+        <p>월간 IMC 미팅과 제품 촬영 한 건으로 시작</p>
+      </div>
+      <div class="expand-arrow">→</div>
+      <div class="expand-card grow">
+        <div class="tag">성과 · 추가 수주</div>
+        <h4>IMC 전략 파트너십 + 피그마 상품화</h4>
+        <p>무드보드·콘텐츠·광고 소재를 <strong>피그마로 셋팅</strong> → 판매 가능한 상품화.<br>신뢰가 쌓여 전략 파트너십으로 확장.</p>
+      </div>
+    </div>
+
+    <div class="sub-title">인스타그램 피드 룩앤필 · <a href="https://www.instagram.com/weetamin/" target="_blank" style="color:#14233f; text-decoration:none; border-bottom:1px solid #ccc;">@weetamin</a></div>
+    <div class="feed-grid">
+      <img src="images/feed1.jpg" alt="weetamin 피드 1" loading="lazy" />
+      <img src="images/feed2.jpg" alt="weetamin 피드 2" loading="lazy" />
+      <img src="images/feed3.jpg" alt="weetamin 피드 3" loading="lazy" />
+      <img src="images/feed4.jpg" alt="weetamin 피드 4" loading="lazy" />
+      <img src="images/feed5.jpg" alt="weetamin 피드 5" loading="lazy" />
+      <img src="images/feed6.jpg" alt="weetamin 피드 6" loading="lazy" />
+      <img src="images/feed7.jpg" alt="weetamin 피드 7" loading="lazy" />
+      <img src="images/feed8.jpg" alt="weetamin 피드 8" loading="lazy" />
+      <img src="images/feed9.jpg" alt="weetamin 피드 9" loading="lazy" />
+    </div>
+
+  </div>
+
+  <!-- ② AI 활용 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">툴 활용 현황</div>
+    </div>
+
+    <div class="callout">
+      <strong>사용 툴</strong>&nbsp; 클로드 / 피그마<br/>
+      리서치 · 데이터 분석 · 컨설팅 운영 — 툴로 만든 산출물이 <strong>견적 라인의 판매 상품</strong>이 됐습니다
+    </div>
+
+    <div class="ai-grid">
+      <div class="ai-card">
+        <div class="num">1</div>
+        <div class="ai-tag sold">판매 상품</div>
+        <h4>피그마<br>대시보드</h4>
+        <p>총매출·광고 데이터 종합 분석 보드<br>피그마로 셋팅 → 솔루션 납품</p>
+        <a href="https://www.figma.com/design/yil88gfRpYkaagzjmA8qyf/-HIZ--%EC%9C%84%ED%83%80%EB%AF%BC?node-id=2018-161&amp;p=f&amp;t=VCKax18OKukafD5k-0" target="_blank">피그마 대시보드 →</a>
+      </div>
+      <div class="ai-card">
+        <div class="num">2</div>
+        <div class="ai-tag sold">판매 상품</div>
+        <h4>마켓·채널<br>리서치</h4>
+        <p>브랜드·제품·경쟁사 + 카카오 선물하기 리서치<br>Claude Code 작성 → 리뉴얼 기획의 근거</p>
+        <a href="https://hizsystem.github.io/brandrise/research/weetamin-kakao-gift/" target="_blank">리서치 자산 →</a>
+      </div>
+      <div class="ai-card">
+        <div class="num">3</div>
+        <div class="ai-tag">Claude Code</div>
+        <h4>회의록·콘텐츠<br>정리</h4>
+        <p>월간 미팅 녹취 → 요약·과업 정리<br>브랜드 스토리·콘텐츠 기획 방향 추출</p>
+      </div>
+    </div>
+
+    <table>
+      <tr>
+        <th>구분</th>
+        <th>내용</th>
+      </tr>
+      <tr>
+        <td>효율화 성과</td>
+        <td class="eff-good">데이터 대시보드 솔루션 납품 &nbsp;·&nbsp; 리서치 단기간 작성 &nbsp;·&nbsp; 회의 문서화 자동화</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ③ 레슨런 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">레슨런</div>
+    </div>
+
+    <div class="lesson-card hero">
+      <div class="lesson-num">Lesson 01 · 핵심</div>
+      <h3>월간 미팅과 작은 촬영에서 시작해, IMC 전략 파트너십 수주로 확장됐습니다</h3>
+      <div class="lesson-quote">
+        "대표님 월간 미팅과 라이프스타일 촬영 한 건으로 시작한 관계가,<br/>
+        결과물에 대한 신뢰가 쌓이며 브랜드 전략·SNS 운영·디자인 리뉴얼까지 확장됐습니다."
+      </div>
+      <p>크게 제안하기보다 작게 시작해 확실히 해내는 것 — 그게 추가 수주의 가장 빠른 길입니다. AI로 결과물의 퀄리티와 속도를 받쳐준 것이 그 신뢰의 근거가 됐습니다.</p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 02</div>
+      <h3>AI로 만든 결과물은, 그 자체로 '판매 가능한 상품'이 됩니다</h3>
+      <div class="lesson-quote">
+        "피그마 대시보드와 마켓 리서치가 단순 보조 산출물이 아니라,<br/>
+        견적서의 한 라인으로 들어가 실제로 판매됐습니다."
+      </div>
+      <p>피그마 워크스페이스(시각 매뉴얼)처럼, AI로 만든 산출물도 '내부가 계속 쓰는 자산'으로 패키징하면 그대로 상품이 됩니다. 작은 팀이 큰 스코프를 감당하고 매출까지 만든 레버였습니다.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="container">
+  <div class="footer">
+    <span>위타민(weetamin) IMC 전략 파트너십 · AI 활용 사례</span>
+    <span>Town Hall 2026</span>
+  </div>
+</div>
+
+</body>
+</html>
