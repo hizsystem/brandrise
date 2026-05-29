@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>노다지파이랩스 NodajiFi Labs 브랜드 진단 견적서 — 브랜드라이즈 by HIZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0A1226;
+      --white: #FFFFFF;
+      --bg: #F5F1E5;
+      --accent: #B89150;
+      --accent-light: #F4EDD8;
+      --gray-100: #EFEDE5;
+      --gray-200: #DDD8CC;
+      --gray-500: #5E6B7A;
+      --gray-700: #2A3142;
+      --text: #14182E;
+      --hl: #6B8AFD;
+    }
+    body {
+      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 48px; }
+
+    /* HERO */
+    .hero { background: var(--black); color: var(--white); padding: 100px 0 80px; }
+    .hero .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      color: #E5C674; text-transform: uppercase; margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: 56px; font-weight: 900; line-height: 1.12;
+      letter-spacing: -0.025em; margin-bottom: 28px;
+    }
+    .hero h1 em { color: #E5C674; font-style: normal; }
+    .hero .sub {
+      font-size: 16px; color: rgba(255,255,255,0.65);
+      font-weight: 300; max-width: 600px; line-height: 1.85;
+    }
+    .hero-meta {
+      display: flex; gap: 48px; margin-top: 64px; flex-wrap: wrap;
+      padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .hero-meta-item .k {
+      font-size: 10px; letter-spacing: 0.12em; color: rgba(255,255,255,0.4);
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .hero-meta-item .v { font-size: 14px; font-weight: 600; }
+
+    .confidential {
+      display: inline-block; margin-top: 32px;
+      padding: 6px 14px; border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px; font-size: 10px; letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.6); text-transform: uppercase;
+    }
+
+    /* SECTIONS */
+    section { padding: 88px 0; }
+    .sec-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 14px;
+    }
+    h2 {
+      font-size: 36px; font-weight: 900; letter-spacing: -0.025em;
+      line-height: 1.25; margin-bottom: 16px; color: var(--black);
+    }
+    .sec-desc {
+      font-size: 15px; color: var(--gray-500); max-width: 640px;
+      line-height: 1.85; margin-bottom: 52px;
+    }
+    hr { border: none; border-top: 1px solid var(--gray-200); }
+
+    /* URGENCY GRID */
+    .urgency-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 44px; }
+    .u-card {
+      background: var(--white); border-radius: 14px; padding: 30px;
+      border: 1px solid var(--gray-200);
+    }
+    .u-card .num {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.12em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .u-card .ct { font-size: 14px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+    .u-card .cd { font-size: 13px; color: var(--gray-500); line-height: 1.75; }
+    .u-card.dark {
+      background: var(--black); border-color: var(--black);
+      grid-column: 1 / -1;
+    }
+    .u-card.dark .num { color: rgba(255,255,255,0.4); }
+    .u-card.dark .ct { color: var(--white); }
+    .u-card.dark .cd { color: rgba(255,255,255,0.65); }
+    .u-card.dark em { color: #E5C674; font-style: normal; font-weight: 700; }
+
+    /* GAP TABLE */
+    .gap-wrap { margin-top: 36px; border-radius: 14px; overflow: hidden; border: 1px solid var(--gray-200); }
+    .gap-table { width: 100%; border-collapse: collapse; background: var(--white); }
+    .gap-table thead tr { background: var(--black); }
+    .gap-table th {
+      padding: 16px 22px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; color: rgba(255,255,255,0.7);
+      text-align: left; text-transform: uppercase;
+    }
+    .gap-table td {
+      padding: 17px 22px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); vertical-align: top; line-height: 1.65;
+    }
+    .gap-table tr:last-child td { border-bottom: none; }
+    .gap-table tr:nth-child(even) td { background: var(--gray-100); }
+    .gap-table td strong { color: var(--black); font-weight: 700; display: block; margin-bottom: 2px; }
+    .badge {
+      display: inline-block; font-size: 10px; font-weight: 800;
+      padding: 3px 11px; border-radius: 20px; letter-spacing: 0.05em;
+    }
+    .b-red { background: #FDEDEA; color: #B23B2E; }
+    .b-orange { background: #FFF3E9; color: #C7661F; }
+    .b-green { background: #ECF5EE; color: #2E7D4F; }
+    .b-blue { background: #EBF1F8; color: #3A6E9B; }
+
+    /* TIER OVERVIEW */
+    .tier-bg { background: var(--black); padding: 88px 0; }
+    .tier-bg h2 { color: var(--white); }
+    .tier-bg .sec-label { color: #E5C674; }
+    .tier-bg .sec-desc { color: rgba(255,255,255,0.55); }
+    .tier-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 52px; max-width: 720px; margin-left: auto; margin-right: auto; }
+    .t-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px; padding: 38px 30px;
+      position: relative;
+    }
+    .t-card.rec {
+      background: var(--accent); border-color: var(--accent);
+    }
+    .rec-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--white); color: var(--accent);
+      font-size: 10px; font-weight: 900; letter-spacing: 0.12em;
+      padding: 4px 16px; border-radius: 20px; text-transform: uppercase; white-space: nowrap;
+    }
+    .t-name {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 10px;
+    }
+    .t-title { font-size: 20px; font-weight: 800; color: var(--white); line-height: 1.35; margin-bottom: 28px; }
+    .t-price { font-size: 40px; font-weight: 900; color: var(--white); letter-spacing: -0.03em; }
+    .t-price span { font-size: 18px; font-weight: 600; }
+    .t-period { font-size: 12px; color: rgba(255,255,255,0.5); margin: 6px 0 28px; }
+    .t-feats { list-style: none; }
+    .t-feat {
+      font-size: 13px; color: rgba(255,255,255,0.7);
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .t-feat:last-child { border-bottom: none; }
+    .t-feat::before { content: "\2192"; color: rgba(255,255,255,0.4); flex-shrink: 0; margin-top: 1px; }
+    .t-feat.on { color: var(--white); font-weight: 500; }
+    .t-feat.on::before { color: rgba(255,255,255,0.8); }
+    .t-feat.off { opacity: 0.28; }
+
+    /* DETAIL */
+    .det { padding: 88px 0; border-bottom: 1px solid var(--gray-200); }
+    .det:last-of-type { border-bottom: none; }
+    .det-head {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 48px; margin-bottom: 52px;
+    }
+    .det-head-l { flex: 1; }
+    .det-head-l h2 { margin-bottom: 14px; }
+    .price-box {
+      background: var(--black); color: var(--white);
+      border-radius: 18px; padding: 30px 40px; text-align: right; flex-shrink: 0;
+    }
+    .price-box .pl { font-size: 10px; color: rgba(255,255,255,0.45); letter-spacing: 0.12em; margin-bottom: 8px; }
+    .price-box .pa { font-size: 34px; font-weight: 900; letter-spacing: -0.03em; }
+    .price-box .ps { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 4px; }
+
+    .dblock { background: var(--white); border-radius: 14px; border: 1px solid var(--gray-200); overflow: hidden; margin-bottom: 14px; }
+    .dblock-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 24px; background: var(--gray-100); border-bottom: 1px solid var(--gray-200);
+    }
+    .dblock-head .bt { font-size: 14px; font-weight: 700; color: var(--black); }
+    .dblock-head .bp { font-size: 14px; font-weight: 800; color: var(--accent); }
+    .dtable { width: 100%; border-collapse: collapse; }
+    .dtable td {
+      padding: 14px 24px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); vertical-align: top; line-height: 1.7;
+    }
+    .dtable tr:last-child td { border-bottom: none; }
+    .dtable td:first-child { font-weight: 600; color: var(--black); width: 200px; white-space: nowrap; }
+    .dtable td:last-child { color: var(--gray-500); }
+
+    .total-bar {
+      background: var(--black); color: var(--white); padding: 26px 36px;
+      border-radius: 14px; display: flex; align-items: center;
+      justify-content: space-between; margin-top: 24px;
+    }
+    .total-bar .tl { font-size: 13px; color: rgba(255,255,255,0.6); }
+    .total-bar .ts { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+    .total-bar .ta { font-size: 38px; font-weight: 900; letter-spacing: -0.03em; }
+
+    .info-box {
+      background: var(--accent-light); border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0; padding: 22px 28px; margin-top: 20px;
+      font-size: 13px; color: var(--gray-700); line-height: 1.8;
+    }
+    .info-box strong { color: var(--accent); }
+
+    /* CURRICULUM GRID */
+    .curri-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+    .curri-card {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: 14px; padding: 24px 26px;
+    }
+    .curri-card .cn {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.14em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 10px;
+    }
+    .curri-card .ct { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 10px; line-height: 1.4; }
+    .curri-card .cd { font-size: 12.5px; color: var(--gray-500); line-height: 1.75; }
+
+    /* COMPARE */
+    .cmp-wrap { margin-top: 44px; border-radius: 14px; overflow: hidden; border: 1px solid var(--gray-200); }
+    .cmp-table { width: 100%; border-collapse: collapse; background: var(--white); }
+    .cmp-table th {
+      padding: 18px 24px; font-size: 13px; font-weight: 700;
+      text-align: center; border-bottom: 2px solid var(--gray-200);
+      background: var(--gray-100);
+    }
+    .cmp-table th:first-child { text-align: left; }
+    .cmp-table th.hi { color: var(--accent); background: var(--accent-light); }
+    .cmp-table td {
+      padding: 14px 24px; font-size: 13px;
+      border-bottom: 1px solid var(--gray-200); text-align: center; color: var(--gray-500);
+    }
+    .cmp-table td:first-child { text-align: left; color: var(--text); font-weight: 500; }
+    .cmp-table .ck { color: var(--accent); font-weight: 800; font-size: 15px; }
+    .cmp-table .no { color: var(--gray-200); }
+    .cmp-table .sum-row td {
+      font-weight: 800; font-size: 15px; color: var(--black);
+      padding: 20px 24px; background: var(--gray-100);
+      border-top: 2px solid var(--gray-200); border-bottom: none;
+    }
+    .cmp-table .sum-row td.hi { color: var(--accent); background: var(--accent-light); }
+
+    /* FOOTER */
+    .footer { background: var(--black); color: rgba(255,255,255,0.5); padding: 72px 0; text-align: center; }
+    .footer .brand { font-size: 20px; font-weight: 900; color: var(--white); margin-bottom: 6px; letter-spacing: -0.02em; }
+    .footer .tag { font-size: 13px; margin-bottom: 36px; }
+    .footer .meta { font-size: 12px; line-height: 2.2; }
+
+    @media print {
+      body { background: var(--white); font-size: 11px; }
+      .container { max-width: 100%; padding: 0 32px; }
+      .hero { padding: 60px 0 50px; }
+      .hero h1 { font-size: 40px; }
+      section { padding: 48px 0; }
+      .det { padding: 48px 0; }
+      .tier-bg { padding: 48px 0; }
+      .hero, .tier-bg, .footer, .u-card.dark, .price-box, .total-bar, .gap-table thead tr, .dblock-head {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .urgency-grid { gap: 8px; }
+      .u-card { padding: 20px; }
+      .tier-cards { gap: 10px; }
+      .t-card { padding: 24px 20px; }
+      .t-price { font-size: 30px; }
+      .det-head { gap: 24px; margin-bottom: 32px; }
+      .price-box { padding: 20px 28px; }
+      .price-box .pa { font-size: 26px; }
+      .total-bar .ta { font-size: 28px; }
+      .sec-desc { margin-bottom: 32px; }
+      h2 { font-size: 28px; }
+      .curri-grid { gap: 8px; }
+      .curri-card { padding: 16px 18px; }
+      .hero { page-break-after: always; }
+      .tier-bg { page-break-before: always; page-break-after: always; }
+      .det { page-break-inside: avoid; }
+      .dblock { page-break-inside: avoid; }
+      .footer { page-break-before: always; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="label">Market Diagnosis &amp; Brand Coaching &middot; 브랜드라이즈 by HIZ</div>
+    <h1><em>캐치프레이즈가 아니라,</em><br>한류 팬덤을 만나는 회로.</h1>
+    <p class="sub">7월 초 상용 런칭, 6월 마케팅 개시.<br>이 일정에서 먼저 필요한 것은 더 많은 채널 세팅이 아니라<br><strong>"Free Education for All"이 한류 팬덤의 언어로 번역되는 회로</strong>입니다.<br>브랜드라이즈는 <strong>글로벌 한류·EduFi 카테고리 리서치 자료</strong>와<br><strong>대표 1:1 브랜드 강의</strong>를 한 세트로 제안합니다.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="k">공급자</div><div class="v">브랜드라이즈 by HIZ</div></div>
+      <div class="hero-meta-item"><div class="k">수신</div><div class="v">노다지파이랩스 최명수 대표</div></div>
+      <div class="hero-meta-item"><div class="k">기준일</div><div class="v" id="today-date"></div></div>
+      <div class="hero-meta-item"><div class="k">금액 기준</div><div class="v">VAT 별도</div></div>
+    </div>
+    <div class="confidential">Confidential &middot; For NodajiFi Labs Only</div>
+  </div>
+</div>
+
+<!-- THE PROBLEM -->
+<section>
+  <div class="container">
+    <div class="sec-label">The Problem</div>
+    <h2>Pre-launch 스타트업이<br>가장 자주 막히는 지점</h2>
+    <p class="sec-desc">기술과 플랫폼이 완성되어도, 그 다음 스텝 — <strong>시장에 닿는 회로 설계</strong> — 에서<br>대부분의 Pre-launch 팀이 같은 벽에 부딪힙니다.<br>방법이 부족해서가 아니라, <strong>시장을 읽는 구조가 없기 때문</strong>입니다.</p>
+    <div class="urgency-grid">
+      <div class="u-card">
+        <div class="num">Problem 01</div>
+        <div class="ct">USP 한 줄이<br>마케팅 전부라고 오해한다</div>
+        <div class="cd">"Free Education for All"은 강력한 USP입니다.<br>그러나 USP는 캐치프레이즈가 아니라<br><strong>채널·콘텐츠·페르소나가 정렬되는 회로의 시작점</strong>입니다.<br>한 줄만으로는 한류 팬덤이 움직이지 않습니다.</div>
+      </div>
+      <div class="u-card">
+        <div class="num">Problem 02</div>
+        <div class="ct">기술·플랫폼은 완성,<br>그러나 시장에 닿는 회로가 없다</div>
+        <div class="cd">한·미 특허 + 콘텐츠 자동화 공장 + Solve-and-Earn 토크노믹스.<br>제품 자산은 갖췄지만 X·유튜브쇼츠·텔레그램·틱톡·인스타·디스코드<br><strong>6채널이 전부 미개설</strong>인 상태입니다.<br>D-30 안에 "어디서 어떻게" 회로를 그리는 단계입니다.</div>
+      </div>
+      <div class="u-card">
+        <div class="num">Problem 03</div>
+        <div class="ct">Web3 + 한류 + 교육 융합 카테고리는<br>일반 대행이 모른다</div>
+        <div class="cd">국내 대행사 대부분은 Web3 규제·토크노믹스·<br>글로벌 한류 팬덤 행동 패턴을 동시에 다룰 수 없습니다.<br><strong>대표가 마케팅 로직을 직접 판단할 수 있어야</strong><br>외주에 휘둘리지 않고 12개 프로젝트를 동시 운영할 수 있습니다.</div>
+      </div>
+      <div class="u-card dark">
+        <div class="num">Core Gap</div>
+        <div class="ct">채널 세팅 속도보다, <em>회로 설계와 대표 체력</em>이 먼저</div>
+        <div class="cd">6채널을 동시에 여는 것보다, <em>코어 3채널의 첫 1만 한류 팬을 만나는 가설</em>을 먼저 세우는 것이 빠릅니다.<br>리서치 자료로 <em>한류·EduFi·Web3 카테고리를 구조화</em>해 회로를 잡고,<br>강의로 <em>대표의 운영 판단력</em>을 만든 뒤 콘텐츠 자동화 공장이 따라가야 지속 가능합니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- OUR APPROACH -->
+<section>
+  <div class="container">
+    <div class="sec-label">Our Approach</div>
+    <h2>그래서 우리는<br>리서치 자료 + 강의를 한 세트로 제안합니다</h2>
+    <p class="sec-desc">리서치 자료은 <strong>한류 팬덤을 읽는 눈</strong>을, 강의는 <strong>대표가 직접 운영할 체력</strong>을 만듭니다.<br>둘 중 하나만으로는 6월 마케팅 개시 시점에 닿지 않습니다.</p>
+
+    <div class="urgency-grid">
+      <div class="u-card">
+        <div class="num">Why 01 &middot; 마켓 리서치 자료</div>
+        <div class="ct">글로벌 한류·EduFi 시장을 데이터로 구조화한다</div>
+        <div class="cd">Learn-and-Earn / Web3 EduFi 카테고리 ·<br>한류 팬덤(2.2억) 지역·연령·플랫폼 분석 ·<br>경쟁군(Duolingo·Memrise·코인&퀴즈) 포지션 맵핑.<br>대행 미팅·인플루언서 협상 때 <strong>돌아올 기준점</strong>이 되는 의사결정 레퍼런스 문서입니다.</div>
+      </div>
+      <div class="u-card">
+        <div class="num">Why 02 &middot; 브랜드 강의 4회</div>
+        <div class="ct">대표가 직접 판단 가능한 체력을 만든다</div>
+        <div class="cd">USP-한 줄 메시지 설계 / 글로벌 채널 운영 /<br>콘텐츠 자동화 활용 + 인플루언서 / D-30 스케일업 판단.<br>일반 강의가 아닌 <strong>노다지파이랩스 데이터로 진행하는<br>대표 1:1 실전형 세션</strong>입니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- CURRENT STATUS -->
+<section>
+  <div class="container">
+    <div class="sec-label">Applied to NodajiFi Labs</div>
+    <h2>이 구조가 노다지파이랩스에<br>어떻게 적용되는가</h2>
+    <p class="sec-desc">앞의 3가지 문제(USP 캐치프레이즈 함정 · 6채널 미개설 · 융합 카테고리의 대행 한계)는<br>노다지파이랩스의 현 시점 정확히 그대로입니다.<br>기술·특허·자동화 공장은 갖춰졌지만, <strong>이것을 한류 팬덤의 언어로 번역하고<br>6월 마케팅 회로에 올려야 하는 구간</strong>입니다. 리서치 자료 + 강의의 효용이 가장 크게 나타나는 시점입니다.</p>
+
+    <div class="info-box">
+      <strong>강점:</strong> 한·미 특허 보유 · Solve-and-Earn 토크노믹스(Gem / NUSD) · 콘텐츠 제작 자동화 공장 · USP 명료성(Free Education for All)<br>
+      <strong>현황:</strong> 상용 런칭 D-30 (2026년 7월 초) · 마케팅 개시 D-7 (2026년 6월) · 6채널 전부 미개설 · 12개 프로젝트 동시 진행<br>
+      <strong>방향 미정:</strong> 노다지파이(교육) ↔ 글로벌픽(금융) 이중 브랜드 ↔ 두바이 재단 거버넌스 / 한류 팬덤 첫 1만 가설 / 6채널 중 첫 점화 1개<br><br>
+      기술·플랫폼·자동화 자산은 완성되었지만, <strong>한류 팬덤 첫 1만의 회로 · 카테고리 포지션 · 대표 운영 체력</strong>은 아직 만들어야 하는 단계입니다.<br>
+      이 단계에서 가장 효용이 큰 것이 <strong>리서치 자료 + 강의</strong>의 조합입니다.
+    </div>
+
+    <div class="gap-wrap" style="margin-top: 36px;">
+      <table class="gap-table">
+        <thead>
+          <tr>
+            <th style="width:32px">#</th>
+            <th>영역 진단</th>
+            <th>현황</th>
+            <th style="width:90px">상태</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><strong>브랜드 포지셔닝 · 카테고리 정의</strong><br>"교육 플랫폼"인지 "Web3 EduFi"인지 "한류 학습 커뮤니티"인지 외부에서 한 줄로 잡히지 않음</td>
+            <td>런칭 전 필수 정리 항목</td>
+            <td><span class="badge b-red">부재</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>한류 팬덤 페르소나 정밀화</strong><br>2.2억 한류 팬덤 전체 → 첫 1만 가설 미설정. 지역(동남아·북미·라틴)·연령·소속 팬덤(K-pop·드라마·푸드) 축 미구축</td>
+            <td>6월 마케팅 타겟 설계에 직결</td>
+            <td><span class="badge b-red">부재</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>경쟁사·카테고리 맵핑</strong><br>Duolingo·Memrise·Drops(언어) · 90 Day Korean·KoreanClass101(한류 교육) · Web3 Learn-to-Earn(Coin&amp;Quiz·RabbitX) 비교 부재</td>
+            <td>차별화 회로 설계의 근거 필요</td>
+            <td><span class="badge b-orange">부분</span></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>글로벌 채널 운영 회로</strong><br>X·유튜브쇼츠·텔레그램·틱톡·인스타·디스코드 6채널 전부 미개설. 첫 점화 1채널과 다음 2채널의 우선순위 미정</td>
+            <td>대표 직접 판단력 필요</td>
+            <td><span class="badge b-red">부재</span></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><strong>제품력 · 기술 자산</strong><br>한국·미국 특허 보유 · Solve-and-Earn 토크노믹스 · 콘텐츠 자동화 공장 · USD 1:1 담보 NUSD 구조</td>
+            <td>브랜드 자산화 즉시 가능</td>
+            <td><span class="badge b-green">우수</span></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><strong>USP · 미션 명료성</strong><br>"Free Education for All" + 학습 보상 토크노믹스 + 한류 팬덤 첫 타겟 — 메시지 코어 자체는 강함</td>
+            <td>팬덤 언어로 번역만 남음</td>
+            <td><span class="badge b-green">우수</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- TIER OVERVIEW -->
+<div class="tier-bg">
+  <div class="container">
+    <div class="sec-label">Solution Packages</div>
+    <h2 style="color:var(--white)">2가지 제안</h2>
+    <p class="sec-desc">두 구성 모두 <strong style="color:#E5C674">마켓 리서치 자료</strong>과 <strong style="color:#E5C674">브랜드 강의 4회</strong>가 기본입니다.<br>심화 단계에서는 <strong style="color:#E5C674">글로벌 한류 채널 콘텐츠 무드보드 제안</strong>이 추가됩니다.</p>
+    <div class="tier-cards">
+
+      <div class="t-card">
+        <div class="t-name">Package A &middot; Base</div>
+        <div class="t-title">마켓 리서치 자료 (한류·EduFi)<br>+ 브랜드 강의 4회</div>
+        <div class="t-price">200<span>만원</span></div>
+        <div class="t-period">약 4주 &middot; VAT 별도</div>
+        <ul class="t-feats">
+          <li class="t-feat on">글로벌 한류·EduFi 시장 · 경쟁사 분석</li>
+          <li class="t-feat on">한류 팬덤 페르소나 + USP 메시지 회로</li>
+          <li class="t-feat on">브랜드 강의 4회 (대표 1:1)</li>
+          <li class="t-feat off">글로벌 한류 채널 콘텐츠 무드보드 (코어 3채널)</li>
+        </ul>
+      </div>
+
+      <div class="t-card rec">
+        <div class="rec-badge">Recommended</div>
+        <div class="t-name">Package B &middot; Plus</div>
+        <div class="t-title">마켓 리서치 자료 (심화)<br>+ 브랜드 강의 4회</div>
+        <div class="t-price">500<span>만원</span></div>
+        <div class="t-period">약 2개월 &middot; VAT 별도</div>
+        <ul class="t-feats">
+          <li class="t-feat on">Package A 전체 포함</li>
+          <li class="t-feat on">글로벌 한류 채널 콘텐츠 무드보드 (X·YouTube Shorts·Telegram)</li>
+          <li class="t-feat on">브랜드 강의 4회 (대표 1:1)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- PACKAGE A -->
+<section class="det">
+  <div class="container">
+    <div class="sec-label">Package A &middot; Base</div>
+    <div class="det-head">
+      <div class="det-head-l">
+        <h2>마켓 리서치 자료 (한류·EduFi)<br>+ 브랜드 강의 4회</h2>
+        <p class="sec-desc" style="margin-bottom:0">글로벌 한류·EduFi 시장을 데이터로 구조화하고,<br>대표가 직접 판단할 수 있는 운영 체력을 쌓는 기본 구성입니다.<br>노다지파이랩스의 경우 <strong>7월 초 런칭 전 카테고리 포지션 정리와<br>첫 1만 한류 팬덤 회로 가설</strong>을 만드는 데 초점을 둡니다.</p>
+      </div>
+      <div class="price-box">
+        <div class="pl">TOTAL</div>
+        <div class="pa">2,000,000</div>
+        <div class="ps">약 4주 &middot; VAT 별도</div>
+      </div>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">1. 마켓 리서치 자료 — Base (한류·EduFi)</span>
+        <span class="bp">1,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>시장 · 카테고리 분석</td><td>글로벌 한국어 학습 시장 · Web3 Learn-and-Earn / EduFi 카테고리 규모 · 성장률 · 키워드 트렌드 분석. "한류 교육 × Web3 보상" 카테고리의 중첩·공백 지점 정리</td></tr>
+        <tr><td>경쟁사 맵핑</td><td>Duolingo · Memrise · Drops (메인스트림 언어 앱) / 90 Day Korean · KoreanClass101 (한류 교육) / Coin&amp;Quiz · RabbitX (Web3 Learn-to-Earn) 가격·포지션·메시지·UX 분석 / 노다지파이가 점유할 빈 포지션 도출</td></tr>
+        <tr><td>한류 팬덤 페르소나 정밀화</td><td>한류 팬덤 2.2억 → 첫 1만 가설 정밀화. 지역(동남아·북미·라틴·MENA) × 소속 팬덤(K-pop·K-드라마·K-푸드·K-뷰티) × 디바이스/플랫폼(텔레그램·X·틱톡·유튜브쇼츠) 2~3축 정리 / 각 페르소나의 학습 동기·보상 민감도 분석</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">2. 브랜드 강의 4회 (대표 1:1)</span>
+        <span class="bp">1,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>운영 방식</td><td>대표 1:1 · 주 1회 · 회당 60분 · 온라인 (총 4주 · 약 4시간) / 실제 노다지파이랩스 자료(특허·자동화 공장·토크노믹스)를 놓고 진행하는 실전형 세션</td></tr>
+        <tr><td>Session 1</td><td>USP · 한 줄 메시지 회로 — "Free Education for All"을 한류 팬덤의 언어로 번역. 캐치프레이즈가 아니라 채널·콘텐츠·CTA가 정렬되는 메시지 구조</td></tr>
+        <tr><td>Session 2</td><td>글로벌 채널 운영 — 6채널 우선순위 판단(X / 유튜브쇼츠 / 텔레그램 코어 3채널 vs. 틱톡 · 인스타 · 디스코드 후행), 각 채널 톤·KPI·운영 리듬 설계</td></tr>
+        <tr><td>Session 3</td><td>콘텐츠 자동화 활용법 — 기존 자동화 공장에서 한류 콘텐츠(스타일·푸드·언어) 변형 숏폼 발행 루틴 설계. AI 콘텐츠의 신뢰 디스카운트 대응</td></tr>
+        <tr><td>Session 4</td><td>인플루언서 · 바이럴 · 런칭 판단 — 외국인 한류 인플루언서 협업 구조, 아이돌 에이전시 도네이션 연계 가설, D-30 스케일업 vs. 안전 런 판단 기준</td></tr>
+      </table>
+    </div>
+
+    <div class="total-bar">
+      <div><div class="tl">PACKAGE A TOTAL</div><div class="ts">VAT 별도 &middot; 약 4주</div></div>
+      <div class="ta">2,000,000원</div>
+    </div>
+
+    <div class="info-box">
+      <strong>참고:</strong> 본 패키지는 <strong>실행 대행이 아닌 회로 설계 + 대표 역량 강화</strong> 구성입니다. 채널 개설·콘텐츠 발행·광고 운영·인플루언서 계약은 본 견적 범위 외이며, 후속 단계(Pro / Enterprise)에서 별도 제안드립니다. Web3·금융 규제 자문 또한 본 견적에 포함되지 않습니다.
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGE B -->
+<section class="det">
+  <div class="container">
+    <div class="sec-label">Package B &middot; Plus &mdash; Recommended</div>
+    <div class="det-head">
+      <div class="det-head-l">
+        <h2>마켓 리서치 자료 (심화)<br>+ 브랜드 강의 4회</h2>
+        <p class="sec-desc" style="margin-bottom:0">Package A 구성에 <strong>글로벌 한류 채널 콘텐츠 무드보드 (코어 3채널)</strong>를 더한 심화 구성입니다.<br>X · YouTube Shorts · Telegram 채널 동시 개설 시점에 콘텐츠 톤이 흔들리지 않도록<br><strong>채널별 워너비 톤 무드보드</strong>를 같이 정리합니다.</p>
+      </div>
+      <div class="price-box">
+        <div class="pl">TOTAL</div>
+        <div class="pa">5,000,000</div>
+        <div class="ps">약 2개월 &middot; VAT 별도</div>
+      </div>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">1. 마켓 리서치 자료 — Plus (리서치 + 글로벌 한류 채널 콘텐츠 무드보드)</span>
+        <span class="bp">4,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>Package A 리서치 전체</td><td>글로벌 한류·EduFi 시장·경쟁사·페르소나·USP 메시지 회로 (Package A 1번 전체 포함)</td></tr>
+        <tr><td>코어 3채널 콘텐츠 무드보드 제안</td><td>X(밈·스레드 톤) / YouTube Shorts(한류 학습 숏폼 톤) / Telegram(커뮤니티·공지 톤) 각 채널 워너비 레퍼런스 · 비주얼 컬러·타이포·키비주얼 가이드 / 자동화 공장 산출물이 채널별 톤에 맞게 변형되는 기준 가이드</td></tr>
+        <tr><td>한류 콘텐츠 카테고리 톤</td><td>한류 콘텐츠 3대 축(스타일 · 푸드 · 언어/문화) 각각의 비주얼·카피 톤 레퍼런스. 6월 마케팅 시작 시 콘텐츠 자동화 공장에서 바로 참고 가능한 형태</td></tr>
+      </table>
+    </div>
+
+    <div class="dblock">
+      <div class="dblock-head">
+        <span class="bt">2. 브랜드 강의 4회 (Package A 동일)</span>
+        <span class="bp">1,000,000원</span>
+      </div>
+      <table class="dtable">
+        <tr><td>커리큘럼</td><td>Package A와 동일한 4회 커리큘럼 (대표 1:1 · 주 1회 · 회당 60분 · 온라인)</td></tr>
+        <tr><td>Plus 연계</td><td>Session 2(글로벌 채널 운영)와 Session 3(콘텐츠 자동화 활용)이 Plus 무드보드 결과를 반영하여 채널별 실전 톤 적용 단계로 확장됩니다</td></tr>
+      </table>
+    </div>
+
+    <div class="curri-grid">
+      <div class="curri-card">
+        <div class="cn">Session 01</div>
+        <div class="ct">USP · 한 줄 메시지 회로</div>
+        <div class="cd">"Free Education for All"을 한류 팬덤 언어로 번역.<br>채널·콘텐츠·CTA가 정렬되는 메시지.</div>
+      </div>
+      <div class="curri-card">
+        <div class="cn">Session 02</div>
+        <div class="ct">글로벌 채널 운영</div>
+        <div class="cd">X / YouTube Shorts / Telegram 코어 3채널.<br>각 채널 톤·KPI·운영 리듬 설계.</div>
+      </div>
+      <div class="curri-card">
+        <div class="cn">Session 03</div>
+        <div class="ct">콘텐츠 자동화 활용</div>
+        <div class="cd">자동화 공장 → 한류 변형 숏폼 루틴.<br>AI 콘텐츠 신뢰 디스카운트 대응.</div>
+      </div>
+      <div class="curri-card">
+        <div class="cn">Session 04</div>
+        <div class="ct">인플루언서 · 바이럴 · 런칭 판단</div>
+        <div class="cd">외국인 한류 인플루언서 협업 구조.<br>D-30 스케일업 vs. 안전 런 기준.</div>
+      </div>
+    </div>
+
+    <div class="total-bar">
+      <div><div class="tl">PACKAGE B TOTAL</div><div class="ts">VAT 별도 &middot; 약 2개월</div></div>
+      <div class="ta">5,000,000원</div>
+    </div>
+
+    <div class="info-box">
+      <strong>Recommended 이유:</strong> 6채널 미개설 + 콘텐츠 자동화 공장 보유 조합에서 가장 위험한 것은 "톤 없는 양산"입니다. 코어 3채널의 콘텐츠 무드보드가 사전에 정리되어 있어야, 채널 오픈 후 자동화 산출물이 분산되지 않고 톤이 일관되게 쌓입니다. Plus는 6월 마케팅 개시 <strong>직전 마지막으로 정리하는 문서 세트</strong>입니다.
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section>
+  <div class="container">
+    <div class="sec-label">Summary</div>
+    <h2>패키지 비교</h2>
+    <p class="sec-desc">브랜드 강의 4회는 양쪽 패키지에 동일하게 포함됩니다.<br>리서치 자료의 심화 범위(코어 3채널 콘텐츠 무드보드)에서만 차이가 있습니다.</p>
+    <div class="cmp-wrap">
+      <table class="cmp-table">
+        <thead>
+          <tr>
+            <th>항목</th>
+            <th>Package A</th>
+            <th class="hi">Package B ★</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>글로벌 한류·EduFi 시장 · 경쟁사 분석</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>한류 팬덤 페르소나 · USP 메시지 회로</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>글로벌 한류 채널 콘텐츠 무드보드 (X·YT Shorts·Telegram)</td><td class="no">&mdash;</td><td class="ck">&#10003;</td></tr>
+          <tr><td>브랜드 강의 4회 (대표 1:1)</td><td class="ck">&#10003;</td><td class="ck">&#10003;</td></tr>
+          <tr class="sum-row">
+            <td>기간</td><td>약 4주</td><td class="hi">약 2개월</td>
+          </tr>
+          <tr class="sum-row">
+            <td>금액 (VAT 별도)</td><td>200만원</td><td class="hi">500만원</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="container">
+    <div class="brand">브랜드라이즈 by HIZ</div>
+    <div class="tag">Pace &amp; Proof</div>
+    <div class="meta">
+      본 견적서의 유효기간은 발행일로부터 30일입니다.<br>
+      위 금액은 모두 VAT 별도 기준이며, 광고비·외주 콘텐츠비·Web3 규제 자문 등은 별도입니다.<br>
+      리서치·강의 일정은 협의 조정 가능하며, 항목은 협의 하에 커스터마이즈 가능합니다.<br>
+      문의: 브랜드라이즈 by HIZ &middot; <span id="footer-date"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var d = new Date();
+    var y = d.getFullYear();
+    var m = String(d.getMonth() + 1).padStart(2, '0');
+    var day = String(d.getDate()).padStart(2, '0');
+    var formatted = y + '. ' + m + '. ' + day;
+    document.getElementById('today-date').textContent = formatted;
+    document.getElementById('footer-date').textContent = formatted;
+  })();
+</script>
+</body>
+</html>
