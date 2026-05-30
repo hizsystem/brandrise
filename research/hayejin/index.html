@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하예진 (HAYEJIN) - New Business 상담 준비 | BRANDRISE</title>
+    <style>
+        :root {
+            --primary: #0D0D0D; --secondary: #1a1b18; --accent: #EA580C; --highlight: #EA580C;
+            --bg: #f4f7f9; --card-bg: #ffffff; --text: #1a1b18; --text-light: #636569;
+            --border: #e8edf1; --success: #00b894; --warning: #EA580C; --danger: #dc2626;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+        .header { background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); color: white; padding: 60px 40px; text-align: center; }
+        .header-badge { display: inline-block; background: rgba(233, 69, 96, 0.2); border: 1px solid var(--highlight); color: var(--highlight); padding: 4px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 16px; letter-spacing: 1px; }
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+        .header .subtitle { font-size: 16px; opacity: 0.7; font-weight: 300; }
+        .header .date { margin-top: 16px; font-size: 13px; opacity: 0.5; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        .toc { background: var(--card-bg); border-radius: 12px; padding: 32px; margin-bottom: 40px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+        .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }
+        .toc a { color: var(--accent); text-decoration: none; font-size: 14px; padding: 6px 0; display: block; transition: color 0.2s; }
+        .toc a:hover { color: var(--highlight); }
+        .section { background: var(--card-bg); border-radius: 12px; padding: 36px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section h2 { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--highlight); }
+        .section h3 { font-size: 17px; font-weight: 600; color: var(--secondary); margin: 20px 0 12px; }
+        .info-grid { display: grid; grid-template-columns: 160px 1fr; gap: 8px 16px; font-size: 14px; }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th { background: var(--primary); color: white; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px; }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+        tr:hover td { background: #f1f3f5; }
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin: 2px; }
+        .tag-red { background: #ffe0e0; color: #d63031; } .tag-green { background: #d4f5e9; color: #00b894; }
+        .tag-blue { background: #dfe6fd; color: #EA580C; } .tag-yellow { background: #fff3cd; color: #856404; } .tag-gray { background: #e9ecef; color: #495057; }
+        .verdict { background: linear-gradient(135deg, #00b894 0%, #00cec9 100%); color: white; padding: 24px 32px; border-radius: 12px; text-align: center; margin: 24px 0; }
+        .verdict .label { font-size: 14px; opacity: 0.8; } .verdict .value { font-size: 36px; font-weight: 800; margin: 8px 0; } .verdict .desc { font-size: 14px; opacity: 0.9; }
+        .tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+        .tier-card { border: 2px solid var(--border); border-radius: 12px; padding: 24px; position: relative; transition: transform 0.2s; }
+        .tier-card:hover { transform: translateY(-4px); }
+        .tier-card.recommended { border-color: var(--highlight); box-shadow: 0 4px 20px rgba(233, 69, 96, 0.15); }
+        .tier-card .tier-badge { position: absolute; top: -12px; right: 16px; background: var(--highlight); color: white; padding: 2px 12px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+        .tier-card h4 { font-size: 16px; margin-bottom: 4px; } .tier-card .price { font-size: 24px; font-weight: 800; color: var(--highlight); margin: 12px 0; }
+        .tier-card .duration { font-size: 13px; color: var(--text-light); margin-bottom: 16px; } .tier-card ul { list-style: none; padding: 0; }
+        .tier-card li { font-size: 13px; padding: 4px 0; padding-left: 20px; position: relative; } .tier-card li::before { content: ">"; position: absolute; left: 0; color: var(--highlight); font-weight: 700; }
+        .callout { background: #fff8e1; border-left: 4px solid #ffc107; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 14px; }
+        .callout-info { background: #e3f2fd; border-left-color: #2196f3; } .callout-danger { background: #fce4ec; border-left-color: #e53935; } .callout-success { background: #e8f5e9; border-left-color: #00b894; }
+        .leverage-box { background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); color: white; padding: 32px; border-radius: 12px; margin: 24px 0; text-align: center; }
+        .leverage-box .quote { font-size: 20px; font-weight: 700; line-height: 1.5; margin: 16px 0; }
+        .flow-steps { display: flex; gap: 0; margin: 20px 0; overflow-x: auto; }
+        .flow-step { flex: 1; min-width: 160px; padding: 16px; background: #f1f3f5; position: relative; text-align: center; }
+        .flow-step:not(:last-child)::after { content: ">"; position: absolute; right: -8px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--highlight); font-weight: 700; z-index: 1; }
+        .flow-step .step-num { font-size: 11px; font-weight: 700; color: var(--highlight); margin-bottom: 4px; } .flow-step .step-title { font-size: 13px; font-weight: 600; } .flow-step .step-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; } .swot-item h4 { font-size: 15px; margin-bottom: 10px; } .swot-item ul { padding-left: 18px; } .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: #d4f5e9; } .swot-w { background: #ffe0e0; } .swot-o { background: #dfe6fd; } .swot-t { background: #fff3cd; }
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; } .source-list a { color: var(--accent); text-decoration: none; } .source-list a:hover { text-decoration: underline; }
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; } .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; } .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 8px 0; } .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+        .summary-section { border-left: 4px solid var(--highlight); background: linear-gradient(135deg, #fff 0%, #fff5f7 100%); } .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; } .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; } .summary-header .sh-title { font-size: 16px; font-weight: 700; } .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; color: white; } .kpi-card.kpi-dark { background: var(--primary); } .kpi-card.kpi-danger { background: var(--danger); } .kpi-card.kpi-success { background: var(--success); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.7; } .kpi-card .kpi-value { font-size: 24px; font-weight: 800; } .kpi-card .kpi-sub { font-size: 11px; opacity: 0.7; }
+        .summary-oneliner { background: #0D0D0D; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; } .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; } .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; } .summary-oneliner .sol-text .hl { color: var(--highlight); }
+        .summary-bottom { font-size: 14px; line-height: 1.8; } .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+        .diagnosis-section { border: 2px solid var(--danger); } .diagnosis-section h2 { border-bottom-color: var(--danger); color: var(--danger); }
+        .diag-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; } .diag-box { padding: 16px; border-radius: 8px; } .diag-box.diag-current { background: #fce4ec; } .diag-box.diag-ideal { background: #e8f5e9; }
+        .diag-box .db-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; } .diag-box.diag-current .db-label { color: var(--danger); } .diag-box.diag-ideal .db-label { color: var(--success); } .diag-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+        .diag-note { font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: #fff3e0; border-radius: 8px; }
+        .spin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; } .spin-card { padding: 20px; border-radius: 10px; font-size: 14px; } .spin-card h4 { font-size: 15px; margin-bottom: 10px; }
+        .spin-s { background: #e3f2fd; } .spin-p { background: #fce4ec; } .spin-i { background: #fff3e0; } .spin-n { background: #e8f5e9; }
+        .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; } .pain-level { flex: 1; min-width: 200px; padding: 16px; border-radius: 10px; font-size: 13px; } .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .pain-l1 { background: #e3f2fd; } .pain-l2 { background: #fff3e0; } .pain-l3 { background: #fce4ec; } .pain-l4 { background: #f3e5f5; }
+        .script-block { background: #f8f9fa; border-left: 3px solid var(--accent); padding: 16px 20px; margin: 12px 0; border-radius: 0 8px 8px 0; font-size: 14px; font-style: italic; color: var(--secondary); }
+        .question-card { background: #f8f9fa; border-radius: 8px; padding: 16px 20px; margin: 12px 0; } .question-card .q-num { font-size: 12px; font-weight: 700; color: var(--highlight); } .question-card .q-text { font-size: 15px; font-weight: 600; margin: 4px 0 8px; } .question-card .q-intent { font-size: 13px; color: var(--text-light); }
+        .timeline-phase { display: grid; grid-template-columns: 100px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); } .timeline-phase .phase-time { font-size: 13px; font-weight: 700; color: var(--highlight); text-align: center; padding-top: 4px; } .timeline-phase .phase-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; } .timeline-phase .phase-content p { font-size: 13px; color: var(--text-light); }
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; } .header h1 { font-size: 24px; } .section { padding: 24px 16px; } .info-grid { grid-template-columns: 1fr; } .tier-cards { grid-template-columns: 1fr; } .swot-grid { grid-template-columns: 1fr; } .flow-steps { flex-direction: column; } .flow-step:not(:last-child)::after { display: none; } .channel-grid { grid-template-columns: repeat(2, 1fr); } .summary-header { grid-template-columns: 1fr; } .kpi-grid { grid-template-columns: repeat(2, 1fr); } .diag-compare { grid-template-columns: 1fr; } .spin-grid { grid-template-columns: 1fr; } .pain-layer { flex-direction: column; } .timeline-phase { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">NEW BUSINESS 상담 준비 패키지</div>
+    <h1>하예진 (HAYEJIN)</h1>
+    <div class="subtitle">비건 자연주의 스킨케어 | 쌀겨·연꽃 · 영국 비건소사이어티/PETA 인증 · 수출 20여 개국</div>
+    <div class="date">작성일: 2026-05-30 | Prepared by BRANDRISE (MarketingOS)</div>
+</div>
+
+<div class="container">
+
+    <!-- Executive Summary -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">회사</div>
+                <div class="sh-title">하예진 (HAYEJIN)</div>
+                <div class="sh-sub">비건 자연주의 스킨케어 | 2018 런칭 · 이후 리브랜딩</div>
+            </div>
+            <div>
+                <div class="sh-label">대표이사</div>
+                <div class="sh-title">(확인 필요)</div>
+                <div class="sh-sub">상담 시 직접 확인 — 사전자료에 미기재</div>
+            </div>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">수출 성장</div>
+                <div class="kpi-value">2.8배</div>
+                <div class="kpi-sub">23,760→66,500EA ('21→'23)</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">브랜드 자산</div>
+                <div class="kpi-value">비건+PETA</div>
+                <div class="kpi-sub">뮤즈 배우 남지현 · 수출 20+개국</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">제품 라인</div>
+                <div class="kpi-value">3 라인</div>
+                <div class="kpi-sub">라이스필라(쌀겨)·블레싱(연꽃)·시트마스크</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">META 광고 효율</div>
+                <div class="kpi-value">CPA 3배↑</div>
+                <div class="kpi-sub">초기 1만→현재 2.9만원 · ROAS 목표 200~300%</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                비건 인증·남지현 뮤즈·수출 20여 개국이라는 단단한 브랜드 자산을 갖추고 있으나,<br>
+                <span class="hl">3년 된 상세페이지 · 미정리 소구포인트 · 방치된 SNS</span>가 들어온 트래픽을 전환으로 잇지 못하는 최대 병목.
+            </div>
+        </div>
+        <div class="summary-bottom">
+            <strong>기회 적합도:</strong> <span class="hl">4.0 / 5.0 (강한 GO — 단, 광고대행사 Driven과 역할 분리 전제)</span> &nbsp;|&nbsp;
+            <strong>추천 Tier:</strong> Professional (월 500만원 안팎, 3개월) &nbsp;|&nbsp;
+            <strong>기대 계약액:</strong> 1,500만원~
+        </div>
+        <div class="callout callout-info" style="margin-top:16px;">
+            <strong>관통 프레임:</strong> 하예진은 "마케팅이 약한 회사"가 아니라 <strong>"가진 자산을 시장 언어로 못 옮긴 회사"</strong>다.
+            우리가 할 일은 새 콘텐츠를 찍어내는 게 아니라 <strong>있는 자산(인증·후기·수출 레퍼런스)을 팔리는 메시지·전환 자산으로 정리</strong>해주는 것.
+        </div>
+    </div>
+
+    <!-- 핵심 문제점 & 진단 -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 문제점 & 진단</h2>
+
+        <h3>1. 상세페이지 노후 · 소구포인트 부재 (Critical)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재 상태</div>
+                <ul>
+                    <li>전 제품 상세페이지 제작 3년 이상 경과 (대표 본인이 "가장 시급한 과제"로 지목)</li>
+                    <li>제품별 소구포인트(왜 사야 하는가)가 정리된 문서 없음</li>
+                    <li>광고로 유입돼도 랜딩(상세페이지)에서 전환 누수 → 광고 효율 악화의 진짜 원인</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">이상적 상태</div>
+                <ul>
+                    <li>제품별 1-메시지 소구포인트 정의 (예: "수부지 진정")</li>
+                    <li>핵심 3제품 상세페이지 전환형 리뉴얼(후기·인증·비포애프터 구조)</li>
+                    <li>상세페이지·광고소재·SNS가 한 메시지로 정렬</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2. 캠페인 구조 붕괴 — 광고 효율 3배 악화 (High)</h3>
+        <div class="diag-note">
+            대행사 Driven 코멘트(4/20~26): "차후 모든 캠페인은 <strong>하예진 실무진이 원하는 타겟팅 + 기획전 단위로 쪼개서</strong> 설정." →
+            머신러닝 재시작 반복 → <strong>초기 CPA 약 1만원 → 현재 약 2.9만원(3배)</strong>. "캠페인 구조를 잡을 수 없어 최대한 소재로 방어 시도." 즉 운영의 문제가 아니라 <strong>구조·의사결정의 문제</strong>.
+        </div>
+
+        <h3>3. 브랜드 SNS 방치 (High)</h3>
+        <div class="diag-note">
+            공식 인스타그램 <strong>@hayejin.official — 게시물 0개 · 팔로워 3명</strong>(2026-05-30 확인). META 광고는 돌리는데 정작 유입 고객이 볼 브랜드 계정이 비어 있어 신뢰·재방문 자산이 0. 유튜브(구독 169·영상 45)는 운영 중이나 전환 동선과 단절.
+        </div>
+
+        <h3>영역별 진단 요약</h3>
+        <table>
+            <tr><th>영역</th><th>현재 상태</th><th>심각도</th><th>GAP</th></tr>
+            <tr><td>상세페이지/소구포인트</td><td>3년 노후, USP 미정리</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>광고 캠페인 구조</td><td>클라이언트 개입으로 최적화 불가</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>브랜드 SNS(인스타)</td><td>사실상 방치(0게시물)</td><td><span class="tag tag-yellow">High</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>브랜드 자산(인증·뮤즈·수출)</td><td>충분히 보유, 미활용</td><td><span class="tag tag-green">Low</span></td><td><span class="tag tag-yellow">중간(활용 갭)</span></td></tr>
+            <tr><td>제품 경쟁력(화해 평점 등)</td><td>제품력 양호(소개서 기준), 플랫폼 노출 약화</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-yellow">중간</span></td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>진단 결론:</strong> 하예진의 ROAS 부진은 "광고를 못 돌려서"가 아니라 <strong>① 들어온 트래픽이 3년 된 상세페이지에서 새고 ② 클라이언트 개입으로 캠페인이 학습을 못 하며 ③ 브랜드 신뢰를 받쳐줄 SNS가 비어 있기 때문</strong>. 광고비 증액이 아니라 <strong>전환 자산(메시지·상세페이지·SNS) 재정비</strong>가 해법.
+        </div>
+    </div>
+
+    <!-- 목차 -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 & 진단</a>
+            <a href="#company-info">1. 기업 기초 정보</a>
+            <a href="#product-lineup">2. 주력 제품/서비스</a>
+            <a href="#digital-presence">3. 디지털 프레즌스 진단</a>
+            <a href="#ad-performance">3-1. META 광고 성과 추세</a>
+            <a href="#competitors">4. 경쟁사 분석</a>
+            <a href="#market">5. 시장 환경</a>
+            <a href="#ceo-background">6. 대표자/경영진 프로필</a>
+            <a href="#swot">7. SWOT 분석</a>
+            <a href="#needs-analysis">8. 니즈 분석 (SPIN + JTBD)</a>
+            <a href="#gap-analysis">9. GAP 분석 & 기회 평가</a>
+            <a href="#quote">10. 3-Tier 견적 초안</a>
+            <a href="#strategy">11. 상담 전략 & 코칭</a>
+            <a href="#closing">12. 클로징 전략</a>
+        </div>
+    </div>
+
+    <!-- 1. 기업 기초 정보 -->
+    <div class="section" id="company-info">
+        <h2>1. 기업 기초 정보</h2>
+        <div class="info-grid">
+            <div class="info-label">브랜드</div><div class="info-value">하예진 (HAYEJIN)</div>
+            <div class="info-label">업종</div><div class="info-value">비건 자연주의 스킨케어 (화장품 제조·판매)</div>
+            <div class="info-label">런칭</div><div class="info-value">2018년 · 이후 비건 인증 획득 후 리브랜딩</div>
+            <div class="info-label">자사몰</div><div class="info-value"><a href="https://www.hayejincosmetics.com/">hayejincosmetics.com</a> (Cafe24 자체몰, 정기 프로모션 운영 중)</div>
+            <div class="info-label">국내 채널</div><div class="info-value">자사몰 · 면세점(현대·신세계 명동·롯데 온라인) · GS shop · SSG · 시코르 · 쿠팡 · 행복한백화점 등</div>
+            <div class="info-label">해외 채널</div><div class="info-value">20여 개국 40여 채널 (러시아 골드애플, 카자흐스탄, 인도네시아, 일본, 터키 등)</div>
+            <div class="info-label">운영 광고</div><div class="info-value">META 단일 (대행사 Driven 운영). 월 광고비 '26.3월 305만 피크 → 4월 87만으로 급감</div>
+            <div class="info-label">자가진단 강점</div><div class="info-value">블레싱오브스프라우트 세럼 — "수부지 피부 진정"</div>
+            <div class="info-label">6개월 목표</div><div class="info-value">국내 매출 ROAS 200~300% 유지</div>
+            <div class="info-label">가장 시급한 과제</div><div class="info-value">전 제품 상세페이지 3년+ 노후 → 빠른 수정 + 소구포인트 정리</div>
+        </div>
+        <div class="source-list">출처: 브랜드 소개서(KR 2025 3Q), 사전질문 답변, META 대시보드 4주치('26.3.30~5.3), 자사몰·SNS 직접 확인(2026-05-30)</div>
+    </div>
+
+    <!-- 2. 주력 제품/서비스 -->
+    <div class="section" id="product-lineup">
+        <h2>2. 주력 제품/서비스</h2>
+        <table>
+            <tr><th>라인</th><th>핵심 원료</th><th>구성·소구</th><th>비고</th></tr>
+            <tr><td><strong>라이스필라 (Rice Bran)</strong></td><td>쌀겨추출물·쌀추출물·쌀겨오일 (저온발효)</td><td>오일토너150·보습크림50·클렌징오일200·클렌징폼100·수분선크림50 등 — 보습·톤개선·주름·미백</td><td><span class="tag tag-blue">메인 라인</span></td></tr>
+            <tr><td><strong>블레싱 오브 스프라우트 (Sprout)</strong></td><td>연꽃배아추출물·병풀추출물</td><td>토너·세럼·크림 — 진정·보습·톤개선</td><td><span class="tag tag-green">현재 계절 메인(세럼)</span></td></tr>
+            <tr><td><strong>커들 오브 시트마스크</strong></td><td>티트리·제주옥시겐워터·플라워스</td><td>시트마스크 3종 — 진정·생기·탄력 (텐셀 원단)</td><td>저자극 테스트·PETA 인증</td></tr>
+        </table>
+        <div class="callout">
+            전 제품 공통: <strong>#피부 저자극 테스트 완료 #영국 비건소사이어티 인증 #미국 PETA 인증</strong>. 기능성 원료 아데노신·나이아신아마이드·알부틴(주름·미백).
+            <br>핵심 전환 제품 후보: <strong>블레싱 세럼(계절 메인) + 라이스필라 클렌징/오일토너(메인) + 수분선크림(첫구매딜 경험 있음)</strong>.
+        </div>
+    </div>
+
+    <!-- 3. 디지털 프레즌스 진단 -->
+    <div class="section" id="digital-presence">
+        <h2>3. 디지털 프레즌스 진단</h2>
+        <div class="channel-grid">
+            <div class="channel-card"><div class="ch-name">자사몰 (Cafe24)</div><div class="ch-stat">운영 ○</div><div class="ch-note">활발, 정기 프로모션. 상세페이지 3년 노후가 약점</div></div>
+            <div class="channel-card"><div class="ch-name">인스타 @hayejin.official</div><div class="ch-stat">0 게시물</div><div class="ch-note">팔로워 3명 — 사실상 방치 (2026-05-30)</div></div>
+            <div class="channel-card"><div class="ch-name">유튜브 하예진Official</div><div class="ch-stat">169 구독</div><div class="ch-note">영상 45개, 정기 업로드. 전환 동선과 단절</div></div>
+            <div class="channel-card"><div class="ch-name">META 광고</div><div class="ch-stat">단일 채널</div><div class="ch-note">대행사 Driven 운영. CPA 3배 악화</div></div>
+            <div class="channel-card"><div class="ch-name">쿠팡</div><div class="ch-stat">입점 ○</div><div class="ch-note">오픈마켓 노출 확인</div></div>
+            <div class="channel-card"><div class="ch-name">화해/글로우픽</div><div class="ch-stat">확인 필요</div><div class="ch-note">소개서는 평점 4+ 주장, 현재 검색 미노출 — 상담 시 확인</div></div>
+        </div>
+        <div class="callout callout-danger">
+            <strong>가장 큰 갭:</strong> 광고(유료)에만 의존하고 <strong>오가닉 자산(인스타·플랫폼 후기)이 비어 있음</strong>. 유료 트래픽이 들어와도 신뢰를 확인할 곳이 없어 전환·재구매가 안 받쳐짐.
+        </div>
+        <div class="source-list">출처: 자사몰·인스타·유튜브 직접 확인(2026-05-30), 화해/글로우픽 검색(미노출, 확인 필요)</div>
+    </div>
+
+    <!-- META 성과 추세 -->
+    <div class="section" id="ad-performance">
+        <h2>3-1. META 광고 성과 추세 (대행사 Driven 대시보드)</h2>
+        <table>
+            <tr><th>주차</th><th>지출</th><th>구매(판매캠)</th><th>핵심층</th><th>비고</th></tr>
+            <tr><td>3.30~4.5</td><td>₩540,413</td><td>29건 / ROAS 33%</td><td>45-54 여성(17건)</td><td>상대적 양호</td></tr>
+            <tr><td>4.20~4.26</td><td>₩572,439</td><td>16건 / ROAS 43%</td><td>45-54·35-44</td><td>CPA 2.9만원, 갈색 소재 OFF</td></tr>
+            <tr><td>4.27~5.3</td><td>₩566,821</td><td>4건 / ROAS 6%</td><td>35-44 여성</td><td>가정의달 캠페인, 전환 급감</td></tr>
+        </table>
+        <div class="callout">
+            월 지출 추세: 1월 153만 → 2월 189만 → <strong>3월 305만(피크)</strong> → <strong>4월 87만(급감)</strong>.
+            구매 핵심층은 일관되게 <strong>35~54세 여성</strong>(특히 45-54 지출·구매 최다, 35-44 ROAS 우수). A/B 결과 <strong>밝은 배경 소재 > 갈색 배경</strong>.
+            <br>* 성별/연령 집계뷰의 구매(135건)와 판매캠뷰 구매(4건)가 큰 차이 → META 어트리뷰션 윈도우 차이로 추정. 실제 자사몰 매출과 대조 필요(상담 질문 2).
+        </div>
+    </div>
+
+    <!-- 4. 경쟁사 분석 -->
+    <div class="section" id="competitors">
+        <h2>4. 경쟁사 분석</h2>
+        <table>
+            <tr><th>브랜드</th><th>핵심 USP</th><th>대표 제품</th><th>위상(추정)</th></tr>
+            <tr><td>조선미녀</td><td>어성초·유기자차, "백탁 없는 선크림"</td><td>맑은쌀선크림·어성초토너</td><td>미국 아마존 히트, 글로벌 대형(매출 수백억 추정)</td></tr>
+            <tr><td>라운드랩</td><td>약산성·저자극, 독도 시리즈</td><td>독도토너·1025</td><td>국내 대형(매출 1천억대 추정)</td></tr>
+            <tr><td>아누아</td><td>어성초 진정 토너, 글로벌 D2C</td><td>어성초77토너</td><td>해외 급성장(추정)</td></tr>
+            <tr><td>토리든</td><td>저분자 히알루론 보습·진정</td><td>다이브인 세럼</td><td>올영 상위(추정)</td></tr>
+            <tr><td>멜릭서</td><td>비건 인증 선두 포지션</td><td>비건 리페어 크림</td><td>비건 카테고리 인지(추정)</td></tr>
+            <tr><td>한율 / I'm from</td><td>쌀·약초 등 한방·곡물 성분</td><td>쌀 토너/세럼</td><td>쌀겨 라인 직접 경쟁(추정)</td></tr>
+        </table>
+        <div class="callout callout-info">
+            <strong>포지셔닝 시사점:</strong> ① <strong>비건·PETA 인증은 이미 차별화가 아님</strong>(멜릭서·디어달리아 등 다수 보유) — 인증은 자격 요건이지 무기가 아니다.
+            ② 쌀겨 성분도 한율·아임프롬 등과 경합. ③ 하예진의 빈자리 = <strong>"쌀겨·연꽃 한국적 원료 × 수부지(수분부족지성) 진정"이라는 구체 조합</strong>으로 좁힐 때 생긴다.
+            <br><span class="tag tag-yellow">※ 경쟁사 매출 수치는 비상장·추정치 — 상담에서 단정 금지, 방향성으로만 사용</span>
+        </div>
+        <div class="source-list">출처: 공개 시장 인지·업계 통념 기반(2026-05). 정량 수치는 미공개로 "추정" 표기.</div>
+    </div>
+
+    <!-- 5. 시장 환경 -->
+    <div class="section" id="market">
+        <h2>5. 시장 환경</h2>
+        <ul style="padding-left:20px; font-size:14px;">
+            <li><strong>비건/클린뷰티</strong>: 성장 카테고리이나 인증 브랜드가 늘며 "비건"만으로는 차별화 약화. 메시지는 인증→실효(진정·보습 결과)로 이동 중.</li>
+            <li><strong>진정·저자극</strong>: 어성초·병풀(시카)·약산성이 주류 키워드. 하예진의 연꽃·병풀은 이 흐름과 정합.</li>
+            <li><strong>K-뷰티 수출 호황</strong>: 조선미녀·아누아 등 D2C 글로벌 성공 사례 다수 — 하예진도 수출 20개국 레퍼런스 보유(국내보다 해외가 강점일 가능성).</li>
+            <li><strong>"수부지 진정" 키워드</strong>: 소비자 자가진단 용어로 꾸준히 사용 — 다만 검색량·커뮤니티 언급도는 <span class="tag tag-yellow">정량 확인 필요</span>.</li>
+        </ul>
+    </div>
+
+    <!-- 6. 대표자/경영진 프로필 -->
+    <div class="section" id="ceo-background">
+        <h2>6. 대표자/경영진 프로필</h2>
+        <div class="callout callout-info">
+            대표자 성명·배경이 사전자료에 없음 <strong>(확인 필요 — 상담 초반 라포 형성 시 자연스럽게 확인)</strong>.
+            확인 신호: 사전질문 답변을 <strong>구체적·실무적으로 직접 작성</strong>(첫구매딜 105건/ROAS 100%↓ 등 수치 명시) → 실무를 직접 챙기는 타입으로 추정.
+            "광고 방향성"을 원한다고 적었으나, 실제 통증은 상세페이지·소구포인트. <strong>가르치려 들지 말고, 정확한 진단으로 "이 사람 제대로 안다"를 먼저 느끼게.</strong>
+        </div>
+    </div>
+
+    <!-- 7. SWOT -->
+    <div class="section" id="swot">
+        <h2>7. SWOT 분석</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s"><h4>Strengths (강점)</h4><ul>
+                <li>영국 비건소사이어티·PETA 인증, 저자극 테스트</li>
+                <li>배우 남지현 뮤즈 + 서울어워드 2년 연속·K뷰티엑스포 1위</li>
+                <li>수출 20여 개국 40채널, EA 2.8배 성장 레퍼런스</li>
+                <li>쌀겨·연꽃 등 차별적 한국 원료 스토리</li>
+            </ul></div>
+            <div class="swot-item swot-w"><h4>Weaknesses (약점)</h4><ul>
+                <li>상세페이지 3년 노후 · 소구포인트 미정리</li>
+                <li>공식 인스타 방치(0게시물) — 오가닉 자산 부재</li>
+                <li>광고 캠페인 구조 붕괴(클라이언트 개입), CPA 3배</li>
+                <li>화해/글로우픽 현재 노출 약화(확인 필요)</li>
+            </ul></div>
+            <div class="swot-item swot-o"><h4>Opportunities (기회)</h4><ul>
+                <li>"수부지 진정" 구체 포지션 선점 여지</li>
+                <li>해외 레퍼런스를 국내 신뢰 자산으로 역수입</li>
+                <li>후기·인증의 전환 자산화(상세·소재·SNS 정렬)</li>
+            </ul></div>
+            <div class="swot-item swot-t"><h4>Threats (위협)</h4><ul>
+                <li>조선미녀·아누아 등 진정·자연주의 강자 다수</li>
+                <li>비건 인증의 차별화 희석</li>
+                <li>쌀겨 성분 경쟁(한율·아임프롬)</li>
+            </ul></div>
+        </div>
+    </div>
+
+    <!-- 8. 니즈 분석 -->
+    <div class="section" id="needs-analysis">
+        <h2>8. 니즈 분석 (SPIN + JTBD)</h2>
+        <div class="spin-grid">
+            <div class="spin-card spin-s"><h4>Situation</h4>비건 스킨케어, META 단일 광고(Driven 운영), 타겟 30~50 여성. 수출은 성장하나 국내 광고 효율은 부진.</div>
+            <div class="spin-card spin-p"><h4>Problem</h4>광고 효율 악화(CPA 1만→2.9만), 첫구매딜 ROAS 100%↓, 상세페이지 3년 노후·소구포인트 부재.</div>
+            <div class="spin-card spin-i"><h4>Implication</h4>전환이 안 되니 광고비를 태울수록 손해. 캠페인 쪼개기로 학습도 안 됨 → 악순환. 브랜드 신뢰 자산(SNS)도 비어 재구매 기반 약함.</div>
+            <div class="spin-card spin-n"><h4>Need-Payoff</h4>소구포인트 정의 + 상세페이지·소재·SNS 정렬 시, 같은 광고비로 전환율↑·ROAS 목표(200~300%) 회복. 해외 레퍼런스를 국내 신뢰로 전환.</div>
+        </div>
+        <h3>Pain Hierarchy (표면 → 진짜)</h3>
+        <div class="pain-layer">
+            <div class="pain-level pain-l1"><span class="level-tag">표면(말한 것)</span>"광고 방향성 및 국내 매출 상승 전략이 필요하다"</div>
+            <div class="pain-level pain-l2"><span class="level-tag">한 겹 아래</span>광고를 더 잘 돌려도 상세페이지에서 다 새는 중 — 전환 자산이 없음</div>
+            <div class="pain-level pain-l3"><span class="level-tag">진짜 니즈</span><strong>"무엇으로 파는 브랜드인지(소구포인트)"를 정의하고, 그걸 상세·소재·SNS로 정렬해 줄 파트너</strong></div>
+            <div class="pain-level pain-l4"><span class="level-tag">감정/정체성</span>수출 20개국·인증·뮤즈까지 갖춘 브랜드인데 국내에선 안 통한다는 답답함 — "제대로 된 브랜드"로 인정받고 싶음</div>
+        </div>
+        <div class="callout callout-success">
+            <strong>추정 진짜 니즈 (확신 72%):</strong> 광고 운영 대행(이미 Driven 보유)이 아니라 — <strong>소구포인트 정의 + 전환 자산(상세페이지·SNS) 재정비 + 퍼포먼스 전략 감리</strong>.
+        </div>
+    </div>
+
+    <!-- 9. GAP 분석 & 기회 평가 -->
+    <div class="section" id="gap-analysis">
+        <h2>9. GAP 분석 & 기회 평가</h2>
+        <div class="verdict">
+            <div class="label">기회 적합도</div>
+            <div class="value">4.0 / 5.0</div>
+            <div class="desc">강한 GO — 명확한 통증 + 충분한 브랜드 자산 + HIZ가 들어갈 빈자리(전환 자산·브랜드). 단, 광고대행 Driven과의 역할 분리를 상담에서 확정해야 깨끗한 수주.</div>
+        </div>
+        <table>
+            <tr><th>평가 축</th><th>점수</th><th>근거</th></tr>
+            <tr><td>통증의 명확성</td><td>4.5</td><td>대표가 "상세페이지·소구포인트"를 직접 시급과제로 지목</td></tr>
+            <tr><td>지불 능력·의지</td><td>4.0</td><td>이미 광고비·대행사 지출 중, 수출로 현금흐름. 단 규모 확인 필요</td></tr>
+            <tr><td>HIZ 적합도</td><td>4.5</td><td>브랜드 메시지·상세페이지·SNS = HIZ 본령. Driven과 비경합</td></tr>
+            <tr><td>자산 레버리지</td><td>4.5</td><td>인증·뮤즈·수출·후기 등 활용할 자산 풍부</td></tr>
+            <tr><td>리스크</td><td>3.0</td><td>"광고 방향성" 기대와 실제 범위 간극 / 클라이언트 개입 성향 / 대표 정보 부족</td></tr>
+        </table>
+    </div>
+
+    <!-- 10. 3-Tier 견적 초안 -->
+    <div class="section" id="quote">
+        <h2>10. 3-Tier 견적 초안</h2>
+        <div class="tier-cards">
+            <div class="tier-card">
+                <h4>Starter — 진단</h4>
+                <div class="price">1,000~1,500만</div>
+                <div class="duration">약 1개월</div>
+                <ul>
+                    <li>소구포인트·상세페이지 진단</li>
+                    <li>광고 캠페인 구조 진단(Driven 데이터 기반)</li>
+                    <li>핵심 제품 1개 메시지/상세 리뉴얼 시안</li>
+                    <li>실행 로드맵 제안</li>
+                </ul>
+            </div>
+            <div class="tier-card recommended">
+                <div class="tier-badge">추천</div>
+                <h4>Professional — 전환 자산 재정비</h4>
+                <div class="price">월 500만 안팎</div>
+                <div class="duration">3개월</div>
+                <ul>
+                    <li>소구포인트 정의(전 라인)</li>
+                    <li>핵심 3제품 상세페이지 전환형 리뉴얼</li>
+                    <li>광고 소재 + 인스타 첫 9~18피드 콘텐츠</li>
+                    <li>퍼포먼스 전략 감리(Driven 협업 구조 정리)</li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>Enterprise — 브랜드 자산화</h4>
+                <div class="price">월 1,000만+</div>
+                <div class="duration">6개월</div>
+                <ul>
+                    <li>국내+해외 통합 브랜드 메시지 체계</li>
+                    <li>D2C 자사몰 리뉴얼 + CRM/재구매 설계</li>
+                    <li>풀 콘텐츠(SNS·영상) + 퍼포먼스 통합</li>
+                    <li>해외 레퍼런스의 국내 자산화</li>
+                </ul>
+            </div>
+        </div>
+        <div class="callout">매출 규모가 작거나 첫 외주면 <strong>Starter(진단)부터 → 성과 보고 확장</strong> 권장. 한꺼번에 크게 벌이지 말 것.</div>
+    </div>
+
+    <!-- 11. 상담 전략 & 코칭 -->
+    <div class="section" id="strategy">
+        <h2>11. 상담 전략 & 코칭</h2>
+        <h3>오늘 꼭 받아올 답 — 필수 질문 Top 3</h3>
+        <div class="question-card">
+            <div class="q-num">Q1</div>
+            <div class="q-text">"광고 운영은 지금 Driven이 하고 계시죠. HIZ가 들어갈 자리는 광고 대행인가요, 아니면 소구포인트·상세페이지·브랜드 콘텐츠 쪽인가요?"</div>
+            <div class="q-intent">의도: 역할 분기 확정 → 수주 범위·견적 결정. (Driven과 경합 vs 보완)</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q2</div>
+            <div class="q-text">"국내 자사몰 매출이 지금 월 어느 정도이고, 광고비 대비 어떤가요? 6개월 안에 진짜 키울 곳은 국내인가요, 해외(20개국)인가요?"</div>
+            <div class="q-intent">의도: 체급·우선순위 파악 → Tier 결정. ROAS 200~300% 목표의 분모(현재 매출) 확인.</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q3</div>
+            <div class="q-text">"'수부지 진정'으로 좁혀서 갈 각오가 있으세요, 아니면 30~50 여성 전체로 가실 생각이세요?"</div>
+            <div class="q-intent">의도: 포지셔닝 의지 확인. 좁혀야 이긴다는 방향 합의.</div>
+        </div>
+
+        <h3>상담 타임라인 (30분 기준)</h3>
+        <div class="timeline-phase"><div class="phase-time">0~5분</div><div class="phase-content"><h4>라포 + 자산 인정</h4><p>"수출 20개국·비건 인증·남지현까지, 자산은 이미 탄탄하세요." 대표·브랜드 히스토리 듣기. 대표명·배경 확인.</p></div></div>
+        <div class="timeline-phase"><div class="phase-time">5~15분</div><div class="phase-content"><h4>진단 공유(신뢰 확보)</h4><p>CPA 1만→2.9만 3배 데이터 + 상세페이지 노후 + 인스타 0게시물 짚기. "광고가 아니라 전환 자산이 병목"으로 프레임 전환.</p></div></div>
+        <div class="timeline-phase"><div class="phase-time">15~25분</div><div class="phase-content"><h4>필수 질문 Q1~Q3 + 방향 제시</h4><p>역할·체급·포지셔닝 받아오기. "수부지 진정" 포지션 + 상세/소재/SNS 정렬안 제시.</p></div></div>
+        <div class="timeline-phase"><div class="phase-time">25~30분</div><div class="phase-content"><h4>다음 단계 + 공짜 팁</h4><p>Starter(진단) 제안 + Quick Tip 선물. 일주일 내 제안서 발송 약속.</p></div></div>
+
+        <div class="callout callout-info">
+            <strong>Challenger 포인트:</strong> "광고비를 더 태우는 게 문제가 아니에요. CPA가 1만→2.9만으로 3배 뛴 건 입찰 경쟁이 아니라 <strong>3년 된 상세페이지에서 트래픽이 다 새고 있다는 신호</strong>예요. 그리고 비건·PETA·남지현은 2026년엔 더 이상 차별화가 아니에요(경쟁사 다 보유) — 진짜 무기는 <strong>'수부지 진정'이라는 구체적 피부고민 점유</strong>입니다."
+        </div>
+    </div>
+
+    <!-- 12. 클로징 전략 -->
+    <div class="section" id="closing">
+        <h2>12. 클로징 전략</h2>
+        <div class="leverage-box">
+            <div class="label">Quick Tip (상담 말미 공짜 선물)</div>
+            <div class="quote">"공식 인스타가 게시물 0개·팔로워 3명이에요.<br>화해/후기 중 '수부지·진정' 후기 10개를 캡처해<br>① 상세페이지 상단 ② 광고 소재 ③ 인스타 첫 9피드로 깔면,<br>지금 '소재로 방어'만 하는 상태가 즉시 살아납니다."</div>
+        </div>
+        <div class="flow-steps">
+            <div class="flow-step"><div class="step-num">STEP 1</div><div class="step-title">진단(Starter)</div><div class="step-desc">소구포인트·상세·광고구조 진단</div></div>
+            <div class="flow-step"><div class="step-num">STEP 2</div><div class="step-title">전환 자산 재정비</div><div class="step-desc">상세 3제품 + 소재 + 인스타</div></div>
+            <div class="flow-step"><div class="step-num">STEP 3</div><div class="step-title">퍼포먼스 회복</div><div class="step-desc">ROAS 200~300% 목표 운영 감리</div></div>
+            <div class="flow-step"><div class="step-num">STEP 4</div><div class="step-title">브랜드 자산화</div><div class="step-desc">국내+해외 통합 확장</div></div>
+        </div>
+        <div class="callout callout-success">
+            <strong>클로징 멘트:</strong> "오늘 계약하자는 거 아니에요. 일주일 안에 '하예진을 무엇으로 파는 브랜드로 만들지' 한 장으로 정리해서 보내드릴게요. 그거 보고 진단부터 가볍게 시작하시죠."
+        </div>
+    </div>
+
+    <!-- 참고 링크 -->
+    <div class="section" id="sources">
+        <h2>참고 링크 & 출처</h2>
+        <div class="source-list">
+            <p>· 자사몰: <a href="https://www.hayejincosmetics.com/">hayejincosmetics.com</a> (2026-05-30 확인)</p>
+            <p>· 인스타그램: <a href="https://www.instagram.com/hayejin.official/">@hayejin.official</a> — 0 게시물·3 팔로워 (2026-05-30 확인)</p>
+            <p>· 유튜브: <a href="https://www.youtube.com/@Official-vp5fb">하예진Official</a> — 169 구독·45 영상</p>
+            <p>· 1차 자료: 하예진 브랜드 소개서(KR 2025 3Q), 사전질문 답변, META 대시보드 4주치(Driven, '26.3.30~5.3)</p>
+            <p>· 경쟁사·시장: 공개 시장 인지 기반(2026-05), 정량 수치는 "추정" 표기</p>
+            <p style="margin-top:8px;color:#dc2626;"><strong>※ 확인 필요 항목:</strong> 대표자 성명·배경 / 국내 자사몰 월매출 규모 / 화해·글로우픽 현재 등재 상태 / Driven과의 계약 지속 여부</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>BRANDRISE (MarketingOS) — New Business 상담 준비 패키지</p>
+    <p>이 문서는 상담 준비 목적으로 작성되었으며, 외부 공유를 금합니다.</p>
+</div>
+
+</body>
+</html>
