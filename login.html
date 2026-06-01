@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>BRANDRISE · 접근 인증</title>
+<style>
+  :root { --ink:#1a1a2e; --accent:#4f46e5; --muted:#6b7280; --line:#e5e7eb; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+    background: linear-gradient(135deg, #f8f9ff 0%, #eef0fb 100%);
+    color: var(--ink); word-break: keep-all; overflow-wrap: break-word;
+  }
+  .card {
+    width: 100%; max-width: 380px; margin: 24px;
+    background: #fff; border: 1px solid var(--line); border-radius: 16px;
+    padding: 40px 32px; box-shadow: 0 12px 40px rgba(31,33,68,0.08);
+  }
+  .brand { font-weight: 800; letter-spacing: 0.04em; font-size: 20px; color: var(--accent); }
+  h1 { font-size: 17px; margin: 18px 0 6px; }
+  p.sub { margin: 0 0 24px; font-size: 13px; color: var(--muted); line-height: 1.5; }
+  label { display: block; font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 6px; }
+  input[type=password] {
+    width: 100%; padding: 12px 14px; font-size: 15px; border: 1px solid var(--line);
+    border-radius: 10px; outline: none; transition: border-color .15s;
+  }
+  input[type=password]:focus { border-color: var(--accent); }
+  button {
+    width: 100%; margin-top: 16px; padding: 12px; font-size: 15px; font-weight: 700;
+    color: #fff; background: var(--accent); border: 0; border-radius: 10px; cursor: pointer;
+    transition: opacity .15s;
+  }
+  button:hover { opacity: .92; }
+  .err { margin-top: 14px; font-size: 13px; color: #dc2626; display: none; }
+  .err.show { display: block; }
+  .foot { margin-top: 22px; font-size: 11px; color: #9ca3af; text-align: center; }
+</style>
+</head>
+<body>
+  <form class="card" method="POST" action="/api/login">
+    <div class="brand">BRANDRISE</div>
+    <h1>접근 인증이 필요합니다</h1>
+    <p class="sub">이 페이지는 비공개 자료입니다. 전달받은 접근 비밀번호를 입력해 주세요.</p>
+    <label for="pw">접근 비밀번호</label>
+    <input id="pw" type="password" name="password" autocomplete="current-password" autofocus required />
+    <input type="hidden" name="redirect" id="redirect" value="/" />
+    <button type="submit">접속하기</button>
+    <div class="err" id="err">비밀번호가 올바르지 않습니다. 다시 확인해 주세요.</div>
+    <div class="foot">© BRANDRISE · HIZ</div>
+  </form>
+  <script>
+    var qs = new URLSearchParams(location.search);
+    if (qs.get('error')) document.getElementById('err').classList.add('show');
+    var r = qs.get('redirect');
+    if (r && r.charAt(0) === '/' && r.charAt(1) !== '/') document.getElementById('redirect').value = r;
+  </script>
+</body>
+</html>

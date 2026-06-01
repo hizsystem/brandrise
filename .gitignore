@@ -5,3 +5,10 @@
 # index.html(브리프 정본)만 공개, _workspace/.raw는 로컬 보존
 research/*/_workspace/
 research/*/.raw/
+
+# Vercel / node (인증 게이트 도입)
+node_modules/
+.vercel/
+.env
+.env.local
+*.log
