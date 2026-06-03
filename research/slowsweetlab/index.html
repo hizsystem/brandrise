@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>느린단맛연구소 (Slow Sweet Lab) — New Business 상담 준비 | BRANDRISE</title>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #444444;
+            --accent: #5a8a4a;
+            --accent-light: #f0f5ec;
+            --accent-soft: #e2eedb;
+            --highlight: #5a8a4a;
+            --gold: #c79a3a;
+            --gold-light: #faf3e0;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --muted: #f5f5f5;
+            --text: #1a1a1a;
+            --text-light: #999999;
+            --border: #eeeeee;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; word-break: keep-all; overflow-wrap: break-word; }
+        .header { background: #ffffff; color: var(--primary); padding: 60px 40px; text-align: center; border-bottom: 1px solid var(--border); }
+        .header-badge { display: inline-block; background: var(--accent-soft); border: 1px solid var(--accent); color: var(--accent); padding: 4px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 16px; letter-spacing: 1px; }
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; color: var(--primary); }
+        .header .subtitle { font-size: 16px; color: var(--secondary); font-weight: 300; }
+        .header .date { margin-top: 16px; font-size: 13px; color: var(--text-light); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        .toc { background: var(--card-bg); border-radius: 12px; padding: 32px; margin-bottom: 40px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+        .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }
+        .toc a { color: var(--accent); text-decoration: none; font-size: 14px; padding: 6px 0; display: block; transition: color 0.2s; }
+        .toc a:hover { color: var(--gold); }
+        .section { background: var(--card-bg); border-radius: 12px; padding: 36px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section h2 { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--highlight); }
+        .section h3 { font-size: 17px; font-weight: 600; color: var(--secondary); margin: 20px 0 12px; }
+        .info-grid { display: grid; grid-template-columns: 160px 1fr; gap: 8px 16px; font-size: 14px; }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th { background: var(--muted); color: var(--primary); padding: 12px 16px; text-align: left; font-weight: 700; font-size: 13px; }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        tr:hover td { background: #f1f3f5; }
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin: 2px; }
+        .tag-red { background: #fbe9e7; color: #c0392b; }
+        .tag-green { background: var(--accent-soft); color: var(--accent); }
+        .tag-blue { background: #e8f0fb; color: #2c6fb5; }
+        .tag-yellow { background: var(--gold-light); color: var(--gold); }
+        .tag-gray { background: var(--muted); color: var(--secondary); }
+        .verdict { background: var(--accent); color: white; padding: 24px 32px; border-radius: 12px; text-align: center; margin: 24px 0; }
+        .verdict .label { font-size: 14px; opacity: 0.8; }
+        .verdict .value { font-size: 36px; font-weight: 800; margin: 8px 0; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+        .tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+        .tier-card { border: 2px solid var(--border); border-radius: 12px; padding: 24px; position: relative; transition: transform 0.2s; }
+        .tier-card:hover { transform: translateY(-4px); }
+        .tier-card.recommended { border-color: var(--accent); box-shadow: 0 4px 20px rgba(90, 138, 74, 0.18); }
+        .tier-card .tier-badge { position: absolute; top: -12px; right: 16px; background: var(--highlight); color: white; padding: 2px 12px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+        .tier-card h4 { font-size: 16px; margin-bottom: 4px; }
+        .tier-card .price { font-size: 24px; font-weight: 800; color: var(--highlight); margin: 12px 0; }
+        .tier-card .duration { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+        .tier-card ul { list-style: none; padding: 0; }
+        .tier-card li { font-size: 13px; padding: 4px 0; padding-left: 20px; position: relative; }
+        .tier-card li::before { content: ">"; position: absolute; left: 0; color: var(--highlight); font-weight: 700; }
+        .callout { background: var(--accent-light); border-left: 4px solid var(--accent); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 14px; }
+        .callout-info { background: var(--muted); border-left-color: var(--secondary); }
+        .callout-danger { background: #fbe9e7; border-left-color: #c0392b; }
+        .callout-success { background: var(--accent-soft); border-left-color: var(--accent); }
+        .callout-gold { background: var(--gold-light); border-left-color: var(--gold); }
+        .leverage-box { background: var(--primary); color: white; padding: 32px; border-radius: 12px; margin: 24px 0; text-align: center; }
+        .leverage-box .quote { font-size: 20px; font-weight: 700; line-height: 1.5; margin: 16px 0; }
+        .leverage-box .quote .hl { color: #9ecb8c; }
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .swot-item h4 { font-size: 15px; margin-bottom: 10px; }
+        .swot-item ul { padding-left: 18px; }
+        .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .swot-w { background: #fbe9e7; border: 1px solid #f5cdc7; }
+        .swot-o { background: var(--gold-light); border: 1px solid #f0e2c0; }
+        .swot-t { background: var(--muted); border: 1px solid var(--border); }
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; line-height: 2; }
+        .source-list a { color: var(--accent); text-decoration: none; }
+        .source-list a:hover { text-decoration: underline; }
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+        .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 8px 0; }
+        .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+        .summary-section { border-left: 4px solid var(--accent); background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%); }
+        .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; }
+        .kpi-card.kpi-dark { background: var(--muted); color: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--accent); color: white; }
+        .kpi-card.kpi-gold { background: var(--gold); color: white; }
+        .kpi-card.kpi-success { background: var(--accent-soft); color: var(--primary); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.75; }
+        .kpi-card .kpi-value { font-size: 24px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.75; }
+        .summary-oneliner { background: #0D0D0D; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+        .summary-oneliner .sol-text .hl { color: #9ecb8c; }
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+        .diagnosis-section { border: 2px solid var(--accent); }
+        .diagnosis-section h2 { border-bottom-color: var(--accent); color: var(--accent); }
+        .diag-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .diag-box { padding: 16px; border-radius: 8px; }
+        .diag-box.diag-current { background: #fbe9e7; }
+        .diag-box.diag-ideal { background: var(--accent-light); }
+        .diag-box .db-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .diag-box.diag-current .db-label { color: #c0392b; }
+        .diag-box.diag-ideal .db-label { color: var(--accent); }
+        .diag-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+        .diag-note { font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: var(--accent-light); border-radius: 8px; }
+        .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+        .pain-level { flex: 1; min-width: 200px; padding: 16px; border-radius: 10px; font-size: 13px; }
+        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .pain-l1 { background: var(--muted); }
+        .pain-l2 { background: var(--accent-light); }
+        .pain-l3 { background: var(--gold-light); }
+        .pain-l4 { background: var(--accent); color: white; }
+        .question-card { background: #f8f9fa; border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+        .question-card .q-num { font-size: 12px; font-weight: 700; color: var(--gold); }
+        .question-card .q-text { font-size: 15px; font-weight: 600; margin: 4px 0 8px; }
+        .question-card .q-intent { font-size: 13px; color: var(--text-light); }
+        .timeline-phase { display: grid; grid-template-columns: 100px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .timeline-phase .phase-time { font-size: 13px; font-weight: 700; color: var(--highlight); text-align: center; padding-top: 4px; }
+        .timeline-phase .phase-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .timeline-phase .phase-content p { font-size: 13px; color: var(--text-light); }
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .tier-cards { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: 1fr 1fr; }
+            .summary-header { grid-template-columns: 1fr; }
+            .diag-compare { grid-template-columns: 1fr; }
+            .channel-grid { grid-template-columns: 1fr; }
+            .timeline-phase { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">NEW BUSINESS 상담 준비 패키지</div>
+    <h1>느린단맛연구소 (Slow Sweet Lab)</h1>
+    <div class="subtitle">저당 수제 그래놀라 "느린맛" + AI 헬스케어 웹서비스 | 헬시플레저·저속노화 시드 브랜드</div>
+    <div class="date">작성일: 2026-06-03 | 상담일: 미정 | Prepared by BRANDRISE · CONFIDENTIAL</div>
+</div>
+
+<div class="container">
+
+    <!-- TOC -->
+    <div class="toc">
+        <h2>목차</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">1. Executive Summary</a>
+            <a href="#diagnosis">2. 핵심 문제점 &amp; 진단</a>
+            <a href="#company">3. 기업 개요 &amp; 사실 검증</a>
+            <a href="#identity">4. 브랜드 정체성 충돌 지도</a>
+            <a href="#market">5. 시장 분석 — 저당·헬시플레저</a>
+            <a href="#competitor">6. 경쟁 구도 3-Set</a>
+            <a href="#swot">7. SWOT</a>
+            <a href="#pain">8. 페인포인트 레이어</a>
+            <a href="#hypothesis">9. 컨설팅 가설 &amp; 제안</a>
+            <a href="#tier">10. Tier 견적 초안</a>
+            <a href="#questions">11. 미팅 시 확인 질문</a>
+            <a href="#risk">12. 리스크 시그널</a>
+            <a href="#leverage">13. 레버리지 &amp; 상담 오프닝</a>
+            <a href="#sources">14. 출처</a>
+        </div>
+    </div>
+
+    <!-- Executive Summary -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>1. Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">회사 / 브랜드</div>
+                <div class="sh-title">느린단맛연구소 / Slow Sweet Lab</div>
+                <div class="sh-sub">㈜슬로우웰니스랩(Slow Wellness Lab) 운영 추정 · 저당 그래놀라 "느린맛" + AI 헬스케어</div>
+            </div>
+            <div>
+                <div class="sh-label">담당자</div>
+                <div class="sh-title">정의현 대표 / CEO</div>
+                <div class="sh-sub">지인 추천 유입 · 직접 결재 라인 추정 (대표명 교차검증 필요 — 본문 §3)</div>
+            </div>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">사업 단계</div>
+                <div class="kpi-value">시드</div>
+                <div class="kpi-sub">공식몰 구축 중 · 정부 액셀러레이팅 검증</div>
+            </div>
+            <div class="kpi-card kpi-gold">
+                <div class="kpi-label">정부 검증</div>
+                <div class="kpi-value">Top 9</div>
+                <div class="kpi-sub">신사업창업사관학교 경기 (420팀 중)</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">명시 예산</div>
+                <div class="kpi-value">~100만</div>
+                <div class="kpi-sub">브랜드 마케팅 · 파일럿 검증 희망</div>
+            </div>
+            <div class="kpi-card kpi-success">
+                <div class="kpi-label">기회 적합도</div>
+                <div class="kpi-value">3.7 / 5.0</div>
+                <div class="kpi-sub">조건부 GO — T0 메시지 진단 진입</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                제품(당류 1g/100g·말티톨 無)은 진짜 차별점이 있는데,<br>
+                <span class="hl">브랜드 이름이 4개(느린단맛연구소·slowseoul·Slow Sweet Lab·슬로우웰니스랩 '느린맛')로 흩어져</span> "한 줄 특장점"이 만들어지지 않은 회사.
+            </div>
+        </div>
+        <div class="summary-bottom">
+            <strong>기회 적합도:</strong> <span class="hl">3.7 / 5.0 (조건부 GO — 시드 메시지 진단)</span> &nbsp;|&nbsp;
+            <strong>추천 진입:</strong> T0 메시지·BI 정합 스프린트 100~150만 / 2주 → 파일럿 검증 후 T1 Foundation 500~800만 / 4주<br>
+            <strong>핵심 레버:</strong> 신청자가 직접 적은 페인("특장점을 직관적으로 알 수 있는 문구의 부재") = <span class="hl">브랜드라이즈의 정확한 진입점</span>. 네이밍 통일 → 밸류프롭 1줄 → 상세페이지/패키지 카피 순.
+        </div>
+    </div>
+
+    <!-- 핵심 문제점 & 진단 -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>2. 핵심 문제점 &amp; 진단</h2>
+
+        <h3>1. 브랜드 네이밍·메시지 정합성 붕괴 (Critical)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재 상태 (2026-06 기준)</div>
+                <ul>
+                    <li>신청서 브랜드명: <strong>느린단맛연구소 / slowseoul</strong></li>
+                    <li>이메일 도메인: <strong>slowsweetlab.com</strong> ("Under construction")</li>
+                    <li>언론 보도 법인: <strong>㈜슬로우웰니스랩</strong>, 제품 <strong>"느린맛"</strong></li>
+                    <li>제품 사이트 추정: slowwellnesslab.com</li>
+                    <li>→ 고객 접점마다 다른 이름 노출 = 인지 자산 누수</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">필요: 네이밍·메시지 1체계</div>
+                <ul>
+                    <li>대표 브랜드명 1개 확정 (국문/영문/핸들 정렬)</li>
+                    <li>제품 라인("느린맛") ↔ 모회사("랩") 위계 정의</li>
+                    <li>"한 줄 특장점" = 당류 1g + 말티톨 無 + 천연</li>
+                    <li>도메인·SNS 핸들·패키지·상세페이지 통일</li>
+                    <li>AI 서비스와 그래놀라의 메시지 분리/연결 규칙</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2. "특장점 직관 전달 문구"의 부재 (High — 신청자 명시 페인)</h3>
+        <div class="diag-note">
+            신청자가 직접 적은 핵심 과제: <strong>"고객이 직관적으로 우리 제품의 특장점을 알 수 있는 문구의 부재"</strong>.
+            제품 스펙은 강력하다 — <strong>100g당 당류 1g대, 메이플시럽·꿀 배제, 저당 제품 흔한 말티톨 미사용</strong>(경기일보, 2025-11). 그런데 이 강점이 소비자 언어 한 줄로 번역되어 있지 않음.
+            저당 카테고리는 "제로/무설탕/저당/무가당" 표시가 난립해 <strong>소비자 피로·불신("무늬만 저당")</strong>이 큰 시장 — 여기서 이기려면 <strong>스펙이 아니라 "왜 천천히 단맛인가"의 직관 카피</strong>가 1순위 무기.
+        </div>
+
+        <h3>3. 사업 모델 이중성: 그래놀라(식품) ↔ AI 헬스케어(플랫폼) (Medium)</h3>
+        <div class="diag-note">
+            느린맛은 단순 그래놀라가 아니라 <strong>혈당·식단 입력 → AI 맞춤 건강관리 + 시중 식품 영양성분 비교</strong> 웹서비스를 결합, "개인 맞춤형 식습관 관리 플랫폼"으로 확장을 선언(경기일보). 비전은 매력적이나, <strong>지금 소비자에게 파는 것은 그래놀라 한 봉지</strong>. 식품 구매 메시지와 플랫폼 비전 메시지가 섞이면 둘 다 흐려짐. 첫 미팅 진단: <strong>"이번 파일럿에서 파는 단 하나의 약속"</strong>을 식품으로 좁힐지 결정.
+        </div>
+
+        <h3>영역별 진단 요약</h3>
+        <table>
+            <tr><th>영역</th><th>현재 상태</th><th>심각도</th><th>GAP</th></tr>
+            <tr><td>브랜드 네이밍 정합</td><td>이름 4종 분산</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>핵심 밸류프롭 카피</td><td>"특장점 문구" 부재 (자가 진단)</td><td><span class="tag tag-red">High</span></td><td><span class="tag tag-red">큼</span></td></tr>
+            <tr><td>제품 차별성</td><td>당류 1g·말티톨 無·천연</td><td><span class="tag tag-green">Strong</span></td><td>언어화만 남음</td></tr>
+            <tr><td>정부 검증·신뢰자산</td><td>신사업창업사관학교 Top 9</td><td><span class="tag tag-green">Strong</span></td><td>마케팅 후킹 미활용</td></tr>
+            <tr><td>판매 채널</td><td>공식몰 구축 중 · EXPO 참가</td><td><span class="tag tag-yellow">Medium</span></td><td>온라인 전환 동선 [확인 필요]</td></tr>
+            <tr><td>식품 ↔ AI 메시지 분리</td><td>혼재</td><td><span class="tag tag-yellow">Medium</span></td><td>파일럿 약속 1개로 좁히기</td></tr>
+            <tr><td>예산 흡수력</td><td>명시 ~100만</td><td><span class="tag tag-red">High</span></td><td>스코프-예산 정합 필요</td></tr>
+            <tr><td>의사결정 구조</td><td>대표 직접 (소수 인원 추정)</td><td><span class="tag tag-green">Low</span></td><td><span class="tag tag-green">작음</span></td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>진단 결론:</strong> 느린단맛연구소는 <strong>"제품·정부검증·비전은 있는데, 그것을 소비자 한 줄로 번역할 브랜드 표면이 없는"</strong> 시드 케이스. 식품 D2C 가장 흔한 실패 = <strong>"좋은 스펙을 스펙 그대로 외치다 묻힘"</strong>. 브랜드라이즈가 들어갈 핵심 가치는 <strong>"흩어진 4개 이름과 강력한 스펙을, 고객이 0.5초에 이해하는 한 줄과 1개 이름으로 묶는 것"</strong>. 견적은 예산 정합형 "메시지·BI 진단 스프린트"로 진입.
+        </div>
+    </div>
+
+    <!-- 기업 개요 -->
+    <div class="section" id="company">
+        <h2>3. 기업 개요 &amp; 사실 검증</h2>
+        <div class="callout callout-info">
+            아래 정보는 <strong>① 신청서(클라이언트 제공 1차 자료)</strong>와 <strong>② 공개 웹 교차검증</strong>을 구분 표기. 미검증 항목은 <strong>[확인 필요]</strong>로 명시 (CLAUDE.md 사실 점검 원칙).
+        </div>
+        <div class="info-grid">
+            <div class="info-label">신청 브랜드명</div><div class="info-value">느린단맛연구소 / slowseoul <span class="tag tag-blue">신청서</span></div>
+            <div class="info-label">영문/도메인</div><div class="info-value">Slow Sweet Lab — slowsweetlab.com (공식몰 "Under construction") <span class="tag tag-green">교차검증</span></div>
+            <div class="info-label">공식 인스타그램</div><div class="info-value"><a href="https://www.instagram.com/slowsweetlab/" style="color:var(--accent);">@slowsweetlab</a> — 계정명 "느린단맛연구소" <span class="tag tag-green">교차검증</span> (※ 신청서 "slowseoul"은 오기 추정)</div>
+            <div class="info-label">운영 법인(추정)</div><div class="info-value">㈜슬로우웰니스랩 (Slow Wellness Lab) <span class="tag tag-yellow">동일체 추정 — 확인 필요</span></div>
+            <div class="info-label">대표 / 직책</div><div class="info-value">정의현 · 대표/CEO <span class="tag tag-green">확정</span></div>
+            <div class="info-label">연락처</div><div class="info-value">010-5671-3640 · official@slowsweetlab.com <span class="tag tag-blue">신청서</span></div>
+            <div class="info-label">카테고리</div><div class="info-value">식품 / F&amp;B — 저당 수제 그래놀라 + AI 헬스케어 웹서비스</div>
+            <div class="info-label">대표 제품</div><div class="info-value">"느린맛" 저당 그래놀라 3종 (오리지널 / 초코 / 시나몬) <span class="tag tag-green">교차검증</span></div>
+            <div class="info-label">제품 스펙</div><div class="info-value">100g당 당류 1g대 · 메이플·꿀 배제 · 말티톨 미사용 · 견과류 다중세척·저온조리 <span class="tag tag-green">경기일보</span></div>
+            <div class="info-label">가격</div><div class="info-value">[확인 필요] — 공개 자료 미노출</div>
+            <div class="info-label">정부 지원</div><div class="info-value">신사업창업사관학교 경기지역 Top 9 (420팀 중) — 중기부·소진공, 운영사 엠디글로벌넷 <span class="tag tag-green">교차검증</span></div>
+            <div class="info-label">유입 경로</div><div class="info-value">지인 추천 <span class="tag tag-blue">신청서</span></div>
+            <div class="info-label">희망 서비스</div><div class="info-value">브랜드 마케팅 (브랜드 기획 · 아이덴티티 · BI 개발 등) <span class="tag tag-blue">신청서</span></div>
+            <div class="info-label">명시 예산</div><div class="info-value">100만원 정도 <span class="tag tag-blue">신청서</span></div>
+            <div class="info-label">목표</div><div class="info-value">신규 고객 확보 · 인지도 향상 · 매출/전환 개선 · 제품 홍보 <span class="tag tag-blue">신청서</span></div>
+            <div class="info-label">기대</div><div class="info-value">파일럿 테스트를 통한 빠른 매출 성과 검증 <span class="tag tag-blue">신청서</span></div>
+        </div>
+        <div class="callout callout-gold">
+            <strong>⚠ 사실 검증 플래그 (미팅 최우선 확인):</strong> ① <strong>법인 동일성</strong> — 느린단맛연구소/Slow Sweet Lab과 ㈜슬로우웰니스랩이 같은 주체인지 (도메인·제품명 정황상 동일 추정이나 미확정). ② <strong>"slowseoul" 핸들 (해소)</strong> — 실제 공식 인스타그램은 <strong>@slowsweetlab</strong>(계정명 "느린단맛연구소")로 확인. 신청서 "slowseoul"은 오기 추정이며, slowseoul.com은 무관한 영상제작사(동명 충돌)이므로 표기 통일 필요.
+        </div>
+    </div>
+
+    <!-- 브랜드 정체성 충돌 -->
+    <div class="section" id="identity">
+        <h2>4. 브랜드 정체성 충돌 지도</h2>
+        <p style="font-size:14px;color:var(--secondary);margin-bottom:8px;">이 표 자체가 신청자의 핵심 페인("특장점 문구 부재")의 근본 원인 진단이다. 고객은 접점마다 다른 이름을 만나고 있다.</p>
+        <table>
+            <tr><th>이름 / 표면</th><th>등장 위치</th><th>카테고리</th><th>리스크</th></tr>
+            <tr><td><strong>느린단맛연구소</strong></td><td>상담 신청서 (국문 대표명)</td><td>저당 식품 연구소 톤</td><td><span class="tag tag-yellow">설명적·길다</span></td></tr>
+            <tr><td><strong>@slowsweetlab</strong></td><td>공식 인스타그램 (계정명 "느린단맛연구소")</td><td>저당 식품</td><td><span class="tag tag-green">실제 정식 핸들 — IG·도메인·이메일 정렬</span></td></tr>
+            <tr><td><strong>slowseoul</strong></td><td>신청서 핸들 표기 (오기 추정)</td><td>—</td><td><span class="tag tag-red">slowseoul.com = 무관 영상제작사 (동명 충돌)</span></td></tr>
+            <tr><td><strong>Slow Sweet Lab</strong></td><td>이메일·IG·도메인 slowsweetlab.com</td><td>공식몰(구축 중)</td><td><span class="tag tag-green">영문 대표명 — 확정적</span></td></tr>
+            <tr><td><strong>슬로우웰니스랩 / Slow Wellness Lab</strong></td><td>언론 보도 법인명</td><td>웰니스 플랫폼</td><td><span class="tag tag-yellow">"Sweet" vs "Wellness" 혼선</span></td></tr>
+            <tr><td><strong>느린맛</strong></td><td>제품 브랜드 (그래놀라)</td><td>저당 그래놀라</td><td><span class="tag tag-green">소비자 인지 1순위 자산</span></td></tr>
+        </table>
+        <div class="callout callout-success">
+            <strong>방향 제언(가설):</strong> 소비자에게 가장 끈끈한 자산은 제품명 <strong>"느린맛"</strong>. "느린단맛연구소"는 이 제품 철학을 그대로 담은 좋은 모(母)브랜드명 — <strong>"느린단맛연구소"(모) · "느린맛"(제품) · Slow Sweet Lab(영문)</strong> 3층 위계로 정리하고, "Wellness/Seoul" 계열 표기는 정리 대상 후보. 단, 법인 등기·상표 출원 현황 확인 후 확정 (미팅 질문 §11).
+        </div>
+    </div>
+
+    <!-- 시장 분석 -->
+    <div class="section" id="market">
+        <h2>5. 시장 분석 — 저당 · 헬시플레저</h2>
+        <div class="channel-grid">
+            <div class="channel-card">
+                <div class="ch-name">국내 저당 시장</div>
+                <div class="ch-stat">4,000억</div>
+                <div class="ch-note">2025E (903억'16 → 3,000억'22 → 4,000억'25E)</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">그래놀라 성장률</div>
+                <div class="ch-stat">20%+</div>
+                <div class="ch-note">매년 고성장 · 오리온 오!그래놀라 '25 +30%</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">트렌드 키워드</div>
+                <div class="ch-stat">저속노화</div>
+                <div class="ch-note">헬시플레저 + 그래놀라코어(라이프스타일화)</div>
+            </div>
+        </div>
+        <h3>시장 해석</h3>
+        <ul style="font-size:14px;padding-left:20px;line-height:1.9;">
+            <li><strong>구조적 순풍:</strong> 저당 시장은 9년간 4배 이상 성장, 그래놀라는 매년 20%+ 성장하는 헬시플레저의 핵심 카테고리. "저속노화"가 2024~25년 메가 트렌드로 안착(정희원 교수 신드롬·샘표 팝업 등) — <strong>"느린 단맛"이라는 네이밍이 트렌드 언어와 정확히 공명</strong>.</li>
+            <li><strong>그래놀라코어 현상:</strong> 그래놀라가 패션·라이프스타일 코드(연예인 착장·잡지 피처)로 번지는 중 — 식품을 넘어 <strong>"라이프스타일 브랜드"로 포지셔닝할 여백</strong> 존재.</li>
+            <li><strong>역풍 — "무늬만 저당" 불신:</strong> 제로·무설탕·저당·무가당 표시 난립으로 소비자 피로·불신 확대. <strong>"진짜 저당"을 증명하는 신뢰 장치(당류 1g 수치 + 말티톨 無 + 정부검증)가 차별의 핵심.</strong></li>
+            <li><strong>대기업 진입 경고:</strong> CJ(백설 알룰로스·슈가라이트 9종), 오뚜기(라이트앤조이), 빙그레(딥앤로우), 오리온(오!그래놀라 라인 증설) 등 대기업이 저당 전문 브랜드로 본격 진입 — <strong>시드 브랜드의 윈도우는 "수제·소량·진정성·스토리"</strong>에 있음.</li>
+        </ul>
+    </div>
+
+    <!-- 경쟁 구도 -->
+    <div class="section" id="competitor">
+        <h2>6. 경쟁 구도 3-Set</h2>
+        <table>
+            <tr><th>구분</th><th>대표 플레이어</th><th>포지션 / 강점</th><th>느린맛의 대응 포인트</th></tr>
+            <tr>
+                <td><strong>① D2C 저당 스타<br>(벤치마크)</strong></td>
+                <td>라라스윗</td>
+                <td>저당 아이스크림 1위 · 초코바 CU 누적 800만개 · 저당 팝콘 월 30억 · 연 200% 성장. "작은 다윗"이 카테고리 1위로 큰 성공 스토리</td>
+                <td>라라스윗의 경로(단일 히트 SKU → 라인 확장 → 채널 침투)를 그래놀라에서 압축 재현. <strong>벤치마크이자 증거</strong></td>
+            </tr>
+            <tr>
+                <td><strong>② 대기업 저당<br>(상위 위협)</strong></td>
+                <td>오리온 오!그래놀라 · 오뚜기 라이트앤조이 · 빙그레 딥앤로우 · CJ 슈가라이트</td>
+                <td>유통·생산·가격 압도 · 대량 매대 장악</td>
+                <td>가격·물량 경쟁 회피. <strong>"수제·당류 1g·말티톨 無·정부검증"의 프리미엄 신뢰 포지션</strong>으로 분리</td>
+            </tr>
+            <tr>
+                <td><strong>③ 프리미엄 건강 그래놀라<br>(직접 인접)</strong></td>
+                <td>조니스그로서리(납작 그래놀라) 등 D2C 클린라벨 브랜드</td>
+                <td>정제설탕 無·클린라벨·감성 패키지·라이프스타일 톤</td>
+                <td>동일 톤 경쟁 구간. <strong>"느린 단맛 = 저속노화" 내러티브 + AI 헬스케어 결합</strong>으로 차별화 가능</td>
+            </tr>
+        </table>
+        <div class="callout">
+            <strong>경쟁 포지셔닝 한 줄:</strong> 대기업과는 "수제·진정성"으로, 클린라벨 D2C와는 "수치로 증명되는 저당(당류 1g) + 저속노화 내러티브 + AI"로 분리한다. 라라스윗은 경쟁자가 아니라 <strong>"같은 출발선에서 가능했음"을 보여주는 증거 자산</strong>으로 상담에서 활용.
+        </div>
+    </div>
+
+    <!-- SWOT -->
+    <div class="section" id="swot">
+        <h2>7. SWOT</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>💪 Strengths</h4>
+                <ul>
+                    <li>수치로 증명되는 차별성: 당류 1g/100g, 말티톨 無</li>
+                    <li>정부 검증(신사업창업사관학교 Top 9/420) — 신뢰 후킹</li>
+                    <li>"느린맛" 제품명이 저속노화 트렌드와 공명</li>
+                    <li>대표 직접 결재 — 빠른 의사결정 (추정)</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>⚠️ Weaknesses</h4>
+                <ul>
+                    <li>브랜드 이름 4종 분산 — 인지 자산 누수</li>
+                    <li>핵심 밸류프롭 카피 부재 (자가 진단)</li>
+                    <li>공식몰 미오픈 · 가격/채널 동선 미확정</li>
+                    <li>예산 ~100만 — 풀 브랜딩엔 협소</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>🚀 Opportunities</h4>
+                <ul>
+                    <li>저당 시장 4,000억·그래놀라 연 20%+ 성장</li>
+                    <li>"저속노화" 메가 트렌드 언어 선점 여백</li>
+                    <li>그래놀라코어 = 라이프스타일 브랜딩 여백</li>
+                    <li>졸업기업 정책자금(최대 1억)·매칭융자 연계 가능</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>🛡️ Threats</h4>
+                <ul>
+                    <li>대기업 저당 전문 브랜드 대량 진입</li>
+                    <li>"무늬만 저당" 시장 불신·표시 피로</li>
+                    <li>클린라벨 D2C와 톤 경쟁 심화</li>
+                    <li>식품↔플랫폼 메시지 분산 시 둘 다 흐려짐</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 페인포인트 -->
+    <div class="section" id="pain">
+        <h2>8. 페인포인트 레이어</h2>
+        <div class="pain-layer">
+            <div class="pain-level pain-l1">
+                <span class="level-tag">표면 (신청자 언어)</span>
+                "고객이 직관적으로 우리 제품의 특장점을 알 수 있는 <strong>문구가 없다</strong>"
+            </div>
+            <div class="pain-level pain-l2">
+                <span class="level-tag">기능적 원인</span>
+                당류 1g·말티톨 無 같은 <strong>스펙이 소비자 언어로 번역되지 않음</strong>. 스펙 나열만 있고 후킹 카피 없음
+            </div>
+            <div class="pain-level pain-l3">
+                <span class="level-tag">구조적 원인</span>
+                <strong>이름이 4개로 분산</strong> + 식품/AI 메시지 혼재 → 한 줄로 묶을 중심축 자체가 미정
+            </div>
+            <div class="pain-level pain-l4">
+                <span class="level-tag">사업적 결과</span>
+                공식몰·파일럿에서 <strong>전환 안 됨 → 매출 검증 지연</strong>. 신청자가 원한 "빠른 매출 검증"이 막힘
+            </div>
+        </div>
+        <div class="callout callout-success">
+            <strong>이 페인은 브랜드라이즈의 정중앙 코어 역량</strong>(브랜드 기획·아이덴티티·BI·카피). 신청자가 원한 서비스("브랜드 마케팅")와 100% 일치 — <strong>핏(fit) 매우 높음</strong>. 관건은 예산(~100만)에 스코프를 정합시키는 것.
+        </div>
+    </div>
+
+    <!-- 컨설팅 가설 -->
+    <div class="section" id="hypothesis">
+        <h2>9. 컨설팅 가설 &amp; 제안</h2>
+        <h3>30 / 60 / 90일 가설</h3>
+        <div class="timeline-phase">
+            <div class="phase-time">~30일<br>진단·정렬</div>
+            <div class="phase-content">
+                <h4>네이밍 1체계 확정 + 밸류프롭 한 줄 + BI 방향</h4>
+                <p>4개 이름 → 모/제품/영문 3층 위계 확정. "왜 느린 단맛인가" 한 줄 메시지 + 보조 카피 3종. 패키지·상세페이지 헤드라인 카피 셋. 핵심 BI 톤·키컬러·로고 방향 제시.</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">~60일<br>적용·파일럿</div>
+            <div class="phase-content">
+                <h4>공식몰 상세페이지 + 패키지 카피 적용 → 파일럿 1종</h4>
+                <p>확정 메시지를 공식몰 상세페이지/대표 SKU 1종에 적용. 소규모 유료 파일럿(인스타·네이버) 1캠페인으로 "한 줄 메시지" A/B 검증. 정부검증·당류 1g을 신뢰 후킹으로 배치.</p>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">~90일<br>검증·확장</div>
+            <div class="phase-content">
+                <h4>전환 데이터 리뷰 → 확장 의사결정</h4>
+                <p>파일럿 CVR·CAC·재구매 시그널 리뷰. 검증되면 라라스윗式 단일 히트 SKU 집중 → 라인 확장 로드맵. AI 헬스케어는 식품 인지 안착 후 2차 레이어로 연결.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tier 견적 -->
+    <div class="section" id="tier">
+        <h2>10. Tier 견적 초안 <span style="font-size:13px;font-weight:400;color:var(--text-light);">(VAT 별도 · 초안)</span></h2>
+        <div class="callout callout-gold">
+            <strong>예산 정합 메모:</strong> 신청 예산 ~100만은 HIZ 기준 <strong>T0 진단형</strong> 구간. 풀 브랜딩(BI 본개발+캠페인)은 T1~T2 영역이므로, <strong>T0로 진입해 "한 줄 메시지+BI 방향"으로 빠른 가치를 증명한 뒤, 파일럿 성과 기반으로 T1 승급</strong>하는 단계적 접근을 권장. 정부 졸업기업 정책자금(최대 1억) 연계 시 T1~T2 흡수력 확보 가능.
+        </div>
+        <div class="tier-cards">
+            <div class="tier-card recommended">
+                <div class="tier-badge">추천 진입</div>
+                <h4>T0 · 메시지 &amp; BI 정합 스프린트</h4>
+                <div class="price">100~150만</div>
+                <div class="duration">2주</div>
+                <ul>
+                    <li>네이밍 1체계 정리 (모/제품/영문)</li>
+                    <li>핵심 밸류프롭 한 줄 + 보조 카피 3종</li>
+                    <li>상세페이지/패키지 헤드라인 카피</li>
+                    <li>BI 톤·키컬러·로고 방향 1안</li>
+                    <li>정부검증·당류1g 신뢰 후킹 배치안</li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>T1 · Foundation</h4>
+                <div class="price">500~800만</div>
+                <div class="duration">4주</div>
+                <ul>
+                    <li>T0 전체 +</li>
+                    <li>BI 본개발 (로고·패키지 가이드)</li>
+                    <li>공식몰 상세페이지 카피·구조 설계</li>
+                    <li>파일럿 캠페인 1종 (소재+세팅)</li>
+                    <li>전환 측정 프레임 셋업</li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>T2 · Build</h4>
+                <div class="price">2,000만+</div>
+                <div class="duration">8주</div>
+                <ul>
+                    <li>T1 전체 +</li>
+                    <li>풀 브랜드 아이덴티티 시스템</li>
+                    <li>D2C 런칭 캠페인 (멀티 채널)</li>
+                    <li>AI 헬스케어 서비스 메시지 통합</li>
+                    <li>라이프스타일 콘텐츠 시리즈</li>
+                </ul>
+            </div>
+        </div>
+        <div class="callout">
+            <strong>제안 경로:</strong> <span style="color:var(--accent);font-weight:700;">T0 스프린트(100~150만/2주)</span> 로 "한 줄 메시지+BI 방향"을 빠르게 확정 → 파일럿으로 매출 시그널 검증(신청자 기대와 일치) → 성과 시 <strong>T1 Foundation 승급</strong>. 첫 거래는 작고 명확하게, 신뢰 쌓은 뒤 확장.
+        </div>
+    </div>
+
+    <!-- 미팅 질문 -->
+    <div class="section" id="questions">
+        <h2>11. 미팅 시 확인 질문</h2>
+        <div class="question-card">
+            <div class="q-num">Q1 · 사실 검증 (최우선)</div>
+            <div class="q-text">법인 ㈜슬로우웰니스랩과 느린단맛연구소/Slow Sweet Lab은 같은 회사인가요? 운영·결재 구조(공동 창업자·역할 분담)는 어떻게 되나요?</div>
+            <div class="q-intent">의도: 법인 동일성·계약 주체·결재 라인 확정</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q2 · 네이밍</div>
+            <div class="q-text">"느린단맛연구소·Slow Sweet Lab·슬로우웰니스랩·느린맛" 중 앞으로 소비자에게 내세울 대표 이름은 무엇인가요? 상표 출원·도메인 현황은요?</div>
+            <div class="q-intent">의도: 네이밍 1체계 확정의 출발점 + 상표 리스크 점검</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q3 · 파일럿 정의</div>
+            <div class="q-text">"빠른 매출 검증"의 구체적 목표는요? (기간·채널·목표 매출/전환·대표 SKU 1종)</div>
+            <div class="q-intent">의도: 파일럿 성공 기준 합의 → 스코프 확정</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q4 · 채널 &amp; 가격</div>
+            <div class="q-text">현재 판매 채널(공식몰 오픈 시점·스마트스토어·오프라인)과 제품 가격대는 어떻게 되나요?</div>
+            <div class="q-intent">의도: 전환 동선·단가 구조 파악 (CAC 흡수력 판단)</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q5 · 예산 &amp; 단계</div>
+            <div class="q-text">100만 예산은 1차 진단 기준인가요? 정부 졸업 정책자금 등 후속 마케팅 재원 계획이 있나요?</div>
+            <div class="q-intent">의도: T0→T1 승급 가능성·재원 타이밍 확인</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q6 · 식품 vs AI</div>
+            <div class="q-text">이번 파일럿에서 파는 것은 그래놀라인가요, AI 서비스인가요? 둘의 우선순위는요?</div>
+            <div class="q-intent">의도: 메시지 분산 해소 — "단 하나의 약속" 정의</div>
+        </div>
+    </div>
+
+    <!-- 리스크 -->
+    <div class="section" id="risk">
+        <h2>12. 리스크 시그널 (5종 체크)</h2>
+        <table>
+            <tr><th>#</th><th>항목</th><th>본 건 평가</th></tr>
+            <tr><td>1</td><td><strong>의사결정 라인</strong></td><td><span class="tag tag-green">양호</span> 정의현 대표/CEO = 권한 명확 · 직접 결재 (운영 구조는 Q1로 확정)</td></tr>
+            <tr><td>2</td><td><strong>예산·흡수력</strong></td><td><span class="tag tag-red">주의</span> 명시 ~100만 = T0 구간. 풀 브랜딩 흡수력 미검증 → 단계적 접근 필수</td></tr>
+            <tr><td>3</td><td><strong>카테고리 핏</strong></td><td><span class="tag tag-green">양호</span> 식품 D2C 브랜딩 = HIZ 표준 SOP 적합</td></tr>
+            <tr><td>4</td><td><strong>동명·사명 분산</strong></td><td><span class="tag tag-red">높음</span> 이름 4종 + slowseoul.com 동명 영상사 충돌 → 브랜딩 1순위 과제</td></tr>
+            <tr><td>5</td><td><strong>운영 흡수력</strong></td><td><span class="tag tag-yellow">확인 필요</span> 시드 소수 인원 추정 — 인하우스 마케팅 인력·실행 리소스 미확인</td></tr>
+        </table>
+    </div>
+
+    <!-- 레버리지 -->
+    <div class="section" id="leverage">
+        <h2>13. 레버리지 &amp; 상담 오프닝</h2>
+        <div class="leverage-box">
+            <div class="quote">"제품은 이미 <span class="hl">당류 1g, 말티톨 0</span>으로 충분히 강합니다.<br>지금 막혀 있는 건 그 강함을 <span class="hl">고객이 0.5초에 이해하는 한 줄</span>로 바꾸는 일,<br>그리고 흩어진 <span class="hl">네 개의 이름을 하나</span>로 묶는 일입니다."</div>
+        </div>
+        <p style="font-size:14px;color:var(--secondary);">
+            상담 전략: 신청자가 스스로 적은 페인("특장점 문구 부재")을 그대로 받아, <strong>"그 문구가 안 나오는 진짜 이유는 이름이 4개라서"</strong>라는 한 단계 깊은 진단을 보여주면 신뢰 확보. 라라스윗 사례로 "작게 시작해 카테고리 1위 간 길"을 제시하고, <strong>T0 스프린트로 작고 빠른 첫 승</strong>을 제안 → 파일럿 검증 후 확장.
+        </p>
+    </div>
+
+    <!-- 출처 -->
+    <div class="section" id="sources">
+        <h2>14. 출처</h2>
+        <div class="source-list">
+            <strong>클라이언트 1차 자료:</strong> 브랜드라이즈 상담 신청서 (정의현 대표, 지인추천, 2026)<br>
+            <strong>브랜드·제품 교차검증:</strong><br>
+            · 경기일보, "당 줄이고 만족감 높인다… 슬로우웰니스랩 '느린맛'" (2025-11-19) — <a href="https://www.kyeonggi.com/article/20251119580197">kyeonggi.com</a><br>
+            · slowsweetlab.com (공식몰, "Under construction" 확인, 2026-06)<br>
+            · 공식 인스타그램 <a href="https://www.instagram.com/slowsweetlab/">@slowsweetlab</a> (계정명 "느린단맛연구소" 확인, 2026-06)<br>
+            · slowwellnesslab.com (제품 사이트 추정 — 일부 플레이스홀더 포함, 교차검증 보조)<br>
+            <strong>시장·경쟁:</strong><br>
+            · 식품음료신문, "멈추지 않는 글로벌 저당·무설탕 식품 시장" — <a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=102004">thinkfood.co.kr</a><br>
+            · 인사이트코리아, "CJ제일제당 새로운 단맛 실험" — <a href="https://www.insightkorea.co.kr/news/articleView.html?idxno=235283">insightkorea.co.kr</a><br>
+            · DealSite경제TV, "헬시플레저 열풍…식품업계 저당 브랜드 론칭" — <a href="https://news.dealsitetv.com/articles/153961">dealsitetv.com</a><br>
+            · 브런치, "라라스윗은 어떻게 다윗이 되었나" — <a href="https://brunch.co.kr/@itsjustgwon/10">brunch.co.kr</a><br>
+            · 한국일보, "조니스그로서리 납작 그래놀라" — <a href="https://www.hankookilbo.com/News/Read/A2025102016070001576">hankookilbo.com</a><br>
+            · 마리끌레르 코리아, "그래놀라 코어" — <a href="https://www.marieclairekorea.com/fashion/2025/12/granola-core/">marieclairekorea.com</a><br>
+            <strong>정부 지원:</strong><br>
+            · 푸드뉴스/엠디글로벌넷, "2025 신사업창업사관학교 경기 예비창업자 모집" — <a href="https://www.foodnews.news/news/article.html?no=1257404">foodnews.news</a> · 소상공인마당 <a href="https://www.sbiz.or.kr/nbs/main.do">sbiz.or.kr</a><br>
+            <span style="color:#c0392b;">※ 동명 충돌 주의: slowseoul.com = 영상제작사(SLOWSEOUL PROJECT), 본 건과 무관.</span>
+        </div>
+    </div>
+
+    <div class="footer">
+        BRANDRISE · New Business 상담 준비 패키지 · CONFIDENTIAL (HIZ 내부 검토용)<br>
+        작성일 2026-06-03 · 모든 수치·사실은 공개 자료 교차검증 기준이며 [확인 필요] 항목은 미팅 시 확정 요망
+    </div>
+
+</div>
+</body>
+</html>
