@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>절대콜라겐 (Absolute Collagen, KR) - 브랜드 디지털 진단 리포트 | BRANDRISE</title>
+    <style>
+        :root {
+            --primary: #0D0D0D;
+            --secondary: #1a1b18;
+            --accent: #BE185D;
+            --highlight: #BE185D;
+            --bg: #f4f7f9;
+            --card-bg: #ffffff;
+            --text: #1a1b18;
+            --text-light: #636569;
+            --border: #e8edf1;
+            --success: #00b894;
+            --warning: #BE185D;
+            --danger: #dc2626;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(190, 24, 93, 0.2);
+            border: 1px solid var(--highlight);
+            color: var(--highlight);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+        .header .subtitle { font-size: 16px; opacity: 0.7; font-weight: 300; }
+        .header .date { margin-top: 16px; font-size: 13px; opacity: 0.5; }
+        .header .links { margin-top: 18px; }
+        .header .links a {
+            display: inline-block;
+            margin: 0 6px;
+            padding: 6px 16px;
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .header .links a:hover { background: rgba(255,255,255,0.18); }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        .toc {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 8px;
+        }
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 0;
+            display: block;
+            transition: color 0.2s;
+        }
+        .toc a:hover { color: var(--highlight); }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--highlight);
+        }
+        .section h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 20px 0 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 8px 16px;
+            font-size: 14px;
+        }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th {
+            background: var(--primary);
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+        tr:hover td { background: #f1f3f5; }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 2px;
+        }
+        .tag-red { background: #ffe0e0; color: #d63031; }
+        .tag-green { background: #d4f5e9; color: #00b894; }
+        .tag-blue { background: #dfe6fd; color: #BE185D; }
+        .tag-yellow { background: #fff3cd; color: #856404; }
+        .tag-gray { background: #e9ecef; color: #495057; }
+
+        .score-bar { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+        .score-bar .bar { flex: 1; height: 8px; background: #e9ecef; border-radius: 4px; overflow: hidden; }
+        .score-bar .fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
+        .fill-high { background: var(--success); }
+        .fill-mid { background: var(--warning); }
+        .fill-low { background: var(--danger); }
+
+        .verdict {
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            color: white;
+            padding: 24px 32px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 24px 0;
+        }
+        .verdict .label { font-size: 14px; opacity: 0.8; }
+        .verdict .value { font-size: 36px; font-weight: 800; margin: 8px 0; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+
+        .tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+        .tier-card {
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .tier-card:hover { transform: translateY(-4px); }
+        .tier-card.recommended {
+            border-color: var(--highlight);
+            box-shadow: 0 4px 20px rgba(190, 24, 93, 0.15);
+        }
+        .tier-card .tier-badge {
+            position: absolute;
+            top: -12px;
+            right: 16px;
+            background: var(--highlight);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .tier-card h4 { font-size: 16px; margin-bottom: 4px; }
+        .tier-card .price { font-size: 24px; font-weight: 800; color: var(--highlight); margin: 12px 0; }
+        .tier-card .duration { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+        .tier-card ul { list-style: none; padding: 0; }
+        .tier-card li { font-size: 13px; padding: 4px 0; padding-left: 20px; position: relative; }
+        .tier-card li::before { content: ">"; position: absolute; left: 0; color: var(--highlight); font-weight: 700; }
+        .tier-fit { font-size: 12px; color: var(--text-light); margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--border); }
+
+        .callout {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+        .callout-info { background: #e3f2fd; border-left-color: #2196f3; }
+        .callout-danger { background: #fce4ec; border-left-color: #e53935; }
+        .callout-success { background: #e8f5e9; border-left-color: #00b894; }
+
+        .leverage-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        .leverage-box .quote { font-size: 20px; font-weight: 700; line-height: 1.5; margin: 16px 0; }
+        .leverage-box .small { font-size: 13px; opacity: 0.8; }
+
+        .flow-steps { display: flex; gap: 0; margin: 20px 0; overflow-x: auto; }
+        .flow-step {
+            flex: 1;
+            min-width: 160px;
+            padding: 16px;
+            background: #f1f3f5;
+            position: relative;
+            text-align: center;
+        }
+        .flow-step:not(:last-child)::after {
+            content: ">";
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: var(--highlight);
+            font-weight: 700;
+            z-index: 1;
+        }
+        .flow-step .step-num { font-size: 11px; font-weight: 700; color: var(--highlight); margin-bottom: 4px; }
+        .flow-step .step-title { font-size: 13px; font-weight: 600; }
+        .flow-step .step-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .swot-item h4 { font-size: 15px; margin-bottom: 10px; }
+        .swot-item ul { padding-left: 18px; }
+        .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: #d4f5e9; }
+        .swot-w { background: #ffe0e0; }
+        .swot-o { background: #dfe6fd; }
+        .swot-t { background: #fff3cd; }
+
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+        .source-list a { color: var(--accent); text-decoration: none; }
+        .source-list a:hover { text-decoration: underline; }
+
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+        .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .channel-card .ch-name a { color: var(--accent); text-decoration: none; }
+        .channel-card .ch-name a:hover { text-decoration: underline; }
+        .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 8px 0; }
+        .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+
+        /* Executive Summary */
+        .summary-section { border-left: 4px solid var(--highlight); background: linear-gradient(135deg, #fff 0%, #fff5f7 100%); }
+        .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; color: white; }
+        .kpi-card.kpi-dark { background: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--danger); }
+        .kpi-card.kpi-success { background: var(--success); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.7; }
+        .kpi-card .kpi-value { font-size: 24px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.7; }
+
+        .summary-oneliner { background: #0D0D0D; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+        .summary-oneliner .sol-text .hl { color: var(--highlight); }
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+
+        /* Diagnosis */
+        .diagnosis-section { border: 2px solid var(--danger); }
+        .diagnosis-section h2 { border-bottom-color: var(--danger); color: var(--danger); }
+        .diag-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .diag-box { padding: 16px; border-radius: 8px; }
+        .diag-box.diag-current { background: #fce4ec; }
+        .diag-box.diag-ideal { background: #e8f5e9; }
+        .diag-box .db-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .diag-box.diag-current .db-label { color: var(--danger); }
+        .diag-box.diag-ideal .db-label { color: var(--success); }
+        .diag-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+        .diag-note { font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: #fff3e0; border-radius: 8px; }
+
+        /* SPIN & JTBD */
+        .spin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .spin-card { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .spin-card h4 { font-size: 15px; margin-bottom: 10px; }
+        .spin-s { background: #e3f2fd; }
+        .spin-p { background: #fce4ec; }
+        .spin-i { background: #fff3e0; }
+        .spin-n { background: #e8f5e9; }
+
+        .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+        .pain-level { flex: 1; min-width: 200px; padding: 16px; border-radius: 10px; font-size: 13px; }
+        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .pain-l1 { background: #e3f2fd; }
+        .pain-l2 { background: #fff3e0; }
+        .pain-l3 { background: #fce4ec; }
+        .pain-l4 { background: #f3e5f5; }
+
+        /* Script & Coaching */
+        .script-block {
+            background: #f8f9fa;
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            font-style: italic;
+            color: var(--secondary);
+        }
+        .question-card { background: #f8f9fa; border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+        .question-card .q-num { font-size: 12px; font-weight: 700; color: var(--highlight); }
+        .question-card .q-text { font-size: 15px; font-weight: 600; margin: 4px 0 8px; }
+        .question-card .q-intent { font-size: 13px; color: var(--text-light); }
+
+        .timeline-phase { display: grid; grid-template-columns: 100px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .timeline-phase .phase-time { font-size: 13px; font-weight: 700; color: var(--highlight); text-align: center; padding-top: 4px; }
+        .timeline-phase .phase-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .timeline-phase .phase-content p { font-size: 13px; color: var(--text-light); }
+
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .tier-cards { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-step:not(:last-child)::after { display: none; }
+            .channel-grid { grid-template-columns: repeat(2, 1fr); }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .diag-compare { grid-template-columns: 1fr; }
+            .spin-grid { grid-template-columns: 1fr; }
+            .pain-layer { flex-direction: column; }
+            .timeline-phase { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">브랜드 디지털 진단 리포트</div>
+    <h1>절대콜라겐 <span style="font-size:20px;opacity:0.8;">(Absolute Collagen, KR)</span></h1>
+    <div class="subtitle">프랑스산 저분자 피쉬 콜라겐 D2C 건기식 | 네이버 콜라겐 카테고리 후기 1위 · ㈜서우코리아</div>
+    <div class="links">
+        <a href="https://absolutecollagen.co.kr" target="_blank" rel="noopener">🌐 자사몰 absolutecollagen.co.kr</a>
+        <a href="https://www.instagram.com/absolute.collagen/" target="_blank" rel="noopener">📷 인스타 @absolute.collagen</a>
+    </div>
+    <div class="date">2026-06-03 | Prepared for 절대콜라겐 · by BRANDRISE (MarketingOS)</div>
+</div>
+
+<div class="container">
+
+    <!-- ============================================================ -->
+    <!-- Executive Summary -->
+    <!-- ============================================================ -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">운영사</div>
+                <div class="sh-title">주식회사 서우코리아</div>
+                <div class="sh-sub">프랑스산 저분자 피쉬 콜라겐 D2C 건기식 · 자매몰 절대보이차 병행 · 직원 3명 슬림 본사</div>
+            </div>
+            <div>
+                <div class="sh-label">대표이사</div>
+                <div class="sh-title">주영훈</div>
+                <div class="sh-sub">㈜서우코리아 대표 — 12년간 콜라겐 카테고리 1위 브랜드 운영</div>
+            </div>
+        </div>
+        <!-- KPI 카드: 핵심 지표 3개 + 문제 지표 1개 (kpi-danger) -->
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">네이버 카테고리 후기</div>
+                <div class="kpi-value">19만+</div>
+                <div class="kpi-sub">콜라겐 카테고리 다년 1위 (15만~19만 출처별)</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">설립 · 본사</div>
+                <div class="kpi-value">12년차</div>
+                <div class="kpi-sub">2012~2013 설립(불일치) · 송파 · 직원 3명</div>
+            </div>
+            <div class="kpi-card kpi-success">
+                <div class="kpi-label">식약처 기능성 인증</div>
+                <div class="kpi-value">보유</div>
+                <div class="kpi-sub">안티링클패치 주름개선 기능성</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">글로벌 진출 시 검토 사항</div>
+                <div class="kpi-value">영국 동명</div>
+                <div class="kpi-sub">Absolute Collagen UK와 영문 사명 동일 — 우회 전략 필요</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                후기 19만+·12년 카테고리 1위라는 <span class="hl">강력한 social proof 모트</span>를 가졌는데,<br>
+                시장 포화·1,000Da 저분자 경쟁 열위·저PR로 <span class="hl">"1위 자산을 다음 성장축(리포지셔닝·글로벌·신규 SKU)으로 전환"</span>하지 못하는 정체 위기.
+            </div>
+        </div>
+        <div class="summary-bottom">
+            <strong>핵심 기회:</strong> <span class="hl">후기 19만+·12년 카테고리 1위라는 강력한 social proof 모트는 이미 확보</span> — 이를 다음 성장(리포지셔닝·신규 SKU·비충돌 글로벌)으로 전환하는 것이 정체 돌파의 가장 빠른 지렛대입니다.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 핵심 문제점 & 진단 -->
+    <!-- ============================================================ -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 문제점 & 진단</h2>
+
+        <h3>1. 카테고리 1위(9점) ↔ 다음 성장 동력(3점) 부재 위기 (Critical)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재 상태</div>
+                <ul>
+                    <li>후기 19만+·12년 카테고리 1위 = 강력한 social proof 모트</li>
+                    <li>국내 콜라겐 시장 포화·성장 둔화 진입 + 대기업·신규 진입 격화</li>
+                    <li>글로벌·신규 SKU·B2B 등 다음 성장 축 미정 — 1위에 안주한 정체</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">이상적 상태</div>
+                <ul>
+                    <li>후기 19만+ 자산을 충성고객 LTV·크로스셀 시스템으로 구조화</li>
+                    <li>"후기 1위" 너머의 브랜드 스토리·차별화 포지셔닝 정립</li>
+                    <li>글로벌(비충돌 시장) 또는 신규 SKU로 차세대 성장 축 확보</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2. 브랜드 자산 = 후기 중심, 스토리·차별화 약함 + 1,000Da 저분자 경쟁 열위 (High)</h3>
+        <div class="diag-note">"절대콜라겐"이라는 직설적 사명·"프랑스산 저분자" 메시지는 있으나, 12년 누적 자산을 활용한 <strong>콘텐츠·인플루언서·PR 시스템은 후기 의존</strong>으로 추정 약함(2024~2026 자사 보도 거의 없는 저PR). 또한 경쟁사가 <strong>100~300Da 초저분자·발효나노</strong>를 내세우는 시장에서 <strong>1,000Da는 저분자 우위 메시지에서 불리</strong> → 리포지셔닝 과제.</div>
+
+        <h3>3. 글로벌 진출 = 영국 Absolute Collagen 사명 100% 충돌 (High)</h3>
+        <div class="diag-note">영국 Absolute Collagen(Maxine Laceby, 2017 창업, £43M 밸류·B-Corp·@absolutecollagen 101K·.com 선점)과 <strong>영문 사명 완전 동일 + 양사 모두 "Since 2017"</strong>. 영미권 진출 시 상표·도메인·SEO·SNS 핸들 전면 충돌 = <strong>매우 높은 리스크</strong>. 영미권은 별도 브랜드명/하위브랜드 전략, 또는 비충돌 시장(일본·동남아) 우선 권고.</div>
+
+        <h3>영역별 진단 요약</h3>
+        <table>
+            <tr><th>영역</th><th>현재 상태</th><th>심각도</th><th>GAP</th></tr>
+            <tr><td>카테고리 지위</td><td>네이버 콜라겐 후기 19만+ 1위 social proof</td><td><span class="tag tag-green">Low</span></td><td><span class="tag tag-green">없음 (강점)</span></td></tr>
+            <tr><td>충성 고객 자산</td><td>12년 누적 재구매 고객층 (추정)</td><td><span class="tag tag-green">Low</span></td><td><span class="tag tag-green">강점 (구조화 미흡)</span></td></tr>
+            <tr><td>차세대 성장 축</td><td>글로벌·신규 SKU·B2B 미정</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>브랜드 스토리·차별화</td><td>후기 의존, 1,000Da 저분자 열위</td><td><span class="tag tag-yellow">High</span></td><td><span class="tag tag-yellow">큼</span></td></tr>
+            <tr><td>글로벌 진출 가능성</td><td>영국 동명 100% 충돌</td><td><span class="tag tag-yellow">High</span></td><td><span class="tag tag-yellow">큼 (영미권)</span></td></tr>
+            <tr><td>운영 흡수력</td><td>직원 3명 슬림 = 외주 의존 추정</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-yellow">미검증</span></td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>진단 결론:</strong> 절대콜라겐은 "후기 1위"라는 누구도 못 가진 모트를 이미 가졌습니다. 막힌 건 "<strong>그 1위 자산을 다음 성장(리포지셔닝·신규 SKU·비충돌 글로벌)으로 전환</strong>"하는 일입니다. 방향은 — 새 카테고리를 만드는 것이 아니라 <strong>12년 누적 자산을 재해석해 정체를 돌파</strong>하는 "스케일 전환"입니다.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 목차 -->
+    <!-- ============================================================ -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 & 진단</a>
+            <a href="#company-info">1. 기업 기초 정보</a>
+            <a href="#product-lineup">2. 주력 제품/서비스</a>
+            <a href="#digital-presence">3. 디지털 프레즌스 진단</a>
+            <a href="#competitors">4. 경쟁사 분석</a>
+            <a href="#market">5. 시장 환경</a>
+            <a href="#ceo-background">6. 대표자 프로필</a>
+            <a href="#swot">7. SWOT 분석</a>
+            <a href="#needs-analysis">8. 니즈 분석 (SPIN + JTBD)</a>
+        </div>
+    </div>
+
+    <!-- 1. 기업 기초 정보 -->
+    <div class="section" id="company-info">
+        <h2>1. 기업 기초 정보</h2>
+        <div class="info-grid">
+            <div class="info-label">법인명</div><div class="info-value">주식회사 서우코리아 (SEOWOO KOREA) · 법인 110111-4768581</div>
+            <div class="info-label">대표이사</div><div class="info-value">대표 <strong>주영훈</strong> — 12년간 콜라겐 카테고리 1위 브랜드 운영</div>
+            <div class="info-label">사업자번호</div><div class="info-value">215-87-62934 · 통신판매업 2013-서울송파-1197호</div>
+            <div class="info-label">설립일</div><div class="info-value">잡코리아·사람인 <strong>2012-01-05</strong> ↔ 기존 자료 2013-12-16 <span class="tag tag-red">⚠️ 불일치 — 사업자등록증/법인등기로 확정 필요</span> (2013은 통신판매업 신고연도일 가능성)</div>
+            <div class="info-label">본사</div><div class="info-value">서울 송파구 올림픽로 336, 1402호 (방이동 대우유토피아오피스텔)</div>
+            <div class="info-label">직원 규모</div><div class="info-value">3명 (4대보험 전 항목 가입) — D2C 매출 규모 대비 슬림 = 외주 의존 추정</div>
+            <div class="info-label">업종(실질)</div><div class="info-value">건강기능식품 D2C + 수입·유통(멀티브랜드 셀러형 — smartstore "레모라" 등 정황) · 자매몰 절대보이차</div>
+            <div class="info-label">기능성 인증</div><div class="info-value">절대콜라겐 안티링클패치 — 식약처 주름개선 기능성화장품 인증 표방 <span class="tag tag-yellow">⚠️ 품목심사번호 개별 조회 필요</span></div>
+            <div class="info-label">재무</div><div class="info-value">비상장 소기업 — <strong>매출·영업이익·자본금 공시 없음</strong> (DART/잡코리아/사람인 모두 미공개) · 외부투자 흔적 없음 = 자력 운영 추정</div>
+            <div class="info-label">홈페이지 / SNS</div><div class="info-value"><a href="https://absolutecollagen.co.kr" target="_blank" rel="noopener" style="color:var(--accent);">absolutecollagen.co.kr</a> · <a href="https://www.instagram.com/absolute.collagen/" target="_blank" rel="noopener" style="color:var(--accent);">@absolute.collagen</a> · 자매몰 절대보이차</div>
+        </div>
+        <div class="callout callout-info">
+            <strong>실측 포인트:</strong> 재무가 전혀 공개되지 않은 비상장 소기업(직원 3명). "후기 19만+ 카테고리 1위"는 다수 출처에서 확인되나 <strong>실제 매출 규모는 미지수</strong>. ① 월 매출·채널별 비중(자사몰/네이버/오픈마켓) ② 후기 "1위"의 측정 기준 ③ 설립연도(2012 vs 2013) → 상담에서 반드시 확정. <strong>매출을 단정해 언급하지 말 것.</strong>
+        </div>
+    </div>
+
+    <!-- 2. 주력 제품/서비스 -->
+    <div class="section" id="product-lineup">
+        <h2>2. 주력 제품/서비스</h2>
+        <p style="font-size:14px;color:var(--text-light);margin-bottom:8px;">핵심은 프랑스산 저분자 피쉬 콜라겐 분말. 기능성 패치가 식약처 인증 자산.</p>
+        <table>
+            <tr><th>카테고리</th><th>대표 제품</th><th>포지션 / 비고</th></tr>
+            <tr><td>핵심 (플래그십)</td><td>절대콜라겐 플러스 (분말)</td><td><strong>프랑스산 저분자 피쉬 콜라겐</strong>, 1,000Da급 펩타이드 + 비타민C (990mg/VitC 10mg은 기존값·공식 미검증)</td></tr>
+            <tr><td>기능성 (인증)</td><td>절대콜라겐 안티링클패치</td><td>식약처 주름개선 기능성화장품 인증 표방 — 인증 자산의 본체</td></tr>
+            <tr><td>기타</td><td>스킨케어·액세서리 카테고리</td><td>자사몰 메뉴 존재, 구체 SKU·가격 미노출(동적 로딩)</td></tr>
+            <tr><td>자매 브랜드</td><td>절대보이차 (shop2.seowookr.cafe24.com)</td><td>그룹 마스터 브랜드 전략 미정 — 정리 필요</td></tr>
+        </table>
+        <div class="callout">
+            <strong>USP:</strong> ① "프랑스산 저분자 피쉬 콜라겐" 원산지 차별화 ② <strong>네이버 콜라겐 카테고리 후기 1위(19만+)의 압도적 social proof</strong> ③ 식약처 기능성 인증 패치 ④ "Since 2017" 브랜드 헤리티지. → <strong>모트는 강력하나 후기 의존·1,000Da 저분자 열위·저PR</strong>이 핵심 과제. (참고: 1,000Da 어류 콜라겐펩타이드 + VitC 10mg 표기는 기존 자료값으로 공식 출처 미검증 — 시험성적서 확인 필요.)
+        </div>
+        <div class="callout callout-success">
+            <strong>이미 확보한 자산(공개):</strong> 네이버 콜라겐 카테고리 후기 15만~19만(다년 1위) · 식약처 기능성 인증 패치 · 12년 D2C 운영 누적 충성고객 · 2022 광고대행사 '광고하는사람들' 전략 MOU(브랜드 인지도 확산 추진). <strong>카테고리 모트·고객 자산은 강력 → 갭은 '브랜드 재해석·차세대 성장 축'에 집중됨.</strong>
+        </div>
+    </div>
+
+    <!-- 3. 디지털 프레즌스 진단 -->
+    <div class="section" id="digital-presence">
+        <h2>3. 디지털 프레즌스 진단</h2>
+        <div class="channel-grid">
+            <div class="channel-card">
+                <div class="ch-name">📝 네이버 카테고리 후기</div>
+                <div class="ch-stat">19만+</div>
+                <div class="ch-note">콜라겐 카테고리 다년 1위<br>(15만~19만 · 출처별 시점 차)</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name"><a href="https://absolutecollagen.co.kr" target="_blank" rel="noopener">🌐 absolutecollagen.co.kr</a></div>
+                <div class="ch-stat">D2C</div>
+                <div class="ch-note">카페24 추정 자사몰 · 스마트스토어 병행(레모라 등)</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name"><a href="https://www.instagram.com/absolute.collagen/" target="_blank" rel="noopener">📷 @absolute.collagen</a></div>
+                <div class="ch-stat">미확인</div>
+                <div class="ch-note">bio "프랑스 저분자 콜라겐 \| 절대콜라겐 \| Since2017"<br>(팔로워·게시물 미공개 렌더링)</div>
+            </div>
+        </div>
+
+        <h3>채널별 진단 — 현재 vs 이상</h3>
+        <table>
+            <tr><th>채널</th><th>현재 상태</th><th>갭 / 이상</th></tr>
+            <tr><td>네이버 후기</td><td><span class="tag tag-green">19만+ 1위 최강 자산</span> — 다만 측정 기준·캡처 미확보</td><td>후기 자산을 카드뉴스·전문가 PR·LTV 콘텐츠로 구조화</td></tr>
+            <tr><td>자사몰 (D2C)</td><td>운영 중 · 스마트스토어 멀티브랜드 셀러 정황 · SKU/가격 미노출</td><td>1위 자산을 활용한 전환·재구매·크로스셀 깔때기</td></tr>
+            <tr><td>인스타그램</td><td>@absolute.collagen 운영, 팔로워·인게이지먼트 미확인</td><td>후기 1위 브랜드 체급에 맞는 콘텐츠·인플루언서 시스템</td></tr>
+            <tr><td>PR/미디어</td><td>2024~2026 자사 보도 거의 없음 (<span class="tag tag-yellow">저PR</span>)</td><td>기능성·임상·"프랑스산" 스토리의 전문가 PR 자산화</td></tr>
+        </table>
+        <div class="callout callout-danger">
+            <strong>디지털 갭 한 줄:</strong> 후기 social proof는 9점, 브랜드 스토리·콘텐츠·PR 시스템은 3~4점. <strong>"1위 자산을 후기 너머로 구조화하지 못한 것"이 가장 큰 기회.</strong>
+        </div>
+    </div>
+
+    <!-- 4. 경쟁사 분석 -->
+    <div class="section" id="competitors">
+        <h2>4. 경쟁사 분석</h2>
+        <p style="font-size:14px;color:var(--text-light);">국내 콜라겐 건기식 시장은 (a) 대기업 신뢰형, (b) 초저분자/기술 소구형으로 양분. 절대콜라겐은 자본·기술 경쟁에선 열위지만 <strong>"후기 1위" 누적 social proof + D2C 충성층</strong>이 차별점.</p>
+        <table>
+            <tr><th>브랜드(운영사)</th><th>포지션</th><th>분자량/원료</th><th>채널·규모</th></tr>
+            <tr><td><strong>절대콜라겐(서우코리아)</strong></td><td>D2C·후기 1위 social proof</td><td>프랑스산 저분자 피쉬 1,000Da급(추정)</td><td>자사몰·네이버 · 직원 3명·매출 비공개</td></tr>
+            <tr><td>에버콜라겐(뉴트리, KOSDAQ)</td><td>카테고리 1위·홈쇼핑 강자</td><td>저분자 펩타이드</td><td>홈쇼핑·온라인·미국 올영 · <strong>누적 1조 돌파</strong>·점유율 40~50%</td></tr>
+            <tr><td>라이필 더마(농심)</td><td>대기업 신뢰·"선호 5년 1위"</td><td>저분자+비오틴</td><td>대형마트·온라인·홈쇼핑 · 대기업 사업부</td></tr>
+            <tr><td>더코리아콜라겐</td><td>초저분자 소구</td><td><strong>100~300Da</strong> 피쉬</td><td>온라인 · 중소</td></tr>
+            <tr><td>뷰티콜라겐(뷰티이앤비)</td><td>발효나노 기술 소구</td><td><strong>발효나노 50nm↓</strong></td><td>자사·온라인 · 중소</td></tr>
+            <tr><td>정관장/종근당건강</td><td>대기업 브랜드 신뢰</td><td>콜라겐 복합</td><td>정몰·약국·온라인 · 대기업</td></tr>
+        </table>
+        <div class="callout">
+            <strong>경쟁 인사이트:</strong> 대기업(에버콜라겐 누적 1조·라이필·정관장)이 신뢰·유통을, 중소(더코리아 100Da·뷰티콜라겐 발효나노)가 기술 메시지를 점유. 절대콜라겐의 차별점은 <strong>"후기 1위" 사회적 증거 + D2C 충성고객</strong>이나, <strong>1,000Da는 초저분자 경쟁 메시지에서 불리</strong> → "저분자 우위"가 아닌 <strong>다른 축(원산지·후기·헤리티지·기능성 패치)으로 리포지셔닝</strong> 필요. <span class="tag tag-yellow">⚠️ 경쟁사 가격·매출 비교 정밀표는 상담 전 보강 권장</span>
+        </div>
+    </div>
+
+    <!-- 5. 시장 환경 -->
+    <div class="section" id="market">
+        <h2>5. 시장 환경</h2>
+        <h3>시장 규모 (TAM/SAM/SOM)</h3>
+        <table>
+            <tr><th>구분</th><th>범위</th><th>비고</th></tr>
+            <tr><td>TAM</td><td>국내 콜라겐 식품 2016년 222억 → 2022년 1,137억 (CAGR 31.3%)</td><td>국내 이너뷰티 전체 2025년 2조 전망</td></tr>
+            <tr><td>SAM</td><td>D2C 온라인 저분자 분말 세그먼트 ≈ 300~500억 (추정)</td><td><span class="tag tag-yellow">⚠️ BRANDRISE 추정</span></td></tr>
+            <tr><td>SOM</td><td>서우코리아 매출 비공개로 산정 불가</td><td>상담 시 실매출 수령 후 산출</td></tr>
+        </table>
+        <h3>시장 트렌드</h3>
+        <table>
+            <tr><th>트렌드</th><th>내용</th><th>절대콜라겐 시사점</th></tr>
+            <tr><td>국내 콜라겐 시장 포화·둔화</td><td>고성장기(CAGR 31%) 후 포화 진입 + 대기업·신규 진입 격화</td><td><span class="tag tag-red">정체 위기</span> — 국내 점유 사수 + 새 성장 축 필요</td></tr>
+            <tr><td>업계 화두 = 수출 활로</td><td>국내 포화로 콜라겐 업계 전반이 글로벌로 눈 돌림</td><td>글로벌 기회 — 단 <strong>영국 동명 충돌</strong>이 영미권 장애물</td></tr>
+            <tr><td>이너뷰티 확장</td><td>2019 ~7,000억 → 2023 ~1조 → 2025 2조 전망</td><td>음용 콜라겐 외 패치·앰플·이너뷰티 신규 SKU 확장 여지</td></tr>
+            <tr><td>글로벌 콜라겐</td><td>2030년 USD 71억 / 2035년 125.9억 (CAGR 7.1%)</td><td>비충돌 시장(일본·동남아) 우선 진출 근거</td></tr>
+        </table>
+        <div class="callout callout-info">
+            <strong>타이밍 레버:</strong> 국내 콜라겐 시장이 포화로 둔화하는 <strong>지금</strong>이 1위 브랜드가 다음 성장 축을 박을 결정적 시점. 후발·대기업이 점유를 잠식하기 전에 — "안 하면 망한다"가 아니라 "<strong>1위 자산이 가장 강할 때 차세대 성장을 설계할 타이밍</strong>" 기회 프레이밍.
+        </div>
+    </div>
+
+    <!-- 6. 대표자 프로필 -->
+    <div class="section" id="ceo-background">
+        <h2>6. 대표자 프로필</h2>
+        <div class="info-grid">
+            <div class="info-label">주영훈 대표</div><div class="info-value">㈜서우코리아 대표. <strong>"국내에 희소가치 있는 경쟁력 해외 브랜드를 수입·유통"</strong>하는 비전 표방, 절대콜라겐을 콜라겐 전문 브랜드로 육성 (gpkorea 2022 인터뷰).</div>
+            <div class="info-label">사업 모델</div><div class="info-value">수입·유통 + 멀티브랜드 셀러형(스마트스토어 레모라 등) + 자매 브랜드 절대보이차 — "수입유통 + 멀티브랜드" 구조.</div>
+            <div class="info-label">미디어 노출</div><div class="info-value">개인 인터뷰·언론 프로필·학력/경력 자료 <strong>거의 없음</strong> (저PR) — 상담 시 직접 청취 필요.</div>
+        </div>
+    </div>
+
+    <!-- 7. SWOT 분석 -->
+    <div class="section" id="swot">
+        <h2>7. SWOT 분석</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>Strengths (강점)</h4>
+                <ul>
+                    <li>네이버 콜라겐 후기 19만+ 1위 = 압도적 social proof</li>
+                    <li>12년 D2C 누적 충성고객 자산</li>
+                    <li>식약처 기능성 인증 패치 보유</li>
+                    <li>"프랑스산 저분자" 원산지 차별화 메시지</li>
+                    <li>대표 본인 의사결정 = 빠른 합의</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>Weaknesses (약점)</h4>
+                <ul>
+                    <li>후기 의존·브랜드 스토리/PR 시스템 약함(저PR)</li>
+                    <li>1,000Da = 초저분자(100~300Da) 경쟁 메시지 열위</li>
+                    <li>직원 3명 슬림 = 외주 의존·운영 흡수력 제약</li>
+                    <li>차세대 성장 축(글로벌·신규 SKU·B2B) 미정</li>
+                    <li>자매 브랜드(절대보이차) 그룹 전략 분산</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>Opportunities (기회)</h4>
+                <ul>
+                    <li>이너뷰티 2조 시장 — 패치·앰플·신규 SKU 확장</li>
+                    <li>후기 19만+ → LTV·크로스셀 시스템화</li>
+                    <li>비충돌 시장(일본·동남아) 글로벌 진출</li>
+                    <li>"프랑스산·기능성·헤리티지" 재포지셔닝 여지</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>Threats (위협)</h4>
+                <ul>
+                    <li>국내 콜라겐 시장 포화·둔화</li>
+                    <li>대기업(에버콜라겐 1조·라이필·정관장) 점유 잠식</li>
+                    <li>초저분자/발효나노 기술 경쟁 격화</li>
+                    <li>영미권 진출 시 영국 Absolute Collagen 충돌</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. 니즈 분석 (SPIN + JTBD) -->
+    <div class="section" id="needs-analysis">
+        <h2>8. 니즈 분석 (SPIN + JTBD)</h2>
+        <div class="callout callout-info" style="margin-top:0;">
+            <strong>핵심 해석:</strong> 절대콜라겐의 니즈는 "새 고객 더 모으기"가 아니라 "<strong>1위 자산을 다음 성장으로 전환</strong>"하는 데 가깝습니다 — 12년 카테고리 1위인데도 시장 포화로 성장이 둔화되는 구조이기 때문입니다.
+        </div>
+
+        <h3>SPIN 레이어링</h3>
+        <div class="spin-grid">
+            <div class="spin-card spin-s">
+                <h4>S — Situation</h4>
+                12년차 콜라겐 D2C 강자. 네이버 후기 19만+ 1위. 프랑스산 저분자 피쉬 콜라겐 + 기능성 패치. 직원 3명 슬림 본사·외주 의존. 국내 시장 포화 진입.
+            </div>
+            <div class="spin-card spin-p">
+                <h4>P — Problem <span style="font-size:11px;">(추정)</span></h4>
+                국내 1위지만 시장 포화로 성장 정체(70%). 브랜드 자산이 후기 의존, 스토리·PR 약함(65%). 1,000Da 저분자 경쟁 메시지 열위(60%). 차세대 성장 축 미정(60%).
+            </div>
+            <div class="spin-card spin-i">
+                <h4>I — Implication <span style="font-size:11px;">(추정)</span></h4>
+                전환이 안 되면 후발·대기업이 "후기 1위" 점유를 잠식 → 12년 모트가 희석. 글로벌은 영국 동명에 막히고, 신규 SKU 없이 음용 콜라겐 단일 의존이 지속되면 정체가 고착.
+            </div>
+            <div class="spin-card spin-n">
+                <h4>N — Need-Payoff <span style="font-size:11px;">(추정)</span></h4>
+                1위 자산을 재해석(리포지셔닝) + 후기 19만+를 LTV·크로스셀로 구조화 + 신규 SKU·비충돌 시장 진출이 설계되면, 정체된 1위가 예측가능한 성장 엔진으로 전환된다.
+            </div>
+        </div>
+
+        <h3>Pain Hierarchy (표면 → 근본)</h3>
+        <div class="pain-layer">
+            <div class="pain-level pain-l1">
+                <span class="level-tag">L1 · 표면 (확신 100%)</span>
+                "더 성장하고 싶다 / 마케팅을 강화하고 싶다" (행사 신청 동기)
+            </div>
+            <div class="pain-level pain-l2">
+                <span class="level-tag">L2 · 1차 구체화 (70%)</span>
+                국내 1위인데 성장이 멈췄다 — 후기 외에 내세울 브랜드 무기가 약하다
+            </div>
+            <div class="pain-level pain-l3">
+                <span class="level-tag">L3 · 구조적 원인 (60%)</span>
+                12년 누적 자산(후기·고객·인증)이 다음 성장 축(글로벌·신규 SKU·LTV)으로 구조화되지 않았다
+            </div>
+            <div class="pain-level pain-l4">
+                <span class="level-tag">L4 · 근본 과제 (55%)</span>
+                "후기로 지킨 1위"에서 "전략적으로 성장하는 1위"로 전환 — 함께 재해석·설계할 파트너가 필요
+            </div>
+        </div>
+        <div class="callout">
+            <strong>핵심:</strong> L4가 맞다면 절대콜라겐에 필요한 것은 "광고 몇 번"이 아니라 <strong>1위 자산 재해석 + 차세대 성장을 함께 설계할 파트너십</strong>입니다.
+        </div>
+
+        <h3>JTBD (Jobs To Be Done)</h3>
+        <table>
+            <tr><th>차원</th><th>회사 차원</th><th>주영훈 대표 개인 차원</th></tr>
+            <tr><td>Functional</td><td>1위 자산 재해석 → 후기 19만+를 LTV·크로스셀로 → 신규 SKU·비충돌 글로벌로 성장 축 확보</td><td>외주 의존 운영을 신뢰할 파트너로 보완, 본인은 제품·소싱에 집중</td></tr>
+            <tr><td>Social</td><td>"후기 1위"를 넘어 "콜라겐 카테고리 대표 브랜드"로 공인</td><td>"12년 외길로 1위를 지킨 + 다음 단계로 키운" 운영자 서사</td></tr>
+            <tr><td>Emotional</td><td>"1위인데 정체된다"는 불안 → 예측가능한 성장을 가졌다는 통제감</td><td>12년 자부심을 지키면서 다음으로 나아가는 안심</td></tr>
+        </table>
+
+        <h3>표면(L1) vs 진짜 니즈(L4)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">표면 요청</div>
+                <ul><li>"성장 / 마케팅 강화"</li><li>= 막연한 캠페인 외주로 보일 수 있음</li></ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">진짜 니즈 (전략 방향)</div>
+                <ul><li>1위 자산 재해석 + 차세대 성장 <strong>파트너십</strong></li><li>후기 1위를 다음 성장 엔진으로 함께 전환할 파트너</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 참고 링크 -->
+    <div class="section" id="sources">
+        <h2>참고 링크 & 출처</h2>
+        <h3>절대콜라겐 공식 채널</h3>
+        <div class="source-list">
+            • 자사몰: <a href="https://absolutecollagen.co.kr" target="_blank" rel="noopener">absolutecollagen.co.kr</a> · 자매몰: <a href="http://shop2.seowookr.cafe24.com/" target="_blank" rel="noopener">절대보이차</a><br>
+            • 인스타: <a href="https://www.instagram.com/absolute.collagen/" target="_blank" rel="noopener">@absolute.collagen</a> (bio "프랑스 저분자 콜라겐 | 절대콜라겐 | Since2017")<br>
+        </div>
+        <h3>리서치 출처</h3>
+        <div class="source-list">
+            • 기업정보(잡코리아): <a href="https://www.jobkorea.co.kr/company/46434530" target="_blank" rel="noopener">jobkorea.co.kr/company/46434530</a> (설립일·직원·업종)<br>
+            • 대표 인터뷰/광고 MOU(GP코리아 2022): <a href="https://www.gpkorea.com/news/articleView.html?idxno=81667" target="_blank" rel="noopener">gpkorea.com</a><br>
+            • 국내 콜라겐 시장(뉴스1, 포화·수출 화두): <a href="https://www.news1.kr/bio/healthcare/5421211" target="_blank" rel="noopener">news1.kr</a><br>
+            • 글로벌 콜라겐 71억$(이코노믹데일리 2024): <a href="https://www.economidaily.com/view/20240717155650689" target="_blank" rel="noopener">economidaily.com</a><br>
+            • 뉴트리/에버콜라겐(누적 1조): <a href="https://pharm.edaily.co.kr/news/read?newsId=02328806642137432" target="_blank" rel="noopener">edaily</a> · <a href="https://thevc.kr/newtree" target="_blank" rel="noopener">thevc.kr/newtree</a><br>
+            • 영국 Absolute Collagen(£23M·£43M 밸류): <a href="https://channelx.world/2024/02/how-absolute-collagen-grew-to-a-23m-business/" target="_blank" rel="noopener">channelx.world</a> · 법인등기: <a href="https://find-and-update.company-information.service.gov.uk/company/09659752" target="_blank" rel="noopener">Companies House</a> · <a href="https://www.instagram.com/absolutecollagen/" target="_blank" rel="noopener">@absolutecollagen (101K)</a>
+        </div>
+        <div class="callout callout-info">
+            <strong>⚠️ 추가 확인 권장 데이터:</strong> ① 사업자등록증/법인등기 → 설립일(2012 vs 2013)·자본금 확정 ② 최근 3개년 매출·영업이익·채널별 비중 ③ 전 SKU·가격표·월매출 ④ 콜라겐 시험성적서(분자량·함량 990mg/1,000Da)·안티링클패치 식약처 품목심사번호 ⑤ 네이버 후기 정확 수치·"1위" 측정 기준 캡처 ⑥ 글로벌 진출 의향·영국 동명 상표 등록 현황 ⑦ 인스타 @absolute.collagen 팔로워·인게이지먼트
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>BRANDRISE (MarketingOS) — 브랜드 디지털 진단 리포트 · 절대콜라겐 (Absolute Collagen, KR)</p>
+    <p>이 리포트는 절대콜라겐(㈜서우코리아) 전용으로 작성되었습니다.</p>
+</div>
+
+</body>
+</html>
