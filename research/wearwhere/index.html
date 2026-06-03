@@ -188,16 +188,16 @@
         .tier-card li::before { content: ">"; position: absolute; left: 0; color: var(--highlight); font-weight: 700; }
 
         .callout {
-            background: #fff8e1;
-            border-left: 4px solid #ffc107;
+            background: #f8f9fa;
+            border-left: 4px solid #cbd2d9;
             padding: 16px 20px;
             border-radius: 0 8px 8px 0;
             margin: 16px 0;
             font-size: 14px;
         }
-        .callout-info { background: #e3f2fd; border-left-color: #2196f3; }
-        .callout-danger { background: #fce4ec; border-left-color: #e53935; }
-        .callout-success { background: #e8f5e9; border-left-color: #00b894; }
+        .callout-info { background: #f8f9fa; border-left-color: var(--accent); }
+        .callout-danger { background: #fdecec; border-left-color: var(--danger); }
+        .callout-success { background: #edf7f0; border-left-color: var(--success); }
 
         .leverage-box {
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
@@ -236,14 +236,14 @@
         .flow-step .step-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
 
         .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
-        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; background:#f8f9fa; border-left:4px solid #cbd2d9; }
         .swot-item h4 { font-size: 15px; margin-bottom: 10px; }
         .swot-item ul { padding-left: 18px; }
         .swot-item li { margin-bottom: 4px; }
-        .swot-s { background: #d4f5e9; }
-        .swot-w { background: #ffe0e0; }
-        .swot-o { background: #dfe6fd; }
-        .swot-t { background: #fff3cd; }
+        .swot-s { border-left-color:#00b894; }
+        .swot-w { border-left-color:#dc2626; }
+        .swot-o { border-left-color:#3b6cf0; }
+        .swot-t { border-left-color:#EA580C; }
 
         .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; }
         .source-list a { color: var(--accent); text-decoration: none; }
@@ -257,8 +257,23 @@
         .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 8px 0; }
         .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
 
+        /* One-Pager (수주 한 장) */
+        .onepager { background:#0D0D0D; color:#fff; border-radius:14px; padding:40px; margin-bottom:28px; box-shadow:0 4px 24px rgba(0,0,0,0.12); }
+        .onepager .op-kicker { font-size:12px; letter-spacing:1.5px; color:#ffb088; font-weight:700; margin-bottom:6px; }
+        .onepager .op-h { font-size:13px; color:#9aa0a6; margin-bottom:18px; }
+        .op-block { margin:24px 0; }
+        .op-block:last-child { margin-bottom:4px; }
+        .op-block .op-label { font-size:12px; font-weight:700; color:#ffb088; letter-spacing:0.5px; margin-bottom:10px; }
+        .op-need { font-size:18px; font-weight:700; line-height:1.6; }
+        .op-need .muted { display:block; margin-top:10px; color:#b4b9be; font-weight:500; font-size:14px; line-height:1.7; }
+        .op-do { display:grid; gap:10px; }
+        .op-do .do-item { background:rgba(255,255,255,0.06); border-left:3px solid #EA580C; padding:13px 16px; border-radius:0 8px 8px 0; font-size:14px; line-height:1.6; }
+        .op-do .do-item strong { color:#ffd9c2; }
+        .op-offer { background:rgba(234,88,12,0.14); border:1px solid #EA580C; border-radius:10px; padding:16px 20px; font-size:14px; line-height:1.7; }
+        .op-offer .hl { color:#ffb088; font-weight:700; }
+
         /* Executive Summary */
-        .summary-section { border-left: 4px solid var(--highlight); background: linear-gradient(135deg, #fff 0%, #fff5f7 100%); }
+        .summary-section { border-left: 4px solid var(--highlight); background:#fff; }
         .summary-section h2 { border-bottom-color: var(--highlight); }
         .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
         .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
@@ -296,20 +311,20 @@
 
         /* SPIN & JTBD */
         .spin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
-        .spin-card { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .spin-card { padding: 20px; border-radius: 10px; font-size: 14px; background:#f8f9fa; border-left:4px solid #cbd2d9; }
         .spin-card h4 { font-size: 15px; margin-bottom: 10px; }
-        .spin-s { background: #e3f2fd; }
-        .spin-p { background: #fce4ec; }
-        .spin-i { background: #fff3e0; }
-        .spin-n { background: #e8f5e9; }
+        .spin-s { border-left-color:#3b6cf0; }
+        .spin-p { border-left-color:#dc2626; }
+        .spin-i { border-left-color:#EA580C; }
+        .spin-n { border-left-color:#00b894; }
 
         .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
-        .pain-level { flex: 1; min-width: 200px; padding: 16px; border-radius: 10px; font-size: 13px; }
-        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; }
-        .pain-l1 { background: #e3f2fd; }
-        .pain-l2 { background: #fff3e0; }
-        .pain-l3 { background: #fce4ec; }
-        .pain-l4 { background: #f3e5f5; }
+        .pain-level { flex: 1; min-width: 200px; padding: 16px; border-radius: 10px; font-size: 13px; background:#f8f9fa; border-left:4px solid #cbd2d9; }
+        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; color:var(--text-light); }
+        .pain-l1 { border-left-color:#cbd2d9; }
+        .pain-l2 { border-left-color:#f0a500; }
+        .pain-l3 { border-left-color:#EA580C; }
+        .pain-l4 { border-left-color:#dc2626; }
 
         /* Script & Coaching */
         .script-block {
@@ -363,6 +378,39 @@
 <div class="container">
 
     <!-- ============================================================ -->
+    <!-- 수주 한 장 (One-Pager) -->
+    <!-- ============================================================ -->
+    <div class="onepager" id="one-pager">
+        <div class="op-kicker">수주 한 장</div>
+        <div class="op-h">미팅 들어가기 전, 이 카드 하나면 된다. (아래 12섹션은 근거·깊이 백업)</div>
+
+        <div class="op-block">
+            <div class="op-label">그래서 진짜 니즈는</div>
+            <div class="op-need">
+                광고를 더 붓기 전에 — 지금 들어온 손님이 왜 안 사는지 정확히 알고, 두 브랜드 중 한 곳부터 매출을 살리는 것.
+                <span class="muted">대표가 적은 말은 "브랜드(BI)를 바꾸자"지만, 실제로 막힌 건 세 가지다. ① 살 이유(후기·실착 신뢰) ② 살 수 있는 동선(인스타 → 자사몰 구매) ③ 애초에 볼 사람(도달). 안경 IG 팔로워 1,167명·릴스 269~369뷰가 그 증거.</span>
+            </div>
+        </div>
+
+        <div class="op-block">
+            <div class="op-label">그래서 우리가 해주는 것 (구체)</div>
+            <div class="op-do">
+                <div class="do-item"><strong>① 진단서 1부 (2~3주)</strong> — 두 브랜드가 유입·전환·재구매 어디서 새는지 짚고, 100만원을 어디부터 써야 하는지 답을 준다.</div>
+                <div class="do-item"><strong>② 한 브랜드 90일 매출 픽스</strong> — 후기·실착 리뷰를 사이트·인스타 첫 화면에 깔고, 인스타에서 자사몰 구매까지 동선을 잇고, 인플루언서가 '도달'이 아니라 '매출'을 내도록 시딩을 다시 짠다.</div>
+                <div class="do-item"><strong>③ 브랜드(BI)는 2단계</strong> — 슬로건·세계관은 매출 공식이 검증된 뒤 그 위에 올린다. 지금 먼저 만들면 또 흔들린다.</div>
+            </div>
+        </div>
+
+        <div class="op-block">
+            <div class="op-label">첫 제안 & 다음 액션</div>
+            <div class="op-offer">
+                <span class="hl">진단(100만원대, 2~3주)부터.</span> 실행까지 맡기시면 진단비는 0원 처리(크레딧 전환) — 사실상 진단은 공짜다. &nbsp;|&nbsp;
+                <span class="hl">다음 액션:</span> 메일 미회신이니 직통·DM으로 "사이트·인스타 이미 다 봤습니다 + 무료 팁 1개"로 가볍게 콜부터 잡는다.
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
     <!-- Executive Summary -->
     <!-- ============================================================ -->
     <div class="section summary-section" id="executive-summary">
@@ -391,7 +439,7 @@
                 <div class="kpi-value">3.58 / 5.0</div>
                 <div class="kpi-sub">조건부 GO (진단 상품으로)</div>
             </div>
-            <div class="kpi-card kpi-success">
+            <div class="kpi-card kpi-dark">
                 <div class="kpi-label">추천 진입</div>
                 <div class="kpi-value">진단형</div>
                 <div class="kpi-sub">유료 진단 → 90일 픽스 업셀</div>
@@ -405,8 +453,9 @@
         <div class="summary-oneliner">
             <div class="sol-label">핵심 진단 한 줄 요약</div>
             <div class="sol-text">
-                두 D2C 브랜드와 명확한 제품 라인을 갖췄으나,<br>
-                <span class="hl">호소("매출")는 결과, 희망 처방("BI")은 상류 자산인데, 실제 누수는 모수·신뢰장치·전환 퍼널(하류)</span>에 있어 처방 순서가 뒤집혀 있음.
+                제품도 브랜드도 갖췄는데,<br>
+                <span class="hl">"볼 사람(도달)"과 "살 이유·살 동선(후기·퍼널)"이 비어서 매출이 막혔다.</span><br>
+                답은 "브랜드를 새로 만들자"가 아니라, 새는 곳부터 막고 한 브랜드에 집중하는 것.
             </div>
         </div>
         <div class="summary-bottom">
