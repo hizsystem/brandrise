@@ -13,7 +13,7 @@ export const config = {
 const COOKIE = 'br_auth';
 
 // 비밀번호 인증이 필요한 기밀 폴더 (이름 표준화됨 → 신규 산출물 자동 보호)
-const GATED = ['/quote', '/proposals', '/new-biz', '/prep', '/consulting', '/research', '/reports'];
+const GATED = ['/quote', '/proposals', '/new-biz', '/prep', '/consulting', '/research', '/reports', '/internal'];
 
 function isGated(path: string): boolean {
   return GATED.some((p) => path === p || path.startsWith(p + '/'));

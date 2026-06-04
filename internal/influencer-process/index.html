@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>인플루언서 캠페인 프로세스 · 전사 운영 가이드</title>
+<style>
+  :root{
+    --ink:#1a1c22; --ink2:#4a4f5c; --ink3:#80869a;
+    --line:#e7e9f0; --line2:#eef0f6;
+    --bg:#f6f7fb; --card:#ffffff;
+    --brand:#4f46e5; --brand-soft:#eef0ff; --brand-deep:#3730a3;
+    --accent:#0ea5a5; --accent-soft:#e6faf8;
+    --amber:#d97706; --amber-soft:#fff5e6;
+    --rose:#e11d6b; --rose-soft:#ffe9f1;
+    --r:16px; --shadow:0 1px 2px rgba(20,22,40,.04),0 12px 30px -16px rgba(20,22,40,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Segoe UI",Roboto,sans-serif;
+    color:var(--ink); background:var(--bg); line-height:1.65;
+    -webkit-font-smoothing:antialiased; letter-spacing:-.01em;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* HERO */
+  header.hero{
+    background:linear-gradient(135deg,#312e81 0%,#4f46e5 55%,#6366f1 100%);
+    color:#fff;padding:64px 0 76px;position:relative;overflow:hidden;
+  }
+  header.hero::after{
+    content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;
+    background:radial-gradient(circle,rgba(255,255,255,.16),transparent 65%);
+  }
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;
+    letter-spacing:.04em;background:rgba(255,255,255,.14);padding:7px 14px;border-radius:999px;
+    margin-bottom:20px;backdrop-filter:blur(4px)}
+  .hero h1{font-size:40px;line-height:1.2;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+  .hero p{font-size:17px;color:#dfe1ff;max-width:640px}
+  .hero .meta{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap}
+  .hero .meta span{font-size:13px;background:rgba(255,255,255,.12);
+    padding:6px 13px;border-radius:8px;border:1px solid rgba(255,255,255,.16)}
+
+  /* SECTION */
+  section{padding:54px 0}
+  .sec-head{margin-bottom:30px}
+  .sec-tag{font-size:13px;font-weight:700;color:var(--brand);letter-spacing:.06em;text-transform:uppercase}
+  .sec-head h2{font-size:26px;font-weight:800;margin-top:6px;letter-spacing:-.02em}
+  .sec-head p{color:var(--ink2);margin-top:8px;font-size:15.5px;max-width:680px}
+
+  /* PURPOSE */
+  .purpose{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media(max-width:820px){.purpose{grid-template-columns:repeat(2,1fr)}}
+  .p-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px}
+  .p-card .p-ico{font-size:26px;margin-bottom:10px}
+  .p-card .p-t{font-size:16px;font-weight:800;margin-bottom:6px}
+  .p-card .p-d{font-size:13.5px;color:var(--ink2);line-height:1.6}
+  .purpose-line{margin-top:18px;background:linear-gradient(135deg,#eef0ff,#f6f7ff);
+    border:1px solid #dcdcff;border-radius:14px;padding:18px 22px;font-size:15px;color:var(--ink2)}
+  .purpose-line b{color:var(--ink)}
+
+  /* NESTED HIERARCHY */
+  .nest-l1{background:#fbfbfe;border:1px solid var(--line);border-radius:16px;padding:18px}
+  .nest-l2{background:var(--brand-soft);border:1px solid #d8d9ff;border-radius:14px;padding:16px;margin-top:14px}
+  .nest-l3-wrap{background:var(--card);border:1px solid #d8d9ff;border-radius:12px;padding:14px;margin-top:12px}
+  .nest-tag{font-size:15px;font-weight:800;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .nest-tag span{font-size:12.5px;font-weight:600;color:var(--ink3)}
+  .nest-eg{font-size:12.5px;color:var(--ink2);margin-top:4px;padding-left:2px}
+  .nest-l3-head{font-size:12.5px;font-weight:700;color:var(--brand-deep);margin-bottom:10px}
+  .row-eg-head,.row-eg{display:grid;grid-template-columns:1.4fr 1fr .8fr 1fr 1fr .8fr;gap:6px;align-items:center}
+  .row-eg-head{font-size:11px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.03em;padding:0 10px 7px}
+  .row-eg{font-size:13px;background:#fafbff;border:1px solid var(--line2);border-radius:8px;padding:9px 10px;margin-bottom:6px}
+  .row-eg.muted{opacity:.62}
+  .row-eg .who{font-weight:700}
+  .row-eg .ok{color:#0c6b6b;font-weight:700}
+  .row-eg .done{color:var(--brand);font-weight:700}
+  .row-eg .wait{color:var(--amber);font-weight:700}
+  .row-eg .no{color:var(--ink3);font-weight:700}
+  @media(max-width:640px){
+    .row-eg-head{display:none}
+    .row-eg{grid-template-columns:1fr 1fr;gap:4px 10px}
+    .row-eg span{font-size:12.5px}
+  }
+  .rules{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+  @media(max-width:760px){.rules{grid-template-columns:1fr}}
+  .rule{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--brand);border-radius:12px;padding:18px 20px}
+  .rule .rk{font-size:12.5px;font-weight:800;color:var(--brand);margin-bottom:6px}
+  .rule .rv{font-size:14px;color:var(--ink2);line-height:1.6}
+
+  /* FLOW STRIP */
+  .flow{display:flex;gap:0;overflow-x:auto;padding:6px 2px 14px}
+  .flow .step{flex:0 0 auto;min-width:128px;text-align:center;position:relative;padding:0 6px}
+  .flow .step:not(:last-child)::after{
+    content:"";position:absolute;top:26px;right:-8px;width:16px;height:2px;background:var(--line);z-index:0}
+  .flow .dot{width:54px;height:54px;border-radius:14px;margin:0 auto 10px;display:flex;
+    align-items:center;justify-content:center;font-size:22px;background:var(--brand-soft);
+    border:1px solid #dcdcff;position:relative;z-index:1}
+  .flow .step .lbl{font-size:13px;font-weight:700}
+  .flow .step .sub{font-size:11.5px;color:var(--ink3);margin-top:2px}
+
+  /* PHASE CARDS */
+  .phase{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+    padding:0;margin-bottom:16px;box-shadow:var(--shadow);overflow:hidden}
+  .phase-top{display:flex;align-items:flex-start;gap:18px;padding:24px 26px 18px}
+  .phase-num{flex:0 0 auto;width:46px;height:46px;border-radius:12px;background:var(--brand);
+    color:#fff;font-weight:800;font-size:19px;display:flex;align-items:center;justify-content:center}
+  .phase.accent .phase-num{background:var(--accent)}
+  .phase.amber .phase-num{background:var(--amber)}
+  .phase.rose .phase-num{background:var(--rose)}
+  .phase-head{flex:1}
+  .phase-head h3{font-size:19px;font-weight:800;letter-spacing:-.01em}
+  .phase-head .goal{font-size:14.5px;color:var(--ink2);margin-top:3px}
+  .phase-badge{flex:0 0 auto;font-size:12px;font-weight:700;color:var(--brand-deep);
+    background:var(--brand-soft);padding:5px 11px;border-radius:999px;white-space:nowrap}
+  .phase.accent .phase-badge{color:#0c6b6b;background:var(--accent-soft)}
+  .phase.amber .phase-badge{color:#92590a;background:var(--amber-soft)}
+  .phase.rose .phase-badge{color:#a21052;background:var(--rose-soft)}
+  .phase-body{padding:0 26px 24px;display:grid;grid-template-columns:1.6fr 1fr;gap:22px}
+  @media(max-width:720px){.phase-body{grid-template-columns:1fr}}
+  .phase-body h4{font-size:12px;font-weight:700;color:var(--ink3);letter-spacing:.05em;
+    text-transform:uppercase;margin-bottom:9px}
+  .acts{list-style:none}
+  .acts li{position:relative;padding-left:20px;font-size:14.5px;color:var(--ink);margin-bottom:7px}
+  .acts li::before{content:"";position:absolute;left:2px;top:9px;width:7px;height:7px;
+    border-radius:50%;background:var(--brand)}
+  .phase.accent .acts li::before{background:var(--accent)}
+  .phase.amber .acts li::before{background:var(--amber)}
+  .phase.rose .acts li::before{background:var(--rose)}
+  .meta-box{background:#fafbff;border:1px solid var(--line2);border-radius:12px;padding:16px 18px}
+  .meta-row{display:flex;gap:10px;font-size:13.5px;padding:6px 0;border-bottom:1px dashed var(--line)}
+  .meta-row:last-child{border-bottom:0}
+  .meta-row .k{flex:0 0 64px;color:var(--ink3);font-weight:600}
+  .meta-row .v{color:var(--ink);font-weight:500}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+  .tags span{font-size:11.5px;background:#eef1f8;color:var(--ink2);padding:3px 9px;border-radius:6px}
+
+  /* TABLES */
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+  table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+  thead th{background:#f3f4fb;text-align:left;padding:13px 16px;font-weight:700;
+    color:var(--ink2);font-size:13px;border-bottom:1px solid var(--line)}
+  tbody td{padding:12px 16px;border-bottom:1px solid var(--line2);color:var(--ink)}
+  tbody tr:last-child td{border-bottom:0}
+  .pill{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:6px}
+  .pill.r{background:var(--brand-soft);color:var(--brand-deep)}
+  .pill.a{background:var(--rose-soft);color:#a21052}
+  .pill.c{background:var(--amber-soft);color:#92590a}
+  .pill.i{background:#eef1f8;color:var(--ink2)}
+
+  /* STACK */
+  .stack{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  @media(max-width:820px){.stack{grid-template-columns:repeat(2,1fr)}}
+  .stack .s-card{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:18px 16px;text-align:center}
+  .stack .s-card .ico{font-size:24px;margin-bottom:8px}
+  .stack .s-card .nm{font-weight:800;font-size:14.5px}
+  .stack .s-card .ds{font-size:12.5px;color:var(--ink3);margin-top:4px;line-height:1.5}
+
+  /* SLA cards */
+  .sla{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:820px){.sla{grid-template-columns:repeat(2,1fr)}}
+  .sla .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+  .sla .card .big{font-size:24px;font-weight:800;color:var(--brand)}
+  .sla .card .lbl{font-size:13px;color:var(--ink2);margin-top:4px}
+
+  /* callout */
+  .callout{background:linear-gradient(135deg,#eef0ff,#f6f7ff);border:1px solid #dcdcff;
+    border-radius:14px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
+  .callout .ic{font-size:22px}
+  .callout .tx b{display:block;margin-bottom:3px;font-size:15px}
+  .callout .tx{font-size:14px;color:var(--ink2)}
+
+  footer{padding:40px 0 60px;color:var(--ink3);font-size:13px;text-align:center;border-top:1px solid var(--line);margin-top:20px}
+  .divider-note{font-size:13px;color:var(--ink3);margin-top:10px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">● 전사 운영 가이드 · INTERNAL</span>
+    <h1>인플루언서 캠페인 프로세스</h1>
+    <p>브랜드사의 캠페인 기획부터 인플루언서 소싱·컨택·계약·실행·정산·사후관리까지. 누구나 같은 기준으로 일할 수 있도록 전체 흐름을 9단계로 표준화했습니다.</p>
+    <div class="meta">
+      <span>📋 단위: 캠페인</span>
+      <span>🔗 단일 진실 원천: 캠페인 트래커</span>
+      <span>✍️ 전자계약: 모두싸인</span>
+      <span>🗓️ 갱신: 2026-06</span>
+    </div>
+  </div>
+</header>
+
+<!-- 목적 -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Purpose</div>
+      <h2>인플루언서 캠페인은 왜 하나</h2>
+      <p>단발성 광고가 아니라, <b>신뢰받는 사람의 목소리를 빌려 브랜드를 타겟에게 정확히 전하고, 그 결과를 측정·자산화</b>하는 활동입니다. 모든 캠페인은 아래 네 가지 목적 중 하나 이상을 노립니다.</p>
+    </div>
+    <div class="purpose">
+      <div class="p-card">
+        <div class="p-ico">📣</div>
+        <div class="p-t">인지 확대</div>
+        <div class="p-d">타겟 오디언스에게 브랜드·제품을 노출해 인지도를 끌어올린다.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-ico">🤝</div>
+        <div class="p-t">신뢰 형성</div>
+        <div class="p-d">광고가 아닌 '추천'의 형태로, 진정성 있는 메시지로 호감과 신뢰를 쌓는다.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-ico">🎯</div>
+        <div class="p-t">전환 · 매출</div>
+        <div class="p-d">정밀 타겟팅된 오디언스를 실제 방문·구매·전환으로 연결한다.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-ico">📦</div>
+        <div class="p-t">콘텐츠 자산</div>
+        <div class="p-d">제작된 콘텐츠를 광고 소재·채널 운영에 2차 활용해 자산으로 남긴다.</div>
+      </div>
+    </div>
+    <div class="purpose-line">
+      한 문장으로 — <b>"적합한 인플루언서를, 적합한 캠페인에, 누락 없이 연결하고, 성과를 데이터로 남긴다."</b> 이 프로세스는 그 일을 누구나 같은 품질로 반복하기 위한 표준입니다.
+    </div>
+  </div>
+</section>
+
+<!-- 데이터 위계 -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Foundation</div>
+      <h2>프로세스가 굴러가는 3층 구조</h2>
+      <p>모든 운영은 <b>브랜드 → 캠페인 → 협업 행(Row)</b> 세 층으로 쌓입니다. 핵심 규칙 하나만 기억하면 됩니다 —
+      <b>인플루언서 한 명과의 협업 전체(컨택부터 정산까지)가 캠페인 트래커의 '한 줄'</b>입니다.</p>
+    </div>
+
+    <!-- 중첩 구조 다이어그램 -->
+    <div class="nest">
+      <div class="nest-l1">
+        <div class="nest-tag">🏢 브랜드 <span>한 번 등록하면 계속 쓰는 거래처 정보</span></div>
+        <div class="nest-eg">예: 스타벅스앳홈 · 담당자 · 과거 협업 이력</div>
+
+        <div class="nest-l2">
+          <div class="nest-tag">🎯 캠페인 <span>목표·기간·예산·KPI를 가진 '한 건의 일'</span></div>
+          <div class="nest-eg">예: 6월 콜드브루 신제품 런칭 · 예산 800만 · 인플루언서 5명</div>
+
+          <div class="nest-l3-wrap">
+            <div class="nest-l3-head">🤝 협업 행 — 인플루언서 1명 = 1줄 (컨택→계약→게시→정산이 한 줄에 누적)</div>
+            <div class="row-eg-head">
+              <span>인플루언서</span><span>컨택</span><span>단가</span><span>계약</span><span>게시</span><span>정산</span>
+            </div>
+            <div class="row-eg">
+              <span class="who">@influencer_A</span><span>06-02 ✅</span><span>120만</span><span class="ok">서명완료</span><span>06-10 ✅</span><span class="wait">대기</span>
+            </div>
+            <div class="row-eg">
+              <span class="who">@influencer_B</span><span>06-02 ✅</span><span>90만</span><span class="ok">서명완료</span><span>06-12 ✅</span><span class="done">완료</span>
+            </div>
+            <div class="row-eg muted">
+              <span class="who">@influencer_C</span><span>06-03 ✅</span><span>—</span><span class="no">협의중</span><span>—</span><span>—</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 두 줄 원칙 -->
+    <div class="rules">
+      <div class="rule">
+        <div class="rk">왜 이렇게 나누나?</div>
+        <div class="rv"><b>브랜드</b>는 캠페인이 끝나도 남는 <b>저장소</b>, <b>캠페인</b>은 매번 새로 만드는 <b>일의 단위</b>, <b>행</b>은 그 안의 <b>실제 작업 기록</b>입니다. 층이 섞이면 "어디에 적어야 하지?"가 생기지만, 이렇게 나누면 자리가 정해집니다.</div>
+      </div>
+      <div class="rule">
+        <div class="rk">데이터는 한 곳에만</div>
+        <div class="rv">모든 입력은 <b>캠페인 트래커(협업 행)</b>에만 합니다. 정산 목록·월별 집계·완료 아카이브 같은 다른 화면은 이 행들을 <b>자동으로 추출</b>한 결과라, 같은 내용을 두 번 적지 않습니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 전체 흐름 스트립 -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Overview</div>
+      <h2>한눈에 보는 9단계</h2>
+      <p>기획(브랜드사)에서 출발해 사후관리까지. 앞 4단계는 '준비', 5~6단계는 '계약·실행', 뒤 3단계는 '마무리'입니다.</p>
+    </div>
+    <div class="flow">
+      <div class="step"><div class="dot">🎯</div><div class="lbl">캠페인 기획</div><div class="sub">브랜드사</div></div>
+      <div class="step"><div class="dot">🔍</div><div class="lbl">소싱</div><div class="sub">후보 발굴</div></div>
+      <div class="step"><div class="dot">✉️</div><div class="lbl">컨택</div><div class="sub">제안·아웃리치</div></div>
+      <div class="step"><div class="dot">💬</div><div class="lbl">협상</div><div class="sub">단가·조건</div></div>
+      <div class="step"><div class="dot">✍️</div><div class="lbl">계약</div><div class="sub">모두싸인</div></div>
+      <div class="step"><div class="dot">🎬</div><div class="lbl">제작·실행</div><div class="sub">가이드·검수</div></div>
+      <div class="step"><div class="dot">📤</div><div class="lbl">게시·모니터링</div><div class="sub">성과 추적</div></div>
+      <div class="step"><div class="dot">💰</div><div class="lbl">정산</div><div class="sub">송금</div></div>
+      <div class="step"><div class="dot">📊</div><div class="lbl">리포트·사후</div><div class="sub">2차활용</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 단계별 상세 -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Playbook</div>
+      <h2>단계별 상세 플레이북</h2>
+      <p>각 단계의 목적, 핵심 활동, 담당, 산출물, 사용 도구입니다.</p>
+    </div>
+
+    <!-- 1 -->
+    <div class="phase">
+      <div class="phase-top">
+        <div class="phase-num">1</div>
+        <div class="phase-head"><h3>캠페인 기획</h3><div class="goal">브랜드사의 목표를 '실행 가능한 캠페인 브리프'로 번역한다.</div></div>
+        <div class="phase-badge">브랜드사 주도</div>
+      </div>
+      <div class="phase-body">
+        <div>
+          <h4>핵심 활동</h4>
+          <ul class="acts">
+            <li>브랜드 목표 정의 — 인지도 / 전환 / 신제품 런칭 중 무엇인지 확정</li>
+            <li>타겟·채널 설정 — 인스타·유튜브·틱톡, 도달하려는 오디언스</li>
+            <li>예산 · KPI 확정 — 총예산, 산출물 수, 성과 지표(도달·저장·전환)</li>
+            <li>캠페인 브리프 작성 — 톤앤매너, 필수 메시지, 금지 표현, 일정</li>
+          </ul>
+        </div>
+        <div class="meta-box">
+          <div class="meta-row"><span class="k">담당</span><span class="v">캠페인 담당 · 팀장 · (브랜드사)</span></div>
+          <div class="meta-row"><span class="k">산출물</span><span class="v">캠페인 브리프 · KPI 시트</span></div>
+          <div class="meta-row"><span class="k">기록</span><span class="v">캠페인 트래커 신규 생성</span></div>
+          <div class="meta-row"><span class="k">도구</span><span class="v"><div class="tags"><span>브리프 템플릿</span><span>마스터 시트</span></div></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="phase">
+      <div class="phase-top">
+        <div class="phase-num">2</div>
+        <div class="phase-head"><h3>인플루언서 소싱</h3><div class="goal">브리프에 맞는 후보를 풀에서 매칭하고 숏리스트를 만든다.</div></div>
+        <div class="phase-badge">캠페인 담당</div>
+      </div>
+      <div class="phase-body">
+        <div>
+          <h4>핵심 활동</h4>
+          <ul class="acts">
+            <li>인플루언서 풀(마스터 DB)에서 카테고리·팔로워·과거 성과로 1차 필터</li>
+            <li>신규 발굴 — 해시태그·경쟁사 협업·추천으로 후보 보강</li>
+            <li>적합도 검증 — 인게이지먼트율, 오디언스 핏, 브랜드 적합성, 과거 이력</li>
+            <li>숏리스트 확정 — 목표 인원의 1.5~2배수로 컨택 후보 확보</li>
+          </ul>
+        </div>
+        <div class="meta-box">
+          <div class="meta-row"><span class="k">담당</span><span class="v">캠페인 담당</span></div>
+          <div class="meta-row"><span class="k">산출물</span><span class="v">컨택 후보 숏리스트</span></div>
+          <div class="meta-row"><span class="k">기록</span><span class="v">인플루언서 풀 ↔ 캠페인 매칭</span></div>
+          <div class="meta-row"><span class="k">도구</span><span class="v"><div class="tags"><span>인플루언서 풀 DB</span><span>채널 분석</span></div></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="phase">
+      <div class="phase-top">
+        <div class="phase-num">3</div>
+        <div class="phase-head"><h3>컨택 · 아웃리치</h3><div class="goal">후보에게 캠페인을 제안하고 참여 의향을 확인한다.</div></div>
+        <div class="phase-badge">캠페인 담당</div>
+      </div>
+      <div class="phase-body">
+        <div>
+          <h4>핵심 활동</h4>
+          <ul class="acts">
+            <li>제안 메시지 발송 — 캠페인 개요·기대 산출물·일정·보상 범위 안내</li>
+            <li>채널별 톤 조정 — DM / 이메일 / 에이전시 경유 구분</li>
+            <li>1차 응답 수집 — 관심 · 보류 · 거절 분류, 상태값 기록</li>
+            <li>미응답 팔로업 — D+2 리마인드, 대체 후보 가동</li>
+          </ul>
+        </div>
+        <div class="meta-box">
+          <div class="meta-row"><span class="k">담당</span><span class="v">캠페인 담당</span></div>
+          <div class="meta-row"><span class="k">산출물</span><span class="v">컨택 로그 · 응답 상태</span></div>
+          <div class="meta-row"><span class="k">SLA</span><span class="v">미응답 D+2 팔로업</span></div>
+          <div class="meta-row"><span class="k">도구</span><span class="v"><div class="tags"><span>제안 템플릿</span><span>캠페인 트래커</span></div></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="phase amber">
+      <div class="phase-top">
+        <div class="phase-num">4</div>
+        <div class="phase-head"><h3>협상 · 조건 조율</h3><div class="goal">단가·산출물·권리 조건을 양측이 합의하는 지점까지 맞춘다.</div></div>
+        <div class="phase-badge">캠페인 담당 · 팀장</div>
+      </div>
+      <div class="phase-body">
+        <div>
+          <h4>핵심 활동</h4>
+          <ul class="acts">
+            <li>단가 · 산출물 협의 — 게시물 수, 포맷(릴스/피드/스토리), 일정</li>
+            <li>권리 조건 정의 — 2차 활용 범위·기간, 독점 여부, 가이드 준수</li>
+            <li>내부 검토 — 예산 대비 단가, 위험 조항, 법무 확인(필요 시)</li>
+            <li>최종 합의 — 확정 조건을 계약 변수로 정리</li>
+          </ul>
+        </div>
+        <div class="meta-box">
+          <div class="meta-row"><span class="k">담당</span><span class="v">캠페인 담당 (R) · 팀장 (A) · 법무 (C)</span></div>
+          <div class="meta-row"><span class="k">산출물</span><span class="v">확정 조건서(계약 변수)</span></div>
+          <div class="meta-row"><span class="k">게이트</span><span class="v">단가·위험 조항 내부 승인</span></div>
+          <div class="meta-row"><span class="k">도구</span><span class="v"><div class="tags"><span>단가 가이드</span><span>마스터 시트</span></div></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="phase rose">
+      <div class="phase-top">
+        <div class="phase-num">5</div>
+        <div class="phase-head"><h3>계약 체결</h3><div class="goal">표준 템플릿으로 전자계약을 발송하고 양측 서명을 완료한다.</div></div>
+        <div class="phase-badge">모두싸인 · SLA 3영업일</div>
+      </div>
+      <div class="phase-body">
+        <div>
+          <h4>핵심 활동</h4>
+          <ul class="acts">
+            <li>표준 템플릿 호출 — 인플루언서·캠페인·보상·권리 변수 자동 채움</li>
+            <li>서명 순서 설정 후 발송 — 내부 서명 → 인플루언서 모바일 서명</li>
+            <li>미서명 자동 리마인드 — D+2 · D+5, D+7 미완료 시 담당자 에스컬레이션</li>
+            <li>완료 PDF 자동 보관 + 사본 자동 배포 + 정산팀 통보</li>
+          </ul>
+        </div>
+        <div class="meta-box">
+          <div class="meta-row"><span class="k">담당</span><span class="v">캠페인 담당 (R) · 팀장 (A) · Admin</span></div>
+          <div class="meta-row"><span class="k">산출물</span><span class="v">서명 완료 계약 PDF</span></div>
+          <div class="meta-row"><span class="k">SLA</span><span class="v">발송 후 3영업일 내 체결</span></div>
+          <div class="meta-row"><span class="k">도구</span><span class="v"><div class="tags"><span>모두싸인</span><span>Zapier</span><span>Drive</span></div></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="phase accent">
+      <div class="phase-top">
+        <div class="phase-num">6</div>
+        <div class="phase-head"><h3>콘텐츠 제작 · 실행</h3><div class="goal">가이드를 전달하고 게시 전 검수로 품질을 맞춘다.</div></div>
+        <div class="phase-badge">캠페인 담당</div>
+      </div>
+      <div class="phase-body">
+        <div>
+          <h4>핵심 활동</h4>
+          <ul class="acts">
+            <li>콘텐츠 가이드 전달 — 필수 메시지, 해시태그, 멘션, 금지 표현</li>
+            <li>제품/협찬 배송 — 필요 시 발송·수령 확인</li>
+            <li>초안 검수 — 가이드 준수·브랜드 톤 확인, 1~2회 피드백</li>
+            <li>게시 일정 확정 — 최종 승인 후 업로드 일정 락</li>
+          </ul>
+        </div>
+        <div class="meta-box">
+          <div class="meta-row"><span class="k">담당</span><span class="v">캠페인 담당 · (브랜드사 검수)</span></div>
+          <div class="meta-row"><span class="k">산출물</span><span class="v">승인된 콘텐츠 · 게시 일정</span></div>
+          <div class="meta-row"><span class="k">기록</span><span class="v">검수 회차·승인 상태</span></div>
+          <div class="meta-row"><span class="k">도구</span><span class="v"><div class="tags"><span>가이드 문서</span><span>Drive</span></div></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="phase accent">
+      <div class="phase-top">
+        <div class="phase-num">7</div>
+        <div class="phase-head"><h3>게시 · 모니터링</h3><div class="goal">예정대로 게시되었는지 확인하고 성과를 추적한다.</div></div>
+        <div class="phase-badge">캠페인 담당</div>
+      </div>
+      <div class="phase-body">
+        <div>
+          <h4>핵심 활동</h4>
+          <ul class="acts">
+            <li>게시 확인 — URL·게시일 수집, 가이드 준수 최종 확인</li>
+            <li>성과 캡처 — 도달·좋아요·저장·댓글·조회수 등 KPI 수집</li>
+            <li>이슈 대응 — 누락·오기재·조기 삭제 시 즉시 협의</li>
+            <li>중간 집계 — 캠페인 단위 성과 롤업</li>
+          </ul>
+        </div>
+        <div class="meta-box">
+          <div class="meta-row"><span class="k">담당</span><span class="v">캠페인 담당</span></div>
+          <div class="meta-row"><span class="k">산출물</span><span class="v">게시 URL · 성과 데이터</span></div>
+          <div class="meta-row"><span class="k">기록</span><span class="v">캠페인 트래커 성과 컬럼</span></div>
+          <div class="meta-row"><span class="k">도구</span><span class="v"><div class="tags"><span>성과 캡처</span><span>대시보드</span></div></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="phase">
+      <div class="phase-top">
+        <div class="phase-num">8</div>
+        <div class="phase-head"><h3>정산</h3><div class="goal">계약·게시 완료 건만 정산 대상으로 이관하고 송금한다.</div></div>
+        <div class="phase-badge">재무 · 자동 이관</div>
+      </div>
+      <div class="phase-body">
+        <div>
+          <h4>핵심 활동</h4>
+          <ul class="acts">
+            <li>정산 대상 확정 — 서명 완료 + 게시 완료 건만 이관</li>
+            <li>증빙 확인 — 게시 URL·세금계산서/원천 처리</li>
+            <li>송금 실행 — 정산일 기준 지급, 완료 표기</li>
+            <li>아카이브 — 송금 완료 건은 완료 아카이브로 자동 이동</li>
+          </ul>
+        </div>
+        <div class="meta-box">
+          <div class="meta-row"><span class="k">담당</span><span class="v">재무 (A) · 캠페인 담당 (I)</span></div>
+          <div class="meta-row"><span class="k">산출물</span><span class="v">정산 완료 기록</span></div>
+          <div class="meta-row"><span class="k">기록</span><span class="v">이번달 정산 → 완료 아카이브</span></div>
+          <div class="meta-row"><span class="k">도구</span><span class="v"><div class="tags"><span>정산 뷰(자동)</span><span>Zapier</span></div></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="phase">
+      <div class="phase-top">
+        <div class="phase-num">9</div>
+        <div class="phase-head"><h3>결과 리포트 · 사후관리</h3><div class="goal">성과를 정리해 브랜드사에 보고하고 권리 만료를 관리한다.</div></div>
+        <div class="phase-badge">캠페인 담당 · 팀장</div>
+      </div>
+      <div class="phase-body">
+        <div>
+          <h4>핵심 활동</h4>
+          <ul class="acts">
+            <li>캠페인 결과 리포트 — KPI 달성·인플루언서별 성과·인사이트</li>
+            <li>브랜드사 보고 — 다음 캠페인 제안으로 연결</li>
+            <li>2차 활용 관리 — 광고 소재 전환 범위·기간 추적</li>
+            <li>만료 알림 — 독점·2차 활용 종료 시점 관리, 우수 인플루언서 풀 업데이트</li>
+          </ul>
+        </div>
+        <div class="meta-box">
+          <div class="meta-row"><span class="k">담당</span><span class="v">캠페인 담당 (R) · 팀장 (A)</span></div>
+          <div class="meta-row"><span class="k">산출물</span><span class="v">결과 리포트 · 사후 일정</span></div>
+          <div class="meta-row"><span class="k">기록</span><span class="v">브랜드 누적 이력 갱신</span></div>
+          <div class="meta-row"><span class="k">도구</span><span class="v"><div class="tags"><span>리포트 템플릿</span><span>대시보드</span></div></span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RACI -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Responsibility</div>
+      <h2>RACI · 누가 무엇을 책임지나</h2>
+      <p><span class="pill r">R 실행</span> <span class="pill a">A 최종책임</span> <span class="pill c">C 협의</span> <span class="pill i">I 공유</span></p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>단계</th><th>R 실행</th><th>A 책임</th><th>C 협의</th><th>I 공유</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>① 캠페인 기획</td><td>캠페인 담당</td><td>팀장</td><td>브랜드사</td><td>재무</td></tr>
+          <tr><td>② 소싱</td><td>캠페인 담당</td><td>캠페인 담당</td><td>—</td><td>팀장</td></tr>
+          <tr><td>③ 컨택</td><td>캠페인 담당</td><td>캠페인 담당</td><td>—</td><td>—</td></tr>
+          <tr><td>④ 협상</td><td>캠페인 담당</td><td>팀장</td><td>법무</td><td>재무</td></tr>
+          <tr><td>⑤ 계약</td><td>캠페인 담당</td><td>팀장</td><td>법무</td><td>인플루언서·Admin</td></tr>
+          <tr><td>⑥ 제작·실행</td><td>캠페인 담당</td><td>캠페인 담당</td><td>브랜드사</td><td>—</td></tr>
+          <tr><td>⑦ 게시·모니터링</td><td>캠페인 담당</td><td>캠페인 담당</td><td>—</td><td>팀장</td></tr>
+          <tr><td>⑧ 정산</td><td>시스템</td><td>재무</td><td>—</td><td>캠페인 담당</td></tr>
+          <tr><td>⑨ 리포트·사후</td><td>캠페인 담당</td><td>팀장</td><td>법무</td><td>브랜드사</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SLA -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Standards</div>
+      <h2>운영 SLA</h2>
+      <p>각 단계가 늘어지지 않도록 정해둔 기준 시간입니다.</p>
+    </div>
+    <div class="sla">
+      <div class="card"><div class="big">1영업일</div><div class="lbl">정보 수집 → 계약 발송</div></div>
+      <div class="card"><div class="big">3영업일</div><div class="lbl">발송 → 서명 완료 목표</div></div>
+      <div class="card"><div class="big">D+2 · D+5</div><div class="lbl">미서명 자동 리마인드</div></div>
+      <div class="card"><div class="big">D+7</div><div class="lbl">미완료 시 에스컬레이션</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">System</div>
+      <h2>운영 시스템 구성</h2>
+      <p>데이터는 한 곳(캠페인 트래커)에만 쌓고, 도구들은 Zapier로 연결됩니다.</p>
+    </div>
+    <div class="stack">
+      <div class="s-card"><div class="ico">📊</div><div class="nm">Google Sheets</div><div class="ds">마스터 운영 데이터 (캠페인·풀·브랜드)</div></div>
+      <div class="s-card"><div class="ico">📚</div><div class="nm">Notion</div><div class="ds">SOP·플레이북·템플릿</div></div>
+      <div class="s-card"><div class="ico">✍️</div><div class="nm">모두싸인</div><div class="ds">전자계약 발송·서명·보관</div></div>
+      <div class="s-card"><div class="ico">📁</div><div class="nm">Google Drive</div><div class="ds">산출물·계약 PDF 보관</div></div>
+      <div class="s-card"><div class="ico">⚡</div><div class="nm">Zapier</div><div class="ds">4개 도구 연동 자동화</div></div>
+    </div>
+    <div style="margin-top:18px" class="callout">
+      <div class="ic">🔑</div>
+      <div class="tx"><b>단일 진실 원천(Single Source of Truth)</b>
+      데이터는 <b>캠페인 트래커</b>에 누적만 합니다. 정산·월별 집계·연간 트렌드·완료 아카이브 등 다른 뷰는 전부 수식으로 자동 추출되므로, 같은 정보를 두 번 입력하지 않습니다.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 예외처리 -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Edge cases</div>
+      <h2>예외 상황 대응</h2>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>상황</th><th>대응 방안</th></tr></thead>
+        <tbody>
+          <tr><td>인플루언서 컨택 무응답</td><td>D+2 리마인드 → 미응답 시 숏리스트 내 대체 후보 가동</td></tr>
+          <tr><td>서명 거절</td><td>사유 확인 → 조건 재협의 후 재발송, 또는 캠페인 제외</td></tr>
+          <tr><td>본인인증 실패(해외 등)</td><td>이메일 인증 + 신분증 사본 첨부로 대체</td></tr>
+          <tr><td>가이드 미준수 게시</td><td>즉시 협의 → 수정·재게시 요청, 반복 시 정산 보류</td></tr>
+          <tr><td>긴급 조건 변경</td><td>기존 계약 해지 후 재발송(부속 합의서 미사용 원칙)</td></tr>
+          <tr><td>시스템 장애</td><td>Admin이 임시 PDF 발송 → 정상화 후 모두싸인에 사후 등록</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    HIZ · 인플루언서 컨택 프로세스 전사 가이드 · INTERNAL USE ONLY<br>
+    <span class="divider-note">출처: 운영 SOP(2026-05) + 인플루언서 운영 마스터 시트 v2 · 최종 갱신 2026-06-04</span>
+  </div>
+</footer>
+
+</body>
+</html>
