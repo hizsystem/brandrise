@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>미례국밥 5월 운영 보고서 — 브랜드라이즈</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans KR', -apple-system, sans-serif; background: #f4f7f9; color: #1a1b18; line-height: 1.7; font-size: 14px; word-break: keep-all; overflow-wrap: break-word; }
+
+.toolbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #0D0D0D; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
+.toolbar-left { display: flex; align-items: center; gap: 16px; }
+.toolbar-logo { font-size: 13px; font-weight: 700; color: #EA580C; letter-spacing: 0.05em; }
+.toolbar-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.15); }
+.toolbar-title { font-size: 14px; font-weight: 500; color: #fff; }
+.toolbar-actions { display: flex; gap: 8px; }
+.btn-toolbar { padding: 7px 16px; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; background: transparent; color: #fff; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+.btn-toolbar:hover { background: rgba(255,255,255,0.1); }
+.btn-toolbar.active { background: #EA580C; color: #fff; border-color: #EA580C; }
+
+.edit-banner { display: none; position: fixed; top: 56px; left: 0; right: 0; z-index: 99; background: #FFF7ED; border-bottom: 2px solid #EA580C; padding: 8px 32px; font-size: 12px; color: #EA580C; font-weight: 600; text-align: center; }
+body.editing .edit-banner { display: block; }
+body.editing .container { padding-top: 110px; }
+body.editing [contenteditable="true"] { outline: 2px dashed rgba(234,88,12,0.3); outline-offset: 2px; border-radius: 4px; }
+body.editing [contenteditable="true"]:focus { outline-color: #EA580C; background: #FFF7ED; }
+
+.container { max-width: 940px; margin: 0 auto; padding: 80px 24px 60px; transition: padding-top 0.2s; }
+
+/* HEADER */
+.report-header { background: #fff; border-radius: 12px; padding: 40px; margin-bottom: 20px; border: 1px solid #e8edf1; }
+.report-header .label { font-size: 11px; font-weight: 700; color: #EA580C; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
+.report-header h1 { font-size: 26px; font-weight: 900; line-height: 1.35; letter-spacing: -0.02em; margin-bottom: 0; }
+.report-header h1 em { color: #EA580C; font-style: normal; }
+.meta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 28px; padding-top: 24px; border-top: 1px solid #e8edf1; }
+.meta-item .mk { font-size: 11px; color: #999; letter-spacing: 0.04em; margin-bottom: 4px; }
+.meta-item .mv { font-size: 13px; font-weight: 600; }
+
+/* SECTION */
+.section { background: #fff; border-radius: 12px; padding: 32px 40px; margin-bottom: 20px; border: 1px solid #e8edf1; }
+
+/* HIGHLIGHT */
+.highlight-box { background: #0D0D0D; border-radius: 12px; padding: 28px 36px; margin-bottom: 20px; color: #fff; }
+.highlight-box .hl-label { font-size: 11px; font-weight: 700; color: #EA580C; letter-spacing: 0.08em; margin-bottom: 10px; }
+.highlight-box .hl-text { font-size: 16px; font-weight: 600; line-height: 1.8; }
+.highlight-box .hl-text em { color: #EA580C; font-style: normal; }
+
+/* CHANNEL HEADER */
+.ch-header { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid #e8edf1; }
+.ch-icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: #fff; flex-shrink: 0; }
+.ch-icon.c1 { background: #0D0D0D; }
+.ch-icon.c2 { background: #EA580C; }
+.ch-icon.c3 { background: #16a34a; }
+.ch-icon.c4 { background: linear-gradient(135deg, #f09433, #dc2743, #bc1888); }
+.ch-icon.c5 { background: #0D0D0D; }
+.ch-header h3 { font-size: 15px; font-weight: 700; }
+.ch-header .ch-badge { font-size: 11px; color: #999; font-weight: 500; }
+
+/* KPI GRID */
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.kpi-card { background: #f8fafb; border-radius: 10px; padding: 22px 18px; text-align: center; border: 1px solid #e8edf1; }
+.kpi-card .kc-label { font-size: 11px; color: #999; font-weight: 500; margin-bottom: 8px; }
+.kpi-card .kc-value { font-size: 26px; font-weight: 900; color: #1a1b18; letter-spacing: -0.02em; }
+.kpi-card .kc-unit { font-size: 13px; font-weight: 500; color: #999; }
+.kpi-card .kc-change { font-size: 11px; margin-top: 5px; font-weight: 600; line-height: 1.4; }
+.kpi-card .kc-change.up { color: #16a34a; }
+.kpi-card .kc-change.down { color: #dc2626; }
+.kpi-card .kc-change.neutral { color: #999; }
+.kpi-card.dark { background: #0D0D0D; border-color: #0D0D0D; }
+.kpi-card.dark .kc-label { color: #EA580C; }
+.kpi-card.dark .kc-value { color: #fff; }
+.kpi-card.dark .kc-value em { color: #EA580C; font-style: normal; }
+.kpi-card.dark .kc-change { color: rgba(255,255,255,0.45); }
+
+/* STATUS BADGE */
+.status { display: inline-block; padding: 3px 11px; border-radius: 12px; font-size: 10px; font-weight: 800; letter-spacing: 0.04em; }
+.status.done { background: #dcfce7; color: #16a34a; }
+.status.partial { background: #fef3c7; color: #b45309; }
+
+/* PROMISE TABLE */
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { background: #f8fafb; padding: 10px 16px; font-weight: 600; border-bottom: 2px solid #e8edf1; color: #999; font-size: 11px; text-align: left; white-space: nowrap; }
+td { padding: 13px 16px; border-bottom: 1px solid #f0f2f5; vertical-align: top; }
+td.item { font-weight: 700; color: #1a1b18; width: 30%; }
+td.desc { color: #636569; font-size: 12px; line-height: 1.7; }
+
+/* STORE CARDS */
+.store-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.store-card { border-radius: 12px; padding: 24px; border: 1px solid #e8edf1; }
+.store-card.up { background: linear-gradient(180deg, #f0fdf4 0%, #fff 60%); border-color: #bbf7d0; }
+.store-card.flat { background: #f8fafb; }
+.store-card .sc-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.store-card .sc-name { font-size: 15px; font-weight: 800; }
+.store-card .sc-tag { font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 12px; }
+.store-card .sc-tag.up { background: #16a34a; color: #fff; }
+.store-card .sc-tag.flat { background: #94a3b8; color: #fff; }
+.store-card .sc-main { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+.store-card .sc-main .scm-val { font-size: 30px; font-weight: 900; letter-spacing: -0.02em; }
+.store-card .sc-main .scm-arrow { font-size: 13px; color: #999; font-weight: 600; }
+.store-card .sc-main .scm-chg { font-size: 13px; font-weight: 800; }
+.store-card .sc-main .scm-chg.up { color: #16a34a; }
+.store-card .sc-main .scm-chg.down { color: #dc2626; }
+.store-card .sc-sub { font-size: 11px; color: #999; margin-bottom: 16px; }
+.store-card .sc-list { font-size: 12px; color: #636569; line-height: 1.85; border-top: 1px dashed #e2e8f0; padding-top: 14px; }
+.store-card .sc-list strong { color: #1a1b18; }
+.store-card .sc-list .k { display: inline-block; min-width: 96px; color: #94a3b8; }
+
+/* INFO BOX */
+.info-box { background: #FFF7ED; border-left: 4px solid #EA580C; border-radius: 0 8px 8px 0; padding: 14px 20px; margin-top: 18px; font-size: 12px; color: #636569; line-height: 1.85; }
+.info-box strong { color: #1a1b18; }
+.info-box.dark { background: #0D0D0D; border-left-color: #EA580C; color: rgba(255,255,255,0.78); }
+.info-box.dark strong { color: #fff; }
+
+/* NEXT GRID */
+.next-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 4px; }
+.next-card { padding: 20px 18px; border-radius: 10px; border: 1px solid #e8edf1; background: #f8fafb; }
+.next-card.hero { background: #FFF7ED; border-color: #EA580C; }
+.next-card .nc-label { font-size: 10px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #EA580C; margin-bottom: 9px; }
+.next-card .nc-title { font-size: 14px; font-weight: 800; margin-bottom: 7px; }
+.next-card .nc-desc { font-size: 12px; color: #636569; line-height: 1.7; }
+.next-card .nc-desc strong { color: #1a1b18; }
+
+/* FOOTER */
+.footer { text-align: center; padding: 40px 0; color: #999; font-size: 12px; line-height: 2; }
+.footer .brand { font-size: 15px; font-weight: 800; color: #1a1b18; margin-bottom: 4px; }
+
+@media (max-width: 768px) {
+  .container { padding: 70px 16px 40px; }
+  .meta-grid { grid-template-columns: repeat(2, 1fr); }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .store-grid { grid-template-columns: 1fr; }
+  .next-grid { grid-template-columns: 1fr; }
+  .section { padding: 24px 20px; }
+}
+@media print {
+  .toolbar, .edit-banner { display: none !important; }
+  .container { padding: 20px; }
+  body { background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="toolbar-left">
+    <div class="toolbar-logo">BRANDRISE</div>
+    <div class="toolbar-sep"></div>
+    <div class="toolbar-title">미례국밥 5월 운영 보고서</div>
+  </div>
+  <div class="toolbar-actions">
+    <button class="btn-toolbar" id="editToggle" onclick="toggleEdit()">편집</button>
+    <button class="btn-toolbar" onclick="window.print()">PDF 저장</button>
+  </div>
+</div>
+
+<div class="edit-banner">편집 모드 — 텍스트와 숫자를 클릭해서 수정하세요.</div>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="report-header">
+    <div class="label" contenteditable="false">미례국밥 X 브랜드라이즈</div>
+    <h1 contenteditable="false">미례국밥 5월 <em>운영 보고서</em></h1>
+    <div class="meta-grid">
+      <div class="meta-item"><div class="mk">기간</div><div class="mv" contenteditable="false">2026. 05. 01 — 05. 31</div></div>
+      <div class="meta-item"><div class="mk">단계</div><div class="mv" contenteditable="false">5월 — 확산 + 강남점 준비</div></div>
+      <div class="meta-item"><div class="mk">작성</div><div class="mv" contenteditable="false">우성민 LEAD</div></div>
+      <div class="meta-item"><div class="mk">작성일</div><div class="mv" contenteditable="false">2026. 06. 03</div></div>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="highlight-box">
+    <div class="hl-label">한 줄 요약</div>
+    <div class="hl-text" contenteditable="false">
+      5월의 핵심은 <em>센텀점 반등</em>입니다. 4월 내내 빠지던 센텀 방문 유입이 월말 <em>+44%</em> 다시 올라섰습니다.<br>
+      콘텐츠는 4월의 한계였던 부족분을 메워 <em>블로그·카페 누적 123건</em>으로 키웠고, 인스타 팔로워도 <em>90명(+181%)</em>까지 늘었습니다.
+    </div>
+  </div>
+
+  <!-- 1. 한눈에 보기 -->
+  <div class="section">
+    <div class="ch-header">
+      <div class="ch-icon c1">1</div>
+      <div>
+        <h3>5월 한눈에 보기</h3>
+        <div class="ch-badge">검색 비수기 진입 위에서, 운영 지표로 흐름을 만든 달</div>
+      </div>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kc-label">센텀 방문 유입</div>
+        <div class="kc-value" contenteditable="false">1,961</div>
+        <div class="kc-change up" contenteditable="false">월초 1,361 → 월말 +44% 반등</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kc-label">콘텐츠 누적</div>
+        <div class="kc-value" contenteditable="false">123<span class="kc-unit">건</span></div>
+        <div class="kc-change up" contenteditable="false">블로그 64 + 카페 59</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kc-label">인스타 팔로워</div>
+        <div class="kc-value" contenteditable="false">90<span class="kc-unit">명</span></div>
+        <div class="kc-change up" contenteditable="false">32 → 90 (+181%)</div>
+      </div>
+      <div class="kpi-card dark">
+        <div class="kc-label">"미례국밥" 검색량</div>
+        <div class="kc-value" contenteditable="false">2,460</div>
+        <div class="kc-change" contenteditable="false">여름 비수기 진입 (예상 흐름)</div>
+      </div>
+    </div>
+    <div class="info-box">
+      <strong>5월을 한 문장으로</strong> — 6~7월은 돼지국밥 카테고리의 연중 검색 최저 구간입니다. 그래서 5월은 검색량을 억지로 올리기보다, <strong>방문 유입·키워드 순위·콘텐츠 자산</strong>을 쌓아 비수기 위에서 흐름을 만드는 데 집중했고, 센텀점에서 그 반등이 먼저 나타났습니다.
+    </div>
+  </div>
+
+  <!-- 2. 약속 × 결과 -->
+  <div class="section">
+    <div class="ch-header">
+      <div class="ch-icon c2">2</div>
+      <div>
+        <h3>5월 약속 × 결과</h3>
+        <div class="ch-badge">5월 초 계획서에서 약속한 3가지</div>
+      </div>
+    </div>
+    <table>
+      <tbody>
+        <tr>
+          <td class="item" contenteditable="false">① 센텀 빅키워드 회복<br><span style="font-weight:500; color:#999; font-size:11px;">맛집 키워드 상위 복귀</span></td>
+          <td style="width:14%;"><span class="status done">달성</span></td>
+          <td class="desc" contenteditable="false">센텀 맛집·센텀시티 맛집 월중 <strong>4위</strong>까지 진입, 센텀역 맛집 16위 → <strong>4위</strong>, 센텀 돼지국밥 <strong>1위</strong>, 센텀점심 2위. 방문 유입 월말 <strong>+44% 반등</strong>으로 이어짐.</td>
+        </tr>
+        <tr>
+          <td class="item" contenteditable="false">② 전포 핵심 키워드 사수<br><span style="font-weight:500; color:#999; font-size:11px;">대표 키워드 1~2위 유지</span></td>
+          <td><span class="status partial">부분</span></td>
+          <td class="desc" contenteditable="false">전포 돼지국밥 <strong>1위</strong>·전포동 국밥 <strong>2위</strong> 사수 ✓. 다만 광역 맛집 키워드가 비수기·연휴와 맞물려 동반 하락, 방문 유입도 조정 구간에 들어감 (아래 3번 참고).</td>
+        </tr>
+        <tr>
+          <td class="item" contenteditable="false">③ 인스타 → 매장 연결 가동<br><span style="font-weight:500; color:#999; font-size:11px;">전환 장치 + 팔로워 성장</span></td>
+          <td><span class="status done">달성</span></td>
+          <td class="desc" contenteditable="false">캡션 안내·매장 위치 태그·프로필 링크 등 전환 장치를 콘텐츠에 표준 적용. 팔로워 <strong>32 → 90명</strong>, 5월 릴스 도달 누적 <strong>약 8.7만</strong>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 3. 네이버플레이스 -->
+  <div class="section">
+    <div class="ch-header">
+      <div class="ch-icon c3">3</div>
+      <div>
+        <h3>네이버플레이스 — 두 매장 흐름</h3>
+        <div class="ch-badge">방문 유입 월초(5/1) → 월말(5/31) 기준</div>
+      </div>
+    </div>
+    <div class="store-grid">
+      <div class="store-card up">
+        <div class="sc-top"><div class="sc-name">센텀점</div><div class="sc-tag up">반등</div></div>
+        <div class="sc-main">
+          <div class="scm-val" contenteditable="false">1,961</div>
+          <div class="scm-arrow">← 1,361</div>
+          <div class="scm-chg up" contenteditable="false">+44%</div>
+        </div>
+        <div class="sc-sub" contenteditable="false">월초 저점에서 4주 연속 상승</div>
+        <div class="sc-list" contenteditable="false">
+          <span class="k">맛집 키워드</span> 월중 <strong>4위권</strong> 진입<br>
+          <span class="k">센텀역 맛집</span> 16위 → <strong>4위</strong><br>
+          <span class="k">센텀 돼지국밥</span> <strong>1위</strong> · 센텀점심 2위<br>
+          <span class="k">리뷰 등록</span> 주 70건대 유지
+        </div>
+      </div>
+      <div class="store-card flat">
+        <div class="sc-top"><div class="sc-name">전포점</div><div class="sc-tag flat">조정</div></div>
+        <div class="sc-main">
+          <div class="scm-val" contenteditable="false">2,583</div>
+          <div class="scm-arrow">← 4,410</div>
+          <div class="scm-chg down" contenteditable="false">-41%</div>
+        </div>
+        <div class="sc-sub" contenteditable="false">비수기 + 5월 초 연휴 겹침</div>
+        <div class="sc-list" contenteditable="false">
+          <span class="k">전포 돼지국밥</span> <strong>1위</strong> 사수<br>
+          <span class="k">전포동 국밥</span> <strong>2위</strong> 사수<br>
+          <span class="k">광역 맛집</span> 비수기 동반 하락<br>
+          <span class="k">대응</span> 6월 여행객 콘텐츠로 회복
+        </div>
+      </div>
+    </div>
+    <div class="info-box">
+      <strong>두 매장이 다른 이유</strong> — 센텀점은 5월 내내 공급한 리뷰·콘텐츠가 맛집 키워드 순위로 먼저 반영되며 방문 유입이 반등했습니다. 전포점은 같은 작업을 하고 있으나 광역 맛집 키워드가 <strong>여름 비수기 + 5월 초 연휴</strong>와 겹치며 일시 조정 중이고, <strong>대표 키워드(전포 돼지국밥·전포동 국밥)는 그대로 지키고 있습니다.</strong> 6월 여행객 타깃 콘텐츠로 전포·센텀 유입을 함께 끌어올립니다.
+    </div>
+  </div>
+
+  <!-- 4. 콘텐츠 & 인스타 -->
+  <div class="section">
+    <div class="ch-header">
+      <div class="ch-icon c4">4</div>
+      <div>
+        <h3>콘텐츠 · 인스타그램</h3>
+        <div class="ch-badge">4월의 숙제였던 콘텐츠 부족분을 메운 달</div>
+      </div>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kc-label">블로그 누적</div>
+        <div class="kc-value" contenteditable="false">64<span class="kc-unit">건</span></div>
+        <div class="kc-change up" contenteditable="false">4월 말 30 → 5월 말 64</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kc-label">카페 누적</div>
+        <div class="kc-value" contenteditable="false">59<span class="kc-unit">건</span></div>
+        <div class="kc-change up" contenteditable="false">4월 말 31 → 5월 말 59</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kc-label">팔로워</div>
+        <div class="kc-value" contenteditable="false">90<span class="kc-unit">명</span></div>
+        <div class="kc-change up" contenteditable="false">+58 (+181%)</div>
+      </div>
+      <div class="kpi-card dark">
+        <div class="kc-label">5월 릴스 도달</div>
+        <div class="kc-value" contenteditable="false"><em>8.7</em><span class="kc-unit">만</span></div>
+        <div class="kc-change" contenteditable="false">첫 주 단일 3.7만 포함</div>
+      </div>
+    </div>
+    <div class="info-box">
+      <strong>4월 → 5월 가장 큰 변화</strong> — 4월 보고서에서 짚었던 "콘텐츠 수급 속도가 못 따라간다"는 한계를 5월에 정면으로 메웠습니다. 블로그·카페 누적이 <strong>두 배 이상</strong>으로 늘며 검색에 노출될 글의 양이 확보됐고, 이 자산은 6~7월 비수기 동안 매장 검색을 떠받치는 기반이 됩니다.
+    </div>
+  </div>
+
+  <!-- 5. 6월로 이어가는 것 -->
+  <div class="section">
+    <div class="ch-header">
+      <div class="ch-icon c5">5</div>
+      <div>
+        <h3>6월로 이어가는 것</h3>
+        <div class="ch-badge">상세는 별도 6월 운영 계획서 참조</div>
+      </div>
+    </div>
+    <div class="info-box dark">
+      <strong>6월 한 줄</strong> — 센텀점의 반등을 <strong>부산 여행객</strong>으로 키우고, 강남점 첫 서울 오픈을 같은 달에 띄웁니다. 두 일을 동시에 받치기 위해 6월에 <strong>바이럴 콘텐츠 제작비 200만 원을 추가 집행</strong>합니다.
+    </div>
+    <div class="next-grid">
+      <div class="next-card hero">
+        <div class="nc-label">추가 집행</div>
+        <div class="nc-title">센텀 — 부산 여행객 바이럴</div>
+        <div class="nc-desc" contenteditable="false">여름 성수기 부산을 찾는 <strong>여행객 타깃 콘텐츠 제작</strong>. 센텀 반등을 매출로 굳히기 위해 <strong>바이럴 200만 원 추가 집행</strong>.</div>
+      </div>
+      <div class="next-card">
+        <div class="nc-label">신규 오픈</div>
+        <div class="nc-title">강남점 첫 서울 진출</div>
+        <div class="nc-desc" contenteditable="false">네이버플레이스 신규 등록·키워드 세팅, 오픈 카운트다운 콘텐츠, 서울 인플루언서 집중 노출로 <strong>오픈 골든타임</strong> 공략.</div>
+      </div>
+      <div class="next-card">
+        <div class="nc-label">유지</div>
+        <div class="nc-title">콘텐츠 자산 누적</div>
+        <div class="nc-desc" contenteditable="false">블로그 체험단 지속, 전포 대표 키워드 사수, 비수기 동안 검색 노출 글 수를 계속 쌓아 7월 이후를 준비.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="brand">BRANDRISE</div>
+    본 리포트는 위드런 측 전달 목적으로 작성되었습니다.<br>
+    데이터 기준일: 2026. 06. 03 · 작성: 우성민 LEAD
+  </div>
+
+</div>
+
+<script>
+function toggleEdit() {
+  const body = document.body;
+  const btn = document.getElementById('editToggle');
+  body.classList.toggle('editing');
+  const isEditing = body.classList.contains('editing');
+  btn.textContent = isEditing ? '편집 완료' : '편집';
+  btn.classList.toggle('active', isEditing);
+  document.querySelectorAll('[contenteditable]').forEach(el => {
+    el.contentEditable = isEditing ? 'true' : 'false';
+  });
+}
+</script>
+</body>
+</html>
