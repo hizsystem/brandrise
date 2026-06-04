@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow">
-<title>미례국밥 6월 운영 견적서 — 브랜드라이즈</title>
+<title>미례국밥 5월 운영 견적서 — 브랜드라이즈</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -43,9 +42,9 @@ table { width: 100%; border-collapse: collapse; font-size: 13px; }
 th { background: #f8fafb; padding: 10px 16px; font-weight: 600; border-bottom: 2px solid #e8edf1; color: #999; font-size: 11px; text-align: left; white-space: nowrap; }
 th:last-child { text-align: right; }
 td { padding: 12px 16px; border-bottom: 1px solid #f0f2f5; vertical-align: middle; }
-td.item { font-weight: 600; color: #1a1b18; white-space: nowrap; width: 220px; }
+td.item { font-weight: 600; color: #1a1b18; white-space: nowrap; width: 200px; }
 td.desc { color: #636569; font-size: 12px; }
-td.amount { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; width: 130px; }
+td.amount { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; width: 120px; }
 tr:hover td { background: #fafbfc; }
 tr.subtotal-row td { background: #f8fafb; font-weight: 700; border-top: 1px solid #e8edf1; }
 
@@ -76,6 +75,12 @@ tr.subtotal-row td { background: #f8fafb; font-weight: 700; border-top: 1px soli
 /* BADGE */
 .badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; background: #FFF7ED; color: #EA580C; margin-left: 8px; vertical-align: middle; }
 
+/* NOTES */
+.note-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+.note-item { font-size: 12px; color: #636569; line-height: 1.8; padding: 18px 22px; background: #f8fafb; border-radius: 10px; border: 1px solid #e8edf1; }
+.note-item strong { color: #1a1b18; display: block; margin-bottom: 4px; font-size: 13px; }
+.section h2 { font-size: 18px; font-weight: 800; margin-bottom: 16px; }
+
 /* FOOTER */
 .footer { text-align: center; padding: 40px 0; color: #999; font-size: 12px; line-height: 2; }
 .footer .brand { font-size: 15px; font-weight: 800; color: #1a1b18; margin-bottom: 4px; }
@@ -84,6 +89,7 @@ tr.subtotal-row td { background: #f8fafb; font-weight: 700; border-top: 1px soli
   .container { padding: 70px 16px 40px; }
   .meta-grid { grid-template-columns: repeat(2, 1fr); }
   .kpi-grid { grid-template-columns: 1fr; }
+  .note-grid { grid-template-columns: 1fr; }
   .section { padding: 24px 20px; }
   .total-box { flex-direction: column; text-align: center; gap: 16px; }
   td.item { white-space: normal; width: auto; }
@@ -101,7 +107,7 @@ tr.subtotal-row td { background: #f8fafb; font-weight: 700; border-top: 1px soli
   <div class="toolbar-left">
     <div class="toolbar-logo">BRANDRISE</div>
     <div class="toolbar-sep"></div>
-    <div class="toolbar-title">미례국밥 6월 운영 견적서</div>
+    <div class="toolbar-title">미례국밥 5월 운영 견적서</div>
   </div>
   <div class="toolbar-actions">
     <button class="btn-toolbar" onclick="window.print()">PDF 저장</button>
@@ -113,7 +119,7 @@ tr.subtotal-row td { background: #f8fafb; font-weight: 700; border-top: 1px soli
   <!-- HEADER -->
   <div class="report-header">
     <div class="label">미례국밥 x 브랜드라이즈</div>
-    <h1 style="font-size:36px;">6월 운영 견적서 <span style="font-size:15px; font-weight:600; color:#999; display:block; margin-top:8px;">본점·센텀·강남 3개 매장 통합 운영</span></h1>
+    <h1 style="font-size:36px;">5월 운영 견적서</h1>
     <div class="meta-grid">
       <div class="meta-item">
         <div class="mk">공급자</div>
@@ -125,7 +131,7 @@ tr.subtotal-row td { background: #f8fafb; font-weight: 700; border-top: 1px soli
       </div>
       <div class="meta-item">
         <div class="mk">기준일</div>
-        <div class="mv">2026. 06. 02</div>
+        <div class="mv">2026. 05. 06</div>
       </div>
       <div class="meta-item">
         <div class="mk">유효기간</div>
@@ -137,34 +143,29 @@ tr.subtotal-row td { background: #f8fafb; font-weight: 700; border-top: 1px soli
   <!-- TOTAL -->
   <div class="total-box">
     <div>
-      <div class="tl">6월 합계</div>
-      <div class="ts">정규 운영 500만 + 여행객 바이럴 200만 · VAT 별도</div>
+      <div class="tl">5월 합계</div>
+      <div class="ts">VAT 별도</div>
     </div>
-    <div class="ta">7,000,000<span>원</span></div>
+    <div class="ta">5,000,000<span>원</span></div>
   </div>
 
   <!-- OVERVIEW -->
   <div class="section">
-    <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);">
+    <div class="kpi-grid">
       <div class="kpi-card">
         <div class="kc-label">Part 1</div>
         <div class="kc-value">300<span class="kc-unit">만원</span></div>
         <div class="kc-desc">채널 전략 & 운영</div>
       </div>
-      <div class="kpi-card">
+      <div class="kpi-card dark">
         <div class="kc-label">Part 2</div>
-        <div class="kc-value">200<span class="kc-unit">만원</span></div>
+        <div class="kc-value"><em>200</em><span class="kc-unit" style="color:rgba(255,255,255,0.4);">만원</span></div>
         <div class="kc-desc">체험단 & 씨딩 & 광고</div>
       </div>
       <div class="kpi-card">
-        <div class="kc-label">Part 3 <span style="color:#EA580C;">추가</span></div>
-        <div class="kc-value">200<span class="kc-unit">만원</span></div>
-        <div class="kc-desc">센텀 여행객 바이럴</div>
-      </div>
-      <div class="kpi-card dark">
-        <div class="kc-label">6월 합계</div>
-        <div class="kc-value"><em>700</em><span class="kc-unit" style="color:rgba(255,255,255,0.4);">만원</span></div>
-        <div class="kc-desc">VAT 별도</div>
+        <div class="kc-label">총 합계</div>
+        <div class="kc-value">500<span class="kc-unit">만원</span></div>
+        <div class="kc-desc">VAT 별도 · 4월 출장 항목 자연 종료</div>
       </div>
     </div>
   </div>
@@ -179,23 +180,28 @@ tr.subtotal-row td { background: #f8fafb; font-weight: 700; border-top: 1px soli
       <thead><tr><th>항목</th><th>내용</th><th>금액</th></tr></thead>
       <tbody>
         <tr>
-          <td class="item">인스타그램 운영 + 콘텐츠 제작</td>
-          <td class="desc">콘텐츠 9건 제작·운영(단일 이미지·캐러셀·영상), 강남점 오픈 카운트다운 시리즈 포함, 캡션 작성, 댓글·해시태그 관리, 프로필 바이오 관리 등 채널 상시 운영</td>
-          <td class="amount">1,600,000</td>
+          <td class="item">인스타그램 운영 + 전환 장치 풀 가동</td>
+          <td class="desc">월간 콘텐츠 8건 이상, 캡션 푸터·엔드카드·위치태그·UTM 추적까지 5종 전환 장치 풀세트 적용</td>
+          <td class="amount">1,000,000</td>
         </tr>
         <tr>
-          <td class="item">네이버플레이스 셋업 + 운영</td>
-          <td class="desc">강남점 셋업 및 최적화, 부산 2개 지점(본점·센텀) 상시 운영. 지속적 키워드 트래킹 기반 관리와 선점 키워드 확보로 핵심 검색 영역 내 랭킹 우위 점유</td>
-          <td class="amount">800,000</td>
+          <td class="item">네이버플레이스 운영 (센텀 + 전포)</td>
+          <td class="desc">전포 슬롯 D+14 풀 측정, 센텀 빅키워드 5~7위 복귀 공략, 서면돼지국밥 슬롯 효율 검증</td>
+          <td class="amount">700,000</td>
         </tr>
         <tr>
-          <td class="item">키워드 데이터 분석 + 위클리 인사이트</td>
-          <td class="desc">검색량·키워드 순위 데이터 분석, 강남 신규 키워드 추가, 위클리 인사이트를 통한 세부 액션 조정</td>
-          <td class="amount">300,000</td>
+          <td class="item">키워드 모니터링 + 위클리 리포트</td>
+          <td class="desc">검색량·키워드 순위 주간 추적, 시즌 보정 평가, 위클리 인사이트 4회 발송</td>
+          <td class="amount">500,000</td>
         </tr>
         <tr>
-          <td class="item">6월 종합 보고서 + 7월 계획서</td>
-          <td class="desc">월말 데이터 결산, 3개 매장 통합 성과 분석, 7월 실행 계획서 발송</td>
+          <td class="item">강남점 오픈 사전 분석<span class="badge">NEW</span></td>
+          <td class="desc">강남점 입지·반경·인근 경쟁 매장 분석, 강남 키워드 전략서 초안, 네이버플레이스 사전 등록 협조, 서울 인플루언서 후보 1차 컨택</td>
+          <td class="amount">500,000</td>
+        </tr>
+        <tr>
+          <td class="item">5월 종합 보고서 + 6월 계획서</td>
+          <td class="desc">월말 데이터 결산, 강남점 마케팅 포함 다음 달 실행 계획서 발송</td>
           <td class="amount">300,000</td>
         </tr>
         <tr class="subtotal-row">
@@ -204,6 +210,9 @@ tr.subtotal-row td { background: #f8fafb; font-weight: 700; border-top: 1px soli
         </tr>
       </tbody>
     </table>
+    <div class="info-box">
+      <strong>5월 핵심</strong> 4~7월은 돼지국밥 카테고리 검색 저점 구간입니다. 5월은 절대 검색량 증가보다, 7월까지 자산을 깔아두고 8~10월 시즌 피크를 자연 상승으로 받는 구조를 만드는 데 집중합니다.
+    </div>
   </div>
 
   <!-- PART 2 -->
@@ -216,19 +225,24 @@ tr.subtotal-row td { background: #f8fafb; font-weight: 700; border-top: 1px soli
       <thead><tr><th>항목</th><th>내용</th><th>금액</th></tr></thead>
       <tbody>
         <tr>
-          <td class="item">블로그 체험단 (40명)</td>
-          <td class="desc">40명 블로그 체험단 집행(센텀점·강남점), 키워드 분배 + 영수증 리뷰 동시 수집</td>
-          <td class="amount">400,000</td>
+          <td class="item">블로그 체험단</td>
+          <td class="desc">월 16건 (주 4건 × 4주), 키워드 분배, 영수증 리뷰 동시 수집</td>
+          <td class="amount">500,000</td>
         </tr>
         <tr>
-          <td class="item">인플루언서 씨딩 (3팀)</td>
-          <td class="desc">강남점 오픈 사전 노출 중심 3팀 운영 (유료 광고가 도달 확장을 담당)</td>
-          <td class="amount">1,000,000</td>
+          <td class="item">인플루언서 씨딩 (5~7명)</td>
+          <td class="desc">부산 마이크로 3명 + 서울 나노 2~4명 (강남점 오픈 사전 노출 동시), 인플루언서별 UTM 추적 도입</td>
+          <td class="amount">1,100,000</td>
         </tr>
         <tr>
-          <td class="item">메타 광고 운영 (수수료+광고비)</td>
-          <td class="desc">타겟 오디언스 설정·캠페인 세팅·소재 운영·최적화 및 광고비 포함 — 씨딩·강남 오픈 부스팅 집행</td>
-          <td class="amount">600,000</td>
+          <td class="item">메타 광고 운영</td>
+          <td class="desc">씨딩 릴스 기반 광고 집행 (광고비 50만 포함)</td>
+          <td class="amount">300,000</td>
+        </tr>
+        <tr>
+          <td class="item">리뷰 운영</td>
+          <td class="desc">리뷰 답변, 체험단 영수증 리뷰 매니징, 별점 회복 가이드</td>
+          <td class="amount">100,000</td>
         </tr>
         <tr class="subtotal-row">
           <td class="item" colspan="2">Part 2 소계</td>
@@ -236,45 +250,41 @@ tr.subtotal-row td { background: #f8fafb; font-weight: 700; border-top: 1px soli
         </tr>
       </tbody>
     </table>
-  </div>
-
-  <!-- PART 3 (추가 집행) -->
-  <div class="section">
-    <div class="part-header">
-      <h3>Part 3 — 센텀 여행객 바이럴 <span class="badge">6월 추가 집행</span></h3>
-      <div class="part-price">2,000,000원</div>
-    </div>
-    <table>
-      <thead><tr><th>항목</th><th>내용</th><th>금액</th></tr></thead>
-      <tbody>
-        <tr>
-          <td class="item">여행객 타깃 인플루언서 협업 (3팀)</td>
-          <td class="desc">여름 성수기 부산 여행·맛집 인플루언서 3팀 협업 — 센텀 반등을 성수기 방문으로 전환하는 도달 확보("부산 여행 국밥 코스"·"해운대·센텀 근처 한 끼"·돼지우동 시그니처)</td>
-          <td class="amount">1,700,000</td>
-        </tr>
-        <tr>
-          <td class="item">메타 광고 운영 (수수료+광고비)</td>
-          <td class="desc">여행객 타깃 캠페인 세팅·소재 운영·최적화 및 광고비 포함 — 부산 여행객 도달 확장</td>
-          <td class="amount">300,000</td>
-        </tr>
-        <tr class="subtotal-row">
-          <td class="item" colspan="2">Part 3 소계</td>
-          <td class="amount">2,000,000</td>
-        </tr>
-      </tbody>
-    </table>
     <div class="info-box">
-      <strong>왜 추가 집행인가</strong> — 5월 센텀 방문 유입이 월말 <strong>+44% 반등</strong>했습니다. 6~7월 검색 비수기에도 부산은 여름 성수기인 만큼, 여행객 타깃 인플루언서·광고로 이 반등을 매출로 굳히기 위한 한시 집행입니다.
+      <strong>씨딩 확장</strong> 4월 4명 → 5월 5~7명. 강남점 오픈 사전 노출을 위해 서울 나노 인플루언서를 처음으로 추가합니다. UTM 추적을 도입해 인플루언서별 영향력을 정밀 측정합니다.
     </div>
   </div>
 
   <!-- FINAL TOTAL -->
   <div class="total-box">
     <div>
-      <div class="tl">6월 최종 합계</div>
-      <div class="ts">정규 운영 500만 + 여행객 바이럴 200만 · VAT 별도</div>
+      <div class="tl">5월 최종 합계</div>
+      <div class="ts">VAT 별도</div>
     </div>
-    <div class="ta">7,000,000<span>원</span></div>
+    <div class="ta">5,000,000<span>원</span></div>
+  </div>
+
+  <!-- NOTES -->
+  <div class="section">
+    <h2>참고 사항</h2>
+    <div class="note-grid">
+      <div class="note-item">
+        <strong>4월 부산 출장·촬영 항목</strong>
+        4월 일회성 항목으로 5월에는 자연 종료됩니다. 차기 출장이 필요한 시점에 별도 견적으로 안내드립니다.
+      </div>
+      <div class="note-item">
+        <strong>강남점 오픈 마케팅 본 집행</strong>
+        본 견적의 강남점 항목은 사전 분석·등록 협조까지입니다. 6월 오픈 D-30 ~ D+7 마케팅 본 집행은 6월 견적서로 별도 발송 예정입니다.
+      </div>
+      <div class="note-item">
+        <strong>광고비 집행</strong>
+        메타 광고비 50만 원이 견적에 포함되어 있습니다. 네이버플레이스 광고비는 미례국밥 직접 결제 구조가 유지됩니다.
+      </div>
+      <div class="note-item">
+        <strong>인플루언서 식사·체험비</strong>
+        매장 방문 인플루언서의 식사 제공은 미례국밥 직접 부담입니다(견적 외).
+      </div>
+    </div>
   </div>
 
   <!-- FOOTER -->
