@@ -44,6 +44,8 @@ SLUG_TIER = {
     "hayejin-cosmetic": "A",  # 매출 27.5억·11년차·8개 지역 글로벌 = T2 흡수력
     "absolute-collagen": "A",  # 콜라겐 카테고리 1위·후기 19만+·식약처 인증 = T2~T3
     "wearwhere": "B",  # 한·일 듀얼 법인이지만 8개월차·3명 = T1 진단부터
+    # ── 2026-06-07 오네아 (유안코퍼레이션 자체 PB 확정) ──
+    "onea": "B",  # 유안코퍼레이션 PB 주방용품, 1인·초기 성장기 = T1 Foundation→T2
 }
 
 # Slug → source batch (sangdam = 사전상담 신청자, govent = 고벤처 행사)
@@ -58,6 +60,8 @@ SLUG_SOURCE = {
     "gelato-wayou": "govent", "j-and": "govent", "esam": "govent", "kim-yeoreum": "govent",
     # 2026-05-23 신규 3건
     "hayejin-cosmetic": "govent", "wearwhere": "govent", "absolute-collagen": "govent",
+    # 2026-06-07 오네아 (유안코퍼레이션 강구현, 5/22 고벤처 신청자)
+    "onea": "govent",
 }
 # default = sangdam (기존 27건)
 
@@ -117,6 +121,8 @@ DISPLAY_ORDER = [
     ("hayejin-cosmetic", "마케팅 팀장", "하예진코스메틱 (Hayejin Cosmetic)", "2026-05-23", 1, "N"),
     ("wearwhere", "이사/임원", "wearwhere + MIMIC LENS", "2026-05-23", 1, "N"),
     ("absolute-collagen", "대표/CEO", "절대콜라겐 (Absolute Collagen)", "2026-05-23", 1, "N"),
+    # ── 2026-06-07 오네아 (유안코퍼레이션 자체 PB) ──
+    ("onea", "강구현", "오네아 (ONEA) / 유안코퍼레이션", "2026-05-22", 1, "N"),
 ]
 
 # Curation hooks (from README)
@@ -175,6 +181,8 @@ HOOKS = {
     "hayejin-cosmetic": "비건 클린 뷰티 K-코스메틱 (씨아이에스인터내셔날서비스㈜·매출 27.5억·11년차·8개 지역 글로벌) — T2 흡수력 명확",
     "wearwhere": "한·일 듀얼 법인 멀티브랜드 (wearwhere 아이웨어 + MIMIC LENS 컬러콘택트렌즈) — T1 진단 후 T2 단계적 승급",
     "absolute-collagen": "저분자 어류 콜라겐펩타이드 D2C — 네이버 콜라겐 카테고리 후기 19만+ 1위, T2~T3 핏 (영국 동명 상표 충돌은 글로벌 리스크)",
+    # ── 2026-06-07 오네아 ──
+    "onea": "유안코퍼레이션(강구현) 자체 PB 주방용품 — 5/22 'PB 보유 여부' 질문의 답 = D2C 빌더 GO 확정. 전동 소금·후추 그라인더, 광고기간 4천만·1인 운영. 광고 의존 탈피·브랜드 자산화 = T1 Foundation→T2",
 }
 
 
@@ -549,6 +557,7 @@ SECTION_RENDER_ORDER = [
     ("한 줄 요약", "ONE-LINER", "사업 본질 한 줄", "card"),
     ("추정 단계", "STAGE", "현재 추정 단계", "card"),
     ("정량 시그널", "QUANTITATIVE SIGNALS", "검색으로 확보된 정량 데이터 (매출·인력·SNS·인증·펀딩)", "card"),
+    ("사업 모델 구조", "BUSINESS MODEL", "사업 모델 레이어 분해", "card"),
     ("유사 케이스 인접도", "ANALOG CASES", "HIZ 기존 케이스 풀과의 매핑", "card"),
     ("동명 충돌 식별", "NAME COLLISION", "동일·유사 사명 식별 결과", "card"),
     ("핵심 페인 (가설)", "PAIN POINTS", "사전 검색 기반 가설 페인", "card"),
@@ -642,6 +651,9 @@ def render_brand_html(md_path: Path, slug: str, applicant_meta: tuple) -> str:
     blocks = []
     for sec_key, label, desc, kind in SECTION_RENDER_ORDER:
         content = secs.get(sec_key)
+        if content is None:
+            # fallback: tolerate parenthetical suffix in heading (e.g. "리스크 시그널 (5종 …)")
+            content = next((v for k, v in secs.items() if k.startswith(sec_key)), None)
         if content is None:
             continue
 
