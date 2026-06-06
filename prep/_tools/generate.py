@@ -171,7 +171,7 @@ HOOKS = {
     "penther": "↑ 2차: (주)펜써 법인 확정 (서울 관악), 0→1 단계 — T1 Foundation 핏",
     "everyday-christmas": "동음 6건 모두 김승용 매칭 0 — PASS 가능성 검토",
     "yousomi": "정보 부족, 디렉터 직책 = 대표 별도 가능성 + 2차에도 매칭 실패",
-    "yuan-corp": "↑ 2차: 개인사업자 확정 (고양), B2C e-커머스 셀러 — PB 보유 여부가 GO 분기",
+    "yuan-corp": "↑ 2차: 개인사업자 확정 (고양), B2C e-커머스 셀러 — PB 보유 여부가 GO 분기 → 오네아(ONEA) 자체 PB 확정 = D2C 빌더 GO 해소",
     "briyl": "캐나다 시그널, 본진 시장 확인 필요 + 2차에도 매칭 실패",
     "gelato-wayou": "23세 청년 F&B, 외부 풋프린트 0 — Tier 0 진단형",
     "j-and": "사명 매우 짧음, 동명 충돌 — @jand_official 후보 1건(매칭 보류)",
