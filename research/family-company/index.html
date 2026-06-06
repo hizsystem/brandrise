@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가족컴퍼니 (Family Company) - New Business 상담 준비 | BRANDRISE</title>
+    <style>
+        :root {
+            --primary: #0D0D0D;
+            --secondary: #1a1b18;
+            --accent: #2E7D57;
+            --highlight: #2E7D57;
+            --bg: #f4f7f5;
+            --card-bg: #ffffff;
+            --text: #1a1b18;
+            --text-light: #636569;
+            --border: #e6efe9;
+            --success: #00b894;
+            --warning: #C77D2E;
+            --danger: #dc2626;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(46, 125, 87, 0.2);
+            border: 1px solid var(--highlight);
+            color: #8fe0b4;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+        .header .subtitle { font-size: 16px; opacity: 0.78; font-weight: 300; }
+        .header .date { margin-top: 16px; font-size: 13px; opacity: 0.5; }
+        .header-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 22px;
+        }
+        .header-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.35);
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 22px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .header-links a:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        .toc {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 8px;
+        }
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 0;
+            display: block;
+            transition: color 0.2s;
+        }
+        .toc a:hover { color: var(--highlight); }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--highlight);
+        }
+        .section h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 20px 0 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 8px 16px;
+            font-size: 14px;
+        }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th {
+            background: var(--primary);
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+        tr:hover td { background: #f1f5f2; }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 2px;
+        }
+        .tag-red { background: #ffe0e0; color: #d63031; }
+        .tag-green { background: #d4f5e9; color: #00966e; }
+        .tag-blue { background: #d8ece1; color: #2E7D57; }
+        .tag-yellow { background: #fff3cd; color: #856404; }
+        .tag-gray { background: #e9ecef; color: #495057; }
+
+        .verdict {
+            background: linear-gradient(135deg, #00b894 0%, #2E7D57 100%);
+            color: white;
+            padding: 24px 32px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 24px 0;
+        }
+        .verdict .label { font-size: 14px; opacity: 0.8; }
+        .verdict .value { font-size: 36px; font-weight: 800; margin: 8px 0; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+
+        .tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+        .tier-card {
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .tier-card:hover { transform: translateY(-4px); }
+        .tier-card.recommended {
+            border-color: var(--highlight);
+            box-shadow: 0 4px 20px rgba(46, 125, 87, 0.18);
+        }
+        .tier-card .tier-badge {
+            position: absolute;
+            top: -12px;
+            right: 16px;
+            background: var(--highlight);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .tier-card h4 { font-size: 16px; margin-bottom: 4px; }
+        .tier-card .price { font-size: 24px; font-weight: 800; color: var(--highlight); margin: 12px 0; }
+        .tier-card .duration { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+        .tier-card ul { list-style: none; padding: 0; }
+        .tier-card li { font-size: 13px; padding: 4px 0; padding-left: 20px; position: relative; }
+        .tier-card li::before { content: ">"; position: absolute; left: 0; color: var(--highlight); font-weight: 700; }
+
+        .callout {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+        .callout-info { background: #e6f2ec; border-left-color: #2E7D57; }
+        .callout-danger { background: #fce4ec; border-left-color: #e53935; }
+        .callout-success { background: #e8f5e9; border-left-color: #00b894; }
+
+        .leverage-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        .leverage-box .quote { font-size: 20px; font-weight: 700; line-height: 1.5; margin: 16px 0; }
+
+        .flow-steps { display: flex; gap: 0; margin: 20px 0; overflow-x: auto; }
+        .flow-step {
+            flex: 1;
+            min-width: 160px;
+            padding: 16px;
+            background: #eef3f0;
+            position: relative;
+            text-align: center;
+        }
+        .flow-step:not(:last-child)::after {
+            content: ">";
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: var(--highlight);
+            font-weight: 700;
+            z-index: 1;
+        }
+        .flow-step .step-num { font-size: 11px; font-weight: 700; color: var(--highlight); margin-bottom: 4px; }
+        .flow-step .step-title { font-size: 13px; font-weight: 600; }
+        .flow-step .step-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .swot-item h4 { font-size: 15px; margin-bottom: 10px; }
+        .swot-item ul { padding-left: 18px; }
+        .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: #d4f5e9; }
+        .swot-w { background: #ffe0e0; }
+        .swot-o { background: #d8ece1; }
+        .swot-t { background: #fff3cd; }
+
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+        .source-list a { color: var(--accent); text-decoration: none; }
+        .source-list a:hover { text-decoration: underline; }
+
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+        .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 8px 0; }
+        .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+
+        /* Executive Summary */
+        .summary-section { border-left: 4px solid var(--highlight); background: linear-gradient(135deg, #fff 0%, #f1f8f4 100%); }
+        .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; color: white; }
+        .kpi-card.kpi-dark { background: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--danger); }
+        .kpi-card.kpi-success { background: var(--success); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.7; }
+        .kpi-card .kpi-value { font-size: 24px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.7; }
+
+        .summary-oneliner { background: #0D0D0D; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+        .summary-oneliner .sol-text .hl { color: #8fe0b4; }
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+
+        /* Diagnosis */
+        .diagnosis-section { border: 2px solid var(--danger); }
+        .diagnosis-section h2 { border-bottom-color: var(--danger); color: var(--danger); }
+        .diag-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .diag-box { padding: 16px; border-radius: 8px; }
+        .diag-box.diag-current { background: #fce4ec; }
+        .diag-box.diag-ideal { background: #e8f5e9; }
+        .diag-box .db-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .diag-box.diag-current .db-label { color: var(--danger); }
+        .diag-box.diag-ideal .db-label { color: var(--success); }
+        .diag-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+        .diag-note { font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: #f3f1e6; border-radius: 8px; }
+
+        /* SPIN & JTBD */
+        .spin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .spin-card { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .spin-card h4 { font-size: 15px; margin-bottom: 10px; }
+        .spin-s { background: #e6f2ec; }
+        .spin-p { background: #fce4ec; }
+        .spin-i { background: #fff3e0; }
+        .spin-n { background: #e8f5e9; }
+
+        .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+        .pain-level { flex: 1; min-width: 200px; padding: 16px; border-radius: 10px; font-size: 13px; }
+        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .pain-l1 { background: #e6f2ec; }
+        .pain-l2 { background: #fff3e0; }
+        .pain-l3 { background: #fce4ec; }
+        .pain-l4 { background: #f3e5f5; }
+
+        /* Script & Coaching */
+        .script-block {
+            background: #f6f9f7;
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            font-style: italic;
+            color: var(--secondary);
+        }
+        .question-card { background: #f6f9f7; border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+        .question-card .q-num { font-size: 12px; font-weight: 700; color: var(--highlight); }
+        .question-card .q-text { font-size: 15px; font-weight: 600; margin: 4px 0 8px; }
+        .question-card .q-intent { font-size: 13px; color: var(--text-light); }
+
+        .timeline-phase { display: grid; grid-template-columns: 100px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .timeline-phase .phase-time { font-size: 13px; font-weight: 700; color: var(--highlight); text-align: center; padding-top: 4px; }
+        .timeline-phase .phase-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .timeline-phase .phase-content p { font-size: 13px; color: var(--text-light); }
+
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .tier-cards { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-step:not(:last-child)::after { display: none; }
+            .channel-grid { grid-template-columns: repeat(2, 1fr); }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .diag-compare { grid-template-columns: 1fr; }
+            .spin-grid { grid-template-columns: 1fr; }
+            .pain-layer { flex-direction: column; }
+            .timeline-phase { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">NEW BUSINESS 상담 준비 패키지</div>
+    <h1>가족컴퍼니 (Family Company)</h1>
+    <div class="subtitle">소상공인 상생형 콘텐츠 커머스 에이전시 | 발굴 → 스토리텔링 콘텐츠 → 디지털 전환 → 6차산업·정부지원·투자유치 · 1호 프로젝트 "괴산 사랑산천년초"</div>
+    <div class="date">작성일: 2026-06-07 (클라이언트 1차 자료 9항목 회신 반영) | Prepared by BRANDRISE (MarketingOS)</div>
+    <div class="header-links">
+        <a href="https://www.bizno.net/article/4045201122" target="_blank" rel="noopener">🏢 사업자정보 404-52-01122</a>
+        <a href="https://www.youtube.com/results?search_query=한만사TV+한국을+만드는+사람들" target="_blank" rel="noopener">▶ 한만사TV (채널 확인 필요)</a>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- ============================================================ -->
+    <!-- Executive Summary -->
+    <!-- ============================================================ -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">회사</div>
+                <div class="sh-title">가족컴퍼니 (Family Company)</div>
+                <div class="sh-sub">소상공인 상생형 콘텐츠 커머스 에이전시 · 조직 2인 공동대표 · 사업자 404-52-01122 (2026-04-24 설립)</div>
+            </div>
+            <div>
+                <div class="sh-label">공동대표</div>
+                <div class="sh-title">최미진 · 조남혁</div>
+                <div class="sh-sub">최미진 = 커머스(디지털 전환·유통 판로) / 조남혁 = 크리에이티브(PD·촬영·편집) · 부부·가족 공동창업 추정</div>
+            </div>
+        </div>
+        <!-- KPI 카드: 단계 + 1호 프로젝트 + 목표 + 최대 병목 -->
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">사업 단계</div>
+                <div class="kpi-value">Pre-revenue</div>
+                <div class="kpi-sub">설립 4주차 · 자체 매출 0 · 초기비용 100% 자비투자 모드</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">1호 프로젝트</div>
+                <div class="kpi-value">사랑산천년초</div>
+                <div class="kpi-sub">충북 괴산 · 신청 3곳 중 선정 · 천년초 건강식품 디지털 전환</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">6개월 목표</div>
+                <div class="kpi-value">5,000만</div>
+                <div class="kpi-sub">공동구매+크라우드펀딩 초기매출 + 정부지원 공동수주</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">최대 병목</div>
+                <div class="kpi-value">전환 엔진 부재</div>
+                <div class="kpi-sub">"콘텐츠·채널 성장 → 실매출" 전환 메커니즘 미보유 (대표 자인)</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                가족컴퍼니는 <span class="hl">스토리텔링 콘텐츠 DNA(한만사TV·PD 내재화)와 진정성 있는 미션("소상공인이 살아야 대한민국이 산다")</span>을 갖췄으나,
+                <span class="hl">"채널 성장이 곧 매출이 될까"라는 전환 엔진의 부재</span>가 본인이 지목한 1순위 불안.
+                동시에 <span class="hl">사업 모델 자체가 단 한 건도 검증되지 않은 Pre-revenue 상태</span> — 즉 답은 "콘텐츠 더 잘 만들기"가 아니라
+                <span class="hl">1호(사랑산천년초)를 '콘텐츠→구매전환→지속판매(구독·펀딩)' 풀퍼널로 성공시키며, 그 과정을 반복 가능한 상생 커머스 SOP로 박제</span>하는 것.
+            </div>
+        </div>
+        <div class="summary-bottom">
+            <strong>기회 적합도:</strong> <span class="hl">4.0 / 5.0 (조건부 Go)</span> &nbsp;|&nbsp;
+            <strong>추천 Tier:</strong> Essential(1호 GTM+SOP 진단) → Professional(전환엔진 구축), 단 <span class="hl">예산 흡수력이 핵심 변수</span> &nbsp;|&nbsp;
+            <strong>구조 옵션:</strong> 성과공유·정부예산 매칭·딜플로우 파트너십 &nbsp;|&nbsp;
+            <strong>1순위 의제:</strong> 클라이언트 vs 파트너 포지셔닝 결정
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 핵심 문제점 & 진단 -->
+    <!-- ============================================================ -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 문제점 & 진단</h2>
+
+        <h3>1. 콘텐츠 ↔ 커머스 전환 단절 — "채널 성장 ≠ 매출" (Critical)</h3>
+        <div class="diag-note">클라이언트가 직접 명시한 <strong>가장 큰 불안 = "단순한 '채널의 성장'이 곧바로 '실질적인 매출'로 이어질 수 있을까"</strong>. 가족컴퍼니의 자산은 콘텐츠(스토리텔링·촬영·편집) 쪽에 집중돼 있고, 그 콘텐츠를 <strong>상세페이지 → 스마트스토어/플레이스 구매전환 → 정기구독·펀딩 재구매</strong>로 잇는 퍼널·데이터 엔진이 비어 있음. 대표 요청 그대로 = "스토리텔링 콘텐츠 역량이 실질적 구매 전환과 지속 가능한 판매 구조로 자연스럽게 연결되도록".</div>
+        <div class="callout callout-info">
+            <strong>이것이 브랜드라이즈의 정확한 코어 영역:</strong> "콘텐츠는 잘 만드는데 매출로 안 이어진다"는 한국 소상공인·인플루언서 커머스의 가장 흔한 실패 지점이며, 정확히 브랜드라이즈가 푸는 문제(콘텐츠 커머스 퍼널 설계·전환 측정·CRO·구독/펀딩 설계). <strong>가족컴퍼니의 약점이 브랜드라이즈의 강점과 정확히 맞물린다</strong> — 니즈-서비스 핏은 거의 만점.
+        </div>
+
+        <h3>2. 비즈니스 모델 미검증 — 1호가 손익분기 시험대 (Critical)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재 구조 (리스크)</div>
+                <ul>
+                    <li>소상공인에게 촬영·편집·광고비 <strong>일체 안 받고 100% 자비투자</strong> → 성공 후 성과공유·정부지원·투자유치로 회수</li>
+                    <li>이 회수 모델은 <strong>아직 한 건도 검증 안 됨</strong>(첫 프로젝트). 자체 매출 0</li>
+                    <li>→ <strong>표준 유료 컨설팅 단가(수천만)를 흡수할 현금 여력이 본질적으로 부족</strong></li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">풀어야 할 방향</div>
+                <ul>
+                    <li>1호(사랑산천년초)에서 <strong>펀딩 5천만 + 정부 보조금 공동수주</strong>라는 실증 데이터 확보</li>
+                    <li>그 한 건의 성공을 <strong>2호·3호에 그대로 복제할 SOP·IR 자산</strong>으로 박제 = 모델 검증</li>
+                    <li>컨설팅 재원도 <strong>성과공유·정부예산 매칭</strong>으로 설계해 현금 장벽 우회</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>3. 포지셔닝 이중 과제 — 동종 카테고리 + 천년초 자체 (High)</h3>
+        <div class="diag-note"><strong>(a) 가족컴퍼니 = 브랜드라이즈와 카테고리 동종.</strong> 둘 다 "소상공인을 콘텐츠·커머스로 키우는" 사업. 따라서 본 건 1순위 의제는 네이밍이 아니라 <strong>"이들을 1회성 클라이언트로 볼 것인가, 발굴 딜플로우를 함께 굴릴 파트너로 볼 것인가"</strong>의 결정. &nbsp; <strong>(b) 1호 천년초 자체도 포지셔닝 필요.</strong> 천년초(토종 손바닥선인장)는 에미네천년초·고려선인장 등 선발 브랜드가 있고 "성질이 차다"는 체질 이슈가 있어, 타깃·소구를 정교화하지 않으면 일반 건강식품 레드오션에 묻힘.</div>
+
+        <h3>영역별 진단 요약</h3>
+        <table>
+            <tr><th>영역</th><th>현재 상태</th><th>심각도</th><th>GAP</th></tr>
+            <tr><td>전환 엔진</td><td>콘텐츠는 있으나 구매전환·지속판매(구독·펀딩) 퍼널 부재 (대표 1순위 불안)</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>모델 검증·현금흐름</td><td>Pre-revenue·100% 자비투자, 회수 모델 0건 검증</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>실행 인력</td><td>2인(콘텐츠 PD 1 + 커머스 1) = 마케팅 실행력 부족 (대표 자인)</td><td><span class="tag tag-red">High</span></td><td><span class="tag tag-red">큼</span></td></tr>
+            <tr><td>1호 제품 포지셔닝</td><td>천년초 선발 브랜드·체질 이슈, 차별화 슬롯 미정</td><td><span class="tag tag-yellow">High</span></td><td><span class="tag tag-yellow">큼</span></td></tr>
+            <tr><td>채널 인프라</td><td>한만사TV(규모 미확인)·인스타·블로그 준비 중, 자사몰 0</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-yellow">중간</span></td></tr>
+            <tr><td>레퍼런스·신뢰</td><td>첫 프로젝트라 정량 매출·광고 데이터 0 = 소상공인 설득 장벽 (대표 자인)</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-yellow">중간</span></td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>진단 결론 (Type III Error 경고):</strong> 가족컴퍼니의 표면 요청은 "콘텐츠 커머스 마케팅 솔루션 + 전략 스케줄러"입니다. 이를 <strong>단순 '콘텐츠 제작 대행/광고 운영 대행'으로 받으면 = 잘못된 문제를 정확히 푸는 오류</strong>. 진짜 과제는 ① <strong>콘텐츠를 매출로 바꾸는 전환 엔진</strong>을 1호에 이식하고 ② 그 성공을 <strong>반복 가능한 상생 커머스 SOP</strong>로 만들어 모델 자체를 검증하는 것. 그리고 그 전제로 <strong>"이 거래를 1회성으로 끊을 것인가, 딜플로우 파트너십으로 갈 것인가"</strong>를 먼저 정해야 견적·구조가 결정됩니다. 예산 흡수력(Pre-revenue)이 유일한 GO 분기점.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 목차 -->
+    <!-- ============================================================ -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 & 진단</a>
+            <a href="#company-info">1. 기업 기초 정보</a>
+            <a href="#product-lineup">2. 사업 모델 / 1호 프로젝트</a>
+            <a href="#digital-presence">3. 디지털 프레즌스 진단</a>
+            <a href="#competitors">4. 경쟁사 분석</a>
+            <a href="#market">5. 시장 환경</a>
+            <a href="#ceo-background">6. 대표자/경영진 프로필</a>
+            <a href="#swot">7. SWOT 분석</a>
+            <a href="#needs-analysis">8. 니즈 분석 (SPIN + JTBD)</a>
+            <a href="#gap-analysis">9. GAP 분석 & 기회 평가</a>
+            <a href="#quote">10. 3-Tier 견적 초안</a>
+            <a href="#strategy">11. 상담 전략 & 코칭</a>
+            <a href="#closing">12. 클로징 전략</a>
+        </div>
+    </div>
+
+    <!-- 1. 기업 기초 정보 -->
+    <div class="section" id="company-info">
+        <h2>1. 기업 기초 정보</h2>
+        <div class="info-grid">
+            <div class="info-label">사업체명</div>
+            <div class="info-value">가족컴퍼니 (Family Company) — 개인 일반과세 사업자</div>
+
+            <div class="info-label">사업자등록번호</div>
+            <div class="info-value">404-52-01122</div>
+
+            <div class="info-label">사업 정체성</div>
+            <div class="info-value"><strong>소상공인 상생형 콘텐츠 커머스 에이전시</strong> — 제품 브랜드가 아니라, 숨은 소상공인·장인을 발굴해 콘텐츠·디지털 전환으로 키우는 서비스 사업</div>
+
+            <div class="info-label">공동대표</div>
+            <div class="info-value"><strong>최미진</strong>(커머스 파트 — 소상공인 디지털 전환·유통 판로) + <strong>조남혁</strong>(크리에이티브 파트 — PD·현장 촬영·편집). 부부·가족 공동창업 추정</div>
+
+            <div class="info-label">설립일</div>
+            <div class="info-value">2026-04-24 (상담 신청 시점 4주차 신생)</div>
+
+            <div class="info-label">거점</div>
+            <div class="info-value">본점 전북 정읍시 중앙1길 93 / 통신판매업 2026-경기파주-1926 (파주 운영지) = 이중 거점</div>
+
+            <div class="info-label">사업 모델</div>
+            <div class="info-value"><strong>초기비용 리스크 제로(0원) 상생 스케일업</strong> — 소상공인에게 촬영·편집·광고비 일체 안 받고 100% 자비투자 → 성공사례(포트폴리오) 축적 → 정부지원 수주·투자유치(엑셀러레이팅)로 성과공유형 매출 회수</div>
+
+            <div class="info-label">매출 실적</div>
+            <div class="info-value"><strong>Pre-revenue (자체 매출 0)</strong> — "수익을 먼저 취하는 구조가 아닌 초기 비용 100% 전액 투자 단계" (대표 명시)</div>
+
+            <div class="info-label">조직 규모</div>
+            <div class="info-value">2인 (공동대표) — 콘텐츠 PD 1 + 커머스 1. 마케팅 실행 인력 보강이 과제 (대표 자인)</div>
+
+            <div class="info-label">마케팅 채널</div>
+            <div class="info-value">공식 유튜브 <strong>한만사TV</strong>(한국을 만드는 사람들) · 인스타그램·블로그 등 멀티채널 준비 중 <span style="color:var(--text-light);">(채널 규모·URL 공개검색 미확인 — 상담 확인 필요)</span></div>
+
+            <div class="info-label">1호 프로젝트</div>
+            <div class="info-value"><strong>충북 괴산 '사랑산천년초'</strong> — 괴산군 신청 우수업체 3곳 중 선정, 가족컴퍼니 제1호 메인 프로젝트로 가동 시작</div>
+
+            <div class="info-label">6개월 목표</div>
+            <div class="info-value">사랑산천년초 공동구매+크라우드펀딩 <strong>약 5,000만원</strong> 초기매출 + 농촌융복합(6차산업) 보조금·지자체 협력 예산 공동수주</div>
+
+            <div class="info-label">철학</div>
+            <div class="info-value">"소상공인이 살아야 대한민국이 산다" — 진정성·삶의 스토리 기반 상생 커머스</div>
+        </div>
+        <div class="callout callout-danger">
+            <strong>⚠️ 상담 1순위 확인:</strong> ① <strong>이번 컨설팅의 가용 재원</strong>(자체 자본 vs 펀딩 매출 일부 vs 정부지원 매칭 — Essential/Professional을 가름) ② 자본금·투자·대출 구조(100% 자비투자의 실제 여력) ③ 최미진·조남혁 역할 분담의 실행 손 범위 ④ <strong>희망 서비스 범위</strong>(전략·플레이북까지인지, 콘텐츠·광고 실행 대행 포함인지) ⑤ 가족컴퍼니를 1회성 클라이언트로 볼지 발굴 딜플로우 파트너로 볼지(브랜드라이즈 내부 의사결정).
+        </div>
+    </div>
+
+    <!-- 2. 사업 모델 / 1호 프로젝트 -->
+    <div class="section" id="product-lineup">
+        <h2>2. 사업 모델 / 1호 프로젝트</h2>
+
+        <h3>두 개의 레이어로 분리해서 봐야 한다</h3>
+        <table>
+            <tr><th>레이어</th><th>내용</th><th>브랜드라이즈의 역할</th></tr>
+            <tr><td><strong>A. 가족컴퍼니 자체 모델</strong></td><td>소상공인 발굴 → 스토리텔링 콘텐츠 → 디지털 전환 → 6차산업·정부지원·투자유치 (반복 비즈니스)</td><td><strong>반복 가능한 '상생 콘텐츠 커머스 SOP/플레이북' 설계</strong></td></tr>
+            <tr style="background:#e8f5e9;"><td style="background:#e8f5e9;"><strong>B. 1호 실행 프로젝트</strong></td><td style="background:#e8f5e9;">괴산 사랑산천년초 공동구매·펀딩 5천만 GTM</td><td style="background:#e8f5e9;"><strong>첫 케이스의 콘텐츠→구매전환→구독 설계 (= A의 검증 템플릿)</strong></td></tr>
+        </table>
+        <div class="callout callout-info">
+            <strong>컨설팅의 본질 가치:</strong> "B(사랑산천년초)를 성공시키면서, 그 과정을 A(반복 SOP)로 박제". 대표가 요청한 <strong>"전략 스케줄러"</strong>가 정확히 이 지점 — 1회성 실행이 아니라 2호·3호에 재사용할 재현 가능한 시스템. 브랜드라이즈는 이미 자체적으로 49+건 PREP·정식 리서치를 SOP화한 노하우가 있어 이 "플레이북 박제" 자체를 가장 잘 전수할 수 있는 파트너.
+        </div>
+
+        <h3>1호 프로젝트 — 괴산 '사랑산천년초'</h3>
+        <table>
+            <tr><th>항목</th><th>내용</th></tr>
+            <tr><td>제품</td><td>천년초(토종 손바닥선인장) 기반 건강식품 — 진액·가루·식초 등 가공 형태 추정 <span class="tag tag-gray">SKU 상담 확인</span></td></tr>
+            <tr><td>원물 특성</td><td>영하 30도 견디는 강인한 생명력 · 칼슘(멸치 7배)·식이섬유(곡물 6배)·비타민C(오렌지 13배) 등 영양 소구 풍부</td></tr>
+            <tr><td>스토리 자산</td><td>사장님의 삶·철학·정직한 제조 과정 = 가족컴퍼니 강점(스토리텔링)과 정합. 콘텐츠화 친화적</td></tr>
+            <tr><td>현 상태</td><td>오프라인 중심 → 온라인 커머스 안착이 목표. 콘텐츠 기획·디지털 전환 로드맵 첫발 단계</td></tr>
+            <tr><td>주의점</td><td>천년초는 "성질이 차서" 냉체질·소음인 비권장 등 체질 이슈 존재 → 타깃·소구 정교화 필요</td></tr>
+        </table>
+        <div class="callout">
+            <strong>해석:</strong> 천년초는 <strong>스토리텔링 친화적 원물</strong>(토종·강인한 생명력·장인 서사)이라 가족컴퍼니의 콘텐츠 강점과 잘 맞는다. 다만 건강식품으로서는 ① 선발 브랜드(에미네천년초·고려선인장)와의 차별화 ② 체질 한정 이슈 ③ 효능 표현 규제(질병 예방·치료 표현 금지)를 넘어야 한다 → <strong>"누구의 어떤 페인을 푸는가"를 좁히는 포지셔닝</strong>이 콘텐츠보다 먼저. 공동구매·와디즈 펀딩은 스토리가 강하면 5천만 목표가 현실적인 채널.
+        </div>
+
+        <h3>모델 강점 vs 제약</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-ideal">
+                <div class="db-label">강점 (자산)</div>
+                <ul>
+                    <li>스토리텔링·현장 촬영·편집을 내재화한 콘텐츠 제작 역량(PD 보유)</li>
+                    <li>"초기비용 0원" 상생 구조 = 소상공인 진입장벽 제거 → 발굴 풀 확보 용이</li>
+                    <li>6차산업·지자체·정부지원과 연계하는 회수 설계 = 비(非)광고 매출원</li>
+                    <li>진정성 미션 = ESG·공공 협력·바이럴에 강한 서사</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-current">
+                <div class="db-label">제약 (병목)</div>
+                <ul>
+                    <li>콘텐츠 → 구매전환 → 지속판매 전환 엔진 부재 (대표 1순위 불안)</li>
+                    <li>Pre-revenue·100% 자비투자 = 현금 여력·지속가능성 미검증</li>
+                    <li>2인 = 마케팅 실행력·전문 역량 부족</li>
+                    <li>레퍼런스 0 = 소상공인 설득·신뢰 확보에 과다 시간 소요</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. 디지털 프레즌스 진단 -->
+    <div class="section" id="digital-presence">
+        <h2>3. 디지털 프레즌스 진단</h2>
+
+        <div class="channel-grid">
+            <div class="channel-card" style="border-color: var(--warning);">
+                <div class="ch-name">YouTube 한만사TV</div>
+                <div class="ch-stat" style="color: var(--warning);">확인 필요</div>
+                <div class="ch-note">"한국을 만드는 사람들" · 콘텐츠 메인 채널<br>공개검색 직접 식별 불가 — 상담 시 URL·구독자 확인</div>
+            </div>
+            <div class="channel-card" style="border-color: var(--warning);">
+                <div class="ch-name">인스타 · 블로그</div>
+                <div class="ch-stat" style="color: var(--warning);">준비 중</div>
+                <div class="ch-note">멀티채널 동시 노출 인프라 구축 단계<br>0→1 셋업 필요</div>
+            </div>
+            <div class="channel-card" style="border-color: var(--danger);">
+                <div class="ch-name">자사몰 / 커머스</div>
+                <div class="ch-stat" style="color: var(--danger);">0</div>
+                <div class="ch-note">자사몰·스마트스토어 미확인<br>1호 사랑산천년초가 첫 커머스 채널</div>
+            </div>
+        </div>
+
+        <h3>채널 구조 진단</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-ideal">
+                <div class="db-label">강점</div>
+                <ul>
+                    <li>콘텐츠 제작 채널(한만사TV)을 사업 출발점에 둠 = 스토리텔링 우선 DNA</li>
+                    <li>"한국을 만드는 사람들" = 소상공인·장인 IP를 시리즈로 누적할 콘텐츠 포맷 잠재력</li>
+                    <li>다국어 자막 기반 글로벌(K-푸드 해외직구·바이어) 확장 비전 보유</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-current">
+                <div class="db-label">병목</div>
+                <ul>
+                    <li><strong>콘텐츠 채널 ↔ 커머스(구매) 연결 고리 없음</strong> — 본 건 핵심. 자사몰·스마트스토어·결제 퍼널 미구축</li>
+                    <li>인스타·블로그가 아직 준비 중 = 콘텐츠 유통 면적 협소</li>
+                    <li>채널 규모·트래픽 데이터 미확인 = "채널 성장이 매출이 될지" 검증 불가 상태</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="callout callout-danger">
+            <strong>핵심 이슈:</strong> 가족컴퍼니의 강점(콘텐츠)과 목표(매출)가 <strong>구조적으로 단절</strong>돼 있다. 유튜브·인스타로 스토리를 잘 전달해도, 그 시청자를 <strong>'장바구니 → 결제 → 재구매·구독'</strong>으로 옮기는 퍼널·랜딩·CRM이 없으면 "채널 성장 = 매출"은 영원히 가설로 남는다. → 1호 사랑산천년초에서 <strong>콘텐츠 → 상세페이지 → 공동구매/펀딩 → 구독</strong> 풀퍼널을 한 번 완주시켜, "채널이 매출이 되는 경로"를 데이터로 증명하는 것이 본 컨설팅의 1차 산출물.
+        </div>
+    </div>
+
+    <!-- 4. 경쟁사 분석 -->
+    <div class="section" id="competitors">
+        <h2>4. 경쟁사 분석</h2>
+        <p style="font-size:14px; color:var(--text-light); margin-bottom:8px;">가족컴퍼니는 두 개의 경쟁 지형 위에 동시에 있다. <strong>축 A</strong>는 가족컴퍼니의 사업(소상공인 콘텐츠 커머스 지원) 자체의 경쟁, <strong>축 B</strong>는 1호 제품(천년초)의 카테고리 경쟁이다.</p>
+
+        <h3>축 A — 소상공인 콘텐츠 커머스 / 상생 지원 (가족컴퍼니 사업의 경쟁)</h3>
+        <table>
+            <tr><th>유형</th><th>대표 사례</th><th>가족컴퍼니 대비 / 빈틈</th></tr>
+            <tr><td>대형 커머스 상생 프로그램</td><td>카카오메이커스 '제가버치'·네이버 '단골거리/푸드윈도', 소진공 라이브커머스 지원</td><td>규모·트래픽 압도적이나 <strong>1:1 밀착 스토리텔링·디지털 전환 컨설팅은 비어 있음</strong> = 가족컴퍼니 진입 슬롯</td></tr>
+            <tr><td>F&B·로컬 상생 IP</td><td>더본코리아(백종원)식 지역상생·골목식당 모델</td><td>방송 IP 의존·대형. 소형 제조·농가 6차산업 디지털 전환은 미커버</td></tr>
+            <tr><td>커머스 콘텐츠 MCN·대행사</td><td>라이브커머스 대행사·푸드 전문 콘텐츠 스튜디오 다수</td><td>대부분 <strong>'외주 제작'(비용 청구) 모델</strong> → 가족컴퍼니의 "0원 자비투자+성과공유" 상생 구조가 차별점이자 리스크</td></tr>
+            <tr style="background:#e6f2ec;"><td style="background:#e6f2ec;"><strong>브랜드 컨설팅(동종)</strong></td><td style="background:#e6f2ec;">브랜드라이즈/HIZ 본체</td><td style="background:#e6f2ec;"><span class="tag tag-blue">카테고리 동종 — 경쟁이자 잠재 파트너. 가족컴퍼니의 상위 enabler 포지션 가능</span></td></tr>
+        </table>
+        <div class="callout callout-info">
+            <strong>전략 함의:</strong> 가족컴퍼니의 차별점은 <strong>"초기비용 0원 + 성과공유 + 6차산업·정부예산 연계"</strong>라는 상생 구조다. 이는 대형 플랫폼·외주 대행이 못 가진 자리지만, 동시에 <strong>"공짜로 해주는 게 지속 가능한가"</strong>라는 모델 리스크와 동전의 양면. 브랜드라이즈는 동종이지만 <strong>경쟁이 아니라 '발굴 딜플로우 파트너'</strong>로 포지셔닝하면 — 가족컴퍼니가 발굴하는 각 소상공인이 브랜드라이즈의 잠재 프로젝트가 되는 구조(resaltz형 스케일 파트너십)가 가능하다.
+        </div>
+
+        <h3>축 B — 천년초 건강식품 (1호 제품의 카테고리 경쟁)</h3>
+        <table>
+            <tr><th>브랜드</th><th>포지션</th><th>사랑산천년초 대비 / 빈틈</th></tr>
+            <tr><td><strong>에미네천년초(농업회사법인)</strong></td><td>천년초 진액·가루 전문, '에미네비법' 콘텐츠로 효능 교육</td><td>선발·콘텐츠 보유. 단 <strong>'특정 인물(장인) 서사'는 약함</strong> = 가족컴퍼니 스토리 차별 여지</td></tr>
+            <tr><td>고려선인장 등 천년초 가공 브랜드</td><td>천년초 성분·효능 소구 범용 제품</td><td>효능 중심·범용 → <strong>'괴산 사랑산 + 사장님 스토리'의 로컬·진정성 각도로 회피</strong></td></tr>
+            <tr style="background:#e8f5e9;"><td style="background:#e8f5e9;"><strong>차전자피·식이섬유 등 인접 '배출' 카테고리</strong></td><td style="background:#e8f5e9;">대중화된 쾌변·식이섬유 시장</td><td style="background:#e8f5e9;"><span class="tag tag-green">천년초의 식이섬유 강점을 즉시이해 '배출' 언어로 번역 시 진입 가능</span></td></tr>
+        </table>
+        <div class="callout">
+            <strong>1호 차별화 가설:</strong> 천년초의 효능을 나열하는 범용 경쟁이 아니라, <strong>"괴산 사랑산 + 사장님의 삶·정직한 제조"라는 로컬·진정성 스토리</strong> + <strong>식이섬유 기반 '배출/장건강' 즉시이해 소구</strong> 조합이 사랑산천년초의 방어 가능한 자리. 가족컴퍼니의 콘텐츠 역량이 정확히 이 차별화의 무기가 된다.
+        </div>
+    </div>
+
+    <!-- 5. 시장 환경 -->
+    <div class="section" id="market">
+        <h2>5. 시장 환경</h2>
+
+        <h3>두 시장의 교집합</h3>
+        <table>
+            <tr><th>구분</th><th>정의</th><th>규모·근거</th></tr>
+            <tr>
+                <td><strong>TAM</strong></td>
+                <td>국내 농촌융복합산업(6차산업) + 소상공인 디지털 전환 시장</td>
+                <td>「농촌융복합산업 육성·지원법」 기반 인증제도 + 전국 시도별 지원센터·2026 액셀러레이터 육성지원사업 운영 = <strong>정부예산이 흐르는 구조적 시장</strong></td>
+            </tr>
+            <tr>
+                <td><strong>SAM</strong></td>
+                <td>온라인 판로·마케팅 역량이 부족한 지역 소상공인·6차산업 제조업체 (가족컴퍼니 발굴 풀)</td>
+                <td>전국 농촌융복합 인증·예비 경영체 다수 + 미인증 농가·소상공인 광범위. 공동구매·라이브커머스·크라우드펀딩 채널 활성화</td>
+            </tr>
+            <tr>
+                <td><strong>SOM</strong></td>
+                <td>가족컴퍼니 현실권 (1호~3호 + 정부 공동수주)</td>
+                <td>1호 사랑산천년초 펀딩 5천만 + 보조금 공동수주 = 신생 에이전시의 현실적 출발. 성공 시 발굴 풀 확장으로 스케일</td>
+            </tr>
+        </table>
+
+        <h3>시장 트렌드 (2025~2026)</h3>
+        <ul style="font-size:14px; padding-left:20px; line-height:1.9;">
+            <li><strong>6차산업·농촌융복합 정부지원 구조화:</strong> 인증사업자 마크·HACCP 교육비·액셀러레이터 육성 등 지원 메뉴가 다양 → 가족컴퍼니의 "정부지원 공동수주" 회수 모델은 실재하는 트랙. <span class="tag tag-green">구조적 기회</span></li>
+            <li><strong>스토리·진정성 소비:</strong> 자극적 리뷰·가격비교 피로 → 생산자 스토리·가치소비 트렌드 = 가족컴퍼니 2차 타깃(착한 소비) 가설과 정합.</li>
+            <li><strong>크라우드펀딩·공동구매 = 신생 D2C의 표준 런칭 채널:</strong> 와디즈 등 농식품 카테고리 활발. 스토리가 강하면 초기 5천만 규모는 달성 가능권.</li>
+            <li><strong>건강식품 효능 표현 규제:</strong> 천년초도 질병 예방·치료 표현 금지. "배변활동 원활"(식이섬유 기능성 인정 문구) 등 규제 안전 소구로 번역 필요.</li>
+            <li><strong>천년초 카테고리:</strong> 토종 선인장 건강식품으로 진액 30~40만원대 형성, 선발 브랜드 존재하나 대형 지배자는 부재 = 스토리·로컬 차별화로 비집을 여지.</li>
+        </ul>
+
+        <div class="callout callout-info">
+            <strong>시장 결론:</strong> 가족컴퍼니가 선 자리는 ① 정부예산이 구조적으로 흐르는 6차산업 시장 ② 스토리·가치소비 트렌드 ③ 공동구매·펀딩이라는 검증된 신생 런칭 채널 — 3박자가 우호적이다. 관건은 <strong>"콘텐츠 → 매출 전환 엔진"</strong>과 <strong>"모델의 현금 지속가능성"</strong>이라는 내부 실행 변수이지 시장 자체가 아니다. 즉 시장은 매력적이고, 풀어야 할 것은 실행·구조·자금 설계다.
+        </div>
+    </div>
+
+    <!-- 6. 대표자/경영진 프로필 -->
+    <div class="section" id="ceo-background">
+        <h2>6. 대표자/경영진 프로필 — 최미진 · 조남혁 공동대표</h2>
+        <div class="info-grid">
+            <div class="info-label">최미진 (커머스 파트)</div>
+            <div class="info-value">소상공인 디지털 전환·유통 판로 개척 담당. 본 상담 직접 신청·회신(dcloud2017@naver.com / 010-7762-2285). 커머스·세일즈 의사결정 라인</div>
+
+            <div class="info-label">조남혁 (크리에이티브 파트)</div>
+            <div class="info-value">PD — 콘텐츠 기획·현장 촬영·편집 담당. 가족컴퍼니의 스토리텔링 콘텐츠 제작 핵심</div>
+
+            <div class="info-label">조직 운영</div>
+            <div class="info-value">2인 공동대표 역할 분담(커머스 ↔ 콘텐츠)으로 유기적 운영. 부부·가족 공동창업 추정(사명 "가족컴퍼니"와 부합)</div>
+
+            <div class="info-label">철학·동기</div>
+            <div class="info-value">"소상공인이 살아야 대한민국이 산다" — 숨은 보물 같은 제품·장인을 발굴해 함께 키우는 동역자(同役者) 구조 지향</div>
+
+            <div class="info-label">의사결정 스타일 (추정)</div>
+            <div class="info-value">미션 주도·관계 중심. 진정성·상생 가치가 강함 → 단가·효율 논리보다 "함께 성공한다"는 동반 서사에 반응. 데이터·레퍼런스 부족이 본인 불안 요소</div>
+        </div>
+        <div class="callout callout-success">
+            <strong>상담 활용:</strong> 아이스브레이킹 = "소상공인이 살아야 대한민국이 산다는 철학"과 1호 사랑산천년초 사장님 발굴 스토리에 진심으로 공감. <strong>가족컴퍼니가 소상공인에게 하려는 그 일(발굴·상생·스케일업)을, 브랜드라이즈가 가족컴퍼니에게 똑같이 해주는 동역자</strong>라는 프레이밍이 강력하다 — "당신들이 소상공인의 동역자이듯, 우리가 당신들의 동역자".
+        </div>
+        <div class="callout callout-danger">
+            <strong>⚠️ 주의:</strong> ① 가족컴퍼니 본인이 콘텐츠·커머스 컨설팅을 '업'으로 삼는 동종 사업자 → "마케팅 가르치려는" 톤이면 거부감. 브랜드라이즈는 그들이 약한 <strong>'전환 엔진·플레이북 시스템화'</strong>에 한정해 보완자로 포지셔닝. ② Pre-revenue → 단가 제시 전에 <strong>가용 재원·성과공유 수용 여부</strong>를 먼저 확인하지 않으면 견적이 공중에 뜬다.
+        </div>
+    </div>
+
+    <!-- 7. SWOT 분석 -->
+    <div class="section" id="swot">
+        <h2>7. SWOT 분석</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>Strengths (강점)</h4>
+                <ul>
+                    <li>스토리텔링 콘텐츠 제작 내재화(PD·촬영·편집)</li>
+                    <li>"초기비용 0원" 상생 구조 = 소상공인 발굴 진입장벽 제거</li>
+                    <li>6차산업·정부지원·투자유치 연계 회수 설계(비광고 매출원)</li>
+                    <li>진정성 미션 = ESG·공공협력·바이럴 친화 서사</li>
+                    <li>1호(사랑산천년초)가 이미 가동 = 추상이 아닌 실물 케이스 보유</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>Weaknesses (약점)</h4>
+                <ul>
+                    <li>콘텐츠 → 구매전환 → 지속판매 전환 엔진 부재(1순위)</li>
+                    <li>Pre-revenue·100% 자비투자 = 현금 여력·모델 미검증</li>
+                    <li>2인 = 마케팅 실행력·전문 역량 부족</li>
+                    <li>레퍼런스 0 = 소상공인 설득 시간·신뢰 비용 큼</li>
+                    <li>자사몰·커머스 인프라 0에서 출발</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>Opportunities (기회)</h4>
+                <ul>
+                    <li>6차산업 정부예산이 구조적으로 흐르는 시장</li>
+                    <li>스토리·가치소비 트렌드 + 공동구매·펀딩 런칭 채널 활성</li>
+                    <li>대형 플랫폼이 못하는 1:1 밀착 디지털 전환 슬롯</li>
+                    <li>발굴 딜플로우 = 각 소상공인이 반복 매출원·확장 경로</li>
+                    <li>다국어 콘텐츠 기반 K-푸드 글로벌 확장 비전</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>Threats (위협)</h4>
+                <ul>
+                    <li>"공짜 자비투자" 모델의 현금 소진·지속가능성 리스크</li>
+                    <li>1호 실패 시 모델 전체 신뢰·확장 동력 상실</li>
+                    <li>대형 커머스 상생 프로그램·대행사의 규모 경쟁</li>
+                    <li>천년초 효능 표현 규제·체질 한정 이슈</li>
+                    <li>정부지원 수주 불확실성(심사·경쟁)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. 니즈 분석 (SPIN + JTBD) -->
+    <div class="section" id="needs-analysis">
+        <h2>8. 니즈 분석 (SPIN + JTBD)</h2>
+
+        <h3>표면 요청 (클라이언트 명시)</h3>
+        <div class="script-block">"진정성 있는 <strong>스토리텔링 콘텐츠 역량이 온라인 마켓(스마트스토어·플레이스 등)에서 실질적인 구매 전환과 지속 가능한 판매 구조(정기구독·크라우드펀딩 등)로 자연스럽게 연결</strong>되길 원합니다. 현재 내부 인력 구조의 한계를 보완하고 마케팅 실행력을 높일 수 있는 브랜드라이즈만의 날카롭고 구체적인 <strong>'콘텐츠 커머스 마케팅 솔루션 및 전략 스케줄러'</strong> 제안과 전문적 조언을 받고자 합니다."</div>
+
+        <h3>SPIN 분석</h3>
+        <div class="spin-grid">
+            <div class="spin-card spin-s">
+                <h4>Situation (상황)</h4>
+                <p>소상공인 상생 콘텐츠 커머스 에이전시. 2인 공동대표(콘텐츠+커머스). Pre-revenue, 100% 자비투자. 1호 사랑산천년초 가동, 콘텐츠 채널(한만사TV) 보유, 자사몰·전환 퍼널 0.</p>
+            </div>
+            <div class="spin-card spin-p">
+                <h4>Problem (문제)</h4>
+                <p>"콘텐츠는 만드는데 매출로 안 이어질까 두렵다." 전환 엔진·지속판매 구조 부재 + 2인 실행력 한계 + 레퍼런스 0. 모델 자체가 1호로 처음 검증되는 단계.</p>
+            </div>
+            <div class="spin-card spin-i">
+                <h4>Implication (시사점)</h4>
+                <p>1호가 매출로 증명 안 되면 → 모델 신뢰·확장(2·3호 섭외, 투자유치) 전체가 막힘. 자비투자 현금만 소진. "소상공인이 살아야" 미션도 첫 단추를 못 꿴다.</p>
+            </div>
+            <div class="spin-card spin-n">
+                <h4>Need-Payoff (해결 이익)</h4>
+                <p>1호에 '콘텐츠→전환→구독·펀딩' 풀퍼널을 이식해 5천만 펀딩+보조금 수주를 만들고, 그 과정을 SOP로 박제하면: ① 모델 검증 ② 2·3호 복제 ③ 투자유치 IR 자산 ④ 실행력 보완.</p>
+            </div>
+        </div>
+
+        <h3>고민 계층 (Pain Hierarchy)</h3>
+        <div class="pain-layer">
+            <div class="pain-level pain-l1">
+                <span class="level-tag">L1 — 표면 요청 ★★★★★</span>
+                콘텐츠 커머스 마케팅 솔루션 + 전략 스케줄러 (콘텐츠 → 구매전환 → 정기구독·펀딩 연결)
+            </div>
+            <div class="pain-level pain-l2">
+                <span class="level-tag">L2 — 전술적 문제 ★★★★☆</span>
+                2인 인력으로 마케팅 실행력 부족. 자사몰·퍼널·광고를 누가 어떻게 굴릴지 미정. 1호를 어떤 채널·순서로 런칭할지 확신 없음
+            </div>
+            <div class="pain-level pain-l3">
+                <span class="level-tag">L3 — 전략적 문제 ★★★☆☆</span>
+                "채널 성장 = 매출" 불확실. 1호 성공스토리(콘텐츠+전환+실매출 데이터)가 안 나오면 모델·확장 전체가 정체
+            </div>
+            <div class="pain-level pain-l4">
+                <span class="level-tag">L4 — 근본 원인 ★★☆☆☆</span>
+                Pre-revenue·자비투자 모델의 지속가능성 불안. 검증된 시스템·레퍼런스로 모델을 객관화하고 투자·정부수주로 회수 궤도에 올리고 싶음
+            </div>
+        </div>
+        <div class="callout callout-danger">
+            <strong>Type III Error 경고:</strong> 표면(L1)을 "콘텐츠 제작 대행"이나 "광고 운영 대행" 단발로 받으면 = 잘못된 문제를 정확히 푸는 오류. 가족컴퍼니는 콘텐츠는 스스로 만든다(그게 그들의 업). 진짜 빈칸은 <strong>① 콘텐츠를 매출로 바꾸는 전환 엔진 ② 1호를 2·3호에 복제할 반복 SOP ③ 그 전제인 비즈니스 모델·재원 구조 설계</strong>. 네이밍·디자인이 아니라 <strong>'시스템·플레이북'</strong>이 산출물.
+        </div>
+
+        <h3>JTBD 분석</h3>
+        <table>
+            <tr><th>Job 유형</th><th>추정 내용</th></tr>
+            <tr><td><strong>Functional</strong></td><td>스토리텔링 콘텐츠를 스마트스토어·플레이스·펀딩에서 실구매·정기구독으로 전환하는 퍼널·전략 스케줄러를 갖추고, 1호를 반복 가능한 SOP로 만든다</td></tr>
+            <tr><td><strong>Social</strong></td><td>"콘텐츠 잘 만드는 신생 팀"을 넘어 "소상공인을 실제 매출로 살려낸 검증된 상생 파트너"로 소상공인·지자체·투자자에게 각인되고 싶음</td></tr>
+            <tr><td><strong>Emotional</strong></td><td>① 자비투자 모델의 지속가능성 불안 해소 ② 첫 단추(1호 성공)를 꿰는 안도감 ③ "소상공인이 살아야 대한민국이 산다" 미션의 실현 성취감</td></tr>
+        </table>
+    </div>
+
+    <!-- 9. GAP 분석 & 기회 평가 -->
+    <div class="section" id="gap-analysis">
+        <h2>9. GAP 분석 & 기회 평가</h2>
+
+        <h3>기회 적합도 평가 (Opportunity Fit Score)</h3>
+        <table>
+            <tr><th>평가 항목</th><th>가중치</th><th>점수</th><th>근거</th></tr>
+            <tr><td>니즈-서비스 핏</td><td>30%</td><td><span class="tag tag-green">5</span></td><td>표면 요청(콘텐츠→커머스 전환·전략 스케줄러)이 브랜드라이즈 코어와 정확히 일치. 거의 만점</td></tr>
+            <tr><td>예산 적합성</td><td>20%</td><td><span class="tag tag-red">2</span></td><td><strong>Pre-revenue·100% 자비투자 = 표준 유료 단가 흡수 어려움(최대 변수)</strong>. 성과공유·정부예산 매칭으로만 해소 가능</td></tr>
+            <tr><td>의사결정 구조</td><td>15%</td><td><span class="tag tag-green">5</span></td><td>공동대표 직접 신청·결정, 부부·가족 = 합의·결재 빠름</td></tr>
+            <tr><td>긴급도</td><td>15%</td><td><span class="tag tag-green">4</span></td><td>"1호 초기 판매 성공스토리 구축이 가장 시급" 대표 명시 + 펀딩·정부수주 타이밍 압박</td></tr>
+            <tr><td>성장 잠재력</td><td>10%</td><td><span class="tag tag-green">4</span></td><td>딜플로우 파트너십 시 각 소상공인이 반복 매출원 + 정부예산 레버. 단 모델 검증 전제</td></tr>
+            <tr><td>레퍼런스 가치</td><td>10%</td><td><span class="tag tag-green">4</span></td><td>"소상공인 상생·농식품 디지털 전환 성공" = ESG·공공·농식품 D2C 포트폴리오로 강력</td></tr>
+        </table>
+
+        <div class="verdict">
+            <div class="label">종합 기회 적합도</div>
+            <div class="value">4.0 / 5.0</div>
+            <div class="desc">🟡 조건부 Go — 핏·결정속도·긴급도·미션은 최상. 단 <strong>예산 흡수력(Pre-revenue)이 유일한 GO 분기점</strong> → 구조 설계로 해소</div>
+        </div>
+
+        <h3>수주 확률 시나리오</h3>
+        <table>
+            <tr><th>시나리오</th><th>조건</th><th>대응</th></tr>
+            <tr style="background:#f1f8f4;"><td style="background:#f1f8f4;"><strong>성과공유·정부예산 매칭 수용</strong></td><td style="background:#f1f8f4;">재원 구조 유연</td><td style="background:#f1f8f4;"><strong>최적 경로 — Essential(진단·SOP) 저단가 진입 + 펀딩 성과·6차산업 보조금을 재원으로 Professional 확장</strong></td></tr>
+            <tr><td>자체 자본만, 보수적</td><td>현금 슬림</td><td>T0~Essential 1page 전략·SOP로 최소 진입, 1호 성과 후 확장 약속</td></tr>
+            <tr><td>딜플로우 파트너 의향</td><td>장기 협업</td><td>브랜드라이즈가 발굴 소상공인의 브랜드 전략 담당 / 가족컴퍼니가 콘텐츠·발굴 담당 = 역할 분담형 파트너십(resaltz형)</td></tr>
+            <tr><td>실행 대행까지 원함</td><td>인력 보완 강함</td><td>전환 엔진 구축 + 콘텐츠 커머스 운영 일부 대행 = Professional~Premium, 단 재원 전제 확인</td></tr>
+        </table>
+        <div class="callout callout-info">
+            <strong>핵심:</strong> 이 건은 "수주하느냐 마느냐"보다 <strong>"어떤 구조로 푸느냐"</strong>가 관건. 표준 유료 컨설팅으로 접근하면 예산에서 막히고, <strong>성과공유·정부예산 매칭·딜플로우 파트너십</strong> 중 하나로 프레임을 바꾸면 핏 만점의 좋은 케이스가 된다.
+        </div>
+    </div>
+
+    <!-- 10. 3-Tier 견적 초안 -->
+    <div class="section" id="quote">
+        <h2>10. 3-Tier 견적 초안</h2>
+        <div class="callout callout-info">
+            <strong>공통 설계 철학:</strong> 가족컴퍼니는 Pre-revenue이므로 <strong>표준 단가 그대로 제시하면 흡수 불가</strong>. 세 티어 모두 "1호(사랑산천년초)를 전환 엔진으로 성공시키며 반복 SOP를 박제"를 출발점에 두되, <strong>재원은 ① 성과공유(펀딩 매출 %) ② 정부예산 매칭(6차산업·지자체) ③ 딜플로우 파트너십</strong> 중 하나로 설계한다. "마케팅 대행"이 아니라 "전환 엔진·플레이북 파트너"로 포지셔닝.
+        </div>
+
+        <div class="tier-cards">
+            <div class="tier-card recommended">
+                <div class="tier-badge">⭐ 추천 진입</div>
+                <h4>🥉 Essential — 진단·플레이북</h4>
+                <div class="price">300만~700만</div>
+                <div class="duration">1호 GTM + 상생 SOP 설계 · 4주 (일회성)</div>
+                <ul>
+                    <li>사랑산천년초 포지셔닝·타깃·소구 정의(체질·규제 안전 번역)</li>
+                    <li>콘텐츠 → 상세페이지 → 공동구매/펀딩 전환 퍼널 설계도</li>
+                    <li>와디즈 펀딩 스토리 구조 + 정기구독 후킹 1차안</li>
+                    <li><strong>2·3호에 재사용할 '상생 콘텐츠 커머스 SOP v1' 템플릿</strong></li>
+                    <li>저단가 진입 = Pre-revenue 흡수 가능 · 정부예산 매칭 시 부담 추가 해체</li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>🥈 Professional — 전환 엔진 구축</h4>
+                <div class="price">1,000만~2,000만</div>
+                <div class="duration">전환 퍼널 실구축 + 1호 런칭 동행 · 8주</div>
+                <ul>
+                    <li>Essential 전체 +</li>
+                    <li>자사몰/스마트스토어 + 콘텐츠↔커머스 연동 실구축</li>
+                    <li>펀딩·공동구매 실행 + 전환 데이터 측정 체계(채널↔매출 KPI)</li>
+                    <li>한만사TV 콘텐츠 → 커머스 연동 포맷 정립</li>
+                    <li><strong>성과공유 하이브리드</strong>(진단비 최소화 + 펀딩 매출 %) 설계 가능</li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>🥇 Partnership — 딜플로우·운영</h4>
+                <div class="price">별도 협의</div>
+                <div class="duration">정부예산 매칭 / 딜플로우 파트너십 · 6개월+</div>
+                <ul>
+                    <li>Professional 전체 +</li>
+                    <li>6차산업 액셀러레이터·지자체 협력 예산 공동 제안서·IR</li>
+                    <li>2·3호 소상공인 온보딩 SOP 가동 + 발굴 딜플로우 공동 운영</li>
+                    <li>콘텐츠 커머스 운영 일부 대행 + 월간 리포트</li>
+                    <li><strong>역할 분담형 파트너십</strong>(발굴·콘텐츠=가족컴퍼니 / 브랜드 전략=브랜드라이즈)</li>
+                </ul>
+            </div>
+        </div>
+
+        <table>
+            <tr><th></th><th>Essential ⭐</th><th>Professional</th><th>Partnership</th></tr>
+            <tr><td>범위</td><td><strong>1호 GTM·SOP 설계</strong></td><td>전환 엔진 실구축+런칭</td><td>+정부예산·딜플로우·운영</td></tr>
+            <tr><td>기간</td><td><strong>4주</strong></td><td>8주</td><td>6개월+</td></tr>
+            <tr><td>가격대(대)</td><td><strong>300만~700만</strong></td><td>1,000만~2,000만</td><td>별도(성과공유·예산매칭)</td></tr>
+            <tr><td>진짜 니즈 충족</td><td><strong>L1+L2</strong></td><td>L1~L3</td><td>L1~L4</td></tr>
+            <tr><td>재원 구조</td><td><strong>자체+정부매칭</strong></td><td>성과공유 하이브리드</td><td>예산매칭·딜플로우</td></tr>
+        </table>
+
+        <div class="leverage-box">
+            <div class="quote">"가족컴퍼니가 소상공인의 '0원 동역자'이듯,<br>브랜드라이즈는 1호를 검증된 SOP로 박제하는 가족컴퍼니의 동역자입니다.<br>표준 단가가 아니라 — 펀딩 성과·정부예산에 얹어 함께 회수하는 구조로 시작하시죠."</div>
+        </div>
+    </div>
+
+    <!-- 11. 상담 전략 & 코칭 -->
+    <div class="section" id="strategy">
+        <h2>11. 상담 전략 & 코칭</h2>
+
+        <h3>60분 상담 타임라인</h3>
+        <div class="timeline-phase">
+            <div class="phase-time">0-5분</div>
+            <div class="phase-content"><h4>라포 형성</h4><p>"소상공인이 살아야 대한민국이 산다" 철학·1호 사랑산천년초 발굴 스토리에 진심 공감. "당신들이 소상공인의 동역자이듯, 우리가 당신들의 동역자" 프레임</p></div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">5-18분</div>
+            <div class="phase-content"><h4>모델·재원 확인 ★</h4><p>질문 1(가용 재원/성과공유)·2(서비스 범위) 먼저 투입 — 견적 구조를 가르는 핵심. 책망 톤 0, "지속가능하게 같이 풀자" 톤</p></div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">18-32분</div>
+            <div class="phase-content"><h4>핵심 진단 ★</h4><p>질문 3(전환 엔진) → 질문 4(1호 실체). "채널 성장이 매출이 될까" 불안의 실체를 끌어내는 골든타임. 침묵 활용</p></div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">32-43분</div>
+            <div class="phase-content"><h4>인사이트 공유</h4><p>Teaching 1·2·3을 "사실 공유" 톤으로. "콘텐츠는 이미 잘하신다, 빈칸은 전환 엔진과 반복 SOP"가 핵심</p></div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">43-52분</div>
+            <div class="phase-content"><h4>솔루션 방향</h4><p>두 레이어(1호 GTM + 반복 SOP) 제시 + 재원 답변에 따라 성과공유·정부예산 매칭·딜플로우 중 1~2개 가볍게. 구체 가격 X</p></div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">52-60분</div>
+            <div class="phase-content"><h4>클로징</h4><p>Essential(1호 GTM·SOP) 진입 프레이밍 + 제안서 약속 + 딜플로우 파트너십 가능성 언급(브랜드라이즈 내부 검토 후)</p></div>
+        </div>
+
+        <h3>반드시 물어볼 질문 (5개)</h3>
+        <div class="question-card">
+            <div class="q-num">Q1 — 가용 재원 ★ 1순위 (Phase 2)</div>
+            <div class="q-text">"지금 초기비용 100% 자비투자 단계라고 하셨는데 — 이번 컨설팅 재원은 자체 자본인가요, 펀딩 매출 일부인가요, 아니면 정부지원 매칭으로 풀 수 있을까요? 저흰 성과를 같이 나누는 구조도 열려 있어요."</div>
+            <div class="q-intent">의도: 견적 구조(표준 vs 성과공유 vs 정부매칭)를 가르는 결정적 질문. 가족컴퍼니 자신의 상생 모델과 같은 언어("성과공유")로 진입하면 거부감 0.</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q2 — 서비스 범위 ★ (Phase 2)</div>
+            <div class="q-text">"콘텐츠는 직접 잘 만드시잖아요. 저희에게 필요한 건 그 콘텐츠를 매출로 바꾸는 '전환 설계+전략 스케줄러'까지인가요, 아니면 그걸 2·3호에 복제할 시스템(SOP)까지인가요?"</div>
+            <div class="q-intent">의도: Essential(전략·SOP) vs Professional(실구축) 분기. 콘텐츠 역량을 먼저 인정해 동종 자존심 자극 회피.</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q3 — 전환 엔진 (Phase 3) ★ 핵심</div>
+            <div class="q-text">"'채널 성장이 매출이 될까'가 가장 큰 불안이라고 하셨죠. 지금 한만사TV·콘텐츠를 본 사람이 실제로 사러 가는 경로(상세페이지·결제·재구매)는 어디까지 만들어져 있나요?"</div>
+            <div class="q-intent">의도: 전환 퍼널의 실제 공백을 본인 입으로 확인 → "그 빈칸이 정확히 저희 영역"으로 자연 연결(Teaching 2).</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q4 — 1호 실체 (Phase 3)</div>
+            <div class="q-text">"사랑산천년초는 지금 SKU(진액·가루 등)·가격·기존 오프라인 매출이 어떻게 되나요? HACCP이나 6차산업 인증은요? 펀딩 5천만 목표는 어떤 근거로 잡으셨어요?"</div>
+            <div class="q-intent">의도: 1호의 실현 가능성·재고 캐파·정부 연계 여부 확인. 5천만 목표의 현실성·근거 점검.</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q5 — 확장·딜플로우 (Phase 4)</div>
+            <div class="q-text">"1호가 성공하면 2·3호 소상공인을 계속 발굴하실 텐데 — 그 발굴 풀을 저희와 함께 굴리는 파트너십도 생각해볼 수 있을까요?"</div>
+            <div class="q-intent">의도: 1회성 클라이언트 → 장기 딜플로우 파트너 가능성 타진(브랜드라이즈 업사이드). 가족컴퍼니에겐 실행력·신뢰 보강 제안.</div>
+        </div>
+
+        <h3>Challenger Teaching 3종 ("사실 공유" 톤)</h3>
+        <div class="leverage-box">
+            <div class="quote" style="font-size:16px;">
+                ① 콘텐츠는 이미 잘하신다 — 빈칸은 '채널을 매출로 바꾸는 전환 엔진'이다<br><br>
+                ② 1호의 진짜 가치는 매출이 아니라 '2·3호에 복제할 검증된 SOP'다<br><br>
+                ③ Pre-revenue엔 표준 단가가 아니라 '성과공유·정부예산'에 얹는 구조가 맞다
+            </div>
+        </div>
+
+        <h3>예상 반론 & 대응</h3>
+        <table>
+            <tr><th>예상 반론</th><th>대응 전략</th></tr>
+            <tr><td>"콘텐츠·마케팅은 저희가 직접 하는 업인데요"</td><td>역량 인정부터: "콘텐츠는 두 분이 가장 잘하시죠. 저흰 그걸 매출로 바꾸는 전환 설계와, 1호를 2·3호에 복제할 시스템만 보탭니다 — 가르치는 게 아니라 빈칸을 채우는 동역자예요"</td></tr>
+            <tr><td>"아직 매출이 없어서 컨설팅 비용이 부담된다"</td><td>구조 전환: "표준 단가로 안 받습니다. 펀딩 성과를 같이 나누거나, 6차산업·지자체 예산에 컨설팅 재원을 얹는 방법이 있어요. 가족컴퍼니가 소상공인에게 하시는 그 방식 그대로요"</td></tr>
+            <tr><td>"채널을 더 키우면 매출은 따라오지 않나"</td><td>재구성: "채널 크기와 매출은 다른 축이에요. 100만 조회가 0원일 수도 있어요. 시청자를 결제까지 옮기는 경로가 있어야 '성장=매출'이 됩니다 — 그 경로를 1호에 한 번 깔아보시죠"</td></tr>
+            <tr><td>"우선 1호만 빨리 띄우고 싶다"</td><td>정합: "그게 정답입니다. 1호를 Essential로 빠르게 띄우되, 같은 작업을 SOP로 기록만 해두면 2·3호가 공짜로 빨라져요. 추가 비용 없이 따라오는 자산입니다"</td></tr>
+            <tr><td>"다른 데도 알아보는 중"</td><td>차별화: "콘텐츠 대행사는 영상을 줍니다. 저흰 '채널→매출 전환 엔진 + 반복 SOP + 정부예산 연계'를 묶어요. 그리고 저희가 발굴 딜플로우 파트너가 되면, 일감이 아니라 함께 크는 구조예요"</td></tr>
+        </table>
+
+        <div class="callout callout-success">
+            <strong>Trusted Advisor Quick Tip (마무리, 즉시 제공):</strong> "오늘 바로 해보실 수 있는 거 하나 — 한만사TV 사랑산천년초 영상 설명란·고정댓글 맨 위에 '구매(공동구매/펀딩) 링크' 한 줄을 넣고, 영상 안에서 그 링크를 입으로 언급해보세요. 콘텐츠를 본 사람이 살 곳을 못 찾는 게 가장 흔한 누수예요. 비용 0원으로 오늘 막을 수 있어요." → 전환 엔진의 가장 작은 첫 조각을 무료로 시연 = "팔기 전에 먼저 돕는다" 인상.
+        </div>
+    </div>
+
+    <!-- 12. 클로징 전략 -->
+    <div class="section" id="closing">
+        <h2>12. 클로징 전략</h2>
+
+        <h3>2단 클로징 시퀀스</h3>
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="step-num">STEP 1</div>
+                <div class="step-title">요약 확인</div>
+                <div class="step-desc">"핵심은 ①1호를 콘텐츠→전환→펀딩 풀퍼널로 띄우고 ②그걸 반복 SOP로 박제 ③재원은 성과공유·정부예산으로. 맞으세요?"</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 2</div>
+                <div class="step-title">Essential 진입</div>
+                <div class="step-desc">"전체 한 번에 안 가셔도 돼요. 1호 GTM+SOP 먼저 작은 단위로, 성과 보고 확장"</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 3</div>
+                <div class="step-title">제안서 약속</div>
+                <div class="step-desc">"1page 진단 + 재원 구조 옵션(성과공유/정부매칭) + Tier 제안서를 [N일] 내 보내드릴게요"</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 4</div>
+                <div class="step-title">파트너십 검토</div>
+                <div class="step-desc">"딜플로우 파트너십은 저희 내부 검토 후 별도 제안 드릴게요" (장기 업사이드 여지 남김)</div>
+            </div>
+        </div>
+
+        <h3>긴급성 요소 (지금 시작해야 하는 이유)</h3>
+        <table>
+            <tr><th>요소</th><th>내용</th></tr>
+            <tr><td>1호 성공스토리 = 모델의 첫 단추</td><td>대표가 "가장 시급"으로 명시. 1호 성공 데이터가 나와야 2·3호 섭외·투자유치·정부수주 확장 전체가 열림</td></tr>
+            <tr><td>펀딩·정부수주 타이밍</td><td>공동구매·크라우드펀딩·6차산업 보조금은 신청·집행 시즌이 있음 → 포지션·퍼널을 지금 확정해야 그 창에 맞춤</td></tr>
+            <tr><td>자비투자 현금 소진</td><td>Pre-revenue·100% 자비투자 = 시간이 곧 현금. 1호를 빨리 매출로 전환할수록 모델 지속가능성 확보</td></tr>
+        </table>
+
+        <h3>리스크 제거 (고객 불안 완화)</h3>
+        <ul style="font-size:14px; padding-left:20px; line-height:1.9;">
+            <li><strong>단계형·저단가 진입:</strong> Essential(300~700만)으로 작게 시작 → 1호 성과 보고 확장 (Pre-revenue 부담 제거)</li>
+            <li><strong>재원 구조 유연성:</strong> 성과공유·정부예산 매칭으로 현금 장벽 우회 — 가족컴퍼니 자신의 상생 모델과 동일 언어</li>
+            <li><strong>동종 존중 톤:</strong> "콘텐츠는 두 분이 최고, 우리는 전환 엔진·SOP만 보탠다"로 가르치는 인상 제거</li>
+            <li><strong>실행력 보완 명시:</strong> 2인 한계를 인정하고, SOP·전환 엔진으로 그들이 굴릴 수 있는 수준 또는 일부 대행으로 설계</li>
+        </ul>
+
+        <div class="callout callout-danger">
+            <strong>⚠️ 클로징 시퀀스 주의:</strong> 가격을 먼저 꺼내면 Pre-revenue 클라이언트는 즉시 닫힌다. 반드시 질문 1(재원)·3(전환 엔진 공백)으로 <strong>재원 구조와 진짜 빈칸(전환·SOP)</strong>을 먼저 합의한 뒤 Tier를 꺼낸다. "표준 단가가 아니라 성과·예산에 얹는 구조"라는 점을 가격보다 먼저 말하는 것이 핵심.
+        </div>
+
+        <h3>상담 후 액션</h3>
+        <ul style="font-size:14px; padding-left:20px; line-height:1.9;">
+            <li>감사 메시지(24시간 이내) — "소상공인이 살아야 대한민국이 산다" 미션 공감 한 줄 재언급</li>
+            <li>1page 진단 + 재원 구조 옵션(성과공유/정부예산 매칭) + 3-Tier 제안서 착수</li>
+            <li>질문 1·2 답변(재원·범위)을 Tier·구조에 반영</li>
+            <li>한만사TV 채널·사랑산천년초 SKU/인증/매출 실체 확보(제안서 근거)</li>
+            <li>딜플로우 파트너십 가능성 브랜드라이즈 내부 검토 → 별도 제안 여부 결정</li>
+            <li>팔로업 통화 일정 확정(제안서 발송 + 2~3일 후)</li>
+        </ul>
+    </div>
+
+    <!-- 참고 링크 -->
+    <div class="section" id="sources">
+        <h2>참고 링크</h2>
+        <div class="source-list">
+            <p>· <strong>클라이언트 1차 자료 (2026-06-07 제공)</strong>: 조직(공동대표 2인 — 최미진 커머스/조남혁 PD·콘텐츠) / 매출(Pre-revenue·100% 자비투자) / 채널(유튜브 한만사TV·인스타·블로그 준비 중) / 타깃(1차 소상공인·6차산업 / 2차 가치소비자 / 3차 B2G 지자체 / 4차 글로벌) / USP(초기비용 0원 상생 스케일업) / 1호(괴산 사랑산천년초) / 6개월 목표(공동구매+펀딩 5천만+정부 공동수주) / 시급 과제(1호 초기 판매 성공스토리) / 기대(콘텐츠 커머스 마케팅 솔루션+전략 스케줄러) / 광고 리포트 없음(첫 프로젝트)</p>
+            <p>· <strong>사업자 정보</strong>: <a href="https://www.bizno.net/article/4045201122" target="_blank">bizno.net — 가족컴퍼니 404-52-01122</a> (공동대표 최미진·조남혁, 2026-04-24 설립, 본점 정읍 / 통신판매 2026-경기파주-1926)</p>
+            <p>· <strong>천년초 시장</strong>: 토종 손바닥선인장 건강식품, 진액 30~40만원대, 칼슘·식이섬유·비타민C 소구, 체질(차가운 성질) 이슈 — <a href="https://healtho.co.kr/news/view.php?idx=71386" target="_blank">헬스오</a> · 선발 브랜드 <a href="https://xn--950b98r80h.com/" target="_blank">에미네천년초</a> · <a href="http://www.goryeocactus.co.kr/pages/business.php" target="_blank">고려선인장</a></p>
+            <p>· <strong>괴산 사랑산</strong>: 감물면 치유마을(지명 확인) — <a href="https://www.goesan.go.kr/tour/selectTourInfo.do?key=884" target="_blank">괴산군 문화관광</a>. "사랑산천년초" 업체 자체는 공개검색 직접 확인 불가 → 클라이언트 제공 정보</p>
+            <p>· <strong>6차산업·농촌융복합</strong>: 인증제도·2026 액셀러레이터 육성지원 등 실재 정부 프로그램 — <a href="https://www.nongsaro.go.kr/portal/ps/psx/psxn/sptExpertDtl.ps?menuId=PS63117&infoNo=14&colmnNo=7" target="_blank">농사로(인증제도)</a> · <a href="https://gangwon6.co.kr/" target="_blank">농촌융복합산업지원센터</a></p>
+            <p style="margin-top:12px; color:var(--text-light);">⚠️ 데이터 표기: 확정(클라이언트 1차 자료·사업자 공개정보·시장 일반 사실) / 추정(부부·가족 공동창업 등 단일 시그널) / 확인 필요(한만사TV 채널 규모, 사랑산천년초 SKU·인증·매출, 자본금·투자 — 상담 직접 확인). 가격은 "대" 수준 범위로 Pre-revenue 특성상 성과공유·정부예산 매칭 구조 전제. 본 문서는 간이 PREP(2026-06-07)을 정식 리서치로 승급한 1차본.</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>BRANDRISE (MarketingOS) — New Business 상담 준비 패키지</p>
+    <p>이 문서는 상담 준비 목적으로 작성되었으며, 외부 공유를 금합니다.</p>
+</div>
+
+</body>
+</html>
