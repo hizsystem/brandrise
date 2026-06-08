@@ -20,23 +20,29 @@ function buildSimbakQuote() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
 
   var KPI = [
-    "· 심박 B2C 브랜드 토대 구축 파트너십 — 흩어진 채널·패키지를 '하나의 심박'으로 통합",
-    "· 세계가 인정한 자산(수출 10개국·특허·인증)을 국내 소비자가 만나는 자리(패키지·SNS)의 언어로 번역",
-    "· 가을 시즌(8~10월) + TIPS 발표 시간표에 맞춘 단계적 진행 — 1순위는 '보이는 자리'부터"
+    "· 심박 브랜드 토대 구축 파트너십 — 흩어진 채널·패키지를 '하나의 심박'으로 통합",
+    "· 단기 목표: 수출 10개국·특허·인증 자산을 패키지·SNS의 소비자 언어로 번역",
+    "· 장기 목표: 자사몰 중심 D2C 매출 기반 확보 (후속 단계)",
+    "· 프로젝트 운영 기간: 가을 시즌(8~10월) 출시 정합 — 6월 초 착수 기준"
   ];
   var NOTES = [
     "· 본 견적서의 금액은 VAT 별도 기준입니다.",
-    "· 자사몰 이커머스 구축은 본 견적에서 제외되며 후속 단계(D2C 엔진)로 별도 제안드립니다.",
-    "· 촬영(제품·라이프스타일)은 옵션 항목이며 별도 견적입니다.",
-    "· 패키지 실물 인쇄·샘플 제작 비용은 별도입니다 (인쇄소 실견적 기준 별도 안내).",
-    "· 광고비·물류·인증 갱신비는 실비 별도(투명 청구)입니다.",
+    "· 인쇄·샘플 제작·광고비·물류·인증 갱신 비용은 별도입니다.",
     "· 결제: 착수금 50% / 중간금 30% / 잔금 20%.",
-    "· SNS 운영(실행)은 심박 내부, 기획·디렉션은 브랜드라이즈 분업입니다."
+    "· 계약 후 브랜드 방향성이 크게 변경될 경우 일정·비용이 조정될 수 있습니다."
+  ];
+
+  // 추가 논의 영역 (후속 단계 / 가격 없음) — 쿠엔즈버킷 표준 차용
+  var DISCUSS_ITEMS = [
+    {label:'자사몰 활성화 세팅', desc:'카페24 기준 자사몰 활성화 + D2C 전환 설계'},
+    {label:'고객 CRM 운영', desc:'고객 CRM 세팅 및 기획 운영'},
+    {label:'메타 광고 운영', desc:'메타 광고 콘텐츠 기획 운영'}
   ];
 
   var core = {
-    title:'[브랜드라이즈] 심박 브랜드 리뉴얼 — 견적 코어', ver:'2026-06-04 ver.',
+    title:'[브랜드라이즈] 심박 브랜드 리뉴얼 — 견적 코어', ver:'2026-06-08 ver.',
     kpi:KPI, notes:NOTES,
+    discuss:{ name:'3) 추가 논의 영역 (후속 단계 / 별도 견적)', items:DISCUSS_ITEMS },
     blocks:[
       { name:'0) 브랜드 기획 (미니)', staffing:'대표 1인, 디렉터 1인, 기획 1인 / 약 3주',
         danga:5000000, qty:'1', subtotal:5000000,
@@ -57,7 +63,7 @@ function buildSimbakQuote() {
       { name:'2) SNS 운영 기획', staffing:'기획 1인, 디자이너 1인 / 약 4주',
         danga:10000000, qty:'1', subtotal:10000000,
         items:[
-          {label:'통합 IA 설계', desc:'인스타 3계정 → 1계정 통합 정보구조(IA) 설계'},
+          {label:'인스타 3계정 → 1계정 통합 설계', desc:"흩어진 계정을 '심박' 하나로 합치는 구조 설계 (메인 계정·피드 분류·기존 게시물 이관)"},
           {label:'무드보드 + 콘텐츠 캘린더', desc:'브랜드 무드보드 + 3개월 콘텐츠 캘린더 (월 12~16건)'},
           {label:'릴스 패턴 + 캡션 기준', desc:'릴스 시나리오 패턴 + 캡션/해시태그 기준'}
         ],
@@ -67,8 +73,9 @@ function buildSimbakQuote() {
   };
 
   var full = {
-    title:'[브랜드라이즈] 심박 브랜드 리뉴얼 — 견적 풀', ver:'2026-06-04 ver.',
+    title:'[브랜드라이즈] 심박 브랜드 리뉴얼 — 견적 풀', ver:'2026-06-08 ver.',
     kpi:KPI, notes:NOTES,
+    discuss:{ name:'4) 추가 논의 영역 (후속 단계 / 별도 견적)', items:DISCUSS_ITEMS },
     blocks:[
       { name:'0) 브랜드 기획 (풀)', staffing:'대표 1인, 디렉터 1인, 기획 1인 / 약 5주',
         danga:15000000, qty:'1', subtotal:15000000,
@@ -91,7 +98,7 @@ function buildSimbakQuote() {
       { name:'2) SNS 기획 + 인플루언서 시딩', staffing:'기획 1인, 디자이너 1인 / 약 3개월',
         danga:13000000, qty:'3개월', subtotal:13000000,
         items:[
-          {label:'인스타 통합 IA 설계', desc:'인스타 3계정 → 1계정 통합 정보구조(IA) 설계'},
+          {label:'인스타 3계정 → 1계정 통합 설계', desc:"흩어진 계정을 '심박' 하나로 합치는 구조 설계 (메인 계정·피드 분류·기존 게시물 이관)"},
           {label:'무드보드 + 3개월 콘텐츠 캘린더', desc:'브랜드 무드보드 + 월 12~16건 3개월 콘텐츠 기획'},
           {label:'릴스 시나리오 + 인플루언서 시딩', desc:'릴스 시나리오 패턴 + 시딩 후보 5~10명/월 큐레이션'},
           {label:'월간 KPI 리포트', desc:'도달·저장·유입 월간 리포트 (운영 실행은 심박 내부)'}
@@ -191,6 +198,15 @@ function renderQuote_(ss, sheetName, newName, d) {
     merges.push([rOptSub,1,1,4]);
   }
 
+  // ── 7. 추가 논의 영역 (합계 아래, 가격 없음 / 후속 단계)
+  var rDiscHdr = 0;
+  if (d.discuss){
+    push(['','','','','']);
+    rDiscHdr = push([d.discuss.name, '', '', '', '']);
+    merges.push([rDiscHdr,1,1,5]);   // 헤더 A:E 병합
+    d.discuss.items.forEach(function(it){ push([it.label, it.desc, '', '', '']); });
+  }
+
   var last = rows.length;
 
   // ── 값 일괄 입력
@@ -240,6 +256,11 @@ function renderQuote_(ss, sheetName, newName, d) {
   if (rOptSub){
     sh.getRange(rOptSub,1,1,5).setBackground(CLR.gray).setFontWeight('bold');
     sh.getRange(rOptSub,1).setHorizontalAlignment('center');
+  }
+  // 추가 논의 영역 헤더 (연한 배경 + 굵게, 가격 없음)
+  if (rDiscHdr){
+    sh.getRange(rDiscHdr,1,1,5).setBackground(CLR.light);
+    sh.getRange(rDiscHdr,1).setFontWeight('bold');
   }
   // 숫자 서식 (단가 C, 계약견적 E) + 수량 D 가운데
   sh.getRange(rHead,3,last-rHead+1,1).setNumberFormat('#,##0').setHorizontalAlignment('center');
