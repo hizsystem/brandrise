@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>루테아 (LUTÉA) - New Business 상담 준비 | BRANDRISE</title>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #444444;
+            --accent: #f07030;
+            --accent-light: #fff3ec;
+            --accent-soft: #fde8da;
+            --highlight: #f07030;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --muted: #f5f5f5;
+            --text: #1a1a1a;
+            --text-light: #999999;
+            --border: #eeeeee;
+            --success: #5a7a52;
+            --warning: #f07030;
+            --danger: #f07030;
+            --jamful-yellow: #FFD93D;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; word-break: keep-all; overflow-wrap: break-word; }
+        .header { background: #ffffff; color: var(--primary); padding: 60px 40px; text-align: center; border-bottom: 1px solid var(--border); }
+        .header-badge { display: inline-block; background: var(--accent-soft); border: 1px solid var(--accent); color: var(--accent); padding: 4px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 16px; letter-spacing: 1px; }
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; color: var(--primary); }
+        .header .subtitle { font-size: 16px; color: var(--secondary); font-weight: 300; }
+        .header .date { margin-top: 16px; font-size: 13px; color: var(--text-light); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        .toc { background: var(--card-bg); border-radius: 12px; padding: 32px; margin-bottom: 40px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+        .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }
+        .toc a { color: var(--accent); text-decoration: none; font-size: 14px; padding: 6px 0; display: block; transition: color 0.2s; }
+        .toc a:hover { color: var(--highlight); }
+        .section { background: var(--card-bg); border-radius: 12px; padding: 36px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section h2 { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--highlight); }
+        .section h3 { font-size: 17px; font-weight: 600; color: var(--secondary); margin: 20px 0 12px; }
+        .info-grid { display: grid; grid-template-columns: 160px 1fr; gap: 8px 16px; font-size: 14px; }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th { background: var(--muted); color: var(--primary); padding: 12px 16px; text-align: left; font-weight: 700; font-size: 13px; }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        tr:hover td { background: #f1f3f5; }
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin: 2px; }
+        .tag-red { background: var(--accent-soft); color: var(--accent); }
+        .tag-green { background: #eef3ec; color: #5a7a52; }
+        .tag-blue { background: var(--accent-light); color: var(--accent); }
+        .tag-yellow { background: #fff8d4; color: #8a6d00; }
+        .tag-gray { background: var(--muted); color: var(--secondary); }
+        .verdict { background: var(--accent); color: white; padding: 24px 32px; border-radius: 12px; text-align: center; margin: 24px 0; }
+        .verdict .label { font-size: 14px; opacity: 0.8; }
+        .verdict .value { font-size: 32px; font-weight: 800; margin: 8px 0; line-height: 1.3; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+        .tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+        .tier-card { border: 2px solid var(--border); border-radius: 12px; padding: 24px; position: relative; transition: transform 0.2s; }
+        .tier-card:hover { transform: translateY(-4px); }
+        .tier-card.recommended { border-color: var(--accent); box-shadow: 0 4px 20px rgba(240, 112, 48, 0.15); }
+        .tier-card .tier-badge { position: absolute; top: -12px; right: 16px; background: var(--highlight); color: white; padding: 2px 12px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+        .tier-card h4 { font-size: 16px; margin-bottom: 4px; }
+        .tier-card .price { font-size: 22px; font-weight: 800; color: var(--highlight); margin: 12px 0; }
+        .tier-card .duration { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+        .tier-card ul { list-style: none; padding: 0; }
+        .tier-card li { font-size: 13px; padding: 4px 0; padding-left: 18px; position: relative; line-height: 1.5; }
+        .tier-card li::before { content: "›"; position: absolute; left: 0; color: var(--highlight); font-weight: 700; }
+        .callout { background: var(--accent-light); border-left: 4px solid var(--accent); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 14px; }
+        .callout-info { background: var(--muted); border-left-color: var(--secondary); }
+        .callout-danger { background: var(--accent-soft); border-left-color: var(--accent); }
+        .callout-success { background: #eef3ec; border-left-color: #5a7a52; }
+        .callout-warn { background: #fff8d4; border-left-color: #b8860b; }
+        .leverage-box { background: var(--primary); color: white; padding: 32px; border-radius: 12px; margin: 24px 0; text-align: center; }
+        .leverage-box .quote { font-size: 20px; font-weight: 700; line-height: 1.5; margin: 16px 0; }
+        .flow-steps { display: flex; gap: 0; margin: 20px 0; overflow-x: auto; }
+        .flow-step { flex: 1; min-width: 160px; padding: 16px; background: #f1f3f5; position: relative; text-align: center; }
+        .flow-step:not(:last-child)::after { content: "›"; position: absolute; right: -8px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--highlight); font-weight: 700; z-index: 1; }
+        .flow-step .step-num { font-size: 11px; font-weight: 700; color: var(--highlight); margin-bottom: 4px; }
+        .flow-step .step-title { font-size: 13px; font-weight: 600; }
+        .flow-step .step-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .swot-item h4 { font-size: 15px; margin-bottom: 10px; }
+        .swot-item ul { padding-left: 18px; }
+        .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: #ffffff; border: 1px solid var(--border); }
+        .swot-w { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .swot-o { background: #ffffff; border: 1px solid var(--border); }
+        .swot-t { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+        .source-list a { color: var(--accent); text-decoration: none; }
+        .source-list a:hover { text-decoration: underline; }
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+        .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 8px 0; }
+        .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+        .summary-section { border-left: 4px solid var(--accent); background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%); }
+        .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; }
+        .kpi-card.kpi-dark { background: var(--muted); color: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--accent); color: white; }
+        .kpi-card.kpi-success { background: var(--accent-soft); color: var(--primary); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.7; }
+        .kpi-card .kpi-value { font-size: 24px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.7; }
+        .summary-oneliner { background: #0D0D0D; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+        .summary-oneliner .sol-text .hl { color: var(--highlight); }
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+        .diagnosis-section { border: 2px solid var(--accent); }
+        .diagnosis-section h2 { border-bottom-color: var(--accent); color: var(--accent); }
+        .diag-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .diag-box { padding: 16px; border-radius: 8px; }
+        .diag-box.diag-current { background: var(--accent-light); }
+        .diag-box.diag-ideal { background: #eef3ec; }
+        .diag-box .db-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .diag-box.diag-current .db-label { color: var(--accent); }
+        .diag-box.diag-ideal .db-label { color: #5a7a52; }
+        .diag-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+        .diag-note { font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: var(--accent-light); border-radius: 8px; }
+        .spin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .spin-card { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .spin-card h4 { font-size: 15px; margin-bottom: 10px; }
+        .spin-s { background: #ffffff; border: 1px solid var(--border); }
+        .spin-p { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .spin-i { background: var(--accent-soft); }
+        .spin-n { background: #ffffff; border: 1px solid var(--border); }
+        .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+        .pain-level { flex: 1; min-width: 200px; padding: 16px; border-radius: 10px; font-size: 13px; }
+        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .pain-l1 { background: var(--muted); }
+        .pain-l2 { background: var(--accent-light); }
+        .pain-l3 { background: var(--accent-soft); }
+        .pain-l4 { background: var(--accent); color: white; }
+        .script-block { background: #f8f9fa; border-left: 3px solid var(--accent); padding: 16px 20px; margin: 12px 0; border-radius: 0 8px 8px 0; font-size: 14px; color: var(--secondary); }
+        .script-block .quote-mark { color: var(--accent); font-weight: 800; margin-right: 6px; }
+        .question-card { background: #f8f9fa; border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+        .question-card .q-num { font-size: 12px; font-weight: 700; color: var(--highlight); }
+        .question-card .q-text { font-size: 15px; font-weight: 600; margin: 4px 0 8px; }
+        .question-card .q-intent { font-size: 13px; color: var(--text-light); }
+        .question-card .q-branch { font-size: 12px; color: var(--secondary); margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border); }
+        .timeline-phase { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .timeline-phase .phase-time { font-size: 13px; font-weight: 700; color: var(--highlight); text-align: center; padding-top: 4px; }
+        .timeline-phase .phase-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .timeline-phase .phase-content p { font-size: 13px; color: var(--text-light); margin-bottom: 6px; }
+        .timeline-phase .phase-content .phase-script { font-size: 13px; color: var(--secondary); background: var(--accent-light); padding: 8px 12px; border-radius: 6px; margin-top: 6px; }
+        .source-cite { font-size: 11px; color: var(--text-light); font-weight: 400; margin-left: 4px; }
+        .fact-warn { background: #fff8d4; border-left: 3px solid #b8860b; padding: 8px 12px; border-radius: 4px; margin: 8px 0; font-size: 13px; color: #6b5400; }
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .tier-cards { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-step:not(:last-child)::after { display: none; }
+            .channel-grid { grid-template-columns: 1fr; }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .diag-compare { grid-template-columns: 1fr; }
+            .spin-grid { grid-template-columns: 1fr; }
+            .pain-layer { flex-direction: column; }
+            .timeline-phase { grid-template-columns: 1fr; }
+        }
+
+        /* One-Pager (수주 한 장) — jamful 팔레트 */
+        .onepager { background: var(--primary); color:#fff; border-radius:14px; padding:40px; margin-bottom:28px; box-shadow:0 4px 24px rgba(0,0,0,0.10); }
+        .onepager .op-kicker { font-size:12px; letter-spacing:1.5px; color:#ffb088; font-weight:700; margin-bottom:6px; }
+        .onepager .op-h { font-size:13px; color:#b9b9b9; margin-bottom:18px; }
+        .op-block { margin:24px 0; }
+        .op-block:last-child { margin-bottom:4px; }
+        .op-block .op-label { font-size:12px; font-weight:700; color:#ffb088; letter-spacing:0.5px; margin-bottom:10px; }
+        .op-need { font-size:18px; font-weight:700; line-height:1.6; }
+        .op-need .muted { display:block; margin-top:10px; color:#c9c9c9; font-weight:500; font-size:14px; line-height:1.7; }
+        .op-do { display:grid; gap:10px; }
+        .op-do .do-item { background:rgba(255,255,255,0.06); border-left:3px solid var(--accent); padding:13px 16px; border-radius:0 8px 8px 0; font-size:14px; line-height:1.6; }
+        .op-do .do-item strong { color:#ffd9c2; }
+        .op-offer { background:rgba(240,112,48,0.16); border:1px solid var(--accent); border-radius:10px; padding:16px 20px; font-size:14px; line-height:1.7; }
+        .op-offer .hl { color:#ffb088; font-weight:700; }
+        /* leverage teach-item */
+        .leverage-box .teach-item { text-align:left; font-size:14px; margin:14px 0; padding-left:16px; border-left:3px solid rgba(255,255,255,0.4); }
+        .leverage-box .teach-item strong { color:#ffd9c2; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">NEW BUSINESS 상담 준비 패키지</div>
+    <h1>루테아 (LUTÉA)</h1>
+    <div class="subtitle">컬러 도자기 라이프스타일 브랜드 | 1인 D2C · 메타 ROAS 회복 · 가치 메시지 재설계</div>
+    <div class="date">작성일: 2026-06-08 | Prepared by BRANDRISE (MarketingOS)</div>
+</div>
+
+<div class="container">
+
+    <!-- 수주 한 장 (One-Pager) -->
+    <div class="onepager" id="one-pager">
+        <div class="op-kicker">수주 한 장</div>
+        <div class="op-h">미팅 들어가기 전, 이 카드 하나면 된다. (아래 12섹션은 근거·깊이 백업)</div>
+        <div class="op-block">
+            <div class="op-label">그래서 진짜 니즈는</div>
+            <div class="op-need">"광고를 다시 살려달라"가 아니라, "무너진 원인을 짚고 매출 구조를 다시 세워줄 진단·전략 파트너"가 필요하다.<span class="muted">표면 호소 = 메타 ROAS 5→2 붕괴(퍼포먼스 문제로 귀인). 실제 원인 = 광고를 받쳐줄 가치 메시지(왜 이 값인가)와 재구매 구조가 없어 광고가 흔들리면 매출이 즉시 붕괴. 근거: IG @luteaofficial 오가닉 좋아요 1~6개(거의 0)·팔로워 707 — 매출이 메타 유료 트래픽에 단일 의존.</span></div>
+        </div>
+        <div class="op-block">
+            <div class="op-label">그래서 우리가 해주는 것 (구체)</div>
+            <div class="op-do">
+                <div class="do-item"><strong>① ROAS 붕괴 원인 진단</strong> — 3월 변곡점 정체(추적 손실 vs 모수 소진/시즌성) 규명 + 위닝 소재 해체로 "왜 예전 소재에서만 매출 나는지" 데이터로 확정</div>
+                <div class="do-item"><strong>② 소재 위닝 공식 + 가치 메시지 재설계</strong> — 재현 가능한 크리에이티브 가이드 + "왜 루테아인가"를 언어화해 가격 저항을 구매 명분으로 전환</div>
+                <div class="do-item"><strong>③ 퍼널 하부 1단(재구매 트리거)</strong> — 신규 오디언스 풀 확장 + 7/30일 재구매 장치로 "광고 단일 의존"에서 "버티는 구조"로 전환</div>
+            </div>
+        </div>
+        <div class="op-block">
+            <div class="op-label">첫 제안 & 다음 액션</div>
+            <div class="op-offer"><span class="hl">Professional — 진단+소재 공식+퍼널 1단 재설계(8주, 중간 백만원대 · 광고비와 분리 견적)</span> 큰 약정 없이 Essential 2주 진단으로 시작해 확장하는 Land &amp; Expand로 1인 운영자 부담 제거 &nbsp;|&nbsp; <span class="hl">다음 액션:</span> 60분 상담에서 월 광고비·재구매율·CAPI 셋업 확인 후 견적 확정 → 2주 내 진단 착수</div>
+        </div>
+    </div>
+
+    <!-- Executive Summary -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">회사</div>
+                <div class="sh-title">루테아 (LUTÉA) / 제니글로벌</div>
+                <div class="sh-sub">컬러 도자기 라이프스타일 D2C | "Find your essence" · 2024년 런칭 신생 1인 브랜드</div>
+            </div>
+            <div>
+                <div class="sh-label">대표이사</div>
+                <div class="sh-title">김혜련</div>
+                <div class="sh-sub">최종 의사결정권자 · 마케팅 0명, 직접 운영 (개인 이력 ⚠️ 미확인)</div>
+            </div>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">현재 메타 ROAS</div>
+                <div class="kpi-value">2.0</div>
+                <div class="kpi-sub">3월 변곡점 전 5.0+ (약 60% 하락)</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">인스타 팔로워</div>
+                <div class="kpi-value">707</div>
+                <div class="kpi-sub">게시물 21개 (Apify 실측)</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">핵심 SKU</div>
+                <div class="kpi-value">2종</div>
+                <div class="kpi-sub">5.9만~6.9만원 · 세트 확장 여지</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">오가닉 인게이지먼트</div>
+                <div class="kpi-value">≈ 0</div>
+                <div class="kpi-sub">게시물 좋아요 1~6개 · 광고 단일 의존</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                컬러·감성 콘셉트("Find your essence")와 ROAS 5를 만든 실행 감각은 갖췄으나,<br>
+                <span class="hl">광고를 받쳐줄 "가치 메시지"와 "재구매 구조"의 부재</span>가 성장의 최대 병목이 되고 있음.
+            </div>
+        </div>
+        <div class="summary-bottom">
+            <strong>기회 적합도:</strong> <span class="hl">4.2 / 5.0 (🟢 Go)</span> &nbsp;|&nbsp;
+            <strong>추천 Tier:</strong> Professional (8주 프로젝트, 광고비와 분리 견적) &nbsp;|&nbsp;
+            <strong>기대 성과:</strong> ROAS 회복 경로 + 광고가 흔들려도 버티는 구조 1단 전환
+        </div>
+    </div>
+
+    <!-- 핵심 문제점 & 진단 -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 문제점 & 진단</h2>
+
+        <h3>1. 광고 단일 의존 구조 — 광고가 흔들리면 매출이 즉시 붕괴 (Critical)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재 상태</div>
+                <ul>
+                    <li>매출이 메타 유료 트래픽에 단일 의존 (IG 오가닉 좋아요 1~6개)</li>
+                    <li>팔로워 707·게시물 21개 — 퍼널 하부(오가닉·커뮤니티) 자산 사실상 0</li>
+                    <li>ROAS가 외부 변수(3월 변곡점)에 무방비로 붕괴</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">이상적 상태</div>
+                <ul>
+                    <li>광고 → 가치 메시지 → 재구매로 이어지는 3축 매출 구조</li>
+                    <li>오가닉·시딩 콘텐츠가 광고 효율을 받쳐주는 자산화</li>
+                    <li>ROAS가 흔들려도 매출이 버티는 완충 구조</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2. 가치 설득 메시지 부재 — "왜 이 값인가"가 전달되지 않는다 (High)</h3>
+        <div class="diag-note">
+            대표의 <strong>"가격 때문에 안 팔리는 건지 모르겠다"</strong>는 가격 문제가 아니라 <strong>가치 전달 실패의 신호</strong>입니다.
+            인스타에서 컬러 도자기는 모두 예쁩니다 — 예쁨은 차별점이 아니라 입장료입니다. 고객이 5.9만 원에서 멈추는 건 비싸서가 아니라
+            <strong>"이 그릇이 그 값일 이유(제작·철학·무드)"가 전달되지 않았기 때문</strong>입니다. 가격을 내리면 마진만 죽습니다.
+            "Find your essence"라는 좋은 씨앗은 있으나 차별화 축·핵심 카피로 자산화되지 않았습니다.
+        </div>
+
+        <h3>3. 신규 획득 단발 구조 — 재구매·LTV 장치가 0 (High)</h3>
+        <div class="diag-note">
+            도자기는 본질적으로 머그 → 접시 → 세트 → 시즌 컬러로 <strong>늘려가는 재구매 카테고리</strong>인데, 광고로 비싸게 산 첫 구매가 1회로 끝납니다.
+            7/30/90일 후속 제안·CRM이 없어 <strong>CAC가 조금만 올라도 즉시 적자 전환</strong> 위험. ROAS 회복은 증상 치료일 뿐, 이 구조를 안 바꾸면 반드시 재발합니다.
+            <span class="source-cite">⚠️ 재구매율은 미확인 — 상담 Q4로 실측 필요</span>
+        </div>
+
+        <h3>영역별 진단 요약</h3>
+        <table>
+            <tr><th>영역</th><th>현재 상태</th><th>심각도</th><th>GAP</th></tr>
+            <tr><td>매출 구조</td><td>메타 유료 트래픽 단일 의존, 완충 자산 0</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>광고 소재·타겟</td><td>위닝 소재 1~2개 갇힘, 신규 소재 사망(모수 소진 의심)</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>브랜드 메시지</td><td>"예쁨" 소구, 가치 차별화 축 부재</td><td><span class="tag tag-red">High</span></td><td><span class="tag tag-red">큼</span></td></tr>
+            <tr><td>재구매·CRM</td><td>후속 제안·자동화 장치 0 <span class="source-cite">(미확인, 질문 필요)</span></td><td><span class="tag tag-red">High</span></td><td><span class="tag tag-red">큼</span></td></tr>
+            <tr><td>오가닉·콘텐츠</td><td>팔로워 707·게시물 21, 오가닉 도달 사실상 사망</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-yellow">큼</span></td></tr>
+            <tr><td>채널 운영</td><td>1인이 인스타+자사몰 2개+오픈마켓 3개+선물채널 운영(분산)</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-yellow">보통</span></td></tr>
+            <tr><td>전환 추적(픽셀/CAPI)</td><td>셋업 상태 미확인 — 3월 추적 손실 가능성</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-gray">확인 필요</span></td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>진단 결론:</strong> 루테아는 ROAS 5를 만들어낸 <strong>실행 감각과 "Find your essence"라는 감성 콘셉트</strong>를 갖추고 있으나,
+            매출이 <strong>전적으로 메타 유료 트래픽에 의존</strong>하고 있어 광고 효율이 흔들리는 순간 매출 전체가 무너지는 구조입니다.
+            대표가 진단한 "광고 문제"는 증상이며, 진짜 병목은 <strong>광고를 받쳐줄 가치 메시지(L3)와 재구매 구조(L4)의 부재</strong>입니다.
+            광고를 더 돌리거나 가격을 내리는 것이 아니라, <strong>"버티는 구조"를 1단부터 까는 것</strong>이 처방입니다.
+        </div>
+    </div>
+
+    <!-- 목차 -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 & 진단</a>
+            <a href="#company-info">1. 기업 기초 정보</a>
+            <a href="#product-lineup">2. 주력 제품/서비스</a>
+            <a href="#digital-presence">3. 디지털 프레즌스 진단</a>
+            <a href="#competitors">4. 경쟁사 분석</a>
+            <a href="#market">5. 시장 환경</a>
+            <a href="#ceo-background">6. 대표자/경영진 프로필</a>
+            <a href="#swot">7. SWOT 분석</a>
+            <a href="#needs-analysis">8. 니즈 분석 (SPIN + JTBD)</a>
+            <a href="#gap-analysis">9. GAP 분석 & 기회 평가</a>
+            <a href="#quote">10. 3-Tier 견적 초안</a>
+            <a href="#strategy">11. 상담 전략 & 코칭</a>
+            <a href="#closing">12. 클로징 전략</a>
+        </div>
+    </div>
+
+    <!-- 1. 기업 기초 정보 -->
+    <div class="section" id="company-info">
+        <h2>1. 기업 기초 정보</h2>
+        <div class="info-grid">
+            <div class="info-label">브랜드명</div>
+            <div class="info-value">루테아 (LUTÉA)</div>
+
+            <div class="info-label">운영사</div>
+            <div class="info-value">제니글로벌 (Jeni Global)</div>
+
+            <div class="info-label">대표자</div>
+            <div class="info-value">김혜련</div>
+
+            <div class="info-label">사업자번호</div>
+            <div class="info-value">843-10-02592</div>
+
+            <div class="info-label">통신판매업 신고</div>
+            <div class="info-value">제2024-용인기흥-7039호 → <strong>2024년 사업 개시 (런칭 1~2년차 신생)</strong></div>
+
+            <div class="info-label">소재지</div>
+            <div class="info-value">경기 용인시 기흥구 공세로 150-29 B01-M116</div>
+
+            <div class="info-label">업종</div>
+            <div class="info-value">컬러 도자기 테이블웨어 라이프스타일 브랜드 (B2C D2C)</div>
+
+            <div class="info-label">연매출</div>
+            <div class="info-value">연 1억 미만</div>
+
+            <div class="info-label">팀 규모</div>
+            <div class="info-value">마케팅 0명 — 대표 직접 운영 (1인 운영 추정)</div>
+
+            <div class="info-label">투자 단계</div>
+            <div class="info-value">부트스트랩 (외부 투자 정황 없음, 추정)</div>
+
+            <div class="info-label">자사몰</div>
+            <div class="info-value"><a href="https://luteaofficial.com/" target="_blank" style="color: var(--accent);">luteaofficial.com</a> (쇼피파이 + 카페24 병행)</div>
+
+            <div class="info-label">태그라인</div>
+            <div class="info-value">"Your mood. Your color. Your cup. — Find your essence"</div>
+
+            <div class="info-label">연락</div>
+            <div class="info-value">hello@luteaofficial.com / 070-8027-8246 (대표 010-8870-6546)</div>
+        </div>
+        <div class="callout callout-info">
+            <strong>상담 전제:</strong> "2024년 통신판매 신고 = 런칭 1~2년차 신생 1인 브랜드"가 모든 진단의 출발점입니다.
+            매출 1억 미만·마케팅 0명이므로 "대형 대행 패키지"가 아니라 <strong>"대표의 손을 덜어주고 원인을 짚어주는 진단·실행+코칭"</strong> 톤이 적합합니다.
+            <span class="source-cite">※ lutea.co.kr(루떼아)은 별개의 주얼리 브랜드 — 혼동 금지</span>
+        </div>
+    </div>
+
+    <!-- 2. 주력 제품/서비스 -->
+    <div class="section" id="product-lineup">
+        <h2>2. 주력 제품/서비스</h2>
+        <table>
+            <tr><th>제품 라인</th><th>구성</th><th>가격대</th><th>포지셔닝</th></tr>
+            <tr><td><strong>Mug + Plate 세트</strong></td><td>컬러 머그 + 플레이트</td><td>5.9만~6.9만원 <span class="source-cite">(정가 7.9만~8.9만, 상시 할인)</span></td><td>홈카페·자기돌봄</td></tr>
+            <tr><td><strong>Trio Bowl 세트</strong></td><td>컬러 볼 3종 세트</td><td>5.9만~6.9만원대</td><td>테이블 스테이징·선물</td></tr>
+        </table>
+        <div class="callout">
+            <strong>제품 진단:</strong> 자사몰 카테고리가 사실상 <strong>2개 SKU 라인뿐</strong>이라 상품 폭이 좁습니다. 이는 약점이자 동시에 기회입니다 —
+            2025~2026 트렌드가 "플레이트 하나"가 아니라 <strong>"무드 세트 전체"</strong> 제안으로 이동 중이므로,
+            객단가 상승(세트 구성 확장)과 재구매(머그 → 접시 → 시즌 컬러로 늘려가기)의 <strong>미개척 레버</strong>가 그대로 남아 있습니다.
+            컬러·개인화("Your mood. Your color")가 브랜드 핵심인 만큼, 컬러 라인 네이밍·스토리텔링으로 자산화할 여지가 큽니다.
+        </div>
+    </div>
+
+    <!-- 3. 디지털 프레즌스 진단 -->
+    <div class="section" id="digital-presence">
+        <h2>3. 디지털 프레즌스 진단</h2>
+
+        <div class="channel-grid">
+            <div class="channel-card">
+                <div class="ch-name">자사몰</div>
+                <div class="ch-stat">운영중</div>
+                <div class="ch-note">luteaofficial.com<br>쇼피파이 + 카페24 병행</div>
+            </div>
+            <div class="channel-card" style="border-color: var(--danger);">
+                <div class="ch-name">Instagram</div>
+                <div class="ch-stat" style="color: var(--warning);">707명</div>
+                <div class="ch-note">@luteaofficial · 게시물 21<br>오가닉 좋아요 1~6개 (사실상 사망)</div>
+            </div>
+            <div class="channel-card" style="border-color: var(--warning);">
+                <div class="ch-name">오픈마켓·선물채널</div>
+                <div class="ch-stat" style="color: var(--warning);">9개+</div>
+                <div class="ch-note">스스/쿠팡/11번가/카카오선물/올영/GS샵<br>신생 1인 치고 과확산</div>
+            </div>
+        </div>
+
+        <h3>채널별 진단</h3>
+        <table>
+            <tr><th>채널</th><th>상태</th><th>평가</th></tr>
+            <tr><td>자사몰 (luteaofficial.com)</td><td>쇼피파이+카페24 동시 운영, SKU 2종</td><td><span class="tag tag-yellow">보통</span> — 두 몰 병행 시 재고·픽셀·트래픽 분산 리스크, 메인 몰 확인 필요</td></tr>
+            <tr><td>Instagram @luteaofficial</td><td>팔로워 707, 게시물 21, 오가닉 좋아요 1~6개</td><td><span class="tag tag-red">Critical</span> — 오가닉 도달 사실상 사망, 광고 단독 노출 의존</td></tr>
+            <tr><td>메타(FB/IG) 광고</td><td>운영 중, ROAS 5→2. 픽셀/CAPI 셋업 <span class="source-cite">미확인</span></td><td><span class="tag tag-red">Critical</span> — 유일 성장 엔진이나 3월 이후 붕괴</td></tr>
+            <tr><td>오픈마켓·선물채널 (9개+)</td><td>스스/쿠팡/11번가/카카오선물/올영/GS샵 입점</td><td><span class="tag tag-yellow">Medium</span> — 채널별 매출 기여·관리 공수 미확인, 파레토 식별 필요</td></tr>
+            <tr><td>인플루언서/시딩</td><td>경험 있음 (체계화 정도 미확인)</td><td><span class="tag tag-yellow">Medium</span> — 마이크로 인플루언서 활용 시 전환 레버 가능</td></tr>
+            <tr><td>미디어/PR</td><td>언론 보도·인터뷰 0건</td><td><span class="tag tag-gray">없음</span> — 외부 평판 자산 부재 (사회적 증거 0)</td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>🔴 결정적 시그널:</strong> IG @luteaofficial의 2026-03 집중 업로드 게시물 좋아요가 <strong>1~6개</strong>(오가닉 거의 0)인 반면,
+            2025-12 단발 게시물 1건만 284좋아요/245뷰의 유료 스파이크를 보였습니다. 이는 <strong>오가닉 도달이 사실상 죽어 있고 매출/노출이 전적으로 메타 유료 트래픽에 의존</strong>한다는 강력한 정황으로,
+            페인포인트("3월에 광고가 무너졌다")의 구조적 원인과 정확히 맞물립니다. <strong>팔로워 700·게시물 21개는 약점이 아니라 레버리지 포인트</strong> —
+            오가닉·시딩·콘텐츠 자산을 깔아 광고 효율을 받쳐주는 "퍼널 하부 보강"이 본질 처방입니다.
+        </div>
+    </div>
+
+    <!-- 4. 경쟁사 분석 -->
+    <div class="section" id="competitors">
+        <h2>4. 경쟁사 분석</h2>
+        <table>
+            <tr><th>구분</th><th>브랜드</th><th>포지션</th><th>루테아와의 관계</th></tr>
+            <tr><td><span class="tag tag-red">1차 (직접)</span></td><td>인스타·스마트스토어 기반 컬러 도자기 소형 D2C 브랜드 다수</td><td>감성 컬러·홈카페</td><td><strong>진짜 경쟁군</strong> — 동일 채널·가격대·타겟 경합 (광고 입찰가·소재 경쟁)</td></tr>
+            <tr><td><span class="tag tag-blue">레퍼런스</span></td><td>덴비(Denby)</td><td>스톤웨어·컬러 라인업·실용성·혼수</td><td>컬러+실용 카테고리 벤치마크</td></tr>
+            <tr><td><span class="tag tag-blue">레퍼런스</span></td><td>이딸라(Iittala)</td><td>북유럽 미니멀·프리미엄 수입</td><td>감성·무드 벤치마크 (가격대 상위)</td></tr>
+            <tr><td><span class="tag tag-gray">전통/상위</span></td><td>광주요·한국도자기·행남자기</td><td>전통·혼수·백화점</td><td>직접 경합 아님 (채널·톤 상이)</td></tr>
+            <tr><td><span class="tag tag-gray">헤리티지</span></td><td>포트메리온·르크루제·노리다케</td><td>백화점·면세</td><td>대체재</td></tr>
+        </table>
+        <div class="callout">
+            <strong>경쟁 시사점:</strong> 루테아의 진짜 적은 광주요·이딸라가 아니라 <strong>"인스타에서 똑같이 컬러 그릇 광고를 돌리는 무명 소형 브랜드 수십 곳"</strong>입니다.
+            3월 ROAS 붕괴는 시즌성(봄 혼수·집들이 수요 정점 후 하락) + 이 경쟁군의 입찰·소재 경쟁 심화가 겹쳤을 가능성이 있습니다.
+            <strong>"예쁨"이 평준화된 시장에서 차별화 축은 가격이 아니라 "이 브랜드만의 이야기"</strong>입니다.
+            벤치마크로 한국도자기의 인스타 앰배서더 프로그램(월 1회 제품 제공+적립금, "내 일상 속 활용" 스토리텔링)이 신생 브랜드가 저비용으로 차용할 시딩 모델입니다.
+        </div>
+    </div>
+
+    <!-- 5. 시장 환경 -->
+    <div class="section" id="market">
+        <h2>5. 시장 환경</h2>
+        <h3>시장 규모 (TAM / SAM / SOM)</h3>
+        <table>
+            <tr><th>구분</th><th>정의</th><th>규모 (추정)</th></tr>
+            <tr><td><strong>TAM</strong></td><td>국내 중고가 이상 테이블웨어 (도자기+유리+스테인리스)</td><td>수천억~1조원대 <span class="source-cite">(출처별 편차)</span></td></tr>
+            <tr><td><strong>SAM</strong></td><td>컬러·라이프스타일 캐주얼 프리미엄 도자기 D2C 세그먼트</td><td>수백억대 추정</td></tr>
+            <tr><td><strong>SOM</strong></td><td>신생 1인 D2C·팔로워 707·매출 1억 미만</td><td>현재 극소 — 1차 목표는 점유율이 아니라 <strong>광고 효율 회복 + 객단가 상승 + 재구매 확보</strong></td></tr>
+        </table>
+        <div class="fact-warn">⚠️ 시장 규모는 정밀 통계 부재로 Perplexity 시드 기반 추정치. 상담에서 단정적 인용 자제.</div>
+
+        <h3>2025~2026 트렌드</h3>
+        <table>
+            <tr><th>트렌드</th><th>루테아 시사점</th></tr>
+            <tr><td>뉴트럴+포인트 컬러 믹스매치, 톤온톤 세트</td><td>컬러 포지셔닝과 직결 — 강점 활용 가능</td></tr>
+            <tr><td>홈카페·테이블 스테이징</td><td>"플레이트 하나"보다 <strong>"무드 세트 전체"</strong> 제안이 경쟁력 (SKU 2종은 약점이자 기회)</td></tr>
+            <tr><td>지속가능·로컬·핸드메이드 스토리</td><td>바이오의 "핸드메이드" 키워드를 스토리로 자산화 가능</td></tr>
+            <tr><td>아트 콜라보·시즌 한정 컬러</td><td>재구매·수집 욕구 자극 레버</td></tr>
+            <tr><td>콘텐츠 퍼스트 → 커뮤니티 → 구매</td><td>시딩은 <strong>마이크로 인플루언서(1만~10만)</strong>가 전환에 유효</td></tr>
+        </table>
+    </div>
+
+    <!-- 6. 대표자/경영진 프로필 -->
+    <div class="section" id="ceo-background">
+        <h2>6. 대표자/경영진 프로필 — 김혜련 대표</h2>
+        <div class="info-grid">
+            <div class="info-label">성함 / 직책</div>
+            <div class="info-value">김혜련 · 대표 (최종 의사결정권자)</div>
+
+            <div class="info-label">이력 / 창업 배경</div>
+            <div class="info-value">⚠️ <strong>확인 필요</strong> — 공개 인터뷰·기고 0건 (비상장 소규모 법인, 공개 정보 없음)</div>
+
+            <div class="info-label">의사결정 스타일</div>
+            <div class="info-value">마케팅 0명·직접 운영·다채널 동시 전개 → 실행을 직접 챙기는 올라운더형 (전문 마케팅 체계는 미구축, 추정)</div>
+
+            <div class="info-label">관심사 / 가치관</div>
+            <div class="info-value">자사몰 카피("Find your essence", "나를 위한 작은 식탁 위 전시회") → 제품 스펙보다 <strong>감성·라이프스타일·자기돌봄</strong> 언어 선호 (팩트 기반 추정)</div>
+        </div>
+        <div class="callout">
+            <strong>상담 활용:</strong> 대표 개인 리서치가 비어 있으므로, 아이스브레이킹은 <strong>"왜 컬러 도자기였나 / 왜 직접 기획·제작하셨나"</strong> 같은 창업 스토리 질문으로 엽니다.
+            "감이 안 온다"는 솔직한 진술은 <strong>데이터 기반 진단을 제시하면 신뢰가 빠르게 형성될 타입</strong>이라는 신호입니다.
+            화려한 분석보다 <strong>"광고 무너진 원인을 같이 숫자로 뜯어보자"</strong>는 실용 접근이 먹힙니다.
+            <span class="source-cite">※ 동명 SNS 계정이 검색되나 동일인 여부 미확인 — 단정 금지</span>
+        </div>
+    </div>
+
+    <!-- 7. SWOT 분석 -->
+    <div class="section" id="swot">
+        <h2>7. SWOT 분석</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>Strengths (강점)</h4>
+                <ul>
+                    <li>ROAS 5+를 만들어낸 실행 감각 (위닝 소재 직접 제작)</li>
+                    <li>"Find your essence" — 정립된 감성·컬러 콘셉트</li>
+                    <li>대표 직접 운영 = 빠른 의사결정·실행</li>
+                    <li>컬러·개인화라는 트렌드 부합 포지셔닝</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>Weaknesses (약점)</h4>
+                <ul>
+                    <li>매출의 메타 유료 트래픽 단일 의존</li>
+                    <li>오가닉 자산 0 (팔로워 707·게시물 21)</li>
+                    <li>가치 메시지·차별화 축 부재</li>
+                    <li>재구매·CRM 장치 0, SKU 2종으로 객단가 한계</li>
+                    <li>1인 운영 + 채널 9개 과확산</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>Opportunities (기회)</h4>
+                <ul>
+                    <li>"무드 세트" 트렌드 → 객단가·세트 확장</li>
+                    <li>시즌 한정 컬러·콜라보 → 재구매·수집 욕구</li>
+                    <li>마이크로 인플루언서 시딩 → 저비용 전환</li>
+                    <li>앰배서더 모델(한국도자기 벤치마크) 차용 여지</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>Threats (위협)</h4>
+                <ul>
+                    <li>무명 컬러 도자기 D2C 다수와 광고 입찰·소재 경쟁</li>
+                    <li>"예쁨의 평준화" — 차별화 없으면 가격 경쟁 전락</li>
+                    <li>iOS/픽셀 추적 환경 변화로 ROAS 변동성 상존</li>
+                    <li>봄 시즌(혼수·집들이) 수요 정점 후 하락 사이클</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. 니즈 분석 (SPIN + JTBD) -->
+    <div class="section" id="needs-analysis">
+        <h2>8. 니즈 분석 (SPIN + JTBD)</h2>
+
+        <h3>SPIN 분석</h3>
+        <div class="spin-grid">
+            <div class="spin-card spin-s">
+                <h4>Situation (상황)</h4>
+                마케팅 0명·대표 직접 운영. 채널 과다 분산. 컬러 도자기 D2C, 연매출 1억 미만. 메타 광고가 사실상 유일한 성장 엔진이었음(ROAS 5+).
+            </div>
+            <div class="spin-card spin-p">
+                <h4>Problem (문제)</h4>
+                3월 변곡점 이후 ROAS 5→2 반토막. 신규 소재를 계속 만들어도 과거 1~2개 위닝 소재에서만 매출. 가격 저항인지 메시지 문제인지 원인 진단 불가.
+            </div>
+            <div class="spin-card spin-i">
+                <h4>Implication (파급효과)</h4>
+                광고 의존이 절대적인데 엔진이 식으면 매출 전체가 종속(현금흐름 리스크). 신규 소재 사망 = 초기 타겟 모수 소진 가능성. 재구매 없으면 CAC 상승분 만회 불가 → 적자 스파이럴.
+            </div>
+            <div class="spin-card spin-n">
+                <h4>Need-Payoff (해결 가치)</h4>
+                "가치 메시지 → 신규 도달 → 재구매" 구조를 갖추면 ROAS가 흔들려도 매출이 버팀. "왜 이 값인가"를 언어화하면 가격 저항이 구매 명분으로 전환. 감 → 검증된 공식+자동화로 대체.
+            </div>
+        </div>
+
+        <h3>고민 계층 분석 (Pain Hierarchy)</h3>
+        <div class="pain-layer">
+            <div class="pain-level pain-l1">
+                <span class="level-tag">L1 · 표면 요청 (확신 ★★★★★)</span>
+                "메타 ROAS가 5→2로 무너졌다. 광고를 어떻게 살리나"
+            </div>
+            <div class="pain-level pain-l2">
+                <span class="level-tag">L2 · 전술적 문제 (★★★★☆)</span>
+                초기 타겟 모수 소진 + 크리에이티브 피로도. "예전 소재에서만 매출"이 결정적 증거. 3월 변곡점 = 추적 손실 / 정책 / 시즌성 중 하나
+            </div>
+            <div class="pain-level pain-l3">
+                <span class="level-tag">L3 · 전략적 문제 (★★★☆☆)</span>
+                "왜 비싼 컬러 도자기를 사야 하나"라는 가치 설득 메시지·차별화 축 부재. 대표의 "설득" 단어가 이 레이어를 가리킴
+            </div>
+            <div class="pain-level pain-l4">
+                <span class="level-tag">L4 · 근본 원인 (★★☆☆☆)</span>
+                신규 획득 단발 구조 — LTV/재구매/CRM 부재. 매출이 광고로 산 신규 1회 구매에 100% 의존. 안 바꾸면 반드시 재발
+            </div>
+        </div>
+
+        <h3>JTBD 분석 — 대표가 진짜 "고용"하려는 일</h3>
+        <table>
+            <tr><th>Job 유형</th><th>내용</th></tr>
+            <tr><td><strong>Functional</strong></td><td>"무너진 매출을 다시 올리고 싶다. 광고가 왜 안 먹히는지, 가격을 내려야 하는지 정답을 알고 싶다."</td></tr>
+            <tr><td><strong>Social</strong></td><td>"혼자 헤매는 1인 대표가 아니라 제대로 된 마케팅 파트너를 가진 브랜드로 보이고 싶다. 루테아가 '동대문 컬러 그릇'이 아니라 '이유 있는 프리미엄 브랜드'로 인식되길 원함."</td></tr>
+            <tr><td><strong>Emotional</strong> ★</td><td>"혼자 가설을 다 돌려봤는데 감이 안 와서 불안하다. 이 막막함을 끝내줄, 원인을 명확히 짚어줄 사람이 필요하다." → 핵심 = <strong>불확실성 종료 / 방향감 회복</strong></td></tr>
+        </table>
+
+        <h3>표면 요청 vs 진짜 니즈</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">대표가 말하는 것 (표면)</div>
+                <ul>
+                    <li>"광고를 다시 살려달라"</li>
+                    <li>"소재를 더 잘 만들어야 한다"</li>
+                    <li>"가격 때문에 안 팔리나"</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">진짜 니즈 (분석)</div>
+                <ul>
+                    <li>"원인을 짚고 구조를 다시 세워줄 진단·전략 파트너"</li>
+                    <li>신규 오디언스 풀 확장 + 추적 복구 (소재 양산 아님)</li>
+                    <li>가격 인하가 아니라 "가치 언어화"</li>
+                </ul>
+            </div>
+        </div>
+        <div class="callout callout-danger">
+            <strong>핵심 리프레임:</strong> 대표의 "가격 때문인지 모르겠다"는 <strong>가격 문제가 아니라 가치 전달 실패의 신호</strong>입니다.
+            최저 Tier도 "ROAS만 만지는 단순 광고 대행"으로 잡으면 이 JTBD와 mismatch입니다 — 반드시 <strong>진단·전략 파트너십</strong>으로 포지셔닝해야 합니다.
+        </div>
+    </div>
+
+    <!-- 9. GAP 분석 & 기회 평가 -->
+    <div class="section" id="gap-analysis">
+        <h2>9. GAP 분석 & 기회 평가</h2>
+        <h3>기회 적합도 평가 (Opportunity Fit Score)</h3>
+        <table>
+            <tr><th>평가 항목</th><th>가중치</th><th>점수 (1-5)</th><th>근거</th></tr>
+            <tr><td><strong>니즈-서비스 핏</strong></td><td>30%</td><td><span class="tag tag-green">5.0</span></td><td>대표가 사는 것 = 진단·전략 파트너. 브랜드라이즈 핵심(진단→메시지→퍼널)과 정확히 일치</td></tr>
+            <tr><td><strong>예산 적합성</strong></td><td>20%</td><td><span class="tag tag-yellow">2.5</span></td><td>🔴 월 예산 미기재. 대형 리테이너 불가하나 진단형 단발 프로젝트는 감당 가능 (광고비 집행 중)</td></tr>
+            <tr><td><strong>의사결정 구조</strong></td><td>15%</td><td><span class="tag tag-green">5.0</span></td><td>대표 직접·1인 운영. 품의·이사회 없음. 단판 클로징 가능 구조</td></tr>
+            <tr><td><strong>긴급도</strong></td><td>15%</td><td><span class="tag tag-green">4.5</span></td><td>ROAS 60% 하락·매출 직결 현금흐름 통증. 지금 당장 해결 압박</td></tr>
+            <tr><td><strong>성장 잠재력</strong></td><td>10%</td><td><span class="tag tag-green">4.0</span></td><td>SKU 확장·채널 정리·재구매 신설·콘텐츠 자산화 등 진단 후 확장 여지 큼</td></tr>
+            <tr><td><strong>레퍼런스 가치</strong></td><td>10%</td><td><span class="tag tag-green">4.0</span></td><td>"1인 D2C 리빙 ROAS 회복+메시지 재설계" = 포트폴리오 전형, 재판매 가능 사례</td></tr>
+        </table>
+
+        <div class="verdict">
+            <div class="label">종합 기회 적합도</div>
+            <div class="value">84.5 / 100 (4.2 / 5.0)</div>
+            <div class="desc">🟢 Go (적극 수주) — 단, 진입 패키지로 체급 매칭 (Land &amp; Expand)</div>
+        </div>
+        <div class="callout">
+            <strong>판정 해설:</strong> 4.0+ 구간이며 유일한 감점은 예산 적합성 2.5입니다. 이건 "거절 사유"가 아니라 <strong>진입 Tier 설계로 풀 수 있는 변수</strong>입니다.
+            풀 리테이너 한 방을 노리지 말고, 진단형 프로젝트로 신뢰를 산 뒤 운영 리테이너로 확장하는 Land &amp; Expand가 적합도를 최대화합니다.
+        </div>
+
+        <h3>수주 확률 시나리오</h3>
+        <table>
+            <tr><th>시나리오</th><th>조건</th><th>액션</th></tr>
+            <tr><td><span class="tag tag-green">High (70~80%)</span></td><td>상담에서 가치 메시지 부재(L3)·재구매 0(L4)을 대표 스스로 인정 + 광고비 월 수백만 확인</td><td>Professional 진단 프로젝트 즉시 제안, 2주 내 착수</td></tr>
+            <tr><td><span class="tag tag-yellow">Mid (45~55%)</span></td><td>대표가 여전히 "광고만 살리면 된다"에 머무름 + 예산 빠듯</td><td>Essential 진단 스프린트로 다운셀, 결과로 확장 신뢰 구축</td></tr>
+            <tr><td><span class="tag tag-red">Low (20% 이하)</span></td><td>월 광고비 100만 미만 + "직접 더 해보겠다"</td><td>No-Go 또는 1회성 유료 진단 리포트만 (관계 유지)</td></tr>
+        </table>
+        <div class="callout callout-info"><strong>기준 기대치:</strong> 상담 진행 시 Mid~High 합산 수주 확률 ≈ <strong>55~65%</strong>. 긴급도·의사결정 단순성이 높아 상담 자리에서 진단 가치를 체감시키면 High로 끌어올릴 수 있습니다.</div>
+    </div>
+
+    <!-- 10. 3-Tier 견적 초안 -->
+    <div class="section" id="quote">
+        <h2>10. 3-Tier 견적 초안</h2>
+        <div class="callout callout-info">
+            <strong>설계 원칙:</strong> ① 최저 Tier도 "단순 광고 대행" 금지 — 전부 <strong>진단·전략 파트너십</strong> 톤 ② Professional이 가장 합리적으로 보이게
+            ③ 가격은 "대(범위)" 수준만, 상담에서 광고비 확인 후 확정 ④ 신생 1억 미만이 감당 가능한 현실적 구간 ⑤ <strong>광고비 ≠ 대행료 분리 견적</strong>
+        </div>
+        <div class="tier-cards">
+            <div class="tier-card">
+                <h4>🟡 Essential</h4>
+                <div class="price">저 · 단발</div>
+                <div class="duration">「ROAS 응급 진단 스프린트」 · 2주</div>
+                <ul>
+                    <li>메타 계정·픽셀/CAPI 추적 손실 점검 (3월 변곡점 규명)</li>
+                    <li>위닝 소재 vs 죽은 소재 구조 분석</li>
+                    <li>신규 vs 리타겟 오디언스 모수 소진 진단</li>
+                    <li>1페이지 처방 리포트 (응급 액션 3개)</li>
+                    <li><strong>역할:</strong> 비교 기준 — "이것만으론 구조가 안 바뀐다"를 체감</li>
+                </ul>
+            </div>
+            <div class="tier-card recommended">
+                <div class="tier-badge">추천</div>
+                <h4>🟢 Professional</h4>
+                <div class="price">중 · 프로젝트</div>
+                <div class="duration">「진단 + 소재 위닝 공식 + 퍼널 1단」 · 8주</div>
+                <ul>
+                    <li>Essential 진단 전체 포함</li>
+                    <li><strong>소재 위닝 공식 도출</strong> — 재현 가능한 크리에이티브 가이드</li>
+                    <li><strong>가치 메시지 재설계</strong> — "왜 이 값인가" 차별화 축·핵심 카피</li>
+                    <li><strong>퍼널 하부 1단</strong> — 신규 오디언스 확장 + 재구매 트리거(7/30일)</li>
+                    <li>무드 세트 객단가 상승 제안 1종</li>
+                    <li><strong>역할:</strong> 지금 체급에 딱 맞는 "진단+해결" 1세트</li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>🔵 Premium</h4>
+                <div class="price">중~고 · 리테이너</div>
+                <div class="duration">「통합 마케팅 파트너십」 · 3~6개월</div>
+                <ul>
+                    <li>Professional 전체 +</li>
+                    <li>메타 광고 운영 대행 (소재·집행·주간 최적화)</li>
+                    <li>콘텐츠/오가닉 자산 구축 (IG·시딩 앰배서더)</li>
+                    <li>CRM·재구매 자동화 풀세팅 (7/30/90일)</li>
+                    <li>채널 파레토 정리 + 월간 성과 리포트·코칭</li>
+                    <li><strong>역할:</strong> 가치 앵커 — "최종 그림"으로 확장 경로 제시</li>
+                </ul>
+            </div>
+        </div>
+        <div class="leverage-box">
+            <div class="quote">"광고를 더 돌릴 게 아니라, 광고가 흔들려도 매출이 버티는 구조를 까는 겁니다."</div>
+            <div style="font-size:14px; opacity:0.85;">앵커링 구조: Essential(원인만 안다) &lt; <strong style="color:#ffd9c2;">Professional(원인+해결 1단, 지금 딱 맞음)</strong> &lt; Premium(완전한 전환, 나중 목표).<br>대표가 "할까 말까"가 아니라 "Essential이냐 Professional이냐"를 고민하게 만든다.</div>
+        </div>
+    </div>
+
+    <!-- 11. 상담 전략 & 코칭 -->
+    <div class="section" id="strategy">
+        <h2>11. 상담 전략 & 코칭</h2>
+        <div class="callout callout-info">
+            <strong>상담 한 줄 전략:</strong> 대표가 들고 온 증상(L1 ROAS 붕괴)을 같이 숫자로 짚어 신뢰를 산 뒤, "광고가 아니라 받쳐줄 구조(L3 가치 메시지 + L4 재구매)가 진짜 문제"임을
+            <strong>대표 스스로 말하게</strong> 만드는 상담. <strong>듣기 70 : 말하기 30.</strong> (사전 메일 미회신 → P2 확대판)
+        </div>
+
+        <h3>60분 상담 타임라인</h3>
+        <div class="timeline-phase">
+            <div class="phase-time">0–5분<br>P1</div>
+            <div class="phase-content"><h4>라포 형성</h4><p>신청 경로 확인 + 창업 스토리 질문("왜 컬러 도자기?")으로 편하게 연다.</p><div class="phase-script">"리서치하며 보니 'Find your essence' 콘셉트가 좋더라" — 아첨 X, 구체적 호기심 O</div></div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">5–20분<br>P2 ★</div>
+            <div class="phase-content"><h4>상황 확인 (15분 확대)</h4><p>미회신이라 핵심 사실 직접 확보: 운영 채널·효과 본 것·6개월 목표 매출 + 필수 질문 Q1~Q2 시작.</p><div class="phase-script">"제가 이해한 게 맞는지 확인하려고요" 프레이밍으로 풍부하게 말하게</div></div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">20–35분<br>P3 ★</div>
+            <div class="phase-content"><h4>깊은 진단 (15분)</h4><p>Q3(이탈 깔때기)·Q4(재구매율)·Q5("왜 이 값인가" 셀프 설명) 집중. "이대로면 6개월 후?"로 끌어올림.</p><div class="phase-script">L1 무시 금지 — 응급처치 공감 깐 뒤 L3/L4로. 침묵 3~5초 적극 활용</div></div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">35–45분<br>P4</div>
+            <div class="phase-content"><h4>인사이트 공유 (10분)</h4><p>Teaching 3개 전달. SCQA 프레이밍.</p><div class="phase-script">"방금 말씀하신 게 정확히 이거예요" — 대표가 P3에서 한 말과 연결</div></div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">45–55분<br>P5</div>
+            <div class="phase-content"><h4>솔루션 방향 (10분)</h4><p>Premium("최종 그림")으로 앵커 → Essential→Professional 사다리. 가격은 "범위"만.</p><div class="phase-script">"광고비의 일부로 구조를 바로잡는 투자" 프레이밍, 구체 금액 단정 금지</div></div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">55–60분<br>P6</div>
+            <div class="phase-content"><h4>클로징 (5분)</h4><p>"오늘 핵심은 ___ 맞으시죠?" 요약 확인 + 제안서 발송일 + 무료 Quick Tip 1개.</p><div class="phase-script">명확한 다음 단계 1개만 합의, 약속 날짜 구체화</div></div>
+        </div>
+
+        <h3>반드시 물어볼 핵심 질문 5개</h3>
+        <div class="question-card">
+            <div class="q-num">Q1 · Phase 2</div>
+            <div class="q-text">"3월에 광고가 갑자기 무너졌다고 하셨는데, 그 직전·직후로 픽셀이나 전환 추적 세팅을 건드렸거나 계정에 알림이 온 게 있었나요? 아니면 봄에 집들이·혼수 수요가 빠지는 시기랑 겹친 느낌이세요?"</div>
+            <div class="q-intent">의도: L2 변곡점 정체 규명 = 추적 손실(기술) vs 모수 소진/시즌성(구조). CAPI는 "건드린 적 있냐"고 질문으로만 실측.</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q2 · Phase 2→3</div>
+            <div class="q-text">"새 소재를 계속 만드시는데 예전 소재에서만 매출이 난다고 하셨잖아요. 그 새 소재가 닿는 사람이 '이미 루테아를 본 사람'인지 '완전히 새 고객'인지 나눠서 보신 적 있으세요?"</div>
+            <div class="q-intent">의도: L2 크리에이티브 피로도 vs 타겟 모수 소진 분리. "거기까진 안 봤다"가 나오면 그 자체가 진단 가치 체감.</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q3 · Phase 3</div>
+            <div class="q-text">"고객이 장바구니까지 왔다가 결제 직전에 빠지는 편이세요, 아니면 광고를 보고도 클릭·방문 자체가 줄어든 느낌이세요? 안 산 분들한테 '왜 안 사셨어요' 들어보신 적 있으세요?"</div>
+            <div class="q-intent">의도: L3 가격 저항이 깔때기 어느 단계에서 터지는지. 클릭 감소면 도달/소재 문제, 결제 직전 이탈이면 가치 설득 문제.</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q4 · Phase 3</div>
+            <div class="q-text">"한 번 산 고객이 두 번째, 세 번째로 또 사는 비율이 대략 어느 정도세요? 재구매 유도하는 메일·카톡·시즌 제안 같은 건 돌리고 계세요?"</div>
+            <div class="q-intent">의도: L4 LTV/재구매 구조 부재 확인 (미확인이라 반드시 질문으로 실측). "거의 없다"면 즉효 레버임을 P4에서 연결.</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q5 · Phase 3 클라이맥스</div>
+            <div class="q-text">"마지막으로 하나만요. 루테아를 전혀 모르는 사람한테 '왜 이 그릇이 이 값을 줄 만한지' 딱 한 문장으로 설명한다면 뭐라고 하시겠어요?" <em>(→ 침묵. 3~5초 기다린다.)</em></div>
+            <div class="q-intent">의도: L3 핵심. 대표가 막히거나 "예뻐서요"에 머물면 = 가치 설득 메시지 부재 = 진짜 병목 확정. 대표가 스스로 깨닫게 하는 질문 → Teaching ②로 넘어가는 최적 타이밍.</div>
+        </div>
+
+        <h3>Challenger Teaching 포인트 3개 (전문가 포지션 선점)</h3>
+        <div class="leverage-box">
+            <div class="teach-item"><strong>① 위닝 소재의 진짜 승리 요인은 소재가 아니었다.</strong> 초기 ROAS 5를 만든 소재는 '소재가 좋아서'가 아니라 '아직 안 태운 고관여 초기 고객'을 만났기 때문. 모수가 소진되면 같은 소재도 빠지고 새 소재는 이미 본 사람에게 또 노출돼 죽는다. → 처방은 "소재 더 만들기"가 아니라 신규 오디언스 풀 열기 + 추적(CAPI) 복구.</div>
+            <div class="teach-item"><strong>② 가격이 문제가 아니라, 이 돈을 줄 이유가 전달이 안 된 겁니다.</strong> 인스타 컬러 도자기는 다 예쁘다 — 예쁨은 차별점이 아니라 입장료. 5.9만 원에서 멈추는 건 비싸서가 아니라 그 값일 이유가 전달 안 돼서. 가격을 내리면 마진만 죽는다. 'Find your essence'라는 좋은 씨앗은 이미 있다.</div>
+            <div class="teach-item"><strong>③ 도자기는 한 번 팔고 끝나는 게 아니라 늘려가는 카테고리입니다.</strong> 첫 구매가 1회로 끝나면 CAC가 조금만 올라도 적자. 머그→접시→세트→시즌 컬러로 늘려가는 재구매 카테고리인데 지금 장치가 0. 두 번째 구매를 만들면 광고가 흔들려도 매출이 버틴다 — 가장 빠른 레버.</div>
+        </div>
+
+        <h3>예상 반론 & 대응</h3>
+        <table>
+            <tr><th>예상 반론</th><th>대응 전략</th></tr>
+            <tr><td>"비싸다 / 매출이 1억도 안 되는데"</td><td>"광고비와 대행료는 다릅니다. ROAS 2면 광고비가 계속 새고 있어요. 진단은 새는 광고비를 막는 투자입니다 — 한 달 광고비의 일부로 구조를 바로잡는 거죠." (광고비 절대액을 역으로 끌어내는 질문으로 전환)</td></tr>
+            <tr><td>"광고만 살려주면 된다 / 운영 대행만"</td><td>"응급처치는 Essential로 바로 해드려요. 근데 받쳐줄 구조가 없으면 살려놔도 또 무너집니다 — 같은 돈을 두 번 쓰시게 돼요. 그래서 응급처치+구조 1단을 같이 가는 Professional을 권합니다." (L1 인정 후 상승)</td></tr>
+            <tr><td>"직접 해볼게요"</td><td>"위닝 소재를 직접 만드신 것 자체가 감각이 있다는 증거예요. 지금 막히신 건 감이 아니라 데이터를 읽는 프레임의 문제입니다. 2주 진단으로 막막함을 끝내드리고, 그 다음은 직접 하셔도 돼요 — 공식만 드리면요." (자책 케어 + Emotional Job 직격)</td></tr>
+            <tr><td>"다른 데도 알아보는 중"</td><td>"잘하셨어요. 다만 대부분 대행사는 '광고 운영해드릴게요'라고 하지 왜 무너졌는지는 안 짚어줘요 — 그게 우리 차이예요. 오늘 이미 가설 3개를 숫자로 드렸잖아요." (Teaching으로 차별화 실증)</td></tr>
+            <tr><td>"가격 때문인 것 같다"고 단정</td><td>(절대 동의해 가격 인하로 가지 말 것) "비싸서가 아니라 이 값을 줄 이유가 전달이 안 돼서예요. 가격을 내리면 마진만 죽습니다. Q3에서 결제 직전 이탈이라고 하셨잖아요 — 그게 메시지 신호예요." (Teaching ②로 리프레임)</td></tr>
+        </table>
+
+        <div class="callout callout-success">
+            <strong>💡 무료 Quick Tip (클로징에서 1개만 — 신뢰는 자기이익을 낮출 때 오른다):</strong><br>
+            <strong>🥇 1순위 (Q2에서 "신규/리타겟 구분 안 했다"가 나오면):</strong> "제일 매출 잘 나오는 예전 위닝 소재를, 지금까지 한 번도 안 닿은 완전 새 타겟에만 다시 태워보세요. 새 소재 만들지 마시고요. 일주일만 돌려보면 모수 소진인지 소재 문제인지 답이 나와요."<br>
+            <strong>🥈 2순위 (Q4에서 "재구매 거의 없다"가 나오면):</strong> "한 번 산 고객한테 30일 뒤 '세트 완성하기' 재구매 쿠폰 한 장만 자동으로 보내보세요. 도자기는 머그 사면 접시 사고 싶어지는 카테고리예요. 광고로 새 고객 사오는 것보다 훨씬 쌉니다."
+        </div>
+    </div>
+
+    <!-- 12. 클로징 전략 -->
+    <div class="section" id="closing">
+        <h2>12. 클로징 전략</h2>
+        <h3>이상적 클로징 플로우</h3>
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="step-num">STEP 1</div>
+                <div class="step-title">요약 확인</div>
+                <div class="step-desc">"오늘 핵심은 ___ 맞으시죠?" 3번의 "맞아요" 누적</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 2</div>
+                <div class="step-title">사다리 제시</div>
+                <div class="step-desc">Premium 앵커 → Essential→Professional 사다리</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 3</div>
+                <div class="step-title">무료 Tip</div>
+                <div class="step-desc">즉효 팁 1개로 가치 선체험</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 4</div>
+                <div class="step-title">진단 착수 합의</div>
+                <div class="step-desc">2주 내 Essential 착수 / 제안서 발송일 못박기</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 5</div>
+                <div class="step-title">팔로업 확정</div>
+                <div class="step-desc">"제안서 받으신 후 한 번 더 통화" 날짜 확정</div>
+            </div>
+        </div>
+
+        <h3>긴급성 & 리스크 제거</h3>
+        <table>
+            <tr><th>레버</th><th>스크립트 / 전략</th></tr>
+            <tr><td><strong>긴급성</strong></td><td>"ROAS 2로 광고를 계속 돌리는 매일이 원인 모른 채 광고비가 새는 날입니다. 진단이 빠를수록 새는 돈이 줄어요." + (시즌성 가설 시) "다음 시즌 수요 정점 전에 구조를 깔아야 그 파도를 탑니다."</td></tr>
+            <tr><td><strong>낮은 진입장벽</strong></td><td>Essential 2주 단발 진단으로 시작 — "큰 약정 없이 원인부터 확인" → 1인 운영자의 현금/약정 불안 해소</td></tr>
+            <tr><td><strong>투명성</strong></td><td>광고비와 대행료 분리 견적 — "대행사가 광고비 뒤에 숨는다"는 업계 불신 제거</td></tr>
+            <tr><td><strong>강점 인정</strong></td><td>"이미 위닝 소재를 만드신 감각" 인정 → 자기효능감 케어, 파트너십을 대체가 아니라 증폭으로 포지셔닝</td></tr>
+        </table>
+
+        <h3>상담 후 액션 리스트</h3>
+        <table>
+            <tr><th>액션</th><th>내용 / 시점</th></tr>
+            <tr><td>감사 메시지</td><td>24시간 이내 — 합의한 핵심 1줄 재확인 + 제안서 발송일 명시</td></tr>
+            <tr><td>Quick Tip 자료화</td><td>상담 중 준 즉효 팁을 실행 가이드 1장으로 정리해 첨부 (가치 선체험 강화)</td></tr>
+            <tr><td>확보 데이터 기록</td><td>월 광고비 절대액 / 채널별 매출 비중 / 재구매율 / 메인 몰 / CAPI 셋업 → 견적 확정 반영</td></tr>
+            <tr><td>제안서 착수</td><td>광고비 기준 Essential→Professional 사다리 금액 확정 ("광고비의 X% 투자" 프레이밍)</td></tr>
+            <tr><td>수주 시나리오 업데이트</td><td>High → Professional 즉시 / Mid → Essential 다운셀 / Low → 1회 유료 진단만</td></tr>
+            <tr><td>팔로업 미팅 확정</td><td>"제안서 받으신 후 한 번 더 통화" 날짜 못박기</td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>🔴 상담 불변 가드 (전 Phase 적용):</strong> ① L1(ROAS) 공감 먼저 → L3/L4로 상승, "광고는 중요하지 않다" 절대 금지
+            ② 가격 인하 제안 절대 금지 ③ 채널 과확산 직접 지적 금지("정리하자" 대신 "어디서 매출 나는지 같이 보자") ④ 재구매율·CAPI는 질문으로만 실측, 단정 금지.
+        </div>
+    </div>
+
+    <!-- 참고 링크 -->
+    <div class="section" id="sources">
+        <h2>참고 링크 & 데이터 출처</h2>
+        <div class="source-list">
+            <p>· 자사몰: <a href="https://luteaofficial.com/" target="_blank">luteaofficial.com</a> (사업자정보·가격·태그라인, 팩트)</p>
+            <p>· 인스타그램 실측: Apify instagram-profile-scraper @luteaofficial (2026-06-08, 팔로워 707·게시물 21·좋아요 분포)</p>
+            <p>· 시장·트렌드: Perplexity sonar-pro (2026-06-08) + xAI Grok (2026-06-08) 선행 리서치</p>
+            <p>· 예산 벤치마크: Eightx(ad spend % by stage), Scale Growth Digital, 탬블 마케팅, Soomgo, Martal</p>
+            <p>· 한국도자기 인스타 앰배서더 프로그램 (시딩 모델 벤치마크)</p>
+            <p>⚠️ lutea.co.kr(루떼아)은 별개의 주얼리 브랜드 — 혼동 금지 / 대표 개인 이력·재구매율·CAPI 셋업은 미확인 (상담 실측 필요)</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>BRANDRISE (MarketingOS) — New Business 상담 준비 패키지</p>
+    <p>이 문서는 상담 준비 목적으로 작성되었으며, 외부 공유를 금합니다.</p>
+</div>
+
+</body>
+</html>
