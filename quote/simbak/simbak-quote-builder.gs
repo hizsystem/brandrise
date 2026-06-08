@@ -45,6 +45,28 @@ function buildSimbakQuote() {
     {label:'퍼포먼스 광고 운영', desc:'전환 캠페인 + 정기배송·리텐션 (월 단위 리테이너)'}
   ];
 
+  // 마케팅 방향 가안 (견적표 우측 G열) — 5/28 미팅 발언 기반 / 블록 순서와 동일
+  var P_BRAND =
+    "● 리뉴얼 제안\n법인 '심박' 뒤 제품들 → 하나의 프리미엄 K-푸드 브랜드로 통합\n" +
+    "· 개선: 콤부차·샤인머스켓빵·심박 브랜드명 분산 → 소비자가 '심박'을 모름\n" +
+    "· 목표: 수출 10개국·특허·인증 자산을 소비자 언어로 번역 + IR/투자 자료 베이스\n" +
+    "· 예시 브랜드: 베지어트(휴닉) · 정관장";
+  var P_PKG =
+    "● 리뉴얼 제안\n포도(생과)에 묶인 샤인머스켓 → '빛나는 것' 프리미엄 선물 브랜드로 분리\n" +
+    "· 개선: 패키지에 브랜드명이 안 보임 / 생과 가격 폭락에 프리미엄 인식 동반 추락\n" +
+    "· 적용: 콤부차·빵·주력 1종 패키지 + 기프트셋 + MD 셀시트\n" +
+    "· 예시 브랜드: 타이거모닝(전 백화점) · 워커비(연매출 100억)";
+  var P_INSTA =
+    "● 리뉴얼 제안\n4050 사장님 운영 비주얼 → 사람·제품·원물 3축 릴스 콘텐츠\n" +
+    "· 개선: 인스타 3개 분산·합산 2,000 팔로워, 콘텐츠로 유입 0\n" +
+    "· 운영: 1개월 촬영·콘텐츠 집중 개발 → 운영은 심박 내부, 기획·촬영은 브랜드라이즈\n" +
+    "· 예시 브랜드: 베지어트(원물 플레이 저장 폭발) · 스타벅스앳홈";
+  var P_MALL =
+    "● 리뉴얼 제안\n회사 소개 페이지 수준 자사몰 3개 → 신뢰자산이 보이고 구매전환되는 단일 D2C\n" +
+    "· 개선: 자사몰 분산(D2C 매출 12.5%) / 상시 할인이 프리미엄 죽임 / 신뢰자산 미노출\n" +
+    "· 방향: 통합 IA(개발 자산은 살림) + 신뢰자산 배지 + 구매 퍼널\n" +
+    "· 예시 브랜드: 베지어트 · 요헤미티";
+
   var core = {
     title:'[브랜드라이즈] 심박 브랜드 리뉴얼 — 견적 코어', ver:'2026-06-08 ver.',
     kpi:KPI, notes:NOTES,
@@ -78,7 +100,8 @@ function buildSimbakQuote() {
         ],
         deliver:['· 인스타 무드보드 + 3개월 콘텐츠 기획안', '· 브랜디드 사진/영상 (촬영 결과물, 운영은 심박 내부)'] }
     ],
-    total:48000000, options:[]
+    total:48000000, options:[],
+    proposals:[P_BRAND, P_PKG, P_INSTA]
   };
 
   var full = {
@@ -123,7 +146,8 @@ function buildSimbakQuote() {
         ],
         deliver:['· 자사몰 통합 설계안 + 와이어프레임', '· 상세 페이지 디자인 (구현은 심박 팀)'] }
     ],
-    total:70000000, options:[]
+    total:70000000, options:[],
+    proposals:[P_BRAND, P_PKG, P_INSTA, P_MALL]
   };
 
   renderQuote_(ss, SHEET_CORE, '견적B · 심박 코어(4,800만)', core);
@@ -151,7 +175,7 @@ function renderQuote_(ss, sheetName, newName, d) {
   try { sh.getRange(1,1,sh.getMaxRows(),sh.getMaxColumns()).breakApart(); } catch(e){}
   sh.clear(); sh.clearNotes();
 
-  var rows = [], merges = [], priceMerges = [];
+  var rows = [], merges = [], priceMerges = [], proposalRanges = [];
   function push(arr){ rows.push(arr); return rows.length; } // 반환 = 1-based 행번호
 
   // ── 1. 타이틀
@@ -175,7 +199,7 @@ function renderQuote_(ss, sheetName, newName, d) {
 
   // ── 5. 블록
   var blockHdr = [], deliverRows = [], subRows = [];
-  d.blocks.forEach(function(b){
+  d.blocks.forEach(function(b, bi){
     var rH = push([b.name, '', b.staffing, '', '']);   // 스태핑 밴드 C:E
     blockHdr.push(rH); merges.push([rH,3,1,3]);
     var itemStart = rows.length + 1;
@@ -190,6 +214,7 @@ function renderQuote_(ss, sheetName, newName, d) {
     deliverRows.push(rD);
     var rS = push(['소       계','','','', b.subtotal]); subRows.push(rS);
     merges.push([rS,1,1,4]);
+    if (d.proposals && d.proposals[bi]) proposalRanges.push([rH, rS, d.proposals[bi]]);
   });
   var rTotal = push(['합       계 (VAT 별도)','','','', d.total]);
   merges.push([rTotal,1,1,4]);
@@ -276,6 +301,23 @@ function renderQuote_(ss, sheetName, newName, d) {
   sh.getRange(rHead,5,last-rHead+1,1).setNumberFormat('#,##0').setHorizontalAlignment('center');
   // 테두리 (표 영역)
   sh.getRange(rHead,1,last-rHead+1,5).setBorder(true,true,true,true,true,true,CLR.border,SpreadsheetApp.BorderStyle.SOLID);
+
+  // ── 8. 우측 '마케팅 방향 가안' (G열) — 견적표(A:E)와 별개 패스 / 블록 헤더~소계 범위에 정렬
+  if (proposalRanges.length){
+    sh.setColumnWidth(6, 28);    // F 간격
+    sh.setColumnWidth(7, 380);   // G 가안
+    sh.getRange(rHead,7).setValue('마케팅 방향의 가안 제시')
+      .setFontFamily('Noto Sans KR').setFontWeight('bold').setFontSize(11)
+      .setBackground(CLR.light).setHorizontalAlignment('center').setVerticalAlignment('middle');
+    proposalRanges.forEach(function(p){
+      var r0=p[0], r1=p[1];
+      try { sh.getRange(r0,7,r1-r0+1,1).merge(); } catch(e){}
+      sh.getRange(r0,7).setValue(p[2])
+        .setFontFamily('Noto Sans KR').setFontSize(9.5)
+        .setVerticalAlignment('top').setWrap(true).setBackground('#ffffff')
+        .setBorder(true,true,true,true,false,false,CLR.border,SpreadsheetApp.BorderStyle.SOLID);
+    });
+  }
 
   if (sh.getName() !== newName) sh.setName(newName);
   // 콘텐츠를 출력 탭으로 옮겼으니, 입력명(견적A/견적B)으로 남은 잔여 빈 탭 제거
