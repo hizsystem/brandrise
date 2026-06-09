@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGT (Natural Good Things) - New Business 상담 준비 | BRANDRISE</title>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #444444;
+            --accent: #f07030;
+            --accent-light: #fff3ec;
+            --accent-soft: #fde8da;
+            --highlight: #f07030;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --muted: #f5f5f5;
+            --text: #1a1a1a;
+            --text-light: #999999;
+            --border: #eeeeee;
+            --success: #5a7a52;
+            --warning: #f07030;
+            --danger: #f07030;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; word-break: keep-all; overflow-wrap: break-word; }
+        .header { background: #ffffff; color: var(--primary); padding: 60px 40px; text-align: center; border-bottom: 1px solid var(--border); }
+        .header-badge { display: inline-block; background: var(--accent-soft); border: 1px solid var(--accent); color: var(--accent); padding: 4px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 16px; letter-spacing: 1px; }
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; color: var(--primary); }
+        .header .subtitle { font-size: 16px; color: var(--secondary); font-weight: 300; }
+        .header .date { margin-top: 16px; font-size: 13px; color: var(--text-light); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        .toc { background: var(--card-bg); border-radius: 12px; padding: 32px; margin-bottom: 40px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+        .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }
+        .toc a { color: var(--accent); text-decoration: none; font-size: 14px; padding: 6px 0; display: block; transition: color 0.2s; }
+        .toc a:hover { color: var(--highlight); }
+        .section { background: var(--card-bg); border-radius: 12px; padding: 36px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section h2 { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--highlight); }
+        .section h3 { font-size: 17px; font-weight: 600; color: var(--secondary); margin: 20px 0 12px; }
+        .info-grid { display: grid; grid-template-columns: 160px 1fr; gap: 8px 16px; font-size: 14px; }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th { background: var(--muted); color: var(--primary); padding: 12px 16px; text-align: left; font-weight: 700; font-size: 13px; }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        tr:hover td { background: #f1f3f5; }
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin: 2px; }
+        .tag-red { background: var(--accent-soft); color: var(--accent); }
+        .tag-green { background: #eef3ec; color: #5a7a52; }
+        .tag-blue { background: var(--accent-light); color: var(--accent); }
+        .tag-yellow { background: #fff8d4; color: #8a6d00; }
+        .tag-gray { background: var(--muted); color: var(--secondary); }
+        .verdict { background: var(--accent); color: white; padding: 24px 32px; border-radius: 12px; text-align: center; margin: 24px 0; }
+        .verdict .label { font-size: 14px; opacity: 0.8; }
+        .verdict .value { font-size: 32px; font-weight: 800; margin: 8px 0; line-height: 1.3; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+        .tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+        .tier-card { border: 2px solid var(--border); border-radius: 12px; padding: 24px; position: relative; transition: transform 0.2s; }
+        .tier-card:hover { transform: translateY(-4px); }
+        .tier-card.recommended { border-color: var(--accent); box-shadow: 0 4px 20px rgba(240, 112, 48, 0.15); }
+        .tier-card .tier-badge { position: absolute; top: -12px; right: 16px; background: var(--highlight); color: white; padding: 2px 12px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+        .tier-card h4 { font-size: 16px; margin-bottom: 4px; }
+        .tier-card .price { font-size: 22px; font-weight: 800; color: var(--highlight); margin: 12px 0; }
+        .tier-card .duration { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+        .tier-card ul { list-style: none; padding: 0; }
+        .tier-card li { font-size: 13px; padding: 4px 0; padding-left: 18px; position: relative; line-height: 1.5; }
+        .tier-card li::before { content: "›"; position: absolute; left: 0; color: var(--highlight); font-weight: 700; }
+        .callout { background: var(--accent-light); border-left: 4px solid var(--accent); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 14px; }
+        .callout-info { background: var(--muted); border-left-color: var(--secondary); }
+        .callout-danger { background: var(--accent-soft); border-left-color: var(--accent); }
+        .callout-success { background: #eef3ec; border-left-color: #5a7a52; }
+        .callout-warn { background: #fff8d4; border-left-color: #b8860b; }
+        .leverage-box { background: var(--primary); color: white; padding: 32px; border-radius: 12px; margin: 24px 0; text-align: center; }
+        .leverage-box .quote { font-size: 20px; font-weight: 700; line-height: 1.5; margin: 16px 0; }
+        .flow-steps { display: flex; gap: 0; margin: 20px 0; overflow-x: auto; }
+        .flow-step { flex: 1; min-width: 160px; padding: 16px; background: #f1f3f5; position: relative; text-align: center; }
+        .flow-step:not(:last-child)::after { content: "›"; position: absolute; right: -8px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--highlight); font-weight: 700; z-index: 1; }
+        .flow-step .step-num { font-size: 11px; font-weight: 700; color: var(--highlight); margin-bottom: 4px; }
+        .flow-step .step-title { font-size: 13px; font-weight: 600; }
+        .flow-step .step-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .swot-item h4 { font-size: 15px; margin-bottom: 10px; }
+        .swot-item ul { padding-left: 18px; }
+        .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: #ffffff; border: 1px solid var(--border); }
+        .swot-w { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .swot-o { background: #ffffff; border: 1px solid var(--border); }
+        .swot-t { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+        .source-list a { color: var(--accent); text-decoration: none; }
+        .source-list a:hover { text-decoration: underline; }
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+        .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 8px 0; }
+        .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+        .summary-section { border-left: 4px solid var(--accent); background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%); }
+        .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; }
+        .kpi-card.kpi-dark { background: var(--muted); color: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--accent); color: white; }
+        .kpi-card.kpi-success { background: var(--accent-soft); color: var(--primary); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.7; }
+        .kpi-card .kpi-value { font-size: 24px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.7; }
+        .summary-oneliner { background: #0D0D0D; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+        .summary-oneliner .sol-text .hl { color: var(--highlight); }
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+        .diagnosis-section { border: 2px solid var(--accent); }
+        .diagnosis-section h2 { border-bottom-color: var(--accent); color: var(--accent); }
+        .diag-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .diag-box { padding: 16px; border-radius: 8px; }
+        .diag-box.diag-current { background: var(--accent-light); }
+        .diag-box.diag-ideal { background: #eef3ec; }
+        .diag-box .db-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .diag-box.diag-current .db-label { color: var(--accent); }
+        .diag-box.diag-ideal .db-label { color: #5a7a52; }
+        .diag-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+        .diag-note { font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: var(--accent-light); border-radius: 8px; }
+        .spin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .spin-card { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .spin-card h4 { font-size: 15px; margin-bottom: 10px; }
+        .spin-s { background: #ffffff; border: 1px solid var(--border); }
+        .spin-p { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .spin-i { background: var(--accent-soft); }
+        .spin-n { background: #ffffff; border: 1px solid var(--border); }
+        .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+        .pain-level { flex: 1; min-width: 200px; padding: 16px; border-radius: 10px; font-size: 13px; }
+        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .pain-l1 { background: var(--muted); }
+        .pain-l2 { background: var(--accent-light); }
+        .pain-l3 { background: var(--accent-soft); }
+        .pain-l4 { background: var(--accent); color: white; }
+        .script-block { background: #f8f9fa; border-left: 3px solid var(--accent); padding: 16px 20px; margin: 12px 0; border-radius: 0 8px 8px 0; font-size: 14px; color: var(--secondary); }
+        .script-block .quote-mark { color: var(--accent); font-weight: 800; margin-right: 6px; }
+        .question-card { background: #f8f9fa; border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+        .question-card .q-num { font-size: 12px; font-weight: 700; color: var(--highlight); }
+        .question-card .q-text { font-size: 15px; font-weight: 600; margin: 4px 0 8px; }
+        .question-card .q-intent { font-size: 13px; color: var(--text-light); }
+        .question-card .q-branch { font-size: 12px; color: var(--secondary); margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border); }
+        .timeline-phase { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .timeline-phase .phase-time { font-size: 13px; font-weight: 700; color: var(--highlight); text-align: center; padding-top: 4px; }
+        .timeline-phase .phase-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .timeline-phase .phase-content p { font-size: 13px; color: var(--text-light); margin-bottom: 6px; }
+        .timeline-phase .phase-content .phase-script { font-size: 13px; color: var(--secondary); background: var(--accent-light); padding: 8px 12px; border-radius: 6px; margin-top: 6px; }
+        .source-cite { font-size: 11px; color: var(--text-light); font-weight: 400; margin-left: 4px; }
+        .fact-warn { background: #fff8d4; border-left: 3px solid #b8860b; padding: 8px 12px; border-radius: 4px; margin: 8px 0; font-size: 13px; color: #6b5400; }
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .tier-cards { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-step:not(:last-child)::after { display: none; }
+            .channel-grid { grid-template-columns: 1fr; }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .diag-compare { grid-template-columns: 1fr; }
+            .spin-grid { grid-template-columns: 1fr; }
+            .pain-layer { flex-direction: column; }
+            .timeline-phase { grid-template-columns: 1fr; }
+        }
+        .onepager { background: var(--primary); color:#fff; border-radius:14px; padding:40px; margin-bottom:28px; box-shadow:0 4px 24px rgba(0,0,0,0.10); }
+        .onepager .op-kicker { font-size:12px; letter-spacing:1.5px; color:#ffb088; font-weight:700; margin-bottom:6px; }
+        .onepager .op-h { font-size:13px; color:#b9b9b9; margin-bottom:18px; }
+        .op-block { margin:24px 0; }
+        .op-block:last-child { margin-bottom:4px; }
+        .op-block .op-label { font-size:12px; font-weight:700; color:#ffb088; letter-spacing:0.5px; margin-bottom:10px; }
+        .op-need { font-size:18px; font-weight:700; line-height:1.6; }
+        .op-need .muted { display:block; margin-top:10px; color:#c9c9c9; font-weight:500; font-size:14px; line-height:1.7; }
+        .op-do { display:grid; gap:10px; }
+        .op-do .do-item { background:rgba(255,255,255,0.06); border-left:3px solid var(--accent); padding:13px 16px; border-radius:0 8px 8px 0; font-size:14px; line-height:1.6; }
+        .op-do .do-item strong { color:#ffd9c2; }
+        .op-offer { background:rgba(240,112,48,0.16); border:1px solid var(--accent); border-radius:10px; padding:16px 20px; font-size:14px; line-height:1.7; }
+        .op-offer .hl { color:#ffb088; font-weight:700; }
+        .leverage-box .teach-item { text-align:left; font-size:14px; margin:14px 0; padding-left:16px; border-left:3px solid rgba(255,255,255,0.4); }
+        .leverage-box .teach-item strong { color:#ffd9c2; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">NEW BUSINESS 상담 준비 패키지</div>
+    <h1>NGT (Natural Good Things)</h1>
+    <div class="subtitle">식품/F&amp;B · 여성 웰니스 이너케어 건강기능식품 | 효소 7년 1위 · 자사 원료공장 · 브랜드 자산 전환</div>
+    <div class="date">상담: 2026-06-10(수) 14:00 대면 · 김수안 대표 | 작성일: 2026-06-10 | Prepared by BRANDRISE (MarketingOS)</div>
+</div>
+
+<div class="container">
+
+    <!-- ============================================================ -->
+    <!-- 수주 한 장 (One-Pager) -->
+    <!-- ============================================================ -->
+    <div class="onepager" id="one-pager">
+        <div class="op-kicker">수주 한 장</div>
+        <div class="op-h">미팅 들어가기 전, 이 카드 하나면 된다. (아래 12섹션은 근거·깊이 백업)</div>
+        <div class="op-block">
+            <div class="op-label">그래서 진짜 니즈는</div>
+            <div class="op-need">10년간 인플루언서 공구로 "도달을 임대"해 와서, 팬덤이 NGT가 아니라 인플루언서에게 쌓였다. 사야 할 건 콘텐츠 대행이 아니라 ① 뾰족한 브랜드 축 ② 임대→소유(자사 자산) 전환 구조 ③ 통합 IMC 깔때기 — 곧 브랜드·IMC 전략 컨설팅.
+                <span class="muted">표면 호소: "온라인 팬덤·브랜드 자산을 만들어 달라(메시지·콘텐츠·광고·CRM 연결 구조)". · 실제 원인: 매출 169억(2022)→105억(2025, ⚠️공시 추세)으로 꺾이는데 카테고리는 연 8~12% 성장 = 점유율 하락. 자사 라이브를 2025에 "처음" 시작 = 도달이 외부 채널에 묶여 자사 자산으로 적립되지 않음.</span>
+            </div>
+        </div>
+        <div class="op-block">
+            <div class="op-label">그래서 우리가 해주는 것 (구체)</div>
+            <div class="op-do">
+                <div class="do-item"><strong>① 뾰족한 브랜드 축 1줄 정의</strong> — 40+ SKU·5대 루틴을 한 우산으로 꿰는 "NGT=무엇" 문장. 효소 7년 1위 신뢰를 여성 웰니스로 번역.</div>
+                <div class="do-item"><strong>② 임대→소유 환류 퍼널 설계·구축</strong> — 인플루언서 공구로 번 도달을 자사몰 회원·CRM·구독으로 환류시키는 깔때기. "촉매로 격상".</div>
+                <div class="do-item"><strong>③ 브랜드~퍼포먼스 통합 IMC 깔때기</strong> — 메시지→콘텐츠→광고(SA/DA)→CRM이 하나로 모이는 구조 + 월간 성과 진단·축 보정.</div>
+            </div>
+        </div>
+        <div class="op-block">
+            <div class="op-label">첫 제안 &amp; 다음 액션</div>
+            <div class="op-offer"><span class="hl">유료 진단(공통 1차) — 4~6주, 수백만~1천만원대로 작게 시작</span> 큰 리테이너 결정을 미리 안 해도 됨(조구만 실패의 "또 헛돈" 불안 직접 해소) &nbsp;|&nbsp; <span class="hl">다음 액션:</span> 상담에서 "진단부터 함께 시작" 합의 → 24h 내 진단 견적 송부.</div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- Executive Summary -->
+    <!-- ============================================================ -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">회사</div>
+                <div class="sh-title">NGT / (주)네츄럴굿띵스</div>
+                <div class="sh-sub">여성 웰니스 이너케어 건강기능식품 · 효소 7년 1위 · 자사 원료공장(K-낙산균 국내 유일)</div>
+            </div>
+            <div>
+                <div class="sh-label">대표이사</div>
+                <div class="sh-title">김수안</div>
+                <div class="sh-sub">2016 창업 · 여성기업 인증 · 제품·공급을 완성한 창업자(브랜드 완성 단계)</div>
+            </div>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">업력</div>
+                <div class="kpi-value">9.7년</div>
+                <div class="kpi-sub">2016.10 설립 · "10년 브랜드"</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">효소 부문</div>
+                <div class="kpi-value">7년 연속 1위</div>
+                <div class="kpi-sub">한국소비자만족지수 2019~2025</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">월 마케팅 예산</div>
+                <div class="kpi-value">5,000만↓</div>
+                <div class="kpi-sub">풀서비스 가능 구간</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">매출 추세 (3년)</div>
+                <div class="kpi-value">약 -38%</div>
+                <div class="kpi-sub">169억(2022)→105억(2025) ⚠️공시 기준</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                제품·R&amp;D·인증·유통(공급측)은 업계 최상위를 갖췄으나,<br>
+                <span class="hl">브랜드 자산·자사 팬덤·자사몰 전환(수요측)이 비어 매출이 "임대한 도달"에 묶인 것</span>이 성장의 최대 병목이 되고 있음.
+            </div>
+        </div>
+        <div class="summary-bottom">
+            <strong>기회 적합도:</strong> <span class="hl">4.75 / 5.0 (Go · 적극 수주)</span> &nbsp;|&nbsp;
+            <strong>추천 Tier:</strong> Professional (진단 4~6주 + 통합 IMC 실행 6개월, 월 2~3천만원대) &nbsp;|&nbsp;
+            <strong>기대 계약 흐름:</strong> 유료 진단(1차) → 6개월 리테이너 확장
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 핵심 문제점 & 진단 -->
+    <!-- ============================================================ -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 문제점 &amp; 진단</h2>
+
+        <h3>1. 포지셔닝이 찢어져 있다 — 정체성 부재 (Critical)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재 상태</div>
+                <ul>
+                    <li>돈 버는 곳(효소)과 자칭 비전(여성 웰니스)이 분리</li>
+                    <li>"여성 웰니스 이너케어" 우산 아래 40+ SKU·5대 루틴이 평행 나열</li>
+                    <li>소비자는 NGT=무엇인지 한 문장으로 못 잡음 (인식 = "효소 파는 곳")</li>
+                    <li>검색결과도 제품 상세·인플루언서 협찬으로 분산</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">이상적 상태</div>
+                <ul>
+                    <li>NGT를 한 줄로 정의하는 뾰족한 브랜드 축 보유</li>
+                    <li>40+ SKU가 한 우산 아래 의미 정렬 → 신제품 인지비용↓</li>
+                    <li>효소 1위 신뢰가 "여성 웰니스" 비전으로 번역되어 연결</li>
+                    <li>소비자가 "NGT는 OO 브랜드"로 즉시 떠올림</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2. 매출이 "임대한 도달"에 묶여 역성장 중 (High)</h3>
+        <div class="diag-note">10년간 매출 엔진이 인플루언서 공구(남의 채널·남의 신뢰)에 의존 → 고객·데이터·관계가 인플루언서/입점몰에 귀속되어 자사몰 팬덤·CRM·LTV로 적립되지 않음. 매출 169억→105억(공시 추세, -38%)인데 카테고리는 연 8~12% 성장 = 점유율 하락. 자사 라이브 "처음이라"(2025) = D2C 전환을 이제 막 시작.</div>
+
+        <h3>3. 브랜딩과 퍼포먼스가 단절돼 깔때기가 안 모인다 (High)</h3>
+        <div class="diag-note">카카오채널·멤버십·리뷰이벤트 인프라는 있으나 브랜드 메시지→콘텐츠→광고(SA/DA)→CRM이 따로 굴러 자사몰 전환·재구매로 안 모임. 조구만 IP 콜라보(2025)도 "연결 구조를 못 만들었다"(대표 자평) — 화제성을 자산으로 받는 그릇(환류 퍼널)이 없던 것.</div>
+
+        <h3>영역별 진단 요약</h3>
+        <table>
+            <tr><th>영역</th><th>현재 상태</th><th>심각도</th><th>GAP</th></tr>
+            <tr><td>브랜드 포지셔닝·정체성</td><td>효소 vs 여성웰니스 분리, 40+ SKU 평행 나열, 한 줄 정의 부재</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>매출 구조(채널)</td><td>인플루언서 공구 의존, 자사몰 환류율 낮음, 3년 -38% 추세</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">매우 큼</span></td></tr>
+            <tr><td>브랜딩↔퍼포먼스 연결(IMC)</td><td>메시지·콘텐츠·광고·CRM 분절, 깔때기 미연결</td><td><span class="tag tag-yellow">High</span></td><td><span class="tag tag-red">큼</span></td></tr>
+            <tr><td>자사 D2C·CRM 성숙도</td><td>인프라(카카오채널·멤버십)는 있으나 미활용, 자사 라이브 이제 시작</td><td><span class="tag tag-yellow">High</span></td><td><span class="tag tag-yellow">중간</span></td></tr>
+            <tr><td>제품·R&amp;D·인증(공급측)</td><td>효소 7년1위·K-낙산균 국내유일·자사 원료공장·GMP·HACCP</td><td><span class="tag tag-green">강점</span></td><td><span class="tag tag-green">없음(미활용)</span></td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>진단 결론:</strong> NGT는 "제품을 못 만드는 회사"가 아니라 "잘 만들고도 브랜드로 못 키우는 회사"다. 공급측 해자(효소·낙산균·공장)가 강할수록 진단은 선명해진다 — 컨설팅의 핵심 가치 제안은 <strong>"이 자산을 브랜드 자산으로 번역하고, 임대한 도달을 소유 자산으로 전환하는 통합 설계"</strong>다. 대행 공수가 아니라 전략 설계 수요.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 목차 -->
+    <!-- ============================================================ -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 &amp; 진단</a>
+            <a href="#company-info">1. 기업 기초 정보</a>
+            <a href="#product-lineup">2. 주력 제품/서비스</a>
+            <a href="#digital-presence">3. 디지털 프레즌스 진단</a>
+            <a href="#competitors">4. 경쟁사 분석</a>
+            <a href="#market">5. 시장 환경</a>
+            <a href="#ceo-background">6. 대표자/경영진 프로필</a>
+            <a href="#swot">7. SWOT 분석</a>
+            <a href="#needs-analysis">8. 니즈 분석 (SPIN + JTBD)</a>
+            <a href="#gap-analysis">9. GAP 분석 &amp; 기회 평가</a>
+            <a href="#quote">10. 3-Tier 견적 초안</a>
+            <a href="#strategy">11. 상담 전략 &amp; 코칭</a>
+            <a href="#closing">12. 클로징 전략</a>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 1. 기업 기초 정보 -->
+    <!-- ============================================================ -->
+    <div class="section" id="company-info">
+        <h2>1. 기업 기초 정보</h2>
+        <div class="info-grid">
+            <div class="info-label">회사명</div><div class="info-value">(주)네츄럴굿띵스 / 브랜드 NGT (Natural Good Things)</div>
+            <div class="info-label">설립일</div><div class="info-value">2016.10.01 (약 9.7년차, "10년 브랜드")</div>
+            <div class="info-label">대표이사</div><div class="info-value">김수안 (대표이사/CEO)</div>
+            <div class="info-label">본사</div><div class="info-value">서울 마포구 양화로3길 73, NGT빌딩 2층 (자사 사옥, 2023 준공)</div>
+            <div class="info-label">원료공장</div><div class="info-value">충북 청주 흥덕구 강내면 (2020 설립) — 수직계열화 핵심</div>
+            <div class="info-label">팀 규모</div><div class="info-value">브랜드북 11명(영업4·브랜딩2·디자인2·개발2·경영1) / ⚠️ 공시 34명 — 격차 큼(상담 확인)</div>
+            <div class="info-label">사업 모델</div><div class="info-value">B2C(자사몰·이커머스) + B2B2C(인플루언서 공구·입점) + 수출</div>
+            <div class="info-label">목표 매출</div><div class="info-value">하반기 50억 (⚠️ 반기/연간 성격 상담 확인)</div>
+            <div class="info-label">슬로건</div><div class="info-value">Sustainable wellness for women / 나날이 건강해지는 일상</div>
+        </div>
+
+        <h3>핵심 해자 (공급측 — NGT의 진짜 강점)</h3>
+        <table>
+            <tr><th>자산</th><th>내용</th></tr>
+            <tr><td>자사 원료공장 + 곡물 발효효소</td><td>NGT 푸드자임, 자사 7종 제품 적용. 효소 OEM이 아니라 원료부터 자기 것.</td></tr>
+            <tr><td>K-낙산균 (국내 최초·유일)</td><td>클로스트리디움 부티리쿰 S-45-5, 2024 상용화. 국책 연구기관 기술이전, 면역·항바이러스 특허. <span class="tag tag-red">마케팅 미활용</span></td></tr>
+            <tr><td>그룹 수직계열화</td><td>NGT(브랜드, 2016) + 비타민하우스(유통, 2000, 전국 7,000여 약국) + npk(제조·GMP·HACCP, 2010). ⚠️가족/그룹 추정</td></tr>
+            <tr><td>인증/수상</td><td>효소부문 7년 연속 1위(2019~2025), ISO22000·HACCP, 여성기업 인증(2025), 글로벌 강소기업 1,000+ 지정(2025)</td></tr>
+            <tr><td>판매 실적</td><td>생생효소 누적 1억 포 이상(2023.10), 중국 티몰글로벌 효소부문 판매 1위(2024.2)</td></tr>
+        </table>
+        <div class="callout callout-info">
+            해자가 강할수록 "제품을 못 만드는 게 아니라 브랜드로 못 만드는 회사"라는 진단이 선명해진다. 컨설팅 가치 제안 = "이 자산을 브랜드 자산으로 번역."
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 2. 주력 제품/서비스 -->
+    <!-- ============================================================ -->
+    <div class="section" id="product-lineup">
+        <h2>2. 주력 제품/서비스</h2>
+        <p style="font-size:14px;color:var(--secondary);margin-bottom:8px;">40+ SKU를 5대 "루틴"으로 묶은 구조. 강점이자 동시에 포지셔닝 산만의 원인 — 한 우산 아래 너무 많은 메시지가 평행한다.</p>
+        <table>
+            <tr><th>루틴(라인)</th><th>대표 제품</th><th>비고</th></tr>
+            <tr><td>Comfort 속편한 일상 (소화효소·장건강)</td><td>생생효소 시리즈(더그레인·더초코·더피넛), 속편한 다이어트, 생생낙산균 프로바이오틱스, 잇츠 차전자피</td><td><span class="tag tag-green">캐시카우·7년1위</span> 효소 + K-낙산균</td></tr>
+            <tr><td>Slim 슬림한 일상 (다이어트)</td><td>오늘은 컷(한국시장 베스트셀러), 잇츠 트리플베러핏, 잇츠 버닝CLA, HCA젤리, 잇츠톡, 오늘은 애플페논</td><td>대중성 높음 · 레드오션</td></tr>
+            <tr><td>Women's Wellness 여성건강 (이너케어·붓기)</td><td>잇츠 브이 포 우먼, 잇츠 시톨(월경주기/임신준비), 잇츠 크랜베리(Y존), 잇츠 라인·펌킨브이티(붓기)</td><td><span class="tag tag-yellow">고성장·미인지</span> NGT 비전축 후보</td></tr>
+            <tr><td>Healthy 건강한 일상 (슬로우에이징·이뮨·베지·에너지)</td><td>유기농 올리브오일·레몬즙, 오늘은 맑음, 잇츠 그린샐러드(올리브영 입점), 잇츠 부스터</td><td>확장 라인</td></tr>
+        </table>
+        <div class="callout">
+            <strong>전략 단서:</strong> "딱 하나로 NGT를 대표한다면?"의 답이 <strong>효소(매출)</strong>냐 <strong>여성 장건강·낙산균(NGT다움)</strong>이냐가 뾰족한 축의 분기점. 매출 비중과 대표 의중에 달려 있어 상담에서 반드시 검증(Q3).
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 3. 디지털 프레즌스 진단 -->
+    <!-- ============================================================ -->
+    <div class="section" id="digital-presence">
+        <h2>3. 디지털 프레즌스 진단</h2>
+        <p style="font-size:14px;color:var(--secondary);margin-bottom:8px;">가설 "인지도는 있으나 자사 자산화 약함" → <strong>디지털 증거로 SUPPORT 확인.</strong></p>
+        <div class="channel-grid">
+            <div class="channel-card">
+                <div class="ch-name">자사몰 / 네이버 스토어</div>
+                <div class="ch-stat">전환 미성숙</div>
+                <div class="ch-note">naturalgoodthings.com · 자사 라이브 "처음이라"(2025) = D2C 이제 시작</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">인스타 @official.ngt</div>
+                <div class="ch-stat">협찬 노출↑</div>
+                <div class="ch-note">계정 콘텐츠보다 #협찬 인플루언서 포스트가 검색 지배 (실팔로워 ⚠️확인필요)</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">입점 채널</div>
+                <div class="ch-stat">도달 넓음</div>
+                <div class="ch-note">올리브영(온/오프)·쿠팡·29CM·SSG·11번가·카카오·공영홈쇼핑 = "임대한 도달"</div>
+            </div>
+        </div>
+        <table>
+            <tr><th>채널</th><th>관찰</th><th>평가</th></tr>
+            <tr><td>자사몰 naturalgoodthings.com</td><td>운영 중, 첫 라이브 "처음이라 더 정성껏"(2025)</td><td><span class="tag tag-yellow">D2C 미성숙</span></td></tr>
+            <tr><td>네이버 스마트스토어 브랜드관</td><td>멤버십·리뷰이벤트 운영</td><td><span class="tag tag-gray">입점 의존</span></td></tr>
+            <tr><td>인스타 @official.ngt</td><td>협찬 노출이 브랜드 검색결과 지배, 브랜드 보이스 약함</td><td><span class="tag tag-red">자산화 약함</span></td></tr>
+            <tr><td>카카오채널</td><td>운영 중 — CRM 인프라는 있음(미활용 추정)</td><td><span class="tag tag-yellow">미활용</span></td></tr>
+            <tr><td>조구만 IP 콜라보(2025)</td><td>"조구맣지만 건강해" 4종 — 대표가 "아쉬웠다"고 한 그 건</td><td><span class="tag tag-red">연결 실패</span></td></tr>
+        </table>
+        <div class="callout callout-danger">
+            <strong>결정적 증거:</strong> "네츄럴굿띵스/효소" 검색 시 상위가 제품 상세·인플루언서 협찬·입점몰 셀러홈으로 채워짐. <strong>브랜드 자체의 스토리·세계관·팬 커뮤니티 콘텐츠가 검색에 안 보임</strong> = 제품 인지는 있는데 브랜드 자산(NGT라는 정체성)은 비어 있다는 직접 증거.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 4. 경쟁사 분석 -->
+    <!-- ============================================================ -->
+    <div class="section" id="competitors">
+        <h2>4. 경쟁사 분석</h2>
+        <table>
+            <tr><th>브랜드</th><th>포지션</th><th>브랜딩 강점</th><th>NGT 대비</th></tr>
+            <tr><td>락토핏 (종근당건강)</td><td>온가족 장건강 프로바이오틱스 1위</td><td>제약 신뢰 + 매스 광고 + 생활밀착</td><td>정면승부 불리 (회피)</td></tr>
+            <tr><td>에버콜라겐 (뉴트리)</td><td>국민 콜라겐, 이너뷰티 리더</td><td>연예인 모델 + 매스 채널 + 과학 스토리</td><td>자본·인지도 격차 큼</td></tr>
+            <tr><td>뉴트리원</td><td>멀티솔루션·기획력(젤리/스틱)</td><td>신제품 속도 + IP·연예인 콜라보</td><td><span class="tag tag-red">직접 경쟁</span> SKU 다각화·콜라보 유사</td></tr>
+            <tr><td>질경이 / 디어리스트</td><td>여성 질건강 D2C, 페인포인트 특화</td><td>커뮤니티·UGC·전문의 콜라보·구독</td><td><span class="tag tag-green">벤치마크</span> NGT가 가야 할 D2C 팬덤 모델</td></tr>
+        </table>
+        <div class="callout">
+            <strong>NGT의 상대적 위치:</strong> 효소=강자(7년1위)지만 효소는 저성장·레드오션. 여성 이너케어(질건강·붓기·PMS)=고성장이나 NGT 인지도 0에 가까움. <strong>돈 버는 곳(효소)과 커야 할 곳(여성웰니스)이 분리되어 포지셔닝이 찢어져 있음.</strong> 전략 방향 = 대기업과 매스 정면승부 X, 질경이/디어리스트형 페인포인트 특화 D2C로 효소 1위 신뢰를 여성웰니스로 번역.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 5. 시장 환경 -->
+    <!-- ============================================================ -->
+    <div class="section" id="market">
+        <h2>5. 시장 환경</h2>
+        <h3>시장 규모 (전략용 추정)</h3>
+        <table>
+            <tr><th>구분</th><th>규모</th><th>의미</th></tr>
+            <tr><td>TAM — 국내 건강기능식품</td><td>약 5.5~6조원 (2024)</td><td>전체 시장</td></tr>
+            <tr><td>SAM — 여성 타깃 이너케어·이너뷰티</td><td>약 1.0~1.3조원 (2026E), 연 8~12% 성장</td><td>NGT 직접 타깃</td></tr>
+            <tr><td>SOM — NGT 현 위치</td><td>매출 105억 → SAM의 약 0.8~1.0% 점유</td><td><span class="tag tag-red">카테고리는 성장, NGT는 역성장 = 점유율 하락</span></td></tr>
+        </table>
+        <h3>2026 웰니스 마케팅 트렌드 (NGT 적용)</h3>
+        <table>
+            <tr><th>트렌드</th><th>NGT 적용 기회</th></tr>
+            <tr><td>고기능 미니멀리즘·올인원 루틴팩</td><td>40+ SKU 산만함을 "아침 이너케어 한 팩"식 루틴으로 묶을 기회</td></tr>
+            <tr><td>성분이 브랜드를 이긴다 (에비던스 기반)</td><td>K-낙산균·특허·7년1위가 무기인데 안 쓰고 있음 — 정답 카드 보유</td></tr>
+            <tr><td>감정·자기돌봄 연결</td><td>"살 빼야"가 아니라 "몸이 편해야 마음도 편하다" 메시지</td></tr>
+            <tr><td>D2C 구독·CRM·하이퍼 개인화</td><td>월경주기·식습관 설문→맞춤 큐레이션. 카카오채널·멤버십 인프라 있으나 미활용</td></tr>
+        </table>
+        <div class="callout callout-info">
+            공구→자사자산 전환 4패턴: ①브랜드 스토리 재정의 ②자사몰 경험 강화(루틴·설문·커뮤니티) ③인플루언서 1인→고객 1만 UGC ④자체 전문가단(영양사 등) 운영. → 이것이 그대로 NGT 실행 로드맵의 골격.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 6. 대표자/경영진 프로필 -->
+    <!-- ============================================================ -->
+    <div class="section" id="ceo-background">
+        <h2>6. 대표자/경영진 프로필</h2>
+        <div class="info-grid">
+            <div class="info-label">대표</div><div class="info-value">김수안 (CEO) — 2016 NGT 창업, 여성기업 인증(2025) 보유</div>
+            <div class="info-label">공개 노출</div><div class="info-value">개인 인터뷰·언론 노출 적음(제품·기업정보 위주, 개인 서사 부재) → ⚠️ 대표 개인 브랜딩 미개발</div>
+            <div class="info-label">그룹 관계</div><div class="info-value">비타민하우스(김상국)·npk(김상준)와 그룹 파트너십 — ⚠️ 성씨 동일·가족 그룹 추정, 공개자료 계열 명시 없음(상담에서 질문으로 확인)</div>
+            <div class="info-label">의사결정 스타일</div><div class="info-value">제품·인증·수상 중심으로 9년 운영 → 제품·품질 중심 사고. 무형 자산(브랜드·팬덤) 투자엔 신중할 수 있음</div>
+        </div>
+        <div class="callout callout-warn">
+            <strong>설득 화법:</strong> 진단 결과를 <strong>숫자·구조</strong>로 보여줘야 설득됨(감성 브랜딩 화법보다 매출 구조 화법). 단, 대표 개인 Emotional Job = "10년 키운 브랜드를 진짜 브랜드로 완성·인정받고 싶은 욕구"가 클로징 레버. → "대행"이 아니라 "브랜드를 끝까지 같이 세울 전략 파트너" 프레임.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 7. SWOT 분석 -->
+    <!-- ============================================================ -->
+    <div class="section" id="swot">
+        <h2>7. SWOT 분석</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>💪 Strengths (강점)</h4>
+                <ul>
+                    <li>효소 7년 연속 1위 · 누적 1억 포</li>
+                    <li>K-낙산균 국내 최초·유일 상용화(특허)</li>
+                    <li>자사 원료공장 + 그룹 수직계열화(제조·유통)</li>
+                    <li>10년 업력 · 다채널 입점 · 수출(중국·일본·대만 등)</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>⚠️ Weaknesses (약점)</h4>
+                <ul>
+                    <li>브랜드 정체성이 "효소 회사"에 갇힘 (한 줄 정의 부재)</li>
+                    <li>40+ SKU 평행 나열 → 포지셔닝 산만</li>
+                    <li>자사몰 전환·CRM·구독 미성숙 (도달이 임대로 묶임)</li>
+                    <li>브랜딩↔퍼포먼스 단절, 대표 개인 브랜딩 미개발</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>🚀 Opportunities (기회)</h4>
+                <ul>
+                    <li>여성 이너케어 시장 연 8~12% 성장</li>
+                    <li>"성분이 브랜드를 이긴다" 트렌드 = NGT 정답 카드</li>
+                    <li>자사 라이브 시작 = D2C 전환 골든타임</li>
+                    <li>페인포인트 특화 D2C(질경이형)로 팬덤 축 구축 가능</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>🔻 Threats (위협)</h4>
+                <ul>
+                    <li>매출 역성장(-38%, 공시 추세) × 카테고리 성장 = 점유율 하락</li>
+                    <li>인플루언서 공구 단가·피로도 상승 → 같은 돈에 도달↓</li>
+                    <li>락토핏·에버콜라겐 등 매스 대기업 인지도 압도</li>
+                    <li>효소 카테고리 저성장·레드오션화</li>
+                </ul>
+            </div>
+        </div>
+        <div class="callout">
+            <strong>SO 전략 (강점×기회):</strong> 효소 1위·낙산균 에비던스(S)를 여성 웰니스 트렌드(O)로 번역 → 대기업과 안 싸우고 페인포인트 특화 D2C로 팬덤 축. <strong>WT 전략 (약점×위협):</strong> 임대된 도달(W) 방치 시 점유율 계속 하락(T) → 자사 자산 전환이 시급.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 8. 니즈 분석 (SPIN + JTBD) -->
+    <!-- ============================================================ -->
+    <div class="section" id="needs-analysis">
+        <h2>8. 니즈 분석 (SPIN + JTBD)</h2>
+        <div class="callout callout-info" style="margin-top:0;">
+            <strong>감정 톤 = 자각된 정체(停滯) + 전략적 갈증.</strong> 불안·혼란이 아니라 "무엇이 부족한지는 안다, 그걸 푸는 축을 못 잡았다"는 성숙한 답답함. 표면 어휘("구조·축·유기적 연결")가 이미 컨설팅 언어 — <strong>대표 본인이 진단가 모드.</strong> 기초 설명은 모욕, 한 겹 더 깊은 통찰만 가치.
+        </div>
+
+        <h3>SPIN 레이어링</h3>
+        <div class="spin-grid">
+            <div class="spin-card spin-s">
+                <h4>S — Situation (상황)</h4>
+                10년차 여성 웰니스 이너케어. 효소 7년1위·K-낙산균·자사공장(공급측 최강). 40+ SKU. 매출 주 엔진 = 인플루언서 공구. 조직 11명. 하반기 50억 목표.
+            </div>
+            <div class="spin-card spin-p">
+                <h4>P — Problem (문제)</h4>
+                "인지도는 있는데 NGT만의 팬덤·자산이 안 쌓인다." 매출은 나지만 인플루언서에 귀속된 도달이라 NGT 자산으로 적립 안 됨. 브랜딩↔마케팅 따로. 조구만으로 자산화 시도했으나 연결 실패.
+            </div>
+            <div class="spin-card spin-i">
+                <h4>I — Implication (파급)</h4>
+                공구 의존 지속 → CAC 상승·마진 압박·"OO언니 브랜드" 종속. 자사몰 CRM/LTV 미적립 → 50억은 매번 새 도달을 사야 달성(성장이 비싸짐). 한 줄 부재 → 신제품마다 인지 0부터. 수직계열화 해자가 인식에 안 닿아 프리미엄 가격결정력 미확보.
+            </div>
+            <div class="spin-card spin-n">
+                <h4>N — Need-Payoff (해결 가치)</h4>
+                뾰족한 축 1줄 → 40+ SKU 의미 정렬, 신제품 인지비용↓. 인플루언서=촉매로 격하 + 자사 자산(콘텐츠·CRM·구독) 전환 → 도달을 임대에서 소유로. 통합 깔때기 → 인지도가 자사몰 전환·재구매·LTV로 모임. = 50억이 복리(compounding) 매출로.
+            </div>
+        </div>
+
+        <h3>고민 계층 (Pain Hierarchy)</h3>
+        <div class="pain-layer">
+            <div class="pain-level pain-l1">
+                <span class="level-tag">L1 표면 요청 · 확신도 ★★★★★</span>
+                "온라인에서 NGT만의 팬덤·브랜드 자산을 만들고 싶다. 메시지·콘텐츠·광고·CRM이 유기적으로 연결되는 구조."
+            </div>
+            <div class="pain-level pain-l2">
+                <span class="level-tag">L2 전술 문제 · ★★★★</span>
+                메시지·콘텐츠·광고·CRM이 따로 굴러 깔때기 미연결 → 인지도는 있는데 자사몰 전환·재구매로 안 모임. 공구 매출이 자사몰로 환류 안 됨.
+            </div>
+            <div class="pain-level pain-l3">
+                <span class="level-tag">L3 전략 문제 · ★★★</span>
+                포지셔닝 산만 — 40+ SKU 평행 나열, NGT=무엇 미정의. 효소 1위 자산이 여성웰니스 비전과 분리. 뾰족한 브랜드 축 미정의.
+            </div>
+            <div class="pain-level pain-l4">
+                <span class="level-tag">L4 근본 원인 · ★★★</span>
+                유통(인플루언서 공구) = 임대한 도달. 10년간 매출이 남의 채널·신뢰에 의존 → 팬덤이 NGT가 아닌 인플루언서에게 쌓였다.
+            </div>
+        </div>
+        <div class="callout callout-danger">
+            <strong>한 줄로 꿰임:</strong> "10년간 도달을 임대해 왔기에(L4), 브랜드 축을 뾰족하게 세울 필요가 없었고(L3), 그래서 메시지·콘텐츠·CRM이 통합될 중심이 없었다(L2)." → 대표가 사야 하는 건 "콘텐츠 대행"이 아니라 <strong>① 뾰족한 브랜드 축 + ② 임대→소유 전환 구조 + ③ 통합 깔때기(IMC) 설계.</strong>
+        </div>
+
+        <h3>JTBD 분석</h3>
+        <table>
+            <tr><th>Job 유형</th><th>내용</th></tr>
+            <tr><td>Functional</td><td>인플루언서 의존 없이도 반복 재구매·구독으로 매출이 도는 구조 설계 + NGT를 정의하는 뾰족한 브랜드 축 1개 확보</td></tr>
+            <tr><td>Social</td><td>"제품은 최강인데 브랜드는 약한 회사" 인식을 벗고 "진짜 브랜드를 가진 회사"로 인정받기 (50억·여성기업·글로벌강소기업에 걸맞은 브랜드 격)</td></tr>
+            <tr><td>Emotional (대표 개인)</td><td><strong>10년 키운 브랜드를 '진짜 브랜드'로 완성하고 싶은 욕구.</strong> 공급은 끝냈는데 수요가 빈 미완성의 답답함. 조구만 실패의 "또 헛돈" 불안 해소 + "돈이 자산으로 쌓이는 확신"</td></tr>
+        </table>
+
+        <h3>표면 vs 진짜 니즈</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">표면 (대표가 말한 것)</div>
+                <ul>
+                    <li>온라인 팬덤·브랜드 자산을 만들어 달라</li>
+                    <li>메시지·콘텐츠·광고·CRM 연결 구조</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">진짜 (사야 할 것)</div>
+                <ul>
+                    <li>① 뾰족한 브랜드 축(40+ SKU를 한 문장으로)</li>
+                    <li>② 임대한 도달 → 자사 자산 전환 구조</li>
+                    <li>③ 브랜드~퍼포먼스 통합 깔때기(IMC) 설계</li>
+                </ul>
+            </div>
+        </div>
+        <div class="callout callout-warn">
+            <strong>눈높이 주의:</strong> 대표는 제품·공급을 완성한 10년차 창업자 + 스스로 진단 어휘를 쓰는 사람. 마케팅 101·D2C 입문 톤은 즉시 신뢰를 깎는다. <strong>공구·인플루언서를 부정하지 말 것</strong> — 현 캐시카우. "끊자"가 아니라 "촉매로 격상시켜 자사로 환류".
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 9. GAP 분석 & 기회 평가 -->
+    <!-- ============================================================ -->
+    <div class="section" id="gap-analysis">
+        <h2>9. GAP 분석 &amp; 기회 평가</h2>
+        <table>
+            <tr><th>항목</th><th>가중치</th><th>점수</th><th>근거</th></tr>
+            <tr><td>니즈-서비스 핏</td><td>30%</td><td><strong>5.0</strong></td><td>진짜 니즈(브랜드 축·임대→소유·통합 IMC)가 BRANDRISE 브랜드 전략+IMC 컨설팅과 정확히 일치</td></tr>
+            <tr><td>예산 적합성</td><td>20%</td><td><strong>4.5</strong></td><td>월 5,000만↓ = 풀서비스 구간. 현 예산 매출 대비 약 5.7% (DTC 중앙값 13%↓) → 증액 여지 = 상방</td></tr>
+            <tr><td>의사결정 구조</td><td>15%</td><td><strong>5.0</strong></td><td>대표 직접 미팅. 그룹 내 브랜드/D2C 트랙 본인 책임 추정 → 단일 의사결정</td></tr>
+            <tr><td>긴급도</td><td>15%</td><td><strong>4.5</strong></td><td>3년 -38% 역성장 × 카테고리 성장 = 점유율 하락. 자사 라이브 시작 = D2C 골든타임</td></tr>
+            <tr><td>성장 잠재력</td><td>10%</td><td><strong>5.0</strong></td><td>진단→실행 리테이너→퍼포먼스·CRM 확장. 40+ SKU·다채널·수출까지 작업 표면적 광대</td></tr>
+            <tr><td>레퍼런스 가치</td><td>10%</td><td><strong>4.5</strong></td><td>효소 7년1위·글로벌강소기업 10년 브랜드. "역성장 D2C 턴어라운드" = 포트폴리오 최상급</td></tr>
+        </table>
+        <div class="verdict">
+            <div class="label">종합 기회 적합도</div>
+            <div class="value">4.75 / 5.0 — Go (적극 수주)</div>
+            <div class="desc">6항목 중 5개 4.5+. 의사결정권자 직접·니즈 완벽 핏·확장성·긴급성 모두 살아있는 A급. 유일 관리 포인트 = "대행 프레임 방어 + 진단 1차 진입장벽 낮추기"</div>
+        </div>
+        <h3>수주 확률 시나리오</h3>
+        <table>
+            <tr><th>시나리오</th><th>조건</th><th>대응</th></tr>
+            <tr><td><span class="tag tag-green">High (진단 착수)</span></td><td>상담에서 정체 인정 + Q5 "인식" 답</td><td>진단 1차 즉시 합의 → 24h 견적 → Professional 확장</td></tr>
+            <tr><td><span class="tag tag-yellow">Mid (검토)</span></td><td>관심 있으나 내부 검토 필요</td><td>진단 견적 + 깔때기 스케치·벤치마크 1장 송부, 팔로업 통화</td></tr>
+            <tr><td><span class="tag tag-red">Low (지연)</span></td><td>가격만 묻고 결과 정의 회피</td><td>"결과 정의 먼저" 되돌림 + 진단 소규모 진입 강조</td></tr>
+        </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 10. 3-Tier 견적 초안 -->
+    <!-- ============================================================ -->
+    <div class="section" id="quote">
+        <h2>10. 3-Tier 견적 초안</h2>
+        <div class="callout callout-info" style="margin-top:0;">
+            <strong>설계 원칙:</strong> 대표 기대 성과 = "명확한 진단 결과". 모든 Tier의 진입점은 <strong>유료 진단/브랜드 전략 워크숍(공통 1차)</strong>으로 통일하고, 결과를 실행 리테이너(2차)로 연결. 진입장벽을 낮춰 "할까 말까"를 "진단부터 받자"로 전환. <em>가격은 "대" 수준 범위만, 정밀 견적은 진단 합의 후 24h 송부.</em>
+        </div>
+        <h3>공통 1차 — 브랜드·IMC 진단 + 전략 축 설계 (모든 Tier의 관문)</h3>
+        <div class="diag-note">범위: 내부 매출구조·채널 비중·CRM 환류율 진단 → 뾰족한 브랜드 축(NGT 한 줄 정의) → 임대→소유 전환 로드맵 + 통합 IMC 깔때기 설계도. 경영진 워크숍 1~2회. <strong>기간 4~6주 · 가격대 수백만~1천만원대 중반.</strong> 대표가 정확히 요청한 "방향성 문서" 산출.</div>
+        <div class="tier-cards">
+            <div class="tier-card">
+                <h4>Essential</h4>
+                <div class="price">1천만원대 초중반</div>
+                <div class="duration">약 2개월 (진단 6주 + 시드 실행) · 비교 기준</div>
+                <ul>
+                    <li>공통 1차 진단 포함</li>
+                    <li>브랜드 축 기반 자사몰 깔때기 1개 라인 정비(메시지·핵심 콘텐츠·랜딩 1종)</li>
+                    <li>실행은 NGT 내부팀이 이어받는 전제</li>
+                    <li>방향성 + "어떻게 시작하는지" 견본 1세트</li>
+                </ul>
+            </div>
+            <div class="tier-card recommended">
+                <div class="tier-badge">추천</div>
+                <h4>Professional</h4>
+                <div class="price">월 2~3천만원대</div>
+                <div class="duration">진단 4~6주 → 실행 6개월(연장형)</div>
+                <ul>
+                    <li>공통 1차 진단 + 6개월 통합 IMC 실행 리테이너</li>
+                    <li>① 브랜드 축 운영(메시지·세계관 콘텐츠)</li>
+                    <li>② 공구→자사몰 환류 퍼널 설계·구축</li>
+                    <li>③ 자사몰 CRM/멤버십 활성화 + 퍼포먼스(SA/DA) 연계</li>
+                    <li>④ 월간 성과 진단·축 보정 — "설계자가 실행까지 직접 운전"</li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>Premium</h4>
+                <div class="price">월 4~5천만원대</div>
+                <div class="duration">진단 6주 → 실행 6~12개월 · 가치 앵커</div>
+                <ul>
+                    <li>Professional 전체 +</li>
+                    <li>① 리브랜딩급 BI/메시지 체계 재정립</li>
+                    <li>② 페인포인트 특화 D2C 커뮤니티·구독 구축(질경이형)</li>
+                    <li>③ K-낙산균·효소 자산의 브랜드 번역(에비던스 브랜딩)</li>
+                    <li>④ 대표 개인 브랜딩/PR + 수출·콜라보 IMC 연계</li>
+                </ul>
+            </div>
+        </div>
+        <div class="callout">
+            <strong>왜 Professional 추천(상담 화법):</strong> "진단만 받고 내부 실행"은 NGT의 비대칭(전략 인식↑·통합 실행 경험↓) 때문에 깔때기가 또 끊길 위험 — 조구만 실패가 그 증거. <strong>설계한 사람이 6개월 같이 운전</strong>해 통합 깔때기가 실제로 모이는 걸 확인하는 게 가장 안전하고 빠른 길. (앵커: Premium이 예산 상단을 채워 Professional이 "전략+실행 풀패키지인데 예산 여유까지 있는 합리적 선택"으로 보이게)
+        </div>
+        <div class="leverage-box">
+            <div class="quote">"같은 예산을, '임대(공구)'가 아니라 '소유(자사 자산)'에 재배치하면<br>그 돈은 한 번 쓰고 끝이 아니라 복리로 쌓입니다."</div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 11. 상담 전략 & 코칭 -->
+    <!-- ============================================================ -->
+    <div class="section" id="strategy">
+        <h2>11. 상담 전략 &amp; 코칭</h2>
+
+        <div class="callout callout-danger" style="margin-top:0;">
+            <strong>이 상담의 3대 원칙:</strong> ① 마케팅 101 금지(대표는 진단가 모드 — 한 겹 더 깊은 통찰만) ② 역성장 수치 들이밀기 금지(169→105 들고 가되 입에 안 올림 — "최근 매출 결이 어떠세요?"로 대표가 먼저 정체를 말하게) ③ 공구 부정 금지 + 대행 프레임 방어("끊자→환류", "대체→증폭")
+        </div>
+
+        <h3>60분 타임라인 (메일 상세 회신 반영 재배분)</h3>
+        <div class="timeline-phase">
+            <div class="phase-time">0–5분<br>P1 라포</div>
+            <div class="phase-content">
+                <h4>"이 사람은 NGT를 알고 왔다"</h4>
+                <p>고벤처 접점 + 효소7년1위·K-낙산균 진심 칭찬</p>
+                <div class="phase-script">"오기 전 NGT 자료를 봤는데요 — 효소 7년 연속 1위에 K-낙산균을 국내 최초로 상용화하셨더라고요. 이 정도 공급·R&amp;D 자산을 가진 회사가 흔치 않습니다. 10년을 제대로 쌓으셨구나 싶었어요."</div>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">5–13분<br>P2 상황확인(8)</div>
+            <div class="phase-content">
+                <h4>메일 위에 맥락 더하기 + 대표가 정체를 먼저 말하게</h4>
+                <p>폼 재질문 X(이미 읽음). 핵심 마중물 1개.</p>
+                <div class="phase-script">"최근 1~2년, 매출의 결이 어떻게 느껴지세요? 잘 나오는데 뭔가 비어 있는 느낌인지, 아니면 성장 자체가 정체된 느낌인지요." ← 역성장 수치는 절대 먼저 꺼내지 않음</div>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">13–30분<br>P3 깊은진단(17) ★</div>
+            <div class="phase-content">
+                <h4>표면("팬덤") → 진짜 니즈(축·전환구조·통합깔때기) 도달</h4>
+                <p>검증 질문 5개 순서대로. 듣기 70%. 침묵 활용.</p>
+                <div class="phase-script">각 답을 요약 확인으로 받아 다음 질문에 연결. 대표가 L3·L4를 스스로 말하게.</div>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">30–42분<br>P4 인사이트(12)</div>
+            <div class="phase-content">
+                <h4>Challenger Teach로 "이 사람과 하면 다르겠다"</h4>
+                <p>Teaching 3개 SCQA. 대표가 정체를 인정한 경우에만 1번(임대 만기) 풀 전개.</p>
+                <div class="phase-script">가르침이 아니라 공동 발견 톤. "방금 말씀하신 그 느낌이 구조로 설명되는 거예요."</div>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">42–52분<br>P5 솔루션 방향(10)</div>
+            <div class="phase-content">
+                <h4>구체 제안 아닌 "가능성" + 진단 진입로</h4>
+                <p>A4/화이트보드에 임대→소유 깔때기 즉석 스케치(화살표가 끊겨 있음을 그림으로).</p>
+                <div class="phase-script">"방향 두 가지 — ① NGT 한 줄 브랜드 축, ② 공구 도달을 자사 자산으로 환류시키는 깔때기. 이걸 4~6주 진단으로 먼저 검증해 문서로 드리는 게 첫 단추예요."</div>
+            </div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">52–60분<br>P6 클로징(8)</div>
+            <div class="phase-content">
+                <h4>"진단부터 함께 시작" 단일 액션 합의</h4>
+                <p>요약 확인 → 단일 액션 → 24h 견적 약속 → Quick Tip 선물</p>
+                <div class="phase-script">옵션 나열 X. 단일 액션으로 좁힘.</div>
+            </div>
+        </div>
+
+        <h3>핵심 질문 스크립트 (반드시 물을 5개)</h3>
+        <div class="question-card">
+            <div class="q-num">Q1 · L4 임대한 도달 + L2 CRM 미연결</div>
+            <div class="q-text">"매출에서 인플루언서 공동구매 vs 자사몰 직접이 대략 몇 대 몇이고, 공구로 들어온 고객이 자사몰 회원·재구매로 넘어오는 비율은 보고 계세요?"</div>
+            <div class="q-intent">의도: 임대한 도달의 실제 심각도 + 자사 자산 적립 여부 정량 확인</div>
+            <div class="q-branch">분기: 환류율 모름/낮음 → "그게 진단 1순위 — 번 도달이 NGT에 안 쌓이는 것" / 추적 중 → "이미 데이터를 보시네요, 어디서 새는지 구조로"</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q2 · L3 포지셔닝 산만</div>
+            <div class="q-text">"고객이 'NGT' 하면 한 단어로 뭘 떠올린다고 보세요? 효소일까요, 여성 웰니스일까요 — 그리고 대표님이 원하시는 한 단어는요?"</div>
+            <div class="q-intent">의도: 현재 인식과 희망 인식의 갭 + 좁힐 의향(클로징 핵심 변수)</div>
+            <div class="q-branch">분기: 갭 큼 → "그 갭이 오늘 가장 중요한 발견, 축을 다시 세울 지점" / 이미 좁힘 → 그 방향을 P5 스케치에 반영</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q3 · 뾰족한 축 후보 + 좁힐 결단</div>
+            <div class="q-text">"40개 넘는 제품 중 딱 하나로 NGT를 대표해야 한다면 무엇이고, 이유는 매출 때문인가요 'NGT다움' 때문인가요?"</div>
+            <div class="q-intent">의도: 축 후보 발굴 + 대표의 좁힐 결단 의지 측정</div>
+            <div class="q-branch">분기: '매출' 답(효소/오늘은컷) → 현실주의, 매출 구조 화법 / 'NGT다움' 답(낙산균/시톨) → 브랜드 의지, Premium 여지</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q4 · 자산화 실패의 정의</div>
+            <div class="q-text">"조구만 콜라보가 '연결 구조를 못 만들었다'고 하셨는데 — 화제는 됐는데 자사몰로 안 온 건지, NGT 브랜드 의미로 안 남은 건지요?"</div>
+            <div class="q-intent">의도: 어느 상품이 1순위인지 분기 (비난조 금지, 대표가 먼저 꺼낸 아쉬움이라 안전)</div>
+            <div class="q-branch">분기: '자사몰 안 옴' → 환류 퍼널 부재(깔때기 설계) / '의미 안 남음' → 콜라보 이전 NGT 축이 먼저(브랜드 축)</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q5 · Emotional Job + 성공 정의</div>
+            <div class="q-text">"잘 풀고 나면 6개월~1년 뒤 NGT가 어떤 모습이면 '제대로 됐다' 하실까요? 매출 숫자인가요, 'NGT가 이런 브랜드구나'라는 인식인가요?"</div>
+            <div class="q-intent">의도: 대표 개인 Emotional Job(진짜 브랜드 인정 욕구) + 성공 기준</div>
+            <div class="q-branch">분기: '인식' 강조 → "10년 키운 걸 진짜 브랜드로 완성, 그게 우리가 가장 잘하는 일" + Premium 설득 / '매출' 강조 → "그 인식이 복리 매출로 돌아오는 구조"</div>
+        </div>
+
+        <h3>Challenger Teaching 3 (P4)</h3>
+        <div class="leverage-box">
+            <div class="teach-item"><strong>1. 역성장 = 임대한 도달의 만기다 (골든타임)</strong><br>카테고리는 연 8~12% 크는데 제품·인증은 강해지고 매출이 안 따라온다면, 빠지는 곳은 제품이 아니라 채널 구조. 자사 라이브를 막 시작한 지금이 임대를 소유로 바꾸는 골든타임. (⚠️ 매출 숫자는 입에 안 올림)</div>
+            <div class="teach-item"><strong>2. 더 쓰는 게 아니라 임대→소유로 재배치 (예산 5.7% vs 13~35%)</strong><br>성장기 D2C는 매출의 13~35%를 마케팅에 쓰는데 NGT는 약 5.7%. 이미 쓰던 공구 예산을 자사 자산으로 재배치하면 그 돈이 복리로 쌓인다. (→ "비싸다" 반론 선제 차단)</div>
+            <div class="teach-item"><strong>3. 가장 비싼 무기가 잠자고 있다 (효소1위·K-낙산균)</strong><br>2026 트렌드 = "성분이 브랜드를 이긴다". 효소 7년1위·누적 1억 포·K-낙산균 국내 유일 — 경쟁사가 돈 주고도 못 사는 카드를 안 내고 있다. 효소 신뢰를 여성 웰니스로 번역하면 대기업과 안 싸우고 페인포인트 D2C로 팬덤 축이 선다.</div>
+        </div>
+
+        <h3>예상 반론 &amp; 대응</h3>
+        <table>
+            <tr><th>예상 반론</th><th>대응</th></tr>
+            <tr><td>"내부 브랜딩 2·디자인 2 있는데 왜 외부?" <span class="tag tag-red">1순위</span></td><td>"실행할 손이 없는 게 아니라 40+ SKU를 한 줄로 꿰는 축과 통합 깔때기 설계 경험이 빈 것. 조구만이 연결 안 된 건 손이 아니라 통합 설계가 없어서. 우리는 축·설계도를 만들고 내부 네 분이 더 잘 굴리게 — 대체가 아니라 증폭입니다."</td></tr>
+            <tr><td>"비싸다"</td><td>"역성장이 계속되면 방치 비용이 매년 빠집니다. 이미 쓰던 공구 예산을 자사 자산으로 재배치하는 거지 새 지출이 아니에요. 게다가 진단 1차부터 시작하니 큰 결정을 미리 안 하셔도 됩니다."</td></tr>
+            <tr><td>"다른 데도 알아보는 중"</td><td>"당연합니다. 다만 NGT는 대행이 아니라 10년 자산을 브랜드로 번역할 전략 파트너가 필요한 케이스라, 일반 콘텐츠 대행사와 비교하면 답이 안 맞을 거예요. 진단 결과물의 깊이로 판단하시면 됩니다 — 그게 저희 실력의 증거예요."</td></tr>
+            <tr><td>"진단만 받고 실행은 내부에서"</td><td>"그러셔도 됩니다 — Essential이 그 전제예요. 다만 NGT는 전략 인식은 높은데 통합 실행 경험이 비대칭이라(조구만이 증거), 설계자가 첫 6개월만 같이 운전해 깔때기가 모이는 걸 확인하고 이관하는 게 재실패 리스크가 가장 낮습니다."</td></tr>
+        </table>
+
+        <div class="callout callout-success">
+            <strong>💡 Quick Tip (무료 선물, P6):</strong> "비용 들 거 없이 이번 주에 바로 — 자사몰 첫 화면에 효소 1위가 '효소 잘 파는 회사'로만 걸려 있을 텐데, 이걸 '여성 웰니스' 축으로 한 줄 번역해보세요. 예: <strong>'7년 연속 1위 효소로 시작한, 여성의 매일을 위한 이너케어'</strong> — 효소(검증된 신뢰)와 여성 웰니스(가야 할 방향)를 한 문장에 묶는 첫 실험. 반응 보시고 내일 보내드릴 진단 제안서랑 같이 보시면 됩니다." (진단 가치를 작게 선증명 + 견적 송부와 자연 연결)
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 12. 클로징 전략 -->
+    <!-- ============================================================ -->
+    <div class="section" id="closing">
+        <h2>12. 클로징 전략</h2>
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="step-num">STEP 1</div>
+                <div class="step-title">요약 확인</div>
+                <div class="step-desc">"제품은 끝냈는데 브랜드가 안 따라온다 — 그게 핵심이죠?"</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 2</div>
+                <div class="step-title">단일 액션 제시</div>
+                <div class="step-desc">"진단부터 함께 시작" — 옵션 나열 없이 하나로</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 3</div>
+                <div class="step-title">24h 견적 약속</div>
+                <div class="step-desc">진단 범위·일정·견적 1~2일 내 송부(브릿지)</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 4</div>
+                <div class="step-title">Quick Tip 선물</div>
+                <div class="step-desc">자사몰 히어로 한 문장 — 진단 가치 선증명</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">STEP 5</div>
+                <div class="step-title">팔로업 합의</div>
+                <div class="step-desc">"제안서 보신 후 짧게 한 번 더" 구두 합의</div>
+            </div>
+        </div>
+
+        <h3>긴급성 &amp; 리스크 제거</h3>
+        <table>
+            <tr><th>레버</th><th>내용</th></tr>
+            <tr><td>긴급성 ①</td><td>역성장 추세 × 카테고리 성장 = 점유율이 지금도 빠지는 중(가만히 있는 게 손해)</td></tr>
+            <tr><td>긴급성 ②</td><td>자사 라이브 막 시작 = D2C 전환 골든타임. 공구 단가 상승 전에 자산 전환 시작</td></tr>
+            <tr><td>리스크 제거</td><td>소규모 진단(수백만~1천만대)으로 시작 → 큰 리테이너 결정 미리 안 해도 됨. "조구만 때처럼 헛돈" 불안을 작게 시작·결과로 판단 구조로 해소</td></tr>
+            <tr><td>프레임 방어선</td><td>"대행사·콘텐츠 운영" 어휘 회피, "전략 파트너·브랜드 완성·자산 설계" 고정. 공구는 부정 X, "촉매로 격상·환류"</td></tr>
+        </table>
+
+        <h3>내부 챔피언 전략</h3>
+        <table>
+            <tr><th>대상</th><th>관계</th><th>공략</th></tr>
+            <tr><td>김수안 대표</td><td>의사결정권자 = 챔피언 (단일 의사결정)</td><td>Emotional Job(브랜드 완성) 직접 자극 + 숫자·구조 설득</td></tr>
+            <tr><td>내부 브랜딩·디자인팀(4명)</td><td>잠재 저항(대행 반발) → 우군 전환 대상</td><td>"대체 아닌 증폭" — 축·설계도를 줘서 그들이 더 잘 굴리게</td></tr>
+            <tr><td>그룹사(비타민하우스·npk)</td><td>⚠️ 관계 미확인</td><td>제조·유통 해자로 활용, 의사결정 독립성 상담 확인</td></tr>
+        </table>
+
+        <h3>상담 후 액션 리스트</h3>
+        <div class="callout">
+            <strong>① (당일 저녁) 감사 메시지</strong> — 24h 내. "오늘 나눈 가설(임대→소유 전환)을 진단으로 검증해 방향성 문서로 드리겠다" + 대표가 말한 핵심 단어 1개 인용(경청 증명)<br>
+            <strong>② (24h 내) 진단 견적 송부</strong> — 공통 1차 진단 범위·기간(4~6주)·가격대. 대행 어휘 0 / 전략 파트너 어휘 고정. 정본 = <code>brandrise-pages/quote/{slug}/</code><br>
+            <strong>③ 약속 자료 전달</strong> — 깔때기 스케치 깔끔본 + 질경이·디어리스트 D2C 벤치마크 1장(언급 시)<br>
+            <strong>④ 제안서 착수</strong> — 검증된 분기(Q2 갭·Q3 SKU·Q4 끊긴 지점)에 맞춰 진단 범위 확정. Professional 중앙값·Premium 앵커<br>
+            <strong>⑤ 내부 기록</strong> — 채널 비중·환류율·내부 인력·그룹사 관계·50억 성격 → 프로파일러 ⚠️ 확인 리스트 5종 업데이트
+        </div>
+
+        <div class="leverage-box">
+            <div class="quote">"NGT는 '뭘 더 만드느냐'가 아니라 10년간 쌓은 자산을 진짜 브랜드로 완성하는 단계예요.<br>그 첫 단추로 진단부터 같이 시작하시죠 — 어떤 메시지·구조로 가야 하는지,<br>대표님이 메일에 쓰신 그 방향성을 4~6주 안에 문서로 손에 쥐어 드리겠습니다."</div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 참고 링크 -->
+    <!-- ============================================================ -->
+    <div class="section" id="sources">
+        <h2>참고 링크 &amp; 데이터 주의</h2>
+        <div class="fact-warn">
+            ⚠️ <strong>데이터 주의:</strong> 매출 169억→105억은 공시(잡코리아·사람인) 기준 추세로 회계연도·집계범위 차이 가능 → 상담에서 단정 금지, "공개자료 기준"으로 신중 프레이밍. 팀 규모(11 vs 34)·그룹사 가족관계·채널별 매출 비중·50억 목표 성격은 ⚠️ 확인 필요(상담에서 검증). 마케팅 예산 벤치마크(DTC 13.3% 중앙값 / 성장기 20~35%)는 글로벌 기준 참고치.
+        </div>
+        <div class="source-list">
+            <p>· NGT 브랜드북 2026 (회사소개서 33p, 메인 정독) — 회사 팩트·제품·채널·인증 확정 출처</p>
+            <p>· Perplexity sonar-pro 시장·경쟁 리서치 (2026-06-09) — 여성 이너케어 시장규모·경쟁 포지셔닝·D2C 트렌드</p>
+            <p>· Grok 인플루언서·X 리서치 (2026-06-09) — 공구 생태계·팬덤 전환 패턴</p>
+            <p>· 공시 데이터: 잡코리아·사람인 (매출·조직 규모, ⚠️추세 참고)</p>
+            <p>· <a href="https://eightx.co/blog/marketing-spend-percent-revenue-public-dtc">Marketing Spend % of Revenue 2026 (Eightx)</a> · <a href="https://eightx.co/blog/ad-spend-percent-revenue-by-stage-2026">Ad Spend by Stage 2026 (Eightx)</a></p>
+            <p>· naturalgoodthings.com · brand.naver.com/naturalgoodthings · 인스타 @official.ngt</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>BRANDRISE (MarketingOS) — New Business 상담 준비 패키지</p>
+    <p>이 문서는 상담 준비 목적으로 작성되었으며, 외부 공유를 금합니다.</p>
+</div>
+
+</body>
+</html>
