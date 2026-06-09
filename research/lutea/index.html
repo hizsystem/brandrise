@@ -157,6 +157,11 @@
         .timeline-phase .phase-content .phase-script { font-size: 13px; color: var(--secondary); background: var(--accent-light); padding: 8px 12px; border-radius: 6px; margin-top: 6px; }
         .source-cite { font-size: 11px; color: var(--text-light); font-weight: 400; margin-left: 4px; }
         .fact-warn { background: #fff8d4; border-left: 3px solid #b8860b; padding: 8px 12px; border-radius: 4px; margin: 8px 0; font-size: 13px; color: #6b5400; }
+        .header-links { display: flex; gap: 10px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+        .header-link-btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 20px; border-radius: 8px; font-size: 13px; font-weight: 700; text-decoration: none; transition: opacity 0.2s, transform 0.15s; }
+        .header-link-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+        .btn-store { background: var(--accent); color: #fff; border: none; }
+        .btn-insta { background: #fff; color: #E1306C; border: 1.5px solid #E1306C; }
         @media (max-width: 768px) {
             .header { padding: 40px 20px; }
             .header h1 { font-size: 24px; }
@@ -201,6 +206,16 @@
     <h1>루테아 (LUTÉA)</h1>
     <div class="subtitle">컬러 도자기 라이프스타일 브랜드 | 1인 D2C · 메타 ROAS 회복 · 가치 메시지 재설계</div>
     <div class="date">작성일: 2026-06-08 | Prepared by BRANDRISE (MarketingOS)</div>
+    <div class="header-links">
+        <a class="header-link-btn btn-store" href="https://luteaofficial.com/" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            자사몰 바로가기
+        </a>
+        <a class="header-link-btn btn-insta" href="https://www.instagram.com/luteaofficial/" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            @luteaofficial
+        </a>
+    </div>
 </div>
 
 <div class="container">
@@ -905,3 +920,4 @@
 
 </body>
 </html>
+
