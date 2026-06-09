@@ -319,6 +319,34 @@
   .dot__l { font-size: 10px; font-weight: 600; color: var(--ink); margin-top: 4px; white-space: nowrap; }
   .dot--us .dot__c { width: 18px; height: 18px; background: var(--brand); border: 3px solid #fff; }
   .dot--us .dot__l { color: var(--brand); font-weight: 800; }
+  .dot--d2c .dot__c { width: 12px; height: 12px; background: var(--clay); border: 2px solid #fff; }
+  .dot--d2c .dot__l { color: var(--clay); font-weight: 700; }
+  .map__leg { display:flex; flex-wrap:wrap; gap:9px 14px; margin-top:11px; font-size:10.5px; color:var(--muted); }
+  .map__leg i { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; vertical-align:middle; }
+
+  /* ===================== BRAND PROFILE (개별 경쟁사) ===================== */
+  .bp-head { display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-top:2px; }
+  .bp-kicker { font-size:11px; font-weight:700; color:var(--muted); letter-spacing:1px; }
+  .bp-name { font-size:26px; font-weight:700; color:var(--forest); letter-spacing:-.5px; }
+  .bp-name em { font-style:normal; font-weight:600; color:var(--olive); font-size:18px; }
+  .bp-tier { font-size:11px; font-weight:700; padding:5px 13px; border-radius:14px; white-space:nowrap; }
+  .bp-tier--star { background:var(--ochre); color:#fff; }
+  .bp-tier--welfare { background:var(--olive-light); color:var(--forest); }
+  .bp-tier--story { background:var(--cream-2); color:var(--ink-soft); }
+  .bp-tier--platform { background:var(--good-light); color:var(--good); }
+  .bp-attr > div { display:flex; gap:14px; padding:9px 0; border-bottom:1px solid var(--line); }
+  .bp-attr dt { flex:0 0 74px; font-size:12px; font-weight:700; color:var(--forest); }
+  .bp-attr dd { margin:0; flex:1; font-size:12.5px; line-height:1.6; color:var(--ink-soft); }
+  .bp-attr dd b { color:var(--ink); }
+  .bp-block { margin-bottom:15px; }
+  .bp-block__h { font-size:10px; font-weight:700; letter-spacing:1.3px; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .bp-link { display:flex; justify-content:space-between; gap:10px; font-size:12px; padding:6px 0; border-bottom:1px dashed var(--line-2); }
+  .bp-link span { color:var(--muted); }
+  .bp-link b { color:var(--forest); font-weight:600; }
+  .bp-prod { background:var(--cream); border:1px solid var(--line); border-radius:5px; padding:10px 12px; }
+  .bp-prod__n { font-size:11px; color:var(--ink-soft); margin-bottom:3px; line-height:1.4; }
+  .bp-prod__p { font-size:15px; font-weight:700; color:var(--forest); }
+  .bp-note { font-size:11.5px; line-height:1.7; color:var(--ink-soft); }
 
   /* roadmap */
   .road { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; position: relative; margin-top: 10px; }
@@ -559,7 +587,7 @@
     <div class="toc__item"><span class="toc__no">02</span><div><div class="toc__t">타겟 고객 분석</div><div class="toc__d">세그먼트 · <span class="nb">구매 여정</span> · <span class="nb">핵심 페르소나 3종</span></div></div></div>
     <div class="toc__item"><span class="toc__no">03</span><div><div class="toc__t">브랜드 방향성 후보</div><div class="toc__d"><span class="nb">포지셔닝 3안 도출</span> · <span class="nb">비교 평가</span></div></div></div>
     <div class="toc__item"><span class="toc__no">04</span><div><div class="toc__t">결론 &amp; 실행 로드맵</div><div class="toc__d"><span class="nb">종합 권고</span> · <span class="nb">박람회→런칭 액션 플랜</span></div></div></div>
-    <div class="toc__item"><span class="toc__no">A</span><div><div class="toc__t">Appendix — 심층 자료</div><div class="toc__d"><span class="nb">시장 개요</span> · <span class="nb">경쟁사 비교</span> · <span class="nb">유통 채널</span> · 출처</div></div></div>
+    <div class="toc__item"><span class="toc__no">A</span><div><div class="toc__t">Appendix — 심층 자료</div><div class="toc__d"><span class="nb">시장 개요</span> · <span class="nb">경쟁사 비교·프로필</span> · <span class="nb">유통 채널</span> · 출처</div></div></div>
   </div>
 
   <div class="card card--cream" style="margin-top:30px;">
@@ -1341,8 +1369,20 @@
         <div class="dot" style="left:46%; top:66%;"><div class="dot__c" style="background:#9a937f;"></div><div class="dot__l">CJ 알짜란</div></div>
         <div class="dot" style="left:62%; top:78%;"><div class="dot__c" style="background:#b9b3a3;"></div><div class="dot__l">오뚜기 등 대중란</div></div>
         <div class="dot" style="left:70%; top:44%;"><div class="dot__c" style="background:var(--ochre);"></div><div class="dot__l">가농</div></div>
+        <!-- 신규 D2C 경쟁 브랜드 -->
+        <div class="dot dot--d2c" style="left:16%; top:30%;"><div class="dot__c"></div><div class="dot__l">상하농원</div></div>
+        <div class="dot dot--d2c" style="left:22%; top:48%;"><div class="dot__c"></div><div class="dot__l">아빠사랑팜</div></div>
+        <div class="dot dot--d2c" style="left:60%; top:32%;"><div class="dot__c"></div><div class="dot__l">포프리</div></div>
+        <div class="dot dot--d2c" style="left:64%; top:54%;"><div class="dot__c"></div><div class="dot__l">스탠다드에그</div></div>
+        <div class="dot dot--d2c" style="left:50%; top:50%;"><div class="dot__c"></div><div class="dot__l">월간계란</div></div>
+        <div class="dot dot--d2c" style="left:73%; top:64%;"><div class="dot__c"></div><div class="dot__l">구쁘·옹알옹알</div></div>
         <!-- us -->
         <div class="dot dot--us" style="left:78%; top:24%;"><div class="dot__c"></div><div class="dot__l">오계양계</div></div>
+      </div>
+      <div class="map__leg">
+        <span><i style="background:#9a937f;"></i>기존 소매·브랜드란</span>
+        <span><i style="background:var(--clay);"></i>신규 D2C 경쟁 브랜드</span>
+        <span><i style="background:var(--brand);"></i>오계양계</span>
       </div>
     </div>
     <div style="grid-column: span 4;">
@@ -1352,14 +1392,357 @@
       </div>
       <div class="callout callout--clay">
         <div class="callout__k">빈 사분면</div>
-        <p><b>우상단 = ‘프리미엄 × 신선·전문성’</b>은 가농을 제외하면 거의 비어 있다. 오계양계는 가농보다 더 위(전문가 스토리·프리미엄)에 자리 잡아 <b>차별적 1등 포지션</b>을 노린다.</p>
+        <p><b>우상단 = ‘프리미엄 × 신선·전문성’</b>은 가농·포프리·스탠다드에그가 채우기 시작한 <b>격전지</b>다. 좌측 복지존(상하농원·아빠사랑팜)은 우회 대상. 오계양계는 이들보다 더 위(<b>전문가 귀농 스토리 × 프리미엄</b>)에 자리 잡아 차별적 1등 포지션을 노린다.</p>
       </div>
     </div>
   </div>
   <div class="pf"><span class="pf__src">포지셔닝 맵은 경쟁사 공개 메시지·가격 기반의 정성 매핑 — 좌표는 상대적 위치를 나타내는 컨설팅 추정</span><span class="pf__pg">OGYE · <b>26</b></span></div>
 </section>
 
-<!-- ============ 25 · A-3 유통 채널 ============ -->
+<!-- ============ 27 · 경쟁사 프로필 ① 포프리 ============ -->
+<section class="page">
+  <div class="rh"><span class="rh__sec">A-2 Appendix · <b>경쟁사 프로필</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="bp-head"><div><span class="bp-kicker">국내 |</span> <span class="bp-name">포프리 <em>(Fourfree)</em></span></div><span class="bp-tier bp-tier--star">★ 신선·전문성 D2C</span></div>
+  <div class="h-rule" style="margin-top:12px;"></div>
+  <div class="grid g2" style="gap:26px; align-items:start;">
+    <div>
+      <dl class="bp-attr">
+        <div><dt>운영사</dt><dd>농업회사법인 포프리 · 2000년 설립 · 전남 화순</dd></div>
+        <div><dt>포지셔닝</dt><dd>“GMO·항생제·바이러스·비린내 <b>4가지로부터 자유로운(Four Free)</b> 신선란”</dd></div>
+        <div><dt>핵심 강점</dt><dd>자체 1일배송 시스템 · 정기회원 <b>약 20만</b><sup>추정</sup> · HACCP · 직영농장 전 과정 운영</dd></div>
+        <div><dt>난각번호</dt><dd>개선케이지+평사 병행 → <b>2·3번 혼합</b><sup>추정</sup> (단일 번호 공식표기 미확인)</dd></div>
+        <div><dt>가격대</dt><dd>10구 정기 ~6,800원<sup>추정</sup> / 20구(2팩) 18,100원</dd></div>
+        <div><dt>유통 채널</dt><dd>자사몰 직접배송 중심 · 외부 플랫폼 의존 낮음</dd></div>
+      </dl>
+      <div class="bp-block" style="margin-top:15px;"><div class="bp-block__h">브랜드 특징</div>
+        <p class="bp-note">2000년 “비린내 없는 계란”으로 출발해 두부·콩나물·두유까지 확장한 종합 신선식품 D2C. 산란일자 마킹·직영농장 투명성으로 신뢰를 쌓았고, <b>전국 24시간 직접배송 물류</b>가 가장 강력한 진입장벽이다.</p>
+      </div>
+    </div>
+    <div>
+      <div class="bp-block"><div class="bp-block__h">온라인 채널</div>
+        <div class="bp-link"><span>홈페이지</span><b>fourfree.co.kr</b></div>
+        <div class="bp-link"><span>판매 방식</span><b>자사몰 정기배송(구독)</b></div>
+      </div>
+      <div class="bp-block"><div class="bp-block__h">주요 제품</div>
+        <div class="grid g2" style="gap:10px;">
+          <div class="bp-prod"><div class="bp-prod__n">특란 10구 (정기배송)</div><div class="bp-prod__p">~6,800원<sup>추정</sup></div></div>
+          <div class="bp-prod"><div class="bp-prod__n">특란 20구 (2팩)</div><div class="bp-prod__p">18,100원</div></div>
+        </div>
+      </div>
+      <div class="callout callout--ochre"><div class="callout__k"><svg class="ic"><use href="#i-star"/></svg>오계양계 관점 — ★ 핵심 벤치마크</div>
+        <p>복지가 아닌 <b>신선·사료·전문성 + 자사 1일배송 구독</b>으로 20년간 20만 회원 D2C를 구축한 선례. 난각 3번·전문성 포지션과 충돌하기보다, “비복지 프리미엄을 신선·전문성으로 정당화하는” <b>검증된 경로</b>를 보여준다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 포프리 자사몰(fourfree.co.kr) 회사소개·상품, old.fourfree.com 제품정보 (2026-06-10 확인) · 회원수·정기배송가는 추정</span><span class="pf__pg">OGYE · <b>27</b></span></div>
+</section>
+
+<!-- ============ 28 · 경쟁사 프로필 ② 스탠다드에그 ============ -->
+<section class="page page--cream">
+  <div class="rh"><span class="rh__sec">A-2 Appendix · <b>경쟁사 프로필</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="bp-head"><div><span class="bp-kicker">국내 |</span> <span class="bp-name">스탠다드에그 <em>(Standard Egg)</em></span></div><span class="bp-tier bp-tier--star">★ 가장 닮은 직접경쟁</span></div>
+  <div class="h-rule" style="margin-top:12px;"></div>
+  <div class="grid g2" style="gap:26px; align-items:start;">
+    <div>
+      <dl class="bp-attr">
+        <div><dt>운영사</dt><dd>원삼양계(대표 박상도, 1992년~) · 2024년 D2C 브랜드 별도 론칭</dd></div>
+        <div><dt>포지셔닝</dt><dd>“건강한 계란의 <b>기준(Standard)</b> — 익명의 계란이 아닌 신뢰할 수 있는 브랜드”</dd></div>
+        <div><dt>핵심 강점</dt><dd>30여 년 양계 노하우 · 산란계 7농장·<b>65만 수</b> · 생산–가공–포장 수직계열 · 구운란 51h 공정</dd></div>
+        <div><dt>난각번호</dt><dd><b>2/4 미확정</b> (품목별 평사·케이지 혼재, 출처 간 불일치)</dd></div>
+        <div><dt>가격대</dt><dd>맥반석 구운란 20구 ~12,780원</dd></div>
+        <div><dt>유통 채널</dt><dd>쿠팡(2024.1 입점·주력) · 자사몰(imweb) · 인스타그램</dd></div>
+      </dl>
+      <div class="bp-block" style="margin-top:15px;"><div class="bp-block__h">브랜드 특징</div>
+        <p class="bp-note">기존 B2B 산란계 사업자가 만든 브랜드형 신선란·구운란. “깨진 달걀 100% 안심보상” 등 신뢰 장치로 <b>쿠팡 D2C 전환</b>에 성공했다. 동물복지·무항생제·유정란도 보조 소구.</p>
+      </div>
+    </div>
+    <div>
+      <div class="bp-block"><div class="bp-block__h">온라인 채널</div>
+        <div class="bp-link"><span>자사몰</span><b>standardegg.imweb.me</b></div>
+        <div class="bp-link"><span>주력 채널</span><b>쿠팡 마켓플레이스</b></div>
+        <div class="bp-link"><span>SNS</span><b>@standardegg.official</b></div>
+      </div>
+      <div class="bp-block"><div class="bp-block__h">주요 제품</div>
+        <div class="grid g2" style="gap:10px;">
+          <div class="bp-prod"><div class="bp-prod__n">맥반석 구운란 20구</div><div class="bp-prod__p">~12,780원</div></div>
+          <div class="bp-prod"><div class="bp-prod__n">쿠팡 자사채널 월매출</div><div class="bp-prod__p">최대 1,700만+<sup>추정</sup></div></div>
+        </div>
+      </div>
+      <div class="callout callout--ochre"><div class="callout__k"><svg class="ic"><use href="#i-star"/></svg>오계양계 관점 — ★ 직접 경쟁 & 채널 벤치마크</div>
+        <p>“복지 최상위가 아닌 <b>신선·전문성·수직계열 신뢰</b>”로 프리미엄을 잡는, 오계양계와 <b>가장 닮은 경쟁자</b>. 동시에 쿠팡 D2C 전환 성공 사례로 <b>채널 전략의 참고</b>가 된다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 쿠팡 뉴스룸(스탠다드에그 성장기), 자사몰 standardegg.imweb.me, 가격검색(fallcent) (2026-06-10 확인) · 난각번호·월매출은 미확인·추정</span><span class="pf__pg">OGYE · <b>28</b></span></div>
+</section>
+
+<!-- ============ 29 · 경쟁사 프로필 ③ 월간계란 ============ -->
+<section class="page">
+  <div class="rh"><span class="rh__sec">A-2 Appendix · <b>경쟁사 프로필</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="bp-head"><div><span class="bp-kicker">국내 |</span> <span class="bp-name">월간계란 <em>(Monthly Eggs)</em></span></div><span class="bp-tier bp-tier--star">신선 D2C · 구독</span></div>
+  <div class="h-rule" style="margin-top:12px;"></div>
+  <div class="grid g2" style="gap:26px; align-items:start;">
+    <div>
+      <dl class="bp-attr">
+        <div><dt>운영사</dt><dd>월간계란(소셜벤처, 대표 주여달) · 서울 용산 / 산지 충남 3대째 양계장 · 2019년~</dd></div>
+        <div><dt>포지셔닝</dt><dd>“갓 낳은 신선란 <b>월 정기구독</b> + 구매=기부”</dd></div>
+        <div><dt>핵심 강점</dt><dd>구독+기부(가치소비) · 클로렐라 유정란 등 특화 SKU · 소셜벤처 인정</dd></div>
+        <div><dt>난각번호</dt><dd><b>2번</b>(평사) — 사육환경 국내 상위 5% 주장</dd></div>
+        <div><dt>가격대</dt><dd>맥반석 구운계란 대란 30알 9,500원 / 정기배송 2.5% 할인</dd></div>
+        <div><dt>유통 채널</dt><dd>자사 구독몰(monthlyeggs.com) 산지직송</dd></div>
+      </dl>
+      <div class="bp-block" style="margin-top:15px;"><div class="bp-block__h">브랜드 특징</div>
+        <p class="bp-note">“신문처럼 정기구독하는 신선란”이라는 컨셉에 <b>판매 10% 기부</b> 소셜미션을 결합. 홍성군 농업기술센터와 클로렐라 유정란 공동연구 등 차별 SKU로 단순 프리미엄과 구분된다.</p>
+      </div>
+    </div>
+    <div>
+      <div class="bp-block"><div class="bp-block__h">온라인 채널</div>
+        <div class="bp-link"><span>구독몰</span><b>monthlyeggs.com</b></div>
+        <div class="bp-link"><span>판매 방식</span><b>월/주 단위 정기구독</b></div>
+      </div>
+      <div class="bp-block"><div class="bp-block__h">주요 제품</div>
+        <div class="grid g2" style="gap:10px;">
+          <div class="bp-prod"><div class="bp-prod__n">맥반석 구운계란 대란 30알</div><div class="bp-prod__p">9,500원</div></div>
+          <div class="bp-prod"><div class="bp-prod__n">유정란 구독 (10·15·30구)</div><div class="bp-prod__p">주기 선택형</div></div>
+        </div>
+      </div>
+      <div class="callout callout--ochre"><div class="callout__k"><svg class="ic"><use href="#i-route"/></svg>오계양계 관점 — 참고 (위협 낮음)</div>
+        <p>같은 비복지·신선 인접 영역이나 <b>‘기부·소셜미션 + 구독’</b>으로 차별화 — 오계양계의 ‘전문가 귀농·스마트팜’ 축과 메시지가 달라 위협도는 낮다. <b>구독·산지직송 UX</b>는 참고할 만하다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 월간계란 자사몰(monthlyeggs.com), 스타트업투데이 인터뷰 (2026-06-10 확인) · 매출·구독자 수치는 미확인</span><span class="pf__pg">OGYE · <b>29</b></span></div>
+</section>
+
+<!-- ============ 30 · 경쟁사 프로필 ④ 구쁘·옹알옹알 ============ -->
+<section class="page page--cream">
+  <div class="rh"><span class="rh__sec">A-2 Appendix · <b>경쟁사 프로필</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="bp-head"><div><span class="bp-kicker">국내 |</span> <span class="bp-name">구쁘 <em>(옹알옹알)</em></span></div><span class="bp-tier bp-tier--star">신선 D2C · 콘텐츠</span></div>
+  <div class="h-rule" style="margin-top:12px;"></div>
+  <div class="grid g2" style="gap:26px; align-items:start;">
+    <div>
+      <dl class="bp-attr">
+        <div><dt>운영사</dt><dd>구쁘 농업회사법인 · 전남 보성 · 계란 라인 = <b>옹알옹알</b> · 슬로건 “입맛이 당기다”</dd></div>
+        <div><dt>포지셔닝</dt><dd>“우리가족 <b>안심 계란</b> + 계란 레시피·식단 라이프스타일”</dd></div>
+        <div><dt>핵심 강점</dt><dd>무항생제·HACCP·NON-GMO 다중 인증 · 옹알옹알쿡 레시피 콘텐츠 · 정기배송</dd></div>
+        <div><dt>난각번호</dt><dd><b>2번</b>(평사·유정란)</dd></div>
+        <div><dt>가격대</dt><dd>옹알옹알 30구 21,900원 (구당 ~730원)</dd></div>
+        <div><dt>유통 채널</dt><dd>자사몰(guppeu.com) + 11번가·SSG·G마켓·보성몰</dd></div>
+      </dl>
+      <div class="bp-block" style="margin-top:15px;"><div class="bp-block__h">브랜드 특징</div>
+        <p class="bp-note">계란을 코어로 손두부·꼬꼬장·저당 베이커리까지 묶은 <b>‘계란 요리/식단’ D2C 종합몰</b>. 다중 인증 신뢰 + 레시피 콘텐츠(유튜브)로 라이프스타일 락인을 노린다.</p>
+      </div>
+    </div>
+    <div>
+      <div class="bp-block"><div class="bp-block__h">온라인 채널</div>
+        <div class="bp-link"><span>자사몰</span><b>guppeu.com (정기배송)</b></div>
+        <div class="bp-link"><span>오픈마켓</span><b>11번가·SSG·G마켓·보성몰</b></div>
+      </div>
+      <div class="bp-block"><div class="bp-block__h">주요 제품</div>
+        <div class="grid g2" style="gap:10px;">
+          <div class="bp-prod"><div class="bp-prod__n">옹알옹알 안심계란 30구</div><div class="bp-prod__p">21,900원</div></div>
+          <div class="bp-prod"><div class="bp-prod__n">레시피·식단 베이커리</div><div class="bp-prod__p">확장 SKU</div></div>
+        </div>
+      </div>
+      <div class="callout callout--ochre"><div class="callout__k"><svg class="ic"><use href="#i-book"/></svg>오계양계 관점 — 콘텐츠·구독 락인 참고</div>
+        <p>“난각 2번 + 무항생제·NON-GMO 인증 + 정기배송 + <b>레시피 콘텐츠</b>”로 안심·식단 락인을 구축한 모델. 소구 축이 달라 직접 위협은 낮으나, <b>콘텐츠+구독 결합</b>은 차용 가치가 크다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 구쁘 자사몰(guppeu.com) 옹알옹알 상세, 11번가·SSG 남도장터 상품 (2026-06-10 확인) · 매출·생산규모는 미확인</span><span class="pf__pg">OGYE · <b>30</b></span></div>
+</section>
+
+<!-- ============ 31 · 경쟁사 프로필 ⑤ 상하농원 ============ -->
+<section class="page">
+  <div class="rh"><span class="rh__sec">A-2 Appendix · <b>경쟁사 프로필</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="bp-head"><div><span class="bp-kicker">국내 |</span> <span class="bp-name">상하농원 <em>(Sangha Farm)</em></span></div><span class="bp-tier bp-tier--welfare">대기업·복지 프리미엄</span></div>
+  <div class="h-rule" style="margin-top:12px;"></div>
+  <div class="grid g2" style="gap:26px; align-items:start;">
+    <div>
+      <dl class="bp-attr">
+        <div><dt>운영사</dt><dd>상하농원(유) · <b>매일유업</b> 계열 · 2016년 전북 고창 농촌융복합(6차산업)</dd></div>
+        <div><dt>포지셔닝</dt><dd>“더 진한 노른자·고소함·영양” — 체험형 농원 신뢰 기반 <b>동물복지 유정란</b></dd></div>
+        <div><dt>핵심 강점</dt><dd>매일유업 자본 + 체험농원 브랜드자산 · 동물복지 인증 · 대형유통 광범위 입점</dd></div>
+        <div><dt>난각번호</dt><dd><b>1번</b>(방사·자유방목, 동물복지)</dd></div>
+        <div><dt>가격대</dt><dd>진 유정란 10구 12,000원 / 자유방목 10구 9,990원</dd></div>
+        <div><dt>유통 채널</dt><dd>자사몰(주24회 정기) · SSG/이마트 · 마켓컬리 · 홈플러스</dd></div>
+      </dl>
+      <div class="bp-block" style="margin-top:15px;"><div class="bp-block__h">브랜드 특징</div>
+        <p class="bp-note">농원 전체 연매출 <b>~340억</b>(2023), 누적 방문객 170만+. 관광·체험 브랜드 신뢰를 식품으로 확장한 구조로, ‘청정 고창·동물복지’가 핵심 자산.</p>
+      </div>
+    </div>
+    <div>
+      <div class="bp-block"><div class="bp-block__h">온라인 채널</div>
+        <div class="bp-link"><span>자사몰</span><b>sanghafarm.co.kr</b></div>
+        <div class="bp-link"><span>대형 유통</span><b>SSG·이마트·컬리·홈플러스</b></div>
+      </div>
+      <div class="bp-block"><div class="bp-block__h">주요 제품</div>
+        <div class="grid g2" style="gap:10px;">
+          <div class="bp-prod"><div class="bp-prod__n">진 유정란 10구</div><div class="bp-prod__p">12,000원</div></div>
+          <div class="bp-prod"><div class="bp-prod__n">자유방목 동물복지 10구</div><div class="bp-prod__p">9,990원</div></div>
+        </div>
+      </div>
+      <div class="callout callout--clay"><div class="callout__k"><svg class="ic"><use href="#i-shield"/></svg>오계양계 관점 — 우회 대상</div>
+        <p>난각 1번(복지) + 대기업 신뢰 + 체험농원 — <b>복지 축에서 정면 경쟁 불가</b>. 오계양계는 복지가 아닌 ‘전문가 검증 신선·품질’로 우회하며, 상하가 가진 “진함·품질” 소구는 <b>데이터·전문성</b>으로 차별화한다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 상하농원 자사몰(sanghafarm.co.kr), 서울경제·헤럴드경제(연매출 340억) (2026-06-10 확인) · 달걀 단일 매출은 미확인</span><span class="pf__pg">OGYE · <b>31</b></span></div>
+</section>
+
+<!-- ============ 32 · 경쟁사 프로필 ⑥ 아빠사랑팜 ============ -->
+<section class="page page--cream">
+  <div class="rh"><span class="rh__sec">A-2 Appendix · <b>경쟁사 프로필</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="bp-head"><div><span class="bp-kicker">국내 |</span> <span class="bp-name">아빠사랑팜 <em>(Papa Love Farm)</em></span></div><span class="bp-tier bp-tier--welfare">방사 프리미엄 소농 D2C</span></div>
+  <div class="h-rule" style="margin-top:12px;"></div>
+  <div class="grid g2" style="gap:26px; align-items:start;">
+    <div>
+      <dl class="bp-attr">
+        <div><dt>운영사</dt><dd>아빠사랑팜(개인사업자, 대표 표성미) · 농장형 D2C</dd></div>
+        <div><dt>포지셔닝</dt><dd>“더하지 않고 빼서 만드는 진짜 계란 (only one egg)”</dd></div>
+        <div><dt>핵심 강점</dt><dd>방사 1번 + <b>Non-GMO 자가 쌀사료</b> · 구독 등급제 · HAPPY 꼬꼬 체험</dd></div>
+        <div><dt>난각번호</dt><dd><b>1번</b>(방사·동물복지)</dd></div>
+        <div><dt>가격대</dt><dd>초란 40구 48,000원(세일 38,400원) · 구당 ~1,000원</dd></div>
+        <div><dt>유통 채널</dt><dd>자사몰(papalovefarm.com) · 네이버 스마트스토어 · 자사 정기구독</dd></div>
+      </dl>
+      <div class="bp-block" style="margin-top:15px;"><div class="bp-block__h">브랜드 특징</div>
+        <p class="bp-note">닭의 본성을 지켜 ‘빼기’로 만든다는 미니멀 내러티브의 <b>고가 프리미엄</b> 소농 D2C. 구독(다이아/사파이어/토파즈 등급)·체험으로 관계형 고객을 묶는다.</p>
+      </div>
+    </div>
+    <div>
+      <div class="bp-block"><div class="bp-block__h">온라인 채널</div>
+        <div class="bp-link"><span>자사몰</span><b>papalovefarm.com</b></div>
+        <div class="bp-link"><span>스토어</span><b>네이버 스마트스토어·블로그</b></div>
+      </div>
+      <div class="bp-block"><div class="bp-block__h">주요 제품</div>
+        <div class="grid g2" style="gap:10px;">
+          <div class="bp-prod"><div class="bp-prod__n">초란 방사 유정란 40구</div><div class="bp-prod__p">38,400~48,000원</div></div>
+          <div class="bp-prod"><div class="bp-prod__n">정기구독 (등급제)</div><div class="bp-prod__p">단가 미확인</div></div>
+        </div>
+      </div>
+      <div class="callout callout--clay"><div class="callout__k"><svg class="ic"><use href="#i-route"/></svg>오계양계 관점 — 메시징 벤치마크</div>
+        <p>난각 1번(방사)·고가·구독·“빼기” 내러티브로 <b>소규모 농장이 D2C 프리미엄</b>을 만든 사례. 복지 축에서 정면 충돌하지 않으므로 위협보다 <b>스토리·구독 설계의 참고</b> 가치가 크다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 아빠사랑팜 자사몰(papalovefarm.com) 메인·상품상세 (2026-06-10 확인) · 매출·산란규모는 미확인</span><span class="pf__pg">OGYE · <b>32</b></span></div>
+</section>
+
+<!-- ============ 33 · 경쟁사 프로필 ⑦ 내일학교달걀 ============ -->
+<section class="page">
+  <div class="rh"><span class="rh__sec">A-2 Appendix · <b>경쟁사 프로필</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="bp-head"><div><span class="bp-kicker">국내 |</span> <span class="bp-name">내일학교달걀 <em>(내일학교 농장)</em></span></div><span class="bp-tier bp-tier--story">스토리텔링·교육 서사</span></div>
+  <div class="h-rule" style="margin-top:12px;"></div>
+  <div class="grid g2" style="gap:26px; align-items:start;">
+    <div>
+      <dl class="bp-attr">
+        <div><dt>운영사</dt><dd>내일학교(경북 봉화 대안학교, 2007 개교) 부설 농장 <span style="color:var(--muted);">추정</span></dd></div>
+        <div><dt>포지셔닝</dt><dd>학생·교사가 함께 닭을 키우는 <b>교육·자립 서사</b>의 달걀</dd></div>
+        <div><dt>핵심 강점</dt><dd>닭 약 3,000수 · “자연의 감사함과 사랑” 정서 서사 · 학교정원 풀 급여</dd></div>
+        <div><dt>난각번호</dt><dd><b>미확인</b> (동물복지 인증 정보 검색 안 됨 · 방사/평사 추정)</dd></div>
+        <div><dt>가격대</dt><dd><b>미확인</b> (소농 직거래)</dd></div>
+        <div><dt>유통 채널</dt><dd>마르쉐@(농부시장) · 농장 직거래</dd></div>
+      </dl>
+      <div class="bp-block" style="margin-top:15px;"><div class="bp-block__h">브랜드 특징</div>
+        <p class="bp-note">교육·자립 활동과 결합한 스토리텔링형 소농 달걀. 제품군은 달걀·달걀조림·구운달걀·달걀빵. 대형 유통 입점 흔적 없는 <b>직거래·소규모</b> 중심.</p>
+      </div>
+    </div>
+    <div>
+      <div class="bp-block"><div class="bp-block__h">온라인 채널</div>
+        <div class="bp-link"><span>플랫폼</span><b>마르쉐@ 농부시장</b></div>
+        <div class="bp-link"><span>직거래</span><b>naeilschool.org / 농장 연락</b></div>
+      </div>
+      <div class="bp-block"><div class="bp-block__h">주요 제품</div>
+        <div class="grid g2" style="gap:10px;">
+          <div class="bp-prod"><div class="bp-prod__n">내일학교 달걀</div><div class="bp-prod__p">가격 미확인</div></div>
+          <div class="bp-prod"><div class="bp-prod__n">달걀조림·구운달걀·달걀빵</div><div class="bp-prod__p">가공 라인</div></div>
+        </div>
+      </div>
+      <div class="callout callout--clay"><div class="callout__k"><svg class="ic"><use href="#i-alert"/></svg>오계양계 관점 — ‘교육’ 서사 겹침 주의</div>
+        <p>‘교육·전문가’ 서사가 일부 겹치나 <b>결이 다르다</b> — 내일학교는 <b>학생 자립 정서</b>, 오계양계는 <b>전문가 권위(농진원)</b>. 혼동을 피하려면 ‘검증·전문성’ 프레임을 명확히 해야 한다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 에듀인뉴스(내일학교 소개), 마르쉐@ 내일학교농장, naeilschool.org (2026-06-10 확인) · 난각·가격·매출 모두 미확인(소농 직거래)</span><span class="pf__pg">OGYE · <b>33</b></span></div>
+</section>
+
+<!-- ============ 34 · 경쟁사 프로필 ⑧ 농사펀드 ============ -->
+<section class="page page--cream">
+  <div class="rh"><span class="rh__sec">A-2 Appendix · <b>경쟁사 프로필</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="bp-head"><div><span class="bp-kicker">국내 |</span> <span class="bp-name">농사펀드 <em>(Farmingfund)</em></span></div><span class="bp-tier bp-tier--platform">유통 플랫폼 · 입점 기회</span></div>
+  <div class="h-rule" style="margin-top:12px;"></div>
+  <div class="grid g2" style="gap:26px; align-items:start;">
+    <div>
+      <dl class="bp-attr">
+        <div><dt>운영사</dt><dd>(주)농사펀드(2014 법인, 대표 박종범) · 임팩트투자사 소풍 시드</dd></div>
+        <div><dt>포지셔닝</dt><dd>“농부에게 미리 투자(선구매) → 산지직송으로 돌려받는” <b>농산물 크라우드펀딩 커머스</b></dd></div>
+        <div><dt>핵심 강점</dt><dd>선(先)펀딩 모델 · 생산자 스토리텔링 · 재구매율 <b>약 85%</b></dd></div>
+        <div><dt>계란 역할</dt><dd>입점·중개형 채널(PB 없음) · 동물복지·유기축산 <b>난각 1번 중심</b></dd></div>
+        <div><dt>가격대</dt><dd>계란 단가 미확인 (상품별 펀딩가)</dd></div>
+        <div><dt>접근</dt><dd>자사 웹/모바일(ffd.co.kr) · 펀딩 + 정기배송</dd></div>
+      </dl>
+      <div class="bp-block" style="margin-top:15px;"><div class="bp-block__h">브랜드 특징</div>
+        <p class="bp-note">농사 전·수확 전 선구매로 농가 자금·가격 리스크를 해소하는 관계형 커머스. 누적 연결 농가 <b>약 650곳</b>(2019), 고충성 단골 기반. 방사·유기 톤이 강하다.</p>
+      </div>
+    </div>
+    <div>
+      <div class="bp-block"><div class="bp-block__h">온라인 채널</div>
+        <div class="bp-link"><span>플랫폼</span><b>ffd.co.kr</b></div>
+        <div class="bp-link"><span>모델</span><b>펀딩 선구매 + 정기배송</b></div>
+      </div>
+      <div class="bp-block"><div class="bp-block__h">취급 계란 경향</div>
+        <div class="grid g2" style="gap:10px;">
+          <div class="bp-prod"><div class="bp-prod__n">유기축산 동물복지란</div><div class="bp-prod__p">난각 1번</div></div>
+          <div class="bp-prod"><div class="bp-prod__n">자연방사 유정란</div><div class="bp-prod__p">산지직송</div></div>
+        </div>
+      </div>
+      <div class="callout callout--ochre"><div class="callout__k"><svg class="ic"><use href="#i-truck"/></svg>오계양계 관점 — 입점 기회</div>
+        <p>주력이 난각 1번·유기 프리미엄존이라 직접 경쟁은 약함. <b>“스토리·전문성 기반 선구매/정기배송 입점 채널”</b>로 활용 가능 — 단 방사·복지 톤이 강해 ‘전문가 신선란’ 내러티브로 차별화가 필요하다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 농사펀드 자사몰(ffd.co.kr), channel.io CXC 사례, 경향신문 (2026-06-10 확인) · 최신 거래액·회원수는 미확인(2019 기준)</span><span class="pf__pg">OGYE · <b>34</b></span></div>
+</section>
+
+<!-- ============ 35 · 경쟁사 프로필 ⑨ 프레딧 ============ -->
+<section class="page">
+  <div class="rh"><span class="rh__sec">A-2 Appendix · <b>경쟁사 프로필</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="bp-head"><div><span class="bp-kicker">국내 |</span> <span class="bp-name">프레딧 <em>(Fredit)</em></span></div><span class="bp-tier bp-tier--platform">유통 플랫폼 · 기회+경쟁</span></div>
+  <div class="h-rule" style="margin-top:12px;"></div>
+  <div class="grid g2" style="gap:26px; align-items:start;">
+    <div>
+      <dl class="bp-attr">
+        <div><dt>운영사</dt><dd><b>hy(에이치와이, 옛 한국야쿠르트)</b> · 2021 통합 론칭 <span style="color:var(--muted);">(※현대그린푸드 아님)</span></dd></div>
+        <div><dt>포지셔닝</dt><dd>“정직한 신선·유기농 선별샵” — 신선식품·건강 종합몰 + 정기배송</dd></div>
+        <div><dt>핵심 강점</dt><dd>프레시매니저 <b>~1.1만명 방문배송</b> · 회원 <b>200만</b>(2024.7) · 거래액 ~1,700억(2023)</dd></div>
+        <div><dt>계란 역할</dt><dd>입점 + PB 혼합 · PB <b>‘잇츠온’ 무항생제 동물복지 유정란</b>(콜드체인 7일내)</dd></div>
+        <div><dt>가격대</dt><dd>멤버십가 — 일반 대비 최대 20%↓ (상세 미확인)</dd></div>
+        <div><dt>접근</dt><dd>앱·웹(fredit.co.kr) + 프레시매니저 방문배송</dd></div>
+      </dl>
+      <div class="bp-block" style="margin-top:15px;"><div class="bp-block__h">브랜드 특징</div>
+        <p class="bp-note">hy의 방문배송·정기구독 인프라를 갖춘 대형 플랫폼. 유료 멤버십 매출 비중 33% 전망, 정기구독 +50%. <b>PB 잇츠온이 ‘신선·전문성’ 포지션을 이미 선점.</b></p>
+      </div>
+    </div>
+    <div>
+      <div class="bp-block"><div class="bp-block__h">온라인 채널</div>
+        <div class="bp-link"><span>플랫폼</span><b>fredit.co.kr · hy앱</b></div>
+        <div class="bp-link"><span>배송</span><b>프레시매니저 방문배송</b></div>
+      </div>
+      <div class="bp-block"><div class="bp-block__h">계란 (PB)</div>
+        <div class="grid g2" style="gap:10px;">
+          <div class="bp-prod"><div class="bp-prod__n">잇츠온 동물복지 유정란</div><div class="bp-prod__p">정기구독</div></div>
+          <div class="bp-prod"><div class="bp-prod__n">회원 규모</div><div class="bp-prod__p">200만+</div></div>
+        </div>
+      </div>
+      <div class="callout callout--clay"><div class="callout__k"><svg class="ic"><use href="#i-layers"/></svg>오계양계 관점 — 기회 + 경쟁 양면</div>
+        <p>강력한 방문배송·정기구독 인프라의 <b>대형 입점 기회</b>이나, 잇츠온 PB 동물복지 유정란이 이미 “신선·전문성”을 선점 → 입점 시 <b>매대 경쟁 + ‘왜 3번인가’ 설득 부담</b>을 동시에 안는다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 프레딧 자사몰(fredit.co.kr), 머니투데이·뉴시스(회원 200만·거래액), inthenews(잇츠온 유정란) (2026-06-10 확인) · 계란 단가는 미확인</span><span class="pf__pg">OGYE · <b>35</b></span></div>
+</section>
+
+<!-- ============ 36 · A-3 유통 채널 ============ -->
 <section class="page page--cream">
   <div class="rh"><span class="rh__sec">A-3 Appendix · <b>유통 채널</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
   <div class="h-kicker"><svg class="ic"><use href="#i-truck"/></svg>Distribution Channels</div>
@@ -1381,7 +1764,7 @@
     <div class="callout__k">채널 전략</div>
     <p><b>1단계(런칭) = 자사몰 D2C + 새벽배송</b>으로 프리미엄 신뢰를 구축하고 고객 데이터를 확보한다. <b>2단계 = 로컬·B2B 확장</b>, <b>3단계 = 대형 유통</b>. 박람회 티징의 회원가입 이벤트가 곧 D2C의 첫 시드가 된다.</p>
   </div>
-  <div class="pf"><span class="pf__src">채널 적합도는 타겟·브랜드 전략 기반 컨설팅 판단 · 수수료·입점기준 등 실데이터는 후속 검토 단계에서 확정</span><span class="pf__pg">OGYE · <b>27</b></span></div>
+  <div class="pf"><span class="pf__src">채널 적합도는 타겟·브랜드 전략 기반 컨설팅 판단 · 수수료·입점기준 등 실데이터는 후속 검토 단계에서 확정</span><span class="pf__pg">OGYE · <b>36</b></span></div>
 </section>
 
 <!-- ============ 26 · 출처 ============ -->
@@ -1425,7 +1808,7 @@
       </div>
     </div>
   </div>
-  <div class="pf"><span class="pf__src">데스크 리서치 기준 2026-06-05 · 모든 수치는 본문 명시 출처 기반, 추정치는 별도 표기</span><span class="pf__pg">OGYE · <b>28</b></span></div>
+  <div class="pf"><span class="pf__src">데스크 리서치 기준 2026-06-05 · 모든 수치는 본문 명시 출처 기반, 추정치는 별도 표기</span><span class="pf__pg">OGYE · <b>37</b></span></div>
 </section>
 
 <!-- ============ 27 · BACK COVER ============ -->
