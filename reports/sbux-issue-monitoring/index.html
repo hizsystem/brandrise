@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow, noarchive" />
+<title>스타벅스 앳홈 인스타그램 이슈 영향 모니터링 리포트</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet" />
+<style>
+  :root{
+    --green:#00704A; --green-dark:#1E3932; --green-soft:#E8F2EE; --cream:#F7F5EE;
+    --ink:#1c1c1c; --muted:#6b6b6b; --line:#e4e2dc;
+    --red:#C0392B; --red-soft:#FBEAE7; --warn:#B8860B; --warn-soft:#FBF3DE;
+    --fill:#FFF6D6; --fill-border:#E8C84B;
+  }
+  *{box-sizing:border-box}
+  body{font-family:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;
+    color:var(--ink);margin:0;background:var(--cream);line-height:1.62;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:940px;margin:0 auto;padding:0 24px 80px}
+  header{background:linear-gradient(135deg,var(--green-dark) 0%,var(--green) 100%);color:#fff;padding:46px 0 38px}
+  header .wrap{padding-bottom:0}
+  .eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;opacity:.8;margin-bottom:14px;font-weight:600}
+  header h1{font-size:27px;line-height:1.35;margin:0 0 22px;font-weight:800}
+  .meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
+    background:rgba(255,255,255,.15);border-radius:10px;overflow:hidden}
+  .meta-cell{background:rgba(255,255,255,.06);padding:13px 16px}
+  .meta-cell .k{font-size:11px;opacity:.7;letter-spacing:.5px;margin-bottom:4px}
+  .meta-cell .v{font-size:14px;font-weight:600}
+  section{margin-top:38px}
+  h2.sec{font-size:20px;margin:0 0 4px;color:var(--green-dark);font-weight:800;display:flex;align-items:center;gap:12px}
+  h2.sec .badge-no{flex:0 0 34px;height:34px;border-radius:9px;background:var(--green);color:#fff;
+    display:grid;place-items:center;font-size:16px;font-weight:800}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px 26px;margin-top:16px}
+  .q{font-size:14px;color:var(--muted);margin:0 0 16px}.q strong{color:var(--ink)}
+  .verdict{font-size:15px;font-weight:700;margin:0 0 14px;padding:12px 16px;border-radius:9px}
+  .verdict.neg{background:var(--red-soft);color:var(--red)}
+  .verdict.warn{background:var(--warn-soft);color:var(--warn)}
+  .verdict.flat{background:var(--green-soft);color:var(--green-dark)}
+  table{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:13.5px}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#fafaf7;font-weight:700;color:var(--green-dark);font-size:12px;letter-spacing:.3px}
+  td.num{text-align:right;font-variant-numeric:tabular-nums}
+  .down{color:var(--red);font-weight:700}.up{color:var(--green);font-weight:700}
+  .cap{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:4px 11px;border-radius:20px;margin-bottom:14px}
+  .cap.ok{background:var(--green-soft);color:var(--green)}
+  .cap.warn{background:var(--warn-soft);color:var(--warn)}
+  .cap .dot{width:7px;height:7px;border-radius:50%;background:currentColor}
+  .src{font-size:12.5px;color:var(--muted);background:#fafaf7;border-radius:8px;padding:10px 14px;margin-top:6px}
+  .src b{color:var(--green-dark)}
+  ul.clean{margin:8px 0 0;padding-left:18px;font-size:14px}ul.clean li{margin-bottom:6px}
+  .quote{background:#fafaf7;border-left:3px solid var(--red);border-radius:0 8px 8px 0;
+    padding:8px 14px;margin:6px 0;font-size:13px;color:#444}
+  .quote .t{font-size:11px;color:var(--muted);margin-right:8px}
+  .summary-box{background:var(--green-soft);border:1px solid #cfe3da;border-radius:12px;padding:22px 26px;margin-top:18px}
+  .summary-box h3{margin:0 0 14px;font-size:16px;color:var(--green-dark)}
+  .summary-box .line{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-bottom:1px dashed #c7ddd3;font-size:14px}
+  .summary-box .line:last-child{border-bottom:none}
+  .summary-box .n{flex:0 0 26px;height:26px;border-radius:50%;background:var(--green);color:#fff;
+    font-size:13px;font-weight:700;display:grid;place-items:center;margin-top:1px}
+  .alert{background:var(--warn-soft);border:1px solid #ecd9a0;border-left:4px solid var(--warn);
+    border-radius:10px;padding:20px 24px;margin-top:18px}
+  .alert h3{margin:0 0 10px;font-size:16px;color:#8a6a08}
+  .alert p{margin:0 0 8px;font-size:13.5px}
+  .note-box{background:#fff;border:1px solid var(--line);border-left:4px solid var(--green);border-radius:10px;padding:20px 24px;margin-top:18px}
+  .note-box h3{margin:0 0 10px;font-size:15px;color:var(--green-dark)}
+  .note-box p,.note-box li{font-size:13.5px}.note-box ul{margin:8px 0 0;padding-left:18px}
+  footer{margin-top:46px;text-align:center;font-size:12px;color:var(--muted)}
+  .toolbar{position:sticky;top:0;z-index:10;background:rgba(247,245,238,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);padding:10px 24px;display:flex;justify-content:flex-end;gap:10px}
+  .toolbar .hint{margin-right:auto;font-size:12px;color:var(--muted);align-self:center}
+  button{font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--green);
+    background:var(--green);color:#fff;padding:7px 16px;border-radius:8px}button:hover{opacity:.88}
+  .tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;margin:2px 4px 2px 0}
+  .tag.neg{background:var(--red-soft);color:var(--red)}.tag.neu{background:#eee;color:#666}.tag.pos{background:var(--green-soft);color:var(--green)}
+  @media print{.toolbar{display:none}body{background:#fff}header{-webkit-print-color-adjust:exact;print-color-adjust:exact}section{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="hint">💡 PDF로 저장해 공유하세요. (수치는 Instagram Graph API 직접 추출)</span>
+  <button onclick="window.print()">PDF / 인쇄</button>
+</div>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Channel Issue Impact Monitoring</div>
+    <h1>스타벅스 앳홈 인스타그램 채널<br/>이슈 영향 모니터링 리포트</h1>
+    <div class="meta-grid">
+      <div class="meta-cell"><div class="k">대상 채널</div><div class="v">@starbucksathome_kr</div></div>
+      <div class="meta-cell"><div class="k">팔로워</div><div class="v">24,430</div></div>
+      <div class="meta-cell"><div class="k">이슈 기준일</div><div class="v">2026.05.18</div></div>
+      <div class="meta-cell"><div class="k">비교 구간</div><div class="v">전 5/11–17 vs 후 5/18–24</div></div>
+      <div class="meta-cell"><div class="k">데이터 출처</div><div class="v">Instagram Graph API</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 이슈 정의 + 모니터링 기준 -->
+  <section>
+    <div class="note-box">
+      <h3>📌 분석 대상 이슈 &amp; 모니터링 기준</h3>
+      <p><b>이슈:</b> 2026년 5월 18일 전후 발생한 <b>"탱크데이 / 5.18 관련 논란"</b>. 인스타그램 댓글에 5.18·광주·탱크이벤트 언급, 불매 호소, "대표 사임" 언급, 브랜드 조롱(응디벅스·쓰벅 등) 및 정치적 공방이 유입됨.</p>
+      <p style="margin-top:10px"><b>모니터링 기준:</b> 현재 채널은 <b>Sprinklr 등 소셜 리스닝 플랫폼 미사용</b>. 본 리포트는 <b>Instagram Graph API(Meta)</b>로 계정 인사이트·게시물 성과·댓글 본문을 직접 추출해 작성. <b>DM·외부 채널 멘션·뉴스·커뮤니티 여론은 미포함.</b></p>
+    </div>
+  </section>
+
+  <!-- ★ 가장 중요한 해석 경고 -->
+  <section>
+    <div class="alert">
+      <h3>⚠️ 해석 시 반드시 주의 — 광고 캠페인 종료와 이슈 시점이 겹침</h3>
+      <p>이슈 전 구간(5/11–17) 계정 <b>도달이 일 250만~390만</b>이었다가 5/18부터 <b>일 수백~15만 수준으로 급락</b>합니다. 이는 <b>이슈로 인한 참여 붕괴가 아니라, 5/17까지 집행되던 대형 유료광고 캠페인이 5/18 전후 종료</b>된 데 따른 것입니다. (해당 기간 신규 게시물 0건)</p>
+      <p>따라서 <b>도달·노출·참여·신규 팔로우 등 계정 단위 정량 지표의 "급감"을 이슈 영향으로 해석하면 오독</b>입니다. 이슈의 실제 영향은 <b>댓글의 질적 변화(감성·키워드)</b>에서 더 정확히 드러납니다.</p>
+    </div>
+  </section>
+
+  <!-- 종합 결론 -->
+  <section>
+    <div class="summary-box">
+      <h3>종합 결론 (Executive Summary)</h3>
+      <div class="line"><span class="n">1</span><span><b>부정 댓글:</b> 이슈 전 신규 댓글은 사실상 100% 긍정·중립(경품 응모/제품 호평). 이슈 후 신규 댓글 <b>21건 중 14건(67%)이 부정·이슈 직결</b>로 전환. 절대량은 적으나 <b>성격이 명확히 반전</b>.</span></div>
+      <div class="line"><span class="n">2</span><span><b>언팔로우:</b> 언팔(취소) 절대수는 Graph API 미제공. 신규 팔로우는 전 2,601 → 후 794(−70%)이나 <b>광고 종료 영향과 분리 불가</b>.</span></div>
+      <div class="line"><span class="n">3</span><span><b>Sentiment:</b> 긍정·중립(브랜드/제품 중심) → <b>부정·정치 이슈 중심으로 톤 반전</b>. 불매·조롱·실망 표현 등장.</span></div>
+      <div class="line"><span class="n">4</span><span><b>이슈 키워드:</b> "탱크데이/탱크이벤트", "5.18·광주", "불매", "실망", "racist", 조롱 닉네임(응디벅스·쓰벅·프라푸치노무현) 등 <b>이슈 전 0건 → 이슈 후 집중 출현</b>.</span></div>
+      <div class="line"><span class="n">5</span><span><b>퍼포먼스:</b> 계정 지표 급감은 <b>광고 종료 영향(↑경고 참조)</b>. 단, 5/18 당일 도달 15.7만으로 <b>국지적 급등 → 이슈로 인한 외부 관심 유입</b> 정황.</span></div>
+    </div>
+  </section>
+
+  <!-- ① 부정 댓글 -->
+  <section>
+    <h2 class="sec"><span class="badge-no">1</span> 부정 댓글 증가 여부</h2>
+    <div class="card">
+      <p class="q"><strong>핵심 질문:</strong> 이슈 후 부정 댓글의 양·비중이 늘었는가?</p>
+      <div class="verdict neg">▲ 부정 댓글 비중 급증 — 이슈 전 ≈0% → 이슈 후 67% (21건 중 14건)</div>
+      <span class="cap ok"><span class="dot"></span>댓글 본문 전량 추출 후 직접 분류 (Graph API)</span>
+      <table>
+        <thead><tr><th>구분</th><th class="num">이슈 전(5/11–17)</th><th class="num">이슈 후(5/18–)</th></tr></thead>
+        <tbody>
+          <tr><td>신규 댓글 총량(최근 게시물 기준)</td><td class="num">다수(경품성)</td><td class="num">21</td></tr>
+          <tr><td>부정·이슈직결 댓글</td><td class="num">≈ 0</td><td class="num down">14 (67%)</td></tr>
+          <tr><td>긍정·옹호 댓글</td><td class="num">대부분</td><td class="num">3 (14%)</td></tr>
+          <tr><td>정치 파생/중립·문의</td><td class="num">–</td><td class="num">4 (19%)</td></tr>
+        </tbody>
+      </table>
+      <div class="src"><b>주의:</b> 5/8 이후 신규 게시물이 없어 이슈 후 댓글은 기존 게시물에 유입됨. 논란 게시물·댓글이 삭제/숨김 처리됐을 수 있어 <b>실제 부정 댓글은 이보다 많았을 가능성(하한값)</b>. 절대량이 적은 것은 게시 중단·댓글 관리 영향.</div>
+    </div>
+  </section>
+
+  <!-- ② 언팔로우 -->
+  <section>
+    <h2 class="sec"><span class="badge-no">2</span> 언팔로우 추이 변화 여부</h2>
+    <div class="card">
+      <p class="q"><strong>핵심 질문:</strong> 이슈 후 팔로우 취소가 늘었는가?</p>
+      <div class="verdict warn">◐ 판단 보류 — 언팔 절대수는 API 미제공 + 광고 종료 영향과 분리 불가</div>
+      <span class="cap warn"><span class="dot"></span>부분 측정 — 언팔로우(취소) 수는 Graph API가 제공하지 않음</span>
+      <table>
+        <thead><tr><th>지표</th><th class="num">이슈 전(5/11–17)</th><th class="num">이슈 후(5/18–24)</th><th class="num">변화</th></tr></thead>
+        <tbody>
+          <tr><td>총 팔로워(현재)</td><td class="num" colspan="2" style="text-align:center">24,430</td><td class="num">–</td></tr>
+          <tr><td>신규 팔로우(기간 합)</td><td class="num">2,601</td><td class="num">794</td><td class="num down">−69.5%</td></tr>
+          <tr><td>팔로우 취소(언팔)</td><td class="num" colspan="3" style="text-align:center;color:var(--muted)">Graph API 미제공 — 측정 불가</td></tr>
+        </tbody>
+      </table>
+      <div class="src"><b>해석:</b> 신규 팔로우 감소는 이슈 전 광고 캠페인이 유입시키던 팔로우가 5/18 광고 종료로 사라진 영향이 큼 → <b>이슈로 인한 이탈로 단정 불가</b>. 순(純) 언팔 추이는 owned 데이터만으로 분리 불가하며, 정밀 추적엔 리스닝 툴 필요.</div>
+    </div>
+  </section>
+
+  <!-- ③ Sentiment -->
+  <section>
+    <h2 class="sec"><span class="badge-no">3</span> 브랜드 Sentiment 변화 여부</h2>
+    <div class="card">
+      <p class="q"><strong>핵심 질문:</strong> 댓글에 드러난 브랜드 감성이 변했는가?</p>
+      <div class="verdict neg">▲ 톤 반전 — 긍정·제품 중심 → 부정·정치 이슈 중심</div>
+      <span class="cap ok"><span class="dot"></span>댓글 본문 직접 분류 (자동 감성 점수는 리스닝 툴 영역)</span>
+      <table>
+        <thead><tr><th>감성</th><th>이슈 전 댓글 성격</th><th>이슈 후 댓글 성격</th></tr></thead>
+        <tbody>
+          <tr><td>긍정</td><td>경품 응모, 제품 호평("깊고 진한 향", "럭셔리")</td><td>소수 옹호("I love Starbucks", 지지 이모지)</td></tr>
+          <tr><td>중립</td><td>제품 문의, 태그 이벤트 참여</td><td>제품 문의 일부</td></tr>
+          <tr><td>부정</td><td class="up">거의 없음</td><td class="down">다수 — 불매·조롱·실망·인종차별 지적</td></tr>
+        </tbody>
+      </table>
+      <div class="src">이슈 전 댓글은 마케팅/경품 중심의 우호적 톤이 지배적이었으나, 이슈 후 신규 댓글은 사회·정치 이슈에 대한 비판과 브랜드 조롱이 중심으로 전환됨.</div>
+    </div>
+  </section>
+
+  <!-- ④ 키워드 / 컴플레인 -->
+  <section>
+    <h2 class="sec"><span class="badge-no">4</span> 이슈 관련 키워드 및 컴플레인 증가 여부</h2>
+    <div class="card">
+      <p class="q"><strong>핵심 질문:</strong> 이슈 직결 키워드·컴플레인이 늘었는가?</p>
+      <div class="verdict neg">▲ 이슈 전 0건 → 이슈 후 집중 출현</div>
+      <span class="cap ok"><span class="dot"></span>댓글 본문 키워드 카운트 (DM·외부 멘션·해시태그 미포함)</span>
+      <table>
+        <thead><tr><th>키워드 / 유형</th><th class="num">이슈 전</th><th class="num">이슈 후</th></tr></thead>
+        <tbody>
+          <tr><td>탱크데이 / 탱크이벤트</td><td class="num">0</td><td class="num down">2</td></tr>
+          <tr><td>5.18 / 광주</td><td class="num">0</td><td class="num down">4</td></tr>
+          <tr><td>불매</td><td class="num">0</td><td class="num down">1</td></tr>
+          <tr><td>실망 / 거지같다 등 비난</td><td class="num">0</td><td class="num down">4</td></tr>
+          <tr><td>조롱 닉네임(응디벅스·쓰벅·프라푸치노무현)</td><td class="num">0</td><td class="num down">5</td></tr>
+          <tr><td>racist / 인종차별</td><td class="num">0</td><td class="num down">1</td></tr>
+          <tr><td>정용진 등 정치 인물 비난</td><td class="num">0</td><td class="num down">3</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:13px;color:var(--muted);margin:4px 0 8px">대표 댓글 발췌(원문):</p>
+      <div class="quote"><span class="t">05-19</span>스타벅스가 5.18 광주시민학살을 조롱하는 탱크이벤트합니다 … 대표만 사임했다고합니다. 스타벅스 불매갑시다</div>
+      <div class="quote"><span class="t">05-20</span>크게 실망입니다. / racistt starbucks</div>
+      <div class="quote"><span class="t">05-18</span>커피 장사 접어라. 니들 커피 맛도 없는데, 의식도 거지같네??</div>
+      <div class="src"><b>한계:</b> 실제 컴플레인 상당수는 DM·뉴스·커뮤니티·X(트위터) 등 <b>채널 외부</b>에 존재. IG 댓글만으론 백래시 전체 규모 측정 불가 → 리스닝 솔루션 필요 영역.</div>
+    </div>
+  </section>
+
+  <!-- ⑤ Engagement / 퍼포먼스 -->
+  <section>
+    <h2 class="sec"><span class="badge-no">5</span> 이슈 전후 Engagement 및 퍼포먼스 변화</h2>
+    <div class="card">
+      <p class="q"><strong>핵심 질문:</strong> 도달·노출·참여가 이슈 전후로 변했는가?</p>
+      <div class="verdict warn">◐ 계정 지표 급감은 광고 종료 영향 — 이슈 영향과 분리 필요</div>
+      <span class="cap ok"><span class="dot"></span>계정 인사이트 직접 추출 — 단, 유료광고 캠페인 종료 시점과 겹침(↑경고)</span>
+      <table>
+        <thead><tr><th>지표 (기간 합/순도달)</th><th class="num">이슈 전(5/11–17)</th><th class="num">이슈 후(5/18–24)</th><th class="num">변화</th></tr></thead>
+        <tbody>
+          <tr><td>도달(Reach, 순)</td><td class="num">8,402,776</td><td class="num">159,149</td><td class="num down">−98.1%</td></tr>
+          <tr><td>조회(Views)</td><td class="num">16,083,666</td><td class="num">166,013</td><td class="num down">−99.0%</td></tr>
+          <tr><td>프로필 방문</td><td class="num">19,399</td><td class="num">5,888</td><td class="num down">−69.6%</td></tr>
+          <tr><td>총 상호작용</td><td class="num">5,840</td><td class="num">136</td><td class="num down">−97.7%</td></tr>
+          <tr><td>신규 팔로우</td><td class="num">2,601</td><td class="num">794</td><td class="num down">−69.5%</td></tr>
+        </tbody>
+      </table>
+      <div class="alert" style="margin-top:6px">
+        <p style="margin:0"><b>이 표를 이슈 영향으로 읽지 마세요.</b> 변화의 주원인은 <b>5/17까지의 대형 유료광고 종료 + 분석 구간 내 신규 게시물 0건</b>입니다.</p>
+      </div>
+      <p style="font-size:13.5px;margin:14px 0 4px"><b>이슈와 직접 연관된 유일한 정량 신호 — 5/18 도달 급등:</b></p>
+      <table>
+        <thead><tr><th>일자</th><th class="num">5/17</th><th class="num">5/18(이슈)</th><th class="num">5/19</th><th class="num">5/20</th></tr></thead>
+        <tbody><tr><td>일별 도달</td><td class="num">561,834</td><td class="num down">157,445</td><td class="num">838</td><td class="num">515</td></tr></tbody>
+      </table>
+      <div class="src">광고가 잦아든 5/18에 도달이 일시 급등 후 익일 급락 → 신규 게시물 없이 발생한 점에서 <b>이슈로 인한 외부 검색·유입(부정적 관심 포함) 정황</b>으로 해석됨.</div>
+    </div>
+  </section>
+
+  <!-- 방법론 & 한계 -->
+  <section>
+    <h2 class="sec" style="font-size:18px"><span class="badge-no" style="background:var(--green-dark)">i</span> 데이터 출처 &amp; 한계</h2>
+    <div class="card">
+      <ul class="clean">
+        <li><b>출처:</b> Instagram Graph API (Meta) — 계정 인사이트(reach/views/profile_views/interactions/follower_count), 게시물 메타데이터, 댓글 본문. HIZ 비즈니스 포트폴리오에 공유된 @starbucksathome_kr 자산 기준.</li>
+        <li><b>Sprinklr 등 소셜 리스닝 미사용</b> → 자동 감성 점수·키워드 볼륨·외부 멘션 추적 불가. 감성/키워드는 댓글 본문 수기 분류.</li>
+        <li><b>언팔로우(취소) 절대수</b>: Graph API 미제공 → 측정 불가.</li>
+        <li><b>DM·외부 채널·뉴스·커뮤니티</b>: 본 리포트 범위 외 → 백래시 전체 규모는 과소 측정됨.</li>
+        <li><b>광고 캠페인 confound</b>: 계정 정량 지표는 5/17까지의 유료광고 종료 영향이 지배적 → 이슈 영향과 분리 필요.</li>
+        <li><b>댓글 삭제/숨김 가능성</b>: 이슈 후 부정 댓글 수치는 하한값일 수 있음.</li>
+      </ul>
+      <p style="font-size:13px;color:var(--muted);margin-top:14px">→ 향후 이슈 발생 시 감성·키워드·외부 멘션·언팔 추이를 정밀 추적하려면 <b>Sprinklr 등 리스닝 솔루션 도입</b>이 권장됩니다.</p>
+    </div>
+  </section>
+
+  <footer>
+    스타벅스 앳홈 인스타그램 이슈 영향 모니터링 · 데이터: Instagram Graph API · 분석일 2026.06.10 · Confidential
+  </footer>
+</div>
+</body>
+</html>
