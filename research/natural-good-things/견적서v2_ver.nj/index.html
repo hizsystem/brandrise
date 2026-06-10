@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[네츄럴굿띵스] 브랜드 컨설팅 견적서 — 브랜드라이즈 by HIZ</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css">
+<style>
+:root{
+  --navy:#3d5179; --navy-deep:#33446a; --navy-soft:#eef2f9; --navy-line:#d9e1ef;
+  --bg:#f4f6fa; --card:#ffffff; --text:#23304a; --text-light:#8b96ab; --border:#e3e8f1;
+  --red:#c0392b; --red-bg:#fdeeec; --orange:#c46a1f; --orange-bg:#fdf3e6;
+  --green:#3e7a4e; --green-bg:#ecf6ee; --violet:#6b4fa0; --violet-bg:#f2edfa;
+  --blue:#2f5ea8; --blue-bg:#e9f0fb; --yellow-bg:#fdf8e3;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;font-size:14px;word-break:keep-all;overflow-wrap:break-word;}
+.page{max-width:1140px;margin:0 auto;padding:36px 24px 60px;}
+
+/* ===== 헤더 ===== */
+.doc-header{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding:8px 4px 18px;border-bottom:3px solid var(--navy);margin-bottom:26px;flex-wrap:wrap;}
+.doc-header h1{font-size:26px;font-weight:800;letter-spacing:-0.5px;}
+.doc-header h1 .brand{color:var(--navy);}
+.doc-header .doc-sub{font-size:13px;color:var(--text-light);margin-top:6px;}
+.doc-meta{text-align:right;font-size:13px;color:var(--text);line-height:1.9;}
+.doc-meta b{color:var(--navy);font-weight:700;margin-right:6px;}
+
+/* ===== 진단 요약 ===== */
+.section-title{display:inline-block;background:var(--navy);color:#fff;font-size:14px;font-weight:700;padding:8px 18px;border-radius:6px;margin-bottom:14px;}
+.diag-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px;}
+.diag-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 14px;display:flex;flex-direction:column;gap:8px;}
+.diag-card .d-title{font-size:13.5px;font-weight:800;display:flex;align-items:center;gap:6px;}
+.diag-card .d-num{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;font-size:11px;font-weight:800;color:#fff;flex:none;}
+.diag-card .d-prob{font-size:12px;color:var(--text-light);line-height:1.55;flex:1;}
+.diag-card .d-sol{font-size:12px;line-height:1.55;border-top:1px dashed var(--border);padding-top:8px;color:var(--text);}
+.diag-card .d-sol::before{content:"→ ";font-weight:800;}
+.c-red .d-title{color:var(--red);} .c-red .d-num{background:var(--red);} .c-red .d-sol::before{color:var(--red);}
+.c-orange .d-title{color:var(--orange);} .c-orange .d-num{background:var(--orange);} .c-orange .d-sol::before{color:var(--orange);}
+.c-blue .d-title{color:var(--blue);} .c-blue .d-num{background:var(--blue);} .c-blue .d-sol::before{color:var(--blue);}
+.c-violet .d-title{color:var(--violet);} .c-violet .d-num{background:var(--violet);} .c-violet .d-sol::before{color:var(--violet);}
+.c-green .d-title{color:var(--green);} .c-green .d-num{background:var(--green);} .c-green .d-sol::before{color:var(--green);}
+.c-navy .d-title{color:var(--navy);} .c-navy .d-num{background:var(--navy);} .c-navy .d-sol::before{color:var(--navy);}
+
+/* 파트너십 방향 */
+.direction{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:34px;}
+.direction .dir-label{font-size:13px;font-weight:800;color:var(--navy);margin-right:4px;}
+.direction .pill{font-size:12px;font-weight:600;background:var(--navy-soft);border:1px solid var(--navy-line);color:var(--navy-deep);padding:5px 13px;border-radius:20px;}
+.direction .arrow{color:var(--text-light);font-weight:700;}
+
+/* ===== 견적 블록 ===== */
+.block{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:26px;overflow:hidden;}
+.block-head{background:var(--navy);color:#fff;padding:13px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
+.block-head .bh-title{font-size:15.5px;font-weight:800;}
+.block-head .bh-badge{font-size:11.5px;font-weight:600;background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.3);padding:4px 12px;border-radius:14px;}
+.block-deliver{background:var(--navy-soft);border-bottom:1px solid var(--navy-line);padding:9px 20px;font-size:12.5px;color:var(--navy-deep);}
+.block-deliver b{font-weight:800;}
+table.quote{width:100%;border-collapse:collapse;font-size:13.5px;}
+table.quote th{background:#f7f9fd;color:var(--navy-deep);font-size:12.5px;font-weight:700;padding:10px 14px;border-bottom:1px solid var(--navy-line);text-align:left;}
+table.quote th.num, table.quote td.num{text-align:right;white-space:nowrap;}
+table.quote th.cen, table.quote td.cen{text-align:center;white-space:nowrap;}
+table.quote td{padding:13px 14px;border-bottom:1px solid var(--border);vertical-align:top;}
+table.quote tr:last-child td{border-bottom:none;}
+table.quote td .item{font-weight:800;color:var(--text);}
+table.quote td .desc{font-size:12.5px;color:var(--text-light);line-height:1.6;margin-top:2px;}
+td.special{background:var(--yellow-bg);font-weight:700;color:var(--orange);}
+tr.subtotal td{background:var(--navy-soft);font-weight:800;color:var(--navy-deep);font-size:14px;border-top:2px solid var(--navy-line);}
+.w-item{width:19%;} .w-desc{width:auto;} .w-price{width:11%;} .w-unit{width:8%;} .w-qty{width:7%;} .w-sum{width:12%;}
+
+/* ===== 비고 + TOTAL ===== */
+.total-row{display:grid;grid-template-columns:1fr 380px;gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:34px 0;background:var(--card);}
+.total-note{padding:24px 26px;font-size:13px;color:var(--text);line-height:2.0;}
+.total-note li{margin-left:18px;}
+.total-box{background:var(--navy);color:#fff;padding:28px 30px;display:flex;flex-direction:column;justify-content:center;text-align:right;gap:6px;}
+.total-box .t-label{font-size:13px;font-weight:700;opacity:0.85;letter-spacing:1px;}
+.total-box .t-value{font-size:34px;font-weight:900;letter-spacing:-0.5px;}
+.total-box .t-vat{font-size:12px;opacity:0.75;}
+
+/* ===== 타임라인 ===== */
+.timeline-title{font-size:17px;font-weight:800;margin-bottom:14px;}
+.timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;}
+.tl-month{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 10px;text-align:center;}
+.tl-month .m-name{font-size:13.5px;font-weight:800;color:var(--navy);margin-bottom:10px;}
+.tl-month .chip{display:block;font-size:11.5px;font-weight:600;border-radius:6px;padding:5px 6px;margin-bottom:6px;line-height:1.4;}
+.chip.b{background:var(--blue-bg);color:var(--blue);}
+.chip.y{background:var(--yellow-bg);color:var(--orange);}
+.chip.g{background:var(--green-bg);color:var(--green);}
+.chip.v{background:var(--violet-bg);color:var(--violet);}
+.chip.r{background:var(--red-bg);color:var(--red);}
+.chip.n{background:var(--navy-soft);color:var(--navy-deep);}
+
+.footer{text-align:right;color:var(--text-light);font-size:12.5px;margin-top:36px;}
+
+@media(max-width:900px){
+  .diag-grid{grid-template-columns:repeat(2,1fr);}
+  .timeline{grid-template-columns:repeat(2,1fr);}
+  .total-row{grid-template-columns:1fr;}
+  .total-box{text-align:left;}
+}
+@media print{
+  body{background:#fff;}
+  .page{padding:0;}
+  .block,.diag-card,.total-row,.tl-month{box-shadow:none;page-break-inside:avoid;}
+  .block-head,.total-box,.section-title{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ===== 문서 헤더 ===== -->
+  <div class="doc-header">
+    <div>
+      <h1><span class="brand">[네츄럴굿띵스]</span> 브랜드 컨설팅 견적서</h1>
+      <div class="doc-sub">2026-06-10 &nbsp;|&nbsp; 브랜드 진단 8개 항목 기반</div>
+    </div>
+    <div class="doc-meta">
+      <div><b>공급자</b> 브랜드라이즈 by HIZ</div>
+      <div><b>수&nbsp;&nbsp;신</b> (주)네츄럴굿띵스 김수안 대표</div>
+      <div><b>기&nbsp;&nbsp;간</b> 6개월 파트너십 (2026.07 ~ 2026.12 · 2027.01 리뉴얼 런칭)</div>
+    </div>
+  </div>
+
+  <!-- ===== 진단 요약 ===== -->
+  <div class="section-title">브랜드 진단 요약 — 8가지 핵심 문제 &amp; 솔루션</div>
+  <div class="diag-grid">
+    <div class="diag-card c-red">
+      <div class="d-title"><span class="d-num">1</span>매출 채널 쏠림</div>
+      <div class="d-prob">커머스 매출의 약 60%가 인플루언서 공동구매. 셀러 이탈 시 대안 부재, 고객·데이터가 셀러에 귀속</div>
+      <div class="d-sol">자사 온라인(약 20억)을 자생 엔진으로 — 채널 믹스 재설계</div>
+    </div>
+    <div class="diag-card c-orange">
+      <div class="d-title"><span class="d-num">2</span>브랜드 포지셔닝 미정립</div>
+      <div class="d-prob">돈 버는 곳(효소)과 비전(여성 웰니스)이 분리. "NGT=무엇"을 한 문장으로 못 잡음</div>
+      <div class="d-sol">"100% 제조사 정통성" 축 공식화 — 세련된 브랜드 언어로 번역</div>
+    </div>
+    <div class="diag-card c-blue">
+      <div class="d-title"><span class="d-num">3</span>제품 체계 부재</div>
+      <div class="d-prob">40+ SKU 평행 나열, 히어로 부재. 대표 자평 "효소는 키 제품이 될 수 없다"</div>
+      <div class="d-sol">브랜드 하우스 구조화 + 신제품 장건강 2종 히어로 포지셔닝</div>
+    </div>
+    <div class="diag-card c-navy">
+      <div class="d-title"><span class="d-num">4</span>마케팅 실행 체계 無</div>
+      <div class="d-prob">13명 조직, 퍼포먼스 마케팅팀 부재. 전략적 IMC 역량 공백</div>
+      <div class="d-sol">월간 IMC 기획·리뷰 체계 + 관리 대시보드 세팅</div>
+    </div>
+    <div class="diag-card c-violet">
+      <div class="d-title"><span class="d-num">5</span>의사결정 근거 부재</div>
+      <div class="d-prob">몇 년째 리브랜딩 의사결정 보류 — "정보를 제대로 넣어주는 사람이 없다"</div>
+      <div class="d-sol">데이터 정밀 진단 = 의사결정 근거 패키지로 페이퍼화</div>
+    </div>
+    <div class="diag-card c-red">
+      <div class="d-title"><span class="d-num">6</span>광고 효율 붕괴</div>
+      <div class="d-prob">메타 ROAS 0.3 (월 700만). 대행사 수 차례 교체에도 개선 없음 = USP·랜딩 부재가 근본</div>
+      <div class="d-sol">USP·랜딩 재설계 + 광고 대행 이관 권고 (직접 운영은 범위 외)</div>
+    </div>
+    <div class="diag-card c-orange">
+      <div class="d-title"><span class="d-num">7</span>비주얼·콘텐츠 노후화</div>
+      <div class="d-prob">상세페이지 10년 묵음. 자사 원료공장·K-낙산균 등 제조사 자산이 어디에도 안 보임</div>
+      <div class="d-sol">촬영·패키지·상세페이지 리뉴얼로 정통성을 시각화</div>
+    </div>
+    <div class="diag-card c-green">
+      <div class="d-title"><span class="d-num">8</span>CRM·자사 팬덤 부재</div>
+      <div class="d-prob">카카오채널·멤버십 인프라는 있으나 미활용. 팬덤이 NGT가 아니라 셀러에게 쌓임</div>
+      <div class="d-sol">자사몰 CRM·리텐션 구조 구축 — 임대한 도달을 소유 자산으로</div>
+    </div>
+  </div>
+
+  <div class="direction">
+    <span class="dir-label">파트너십 방향</span>
+    <span class="pill">데이터 정밀 진단 선행</span><span class="arrow">›</span>
+    <span class="pill">브랜드 아이덴티티 → 디자인·촬영·채널 순서 진행</span><span class="arrow">›</span>
+    <span class="pill">12월 브랜드 세일 → 1월 리뉴얼 런칭</span><span class="arrow">›</span>
+    <span class="pill">리테이너 + 캠페인 방식</span><span class="arrow">›</span>
+    <span class="pill">인하우스 전수 목표</span>
+  </div>
+
+  <!-- ===== 0) IMC 파트너십 ===== -->
+  <div class="block">
+    <div class="block-head">
+      <div class="bh-title">0) 브랜드 IMC 전략 파트너십 / 대행사 fee</div>
+      <div class="bh-badge">진단 ④⑤ 대응 · 6개월 상시</div>
+    </div>
+    <div class="block-deliver"><b>납품물:</b> 연간(월간) 플랜 시트 및 관리 데이터 (매월 납품)</div>
+    <table class="quote">
+      <thead><tr>
+        <th class="w-item">항목</th><th class="w-desc">내용</th><th class="w-price num">단가</th><th class="w-unit cen">기준</th><th class="w-qty cen">수량</th><th class="w-sum num">합계</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="item">월간 IMC 회의</span></td>
+          <td><div class="desc">매출·광고 데이터 분석 및 월 단위 마케팅 기획 리뷰<br>(대표진 정기 미팅 + 상시 슬랙 컨설팅)</div></td>
+          <td class="num">600,000</td><td class="cen">월</td><td class="cen">6</td><td class="num">3,600,000</td>
+        </tr>
+        <tr>
+          <td><span class="item">AI 관리 대시보드</span></td>
+          <td><div class="desc">매출·광고 데이터 종합 분석 툴 제공 (웹 대시보드)</div></td>
+          <td class="num">300,000</td><td class="cen">월</td><td class="cen">6</td><td class="num">1,800,000</td>
+        </tr>
+        <tr>
+          <td><span class="item">플랜 시트 납품</span></td>
+          <td><div class="desc">연간(월간) 플랜 시트 및 관리 데이터 최초 세팅</div></td>
+          <td class="num">3,000,000</td><td class="cen">1회</td><td class="cen">1</td><td class="num">3,000,000</td>
+        </tr>
+        <tr class="subtotal"><td colspan="5">소 계</td><td class="num">8,400,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===== 1) 데이터 정밀 진단 ===== -->
+  <div class="block">
+    <div class="block-head">
+      <div class="bh-title">1) 1차·2차 진단 + 시장 서베이 → 사업계획 (의사결정 근거 패키지)</div>
+      <div class="bh-badge">진단 ⑤⑥⑧ 대응 · 데이터 수령 즉시 착수 · 1~2개월</div>
+    </div>
+    <div class="block-deliver"><b>납품물:</b> 1차 데이터 진단서 + 2차 전략 진단 페이퍼 + 시장 서베이 리포트 + 3개년 사업계획 골격 — "결정을 내릴 수 있는 정보"를 페이퍼로</div>
+    <table class="quote">
+      <thead><tr>
+        <th class="w-item">항목</th><th class="w-desc">내용</th><th class="w-price num">단가</th><th class="w-unit cen">기준</th><th class="w-qty cen">수량</th><th class="w-sum num">합계</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="item">1차 진단 — 데이터 정밀 분해</span></td>
+          <td><div class="desc">메타 광고 / 월별·채널별·제품별 매출 / 회원·CRM 백데이터 디깅<br>인플루언서(셀러)별 판매·시즌별 추이·자사몰 LTV·광고 효율 분해<br>메타 ROAS 0.3 원인 규명 + 광고 대행 이관·정리 권고안 포함</div></td>
+          <td class="num">—</td><td class="cen">포함</td><td class="cen">1</td><td class="special cen">포함</td>
+        </tr>
+        <tr>
+          <td><span class="item">2차 진단 — 전략 페이퍼화</span></td>
+          <td><div class="desc">상담에서 나온 숨은 맥락(채널·조직·의사결정 구조) + HIZ 노하우를 더해<br>"무엇을, 어떤 순서로 결정해야 하는가"를 의사결정 문서로 정리</div></td>
+          <td class="num">—</td><td class="cen">포함</td><td class="cen">1</td><td class="special cen">포함</td>
+        </tr>
+        <tr>
+          <td><span class="item">시장 서베이</span></td>
+          <td><div class="desc">건기식·이너케어 시장/소비자 조사 + 경쟁 브랜드 분석<br>"100% 제조사" 포지셔닝 소비자 수용도 검증</div></td>
+          <td class="num">—</td><td class="cen">포함</td><td class="cen">1</td><td class="special cen">포함</td>
+        </tr>
+        <tr>
+          <td><span class="item">사업계획 골격 (3개년)</span></td>
+          <td><div class="desc">자사 온라인(약 20억)을 자생 엔진으로 키우는 채널·제품·예산 로드맵<br>해외(일본 큐텐 효소 니즈 검증) 확장 시나리오 포함</div></td>
+          <td class="num">—</td><td class="cen">포함</td><td class="cen">1</td><td class="special cen">포함</td>
+        </tr>
+        <tr class="subtotal"><td colspan="5">소 계</td><td class="num">15,000,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===== 2) 브랜드 아이덴티티 ===== -->
+  <div class="block">
+    <div class="block-head">
+      <div class="bh-title">2) 리브랜딩 ① — 브랜드 아이덴티티 정립 + 제품체계 전략</div>
+      <div class="bh-badge">진단 ②③ 대응 · 진단 직후 · 1~2개월</div>
+    </div>
+    <div class="block-deliver"><b>납품물:</b> 브랜드 포지셔닝 전략 문서 + 제품 라인업 역할 정의 + 커뮤니케이션 가이드 — 외부 주도 리브랜딩 (기존 고객 리텐션은 제품력에 묶여 있어 리브랜딩에도 안 무너짐 → 새 고객 확보 방향)</div>
+    <table class="quote">
+      <thead><tr>
+        <th class="w-item">항목</th><th class="w-desc">내용</th><th class="w-price num">단가</th><th class="w-unit cen">기준</th><th class="w-qty cen">수량</th><th class="w-sum num">합계</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="item">브랜드 워크숍 3회</span></td>
+          <td><div class="desc">1차 진단·서베이 결과 공유 / 2차 페르소나·니즈 정의 / 3차 라인업 도출·무드보드<br>(대표·핵심 멤버 참여 — 내부 설득 비용을 워크숍으로 흡수)</div></td>
+          <td class="num">—</td><td class="cen">포함</td><td class="cen">3회</td><td class="special cen">포함</td>
+        </tr>
+        <tr>
+          <td><span class="item">브랜드 포지셔닝 전략</span></td>
+          <td><div class="desc">"100% 제조사 정통성" 축 공식화 — 자사 원료공장·K-낙산균·효소 7년 1위를<br>세련된 브랜드 언어로 번역 / 타겟 재정의·경쟁 포지셔닝</div></td>
+          <td class="num">—</td><td class="cen">포함</td><td class="cen">1</td><td class="special cen">포함</td>
+        </tr>
+        <tr>
+          <td><span class="item">제품 라인업 전략</span></td>
+          <td><div class="desc">히어로/서브/확장 제품 역할 정의 — 40+ SKU 브랜드 하우스 구조화<br>신제품 장건강 2종("토양 만들기") 히어로 포지셔닝</div></td>
+          <td class="num">—</td><td class="cen">포함</td><td class="cen">1</td><td class="special cen">포함</td>
+        </tr>
+        <tr>
+          <td><span class="item">브랜드 커뮤니케이션 가이드</span></td>
+          <td><div class="desc">핵심 메시지 / 슬로건·톤앤매너 / 채널별 말투·금칙어 — 인스타·자사몰·상세 적용 가이드<br>실구매자 리뷰·VOC 기반 언어 분석</div></td>
+          <td class="num">—</td><td class="cen">포함</td><td class="cen">1</td><td class="special cen">포함</td>
+        </tr>
+        <tr class="subtotal"><td colspan="5">소 계</td><td class="num">20,000,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===== 3) 로고 & 패키지 ===== -->
+  <div class="block">
+    <div class="block-head">
+      <div class="bh-title">3) 리브랜딩 ② — 브랜드 로고 &amp; 패키지 디자인 리뉴얼</div>
+      <div class="bh-badge">진단 ②⑦ 대응 · 아이덴티티 확정 후 착수 · 2개월</div>
+    </div>
+    <div class="block-deliver"><b>납품물:</b> 로고 리뉴얼 + 패키지 디자인 (히어로 라인) + 브랜드 가이드라인 · 디자인 2개월</div>
+    <table class="quote">
+      <thead><tr>
+        <th class="w-item">항목</th><th class="w-desc">내용</th><th class="w-price num">단가</th><th class="w-unit cen">기준</th><th class="w-qty cen">수량</th><th class="w-sum num">합계</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="item">현행 로고 리뉴얼</span></td>
+          <td><div class="desc">현행 로고 분석 → 리뉴얼 방향 3안 제시<br>최종 확정 + 컬러 시스템·타이포 가이드</div></td>
+          <td class="num">—</td><td class="cen">1종</td><td class="cen">1</td><td class="special cen">포함</td>
+        </tr>
+        <tr>
+          <td><span class="item">패키지 디자인 (효소 라인)</span></td>
+          <td><div class="desc">7년 1위 효소 라인 메인 패키지 리뉴얼<br>"제조사 정통성" 시각화 — 하이엔드·채널 MD 호환 대응</div></td>
+          <td class="num">—</td><td class="cen">1종</td><td class="cen">1</td><td class="special cen">포함</td>
+        </tr>
+        <tr>
+          <td><span class="item">패키지 디자인 (장건강 신제품 2종)</span></td>
+          <td><div class="desc">신규 히어로 장건강 2종 런칭 패키지 디자인<br>쇼핑백·리플렛·어플리케이션 확장</div></td>
+          <td class="num">—</td><td class="cen">2종</td><td class="cen">1</td><td class="special cen">포함</td>
+        </tr>
+        <tr>
+          <td><span class="item">상세페이지 템플릿 리뉴얼</span></td>
+          <td><div class="desc">10년 묵은 상세페이지 → 히어로 제품 기준 신규 템플릿 설계<br>(내부 디자이너 2명이 전 SKU 확장 적용 가능한 구조로)</div></td>
+          <td class="num">—</td><td class="cen">1식</td><td class="cen">1</td><td class="special cen">포함</td>
+        </tr>
+        <tr>
+          <td><span class="item">브랜드 가이드라인</span></td>
+          <td><div class="desc">로고 규정·컬러 활용·패키지 규정 / 내부·외주 활용 가능</div></td>
+          <td class="num">—</td><td class="cen">1식</td><td class="cen">1</td><td class="special cen">포함</td>
+        </tr>
+        <tr class="subtotal"><td colspan="5">소 계</td><td class="num">30,000,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===== 4) 사진 촬영 ===== -->
+  <div class="block">
+    <div class="block-head">
+      <div class="bh-title">4) 사진 촬영 (제품 포트폴리오 + 라이프스타일) 및 콘텐츠 제작</div>
+      <div class="bh-badge">진단 ⑦ 대응 · 광고·페이지 확장 컷 확보</div>
+    </div>
+    <div class="block-deliver"><b>납품물:</b> 제품 포트폴리오 컷 + 라이프스타일 컷 + 광고 소재 컷</div>
+    <table class="quote">
+      <thead><tr>
+        <th class="w-item">항목</th><th class="w-desc">내용</th><th class="w-price num">단가</th><th class="w-unit cen">기준</th><th class="w-qty cen">수량</th><th class="w-sum num">합계</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="item">촬영 기획 및 디렉팅</span></td>
+          <td><div class="desc">촬영 콘셉트 기획·무드보드 / 스타일리스트·소품·스튜디오 셋업<br>현장 연출 디렉팅 (1일 full day)</div></td>
+          <td class="num">3,000,000</td><td class="cen">1일</td><td class="cen">1</td><td class="num">3,000,000</td>
+        </tr>
+        <tr>
+          <td><span class="item">제품 포트폴리오 컷</span></td>
+          <td><div class="desc">전 라인업 제품 컷 (효소 라인 + 장건강 신제품 2종)<br>원료공장·제조 공정 컷 포함 — 입점 심사용 고품질</div></td>
+          <td class="num">7,000,000</td><td class="cen">포함</td><td class="cen">30+a</td><td class="num">7,000,000</td>
+        </tr>
+        <tr>
+          <td><span class="item">라이프스타일 컷</span></td>
+          <td><div class="desc">무드 라이프스타일 컷</div></td>
+          <td class="num">7,000,000</td><td class="cen">포함</td><td class="cen">30+a</td><td class="num">7,000,000</td>
+        </tr>
+        <tr>
+          <td><span class="item">콘텐츠 제작</span></td>
+          <td><div class="desc">메타·인스타그램 광고 후킹용 썸네일·디자인 콘텐츠 변환 10건<br>자사몰·광고 랜딩에 제품 상세 이미지 디자인 10개</div></td>
+          <td class="num">5,000,000</td><td class="cen">포함</td><td class="cen">콘텐츠</td><td class="num">5,000,000</td>
+        </tr>
+        <tr>
+          <td><span class="item">포토 외주 (스튜디오)</span></td>
+          <td><div class="desc">1일 full day 포토 / 스튜디오 렌탈 외주</div></td>
+          <td class="num">—</td><td class="cen">실비</td><td class="cen">—</td><td class="special cen">별도</td>
+        </tr>
+        <tr>
+          <td><span class="item">모델 섭외</span></td>
+          <td><div class="desc">라이프스타일 컷 모델 섭외 (선택 사항)</div></td>
+          <td class="num">—</td><td class="cen">실비</td><td class="cen">—</td><td class="special cen">별도</td>
+        </tr>
+        <tr class="subtotal"><td colspan="5">소 계</td><td class="num">22,000,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===== 5) 인스타그램 + 런칭 ===== -->
+  <div class="block">
+    <div class="block-head">
+      <div class="bh-title">5) 마케팅 — 인스타·CRM 기획 + 12월 브랜드 세일 → 1월 리뉴얼 런칭</div>
+      <div class="bh-badge">진단 ①⑧ 대응 · 아이덴티티 확립 후 착수</div>
+    </div>
+    <div class="block-deliver"><b>납품물:</b> 무드보드 + 월 콘텐츠 기획보드 (월 8~10건) + 세일·런칭 캠페인 기획서 — 예산 내 선택지 제시·테스트 중심 (다 쓰지 않음), 운영 실행은 인하우스 전수 병행</div>
+    <table class="quote">
+      <thead><tr>
+        <th class="w-item">항목</th><th class="w-desc">내용</th><th class="w-price num">단가</th><th class="w-unit cen">기준</th><th class="w-qty cen">수량</th><th class="w-sum num">합계</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="item">인스타그램 무드보드</span></td>
+          <td><div class="desc">연간 브랜드 채널 운영 전략 및 개발<br>"제조사 정통성" 시각 기준·레퍼런스 정립 / 피드·릴스·스토리 구조 설계</div></td>
+          <td class="num">5,000,000</td><td class="cen">1회</td><td class="cen">1</td><td class="num">5,000,000</td>
+        </tr>
+        <tr>
+          <td><span class="item">월 콘텐츠 기획보드</span></td>
+          <td><div class="desc">월 8~10건 기획 + 레퍼런스 — 브랜드·스토리·제조 서사·제품 콘텐츠 구조화<br>카카오채널·멤버십 CRM 메시지 기획 포함 / 필수 스토리·피드 운영 가이드</div></td>
+          <td class="num">2,500,000</td><td class="cen">월</td><td class="cen">6</td><td class="num">15,000,000</td>
+        </tr>
+        <tr>
+          <td><span class="item">세일·런칭 캠페인 기획</span></td>
+          <td><div class="desc">12월 브랜드 세일 — 광고 잠그고 물량 소진·매출 정리 (모았다가 한 번에 터뜨리기)<br>2027년 1월 리뉴얼 런칭 — "우리 이렇게 바뀌었어요" 서사 바이럴 설계 + 인하우스 전수</div></td>
+          <td class="num">5,000,000</td><td class="cen">1식</td><td class="cen">1</td><td class="num">5,000,000</td>
+        </tr>
+        <tr>
+          <td><span class="item">팔로워 모객 이벤트 기획</span></td>
+          <td><div class="desc">브랜드 채널 드라이브용 팔로워 모객 이벤트<br>12월 세일~1월 런칭 시점 집중 집행 (인당 모객 단가 기준)</div></td>
+          <td class="num">30,000</td><td class="cen">명</td><td class="cen">200</td><td class="num">6,000,000</td>
+        </tr>
+        <tr class="subtotal"><td colspan="5">소 계</td><td class="num">31,000,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===== TOTAL ===== -->
+  <div class="total-row">
+    <div class="total-note">
+      <li>포토 스튜디오 렌탈, 모델 섭외비, 패키지 인쇄 실비는 별도 산정</li>
+      <li>광고 매체비 및 퍼포먼스 광고 직접 운영은 범위 외 — 현 대행(ROAS 0.3) 이관·정리 권고안은 진단 산출물에 포함</li>
+      <li>블록 1) 데이터 정밀 진단은 단독 착수 가능 — 진단 결과에 따라 이후 블록 범위·금액 협의 조정</li>
+      <li>VAT 별도, 데이터 회신(메타·매출·회원·CRM) 시 일정 확정</li>
+    </div>
+    <div class="total-box">
+      <div class="t-label">TOTAL (0~5)</div>
+      <div class="t-value">126,400,000 원</div>
+      <div class="t-vat">VAT 별도</div>
+    </div>
+  </div>
+
+  <!-- ===== 타임라인 ===== -->
+  <div class="timeline-title">예상 진행 순서 (6개월 · 2026.07 ~ 2026.12 → 2027.01 리뉴얼 런칭)</div>
+  <div class="timeline">
+    <div class="tl-month">
+      <div class="m-name">7월</div>
+      <span class="chip b">1차 데이터 진단</span>
+      <span class="chip b">2차 전략 진단</span>
+      <span class="chip n">IMC 세팅</span>
+    </div>
+    <div class="tl-month">
+      <div class="m-name">8월</div>
+      <span class="chip b">시장 서베이</span>
+      <span class="chip b">3개년 사업계획</span>
+      <span class="chip n">브랜드 워크숍</span>
+    </div>
+    <div class="tl-month">
+      <div class="m-name">9월</div>
+      <span class="chip n">포지셔닝·제품 체계</span>
+      <span class="chip y">로고 리뉴얼 착수</span>
+      <span class="chip n">메시지 가이드</span>
+    </div>
+    <div class="tl-month">
+      <div class="m-name">10월</div>
+      <span class="chip y">패키지·상세페이지</span>
+      <span class="chip y">제품·공장 촬영</span>
+      <span class="chip v">광고 소재</span>
+    </div>
+    <div class="tl-month">
+      <div class="m-name">11월</div>
+      <span class="chip g">인스타 무드보드</span>
+      <span class="chip g">콘텐츠 기획·CRM</span>
+      <span class="chip v">세일 캠페인 준비</span>
+    </div>
+    <div class="tl-month">
+      <div class="m-name">12월</div>
+      <span class="chip r">브랜드 세일 (물량·매출 정리)</span>
+      <span class="chip r">1월 리뉴얼 런칭 세팅</span>
+      <span class="chip n">인하우스 전수</span>
+    </div>
+  </div>
+
+  <div class="footer">Brandrise by HIZ &nbsp;|&nbsp; 2026-06-10</div>
+
+</div>
+</body>
+</html>
