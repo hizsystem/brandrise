@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NGT (네츄럴굿띵스) 브랜드 전략 진단서 | BRANDRISE</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css">
+<style>
+:root{
+  --primary:#1a1a1a; --secondary:#444444; --accent:#f07030; --accent-light:#fff3ec;
+  --accent-soft:#fde8da; --highlight:#f07030; --bg:#fafafa; --card-bg:#ffffff;
+  --muted:#f5f5f5; --text:#1a1a1a; --text-light:#999999; --border:#eeeeee; --success:#5a7a52;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;word-break:keep-all;overflow-wrap:break-word;}
+.header{background:#fff;color:var(--primary);padding:60px 40px;text-align:center;border-bottom:1px solid var(--border);}
+.header-badge{display:inline-block;background:var(--accent-soft);border:1px solid var(--accent);color:var(--accent);padding:4px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:16px;letter-spacing:1px;}
+.header h1{font-size:36px;font-weight:800;margin-bottom:8px;}
+.header .subtitle{font-size:16px;color:var(--secondary);font-weight:300;}
+.header .date{margin-top:16px;font-size:13px;color:var(--text-light);}
+.container{max-width:1100px;margin:0 auto;padding:40px 20px;}
+.section{background:var(--card-bg);border-radius:12px;padding:36px;margin-bottom:28px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.section h2{font-size:22px;font-weight:700;color:var(--primary);margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid var(--highlight);}
+.section h3{font-size:17px;font-weight:600;color:var(--secondary);margin:20px 0 12px;}
+.lead{font-size:15px;color:var(--secondary);margin-bottom:8px;}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+th{background:var(--muted);color:var(--primary);padding:12px 16px;text-align:left;font-weight:700;font-size:13px;}
+td{padding:12px 16px;border-bottom:1px solid var(--border);vertical-align:top;}
+tr:hover td{background:#f1f3f5;}
+td strong{color:var(--primary);}
+.tag{display:inline-block;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600;margin:2px;white-space:nowrap;}
+.tag-red{background:var(--accent-soft);color:var(--accent);}
+.tag-green{background:#eef3ec;color:#5a7a52;}
+.tag-yellow{background:#fff8d4;color:#8a6d00;}
+.tag-gray{background:var(--muted);color:var(--secondary);}
+.verdict{background:var(--accent);color:#fff;padding:32px;border-radius:12px;text-align:center;margin:8px 0 0;}
+.verdict .label{font-size:14px;opacity:0.85;}
+.verdict .value{font-size:24px;font-weight:800;margin:12px 0;line-height:1.5;}
+.verdict .value em{font-style:normal;background:rgba(255,255,255,0.18);padding:0 6px;border-radius:4px;}
+.verdict .desc{font-size:14px;opacity:0.92;line-height:1.7;}
+.channel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 8px;}
+.channel-card{border:1px solid var(--border);border-radius:8px;padding:20px 16px;text-align:center;}
+.channel-card.own{border:2px solid var(--accent);background:var(--accent-light);}
+.channel-card .ch-name{font-weight:700;font-size:14px;margin-bottom:4px;}
+.channel-card .ch-stat{font-size:26px;font-weight:800;color:var(--highlight);margin:8px 0;}
+.channel-card .ch-note{font-size:12px;color:var(--text-light);line-height:1.6;}
+.moat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0 8px;}
+.moat-item{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px;}
+.moat-item h4{font-size:15px;margin-bottom:8px;color:var(--primary);}
+.moat-item p{font-size:13px;color:var(--secondary);line-height:1.7;}
+.moat-item .flag{display:inline-block;margin-top:12px;font-size:12px;font-weight:700;color:var(--accent);}
+.flow-steps{display:flex;gap:0;margin:20px 0 8px;overflow-x:auto;}
+.flow-step{flex:1;min-width:180px;padding:22px 18px;background:#f1f3f5;position:relative;border-radius:10px;margin-right:14px;}
+.flow-step:last-child{margin-right:0;}
+.flow-step.on{background:var(--accent);}
+.flow-step:not(:last-child)::after{content:"›";position:absolute;right:-11px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--highlight);font-weight:700;z-index:1;}
+.flow-step .step-num{font-size:11px;font-weight:700;color:var(--highlight);margin-bottom:6px;letter-spacing:0.5px;}
+.flow-step.on .step-num{color:rgba(255,255,255,0.85);}
+.flow-step .step-title{font-size:15px;font-weight:700;color:var(--primary);}
+.flow-step.on .step-title{color:#fff;}
+.flow-step .step-desc{font-size:12px;color:var(--text-light);margin-top:8px;line-height:1.6;}
+.flow-step.on .step-desc{color:rgba(255,255,255,0.9);}
+.callout{padding:18px 22px;border-radius:0 8px 8px 0;margin:20px 0 0;font-size:14px;line-height:1.8;border-left:4px solid var(--accent);}
+.callout-info{background:var(--muted);border-left-color:var(--secondary);}
+.callout-danger{background:var(--accent-soft);border-left-color:var(--accent);}
+.callout strong{color:var(--primary);}
+.callout-danger strong{color:var(--accent);}
+.leverage-box{background:var(--primary);color:#fff;padding:32px;border-radius:12px;margin:8px 0 0;}
+.leverage-box .lq{font-size:20px;font-weight:700;line-height:1.55;}
+.leverage-box .lq em{font-style:normal;color:var(--accent);}
+.footer{text-align:center;padding:40px 20px;color:var(--text-light);font-size:13px;line-height:1.9;}
+.footer .fb{font-size:16px;font-weight:800;color:var(--secondary);}
+.footer .fb em{font-style:normal;color:var(--accent);}
+@media(max-width:760px){
+  .channel-grid,.moat-grid{grid-template-columns:1fr;}
+  .header h1{font-size:28px;}.section{padding:24px;}
+}
+@media print{
+  body{background:#fff;}
+  .section{box-shadow:none;border:1px solid var(--border);page-break-inside:avoid;}
+  .verdict,.leverage-box,.flow-step.on,.channel-card.own,.header,.footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">BRAND STRATEGY DIAGNOSIS · 1차 전략 진단</div>
+  <h1>NGT (네츄럴굿띵스) 브랜드 진단서</h1>
+  <div class="subtitle">잘 만들고도 브랜드로 못 키운 회사 — 임대한 도달을 소유한 자산으로</div>
+  <div class="date">수신: (주)네츄럴굿띵스 김수안 대표 | 작성: 브랜드라이즈 by HIZ | 기준일: 2026-06-10</div>
+</div>
+
+<div class="container">
+
+  <!-- 핵심 진단 -->
+  <div class="section">
+    <h2>핵심 진단 한 줄</h2>
+    <div class="verdict">
+      <div class="label">CORE DIAGNOSIS</div>
+      <div class="value">NGT는 <em>"제품을 못 만드는 회사"가 아니라<br>"잘 만들고도 브랜드로 못 키우는 회사"</em>다.</div>
+      <div class="desc">10년간 매출 엔진이 인플루언서 공동구매(남의 채널·남의 신뢰)에 묶여, 팬덤이 NGT가 아니라 인플루언서에게 쌓였다.<br><b>임대한 도달을 소유한 자산으로 전환하는 것</b>이 성장의 병목이다.</div>
+    </div>
+  </div>
+
+  <!-- 매출 구조 -->
+  <div class="section">
+    <h2>매출 구조 해부 — 진짜 키워야 할 곳</h2>
+    <p class="lead">"회사 전체 매출"과 "브랜드가 직접 키울 수 있는 매출"은 전혀 다릅니다. 자사 온라인은 아직 작은 씨앗입니다.</p>
+    <div class="channel-grid">
+      <div class="channel-card">
+        <div class="ch-name">인플루언서 공동구매</div>
+        <div class="ch-stat">약 60%</div>
+        <div class="ch-note">커머스 매출의 절대 비중. 셀러가 팔면 오르고 멈추면 빠진다. 고객·데이터가 셀러에 귀속.</div>
+      </div>
+      <div class="channel-card">
+        <div class="ch-name">해외 (일본·대만·태국)</div>
+        <div class="ch-stat">약 20억</div>
+        <div class="ch-note">코스메키친·큐텐 등. 일본 효소 니즈 검증(큐텐 3일 행사). 성장 여지 ↑, 통판 의존.</div>
+      </div>
+      <div class="channel-card own">
+        <div class="ch-name">자사 온라인 (직접 통제)</div>
+        <div class="ch-stat">약 20억</div>
+        <div class="ch-note">브랜드가 진짜 키울 수 있는 영역. 월 5천만(SA+메타) 집행 중. <b style="color:var(--accent)">바로 이 자산이 과제.</b></div>
+      </div>
+    </div>
+    <div class="callout callout-info">
+      <strong>※ 위 수치는 상담(2026-06-10) 발언 기반 추정치</strong>입니다. 채널별·제품별·월별 정밀 분해와 자사몰 LTV·회원 데이터는 <strong>1차 데이터 진단(T1)</strong>에서 확정합니다. 핵심 메시지는 동일 — <strong>전체 100억의 외형이 아니라, 직접 통제 가능한 자사 자산(약 20억)을 자생 엔진으로 키우는 것</strong>이 본 프로젝트의 목표입니다.
+    </div>
+  </div>
+
+  <!-- 5대 병목 -->
+  <div class="section">
+    <h2>5대 병목 진단</h2>
+    <p class="lead">제품(공급측)은 업계 최상위인데 수요측(브랜드 자산·자사 팬덤·전환 구조)이 비어 있습니다. 심각도 순.</p>
+    <table>
+      <thead>
+        <tr><th style="width:34px">#</th><th>진단 항목</th><th style="width:90px">심각도</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><strong>포지셔닝이 찢어져 있다 — 정체성 부재</strong><br>돈 버는 곳(효소)과 비전(여성 웰니스)이 분리. 40+ SKU가 한 우산 아래 평행 나열. 소비자는 "NGT=무엇"을 한 문장으로 못 잡는다("효소 파는 곳"). 대표 본인도 "효소는 키 제품이 될 수 없다"고 진단.</td>
+          <td><span class="tag tag-red">Critical</span></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>매출이 "임대한 도달"에 묶여 있다</strong><br>10년간 매출 엔진이 인플루언서 공구(셀러 1인과 7년 협업)에 의존. 셀러가 독립하면 NGT엔 대안이 없었고, 자사 온라인은 2025년에야 "처음" 키우기 시작. 카테고리는 연 8~12% 성장인데 NGT는 점유율 하락.</td>
+          <td><span class="tag tag-red">Critical</span></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><strong>브랜딩과 퍼포먼스가 단절</strong><br>메시지→콘텐츠→광고→CRM이 따로 굴러 자사몰 전환·재구매로 안 모임. 카카오채널·멤버십 인프라는 있으나 미활용. 조구만 IP 콜라보(2025)도 "화제성을 자산으로 받는 그릇이 없어" 일회성으로 끝남(대표 자평).</td>
+          <td><span class="tag tag-yellow">High</span></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>광고 효율 붕괴 — 즉시 정리 필요</strong><br>메타 ROAS 0.3 (월 700만 집행). 제품비·고정비 감안 시 손익분기는 ROAS 1.5+. 대행사 수 차례 교체에도 개선 없음 = 브랜드 USP·랜딩 부재가 근본 원인. 광고를 더 붓는 게 아니라 "모았다가 한 번 제대로 터뜨릴" 구조가 필요.</td>
+          <td><span class="tag tag-yellow">High</span></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><strong>내부 조직만으로는 리브랜딩 불가</strong><br>13명 규모·퍼포먼스(공격) 마케팅팀 부재. 콘텐츠 기획자는 있으나 전략적 IMC 역량은 공백. 상세페이지는 10년 묵음. 내부 정치·의사결정 구조상 직원이 대표의 브랜드를 뒤집기 어려움 → 외부 주도가 구조적으로 안전.</td>
+          <td><span class="tag tag-yellow">High</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 제조사 정통성 -->
+  <div class="section">
+    <h2>가장 큰 자산이 가장 안 보인다 — "제조사 정통성"</h2>
+    <p class="lead">건기식 시장의 페인포인트는 "공장에서 인플루언서가 대충 만들어 파는 것 아니냐"는 불신입니다. NGT는 이 불신을 정면으로 깨는 진짜 제조사 — 그런데 그 사실이 어디에도 보이지 않습니다.</p>
+    <div class="moat-grid">
+      <div class="moat-item">
+        <h4>자사 원료공장 + 곡물발효효소</h4>
+        <p>효소를 OEM이 아니라 원료부터 직접 만든다(NGT 푸드자임). 소비자는 "원산지에서 직접 사는 것"을 원한다 — 이게 차별의 핵심.</p>
+        <span class="flag">→ 현재 노출: 거의 없음</span>
+      </div>
+      <div class="moat-item">
+        <h4>K-낙산균 (국내 최초·유일)</h4>
+        <p>클로스트리디움 부티리쿰 S-45-5, 국책 연구기관 기술이전·특허. 경쟁사가 따라올 수 없는 원료 해자.</p>
+        <span class="flag">→ 현재 마케팅 활용: 0</span>
+      </div>
+      <div class="moat-item">
+        <h4>효소 7년 연속 1위 신뢰</h4>
+        <p>KCSI 2019~2025. 돌고 돌아 다시 찾는 충성 고객의 근거. 단 이 신뢰가 "브랜드"가 아니라 "제품"에만 쌓여 있음.</p>
+        <span class="flag">→ 브랜드 자산으로 미전환</span>
+      </div>
+      <div class="moat-item">
+        <h4>신제품 장건강 2종 (런칭 대기)</h4>
+        <p>위고비 대항 컨셉 — 수용체를 건드려 건강한 장 대사. "씨앗을 심기 위한 토양을 만드는" 서사. 새 히어로 상품 후보.</p>
+        <span class="flag">→ 리뉴얼 런칭의 콘텐츠 축</span>
+      </div>
+    </div>
+    <div class="callout callout-danger">
+      대표님은 "제조사 기반 = 촌스럽다"고 느끼지만, 진단 결론은 정반대입니다. <strong>제조사 정통성은 NGT의 가장 강력한 무기이며, 문제는 그것을 "촌스럽게" 두었다는 것</strong>뿐입니다. 컨설팅의 핵심 가치 = <strong>이 자산을 "세련되게 보이는 브랜드 언어"로 번역하고, 임대한 도달을 소유 자산으로 전환하는 통합 설계</strong>입니다.
+    </div>
+  </div>
+
+  <!-- 다음 단계 -->
+  <div class="section">
+    <h2>이 진단을 의사결정으로 — 다음 단계</h2>
+    <p class="lead">대표님의 진짜 니즈는 "결정을 내릴 수 있는 정보"입니다. 본 1차 전략 진단은 방향을 잡았고, 데이터가 그것을 증명·정밀화합니다.</p>
+    <div class="flow-steps">
+      <div class="flow-step on">
+        <div class="step-num">STEP 1 · 진단</div>
+        <div class="step-title">데이터 정밀 진단</div>
+        <div class="step-desc">메타·매출(월별/채널별/제품별)·회원·CRM 수령 → 채널별 LTV·광고효율·제품 건전성 분해. "의사결정 근거 패키지"로 페이퍼화. (4주)</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">STEP 2 · 리브랜딩</div>
+        <div class="step-title">뾰족한 브랜드 축</div>
+        <div class="step-desc">제조사 정통성을 세련된 한 줄 축으로. 40+ SKU를 한 우산 아래 정렬. 자사몰 CRM·팬덤 구조 + 콘텐츠·퍼포먼스 연결.</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">STEP 3 · 마케팅</div>
+        <div class="step-title">실행 + 런칭</div>
+        <div class="step-desc">12월 브랜드 세일로 물량·매출 정리 → 2026년 1월 리뉴얼 런칭 + "이렇게 바뀌었다" 서사 바이럴. 광고 대행 이관·정리 병행.</div>
+      </div>
+    </div>
+    <div class="callout callout-danger">
+      <strong>필요 데이터 (NGT → HIZ):</strong> ① 메타 광고 데이터 &nbsp;② 매출 데이터(월별·채널별·제품별, 엑셀) &nbsp;③ 회원수 &nbsp;④ CRM 데이터<br>
+      <strong>HIZ → NGT:</strong> 데이터 정밀 진단서 + 단계별 견적서(별첨)
+    </div>
+  </div>
+
+  <!-- 마무리 레버리지 -->
+  <div class="section" style="background:transparent;box-shadow:none;padding:0;">
+    <div class="leverage-box">
+      <div class="lq">"패키지 예쁘게 바꾸는 건 누구나 한다.<br>중요한 건 <em>지금 우리의 건강성을 진단</em>하는 것 —<br>그래야 비로소 <em>결정</em>을 내릴 수 있다."</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="fb">브랜드<em>라이즈</em> by HIZ &nbsp;·&nbsp; Brand · IMC Consulting</div>
+  <div style="margin-top:10px;">본 진단서는 2026-06-10 대면 상담 및 공개 리서치 기반 <b>1차 전략 진단</b>입니다. 채널별·제품별 정량 수치는 데이터 정밀 진단(T1) 단계에서 확정됩니다.<br>&copy; 2026 브랜드라이즈 by HIZ · 비공개 — (주)네츄럴굿띵스 제출용</div>
+</div>
+
+</body>
+</html>
