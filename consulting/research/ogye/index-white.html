@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Desk Research — 오계양계 <에그하다> (White / PPT용)</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+
+  :root {
+    --paper: #ffffff;
+    --cream: #f6f3ea;       /* warm document background */
+    --cream-2: #efeadd;
+    --ink: #1d242e;         /* cool charcoal text */
+    --ink-soft: #39434f;
+    --muted: #767d86;
+    --line: #e2ddcf;        /* warm hairline */
+    --line-2: #d4ccba;
+    --forest: #1d3c5c;      /* primary accent — deep ocean blue */
+    --forest-2: #2a5079;
+    --olive: #5b7fa6;       /* slate blue */
+    --olive-light: #e7edf4;
+    --ochre: #c0892c;       /* egg-yolk gold — secondary accent */
+    --ochre-light: #f7efdc;
+    --clay: #b05c38;        /* warm signal */
+    --clay-light: #f6e7df;
+    --brand: #e8491d;       /* HIZ orange — brand mark only */
+    --good: #3f7d56;
+    --good-light: #e8f1ea;
+    --warn: #b8842a;
+    --warn-light: #f7efda;
+    --bad: #b0463a;
+    --bad-light: #f6e6e2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
+    background: #c9c4b6;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "tnum";
+    word-break: keep-all;        /* 한국어 어절 단위 줄바꿈 */
+    overflow-wrap: break-word;
+    line-break: strict;
+  }
+  .serif { font-family: 'Pretendard', sans-serif; }
+  /* 다중 줄 제목·문단 줄배분 균형 */
+  h1, h2, .h-title, .big, .cover__title, .divider__t, .cover__sub, .divider__d { text-wrap: balance; }
+  .lead, .lead--serif, .card p, .callout p, .pcard__b p, .road__b, .feat__d, .stat__lab { text-wrap: pretty; }
+  /* 마커 하이라이트가 줄 끝에서 끊겨도 자연스럽게 */
+  .mk, .mk--b, .mk--w { box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+  /* ===================== PAGE SYSTEM ===================== */
+  .page {
+    width: 1122px;
+    height: 793px;
+    padding: 52px 64px 58px;
+    margin: 0 auto 14px;
+    background: var(--paper);
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.14);
+  }
+  /* ---- uniform decorative layer (behind content) ---- */
+  .page::before {
+    content:''; position:absolute; z-index:-1; right:-46px; bottom:-46px;
+    width:330px; height:330px;
+    background-image: radial-gradient(circle, rgba(29,60,92,.07) 1.4px, transparent 1.4px);
+    background-size: 19px 19px;
+    -webkit-mask-image: radial-gradient(circle at 100% 100%, #000, transparent 70%);
+    mask-image: radial-gradient(circle at 100% 100%, #000, transparent 70%);
+  }
+  .page::after {
+    content:''; position:absolute; z-index:-1; left:30px; top:118px; bottom:84px; width:1px;
+    background: repeating-linear-gradient(180deg, var(--line-2) 0 5px, transparent 5px 13px);
+  }
+  .page--forest::before { background-image: radial-gradient(circle, rgba(255,255,255,.10) 1.4px, transparent 1.4px); }
+  .page--forest::after  { background: repeating-linear-gradient(180deg, rgba(255,255,255,.22) 0 5px, transparent 5px 13px); }
+  .page--cream { background: var(--cream); }
+  .page--forest {
+    background: var(--forest);
+    background-image: linear-gradient(150deg, #15293f 0%, #1d3c5c 45%, #27496e 100%);
+    color: #fff;
+  }
+
+  /* ---- running header ---- */
+  .rh {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 9px;
+    margin-bottom: 26px;
+  }
+  .rh__sec {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--forest);
+  }
+  .rh__sec b { color: var(--ochre); }
+  .rh__doc {
+    font-size: 9.5px;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ---- title block ---- */
+  .h-kicker {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 8px;
+  }
+  .h-title {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.28;
+    color: var(--ink);
+  }
+  .h-rule { width: 46px; height: 3px; background: var(--forest); margin: 14px 0 22px; }
+
+  /* ---- footer ---- */
+  .pf {
+    position: absolute;
+    left: 64px; right: 64px; bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--line);
+    padding-top: 7px;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.3px;
+  }
+  .pf__src { max-width: 760px; line-height: 1.5; }
+  .pf__pg b { color: var(--forest); font-weight: 700; }
+  .page--forest .pf { border-top-color: rgba(255,255,255,.18); color: rgba(255,255,255,.55); }
+  .page--forest .pf__pg b { color: #fff; }
+
+  /* ===================== COVER ===================== */
+  .cover { height: 100%; display: flex; flex-direction: column; padding: 76px 78px; }
+  .cover__top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .cover__badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid rgba(255,255,255,.35);
+    color: #fff; font-size: 10.5px; font-weight: 600;
+    padding: 7px 15px; border-radius: 2px; letter-spacing: 2px; text-transform: uppercase;
+  }
+  .cover__hiz {
+    font-family: 'Pretendard', sans-serif; font-style: italic; font-weight: 700;
+    font-size: 15px; color: #fff; letter-spacing: 1px;
+    text-shadow: 0 1px 10px rgba(13,26,42,.6);
+  }
+  .cover__hiz span { color: var(--ochre); }
+  .cover__mid { margin-top: auto; }
+  .cover__eyebrow {
+    font-size: 13px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--ochre); font-weight: 600; margin-bottom: 22px;
+  }
+  .cover__title {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 40px; font-weight: 700; line-height: 1.34; letter-spacing: -1px; color: #fff;
+  }
+  .cover__title .l1, .cover__title .lede { white-space: nowrap; display: block; }
+  .cover__title .lede { color: #e9dcb6; }
+  .cover__sub {
+    margin-top: 22px; font-size: 15.5px; font-weight: 300; line-height: 1.75;
+    color: rgba(255,255,255,.82); max-width: 660px;
+  }
+  .cover__rule { width: 64px; height: 3px; background: var(--ochre); margin: 34px 0; }
+  .cover__meta {
+    display: flex; gap: 46px; font-size: 12px; color: rgba(255,255,255,.7); line-height: 1.7;
+  }
+  .cover__meta b { display:block; color:#fff; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; opacity:.6; font-weight:600;}
+  .cover__egg {
+    position: absolute; right: -60px; top: 90px; width: 360px; height: 460px;
+    background: radial-gradient(ellipse 50% 50% at 50% 42%, rgba(224,196,120,.22), rgba(224,196,120,0) 70%);
+    border-radius: 50%;
+  }
+
+  /* ===================== TYPE / PROSE ===================== */
+  .lead {
+    font-size: 14px; line-height: 1.85; color: var(--ink-soft);
+  }
+  .lead--serif { font-family: 'Pretendard', sans-serif; font-weight: 400; font-size: 15px; line-height: 1.9; }
+  p + p { margin-top: 11px; }
+  .dropcap::first-letter {
+    font-family:'Pretendard',sans-serif; font-size: 50px; font-weight: 700; color: var(--forest);
+    float: left; line-height: .82; padding: 6px 12px 0 0;
+  }
+
+  /* ===================== GRID HELPERS ===================== */
+  .grid { display: grid; gap: 16px; }
+  .g2 { grid-template-columns: 1fr 1fr; }
+  .g3 { grid-template-columns: repeat(3,1fr); }
+  .g4 { grid-template-columns: repeat(4,1fr); }
+  .col-7 { grid-column: span 7; } .col-5 { grid-column: span 5; }
+  .g12 { grid-template-columns: repeat(12,1fr); }
+
+  /* ===================== STAT ===================== */
+  .stat { padding: 18px 20px; background: var(--cream); border: 1px solid var(--line); border-radius: 4px; }
+  .stat__num { font-family:'Pretendard',sans-serif; font-size: 34px; font-weight: 700; color: var(--forest); line-height: 1; letter-spacing: -1px; }
+  .stat__num small { font-size: 16px; font-weight: 600; }
+  .stat__lab { font-size: 11px; color: var(--muted); margin-top: 9px; line-height: 1.5; }
+  .stat--ochre .stat__num { color: var(--ochre); }
+  .stat--clay .stat__num { color: var(--clay); }
+
+  /* ===================== CARD ===================== */
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: 5px; padding: 18px 20px; }
+  .card--cream { background: var(--cream); }
+  .card__h { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 9px; display:flex; align-items:center; gap:8px;}
+  .card__tag { font-size: 9px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:3px 8px; border-radius:2px; }
+  .card p, .card li { font-size: 12px; line-height: 1.7; color: var(--ink-soft); }
+  .card ul { padding-left: 16px; }
+  .card li { margin-bottom: 3px; }
+
+  /* ===================== CALLOUT ===================== */
+  .callout {
+    background: var(--olive-light); border-left: 4px solid var(--forest);
+    padding: 15px 20px; border-radius: 0 5px 5px 0;
+  }
+  .callout--ochre { background: var(--ochre-light); border-left-color: var(--ochre); }
+  .callout--clay { background: var(--clay-light); border-left-color: var(--clay); }
+  .callout__k { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--forest); margin-bottom: 6px; }
+  .callout--ochre .callout__k { color: var(--ochre); }
+  .callout--clay .callout__k { color: var(--clay); }
+  .callout p { font-size: 12.5px; line-height: 1.7; color: var(--ink-soft); }
+  .callout b { color: var(--ink); }
+
+  /* ===================== TABLE ===================== */
+  table.rep { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+  table.rep thead th {
+    background: var(--forest); color: #fff; font-weight: 600; text-align: left;
+    padding: 9px 12px; font-size: 11px; letter-spacing: .3px;
+  }
+  table.rep thead th:first-child { border-radius: 4px 0 0 0; }
+  table.rep thead th:last-child { border-radius: 0 4px 0 0; }
+  table.rep tbody td { padding: 9px 12px; border-bottom: 1px solid var(--line); color: var(--ink-soft); line-height: 1.5; vertical-align: top; }
+  table.rep tbody tr:nth-child(even) { background: var(--cream); }
+  table.rep tbody tr.hl { background: var(--ochre-light); }
+  table.rep tbody tr.hl td { color: var(--ink); font-weight: 500; }
+  table.rep .c { text-align: center; }
+  table.rep.rep--compact { font-size: 10.6px; }
+  table.rep.rep--compact thead th { padding: 7px 9px; font-size: 10px; }
+  table.rep.rep--compact tbody td { padding: 6px 9px; line-height: 1.42; }
+  table.rep tbody tr.grp td { background: var(--olive-light); color: var(--forest); font-weight: 700; font-size: 9.5px; letter-spacing: .6px; text-transform: uppercase; padding-top: 7px; padding-bottom: 5px; }
+  .pill { display:inline-block; font-size:10px; font-weight:700; padding:2px 8px; border-radius:10px; }
+  .pill--blue { background: var(--olive-light); color: var(--forest); }
+  .pill--g { background: var(--good-light); color: var(--good); }
+  .pill--y { background: var(--warn-light); color: var(--warn); }
+  .pill--r { background: var(--bad-light); color: var(--bad); }
+  .pill--n { background: var(--cream-2); color: var(--muted); }
+
+  /* ===================== BAR CHART (CSS) ===================== */
+  .bars { display: flex; flex-direction: column; gap: 11px; }
+  .bar__row { display: grid; grid-template-columns: 130px 1fr 52px; align-items: center; gap: 12px; }
+  .bar__lab { font-size: 11.5px; color: var(--ink-soft); text-align: right; line-height:1.3; }
+  .bar__track { background: var(--cream-2); border-radius: 3px; height: 22px; position: relative; overflow: hidden; }
+  .bar__fill { height: 100%; border-radius: 3px; background: var(--forest); }
+  .bar__fill.f-ochre { background: var(--ochre); }
+  .bar__fill.f-olive { background: var(--olive); }
+  .bar__fill.f-clay { background: var(--clay); }
+  .bar__fill.f-mut { background: #b9b3a3; }
+  .bar__val { font-size: 12px; font-weight: 700; color: var(--ink); }
+
+  /* vertical column chart */
+  .cols { display: flex; align-items: flex-end; gap: 18px; height: 200px; padding: 0 6px; border-bottom: 2px solid var(--line); }
+  .col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+  .col__bar { width: 100%; max-width: 56px; background: linear-gradient(180deg, var(--olive), var(--forest)); border-radius: 4px 4px 0 0; position: relative; }
+  .col__v { position: absolute; top: -20px; left: 0; right: 0; text-align: center; font-size: 12px; font-weight: 700; color: var(--forest); }
+  .col__x { margin-top: 8px; font-size: 11px; color: var(--muted); text-align: center; }
+
+  /* ===================== CONTENTS ===================== */
+  .toc { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; margin-top: 16px; }
+  .toc__item { display: flex; align-items: baseline; gap: 16px; padding: 17px 0; border-bottom: 1px solid var(--line); }
+  .toc__no { font-family:'Pretendard',sans-serif; font-size: 25px; font-weight: 700; color: var(--ochre); width: 40px; }
+  .toc__t { font-size: 20px; font-weight: 600; color: var(--ink); flex: 1; line-height: 1.4; }
+  .toc__d { font-size: 15px; color: var(--muted); line-height: 1.55; margin-top: 6px; }
+  .toc__d .nb { white-space: nowrap; }
+  .toc__pg { font-size: 16px; color: var(--muted); font-weight: 600; }
+
+  /* ===================== DIVIDER ===================== */
+  .divider { height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 0 78px; }
+  .divider__no { font-family:'Pretendard',sans-serif; font-size: 90px; font-weight: 700; line-height: 1; color: rgba(255,255,255,.16); }
+  .divider__bar { width: 56px; height: 3px; background: var(--ochre); margin: 18px 0 20px; }
+  .divider__t { font-family:'Pretendard',sans-serif; font-size: 34px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+  .divider__d { margin-top: 14px; font-size: 14px; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,.78); max-width: 540px; }
+  .divider__toc { margin-top: 30px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .divider__chip { font-size: 11px; color: rgba(255,255,255,.82); border: 1px solid rgba(255,255,255,.25); padding: 6px 13px; border-radius: 20px; }
+
+  /* persona */
+  .persona { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  .persona__top { background: var(--forest); color: #fff; padding: 14px 16px; }
+  .persona--b .persona__top { background: var(--ochre); }
+  .persona--c .persona__top { background: var(--clay); }
+  .persona__name { font-size: 14px; font-weight: 700; }
+  .persona__meta { font-size: 10.5px; opacity: .85; margin-top: 3px; }
+  .persona__body { padding: 14px 16px; }
+  .persona__row { font-size: 11px; line-height: 1.6; margin-bottom: 9px; }
+  .persona__row b { display:block; font-size: 9.5px; letter-spacing:.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+
+  /* positioning map */
+  .map { position: relative; width: 100%; height: 360px; background: var(--cream); border: 1px solid var(--line); border-radius: 6px; }
+  .map__ax { position: absolute; background: #cfc8b8; }
+  .map__axx { left: 6%; right: 6%; top: 50%; height: 1.5px; }
+  .map__axy { top: 6%; bottom: 6%; left: 50%; width: 1.5px; }
+  .map__lab { position: absolute; font-size: 10px; font-weight: 700; color: var(--muted); letter-spacing: .5px; }
+  .dot { position: absolute; transform: translate(-50%,-50%); text-align: center; }
+  .dot__c { width: 13px; height: 13px; border-radius: 50%; margin: 0 auto; box-shadow: 0 1px 4px rgba(0,0,0,.2); }
+  .dot__l { font-size: 10px; font-weight: 600; color: var(--ink); margin-top: 4px; white-space: nowrap; }
+  .dot--us .dot__c { width: 18px; height: 18px; background: var(--brand); border: 3px solid #fff; }
+  .dot--us .dot__l { color: var(--brand); font-weight: 800; }
+  .dot--d2c .dot__c { width: 12px; height: 12px; background: var(--clay); border: 2px solid #fff; }
+  .dot--d2c .dot__l { color: var(--clay); font-weight: 700; }
+  .map__leg { display:flex; flex-wrap:wrap; gap:9px 14px; margin-top:11px; font-size:10.5px; color:var(--muted); }
+  .map__leg i { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; vertical-align:middle; }
+
+  /* ===================== BRAND PROFILE (개별 경쟁사) ===================== */
+  .bp-head { display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-top:2px; }
+  .bp-kicker { font-size:11px; font-weight:700; color:var(--muted); letter-spacing:1px; }
+  .bp-name { font-size:26px; font-weight:700; color:var(--forest); letter-spacing:-.5px; }
+  .bp-name em { font-style:normal; font-weight:600; color:var(--olive); font-size:18px; }
+  .bp-tier { font-size:11px; font-weight:700; padding:5px 13px; border-radius:14px; white-space:nowrap; }
+  .bp-tier--star { background:var(--ochre); color:#fff; }
+  .bp-tier--welfare { background:var(--olive-light); color:var(--forest); }
+  .bp-tier--story { background:var(--cream-2); color:var(--ink-soft); }
+  .bp-tier--platform { background:var(--good-light); color:var(--good); }
+  .bp-attr > div { display:flex; gap:14px; padding:9px 0; border-bottom:1px solid var(--line); }
+  .bp-attr dt { flex:0 0 74px; font-size:12px; font-weight:700; color:var(--forest); }
+  .bp-attr dd { margin:0; flex:1; font-size:12.5px; line-height:1.6; color:var(--ink-soft); }
+  .bp-attr dd b { color:var(--ink); }
+  .bp-block { margin-bottom:15px; }
+  .bp-block__h { font-size:10px; font-weight:700; letter-spacing:1.3px; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .bp-link { display:flex; justify-content:space-between; gap:10px; font-size:12px; padding:6px 0; border-bottom:1px dashed var(--line-2); }
+  .bp-link span { color:var(--muted); }
+  .bp-link b { color:var(--forest); font-weight:600; }
+  .bp-prod { background:var(--cream); border:1px solid var(--line); border-radius:5px; padding:10px 12px; }
+  .bp-prod__n { font-size:11px; color:var(--ink-soft); margin-bottom:3px; line-height:1.4; }
+  .bp-prod__p { font-size:15px; font-weight:700; color:var(--forest); }
+  .bp-note { font-size:11.5px; line-height:1.7; color:var(--ink-soft); }
+
+  /* roadmap */
+  .road { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; position: relative; margin-top: 10px; }
+  .road__step { padding: 0 16px; position: relative; }
+  .road__step::before { content:''; position:absolute; top: 13px; left: 0; right: 0; height: 2px; background: var(--line); z-index:0; }
+  .road__step:first-child::before { left: 50%; }
+  .road__step:last-child::before { right: 50%; }
+  .road__dot { width: 28px; height: 28px; border-radius: 50%; background: var(--forest); color: #fff; display:flex; align-items:center; justify-content:center; font-size: 12px; font-weight:700; position: relative; z-index:1; margin: 0 auto; }
+  .road__when { text-align:center; font-size: 10px; font-weight:700; color: var(--ochre); margin-top: 9px; letter-spacing:.5px; }
+  .road__t { text-align:center; font-size: 12.5px; font-weight:700; margin-top: 3px; }
+  .road__b { font-size: 10.5px; color: var(--ink-soft); line-height: 1.55; margin-top: 8px; }
+  .road__b li { margin-bottom: 2px; }
+
+  /* swot */
+  .swot { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .swot__q { border-radius: 6px; padding: 14px 16px; border: 1px solid var(--line); }
+  .swot__q h4 { font-size: 13px; font-weight: 700; margin-bottom: 9px; display:flex; align-items:center; gap: 8px;}
+  .swot__q h4 span { font-family:'Pretendard',sans-serif; font-size: 18px; }
+  .swot__q li { font-size: 11px; line-height: 1.55; color: var(--ink-soft); margin-bottom: 4px; padding-left: 13px; position: relative; }
+  .swot__q li::before { content:'—'; position:absolute; left:0; color: var(--muted); }
+  .swot--s { background: var(--good-light); border-color: #c5ddcb; } .swot--s h4 { color: var(--good); }
+  .swot--w { background: var(--bad-light); border-color: #e6cabf; } .swot--w h4 { color: var(--bad); }
+  .swot--o { background: var(--ochre-light); border-color: #e8d4a4; } .swot--o h4 { color: var(--warn); }
+  .swot--t { background: var(--cream-2); border-color: var(--line); } .swot--t h4 { color: var(--ink-soft); }
+
+  .num-badge { font-family:'Pretendard',sans-serif; font-weight:700; color: var(--ochre); }
+  .mini-label { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-bottom:10px; display:flex; align-items:center; gap:7px;}
+
+  /* ===================== GRAPHIC SYSTEM ===================== */
+  /* line-icons */
+  .ic { width:15px; height:15px; flex:none; fill:none; stroke:currentColor; stroke-width:1.7;
+        stroke-linecap:round; stroke-linejoin:round; vertical-align:-2px; }
+  .h-kicker { display:flex; align-items:center; gap:8px; }
+  .h-kicker .ic { width:15px; height:15px; color:var(--ochre); }
+  .card__h .ic { width:15px; height:15px; }
+  .callout__k .ic, .mini-label .ic { width:13px; height:13px; }
+
+  /* icon chip badge — small square block w/ icon */
+  .ichip { width:30px; height:30px; border-radius:7px; display:inline-flex; align-items:center;
+           justify-content:center; flex:none; background:var(--olive-light); color:var(--forest); }
+  .ichip .ic { width:16px; height:16px; }
+  .ichip--ochre { background:var(--ochre-light); color:var(--warn); }
+  .ichip--clay { background:var(--clay-light); color:var(--clay); }
+  .ichip--good { background:var(--good-light); color:var(--good); }
+  .ichip--bad  { background:var(--bad-light); color:var(--bad); }
+
+  /* blueprint egg — decorative line-art motif (chrome pages) */
+  .bpegg { position:absolute; z-index:-1; pointer-events:none; color:rgba(255,255,255,.20); }
+
+  /* visual block — framed graphic tile that stands in for imagery */
+  .viz { position:relative; border:1px solid var(--line); border-radius:9px; overflow:hidden;
+         background:linear-gradient(140deg,#eef3f8,#e1e9f2); min-height:140px;
+         display:flex; align-items:center; justify-content:center; isolation:isolate; }
+  .viz::before { content:''; position:absolute; inset:0; z-index:-1;
+         background-image: radial-gradient(circle, rgba(29,60,92,.09) 1.3px, transparent 1.3px);
+         background-size: 15px 15px; }
+  .viz__art { width:auto; height:72%; max-height:150px; color:var(--forest); }
+  .viz__cap { position:absolute; left:14px; bottom:11px; font-size:9.5px; font-weight:700;
+         letter-spacing:1.2px; text-transform:uppercase; color:var(--forest); opacity:.8;
+         display:flex; align-items:center; gap:6px; }
+  .viz--forest { background:linear-gradient(150deg,#15293f,#27496e); }
+  .viz--forest .viz__art { color:rgba(255,255,255,.92); }
+  .viz--forest::before { background-image: radial-gradient(circle, rgba(255,255,255,.10) 1.3px, transparent 1.3px); }
+  .viz--forest .viz__cap { color:#e9cd8c; opacity:1; }
+  .viz--ochre { background:linear-gradient(140deg,#f7efdc,#f0e2c2); }
+  .viz--ochre .viz__art { color:var(--warn); }
+  .viz--ochre::before { background-image: radial-gradient(circle, rgba(192,137,44,.13) 1.3px, transparent 1.3px); }
+
+  /* feature row — icon block + label strip */
+  .feats { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+  .feat { background:var(--cream); border:1px solid var(--line); border-radius:7px; padding:13px 14px; }
+  .feat .ichip { margin-bottom:9px; }
+  .feat__t { font-size:11.5px; font-weight:700; color:var(--ink); line-height:1.3; }
+  .feat__d { font-size:10px; color:var(--muted); line-height:1.5; margin-top:4px; }
+
+  /* ===================== EDITORIAL TREATMENT (photo + marker type) ===================== */
+  /* marker highlight on keywords */
+  .mk  { background: linear-gradient(transparent 56%, rgba(192,137,44,.40) 56%); padding:0 2px; border-radius:1px; }
+  .mk--b { background: linear-gradient(transparent 56%, rgba(91,127,166,.45) 56%); }
+  .mk--w { background: linear-gradient(transparent 56%, rgba(233,205,140,.40) 56%); }
+
+  /* big centered statement headline (Heineken-style) */
+  .big { font-size:39px; font-weight:800; line-height:1.3; letter-spacing:-1.2px; color:var(--ink); }
+  .big--c { text-align:center; }
+  .big--w { color:#fff; }
+  .big .accent { color:var(--forest); }
+  .big--w .accent { color:#e9cd8c; }
+  .sub-c { text-align:center; font-size:15px; line-height:1.75; color:var(--ink-soft); margin-top:14px; }
+  .page--forest .sub-c { color:rgba(255,255,255,.85); }
+
+  /* full-bleed photo layer */
+  .bleed { position:absolute; inset:0; z-index:-1; background:#1d3c5c no-repeat center/cover; }
+  .bleed::after { content:''; position:absolute; inset:0; }
+  .page--photo { color:#fff; }
+  .page--photo .bleed::after { background:linear-gradient(105deg, rgba(13,26,42,.95) 0%, rgba(18,38,58,.84) 42%, rgba(18,38,58,.52) 100%); }
+  .page--photo .rh { border-bottom-color:rgba(255,255,255,.22); }
+  .page--photo .rh__sec { color:#fff; } .page--photo .rh__sec b { color:#e9cd8c; }
+  .page--photo .rh__doc { color:rgba(255,255,255,.6); }
+  .page--photo::before, .page--photo::after { display:none; }
+
+  /* cover diagonal photo */
+  .cover-photo { position:absolute; z-index:-1; top:0; right:0; bottom:0; width:57%;
+    background:#1d3c5c no-repeat center/cover; clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%); }
+  .cover-photo::after { content:''; position:absolute; inset:0;
+    background:linear-gradient(95deg, #15293f 0%, rgba(21,41,63,.55) 26%, rgba(21,41,63,.12) 55%, transparent 80%); }
+
+  /* photo tile / framed image card */
+  .photo { position:relative; border-radius:9px; overflow:hidden; background:#1d3c5c no-repeat center/cover; }
+  .photo .cap { position:absolute; left:0; right:0; bottom:0; padding:20px 14px 11px;
+    background:linear-gradient(transparent, rgba(13,26,42,.86)); color:#fff;
+    font-size:11px; font-weight:700; letter-spacing:.3px; display:flex; align-items:center; gap:7px; }
+  .photo .cap .ic { width:14px; height:14px; color:#e9cd8c; }
+  .photo .tagtl { position:absolute; left:11px; top:11px; font-size:8.5px; font-weight:700;
+    letter-spacing:1.4px; text-transform:uppercase; color:#fff; background:rgba(20,41,63,.7);
+    border:1px solid rgba(255,255,255,.3); padding:3px 8px; border-radius:3px; backdrop-filter:blur(2px); }
+  .pcard { border:1px solid var(--line); border-radius:9px; overflow:hidden; background:#fff; }
+  .pcard__img { height:118px; background:#1d3c5c no-repeat center/cover; }
+  .pcard__b { padding:12px 14px; }
+  .pcard__b .card__h { margin-bottom:6px; }
+  .pcard__b p { font-size:11.5px; line-height:1.6; color:var(--ink-soft); }
+</style>
+</head>
+<body>
+
+<!-- ============ SVG SPRITE (icons + motif) ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="i-egg" viewBox="0 0 24 24"><path d="M12 3c3.6 0 6.2 5.2 6.2 9.2A6.2 6.2 0 0 1 5.8 12.2C5.8 8.2 8.4 3 12 3z"/></symbol>
+  <symbol id="i-expert" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9.5" cy="8" r="3.2"/><path d="M3.5 20a6 6 0 0 1 12 0"/><path d="M16.5 5.4a3.1 3.1 0 0 1 0 6"/><path d="M17.5 14.6a6 6 0 0 1 3.8 5.4"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.6-3.1 7.7-7 9-3.9-1.3-7-4.4-7-9V6z"/><polyline points="8.8 12 11.3 14.5 15.6 9.6"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 6.2-13 14-13 0 8-5.2 14-13 14"/><path d="M5 19c3-3 6-5 9.2-6"/></symbol>
+  <symbol id="i-fresh" viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="5.8" y1="5.8" x2="18.2" y2="18.2"/><line x1="18.2" y1="5.8" x2="5.8" y2="18.2"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 6"/><polyline points="15 6 21 6 21 12"/></symbol>
+  <symbol id="i-won" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M7.5 9l1.7 6.2L12 10l2.8 5.2L16.5 9"/><line x1="6.8" y1="12" x2="17.2" y2="12"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><rect x="2.5" y="7" width="11.5" height="9" rx="1.2"/><path d="M14 10.5h3.8l3.2 3.2V16H14z"/><circle cx="7" cy="18.2" r="1.7"/><circle cx="17" cy="18.2" r="1.7"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2.2"/><line x1="4" y1="9.5" x2="20" y2="9.5"/><line x1="9" y1="3" x2="9" y2="6.2"/><line x1="15" y1="3" x2="15" y2="6.2"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.6"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.4"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.4"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.4"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.4"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.2A7 7 0 0 0 5 9.8C5 14.8 12 21 12 21z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><line x1="5.5" y1="21" x2="5.5" y2="4"/><path d="M5.5 4.5h11l-1.6 3.1 1.6 3.1h-11"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.8"/><line x1="16" y1="16" x2="21" y2="21"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><polygon points="12 3.5 21 8.2 12 12.9 3 8.2"/><polyline points="3 12.6 12 17.3 21 12.6"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.2"/><line x1="8.3" y1="8" x2="15.7" y2="8"/><line x1="8.3" y1="12" x2="15.7" y2="12"/><line x1="8.3" y1="16" x2="13" y2="16"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4.5 5.2A2 2 0 0 1 6.5 3.2H19v16.4H6.5a2 2 0 0 0-2 2z"/><line x1="6.5" y1="19.6" x2="19" y2="19.6"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 3.2 14.5 9 20.8 9.5 16 13.7 17.5 19.9 12 16.4 6.5 19.9 8 13.7 3.2 9.5 9.5 9"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.4"/><circle cx="18" cy="6" r="2.4"/><path d="M8 16.5C13 13 11 9 16 7"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.5l8.5 15H3.5z"/><line x1="12" y1="9.5" x2="12" y2="14"/><circle cx="12" cy="16.6" r="0.7" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v5M12 16v5M3 12h5M16 12h5"/><path d="M12 8.5l1.6 1.9L15.5 12l-1.9 1.6L12 15.5l-1.6-1.9L8.5 12l1.9-1.6z"/></symbol>
+  <!-- blueprint egg motif: egg + crosshair + ticks (uses currentColor) -->
+  <symbol id="bpegg" viewBox="0 0 260 320">
+    <line x1="130" y1="14" x2="130" y2="306" stroke="currentColor" stroke-width="1" stroke-dasharray="2 7" opacity=".7"/>
+    <line x1="14" y1="160" x2="246" y2="160" stroke="currentColor" stroke-width="1" stroke-dasharray="2 7" opacity=".7"/>
+    <path d="M130 52 C90 52 62 110 62 164 C62 218 92 268 130 268 C168 268 198 218 198 164 C198 110 170 52 130 52 Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    <path d="M130 70 C100 70 80 116 80 162 C80 208 102 250 130 250 C158 250 180 208 180 162 C180 116 160 70 130 70 Z" fill="none" stroke="currentColor" stroke-width=".8" opacity=".55"/>
+    <circle cx="130" cy="52" r="3.4" fill="currentColor"/>
+    <circle cx="62" cy="160" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <circle cx="198" cy="160" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <circle cx="130" cy="268" r="3" fill="currentColor"/>
+    <line x1="206" y1="52" x2="206" y2="268" stroke="currentColor" stroke-width="1" opacity=".6"/>
+    <line x1="202" y1="52" x2="210" y2="52" stroke="currentColor" stroke-width="1" opacity=".6"/>
+    <line x1="202" y1="268" x2="210" y2="268" stroke="currentColor" stroke-width="1" opacity=".6"/>
+  </symbol>
+</defs></svg>
+
+<!-- ============ 01 · COVER ============ -->
+<section class="page page--forest">
+  <div class="cover-photo" style="background-image:url('img/hero.jpg');"></div>
+  <div style="position:absolute; right:58px; bottom:50px; z-index:1; text-align:right; color:rgba(255,255,255,.8); font-size:10px; letter-spacing:1.5px; line-height:1.7; text-shadow:0 1px 10px rgba(13,26,42,.7);">
+    <div style="color:#e9cd8c; font-weight:700; font-size:11px;">SMART-FARM PRECISION</div>
+    난각 3번 · 0.075㎡ 위생 관리
+  </div>
+  <div class="cover">
+    <div class="cover__top">
+      <span class="cover__badge"><svg class="ic" style="width:13px;height:13px;"><use href="#i-egg"/></svg> Market Desk Research</span>
+      <span class="cover__hiz">HIZ <span>BRAND RISE</span></span>
+    </div>
+    <div class="cover__mid" style="max-width:560px;">
+      <div class="cover__eyebrow">신규 브랜드 런칭 · 시장 진단 리포트</div>
+      <h1 class="cover__title"><span class="l1">오계양계 계란 브랜드 &lt;에그하다&gt;</span><span class="lede">시장 분석 &amp; 포지셔닝 전략</span></h1>
+      <p class="cover__sub" style="max-width:520px;">국내 계란 시장 구조와 경쟁 구도를 진단하고, 난각번호 3번이라는 제약 위에서
+      <span class="mk--w" style="color:#fff;">‘전문가가 키운 신선란’</span>으로 시장을 재정의하는 브랜드 방향성을 제안한다.</p>
+      <div class="cover__rule"></div>
+      <div class="cover__meta">
+        <div><b>Client</b>오계양계 (대구 · 농식품벤처)</div>
+        <div><b>Scope</b>시장 · 경쟁 · 소비자 · 포지셔닝</div>
+        <div><b>Timeline</b>7/15 코엑스 티징 → 9월 런칭</div>
+        <div><b>Date</b>2026. 06. 05 · v1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">Executive Summary · <b>핵심 요약</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-star"/></svg>한 장 요약</div>
+  <h2 class="h-title">시장은 우호적이나, 승부는 <span class="mk">‘난각 3번’을 어떻게 뒤집느냐</span>에 달려 있다</h2>
+  <div class="h-rule"></div>
+
+  <div class="grid g12" style="gap:22px;">
+    <div class="col-7" style="grid-column: span 7;">
+      <p class="lead lead--serif dropcap">계란 소비는 1인당 연 348개로 사상 최고치를 경신했고, 한 판 가격은 7천 원대에 정착했다. 수요는 견조하고 프리미엄 가격 저항은 낮아, 신규 브랜드 진입에 유리한 국면이다. 그러나 소비자의 선택 기준이 ‘가격’에서 ‘사육환경·안전성’으로 빠르게 이동하면서, 시장의 프리미엄 축은 동물복지(난각 1·2번)로 쏠리고 있다.</p>
+      <p class="lead">오계양계는 <b>난각번호 3번(개선된 케이지)</b>으로, 이 복지 프리미엄 축을 정면으로 쓸 수 없다. 동시에 <b style="white-space:nowrap;">농진원 센터장 출신의 귀농</b>이라는, 경쟁사가 갖지 못한 강력한 신뢰 자산을 보유한다. 따라서 전략의 핵심은 명확하다 — 복지 경쟁을 피하고, <b>신선도 · 스마트팜 위생 · 전문가 진정성</b>의 축으로 시장을 재정의하는 것이다. 이미 ‘가농’이 케이지란을 ‘신선도+무항생제’만으로 프리미엄화하며 이 길이 유효함을 증명했다.</p>
+      <div class="callout callout--clay" style="margin-top:16px;">
+        <div class="callout__k">단 하나의 결론</div>
+        <p><b>“농업을 가르치던 사람이 직접 키운, 가장 신선하고 깨끗한 매일의 계란.”</b> — 복지 흉내 대신 전문성·신선도·과학적 위생으로 승부한다.</p>
+      </div>
+    </div>
+    <div class="col-5" style="grid-column: span 5;">
+      <div class="grid g2" style="gap:12px;">
+        <div class="stat"><div class="stat__num">348<small>개</small></div><div class="stat__lab">1인당 연간 소비량 (사상 최고)</div></div>
+        <div class="stat stat--ochre"><div class="stat__num">7,045<small>원</small></div><div class="stat__lab">계란 한 판(30구) 평균가 (’26)</div></div>
+        <div class="stat stat--clay"><div class="stat__num">18<small>%</small></div><div class="stat__lab">난각번호 정확 인지 소비자뿐</div></div>
+        <div class="stat"><div class="stat__num">~15<small>%</small></div><div class="stat__lab">브랜드란이 차지하는 시장 비중<sup>추정</sup></div></div>
+      </div>
+      <div class="card card--cream" style="margin-top:12px;">
+        <div class="card__h">4대 핵심 판단</div>
+        <ul style="padding-left:15px;">
+          <li>시장 우호적 — 수요 최고·가격 정착 → 진입 적기</li>
+          <li>복지 축 봉쇄 — 3번은 1·2번 프리미엄 모방 금지</li>
+          <li>전문성 = 유일 자산 — 센터장 귀농 스토리</li>
+          <li>재정의 전략 — 신선·위생·전문성으로 우회</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 농식품부·대한산란계협회, 축산물품질평가원, 동물자유연대 시민인식조사, 업계 추정치 종합 (2025–2026)</span><span class="pf__pg">OGYE · <b>02</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">Contents · <b>목차</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-doc"/></svg>Report Structure</div>
+  <h2 class="h-title">목차</h2>
+  <div class="h-rule"></div>
+  <div class="toc">
+    <div class="toc__item"><span class="toc__no">01</span><div><div class="toc__t">전체 스케줄링</div><div class="toc__d">박람회 → 런칭 2개월 실행 로드맵</div></div></div>
+    <div class="toc__item"><span class="toc__no">02</span><div><div class="toc__t">시장 분석</div><div class="toc__d">시장 환경 · 가격 · 규모 · 글로벌</div></div></div>
+    <div class="toc__item"><span class="toc__no">03</span><div><div class="toc__t">에그하다의 현재</div><div class="toc__d">브랜드 자산 · 난각 제도 · SWOT · 전략 시사점</div></div></div>
+    <div class="toc__item"><span class="toc__no">04</span><div><div class="toc__t">경쟁사 분석</div><div class="toc__d">소매·D2C 경쟁 · 비교표 · 포지셔닝맵 · 프로필 9</div></div></div>
+    <div class="toc__item"><span class="toc__no">05</span><div><div class="toc__t">타겟 고객 분석</div><div class="toc__d">세그먼트 · 구매 여정 · 페르소나</div></div></div>
+    <div class="toc__item"><span class="toc__no">06</span><div><div class="toc__t">브랜드 방향성 후보</div><div class="toc__d">포지셔닝 3안 · 비교 평가</div></div></div>
+    <div class="toc__item"><span class="toc__no">07</span><div><div class="toc__t">결론</div><div class="toc__d">종합 권고 · 핵심 명제</div></div></div>
+    <div class="toc__item"><span class="toc__no">A</span><div><div class="toc__t">Appendix</div><div class="toc__d">유통 채널 · 출처 & 방법론</div></div></div>
+  </div>
+  <div class="pf"><span class="pf__src">데스크 리서치 기준 2026-06-05 · 후속 단계에서 1차 데이터(인터뷰·실사)로 갱신</span><span class="pf__pg">OGYE · <b>03</b></span></div>
+</section>
+
+<section class="page page--forest page--photo">
+  <div class="bleed" style="background-image:url('img/hands.jpg');"></div>
+  <div class="divider">
+    <div class="divider__no">01</div>
+    <div class="divider__bar"></div>
+    <div class="divider__t">전체 스케줄링</div>
+    <p class="divider__d">7월 박람회 티징부터 9월 런칭까지, 2개월 실행 여정을 한눈에 본다. 이 일정이 모든 산출물의 기준점이다.</p>
+    <div class="divider__toc">
+      <span class="divider__chip">기획 확정 (~6월말)</span>
+      <span class="divider__chip">BI·패키지 (7월초)</span>
+      <span class="divider__chip">7/15 코엑스 티징</span>
+      <span class="divider__chip">8~9월 공식 런칭</span>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src"></span><span class="pf__pg">OGYE · <b>04</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">01 전체 스케줄링 · <b>실행 로드맵</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-cal"/></svg>Roadmap · 박람회 → 런칭</div>
+  <h2 class="h-title">2개월 실행 로드맵 — 코엑스 티징에서 9월 런칭까지</h2>
+  <div class="h-rule"></div>
+
+  <div class="road" style="margin-bottom:22px;">
+    <div class="road__step"><div class="road__dot" style="background:var(--ochre);">①</div><div class="road__when">~6월 말</div><div class="road__t">기획 확정</div><ul class="road__b" style="padding-left:14px;"><li>대표 인터뷰·인증 확인</li><li>포지셔닝 A안 확정</li><li>네이밍·슬로건·스토리</li></ul></div>
+    <div class="road__step"><div class="road__dot" style="background:var(--ochre);">②</div><div class="road__when">7월 초</div><div class="road__t">BI·패키지</div><ul class="road__b" style="padding-left:14px;"><li>로고·컬러·가이드</li><li>패키지 3종+택배박스</li><li>무드보드</li></ul></div>
+    <div class="road__step"><div class="road__dot">③</div><div class="road__when">7/15 코엑스</div><div class="road__t">박람회 티징</div><ul class="road__b" style="padding-left:14px;"><li>부스 3면+포스터</li><li>회원가입·시식 이벤트</li><li>소개 엽서·리플렛</li></ul></div>
+    <div class="road__step"><div class="road__dot">④</div><div class="road__when">8~9월</div><div class="road__t">공식 런칭</div><ul class="road__b" style="padding-left:14px;"><li>온라인몰·정기배송</li><li>채널 입점</li><li>론칭 캠페인</li></ul></div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card" style="background:#fff;">
+      <div class="card__h" style="color:var(--clay);">즉시 확인 필요 (Blocking)</div>
+      <ul style="padding-left:15px;">
+        <li>대표 <b>실명·농진원 센터 이력</b> — 스토리의 핵심</li>
+        <li><b>무항생제 등 인증</b> 취득 여부 — A안 설득력 좌우</li>
+        <li>농장 소재지·산란 규모·생산 캐파</li>
+        <li>제품 라인업·예상 소매가·세트 구성</li>
+      </ul>
+    </div>
+    <div class="card" style="background:#fff;">
+      <div class="card__h" style="color:var(--forest);">박람회 티징 핵심 메시지</div>
+      <ul style="padding-left:15px;">
+        <li>부스 헤드카피: <b>“키운 사람이 다릅니다”</b></li>
+        <li>생산자(센터장) 스토리 보드 + 스마트팜 위생 비주얼</li>
+        <li>산란일 강조 신선 시식 체험</li>
+        <li>9월 런칭 사전예약·회원 모객(CRM 시드)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">로드맵은 업무 스콥(브랜드 기획·BI/패키지·박람회 티징) 기준 · 시점은 7/15 코엑스·9월 런칭 목표에 맞춘 역산</span><span class="pf__pg">OGYE · <b>05</b></span></div>
+</section>
+
+<section class="page page--forest page--photo">
+  <div class="bleed" style="background-image:url('img/flatlay.jpg');"></div>
+  <div class="divider">
+    <div class="divider__no">02</div>
+    <div class="divider__bar"></div>
+    <div class="divider__t">시장 분석</div>
+    <p class="divider__d">계란 시장의 규모와 가격 흐름, 글로벌까지 — 신규 프리미엄 브랜드가 진입할 여백을 진단한다.</p>
+    <div class="divider__toc">
+      <span class="divider__chip">시장 환경 한눈에</span>
+      <span class="divider__chip">‘7천원 시대’ 가격</span>
+      <span class="divider__chip">시장 정의 &amp; 규모</span>
+      <span class="divider__chip">글로벌 시장</span>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src"></span><span class="pf__pg">OGYE · <b>06</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">02 시장 분석 · <b>시장 환경 (1)</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-chart"/></svg>Market Size &amp; Consumption</div>
+  <h2 class="h-title">수요는 <span class="mk">사상 최고</span> — 계란은 ‘매일 먹는 국민 단백질’</h2>
+  <div class="h-rule"></div>
+
+  <div class="grid g12" style="gap:24px;">
+    <div style="grid-column: span 7;">
+      <div class="mini-label">1인당 연간 소비량 추이 (개)</div>
+      <div class="cols">
+        <div class="col"><div class="col__bar" style="height:52%;"><span class="col__v">77</span></div><div class="col__x">1970</div></div>
+        <div class="col"><div class="col__bar" style="height:70%;"><span class="col__v">270</span></div><div class="col__x">2010</div></div>
+        <div class="col"><div class="col__bar" style="height:86%;"><span class="col__v">331</span></div><div class="col__x">2023</div></div>
+        <div class="col"><div class="col__bar" style="height:92%;"><span class="col__v">348</span></div><div class="col__x">2024</div></div>
+        <div class="col"><div class="col__bar" style="height:100%; background:linear-gradient(180deg,var(--ochre),#a9761f);"><span class="col__v" style="color:var(--ochre);">400</span></div><div class="col__x">목표</div></div>
+      </div>
+      <p style="font-size:11px; color:var(--muted); margin-top:10px; line-height:1.6;">50년간 약 4.5배 증가. 정부는 1인당 연 400개를 목표로 소비 확대를 추진 중 — 시장 파이 자체가 계속 커지는 구조.</p>
+
+      <div class="callout" style="margin-top:18px;">
+        <div class="callout__k">소비 동인 2축</div>
+        <p><b>① 가성비 단백질</b> — 다이어트·근력 관리 트렌드로 ‘저렴한 고단백 식품’으로 재조명. &nbsp;<b>② 가치소비</b> — 선택 기준이 ‘가격’에서 ‘사육환경·안전성’으로 이동.</p>
+      </div>
+    </div>
+    <div style="grid-column: span 5;">
+      <div class="grid" style="gap:12px;">
+        <div class="stat"><div class="stat__num">180<small>억 개</small></div><div class="stat__lab">국내 연간 총 소비량 (가공 포함, 2024)</div></div>
+        <div class="stat stat--ochre"><div class="stat__num">147<small>억 개</small></div><div class="stat__lab">선별포장 거쳐 유통된 식용란 수량</div></div>
+        <div class="stat"><div class="stat__num">약 1<small>조 원</small></div><div class="stat__lab">국내 계란 시장 추정 규모<sup>추정</sup></div></div>
+      </div>
+      <div class="card card--cream" style="margin-top:13px;">
+        <div class="card__h" style="color:var(--forest);">시사점</div>
+        <p style="font-size:11.5px; line-height:1.7;">수요는 견조하고 우상향. 문제는 ‘얼마나 파느냐’가 아니라 <b>‘어떤 가치로 선택받느냐’</b>. 가치소비 흐름이 곧 신규 브랜드의 기회이자, 난각 3번에는 위협이 된다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 농식품부·대한산란계협회, 이투데이 「50년간 소비량 4배↑」(2025.12), 팜인사이트 「1인당 400개」 · 시장규모는 업계 추정</span><span class="pf__pg">OGYE · <b>07</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">02 시장 분석 · <b>시장 환경 (2)</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-won"/></svg>Price &amp; Supply</div>
+  <h2 class="h-title">‘7천 원 시대’ 정착 — <span class="mk">프리미엄 가격 저항이 낮은</span> 국면</h2>
+  <div class="h-rule"></div>
+
+  <div class="grid g4" style="margin-bottom:20px;">
+    <div class="stat" style="background:#fff;"><div class="stat__num stat__num">7,045<small>원</small></div><div class="stat__lab">계란 한 판(30구) 평균가 — 전년比 +16~21%</div></div>
+    <div class="stat" style="background:#fff;"><div class="stat__num">5.5<small>%↓</small></div><div class="stat__lab">6개월↑ 산란계 사육 마릿수 감소</div></div>
+    <div class="stat" style="background:#fff;"><div class="stat__num">1,000<small>만</small></div><div class="stat__lab">AI로 살처분된 산란계 (역대 최다 56건)</div></div>
+    <div class="stat" style="background:#fff;"><div class="stat__num">5~6<small>개월</small></div><div class="stat__lab">살처분→산란 회복까지 소요 → 고가 지속</div></div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <div class="card__h" style="color:var(--clay);">가격 상승의 3중고</div>
+      <ul style="padding-left:15px;">
+        <li><b>공급 충격</b> — 역대 최다 조류독감(AI), 산란계 1,000만 마리 살처분</li>
+        <li><b>원가 상승</b> — 환율 1,500원대 + 중동 정세로 사료가 동반 상승</li>
+        <li><b>회복 지연</b> — 병아리→산란까지 5~6개월, 공급 회복 더딤</li>
+      </ul>
+    </div>
+    <div class="callout callout--ochre" style="align-self:start;">
+      <div class="callout__k">전략적 함의</div>
+      <p>소비자는 이미 ‘비싼 계란’에 적응했다. 한 판 7천 원이 기준선이 된 지금은 <b>신규 브랜드가 프리미엄 가격을 책정하기에 오히려 유리한 시기</b>다. 가격이 아니라 ‘이 값을 낼 이유(가치)’를 설계하는 것이 과제.</p>
+    </div>
+  </div>
+
+  <div class="card card--cream" style="margin-top:18px; background:#fff;">
+    <div class="card__h" style="color:var(--forest);">참고 — 주요 브랜드 소매 가격대</div>
+    <p style="font-size:11.5px; line-height:1.7;">CJ·풀무원 대표 달걀 <b>10구 4,100원</b>, 오뚜기 <b>3,980원</b> 수준. 가농 1+등급 특란 <b>15구 7,980원</b>(이마트). 동물복지 1번란은 <b>10구 8,350원</b>대로, 일반 4번란 대비 약 3배. → 오계양계(3번)의 합리적 소매 밴드는 <b>중상위(10구 4,500~6,000원대)</b>로 추정.</p>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 한국경제·머니투데이·네이트뉴스(2026.04~05), 축산물품질평가원 산지가격, 이마트몰·마켓컬리 소매가 · 가격밴드는 추정</span><span class="pf__pg">OGYE · <b>08</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">02 시장 분석 · <b>시장 개요</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-chart"/></svg>Market Overview</div>
+  <h2 class="h-title">시장 정의 &amp; 규모 — 견조한 내수, 거대한 글로벌</h2>
+  <div class="h-rule"></div>
+
+  <div class="grid g12" style="gap:24px;">
+    <div style="grid-column: span 7;">
+      <div class="mini-label">글로벌 계란 시장 규모 (USD bn)</div>
+      <div class="cols" style="height:170px;">
+        <div class="col"><div class="col__bar" style="height:62%;"><span class="col__v">158.8</span></div><div class="col__x">2025</div></div>
+        <div class="col"><div class="col__bar" style="height:66%;"><span class="col__v">167.4</span></div><div class="col__x">2026</div></div>
+        <div class="col"><div class="col__bar" style="height:100%; background:linear-gradient(180deg,var(--ochre),#a9761f);"><span class="col__v" style="color:var(--ochre);">258.0</span></div><div class="col__x">2034</div></div>
+      </div>
+      <p style="font-size:11px; color:var(--muted); margin-top:10px; line-height:1.6;">글로벌 시장 CAGR 5.56%(’26–’34). <b>아시아·태평양이 58.8%</b>로 최대 — 내수를 넘어선 향후 수출·글로벌 확장 여지도 존재.</p>
+    </div>
+    <div style="grid-column: span 5;">
+      <div class="grid" style="gap:11px;">
+        <div class="stat"><div class="stat__num">약 1<small>조 원</small></div><div class="stat__lab">국내 계란 시장 추정 규모<sup>추정</sup></div></div>
+        <div class="stat stat--ochre"><div class="stat__num">~15<small>%</small></div><div class="stat__lab">브랜드란이 차지하는 비중<sup>추정</sup> — 성장 여지 큰 미성숙 영역</div></div>
+        <div class="stat"><div class="stat__num">7,774<small>만</small></div><div class="stat__lab">국내 산란계 사육 마릿수 (’26 1분기)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:18px;">
+    <div class="callout__k">시장 구조의 함의</div>
+    <p>전체 시장의 85%가 여전히 <b>무brand 일반란</b> — 브랜드란은 이제 막 커지는 영역이다. 정교한 포지셔닝을 가진 신규 브랜드에게 <b>‘비어 있는 프리미엄 신뢰 포지션’</b>을 선점할 기회가 열려 있다.</p>
+  </div>
+  <div class="pf"><span class="pf__src">출처: Fortune Business Insights 글로벌 Eggs Market(2025), 대한산란계협회 사육통계, 축산경제신문 브랜드란 시장 추정 · 국내 규모·점유는 추정치</span><span class="pf__pg">OGYE · <b>09</b></span></div>
+</section>
+
+<section class="page page--forest page--photo">
+  <div class="bleed" style="background-image:url('img/farm.jpg');"></div>
+  <div class="divider">
+    <div class="divider__no">03</div>
+    <div class="divider__bar"></div>
+    <div class="divider__t">에그하다의 현재</div>
+    <p class="divider__d">오계양계가 쥔 자산과 제약을 진단한다. 특히 ‘난각번호 3번’이 브랜드 전략에 갖는 의미를 핵심 문제로 정의한다.</p>
+    <div class="divider__toc">
+      <span class="divider__chip">브랜드 자산 &amp; 제약</span>
+      <span class="divider__chip">난각번호 제도 &amp; 규제</span>
+      <span class="divider__chip">SWOT</span>
+      <span class="divider__chip">전략적 시사점</span>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src"></span><span class="pf__pg">OGYE · <b>10</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">03 에그하다의 현재 · <b>브랜드 자산 &amp; 제약</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-shield"/></svg>Brand Assets &amp; Constraints</div>
+  <h2 class="h-title"><span class="mk">경쟁사가 못 가진 자산</span>, 그리고 정면의 제약</h2>
+  <div class="h-rule"></div>
+
+  <div class="grid g2" style="gap:20px;">
+    <div>
+      <div class="mini-label" style="color:var(--good);">▲ 보유 자산 (Owned Equity)</div>
+      <div class="grid" style="gap:11px;">
+        <div class="card" style="border-left:4px solid var(--forest);">
+          <div class="card__h">전문가의 귀농 <span class="card__tag" style="background:var(--good-light); color:var(--good);">핵심</span></div>
+          <p>농진원(농업기술실용화/농식품벤처) <b>센터장 출신</b>이 직접 귀농해 운영. ‘농업을 가르치던 사람이 직접 키운다’는, 어떤 경쟁사도 복제 불가능한 신뢰 서사.</p>
+        </div>
+        <div class="card" style="border-left:4px solid var(--olive);">
+          <div class="card__h">스마트팜 운영</div>
+          <p>데이터 기반 환경·위생 관리 → 복지가 아닌 <b>‘과학적 청결·균일 품질’</b>로 안전 프레임을 전환할 근거.</p>
+        </div>
+        <div class="card" style="border-left:4px solid var(--ochre);">
+          <div class="card__h">대구·경북 로컬 &amp; 벤처 인증</div>
+          <p>농식품벤처 트랙 → 산지직송·로컬 신뢰, 정책 연계·스토리텔링 자산.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="mini-label" style="color:var(--bad);">▼ 제약 조건 (Constraints)</div>
+      <div class="grid" style="gap:11px;">
+        <div class="card" style="border-left:4px solid var(--bad);">
+          <div class="card__h">난각번호 3번 <span class="card__tag" style="background:var(--bad-light); color:var(--bad);">최대 리스크</span></div>
+          <p>개선된 케이지 사육. 동물복지·방사(1·2번) 프리미엄 축을 <b>쓸 수 없음</b>. 시장의 가치소비 흐름과 정면으로 어긋나는 위치.</p>
+        </div>
+        <div class="card" style="border-left:4px solid var(--clay);">
+          <div class="card__h">신규 브랜드 · 무인지도</div>
+          <p>인지도 0에서 출발. 풀무원·CJ·가농 등 자본·유통력을 갖춘 선점 브랜드와 경쟁.</p>
+        </div>
+        <div class="card" style="border-left:4px solid var(--muted);">
+          <div class="card__h">타임라인 압축</div>
+          <p>7/15 코엑스 티징 → 9월 런칭. BI·패키지·스토리를 <b>2개월 내</b> 확정해야 하는 속도 압박.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout--clay" style="margin-top:18px;">
+    <div class="callout__k">핵심 문제 정의</div>
+    <p>“시장이 ‘어떻게 키웠나(복지)’를 묻기 시작한 시대에, <b>케이지(3번)로 태어난 신규 브랜드가 어떻게 프리미엄으로 선택받을 것인가</b>” — 이 질문에 대한 답이 곧 브랜드 전략이다.</p>
+  </div>
+  <div class="pf"><span class="pf__src">※ 대표 실명·센터 이력·농장 소재지·산란 규모·인증(무항생제 등) 취득 여부는 후속 인터뷰로 확정 필요 — 스토리 구체화의 핵심 변수</span><span class="pf__pg">OGYE · <b>11</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">03 에그하다의 현재 · <b>난각번호 제도</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-egg"/></svg>Egg-Code System &amp; Regulation</div>
+  <h2 class="h-title">난각번호 3번의 진짜 의미 — 위협이자, <span class="mk--b">빈틈</span></h2>
+  <div class="h-rule"></div>
+
+  <table class="rep" style="margin-bottom:16px;">
+    <thead><tr><th style="width:64px;">난각</th><th style="width:150px;">사육환경</th><th>시장 포지션</th><th style="width:200px;">대표 채널·브랜드</th><th style="width:90px;" class="c">소매가(10구)</th></tr></thead>
+    <tbody>
+      <tr><td><b>1번</b></td><td>방사 (자유방목)</td><td>최고 프리미엄 · 동물복지</td><td>마켓컬리·오아시스·백화점 / 다란팜</td><td class="c">~8,350원</td></tr>
+      <tr><td><b>2번</b></td><td>평사 (축사 내 평사)</td><td>프리미엄 · 동물복지 진입</td><td>풀무원 목초란 · 컬리 PB</td><td class="c">중상</td></tr>
+      <tr class="hl"><td><b>3번</b></td><td>개선된 케이지 (0.075㎡)</td><td>← <b>오계양계 위치</b> · 신선·등급으로 차별화 가능 영역</td><td>일반 유통 / 가농式 프리미엄</td><td class="c">중</td></tr>
+      <tr><td><b>4번</b></td><td>기존 케이지 (0.05㎡)</td><td>가성비 · 범용</td><td>대형마트·재래시장</td><td class="c">낮음(1번의 ⅓)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid g12" style="gap:18px;">
+    <div style="grid-column: span 6;">
+      <div class="card" style="background:#fff;">
+        <div class="card__h" style="color:var(--clay);">소비자 인식의 ‘혼란’ — 이것이 빈틈이다</div>
+        <ul style="padding-left:15px;">
+          <li>동물복지 계란 구매액 전년比 <b>+36.6%</b>, 응답자 <b>63%</b>가 구매 경험</li>
+          <li>그러나 난각번호를 <b>정확히 아는 소비자는 18%뿐</b></li>
+          <li>다수가 <b>‘1등급·무항생제·건강한 닭’ 문구를 복지로 착각</b></li>
+        </ul>
+      </div>
+    </div>
+    <div style="grid-column: span 6;">
+      <div class="callout">
+        <div class="callout__k">전략적 독해</div>
+        <p><b>하지 말 것</b> — 복지/방사/자연 이미지 모방. 진정성·규제 리스크로 신규 브랜드에 치명적.</p>
+        <p style="margin-top:8px;"><b>할 수 있는 것</b> — 소비자가 실제 신뢰 신호로 받아들이는 건 <b>무항생제·신선도·전문 관리·위생</b>. 난각 3번이어도 사료·신선도·스마트팜 위생으로 충분히 차별화 가능.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout--ochre" style="margin-top:16px;">
+    <div class="callout__k">결론</div>
+    <p>복지 축을 버리고 <b>‘안전·신선·전문성’ 축으로 시장을 재정의</b>한다. 가농이 케이지란을 ‘신선도+무항생제’만으로 프리미엄화한 것이 살아 있는 증거다.</p>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 비즈워치 「난각번호의 비밀」, 동물자유연대 시민인식조사③, MBC「동물복지 달걀」(2026), 푸드투데이 난각표시제 5년 · 가축법 사육환경 기준</span><span class="pf__pg">OGYE · <b>12</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">03 에그하다의 현재 · <b>SWOT</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-grid"/></svg>SWOT Analysis</div>
+  <h2 class="h-title">SWOT — 강점을 신뢰로, 약점을 우회로</h2>
+  <div class="h-rule"></div>
+  <div class="swot">
+    <div class="swot__q swot--s">
+      <h4><span>S</span> Strengths · 강점</h4>
+      <ul>
+        <li>농진원 센터장 출신 — 복제 불가능한 전문성·신뢰 스토리</li>
+        <li>스마트팜 = 데이터 기반 위생·균일 품질의 근거</li>
+        <li>대구·경북 로컬 + 농식품벤처 인증 자산</li>
+        <li>신규 브랜드의 백지 — 처음부터 정교한 포지셔닝 가능</li>
+      </ul>
+    </div>
+    <div class="swot__q swot--w">
+      <h4><span>W</span> Weaknesses · 약점</h4>
+      <ul>
+        <li>난각번호 3번 — 복지 프리미엄 축 사용 불가</li>
+        <li>인지도 0, 유통·자본력 열위 (vs 풀무원·CJ·가농)</li>
+        <li>2개월 내 BI·패키지·스토리 확정해야 하는 시간 압박</li>
+        <li>인증(무항생제 등) 보유 여부 미확인 — 차별화 변수</li>
+      </ul>
+    </div>
+    <div class="swot__q swot--o">
+      <h4><span>O</span> Opportunities · 기회</h4>
+      <ul>
+        <li>수요 사상 최고 + 7천 원 정착 → 프리미엄 진입 적기</li>
+        <li>난각 인지 혼란(18%) → ‘신선·전문성’ 메시지의 빈틈</li>
+        <li>단백질·가성비 트렌드 → 데일리 단백질 포지션 여지</li>
+        <li>가농式 ‘케이지 프리미엄’ 성공 선례 존재</li>
+      </ul>
+    </div>
+    <div class="swot__q swot--t">
+      <h4><span>T</span> Threats · 위협</h4>
+      <ul>
+        <li>가치소비 = 복지(1·2번)로의 프리미엄 쏠림</li>
+        <li>선점 브랜드의 자본·매대 장악력</li>
+        <li>AI·사료가 등 공급 변수에 따른 원가 불안정</li>
+        <li>‘복지인 척’ 비치면 진정성·규제 역풍</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:16px;">
+    <div class="callout__k">SO / WO 전략의 교차점</div>
+    <p>강점(전문성·스마트팜)으로 기회(인지 혼란·신선 수요)를 공략하고 <b>(SO)</b>, 약점(3번)은 복지를 우회한 ‘신선·위생·전문성’ 재정의로 무력화한다 <b>(WO)</b>. → 다음 장의 전략 시사점으로 연결.</p>
+  </div>
+  <div class="pf"><span class="pf__src">분석 종합: 시장·경쟁·소비자·규제 데이터 기반 (2025–2026)</span><span class="pf__pg">OGYE · <b>13</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">03 에그하다의 현재 · <b>전략적 시사점</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-target"/></svg>Strategic Implications</div>
+  <h2 class="h-title">시장이 말하는 <span class="mk">4가지 전략 명제</span></h2>
+  <div class="h-rule"></div>
+
+  <div class="grid g2" style="gap:14px;">
+    <div class="card" style="background:#fff; border-left:4px solid var(--forest);">
+      <div class="card__h"><span class="num-badge">01</span>&nbsp; 복지를 버리고 ‘신선·위생·전문성’으로 재정의하라</div>
+      <p>3번으로 1·2번을 흉내 내는 순간 진다. 경쟁 축 자체를 옮겨, 복지가 아닌 영역에서 1등이 된다.</p>
+    </div>
+    <div class="card" style="background:#fff; border-left:4px solid var(--ochre);">
+      <div class="card__h"><span class="num-badge">02</span>&nbsp; ‘사람’을 브랜드의 중심에 세워라</div>
+      <p>센터장 출신 귀농은 카테고리에서 가장 강력한 신뢰 자산. 제품이 아니라 <b>‘키운 사람’</b>을 판다.</p>
+    </div>
+    <div class="card" style="background:#fff; border-left:4px solid var(--olive);">
+      <div class="card__h"><span class="num-badge">03</span>&nbsp; 스마트팜을 ‘안전의 과학적 증거’로 번역하라</div>
+      <p>데이터·위생관리를 소비자 언어(깨끗함·균일함·매일 같은 품질)로 치환해 복지의 빈자리를 메운다.</p>
+    </div>
+    <div class="card" style="background:#fff; border-left:4px solid var(--clay);">
+      <div class="card__h"><span class="num-badge">04</span>&nbsp; 프리미엄 가격은 ‘이유’로 정당화하라</div>
+      <p>7천 원 시대 = 가격 저항 낮음. 중상위 밴드에서 ‘이 값을 낼 이유’를 스토리·기능으로 설계.</p>
+    </div>
+  </div>
+
+  <div class="callout callout--ochre" style="margin-top:18px;">
+    <div class="callout__k">→ 브랜드 방향성으로 가는 다리</div>
+    <p>이 4명제를 결합하면 하나의 문장으로 수렴한다 — <b>“농업 전문가가 스마트팜으로 키운, 가장 신선하고 깨끗한 매일의 계란.”</b> 다음 섹션에서 이를 타겟·페르소나로 검증하고, 3개의 구체적 포지셔닝 후보로 전개한다.</p>
+  </div>
+  <div class="pf"><span class="pf__src">전략 명제는 본 리포트의 시장·경쟁·규제 분석을 종합한 컨설팅 판단 — 02·03 섹션에서 타겟·포지셔닝으로 구체화</span><span class="pf__pg">OGYE · <b>14</b></span></div>
+</section>
+
+<section class="page page--forest page--photo">
+  <div class="bleed" style="background-image:url('img/table.jpg');"></div>
+  <div class="divider">
+    <div class="divider__no">04</div>
+    <div class="divider__bar"></div>
+    <div class="divider__t">경쟁사 분석</div>
+    <p class="divider__d">소매 강자부터 클라이언트가 지목한 10개 D2C 브랜드까지 — 누가 어느 축으로 프리미엄을 만드는지 해부한다.</p>
+    <div class="divider__toc">
+      <span class="divider__chip">소매 경쟁 구도</span>
+      <span class="divider__chip">D2C 경쟁 구도 &amp; 비교표</span>
+      <span class="divider__chip">포지셔닝 맵</span>
+      <span class="divider__chip">경쟁사 프로필 9</span>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src"></span><span class="pf__pg">OGYE · <b>15</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">04 경쟁사 분석 · <b>경쟁 구도 (소매)</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-target"/></svg>Competitive Landscape</div>
+  <h2 class="h-title">경쟁사 비교 — 누가 어느 축으로 프리미엄을 만드는가</h2>
+  <div class="h-rule"></div>
+
+  <table class="rep" style="margin-bottom:16px;">
+    <thead><tr><th style="width:120px;">브랜드</th><th style="width:80px;">난각</th><th>차별화 축</th><th>핵심 메시지</th><th style="width:110px;" class="c">참고 가격/규모</th></tr></thead>
+    <tbody>
+      <tr><td><b>풀무원 자연란/목초란</b></td><td>2번</td><td>동물복지 · 친환경</td><td>2007 국내 최초 동물복지 도입</td><td class="c">~150억<sup>추정</sup></td></tr>
+      <tr><td><b>CJ 알짜란</b></td><td>3·4번</td><td>대기업 신뢰 · 유통력</td><td>안전·균일, 대형 유통 장악</td><td class="c">~120억<sup>추정</sup></td></tr>
+      <tr class="hl"><td><b>가농</b></td><td>3·4번</td><td><b>신선도 · 무항생제 (복지 아님)</b></td><td>“오늘 낳아 내일 도착 · 1+등급 4無 · 당일출고”</td><td class="c">15구 7,980원</td></tr>
+      <tr><td><b>마켓컬리 PB·다란팜</b></td><td>1·2번</td><td>동물복지 · 유기농 방목</td><td>유정란·유기농·자유방목 프리미엄</td><td class="c">10구 8천원~</td></tr>
+      <tr><td><b>오뚜기 3040란 등</b></td><td>3·4번</td><td>가성비 · 접근성</td><td>대중 브랜드란</td><td class="c">10구 3,980원</td></tr>
+      <tr style="background:var(--ochre-light);"><td><b>오계양계</b> <span class="pill" style="background:var(--brand); color:#fff;">신규</span></td><td>3번</td><td><b>전문가 · 신선 · 스마트팜 위생</b></td><td>“키운 사람이 다른, 가장 신선한 매일의 계란”</td><td class="c">중상위 진입</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid g2">
+    <div class="callout callout--ochre">
+      <div class="callout__k">벤치마크 — 가농</div>
+      <p>케이지란(3·4번)을 <b>복지가 아닌 ‘신선도+무항생제+당일배송’</b>만으로 프리미엄화한 직접 선례. 오계양계가 가장 참고할 모델이며, 여기에 <b>‘전문가 생산자 스토리’</b>를 더해 차별화한다.</p>
+    </div>
+    <div class="card" style="background:#fff;">
+      <div class="card__h" style="color:var(--forest);">경쟁 공백 (White Space)</div>
+      <p>복지(1·2번)도, 대기업 유통(CJ·풀무원)도, 순수 신선(가농)도 아닌 — <b>‘전문가가 직접 + 스마트팜 위생 + 로컬 신뢰’</b>를 결합한 포지션은 비어 있다. 오계양계의 진입 지점.</p>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 가농 에그샵·풀무원 지속가능경영·마켓컬리 공개자료, 축산경제신문·SBS 브랜드란 분석 · 매출은 업계 추정(과거 보도 기준)으로 현행과 차이 가능</span><span class="pf__pg">OGYE · <b>16</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">04 경쟁사 분석 · <b>D2C 경쟁 구도</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-grid"/></svg>Competitive Landscape · D2C</div>
+  <h2 class="h-title">온라인·D2C 경쟁 브랜드 — <span class="mk--b">누가 어느 진영</span>에 있는가</h2>
+  <div class="h-rule"></div>
+  <p class="lead" style="margin-bottom:18px;">클라이언트가 지목한 10개 경쟁 브랜드를 직접 리서치해 <b>4개 유형</b>으로 분류했다. 핵심은 ②번 진영 — 복지가 아닌 <b>신선·전문성·구독</b>으로 프리미엄을 만든 D2C 그룹이 곧 오계양계의 전장이다.</p>
+
+  <div class="grid g2" style="gap:14px;">
+    <div class="card card--cream">
+      <div class="card__h"><svg class="ic"><use href="#i-shield"/></svg>① 대기업 · 복지 프리미엄 <span class="pill pill--n" style="margin-left:auto;">난각 1번</span></div>
+      <p style="font-size:12px; margin-bottom:8px;"><b>상하농원</b>(매일유업·체험농원·동물복지) · <b>아빠사랑팜</b>(방사 1번·Non-GMO 사료·구독)</p>
+      <p style="font-size:11.5px; color:var(--muted); border-top:1px solid var(--line); padding-top:8px;"><b style="color:var(--clay);">오계양계 관점</b> — 복지·방사 축은 난각 3번으로 <b>정면 경쟁 불가</b>. 회피·우회 대상이며, 내러티브(체험·‘빼기’)만 참고.</p>
+    </div>
+
+    <div class="callout callout--ochre" style="border-radius:5px;">
+      <div class="callout__k"><svg class="ic"><use href="#i-star"/></svg>② 신선·전문성 D2C · 비복지 프리미엄 &nbsp;★ 우리 진영</div>
+      <p style="font-size:12px; margin-bottom:8px;"><b>포프리</b>(4無 사료·1일배송·20만 회원) · <b>스탠다드에그</b>(30년 양계 전문성·수직계열) · <b>월간계란</b>(구독+기부) · <b>구쁘(옹알옹알)</b>(무항생제 인증+레시피)</p>
+      <p style="font-size:11.5px; color:var(--ink-soft); border-top:1px solid var(--ochre); padding-top:8px;"><b>오계양계 관점</b> — 복지가 아닌 <b>신선·사료·전문성·구독</b>으로 프리미엄을 만든 진영. 오계양계와 <b>같은 전장 = 핵심 벤치마크이자 직접 경쟁군.</b></p>
+    </div>
+
+    <div class="card">
+      <div class="card__h"><svg class="ic"><use href="#i-book"/></svg>③ 스토리텔링 · 교육 서사</div>
+      <p style="font-size:12px; margin-bottom:8px;"><b>내일학교달걀</b>(봉화 대안학교·학생/교사가 함께 사육·자립 서사)</p>
+      <p style="font-size:11.5px; color:var(--muted); border-top:1px solid var(--line); padding-top:8px;"><b style="color:var(--clay);">오계양계 관점</b> — ‘교육·전문가’ 서사가 일부 겹침. 단 결이 다름(<b>학생 자립 정서 ↔ 전문가 권위</b>) → ‘검증·전문성’ 프레임으로 분리.</p>
+    </div>
+
+    <div class="card card--cream">
+      <div class="card__h"><svg class="ic"><use href="#i-truck"/></svg>④ 유통 · 커머스 플랫폼 <span class="pill pill--g" style="margin-left:auto;">입점 기회</span></div>
+      <p style="font-size:12px; margin-bottom:8px;"><b>농사펀드</b>(크라우드펀딩 산지직송) · <b>프레딧</b>(hy·방문배송·정기구독·회원 200만)</p>
+      <p style="font-size:11.5px; color:var(--muted); border-top:1px solid var(--line); padding-top:8px;"><b style="color:var(--good);">오계양계 관점</b> — 경쟁이 아닌 <b>진입 채널</b>. 단 프레딧은 PB 동물복지 유정란(잇츠온) 보유 → 매대 경쟁 병존.</p>
+    </div>
+  </div>
+
+  <div class="callout callout--clay" style="margin-top:14px; padding:11px 16px;">
+    <p style="font-size:11.5px;"><b>※ ‘오복란’</b>은 일반 웹·네이버쇼핑·언론 등 공개 출처에서 식별되는 계란 브랜드를 <b>확인하지 못함(미확인)</b> — 정확한 표기·판매 링크·지역 단서 확인 후 재조사 필요.</p>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 각 브랜드 자사몰·쿠팡·SSG·11번가, 쿠팡 뉴스룸, 머니투데이·뉴시스, 스타트업투데이, 마르쉐@, 서울경제·헤럴드경제 등 (2026-06-10 확인) · 일부 매출/난각번호는 추정·미확인</span><span class="pf__pg">OGYE · <b>17</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">04 경쟁사 분석 · <b>D2C 경쟁사 비교</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-target"/></svg>Competitive Analysis · D2C</div>
+  <h2 class="h-title">경쟁사 비교 분석표 — <span class="mk--b">신선·전문성 진영</span>이 곧 우리의 전장</h2>
+  <div class="h-rule"></div>
+
+  <table class="rep rep--compact">
+    <thead><tr>
+      <th style="width:108px;">브랜드</th>
+      <th style="width:58px;">난각</th>
+      <th>차별화 축 · 포지셔닝</th>
+      <th style="width:138px;">가격대 (예시)</th>
+      <th style="width:150px;">주요 채널</th>
+      <th style="width:118px;">오계양계 관점</th>
+    </tr></thead>
+    <tbody>
+      <tr class="grp"><td colspan="6">① 대기업 · 복지 프리미엄 (난각 1번)</td></tr>
+      <tr><td><b>상하농원</b></td><td>1번</td><td>매일유업 계열 · 체험농원 신뢰 · 동물복지 “진한 노른자”</td><td>10구 9,990~12,000원</td><td>자사몰·컬리·이마트·홈플러스</td><td>복지축 — 우회 대상</td></tr>
+      <tr><td><b>아빠사랑팜</b></td><td>1번</td><td>방사 + Non-GMO 쌀사료 · “빼기” 내러티브 · 구독·체험</td><td>40구 38,400원~ (구당 ~1,000원)</td><td>자사몰·네이버 스토어</td><td>방사 소농 D2C — 메시징 참고</td></tr>
+
+      <tr class="grp"><td colspan="6">② 신선 · 전문성 D2C — 비복지 프리미엄 ★ 우리 진영</td></tr>
+      <tr class="hl"><td><b>포프리</b></td><td>2·3번<sup>추정</sup></td><td>4無 사료(GMO·항생제·바이러스·비린내)·산란 24h 직배</td><td>10구 ~6,800원<sup>추정</sup> / 20구 18,100원</td><td>자사몰 직배(정기구독·회원 20만)</td><td>★핵심 벤치마크</td></tr>
+      <tr class="hl"><td><b>스탠다드에그</b></td><td>2/4 미확정</td><td>30년 양계 전문성 · 생산–가공–포장 수직계열 신뢰</td><td>구운란 20구 ~12,780원</td><td>쿠팡(주력)·자사몰·인스타</td><td>★가장 닮은 직접경쟁</td></tr>
+      <tr><td><b>월간계란</b></td><td>2번</td><td>정기구독 + 판매 10% 기부(가치소비) · 신선 유정란</td><td>구운란 30구 9,500원</td><td>자사 구독몰(산지직송)</td><td>구독 UX 참고 · 위협 낮음</td></tr>
+      <tr><td><b>구쁘(옹알옹알)</b></td><td>2번</td><td>무항생제·NON-GMO 인증 + 레시피 콘텐츠 + 정기배송</td><td>30구 21,900원</td><td>자사몰·11번가·SSG·G마켓</td><td>콘텐츠·구독 락인 참고</td></tr>
+
+      <tr class="grp"><td colspan="6">③ 스토리텔링 · 교육 서사</td></tr>
+      <tr><td><b>내일학교달걀</b></td><td>미확인</td><td>봉화 대안학교 · 학생/교사 공동 사육 · 교육·자립 서사</td><td>미확인 (직거래)</td><td>마르쉐@·농장 직거래</td><td>‘교육’ 서사 겹침 — 분리 필요</td></tr>
+
+      <tr class="grp"><td colspan="6">④ 유통 · 커머스 플랫폼 (입점 기회)</td></tr>
+      <tr><td><b>농사펀드</b></td><td>입점 1번·유기 중심</td><td>농부 선(先)펀딩 → 산지직송 · 생산자 스토리텔링 중개</td><td>미확인 (상품별)</td><td>자사 웹/모바일 · 펀딩·정기배송</td><td>입점 기회 (스토리 채널)</td></tr>
+      <tr><td><b>프레딧</b></td><td>PB 유정란<sup>번호 미확인</sup></td><td>hy 운영 · 프레시매니저 방문배송 + 정기구독 큐레이션</td><td>미확인 (멤버십가)</td><td>앱·웹·방문배송(회원 200만)</td><td>입점 기회 + PB 경쟁</td></tr>
+
+      <tr style="background:var(--forest);"><td style="color:#fff;"><b>오계양계</b> <span class="pill" style="background:var(--ochre); color:#fff;">신규</span></td><td style="color:#fff;">3번</td><td style="color:#fff;"><b>전문가 귀농 · 스마트팜 위생 · 가장 신선한 매일의 계란</b></td><td style="color:#fff;">중상위 진입</td><td style="color:#fff;">자사몰 · 7/15 박람회 티징</td><td style="color:#fff;"><b>빈자리 선점</b></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout--ochre" style="margin-top:13px; padding:11px 16px;">
+    <p style="font-size:11.5px;"><b>분석 관점</b> — 난각 1번(복지) 진영은 정면 경쟁 불가, ②번 신선·전문성 진영(포프리·스탠다드에그)은 “복지 없이도 프리미엄 가능”을 <b>이미 검증</b>했다. 오계양계는 이들과 같은 축에서 <b>‘농진원 전문가 귀농’이라는 누구도 복제 못 하는 신뢰 자산</b>으로 한 단 위에 선다.</p>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 각 브랜드 자사몰·쿠팡·SSG·11번가, 쿠팡 뉴스룸·머니투데이·뉴시스·스타트업투데이·마르쉐@ 등 (2026-06-10 확인) · 가격은 시점·SKU별 상이, 일부 난각번호·매출은 추정·미확인</span><span class="pf__pg">OGYE · <b>18</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">04 경쟁사 분석 · <b>포지셔닝 맵</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-pin"/></svg>Positioning Map</div>
+  <h2 class="h-title">포지셔닝 맵 — 비어 있는 <span class="mk--b">‘전문성×신선’</span> 사분면</h2>
+  <div class="h-rule"></div>
+
+  <div class="grid g12" style="gap:22px;">
+    <div style="grid-column: span 8;">
+      <div class="map">
+        <div class="map__ax map__axx"></div>
+        <div class="map__ax map__axy"></div>
+        <div class="map__lab" style="top:3%; left:50%; transform:translateX(-50%);">↑ 프리미엄 · 고가치</div>
+        <div class="map__lab" style="bottom:3%; left:50%; transform:translateX(-50%);">대중 · 가성비 ↓</div>
+        <div class="map__lab" style="top:50%; left:2%; transform:translateY(-50%);">복지·자연<br>소구</div>
+        <div class="map__lab" style="top:50%; right:2%; transform:translateY(-50%); text-align:right;">신선·전문성<br>소구</div>
+        <!-- competitors -->
+        <div class="dot" style="left:24%; top:20%;"><div class="dot__c" style="background:var(--olive);"></div><div class="dot__l">마켓컬리·다란팜</div></div>
+        <div class="dot" style="left:33%; top:38%;"><div class="dot__c" style="background:var(--forest);"></div><div class="dot__l">풀무원 목초란</div></div>
+        <div class="dot" style="left:46%; top:66%;"><div class="dot__c" style="background:#9a937f;"></div><div class="dot__l">CJ 알짜란</div></div>
+        <div class="dot" style="left:62%; top:78%;"><div class="dot__c" style="background:#b9b3a3;"></div><div class="dot__l">오뚜기 등 대중란</div></div>
+        <div class="dot" style="left:70%; top:44%;"><div class="dot__c" style="background:var(--ochre);"></div><div class="dot__l">가농</div></div>
+        <!-- 신규 D2C 경쟁 브랜드 -->
+        <div class="dot dot--d2c" style="left:16%; top:30%;"><div class="dot__c"></div><div class="dot__l">상하농원</div></div>
+        <div class="dot dot--d2c" style="left:22%; top:48%;"><div class="dot__c"></div><div class="dot__l">아빠사랑팜</div></div>
+        <div class="dot dot--d2c" style="left:60%; top:32%;"><div class="dot__c"></div><div class="dot__l">포프리</div></div>
+        <div class="dot dot--d2c" style="left:64%; top:54%;"><div class="dot__c"></div><div class="dot__l">스탠다드에그</div></div>
+        <div class="dot dot--d2c" style="left:50%; top:50%;"><div class="dot__c"></div><div class="dot__l">월간계란</div></div>
+        <div class="dot dot--d2c" style="left:73%; top:64%;"><div class="dot__c"></div><div class="dot__l">구쁘·옹알옹알</div></div>
+        <!-- us -->
+        <div class="dot dot--us" style="left:78%; top:24%;"><div class="dot__c"></div><div class="dot__l">오계양계</div></div>
+      </div>
+      <div class="map__leg">
+        <span><i style="background:#9a937f;"></i>기존 소매·브랜드란</span>
+        <span><i style="background:var(--clay);"></i>신규 D2C 경쟁 브랜드</span>
+        <span><i style="background:var(--brand);"></i>오계양계</span>
+      </div>
+    </div>
+    <div style="grid-column: span 4;">
+      <div class="card card--cream" style="margin-bottom:12px;">
+        <div class="card__h" style="color:var(--forest);">두 축</div>
+        <p style="font-size:11.5px; line-height:1.7;"><b>세로</b> = 가격·가치 (프리미엄↔대중)<br><b>가로</b> = 소구점 (복지·자연 ↔ 신선·전문성)</p>
+      </div>
+      <div class="callout callout--clay">
+        <div class="callout__k">빈 사분면</div>
+        <p><b>우상단 = ‘프리미엄 × 신선·전문성’</b>은 가농·포프리·스탠다드에그가 채우기 시작한 <b>격전지</b>다. 좌측 복지존(상하농원·아빠사랑팜)은 우회 대상. 오계양계는 이들보다 더 위(<b>전문가 귀농 스토리 × 프리미엄</b>)에 자리 잡아 차별적 1등 포지션을 노린다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">포지셔닝 맵은 경쟁사 공개 메시지·가격 기반의 정성 매핑 — 좌표는 상대적 위치를 나타내는 컨설팅 추정</span><span class="pf__pg">OGYE · <b>19</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">04 경쟁사 분석 · <b>경쟁사 프로필</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="bp-head"><div><span class="bp-kicker">국내 |</span> <span class="bp-name">포프리 <em>(Fourfree)</em></span></div><span class="bp-tier bp-tier--star">★ 신선·전문성 D2C</span></div>
+  <div class="h-rule" style="margin-top:12px;"></div>
+  <div class="grid g2" style="gap:26px; align-items:start;">
+    <div>
+      <dl class="bp-attr">
+        <div><dt>운영사</dt><dd>농업회사법인 포프리 · 2000년 설립 · 전남 화순</dd></div>
+        <div><dt>포지셔닝</dt><dd>“GMO·항생제·바이러스·비린내 <b>4가지로부터 자유로운(Four Free)</b> 신선란”</dd></div>
+        <div><dt>핵심 강점</dt><dd>자체 1일배송 시스템 · 정기회원 <b>약 20만</b><sup>추정</sup> · HACCP · 직영농장 전 과정 운영</dd></div>
+        <div><dt>난각번호</dt><dd>개선케이지+평사 병행 → <b>2·3번 혼합</b><sup>추정</sup> (단일 번호 공식표기 미확인)</dd></div>
+        <div><dt>가격대</dt><dd>10구 정기 ~6,800원<sup>추정</sup> / 20구(2팩) 18,100원</dd></div>
+        <div><dt>유통 채널</dt><dd>자사몰 직접배송 중심 · 외부 플랫폼 의존 낮음</dd></div>
+      </dl>
+      <div class="bp-block" style="margin-top:15px;"><div class="bp-block__h">브랜드 특징</div>
+        <p class="bp-note">2000년 “비린내 없는 계란”으로 출발해 두부·콩나물·두유까지 확장한 종합 신선식품 D2C. 산란일자 마킹·직영농장 투명성으로 신뢰를 쌓았고, <b>전국 24시간 직접배송 물류</b>가 가장 강력한 진입장벽이다.</p>
+      </div>
+    </div>
+    <div>
+      <div class="bp-block"><div class="bp-block__h">온라인 채널</div>
+        <div class="bp-link"><span>홈페이지</span><b>fourfree.co.kr</b></div>
+        <div class="bp-link"><span>판매 방식</span><b>자사몰 정기배송(구독)</b></div>
+      </div>
+      <div class="bp-block"><div class="bp-block__h">주요 제품</div>
+        <div class="grid g2" style="gap:10px;">
+          <div class="bp-prod"><div class="bp-prod__n">특란 10구 (정기배송)</div><div class="bp-prod__p">~6,800원<sup>추정</sup></div></div>
+          <div class="bp-prod"><div class="bp-prod__n">특란 20구 (2팩)</div><div class="bp-prod__p">18,100원</div></div>
+        </div>
+      </div>
+      <div class="callout callout--ochre"><div class="callout__k"><svg class="ic"><use href="#i-star"/></svg>오계양계 관점 — ★ 핵심 벤치마크</div>
+        <p>복지가 아닌 <b>신선·사료·전문성 + 자사 1일배송 구독</b>으로 20년간 20만 회원 D2C를 구축한 선례. 난각 3번·전문성 포지션과 충돌하기보다, “비복지 프리미엄을 신선·전문성으로 정당화하는” <b>검증된 경로</b>를 보여준다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 포프리 자사몰(fourfree.co.kr) 회사소개·상품, old.fourfree.com 제품정보 (2026-06-10 확인) · 회원수·정기배송가는 추정</span><span class="pf__pg">OGYE · <b>20</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">04 경쟁사 분석 · <b>경쟁사 프로필</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="bp-head"><div><span class="bp-kicker">국내 |</span> <span class="bp-name">스탠다드에그 <em>(Standard Egg)</em></span></div><span class="bp-tier bp-tier--star">★ 가장 닮은 직접경쟁</span></div>
+  <div class="h-rule" style="margin-top:12px;"></div>
+  <div class="grid g2" style="gap:26px; align-items:start;">
+    <div>
+      <dl class="bp-attr">
+        <div><dt>운영사</dt><dd>원삼양계(대표 박상도, 1992년~) · 2024년 D2C 브랜드 별도 론칭</dd></div>
+        <div><dt>포지셔닝</dt><dd>“건강한 계란의 <b>기준(Standard)</b> — 익명의 계란이 아닌 신뢰할 수 있는 브랜드”</dd></div>
+        <div><dt>핵심 강점</dt><dd>30여 년 양계 노하우 · 산란계 7농장·<b>65만 수</b> · 생산–가공–포장 수직계열 · 구운란 51h 공정</dd></div>
+        <div><dt>난각번호</dt><dd><b>2/4 미확정</b> (품목별 평사·케이지 혼재, 출처 간 불일치)</dd></div>
+        <div><dt>가격대</dt><dd>맥반석 구운란 20구 ~12,780원</dd></div>
+        <div><dt>유통 채널</dt><dd>쿠팡(2024.1 입점·주력) · 자사몰(imweb) · 인스타그램</dd></div>
+      </dl>
+      <div class="bp-block" style="margin-top:15px;"><div class="bp-block__h">브랜드 특징</div>
+        <p class="bp-note">기존 B2B 산란계 사업자가 만든 브랜드형 신선란·구운란. “깨진 달걀 100% 안심보상” 등 신뢰 장치로 <b>쿠팡 D2C 전환</b>에 성공했다. 동물복지·무항생제·유정란도 보조 소구.</p>
+      </div>
+    </div>
+    <div>
+      <div class="bp-block"><div class="bp-block__h">온라인 채널</div>
+        <div class="bp-link"><span>자사몰</span><b>standardegg.imweb.me</b></div>
+        <div class="bp-link"><span>주력 채널</span><b>쿠팡 마켓플레이스</b></div>
+        <div class="bp-link"><span>SNS</span><b>@standardegg.official</b></div>
+      </div>
+      <div class="bp-block"><div class="bp-block__h">주요 제품</div>
+        <div class="grid g2" style="gap:10px;">
+          <div class="bp-prod"><div class="bp-prod__n">맥반석 구운란 20구</div><div class="bp-prod__p">~12,780원</div></div>
+          <div class="bp-prod"><div class="bp-prod__n">쿠팡 자사채널 월매출</div><div class="bp-prod__p">최대 1,700만+<sup>추정</sup></div></div>
+        </div>
+      </div>
+      <div class="callout callout--ochre"><div class="callout__k"><svg class="ic"><use href="#i-star"/></svg>오계양계 관점 — ★ 직접 경쟁 & 채널 벤치마크</div>
+        <p>“복지 최상위가 아닌 <b>신선·전문성·수직계열 신뢰</b>”로 프리미엄을 잡는, 오계양계와 <b>가장 닮은 경쟁자</b>. 동시에 쿠팡 D2C 전환 성공 사례로 <b>채널 전략의 참고</b>가 된다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 쿠팡 뉴스룸(스탠다드에그 성장기), 자사몰 standardegg.imweb.me, 가격검색(fallcent) (2026-06-10 확인) · 난각번호·월매출은 미확인·추정</span><span class="pf__pg">OGYE · <b>21</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">04 경쟁사 분석 · <b>경쟁사 프로필</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="bp-head"><div><span class="bp-kicker">국내 |</span> <span class="bp-name">월간계란 <em>(Monthly Eggs)</em></span></div><span class="bp-tier bp-tier--star">신선 D2C · 구독</span></div>
+  <div class="h-rule" style="margin-top:12px;"></div>
+  <div class="grid g2" style="gap:26px; align-items:start;">
+    <div>
+      <dl class="bp-attr">
+        <div><dt>운영사</dt><dd>월간계란(소셜벤처, 대표 주여달) · 서울 용산 / 산지 충남 3대째 양계장 · 2019년~</dd></div>
+        <div><dt>포지셔닝</dt><dd>“갓 낳은 신선란 <b>월 정기구독</b> + 구매=기부”</dd></div>
+        <div><dt>핵심 강점</dt><dd>구독+기부(가치소비) · 클로렐라 유정란 등 특화 SKU · 소셜벤처 인정</dd></div>
+        <div><dt>난각번호</dt><dd><b>2번</b>(평사) — 사육환경 국내 상위 5% 주장</dd></div>
+        <div><dt>가격대</dt><dd>맥반석 구운계란 대란 30알 9,500원 / 정기배송 2.5% 할인</dd></div>
+        <div><dt>유통 채널</dt><dd>자사 구독몰(monthlyeggs.com) 산지직송</dd></div>
+      </dl>
+      <div class="bp-block" style="margin-top:15px;"><div class="bp-block__h">브랜드 특징</div>
+        <p class="bp-note">“신문처럼 정기구독하는 신선란”이라는 컨셉에 <b>판매 10% 기부</b> 소셜미션을 결합. 홍성군 농업기술센터와 클로렐라 유정란 공동연구 등 차별 SKU로 단순 프리미엄과 구분된다.</p>
+      </div>
+    </div>
+    <div>
+      <div class="bp-block"><div class="bp-block__h">온라인 채널</div>
+        <div class="bp-link"><span>구독몰</span><b>monthlyeggs.com</b></div>
+        <div class="bp-link"><span>판매 방식</span><b>월/주 단위 정기구독</b></div>
+      </div>
+      <div class="bp-block"><div class="bp-block__h">주요 제품</div>
+        <div class="grid g2" style="gap:10px;">
+          <div class="bp-prod"><div class="bp-prod__n">맥반석 구운계란 대란 30알</div><div class="bp-prod__p">9,500원</div></div>
+          <div class="bp-prod"><div class="bp-prod__n">유정란 구독 (10·15·30구)</div><div class="bp-prod__p">주기 선택형</div></div>
+        </div>
+      </div>
+      <div class="callout callout--ochre"><div class="callout__k"><svg class="ic"><use href="#i-route"/></svg>오계양계 관점 — 참고 (위협 낮음)</div>
+        <p>같은 비복지·신선 인접 영역이나 <b>‘기부·소셜미션 + 구독’</b>으로 차별화 — 오계양계의 ‘전문가 귀농·스마트팜’ 축과 메시지가 달라 위협도는 낮다. <b>구독·산지직송 UX</b>는 참고할 만하다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 월간계란 자사몰(monthlyeggs.com), 스타트업투데이 인터뷰 (2026-06-10 확인) · 매출·구독자 수치는 미확인</span><span class="pf__pg">OGYE · <b>22</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">04 경쟁사 분석 · <b>경쟁사 프로필</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="bp-head"><div><span class="bp-kicker">국내 |</span> <span class="bp-name">구쁘 <em>(옹알옹알)</em></span></div><span class="bp-tier bp-tier--star">신선 D2C · 콘텐츠</span></div>
+  <div class="h-rule" style="margin-top:12px;"></div>
+  <div class="grid g2" style="gap:26px; align-items:start;">
+    <div>
+      <dl class="bp-attr">
+        <div><dt>운영사</dt><dd>구쁘 농업회사법인 · 전남 보성 · 계란 라인 = <b>옹알옹알</b> · 슬로건 “입맛이 당기다”</dd></div>
+        <div><dt>포지셔닝</dt><dd>“우리가족 <b>안심 계란</b> + 계란 레시피·식단 라이프스타일”</dd></div>
+        <div><dt>핵심 강점</dt><dd>무항생제·HACCP·NON-GMO 다중 인증 · 옹알옹알쿡 레시피 콘텐츠 · 정기배송</dd></div>
+        <div><dt>난각번호</dt><dd><b>2번</b>(평사·유정란)</dd></div>
+        <div><dt>가격대</dt><dd>옹알옹알 30구 21,900원 (구당 ~730원)</dd></div>
+        <div><dt>유통 채널</dt><dd>자사몰(guppeu.com) + 11번가·SSG·G마켓·보성몰</dd></div>
+      </dl>
+      <div class="bp-block" style="margin-top:15px;"><div class="bp-block__h">브랜드 특징</div>
+        <p class="bp-note">계란을 코어로 손두부·꼬꼬장·저당 베이커리까지 묶은 <b>‘계란 요리/식단’ D2C 종합몰</b>. 다중 인증 신뢰 + 레시피 콘텐츠(유튜브)로 라이프스타일 락인을 노린다.</p>
+      </div>
+    </div>
+    <div>
+      <div class="bp-block"><div class="bp-block__h">온라인 채널</div>
+        <div class="bp-link"><span>자사몰</span><b>guppeu.com (정기배송)</b></div>
+        <div class="bp-link"><span>오픈마켓</span><b>11번가·SSG·G마켓·보성몰</b></div>
+      </div>
+      <div class="bp-block"><div class="bp-block__h">주요 제품</div>
+        <div class="grid g2" style="gap:10px;">
+          <div class="bp-prod"><div class="bp-prod__n">옹알옹알 안심계란 30구</div><div class="bp-prod__p">21,900원</div></div>
+          <div class="bp-prod"><div class="bp-prod__n">레시피·식단 베이커리</div><div class="bp-prod__p">확장 SKU</div></div>
+        </div>
+      </div>
+      <div class="callout callout--ochre"><div class="callout__k"><svg class="ic"><use href="#i-book"/></svg>오계양계 관점 — 콘텐츠·구독 락인 참고</div>
+        <p>“난각 2번 + 무항생제·NON-GMO 인증 + 정기배송 + <b>레시피 콘텐츠</b>”로 안심·식단 락인을 구축한 모델. 소구 축이 달라 직접 위협은 낮으나, <b>콘텐츠+구독 결합</b>은 차용 가치가 크다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 구쁘 자사몰(guppeu.com) 옹알옹알 상세, 11번가·SSG 남도장터 상품 (2026-06-10 확인) · 매출·생산규모는 미확인</span><span class="pf__pg">OGYE · <b>23</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">04 경쟁사 분석 · <b>경쟁사 프로필</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="bp-head"><div><span class="bp-kicker">국내 |</span> <span class="bp-name">상하농원 <em>(Sangha Farm)</em></span></div><span class="bp-tier bp-tier--welfare">대기업·복지 프리미엄</span></div>
+  <div class="h-rule" style="margin-top:12px;"></div>
+  <div class="grid g2" style="gap:26px; align-items:start;">
+    <div>
+      <dl class="bp-attr">
+        <div><dt>운영사</dt><dd>상하농원(유) · <b>매일유업</b> 계열 · 2016년 전북 고창 농촌융복합(6차산업)</dd></div>
+        <div><dt>포지셔닝</dt><dd>“더 진한 노른자·고소함·영양” — 체험형 농원 신뢰 기반 <b>동물복지 유정란</b></dd></div>
+        <div><dt>핵심 강점</dt><dd>매일유업 자본 + 체험농원 브랜드자산 · 동물복지 인증 · 대형유통 광범위 입점</dd></div>
+        <div><dt>난각번호</dt><dd><b>1번</b>(방사·자유방목, 동물복지)</dd></div>
+        <div><dt>가격대</dt><dd>진 유정란 10구 12,000원 / 자유방목 10구 9,990원</dd></div>
+        <div><dt>유통 채널</dt><dd>자사몰(주24회 정기) · SSG/이마트 · 마켓컬리 · 홈플러스</dd></div>
+      </dl>
+      <div class="bp-block" style="margin-top:15px;"><div class="bp-block__h">브랜드 특징</div>
+        <p class="bp-note">농원 전체 연매출 <b>~340억</b>(2023), 누적 방문객 170만+. 관광·체험 브랜드 신뢰를 식품으로 확장한 구조로, ‘청정 고창·동물복지’가 핵심 자산.</p>
+      </div>
+    </div>
+    <div>
+      <div class="bp-block"><div class="bp-block__h">온라인 채널</div>
+        <div class="bp-link"><span>자사몰</span><b>sanghafarm.co.kr</b></div>
+        <div class="bp-link"><span>대형 유통</span><b>SSG·이마트·컬리·홈플러스</b></div>
+      </div>
+      <div class="bp-block"><div class="bp-block__h">주요 제품</div>
+        <div class="grid g2" style="gap:10px;">
+          <div class="bp-prod"><div class="bp-prod__n">진 유정란 10구</div><div class="bp-prod__p">12,000원</div></div>
+          <div class="bp-prod"><div class="bp-prod__n">자유방목 동물복지 10구</div><div class="bp-prod__p">9,990원</div></div>
+        </div>
+      </div>
+      <div class="callout callout--clay"><div class="callout__k"><svg class="ic"><use href="#i-shield"/></svg>오계양계 관점 — 우회 대상</div>
+        <p>난각 1번(복지) + 대기업 신뢰 + 체험농원 — <b>복지 축에서 정면 경쟁 불가</b>. 오계양계는 복지가 아닌 ‘전문가 검증 신선·품질’로 우회하며, 상하가 가진 “진함·품질” 소구는 <b>데이터·전문성</b>으로 차별화한다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 상하농원 자사몰(sanghafarm.co.kr), 서울경제·헤럴드경제(연매출 340억) (2026-06-10 확인) · 달걀 단일 매출은 미확인</span><span class="pf__pg">OGYE · <b>24</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">04 경쟁사 분석 · <b>경쟁사 프로필</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="bp-head"><div><span class="bp-kicker">국내 |</span> <span class="bp-name">아빠사랑팜 <em>(Papa Love Farm)</em></span></div><span class="bp-tier bp-tier--welfare">방사 프리미엄 소농 D2C</span></div>
+  <div class="h-rule" style="margin-top:12px;"></div>
+  <div class="grid g2" style="gap:26px; align-items:start;">
+    <div>
+      <dl class="bp-attr">
+        <div><dt>운영사</dt><dd>아빠사랑팜(개인사업자, 대표 표성미) · 농장형 D2C</dd></div>
+        <div><dt>포지셔닝</dt><dd>“더하지 않고 빼서 만드는 진짜 계란 (only one egg)”</dd></div>
+        <div><dt>핵심 강점</dt><dd>방사 1번 + <b>Non-GMO 자가 쌀사료</b> · 구독 등급제 · HAPPY 꼬꼬 체험</dd></div>
+        <div><dt>난각번호</dt><dd><b>1번</b>(방사·동물복지)</dd></div>
+        <div><dt>가격대</dt><dd>초란 40구 48,000원(세일 38,400원) · 구당 ~1,000원</dd></div>
+        <div><dt>유통 채널</dt><dd>자사몰(papalovefarm.com) · 네이버 스마트스토어 · 자사 정기구독</dd></div>
+      </dl>
+      <div class="bp-block" style="margin-top:15px;"><div class="bp-block__h">브랜드 특징</div>
+        <p class="bp-note">닭의 본성을 지켜 ‘빼기’로 만든다는 미니멀 내러티브의 <b>고가 프리미엄</b> 소농 D2C. 구독(다이아/사파이어/토파즈 등급)·체험으로 관계형 고객을 묶는다.</p>
+      </div>
+    </div>
+    <div>
+      <div class="bp-block"><div class="bp-block__h">온라인 채널</div>
+        <div class="bp-link"><span>자사몰</span><b>papalovefarm.com</b></div>
+        <div class="bp-link"><span>스토어</span><b>네이버 스마트스토어·블로그</b></div>
+      </div>
+      <div class="bp-block"><div class="bp-block__h">주요 제품</div>
+        <div class="grid g2" style="gap:10px;">
+          <div class="bp-prod"><div class="bp-prod__n">초란 방사 유정란 40구</div><div class="bp-prod__p">38,400~48,000원</div></div>
+          <div class="bp-prod"><div class="bp-prod__n">정기구독 (등급제)</div><div class="bp-prod__p">단가 미확인</div></div>
+        </div>
+      </div>
+      <div class="callout callout--clay"><div class="callout__k"><svg class="ic"><use href="#i-route"/></svg>오계양계 관점 — 메시징 벤치마크</div>
+        <p>난각 1번(방사)·고가·구독·“빼기” 내러티브로 <b>소규모 농장이 D2C 프리미엄</b>을 만든 사례. 복지 축에서 정면 충돌하지 않으므로 위협보다 <b>스토리·구독 설계의 참고</b> 가치가 크다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 아빠사랑팜 자사몰(papalovefarm.com) 메인·상품상세 (2026-06-10 확인) · 매출·산란규모는 미확인</span><span class="pf__pg">OGYE · <b>25</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">04 경쟁사 분석 · <b>경쟁사 프로필</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="bp-head"><div><span class="bp-kicker">국내 |</span> <span class="bp-name">내일학교달걀 <em>(내일학교 농장)</em></span></div><span class="bp-tier bp-tier--story">스토리텔링·교육 서사</span></div>
+  <div class="h-rule" style="margin-top:12px;"></div>
+  <div class="grid g2" style="gap:26px; align-items:start;">
+    <div>
+      <dl class="bp-attr">
+        <div><dt>운영사</dt><dd>내일학교(경북 봉화 대안학교, 2007 개교) 부설 농장 <span style="color:var(--muted);">추정</span></dd></div>
+        <div><dt>포지셔닝</dt><dd>학생·교사가 함께 닭을 키우는 <b>교육·자립 서사</b>의 달걀</dd></div>
+        <div><dt>핵심 강점</dt><dd>닭 약 3,000수 · “자연의 감사함과 사랑” 정서 서사 · 학교정원 풀 급여</dd></div>
+        <div><dt>난각번호</dt><dd><b>미확인</b> (동물복지 인증 정보 검색 안 됨 · 방사/평사 추정)</dd></div>
+        <div><dt>가격대</dt><dd><b>미확인</b> (소농 직거래)</dd></div>
+        <div><dt>유통 채널</dt><dd>마르쉐@(농부시장) · 농장 직거래</dd></div>
+      </dl>
+      <div class="bp-block" style="margin-top:15px;"><div class="bp-block__h">브랜드 특징</div>
+        <p class="bp-note">교육·자립 활동과 결합한 스토리텔링형 소농 달걀. 제품군은 달걀·달걀조림·구운달걀·달걀빵. 대형 유통 입점 흔적 없는 <b>직거래·소규모</b> 중심.</p>
+      </div>
+    </div>
+    <div>
+      <div class="bp-block"><div class="bp-block__h">온라인 채널</div>
+        <div class="bp-link"><span>플랫폼</span><b>마르쉐@ 농부시장</b></div>
+        <div class="bp-link"><span>직거래</span><b>naeilschool.org / 농장 연락</b></div>
+      </div>
+      <div class="bp-block"><div class="bp-block__h">주요 제품</div>
+        <div class="grid g2" style="gap:10px;">
+          <div class="bp-prod"><div class="bp-prod__n">내일학교 달걀</div><div class="bp-prod__p">가격 미확인</div></div>
+          <div class="bp-prod"><div class="bp-prod__n">달걀조림·구운달걀·달걀빵</div><div class="bp-prod__p">가공 라인</div></div>
+        </div>
+      </div>
+      <div class="callout callout--clay"><div class="callout__k"><svg class="ic"><use href="#i-alert"/></svg>오계양계 관점 — ‘교육’ 서사 겹침 주의</div>
+        <p>‘교육·전문가’ 서사가 일부 겹치나 <b>결이 다르다</b> — 내일학교는 <b>학생 자립 정서</b>, 오계양계는 <b>전문가 권위(농진원)</b>. 혼동을 피하려면 ‘검증·전문성’ 프레임을 명확히 해야 한다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 에듀인뉴스(내일학교 소개), 마르쉐@ 내일학교농장, naeilschool.org (2026-06-10 확인) · 난각·가격·매출 모두 미확인(소농 직거래)</span><span class="pf__pg">OGYE · <b>26</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">04 경쟁사 분석 · <b>경쟁사 프로필</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="bp-head"><div><span class="bp-kicker">국내 |</span> <span class="bp-name">농사펀드 <em>(Farmingfund)</em></span></div><span class="bp-tier bp-tier--platform">유통 플랫폼 · 입점 기회</span></div>
+  <div class="h-rule" style="margin-top:12px;"></div>
+  <div class="grid g2" style="gap:26px; align-items:start;">
+    <div>
+      <dl class="bp-attr">
+        <div><dt>운영사</dt><dd>(주)농사펀드(2014 법인, 대표 박종범) · 임팩트투자사 소풍 시드</dd></div>
+        <div><dt>포지셔닝</dt><dd>“농부에게 미리 투자(선구매) → 산지직송으로 돌려받는” <b>농산물 크라우드펀딩 커머스</b></dd></div>
+        <div><dt>핵심 강점</dt><dd>선(先)펀딩 모델 · 생산자 스토리텔링 · 재구매율 <b>약 85%</b></dd></div>
+        <div><dt>계란 역할</dt><dd>입점·중개형 채널(PB 없음) · 동물복지·유기축산 <b>난각 1번 중심</b></dd></div>
+        <div><dt>가격대</dt><dd>계란 단가 미확인 (상품별 펀딩가)</dd></div>
+        <div><dt>접근</dt><dd>자사 웹/모바일(ffd.co.kr) · 펀딩 + 정기배송</dd></div>
+      </dl>
+      <div class="bp-block" style="margin-top:15px;"><div class="bp-block__h">브랜드 특징</div>
+        <p class="bp-note">농사 전·수확 전 선구매로 농가 자금·가격 리스크를 해소하는 관계형 커머스. 누적 연결 농가 <b>약 650곳</b>(2019), 고충성 단골 기반. 방사·유기 톤이 강하다.</p>
+      </div>
+    </div>
+    <div>
+      <div class="bp-block"><div class="bp-block__h">온라인 채널</div>
+        <div class="bp-link"><span>플랫폼</span><b>ffd.co.kr</b></div>
+        <div class="bp-link"><span>모델</span><b>펀딩 선구매 + 정기배송</b></div>
+      </div>
+      <div class="bp-block"><div class="bp-block__h">취급 계란 경향</div>
+        <div class="grid g2" style="gap:10px;">
+          <div class="bp-prod"><div class="bp-prod__n">유기축산 동물복지란</div><div class="bp-prod__p">난각 1번</div></div>
+          <div class="bp-prod"><div class="bp-prod__n">자연방사 유정란</div><div class="bp-prod__p">산지직송</div></div>
+        </div>
+      </div>
+      <div class="callout callout--ochre"><div class="callout__k"><svg class="ic"><use href="#i-truck"/></svg>오계양계 관점 — 입점 기회</div>
+        <p>주력이 난각 1번·유기 프리미엄존이라 직접 경쟁은 약함. <b>“스토리·전문성 기반 선구매/정기배송 입점 채널”</b>로 활용 가능 — 단 방사·복지 톤이 강해 ‘전문가 신선란’ 내러티브로 차별화가 필요하다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 농사펀드 자사몰(ffd.co.kr), channel.io CXC 사례, 경향신문 (2026-06-10 확인) · 최신 거래액·회원수는 미확인(2019 기준)</span><span class="pf__pg">OGYE · <b>27</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">04 경쟁사 분석 · <b>경쟁사 프로필</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="bp-head"><div><span class="bp-kicker">국내 |</span> <span class="bp-name">프레딧 <em>(Fredit)</em></span></div><span class="bp-tier bp-tier--platform">유통 플랫폼 · 기회+경쟁</span></div>
+  <div class="h-rule" style="margin-top:12px;"></div>
+  <div class="grid g2" style="gap:26px; align-items:start;">
+    <div>
+      <dl class="bp-attr">
+        <div><dt>운영사</dt><dd><b>hy(에이치와이, 옛 한국야쿠르트)</b> · 2021 통합 론칭 <span style="color:var(--muted);">(※현대그린푸드 아님)</span></dd></div>
+        <div><dt>포지셔닝</dt><dd>“정직한 신선·유기농 선별샵” — 신선식품·건강 종합몰 + 정기배송</dd></div>
+        <div><dt>핵심 강점</dt><dd>프레시매니저 <b>~1.1만명 방문배송</b> · 회원 <b>200만</b>(2024.7) · 거래액 ~1,700억(2023)</dd></div>
+        <div><dt>계란 역할</dt><dd>입점 + PB 혼합 · PB <b>‘잇츠온’ 무항생제 동물복지 유정란</b>(콜드체인 7일내)</dd></div>
+        <div><dt>가격대</dt><dd>멤버십가 — 일반 대비 최대 20%↓ (상세 미확인)</dd></div>
+        <div><dt>접근</dt><dd>앱·웹(fredit.co.kr) + 프레시매니저 방문배송</dd></div>
+      </dl>
+      <div class="bp-block" style="margin-top:15px;"><div class="bp-block__h">브랜드 특징</div>
+        <p class="bp-note">hy의 방문배송·정기구독 인프라를 갖춘 대형 플랫폼. 유료 멤버십 매출 비중 33% 전망, 정기구독 +50%. <b>PB 잇츠온이 ‘신선·전문성’ 포지션을 이미 선점.</b></p>
+      </div>
+    </div>
+    <div>
+      <div class="bp-block"><div class="bp-block__h">온라인 채널</div>
+        <div class="bp-link"><span>플랫폼</span><b>fredit.co.kr · hy앱</b></div>
+        <div class="bp-link"><span>배송</span><b>프레시매니저 방문배송</b></div>
+      </div>
+      <div class="bp-block"><div class="bp-block__h">계란 (PB)</div>
+        <div class="grid g2" style="gap:10px;">
+          <div class="bp-prod"><div class="bp-prod__n">잇츠온 동물복지 유정란</div><div class="bp-prod__p">정기구독</div></div>
+          <div class="bp-prod"><div class="bp-prod__n">회원 규모</div><div class="bp-prod__p">200만+</div></div>
+        </div>
+      </div>
+      <div class="callout callout--clay"><div class="callout__k"><svg class="ic"><use href="#i-layers"/></svg>오계양계 관점 — 기회 + 경쟁 양면</div>
+        <p>강력한 방문배송·정기구독 인프라의 <b>대형 입점 기회</b>이나, 잇츠온 PB 동물복지 유정란이 이미 “신선·전문성”을 선점 → 입점 시 <b>매대 경쟁 + ‘왜 3번인가’ 설득 부담</b>을 동시에 안는다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: 프레딧 자사몰(fredit.co.kr), 머니투데이·뉴시스(회원 200만·거래액), inthenews(잇츠온 유정란) (2026-06-10 확인) · 계란 단가는 미확인</span><span class="pf__pg">OGYE · <b>28</b></span></div>
+</section>
+
+<section class="page page--forest page--photo">
+  <div class="bleed" style="background-image:url('img/table.jpg');"></div>
+  <div class="divider">
+    <div class="divider__no">05</div>
+    <div class="divider__bar"></div>
+    <div class="divider__t">타겟 고객 분석</div>
+    <p class="divider__d">‘신선·전문성·안전’ 메시지에 가장 강하게 반응할 고객은 누구인가. 시장을 세그먼트로 나누고, 구매 여정과 핵심 페르소나로 타겟을 구체화한다.</p>
+    <div class="divider__toc">
+      <span class="divider__chip">타겟 세그먼트</span>
+      <span class="divider__chip">소비자 인사이트 &amp; 구매 여정</span>
+      <span class="divider__chip">핵심 페르소나 3종</span>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src"></span><span class="pf__pg">OGYE · <b>29</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">05 타겟 고객 · <b>세그먼트</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-users"/></svg>Target Segmentation</div>
+  <h2 class="h-title">계란 구매층을 세 갈래로 — 우리의 결은 <span class="mk">‘신뢰 민감층’</span></h2>
+  <div class="h-rule"></div>
+
+  <div class="bars" style="margin-bottom:20px;">
+    <div class="mini-label">구매 결정에서 ‘브랜드·사육환경’ 중시도 (정성 추정)</div>
+    <div class="bar__row"><span class="bar__lab">건강·안전 민감층<br><small style="color:var(--muted)">육아맘·시니어 케어</small></span><div class="bar__track"><div class="bar__fill f-ochre" style="width:88%;"></div></div><span class="bar__val">高</span></div>
+    <div class="bar__row"><span class="bar__lab">단백질 관리층<br><small style="color:var(--muted)">운동·다이어트</small></span><div class="bar__track"><div class="bar__fill" style="width:64%;"></div></div><span class="bar__val">中</span></div>
+    <div class="bar__row"><span class="bar__lab">가성비 실속층<br><small style="color:var(--muted)">대량·범용 구매</small></span><div class="bar__track"><div class="bar__fill f-mut" style="width:28%;"></div></div><span class="bar__val">低</span></div>
+  </div>
+
+  <div class="grid g3">
+    <div class="card card--cream" style="border-top:3px solid var(--ochre);">
+      <div class="card__h">① 건강·안전 민감층 <span class="card__tag" style="background:var(--ochre-light); color:var(--warn);">1차 타겟</span></div>
+      <p>아이·가족·부모 건강을 위해 ‘무엇을 먹이는가’에 민감. 신선도·위생·생산자 신뢰에 기꺼이 프리미엄 지불. <b>오계양계 메시지와 정확히 일치.</b></p>
+    </div>
+    <div class="card card--cream" style="border-top:3px solid var(--forest);">
+      <div class="card__h">② 단백질 관리층 <span class="card__tag" style="background:var(--olive-light); color:var(--olive);">2차 타겟</span></div>
+      <p>매일 다량 섭취. 신선도·고단백·균일 품질 중시. 기능성(오메가3 등) 라인으로 확장 공략 가능.</p>
+    </div>
+    <div class="card card--cream" style="border-top:3px solid #b9b3a3;">
+      <div class="card__h">③ 가성비 실속층 <span class="card__tag pill--n">비핵심</span></div>
+      <p>최저가 중심, 브랜드 충성도 낮음. 프리미엄 전략과 결이 다름 → <b>주력 타겟 아님.</b></p>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:18px;">
+    <div class="callout__k">타겟 전략</div>
+    <p><b>1차 = 건강·안전 민감층(육아맘·시니어 케어 구매자)</b>에 집중해 브랜드 신뢰를 구축하고, <b>2차 = 단백질 관리층</b>으로 라인 확장. 가성비층은 의도적으로 포기해 프리미엄 정체성을 지킨다.</p>
+  </div>
+  <div class="pf"><span class="pf__src">출처: CJ온스타일 계란 선택 가이드, 축산물품질평가원 신선도 기준, 소비 트렌드(단백질·가치소비) 종합 · 세그먼트 비중은 정성 추정</span><span class="pf__pg">OGYE · <b>30</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">05 타겟 고객 · <b>구매 여정</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-search"/></svg>Consumer Insight &amp; Purchase Journey</div>
+  <h2 class="h-title">소비자는 ‘산란일’부터 본다 — 신선이 곧 첫인상</h2>
+  <div class="h-rule"></div>
+
+  <div class="road" style="margin-bottom:22px;">
+    <div class="road__step"><div class="road__dot">1</div><div class="road__when">인지</div><div class="road__t">계기</div><ul class="road__b" style="padding-left:14px;"><li>가족 건강 자각</li><li>박람회·SNS·추천</li><li>‘좋은 계란’ 탐색 시작</li></ul></div>
+    <div class="road__step"><div class="road__dot">2</div><div class="road__when">탐색·비교</div><div class="road__t">확인</div><ul class="road__b" style="padding-left:14px;"><li><b>산란일</b>·유통/보관</li><li>무항생제·등급 문구</li><li>생산자·후기</li></ul></div>
+    <div class="road__step"><div class="road__dot">3</div><div class="road__when">구매</div><div class="road__t">결정</div><ul class="road__b" style="padding-left:14px;"><li>냉장 신선 우선</li><li>‘믿을 사람’ 신호</li><li>적정 프리미엄 수용</li></ul></div>
+    <div class="road__step"><div class="road__dot">4</div><div class="road__when">재구매</div><div class="road__t">충성</div><ul class="road__b" style="padding-left:14px;"><li>맛·신선 일관성</li><li>정기배송 전환</li><li>지인 추천</li></ul></div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card" style="background:#fff;">
+      <div class="card__h" style="color:var(--forest);">핵심 인사이트</div>
+      <ul style="padding-left:15px;">
+        <li>소비자는 가장 먼저 <b>산란일·신선도</b>를 확인 — 맛·비린내에 직결</li>
+        <li>‘무항생제·동물복지’는 기준이 제각각이라 <b>상세 설명·생산자 신뢰</b>로 보완 판단</li>
+        <li>매일 먹는 용도엔 <b>대란 중심 무항생제 신선란</b>이 무난한 선택지로 인식</li>
+      </ul>
+    </div>
+    <div class="callout callout--ochre" style="align-self:start;">
+      <div class="callout__k">접점별 공략 포인트</div>
+      <p><b>탐색 단계</b>가 승부처 — 패키지에 <b>산란일 강조 + 생산자(센터장) 얼굴/이력 + 스마트팜 위생 비주얼</b>을 전면 배치해 ‘믿을 사람이 만든 신선란’을 0.5초 안에 각인.</p>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">출처: CJ온스타일 「용도별 신선도 선택 가이드」, 축산물품질평가원 계란 품질·신선도 판정 기준</span><span class="pf__pg">OGYE · <b>31</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">05 타겟 고객 · <b>핵심 페르소나</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-expert"/></svg>Target Personas</div>
+  <h2 class="h-title">핵심 페르소나 3종</h2>
+  <div class="h-rule"></div>
+
+  <div class="grid g3">
+    <div class="persona">
+      <div class="persona__top"><div class="persona__name">서지은 · 35</div><div class="persona__meta">1차 · 5세 아이 엄마 / 워킹맘 · 대구 수성구</div></div>
+      <div class="persona__body">
+        <div class="persona__row"><b>니즈</b>아이에게 ‘안심하고’ 먹일 신선한 계란. 가격보다 신뢰.</div>
+        <div class="persona__row"><b>구매</b>새벽배송·동네 프리미엄 마트. 산란일·생산자 꼼꼼히 확인.</div>
+        <div class="persona__row"><b>방아쇠</b>“누가, 어떻게 키웠는지” 보이면 지갑이 열림.</div>
+        <div class="persona__row" style="margin-bottom:0;"><b>한 마디</b>“비싸도, 믿을 수 있으면 그걸로 사요.”</div>
+      </div>
+    </div>
+    <div class="persona persona--b">
+      <div class="persona__top"><div class="persona__name">박준호 · 41</div><div class="persona__meta">2차 · 헬스·식단 관리 직장인 · 대구 달서구</div></div>
+      <div class="persona__body">
+        <div class="persona__row"><b>니즈</b>하루 4~6알. 고단백·신선·균일 품질, 합리적 단가.</div>
+        <div class="persona__row"><b>구매</b>온라인 정기배송 선호. 대란/특란 대용량.</div>
+        <div class="persona__row"><b>방아쇠</b>신선도 보장 + 기능성(오메가3·고단백) 라인.</div>
+        <div class="persona__row" style="margin-bottom:0;"><b>한 마디</b>“매일 먹으니까 신선하고 균일한 게 최고죠.”</div>
+      </div>
+    </div>
+    <div class="persona persona--c">
+      <div class="persona__top"><div class="persona__name">정외순 · 63</div><div class="persona__meta">1차 · 손주 돌보는 시니어 / 가족 식탁 담당</div></div>
+      <div class="persona__body">
+        <div class="persona__row"><b>니즈</b>가족·손주 건강. ‘좋은 농가의 진짜 계란’ 선호.</div>
+        <div class="persona__row"><b>구매</b>로컬·산지직송 신뢰. 선물용 수요도.</div>
+        <div class="persona__row"><b>방아쇠</b>대구 지역 농장 + 전문가 농부 스토리에 공감.</div>
+        <div class="persona__row" style="margin-bottom:0;"><b>한 마디</b>“그래도 직접 키운 사람 거가 다르지.”</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:20px;">
+    <div class="callout__k">공통 분모 — 브랜드가 충족시킬 단 하나</div>
+    <p>세 페르소나 모두 <b>‘믿을 수 있는 사람이 정성껏 키운, 신선한 계란’</b>을 원한다. 복지 인증이 아니라 <b>생산자 신뢰 + 신선도</b>가 구매의 방아쇠 — 오계양계의 자산과 정확히 포개진다.</p>
+  </div>
+  <div class="pf"><span class="pf__src">페르소나는 시장 세그먼트·구매여정 분석 기반의 대표 가상 인물 — 후속 단계에서 실제 고객 인터뷰로 검증 권장</span><span class="pf__pg">OGYE · <b>32</b></span></div>
+</section>
+
+<section class="page page--forest page--photo">
+  <div class="bleed" style="background-image:url('img/pack.jpg');"></div>
+  <div class="divider">
+    <div class="divider__no">06</div>
+    <div class="divider__bar"></div>
+    <div class="divider__t">브랜드 방향성 후보</div>
+    <p class="divider__d">앞선 진단을 종합해, 난각 3번의 제약을 우회하는 세 갈래의 포지셔닝 후보를 제시하고 비교 평가한다. 브랜드 기획 단계에서 택일·결합할 의사결정 자료다.</p>
+    <div class="divider__toc">
+      <span class="divider__chip">포지셔닝 3안</span>
+      <span class="divider__chip">비교 평가 &amp; 권고</span>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src"></span><span class="pf__pg">OGYE · <b>33</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">06 브랜드 방향성 · <b>포지셔닝 3안</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-route"/></svg>Three Positioning Routes</div>
+  <h2 class="h-title">세 갈래의 길 — 모두 <span class="mk">복지를 우회한다</span></h2>
+  <div class="h-rule"></div>
+
+  <div class="grid g3" style="gap:14px;">
+    <div class="card" style="border-top:4px solid var(--forest); background:#fff;">
+      <div class="card__h" style="font-size:11px; color:var(--ochre); letter-spacing:1px;">ROUTE A · 추천</div>
+      <div class="serif" style="font-size:17px; font-weight:700; color:var(--forest); line-height:1.35; margin:2px 0 8px;">전문가 신선란</div>
+      <p style="font-size:11.5px; color:var(--ink-soft); line-height:1.65;"><b>“매일 먹는 계란일수록, 키운 사람이 중요하다.”</b></p>
+      <p style="font-size:11px; color:var(--ink-soft); line-height:1.6; margin-top:8px;">센터장 전문성 + 가농式 신선도. 생산자를 브랜드 얼굴로. 가장 안전하고 확장성 높은 중심축.</p>
+      <div style="margin-top:10px; font-size:10px; color:var(--muted);">핵심자산: 전문성 · 신선도 · 신뢰</div>
+    </div>
+    <div class="card" style="border-top:4px solid var(--olive); background:#fff;">
+      <div class="card__h" style="font-size:11px; color:var(--olive); letter-spacing:1px;">ROUTE B · 신뢰 근거</div>
+      <div class="serif" style="font-size:17px; font-weight:700; color:var(--olive); line-height:1.35; margin:2px 0 8px;">스마트팜 안전란</div>
+      <p style="font-size:11.5px; color:var(--ink-soft); line-height:1.65;"><b>“데이터로 키운, 가장 위생적인 계란.”</b></p>
+      <p style="font-size:11px; color:var(--ink-soft); line-height:1.6; margin-top:8px;">복지 대신 ‘과학적 안전·청결·균일’로 안전 프레임 전환. A를 떠받치는 신뢰의 증거.</p>
+      <div style="margin-top:10px; font-size:10px; color:var(--muted);">핵심자산: 스마트팜 · 위생 · 균일품질</div>
+    </div>
+    <div class="card" style="border-top:4px solid var(--ochre); background:#fff;">
+      <div class="card__h" style="font-size:11px; color:var(--warn); letter-spacing:1px;">ROUTE C · 라인 확장</div>
+      <div class="serif" style="font-size:17px; font-weight:700; color:var(--warn); line-height:1.35; margin:2px 0 8px;">데일리 단백질란</div>
+      <p style="font-size:11.5px; color:var(--ink-soft); line-height:1.65;"><b>“매일의 단백질, 가장 신선하게.”</b></p>
+      <p style="font-size:11px; color:var(--ink-soft); line-height:1.6; margin-top:8px;">단백질·다이어트 트렌드 직격. 고단백·오메가3 기능성 사료로 3번 약점 상쇄, 2차 타겟 확장.</p>
+      <div style="margin-top:10px; font-size:10px; color:var(--muted);">핵심자산: 기능성 · 신선 · 데일리</div>
+    </div>
+  </div>
+
+  <div class="callout callout--ochre" style="margin-top:18px;">
+    <div class="callout__k">권고 — 단일 선택이 아니라 ‘구조’</div>
+    <p>9월 런칭·일반 유통(3번) 현실성을 보면, <b>A를 중심 메시지, B를 신뢰의 근거, C를 제품 라인 확장</b>으로 묶는 조합이 가장 강력하다. 즉 <b>“전문가가(A) 스마트팜으로 깨끗하게(B) 키운 신선란, 데일리 단백질 라인까지(C)”</b> — 하나의 브랜드 안에 세 축을 위계로 배열한다.</p>
+  </div>
+  <div class="pf"><span class="pf__src">포지셔닝 후보는 01·02 섹션 분석을 종합한 전략 제안 — 슬로건은 방향 예시로, 브랜드 기획 단계에서 확정</span><span class="pf__pg">OGYE · <b>34</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">06 브랜드 방향성 · <b>비교 평가</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-layers"/></svg>Comparative Evaluation</div>
+  <h2 class="h-title">3안 비교 평가 — 무엇을 중심에 둘 것인가</h2>
+  <div class="h-rule"></div>
+
+  <table class="rep" style="margin-bottom:18px;">
+    <thead><tr><th style="width:160px;">평가 기준</th><th class="c">A · 전문가 신선란</th><th class="c">B · 스마트팜 안전란</th><th class="c">C · 데일리 단백질란</th></tr></thead>
+    <tbody>
+      <tr><td>자산 적합도 <small>(센터장·스마트팜)</small></td><td class="c"><span class="pill pill--g">최상</span></td><td class="c"><span class="pill pill--g">상</span></td><td class="c"><span class="pill pill--y">중</span></td></tr>
+      <tr><td>난각 3번 약점 우회력</td><td class="c"><span class="pill pill--g">강</span></td><td class="c"><span class="pill pill--g">강</span></td><td class="c"><span class="pill pill--y">중</span></td></tr>
+      <tr><td>타겟 도달 폭</td><td class="c"><span class="pill pill--g">넓음</span></td><td class="c"><span class="pill pill--y">중</span></td><td class="c"><span class="pill pill--y">세그먼트</span></td></tr>
+      <tr><td>차별화·독점성</td><td class="c"><span class="pill pill--g">높음</span></td><td class="c"><span class="pill pill--y">중</span></td><td class="c"><span class="pill pill--r">경쟁多</span></td></tr>
+      <tr><td>박람회 티징 임팩트</td><td class="c"><span class="pill pill--g">스토리 강</span></td><td class="c"><span class="pill pill--y">비주얼 강</span></td><td class="c"><span class="pill pill--y">기능 소구</span></td></tr>
+      <tr><td>확장성 <small>(라인·채널)</small></td><td class="c"><span class="pill pill--g">높음</span></td><td class="c"><span class="pill pill--y">중</span></td><td class="c"><span class="pill pill--g">높음</span></td></tr>
+      <tr class="hl"><td><b>종합 권고</b></td><td class="c"><b>★ 중심축</b></td><td class="c">신뢰 근거</td><td class="c">라인 확장</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid g2">
+    <div class="card" style="background:#fff;">
+      <div class="card__h" style="color:var(--forest);">왜 A가 중심인가</div>
+      <ul style="padding-left:15px;">
+        <li>오계양계만의 <b>독점 자산(전문가 귀농)</b>에 직결 — 복제 불가</li>
+        <li>1·2차 타겟 모두에 통하는 <b>가장 넓은 신뢰 메시지</b></li>
+        <li>박람회 티징에서 <b>‘사람 스토리’</b>가 가장 강한 후킹</li>
+      </ul>
+    </div>
+    <div class="callout">
+      <div class="callout__k">결정 가이드</div>
+      <p>대표님과 확정할 단 하나의 질문 — <b>“우리 브랜드의 얼굴을 ‘사람(A)’에 둘 것인가, ‘기술(B)’에 둘 것인가?”</b> 본 리포트의 권고는 <b>사람(A)을 전면에, 기술(B)을 근거로</b>. 인증(무항생제) 취득 시 A의 설득력은 한층 강화된다.</p>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">평가는 6개 기준에 대한 컨설팅 정성 판단 — 대표 인터뷰·인증 현황 확인 후 가중치 재조정 가능</span><span class="pf__pg">OGYE · <b>35</b></span></div>
+</section>
+
+<section class="page page--forest page--photo">
+  <div class="bleed" style="background-image:url('img/hands.jpg');"></div>
+  <div class="divider">
+    <div class="divider__no">07</div>
+    <div class="divider__bar"></div>
+    <div class="divider__t">결론</div>
+    <p class="divider__d">진단·시장·경쟁·타겟·방향성을 하나의 결론으로 수렴해, 오계양계가 시장에 던질 명제를 확정한다.</p>
+    <div class="divider__toc">
+      <span class="divider__chip">종합 결론 &amp; 권고</span>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src"></span><span class="pf__pg">OGYE · <b>36</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">07 결론 · <b>종합 권고</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-flag"/></svg>Conclusion</div>
+  <h2 class="h-title"><span class="mk">하나의 문장</span>으로 — 오계양계가 시장에 던질 명제</h2>
+  <div class="h-rule"></div>
+
+  <div style="position:relative; border-radius:10px; padding:38px 42px; color:#fff; margin-bottom:22px; overflow:hidden; background:#15293f;">
+    <div style="position:absolute; inset:0; background:url('img/hands.jpg') center 30%/cover;"></div>
+    <div style="position:absolute; inset:0; background:linear-gradient(100deg, rgba(13,26,42,.96) 0%, rgba(21,41,63,.86) 45%, rgba(28,55,84,.58) 100%);"></div>
+    <div style="position:relative;">
+      <div style="font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#e9cd8c; margin-bottom:14px;">Brand Proposition</div>
+      <div class="serif" style="font-size:27px; font-weight:700; line-height:1.5;">“농업을 가르치던 사람이,<br>스마트팜으로 깨끗하게 키운 — <span style="color:#ecd49a;">가장 신선한 매일의 계란.”</span></div>
+    </div>
+  </div>
+
+  <div class="grid g3">
+    <div class="card card--cream">
+      <div class="card__h" style="color:var(--forest);"><svg class="ic"><use href="#i-alert"/></svg>버린다</div>
+      <p>동물복지·방사 흉내. 가격 경쟁. ‘건강란’ 같은 막연한 클레임. → 3번이 불리한 싸움터에서 빠져나온다.</p>
+    </div>
+    <div class="card card--cream">
+      <div class="card__h" style="color:var(--ochre);"><svg class="ic"><use href="#i-flag"/></svg>세운다</div>
+      <p>생산자(사람)를 브랜드 얼굴로. 신선도·산란일을 전면에. 스마트팜 위생을 안전의 증거로.</p>
+    </div>
+    <div class="card card--cream">
+      <div class="card__h" style="color:var(--clay);"><svg class="ic"><use href="#i-chart"/></svg>키운다</div>
+      <p>중상위 프리미엄 가격을 ‘이유’로 정당화. 데일리 단백질 라인으로 확장. 정기배송으로 충성 전환.</p>
+    </div>
+  </div>
+
+  <div class="callout callout--ochre" style="margin-top:18px;">
+    <div class="callout__k">한 줄 결론</div>
+    <p>오계양계는 <b>‘계란을 파는 농장’이 아니라 ‘믿을 수 있는 사람이 만든 신선함을 파는 브랜드’</b>가 되어야 한다. 난각 3번은 약점이 아니라, 경쟁 축을 바꿀 명분이다.</p>
+  </div>
+  <div class="pf"><span class="pf__src">본 결론은 01–03 섹션의 시장·경쟁·소비자·규제 분석을 종합한 HIZ 컨설팅 권고</span><span class="pf__pg">OGYE · <b>37</b></span></div>
+</section>
+
+<section class="page page--forest page--photo">
+  <div class="bleed" style="background-image:url('img/farm.jpg');"></div>
+  <div class="divider">
+    <div class="divider__no">A</div>
+    <div class="divider__bar"></div>
+    <div class="divider__t">Appendix — 보조 자료</div>
+    <p class="divider__d">런칭 실행에 필요한 유통 채널 적합도와, 본 리포트가 근거한 데이터 출처·방법론을 정리한다.</p>
+    <div class="divider__toc">
+      <span class="divider__chip">유통 채널 적합도</span>
+      <span class="divider__chip">출처 &amp; 방법론</span>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src"></span><span class="pf__pg">OGYE · <b>38</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">Appendix · <b>유통 채널</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-truck"/></svg>Distribution Channels</div>
+  <h2 class="h-title">채널별 적합도 — D2C·새벽배송부터 시작한다</h2>
+  <div class="h-rule"></div>
+
+  <table class="rep" style="margin-bottom:16px;">
+    <thead><tr><th style="width:170px;">채널</th><th class="c" style="width:90px;">적합도</th><th>특징 &amp; 진입 논리</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td><b>자사몰 · D2C 정기배송</b></td><td class="c"><span class="pill pill--g">최우선</span></td><td>마진·CRM·스토리 통제 최적. 신선도 서사(산란일·당일출고)와 정합. 박람회 모객을 그대로 전환.</td></tr>
+      <tr><td><b>새벽배송 (컬리·오아시스)</b></td><td class="c"><span class="pill pill--g">높음</span></td><td>프리미엄·신선 민감 고객 밀집. 1차 타겟(육아맘)과 일치. 단, 입점 기준·수수료 검토.</td></tr>
+      <tr><td><b>로컬·산지직송 / 지역몰</b></td><td class="c"><span class="pill pill--y">중상</span></td><td>대구·경북 로컬 자산 활용. 농식품벤처·로컬푸드 연계로 진정성 강화.</td></tr>
+      <tr><td><b>대형마트 매대</b></td><td class="c"><span class="pill pill--y">중·후순위</span></td><td>물량·인지도 필요, 가격경쟁·수수료 부담. 브랜드 안착 후 진입.</td></tr>
+      <tr><td><b>B2B (카페·베이커리·급식)</b></td><td class="c"><span class="pill pill--y">확장</span></td><td>균일 품질·신선 소구로 납품. 안정적 물량 확보 옵션.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout__k">채널 전략</div>
+    <p><b>1단계(런칭) = 자사몰 D2C + 새벽배송</b>으로 프리미엄 신뢰를 구축하고 고객 데이터를 확보한다. <b>2단계 = 로컬·B2B 확장</b>, <b>3단계 = 대형 유통</b>. 박람회 티징의 회원가입 이벤트가 곧 D2C의 첫 시드가 된다.</p>
+  </div>
+  <div class="pf"><span class="pf__src">채널 적합도는 타겟·브랜드 전략 기반 컨설팅 판단 · 수수료·입점기준 등 실데이터는 후속 검토 단계에서 확정</span><span class="pf__pg">OGYE · <b>39</b></span></div>
+</section>
+
+<section class="page">
+  <div class="rh"><span class="rh__sec">Appendix · <b>출처 &amp; 방법론</b></span><span class="rh__doc">Ogye Eggs · Market Desk Research</span></div>
+  <div class="h-kicker"><svg class="ic"><use href="#i-book"/></svg>Sources &amp; Methodology</div>
+  <h2 class="h-title">출처 &amp; 데이터 신뢰도</h2>
+  <div class="h-rule"></div>
+
+  <div class="grid g2" style="gap:22px;">
+    <div>
+      <div class="mini-label">시장 · 가격 · 공급</div>
+      <ul style="font-size:11px; line-height:1.85; color:var(--ink-soft); padding-left:16px; margin-bottom:18px;">
+        <li>이투데이 「50년간 1인당 소비량 4배↑」 (2025.12)</li>
+        <li>한국경제 「달걀 한 판 7000원」 (2025.08)</li>
+        <li>머니투데이 「한판 7000원대」 (2026.05)</li>
+        <li>네이트뉴스 「산란계 5.5% 급감」 (2026.04)</li>
+        <li>팜인사이트 「1인당 400개」, 대한산란계협회 통계</li>
+        <li>Fortune Business Insights, Global Eggs Market (2025)</li>
+      </ul>
+      <div class="mini-label">난각 제도 · 소비자 인식</div>
+      <ul style="font-size:11px; line-height:1.85; color:var(--ink-soft); padding-left:16px;">
+        <li>비즈워치 「난각번호의 비밀」 (2023.10)</li>
+        <li>동물자유연대 「달걀시장·동물복지 시민인식조사③」</li>
+        <li>MBC 「동물복지 달걀」 (2026), 푸드투데이 난각표시제 5년</li>
+      </ul>
+    </div>
+    <div>
+      <div class="mini-label">경쟁사 · 채널 · 소비자</div>
+      <ul style="font-size:11px; line-height:1.85; color:var(--ink-soft); padding-left:16px; margin-bottom:18px;">
+        <li>가농 에그샵 (ganongegg.shop) 공식 자료·가격</li>
+        <li>풀무원 지속가능경영 「동물복지 목초란」</li>
+        <li>마켓컬리·다란팜·상하농원 상품 페이지</li>
+        <li>축산경제신문·SBS 「브랜드 계란의 허와 실」</li>
+        <li>CJ온스타일 「용도별 신선도 선택 가이드」</li>
+        <li>축산물품질평가원 계란 품질·신선도 판정 기준</li>
+      </ul>
+      <div class="callout callout--clay">
+        <div class="callout__k">데이터 신뢰도 고지</div>
+        <p>정부·협회·언론 1차 통계는 교차검증을 거침. <b><sup>추정</sup> 표기 항목</b>(시장 금액 규모, 브랜드별 매출·점유율, 세그먼트 비중, 가격밴드)은 과거 보도·업계 추정 기반으로 <b>현행과 차이가 있을 수 있음</b>. 후속 단계에서 대표 인터뷰·농장 실사·1차 시장조사로 보강 권장.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf__src">데스크 리서치 기준 2026-06-05 · 모든 수치는 본문 명시 출처 기반, 추정치는 별도 표기</span><span class="pf__pg">OGYE · <b>40</b></span></div>
+</section>
+
+<section class="page page--forest page--photo">
+  <div class="bleed" style="background-image:url('img/macro.jpg');"></div>
+  <div class="cover" style="justify-content:center;">
+    <div class="cover__eyebrow" style="margin-bottom:18px;">Next Step</div>
+    <h1 class="cover__title" style="font-size:34px;">다음은, ‘사람의 이야기’를<br><span class="lede">브랜드의 얼굴로 만드는 일.</span></h1>
+    <p class="cover__sub" style="max-width:600px;">본 리포트는 브랜드 기획(0단계)의 근거 문서입니다. 대표 인터뷰·인증 확인을 거쳐
+    포지셔닝 A안을 확정하고, 네이밍·슬로건·브랜드 스토리 → BI·패키지 → 7/15 박람회 티징으로 이어갑니다.</p>
+    <div class="cover__rule"></div>
+    <div class="cover__meta">
+      <div><b>제안</b>포지셔닝 A안 확정 → 스토리·네이밍</div>
+      <div><b>확인 요청</b>대표 이력 · 인증 · 산란 규모</div>
+      <div><b>Prepared by</b>HIZ BRAND RISE</div>
+    </div>
+    <div style="position:absolute; bottom:60px; right:78px; font-family:'Pretendard',sans-serif; font-style:italic; font-weight:700; font-size:16px; color:#fff;">HIZ <span style="color:var(--ochre);">BRAND RISE</span></div>
+  </div>
+</section>
+
+</body>
+</html>
