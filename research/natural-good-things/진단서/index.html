@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>NGT 브랜드 성장 진단 리포트 | BRANDRISE</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --accent:#f07030; --accent-d:#d85a1c; --accent-light:#fff3ec; --accent-soft:#fde8da;
+  --ink:#1a1a1a; --secondary:#444; --muted-t:#8a8a8a;
+  --bg:#f6f5f3; --card:#ffffff; --line:#ececec; --soft:#f7f7f5;
+  --crit:#d64545; --crit-bg:#fbecec; --high:#f07030; --high-bg:#fff3ec; --med:#b8860b; --med-bg:#fff8e6;
+  --green:#5a7a52; --green-bg:#eef3ec;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+
+/* toolbar */
+.toolbar{position:fixed;top:14px;right:16px;z-index:50;display:flex;gap:8px}
+.toolbar button{font-family:inherit;font-size:12px;font-weight:600;border:1px solid var(--line);background:#fff;color:var(--secondary);padding:7px 13px;border-radius:20px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.06);transition:.18s}
+.toolbar button:hover{border-color:var(--accent);color:var(--accent)}
+.toolbar button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* cover */
+.cover{background:linear-gradient(160deg,#1a1a1a 0%,#2a2320 60%,#3a2418 100%);color:#fff;padding:78px 22px 70px;text-align:center;position:relative;overflow:hidden}
+.cover::after{content:"";position:absolute;right:-80px;bottom:-90px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(240,112,48,.28),transparent 68%)}
+.cover .inner{max-width:760px;margin:0 auto;position:relative;z-index:1}
+.cover .badge{display:inline-block;border:1px solid rgba(240,112,48,.6);color:#f7a877;background:rgba(240,112,48,.12);padding:5px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1.5px;margin-bottom:22px}
+.cover h1{font-size:39px;font-weight:800;line-height:1.28;letter-spacing:-.5px;margin-bottom:18px}
+.cover h1 .hl{color:var(--accent)}
+.cover .lead{font-size:16px;color:#cfc7c1;font-weight:300;line-height:1.7}
+.cover .meta{margin-top:34px;display:inline-flex;flex-wrap:wrap;gap:10px 26px;justify-content:center;font-size:12.5px;color:#a59c95;border-top:1px solid rgba(255,255,255,.12);padding-top:20px}
+.cover .meta b{color:#e8e2dd;font-weight:600}
+
+/* intro */
+.intro{background:var(--card);border-radius:0 0 14px 14px;padding:30px 34px;font-size:14.5px;color:var(--secondary);box-shadow:0 4px 18px rgba(0,0,0,.05);margin-bottom:34px}
+.intro strong{color:var(--ink);font-weight:700}
+
+/* section */
+section{margin-bottom:30px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px}
+.sec-no{font-size:13px;font-weight:800;color:var(--accent);letter-spacing:1px;flex:none}
+.sec-head h2{font-size:23px;font-weight:800;letter-spacing:-.4px}
+.card{background:var(--card);border-radius:14px;padding:30px 34px;box-shadow:0 3px 16px rgba(0,0,0,.05)}
+
+/* verdict hero */
+.verdict{background:var(--ink);color:#fff;border-radius:14px;padding:38px 34px;text-align:center}
+.verdict .k{font-size:12px;letter-spacing:2px;color:var(--accent);font-weight:700;margin-bottom:14px}
+.verdict .big{font-size:25px;font-weight:800;line-height:1.5;letter-spacing:-.4px}
+.verdict .big em{font-style:normal;color:var(--accent);text-decoration:underline;text-decoration-color:rgba(240,112,48,.5);text-underline-offset:5px}
+.verdict .tri{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:30px;border-top:1px solid rgba(255,255,255,.13)}
+.verdict .tri div{padding:22px 14px 4px;border-right:1px solid rgba(255,255,255,.13)}
+.verdict .tri div:last-child{border-right:0}
+.verdict .tri .t{font-size:12px;color:#bdb4ad;margin-bottom:7px;font-weight:600}
+.verdict .tri .v{font-size:15px;font-weight:700;line-height:1.5}
+.verdict .tri .v.on{color:var(--accent)}
+
+/* revenue bar */
+.barwrap{margin:8px 0 18px}
+.bar{display:flex;height:54px;border-radius:9px;overflow:hidden;font-size:13px;font-weight:700;color:#fff}
+.bar .seg{display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.25;text-align:center}
+.bar .s60{flex:60;background:#b9b3ad}
+.bar .s20a{flex:20;background:var(--accent)}
+.bar .s20b{flex:20;background:var(--accent-d)}
+.bar .seg small{font-weight:400;font-size:11px;opacity:.92}
+.barlegend{display:flex;gap:20px;flex-wrap:wrap;font-size:12.5px;color:var(--secondary);margin-top:12px}
+.barlegend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:middle}
+.lease{background:#b9b3ad}.own{background:var(--accent)}.own2{background:var(--accent-d)}
+.note-line{background:var(--accent-light);border-left:4px solid var(--accent);border-radius:0 9px 9px 0;padding:15px 19px;font-size:14px;margin-top:18px}
+.note-line b{color:var(--accent-d)}
+
+/* bottleneck cards */
+.bn{border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:13px;display:grid;grid-template-columns:74px 1fr;gap:18px;align-items:start;background:#fff;transition:.18s}
+.bn:hover{box-shadow:0 4px 16px rgba(0,0,0,.07)}
+.bn .sev{font-size:10.5px;font-weight:800;letter-spacing:.5px;text-align:center;padding:6px 0;border-radius:7px;line-height:1.3}
+.sev.c{background:var(--crit-bg);color:var(--crit)}
+.sev.h{background:var(--high-bg);color:var(--high)}
+.sev.m{background:var(--med-bg);color:var(--med)}
+.bn h4{font-size:16px;font-weight:700;margin-bottom:5px}
+.bn p{font-size:13.5px;color:var(--secondary);line-height:1.65}
+.bn p .em{color:var(--ink);font-weight:600;background:linear-gradient(transparent 62%,var(--accent-soft) 62%)}
+
+/* asset flip */
+.flip{background:linear-gradient(135deg,#2a2320,#1a1a1a);color:#fff;border-radius:14px;padding:34px}
+.flip .lbl{font-size:12px;letter-spacing:1.5px;color:var(--accent);font-weight:700;margin-bottom:12px}
+.flip h3{font-size:21px;font-weight:800;line-height:1.45;margin-bottom:16px}
+.flip p{font-size:14px;color:#cfc7c1;line-height:1.75;margin-bottom:14px}
+.flip p:last-child{margin-bottom:0}
+.flip .chips{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0 6px}
+.flip .chip{background:rgba(240,112,48,.14);border:1px solid rgba(240,112,48,.4);color:#f7a877;font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:8px}
+
+/* roadmap */
+.road{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.step{border:1px solid var(--line);border-radius:12px;padding:22px 20px;background:#fff;position:relative}
+.step.lead{border:2px solid var(--accent);box-shadow:0 6px 22px rgba(240,112,48,.13)}
+.step .tag{position:absolute;top:-11px;left:18px;background:var(--accent);color:#fff;font-size:10.5px;font-weight:700;padding:3px 11px;border-radius:8px}
+.step .ph{font-size:12px;font-weight:800;color:var(--accent);letter-spacing:.5px}
+.step h4{font-size:16px;font-weight:700;margin:6px 0 3px}
+.step .dur{font-size:12px;color:var(--muted-t);margin-bottom:12px}
+.step ul{list-style:none}
+.step li{font-size:12.5px;color:var(--secondary);padding:3px 0 3px 15px;position:relative;line-height:1.55}
+.step li::before{content:"›";position:absolute;left:0;color:var(--accent);font-weight:700}
+.road-note{font-size:12.5px;color:var(--muted-t);margin-top:14px;text-align:center}
+.road-note b{color:var(--secondary)}
+
+/* data exchange */
+.xchg{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.xbox{border-radius:12px;padding:22px 24px}
+.xbox.to{background:var(--soft);border:1px solid var(--line)}
+.xbox.from{background:var(--accent-light);border:1px solid var(--accent-soft)}
+.xbox .dir{font-size:12px;font-weight:800;letter-spacing:.5px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.xbox.to .dir{color:var(--secondary)}
+.xbox.from .dir{color:var(--accent-d)}
+.xbox ul{list-style:none}
+.xbox li{font-size:13.5px;padding:7px 0 7px 22px;position:relative;border-bottom:1px dashed var(--line)}
+.xbox li:last-child{border-bottom:0}
+.xbox li::before{content:"";position:absolute;left:2px;top:14px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.xbox.to li::before{background:#b9b3ad}
+.xchg-foot{grid-column:1/-1;text-align:center;font-size:13px;color:var(--secondary);background:#fff;border:1px dashed var(--accent-soft);border-radius:10px;padding:14px;margin-top:2px}
+.xchg-foot b{color:var(--accent-d)}
+
+/* closing */
+.closing{text-align:center;padding:44px 26px;background:var(--card);border-radius:14px;box-shadow:0 3px 16px rgba(0,0,0,.05)}
+.closing .q{font-size:21px;font-weight:800;line-height:1.6;letter-spacing:-.3px;max-width:680px;margin:0 auto 8px}
+.closing .q .hl{color:var(--accent)}
+.closing .sign{margin-top:26px;font-size:13px;color:var(--muted-t)}
+.closing .sign b{color:var(--ink);font-weight:800;font-size:15px;letter-spacing:1px}
+
+footer{text-align:center;font-size:11.5px;color:var(--muted-t);padding:34px 22px 60px;line-height:1.7}
+
+@media(max-width:760px){
+  .cover h1{font-size:29px}.verdict .big{font-size:20px}.verdict .tri{grid-template-columns:1fr;gap:0}
+  .verdict .tri div{border-right:0;border-bottom:1px solid rgba(255,255,255,.13)}
+  .road{grid-template-columns:1fr}.xchg{grid-template-columns:1fr}
+  .bn{grid-template-columns:1fr;gap:10px}.bn .sev{display:inline-block;padding:5px 12px}
+  .card,.verdict,.flip{padding:24px 20px}.cover .meta{gap:8px 16px}
+}
+@media print{
+  .toolbar{display:none}body{background:#fff}
+  .cover{background:#1a1a1a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section{break-inside:avoid}.cover{break-after:avoid}
+}
+.editing [contenteditable="true"]{outline:1.5px dashed var(--accent);outline-offset:3px;border-radius:3px;background:var(--accent-light)}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button id="editBtn" onclick="toggleEdit()">✏️ 편집</button>
+  <button onclick="window.print()">📄 PDF 저장</button>
+</div>
+
+<!-- COVER -->
+<header class="cover">
+  <div class="inner">
+    <span class="badge">BRANDRISE · 1차 브랜드 진단</span>
+    <h1>잘 만드는 회사는 이미 완성됐습니다.<br>이제 <span class="hl">NGT라는 이름</span>으로 쌓일 차례입니다.</h1>
+    <p class="lead">임대한 도달에서, 소유한 자산으로 — NGT 브랜드 성장 방향 진단</p>
+    <div class="meta">
+      <span>수신 <b>(주)네츄럴굿띵스 김수안 대표님</b></span>
+      <span>작성 <b>BRANDRISE</b></span>
+      <span>기준일 <b>2026.06.10</b></span>
+      <span>근거 <b>6/10 대면 상담 + 공유 자료</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="intro" contenteditable="false">
+    대표님, 오늘 1시간 44분의 대화 감사했습니다. 나눈 이야기를 <strong>한 장의 방향 진단</strong>으로 정리해 먼저 보내드립니다. 이 문서는 정밀 데이터 진단(T1) 이전 단계로, <strong>숫자보다 구조</strong>를 봅니다. 정량 수치는 데이터 회신 후 T1에서 확정됩니다 — 지금은 "NGT가 어디서 새고, 어디로 가야 하는가"의 큰 그림입니다.
+  </div>
+
+  <!-- 1. CORE -->
+  <section>
+    <div class="sec-head"><span class="sec-no">01</span><h2>핵심 진단 한 줄</h2></div>
+    <div class="verdict">
+      <div class="k">CORE DIAGNOSIS</div>
+      <div class="big" contenteditable="false">NGT는 '잘 만드는 회사'를 이미 완성했습니다.<br>비어 있는 건 <em>그 잘 만듦이 NGT의 자산으로 쌓이는 구조</em>입니다.</div>
+      <div class="tri">
+        <div><div class="t">공급 (제품·공장·인증)</div><div class="v on">국내 최강 — 이미 완성</div></div>
+        <div><div class="t">수요 (팬덤·브랜드 인식)</div><div class="v">10년차인데 비어 있음</div></div>
+        <div><div class="t">격차의 원인</div><div class="v">도달을 '임대'해 온 구조</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. REVENUE -->
+  <section>
+    <div class="sec-head"><span class="sec-no">02</span><h2>매출 구조 해부 — 진짜 'NGT 소유' 매출은 얼마인가</h2></div>
+    <div class="card">
+      <p style="font-size:14px;color:var(--secondary);margin-bottom:18px" contenteditable="false">상담에서 공유주신 작년 커머스 매출 <strong>약 80억</strong>을 채널로 분해하면, NGT가 직접 소유한 매출은 자사 온라인 한 축뿐입니다.</p>
+      <div class="barwrap">
+        <div class="bar">
+          <div class="seg s60">공동구매 60%<small>인플루언서·셀러</small></div>
+          <div class="seg s20a">수출 20%<small>일본·태국·대만</small></div>
+          <div class="seg s20b">자사 온라인 20%<small>자사몰·스토어</small></div>
+        </div>
+        <div class="barlegend">
+          <span><i class="lease"></i>임대한 도달 — 매달 다시 사야 하는 매출</span>
+          <span><i class="own"></i>벤더 경유 — 가격 결정력 제한</span>
+          <span><i class="own2"></i>소유한 자산 — NGT가 직접 쌓는 매출</span>
+        </div>
+      </div>
+      <div class="note-line" contenteditable="false">매출의 <b>60%가 NGT가 아닌 셀러의 신뢰</b>로 일어납니다. 고객·데이터·관계가 인플루언서에게 귀속되니, NGT 자사몰에는 회원·재구매·LTV가 적립될 자리가 없었습니다. 반대로 광고비(연환산 약 6억)는 <b>20억짜리 자사 채널에 집중</b>되는데, 메타 ROAS가 임계점(1) 아래 — 소유 자산을 키우려는 예산이 새고 있는 구조입니다.</div>
+    </div>
+  </section>
+
+  <!-- 3. BOTTLENECKS -->
+  <section>
+    <div class="sec-head"><span class="sec-no">03</span><h2>5대 성장 병목</h2></div>
+
+    <div class="bn"><div class="sev c">CRITICAL</div><div>
+      <h4>1. 임대한 도달 — 10년간 '남의 채널'에서 팔아왔다</h4>
+      <p contenteditable="false">매출 엔진이 인플루언서 공동구매에 묶여, 들어온 고객이 <span class="em">NGT 회원·재구매로 환류되지 않습니다.</span> 팬덤이 없는 게 아니라, 팬덤이 NGT가 아닌 셀러에게 쌓였습니다. 단가·피로도가 오르면 같은 돈으로 도달이 줄어드는 구조 — 자사 라이브를 막 시작한 지금이 전환의 골든타임입니다.</p>
+    </div></div>
+
+    <div class="bn"><div class="sev c">CRITICAL</div><div>
+      <h4>2. 포지셔닝 산만 — 40+ SKU가 'NGT=한 문장'을 못 만든다</h4>
+      <p contenteditable="false">효소·다이어트·여성건강·붓기·슬로우에이징이 '여성 웰니스' 우산 아래 평행 나열되어, <span class="em">소비자가 NGT를 한 문장으로 기억하지 못합니다.</span> 가장 강한 자산인 효소 1위가 브랜드 비전과 분리되어, 신제품마다 인지를 0부터 다시 쌓아야 합니다.</p>
+    </div></div>
+
+    <div class="bn"><div class="sev h">HIGH</div><div>
+      <h4>3. 브랜딩 ↔ 퍼포먼스 단절 — 깔때기가 연결돼 있지 않다</h4>
+      <p contenteditable="false">브랜드 메시지·콘텐츠·광고(SA/DA)·CRM이 <span class="em">따로 굴러</span> 인지도가 자사몰 전환·재구매로 모이지 않습니다. 좋은 상품을 만들어 놓고 광고가 안 붙거나, 광고는 도는데 브랜드 서사가 없는 — 양쪽이 서로를 증폭하지 못하는 상태입니다.</p>
+    </div></div>
+
+    <div class="bn"><div class="sev h">HIGH</div><div>
+      <h4>4. 광고 효율 누수 — 메타 ROAS가 임계점 아래</h4>
+      <p contenteditable="false">소유 자산을 키워야 할 예산이 <span class="em">ROAS 1 미만 구간</span>에서 소진되고 있습니다. 즉시 점검·재배치가 필요한 영역이자, 가장 빠르게 마진을 방어할 수 있는 지점입니다. (T1에서 캠페인·소재별로 정량 분해)</p>
+    </div></div>
+
+    <div class="bn"><div class="sev m">MEDIUM</div><div>
+      <h4>5. 자산 번역 실패 — 가장 비싼 무기가 마케팅에 안 닿는다</h4>
+      <p contenteditable="false">효소 7년 1위·K-낙산균 국내 유일·자사 원료공장이라는 <span class="em">경쟁사가 못 사는 에비던스</span>가 소비자 인식에 닿지 않습니다. 조구만 IP 콜라보가 화제성을 자산으로 연결하지 못한 것도 같은 뿌리 — '전환 구조' 없이 도달만 임대한 결과입니다.</p>
+    </div></div>
+  </section>
+
+  <!-- 4. ASSET FLIP -->
+  <section>
+    <div class="sec-head"><span class="sec-no">04</span><h2>관점 전환 — 가장 비싼 무기가 잠자고 있다</h2></div>
+    <div class="flip">
+      <div class="lbl">REFRAME</div>
+      <h3 contenteditable="false">'제조사 기반'은 촌스러움이 아니라,<br>소비자가 가장 원하는 신뢰입니다.</h3>
+      <p contenteditable="false">상담에서 '제조사 기반'을 보여주기 민망해하셨지만, 진단의 결론은 정반대입니다. 소비자는 <strong style="color:#f7a877">원산지에서 직접 기른 것</strong>을 사고 싶어 합니다. 자사 원료공장·RNB 연구센터에서 원료부터 완제품까지 만든다는 사실은 — 대충 공장에 맡겨 인플루언서 이름만 붙여 파는 시장에서 — NGT만의 결정적 차별점입니다.</p>
+      <div class="chips">
+        <span class="chip">효소 7년 연속 1위</span>
+        <span class="chip">K-낙산균 국내 최초·유일</span>
+        <span class="chip">자사 원료공장 + GMP</span>
+        <span class="chip">여성기업·글로벌강소기업</span>
+      </div>
+      <p contenteditable="false">2026 웰니스 시장의 규칙은 <strong style="color:#f7a877">"성분이 브랜드를 이긴다"</strong>입니다. NGT는 이 트렌드의 정답 카드를 손에 쥐고도 안 내고 있습니다. 효소 1위의 신뢰를 '여성 웰니스 브랜드'로 <strong style="color:#f7a877">번역</strong>하는 순간, 대기업과 매스 광고로 싸우지 않고도 뾰족한 D2C 팬덤을 만들 축이 섭니다.</p>
+    </div>
+  </section>
+
+  <!-- 5. ROADMAP -->
+  <section>
+    <div class="sec-head"><span class="sec-no">05</span><h2>진단을 의사결정으로 — 3단계 로드맵</h2></div>
+    <div class="road">
+      <div class="step lead"><span class="tag">권장 시작</span>
+        <div class="ph">T1 · 입구</div>
+        <h4>데이터 정밀 진단</h4>
+        <div class="dur">약 4주</div>
+        <ul>
+          <li>채널별 매출 분해</li>
+          <li>LTV·재구매율 측정</li>
+          <li>광고 효율 정량 분해</li>
+          <li>브랜드 갭 진단</li>
+        </ul>
+      </div>
+      <div class="step">
+        <div class="ph">T2 · 빌드</div>
+        <h4>브랜드 축 + IMC 설계</h4>
+        <div class="dur">약 3개월</div>
+        <ul>
+          <li>뾰족한 브랜드 한 줄 정의</li>
+          <li>임대→소유 전환 깔때기</li>
+          <li>콘텐츠·CRM·퍼포먼스 연결</li>
+          <li>제조사 정통성 메시지화</li>
+        </ul>
+      </div>
+      <div class="step">
+        <div class="ph">T3 · 스케일</div>
+        <h4>확장 — 신제품·글로벌·공간</h4>
+        <div class="dur">6~12개월</div>
+        <ul>
+          <li>장 건강 신제품 런칭 서사</li>
+          <li>일본·글로벌 채널 IMC</li>
+          <li>1층 쇼룸 브랜드 경험 설계</li>
+        </ul>
+      </div>
+    </div>
+    <p class="road-note" contenteditable="false">각 단계는 <b>독립 계약</b>이 가능합니다. 권장 흐름은 <b>T1 진단 → T2 빌드</b> — 작게 시작해 결과로 판단하고, 마음에 드는 방향이 잡히면 그때 실행을 논의합니다. 구체적 범위·투자 규모는 <b>별첨 견적서</b>에서 안내드립니다.</p>
+  </section>
+
+  <!-- 6. NEXT / DATA -->
+  <section>
+    <div class="sec-head"><span class="sec-no">06</span><h2>다음 스텝</h2></div>
+    <div class="card">
+      <div class="xchg">
+        <div class="xbox to">
+          <div class="dir">NGT → HIZ</div>
+          <ul>
+            <li>월별·채널별·제품별 매출</li>
+            <li>회원 수</li>
+            <li>CRM 데이터</li>
+            <li>META 광고 데이터</li>
+          </ul>
+        </div>
+        <div class="xbox from">
+          <div class="dir">HIZ → NGT</div>
+          <ul>
+            <li>정밀 진단서 (T1 데이터 기반)</li>
+            <li>단계별 견적서</li>
+          </ul>
+        </div>
+        <div class="xchg-foot" contenteditable="false">데이터 <b>회신 시점</b>이 곧 T1 정밀 진단의 착수 기준일입니다. 받는 즉시 분해를 시작해, 오늘 나눈 가설을 숫자로 검증해 드립니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section>
+    <div class="closing">
+      <div class="q" contenteditable="false">10년간 <span class="hl">제품을 완성</span>하셨습니다.<br>이제 그 제품이 <span class="hl">'NGT라는 이름'으로 쌓이게</span> 하는 일이 남았습니다.<br>그 마지막 퍼즐을, 끝까지 같이 끼우겠습니다.</div>
+      <div class="sign"><b>BRANDRISE</b><br>브랜드를 완성하는 전략 파트너</div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  본 진단은 2026년 6월 10일 대면 상담과 공유 자료에 근거한 1차 방향 진단입니다.<br>
+  정량 수치 및 세부 진단은 데이터 회신 후 T1(데이터 정밀 진단)에서 확정됩니다. · © 2026 BRANDRISE
+</footer>
+
+<script>
+function toggleEdit(){
+  var on=document.body.classList.toggle('editing');
+  var btn=document.getElementById('editBtn');
+  btn.classList.toggle('on',on);
+  btn.textContent=on?'✅ 편집 종료':'✏️ 편집';
+  document.querySelectorAll('[contenteditable]').forEach(function(el){el.setAttribute('contenteditable',on?'true':'false');});
+}
+</script>
+</body>
+</html>
