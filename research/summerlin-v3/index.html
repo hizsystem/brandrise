@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE PREP 통합표준 v3 — 썸머린 (summerlin-v3)
+  상담 전 PREP · 인테이크 + 회신메일(2026-06-11) + 직접 리서치 기반 · 진단/니즈/적합도 = 가설
+  v2(카테고리 미정·footprint 0·discovery-first) 대비 변경:
+   ① 카테고리 확정(썬케어) ② 실재 퍼스널 에셋 @kalon_jootti ③ 니즈 = 퍼스널 IP→제품 브랜드 전환·증폭
+   ④ 런칭일 2027.01 확정 ⑤ 벤치마크(디마프·아로마티카·히야) 차별화 욕구. v2를 덮지 않고 v3로 별도 배포.
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>썸머린 — NB 상담 준비 PREP v3 | BRANDRISE</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.72;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+.hero{background:var(--ink);color:#fff;padding:64px 0 52px}
+.hero .in{max-width:1180px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:42px;font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:14px}
+.hero .sub{font-size:16px;color:#cbd5e1;font-weight:300;max-width:700px;line-height:1.75}
+.hero .meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.layout{max-width:1180px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:208px 1fr;gap:48px;align-items:start}
+nav.toc{position:sticky;top:28px;padding:36px 0;font-size:13.5px}
+nav.toc .nl{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--muted);margin:0 0 14px 12px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;border-left:2px solid transparent;transition:.15s;font-weight:500}
+nav.toc a:hover{color:var(--ink);background:var(--soft)}
+nav.toc a.on{color:var(--ac);background:var(--ac-50);border-left-color:var(--ac);font-weight:700}
+main{padding:36px 0 100px;min-width:0}
+section{margin-bottom:54px;scroll-margin-top:24px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+h2{font-size:25px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.lead{font-size:14.5px;color:var(--muted);margin-bottom:22px;line-height:1.7}
+h3{font-size:15px;font-weight:800;margin:26px 0 12px;color:var(--ink2);letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.co{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:13.5px;line-height:1.75;border:1px solid var(--line)}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100)} .co.ok{background:var(--ok-50);border-color:#bbf7d0}
+.co.warn{background:var(--warn-50);border-color:#fde68a} .co.bad{background:var(--bad-50);border-color:#fecdd3}
+.co b{color:var(--ink)}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
+.t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
+.t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 4px}
+.kpi .k{background:var(--ink);color:#fff;border-radius:12px;padding:18px}
+.kpi .k.alt{background:var(--bad)}
+.kpi .lbl{font-size:11px;color:#94a3b8;font-weight:600;margin-bottom:4px}
+.kpi .k.alt .lbl{color:#fecdd3}
+.kpi .v{font-size:25px;font-weight:800;letter-spacing:-.02em}
+.kpi .s{font-size:11px;color:#cbd5e1;margin-top:3px;line-height:1.5}
+.kpi .k.alt .s{color:#fecdd3}
+.op{background:linear-gradient(160deg,var(--ac-50),#fff 65%);border:1px solid var(--ac-100);border-radius:16px;padding:26px 28px}
+.op .opk{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--ac);margin-bottom:14px}
+.op .blk{margin-bottom:16px} .op .blk:last-child{margin-bottom:0}
+.op .bl{font-size:11px;font-weight:800;color:var(--ac-700);letter-spacing:.06em;margin-bottom:5px}
+.op .bt{font-size:14.5px;line-height:1.7;color:var(--ink2)}
+.op .do{font-size:13.5px;line-height:1.7;color:var(--ink2);padding:3px 0} .op .do b{color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin:6px 0 4px}
+th{background:var(--soft);color:var(--ink2);font-weight:700;text-align:left;padding:9px 11px;font-size:11.5px;border-bottom:1px solid var(--line)}
+td{padding:9px 11px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b,td strong{color:var(--ink)}
+.q{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac);border-radius:10px;padding:16px 18px;margin-bottom:10px}
+.q .qn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.05em;margin-bottom:5px}
+.q .qt{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.65}
+.q .qi{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.6}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px;position:relative}
+.tier.rec{border:2px solid var(--ac);box-shadow:0 8px 24px -12px rgba(79,70,229,.4)}
+.tier .rb{position:absolute;top:-11px;left:18px;background:var(--ac);color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;padding:3px 11px;border-radius:9px}
+.tier .tn{font-size:12px;font-weight:800;color:var(--muted)}
+.tier .tt{font-size:12.5px;color:var(--muted);margin:2px 0 10px}
+.tier .tp{font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.tier .td{font-size:11.5px;color:var(--muted);margin-bottom:12px}
+.tier ul{list-style:none}
+.tier li{font-size:12px;color:var(--ink2);padding:4px 0 4px 15px;position:relative;line-height:1.55}
+.tier li::before{content:"›";position:absolute;left:0;color:var(--ac);font-weight:800}
+.tl{border-left:2px solid var(--line);padding-left:20px;margin:10px 0}
+.tl .ph{position:relative;padding:10px 0}
+.tl .ph::before{content:"";position:absolute;left:-26px;top:14px;width:9px;height:9px;border-radius:50%;background:var(--ac)}
+.tl .pt{font-size:12px;font-weight:800;color:var(--ac)}
+.tl .pb{font-size:13px;color:var(--ink2);margin-top:2px}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sw{border-radius:12px;padding:16px 18px;border:1px solid var(--line)}
+.sw h4{font-size:12.5px;font-weight:800;margin-bottom:8px}
+.sw.s{background:var(--ok-50)} .sw.s h4{color:var(--ok)}
+.sw.w{background:var(--bad-50)} .sw.w h4{color:var(--bad)}
+.sw.o{background:var(--ac-50)} .sw.o h4{color:var(--ac)}
+.sw.tt{background:var(--warn-50)} .sw.tt h4{color:var(--warn)}
+.sw li{font-size:12px;color:var(--ink2);margin-left:15px;padding:2px 0;line-height:1.5}
+.verdict{background:var(--ink);color:#fff;border-radius:14px;padding:24px;text-align:center;margin:14px 0}
+.verdict .vl{font-size:12px;color:#94a3b8;font-weight:600}
+.verdict .vv{font-size:34px;font-weight:800;letter-spacing:-.02em;margin:6px 0;color:#a5b4fc}
+.verdict .vd{font-size:13px;color:#cbd5e1}
+.pmap{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin:14px 0;font-size:12px;line-height:1.5;white-space:pre;overflow-x:auto;font-family:'Pretendard',monospace;color:var(--ink2)}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px}
+footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
+@media(max-width:880px){.layout{grid-template-columns:1fr;gap:0;padding:0 22px}nav.toc{display:none}.hero .in{padding:0 22px}.hero h1{font-size:30px}.grid2,.grid3,.kpi,.tiers,.swot{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">NEW BUSINESS PREP · 통합표준 v3 · 회신메일 반영</div>
+  <h1>썸머린</h1>
+  <div class="sub">런칭 전 · 매출 0 · 1인(박현주 대표) 신생 브랜드. 회신메일(6/11)로 <b style="color:#fff">카테고리=썬(자외선차단)케어 확정 · 타겟 런칭 2027년 1월</b>. 대표가 이미 퍼스널 인스타 <b style="color:#fff">@kalon_jootti("쥬띠 30년째 깔롱 부리는 중")</b>를 런칭일지로 운영 중 — 이 상담의 핵심은 <b style="color:#fff">"퍼스널 IP → 제품 브랜드" 전환 설계</b>다.</div>
+  <div class="meta">
+    <span class="chip">기회 적합도(추정) <b>≈ 4.0 / 5.0 · 적극 GO</b></span>
+    <span class="chip">추천 <b>Essential 전환 진단 → 런칭 7개월 동반 확장</b></span>
+    <span class="chip">런칭 <b>2027.01 (약 7개월 후)</b></span>
+    <span class="chip">상담 전 PREP · 회신메일+직접 리서치(6/11)</span>
+  </div>
+</div></div>
+
+<div class="layout">
+  <nav class="toc">
+    <div class="nl">PREP 목차</div>
+    <a href="#onepager">수주 한 장</a>
+    <a href="#diagnosis">핵심 진단</a>
+    <a href="#company">기업 · 정량</a>
+    <a href="#product">제품 · 채널</a>
+    <a href="#market">벤치마크 · 좌표</a>
+    <a href="#needs">SWOT · 니즈</a>
+    <a href="#deal">기회 · 견적</a>
+    <a href="#consult">상담 준비</a>
+    <a href="#sources">참고 출처</a>
+  </nav>
+
+  <main>
+    <section id="onepager">
+      <div class="sec-k">ONE-PAGER</div>
+      <h2>수주 한 장</h2>
+      <p class="lead">미팅 직전 이 카드 하나면 된다. 아래 전 섹션은 회신메일(2026-06-11) + 직접 리서치 기반 가설 백업. <span class="t n">상담 전 PREP · 녹취 미참조</span></p>
+      <div class="op">
+        <div class="opk">🎯 수주 한 장</div>
+        <div class="blk">
+          <div class="bl">그래서 진짜 니즈는 (가설 · 확신 70%)</div>
+          <div class="bt">표면 호소는 "<b>비용·서비스 범위 + 에셋↔브랜드 연동 시점/방법</b>"이지만, 진짜로 사려는 건 — <b>이미 신뢰받는 대표(퍼스널 IP @kalon_jootti)를 제품 브랜드로 끊김 없이 건너가게 하는 "전환 로드맵"과, 런칭(2027.01)까지 같이 달릴 7개월 동행자</b>. 채널 추천이 아니라 "IP를 매출로 바꾸는 다리"다.</div>
+        </div>
+        <div class="blk">
+          <div class="bl">⚡ 미팅 판도를 바꿀 직접 리서치 발견</div>
+          <div class="bt">① KIPRIS — <b>"썸머린 주식회사"(강남)가 상표 "Violet Herz" 3류(선스크린·기능성)·35류 등록 완료(2026.05.18)</b> → 회신메일의 "썬 전문 브랜드"와 일치, <b>카테고리·준비도 확정</b>. ② @kalon_jootti <b>계정 실존 확인</b>(표시명 "쥬띠 30년째 깔롱 부리는 중" — 3중 페치 교차) = 메일의 "화장품 덕후 대표 퍼스널 계정" 외부 확증. <span class="t y">⚠️ 팔로워·게시물 수는 비로그인 차단 — Apify 활성화 제안</span></div>
+        </div>
+        <div class="blk">
+          <div class="bl">그래서 우리가 해주는 것</div>
+          <div class="do"><b>① 퍼스널 IP → 제품 브랜드 전환 로드맵</b> — @kalon_jootti의 신뢰 자산을 언제·어떻게 Violet Herz/썸머린으로 핸드오버할지, 3가지 전환 모델을 런칭일 기준으로 시뮬레이션</div>
+          <div class="do"><b>② "디마프·아로마티카·히야가 아닌 나" 차별화 좌표 1장</b> — 셋 다 '제품 먼저, 대표 나중'. 썸머린은 거꾸로 'IP 먼저' — 그 역방향 강점을 좌표로 못 박음</div>
+          <div class="do"><b>③ 런칭 7개월 콘텐츠·채널 캘린더</b> — 런칭일에 채널·신뢰장치가 "이미 데워진" 상태로 출발. 0에서 다시 쌓느라 첫 여름 시즌 놓치는 일 차단</div>
+        </div>
+        <div class="blk">
+          <div class="bl">첫 제안 & 다음 액션</div>
+          <div class="bt"><b>Essential 전환 진단(2~3주)로 작게 진입</b> → 진단비 크레딧 전환으로 런칭 동반(Professional, 3~6개월) 확장. 유사 케이스 3건(slowsweetlab·flipside·classique-kymu)이 검증한 Land &amp; Expand. <b>확정 견적은 2단 클로징</b> — 미팅서 예산·전환모델 확정 → 1주 내 맞춤 견적. <b>점수표상 유일 약점 = 예산</b> → 상담 게이트 = "런칭까지 가용 마케팅 예산대" 끌어내기.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="diagnosis">
+      <div class="sec-k">DIAGNOSIS (가설)</div>
+      <h2>핵심 진단</h2>
+      <p class="lead">v2의 "카테고리 백지·footprint 0" 진단은 회신메일로 무효화됐다. 새 병목은 "뭘 팔지"가 아니라 <b>"이미 가진 퍼스널 IP를 제품 브랜드로 어떻게·언제 전환·증폭하느냐"</b>. <span class="t n">상담 전 가설</span></p>
+      <div class="kpi">
+        <div class="k"><div class="lbl">카테고리</div><div class="v">썬케어</div><div class="s">메일 확정 + Violet Herz 상표(선스크린)</div></div>
+        <div class="k"><div class="lbl">런칭 목표</div><div class="v">2027.01</div><div class="s">약 7개월 후 · 역산 시작점</div></div>
+        <div class="k"><div class="lbl">퍼스널 에셋</div><div class="v">@kalon_jootti</div><div class="s">런칭일지·화장품러버 (실존 확인)</div></div>
+        <div class="k alt"><div class="lbl">최대 변수</div><div class="v">예산</div><div class="s">미상 — 비용 문의 단계 · 상담 게이트</div></div>
+      </div>
+      <div class="grid3" style="margin-top:14px">
+        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">IP→브랜드 전환 설계 부재</h3><p style="font-size:12.5px;color:var(--muted)">"쌓은 에셋과 브랜드를 어느 시점에 어떻게 연동·업그레이드"(메일 원문) = 전환 다리가 없음. 안 놓으면 7개월 쌓은 팔로워 신뢰가 첫 구매로 안 넘어감(IP 누수).</p></div>
+        <div class="card"><span class="t y">High</span><h3 style="margin:8px 0 6px">차별화 좌표 미확정</h3><p style="font-size:12.5px;color:var(--muted)">"디마프·아로마티카·히야 셋 다 아닌 것 같다" — 차별화 욕구는 강하나 좌표가 없음. 합의 안 되면 끝없는 무드보드 반복. 이게 곧 컨설팅 의존도(=수주 기회).</p></div>
+        <div class="card"><span class="t y">High</span><h3 style="margin:8px 0 6px">타이밍 확신 결여(추정)</h3><p style="font-size:12.5px;color:var(--muted)">매출 0인데 지금 마케팅비를 써도 되나? 정작 가장 싼 구간(런칭 전 7개월·노이즈 0)을 흘려보낼 위험. 비용 문의 = 타이밍 자기검열의 방증(추정).</p></div>
+      </div>
+      <div class="co bad"><span class="lab">진단 결론 (가설)</span>썸머린의 병목은 더 이상 "무엇을 파느냐"(=썬케어로 확정)가 아니라 <b>"이미 가진 대표 IP를, 런칭이라는 사건에 맞춰 제품 브랜드로 건너가게 하는 순서·타이밍·전환장치의 부재"</b>다. 디마프·아로마티카·히야는 모두 <b>제품을 먼저 만들고 대표를 얼굴로 입힌</b> 케이스 — 썸머린은 <b>거꾸로 IP를 먼저 가진 역방향</b>이라 셋 어디에도 안 맞는다(대표의 "셋 다 아니다" 직감과 일치). 따라서 이 상담은 솔루션을 던지는 자리가 아니라 <b>전환 모델을 같이 고르고, 7개월 런웨이를 어떻게 쓸지 현장에서 그리는 자리</b>다.</div>
+    </section>
+
+    <section id="company">
+      <div class="sec-k">COMPANY &amp; SIGNALS</div>
+      <h2>기업 · 정량 시그널</h2>
+      <p class="lead">회신메일 확정 사실 + 직접 리서치(2026-06-11 라이브 확인) 시그널. 로그인 필요 메트릭은 "미확인+Apify 제안"으로 정직 표기.</p>
+      <div class="grid2">
+        <div class="card">
+          <h3 style="margin-top:0">기업 기초 <span class="t n">인테이크+회신메일</span></h3>
+          <table>
+            <tr><td style="width:34%"><b>대표/법인</b></td><td>박현주 · 썸머린㈜(강남) <span class="t y">법인↔대표 연결 미확인</span></td></tr>
+            <tr><td><b>연락</b></td><td>phjoojoo@naver.com · 010-9132-3880</td></tr>
+            <tr><td><b>카테고리</b></td><td><b>썬(자외선차단) 전문 화장품</b> <span class="t g">메일 확정</span></td></tr>
+            <tr><td><b>사업 단계</b></td><td>런칭 전 · 매출 0 · 1인 대표 직접 운영(결재 0단계)</td></tr>
+            <tr><td><b>런칭 목표</b></td><td><b>2027년 1월 (약 7개월 후)</b></td></tr>
+            <tr><td><b>퍼스널 에셋</b></td><td>@kalon_jootti — 런칭일지 + 브랜드 동기 + "화장품을 얼마나 좋아하는 대표인지"</td></tr>
+            <tr><td><b>핵심 고민(원문)</b></td><td>"쌓은 에셋과 브랜드를 어느 시점에 어떻게 연동하고, 런칭하면서 어떻게 업그레이드할지"</td></tr>
+            <tr><td><b>벤치마크</b></td><td>디마프·아로마티카·히야 — <b>"셋 다 아닌 것 같다"</b></td></tr>
+            <tr><td><b>문의</b></td><td>컨설팅+실무 비용 규모 + 제공 서비스 범위</td></tr>
+          </table>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">직접 리서치 시그널 <span style="font-size:11px;color:var(--muted);font-weight:500">(2026-06-11 라이브 확인)</span></h3>
+          <table>
+            <tr><td style="width:34%"><b>@kalon_jootti</b></td><td><b>계정 실존</b> · 표시명 <b>"쥬띠 30년째 깔롱 부리는 중"</b>(firecrawl·exa·WebFetch 3중 일치) — 메일의 "화장품 덕후 대표" 콘셉트 외부 확증 <span class="t n">Instagram</span></td></tr>
+            <tr><td><b>IG 정량</b></td><td>팔로워·팔로잉·게시물 수·개설시점·바이오 본문 <span class="t y">미확인</span> (비로그인 차단, 프록시 미러 전멸) → <b>Apify Instagram Scraper 1회 실행 제안</b></td></tr>
+            <tr><td><b>상표 (핵심)</b></td><td>썸머린㈜가 "Violet Herz" 3류(화장품·선스크린)·35류 등록완료(2026.05.18) — <b>카테고리·준비도 확정</b> <span class="t n">KIPRIS</span></td></tr>
+            <tr><td><b>네이밍 의미</b></td><td>kalon(그리스어 καλόν=아름다움+선) · Violet Herz(독일어 Herz=마음 → "보랏빛 마음", 톤업 퍼플 베이스와 컬러 코드 일치) <span class="t n">어원 사실 / 의도 추정</span></td></tr>
+            <tr><td><b>네임스페이스</b></td><td>국내 화장품 동명 상표 충돌 0 (KIPRIS "summerlin" 8건=美 항공 LLC·MIVA 등 전부 무관). 자사 Violet Herz 선점 완료 <span class="t n">KIPRIS</span></td></tr>
+            <tr><td><b>커머스 라이브</b></td><td>썸머린/Violet Herz 웹·스마트스토어·SNS 노출 0건 = pre-launch 정합. <b>유일한 디지털 발자국 = 상표 + @kalon_jootti 2개뿐</b> <span class="t n">구글·네이버 색인</span></td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="co ac"><span class="lab">네러티브 단서 (상담 활용)</span>네이밍이 이미 일관된 다리를 갖고 있다(가설): <b>kalon_jootti(퍼스널·미학적 선함) → Violet Herz(제품·보라/마음) → 썸머린(법인·여름빛)</b>. 대표 고민("어느 시점에 연동")의 답을 <b>네이밍 일관성</b>에서 끌어낼 소재가 이미 존재 — "런칭 시 퍼스널→브랜드 핸드오버"를 자연스럽게 설계할 수 있다.</div>
+      <div class="co warn"><span class="lab">미팅 확정 3종</span>① <b>썸머린㈜·Violet Herz 상표가 대표님 명의인가?</b> + 제품 준비 단계(처방/샘플/OEM 양산) — 7개월 역산 기준점 ② <b>@kalon_jootti를 '대표 IP'로 계속 키울지 vs 제품계정 분리할지</b>(전환 모델 선택) ③ "셋 다 아니다"의 정확한 차별점 — 어떤 결이 걸렸는지. 팔로워·바이오 정밀 확인은 <b>Apify(Instagram Scraper) 활성화 제안</b>.</div>
+    </section>
+
+    <section id="product">
+      <div class="sec-k">PRODUCT &amp; CHANNEL</div>
+      <h2>제품 · 채널</h2>
+      <p class="lead">카테고리=썬케어 확정(메일+Violet Herz 상표). 아래 제품 라인·트렌드는 직접 리서치(2026-06-11) 시장 자료 기반 — 구체 제형은 미팅 Q1에서 확정.</p>
+      <h3>썬케어 제품 라인 가설 + 시장 트렌드 정합</h3>
+      <table>
+        <tr><th>라인 가설</th><th>예시</th><th>2026 트렌드 정합 (직접 리서치)</th></tr>
+        <tr><td><b>톤업 선크림</b> ↑</td><td>퍼플/베이지 톤업 베이스</td><td><span class="t b">올영 선케어 내 톤업 비중 25%(2023)→35%, 톤업 매출 +131%(2년比). 핑크→퍼플 컬러 확장</span> = Violet Herz 컬러 코드 직결</td></tr>
+        <tr><td>선세럼·선스틱</td><td>스킨케어링 SPF50+/PA++++</td><td>"선 레이어링"(크림+스틱+스프레이 덧바름) — 올영 선케어 +29%. 객단가↑·크로스셀</td></tr>
+        <tr><td>애프터선·바디</td><td>진정·미스트·바디 선</td><td>시즌 확장(5~9월→4~10월), 구매층 확장(남성·10대)</td></tr>
+        <tr><td>하이브리드</td><td>차단+미백/장벽/PDRN</td><td>"차단만으론 안 팔린다" — 성분 차별점 한 문장 필수, 없으면 가격경쟁 매몰</td></tr>
+      </table>
+      <div class="co ac"><span class="lab">진입 요건 (1인 D2C)</span>선케어는 <b>SPF 시험성적(ISO 23675/24443)·백탁·발림성</b> 하드웨어 검증이 진입 필수 + <b>책임판매업 등록</b>. 1인 대표 + ODM(한국콜마 플래닛147·코스맥스 등 개인고객 인큐베이팅) 경로가 표준. 시장은 "강자 약세 + 신흥 인디 부상" 국면(티몰 한국관 선케어 TOP10 전년比 약 -80%, 스킨1004·라운드랩 신규 부상)이라 <b>인디 신규 진입 여지가 여전히 큼</b>.</div>
+      <h3>채널 — 현재 퍼스널 1개 → 런칭까지 전환 세트</h3>
+      <table>
+        <tr><th>채널</th><th>역할</th><th>전환 설계 포인트</th></tr>
+        <tr><td><b>@kalon_jootti (퍼스널)</b></td><td>신뢰 깔때기 · 창업 서사 자산</td><td><b>폐기/분리 금지</b> — 팔로워·진정성을 브랜드로 '이관'하는 브릿지 콘텐츠가 핵심(전환 모델에 따라 통합/연결/단계전환)</td></tr>
+        <tr><td>제품 계정 (Violet Herz/썸머린)</td><td>브랜딩·발견·전환</td><td>런칭일 기준 D-N개월에 개설·핸드오버. 카탈로그 X, 세계관 O</td></tr>
+        <tr><td>네이버 스마트스토어</td><td>결제 (신뢰·검색유입)</td><td>2순위 — 자사몰은 나중. 1인 과확장 방지(당장 멀티채널 금지)</td></tr>
+      </table>
+      <div class="co ok"><span class="lab">전환 모델 3안 (Essential 진단 산출물)</span><b>① 대표 IP 통합형</b>(@kalon_jootti = 곧 브랜드 얼굴, 히야 모델) · <b>② 분리·연결형</b>(퍼스널=신뢰 깔때기, 제품계정으로 전환 유도) · <b>③ 단계 전환형</b>(런칭 전까지 퍼스널로 키우다 D-day에 핸드오버). 이 선택이 콘텐츠 설계·계정 구조·광고 타이밍을 전부 결정 = <b>견적의 뼈대</b>. 미팅 핵심 게이트.</div>
+    </section>
+
+    <section id="market">
+      <div class="sec-k">BENCHMARK &amp; POSITIONING</div>
+      <h2>벤치마크 · 차별화 좌표</h2>
+      <p class="lead">대표가 직접 지목한 3개("디마프·아로마티카·히야인데 셋 다 아닌 것 같다")를 직접 리서치. 핵심 통찰 = <b>셋 다 '제품 먼저, 대표 나중'. 썸머린만 'IP 먼저'</b>. <span class="t n">분석=가설</span></p>
+      <h3>'대표가 얼굴이 되는 화장품' 3개 벤치마크</h3>
+      <table>
+        <tr><th>케이스</th><th>창업자 · 노출 방식</th><th>퍼스널↔브랜드 계정</th><th>왜 썸머린과 다른가 (가설)</th></tr>
+        <tr><td><b>디마프 (De:maf)</b><br><span class="t n">2023.11, 연 70억</span></td><td>최혜진('레지나'). 교육학 전공. <b>교육자형</b> — 매일 라이브로 "피부 장벽학개론" 무료 강의, 잔소리·습관교정 먼저</td><td>통합·일체형 (@demaf.regina = 브랜드 인격)</td><td>썸머린은 <b>가르치는 권위가 아니라 함께 설레며 만드는 애호가/메이커</b> 결 → "나는 선생님이 아니다"</td></tr>
+        <tr><td><b>아로마티카</b><br><span class="t n">2004, 클린뷰티</span></td><td>김영균(산업은행→아로마테라피스트). <b>철학자형</b> — 지속가능성·비건·EWG, 미션의 화신</td><td>분리형(브랜드 우위) — 미디어·강연에 '철학의 얼굴'</td><td>1인 pre-launch가 떠안기엔 <b>철학·미션이 너무 무겁고</b> 가벼운 '런칭 일지' 무드와 톤 상반 → "나는 그렇게 무겁지 않다"</td></tr>
+        <tr><td><b>히야 (HYAAH)</b><br><span class="t n">~8년차, 올영입점</span></td><td>임세경('히야대장'). <b>라이프스타일 큐레이터형</b> — 자사몰 '히야대장 say'에 1인칭 서사, "반짝임보다 스며듦"</td><td>분리·전환형 (@hyaah.liny ↔ @hyaah_official)</td><td>가장 가깝지만 <b>8년차 성숙 + 푸드/리빙 확장형</b>(선케어 전문 아님), '완성된 대장'. 썸머린은 <b>"지금 시작하는 중"</b>의 pre-launch 내러티브가 자산</td></tr>
+      </table>
+      <div class="co ac"><span class="lab">공통 갭 = 썸머린의 독점 자산 (가설)</span>세 곳 모두 <b>이미 제품/브랜드가 있는 상태에서 대표가 얼굴이 됐다</b>. 썸머린은 <b>제품이 나오기 전(pre-launch)부터 대표의 '되어가는 과정' 자체를 콘텐츠화</b>하고, 그것도 <b>썬케어 단일 전문성 + 화장품 덕후의 진정성</b>을 동시에 가진 결 — 이 조합이 셋 어디에도 없다. = 대표의 "셋 다 아니다" 직감이 정확.</div>
+      <h3>차별화 좌표 (Positioning Map · 가설)</h3>
+      <div class="pmap">              진정성 · 개인 내러티브(個人 서사) ▲
+                                            │
+       [디마프]                             │            [히야 HYAAH]
+   전문성 권위 + 개인서사                    │       라이프스타일 + 개인서사
+   (잔소리하는 피부쌤)                       │        (일상러버 '대장')
+                                            │   ★ 썸머린 빈칸 = 이 위쪽 사이
+   성분·전문·권위 ◄─────────────────────────┼───────────────────────► 무드·라이프·감성
+                                            │
+       [아로마티카]                          │
+   성분·철학 + 미션/규모                     │
+   (클린뷰티 선구자)                         │
+                                            │
+                       미션·철학·규모 ▼</div>
+      <div class="co ok"><span class="lab">썸머린 빈칸 옵션 (가설)</span><b>옵션 A (1순위) — "전문성 × 진정성"의 런칭 과정형:</b> 디마프와 같은 사분면이되, '가르치는 완성된 권위자'가 아니라 <b>'썬케어를 파고드는 덕후가 처음 브랜드를 만들어가는 과정'</b>. 키워드 = 썬케어 한 우물 + pre-launch 메이킹 다이어리 + 덕후의 솔직함. <b>옵션 B — 시간(T)축 전환 내러티브형:</b> 세 벤치마크는 정적 좌표. 썸머린만 <b>"퍼스널→브랜드 전환을 실시간 공개"</b>한다는 독점 자산 → 합쳐지는 과정을 0부터 보여주는 유일 케이스.</div>
+      <h3>유사 케이스 매핑 (HIZ 케이스 풀)</h3>
+      <table>
+        <tr><th>케이스</th><th>인접도</th><th>시사점</th></tr>
+        <tr><td><b>슬로우스윗랩</b></td><td><span class="t g">가장 가까움</span></td><td>Pre-launch·1인. T0 단발 스프린트(2~3주)→검증 후 확장 구조 검증됨. 썸머린은 카테고리·IP가 잡혀 한 칸 더 앞서 있음</td></tr>
+        <tr><td><b>브렐라 (flipside)</b></td><td><span class="t b">가까움</span></td><td>프리런칭·1인 D2C. 1인 창업자 가격 감각 실측 = 월 150~200만. "예산 부족→1회성 다운셀" 플레이북 이식</td></tr>
+        <tr><td><b>클라시크/키므</b></td><td><span class="t b">가까움</span></td><td>1인 인디 뷰티 런칭 전. "초기 대표는 비용보다 방향에 목마름 — 첫 상담 무리한 클로징 금지"</td></tr>
+        <tr><td>루테아</td><td><span class="t n">인접</span></td><td>런칭 후 1년차 1인 D2C. 최저 Tier도 '대행'이 아니라 '설계'로 정의해야 JTBD 일치</td></tr>
+      </table>
+    </section>
+
+    <section id="needs">
+      <div class="sec-k">SWOT &amp; NEEDS</div>
+      <h2>SWOT · 니즈 (SPIN + JTBD)</h2>
+      <p class="lead">표면 = "비용·범위 + 연동 시점/방법". 진짜 = IP→브랜드 전환 로드맵 + 7개월 동행자. <span class="t n">상담 전 가설</span></p>
+      <div class="swot">
+        <div class="sw s"><h4>Strengths</h4><ul><li><b>이미 신뢰받는 퍼스널 IP 보유</b>(@kalon_jootti) — 경쟁사가 못 가진 역방향 강점, 0에서 시작 아님</li><li>카테고리(썬케어) 확정 + Violet Herz 상표·법인 선점(준비도 상위)</li><li>1인 = 의사결정 속도 최대, 결재 0단계</li><li>런칭일(2027.01) 확정 = 7개월 런웨이를 역산 설계 가능</li></ul></div>
+        <div class="sw w"><h4>Weaknesses</h4><ul><li>예산 미정 · 매출 0 — "지금 돈 써도 되나" 타이밍 자기검열</li><li>1인 3중 과부하(콘텐츠·물류·CS) 번아웃 구조 리스크</li><li>전환 설계 경험 0 — IP→제품 핸드오버 노하우 부재</li><li>"여름/썬" 시즌 편중(4~8월 집중) — 1월 런칭 후 첫 성수기까지 갭</li></ul></div>
+        <div class="sw o"><h4>Opportunities</h4><ul><li>런칭 전 7개월 = <b>가장 싼 마케팅 구간</b>(노이즈 0으로 IP 자산화)</li><li>톤업·퍼플 베이스·선 레이어링 트렌드 = Violet Herz 컬러 정합</li><li>"강자 약세+신흥 인디 부상" 국면 = 진입 여지 큼</li><li>퍼스널 IP 진정성 콘텐츠가 광고비를 대체하는 시장 흐름</li></ul></div>
+        <div class="sw tt"><h4>Threats</h4><ul><li>전환 다리 안 놓으면 IP 신뢰가 첫 구매로 안 넘어감(누수)</li><li>선케어 = 레드오션, 성분·차별점 없으면 가격경쟁 매몰</li><li>SPF 시험성적 등 하드웨어 검증 허들</li><li>런칭 임박해 시작하면 재고·일정·시즌이 한꺼번에 몰림</li></ul></div>
+      </div>
+      <h3>Pain Hierarchy (가설 · 표면→근본)</h3>
+      <div class="co"><b>L1 표면 (95%)</b> 비용·서비스 범위를 모름 / 연동 시점·방법을 모름 → <b>L2 증상 (75%)</b> 퍼스널 계정과 (미존재) 제품 계정이 따로 놀 위험, 런칭 콘텐츠 백지 → <b>L3 구조 (65%)</b> IP→제품 전환 로드맵 부재 + 1인 실행 캐파 한계 → 7개월이 무계획하게 흐름 → <b>L4 근본 (55%)</b> "차별화는 하고 싶은데 좌표가 없음" + "매출 0인데 지금 쓰나"의 <b>타이밍 확신 결여</b> → 가장 비싼 자산(런칭 전 7개월·대표 신뢰서사)을 흘려보낼 위험</div>
+      <div class="co ac"><span class="lab">표면 vs 진짜 니즈 (가설)</span>"비용이 얼마?"(98% 표면) → 진짜는 ① <b>퍼스널 IP→제품 브랜드 전환의 순서·타이밍·전환장치 설계 동행자</b>(70%) ② "셋 다 아니다"의 정체화 — <b>본인이 납득할 차별화 좌표</b>를 전문가와 같이 못 박기(60%) ③ 1인 실행 캐파 부족 — <b>런칭까지 손 잡아줄 7개월 실무 파트너</b>(55%). 제안 언어를 "마케팅 대행"이 아니라 <b>"IP를 브랜드로 건너가게 하는 7개월 전환 동반"</b>으로.</div>
+      <h3>JTBD 3유형</h3>
+      <table>
+        <tr><th>유형</th><th>박 대표가 "고용"하려는 것</th></tr>
+        <tr><td><b>Functional</b></td><td>"런칭(2027.01)까지 퍼스널 IP를 제품 브랜드로 끊김 없이 전환하고, 채널·콘텐츠·신뢰장치를 데워둔 채 출발하게 해줘."</td></tr>
+        <tr><td><b>Social</b></td><td>"디마프·아로마티카·히야와 다른 우리만의 좌표를 가진, '제대로 준비한 대표'로 보이고 싶어."</td></tr>
+        <tr><td><b>Emotional</b></td><td>"혼자 7개월 표류하는 불안을 끝내고, 내가 쌓아온 서사가 헛되지 않는다는 확신을 갖고 싶어."</td></tr>
+      </table>
+    </section>
+
+    <section id="deal">
+      <div class="sec-k">FIT &amp; ESTIMATE</div>
+      <h2>기회 평가 · 견적 (가설)</h2>
+      <div class="verdict"><div class="vl">종합 기회 적합도 (상담 전 추정 · v3 재산정)</div><div class="vv">≈ 4.0 / 5.0</div><div class="vd">적극 GO — 단 예산 게이트 1건. 카테고리·IP·런칭일·단독결정권의 4대 확정이 v2(3.58)의 불확실성을 대거 해소. 유일한 발목 = 예산</div></div>
+      <div class="grid2">
+        <div class="card"><h3 style="margin-top:0">적합도 (6항목 가중 · v2→v3)</h3><table>
+          <tr><td>니즈-핏 30%</td><td><b>4.5</b> <span class="t g">▲</span></td><td>카테고리 확정+실재 IP+명확한 "전환 설계" 니즈 = HIZ SOP 정합 (v2 3.5)</td></tr>
+          <tr><td>예산 20%</td><td><b>2.5</b> <span class="t r">▼</span></td><td>🔴 비용을 묻는 단계 = 미설정. 매출 0·1인. 단 "컨설팅+실무" 동시 요청은 방어 (v2 3.0)</td></tr>
+          <tr><td>의사결정 15%</td><td><b>5.0</b> <span class="t g">▲</span></td><td>1인 대표 = 단독 즉결, 승인 변수 0 (v2 4.0, 추정→확정)</td></tr>
+          <tr><td>긴급도 15%</td><td><b>4.5</b> <span class="t g">▲</span></td><td>런칭 2027.01 역산 7개월 → 전환·빌드는 지금 시작 (v2 3.5)</td></tr>
+          <tr><td>성장잠재력 10%</td><td><b>3.5</b> <span class="t n">―</span></td><td>썬케어=대형·반복구매·글로벌. 단 레드오션+시즌의존 (v2 3.5)</td></tr>
+          <tr><td>레퍼런스 10%</td><td><b>4.0</b> <span class="t g">▲</span></td><td>"퍼스널 IP→브랜드 전환"은 HIZ 케이스 풀에 희소한 0→1 동행 사례 (v2 3.5)</td></tr>
+        </table></div>
+        <div class="card"><h3 style="margin-top:0">리스크 5종 · GO 분기점</h3><table>
+          <tr><td>예산흡수</td><td><span class="t r">🔴</span> 블로커 후보 — 못 끌어내면 Premium 제외·Essential 다운셀, 끌어내면 Professional</td></tr>
+          <tr><td>시즌 의존</td><td><span class="t y">⚠️</span> 썬케어 4~8월 집중, 1월 런칭→첫 여름까지 갭. "첫 시즌 데우기"를 Professional 차별가치로</td></tr>
+          <tr><td>좌표 미확정</td><td><span class="t y">⚠️</span> 차별화 욕구 강하나 합의 안 되면 무드보드 무한반복 — Essential서 좌표 못 박기 산출물 앵커</td></tr>
+          <tr><td>1인 실행캐파</td><td><span class="t g">✅</span>→<span class="t y">⚠️</span> "실무 도움" 명시=외주 의향(긍정). 단 1인 피드백 병목 → 월 리테이너가 핏</td></tr>
+          <tr><td>타이밍 확신</td><td><span class="t y">⚠️</span> "매출 0에 지금 쓰나" L4 불안 — "지금이 최저비용 구간" 재배열 못 하면 Defer로 샘</td></tr>
+        </table></div>
+      </div>
+      <h3>3-Tier 견적 ("IP→브랜드 전환 + 런칭 7개월 동반" 프레임)</h3>
+      <p class="lead" style="margin-bottom:10px">공통항목 단가는 브랜드 불문 동일(단가 공유 원칙) — 총액은 항목·개월·고유 블록으로만 조정. <b>아래는 대 단위 골격, 확정 금액은 예산·전환모델 확정 후 1주 내 맞춤 견적(2단 클로징)</b>.</p>
+      <div class="tiers">
+        <div class="tier rec"><div class="rb">추천 입구</div><div class="tn">🟢 Essential</div><div class="tt">"IP→브랜드 전환 진단"</div><div class="tp">300만 (단발)</div><div class="td">2~3주 · 진단비 크레딧 전환</div><ul><li>퍼스널 IP→제품 전환 로드맵 (3안 시뮬레이션)</li><li>"셋 다 아닌" 차별화 좌표 1장</li><li>7개월 채널·콘텐츠 캘린더 골격</li><li>네이밍·핸들·상표 정합 점검</li><li>리뷰콜 1회</li></ul></div>
+        <div class="tier"><div class="tn">🔵 Professional</div><div class="tt">"런칭 7개월 동반"</div><div class="tp">월 약 600~840만</div><div class="td">3~6개월(런칭 역산)</div><ul><li>Essential 전부 +</li><li>월 IMC 회의(60만/월)</li><li>콘텐츠 제작(500만/월) — IP 브릿지 콘텐츠</li><li>월 기획보드(250만/월) · AI 대시보드(30만/월)</li><li>제품 채널 개설 + 런칭 카운트다운 운영</li></ul></div>
+        <div class="tier"><div class="tn">🟣 Premium</div><div class="tt">"풀빌드 + 브랜딩"</div><div class="tp">월 약 1,000만+</div><div class="td">6개월+ · 광고비 별도</div><ul><li>Professional 전부 +</li><li>인스타 무드보드(500만, 1회)</li><li>아이덴티티/패키지 블록(2,000~3,000만)</li><li>첫 여름 시즌 캠페인 빌드</li><li>소액 퍼포먼스 광고 테스트</li></ul></div>
+      </div>
+      <div class="co warn"><span class="lab">패키징 원칙</span>예산 미정 상태이므로 <b>Essential(전환 진단)을 강한 앵커로</b> — 진단비 300만은 Professional 계약 시 <b>크레딧 전환</b>으로 업셀 문턱을 낮춘다. 7개월은 한 번에 풀패키지 팔기엔 길고 대표 결정도 안 섰으니, <b>싼 진단으로 Land → 신뢰·데이터 확보 → 런칭 임박해 Expand</b>. Premium은 예산·차별화 의지 둘 다 강할 때만 상한 닻으로 노출. 견적 확정 전 선투입 노동 금지.</div>
+      <h3>수주 시나리오</h3>
+      <table>
+        <tr><th>시나리오</th><th>트리거 (미팅 중 관찰)</th><th>액션</th></tr>
+        <tr><td><b>Best</b> (~30%)</td><td>가용 예산 월 수백만대 확인 + "실무까지 맡기고 싶다" 명확 + 전환 로드맵 데모에 "이거다"</td><td>Essential 즉시 계약 → 1~2주 내 Professional(3~6개월) 전환(진단비 크레딧)</td></tr>
+        <tr><td><b>Base</b> (~45%)</td><td>예산 모호하나 "전환 로드맵 필요" 납득 + 단독결정권 빠른 결정</td><td><b>Essential 300만 단발 선계약</b> → 산출물 만족 시 운영 업셀</td></tr>
+        <tr><td><b>No-Go/Defer</b> (~25%)</td><td>"정보만 얻고 직접 하겠다" or 예산 월 수십만 미만 + 진단 거부</td><td>무료 Quick Tip 1개 + 런칭 임박 시 재오픈 — 풀제안서로 재차 찌르지 않음</td></tr>
+      </table>
+      <div class="co ac"><span class="lab">Challenger 한 문장</span>"대표님, 디마프·아로마티카·히야 셋 다 아니라는 그 감각이 정확합니다 — 그 셋의 공통점은 <b>제품을 먼저 만들고 브랜드를 입혔다</b>는 거고, 대표님은 거꾸로 <b>이미 신뢰받는 대표(IP)를 먼저 가졌습니다.</b> 문제는 그 IP가 런칭 순간에 제품으로 <b>건너가는 다리</b>를 안 놓으면 7개월 쌓은 신뢰가 첫 구매로 안 넘어가고 — 더 위험한 건, <b>매출 0인 지금이 노이즈 없이 그 다리를 놓을 수 있는 가장 싼 구간</b>인데, 런칭 임박해서 시작하면 재고·일정·시즌이 다 한꺼번에 몰린다는 겁니다."</div>
+    </section>
+
+    <section id="consult">
+      <div class="sec-k">MEETING PREP</div>
+      <h2>상담 준비</h2>
+      <p class="lead">핵심 게이트 = <b>"@kalon_jootti(에셋) ↔ 썸머린(브랜드)" 전환 모델 합의</b>. 이게 잡혀야 견적이 산다. 메일 답장 재접촉 단계 — 상담 일시 미확정 가능성(아래는 상담 진행 시 즉시 사용).</p>
+      <div class="co ac"><span class="lab">🎤 아이스브레이킹 (퍼스널 IP 인정·강화 톤)</span>"메일 잘 받았어요, 대표님. @kalon_jootti 먼저 쭉 봤는데 — 런칭일지를 이렇게 미리 쌓아오신 분이 사실 드물어요. 보통은 제품 나오고 나서야 부랴부랴 계정 파시거든요. 대표님은 이미 '사람'이라는 자산을 만들어 두신 거라, 저희가 0에서 시작하는 게 아니라 '있는 걸 어떻게 증폭하느냐' 싸움이에요. 그래서 오늘은 뭘 새로 만들지보다, 대표님이 쌓아온 걸 런칭이랑 어떻게 연결할지를 같이 그려보면 좋겠어요. 그 고민이 메일에 적어주신 핵심이기도 했고요." <span style="color:var(--muted)">— ① 에셋 가치 인정(방어심 해제) ② '대체' 아닌 '레버리지' 규정 ③ 메일 핵심 정조준</span></div>
+      <h3>반드시 물어볼 질문 Top 3</h3>
+      <div class="q"><div class="qn">Q1 🔴 법적·제품 준비 단계 ("실재" 검증)</div><div class="qt">"먼저 그림을 정확히 그리고 싶어서요 — 상표(Violet Herz)랑 썸머린 법인은 대표님 명의로 이미 확보되신 상태일까요? 그리고 제품 자체는 지금 처방·샘플·OEM 어느 단계까지 와 있으세요?"</div><div class="qi">의도: 마케팅의 그릇(법인·상표) 소유 주체 + 제품 단계 = 7개월 역산 기준점. 처방만=빠듯 / OEM 양산 직전=풀가동 가능. 막히면: "아직 정리 중이셔도 괜찮아요 — 지금 어디까지 와 있는지만 알면 됩니다. 보통 이 단계 대표님들이 같이 고민하는 부분이에요."</div></div>
+      <div class="q"><div class="qn">Q2 🔴 에셋↔브랜드 전환 모델 (★핵심 게이트★)</div><div class="qt">"@kalon_jootti를 앞으로 '박현주라는 대표 자체가 IP'인 방향으로 계속 키우실 생각이세요, 아니면 썸머린 제품 계정은 따로 두고 퍼스널은 퍼스널대로 가는 그림이세요? 둘 다 정답이 있는데, 어느 쪽이 더 마음이 가세요?"</div><div class="qi">의도: 대표 핵심 고민("어느 시점에 어떻게 연동")을 선택지로 환원 — (1)통합형 (2)분리·연결형 (3)단계 전환형. 이 선택이 콘텐츠·계정구조·광고 타이밍을 다 결정 = 견적 뼈대. 막히면: "지금 안 고르셔도 돼요. 저희가 세 모델 각각 '런칭일에 어떤 그림이 되는지' 시뮬레이션 해드리고 그걸 보고 고르시는 게 안전해요"(→ Essential 진단 산출물 = 유료화 명분)</div></div>
+      <div class="q"><div class="qn">Q3 · 차별화의 한 문장 ("셋이 아닌 나")</div><div class="qt">"디마프·아로마티카·히야 세 곳 다 '이건 아니다' 싶으셨다고 했는데 — 그 셋의 어떤 점이 걸리셨어요? 그리고 거꾸로, 썸머린을 한 문장으로 '○○한 사람을 위한 썬케어'라고 채운다면 그 ○○ 자리에 뭐가 들어가면 좋겠어요?"</div><div class="qi">의도: 차별화 욕구를 명사로 못 박기 + 차별점을 '제품 특성'이 아니라 '살 사람'에서 역추적. 막히면: "디마프는 너무 감성적이라? 아로마티카는 클린뷰티 색이 강해서? 히야는 대표가 너무 전면에 나서서? 어느 결이 제일 안 맞으셨어요?"(선택지로 좁히기) / 타깃 빈칸 못 채우면: "대표님이 '이 사람한테는 진짜 자신 있게 팔 수 있다' 싶은 한 명을 떠올리면 누구예요? 그 한 명이 답일 때가 많아요."</div></div>
+      <h3>60분 타임라인</h3>
+      <table>
+        <tr><th>구간</th><th>시간</th><th>목표</th><th>체크포인트</th></tr>
+        <tr><td><b>1. 아이스브레이킹</b></td><td>0–7</td><td>퍼스널 IP 운영 인정 → 동료 포지셔닝</td><td>"이미 하고 계신 분" 톤</td></tr>
+        <tr><td><b>2. Discovery</b> 🔴</td><td>7–35</td><td>Q1(실재)→Q2(전환모델·게이트)→Q3(차별화)</td><td>✅ 게이트: 35분에 전환모델 안 잡히면 Q3 버리고라도 Q2 클로징</td></tr>
+        <tr><td><b>3. 방향 제시</b></td><td>35–48</td><td>합의된 전환모델 위에 "런칭일 그림" 1장 + 7개월 로드맵 스케치</td><td>완성 솔루션 X — "이 방향이면 이렇게 됩니다" 가설까지만(무료컨설팅화 방지)</td></tr>
+        <tr><td><b>4. 예산·클로징</b></td><td>48–60</td><td>2단 클로징 — 예산 레인지 확정 → 1주 내 맞춤 견적</td><td>"월 ○○만대냐 ○○○만대냐"만 알아도 헛제안 방지</td></tr>
+      </table>
+      <h3>클로징 — 2단 + Land &amp; Expand</h3>
+      <div class="co ac"><span class="lab">2단 클로징</span><b>1단 (예산 레인지 확정):</b> "비용은 '컨설팅 단품'이냐 '실무 실행까지 함께'냐에 따라 폭이 꽤 달라요. 대표님은 지금 방향을 잡아줄 컨설팅 중심을 생각하세요, 아니면 런칭까지 손발이 되어줄 실행 파트너를 찾으세요? 그리고 런칭까지 마케팅에 잡아두신 예산 레인지가 대략 어느 정도세요?" → <b>2단 (1주 내 맞춤 견적):</b> "오늘 나눈 전환 모델이랑 예산 감안해서 1주 안에 대표님 상황에 딱 맞춘 견적 + 7개월 로드맵으로 정리해 보내드릴게요. 그거 보고 결정하시면 돼요." <b>무료컨설팅화 방지:</b> 방향(What)까지만 무료, How(콘텐츠·계정구조 설계)부터 유료 진단.</div>
+      <div class="co ok"><span class="lab">🎁 Quick Tip (미팅 직전 30초)</span><b>@kalon_jootti 최근 게시물 3개를 직접 열어보고 들어가라.</b> 가장 반응 좋았던 1개의 제목·댓글을 입에 담은 채 시작할 것. pre-launch 1인 대표에게 퍼스널 IP는 자식 같은 존재 — "내 계정을 진짜 봤다"는 신호 하나가 신뢰 절반을 만든다.</div>
+      <div class="co"><span class="lab">상담 후 24h 액션</span>① 당일 감사 메시지 + 방향 그림 사진 ② <b>/상담랩업</b> 실행 — 가설 보정(상표·법인 소유·제품 단계·전환모델 선택·예산 체급), 온도·수주확률 기록 ③ 견적 골격 착수(Essential 크레딧 전환 구조, 공통 단가 동일 유지) ④ 약속 이행 체크 ⑤ 슬랙 3줄 보고(전환모델·온도·다음 스텝 날짜)</div>
+    </section>
+
+    <section id="sources">
+      <div class="sec-k">SOURCES</div>
+      <h2>참고 출처</h2>
+      <p class="lead">① 클라이언트 제공 ② 직접 리서치 (라이브 확인 2026-06-11). 이 문서는 상담 전 PREP — 녹취·랩업 미참조, 진단·니즈·적합도는 전부 가설.</p>
+      <div class="co"><span class="lab">① 클라이언트 제공</span>인테이크 신청 정보 + <b>회신메일(2026-06-11)</b>: 런칭 전·1인 대표·썬 전문 브랜드·런칭 2027.01·퍼스널 인스타 @kalon_jootti 운영·핵심 고민(에셋↔브랜드 연동·런칭 업그레이드)·벤치마크(디마프·아로마티카·히야, "셋 다 아님")·비용/서비스 범위 문의.</div>
+      <div class="co ac"><span class="lab">② 직접 리서치 (2026-06-11 라이브 확인)</span>
+        <b>Instagram</b> @kalon_jootti 표시명 "쥬띠 30년째 깔롱 부리는 중"(firecrawl·exa·WebFetch 3중 교차) ·
+        <b>KIPRIS</b> 상표 "Violet Herz" 썸머린㈜ 3류(선스크린)·35류 등록(2026.05.18) + "summerlin" 8건 무관 확인 ·
+        <b>벤치마크</b> 디마프(news.bizwatch.co.kr/2026/04/24, flex.team blog, @demaf.regina) · 아로마티카(digitalchosun 2020.12, newsis 2021.02, newspenguin) · 히야 HYAAH(hyaah.co.kr, @hyaah.liny, 올리브영 브랜드스토어 A011792) ·
+        <b>썬케어 시장</b> 매일경제(mk.co.kr/12063284, 톤업+131%·올영 톤업비중 35%) · 한국경제(202606094875i, 선 레이어링·구매층 확장) · 뷰티경제(thebk 308043 티몰-80%·308144 ISO시험법) · H&amp;I글로벌리서치(시장규모 CAGR 8.3%) · 뉴스포스트(콜마 플래닛147 ODM 인큐베이팅)
+      </div>
+      <div class="co warn"><span class="lab">미확인 (정직 표기) → 미팅·도구로 해소</span>@kalon_jootti 팔로워·팔로잉·게시물 수·개설시점·바이오 본문·콘텐츠 톤(비로그인 차단·프록시 미러 전멸 — <b>Apify Instagram Scraper 활성화 제안</b>) · 썸머린㈜·Violet Herz↔박현주 명의 연결(법인등기 또는 미팅 질문) · 제품 준비 단계(처방/샘플/OEM) · 월 예산 · 상담 일시 · 디마프 개인↔공식 계정 분리여부·히야 정확 창업연도(자사몰 "8년차" 추정)</div>
+    </section>
+  </main>
+</div>
+
+<footer><div class="in">BRANDRISE (MarketingOS) · 썸머린 NB 상담 준비 PREP v3 — 통합표준 · 회신메일(6/11)+직접 리서치 반영 · 상담 전 · 내부 전용 · 외부 공유 금지</div></footer>
+
+<script>
+const links=[...document.querySelectorAll('nav.toc a')];
+const map=links.map(a=>({a,el:document.querySelector(a.getAttribute('href'))}));
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  links.forEach(l=>l.classList.remove('on'));
+  const m=map.find(m=>m.el===e.target); if(m)m.a.classList.add('on');}})},{rootMargin:'-20% 0px -70% 0px'});
+map.forEach(m=>m.el&&obs.observe(m.el));
+</script>
+</body>
+</html>
