@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  BRANDRISE 견적서 통합표준 템플릿 (HTML · 인디고 클린)                     ║
+  ║  · 슬로우서울 사례로 채워진 "살아있는 템플릿" — 복제 후 콘텐츠만 교체.         ║
+  ║  · 색/컴포넌트를 새로 만들지 말 것: PREP v2와 동일한 인디고 단일 액센트·       ║
+  ║    Pretendard 토큰. ⛔ 클라이언트별 컬러 금지 (2026-06-11 통합표준).        ║
+  ║  배포: quote/{slug}/index.html                                          ║
+  ║  ── 규모별 분기 (quote/_FORMAT.md) ──                                    ║
+  ║  · 1,000만 이하: 이 HTML 단독 (1~2안)                                    ║
+  ║  · 1,000만 초과: 구글시트 정본(quote/_template/quote-builder-template.gs) ║
+  ║    + 이 HTML은 브리핑·발송용 요약 겸용 가능                                ║
+  ║  ── 원칙 ──                                                             ║
+  ║  ① 단가 공유 원칙: 공통 항목 단가는 브랜드 불문 동일. 총액 조정은            ║
+  ║     항목 제거·고유 블록·수량으로만.                                        ║
+  ║  ② 2안 앵커링: 코어 = "시급한 것부터(하한 앵커)", 풀 = "토대를 제대로".      ║
+  ║  ③ ⛔ M/M 노임단가표(투여율·제경비) 금지. "무엇을 주는가 + 얼마"만.          ║
+  ║  ④ 마케팅 방향 가안: 미팅 발언 그대로가 가장 강하다. 직접 경쟁사 예시 금지     ║
+  ║     (우리 작업사례 + 벤치마크 롤모델만).                                    ║
+  ╚══════════════════════════════════════════════════════════════════════╝
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>슬로우서울 — 브랜드 파운데이션 견적서 | BRANDRISE</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.72;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+.hero{background:var(--ink);color:#fff;padding:60px 0 48px}
+.hero .in{max-width:960px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero .sub{font-size:15.5px;color:#cbd5e1;font-weight:300;max-width:680px;line-height:1.75}
+.hero .meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.wrap{max-width:960px;margin:0 auto;padding:36px 40px 100px}
+section{margin-bottom:50px;scroll-margin-top:24px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.lead{font-size:14.5px;color:var(--muted);margin-bottom:20px;line-height:1.7}
+h3{font-size:15px;font-weight:800;margin:24px 0 12px;color:var(--ink2);letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
+.co{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:13.5px;line-height:1.75;border:1px solid var(--line)}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100)} .co.ok{background:var(--ok-50);border-color:#bbf7d0}
+.co.warn{background:var(--warn-50);border-color:#fde68a} .co.bad{background:var(--bad-50);border-color:#fecdd3}
+.co b{color:var(--ink)}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
+.t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
+.t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0 4px}
+th{background:var(--soft);color:var(--ink2);font-weight:700;text-align:left;padding:10px 12px;font-size:11.5px;border-bottom:1px solid var(--line)}
+td{padding:10px 12px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b,td strong{color:var(--ink)}
+td.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+tr.sub td{background:var(--soft);font-weight:700;color:var(--ink)}
+tr.total td{background:var(--ink);color:#fff;font-weight:800;font-size:14px}
+tr.total td b{color:#a5b4fc}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin-bottom:18px;position:relative}
+.plan.rec{border:2px solid var(--ac);box-shadow:0 8px 24px -12px rgba(79,70,229,.4)}
+.plan .rb{position:absolute;top:-12px;left:22px;background:var(--ac);color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.08em;padding:4px 12px;border-radius:9px}
+.plan .pn{font-size:12px;font-weight:800;color:var(--ac);letter-spacing:.1em;margin-bottom:4px}
+.plan .pt{font-size:20px;font-weight:800;letter-spacing:-.02em;margin-bottom:2px}
+.plan .pd{font-size:13px;color:var(--muted);margin-bottom:14px}
+.plan .pp{font-size:26px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.plan .pp small{font-size:13px;font-weight:600;color:var(--muted)}
+.gaan{background:linear-gradient(160deg,var(--ac-50),#fff 70%);border:1px solid var(--ac-100);border-radius:12px;padding:18px 20px;margin:14px 0;font-size:13px;line-height:1.75}
+.gaan .gk{font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--ac);margin-bottom:8px}
+.gaan .arrow{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.gaan .arrow em{font-style:normal;color:var(--ac)}
+.gaan .row{padding:2px 0;color:var(--ink2)} .gaan .row b{color:var(--ink)}
+.tl{border-left:2px solid var(--line);padding-left:20px;margin:10px 0}
+.tl .ph{position:relative;padding:10px 0}
+.tl .ph::before{content:"";position:absolute;left:-26px;top:14px;width:9px;height:9px;border-radius:50%;background:var(--ac)}
+.tl .pt{font-size:12px;font-weight:800;color:var(--ac)}
+.tl .pb{font-size:13px;color:var(--ink2);margin-top:2px}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px}
+@media(max-width:880px){.wrap{padding:28px 22px 80px}.hero .in{padding:0 22px}.hero h1{font-size:28px}}
+@media print{
+  body{background:#fff}
+  .hero,.t,tr.total td,.gaan,.co{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section,.plan{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">QUOTATION · 브랜드라이즈 by HIZ</div>
+  <h1>슬로우서울 브랜드 파운데이션 견적서</h1>
+  <div class="sub">제품을 늘리기 전에, <b style="color:#fff">"슬로우서울은 무엇인가"라는 한 문장</b>부터. 카테고리 포지셔닝과 비즈니스 설계를 하나의 토대로 묶은 견적입니다.</div>
+  <div class="meta">
+    <span class="chip">작성 <b>2026-06-11</b></span>
+    <span class="chip">유효기간 <b>발행일로부터 30일</b></span>
+    <span class="chip">금액 <b>VAT 별도</b></span>
+    <span class="chip">수신 <b>슬로우서울 정의현 대표</b></span>
+  </div>
+</div></div>
+
+<div class="wrap">
+
+  <section id="view">
+    <div class="sec-k">PERSPECTIVE</div>
+    <h2>브랜드라이즈의 관점</h2>
+    <p class="lead">왜 이 구성인가 — 상담에서 확인한 현재와, 이 견적이 만드는 다음.</p>
+    <div class="co ac"><span class="lab">진단 요약 (상담 기반)</span>
+      좋은 원료와 진정성은 이미 있다. 비어 있는 것은 ① "슬로우서울 = 무엇" 한 문장(카테고리 포지셔닝) ② 그 문장이 패키지·채널·상세에 일관되게 보이는 체계. 제품을 먼저 늘리면 이 공백이 SKU 수만큼 복제된다 — <b>토대 먼저, 확장은 그 위에</b>.
+    </div>
+    <div class="co"><span class="lab">이 견적으로 사는 것</span>
+      디자인 시안 N장이 아니라 <b>계속 쓰는 브랜드 자산</b> — 한 번 정립된 포지셔닝·메시지 체계는 이후 모든 제품·채널·콘텐츠가 재사용한다. 1회 구매가 아니라 토대 구매.
+    </div>
+  </section>
+
+  <section id="planA">
+    <div class="sec-k">OPTION A</div>
+    <h2>A안 — 브랜드 기획 (코어)</h2>
+    <p class="lead">지금 가장 시급한 것부터. 포지셔닝·메시지의 토대만 먼저 세우는 안.</p>
+    <div class="plan rec">
+      <div class="rb">추천 시작점</div>
+      <div class="pn">PLAN A · CORE</div>
+      <div class="pt">브랜드 기획 — "순서 지도"</div>
+      <div class="pd">약 4주 · 이런 분께: 자금은 아끼되 방향은 제대로 잡고 싶다, 실행은 내부에서</div>
+      <div class="pp">15,000,000원 <small>(VAT 별도)</small></div>
+    </div>
+    <table>
+      <tr><th style="width:26%">구분</th><th>항목 · 내용</th><th style="width:16%;text-align:right">계약 견적</th></tr>
+      <tr><td rowspan="4"><b>0) 브랜드 기획</b><br><span class="t n">4주</span></td>
+        <td><b>시장 &amp; 경쟁 브랜드 분석</b> — 카테고리 포지셔닝 맵, 채널별 가격대·리뷰·감도 스캐닝</td><td class="num" rowspan="4">15,000,000</td></tr>
+      <tr><td><b>타겟 분석 &amp; 포지셔닝 전략</b> — 핵심 페르소나 도출, "슬로우서울 = 무엇" 한 문장 확정</td></tr>
+      <tr><td><b>메시지 하우스</b> — 핵심 1 + 지지 3 + 증거 매핑 (원료·산지·제법)</td></tr>
+      <tr><td><b>비즈니스 설계</b> — 제품 라인업 우선순위 + 채널 전개 순서 로드맵</td></tr>
+      <tr class="sub"><td>최종 납품 작업물</td><td colspan="2">브랜드 전략 슬라이드(포지셔닝·타겟·메시지 맵) · 라인업/채널 로드맵 1장</td></tr>
+      <tr class="total"><td>합계 (VAT 별도)</td><td></td><td class="num"><b>15,000,000</b></td></tr>
+    </table>
+    <div class="gaan">
+      <div class="gk">마케팅 방향 가안</div>
+      <div class="arrow">쌀 디저트 판매 사이트 <em>→</em> 프리미엄 슬로우푸드 라이프스타일 브랜드</div>
+      <div class="row"><b>현재)</b> 좋은 제품이 "무엇의 브랜드인지" 없이 단품으로 흩어져 있음</div>
+      <div class="row"><b>목표)</b> 카테고리 한 문장 확정 → 모든 제품·채널이 같은 문장을 말하게</div>
+      <div class="row"><b>예시 브랜드)</b> 베지어트(우리 작업사례) · 오설록(벤치마크 롤모델)</div>
+    </div>
+  </section>
+
+  <section id="planB">
+    <div class="sec-k">OPTION B</div>
+    <h2>B안 — 브랜드 기획 + BI·패키지 디자인 (풀)</h2>
+    <p class="lead">토대를 제대로. A안의 전략이 보이는 형태(BI·패키지)까지 한 번에.</p>
+    <div class="plan">
+      <div class="pn">PLAN B · FULL</div>
+      <div class="pt">브랜드 기획 + BI·패키지</div>
+      <div class="pd">약 10주 · 이런 분께: 올해 안에 리뉴얼 출시까지, 전략과 디자인의 단절 없이</div>
+      <div class="pp">38,000,000원 <small>(VAT 별도)</small></div>
+    </div>
+    <table>
+      <tr><th style="width:26%">구분</th><th>항목 · 내용</th><th style="width:16%;text-align:right">계약 견적</th></tr>
+      <tr><td rowspan="2"><b>0) 브랜드 기획</b><br><span class="t n">4주</span></td>
+        <td>A안 전체 (시장·타겟·포지셔닝·메시지 하우스·비즈니스 설계)</td><td class="num" rowspan="2">15,000,000</td></tr>
+      <tr><td><b>브랜드북</b> — 국문 브랜드북 (BI 적용 전제 확장판)</td></tr>
+      <tr class="sub"><td>소계</td><td colspan="2" class="num">15,000,000</td></tr>
+      <tr><td rowspan="3"><b>1) BI·패키지 디자인</b><br><span class="t n">6주</span></td>
+        <td><b>BI 리뉴얼</b> — 로고·컬러·타이포 시스템 (확정 포지셔닝 기반)</td><td class="num" rowspan="3">23,000,000</td></tr>
+      <tr><td><b>패키지 디자인 2종</b> — 주력 2종 패키지·라벨, 인증·산지 신뢰자산 시각화</td></tr>
+      <tr><td><b>MD 제안용 셀시트</b> — 입점·바이어 제안용 1종</td></tr>
+      <tr class="sub"><td>소계</td><td colspan="2" class="num">23,000,000</td></tr>
+      <tr class="total"><td>합계 (VAT 별도)</td><td></td><td class="num"><b>38,000,000</b></td></tr>
+    </table>
+    <div class="gaan">
+      <div class="gk">마케팅 방향 가안</div>
+      <div class="arrow">전략 따로 디자인 따로 <em>→</em> 한 문장이 로고·패키지·셀시트까지 관통</div>
+      <div class="row"><b>현재)</b> 패키지에 브랜드가 안 보임 — 제품 사진만으로 팔리는 구조</div>
+      <div class="row"><b>목표)</b> 매대·피드에서 0.5초에 "슬로우서울"이 잡히는 시각 체계</div>
+      <div class="row"><b>예시 브랜드)</b> 타이거모닝(패키지·입점 사례) · 워커비(벤치마크)</div>
+    </div>
+  </section>
+
+  <section id="flow">
+    <div class="sec-k">SCHEDULE</div>
+    <h2>예상 진행 순서</h2>
+    <div class="tl">
+      <div class="ph"><div class="pt">W1~2 · 착수</div><div class="pb">킥오프 + 자료 수령 + 시장·경쟁 분석</div></div>
+      <div class="ph"><div class="pt">W3~4 · 전략 확정</div><div class="pb">포지셔닝 한 문장·메시지 하우스 리뷰 → 확정 (B안: BI 착수 게이트)</div></div>
+      <div class="ph"><div class="pt">W5~8 · 디자인 (B안)</div><div class="pb">BI 시안 → 패키지 전개 → 셀시트</div></div>
+      <div class="ph"><div class="pt">W9~10 · 납품</div><div class="pb">최종 파일 납품 + 적용 가이드 리뷰콜</div></div>
+    </div>
+  </section>
+
+  <section id="discuss">
+    <div class="sec-k">NEXT</div>
+    <h2>추가 논의 영역 <span class="t n">후속 단계 · 별도 견적</span></h2>
+    <table>
+      <tr><th style="width:30%">항목</th><th>내용</th></tr>
+      <tr><td><b>인스타그램 셋업·운영</b></td><td>무드보드 + 콘텐츠 캘린더 + 촬영 (BI 확정 후 착수가 효율적)</td></tr>
+      <tr><td><b>자사몰·스마트스토어 정비</b></td><td>상세페이지 리뉴얼 + 구매 전환 퍼널</td></tr>
+      <tr><td><b>퍼포먼스 광고</b></td><td>포지셔닝·랜딩 정비 후 소액 테스트부터 (월 단위 리테이너)</td></tr>
+    </table>
+  </section>
+
+  <section id="notes">
+    <div class="sec-k">NOTES</div>
+    <h2>비고</h2>
+    <div class="co"><span class="lab">공통 조건</span>
+      · 본 견적의 금액은 <b>VAT 별도</b> 기준입니다.<br>
+      · 인쇄·샘플 제작·광고비·촬영 실비(스튜디오·모델 등)·물류는 별도입니다.<br>
+      · 결제: 착수금 50% / 중간금 30% / 잔금 20%.<br>
+      · 계약 후 브랜드 방향성이 크게 변경될 경우 일정·비용이 조정될 수 있습니다.<br>
+      · 견적 유효기간: 발행일로부터 30일.
+    </div>
+  </section>
+
+</div>
+
+<footer>BRANDRISE (MarketingOS) by HIZ · 슬로우서울 브랜드 파운데이션 견적서 — 비공개 · 수신처 외 공유 금지</footer>
+
+</body>
+</html>
