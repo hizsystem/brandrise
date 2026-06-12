@@ -32,5 +32,5 @@
 
 - 견적 상세 규칙(규모 분기·5블록·마케팅 가안·심플화): `quote/_FORMAT.md`
 - PREP 채워진 사례: `research/naturalgoodthings-v2/` · `research/summerlin-v2/`
-- 진단서 사례: `research/natural-good-things/진단서_ver.nj/` (구 오렌지 — 템플릿이 인디고 표준)
+- 진단서 사례: `research/natural-good-things/diagnosis_ver.nj/` (구 오렌지 — 템플릿이 인디고 표준)
 - 견적 사례: `research/natural-good-things/견적서v2_ver.nj/` (블록형 원본) · `quote/slowseoul/` (경량 2안) · `quote/simbak/` (시트 빌더, 2026-06-08)
