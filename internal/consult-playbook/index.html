@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE 상담 매뉴얼 (플레이북) v0.1 · 인디고 클린
+  · 목적: 대표·실장 상담·견적콜 녹취 → 반복 가능한 플레이북. "복제 뜨고 암기하고 소화."
+  · v0.1 출처: NGT 상담 녹취(권윤정 대표, 2026-06-10) 1건. → 애라 실장·견적콜 녹취로 확장.
+  · 영업 프로세스 1차(상담)·2차(견적) 단계와 연동. 배포: internal/consult-playbook/
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>브랜드라이즈 상담 매뉴얼 (플레이북) | BRANDRISE 내부</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.72;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+.hero{background:var(--ink);color:#fff;padding:58px 0 46px}
+.hero .in{max-width:980px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:clamp(28px,4.6vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 3px;border-radius:2px}
+.hero .sub{font-size:15.5px;color:#cbd5e1;font-weight:300;max-width:720px}
+.hero .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.minitoc{max-width:980px;margin:0 auto;padding:14px 40px 0;font-size:12.5px;color:var(--muted)}
+.minitoc a{color:var(--muted);text-decoration:none;font-weight:600}
+.minitoc a:hover{color:var(--ac)}
+.wrap{max-width:980px;margin:0 auto;padding:30px 40px 100px}
+section{margin-bottom:58px;scroll-margin-top:18px}
+.sec-k{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:6px;padding:4px 10px;margin-bottom:12px}
+h2{font-size:25px;font-weight:800;letter-spacing:-.02em;margin-bottom:7px}
+.lead{font-size:14.5px;color:var(--muted);margin-bottom:22px;max-width:780px}
+h3{font-size:16px;font-weight:800;margin:26px 0 8px;letter-spacing:-.01em}
+
+.co{border-radius:12px;padding:14px 18px;margin:14px 0;font-size:13.5px;line-height:1.7;border:1px solid var(--line)}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100)} .co.warn{background:var(--warn-50);border-color:#fde68a}
+.co.ok{background:var(--ok-50);border-color:#bbf7d0}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.warn .lab{color:var(--warn)} .co.ok .lab{color:var(--ok)}
+.co b{color:var(--ink)}
+
+/* 원칙 카드 */
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:16px 0}
+.pcard{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
+.pcard .pn{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:var(--ac);color:#fff;font-size:13px;font-weight:800;margin-bottom:10px}
+.pcard .pt{font-size:15px;font-weight:800;margin-bottom:6px;letter-spacing:-.01em}
+.pcard .pb{font-size:12.5px;color:var(--ink2);line-height:1.6}
+
+/* 단계 플레이 */
+.flow{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:14px 0}
+.step{display:grid;grid-template-columns:120px 1fr;border-top:1px solid var(--line2)}
+.step:first-child{border-top:none}
+.step .sk{padding:16px 16px;font-size:12.5px;font-weight:800;color:var(--ac);background:var(--ac-50);border-right:1px solid var(--line2);display:flex;align-items:center}
+.step .sc{padding:15px 18px}
+.step .st{font-size:14.5px;font-weight:800;margin-bottom:4px}
+.step .sd{font-size:12.5px;color:var(--ink2);line-height:1.6}
+
+/* 멘트(인용) */
+.say{border-left:3px solid var(--ac);background:var(--soft);border-radius:0 10px 10px 0;padding:10px 16px;margin:8px 0;font-size:13px;color:var(--ink);line-height:1.65}
+.say::before{content:"\201C";color:var(--ac);font-weight:800;margin-right:3px}
+.say::after{content:"\201D";color:var(--ac);font-weight:800;margin-left:2px}
+.say .src{display:block;font-size:11px;color:var(--muted);font-weight:600;margin-top:5px}
+
+/* 온도 표 */
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:left;padding:10px 13px;font-size:12px}
+td{padding:11px 13px;border-top:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b{color:var(--ink)}
+tbody tr:nth-child(even) td{background:var(--soft)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px}
+.t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+
+footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:980px;margin:0 auto}
+@media(max-width:880px){
+  .wrap,.hero .in,.minitoc{padding-left:22px;padding-right:22px}
+  .step{grid-template-columns:1fr} .step .sk{border-right:none;border-bottom:1px solid var(--line2)}
+}
+@media print{
+  body{background:#fff}
+  .hero,.pcard .pn,.step .sk,.co,.say,th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section,.pcard,.flow,.co,.say,table{break-inside:avoid}
+  .minitoc{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">BRANDRISE · 상담 매뉴얼 · PLAYBOOK v0.1</div>
+  <h1>브랜드라이즈 상담 <span class="hl">플레이북</span></h1>
+  <div class="sub">대표·실장의 상담을 <b style="color:#fff">복제 → 암기 → 소화</b>. 녹취에서 반복되는 무브를 뽑아 누구나 같은 수준으로 상담하게 한다.</div>
+  <div class="meta">
+    <span class="chip">버전 <b>v0.1 (초안)</b></span>
+    <span class="chip">출처 <b>NGT 상담 녹취 · 권윤정 대표</b></span>
+    <span class="chip">연동 <b>영업 프로세스 1·2차</b></span>
+    <span class="chip">확장예정 <b>애라 실장·견적콜 녹취</b></span>
+  </div>
+</div></div>
+
+<div class="minitoc">· <a href="#what">매뉴얼이란</a> · <a href="#principles">상담 5대 원칙</a> · <a href="#play">단계별 플레이</a> · <a href="#quote">견적 포지셔닝</a> · <a href="#temp">온도 읽기</a> · <a href="#case">케이스 NGT</a></div>
+
+<div class="wrap">
+
+  <section id="what">
+    <div class="sec-k">WHY</div>
+    <h2>이 매뉴얼이 하는 일</h2>
+    <p class="lead">영업이 "대표 개인기"에 묶이면 회사가 못 큰다. 대표·실장의 상담·견적콜을 <b>녹취 → 반복 가능한 플레이북</b>으로 만들어, 신입도 같은 무브를 쓸 수 있게 한다.</p>
+    <div class="co ac"><span class="lab">읽는 법</span>아래 <b>원칙</b>은 "왜 그렇게 말하는가", <b>단계별 플레이</b>는 "언제 무엇을 말하는가", <b>멘트</b>는 대표의 실제 표현이다. 외우지 말고 <b>왜 먹히는지</b>를 소화할 것.</div>
+    <div class="co warn"><span class="lab">v0.1 한계</span>현재 <b>NGT 상담 1건(대표)</b>에서 추출. 애라 실장 상담·견적콜 녹취가 쌓이면 v0.2로 확장(특히 실장의 1차 분별·견적콜 클로징). <b>임애라 실장 검토·보강 예정.</b></div>
+  </section>
+
+  <section id="principles">
+    <div class="sec-k">PRINCIPLES</div>
+    <h2>상담 5대 원칙</h2>
+    <p class="lead">NGT 녹취에서 반복된, 수주를 만드는 핵심 무브.</p>
+    <div class="principles">
+      <div class="pcard"><div class="pn">1</div><div class="pt">진단을 "근거 패키지"로 판다</div><div class="pb">"리브랜딩 비용"이 아니라 <b>"의사결정할 근거가 없어서 못 정하는 문제"</b>를 푸는 패키지로 포지셔닝. 고객의 진짜 갈증을 입구로.</div></div>
+      <div class="pcard"><div class="pn">2</div><div class="pt">외부 주도 명분을 준다</div><div class="pb">"직원은 리브랜딩 못 한다, 내부에서 하면 망한다." 외부(HIZ)가 해야 하는 이유를 논리로 깔아 <b>수주 명분</b>을 만든다.</div></div>
+      <div class="pcard"><div class="pn">3</div><div class="pt">커머디티를 디밸류한다</div><div class="pb">"예쁜 패키지·예쁜 글은 ChatGPT도 한다." 흔한 것을 깎아내리고 <b>진단·전략(우리만 하는 것)</b>의 가치를 띄운다.</div></div>
+      <div class="pcard"><div class="pn">4</div><div class="pt">범위를 선긋는다</div><div class="pb">"광고 직접 운영은 너무 헤비, 안 받습니다." <b>안 할 것을 명확히 거절</b>해서 오히려 신뢰와 전문성을 산다.</div></div>
+      <div class="pcard"><div class="pn">5</div><div class="pt">데이터를 열게 + 날짜를 박는다</div><div class="pb">"메타·매출·회원수 주세요" = 진단 입구 클로징. "12월 세일 → 1월 런칭" <b>캘린더로 긴급도를 고정</b>해 미룸을 막는다.</div></div>
+    </div>
+  </section>
+
+  <section id="play">
+    <div class="sec-k">PLAY · 1차 상담</div>
+    <h2>단계별 플레이 — 무엇을, 언제</h2>
+    <p class="lead">영업 프로세스 1차(상담) 흐름에 매핑. 각 단계의 목표와 대표의 실제 멘트.</p>
+    <div class="flow">
+      <div class="step"><div class="sk">콜 · 규모 파악</div><div class="sc"><div class="st">매출·체급·열을 먼저 읽는다</div><div class="sd">대면 전 콜에서 매출 규모·관심도·가능성을 가늠해 담당(대표 별표 vs 일반)을 가른다. "돈 냄새"를 맡는 감각이 배치를 결정.</div></div></div>
+      <div class="step"><div class="sk">오프닝</div><div class="sc"><div class="st">고객이 "진짜 못 푸는 것"을 말하게 한다</div><div class="sd">제품·매출 히스토리를 듣되, 표면 요청(리브랜딩) 아래의 진짜 페인을 끌어낸다.<div class="say">대표님이 아직 잘 모르겠어서 결정을 못 하시는 거예요. 정보를 제대로 넣어주는 사람이 없는 거죠<span class="src">— 권윤정 (27:56)</span></div></div></div></div>
+      <div class="step"><div class="sk">축 재정의</div><div class="sc"><div class="st">숨은 축을 찾아 무게중심을 옮긴다</div><div class="sd">고객/브리프가 생각한 축이 아니라, 상담 중 드러난 진짜 해자로 축을 재정의(NGT: 여성웰니스 → <b>"100% 제조사 정통성"</b>).<div class="say">100% 제조사 기반이 강점이에요. 소비자는 원산지에서 야채 사 먹고 싶어 한다. 그거예요<span class="src">— 권윤정 (19:37)</span></div></div></div></div>
+      <div class="step"><div class="sk">진단 포지셔닝</div><div class="sc"><div class="st">진단 = 의사결정 근거로 띄운다 (원칙 1·3)</div><div class="sd">진단을 비용이 아니라 "건강성 검사 + 결정 근거"로.<div class="say">리브랜딩은 동의. 근데 패키지 예쁘게 바꾸고 예쁜 글 쓰는 건 ChatGPT가 잘한다. 더 중요한 건 지금 우리의 건강성을 진단하는 것<span class="src">— 권윤정 (11:50)</span></div></div></div></div>
+      <div class="step"><div class="sk">골격 제시</div><div class="sc"><div class="st">6개월 3단계 로드맵을 그린다</div><div class="sd">서베이→사업계획 / 리브랜딩(외부 주도, 원칙 2) / 마케팅(예산 안에서 선택). "3개월 성과는 거짓말, 6개월 프로젝트."<div class="say">직원은 리브랜딩 못 합니다. 내부에서 하면 대부분 망해요. 저 같은 외부 사람은 쉽게 하죠<span class="src">— 권윤정 (14:33)</span></div></div></div></div>
+      <div class="step"><div class="sk">범위 선긋기</div><div class="sc"><div class="st">안 할 것을 거절한다 (원칙 4)</div><div class="sd">광고 직접 운영은 헤비하다며 제외. 현 대행 ROAS 0.3은 이관 권고만.<div class="say">ROAS 0.3은 바로 이관해야죠. 다 모았다가 한 번을 제대로 터뜨리는 걸 추천<span class="src">— 권윤정 (36:18)</span></div></div></div></div>
+      <div class="step"><div class="sk">클로징</div><div class="sc"><div class="st">데이터를 열게 하고 날짜를 박는다 (원칙 5)</div><div class="sd">진단 입구를 합의로 만들고, 데이터 요청 + 캘린더로 긴급도 고정.<div class="say">진단도 받고 견적도 받고 싶어서 → 메타 데이터 + 월별·채널별·제품별 매출 + 회원수 주세요<span class="src">— 대표/권윤정 (54:00)</span></div></div></div></div>
+    </div>
+    <div class="co ok"><span class="lab">상담 후</span>3일 내 <b>진단서 + 견적서</b> 송부. 진단의 병목 번호가 견적 블록에 1:1 대응 (영업 프로세스 1차→2차 연결).</div>
+  </section>
+
+  <section id="quote">
+    <div class="sec-k">QUOTE</div>
+    <h2>견적 포지셔닝 원칙</h2>
+    <div class="co ac"><span class="lab">앵커링</span><b>진입 앵커 = 작은 yes</b> (데이터 진단 단독 착수 가능). <b>A/B 2안</b>으로 "차이를 눈으로" 보게 해 권장안을 선택하게 한다. 공통 항목 단가는 브랜드 불문 동일, 차이는 블록 깊이로.</div>
+    <div class="co"><span class="lab">티어 기준</span>대표가 들어가는 컨설팅 = 최소 5천(또는 3~4천 진입가, 억대 확장 확인 시). 견적은 싯가 — 기업 규모·브랜딩 의지로 총액을 잡고 기획파트로 미세조정.</div>
+    <p style="font-size:12.5px;color:var(--muted);margin-top:6px">※ 견적콜 단계의 멘트·반론 처리는 <b>견적콜 녹취 확보 후 v0.2</b>에서 보강.</p>
+  </section>
+
+  <section id="temp">
+    <div class="sec-k">READ</div>
+    <h2>온도 읽기 — 관심·긴급·예산</h2>
+    <p class="lead">상담 중 고객의 3축 온도를 읽어 클로징 압력을 조절한다 (NGT 기준 예시).</p>
+    <table>
+      <tr><th style="width:130px">축</th><th style="width:90px">신호</th><th>읽는 법 · 대응</th></tr>
+      <tr><td><b>관심도</b></td><td><span class="t b">높음 ★★★★</span></td><td>본인이 직접 신청, 라이브로 데이터까지 연다 → 진단 입구는 거의 확정. <b>입구를 빨리 합의</b>로 굳힌다.</td></tr>
+      <tr><td><b>긴급도</b></td><td><span class="t n">중간 ★★★</span></td><td>위기의식은 있으나 "몇 년째 못 정함" → <b>날짜(세일·런칭)로 데드라인을 박아</b> 미룸을 차단.</td></tr>
+      <tr><td><b>예산의지</b></td><td><span class="t n">중간 ★★★</span></td><td>컨설팅엔 열려 있으나 "다 바꿀 순 없다" 신중 → <b>단계적 흡수</b>(진입 앵커 → 확장)로 부담을 쪼갠다.</td></tr>
+    </table>
+  </section>
+
+  <section id="case">
+    <div class="sec-k">CASE</div>
+    <h2>케이스 — NGT (이 매뉴얼의 원천)</h2>
+    <p class="lead">2026-06-10 NGT 김수안 대표 상담(1:44). 진단+견적 송부 합의까지 도달. 위 원칙·플레이가 실제로 쓰인 한 건.</p>
+    <table>
+      <tr><th style="width:150px">무브</th><th>이 상담에서</th></tr>
+      <tr><td><b>축 재정의</b></td><td>"여성 웰니스" → <b>"100% 제조사 정통성"</b> (자사 원료공장·K-낙산균 = 경쟁사 못 따라오는 해자)</td></tr>
+      <tr><td><b>진단 포지셔닝</b></td><td>"건강성 진단이 먼저" — 리브랜딩 견적이 아니라 의사결정 근거로</td></tr>
+      <tr><td><b>외부 주도 명분</b></td><td>"직원은 리브랜딩 못 한다" → 외부 HIZ가 해야 하는 논리</td></tr>
+      <tr><td><b>범위 선긋기</b></td><td>광고 직접 운영 제외, ROAS 0.3 이관 권고만</td></tr>
+      <tr><td><b>클로징</b></td><td>데이터 요청 + "12월 세일 → 1월 런칭" 캘린더로 긴급도 고정</td></tr>
+    </table>
+    <div class="co ok"><span class="lab">결과</span>진단 입구 수주확률 80% · 6개월 리테이너 50%(진단 퀄리티가 클로징 레버). 전체 녹취·상담랩업은 로컬 비공개(`13.내추럴굿띵스`).</div>
+  </section>
+
+</div>
+
+<footer>
+  <b>BRANDRISE</b> by HIZ · 상담 매뉴얼 (플레이북) v0.1 · 내부<br>
+  출처: NGT 상담 녹취(권윤정 대표) · 애라 실장·견적콜 녹취로 확장 예정 (with 임애라 실장)<br>
+  © 2026 브랜드라이즈 by HIZ · 비공개 내부 문서
+</footer>
+
+</body>
+</html>
