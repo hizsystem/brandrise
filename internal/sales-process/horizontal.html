@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE 영업 프로세스 매뉴얼 (내부) · 가로형 프로세스 맵 · 인디고 클린
+  · index.html(세로형)과 동일 콘텐츠/디자인 토큰. 레이아웃만 5페이즈 가로 + 스텝 세로 스택.
+  · 출처: 2026-06-12 권윤정 대표 주재 시스템화 회의.
+  배포: internal/sales-process/horizontal.html (게이트 폴더)
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>브랜드라이즈 영업 프로세스 (가로형) | BRANDRISE 내부</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.7;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+.hero{background:var(--ink);color:#fff;padding:50px 0 40px}
+.hero .in{max-width:1320px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:18px}
+.hero h1{font-size:clamp(26px,4vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 3px;border-radius:2px}
+.hero .sub{font-size:15px;color:#cbd5e1;font-weight:300;max-width:760px}
+.hero .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.hero .chip a{color:#a5b4fc;text-decoration:none}
+
+.wrap{max-width:1320px;margin:0 auto;padding:28px 40px 90px}
+.sec-k{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:6px;padding:4px 10px;margin-bottom:12px}
+h2{font-size:23px;font-weight:800;letter-spacing:-.02em;margin-bottom:7px}
+.lead{font-size:14px;color:var(--muted);margin-bottom:22px;max-width:820px}
+
+/* ===== 가로 프로세스 맵 ===== */
+.pmap{display:flex;align-items:stretch;gap:30px;overflow-x:auto;padding:6px 2px 20px}
+.phase{flex:1 1 0;min-width:236px;display:flex;flex-direction:column;position:relative}
+.phase:not(:last-child)::after{content:"›";position:absolute;right:-22px;top:30px;transform:translateY(-50%);font-size:24px;font-weight:800;color:var(--ac);z-index:2}
+.ph-h{background:var(--ac-50);border:1px solid var(--ac-100);border-radius:12px 12px 0 0;padding:12px 15px}
+.ph-h .k{font-size:10.5px;font-weight:800;letter-spacing:.12em;color:var(--ac);margin-bottom:2px}
+.ph-h .n{font-size:16.5px;font-weight:800;color:var(--ink)}
+.ph-h .nd{font-size:11px;color:var(--muted);font-weight:500;margin-top:2px}
+.ph-body{border:1px solid var(--line);border-top:none;border-radius:0 0 12px 12px;background:var(--card);
+  padding:11px;display:flex;flex-direction:column;gap:8px;flex:1}
+.pstep{border:1px solid var(--line2);border-radius:9px;padding:9px 11px;background:var(--soft)}
+.pstep .pt{font-size:12.5px;font-weight:800;display:flex;gap:7px;align-items:flex-start;line-height:1.35}
+.pstep .pn{display:inline-flex;width:19px;height:19px;flex:none;align-items:center;justify-content:center;
+  font-size:10.5px;font-weight:800;color:#fff;background:var(--ac);border-radius:6px;margin-top:1px}
+.pstep .pd{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5;padding-left:26px}
+.pstep .pg{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px;padding-left:26px}
+.pstep.chan .pt{padding-left:0} .pstep.chan .pd,.pstep.chan .pg{padding-left:0}
+.pstep .dot{width:7px;height:7px;border-radius:50%;background:var(--ac);flex:none;margin-top:6px}
+.tg{font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:5px;white-space:nowrap}
+.tg.k{background:var(--warn-50);color:var(--warn)}
+.tg.o{background:var(--ac-50);color:var(--ac)}
+.tg.s{background:var(--ink);color:#fff}
+.tg.n{background:#f1f5f9;color:var(--muted)}
+.ph-out{margin-top:auto;padding:9px 11px 2px;font-size:11px;color:var(--ink2);line-height:1.55}
+.ph-out .lab{display:block;font-size:9.5px;font-weight:800;letter-spacing:.1em;color:var(--ac);text-transform:uppercase;margin-bottom:3px}
+.ph-out b{color:var(--ink)}
+.phase.win .ph-h{background:var(--ink);border-color:var(--ink)}
+.phase.win .ph-h .k{color:#a5b4fc} .phase.win .ph-h .n{color:#fff} .phase.win .ph-h .nd{color:#cbd5e1}
+
+/* 자동화/분별 밴드 */
+.co{border-radius:12px;padding:13px 18px;margin:8px 0 0;font-size:13px;line-height:1.7;border:1px solid var(--line)}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100)} .co.warn{background:var(--warn-50);border-color:#fde68a}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.warn .lab{color:var(--warn)}
+.co b{color:var(--ink)}
+
+/* 산출물 */
+.deliv{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 0}
+.dcard{border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden;text-decoration:none;color:inherit;display:block;transition:.15s}
+.dcard:hover{border-color:var(--ac-100);box-shadow:0 4px 14px rgba(79,70,229,.08)}
+.dcard .dh{padding:12px 16px;font-size:13.5px;font-weight:800;background:var(--ac-50);color:var(--ac-700);border-bottom:1px solid var(--ac-100);display:flex;justify-content:space-between;align-items:center}
+.dcard .dh .ph{font-size:10.5px;font-weight:800;background:var(--ac);color:#fff;border-radius:99px;padding:2px 8px}
+.dcard .db{padding:12px 16px;font-size:12px;color:var(--ink2);line-height:1.6}
+.dcard .db .lk{color:var(--ac);font-weight:700;font-size:11.5px}
+
+.block{margin-top:48px}
+footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:1320px;margin:40px auto 0}
+
+@media(max-width:1000px){
+  .pmap{flex-direction:column;gap:14px}
+  .phase{min-width:0}
+  .phase:not(:last-child)::after{content:"";display:none}
+  .ph-h{border-radius:12px 12px 0 0}
+}
+@media print{
+  body{background:#fff}
+  .hero,.phase.win .ph-h,.pstep .pn,.co,.dcard .dh{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .phase,.pstep,.dcard,.co{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">BRANDRISE · 영업 시스템 매뉴얼 · 가로형</div>
+  <h1>브랜드라이즈 영업 <span class="hl">프로세스 맵</span></h1>
+  <div class="sub">유입 → 1차 상담 → 2차 견적 → 3차 계약 → 수주를 <b style="color:#fff">한 줄 가로 흐름</b>으로. 페이즈는 가로, 세부 스텝은 그 아래 — 전체 영업 동선을 한눈에.</div>
+  <div class="meta">
+    <span class="chip">단계 <b>유입 + 3차</b></span>
+    <span class="chip">산출물 <b>4종</b></span>
+    <span class="chip">자동 알림톡 <b>3 포인트</b></span>
+    <span class="chip"><a href="./index.html">↕ 세로형 매뉴얼 보기</a></span>
+  </div>
+</div></div>
+
+<div class="wrap">
+
+  <section>
+    <div class="sec-k">PROCESS MAP</div>
+    <h2>전체 영업 동선 — 가로 한 줄</h2>
+    <p class="lead">어디로 유입돼도 종착은 <b>브랜드라이즈 진단(상담 신청)</b>. 페이즈마다 표준 산출물과 자동 알림톡이 붙는다. 헤더 색 다크 = 최종 수주.</p>
+
+    <div class="pmap">
+
+      <!-- 유입 -->
+      <div class="phase">
+        <div class="ph-h"><div class="k">INFLOW</div><div class="n">유입 · 영업</div><div class="nd">자체·정부지원·대표 인프라</div></div>
+        <div class="ph-body">
+          <div class="pstep chan"><div class="pt"><span class="dot"></span>자체 채널 · 브랜드라이즈</div><div class="pd" style="padding-left:0">유튜브 · 고벤처포럼 · 단톡방 광고 (주력)</div></div>
+          <div class="pstep chan"><div class="pt"><span class="dot"></span>정부지원사업</div><div class="pd" style="padding-left:0">수요 크나 이탈 多 → 데이터 측정용</div></div>
+          <div class="pstep chan"><div class="pt"><span class="dot"></span>대표 인프라</div><div class="pd" style="padding-left:0">인스타 등 개인 자산 → 통합·독립이 목표</div></div>
+          <div class="ph-out"><span class="lab">1차 분별 · 감각</span><b>매출 규모 · 열 · 가능성</b> 체크 → 담당 배치. <b>대표 별표(★)</b> / 일반 분기.</div>
+        </div>
+      </div>
+
+      <!-- 1차 상담 -->
+      <div class="phase">
+        <div class="ph-h"><div class="k">PHASE 1</div><div class="n">1차 · 상담</div><div class="nd">신청 → 콜 → 상담 → 산출물</div></div>
+        <div class="ph-body">
+          <div class="pstep"><div class="pt"><span class="pn">1</span>상담 신청</div><div class="pd">광고·랜딩·채널에서 접수(진단)</div><div class="pg"><span class="tg k">🔔 신청 접수</span></div></div>
+          <div class="pstep"><div class="pt"><span class="pn">2</span>콜 — 견적·규모 파악</div><div class="pd">매출 규모·열·가능성 1차 확인 + 유입경로</div><div class="pg"><span class="tg o">유입경로</span></div></div>
+          <div class="pstep"><div class="pt"><span class="pn">3</span>스케줄링 — 담당 배치</div><div class="pd">담당·일정 배치(시트). 대표 별표 분기</div><div class="pg"><span class="tg k">🔔 일정 확정</span><span class="tg s">★ 대표</span></div></div>
+          <div class="pstep"><div class="pt"><span class="pn">4</span>메일 — 추가 질문</div><div class="pd">상담 전 질문지 발송, 자료 회신 유도</div><div class="pg"><span class="tg n">사전 자료</span></div></div>
+          <div class="pstep"><div class="pt"><span class="pn">5</span>PREP 작성</div><div class="pd">내부 상담 준비 — 리서치 기반 가설</div><div class="pg"><span class="tg o">📄 PREP</span></div></div>
+          <div class="pstep"><div class="pt"><span class="pn">6</span>상담 진행</div><div class="pd">대면/콜. 별표는 대표가 직접 전략 제시</div><div class="pg"><span class="tg n">일반</span><span class="tg s">★ 대표</span></div></div>
+          <div class="pstep"><div class="pt"><span class="pn">7</span>상담 완료</div><div class="pd">완료 → 3일 내 진단서 발송</div><div class="pg"><span class="tg k">🔔 완료</span></div></div>
+          <div class="ph-out"><span class="lab">1차 산출물</span><b>PREP</b>(내부) + <b>진단서</b>(고객 제출·견적 근거)</div>
+        </div>
+      </div>
+
+      <!-- 2차 견적 -->
+      <div class="phase">
+        <div class="ph-h"><div class="k">PHASE 2</div><div class="n">2차 · 견적</div><div class="nd">초안 → 컨펌 → 발송 → 견적콜</div></div>
+        <div class="ph-body">
+          <div class="pstep"><div class="pt"><span class="pn">1</span>견적 초안 작성</div><div class="pd">진단 병목 → 견적 블록. 규모별 분기(HTML/시트)</div><div class="pg"><span class="tg o">📄 견적서</span></div></div>
+          <div class="pstep"><div class="pt"><span class="pn">2</span>컨펌 — 자체/대표</div><div class="pd">내부 검토 후 대표 컨펌. 총액 티어 확인</div><div class="pg"><span class="tg s">★ 컨펌</span></div></div>
+          <div class="pstep"><div class="pt"><span class="pn">3</span>견적 발송</div><div class="pd">A/B안 제시 — "차이를 눈으로"(추천안 강조)</div><div class="pg"><span class="tg o">A / B안</span></div></div>
+          <div class="pstep"><div class="pt"><span class="pn">4</span>견적콜</div><div class="pd">설명 부족 건 보완. 안 풀리면 대표 SOS</div><div class="pg"><span class="tg n">결정 지원</span></div></div>
+          <div class="ph-out"><span class="lab">2차 산출물</span><b>견적서(A/B안)</b> — A=진입 앵커, B=권장(풀)</div>
+        </div>
+      </div>
+
+      <!-- 3차 계약 -->
+      <div class="phase">
+        <div class="ph-h"><div class="k">PHASE 3</div><div class="n">3차 · 계약</div><div class="nd">계약 → 셋업(마스터시트)</div></div>
+        <div class="ph-body">
+          <div class="pstep"><div class="pt"><span class="pn">1</span>계약</div><div class="pd">범위·금액 확정. 데이터 진단 단독 착수도 옵션</div><div class="pg"><span class="tg n">수주</span></div></div>
+          <div class="pstep"><div class="pt"><span class="pn">2</span>셋업 — 마스터시트</div><div class="pd">월간 플랜·관리 데이터. 첫 워크숍 대표 참여</div><div class="pg"><span class="tg o">마스터시트</span></div></div>
+          <div class="ph-out"><span class="lab">첫 끝발</span>첫 워크숍·디자인 미팅은 <b>대표</b>가 들어가 전략→녹음→매뉴얼화. 다음부터 팀이 받는다.</div>
+        </div>
+      </div>
+
+      <!-- 수주 -->
+      <div class="phase win">
+        <div class="ph-h"><div class="k">RESULT</div><div class="n">수주</div><div class="nd">운영 인하우스 전수</div></div>
+        <div class="ph-body">
+          <div class="pstep"><div class="pt"><span class="pn">✓</span>운영 착수</div><div class="pd">마스터시트 기반 월간 운영. 인하우스로 전수</div><div class="pg"><span class="tg s">전수</span></div></div>
+          <div class="ph-out"><span class="lab">목표</span>대표 개인기 → <b>누구나 플레이어</b>가 되는 시스템.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="co ac"><span class="lab">자동화 포인트 · 알림톡 3회</span><b>① 상담 신청</b> · <b>② 일정 확정</b> · <b>③ 상담 완료</b> — 스케줄링·완료 처리만 사람이 누르면 나머지는 자동 발송.</div>
+  </section>
+
+  <section class="block">
+    <div class="sec-k">DELIVERABLES</div>
+    <h2>산출물 ↔ 표준 템플릿</h2>
+    <p class="lead">각 단계 산출물은 인디고 클린 단일 표준 템플릿으로 통일. 복제해 콘텐츠만 교체한다.</p>
+    <div class="deliv">
+      <a class="dcard" href="../../research/_template/prep-v2-template.html"><div class="dh"><span>PREP</span><span class="ph">1차</span></div><div class="db">상담 전 내부 준비 (가설·리서치). <span class="lk">템플릿 열기 ›</span></div></a>
+      <a class="dcard" href="../../research/_template/diagnosis-template.html"><div class="dh"><span>진단서</span><span class="ph">1차</span></div><div class="db">상담 후 고객 제출 — 견적 근거. <span class="lk">템플릿 열기 ›</span></div></a>
+      <a class="dcard" href="../../quote/_template/quote-template.html"><div class="dh"><span>견적서 HTML</span><span class="ph">2차</span></div><div class="db">A/B안 · 1,000만 이하 정본. <span class="lk">템플릿 열기 ›</span></div></a>
+      <a class="dcard" href="../../quote/_template/quote-builder-template.gs"><div class="dh"><span>견적 구글시트</span><span class="ph">2차</span></div><div class="db">1,000만 초과 정본 (강훈 5블록). <span class="lk">빌더 열기 ›</span></div></a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <b>BRANDRISE</b> by HIZ · 영업 프로세스 매뉴얼 (가로형) · 내부<br>
+  2026-06-12 시스템화 회의 기반 · 세로형 <a href="./index.html" style="color:var(--ac)">index.html</a>과 동일 콘텐츠<br>
+  © 2026 브랜드라이즈 by HIZ · 비공개 내부 문서
+</footer>
+
+</body>
+</html>
