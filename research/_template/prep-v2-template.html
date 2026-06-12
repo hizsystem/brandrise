@@ -122,32 +122,48 @@ footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
 .hero h1{font-size:clamp(28px,4.6vw,42px)}
 .hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
 
-/* 2) 스티키 TOC 탭바 (hero 바로 아래 가로 탭) — 기존 좌측 nav.toc와 별도 .tabbar */
-.tabbar{position:sticky;top:0;z-index:50;display:flex;background:var(--card);
-  border-bottom:1px solid var(--line);box-shadow:0 1px 0 var(--line)}
-.tabbar a{flex:1;text-align:center;padding:13px 6px;font-size:12.5px;font-weight:700;
-  color:var(--ink2);text-decoration:none;border-right:1px solid var(--line2);transition:.15s}
-.tabbar a:last-child{border-right:none}
-.tabbar a:hover{background:var(--ac-50);color:var(--ac)}
-.tabbar a.on{color:var(--ac);box-shadow:inset 0 -2px 0 var(--ac)}
-
-/* 3) evidence 박스 (직접 리서치 캡처·증빙 액자) */
+/* 2) evidence 박스 (직접 리서치 캡처·증빙 액자) */
 .evi{border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:14px 0}
 .evi .eh{padding:11px 16px;font-size:12.5px;font-weight:800;background:var(--soft);border-bottom:1px solid var(--line);color:var(--ink2)}
 .evi img{display:block;width:100%;height:auto}
 .evi .en{padding:9px 16px;font-size:12px;color:var(--muted);border-top:1px dashed var(--line)}
 
-/* 4) 역할/팩트 카드 그리드 (핵심 팩트 스캔형 3~4열) */
+/* 3) 역할/팩트 카드 그리드 (핵심 팩트 스캔형 3~4열) */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
 .fcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
 .fcard .fk{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
 .fcard .fv{font-size:15px;font-weight:800;color:var(--ink)}
 .fcard .fs{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.55;font-weight:500}
 
-@media(max-width:880px){.tabbar{display:none}}
+/* 4) ★ 리서치 캡처 그리드 — 광고 대시보드·경쟁사·SNS 현황 (상담 전 직접 리서치 캡처 자리) */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:16px 0 6px}
+.shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.shot .sk{display:flex;align-items:center;gap:7px;padding:9px 13px;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--ac);background:var(--ac-50);border-bottom:1px solid var(--ac-100)}
+.shot .sk::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--ac)}
+.shot .sfig{aspect-ratio:16/10;background:var(--soft);display:block;width:100%;object-fit:cover}
+/* 빈 슬롯(placeholder) 상태 — 점선 안내 */
+.shot .sph{aspect-ratio:16/10;background:repeating-linear-gradient(45deg,var(--soft),var(--soft) 10px,#f0f3f8 10px,#f0f3f8 20px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted);text-align:center;padding:14px}
+.shot .sph .ic{font-size:22px;opacity:.5}
+.shot .sph .pl{font-size:12px;font-weight:700;color:var(--ink2)}
+.shot .scap{padding:10px 14px;font-size:12px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line2)}
+.shot .scap b{color:var(--ink2)}
+
+/* 5) 디자인·가독성 격상 (v2-③) — 인디고 토큰 안에서 "디자인된 문서" */
+section{margin-bottom:64px}                                /* 섹션 호흡 ↑ */
+h2{line-height:1.18}
+h3{letter-spacing:-.01em;line-height:1.4}
+/* 섹션 결론 풀폭 인디고 밴드 (.co.ac.band) — 베지어트 컬러 블록 역할 */
+.co.ac.band{padding:20px 24px;border-radius:14px;font-size:14px;line-height:1.78}
+/* 표 가독성: zebra + th 인디고 틴트 + 셀 패딩 + 숫자 tabular-nums */
+table{font-variant-numeric:tabular-nums}
+th{background:var(--ac-50);color:var(--ac-700);padding:11px 13px}
+td{padding:11px 13px}
+tbody tr:nth-child(even) td, table tr:nth-child(even) td{background:var(--soft)}
+
+@media(max-width:880px){.shots{grid-template-columns:1fr}}
 @media print{
-  .tabbar{display:none}
-  .evi,.fcard,.card{break-inside:avoid}
+  .evi,.fcard,.card,.shot{break-inside:avoid}
 }
 </style>
 </head>
@@ -164,18 +180,6 @@ footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
     <span class="chip">상담 전 PREP · 인테이크+리서치 기반</span>
   </div>
 </div></div>
-
-<nav class="tabbar">
-  <a href="#onepager">수주 한 장</a>
-  <a href="#diagnosis">핵심 진단</a>
-  <a href="#company">기업 · 정량</a>
-  <a href="#product">제품 · 채널</a>
-  <a href="#market">경쟁 · 시장</a>
-  <a href="#needs">SWOT · 니즈</a>
-  <a href="#deal">기회 · 견적</a>
-  <a href="#consult">상담 준비</a>
-  <a href="#sources">참고 출처</a>
-</nav>
 
 <div class="layout">
   <nav class="toc">
@@ -261,6 +265,19 @@ footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
         </div>
       </div>
       <div class="co ok"><span class="lab">동명 · 네이밍 체크</span>"Natural Good Things / NGT" 자체 명확 식별, 동명 충돌 없음. 단 한·영문 브랜드 표기·SKU명(잇츠·생생효소 등) 통일 점검은 글로벌 단계 의제. <span class="t y">미팅 확정</span> 설립일(소개서 2016-10 vs 공시 2016-09)·조직 규모(인테이크 11명 vs 공시 31명)·매출 둔화(169억→135억) 원인.</div>
+      <h3>직접 리서치 캡처 — 자사몰 · 정량</h3>
+      <div class="shots">
+        <figure class="shot">
+          <div class="sk">자사몰 메인</div>
+          <img class="sfig" src="_shots/ngt-channel.jpg" alt="NGT 자사몰·판매채널">
+          <figcaption class="scap"><b>자사몰·판매채널</b> · NGT 소개자료 발췌 (라이브 캡처는 상담 시 갱신)</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="sk">매출 추이</div>
+          <div class="sph"><div class="ic">📉</div><div class="pl">사람인·인크루트 기업정보</div></div>
+          <figcaption class="scap"><b>169억→135.4억</b> · 2022→2023 둔화 화면 — 정량 시그널 근거 캡처</figcaption>
+        </figure>
+      </div>
     </section>
 
     <section id="product">
@@ -277,6 +294,24 @@ footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
       </table>
       <h3>채널 (국내 풀커버 + 글로벌)</h3>
       <div class="co ac"><span class="lab">채널 인벤토리</span><b>국내</b> 자사몰(naturalgoodthings.com)·네이버 스마트스토어·쿠팡·29CM·올리브영(온/오프 '잇츠그린샐러드'·올리브베러 '생생효소')·공영홈쇼핑·신세계/롯데면세·쇼핑라이브(네이버·카카오)·SNS 공동구매 · <b>글로벌</b> 중국(T몰글로벌·샤오홍슈·공구단장)·대만(라이브커머스)·일본(코스메키친 전용5종)·몽골·호주·베트남·이탈리아 · IG <b>@official.ngt</b><br><span style="color:var(--muted)">🎤 진단 포인트: 채널은 이미 넓다. 비어 있는 건 "자사몰이 팬덤·재구매의 허브가 되는 구조". 채널별 매출 비중·자사몰 LTV가 미팅 1순위 청취.</span></div>
+      <h3>직접 리서치 캡처 — SNS · 베스트셀러</h3>
+      <div class="shots">
+        <figure class="shot">
+          <div class="sk">인스타 현황</div>
+          <div class="sph"><div class="ic">📸</div><div class="pl">@official.ngt 그리드 캡처</div></div>
+          <figcaption class="scap"><b>본 계정 @official.ngt</b> · 그리드·콘텐츠 톤·팔로워(로그인 필요·미확인) — 상담 전 캡처 삽입</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="sk">베스트셀러</div>
+          <img class="sfig" src="_shots/ngt-lineup.jpg" alt="NGT 제품 라인업">
+          <figcaption class="scap"><b>제품 라인업 (40+ SKU)</b> · NGT 소개자료 발췌 — 히어로 부재·평행 나열</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="sk">글로벌 PR</div>
+          <img class="sfig" src="_shots/ngt-global.jpg" alt="NGT 글로벌 진출·SNS">
+          <figcaption class="scap"><b>글로벌 진출·SNS</b> · NGT 소개자료 발췌 — 일본·대만 등</figcaption>
+        </figure>
+      </div>
     </section>
 
     <section id="market">
@@ -297,7 +332,20 @@ footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
         <tr><td>케어비네스트 / 절대콜라겐</td><td><span class="t b">가까움</span></td><td>건기식 D2C 멀티채널 — 비즈모델 일치</td></tr>
         <tr><td>레베로 / 마키노차야</td><td><span class="t n">인접</span></td><td>지속가능·웰니스 정체성·콘텐츠 시스템 측면</td></tr>
       </table>
-      <div class="co ac"><span class="lab">시장 시사</span>여성 이너케어 = "데이터·성분 신뢰" + "지속 루틴(구독)"이 승부처. NGT의 <b>자사 발효공장·K-낙산균·효소 1위</b>는 경쟁사가 따라올 수 없는 신뢰 자산 — 이걸 콘텐츠·CRM으로 "보이게" 만드는 게 핵심.</div>
+      <h3>직접 리서치 캡처 — 경쟁사 현황</h3>
+      <div class="shots">
+        <figure class="shot">
+          <div class="sk">경쟁사 진입</div>
+          <div class="sph"><div class="ic">⚔️</div><div class="pl">올리브영 W케어 라인</div></div>
+          <figcaption class="scap"><b>유통 거인 신규 진입</b> · 올영 W케어 매대·온라인 카테고리 잠식 현황 캡처</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="sk">D2C 벤치마크</div>
+          <div class="sph"><div class="ic">🏷️</div><div class="pl">랭킹닭컴·닥터키친</div></div>
+          <figcaption class="scap"><b>다이어트·여성 D2C</b> · 팬덤·멤버십 구조 벤치마크 화면 캡처</figcaption>
+        </figure>
+      </div>
+      <div class="co ac band"><span class="lab">시장 시사</span>여성 이너케어 = "데이터·성분 신뢰" + "지속 루틴(구독)"이 승부처. NGT의 <b>자사 발효공장·K-낙산균·효소 1위</b>는 경쟁사가 따라올 수 없는 신뢰 자산 — 이걸 콘텐츠·CRM으로 "보이게" 만드는 게 핵심.</div>
     </section>
 
     <section id="needs">
@@ -312,7 +360,7 @@ footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
       </div>
       <h3>Pain Hierarchy (가설 · 표면→근본)</h3>
       <div class="co"><b>L1 표면</b> "온라인 팬덤·뾰족한 축이 필요"(대표 명시) → <b>L2 전술</b> 자사몰 콘텐츠·CRM이 인플루언서 인지도를 못 받음 → <b>L3 전략</b> 30+ SKU·7개국에 한 줄 브랜드 축이 없음 → <b>L4 근본</b> 인플루언서·공구 의존 = 자사몰 자생 성장엔진(재구매·구독·팬덤) 부재</div>
-      <div class="co ac"><span class="lab">표면 vs 진짜 니즈 (가설)</span>표면 = "브랜딩 방향성 정리". 진짜 = <b>브랜딩 + 마케팅 통합 IMC</b> — ①브랜드 축 뾰족화 ②자사몰 CRM·팬덤 시스템 ③콘텐츠·광고 연결. 대표도 "브랜딩과 마케팅을 따로 보지 않는 뾰족한 축"을 직접 기대 → 니즈-서비스 핏 매우 높음.</div>
+      <div class="co ac band"><span class="lab">표면 vs 진짜 니즈 (가설)</span>표면 = "브랜딩 방향성 정리". 진짜 = <b>브랜딩 + 마케팅 통합 IMC</b> — ①브랜드 축 뾰족화 ②자사몰 CRM·팬덤 시스템 ③콘텐츠·광고 연결. 대표도 "브랜딩과 마케팅을 따로 보지 않는 뾰족한 축"을 직접 기대 → 니즈-서비스 핏 매우 높음.</div>
     </section>
 
     <section id="deal">
@@ -385,7 +433,7 @@ footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
 <footer><div class="in">BRANDRISE (MarketingOS) · 네츄럴굿띵스(NGT) NB 상담 준비 PREP — 통합표준 · 상담 전(인테이크+리서치) · 내부 전용</div></footer>
 
 <script>
-const links=[...document.querySelectorAll('nav.toc a, nav.tabbar a')];
+const links=[...document.querySelectorAll('nav.toc a')];
 const sections=[...new Set(links.map(a=>a.getAttribute('href')))]
   .map(href=>({href,el:document.querySelector(href)})).filter(s=>s.el);
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){

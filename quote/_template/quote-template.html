@@ -49,11 +49,11 @@ body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);colo
 .hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
 .hero .chip b{color:#a5b4fc}
 .wrap{max-width:960px;margin:0 auto;padding:36px 40px 100px}
-section{margin-bottom:50px;scroll-margin-top:24px}
-.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
-h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
-.lead{font-size:14.5px;color:var(--muted);margin-bottom:20px;line-height:1.7}
-h3{font-size:15.5px;font-weight:800;margin:30px 0 6px;color:var(--ink);letter-spacing:-.01em}
+section{margin-bottom:64px;scroll-margin-top:24px}
+.sec-k{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:999px;padding:4px 12px;margin-bottom:12px}
+h2{font-size:26px;font-weight:800;letter-spacing:-.025em;line-height:1.22;margin-bottom:8px}
+.lead{font-size:15px;color:var(--ink2);margin-bottom:24px;line-height:1.75;max-width:760px}
+h3{font-size:16px;font-weight:800;margin:34px 0 6px;color:var(--ink);letter-spacing:-.01em}
 h3 .t{vertical-align:2px}
 .bmeta{font-size:12.5px;color:var(--muted);margin-bottom:10px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
@@ -66,13 +66,15 @@ h3 .t{vertical-align:2px}
 .t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
 .t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
 .t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
-table{width:100%;border-collapse:collapse;font-size:12.5px;margin:6px 0 4px}
-th{background:var(--soft);color:var(--ink2);font-weight:700;text-align:left;padding:9px 11px;font-size:11.5px;border-bottom:1px solid var(--line)}
-td{padding:10px 11px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin:6px 0 4px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:left;padding:11px 13px;font-size:11.5px;letter-spacing:.01em;border-bottom:1px solid var(--ac-100)}
+td{padding:12px 13px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+table tr:nth-child(even) td{background:var(--soft)}
 td b,td strong{color:var(--ink)}
 td.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
 td.c{text-align:center;white-space:nowrap}
-tr.sub td{background:var(--soft);font-weight:700;color:var(--ink)}
+table tr.sub td{background:var(--ac-50);font-weight:800;color:var(--ink);border-top:1px solid var(--ac-100)}
+table tr.sub td.num{color:var(--ac-700)}
 .steps{display:flex;gap:8px;margin:14px 0 4px}
 .stp{flex:1;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:12px 12px;position:relative;font-size:12px;line-height:1.6}
 .stp:not(:last-child)::after{content:"›";position:absolute;right:-9px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--ac);font-weight:800;z-index:1}
@@ -100,14 +102,11 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
 .hero h1{font-size:clamp(28px,4.6vw,40px)}
 .hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
 
-/* 2) 스티키 TOC 탭바 (hero 바로 아래) */
-.toc{position:sticky;top:0;z-index:50;display:flex;background:var(--card);
-  border-bottom:1px solid var(--line);box-shadow:0 1px 0 var(--line)}
-.toc a{flex:1;text-align:center;padding:13px 6px;font-size:12.5px;font-weight:700;
-  color:var(--ink2);text-decoration:none;border-right:1px solid var(--line2);transition:.15s}
-.toc a:last-child{border-right:none}
-.toc a:hover{background:var(--ac-50);color:var(--ac)}
-.toc a.on{color:var(--ac);box-shadow:inset 0 -2px 0 var(--ac)}
+/* 2) 인라인 미니 목차 (hero 아래 한 줄 — 박스/배경 없음, 메뉴바 아님) */
+.mini-index{max-width:960px;margin:0 auto;padding:14px 40px 0;font-size:12.5px;color:var(--muted);letter-spacing:.01em}
+.mini-index a{color:var(--ink2);text-decoration:none;font-weight:700;transition:.15s}
+.mini-index a:hover{color:var(--ac)}
+.mini-index .sep{color:var(--line);margin:0 9px}
 
 /* 3) ★ A/B 견적 비교 그리드 */
 .ab{display:grid;grid-template-columns:1fr 56px 1.08fr;gap:0;align-items:stretch;margin:18px 0 8px}
@@ -141,11 +140,31 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
 .layer .lp{padding:14px 12px;font-size:12.5px;font-weight:700;color:var(--ink2);display:flex;align-items:center;border-left:1px dashed var(--line);border-right:1px dashed var(--line)}
 .layer .ld{padding:14px 18px;font-size:13px;color:var(--ink2);display:flex;align-items:center}
 
-/* 6) 역할/팩트 카드 그리드 */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
+/* 6) 역할/팩트 카드 그리드 + 핵심 수치 강조 */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
 .fcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
 .fcard .fk{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
 .fcard .fv{font-size:15px;font-weight:800;color:var(--ink)}
+/* 핵심 수치(매출 60% · ROAS 0.3 · 총액 등)를 표 밖으로 끌어올린 강조 카드 */
+.fcard.num{padding:20px 22px}
+.fcard.num .fv{font-size:30px;letter-spacing:-.02em;line-height:1.05;font-variant-numeric:tabular-nums}
+.fcard.num .fv small{font-size:13px;font-weight:700;color:var(--muted);margin-left:5px;letter-spacing:0}
+.fcard.num .fn{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.55}
+.fcard.num.hi{background:var(--ac-50);border-color:var(--ac-100)}
+.fcard.num.hi .fv{color:var(--ac-700)}
+
+/* 7) ★ v2 — 리서치/딜리버러블 캡처 슬롯 (빈 상태도 디자인되게) */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:16px 0 6px}
+.shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.shot .sk{display:flex;align-items:center;gap:7px;padding:9px 13px;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--ac);background:var(--ac-50);border-bottom:1px solid var(--ac-100)}
+.shot .sk::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--ac)}
+.shot .sfig{aspect-ratio:16/10;background:var(--soft);display:block;width:100%;object-fit:cover}
+.shot .sph{aspect-ratio:16/10;background:repeating-linear-gradient(45deg,var(--soft),var(--soft) 10px,#f0f3f8 10px,#f0f3f8 20px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted);text-align:center;padding:14px}
+.shot .sph .ic{font-size:22px;opacity:.5}
+.shot .sph .pl{font-size:12px;font-weight:700;color:var(--ink2)}
+.shot .scap{padding:10px 14px;font-size:12px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line2)}
+.shot .scap b{color:var(--ink2)}
 
 /* 반응형 (veggiet DNA) */
 @media(max-width:880px){
@@ -154,11 +173,10 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
   .layer{grid-template-columns:110px 1fr}
   .layer .lp{border-right:none}
   .layer .ld{grid-column:1/3;border-top:1px dashed var(--line)}
-  .toc{display:none}
+  .mini-index{padding:12px 22px 0}
 }
 @media print{
-  .toc{display:none}
-  .ab-card,.evi,.layer,.fcard{break-inside:avoid}
+  .ab-card,.evi,.layer,.fcard,.shot{break-inside:avoid}
 }
 </style>
 </head>
@@ -176,13 +194,9 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
   </div>
 </div></div>
 
-<nav class="toc">
-  <a href="#diagnosis">진단맵</a>
-  <a href="#ab">PLAN A·B</a>
-  <a href="#blocks">블록상세</a>
-  <a href="#flow">일정</a>
-  <a href="#notes">비고</a>
-</nav>
+<div class="mini-index">
+  <a href="#diagnosis">진단맵</a><span class="sep">·</span><a href="#ab">PLAN A·B</a><span class="sep">·</span><a href="#blocks">블록상세</a><span class="sep">·</span><a href="#flow">일정</a><span class="sep">·</span><a href="#notes">비고</a>
+</div>
 
 <div class="wrap">
 
@@ -190,6 +204,11 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
     <div class="sec-k">DIAGNOSIS MAP</div>
     <h2>브랜드 진단 요약 — 8가지 핵심 문제 &amp; 솔루션</h2>
     <p class="lead">2026-06-10 대면 상담 및 1차 전략 진단(별첨) 기반. <b>각 견적 블록은 아래 진단 번호에 대응합니다.</b></p>
+    <div class="cards">
+      <div class="fcard num"><div class="fk">매출 채널 쏠림 ①</div><div class="fv">약 60%<small>인플루언서 공동구매</small></div><div class="fn">셀러 이탈 시 대안 부재 — 고객·데이터가 셀러에 귀속</div></div>
+      <div class="fcard num"><div class="fk">광고 효율 붕괴 ⑥</div><div class="fv">ROAS 0.3<small>월 700만 집행</small></div><div class="fn">대행사 수 차례 교체에도 개선 없음 = USP·랜딩 부재</div></div>
+      <div class="fcard num hi"><div class="fk">6개월 풀 파트너십 견적</div><div class="fv">103,400,000<small>원 · VAT 별도</small></div><div class="fn">블록 0~5 합계 (= PLAN B). 진단 8항목에 1:1 대응</div></div>
+    </div>
     <table>
       <tr><th style="width:30px">#</th><th style="width:42%">진단</th><th>솔루션</th></tr>
       <tr><td class="c"><b>①</b></td><td><b>매출 채널 쏠림</b> — 커머스 매출의 약 60%가 인플루언서 공동구매. 셀러 이탈 시 대안 부재, 고객·데이터가 셀러에 귀속</td><td>자사 온라인(약 20억)을 자생 엔진으로 — 채널 믹스 재설계</td></tr>
@@ -234,6 +253,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
         <div class="ab-tag">토대를 제대로 — 진단→브랜딩→디자인→촬영→런칭 (아래 블록 0~5 = 총 103,400,000원)</div>
       </div>
     </div>
+    <div class="co ac"><span class="lab">같은 단가 · 깊이만 다름</span>두 안의 항목 단가는 동일합니다. <b>A안은 블록 1·2만(3,000만원~)으로 작게 시작</b>해 진단 결과를 보고 확장하고, <b>B안은 블록 0~5 전체(103,400,000원)</b>를 한 번에 세우는 6개월 풀 파트너십입니다.</div>
   </section>
 
   <section id="blocks">
@@ -295,6 +315,24 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
       <tr><td><b>포토 외주 (스튜디오)</b></td><td>1일 full day 포토 / 스튜디오 렌탈 외주</td><td class="num">—</td><td class="c">실비</td><td class="c">—</td><td class="c">별도</td></tr>
       <tr class="sub"><td colspan="5">소 계</td><td class="num">15,000,000</td></tr>
     </table>
+    <div class="shots">
+      <figure class="shot">
+        <div class="sk">촬영 레퍼런스</div>
+        <img class="sfig" src="_shots/ngt-lifestyle.jpg" alt="NGT 제품 라이프스타일">
+        <figcaption class="scap"><b>현 제품 컷 (리뉴얼 전)</b> — 촬영 방향 기준, NGT 소개자료 발췌</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="sk">패키지 방향</div>
+        <img class="sfig" src="_shots/ngt-lineup.jpg" alt="NGT 현 패키지">
+        <figcaption class="scap"><b>현 패키지 (리뉴얼 전)</b> — 리뉴얼 출발점, NGT 소개자료 발췌</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="sk">콘텐츠 소재</div>
+        <img class="sfig" src="_shots/ngt-pr.jpg" alt="NGT 런칭·언론 비주얼">
+        <figcaption class="scap"><b>현 콘텐츠·런칭 비주얼</b> — 개선 출발점, NGT 소개자료 발췌</figcaption>
+      </figure>
+    </div>
+    <p class="lead" style="margin:8px 0 0;font-size:12.5px">* 위 슬롯은 딜리버러블 레퍼런스 자리입니다 — 촬영 기획·디자인 시안 확정 시 실제 캡처로 교체됩니다.</p>
 
     <h3>5) 마케팅 — 인스타·CRM 기획 + 12월 세일 → 1월 리뉴얼 런칭 <span class="t b">진단 ①⑧ 대응</span> <span class="t n">아이덴티티 확립 후 착수</span></h3>
     <div class="bmeta"><b>납품물:</b> 무드보드 + 월 콘텐츠 기획보드 (월 8~10건) + 세일·런칭 캠페인 기획서 — 운영 실행은 인하우스 전수 병행</div>

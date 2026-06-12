@@ -101,14 +101,11 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
 .hero h1{font-size:clamp(28px,4.6vw,40px)}
 .hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
 
-/* 2) 스티키 TOC 탭바 (hero 바로 아래) */
-.toc{position:sticky;top:0;z-index:50;display:flex;background:var(--card);
-  border-bottom:1px solid var(--line);box-shadow:0 1px 0 var(--line)}
-.toc a{flex:1;text-align:center;padding:13px 6px;font-size:12.5px;font-weight:700;
-  color:var(--ink2);text-decoration:none;border-right:1px solid var(--line2);transition:.15s}
-.toc a:last-child{border-right:none}
-.toc a:hover{background:var(--ac-50);color:var(--ac)}
-.toc a.on{color:var(--ac);box-shadow:inset 0 -2px 0 var(--ac)}
+/* 2) 인라인 미니 목차 (hero 아래 — 박스/메뉴바 느낌 제거, 얇은 텍스트 한 줄) */
+.minitoc{max-width:960px;margin:0 auto;padding:18px 40px 0;font-size:12.5px;color:var(--muted);letter-spacing:.01em}
+.minitoc a{color:var(--ink2);text-decoration:none;font-weight:700;transition:.15s}
+.minitoc a:hover{color:var(--ac)}
+.minitoc .sep{color:var(--line);margin:0 9px;font-weight:400}
 
 /* 4) evidence 박스 (데이터 근거 스샷/증빙) */
 .evi{border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:14px 0}
@@ -142,8 +139,35 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
 .bcard .bmap{grid-column:2/4;margin-top:10px;font-size:11.5px;font-weight:700;color:var(--ac);
   display:inline-flex;align-items:center;gap:6px}
 
-@media(max-width:880px){.wrap{padding:28px 22px 80px}.hero .in{padding:0 22px}.hero h1{font-size:28px}.chs,.moat,.grid2,.grid3{grid-template-columns:1fr}.steps{flex-direction:column}.st:not(:last-child)::after{content:"";display:none}
-  .toc{display:none}
+/* ★ v2-② 리서치 캡처 이미지 슬롯 (데이터 근거 — 진단서 핵심 비주얼) */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:16px 0 6px}
+.shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.shot .sk{display:flex;align-items:center;gap:7px;padding:9px 13px;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--ac);background:var(--ac-50);border-bottom:1px solid var(--ac-100)}
+.shot .sk::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--ac)}
+.shot .sfig{aspect-ratio:16/10;background:var(--soft);display:block;width:100%;object-fit:cover}
+.shot .sph{aspect-ratio:16/10;background:repeating-linear-gradient(45deg,var(--soft),var(--soft) 10px,#f0f3f8 10px,#f0f3f8 20px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted);text-align:center;padding:14px}
+.shot .sph .ic{font-size:22px;opacity:.5}
+.shot .sph .pl{font-size:12px;font-weight:700;color:var(--ink2)}
+.shot .scap{padding:10px 14px;font-size:12px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line2)}
+.shot .scap b{color:var(--ink2)}
+
+/* ★ v2-③ 디자인·가독성 격상 (인디고 토큰 내) */
+section{margin-bottom:64px}                                   /* 섹션 호흡 ↑ */
+.sec-k{display:inline-block;background:var(--ac-50);border:1px solid var(--ac-100);border-radius:7px;padding:4px 10px}  /* sec-k 칩화 */
+h2{line-height:1.28}
+h3{letter-spacing:-.01em}
+table{margin:10px 0 6px}
+th{padding:11px 14px}
+td{padding:12px 14px}
+tbody tr:nth-child(even) td{background:var(--soft)}            /* zebra */
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.co.ac.band{display:block;text-align:left}                    /* 풀폭 결론 밴드 */
+.co.ac.band .lab{color:var(--ac)}
+
+@media(max-width:880px){
+  .minitoc{padding:14px 22px 0;line-height:2}
+  .shots{grid-template-columns:1fr}.wrap{padding:28px 22px 80px}.hero .in{padding:0 22px}.hero h1{font-size:28px}.chs,.moat,.grid2,.grid3{grid-template-columns:1fr}.steps{flex-direction:column}.st:not(:last-child)::after{content:"";display:none}
   .layer{grid-template-columns:110px 1fr}
   .layer .lp{border-right:none}
   .layer .ld{grid-column:1/3;border-top:1px dashed var(--line)}
@@ -154,8 +178,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
   body{background:#fff}
   .hero,.verdict,.lever,.st.on,.ch.own,.t,.co{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   section{page-break-inside:avoid}
-  .toc{display:none}
-  .evi,.layer,.fcard,.bcard{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .evi,.layer,.fcard,.bcard,.shot,.shots,.co{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 </style>
 </head>
@@ -173,14 +196,9 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
   </div>
 </div></div>
 
-<nav class="toc">
-  <a href="#core">핵심 진단</a>
-  <a href="#structure">매출 구조</a>
-  <a href="#bottleneck">병목 진단</a>
-  <a href="#asset">숨은 자산</a>
-  <a href="#next">다음 단계</a>
-  <a href="#lever">레버리지</a>
-</nav>
+<div class="minitoc">
+  <a href="#core">핵심 진단</a><span class="sep">·</span><a href="#structure">매출 구조</a><span class="sep">·</span><a href="#bottleneck">병목 진단</a><span class="sep">·</span><a href="#asset">숨은 자산</a><span class="sep">·</span><a href="#next">다음 단계</a><span class="sep">·</span><a href="#lever">레버리지</a>
+</div>
 
 <div class="wrap">
 
@@ -215,7 +233,21 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
         <div class="cd">브랜드가 진짜 키울 수 있는 영역. 월 5천만(SA+메타) 집행 중. <b style="color:var(--ac)">바로 이 자산이 과제.</b></div>
       </div>
     </div>
-    <div class="co"><span class="lab">수치 출처 선 긋기</span><b>위 수치는 상담(2026-06-10) 발언 기반 추정치</b>입니다. 채널별·제품별·월별 정밀 분해와 자사몰 LTV·회원 데이터는 <b>1차 데이터 진단(T1)</b>에서 확정합니다. 핵심 메시지는 동일 — 전체 외형이 아니라 <b>직접 통제 가능한 자사 자산을 자생 엔진으로 키우는 것</b>이 본 프로젝트의 목표입니다.</div>
+
+    <div class="shots">
+      <figure class="shot">
+        <div class="sk">매출 채널 추이</div>
+        <div class="sph"><div class="ic">📈</div><div class="pl">월별·채널별 매출 캡처</div></div>
+        <figcaption class="scap"><b>커머스의 약 60%가 공동구매</b> · 자사몰 비중 추이 — 데이터 진단(T1) 시 채널별 그래프 삽입</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="sk">자사몰 / CRM 현황</div>
+        <img class="sfig" src="_shots/ngt-channel.jpg" alt="NGT 자사몰·판매채널">
+        <figcaption class="scap"><b>자사몰·판매채널 현황</b> · NGT 소개자료 발췌 — 회원·LTV 정밀치는 데이터 수령 후</figcaption>
+      </figure>
+    </div>
+
+    <div class="co ac band"><span class="lab">수치 출처 선 긋기 · 발언 기반 추정</span><b>위 수치는 상담(2026-06-10) 발언 기반 추정치</b>입니다. 채널별·제품별·월별 정밀 분해와 자사몰 LTV·회원 데이터는 <b>1차 데이터 진단(T1)</b>에서 확정합니다. 핵심 메시지는 동일 — 전체 외형이 아니라 <b>직접 통제 가능한 자사 자산을 자생 엔진으로 키우는 것</b>이 본 프로젝트의 목표입니다.</div>
   </section>
 
   <section id="bottleneck">
@@ -259,6 +291,22 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
         <div class="bmap">→ 견적서 블록 ⑤에 대응</div>
       </div>
     </div>
+
+    <h3>병목을 뒷받침하는 데이터 근거</h3>
+    <div class="shots">
+      <figure class="shot">
+        <div class="sk">광고 대시보드</div>
+        <div class="sph"><div class="ic">📊</div><div class="pl">메타 광고 캡처</div></div>
+        <figcaption class="scap"><b>메타 ROAS 0.3</b> · 월 700만 집행 (손익분기 1.5+) — 병목 ④ 근거, 상담 시 대시보드 캡처 삽입</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="sk">경쟁 / SNS 현황</div>
+        <img class="sfig" src="_shots/ngt-global.jpg" alt="NGT 자사 SNS·글로벌">
+        <figcaption class="scap"><b>자사 SNS·글로벌</b> · NGT 소개자료 발췌 (경쟁 포지셔닝은 직접 리서치 캡처)</figcaption>
+      </figure>
+    </div>
+
+    <div class="co ac band"><span class="lab">병목 결론 · 발언 기반 추정</span>제품(공급측)은 업계 최상위이나 <b>수요측(브랜드 자산·자사 팬덤·전환 구조)이 비어 있는 것</b>이 5대 병목의 공통 뿌리입니다. 위 ROAS·점유율 수치는 상담 발언 기반 추정 — 정밀 분해는 데이터 진단(T1)에서 확정하되, <b>각 병목 ①~⑤가 견적서 블록 ①~⑤에 1:1로 대응</b>합니다.</div>
   </section>
 
   <section id="asset">
@@ -299,23 +347,6 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
   본 진단서는 2026-06-10 대면 상담 및 공개 리서치 기반 <b>1차 전략 진단</b>입니다. 정량 수치는 데이터 정밀 진단(T1) 단계에서 확정됩니다.<br>
   © 2026 브랜드라이즈 by HIZ · 비공개 — 수신처 제출용
 </footer>
-
-<script>
-/* TOC 스크롤스파이 — 현재 섹션 탭에 .on 표시 */
-(function(){
-  var links=[].slice.call(document.querySelectorAll('.toc a'));
-  if(!links.length)return;
-  var map=links.map(function(a){var id=a.getAttribute('href').slice(1);return{a:a,el:document.getElementById(id)};}).filter(function(m){return m.el;});
-  function spy(){
-    var y=window.scrollY+120,cur=map[0];
-    map.forEach(function(m){if(m.el.offsetTop<=y)cur=m;});
-    links.forEach(function(a){a.classList.remove('on');});
-    if(cur)cur.a.classList.add('on');
-  }
-  window.addEventListener('scroll',spy,{passive:true});
-  window.addEventListener('resize',spy);spy();
-})();
-</script>
 
 </body>
 </html>

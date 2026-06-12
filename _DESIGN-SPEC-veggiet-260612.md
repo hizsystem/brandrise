@@ -141,3 +141,64 @@
 - [ ] 인쇄(PDF) 시 카드·그리드 break-inside 안 깨짐
 - [ ] TOC 스티키 동작 · 앵커 점프 정상
 - [ ] 브라우저 렌더 확인(깨짐 0)
+
+---
+
+# v2 — 대표 피드백 반영 (2026-06-12, 같은 날)
+
+> 피드백: "베지어트에서 **위 메뉴(상단 TOC)만 따라한** 느낌. 사이드바 있으면 그건 오히려 불필요.
+> 대표가 좋아한 건 **디자인 완성도·가독성·이미지가 들어간 비주얼**." → v1의 표면(상단 탭바)을 걷어내고 알맹이로.
+
+## v2-① 상단 TOC 탭바 제거 (전 템플릿)
+- v1에서 추가한 hero 아래 **수평 TOC 탭바(`.toc`/`.tabbar`)를 마크업·CSS 모두 삭제**.
+- PREP의 **기존 좌측 사이드바(`nav.toc`)는 그대로 유지** — 거기에 탭바를 또 단 게 중복이었음. 사이드바 스크롤스파이만 남김.
+- 견적서·진단서(사이드바 없음): 탭바 없이 가되, 섹션이 길면 hero 아래 **얇은 한 줄 텍스트 목차(클릭 가능, 박스/배경 없는 인라인 `· 진단 · 견적 · 일정` 정도)**만. 메뉴바 느낌 금지.
+
+## v2-② ★ 리서치 캡처 이미지 슬롯 (이번 핵심 — "이미지가 들어간 부분")
+문서가 비주얼하게 보이도록 **리서치 캡처 자리를 디자인된 슬롯**으로. 빈 상태도 의도된 디자인으로 보이고, 실제 캡처(상담준비 때)를 넣으면 바로 리치해짐.
+
+```css
+/* 리서치 캡처 그리드 — 광고 대시보드·경쟁사·SNS 현황 등 */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:16px 0 6px}
+.shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.shot .sk{display:flex;align-items:center;gap:7px;padding:9px 13px;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--ac);background:var(--ac-50);border-bottom:1px solid var(--ac-100)}
+.shot .sk::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--ac)}
+.shot .sfig{aspect-ratio:16/10;background:var(--soft);display:block;width:100%;object-fit:cover}
+/* 빈 슬롯(placeholder) 상태 — 점선 안내 */
+.shot .sph{aspect-ratio:16/10;background:repeating-linear-gradient(45deg,var(--soft),var(--soft) 10px,#f0f3f8 10px,#f0f3f8 20px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted);text-align:center;padding:14px}
+.shot .sph .ic{font-size:22px;opacity:.5}
+.shot .sph .pl{font-size:12px;font-weight:700;color:var(--ink2)}
+.shot .scap{padding:10px 14px;font-size:12px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line2)}
+.shot .scap b{color:var(--ink2)}
+@media print{.shot{break-inside:avoid}}
+```
+사용(빈 슬롯 — 템플릿 기본):
+```html
+<div class="shots">
+  <figure class="shot">
+    <div class="sk">광고 대시보드</div>
+    <div class="sph"><div class="ic">📊</div><div class="pl">메타 광고 캡처</div></div>
+    <figcaption class="scap"><b>메타 ROAS 0.3</b> · 월 700만 집행 — 상담 시 대시보드 캡처 삽입</figcaption>
+  </figure>
+  <!-- 채울 때: <img class="sfig" src="..."> 로 .sph 교체 -->
+</div>
+```
+배치: **진단서** = 데이터 근거(광고 대시보드·매출 추이·CRM)·경쟁/SNS 현황. **PREP** = 광고 대시보드·경쟁사·인스타 현황(상담 전 직접 리서치 캡처). **견적서** = 선택(딜리버러블 레퍼런스 정도, 과하지 않게).
+
+## v2-③ 디자인·가독성 격상 (전 템플릿 공통 — 표면 아닌 알맹이)
+인디고 토큰 안에서 "디자인된 문서"로:
+1. **섹션 호흡 키우기**: section 간 여백 ↑(예 `section{margin-bottom:64px}`), 섹션 시작에 sec-k 칩 + 큰 h2 + lead 대비 강화.
+2. **핵심 한 줄 밴드**: 각 섹션 결론을 `.co.ac`(인디고 연한 배경) **풀폭 밴드**로 시각 강조 — 베지어트의 컬러 블록 역할(색은 인디고만).
+3. **숫자/지표 강조**: 중요 수치(ROAS 0.3, 매출 60%, 103,400,000 등)는 `.fcard .fv`처럼 **크게**. 표 안 묻힌 핵심 숫자를 카드/콜아웃으로 끌어올리기.
+4. **표 가독성**: zebra(행 교차 `var(--soft)`), th 인디고 틴트, 숫자열 tabular-nums 유지, 셀 패딩 ↑.
+5. **타이포 리듬**: h2/h3 letter-spacing·line-height 정돈, 본문 15px 유지, 강조는 굵기/색(인디고)으로.
+6. **인쇄 안전**: 모든 신규 블록 `break-inside:avoid`.
+⛔ 새 색 금지(인디고/중성 토큰만), Pretendard 유지, **NGT 콘텐츠 문구·수치·금액 불변**(마크업/표현만).
+
+## v2 검수
+- [ ] 상단 탭바 0개 (PREP는 좌측 사이드바만) · 메뉴바 느낌 제거
+- [ ] 리서치 캡처 슬롯이 빈 상태에서도 "디자인된" 느낌 (점선 placeholder + 라벨칩 + 캡션)
+- [ ] 핵심 수치가 표에서 카드/밴드로 시각화돼 한눈에 읽힘
+- [ ] 새 색 0 · NGT 콘텐츠 불변 · 모바일/인쇄 OK
+- [ ] 렌더 스샷으로 "메뉴만 바뀐 게 아니라 비주얼이 리치해졌다" 확인
