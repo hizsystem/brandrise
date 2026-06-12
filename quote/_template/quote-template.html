@@ -94,13 +94,79 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
   .hero,.total,.t,.co{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   section{page-break-inside:avoid}
 }
+
+/* ===== veggiet DNA 업그레이드 컴포넌트 (인디고 클린 · 가산) ===== */
+/* 1) 에디토리얼 커버 — h1 형광 언더라인 + 반응형 확대 */
+.hero h1{font-size:clamp(28px,4.6vw,40px)}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
+
+/* 2) 스티키 TOC 탭바 (hero 바로 아래) */
+.toc{position:sticky;top:0;z-index:50;display:flex;background:var(--card);
+  border-bottom:1px solid var(--line);box-shadow:0 1px 0 var(--line)}
+.toc a{flex:1;text-align:center;padding:13px 6px;font-size:12.5px;font-weight:700;
+  color:var(--ink2);text-decoration:none;border-right:1px solid var(--line2);transition:.15s}
+.toc a:last-child{border-right:none}
+.toc a:hover{background:var(--ac-50);color:var(--ac)}
+.toc a.on{color:var(--ac);box-shadow:inset 0 -2px 0 var(--ac)}
+
+/* 3) ★ A/B 견적 비교 그리드 */
+.ab{display:grid;grid-template-columns:1fr 56px 1.08fr;gap:0;align-items:stretch;margin:18px 0 8px}
+.ab-card{border:1.5px solid var(--line);border-radius:16px;padding:24px 26px;background:var(--card);display:flex;flex-direction:column}
+.ab-card.rec{background:var(--ink);color:#fff;border-color:var(--ink)}
+.ab-card .ab-k{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--muted);margin-bottom:6px}
+.ab-card.rec .ab-k{color:#a5b4fc}
+.ab-card .ab-nm{font-size:18px;font-weight:800;letter-spacing:-.01em;margin-bottom:14px}
+.ab-card .ab-amt{font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.ab-card.rec .ab-amt{color:#a5b4fc}
+.ab-card .ab-amt small{font-size:13px;font-weight:600;color:var(--muted);margin-left:6px}
+.ab-card.rec .ab-amt small{color:#cbd5e1}
+.ab-card .ab-rows{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.ab-card .ab-rows div{font-size:13px;display:flex;gap:12px;justify-content:space-between;
+  border-top:1px dashed var(--line);padding-top:8px}
+.ab-card.rec .ab-rows div{border-color:rgba(255,255,255,.16);color:#e2e8f0}
+.ab-card .ab-tag{margin-top:auto;padding-top:14px;font-size:12px;font-weight:700;color:var(--ac)}
+.ab-card.rec .ab-tag{color:#a5b4fc}
+.ab-arrow{display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:var(--ac)}
+
+/* 4) evidence 박스 */
+.evi{border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:14px 0}
+.evi .eh{padding:11px 16px;font-size:12.5px;font-weight:800;background:var(--soft);border-bottom:1px solid var(--line);color:var(--ink2)}
+.evi img{display:block;width:100%;height:auto}
+.evi .en{padding:9px 16px;font-size:12px;color:var(--muted);border-top:1px dashed var(--line)}
+
+/* 5) layer 스택 */
+.stack{display:flex;flex-direction:column;gap:8px;margin:14px 0}
+.layer{display:grid;grid-template-columns:130px 150px 1fr;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.layer .ln{padding:14px 16px;font-weight:800;font-size:14px;background:var(--ac-50);color:var(--ac-700);display:flex;align-items:center}
+.layer .lp{padding:14px 12px;font-size:12.5px;font-weight:700;color:var(--ink2);display:flex;align-items:center;border-left:1px dashed var(--line);border-right:1px dashed var(--line)}
+.layer .ld{padding:14px 18px;font-size:13px;color:var(--ink2);display:flex;align-items:center}
+
+/* 6) 역할/팩트 카드 그리드 */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
+.fcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
+.fcard .fk{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.fcard .fv{font-size:15px;font-weight:800;color:var(--ink)}
+
+/* 반응형 (veggiet DNA) */
+@media(max-width:880px){
+  .ab{grid-template-columns:1fr;gap:10px}
+  .ab-arrow{transform:rotate(90deg);padding:2px 0}
+  .layer{grid-template-columns:110px 1fr}
+  .layer .lp{border-right:none}
+  .layer .ld{grid-column:1/3;border-top:1px dashed var(--line)}
+  .toc{display:none}
+}
+@media print{
+  .toc{display:none}
+  .ab-card,.evi,.layer,.fcard{break-inside:avoid}
+}
 </style>
 </head>
 <body>
 
 <div class="hero"><div class="in">
   <div class="badge">BRAND CONSULTING QUOTE · 견적서</div>
-  <h1>[네츄럴굿띵스] 브랜드 컨설팅 견적서</h1>
+  <h1>[네츄럴굿띵스] 브랜드 컨설팅 <span class="hl">견적서</span></h1>
   <div class="sub">브랜드 진단 8개 항목 기반 — <b style="color:#fff">6개월 파트너십</b> (2026.07 ~ 2026.12 · 2027.01 리뉴얼 런칭)</div>
   <div class="meta">
     <span class="chip">수신 <b>(주)네츄럴굿띵스 김수안 대표</b></span>
@@ -109,6 +175,14 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
     <span class="chip">근거 <b>1차 전략 진단서 (별첨)</b></span>
   </div>
 </div></div>
+
+<nav class="toc">
+  <a href="#diagnosis">진단맵</a>
+  <a href="#ab">PLAN A·B</a>
+  <a href="#blocks">블록상세</a>
+  <a href="#flow">일정</a>
+  <a href="#notes">비고</a>
+</nav>
 
 <div class="wrap">
 
@@ -128,6 +202,38 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
       <tr><td class="c"><b>⑧</b></td><td><b>CRM·자사 팬덤 부재</b> — 카카오채널·멤버십 인프라는 있으나 미활용. 팬덤이 NGT가 아니라 셀러에게 쌓임</td><td>자사몰 CRM·리텐션 구조 구축 — 임대한 도달을 소유 자산으로</td></tr>
     </table>
     <div class="co ac"><span class="lab">파트너십 방향</span>데이터 정밀 진단 선행 › 브랜드 아이덴티티 → 디자인·촬영·채널 순서 진행 › 12월 브랜드 세일 → 1월 리뉴얼 런칭 › 리테이너 + 캠페인 방식 › 인하우스 전수 목표</div>
+  </section>
+
+  <section id="ab">
+    <div class="sec-k">PLAN A vs B</div>
+    <h2>두 가지 시작 방법 — 작은 yes부터, 또는 토대부터</h2>
+    <p class="lead">같은 단가·같은 항목 정의 위에서 <b>깊이만 다릅니다.</b> A안은 진단으로 작게 시작해 결과를 보고 확장하고, B안은 6개월 풀 파트너십으로 토대를 한 번에 세웁니다. (금액은 협의 조정 — "~" 표기)</p>
+    <div class="ab">
+      <div class="ab-card">
+        <div class="ab-k">PLAN A · 코어(진입 앵커)</div>
+        <div class="ab-nm">데이터 진단 + 브랜드 아이덴티티</div>
+        <div class="ab-amt">3,000<small>만원~ · VAT 별도</small></div>
+        <div class="ab-rows">
+          <div><span>블록 1 · 1·2차 진단 + 시장 서베이 → 사업계획</span><b>포함</b></div>
+          <div><span>블록 2 · 리브랜딩 ① 아이덴티티·제품체계 전략</span><b>포함</b></div>
+          <div><span>디자인·촬영·운영(블록 0·3·4·5)</span><b>진단 후 확장</b></div>
+        </div>
+        <div class="ab-tag">작은 yes로 시작 — 진단 결과 후 범위·금액 협의 조정</div>
+      </div>
+      <div class="ab-arrow">→</div>
+      <div class="ab-card rec">
+        <div class="ab-k">PLAN B · 풀(권장)</div>
+        <div class="ab-nm">6개월 브랜드 IMC 풀 파트너십</div>
+        <div class="ab-amt">1억~<small>· VAT 별도</small></div>
+        <div class="ab-rows">
+          <div><span>블록 0 · IMC 전략 파트너십(6개월 상시)</span><b>포함</b></div>
+          <div><span>블록 1·2 · 진단 + 리브랜딩 아이덴티티</span><b>포함</b></div>
+          <div><span>블록 3 · 로고·패키지·상세 디자인 리뉴얼</span><b>포함</b></div>
+          <div><span>블록 4·5 · 촬영·콘텐츠 + 세일·런칭 마케팅</span><b>포함</b></div>
+        </div>
+        <div class="ab-tag">토대를 제대로 — 진단→브랜딩→디자인→촬영→런칭 (아래 블록 0~5 = 총 103,400,000원)</div>
+      </div>
+    </div>
   </section>
 
   <section id="blocks">
@@ -200,6 +306,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
       <tr class="sub"><td colspan="5">소 계</td><td class="num">20,000,000</td></tr>
     </table>
 
+    <div class="co ac"><span class="lab">연결</span>위 블록 0~5의 합계가 <b>PLAN B(6개월 풀 파트너십)</b>의 상세 내역입니다. (상단 A/B 비교 참조)</div>
     <div class="total">
       <div class="tl2">TOTAL (블록 0~5)</div>
       <div class="tv">103,400,000원 <small>VAT 별도</small></div>

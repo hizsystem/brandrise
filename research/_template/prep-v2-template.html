@@ -116,13 +116,46 @@ td b,td strong{color:var(--ink)}
 footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px}
 footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
 @media(max-width:880px){.layout{grid-template-columns:1fr;gap:0;padding:0 22px}nav.toc{display:none}.hero .in{padding:0 22px}.hero h1{font-size:30px}.grid2,.grid3,.kpi,.tiers,.swot{grid-template-columns:1fr}}
+
+/* ===== veggiet DNA 가산 컴포넌트 (인디고 클린 토큰만 사용) ===== */
+/* 1) 에디토리얼 커버 — h1 형광 언더라인 + clamp 반응형 */
+.hero h1{font-size:clamp(28px,4.6vw,42px)}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
+
+/* 2) 스티키 TOC 탭바 (hero 바로 아래 가로 탭) — 기존 좌측 nav.toc와 별도 .tabbar */
+.tabbar{position:sticky;top:0;z-index:50;display:flex;background:var(--card);
+  border-bottom:1px solid var(--line);box-shadow:0 1px 0 var(--line)}
+.tabbar a{flex:1;text-align:center;padding:13px 6px;font-size:12.5px;font-weight:700;
+  color:var(--ink2);text-decoration:none;border-right:1px solid var(--line2);transition:.15s}
+.tabbar a:last-child{border-right:none}
+.tabbar a:hover{background:var(--ac-50);color:var(--ac)}
+.tabbar a.on{color:var(--ac);box-shadow:inset 0 -2px 0 var(--ac)}
+
+/* 3) evidence 박스 (직접 리서치 캡처·증빙 액자) */
+.evi{border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:14px 0}
+.evi .eh{padding:11px 16px;font-size:12.5px;font-weight:800;background:var(--soft);border-bottom:1px solid var(--line);color:var(--ink2)}
+.evi img{display:block;width:100%;height:auto}
+.evi .en{padding:9px 16px;font-size:12px;color:var(--muted);border-top:1px dashed var(--line)}
+
+/* 4) 역할/팩트 카드 그리드 (핵심 팩트 스캔형 3~4열) */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
+.fcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
+.fcard .fk{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.fcard .fv{font-size:15px;font-weight:800;color:var(--ink)}
+.fcard .fs{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.55;font-weight:500}
+
+@media(max-width:880px){.tabbar{display:none}}
+@media print{
+  .tabbar{display:none}
+  .evi,.fcard,.card{break-inside:avoid}
+}
 </style>
 </head>
 <body>
 
 <div class="hero"><div class="in">
   <div class="badge">NEW BUSINESS PREP · 통합표준</div>
-  <h1>네츄럴굿띵스 (NGT)</h1>
+  <h1>네츄럴굿띵스 <span class="hl">(NGT)</span></h1>
   <div class="sub">"Sustainable wellness for women" — 자사 발효 원료공장을 가진 10년차 여성 이너케어 강자. 제품·인증·글로벌은 갖췄으나, <b style="color:#fff">인플루언서·공구 인지도를 자사몰 브랜드 자산</b>으로 전환해야 하는 시점.</div>
   <div class="meta">
     <span class="chip">기회 적합도(추정) <b>4.4 / 5.0 · GO</b></span>
@@ -131,6 +164,18 @@ footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
     <span class="chip">상담 전 PREP · 인테이크+리서치 기반</span>
   </div>
 </div></div>
+
+<nav class="tabbar">
+  <a href="#onepager">수주 한 장</a>
+  <a href="#diagnosis">핵심 진단</a>
+  <a href="#company">기업 · 정량</a>
+  <a href="#product">제품 · 채널</a>
+  <a href="#market">경쟁 · 시장</a>
+  <a href="#needs">SWOT · 니즈</a>
+  <a href="#deal">기회 · 견적</a>
+  <a href="#consult">상담 준비</a>
+  <a href="#sources">참고 출처</a>
+</nav>
 
 <div class="layout">
   <nav class="toc">
@@ -195,14 +240,14 @@ footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
       <div class="grid2">
         <div class="card">
           <h3 style="margin-top:0">기업 기초</h3>
-          <table>
-            <tr><td style="width:32%"><b>법인 / 대표</b></td><td>(주)네츄럴굿띵스 · 김수안(Sandy)</td></tr>
-            <tr><td><b>설립</b></td><td>2016 (10년차) · 자생 성장(부트스트랩)</td></tr>
-            <tr><td><b>거점</b></td><td>마포 본사(NGT빌딩) + 청주 자사 원료공장(2020)</td></tr>
-            <tr><td><b>조직</b></td><td>인테이크 11명(영업4·브랜딩2·디자인2·제품개발2·경영지원1) / 공시 31명 <span class="t y">⚠️ 차이 확인</span></td></tr>
-            <tr><td><b>그룹사</b></td><td>제조전문(2000)·건기식(2010)·NGT(2016) 파트너십</td></tr>
-            <tr><td><b>인증</b></td><td>ISO22000·HACCP·여성기업·벤처·글로벌강소기업1000+</td></tr>
-          </table>
+          <div class="cards">
+            <div class="fcard"><div class="fk">법인 / 대표</div><div class="fv">(주)네츄럴굿띵스 · 김수안(Sandy)</div></div>
+            <div class="fcard"><div class="fk">설립</div><div class="fv">2016 (10년차) · 자생 성장(부트스트랩)</div></div>
+            <div class="fcard"><div class="fk">거점</div><div class="fv">마포 본사(NGT빌딩) + 청주 자사 원료공장(2020)</div></div>
+            <div class="fcard"><div class="fk">조직</div><div class="fv">인테이크 11명(영업4·브랜딩2·디자인2·제품개발2·경영지원1) / 공시 31명 <span class="t y">⚠️ 차이 확인</span></div></div>
+            <div class="fcard"><div class="fk">그룹사</div><div class="fv">제조전문(2000)·건기식(2010)·NGT(2016) 파트너십</div></div>
+            <div class="fcard"><div class="fk">인증</div><div class="fv">ISO22000·HACCP·여성기업·벤처·글로벌강소기업1000+</div></div>
+          </div>
         </div>
         <div class="card">
           <h3 style="margin-top:0">정량 시그널 <span style="font-size:11px;color:var(--muted);font-weight:500">(값 · 출처)</span></h3>
@@ -340,12 +385,14 @@ footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
 <footer><div class="in">BRANDRISE (MarketingOS) · 네츄럴굿띵스(NGT) NB 상담 준비 PREP — 통합표준 · 상담 전(인테이크+리서치) · 내부 전용</div></footer>
 
 <script>
-const links=[...document.querySelectorAll('nav.toc a')];
-const map=links.map(a=>({a,el:document.querySelector(a.getAttribute('href'))}));
+const links=[...document.querySelectorAll('nav.toc a, nav.tabbar a')];
+const sections=[...new Set(links.map(a=>a.getAttribute('href')))]
+  .map(href=>({href,el:document.querySelector(href)})).filter(s=>s.el);
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
-  links.forEach(l=>l.classList.remove('on'));
-  const m=map.find(m=>m.el===e.target); if(m)m.a.classList.add('on');}})},{rootMargin:'-20% 0px -70% 0px'});
-map.forEach(m=>m.el&&obs.observe(m.el));
+  const s=sections.find(s=>s.el===e.target); if(!s)return;
+  links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')===s.href));
+}})},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>obs.observe(s.el));
 </script>
 </body>
 </html>

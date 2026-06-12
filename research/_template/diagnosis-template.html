@@ -95,11 +95,67 @@ td b,td strong{color:var(--ink)}
 .lever .lq{font-size:19px;font-weight:700;line-height:1.6;text-align:center}
 .lever .lq em{font-style:normal;color:#a5b4fc}
 footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9}
-@media(max-width:880px){.wrap{padding:28px 22px 80px}.hero .in{padding:0 22px}.hero h1{font-size:28px}.chs,.moat,.grid2,.grid3{grid-template-columns:1fr}.steps{flex-direction:column}.st:not(:last-child)::after{content:"";display:none}}
+
+/* ===== veggiet DNA 이식 (인디고 클린) — 가산 컴포넌트 ===== */
+/* 1) 에디토리얼 커버: h1 형광 언더라인 + 반응형 클램프 */
+.hero h1{font-size:clamp(28px,4.6vw,40px)}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
+
+/* 2) 스티키 TOC 탭바 (hero 바로 아래) */
+.toc{position:sticky;top:0;z-index:50;display:flex;background:var(--card);
+  border-bottom:1px solid var(--line);box-shadow:0 1px 0 var(--line)}
+.toc a{flex:1;text-align:center;padding:13px 6px;font-size:12.5px;font-weight:700;
+  color:var(--ink2);text-decoration:none;border-right:1px solid var(--line2);transition:.15s}
+.toc a:last-child{border-right:none}
+.toc a:hover{background:var(--ac-50);color:var(--ac)}
+.toc a.on{color:var(--ac);box-shadow:inset 0 -2px 0 var(--ac)}
+
+/* 4) evidence 박스 (데이터 근거 스샷/증빙) */
+.evi{border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:14px 0}
+.evi .eh{padding:11px 16px;font-size:12.5px;font-weight:800;background:var(--soft);border-bottom:1px solid var(--line);color:var(--ink2)}
+.evi img{display:block;width:100%;height:auto}
+.evi .en{padding:9px 16px;font-size:12px;color:var(--muted);border-top:1px dashed var(--line)}
+
+/* 5) layer 스택 (이름|기간|설명 가로 레이어) */
+.stack{display:flex;flex-direction:column;gap:8px;margin:14px 0}
+.layer{display:grid;grid-template-columns:130px 150px 1fr;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.layer .ln{padding:14px 16px;font-weight:800;font-size:14px;background:var(--ac-50);color:var(--ac-700);display:flex;align-items:center}
+.layer .lp{padding:14px 12px;font-size:12.5px;font-weight:700;color:var(--ink2);display:flex;align-items:center;border-left:1px dashed var(--line);border-right:1px dashed var(--line)}
+.layer .ld{padding:14px 18px;font-size:13px;color:var(--ink2);display:flex;align-items:center}
+
+/* 6) 역할/팩트 카드 그리드 */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
+.fcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
+.fcard .fk{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.fcard .fv{font-size:15px;font-weight:800;color:var(--ink)}
+
+/* ★ 병목 진단 카드 (표→카드, 번호↔견적블록 대응 유지) */
+.bn{display:flex;flex-direction:column;gap:10px;margin:14px 0 4px}
+.bcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 22px;
+  display:grid;grid-template-columns:48px 1fr auto;gap:0 18px;align-items:start}
+.bcard .bnum{grid-row:1/3;width:40px;height:40px;border-radius:11px;background:var(--ac-50);color:var(--ac-700);
+  font-size:18px;font-weight:800;display:flex;align-items:center;justify-content:center;letter-spacing:-.02em}
+.bcard.crit .bnum{background:var(--bad-50);color:var(--bad)}
+.bcard .bh{font-size:14.5px;font-weight:800;color:var(--ink);letter-spacing:-.01em;align-self:center}
+.bcard .bsev{align-self:center}
+.bcard .bd{grid-column:2/4;font-size:13px;color:var(--ink2);line-height:1.68;margin-top:6px}
+.bcard .bmap{grid-column:2/4;margin-top:10px;font-size:11.5px;font-weight:700;color:var(--ac);
+  display:inline-flex;align-items:center;gap:6px}
+
+@media(max-width:880px){.wrap{padding:28px 22px 80px}.hero .in{padding:0 22px}.hero h1{font-size:28px}.chs,.moat,.grid2,.grid3{grid-template-columns:1fr}.steps{flex-direction:column}.st:not(:last-child)::after{content:"";display:none}
+  .toc{display:none}
+  .layer{grid-template-columns:110px 1fr}
+  .layer .lp{border-right:none}
+  .layer .ld{grid-column:1/3;border-top:1px dashed var(--line)}
+  .bcard{grid-template-columns:40px 1fr}
+  .bcard .bsev{grid-column:2/3;justify-self:start;margin-top:4px}
+  .bcard .bd,.bcard .bmap{grid-column:1/3}}
 @media print{
   body{background:#fff}
   .hero,.verdict,.lever,.st.on,.ch.own,.t,.co{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   section{page-break-inside:avoid}
+  .toc{display:none}
+  .evi,.layer,.fcard,.bcard{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 </style>
 </head>
@@ -107,7 +163,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
 
 <div class="hero"><div class="in">
   <div class="badge">BRAND STRATEGY DIAGNOSIS · 1차 전략 진단</div>
-  <h1>NGT (네츄럴굿띵스) 브랜드 진단서</h1>
+  <h1>NGT (네츄럴굿띵스) 브랜드 <span class="hl">진단서</span></h1>
   <div class="sub">잘 만들고도 브랜드로 못 키운 회사 — <b style="color:#fff">임대한 도달을 소유한 자산으로</b>.</div>
   <div class="meta">
     <span class="chip">수신 <b>(주)네츄럴굿띵스 김수안 대표</b></span>
@@ -116,6 +172,15 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
     <span class="chip">근거 <b>대면 상담 + 공개 리서치</b></span>
   </div>
 </div></div>
+
+<nav class="toc">
+  <a href="#core">핵심 진단</a>
+  <a href="#structure">매출 구조</a>
+  <a href="#bottleneck">병목 진단</a>
+  <a href="#asset">숨은 자산</a>
+  <a href="#next">다음 단계</a>
+  <a href="#lever">레버리지</a>
+</nav>
 
 <div class="wrap">
 
@@ -157,14 +222,43 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
     <div class="sec-k">BOTTLENECKS</div>
     <h2>5대 병목 진단</h2>
     <p class="lead">제품(공급측)은 업계 최상위인데 수요측(브랜드 자산·자사 팬덤·전환 구조)이 비어 있습니다. 심각도 순 — 번호는 견적서 블록과 대응.</p>
-    <table>
-      <tr><th style="width:34px">#</th><th>진단 항목</th><th style="width:90px">심각도</th></tr>
-      <tr><td>1</td><td><b>포지셔닝이 찢어져 있다 — 정체성 부재</b><br>돈 버는 곳(효소)과 비전(여성 웰니스)이 분리. 40+ SKU가 한 우산 아래 평행 나열. 소비자는 "NGT=무엇"을 한 문장으로 못 잡는다. 대표 본인도 "효소는 키 제품이 될 수 없다"고 진단.</td><td><span class="t r">Critical</span></td></tr>
-      <tr><td>2</td><td><b>매출이 "임대한 도달"에 묶여 있다</b><br>10년간 매출 엔진이 인플루언서 공구(셀러 1인과 7년 협업)에 의존. 셀러가 독립하면 대안이 없었고, 자사 온라인은 2025년에야 "처음" 키우기 시작. 카테고리는 연 8~12% 성장인데 NGT는 점유율 하락.</td><td><span class="t r">Critical</span></td></tr>
-      <tr><td>3</td><td><b>브랜딩과 퍼포먼스가 단절</b><br>메시지→콘텐츠→광고→CRM이 따로 굴러 자사몰 전환·재구매로 안 모임. 카카오채널·멤버십 인프라는 있으나 미활용. IP 콜라보도 "화제성을 자산으로 받는 그릇이 없어" 일회성으로 끝남(대표 자평).</td><td><span class="t y">High</span></td></tr>
-      <tr><td>4</td><td><b>광고 효율 붕괴 — 즉시 정리 필요</b><br>메타 ROAS 0.3 (월 700만 집행). 손익분기는 ROAS 1.5+. 대행사 수 차례 교체에도 개선 없음 = 브랜드 USP·랜딩 부재가 근본 원인. 광고를 더 붓는 게 아니라 "모았다가 한 번 제대로 터뜨릴" 구조가 필요.</td><td><span class="t y">High</span></td></tr>
-      <tr><td>5</td><td><b>내부 조직만으로는 리브랜딩 불가</b><br>13명 규모·퍼포먼스 마케팅팀 부재. 전략적 IMC 역량 공백, 상세페이지 10년 묵음. 내부 의사결정 구조상 직원이 대표의 브랜드를 뒤집기 어려움 → 외부 주도가 구조적으로 안전.</td><td><span class="t y">High</span></td></tr>
-    </table>
+    <div class="bn">
+      <div class="bcard crit">
+        <div class="bnum">1</div>
+        <div class="bh">포지셔닝이 찢어져 있다 — 정체성 부재</div>
+        <div class="bsev"><span class="t r">Critical</span></div>
+        <div class="bd">돈 버는 곳(효소)과 비전(여성 웰니스)이 분리. 40+ SKU가 한 우산 아래 평행 나열. 소비자는 "NGT=무엇"을 한 문장으로 못 잡는다. 대표 본인도 "효소는 키 제품이 될 수 없다"고 진단.</div>
+        <div class="bmap">→ 견적서 블록 ①에 대응</div>
+      </div>
+      <div class="bcard crit">
+        <div class="bnum">2</div>
+        <div class="bh">매출이 "임대한 도달"에 묶여 있다</div>
+        <div class="bsev"><span class="t r">Critical</span></div>
+        <div class="bd">10년간 매출 엔진이 인플루언서 공구(셀러 1인과 7년 협업)에 의존. 셀러가 독립하면 대안이 없었고, 자사 온라인은 2025년에야 "처음" 키우기 시작. 카테고리는 연 8~12% 성장인데 NGT는 점유율 하락.</div>
+        <div class="bmap">→ 견적서 블록 ②에 대응</div>
+      </div>
+      <div class="bcard">
+        <div class="bnum">3</div>
+        <div class="bh">브랜딩과 퍼포먼스가 단절</div>
+        <div class="bsev"><span class="t y">High</span></div>
+        <div class="bd">메시지→콘텐츠→광고→CRM이 따로 굴러 자사몰 전환·재구매로 안 모임. 카카오채널·멤버십 인프라는 있으나 미활용. IP 콜라보도 "화제성을 자산으로 받는 그릇이 없어" 일회성으로 끝남(대표 자평).</div>
+        <div class="bmap">→ 견적서 블록 ③에 대응</div>
+      </div>
+      <div class="bcard">
+        <div class="bnum">4</div>
+        <div class="bh">광고 효율 붕괴 — 즉시 정리 필요</div>
+        <div class="bsev"><span class="t y">High</span></div>
+        <div class="bd">메타 ROAS 0.3 (월 700만 집행). 손익분기는 ROAS 1.5+. 대행사 수 차례 교체에도 개선 없음 = 브랜드 USP·랜딩 부재가 근본 원인. 광고를 더 붓는 게 아니라 "모았다가 한 번 제대로 터뜨릴" 구조가 필요.</div>
+        <div class="bmap">→ 견적서 블록 ④에 대응</div>
+      </div>
+      <div class="bcard">
+        <div class="bnum">5</div>
+        <div class="bh">내부 조직만으로는 리브랜딩 불가</div>
+        <div class="bsev"><span class="t y">High</span></div>
+        <div class="bd">13명 규모·퍼포먼스 마케팅팀 부재. 전략적 IMC 역량 공백, 상세페이지 10년 묵음. 내부 의사결정 구조상 직원이 대표의 브랜드를 뒤집기 어려움 → 외부 주도가 구조적으로 안전.</div>
+        <div class="bmap">→ 견적서 블록 ⑤에 대응</div>
+      </div>
+    </div>
   </section>
 
   <section id="asset">
@@ -205,6 +299,23 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
   본 진단서는 2026-06-10 대면 상담 및 공개 리서치 기반 <b>1차 전략 진단</b>입니다. 정량 수치는 데이터 정밀 진단(T1) 단계에서 확정됩니다.<br>
   © 2026 브랜드라이즈 by HIZ · 비공개 — 수신처 제출용
 </footer>
+
+<script>
+/* TOC 스크롤스파이 — 현재 섹션 탭에 .on 표시 */
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  if(!links.length)return;
+  var map=links.map(function(a){var id=a.getAttribute('href').slice(1);return{a:a,el:document.getElementById(id)};}).filter(function(m){return m.el;});
+  function spy(){
+    var y=window.scrollY+120,cur=map[0];
+    map.forEach(function(m){if(m.el.offsetTop<=y)cur=m;});
+    links.forEach(function(a){a.classList.remove('on');});
+    if(cur)cur.a.classList.add('on');
+  }
+  window.addEventListener('scroll',spy,{passive:true});
+  window.addEventListener('resize',spy);spy();
+})();
+</script>
 
 </body>
 </html>
