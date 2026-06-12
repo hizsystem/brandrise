@@ -195,6 +195,17 @@
         /* leverage teach-item */
         .leverage-box .teach-item { text-align:left; font-size:14px; margin:14px 0; padding-left:16px; border-left:3px solid rgba(255,255,255,0.4); }
         .leverage-box .teach-item strong { color:#ffd9c2; }
+        /* One-Pager v2 — 라벨+한 줄 정보카드 (한눈에) */
+        .op-grid { display:grid; grid-template-columns:92px 1fr; gap:11px 16px; margin:18px 0 4px; }
+        .op-grid .op-k { font-size:12px; font-weight:700; color:#ffb088; padding-top:2px; }
+        .op-grid .op-v { font-size:15px; line-height:1.55; }
+        .op-grid .op-v strong { color:#ffd9c2; }
+        .op-grid .op-v ol { margin:0; padding-left:17px; }
+        .op-grid .op-v ol li { margin-bottom:3px; }
+        .op-divider { border-top:1px solid rgba(255,255,255,0.15); margin:16px 0; }
+        .op-hook { font-size:16px; font-weight:800; color:#fff; line-height:1.5; }
+        .op-hook .lead { font-size:11px; color:#ffb088; font-weight:700; letter-spacing:0.5px; display:block; margin-bottom:4px; }
+        @media (max-width:768px){ .op-grid { grid-template-columns:1fr; gap:4px 0; } .op-grid .op-k { padding-top:10px; } }
     </style>
 </head>
 <body>
@@ -212,24 +223,22 @@
     <!-- 수주 한 장 (One-Pager) -->
     <!-- ============================================================ -->
     <div class="onepager" id="one-pager">
-        <div class="op-kicker">수주 한 장</div>
-        <div class="op-h">미팅 들어가기 전, 이 카드 하나면 된다. (아래 12섹션은 근거·깊이 백업) — 🔴 이 상담은 proof-first: "영상 보고 결이 맞아" 온 warm lead라 설득이 아니라 "유솜을 누구보다 이해한다"를 경쟁사 빈자리 맵으로 증명하는 자리다.</div>
-        <div class="op-block">
-            <div class="op-label">그래서 진짜 니즈는</div>
-            <div class="op-need">"기획·BM은 끝냈는데, 한정된 월 500만으로 무엇부터 옳게 내놓을지 모르겠다. 내 브랜드가 통할지 검증받고, 혼자 결정하는 두려움을 같이 질 파트너가 필요하다."<span class="muted">표면 요청은 "IMC 마케팅 의뢰(L1)"지만, 신청 버튼을 누른 진짜 엔진은 <strong style="color:#ffd9c2;">"대표님 영상 보고 결이 맞아서"(L4 — 신뢰·동행)</strong>다. L1로만 응대하면 "IMC 다 해주는 더 싼 곳"과의 견적 비교 게임에 끌려가 패한다. (Pain L1 확신 95% → L4 근본 60%)</span></div>
+        <div class="op-kicker">🎯 수주 한 장</div>
+        <div class="op-h">시간 없을 땐 이것만. (깊이·근거는 아래 12섹션)</div>
+        <div class="op-grid">
+            <div class="op-k">진짜 니즈</div>
+            <div class="op-v">기획·BM은 끝, 실행은 백지. 표면은 "IMC 의뢰"지만 진짜는 <strong>"통할지 검증 + 같이 갈 파트너"(L4 신뢰·동행)</strong></div>
+            <div class="op-k">미팅 목표</div>
+            <div class="op-v">경쟁사 빈자리 맵 → <strong>유솜의 한 칸 확정</strong> (warm lead라 설득 아닌 "이해 증명")</div>
+            <div class="op-k">주는 것</div>
+            <div class="op-v"><ol><li>빈자리 포지셔닝 1문장</li><li>인플루언서·체험단 시드 + 인스타 초기 9~12컷</li><li>검증→시드→증폭 단계 로드맵 + 500만 배분</li></ol></div>
+            <div class="op-k">첫 제안</div>
+            <div class="op-v"><strong>Professional</strong>(월 500만 내) · 작게 시작은 Essential 단발</div>
+            <div class="op-k">다음 액션</div>
+            <div class="op-v">빈칸·런칭 타임라인·500만 배분 확정 → <strong>24h 내 견적 정본</strong></div>
         </div>
-        <div class="op-block">
-            <div class="op-label">그래서 우리가 해주는 것 (구체)</div>
-            <div class="op-do">
-                <div class="do-item"><strong>① 경쟁사 빈자리 맵 + 유솜의 한 칸(포지셔닝 한 문장) 확정</strong> — 홈웨어 D2C 8개 브랜드를 "어디가 비었나"로 재구성. 여성 러블리 레드오션을 피해 유솜이 깃발 꽂을 한 칸을 확정. 모든 콘텐츠·광고 카피의 기준선.</div>
-                <div class="do-item"><strong>② 마이크로 인플루언서·체험단 시드 + 인스타 초기 9~12컷·릴스 골격</strong> — 홈웨어는 입어봐야 아는 카테고리. 광고보다 소셜 프루프가 먼저. 오픈 첫날 "리뷰 0·팔로워 0"이 아니게 만드는 시드 자산.</div>
-                <div class="do-item"><strong>③ "검증 → 시드 → 광고 증폭" 단계형 런칭 로드맵 + 월 500만 배분 설계</strong> — 굿즈·인플루언서·광고 동시 집행(셋 다 얕아져 0 임팩트)을 막고, 한 단계에 집중해 임계점을 돌파하는 순서.</div>
-            </div>
-        </div>
-        <div class="op-block">
-            <div class="op-label">첫 제안 & 다음 액션</div>
-            <div class="op-offer"><span class="hl">Professional("런칭 IMC 1세트" 패키지, 중 가격대 · 월 500만 내 설계)</span> — 처음부터 다 안 해도 됨. Essential(진단) 단발로 작게 시작해 확신 서면 실행으로. &nbsp;|&nbsp; <span class="hl">다음 액션:</span> 미팅서 빈자리 한 칸·런칭 타임라인·500만 배분 확정 → <strong style="color:#ffd9c2;">24h 내 Essential/Professional 견적 정본 발송(2단 클로징)</strong></div>
-        </div>
+        <div class="op-divider"></div>
+        <div class="op-hook"><span class="lead">한 마디</span>"500만으로 다 하면 다 죽는다 — 순서가 생명"</div>
     </div>
 
     <!-- ============================================================ -->

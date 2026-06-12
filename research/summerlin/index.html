@@ -192,6 +192,17 @@
         /* leverage teach-item */
         .leverage-box .teach-item { text-align:left; font-size:14px; margin:14px 0; padding-left:16px; border-left:3px solid rgba(255,255,255,0.4); }
         .leverage-box .teach-item strong { color:#ffd9c2; }
+        /* One-Pager v2 — 라벨+한 줄 정보카드 (한눈에) */
+        .op-grid { display:grid; grid-template-columns:92px 1fr; gap:11px 16px; margin:18px 0 4px; }
+        .op-grid .op-k { font-size:12px; font-weight:700; color:#ffb088; padding-top:2px; }
+        .op-grid .op-v { font-size:15px; line-height:1.55; }
+        .op-grid .op-v strong { color:#ffd9c2; }
+        .op-grid .op-v ol { margin:0; padding-left:17px; }
+        .op-grid .op-v ol li { margin-bottom:3px; }
+        .op-divider { border-top:1px solid rgba(255,255,255,0.15); margin:16px 0; }
+        .op-hook { font-size:16px; font-weight:800; color:#fff; line-height:1.5; }
+        .op-hook .lead { font-size:11px; color:#ffb088; font-weight:700; letter-spacing:0.5px; display:block; margin-bottom:4px; }
+        @media (max-width:768px){ .op-grid { grid-template-columns:1fr; gap:4px 0; } .op-grid .op-k { padding-top:10px; } }
     </style>
 </head>
 <body>
@@ -209,24 +220,22 @@
     <!-- 수주 한 장 (One-Pager) -->
     <!-- ============================================================ -->
     <div class="onepager" id="one-pager">
-        <div class="op-kicker">수주 한 장</div>
-        <div class="op-h">미팅 들어가기 전, 이 카드 하나면 된다. (아래 12섹션은 근거·깊이 백업) — 🔴 이 상담은 discovery-first: 첫 30분에 "썸머린이 뭔지"를 캐내는 게 1순위.</div>
-        <div class="op-block">
-            <div class="op-label">그래서 진짜 니즈는</div>
-            <div class="op-need">"한정된 1인 자원으로 첫 제품을 실패 없이 시장에 안착시키고, 혼자서도 굴러가는 구조를 갖고 싶다."<span class="muted">표면 호소는 "런칭 방식·채널 추천"이지만, 실제 원인은 <strong style="color:#ffd9c2;">검증 안 된 첫 베팅에 대한 안전장치 부재</strong>다. 채널을 묻는 게 아니라 "실패 안 하는 순서"를 찾는 것. (Pain L1 확신도 95% → L4 근본니즈 70%)</span></div>
+        <div class="op-kicker">🎯 수주 한 장</div>
+        <div class="op-h">시간 없을 땐 이것만. (깊이·근거는 아래 12섹션)</div>
+        <div class="op-grid">
+            <div class="op-k">진짜 니즈</div>
+            <div class="op-v">1인 자원으로 첫 제품 실패 없이 안착 + 혼자서도 굴러가는 구조. 표면은 "채널 추천"이지만 진짜는 <strong>"실패 안 하는 순서"(안전장치)</strong></div>
+            <div class="op-k">미팅 목표</div>
+            <div class="op-v">discovery-first — 첫 30분에 <strong>"썸머린이 뭔지·누구에게·제품 어디까지"</strong> 캐기 (카테고리 ⚠️미확정)</div>
+            <div class="op-k">주는 것</div>
+            <div class="op-v"><ol><li>카테고리 맞춤 런칭 시퀀스 로드맵(0~5단계)</li><li>프리런칭 관심자 100~300 + 포지셔닝 1문장</li><li>인스타 초기 9~12컷 + 스마트스토어 퍼널</li></ol></div>
+            <div class="op-k">첫 제안</div>
+            <div class="op-v"><strong>Professional</strong>("런칭 동반", 중·6~8주) · 작게 시작은 Essential 단발</div>
+            <div class="op-k">다음 액션</div>
+            <div class="op-v">미팅서 카테고리·예산 확정 → <strong>1주 내 맞춤 로드맵 + 견적</strong></div>
         </div>
-        <div class="op-block">
-            <div class="op-label">그래서 우리가 해주는 것 (구체)</div>
-            <div class="op-do">
-                <div class="do-item"><strong>① 카테고리 맞춤 런칭 시퀀스 로드맵</strong> — 제품부터 찍지 말고 "무엇을 언제" 0~5단계로. 채널 과확장·재고 선생산 사전 차단.</div>
-                <div class="do-item"><strong>② 프리런칭 관심자 100~300명 수집 + 포지셔닝 한 문장</strong> — 런칭 첫날 살 사람을 미리 확보(악성재고·광고낭비 0). "왜 썸머린인가" 확정.</div>
-                <div class="do-item"><strong>③ 인스타 초기 9~12컷 설계 + 스마트스토어 퍼널 연결</strong> — 카탈로그가 아니라 세계관. 노출을 매출로 바꾸는 전환 장치까지.</div>
-            </div>
-        </div>
-        <div class="op-block">
-            <div class="op-label">첫 제안 & 다음 액션</div>
-            <div class="op-offer"><span class="hl">Professional("런칭 동반" 패키지, 중 가격대 · 6~8주)</span> — 처음부터 다 안 해도 됨, 소규모로 시작해 런칭 성공 보고 확장. &nbsp;|&nbsp; <span class="hl">다음 액션:</span> 미팅서 카테고리·예산 확정 → <strong style="color:#ffd9c2;">1주 내 맞춤 런칭 로드맵 + 정확한 견적 발송(2단 클로징)</strong></div>
-        </div>
+        <div class="op-divider"></div>
+        <div class="op-hook"><span class="lead">한 마디</span>"제품부터 찍지 말고, 살 사람부터 모으는 순서"</div>
     </div>
 
     <!-- ============================================================ -->
