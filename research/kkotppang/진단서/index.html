@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE 진단서 — 꽃빵 (kkotppang) · 1차 전략 진단
+  · 인디고 클린 통합표준 (research/_template/diagnosis-template.html 복제, 콘텐츠만 교체)
+  · 근거: 2026-06-12 대면 상담 + 사전 PREP 리서치. 수치는 "상담 발언 기반 추정" 명시.
+  · 병목 번호(①~⑤) ↔ 견적서 블록 대응.
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>꽃빵 (kkotppang) 브랜드 전략 진단서 | BRANDRISE</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.72;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+.hero{background:var(--ink);color:#fff;padding:60px 0 48px}
+.hero .in{max-width:960px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero .sub{font-size:15.5px;color:#cbd5e1;font-weight:300;max-width:680px;line-height:1.75}
+.hero .meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.wrap{max-width:960px;margin:0 auto;padding:36px 40px 100px}
+section{margin-bottom:50px;scroll-margin-top:24px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.lead{font-size:14.5px;color:var(--muted);margin-bottom:20px;line-height:1.7}
+h3{font-size:15px;font-weight:800;margin:24px 0 12px;color:var(--ink2);letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.co{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:13.5px;line-height:1.75;border:1px solid var(--line)}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100)} .co.ok{background:var(--ok-50);border-color:#bbf7d0}
+.co.warn{background:var(--warn-50);border-color:#fde68a} .co.bad{background:var(--bad-50);border-color:#fecdd3}
+.co b{color:var(--ink)}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
+.t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
+.t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0 4px}
+th{background:var(--soft);color:var(--ink2);font-weight:700;text-align:left;padding:10px 12px;font-size:11.5px;border-bottom:1px solid var(--line)}
+td{padding:11px 12px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b,td strong{color:var(--ink)}
+.verdict{background:var(--ink);color:#fff;border-radius:14px;padding:30px 28px;text-align:center;margin:14px 0}
+.verdict .vl{font-size:12px;color:#94a3b8;font-weight:600;letter-spacing:.1em}
+.verdict .vv{font-size:23px;font-weight:800;letter-spacing:-.01em;margin:12px 0;line-height:1.5}
+.verdict .vv em{font-style:normal;color:#a5b4fc}
+.verdict .vd{font-size:13.5px;color:#cbd5e1;line-height:1.75}
+.chs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 4px}
+.ch{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 18px;text-align:center}
+.ch.own{border:2px solid var(--ac);background:var(--ac-50)}
+.ch .cn{font-weight:700;font-size:13.5px;margin-bottom:4px}
+.ch .cv{font-size:25px;font-weight:800;color:var(--ac);margin:8px 0;letter-spacing:-.02em}
+.ch .cd{font-size:12px;color:var(--muted);line-height:1.6}
+.moat{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 4px}
+.mo{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+.mo h4{font-size:14px;font-weight:800;margin-bottom:6px}
+.mo p{font-size:12.5px;color:var(--muted);line-height:1.7}
+.mo .flag{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--ac)}
+.steps{display:flex;gap:14px;margin:18px 0 4px;overflow-x:auto}
+.st{flex:1;min-width:180px;padding:20px 18px;background:var(--soft);border:1px solid var(--line);border-radius:12px;position:relative}
+.st.on{background:var(--ac);border-color:var(--ac)}
+.st:not(:last-child)::after{content:"›";position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--ac);font-weight:800;z-index:1}
+.st .sn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.05em;margin-bottom:6px}
+.st.on .sn{color:rgba(255,255,255,.85)}
+.st .stt{font-size:14.5px;font-weight:800;color:var(--ink)}
+.st.on .stt{color:#fff}
+.st .sd{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.65}
+.st.on .sd{color:rgba(255,255,255,.9)}
+.lever{background:var(--ink);color:#fff;border-radius:14px;padding:30px 28px;margin:14px 0}
+.lever .lq{font-size:19px;font-weight:700;line-height:1.6;text-align:center}
+.lever .lq em{font-style:normal;color:#a5b4fc}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9}
+@media(max-width:880px){.wrap{padding:28px 22px 80px}.hero .in{padding:0 22px}.hero h1{font-size:28px}.chs,.moat,.grid2,.grid3{grid-template-columns:1fr}.steps{flex-direction:column}.st:not(:last-child)::after{content:"";display:none}}
+@media print{
+  body{background:#fff}
+  .hero,.verdict,.lever,.st.on,.ch.own,.t,.co{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">BRAND STRATEGY DIAGNOSIS · 1차 전략 진단</div>
+  <h1>꽃빵 (kkotppang) 브랜드 진단서</h1>
+  <div class="sub">유통은 빠른데 내 고객이 안 남는 브랜드 — <b style="color:#fff">임대한 유통·트래픽을 소유한 고객 자산으로</b>.</div>
+  <div class="meta">
+    <span class="chip">수신 <b>(주)꽃빵 이시연 대표</b></span>
+    <span class="chip">작성 <b>브랜드라이즈 by HIZ</b></span>
+    <span class="chip">기준일 <b>2026-06-12</b></span>
+    <span class="chip">근거 <b>대면 상담 + 공개 리서치</b></span>
+  </div>
+</div></div>
+
+<div class="wrap">
+
+  <section id="core">
+    <div class="sec-k">CORE DIAGNOSIS</div>
+    <h2>핵심 진단 한 줄</h2>
+    <div class="verdict">
+      <div class="vl">CORE DIAGNOSIS</div>
+      <div class="vv">꽃빵은 <em>"유통을 못 뚫는 회사"가 아니라<br>"유통은 빠른데 자기 고객을 못 모으는 회사"</em>다.</div>
+      <div class="vd">돈키호테 500점·아트박스 40점·무신사·아마존·중국 면세점까지 입점은 빠른데, 매출의 약 90%가 B2B 유통에 묶여 <b style="color:#fff">고객 데이터의 90%를 갖지 못한다.</b> 틱톡으로 하루 1,600명이 들어와도 그냥 나간다.<br><b style="color:#fff">임대한 유통·트래픽을 소유한 고객 자산으로 전환하는 것</b>이 성장의 병목이다.</div>
+    </div>
+  </section>
+
+  <section id="structure">
+    <div class="sec-k">STRUCTURE</div>
+    <h2>매출 구조 해부 — 진짜 키워야 할 곳</h2>
+    <p class="lead">"입점한 채널 수"와 "브랜드가 직접 키울 수 있는 매출"은 전혀 다릅니다. 자사몰·D2C는 아직 전체의 10분의 1, 작은 씨앗입니다.</p>
+    <div class="chs">
+      <div class="ch">
+        <div class="cn">B2B 유통 (국내+글로벌)</div>
+        <div class="cv">약 90%</div>
+        <div class="cd">월 약 2,000만. 무신사·돈키호테·면세점 등. 고객·데이터가 유통사에 귀속 — 단가·프로모션 직접 통제 불가.</div>
+      </div>
+      <div class="ch">
+        <div class="cn">글로벌 입점 (일·미·중·베)</div>
+        <div class="cv">5개국</div>
+        <div class="cd">돈키호테 500점·아마존US·중국 면세점·베트남(7~8월 출시 예정). 입점은 화려하나 sell-out 미보장.</div>
+      </div>
+      <div class="ch own">
+        <div class="cn">자사몰·D2C (직접 통제)</div>
+        <div class="cv">약 10%</div>
+        <div class="cd">월 약 200만. 브랜드가 진짜 키울 수 있는 영역. 현재 고객 데이터의 <b style="color:var(--ac)">10%만 확보</b> — 바로 이 자산이 과제.</div>
+      </div>
+    </div>
+    <div class="co"><span class="lab">수치 출처 선 긋기</span><b>위 수치는 상담(2026-06-12) 발언 기반 추정치</b>입니다("B2B 월 2,000만 : B2C 약 200만 = 9:1", "현재 고객 중 10%만 데이터 보유"). 채널별·SKU별·월별 정밀 분해와 자사몰 유입·전환·LTV는 <b>1차 데이터 진단(T1)</b>에서 확정합니다. 핵심 메시지는 동일 — 전체 외형이 아니라 <b>직접 통제 가능한 자사 고객 자산을 자생 엔진으로 키우는 것</b>이 본 프로젝트의 목표입니다.</div>
+  </section>
+
+  <section id="bottleneck">
+    <div class="sec-k">BOTTLENECKS</div>
+    <h2>5대 병목 진단</h2>
+    <p class="lead">제품(공급측)·유통·제휴는 이미 풍성한데 수요측(브랜드 정체성·자사 고객·전환 구조)이 비어 있습니다. 심각도 순 — 번호는 견적서 블록과 대응.</p>
+    <table>
+      <tr><th style="width:34px">#</th><th>진단 항목</th><th style="width:90px">심각도</th></tr>
+      <tr><td>1</td><td><b>"왜 꽃빵인가"의 한 줄이 없다 — needstate 부재</b><br>상담에서 가장 크게 드러난 지점. "꽃 원료를 쓴다" 말고는 <b>차별점(USP)을 발견하기 어렵다</b>. 더 결정적으로 "꽃 원료가 Z세대에게 왜 좋은지가 연결이 안 된다" — 원료 민감 타겟은 4050인데 꽃빵 타겟은 16~22세. 24개 SKU가 "가성비·색·발색"으로 평행 나열되어 롬앤·어뮤즈·페리페라와 구분이 안 된다.</td><td><span class="t r">Critical</span></td></tr>
+      <tr><td>2</td><td><b>광고 의존·자생력 0 — 유입은 있는데 구매가 없다</b><br>틱톡 광고로 하루 1,600명이 유입되는데 "그냥 보기만 하고 나간다". 전 채널 ROAS가 1.0 미만(마이너스 구조). 광고를 끄면 매출이 따라 꺼진다. 1,600명이 증명한 트래픽이 <b>팬덤으로 전환되지 못하는 퍼널 단절</b>이 본질.</td><td><span class="t r">Critical</span></td></tr>
+      <tr><td>3</td><td><b>내 고객 데이터의 90%가 없다 — CRM 불가</b><br>매출 9:1이 B2B라 <b>고객 중 10%만 데이터를 보유</b>. 무신사·유통 체험단 고객 정보는 유통사에 귀속. 재구매율 추적 안 됨, 팔로우 이벤트(월 2회·채널당 2~30명)도 별도 관리·CRM 없음. 모객은 하는데 자산으로 안 쌓인다.</td><td><span class="t y">High</span></td></tr>
+      <tr><td>4</td><td><b>채널은 늘렸는데 집중이 없다</b><br>틱톡·네이버·에이블리·쿠팡 동시 운영 + 쿠팡 로켓크로스 이전 중. 채널 확장은 매출엔 필요하나 <b>관리가 병행되지 않으면 수수료만 새는 구조</b>(특히 쿠팡 고수수료). "다 하는 것"보다 자사몰 유입 드라이브를 어디에 걸지 집중 채널 결정이 빠져 있다.</td><td><span class="t y">High</span></td></tr>
+      <tr><td>5</td><td><b>소액 예산 + 자산화 안 되는 마케팅</b><br>마케팅 예산 월 200만으로 하반기 8억·연 10억 목표와 갭 과대. 인플루언서는 <b>무가 시딩만</b>(유가 미진행) — 팬덤 있는 코스메틱 인플루언서를 통한 자사몰 모객 미활용. 로즈데이 1+1 완판 경험이 있으나 일회성에 그쳐 캠페인성 모객 자산으로 반복되지 못함.</td><td><span class="t y">High</span></td></tr>
+    </table>
+  </section>
+
+  <section id="asset">
+    <div class="sec-k">HIDDEN ASSET</div>
+    <h2>가장 큰 자산이 가장 안 보인다 — "초고속 SCM + 꽃 정통성"</h2>
+    <p class="lead">꽃빵에는 경쟁사가 흉내 내기 어려운 무기가 이미 있습니다 — 그런데 그 사실이 브랜드 언어로 번역되어 있지 않습니다.</p>
+    <div class="moat">
+      <div class="mo"><h4>초고속 SCM (3~4개월 신제품)</h4><p>용기 금형 제작부터 양산까지 직접 연결(박성기 실장=용기 제조). 타사 6~12개월의 절반 속도로 신제품·캠페인 대응이 가능하다.</p><span class="flag">→ 현재 브랜드 메시지로 노출: 거의 없음</span></div>
+      <div class="mo"><h4>꽃 정통성 — 홋카이도 후라노 꽃농원</h4><p>이현 이사(대표 부친)의 일본 후라노 꽃농원 직접 재배 원료·삐아재팬 진출 경험. "진짜 꽃에서 온 원료"라는 서사의 뿌리.</p><span class="flag">→ Z세대 needstate로 미번역</span></div>
+      <div class="mo"><h4>리뷰 12,429건 · 재구매 52.5%</h4><p>평점 4.6~4.9, 90일+ 재구매 52.5%. 돌아오는 충성 고객이 분명히 있다 — 단 이 신뢰가 "브랜드"가 아니라 "제품·유통"에만 쌓여 있음.</p><span class="flag">→ 브랜드 자산·직접유입으로 미전환</span></div>
+      <div class="mo"><h4>꽃모양 용기 + 키링볼 굿즈</h4><p>소장·꾸미기 욕구를 건드리는 차별 용기와 키링볼·립앤치크 신제품. SNS 바이럴·UGC의 소재 후보.</p><span class="flag">→ '꽃 플레이' 콘텐츠 축으로 미설계</span></div>
+    </div>
+    <div class="co bad"><span class="lab">진단 결론</span>꽃빵의 약점은 "차별점이 없다"가 아닙니다 — <b>차별점이 있는데 Z세대가 사고 싶은 이유(needstate)로 번역되지 않았다</b>는 것입니다. "꽃 원료"를 원료 설명이 아니라 <b>Z세대가 놀고 싶은 '꽃 플레이'</b>로, 초고속 SCM·꽃 정통성·꽃모양 용기를 하나의 시그니처 축으로 묶는 것 — 컨설팅의 핵심 가치는 <b>임대한 유통·트래픽을 소유한 고객 자산으로 전환하는 통합 설계</b>입니다.</div>
+  </section>
+
+  <section id="next">
+    <div class="sec-k">NEXT STEP</div>
+    <h2>이 진단을 의사결정으로 — 다음 단계</h2>
+    <p class="lead">대표님의 진짜 니즈는 "광고를 더 잘 돌리는 법"이 아니라 "광고를 덜 써도 팔리는 구조"입니다. 본 1차 진단은 방향을 잡았고, 데이터가 그것을 증명·정밀화합니다.</p>
+    <div class="steps">
+      <div class="st on"><div class="sn">STEP 1 · 진단</div><div class="stt">데이터 정밀 진단</div><div class="sd">채널·SKU별 ROAS·마진 분해 → 광고 OFF 시 자생 베이스라인 산출 → 틱톡→자사몰 퍼널 이탈 지점·고객데이터 현황 진단. "의사결정 근거 패키지"로 페이퍼화. (4주)</div></div>
+      <div class="st"><div class="sn">STEP 2 · 포지셔닝</div><div class="stt">"왜 꽃빵" 한 줄 + 시그니처</div><div class="sd">꽃 원료를 Z세대 '꽃 플레이'로 번역. 24 SKU 중 검색되는 시그니처 정렬. 경쟁사(롬앤·어뮤즈·컬러그램·페리페라) 마케팅 벤치마크.</div></div>
+      <div class="st"><div class="sn">STEP 3 · 자생 엔진</div><div class="stt">전환 + 모객 실행</div><div class="sd">자사몰·상세페이지 A/B 테스트 + 고객데이터 확보(가입 유도·CRM) + 유가 인플루언서·로즈데이형 캠페인 모객. 집중 채널 선택·관리.</div></div>
+    </div>
+    <div class="co warn"><span class="lab">필요 데이터 (클라이언트 → HIZ)</span>① 채널별·SKU별·월별 매출 데이터(엑셀) ② 틱톡·메타·네이버 광고 데이터 ③ 자사몰 유입·전환·이탈 데이터(GA 등) ④ 회원수·CRM·재구매 데이터<br><b>HIZ → 클라이언트:</b> 데이터 정밀 진단서 + 단계별 견적서(별첨)</div>
+  </section>
+
+  <section id="lever">
+    <div class="lever">
+      <div class="lq">"채널을 늘리는 건 누구나 한다.<br>중요한 건 <em>1,600명이 그냥 나가는 이유</em>를 찾아 —<br>그래야 비로소 <em>광고를 덜 써도 팔리는 구조</em>가 돈다."</div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <b>BRANDRISE</b> by HIZ · Brand · IMC Consulting<br>
+  본 진단서는 2026-06-12 대면 상담 및 공개 리서치 기반 <b>1차 전략 진단</b>입니다. 정량 수치는 데이터 정밀 진단(T1) 단계에서 확정됩니다.<br>
+  © 2026 브랜드라이즈 by HIZ · 비공개 — 수신처 제출용
+</footer>
+
+</body>
+</html>
