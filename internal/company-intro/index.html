@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE 회사소개 실전 매뉴얼 (직원용) · 인디고 클린
+  · 목적: 상담 첫 15분 "회사 소개"를 누구나 같은 수준으로. 통대본 + 사례 카드 선택표.
+  · 출처: 권윤정 대표 직접 상담 녹취 3건(260610 메인 / 그리니팅 260609 / 내추럴굿띵스 260610). 원본 분석본 = 00_회사소개매뉴얼/v2.
+  · 영업 프로세스 1차(상담) 오프닝과 연동. 배포: internal/company-intro/
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>브랜드라이즈 회사소개 매뉴얼 (직원용) | BRANDRISE 내부</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.72;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+.mnav{background:#0b1220;border-bottom:1px solid rgba(255,255,255,.08)}
+.mnav .in{max-width:980px;margin:0 auto;padding:11px 40px;display:flex;gap:5px;flex-wrap:wrap;align-items:center;font-size:12.5px}
+.mnav a{color:#cbd5e1;font-weight:600;text-decoration:none;padding:4px 9px;border-radius:7px;white-space:nowrap}
+.mnav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.mnav a.home{color:#a5b4fc;font-weight:800;letter-spacing:.03em}
+.mnav a.on{color:#fff;background:rgba(165,180,252,.16)}
+.mnav .sep{color:#334155;margin:0 2px}
+.hero{background:var(--ink);color:#fff;padding:58px 0 46px}
+.hero .in{max-width:980px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:clamp(28px,4.6vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 3px;border-radius:2px}
+.hero .sub{font-size:15.5px;color:#cbd5e1;font-weight:300;max-width:740px}
+.hero .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.minitoc{max-width:980px;margin:0 auto;padding:14px 40px 0;font-size:12.5px;color:var(--muted)}
+.minitoc a{color:var(--muted);text-decoration:none;font-weight:600}
+.minitoc a:hover{color:var(--ac)}
+.wrap{max-width:980px;margin:0 auto;padding:30px 40px 100px}
+section{margin-bottom:54px;scroll-margin-top:18px}
+.sec-k{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:6px;padding:4px 10px;margin-bottom:12px}
+.sec-k .mn{color:var(--muted);font-weight:700;margin-left:6px}
+h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:7px}
+.lead{font-size:14.5px;color:var(--muted);margin-bottom:20px;max-width:780px}
+h3{font-size:15.5px;font-weight:800;margin:24px 0 8px;letter-spacing:-.01em}
+
+.co{border-radius:12px;padding:14px 18px;margin:14px 0;font-size:13.5px;line-height:1.7;border:1px solid var(--line)}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100)} .co.warn{background:var(--warn-50);border-color:#fde68a}
+.co.ok{background:var(--ok-50);border-color:#bbf7d0} .co.bad{background:var(--bad-50);border-color:#fecdd3}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.warn .lab{color:var(--warn)} .co.ok .lab{color:var(--ok)} .co.bad .lab{color:var(--bad)}
+.co b{color:var(--ink)}
+
+/* 대본 인용 */
+.say{border-left:3px solid var(--ac);background:var(--soft);border-radius:0 10px 10px 0;padding:12px 17px;margin:10px 0;font-size:13.5px;color:var(--ink);line-height:1.72}
+.say p{margin:0 0 9px} .say p:last-child{margin-bottom:0}
+.say .src{display:block;font-size:11px;color:var(--muted);font-weight:600;margin-top:7px}
+
+/* 단계 흐름(번호) */
+.flow{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:14px 0}
+.step{display:grid;grid-template-columns:118px 1fr;border-top:1px solid var(--line2)}
+.step:first-child{border-top:none}
+.step .sk{padding:16px 16px;font-size:12.5px;font-weight:800;color:var(--ac);background:var(--ac-50);border-right:1px solid var(--line2);display:flex;flex-direction:column;justify-content:center;gap:3px}
+.step .sk .tm{font-size:11px;color:var(--muted);font-weight:700}
+.step .sc{padding:15px 18px}
+.step .st{font-size:14.5px;font-weight:800;margin-bottom:4px}
+.step .sd{font-size:12.5px;color:var(--ink2);line-height:1.6}
+
+/* 사례 카드 */
+.cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:13px;margin:16px 0}
+.ccard{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:0;overflow:hidden}
+.ccard .ch{padding:13px 17px;background:var(--soft);border-bottom:1px solid var(--line2);display:flex;align-items:baseline;gap:8px}
+.ccard .ch .ck{font-size:12px;font-weight:800;color:#fff;background:var(--ac);border-radius:7px;padding:2px 9px;flex:0 0 auto}
+.ccard .ch .ct{font-size:14.5px;font-weight:800}
+.ccard .ch .cs{font-size:11.5px;color:var(--muted);font-weight:600;margin-left:auto;text-align:right}
+.ccard .cb{padding:13px 17px}
+.ccard .cscript{font-size:13px;color:var(--ink);line-height:1.7;border-left:3px solid var(--ac-100);padding-left:12px;margin-bottom:9px}
+.ccard .cend{font-size:12.5px;color:var(--ac-700);font-weight:700;background:var(--ac-50);border-radius:8px;padding:8px 12px}
+.ccard .cwarn{font-size:11.5px;color:var(--warn);font-weight:600;margin-top:8px}
+
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:left;padding:10px 13px;font-size:12px}
+td{padding:11px 13px;border-top:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b{color:var(--ink)}
+tbody tr:nth-child(even) td{background:var(--soft)}
+
+/* 금지 리스트 */
+.dont{display:grid;gap:8px;margin:14px 0}
+.dont .d{display:flex;gap:11px;align-items:flex-start;background:var(--bad-50);border:1px solid #fecdd3;border-radius:11px;padding:11px 15px;font-size:13px;color:var(--ink)}
+.dont .d .x{color:var(--bad);font-weight:800;flex:0 0 auto}
+
+footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:980px;margin:0 auto}
+@media(max-width:880px){
+  .wrap,.hero .in,.minitoc,.mnav .in{padding-left:22px;padding-right:22px}
+  .step{grid-template-columns:1fr} .step .sk{border-right:none;border-bottom:1px solid var(--line2);flex-direction:row;gap:8px}
+}
+@media print{
+  body{background:#fff}
+  .mnav{display:none}
+  .hero,.step .sk,.co,.say,th,.ccard .ch,.ccard .ck,.dont .d{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section,.flow,.co,.say,table,.ccard{break-inside:avoid}
+  .minitoc{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="mnav"><div class="in">
+  <a class="home" href="../">BRANDRISE 매뉴얼</a><span class="sep">·</span>
+  <a href="../sales-process/">영업 프로세스</a>
+  <a class="on" href="../company-intro/">회사소개</a>
+  <a href="../consult-playbook/">상담</a>
+  <a href="../quote-call-playbook/">견적콜</a>
+</div></nav>
+
+<div class="hero"><div class="in">
+  <div class="badge">BRANDRISE · 회사소개 매뉴얼 · 직원용 v3</div>
+  <h1>브랜드라이즈 회사소개 <span class="hl">실전 매뉴얼</span></h1>
+  <div class="sub">상담 첫 15분, "회사 소개"를 <b style="color:#fff">누구나 같은 수준으로</b>. ①~⑥ 순서대로 말하고, 사례는 선택표에서 2~3개만. 15분 안에 끝내고 마이크를 넘긴다.</div>
+  <div class="meta">
+    <span class="chip">버전 <b>v3</b></span>
+    <span class="chip">출처 <b>권윤정 대표 상담 녹취 3건</b></span>
+    <span class="chip">연동 <b>영업 프로세스 1차(상담) 오프닝</b></span>
+    <span class="chip">길이 <b>총 15분</b></span>
+  </div>
+</div></div>
+
+<div class="minitoc">· <a href="#how">사용법</a> · <a href="#pick">사례 카드 고르기</a> · <a href="#flow">①~⑥ 진행</a> · <a href="#cases">사례 카드</a> · <a href="#qa">질문 받으면</a> · <a href="#dont">금지 5가지</a> · <a href="#names">고유명사 주의</a></div>
+
+<div class="wrap">
+
+  <section id="how">
+    <div class="sec-k">HOW</div>
+    <h2>이 매뉴얼 쓰는 법</h2>
+    <p class="lead">상담 전 5분 훑는다 → ①~⑥ 순서대로 말한다 → 인용 블록은 <b>그대로 말해도 되는 대본</b>이다.</p>
+    <div class="co ac"><span class="lab">3원칙</span>① 사례는 전부 말하지 말고 <b>선택표에서 2~3개만</b> 고른다. ② 통대본은 <b>순서를 바꾸지 않는다</b>(왜 먹히는지 설계됨). ③ 총 <b>15분 안에 끝내고 반드시 상대에게 마이크를 넘긴다</b> — 회사소개는 듣기로 가는 다리다.</div>
+  </section>
+
+  <section id="pick">
+    <div class="sec-k">PICK <span class="mn">시작 전 30초</span></div>
+    <h2>사례 카드 고르기</h2>
+    <p class="lead">상대 회사 유형을 보고 말할 카드를 미리 정한다. <b>굵은 카드</b>가 1순위.</p>
+    <table>
+      <tr><th style="width:54%">상대가 이런 회사면</th><th>이 카드를 말한다</th></tr>
+      <tr><td>식품 · F&B</td><td><b>A 맥스봉</b> + H 베지어트</td></tr>
+      <tr><td>뷰티 · 건기식</td><td><b>J 위타민</b> + H 베지어트</td></tr>
+      <tr><td>매출은 있는데 브랜드가 없다 (유통·공구 기반)</td><td><b>J 위타민</b></td></tr>
+      <tr><td>패키지 · 디자인 고민</td><td><b>H 베지어트</b></td></tr>
+      <tr><td>소규모 · 1인 기업</td><td><b>I 참기름</b> + H 베지어트</td></tr>
+      <tr><td>대기업 · 중견</td><td><b>B 네슬레</b> + C 돌체구스토</td></tr>
+      <tr><td>재단 · 공공 · 기관</td><td><b>D 정몽구 재단</b></td></tr>
+      <tr><td>인플루언서 · SNS 고민</td><td><b>E 하이네켄</b></td></tr>
+      <tr><td>해외 진출 관심</td><td>H 베지어트 + ⑤끝 브랜드라이즈 비전</td></tr>
+    </table>
+  </section>
+
+  <section id="flow">
+    <div class="sec-k">FLOW</div>
+    <h2>①~⑥ 진행 — 순서대로</h2>
+    <p class="lead">각 단계의 할 일과 통대본. ②③⑤⑥은 그대로 이어 말한다.</p>
+    <div class="flow">
+      <div class="step"><div class="sk">① 아이스브레이킹<span class="tm">3분</span></div><div class="sc"><div class="st">소개 경로를 끝까지 묻는다 (자랑은 아직)</div><div class="sd">"저희를 어떻게 아셨어요?" 소개자가 나오면 인연 한 줄. 꼭 심는 말 ▸ <b>"저희는 영업을 안 해요. 고객사분들이 다 소개해 주세요."</b> 넘어가는 멘트: "그럼 저희가 먼저 회사 소개를 살짝 해 드릴게요."</div></div></div>
+      <div class="step"><div class="sk">② 회사 스토리<span class="tm">4분 · 통대본</span></div><div class="sc"><div class="st">대기업 검증 → 직접 팔아봄 → 소개로 도는 회사</div><div class="sd">아래 통대본을 내 말투로, 순서 그대로.<div class="say"><p>저희는 원래 대기업이나 글로벌 브랜드 중심으로 컨설팅·마케팅을 했던 팀이에요. 해외 나가는 브랜드, 한국 들어오는 브랜드, 오래돼서 매출이 안 크는 브랜드 — 이런 리뉴얼을 많이 했어요. 천억대 브랜드들이 고객사였고요.</p><p>그러다 회사를 키울 때, 보통 에이전시는 광고 쪽으로 키우는데 저흰 특이하게 <b>자사 브랜드를 직접 냈어요.</b> 대행사는 큰 광고주를 많이 데려와야 크는 구조라 그게 한계라고 봤거든요. 청년창업사관학교로 시작해 우수 선정도 됐고요.</p><p>그런데 직접 팔아보니까 — 에이전시 때 광고주들이 제일 많이 하던 말이 '그래서 너네가 팔아봤어?'였거든요. 그걸 제가 고스란히 겪은 거예요. 클라이언트 돈 천만 원 써서 ROAS 나오면 기분 좋았는데, <b>내 돈 광고비 100만 원은 진짜 달달달달 짭니다.</b></p><p>그 브랜드는 지금 프리미엄 마켓으로 일본까지 나가 있고요. 그렇게 직접 팔아본 경험이랑 대기업에서 쌓은 데이터로, 지금은 두 자릿수 매출만 되면 어떤 대표님이랑도 같이 합니다.</p><span class="src">심을 인식 3개 ▸ ❶ 대기업이 검증한 실력 ❷ 직접 팔아봤다 ❸ 영업 없이 소개로 도는 회사</span></div></div></div></div>
+      <div class="step"><div class="sk">③ 일하는 방식<span class="tm">2분 · 통대본</span></div><div class="sc"><div class="st">진짜 차이는 리서치·전략 앞단</div><div class="sd"><div class="say"><p>저희 일에서 제일 중요한 파트는 <b>마켓 리서치</b>, 그리고 <b>'나 누구랑 싸워서 어떻게 이길 거야'라는 전략 파트</b>예요. 어떻게·왜·어떤 방향으로 성장할지, 누굴 이기고 싶은지. A부터 Z까지 다 하지만 — 촬영은 누가 해도 비슷하잖아요. 진짜 차이는 그 앞단이에요.</p><p>대표님들이 답답한 게, 사실 <b>그 고민을 같이 얘기할 사람이 없다</b>는 거거든요. 저흰 대기업·글로벌·스몰 브랜드를 다 해봐서 이런 대행사가 흔치 않아요. 소비재 데이터가 계속 쌓여서, 오히려 대표님들이 '요즘 시장 어때요?' 하고 물어보세요.</p></div></div></div></div>
+      <div class="step"><div class="sk">④ 사례 카드<span class="tm">5분 · 2~3개</span></div><div class="sc"><div class="st">선택표에서 고른 카드만</div><div class="sd">각 카드: 상황 한 줄 → 대본 → 마무리 멘트. 아래 <a href="#cases" style="color:var(--ac);font-weight:700">사례 카드 ▾</a> 참조. <b>4개 이상 나열 금지.</b></div></div></div>
+      <div class="step"><div class="sk">⑤ 스몰 브랜드<span class="tm">공통 멘트</span></div><div class="sc"><div class="st">성장 모멘텀 + 재구매 기준 (H·I·J 앞뒤로 1회)</div><div class="sd"><div class="say"><p>브랜드는 보통 1억에서 10억이 제일 오래 걸리고, 10억→30억→100억마다 성장 모멘텀이 있어요. 그때마다 사람과 구조를 바꾸는 수밖에 없는데, 작은 회사는 그게 어려우니까 저희 같은 파트너를 쓰시는 거예요.</p><p>그리고 제가 브랜드를 판단하는 기준은 <b>재구매</b>예요. 재구매가 있으면 브랜딩·마케팅이 붙었을 때 의미가 있고, 없으면 제품부터 다시 뜯어야 합니다.</p><span class="src">해외 관심 상대면 한 줄 ▸ "저희가 미국 컨택이 있어서, 어차피 나가실 거면 저희가 다리를 하는 게 훨씬 효율적이에요."</span></div></div></div></div>
+      <div class="step"><div class="sk">⑥ 마무리<span class="tm">30초 · 고정</span></div><div class="sc"><div class="st">반드시 이걸로 끝낸다 → 듣기 모드</div><div class="sd"><div class="say"><p>고민의 프레임은 사실 다 비슷해요. 대표님은 브랜드 안에 계시니까 내 아픈 게 제일 아프거든요. 저흰 구조로 보니까 '여기가 비어 있네'가 보여요. 특히 뷰티·건기식·푸드는 거의 똑같습니다.</p><p><b>말씀해 주세요. 어떤 고민들이 있으신지.</b></p></div></div></div></div>
+    </div>
+    <div class="co ok"><span class="lab">⑥ 이후</span>여기서부터 <b>듣기 모드</b>. 회사소개는 끝이고, 상담 본론으로 넘어간다 → <a href="../consult-playbook/" style="color:var(--ok);font-weight:700">상담 플레이북 ›</a></div>
+  </section>
+
+  <section id="cases">
+    <div class="sec-k">CASES <span class="mn">④에서 2~3개만</span></div>
+    <h2>사례 카드</h2>
+    <p class="lead">상황 → 대본(그대로 말해도 됨) → 마무리 멘트. 선택표에서 고른 것만.</p>
+    <div class="cases">
+      <div class="ccard"><div class="ch"><span class="ck">A</span><span class="ct">맥스봉 (CJ)</span><span class="cs">늙은 브랜드 회춘</span></div><div class="cb"><div class="cscript">맥스봉이 400억에서 정체였어요. 출시 20년 차라 20대였던 고객이 아기 엄마가 돼서 '아기가 먹는 소시지'로 늙어버린 거죠. 저희가 브랜드 바이블을 만들어 제품 설계부터 마케팅까지 다시 20대로 타겟팅했고, <b>3년 안에 700억</b>까지 갔어요.</div><div class="cend">"브랜드는 늙지 않아야 해요. 아기 엄마가 사더라도 제품은 젊어야 합니다."</div></div></div>
+      <div class="ccard"><div class="ch"><span class="ck">B</span><span class="ct">네슬레 스타벅스 앳홈</span><span class="cs">예뻐서 팔리는 구조</span></div><div class="cb"><div class="cscript">집에서 마시는 스타벅스 제품을 저희가 운영하는데, 인스타 운영은 1단계예요. 예쁜 건 당연하고요. <b>인스타의 진짜 고민은 '열심히 해서, 그래서? 돈 벌 거야?'잖아요.</b> 저흰 그 뒤에 CRM까지 붙여 재구매가 돌게 설계합니다.</div><div class="cend">"단순히 예쁜 게 아니라, 예뻐서 팔리도록 루트를 설계하는 것까지가 저희 일이에요."</div><div class="cwarn">⚠ 계약 주체(네슬레 vs 신세계)는 상대가 물을 때만. 먼저 꺼내지 않는다.</div></div></div>
+      <div class="ccard"><div class="ch"><span class="ck">C</span><span class="ct">돌체구스토</span><span class="cs">프리미엄 전환 · 4년째</span></div><div class="cb"><div class="cscript">네스프레소 특허가 풀리며 카피가 쏟아졌고, 돌체구스토를 프리미엄으로 올리라는 미션이었어요. 셀럽·아트웍 콜라보로 이미지를 단계적으로 바꿨죠. 인지는 A에서 B로 한 번에 못 가요. A/B 테스트로 단계 전환을 설계합니다. 지금 4년째예요.</div><div class="cend">여유 있으면 ▸ "고객사들이 기본 3년은 가요. 1년 차에 KPI 맞추고, 2년 차에 성과 나고, 3년 차에 터집니다."</div></div></div>
+      <div class="ccard"><div class="ch"><span class="ck">D</span><span class="ct">현대차 정몽구 재단</span><span class="cs">한 달 만에 연간 KPI</span></div><div class="cb"><div class="cscript">재단은 알릴 얘기는 많은데 예뻐지려고 텍스트를 빼면 노출이 죽는 딜레마가 있어요. 저희가 컬러·폰트 통일성으로 둘 다 잡았고, <b>운영 한 달 만에 연간 KPI를 달성</b>했어요. 솔직히 워낙 관리가 안 돼 있던 0에서 시작이라 가능했던 것도 있고요(웃음). 지금 4년째입니다.</div><div class="cend">"브랜딩은 예뻐야 하는데, '팔리는 예쁨'이어야 해요."</div></div></div>
+      <div class="ccard"><div class="ch"><span class="ck">E</span><span class="ct">하이네켄</span><span class="cs">인플루언서 시딩</span></div><div class="cb"><div class="cscript">브랜딩이냐 캠페인이냐를 항상 나눠요. <b>브랜딩은 사람다움처럼 일관되게, 캠페인은 뾰족하게.</b> 2022년 인플루언서 초창기에 국내 최초 수준으로 시딩 박스를 만들어 글로벌 본사 상도 받았어요. 시딩은 인플루언서 얼굴이 아니라 걔 피드에 제품이 재밌게 노출되는 게 핵심이거든요. 그게 기획의 묘미예요.</div><div class="cend">— SNS·인플루언서 고민 상대에 특히 강함</div></div></div>
+      <div class="ccard"><div class="ch"><span class="ck">H</span><span class="ct">베지어트</span><span class="cs">디자인은 취향이 아니라 설계</span></div><div class="cb"><div class="cscript">제품력 좋고 재구매도 나오는데 브랜드 메시지가 없던 곳이에요. 패키지를 갈았는데, 직원분들은 그때 유행 스타일을 골랐고 저흰 시장이 어디로 갈지 보고 다른 안을 제안했어요. 두 달을 설득했죠. <b>디자인은 취향이 아니라 설계거든요.</b> 결국 나오자마자 MD·플랫폼에서 먼저 연락이 왔고, 지금은 카피 방어를 고민할 정도예요. 올해도 30% 이상 성장 중이고요.</div><div class="cend">"대표님은 이 회사에서 퇴사 못 하는 유일한 사람이니까, 그 제품에 맞는 옷을 입혀야 해요."</div></div></div>
+      <div class="ccard"><div class="ch"><span class="ck">I</span><span class="ct">프리미엄 참기름</span><span class="cs">작아도 전략은 있다</span></div><div class="cb"><div class="cscript">1인 기업에 원료가 한정이라 빨리 못 크는 브랜드였어요. 그래서 '그냥 비싸게 계세요'라고 했죠. 프리미엄 선물 시장으로 포지셔닝해 B2C에 기업선물까지. 회사 규모가 작아도 전략은 다 있습니다.</div><div class="cend">— 소규모·1인 기업 상대에 안심을 준다</div></div></div>
+      <div class="ccard"><div class="ch"><span class="ck">J</span><span class="ct">위타민</span><span class="cs">매출 커도 브랜드 없으면 모래성</span></div><div class="cb"><div class="cscript">공구 기반으로 100억 가까이 파는데 브랜드 인지가 0이었어요. 저희 직원도 자기가 먹는 비타민이 이 브랜드인 줄 몰랐을 정도로요. <b>매출이 크다고 그게 포텐은 아니에요. 셀러가 딴 거 팔면 끝나거든요.</b> 공구 셀러가 다 엄마들이라 브랜드가 계속 늙어가요. 그래서 지금 이름 하나만 남기고 전면 리뉴얼 중입니다.</div><div class="cend">— '매출은 있는데 브랜드가 없는' 상대의 정곡</div></div></div>
+    </div>
+  </section>
+
+  <section id="qa">
+    <div class="sec-k">Q&A</div>
+    <h2>질문 받으면 이렇게 답한다</h2>
+    <table>
+      <tr><th style="width:34%">질문</th><th>답</th></tr>
+      <tr><td><b>"어떻게 진행돼요?"</b></td><td>"1차 진단은 데이터로, 2차는 오늘 같은 상담에서 나온 얘기까지 더해 진단 페이퍼를 드려요."</td></tr>
+      <tr><td><b>"기간은요?"</b></td><td>"시장 서베이 → 브랜딩 → 마케팅 순서로 <b>최대 6개월</b>이에요. 장기전 되면 저희도 마이너스라서요."</td></tr>
+      <tr><td><b>"그 다음엔요?"</b></td><td>"끝날 때쯤 마케팅 선택지를 여러 개 드리고, 대표님이 예산 안에서 고르시는 거예요."</td></tr>
+      <tr><td><b>"뭘 해줄 수 있어요?"</b></td><td>"채널 세팅·콘텐츠·인플루언서·광고까지 다 해요. 근데 <b>진단이 먼저</b>예요. 다짜고짜 '인플루언서 100명 쓰세요'는 안 합니다."</td></tr>
+      <tr><td><b>견적 질문</b></td><td>즉답하지 않는다 ▸ "진단 보고 견적서로 정리해 드릴게요." (견적은 하우스 표준 견적서로 → <a href="../quote-call-playbook/" style="color:var(--ac);font-weight:700">견적콜 플레이북</a>)</td></tr>
+    </table>
+  </section>
+
+  <section id="dont">
+    <div class="sec-k">DON'T</div>
+    <h2>금지 5가지</h2>
+    <div class="dont">
+      <div class="d"><span class="x">✕</span><div>사례 4개 이상 나열 — <b>2~3개만</b></div></div>
+      <div class="d"><span class="x">✕</span><div>네슬레-신세계 계약 구조를 <b>먼저</b> 꺼내기</div></div>
+      <div class="d"><span class="x">✕</span><div>"한 달 만에 KPI"를 단서("0에서 시작이라") <b>없이</b> 말하기</div></div>
+      <div class="d"><span class="x">✕</span><div>소개만 하고 <b>상대 고민 안 묻고</b> 끝내기</div></div>
+      <div class="d"><span class="x">✕</span><div>그 자리에서 <b>견적 숫자</b> 말하기</div></div>
+    </div>
+  </section>
+
+  <section id="names">
+    <div class="sec-k">NAMES</div>
+    <h2>셀럽·고유명사 주의 (말하기 전 확인)</h2>
+    <div class="co warn"><span class="lab">미확정 — 두루뭉술하게</span>
+      · 돌체구스토 셀럽: 마이큐·이도현 <b>(추정 — 확정 전엔 "셀럽 콜라보"로만)</b><br>
+      · CJ 대체유 신사업 브랜드명: 미확정 — <b>"CJ 신사업"으로만</b><br>
+      · 자사 브랜드명·일본 입점처: 미확정 — <b>"프리미엄 브랜드, 일본 진출"로만</b><br>
+      · 하이네켄 수상명: 미확정 — <b>"글로벌 본사 상"으로만</b>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <b>BRANDRISE</b> by HIZ · 회사소개 실전 매뉴얼 (직원용) v3 · 내부<br>
+  근거: 권윤정 대표 직접 상담 녹취 3건 (260610 메인 / 그리니팅 260609 / 내추럴굿띵스 260610) · 상세 분석본 v2 별도<br>
+  © 2026 브랜드라이즈 by HIZ · 비공개 내부 문서
+</footer>
+
+</body>
+</html>

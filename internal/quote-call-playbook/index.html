@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE 견적콜 매뉴얼 (플레이북) v0.1 · 인디고 클린
+  · 목적: 견적 발송 후 "견적콜"로 결정을 돕는 무브를 반복 가능하게. 상담 플레이북의 2차(견적) 짝.
+  · v0.1 출처: 쿠엔즈버킷 견적콜 녹취(권윤정 대표, 2026-06-12) 1건.
+    ※ 녹취 화자 라벨 "우성민(Green)"은 녹화 계정 ID이며, 실제 발화자는 권윤정 대표.
+  · 영업 프로세스 2차(견적) 단계와 연동. 배포: internal/quote-call-playbook/
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>브랜드라이즈 견적콜 매뉴얼 (플레이북) | BRANDRISE 내부</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.72;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+/* ===== 공통 매뉴얼 네비 ===== */
+.mnav{background:#0b1220;border-bottom:1px solid rgba(255,255,255,.08)}
+.mnav .in{max-width:980px;margin:0 auto;padding:11px 40px;display:flex;gap:5px;flex-wrap:wrap;align-items:center;font-size:12.5px}
+.mnav a{color:#cbd5e1;font-weight:600;text-decoration:none;padding:4px 9px;border-radius:7px;white-space:nowrap}
+.mnav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.mnav a.home{color:#a5b4fc;font-weight:800;letter-spacing:.03em}
+.mnav a.on{color:#fff;background:rgba(165,180,252,.16)}
+.mnav .sep{color:#334155;margin:0 2px}
+.hero{background:var(--ink);color:#fff;padding:58px 0 46px}
+.hero .in{max-width:980px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:clamp(28px,4.6vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 3px;border-radius:2px}
+.hero .sub{font-size:15.5px;color:#cbd5e1;font-weight:300;max-width:740px}
+.hero .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.minitoc{max-width:980px;margin:0 auto;padding:14px 40px 0;font-size:12.5px;color:var(--muted)}
+.minitoc a{color:var(--muted);text-decoration:none;font-weight:600}
+.minitoc a:hover{color:var(--ac)}
+.wrap{max-width:980px;margin:0 auto;padding:30px 40px 100px}
+section{margin-bottom:58px;scroll-margin-top:18px}
+.sec-k{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:6px;padding:4px 10px;margin-bottom:12px}
+h2{font-size:25px;font-weight:800;letter-spacing:-.02em;margin-bottom:7px}
+.lead{font-size:14.5px;color:var(--muted);margin-bottom:22px;max-width:780px}
+h3{font-size:16px;font-weight:800;margin:26px 0 8px;letter-spacing:-.01em}
+
+.co{border-radius:12px;padding:14px 18px;margin:14px 0;font-size:13.5px;line-height:1.7;border:1px solid var(--line)}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100)} .co.warn{background:var(--warn-50);border-color:#fde68a}
+.co.ok{background:var(--ok-50);border-color:#bbf7d0}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.warn .lab{color:var(--warn)} .co.ok .lab{color:var(--ok)}
+.co b{color:var(--ink)}
+
+/* 원칙 카드 */
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:16px 0}
+.pcard{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
+.pcard .pn{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:var(--ac);color:#fff;font-size:13px;font-weight:800;margin-bottom:10px}
+.pcard .pt{font-size:15px;font-weight:800;margin-bottom:6px;letter-spacing:-.01em}
+.pcard .pb{font-size:12.5px;color:var(--ink2);line-height:1.6}
+
+/* 단계 플레이 */
+.flow{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:14px 0}
+.step{display:grid;grid-template-columns:120px 1fr;border-top:1px solid var(--line2)}
+.step:first-child{border-top:none}
+.step .sk{padding:16px 16px;font-size:12.5px;font-weight:800;color:var(--ac);background:var(--ac-50);border-right:1px solid var(--line2);display:flex;align-items:center}
+.step .sc{padding:15px 18px}
+.step .st{font-size:14.5px;font-weight:800;margin-bottom:4px}
+.step .sd{font-size:12.5px;color:var(--ink2);line-height:1.6}
+
+/* 멘트(인용) */
+.say{border-left:3px solid var(--ac);background:var(--soft);border-radius:0 10px 10px 0;padding:10px 16px;margin:8px 0;font-size:13px;color:var(--ink);line-height:1.65}
+.say::before{content:"\201C";color:var(--ac);font-weight:800;margin-right:3px}
+.say::after{content:"\201D";color:var(--ac);font-weight:800;margin-left:2px}
+.say .src{display:block;font-size:11px;color:var(--muted);font-weight:600;margin-top:5px}
+
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:left;padding:10px 13px;font-size:12px}
+td{padding:11px 13px;border-top:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b{color:var(--ink)}
+tbody tr:nth-child(even) td{background:var(--soft)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px}
+.t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+
+footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:980px;margin:0 auto}
+@media(max-width:880px){
+  .wrap,.hero .in,.minitoc,.mnav .in{padding-left:22px;padding-right:22px}
+  .step{grid-template-columns:1fr} .step .sk{border-right:none;border-bottom:1px solid var(--line2)}
+}
+@media print{
+  body{background:#fff}
+  .mnav{display:none}
+  .hero,.pcard .pn,.step .sk,.co,.say,th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section,.pcard,.flow,.co,.say,table{break-inside:avoid}
+  .minitoc{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="mnav"><div class="in">
+  <a class="home" href="../">BRANDRISE 매뉴얼</a><span class="sep">·</span>
+  <a href="../sales-process/">영업 프로세스</a>
+  <a href="../company-intro/">회사소개</a>
+  <a href="../consult-playbook/">상담</a>
+  <a class="on" href="../quote-call-playbook/">견적콜</a>
+</div></nav>
+
+<div class="hero"><div class="in">
+  <div class="badge">BRANDRISE · 견적콜 매뉴얼 · PLAYBOOK v0.1</div>
+  <h1>브랜드라이즈 견적콜 <span class="hl">플레이북</span></h1>
+  <div class="sub">견적은 보냈다. 이제 <b style="color:#fff">결정을 돕는</b> 자리다. 견적을 "설명"하는 게 아니라 전략의 일부로 열어, 가격 저항과 범위 공포를 신뢰로 바꾼다.</div>
+  <div class="meta">
+    <span class="chip">버전 <b>v0.1 (초안)</b></span>
+    <span class="chip">출처 <b>쿠엔즈버킷 견적콜 · 권윤정 대표</b></span>
+    <span class="chip">연동 <b>영업 프로세스 2차(견적)</b></span>
+    <span class="chip">짝 매뉴얼 <b>상담 플레이북</b></span>
+  </div>
+</div></div>
+
+<div class="minitoc">· <a href="#what">견적콜이란</a> · <a href="#principles">견적콜 5대 원칙</a> · <a href="#play">단계별 플레이</a> · <a href="#obj">반론 처리</a> · <a href="#say">바로 쓰는 멘트</a> · <a href="#case">케이스 쿠엔즈버킷</a></div>
+
+<div class="wrap">
+
+  <section id="what">
+    <div class="sec-k">WHY</div>
+    <h2>견적콜이 하는 일</h2>
+    <p class="lead">견적콜은 <b>견적서를 읽어주는 자리가 아니다.</b> "구체적으로 어떤 액티비티가 들어 있는지" 막혀서 결정을 못 하는 고객에게, 견적을 <b>전략의 일부</b>로 다시 열어 보이고 결정을 당기는 자리다.</p>
+    <div class="co ac"><span class="lab">견적콜의 출발</span>먼저 <b>견적 반응부터 묻는다.</b> "견적 보셨을 때 어떠셨어요?" — 고객이 어디서 막혔는지(가격? 범위? 액티비티 불명?)를 듣고 거기에 맞춰 푼다. 일방 설명이 아니라 막힘 해소.<div class="say">그 저희가 견적을 보셨을 때 혹시 어떠셨어요?<span class="src">— 권윤정 (00:01:44)</span></div></div>
+    <div class="co warn"><span class="lab">v0.1 한계</span>현재 <b>쿠엔즈버킷 견적콜 1건(권윤정 대표)</b>에서 추출. 애라 실장 견적콜·다른 체급 케이스가 쌓이면 v0.2로 확장. <b>임애라 실장 검토·보강 예정.</b> 상담 단계 무브는 → <a href="../consult-playbook/" style="color:var(--ac);font-weight:700">상담 플레이북 ›</a></div>
+  </section>
+
+  <section id="principles">
+    <div class="sec-k">PRINCIPLES</div>
+    <h2>견적콜 5대 원칙</h2>
+    <p class="lead">쿠엔즈버킷 견적콜에서 반복된, 결정을 만드는 핵심 무브.</p>
+    <div class="principles">
+      <div class="pcard"><div class="pn">1</div><div class="pt">견적서를 "전략의 일부"로 연다</div><div class="pb">화면 <b>왼쪽=견적(할 일)</b>, <b>오른쪽=전략 그림</b>("타사는 이렇게 하고, 당신에게 지금 필요한 건 이것"). 견적은 메뉴판이 아니라 <b>당신을 위한 그림</b>으로 보인다.</div></div>
+      <div class="pcard"><div class="pn">2</div><div class="pt">비싼 값을 "내재화"로 정당화한다</div><div class="pb">"저흰 오래 쓰기엔 비싼 팀." 대신 견적 안에 <b>대표·직원 학습</b>을 깐다. 우리가 빠진 뒤에도 예산 쓸 힘이 생기게 — 가격 저항을 <b>학습 가치</b>로 전환.</div></div>
+      <div class="pcard"><div class="pn">3</div><div class="pt">범위 공포를 신뢰로 받는다</div><div class="pb">일이 커진다는 두려움엔 인정 + 안심. "견적보다 무조건 많이 해드린다. 견적은 보수적으로 — 나중에 견적서 들고 안 싸우려고. <b>성공 안 시키는 브랜드 없다.</b>"</div></div>
+      <div class="pcard"><div class="pn">4</div><div class="pt">데이터로 액티비티의 값을 증명한다</div><div class="pb">추상적 항목을 측정가능 가치로. <b>UTM·ROAS·AI 대시보드</b>. "묵직하게 3천 쓰는 계산법 → 100만 원에 다 링크 달아 추적." 견적 항목이 왜 돈값인지를 숫자로.</div></div>
+      <div class="pcard"><div class="pn">5</div><div class="pt">희소성으로 결정을 당긴다</div><div class="pb">"프로젝트 많아 인력 재배치가 필요. <b>일찍 결정하는 팀이 먼저 가져간다.</b>" + PM=본인이 직접 들어간다는 신뢰로 매듭. 미룸을 구조로 차단.</div></div>
+    </div>
+  </section>
+
+  <section id="play">
+    <div class="sec-k">PLAY · 2차 견적콜</div>
+    <h2>단계별 플레이 — 무엇을, 언제</h2>
+    <p class="lead">영업 프로세스 2차(견적) 흐름에 매핑. 각 단계의 목표와 권윤정 대표의 실제 멘트.</p>
+    <div class="flow">
+      <div class="step"><div class="sk">오프닝 · 반응 묻기</div><div class="sc"><div class="st">견적 반응부터 듣고 막힘을 잡는다</div><div class="sd">"어떠셨어요?"로 시작. 고객이 "액티비티가 뭔지 설명을 들어야겠다" = <b>이해 공백</b>이 막힘. 그 공백을 채우는 콜로 방향을 잡는다.</div></div></div>
+      <div class="step"><div class="sk">화면 구조</div><div class="sc"><div class="st">좌(견적) · 우(전략 그림)로 연다 (원칙 1)</div><div class="sd">견적을 줄별로 풀되, 옆에 "타사는 이렇게, 당신은 지금 이게 필요" 그림을 붙여 견적을 전략으로 격상.<div class="say">왼쪽이 견적이고, 오른쪽은 저희가 타사랑 할 때 이런 방식으로 합니다. 근데 프렌즈버킷이 지금 필요한 건 이거다 하는 저의 그림인 거라고 보시면 돼요<span class="src">— 권윤정 (00:02:56)</span></div></div></div></div>
+      <div class="step"><div class="sk">핵심 판단</div><div class="sc"><div class="st">견적의 0번 = "대표 학습"을 먼저 박는다</div><div class="sd">견적 전체를 관통하는 한 줄 판단을 먼저 선언. 쿠엔즈버킷 = "대표님이 마케팅 이해도가 너무 필요하다" → 정기 회의(0번)가 견적의 뼈대.<div class="say">제가 판단했던 첫 번째는, 대표님이 마케팅에 대한 이해도가 너무 필요하다였습니다<span class="src">— 권윤정 (00:02:56)</span></div></div></div></div>
+      <div class="step"><div class="sk">가격 정당화</div><div class="sc"><div class="st">"비싼 팀"을 내재화로 되받는다 (원칙 2)</div><div class="sd">비싼 값을 숨기지 않고 명분으로. 성과를 내면서 <b>직원을 키워드린다</b> — 우리가 빠진 뒤에도 예산 쓸 힘.<div class="say">저희는 장기로 오래 일하기엔 비싼 팀이에요. 그래서 항상 같이 하는 게 내재화. 저희가 성과를 낼 때 대표님은 동시에 직원을 키우시는 게 제일 좋습니다<span class="src">— 권윤정 (00:03:57)</span></div></div></div></div>
+      <div class="step"><div class="sk">액티비티 증명</div><div class="sc"><div class="st">데이터·ROAS로 항목값을 증명한다 (원칙 4)</div><div class="sd">메타·CRM·인플루언서 광고에 UTM 전수 설계 + AI 대시보드. "묵직한 계산법"을 측정가능 효율로 교체.<div class="say">예산이 100만 원에서 시작해도 저희가 다 링크를 달아요. UTM이라고 하죠. 어떤 매체로 어떤 루트로 왔는지 다 설계해서 그 지표를 같이 봅니다<span class="src">— 권윤정 (00:05:49)</span></div></div></div></div>
+      <div class="step"><div class="sk">개선지점 압축</div><div class="sc"><div class="st">"딱 2개"로 줄여 이해를 굳힌다</div><div class="sd">방대한 견적을 ①타사몰에서 새 옷(패키지·소셜·사진) ②자사몰에서 내 고객(카톡 플친 CRM) 2개로 압축. 중간에 "여기까지 이해되세요?"로 확인.<div class="say">개선 지점이 두 개입니다. 1번은 새로운 옷으로 읽는다, 2번은 자사몰에서 내 고객을 만든다. 여기까지 이해되세요, 대표님?<span class="src">— 권윤정 (00:13:04)</span></div></div></div></div>
+      <div class="step"><div class="sk">비전 판매</div><div class="sc"><div class="st">프리미엄 선물시장 그림으로 욕망을 키운다</div><div class="sd">견적콜이지만 전략 비전으로 "사고 싶게". 농부플러스(저가)↔프리미엄(고가) 사이 낀 포지셔닝 → 선물시장·TPO 세트·일본 수출. 본인 유튜브 권위로 신뢰 보강.<div class="say">무조건 선물 시장으로 브랜딩하셔야 돼요. 제 견적은 그 작업을 할 건데, 작업뿐만 아니라 되게 중요한 건 대표님의 학습이에요<span class="src">— 권윤정 (00:25:04)</span></div></div></div></div>
+      <div class="step"><div class="sk">범위 공포</div><div class="sc"><div class="st">"일이 커진다"는 두려움을 신뢰로 받는다 (원칙 3)</div><div class="sd">고객이 "포트폴리오까지 바뀌면 손 많이 간다"고 물러설 때 — 인정하되 견적은 보수적임을 못 박아 안심.<div class="say">저는 견적보다 무조건 많이 해드려요. 근데 견적에 다 쓰지 않습니다. 견적서 들고 나중에 싸우면 안 되니까. 저흰 기본적으로 성공 안 시키는 브랜드가 없어요<span class="src">— 권윤정 (00:26:48)</span></div></div></div></div>
+      <div class="step"><div class="sk">기간 프레이밍</div><div class="sc"><div class="st">6개월 = 학습 때문, "한 달은 사기"</div><div class="sd">기간을 짧게 후려치지 않는다. 빠르면 2.5개월에 끝낼 일이지만, <b>대표 학습</b>이 우리를 쓰는 이유라 6개월. 단발이 아니라 자생력까지.<div class="say">제가 한 달에 끝낸다 하면 사기꾼이죠. 정권 주시면 2.5달에 끝내요. 근데 대표님이 학습하시는 게 저희를 쓰는 이유여야 돼요<span class="src">— 권윤정 (00:27:38)</span></div></div></div></div>
+      <div class="step"><div class="sk">클로징</div><div class="sc"><div class="st">희소성으로 결정을 당긴다 (원칙 5)</div><div class="sd">"늦어도 되냐"는 떠봄에 단호히 No. 프로젝트가 많아 인력 재배치가 필요 → 일찍 결정하는 팀이 먼저.<div class="say">저희는 일찍 결정하는 팀이 먼저 가져가는 구조예요. 혹시 언제 결정하실 수 있는지를 알려주세요<span class="src">— 권윤정 (00:29:09)</span></div></div></div></div>
+      <div class="step"><div class="sk">PM 신뢰</div><div class="sc"><div class="st">"PM이 누구냐"에 본인이 들어간다로 매듭</div><div class="sd">마지막 불안(밑의 PM이 누구냐)엔 — 본인이 직접 + 5년 이상 호흡 실장급 + 대기업 경력 + MD 라인. 직원 채용도 같이.<div class="say">저는 제가 안 들어가는 건 잘 없습니다. 저희 PM·실장급도 다 저랑 5년 이상 한, 대기업 경력에 MD랑 커뮤니케이션 하는 실제 라인들이에요<span class="src">— 권윤정 (00:29:50)</span></div></div></div></div>
+    </div>
+    <div class="co ok"><span class="lab">콜 후</span>결정 데드라인을 합의로 받아둔다("내부 상의 후 언제까지 알려드릴게요"). 늘어지면 희소성(인력 재배치) 카드를 다시. 계약 합의 시 → 영업 프로세스 3차(계약·마스터시트 셋업)로.</div>
+  </section>
+
+  <section id="obj">
+    <div class="sec-k">OBJECTIONS</div>
+    <h2>반론 처리 — 견적콜에서 나오는 진짜 말들</h2>
+    <p class="lead">고객이 물러서는 지점과, 권윤정 대표가 받아친 방식. 외우지 말고 <b>왜 먹히는지</b>를 소화할 것.</p>
+    <table>
+      <tr><th style="width:230px">고객이 이렇게 말하면</th><th>이렇게 받는다</th></tr>
+      <tr><td><b>"견적은 봤는데 구체적으로 뭘 하는 건지 모르겠다"</b></td><td>견적을 화면에 띄워 <b>좌(할 일)/우(전략 그림)</b>로 줄별 설명. 막힘은 가격이 아니라 <b>이해 공백</b>일 때가 많다 — 먼저 반응을 물어 그 공백을 짚는다.</td></tr>
+      <tr><td><b>"포트폴리오·상품 구성까지 바뀌면 일이 너무 커진다"</b></td><td>범위가 커지는 건 인정("구성을 다시 같이 하셔야 돼요") + 안심. <b>"견적은 보수적으로 잡았고, 실제론 더 해드린다. 성공 안 시키는 브랜드 없다."</b> 공포 → 신뢰.</td></tr>
+      <tr><td><b>"이게 전부 기간(6개월)으로 돼 있는 건가? 너무 길다"</b></td><td>짧게 후려치지 않는다. <b>"한 달에 끝낸다면 사기. 빠르면 2.5개월에 되지만, 대표님 학습이 우리를 쓰는 이유라 6개월."</b> 기간을 자생력의 값으로.</td></tr>
+      <tr><td><b>"사진·영상 수량은 견적에 포함? 추가도 되나?"</b></td><td><b>"견적보다 무조건 많이 해드린다. 다만 견적엔 보수적으로 적는다 — 나중에 견적서로 안 싸우려고."</b> 양 불안을 신뢰로 덮는다.</td></tr>
+      <tr><td><b>"권 대표님 말고 밑에서 담당할 PM이 누구냐"</b></td><td><b>"저는 제가 안 들어가는 건 잘 없습니다."</b> + 실장급 5년 이상 호흡·대기업 경력·MD 라인. PM 불안을 사람으로 매듭.</td></tr>
+      <tr><td><b>"내부에서 좀 논의할 시간을 달라" / "늦어도 되냐"</b></td><td>시간은 주되 늘어짐엔 No. <b>"일찍 결정하는 팀이 먼저 가져간다. 저희도 인력 재배치가 필요해 언제 결정할지 알려달라."</b> 희소성으로 마감.</td></tr>
+    </table>
+  </section>
+
+  <section id="say">
+    <div class="sec-k">SCRIPT</div>
+    <h2>바로 쓰는 멘트 (그대로 말해도 되는 대본)</h2>
+    <p class="lead">권윤정 대표 실제 표현. 상황에 맞게 골라 쓴다.</p>
+    <div class="say">견적 보셨을 때 혹시 어떠셨어요? <span class="src">— 오프닝, 반응부터 묻기</span></div>
+    <div class="say">왼쪽이 견적이고, 오른쪽은 저희가 타사랑 일할 때 방식이에요. 근데 프렌즈버킷이 지금 필요한 건 이거다 하는 저의 그림인 거라고 보시면 돼요. <span class="src">— 견적을 전략으로 격상</span></div>
+    <div class="say">저희는 오래 쓰기엔 비싼 팀이에요. 그래서 항상 같이 하는 게 내재화입니다. 저희가 성과를 낼 때 대표님은 동시에 직원을 키우시는 게 제일 좋아요. <span class="src">— 가격 정당화</span></div>
+    <div class="say">광고비 3천을 묵직하게 쓰는 계산법을 갖고 계시면 계속 묵직하게 쓰셔야 돼요. 100만 원에도 다 UTM 링크를 달아서, 어떤 매체로 어떤 루트로 왔는지 지표를 같이 봅니다. <span class="src">— 액티비티의 값 증명</span></div>
+    <div class="say">개선 지점은 딱 두 개예요. 1번 새로운 옷으로 다시 읽힌다, 2번 자사몰에서 내 고객을 만든다. 여기까지 이해되세요? <span class="src">— 압축 + 중간 확인</span></div>
+    <div class="say">저는 견적보다 무조건 많이 해드려요. 근데 견적엔 다 안 씁니다. 견적서 들고 나중에 싸우면 안 되니까요. 저흰 성공 안 시키는 브랜드가 없어요. <span class="src">— 범위 공포 → 신뢰</span></div>
+    <div class="say">제가 한 달에 끝낸다고 하면 사기꾼이죠. 정권 주시면 2.5달에도 끝내요. 근데 대표님이 학습하시는 게 저희를 쓰는 이유여야 합니다. <span class="src">— 기간 프레이밍</span></div>
+    <div class="say">저희는 일찍 결정하는 팀이 먼저 가져가는 구조예요. 언제 결정하실 수 있는지 알려주세요. <span class="src">— 클로징, 희소성</span></div>
+    <div class="say">저는 제가 안 들어가는 건 잘 없습니다. 저희 실장급도 다 저랑 5년 이상 한, 대기업 경력에 MD랑 직접 커뮤니케이션 하는 라인이에요. <span class="src">— PM 신뢰 매듭</span></div>
+  </section>
+
+  <section id="case">
+    <div class="sec-k">CASE</div>
+    <h2>케이스 — 쿠엔즈버킷 (이 매뉴얼의 원천)</h2>
+    <p class="lead">2026-06-12 쿠엔즈버킷(프리미엄 참기름 제조사) 견적콜. 견적 발송 후 권윤정 대표가 줄별 설명 + 비전 재판매로 진행. 위 원칙·플레이가 실제로 쓰인 한 건.</p>
+    <table>
+      <tr><th style="width:150px">무브</th><th>이 견적콜에서</th></tr>
+      <tr><td><b>전략으로 격상</b></td><td>견적(좌)에 "타사 방식 + 너에게 필요한 그림"(우)을 붙여, 메뉴판이 아닌 전략으로</td></tr>
+      <tr><td><b>핵심 판단 박기</b></td><td>"대표님이 마케팅 이해도가 필요하다" → 견적 0번 = 정기 회의(내재화)가 뼈대</td></tr>
+      <tr><td><b>가격 정당화</b></td><td>"비싼 팀"을 숨기지 않고 → 성과 + 직원 학습으로 명분화</td></tr>
+      <tr><td><b>개선 2개 압축</b></td><td>방대한 견적을 ①새 옷(패키지·소셜·사진) ②자사몰 CRM 2개로 줄여 이해 고정</td></tr>
+      <tr><td><b>범위 공포 대응</b></td><td>"포트폴리오까지 바뀐다"는 후퇴 → "견적은 보수적, 실제론 더 해준다"로 안심</td></tr>
+      <tr><td><b>희소성 클로징</b></td><td>"일찍 결정하는 팀이 먼저" + 인력 재배치 카드로 결정 압력</td></tr>
+    </table>
+    <div class="co ok"><span class="lab">결과</span>고객 "내용은 다 이해, 내부 논의 후 결정 회신" — 결정 대기. 범위 방대함을 인지하되 방향엔 동의. 전체 녹취·원문은 로컬 비공개(`7. 브랜드 라이즈/_쿠앤즈버킷`).</div>
+    <div class="co warn"><span class="lab">기록 주의</span>녹취 화자 라벨 <b>"우성민(Green)"은 녹화 계정 ID</b>이며 실제 발화자는 <b>권윤정 대표</b>(콜 중 고객이 "권 대표님"이라 호명, 화자가 "제가 직접 들어간다"로 응답해 교차 확인). 모든 멘트는 권윤정 대표 발화.</div>
+  </section>
+
+</div>
+
+<footer>
+  <b>BRANDRISE</b> by HIZ · 견적콜 매뉴얼 (플레이북) v0.1 · 내부<br>
+  출처: 쿠엔즈버킷 견적콜 녹취(권윤정 대표, 2026-06-12) · 애라 실장·타 체급 케이스로 확장 예정<br>
+  © 2026 브랜드라이즈 by HIZ · 비공개 내부 문서
+</footer>
+
+</body>
+</html>

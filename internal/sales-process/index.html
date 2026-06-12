@@ -24,6 +24,13 @@
 html{scroll-behavior:smooth}
 body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
   line-height:1.7;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+.mnav{background:#0b1220;border-bottom:1px solid rgba(255,255,255,.08)}
+.mnav .in{max-width:980px;margin:0 auto;padding:11px 40px;display:flex;gap:5px;flex-wrap:wrap;align-items:center;font-size:12.5px}
+.mnav a{color:#cbd5e1;font-weight:600;text-decoration:none;padding:4px 9px;border-radius:7px;white-space:nowrap}
+.mnav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.mnav a.home{color:#a5b4fc;font-weight:800;letter-spacing:.03em}
+.mnav a.on{color:#fff;background:rgba(165,180,252,.16)}
+.mnav .sep{color:#334155;margin:0 2px}
 .hero{background:var(--ink);color:#fff;padding:58px 0 46px}
 .hero .in{max-width:980px;margin:0 auto;padding:0 40px}
 .hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
@@ -95,11 +102,12 @@ h2{font-size:25px;font-weight:800;letter-spacing:-.02em;margin-bottom:7px}
 footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:980px;margin:0 auto}
 
 @media(max-width:880px){
-  .wrap,.hero .in,.minitoc{padding-left:22px;padding-right:22px}
+  .wrap,.hero .in,.minitoc,.mnav .in{padding-left:22px;padding-right:22px}
   .funnel{flex-direction:column} .fstep::after{content:"";display:none}
 }
 @media print{
   body{background:#fff}
+  .mnav{display:none}
   .hero,.fstep.win,.step .sn,.co,.dcard .dh{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   section,.flow,.fcard,.dcard,.co{break-inside:avoid}
   .minitoc{display:none}
@@ -107,6 +115,14 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
 </style>
 </head>
 <body>
+
+<nav class="mnav"><div class="in">
+  <a class="home" href="../">BRANDRISE 매뉴얼</a><span class="sep">·</span>
+  <a class="on" href="../sales-process/">영업 프로세스</a>
+  <a href="../company-intro/">회사소개</a>
+  <a href="../consult-playbook/">상담</a>
+  <a href="../quote-call-playbook/">견적콜</a>
+</div></nav>
 
 <div class="hero"><div class="in">
   <div class="badge">BRANDRISE · 영업 시스템 매뉴얼</div>
@@ -163,7 +179,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
       <div class="step"><div class="sn">7</div><div class="sc"><div><div class="st">상담 완료</div><div class="sd">완료 처리 → 3일 이내 산출물(진단서) 발송</div></div><div class="stags"><span class="t kakao">🔔 알림톡 · 완료</span></div></div></div>
     </div>
     <div class="co ac"><span class="lab">1차 산출물</span><b>PREP</b>(내부 준비) + <b>진단서</b>(고객 제출 — 무료 가치 증명이자 견적의 근거 문서). 진단의 병목 번호가 2차 견적 블록에 1:1로 대응한다.</div>
-    <div class="co"><span class="lab">상담 진행 방식</span>대표·실장의 상담을 복제·암기하려면 → <a href="../consult-playbook/" style="color:var(--ac);font-weight:700">상담 플레이북 (매뉴얼) ›</a></div>
+    <div class="co"><span class="lab">상담 진행 방식</span>상담 첫 15분 회사 소개 대본 → <a href="../company-intro/" style="color:var(--ac);font-weight:700">회사소개 매뉴얼 ›</a> · 대표·실장의 상담을 복제·암기 → <a href="../consult-playbook/" style="color:var(--ac);font-weight:700">상담 플레이북 ›</a></div>
   </section>
 
   <section id="p2">
@@ -177,6 +193,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
       <div class="step"><div class="sn">4</div><div class="sc"><div><div class="st">견적콜</div><div class="sd">설명 부족으로 결정을 못 하는 건 보완. 안 풀리면 대표 SOS</div></div><div class="stags"><span class="t n">결정 지원</span></div></div></div>
     </div>
     <div class="co ac"><span class="lab">2차 산출물</span><b>견적서 (A/B안)</b> — A=진입 앵커(작은 yes), B=권장(풀). 공통 항목 단가는 브랜드 불문 동일, 차이는 블록 깊이로.</div>
+    <div class="co"><span class="lab">견적콜 진행 방식</span>견적을 전략으로 열고 가격 저항·범위 공포를 신뢰로 바꾸는 무브 → <a href="../quote-call-playbook/" style="color:var(--ac);font-weight:700">견적콜 플레이북 (매뉴얼) ›</a></div>
   </section>
 
   <section id="p3">

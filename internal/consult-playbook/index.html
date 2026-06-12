@@ -23,6 +23,13 @@
 html{scroll-behavior:smooth}
 body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
   line-height:1.72;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+.mnav{background:#0b1220;border-bottom:1px solid rgba(255,255,255,.08)}
+.mnav .in{max-width:980px;margin:0 auto;padding:11px 40px;display:flex;gap:5px;flex-wrap:wrap;align-items:center;font-size:12.5px}
+.mnav a{color:#cbd5e1;font-weight:600;text-decoration:none;padding:4px 9px;border-radius:7px;white-space:nowrap}
+.mnav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.mnav a.home{color:#a5b4fc;font-weight:800;letter-spacing:.03em}
+.mnav a.on{color:#fff;background:rgba(165,180,252,.16)}
+.mnav .sep{color:#334155;margin:0 2px}
 .hero{background:var(--ink);color:#fff;padding:58px 0 46px}
 .hero .in{max-width:980px;margin:0 auto;padding:0 40px}
 .hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
@@ -82,11 +89,12 @@ tbody tr:nth-child(even) td{background:var(--soft)}
 
 footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:980px;margin:0 auto}
 @media(max-width:880px){
-  .wrap,.hero .in,.minitoc{padding-left:22px;padding-right:22px}
+  .wrap,.hero .in,.minitoc,.mnav .in{padding-left:22px;padding-right:22px}
   .step{grid-template-columns:1fr} .step .sk{border-right:none;border-bottom:1px solid var(--line2)}
 }
 @media print{
   body{background:#fff}
+  .mnav{display:none}
   .hero,.pcard .pn,.step .sk,.co,.say,th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   section,.pcard,.flow,.co,.say,table{break-inside:avoid}
   .minitoc{display:none}
@@ -94,6 +102,14 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
 </style>
 </head>
 <body>
+
+<nav class="mnav"><div class="in">
+  <a class="home" href="../">BRANDRISE 매뉴얼</a><span class="sep">·</span>
+  <a href="../sales-process/">영업 프로세스</a>
+  <a href="../company-intro/">회사소개</a>
+  <a class="on" href="../consult-playbook/">상담</a>
+  <a href="../quote-call-playbook/">견적콜</a>
+</div></nav>
 
 <div class="hero"><div class="in">
   <div class="badge">BRANDRISE · 상담 매뉴얼 · PLAYBOOK v0.1</div>
@@ -153,7 +169,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
     <h2>견적 포지셔닝 원칙</h2>
     <div class="co ac"><span class="lab">앵커링</span><b>진입 앵커 = 작은 yes</b> (데이터 진단 단독 착수 가능). <b>A/B 2안</b>으로 "차이를 눈으로" 보게 해 권장안을 선택하게 한다. 공통 항목 단가는 브랜드 불문 동일, 차이는 블록 깊이로.</div>
     <div class="co"><span class="lab">티어 기준</span>대표가 들어가는 컨설팅 = 최소 5천(또는 3~4천 진입가, 억대 확장 확인 시). 견적은 싯가 — 기업 규모·브랜딩 의지로 총액을 잡고 기획파트로 미세조정.</div>
-    <p style="font-size:12.5px;color:var(--muted);margin-top:6px">※ 견적콜 단계의 멘트·반론 처리는 <b>견적콜 녹취 확보 후 v0.2</b>에서 보강.</p>
+    <div class="co"><span class="lab">견적콜은 별도 매뉴얼</span>견적 발송 후 결정을 돕는 견적콜 단계의 멘트·반론 처리는 전용 플레이북으로 분리됨 → <a href="../quote-call-playbook/" style="color:var(--ac);font-weight:700">견적콜 플레이북 ›</a> (쿠엔즈버킷 견적콜·권윤정 대표 기반)</div>
   </section>
 
   <section id="temp">

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE 내부 매뉴얼 허브 · 인디고 클린
+  · 영업 시스템 매뉴얼 묶음의 진입점. 회사소개 → 상담 → 견적콜이 영업 흐름 순서.
+  · 배포: internal/index.html
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>BRANDRISE 내부 매뉴얼 허브</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.7;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+.hero{background:var(--ink);color:#fff;padding:64px 0 52px}
+.hero .in{max-width:980px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:clamp(30px,5vw,44px);font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:13px}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 3px;border-radius:2px}
+.hero .sub{font-size:15.5px;color:#cbd5e1;font-weight:300;max-width:680px}
+.wrap{max-width:980px;margin:0 auto;padding:40px 40px 100px}
+.sec-k{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:6px;padding:4px 10px;margin-bottom:12px}
+h2{font-size:23px;font-weight:800;letter-spacing:-.02em;margin-bottom:7px}
+.lead{font-size:14.5px;color:var(--muted);margin-bottom:24px;max-width:760px}
+
+/* 영업 흐름 띠 */
+.flowbar{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 40px}
+.fb{flex:1;min-width:120px;background:var(--soft);border:1px solid var(--line);border-radius:11px;padding:12px 14px;position:relative}
+.fb:not(:last-child)::after{content:"›";position:absolute;right:-9px;top:50%;transform:translateY(-50%);font-size:17px;color:var(--ac);font-weight:800;z-index:1}
+.fb .k{font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--ac);margin-bottom:3px}
+.fb .t{font-size:13.5px;font-weight:800}
+.fb.win{background:var(--ink);border-color:var(--ink)} .fb.win .k{color:#a5b4fc} .fb.win .t{color:#fff}
+
+/* 매뉴얼 카드 */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px;margin:14px 0}
+.mc{border:1px solid var(--line);border-radius:16px;background:var(--card);overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:.15s}
+.mc:hover{border-color:var(--ac-100);box-shadow:0 6px 20px rgba(79,70,229,.09);transform:translateY(-1px)}
+.mc .mh{padding:17px 20px 13px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line2)}
+.mc .ph{font-size:10.5px;font-weight:800;background:var(--ac);color:#fff;border-radius:99px;padding:3px 10px;flex:0 0 auto}
+.mc .ph.x{background:var(--muted)}
+.mc .mt{font-size:16.5px;font-weight:800;letter-spacing:-.01em}
+.mc .mb{padding:14px 20px 16px;font-size:13px;color:var(--ink2);line-height:1.62;flex:1}
+.mc .mf{padding:0 20px 16px;font-size:12px;color:var(--muted)}
+.mc .go{color:var(--ac);font-weight:800;font-size:12.5px}
+.mc .src{display:block;margin-top:7px;font-size:11px;color:var(--muted)}
+
+footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:980px;margin:0 auto}
+@media(max-width:880px){ .wrap,.hero .in{padding-left:22px;padding-right:22px} .flowbar{flex-direction:column} .fb::after{display:none} }
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">BRANDRISE · 내부 매뉴얼 허브</div>
+  <h1>브랜드라이즈 <span class="hl">영업 시스템</span> 매뉴얼</h1>
+  <div class="sub">영업을 "대표 개인기"에서 시스템·매뉴얼로. 프로세스 한 장과, 단계마다 복제 가능한 플레이북 — 누구나 같은 수준으로 플레이한다.</div>
+</div></div>
+
+<div class="wrap">
+
+  <div class="sec-k">FLOW</div>
+  <h2>영업 흐름과 매뉴얼</h2>
+  <p class="lead">상담은 <b>회사소개</b>로 열고, <b>상담</b>으로 진단을 만들고, <b>견적콜</b>로 결정을 당긴다. 각 단계에 전용 매뉴얼이 붙는다.</p>
+  <div class="flowbar">
+    <div class="fb"><div class="k">진입</div><div class="t">회사소개</div></div>
+    <div class="fb"><div class="k">1차</div><div class="t">상담 · 진단</div></div>
+    <div class="fb"><div class="k">2차</div><div class="t">견적콜</div></div>
+    <div class="fb win"><div class="k">결과</div><div class="t">수주</div></div>
+  </div>
+
+  <div class="cards">
+
+    <a class="mc" href="sales-process/">
+      <div class="mh"><span class="ph">MAP</span><span class="mt">영업 프로세스</span></div>
+      <div class="mb">유입 → 1차 상담 → 2차 견적 → 3차 계약 → 수주. 단계마다 표준 산출물 4종과 자동 알림톡이 붙는 전체 지도.</div>
+      <div class="mf"><span class="go">프로세스 열기 ›</span><span class="src">출처 · 2026-06-12 시스템화 회의</span></div>
+    </a>
+
+    <a class="mc" href="company-intro/">
+      <div class="mh"><span class="ph">진입</span><span class="mt">회사소개 매뉴얼</span></div>
+      <div class="mb">상담 첫 15분 회사 소개를 누구나 같은 수준으로. ①~⑥ 통대본 + 사례 카드 선택표 + 금지 5가지.</div>
+      <div class="mf"><span class="go">매뉴얼 열기 ›</span><span class="src">v3 · 권윤정 대표 상담 녹취 3건</span></div>
+    </a>
+
+    <a class="mc" href="consult-playbook/">
+      <div class="mh"><span class="ph">1차</span><span class="mt">상담 플레이북</span></div>
+      <div class="mb">대표·실장 상담을 복제·암기·소화. 5대 원칙 + 단계별 플레이 + 멘트 + 온도 읽기.</div>
+      <div class="mf"><span class="go">플레이북 열기 ›</span><span class="src">v0.1 · NGT 상담 녹취(권윤정 대표)</span></div>
+    </a>
+
+    <a class="mc" href="quote-call-playbook/">
+      <div class="mh"><span class="ph">2차</span><span class="mt">견적콜 플레이북</span></div>
+      <div class="mb">견적 발송 후 결정을 돕는 콜. 5대 원칙 + 단계별 플레이 + 반론 처리 + 바로 쓰는 멘트.</div>
+      <div class="mf"><span class="go">플레이북 열기 ›</span><span class="src">v0.1 · 쿠엔즈버킷 견적콜(권윤정 대표)</span></div>
+    </a>
+
+  </div>
+
+</div>
+
+<footer>
+  <b>BRANDRISE</b> by HIZ · 내부 매뉴얼 허브<br>
+  영업 시스템 매뉴얼 묶음 · 산출물 4종 표준 템플릿과 연동<br>
+  © 2026 브랜드라이즈 by HIZ · 비공개 내부 문서
+</footer>
+
+</body>
+</html>
