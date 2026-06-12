@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유솜 (YOOSOM) - New Business 리서치 | BRAND RISE</title>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --highlight: #e94560;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --text-light: #636e72;
+            --border: #dfe6e9;
+            --success: #00b894;
+            --warning: #fdcb6e;
+            --danger: #d63031;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(233, 69, 96, 0.2);
+            border: 1px solid var(--highlight);
+            color: var(--highlight);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+        .header .subtitle { font-size: 16px; opacity: 0.7; font-weight: 300; }
+        .header .date { margin-top: 16px; font-size: 13px; opacity: 0.5; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        .toc {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 8px;
+        }
+
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 0;
+            display: block;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover { color: var(--highlight); }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--highlight);
+        }
+
+        .section h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 20px 0 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 8px 16px;
+            font-size: 14px;
+        }
+
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th { background: var(--primary); color: white; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px; }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        tr:hover td { background: #f1f3f5; }
+
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin: 2px; }
+        .tag-red { background: #ffe0e0; color: #d63031; }
+        .tag-green { background: #d4f5e9; color: #00b894; }
+        .tag-blue { background: #dfe6fd; color: #0f3460; }
+        .tag-yellow { background: #fff3cd; color: #856404; }
+        .tag-gray { background: #e9ecef; color: #495057; }
+
+        .verdict {
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            color: white;
+            padding: 24px 32px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 24px 0;
+        }
+
+        .verdict .label { font-size: 14px; opacity: 0.8; }
+        .verdict .value { font-size: 36px; font-weight: 800; margin: 8px 0; }
+        .verdict .desc { font-size: 14px; opacity: 0.9; }
+
+        .tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+
+        .tier-card {
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .tier-card:hover { transform: translateY(-4px); }
+
+        .tier-card.recommended {
+            border-color: var(--highlight);
+            box-shadow: 0 4px 20px rgba(233, 69, 96, 0.15);
+        }
+
+        .tier-card .tier-badge {
+            position: absolute;
+            top: -12px;
+            right: 16px;
+            background: var(--highlight);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .tier-card h4 { font-size: 16px; margin-bottom: 4px; }
+        .tier-card .price { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 12px 0; }
+        .tier-card .duration { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+        .tier-card ul { list-style: none; padding: 0; }
+        .tier-card li { font-size: 13px; padding: 4px 0; padding-left: 20px; position: relative; }
+        .tier-card li::before { content: ">"; position: absolute; left: 0; color: var(--highlight); font-weight: 700; }
+
+        .callout {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+
+        .callout-info { background: #e3f2fd; border-left-color: #2196f3; }
+        .callout-danger { background: #fce4ec; border-left-color: #e53935; }
+        .callout-success { background: #e8f5e9; border-left-color: var(--success); }
+
+        .leverage-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin: 24px 0;
+        }
+        .leverage-box .lv-title { font-size: 13px; opacity: 0.6; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+        .leverage-box .quote { font-size: 18px; font-weight: 700; line-height: 1.6; margin: 8px 0; }
+        .leverage-box .quote .hl { color: #ff7a93; }
+        .leverage-box ul { margin: 12px 0 0 18px; font-size: 14px; opacity: 0.92; }
+        .leverage-box li { margin-bottom: 8px; }
+
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .swot-item h4 { font-size: 15px; margin-bottom: 10px; }
+        .swot-item ul { padding-left: 18px; }
+        .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: #d4f5e9; }
+        .swot-w { background: #ffe0e0; }
+        .swot-o { background: #dfe6fd; }
+        .swot-t { background: #fff3cd; }
+
+        /* SPIN grid */
+        .spin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .spin-item { padding: 20px; border-radius: 10px; background: #f1f3f5; border-left: 4px solid var(--accent); font-size: 14px; }
+        .spin-item h4 { font-size: 15px; margin-bottom: 8px; color: var(--accent); }
+        .spin-item ul { padding-left: 18px; margin: 0; }
+        .spin-item li { margin-bottom: 4px; }
+
+        /* Pain hierarchy */
+        .pain-layers { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
+        .pain-layer { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: 8px; font-size: 14px; }
+        .pain-layer .pl-level { font-weight: 800; font-size: 13px; min-width: 92px; }
+        .pain-layer .pl-body { flex: 1; }
+        .pain-layer .pl-conf { font-weight: 800; font-size: 14px; min-width: 56px; text-align: right; }
+        .pain-l1 { background: #fff3cd; }
+        .pain-l2 { background: #ffe8cc; }
+        .pain-l3 { background: #ffd9d4; }
+        .pain-l4 { background: #ffe0e0; border: 1px solid var(--danger); }
+
+        /* Timeline */
+        .timeline-phase { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+        .timeline-phase:last-child { border-bottom: none; }
+        .timeline-phase .tp-time { min-width: 86px; font-weight: 800; color: var(--highlight); font-size: 14px; }
+        .timeline-phase .tp-body { flex: 1; font-size: 14px; }
+        .timeline-phase .tp-body strong { color: var(--primary); }
+        .timeline-phase.tp-peak { background: #fff5f7; border-radius: 8px; padding: 14px 16px; border-bottom: none; }
+
+        /* Question cards */
+        .question-card { border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 12px 0; }
+        .question-card .qc-num { display: inline-block; background: var(--accent); color: #fff; width: 24px; height: 24px; border-radius: 50%; text-align: center; line-height: 24px; font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+        .question-card .qc-q { font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+        .question-card .qc-intent { font-size: 13px; color: var(--text-light); }
+
+        /* Flow steps */
+        .flow-steps { display: flex; flex-direction: column; margin: 20px 0; }
+        .flow-step { display: flex; gap: 16px; align-items: flex-start; }
+        .flow-step .fs-marker { display: flex; flex-direction: column; align-items: center; }
+        .flow-step .fs-num { background: var(--highlight); color: #fff; width: 32px; height: 32px; border-radius: 50%; text-align: center; line-height: 32px; font-weight: 700; flex-shrink: 0; }
+        .flow-step .fs-line { width: 2px; flex: 1; background: var(--border); min-height: 20px; }
+        .flow-step .fs-body { flex: 1; padding-bottom: 20px; font-size: 14px; }
+        .flow-step .fs-body h4 { font-size: 15px; color: var(--primary); margin-bottom: 4px; }
+
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+        .source-list a { color: var(--accent); text-decoration: none; word-break: break-all; }
+        .source-list a:hover { text-decoration: underline; }
+
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+        .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .channel-card .ch-stat { font-size: 18px; font-weight: 800; color: var(--highlight); margin: 8px 0; }
+        .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+
+        /* Executive Summary */
+        .summary-section { border-left: 4px solid var(--highlight); background: linear-gradient(135deg, #fff 0%, #fff5f7 100%); }
+        .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; color: white; }
+        .kpi-card.kpi-dark { background: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--danger); }
+        .kpi-card.kpi-accent { background: var(--accent); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.7; }
+        .kpi-card .kpi-value { font-size: 24px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.7; }
+
+        .summary-oneliner { background: #1a1a2e; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 16px; font-weight: 600; line-height: 1.7; }
+        .summary-oneliner .sol-text .hl { color: var(--highlight); font-weight: 800; }
+
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+
+        /* Diagnosis Section */
+        .diagnosis-section { border: 2px solid var(--danger); }
+        .diagnosis-section h2 { border-bottom-color: var(--danger); color: var(--danger); }
+        .diag-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .diag-box { padding: 16px; border-radius: 8px; }
+        .diag-box.diag-current { background: #fce4ec; }
+        .diag-box.diag-ideal { background: #e8f5e9; }
+        .diag-box .db-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .diag-box.diag-current .db-label { color: var(--danger); }
+        .diag-box.diag-ideal .db-label { color: var(--success); }
+        .diag-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+
+        .diag-note {
+            font-size: 14px;
+            margin: 8px 0 16px;
+            padding: 12px 16px;
+            background: #fff3e0;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .tier-cards { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .spin-grid { grid-template-columns: 1fr; }
+            .channel-grid { grid-template-columns: repeat(2, 1fr); }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .diag-compare { grid-template-columns: 1fr; }
+        }
+
+        @media print {
+            body { background: white; }
+            .section { box-shadow: none; border: 1px solid #ddd; }
+            .toc { box-shadow: none; border: 1px solid #ddd; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">NEW BUSINESS RESEARCH</div>
+    <h1>유솜 (YOOSOM)</h1>
+    <div class="subtitle">미티어(METEOR) · 홈웨어 D2C 런칭 준비 | 상담 준비 패키지</div>
+    <div class="date">2026-06-12 | Prepared by BRAND RISE</div>
+</div>
+
+<div class="container">
+
+    <!-- Executive Summary -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">기업 / 브랜드</div>
+                <div class="sh-title">미티어(METEOR) · 유솜(YOOSOM)</div>
+                <div class="sh-sub">홈웨어 패션 D2C | 런칭 직전 (생산공장·샘플 제작 중)</div>
+            </div>
+            <div>
+                <div class="sh-label">대표자</div>
+                <div class="sh-title">강유성 (대표/CEO)</div>
+                <div class="sh-sub">"대표님 영상 보고 신청" — 콘텐츠로 신뢰 형성된 warm lead</div>
+            </div>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">한국 홈웨어 시장 (2026)</div>
+                <div class="kpi-value" style="font-size:18px;">1.48조원</div>
+                <div class="kpi-sub">CAGR 8.8%, 성장 카테고리</div>
+            </div>
+            <div class="kpi-card kpi-accent">
+                <div class="kpi-label">온라인 D2C 세그먼트 (SAM)</div>
+                <div class="kpi-value" style="font-size:18px;">약 5,900억</div>
+                <div class="kpi-sub">라운지웨어 CAGR 9.7% (의류 3배)</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">기회 적합도</div>
+                <div class="kpi-value" style="font-size:18px;">4.28 / 5.0</div>
+                <div class="kpi-sub">🟢 GO (조건부)</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">핵심 긴장 (Critical)</div>
+                <div class="kpi-value" style="font-size:18px;">500만 vs 풀IMC</div>
+                <div class="kpi-sub">예산 적합성 2.5/5 — 구조적 미스매치</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                유솜은 기획·BM은 완료됐으나 마케팅 실행 인프라는 0인 전형적 <span class="hl">pre-launch 그린필드</span>입니다. 신청은 "IMC 의뢰(L1)"로 왔지만, 버튼을 누른 진짜 엔진은 <span class="hl">"대표님 영상 보고 결이 맞아서"(L4 신뢰·동행)</span>입니다.<br>
+                월 500만 × 런칭 전에서 굿즈·인플루언서·광고 <span class="hl">동시 집행은 셋 다 얕아져 0 임팩트</span>로 끝납니다. 승부는 "검증 → 시드 자산 → 광고 증폭" 순서 재구성입니다.
+            </div>
+        </div>
+        <div class="summary-bottom">
+            <strong>기회 적합도:</strong> <span class="hl">4.28 / 5.0 (GO - 조건부)</span> &nbsp;|&nbsp;
+            <strong>추천 Tier:</strong> Professional (진단 + 런칭 IMC 1세트) &nbsp;|&nbsp;
+            <strong>Quick Win:</strong> 경쟁사 빈자리 선점 + 마이크로 인플루언서·체험단 시드 자산 축적
+        </div>
+    </div>
+
+    <!-- 핵심 문제점 & 진단 -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 문제점 &amp; 진단</h2>
+
+        <h3>월 500만 × 런칭 전 vs "IMC 풀패키지" 희망 — 구조적 미스매치 (Critical)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재 (대표의 기대)</div>
+                <ul>
+                    <li>굿즈·인플루언서·리뷰·광고 <strong>동시 집행</strong> 희망</li>
+                    <li>실행 <strong>우선순위 없음</strong> ("IMC 전반 상의")</li>
+                    <li>BM·포지셔닝 <strong>시장 검증 0</strong> (샘플 단계)</li>
+                    <li>인지도·리뷰·콘텐츠 자산 <strong>전무 (0에서 시작)</strong></li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">이상 (런칭 성공 경로)</div>
+                <ul>
+                    <li>한정 예산을 <strong>한 단계에 집중</strong>해 임계점 돌파</li>
+                    <li>경쟁사 <strong>빈자리 선점</strong> → CAC 최소화</li>
+                    <li>체험·리뷰 <strong>소셜 프루프</strong> 선축적 후 광고</li>
+                    <li>"검증 → 시드 → 증폭" <strong>단계 로드맵</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>표면 요청(L1) 아래 진짜 니즈(L4)가 따로 있다</h3>
+        <div class="diag-note">
+            의뢰서는 <strong>"IMC 마케팅 방향성 상의(L1)"</strong>로 왔지만, 신청을 누른 트리거는 <strong>"영상 보고 결이 맞아서"(L4 — 사람·신뢰·동행)</strong>입니다.
+            L1로만 응대하면 "IMC 다 해주는 더 싼 곳"과의 <strong>견적 비교 게임</strong>으로 끌려가 패합니다.
+            L3(내 BM이 시장에서 통할지 검증받고 싶음)·L4(첫 사업, 혼자 결정이 두려움)를 짚어야 수주가 닫힙니다.
+        </div>
+
+        <h3>영역별 진단 요약</h3>
+        <table>
+            <tr>
+                <th>영역</th>
+                <th>현재 상태</th>
+                <th>심각도</th>
+                <th>GAP</th>
+            </tr>
+            <tr>
+                <td>포지셔닝</td>
+                <td>목표 빈자리 미확정 (⚠️ 상담 1순위)</td>
+                <td><span class="tag tag-red">Critical</span></td>
+                <td><span class="tag tag-red">매우 큼</span></td>
+            </tr>
+            <tr>
+                <td>예산-기대치 정렬</td>
+                <td>월 500만 vs 풀 IMC 동시 희망</td>
+                <td><span class="tag tag-red">Critical</span></td>
+                <td><span class="tag tag-red">매우 큼</span></td>
+            </tr>
+            <tr>
+                <td>디지털 자산</td>
+                <td>인스타·스토어·검색 노출 사실상 0</td>
+                <td><span class="tag tag-yellow">High (기회)</span></td>
+                <td><span class="tag tag-yellow">큼</span></td>
+            </tr>
+            <tr>
+                <td>마케팅 실행 인프라</td>
+                <td>채널·콘텐츠·고객 데이터·퍼널 전무</td>
+                <td><span class="tag tag-red">High</span></td>
+                <td><span class="tag tag-red">큼</span></td>
+            </tr>
+            <tr>
+                <td>제품-시장 핏 검증</td>
+                <td>샘플 단계 — 소재·핏·SKU 시장표준 대조 전</td>
+                <td><span class="tag tag-yellow">Medium</span></td>
+                <td><span class="tag tag-yellow">큼</span></td>
+            </tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>진단 결론:</strong> 유솜은 기획·BM이라는 <strong>출발 자산</strong>은 갖췄으나, 시장에 옳게 내놓는 <strong>런칭 실행 설계가 전무</strong>한 상태입니다.
+            지금이 레거시 부채 없이 <strong>첫 픽셀부터 의도대로 브랜드를 까는 골든타임</strong>이며, 월 500만 제약 때문에 <strong>"다 하기"가 아니라 "순서대로 하기"</strong>가 생존의 유일한 길입니다.
+        </div>
+    </div>
+
+    <!-- 목차 -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 &amp; 진단</a>
+            <a href="#company-info">1. 기업 기초 정보</a>
+            <a href="#product-analysis">2. 주력 제품/서비스</a>
+            <a href="#digital-presence">3. 디지털 프레즌스 진단</a>
+            <a href="#competitors">4. 경쟁사 분석 ★</a>
+            <a href="#market">5. 시장 환경</a>
+            <a href="#leadership">6. 대표자/경영진</a>
+            <a href="#swot">7. SWOT 분석</a>
+            <a href="#needs">8. 니즈 분석 (SPIN+JTBD)</a>
+            <a href="#gap-analysis">9. GAP 분석 &amp; 기회 평가</a>
+            <a href="#quote">10. 3-Tier 견적 초안</a>
+            <a href="#strategy">11. 상담 전략 &amp; 코칭</a>
+            <a href="#closing">12. 클로징 전략</a>
+            <a href="#sources">참고 링크</a>
+        </div>
+    </div>
+
+    <!-- 1. 기업 기초 정보 -->
+    <div class="section" id="company-info">
+        <h2>1. 기업 기초 정보</h2>
+        <div class="info-grid">
+            <div class="info-label">회사명</div>
+            <div class="info-value">미티어 (METEOR) <span class="tag tag-gray">운영 법인/상호 추정</span></div>
+
+            <div class="info-label">브랜드명</div>
+            <div class="info-value">유솜 (YOOSOM) — 런칭 준비 중인 홈웨어 D2C 브랜드</div>
+
+            <div class="info-label">업종</div>
+            <div class="info-value">E-커머스/유통 · 홈웨어 패션 D2C</div>
+
+            <div class="info-label">사업 단계</div>
+            <div class="info-value"><strong>런칭 직전</strong> — 생산공장·샘플 제작 중. 브랜드 기획·BM 수립 완료</div>
+
+            <div class="info-label">대표자</div>
+            <div class="info-value">강유성 (대표/CEO)</div>
+
+            <div class="info-label">연락처</div>
+            <div class="info-value">010-8690-0140 · meteor2025@naver.com</div>
+
+            <div class="info-label">마케팅 목표</div>
+            <div class="info-value">신규 고객 확보(Acquisition) + 브랜드 인지도 향상(Awareness)</div>
+
+            <div class="info-label">희망 서비스</div>
+            <div class="info-value">IMC 마케팅 (굿즈, 캠페인, 인플루언서, 리뷰, 광고 제작 등)</div>
+
+            <div class="info-label">월 마케팅 예산</div>
+            <div class="info-value">500만원 이하 <span class="tag tag-yellow">시드 단계 소규모</span></div>
+
+            <div class="info-label">기대 성과</div>
+            <div class="info-value">맞춤형 마케팅 전략 로드맵 확보</div>
+
+            <div class="info-label">신청 경로</div>
+            <div class="info-value">"대표님 영상 보고 방향성이 맞아 신청" (콘텐츠 기반 warm lead)</div>
+        </div>
+
+        <div class="callout">
+            <strong>⚠️ 상담 1순위 확인:</strong> 브랜드명 "유솜(YOOSOM)"의 유래·세계관 — '유(柔, 부드러움)+솜(포근함)' 또는 'You+Some' 어감 추정.
+            <strong>네이밍 의도에 포지셔닝의 씨앗</strong>이 들어있습니다. 이메일 <code>meteor2025</code>는 2025년 사업 시작 시점 시사.
+            BM 문서·브랜드북 존재 여부, 첫 창업 여부, 팀 구성, 생산·소싱 네트워크는 모두 상담에서 확인 필요.
+        </div>
+
+        <div class="callout callout-info">
+            <strong>재무/규모 시그널:</strong> 월 마케팅 예산 500만원 이하 = 시드 단계 소규모. 런칭 IMC를 "선택과 집중"으로 설계해야 하는 제약이며,
+            이 제약이 본 패키징·전략의 핵심 전제입니다.
+        </div>
+    </div>
+
+    <!-- 2. 주력 제품/서비스 -->
+    <div class="section" id="product-analysis">
+        <h2>2. 주력 제품/서비스</h2>
+
+        <p style="font-size:14px;">유솜은 <strong>홈웨어 패션 D2C 브랜드</strong>로, 현재 생산공장 세팅·샘플 제작 단계입니다. 제품 라인업·소재·가격대는 상담에서 확인이 필요한 항목입니다.</p>
+
+        <table>
+            <tr>
+                <th>항목</th>
+                <th>현재 확인 수준</th>
+                <th>상담 확인 필요</th>
+            </tr>
+            <tr>
+                <td>제품 카테고리</td>
+                <td>홈웨어 (파자마/라운지웨어 추정)</td>
+                <td>세부 라인업 · 원마일웨어 여부</td>
+            </tr>
+            <tr>
+                <td>소재·핏</td>
+                <td>샘플 제작 중 <span class="tag tag-yellow">미확인</span></td>
+                <td>주력 소재 · 촉감 차별점 · 세탁 내구성</td>
+            </tr>
+            <tr>
+                <td>SKU 구성</td>
+                <td><span class="tag tag-yellow">미확인</span></td>
+                <td>초기 SKU 수 · 소량 테스트 vs 대량</td>
+            </tr>
+            <tr>
+                <td>가격대</td>
+                <td><span class="tag tag-yellow">미확인</span></td>
+                <td>세트 단가 · 경쟁사 대비 포지션</td>
+            </tr>
+            <tr>
+                <td>굿즈</td>
+                <td>희망 서비스에 명시 (셀프기프팅 친화)</td>
+                <td>머그·슬리퍼·수면양말 등 구체 구상</td>
+            </tr>
+        </table>
+
+        <div class="callout">
+            <strong>전략 시사점:</strong> 유솜은 시장 리서치가 지적한 신규 런칭 실수 중 <strong>#2(소재·핏 이해 부족)·#5(SKU 과다)</strong> 단계에 정확히 서 있습니다.
+            샘플 단계인 <strong>지금이 제품 단에서 개입할 수 있는 유일한 타이밍</strong>이며, 소재·핏·SKU를 시장 표준과 대조하는 것이 컨설팅 가치를 즉시 입증하는 포인트입니다.
+            홈웨어는 "입어봐야 아는" 카테고리라 제품 결함이 있으면 어떤 IMC도 무력화됩니다.
+        </div>
+    </div>
+
+    <!-- 3. 디지털 프레즌스 진단 -->
+    <div class="section" id="digital-presence">
+        <h2>3. 디지털 프레즌스 진단</h2>
+
+        <p style="font-size:14px;">현 상태는 사실상 <strong>"0에서 시작" (그린필드)</strong>입니다. 런칭 전이라 검색 흔적이 거의 없으며 — 이는 <strong>약점이 아니라 기회</strong>입니다.</p>
+
+        <div class="channel-grid">
+            <div class="channel-card" style="border-color: var(--warning);">
+                <div class="ch-name">Instagram</div>
+                <div class="ch-stat" style="color: var(--warning);">@youysoms (?)</div>
+                <div class="ch-note">"LOVEONE YOUSOM" 계정 1건 검색<br>⚠️ 본 브랜드 여부 미확인</div>
+            </div>
+            <div class="channel-card" style="border-color: var(--danger);">
+                <div class="ch-name">스마트스토어/자사몰</div>
+                <div class="ch-stat" style="color: var(--danger);">미오픈</div>
+                <div class="ch-note">런칭 전 — 미구축 추정</div>
+            </div>
+            <div class="channel-card" style="border-color: var(--danger);">
+                <div class="ch-name">검색·플랫폼</div>
+                <div class="ch-stat" style="color: var(--danger);">0건</div>
+                <div class="ch-note">네이버·무신사·29CM 흔적 없음</div>
+            </div>
+        </div>
+
+        <h3>"0에서 시작"을 기회로 프레이밍</h3>
+        <div class="callout callout-info">
+            <strong>레거시 부채 없음:</strong> 잘못 박힌 톤·저가 이미지·악성 리뷰가 전무. <strong>첫 픽셀부터 의도된 브랜드 세계관으로 설계 가능</strong>합니다.
+            신규 런칭 실수 #1(차별화 없는 포지셔닝)·#4(퍼포먼스 의존)을 <strong>사전에 회피</strong>할 수 있는 유일한 타이밍이며,
+            런칭은 인지도 0 → 첫 노출이 곧 브랜드 각인인 <strong>단 한 번의 임팩트 카드</strong>입니다.
+        </div>
+
+        <h3>경쟁사 디지털 운영 수준 = 따라잡아야 할 표준 스택</h3>
+        <table>
+            <tr>
+                <th>퍼널</th>
+                <th>표준 채널</th>
+                <th>강한 경쟁사</th>
+            </tr>
+            <tr>
+                <td>상단 (인지)</td>
+                <td>인스타 피드(무드 룩북) + 릴스(착용 영상) + 틱톡</td>
+                <td>데일리쥬 · 무드무드</td>
+            </tr>
+            <tr>
+                <td>중·하단 (탐색·신뢰)</td>
+                <td>네이버 스마트스토어 + 블로그/카페 리뷰 + 체험단 포토리뷰</td>
+                <td>코코로지 · 마른파이브</td>
+            </tr>
+            <tr>
+                <td>전환</td>
+                <td>자사몰/스토어 + 라이브커머스(착용·핏 실시간 시연)</td>
+                <td>전반</td>
+            </tr>
+        </table>
+        <div class="callout">
+            유솜은 이 스택을 <strong>0부터 동시 구축</strong>해야 하지만, 500만/월 예산상 전 채널 동시 풀가동은 불가합니다. <strong>우선순위 설계가 IMC 제안의 뼈대</strong>입니다.
+        </div>
+    </div>
+
+    <!-- 4. 경쟁사 분석 -->
+    <div class="section" id="competitors">
+        <h2>4. 경쟁사 분석 <span style="font-size:14px; color:var(--highlight);">★ 상담 핵심 무기</span></h2>
+
+        <p style="font-size:14px;">"경쟁사(남)를 알아야 나를 안다." 아래 표는 한국 홈웨어 D2C 8개 브랜드를 <strong>유솜 관점("어디가 비었나")</strong>으로 재구성한 것입니다.</p>
+
+        <table>
+            <tr>
+                <th>브랜드</th>
+                <th>포지셔닝</th>
+                <th>가격대(세트)</th>
+                <th>핵심 USP</th>
+                <th>유솜 시사점</th>
+            </tr>
+            <tr>
+                <td><strong>데일리쥬</strong></td>
+                <td>여성 파자마, 러블리·로맨틱</td>
+                <td>3~6만</td>
+                <td>패턴·컬러 다양, 시즌 기프트, 커플/패밀리</td>
+                <td><span class="tag tag-red">러블리=레드오션, 정면승부 비추</span></td>
+            </tr>
+            <tr>
+                <td><strong>무드무드</strong></td>
+                <td>미니멀·모던 유니섹스 라운지</td>
+                <td>4~8만</td>
+                <td>유니섹스, 집·외출 겸용 셋업, 무드 비주얼</td>
+                <td>원마일웨어 강자 — 차별점 필요</td>
+            </tr>
+            <tr>
+                <td><strong>코코로지</strong></td>
+                <td>이너웨어 기반 홈웨어</td>
+                <td>3~7만</td>
+                <td>편안함, 바디포지티브, 이너·홈 겸용</td>
+                <td>이너 기반 신뢰 자산 — 유솜엔 없음(약점)</td>
+            </tr>
+            <tr>
+                <td><strong>마른파이브</strong></td>
+                <td>언더웨어→홈웨어 확장</td>
+                <td>2~6만</td>
+                <td>편안함·일상성, 연매출 300억·40% 성장</td>
+                <td>가치소비 스토리텔링 벤치마크</td>
+            </tr>
+            <tr>
+                <td><strong>헤지스라운지</strong></td>
+                <td>캐주얼 대기업 홈라인</td>
+                <td>5~10만</td>
+                <td>브랜드 인지도, 선물용</td>
+                <td>프리미엄·자본력 — 동일 가격대 회피</td>
+            </tr>
+            <tr>
+                <td><strong>라퍼지스토어</strong></td>
+                <td>남성 캐주얼 홈라인</td>
+                <td>3~7만</td>
+                <td>남성 편한 핏, 팬덤 기반</td>
+                <td><span class="tag tag-green">남성/유니섹스 공백 존재</span></td>
+            </tr>
+            <tr>
+                <td><strong>스파오 홈</strong></td>
+                <td>SPA 가성비</td>
+                <td>1~4만</td>
+                <td>대량생산 가성비, 캐릭터 콜라보, 오프라인망</td>
+                <td><span class="tag tag-red">저가 정면승부 절대 금지</span></td>
+            </tr>
+            <tr>
+                <td><strong>모이몰른</strong></td>
+                <td>유아·아동 홈웨어</td>
+                <td>3~6만</td>
+                <td>북유럽 감성, 안전 소재, 맘카페</td>
+                <td>키즈 = 별도 진입장벽</td>
+            </tr>
+            <tr style="background:#fff5f7;">
+                <td style="background:#fff5f7;"><strong>유솜 (YOOSOM)</strong></td>
+                <td style="background:#fff5f7;"><span class="tag tag-yellow">⚠️ 빈자리 중 한 칸 확정 필요</span></td>
+                <td style="background:#fff5f7;">미정</td>
+                <td style="background:#fff5f7;">네이밍 가설상 "포근·부드러움"</td>
+                <td style="background:#fff5f7;"><span class="tag tag-green">그린필드 = 자유도 최대</span></td>
+            </tr>
+        </table>
+
+        <h3>포지셔닝 공백 = 유솜의 빈 자리 (★ 상담 최대 의제)</h3>
+        <div class="callout callout-success">
+            <strong>시장이 인지한 기회 영역 3곳:</strong>
+            <ul style="margin:8px 0 0 18px;">
+                <li><strong>① 남성·유니섹스 라운지웨어</strong> — 여성 대비 경쟁 약하고 디자인 다양성 부족. 라퍼지·SPA가 일부만 채움. 체형·라이프스타일 특화 D2C 여지 큼.</li>
+                <li><strong>② 슬로 패션·지속가능 코지 프리미엄</strong> — 친환경 소재+장수 디자인 기반 브랜드 아직 초기. MZ·30~40대 가치소비층 미공략.</li>
+                <li><strong>③ 특수 라이프스타일 니치</strong> — 1~2인 가구·반려동물 가구·디지털 노마드·재택 워커 특화 홈웨어.</li>
+            </ul>
+            <div style="margin-top:10px;">⚠️ 유솜 네이밍("부드러움/포근") 가설상 <strong>②지속가능 코지</strong> 또는 <strong>③특정 페르소나</strong> 적합도 추정 — <strong>상담에서 어느 칸을 노릴지 확정이 진단 1단계의 최우선 과제</strong>입니다.</div>
+        </div>
+    </div>
+
+    <!-- 5. 시장 환경 -->
+    <div class="section" id="market">
+        <h2>5. 시장 환경</h2>
+
+        <h3>시장 규모 (TAM / SAM / SOM)</h3>
+        <table>
+            <tr>
+                <th>구분</th>
+                <th>규모 (2026 추정)</th>
+                <th>근거</th>
+            </tr>
+            <tr>
+                <td><strong>TAM</strong> — 한국 홈웨어·라운지웨어·파자마 전체</td>
+                <td><strong>약 1조 4,800억 원</strong></td>
+                <td>Perplexity 딥리서치, CAGR 8.8%</td>
+            </tr>
+            <tr>
+                <td><strong>SAM</strong> — 온라인 D2C 부분 (전체 ~40%)</td>
+                <td><strong>약 5,900억 원</strong></td>
+                <td>D2C 비중 35~40% 추정</td>
+            </tr>
+            <tr>
+                <td><strong>SOM</strong> — 유솜 현실 타깃 (특정 세그먼트 일부)</td>
+                <td>수십억 원대 진입 가능 풀 <span class="tag tag-yellow">가설</span></td>
+                <td>신규·소예산 기준 보수 추정</td>
+            </tr>
+        </table>
+        <div class="callout">
+            <strong>성장성:</strong> 라운지웨어 글로벌 CAGR ~9.7% — 전체 의류(3.4%)의 약 3배. 한국은 온라인 침투·트렌드 수용 속도로 이 흐름을 선도합니다.
+            <strong>단, 포화 경고:</strong> 2025~26 시장은 이미 포화 근접 + 성장률 완만화 국면 → 시장 편승만으론 부족하고 <strong>독자 포지셔닝이 필수</strong>입니다.
+        </div>
+
+        <h3>2025~26 핵심 트렌드</h3>
+        <table>
+            <tr>
+                <th>트렌드</th>
+                <th>내용</th>
+                <th>유솜 활용</th>
+            </tr>
+            <tr>
+                <td><strong>원마일웨어</strong></td>
+                <td>집+1.6km 외출 가능한 "잠옷 같은데 외출복" 룩. 2026 강세 지속</td>
+                <td>신규 진입 키워드 1순위</td>
+            </tr>
+            <tr>
+                <td><strong>코지룩/코지웨어</strong></td>
+                <td>플러피·소프트 소재, "게으름이 추구미". 세트룩·액세서리 결합</td>
+                <td>네이밍("포근") 결과 일치 가능성</td>
+            </tr>
+            <tr>
+                <td><strong>셀프기프팅</strong></td>
+                <td>"나를 위한" 감성 홈웨어 구매. 휴식·자기돌봄</td>
+                <td>굿즈·패키징 차별화 훅</td>
+            </tr>
+            <tr>
+                <td><strong>벤치마크</strong></td>
+                <td>젤라또피케(르세라핌 글로벌 앰배서더·팝업 바이럴), 오르시떼(2026 베스트셀러 상위)</td>
+                <td>신생은 메가 앰배서더 불가 → 마이크로 인플루언서 결</td>
+            </tr>
+        </table>
+
+        <h3>신규 런칭 흔한 실수 5 (= 유솜이 피해야 할 지뢰)</h3>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>실수</th>
+                <th>유솜 현황</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>차별화 없는 콘셉트·모호한 타깃 ("20~40대 여성" 식)</td>
+                <td><span class="tag tag-red">최대 리스크 — CAC 폭증 직결</span></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>원가·소재·핏 이해 부족 → 품질/리뷰 리스크</td>
+                <td><span class="tag tag-yellow">샘플 단계 — 개입 가능</span></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>채널-가격 전략 불일치</td>
+                <td>가격대 미정 — 설계 단계</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>단기 퍼포먼스 광고 과의존 → 에쿼티 미축적</td>
+                <td><span class="tag tag-red">500만 예산상 특히 경계</span></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>공급망·재고·SKU 과다 → 재고 리스크</td>
+                <td><span class="tag tag-yellow">SKU 설계 단계</span></td>
+            </tr>
+        </table>
+
+        <div class="callout callout-info">
+            <strong>IMC 카테고리 궁합:</strong> 홈웨어는 촉감·핏·무드 등 <strong>감각적 가치</strong>가 핵심인데 온라인에선 체험 불가 → <strong>체험단·인플루언서 리뷰(소셜 프루프)가 구매 결정을 좌우</strong>합니다.
+            유솜의 희망 서비스(굿즈·인플루언서·리뷰)와 카테고리 궁합이 우수합니다. 단, <strong>"양보다 질"의 미드·마이크로 인플루언서 다수</strong>가 메가 1명보다 효과적입니다.
+        </div>
+    </div>
+
+    <!-- 6. 대표자/경영진 -->
+    <div class="section" id="leadership">
+        <h2>6. 대표자/경영진</h2>
+        <div class="info-grid">
+            <div class="info-label">대표</div>
+            <div class="info-value">강유성 (대표/CEO)</div>
+
+            <div class="info-label">공개 정보</div>
+            <div class="info-value">인터뷰·SNS·이력 검색 <strong>0건</strong> <span class="tag tag-yellow">⚠️ 상담 직접 확인</span></div>
+
+            <div class="info-label">신청 동기</div>
+            <div class="info-value"><strong>"대표님 영상 보고 방향성이 맞아 신청"</strong> — 콘텐츠로 신뢰가 선(先)형성된 warm lead</div>
+
+            <div class="info-label">의사결정 구조</div>
+            <div class="info-value">대표 단독 결정 가능성 높음 (소규모·초기) <span class="tag tag-yellow">가설</span></div>
+
+            <div class="info-label">확인 필요</div>
+            <div class="info-value">패션/이커머스 경력, 창업 동기, 팀 구성(혼자 vs 동업), 생산·소싱 네트워크</div>
+        </div>
+
+        <div class="callout callout-success">
+            <strong>★ warm lead의 의미:</strong> 차가운 인바운드가 아니라 <strong>이미 우리 관점·철학에 공감한 상태</strong>로 들어왔습니다.
+            상담 톤은 영업적 설득보다 <strong>"방향성 공감 → 구체적 실행 합의"</strong>가 자연스럽고,
+            오프닝 질문 <em>"어떤 영상의 어떤 메시지에 끌리셨어요?"</em>가 라포와 니즈를 동시에 파악하는 최적 진입점입니다.
+        </div>
+    </div>
+
+    <!-- 7. SWOT 분석 -->
+    <div class="section" id="swot">
+        <h2>7. SWOT 분석</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>Strengths (강점)</h4>
+                <ul>
+                    <li>그린필드 — 레거시 부채·악성 리뷰 0, 첫 픽셀부터 설계 가능</li>
+                    <li>브랜드 기획·BM 완료 (출발 자산 보유)</li>
+                    <li>희망 서비스(굿즈·인플루언서·리뷰)가 홈웨어 카테고리와 궁합 우수</li>
+                    <li>대표 직접 의사결정 → 빠른 컨펌 가능</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>Weaknesses (약점)</h4>
+                <ul>
+                    <li>인지도·리뷰·콘텐츠 자산 0 (CAC 최고점 구간)</li>
+                    <li>월 500만 예산 = 풀 IMC 동시 집행 불가</li>
+                    <li>시장 검증 0 (샘플 단계, 고객 반응 없음)</li>
+                    <li>이너웨어 같은 기존 신뢰 자산 부재</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>Opportunities (기회)</h4>
+                <ul>
+                    <li>포지셔닝 공백 3곳 (남성·유니섹스 / 지속가능 코지 / 특수 페르소나)</li>
+                    <li>성장 카테고리 (라운지웨어 CAGR 9.7%)</li>
+                    <li>원마일웨어·코지룩·셀프기프팅 트렌드 결</li>
+                    <li>굿즈·셀프기프팅 시너지 → UGC 엔진화</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>Threats (위협)</h4>
+                <ul>
+                    <li>여성 러블리 레드오션 (데일리쥬·무드무드·코코로지)</li>
+                    <li>SPA 가성비(스파오)와 가격 정면승부 시 패배</li>
+                    <li>성공 디자인·무드의 빠른 모방</li>
+                    <li>시장 포화 근접 → 차별화 없으면 광고비만 소진</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. 니즈 분석 (SPIN+JTBD) -->
+    <div class="section" id="needs">
+        <h2>8. 니즈 분석 (SPIN + JTBD)</h2>
+
+        <h3>SPIN 레이어링 (런칭 전 특성 반영)</h3>
+        <div class="spin-grid">
+            <div class="spin-item">
+                <h4>S — 상황 (Situation)</h4>
+                <ul>
+                    <li>홈웨어 D2C 유솜 런칭 준비, 기획·BM 완료, 샘플·공장 세팅 중</li>
+                    <li>마케팅 채널·판매 데이터·팀 0, 예산 월 500만 이하</li>
+                </ul>
+            </div>
+            <div class="spin-item">
+                <h4>P — 문제 (Problem)</h4>
+                <ul>
+                    <li>기획은 끝났는데 "어떻게 옳게 내놓느냐" 실행 설계가 비어 있음</li>
+                    <li>어디서/무엇부터/얼마를 써야 하는지 <strong>우선순위 부재</strong></li>
+                    <li>자기 BM이 시장에서 통할지 검증해본 적 없음</li>
+                </ul>
+            </div>
+            <div class="spin-item">
+                <h4>I — 시사 (Implication)</h4>
+                <ul>
+                    <li>검증 없이 런칭 → 재고·초기 광고비 매몰 (인지도 0 = CAC 최고점)</li>
+                    <li>우선순위 없이 다 벌리면 → 월 500만 전부 얕게 → 0 임팩트</li>
+                    <li>런칭 타이밍 어긋나면 → 알고리즘·검색 회복에 수개월</li>
+                </ul>
+            </div>
+            <div class="spin-item">
+                <h4>N — 니즈-보상 (Need-payoff)</h4>
+                <ul>
+                    <li>검증된 런칭 순서(로드맵) = 한정 예산을 어디부터 쓸지 확신</li>
+                    <li>시드 고객·리뷰·콘텐츠 자산 = 오픈 첫날 "비어있지 않은 브랜드"</li>
+                    <li>함께 검증·실행할 파트너 = 첫 창업 결정 외로움 해소</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Pain Hierarchy (표면 → 근본, 확신도)</h3>
+        <div class="pain-layers">
+            <div class="pain-layer pain-l1">
+                <div class="pl-level">L1 표면</div>
+                <div class="pl-body">"IMC 마케팅 방향성을 상의하고 의뢰하고 싶다" — 무엇을 어떤 채널로 할지 정해달라</div>
+                <div class="pl-conf">95%</div>
+            </div>
+            <div class="pain-layer pain-l2">
+                <div class="pl-level">L2</div>
+                <div class="pl-body">"기획은 끝났는데 실행을 어디서부터, 한정 예산을 어디에 먼저 쓸지 모르겠다" — 우선순위 부재</div>
+                <div class="pl-conf">80%</div>
+            </div>
+            <div class="pain-layer pain-l3">
+                <div class="pl-level">L3</div>
+                <div class="pl-body">"내 BM·브랜드가 시장에서 진짜 통할지 검증받고 싶다" — 자기 확신 결핍 ⚠️</div>
+                <div class="pl-conf">65%</div>
+            </div>
+            <div class="pain-layer pain-l4">
+                <div class="pl-level">L4 근본</div>
+                <div class="pl-body">"처음 하는 사업, 혼자 결정하기 두렵다. 믿고 같이 갈 사람이 있으면 좋겠다" — 실행 파트너십·심리적 안전 ⚠️</div>
+                <div class="pl-conf">60%</div>
+            </div>
+        </div>
+        <div class="callout callout-danger">
+            <strong>핵심 통찰:</strong> 의뢰서는 L1(서비스)로 왔지만, 신청 트리거는 <strong>L4(사람·신뢰)</strong>였습니다("영상 보고 결이 맞아서").
+            <strong>L1로만 응대하면 견적 비교 게임에 빠지고, L3·L4를 짚으면 수주가 닫힙니다.</strong>
+        </div>
+
+        <h3>JTBD (Jobs To Be Done)</h3>
+        <table>
+            <tr>
+                <th>유형</th>
+                <th>Job</th>
+            </tr>
+            <tr>
+                <td><strong>Functional</strong></td>
+                <td>한정 예산(월 500만↓)으로 무엇을 먼저 할지 우선순위가 박힌 IMC 로드맵을 손에 넣고, 내 BM·브랜드를 시장 관점에서 점검받고 싶다</td>
+            </tr>
+            <tr>
+                <td><strong>Social</strong></td>
+                <td>혼자 막막한 초보 사장이 아니라 "전문 파트너와 제대로 준비한 브랜드"로 보이고 싶다</td>
+            </tr>
+            <tr>
+                <td><strong>Emotional</strong> 🔴</td>
+                <td>내 브랜드를 진심으로 이해하고 같이 뛸 사람을 만나 안심하고 싶다. 첫 사업의 결정 외로움·불안을 덜고 싶다 — <strong>신청의 진짜 엔진</strong></td>
+            </tr>
+        </table>
+
+        <h3>표면(L1) vs 진짜(L4)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">표면 요청 (대표가 적은 것)</div>
+                <ul>
+                    <li>IMC 마케팅 방향성 상의·의뢰</li>
+                    <li>굿즈·캠페인·인플루언서·리뷰·광고</li>
+                    <li>맞춤형 전략 로드맵</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">진짜 니즈 (행간)</div>
+                <ul>
+                    <li>내 BM이 시장에서 통할지 검증받고 싶음 (L3)</li>
+                    <li>혼자 결정 두렵다, 같이 뛸 파트너 (L4)</li>
+                    <li>"우리를 진심으로 이해하는가"의 증명</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. GAP 분석 & 기회 평가 -->
+    <div class="section" id="gap-analysis">
+        <h2>9. GAP 분석 &amp; 기회 평가</h2>
+
+        <h3>기회 적합도 평가 (Opportunity Fit Score)</h3>
+        <table>
+            <tr>
+                <th>항목</th>
+                <th>가중치</th>
+                <th>점수(/5)</th>
+                <th>근거</th>
+            </tr>
+            <tr>
+                <td>니즈-서비스 핏</td>
+                <td>30%</td>
+                <td><strong>4.5</strong></td>
+                <td>홈웨어=체험·리뷰·굿즈 IMC가 카테고리 정답. 희망 서비스와 궁합 최상 (단계화 전제 시)</td>
+            </tr>
+            <tr>
+                <td>예산 적합성</td>
+                <td>20%</td>
+                <td><span class="tag tag-red">2.5</span></td>
+                <td>월 500만↓ × 풀 IMC 희망 = 구조적 미스매치. 단계형 재구성 시 1단계는 충분히 닿음</td>
+            </tr>
+            <tr>
+                <td>의사결정 구조</td>
+                <td>15%</td>
+                <td><strong>4.5</strong></td>
+                <td>대표 직접 신청·직접 상담, 중간 보고라인 없음 = 클로징 단순</td>
+            </tr>
+            <tr>
+                <td>긴급도</td>
+                <td>15%</td>
+                <td><strong>4.0</strong></td>
+                <td>샘플 제작 중 = 런칭 임박. "지금 골격 안 깔면 늦는다" 자연 긴급성</td>
+            </tr>
+            <tr>
+                <td>성장 잠재성</td>
+                <td>10%</td>
+                <td><strong>4.0</strong></td>
+                <td>라운지웨어 CAGR 9.7%. 빈자리 선점 시 SOM 확장 + 리테이너 전환 여지</td>
+            </tr>
+            <tr>
+                <td>레퍼런스 가치</td>
+                <td>10%</td>
+                <td><strong>3.5</strong></td>
+                <td>pre-launch "0→1 런칭 성공" 케이스 = 포트폴리오 공백 보강. 단 신생이라 레버리지 제한</td>
+            </tr>
+        </table>
+
+        <div class="verdict">
+            <div class="label">종합 기회 적합도</div>
+            <div class="value">4.28 / 5.0</div>
+            <div class="desc">🟢 GO (조건부) — warm lead + 의사결정 단순 + 카테고리-서비스 핏 최상 + 성장 카테고리</div>
+        </div>
+
+        <h3>수주 확률 시나리오</h3>
+        <table>
+            <tr>
+                <th>시나리오</th>
+                <th>조건</th>
+                <th>결과</th>
+            </tr>
+            <tr>
+                <td><span class="tag tag-green">High (수주)</span></td>
+                <td>첫 30분에 "순서가 생명" 단계형 로드맵을 납득시킴</td>
+                <td>Professional 또는 Essential 착수</td>
+            </tr>
+            <tr>
+                <td><span class="tag tag-yellow">Mid (부분 수주)</span></td>
+                <td>예산 부담 강하나 진단 가치는 인정</td>
+                <td>Essential 단발 → 자연 업셀</td>
+            </tr>
+            <tr>
+                <td><span class="tag tag-red">No-Go</span></td>
+                <td>"굿즈+인플루언서+광고 동시가 곧 마케팅" 고정관념 고수</td>
+                <td>1단계만 수주 or 정중히 핏 안 맞음 고지</td>
+            </tr>
+        </table>
+        <div class="callout callout-danger">
+            <strong>조건 (반드시 정렬):</strong> 예산-기대치 갭(2.5점 항목)을 상담 첫 30분에 단계형 로드맵으로 재프레이밍해야 합니다.
+            이걸 못 하면 "IMC 다 해주는 더 싼 곳" 견적 비교 게임으로 끌려가 패합니다.
+        </div>
+    </div>
+
+    <!-- 10. 3-Tier 견적 초안 -->
+    <div class="section" id="quote">
+        <h2>10. 3-Tier 견적 초안</h2>
+        <p style="font-size:14px;">니즈분석 단계 로드맵(①BM/포지셔닝 점검 → ②시드·리뷰·콘텐츠 자산 → ③오픈 후 광고 증폭)을 가격 구조로 번역했습니다. <strong>구체 금액은 상담 후 BM·타임라인·범위 확정 뒤 견적 정본에서 확정</strong>합니다("대/중/소" 수준).</p>
+
+        <div class="tier-cards">
+            <div class="tier-card">
+                <h4>🥉 Essential</h4>
+                <div class="price">소 (1회성 진단)</div>
+                <div class="duration">약 3~4주 · 단발 프로젝트</div>
+                <ul>
+                    <li>시장·경쟁 빈자리 분석 (유솜의 한 칸 확정)</li>
+                    <li>타깃 페르소나·USP 선명화</li>
+                    <li>BM/가격/채널 점검</li>
+                    <li>런칭 IMC 우선순위 로드맵 1장</li>
+                    <li>제품(소재·핏·SKU) 시장표준 대조</li>
+                </ul>
+                <p style="font-size:12px; color:var(--text-light); margin-top:12px;">진입장벽 최저. 진단 결과가 곧 2단계 제안서(자연 업셀).</p>
+            </div>
+            <div class="tier-card recommended">
+                <div class="tier-badge">★ 추천</div>
+                <h4>🥈 Professional</h4>
+                <div class="price">중 (월 500만 내 설계)</div>
+                <div class="duration">약 2~3개월 · 월 단위 동행</div>
+                <ul>
+                    <li>Essential 전체 +</li>
+                    <li>시드 콘텐츠 자산 구축 (인스타 무드·룩북·릴스 골격)</li>
+                    <li>마이크로 인플루언서 시딩 + 체험단 1차 운영</li>
+                    <li>자사몰/스토어 런칭 메시지·상세 골격</li>
+                    <li>굿즈는 언박싱 1종만 선별 투입</li>
+                </ul>
+                <p style="font-size:12px; color:var(--text-light); margin-top:12px;">오픈 첫날 "비어있지 않은 브랜드". 단계 착수형/압축형으로 500만 내 설계. "함께 실행" 갈망과 정확히 일치.</p>
+            </div>
+            <div class="tier-card">
+                <h4>🥇 Premium</h4>
+                <div class="price">대 (500만 초과)</div>
+                <div class="duration">3개월+ 리테이너</div>
+                <ul>
+                    <li>Professional 전체 +</li>
+                    <li>퍼포먼스 광고 운영 (메타·네이버)</li>
+                    <li>인플루언서 풀 확장 + 굿즈 라인</li>
+                    <li>라이브커머스 셋업</li>
+                    <li>월간 성과 리포트·최적화</li>
+                </ul>
+                <p style="font-size:12px; color:var(--text-light); margin-top:12px;">"가야 할 목적지"지만 지금은 아님. 광고 증폭은 시드·리뷰 자산이 쌓인 <strong>후</strong>에 효율이 남.</p>
+            </div>
+        </div>
+
+        <div class="leverage-box">
+            <div class="lv-title">3-Tier 핵심 메시지</div>
+            <div class="quote">
+                "유솜의 목적지는 <span class="hl">Premium(풀 IMC)</span>이 맞습니다. 그런데 런칭 전에 거기부터 시작하면 돈을 태웁니다.<br>
+                지금은 <span class="hl">Professional</span>로 '비어있지 않은 런칭'을 만들고, 매출·리뷰가 쌓이면 그때 광고로 증폭하는 게 <span class="hl">같은 500만을 10배로 쓰는 길</span>입니다."
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. 상담 전략 & 코칭 -->
+    <div class="section" id="strategy">
+        <h2>11. 상담 전략 &amp; 코칭</h2>
+
+        <div class="callout callout-info" style="margin-top:0;">
+            <strong>이 상담의 한 문장:</strong> 유솜 상담은 "제안"이 아니라 <strong>"증명"</strong>입니다. 이미 영상 보고 온 warm lead — 설득이 아니라
+            <strong>"우리가 당신 브랜드를 누구보다 이해한다"를 경쟁사 빈자리 맵으로 증명</strong>하고, "순서가 생명"을 같이 그려 1단계를 합의하는 자리입니다.
+        </div>
+
+        <h3>60분 타임라인</h3>
+        <div class="timeline-phase">
+            <div class="tp-time">P1 · 5분</div>
+            <div class="tp-body"><strong>라포</strong> — "어떤 영상의 어떤 메시지에 끌리셨어요?" 오프닝 훅. 라포 + 니즈(L4) 동시 확보</div>
+        </div>
+        <div class="timeline-phase">
+            <div class="tp-time">P2 · 15분</div>
+            <div class="tp-body"><strong>상황 확인 (미회신 갭 반영 확대)</strong> — BM·타깃·제품·타임라인·팀 수집. Q3·Q4 중심. 듣기 80%</div>
+        </div>
+        <div class="timeline-phase">
+            <div class="tp-time">P3 · 10분</div>
+            <div class="tp-body"><strong>깊은 진단</strong> — Q1(BM 확신)·Q5(파트너십). "확신 안 서는 한 가지"·"결정 외로움" 표면화</div>
+        </div>
+        <div class="timeline-phase tp-peak">
+            <div class="tp-time">P4 · 10분</div>
+            <div class="tp-body">🔴 <strong>인사이트 공유 (신뢰 증명의 정점)</strong> — 경쟁사 빈자리 맵 공개. "유솜은 여기, 비어있는 칸은 여기"</div>
+        </div>
+        <div class="timeline-phase">
+            <div class="tp-time">P5 · 10분</div>
+            <div class="tp-body"><strong>솔루션 방향</strong> — Challenger ①②③. "500만으로 다 하면 다 죽는다 → 검증→시드→증폭" 단계 도식</div>
+        </div>
+        <div class="timeline-phase">
+            <div class="tp-time">P6 · 10분</div>
+            <div class="tp-body"><strong>클로징</strong> — Essential(진단) 착수 제안 + Quick Tip 무료 증정 + 24h 견적 약속</div>
+        </div>
+
+        <h3>핵심 질문 스크립트 (필수 5)</h3>
+        <div class="question-card">
+            <div class="qc-num">1</div>
+            <div class="qc-q">"기획하신 비즈니스모델에서, 지금 가장 확신이 안 서는 한 가지를 꼽으면요? 타깃인가요, 가격인가요, '이게 진짜 팔릴까' 그 자체인가요?"</div>
+            <div class="qc-intent">의도: L3(자기 검증 결핍) 확인. "BM 개선"이 포지셔닝 점검인지·사업성 검증인지·실행 설계인지 가름 (패키징 분기)</div>
+        </div>
+        <div class="question-card">
+            <div class="qc-num">2</div>
+            <div class="qc-q">"런칭 전 한정 예산이라면, 광고로 사람을 모으는 것 vs 먼저 진짜 입어본 시드 고객·리뷰를 쌓는 것 — 뭐가 먼저라고 보세요?"</div>
+            <div class="qc-intent">의도: "광고=마케팅" 오해 여부. 체험·시드 우선 논리 수용 여지(설득 난이도). L2(우선순위 부재) 확인</div>
+        </div>
+        <div class="question-card">
+            <div class="qc-num">3</div>
+            <div class="qc-q">"샘플 나오고 실제 판매 오픈까지 일정이 어떻게 되세요? 가을·겨울 코지 시즌 같은 타깃이 있으신가요?"</div>
+            <div class="qc-intent">의도: 로드맵 시간축 확정. 홈웨어 시즌성(코지=F/W 강세)이 전략을 좌우. 긴급성·리드타임 근거</div>
+        </div>
+        <div class="question-card">
+            <div class="qc-num">4</div>
+            <div class="qc-q">"유솜을 한 줄로 소개한다면요? 어떤 사람이, 어떤 순간에 입었으면 하세요? 젤라또피케·오르시떼랑은 뭐가 다를까요?"</div>
+            <div class="qc-intent">의도: 포지셔닝·USP 선명도. "20~40대 여성" 식 광범위하면 → 진단 1순위 과제 단서(차별화 부재=CAC 폭증)</div>
+        </div>
+        <div class="question-card">
+            <div class="qc-num">5</div>
+            <div class="qc-q">"'함께 실행할 회사'를 찾으셨다는데, 어디까지 같이 하길 바라세요? 전략만 잡아드리면 직접 하실지 — 처음 하시는 사업이면 혼자 결정이 부담되진 않으세요?"</div>
+            <div class="qc-intent">의도: L4(파트너십·결정 외로움) + Emotional Job 확인. 범위 스코핑 = Essential/Professional 분기</div>
+        </div>
+
+        <div class="leverage-box">
+            <div class="lv-title">Challenger Teaching 3 (재구성 = 수주의 핵심)</div>
+            <div class="quote">① "런칭 전 500만으로 다 하면, 다 죽는다 — <span class="hl">순서가 생명</span>"</div>
+            <ul>
+                <li>인지도 0 상태에서 CAC 최고점. 500만을 굿즈·인플루언서·광고에 1/3씩 쪼개면 어느 것도 임계점 미달 → 0 임팩트 (런칭 실수 #4)</li>
+            </ul>
+            <div class="quote" style="margin-top:16px;">② "여성 러블리는 레드오션 — <span class="hl">빈자리를 선점</span>해야 CAC가 산다"</div>
+            <ul>
+                <li>데일리쥬·무드무드·코코로지가 꽉 잡은 영역 = 광고비 싸움(자본력 싸움). 빈자리 3곳에 깃발 꽂아 검색·해시태그 선점</li>
+            </ul>
+            <div class="quote" style="margin-top:16px;">③ "홈웨어는 입어봐야 안다 — <span class="hl">체험·리뷰가 광고보다 먼저</span>"</div>
+            <ul>
+                <li>소셜 프루프(별점·포토리뷰·착용샷)가 구매 결정 좌우. 리뷰 0 상태에서 광고 켜면 유입은 와도 전환 안 됨. 마이크로 인플루언서·체험단 다수가 메가 1명보다 효과적</li>
+            </ul>
+        </div>
+
+        <h3>예상 반론 &amp; 대응</h3>
+        <table>
+            <tr>
+                <th>반론</th>
+                <th>대응 핵심</th>
+            </tr>
+            <tr>
+                <td>"예산이 빠듯하다 / 500만도 부담"</td>
+                <td>"그래서 더더욱 단계로. 진단(Essential)으로 작게 시작 → 확신 서면 실행으로. 진단 결과물 자체가 직접 실행 가능한 설계도라 한 단계만 해도 남는 게 있습니다"</td>
+            </tr>
+            <tr>
+                <td>"IMC 다 해주는 곳 알아본다"</td>
+                <td>"런칭 전 500만으로 '다' 해준다는 건 다 얕게 한다는 뜻일 가능성이 높아요. 저희는 다 해드린다고 안 합니다 — 지금 유솜에 진짜 필요한 것만, 순서대로요"</td>
+            </tr>
+            <tr>
+                <td>"직접 해볼까 한다"</td>
+                <td>"직접 하실 수 있어요. 그래서 진단을 추천드려요 — 설계도 드리면 실행은 대표님이. 다만 시드·시딩·체험단 첫 세팅이 시간을 많이 잡아먹고, 첫 단추 어긋나면 회복에 몇 달 걸려요"</td>
+            </tr>
+            <tr>
+                <td>"다른 데도 견적 받는 중"</td>
+                <td>"당연히 비교하셔야죠. 한 가지만 — '런칭 전인데 왜 광고부터 켜라는지' 순서의 근거를 묻는 곳인지 봐주세요. 굿즈·인플루언서·광고가 그냥 다 들어간 견적은 유솜을 안 보고 메뉴판을 준 거예요"</td>
+            </tr>
+        </table>
+
+        <div class="callout callout-success">
+            <strong>🎁 Trusted Advisor Quick Tip (상담 마무리 무료 증정):</strong>
+            <strong>"런칭 전 인스타 시드 1주 플랜 + 빈자리 한 줄 포지셔닝 초안"</strong>
+            <ul style="margin:8px 0 0 18px;">
+                <li><strong>(A) 한 줄 포지셔닝</strong>: "데일리쥬가 '러블리'라면, 유솜은 '[빈자리 — 예: 혼자 사는 나를 위한, 외출도 되는 포근함]'" — 모든 콘텐츠·광고 카피의 기준선</li>
+                <li><strong>(B) 인스타 시드 1주 플랜 (0원, 지금 당장)</strong>: Day1~2 프로필·바이오+티저 / Day3~4 샘플 디테일컷(소재 클로즈업) / Day5 브랜드 이야기(네이밍 유래) / Day6~7 "런칭 알림 받기" CTA로 웨이팅 모으기</li>
+            </ul>
+            <div style="margin-top:8px;">→ "오픈 첫날 '리뷰 0·팔로워 0'이 아니게 만드는 첫걸음. 계약 안 하셔도 지금 바로 하시면 돼요."</div>
+        </div>
+
+        <div class="callout">
+            <strong>경청 기법 (첫 창업자 불안 맞춤):</strong> <strong>미러링</strong>(마지막 단어 되돌리기) → 캐묻지 않고 정보 갭 채움 ·
+            <strong>라벨링</strong>("들뜨면서도 불안하신 것 같아요") → L4 신뢰 증명 · <strong>요약 확인</strong>(P3 끝) → 견적 오류 사전 차단 ·
+            <strong>침묵</strong>(Q1·Q5 후 3초) → 진짜 속마음 표출. 단 불안해하면 5초 넘기지 말 것.
+        </div>
+    </div>
+
+    <!-- 12. 클로징 전략 -->
+    <div class="section" id="closing">
+        <h2>12. 클로징 전략</h2>
+
+        <h3>이상적 다음 단계 (Primary CTA)</h3>
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="fs-marker"><div class="fs-num">1</div><div class="fs-line"></div></div>
+                <div class="fs-body">
+                    <h4>런칭 전략 진단(Essential) 착수</h4>
+                    가장 낮은 진입장벽. "오늘 나눈 얘기로 빈자리·순서가 보이니, 3~4주짜리 진단으로 설계도화해 드릴게요."
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="fs-marker"><div class="fs-num">2</div><div class="fs-line"></div></div>
+                <div class="fs-body">
+                    <h4>진단 결과 = 2단계 제안서</h4>
+                    진단 결과물 자체가 자력 실행도 가능한 설계도 → "돈 날릴 위험" 인식 차단 + 자연 업셀 경로.
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="fs-marker"><div class="fs-num">3</div><div class="fs-line"></div></div>
+                <div class="fs-body">
+                    <h4>Professional 실행 동행</h4>
+                    "그거 보고 실행을 같이 갈지, 대표님이 하실지 정하셔도 늦지 않아요." 결정 외로움(L4) 완화.
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="fs-marker"><div class="fs-num">4</div></div>
+                <div class="fs-body">
+                    <h4>매출·리뷰 축적 후 Premium 증폭</h4>
+                    에쿼티 쌓인 후 광고로 증폭 → 리테이너 전환. "같은 500만을 10배로."
+                </div>
+            </div>
+        </div>
+
+        <h3>상담에서 반드시 확정할 4종 (견적 정본 변수)</h3>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>확정 항목</th>
+                <th>왜 중요한가</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>빈자리 중 유솜의 한 칸</td>
+                <td>Teaching ② 확정 → 모든 콘텐츠·포지셔닝의 기준선</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>런칭 타임라인·F/W 시즌 여부</td>
+                <td>긴급성·리드타임 역산 (코지=가을겨울 강세)</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>500만 배분 기대치 (광고 vs 제작 vs 인플루언서)</td>
+                <td>패키지 구성·단계 착수형 설계 근거</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>"함께 실행"의 범위 (전략 only vs 실행 포함)</td>
+                <td>Essential/Professional 분기 + 견적 인력 근거</td>
+            </tr>
+        </table>
+
+        <h3>상담 후 24h 액션 리스트</h3>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>액션</th>
+                <th>경로 / 마감</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>상담 메모 정리 (Q1~Q5 답변, 확정 4종)</td>
+                <td>_workspace / 당일</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>견적 정본 작성 (Essential/Professional 금액 확정)</td>
+                <td>brandrise-pages/quote/yoosom/ / 24h</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>제안 방향 결정 (확신 강함→Professional / 망설임→Essential 단독+업셀)</td>
+                <td>견적 정본 내 / 24h</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>후속 메일 (감사 + Quick Tip 정리본 + 견적 + "천천히 결정하셔도 됩니다")</td>
+                <td>대표 직접 / 24h</td>
+            </tr>
+        </table>
+
+        <div class="callout callout-info">
+            <strong>warm lead 클로징 톤:</strong> 영업적 설득 ❌ → "방향성 공감 → 구체적 실행 합의". 후속 메일은 세일즈가 아니라 <strong>동행의 연장</strong>.
+            "오늘 나눈 [대표 단어]를 잊지 않았다"는 정서 신호 + 무료 Tip이 warm lead의 신뢰를 계약으로 닫는 마지막 터치입니다. <strong>채근·마감 압박은 역효과</strong>(결정 외로움 자극).
+        </div>
+    </div>
+
+    <!-- 참고 링크 -->
+    <div class="section" id="sources">
+        <h2>참고 링크</h2>
+        <p style="font-size:13px; color:var(--text-light);">본 리서치는 Perplexity 딥리서치(시장·경쟁) + Grok(트렌드·인플루언서) + WebSearch 보강 + 4인 에이전트 협업(프로파일러·니즈분석·수주전략·상담코치)으로 작성되었습니다.</p>
+        <div class="source-list">
+            <p><strong>시장·경쟁 (Perplexity sonar-deep-research):</strong> 한국 홈웨어·라운지웨어·파자마 D2C 시장 분석 — 경쟁 8개 브랜드 비교, 시장규모 추정, 런칭 실수 5, IMC 채널 전략 (2026-06-12 수집)</p>
+            <p><strong>트렌드·인플루언서 (Grok):</strong> 원마일웨어·코지룩·셀프기프팅 트렌드, 젤라또피케·오르시떼 벤치마크, 오늘의집 협찬·체험단(리얼리뷰/위리뷰) 구조</p>
+            <p style="margin-top:8px;">주요 출처: <a href="https://brunch.co.kr/@jjlab/52" target="_blank">brunch.co.kr/@jjlab/52</a> · <a href="https://www.tinnews.co.kr/29905" target="_blank">tinnews.co.kr</a> · <a href="https://fashionbiz.co.kr/article/217548" target="_blank">fashionbiz.co.kr</a> · <a href="http://www.real-review.kr/" target="_blank">real-review.kr</a></p>
+        </div>
+        <div class="callout" style="margin-top:16px;">
+            <strong>⚠️ 데이터 신뢰도 고지:</strong> 시장 규모는 글로벌 데이터 기반 추정치이며 공식 통계가 아닙니다. 미티어/유솜·강유성 대표 관련 정보는 런칭 전 단계로 공개 정보가 거의 없어 다수 항목이 "상담 확인 필요" 상태입니다. 본 문서의 가설은 상담에서 검증 후 견적 정본에 반영합니다.
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>본 문서는 BRAND RISE New Business 상담 준비용 내부 자료입니다.</p>
+        <p>유솜(YOOSOM) · 미티어(METEOR) | 2026-06-12 | Prepared by BRAND RISE</p>
+    </div>
+
+</div>
+
+</body>
+</html>
