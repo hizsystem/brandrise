@@ -8,7 +8,7 @@
 | 문서 | 시점 | 템플릿 | 배포 경로 | 비고 |
 |---|---|---|---|---|
 | **PREP (상담 준비)** | 상담 **전** | `research/_template/prep-v2-template.html` | `research/{slug}/` (기존 prep 있으면 `{slug}-v2`) | 녹취·랩업 절대 참고 금지, 진단·니즈·적합도 = "가설" 표기. 직접 리서치 + 참고 출처 2분류 |
-| **진단서 (1차 전략 진단)** | 상담 **후** | `research/_template/diagnosis-template.html` | `research/{slug}/진단서/` | 상담 발언 인용 OK (단 "발언 기반 추정" 명시). 견적서의 근거 문서 — 병목 번호 ↔ 견적 블록 대응 |
+| **진단서 (1차 전략 진단)** | 상담 **후** | `research/_template/diagnosis-template.html` | `research/{slug}/diagnosis/` (영문 경로 표준, 2026-06-12) | 상담 발언 인용 OK (단 "발언 기반 추정" 명시). 견적서의 근거 문서 — 병목 번호 ↔ 견적 블록 대응 |
 | **견적서 HTML** | 상담 후 | `quote/_template/quote-template.html` | `quote/{slug}/` | 1,000만 이하 정본 / 초과 시 브리핑·발송용 요약 겸용 |
 | **견적서 구글시트 빌더** | 상담 후 | `quote/_template/quote-builder-template.gs` | 강훈 워크북 복제본 + Apps Script | 1,000만 초과 정본 (강훈 5블록 + G열 마케팅 가안). `renderQuote_()` 엔진은 수정 금지 |
 
