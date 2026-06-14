@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>작은습관 · &dm. cosmetics - New Business 상담 준비 | BRANDRISE</title>
+    <style>
+        :root {
+            --primary: #20302a;
+            --secondary: #4a5a52;
+            --accent: #6f9079;
+            --accent-light: #f1f6f1;
+            --accent-soft: #dfeadd;
+            --highlight: #5f8268;
+            --bg: #fafbf9;
+            --card-bg: #ffffff;
+            --muted: #f2f4f1;
+            --text: #20302a;
+            --text-light: #94a399;
+            --border: #ebefe9;
+            --success: #5a7a52;
+            --warning: #c08a3e;
+            --danger: #c0705a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; word-break: keep-all; overflow-wrap: break-word; }
+        .header { background: #ffffff; color: var(--primary); padding: 60px 40px; text-align: center; border-bottom: 1px solid var(--border); }
+        .header-badge { display: inline-block; background: var(--accent-soft); border: 1px solid var(--accent); color: var(--highlight); padding: 4px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 16px; letter-spacing: 1px; }
+        .header h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; color: var(--primary); }
+        .header .subtitle { font-size: 16px; color: var(--secondary); font-weight: 300; }
+        .header .tagline { margin-top: 10px; font-size: 14px; color: var(--highlight); font-weight: 600; letter-spacing: 1px; }
+        .header .date { margin-top: 16px; font-size: 13px; color: var(--text-light); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        .toc { background: var(--card-bg); border-radius: 12px; padding: 32px; margin-bottom: 40px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+        .toc h2 { font-size: 18px; margin-bottom: 16px; color: var(--primary); }
+        .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }
+        .toc a { color: var(--accent); text-decoration: none; font-size: 14px; padding: 6px 0; display: block; transition: color 0.2s; }
+        .toc a:hover { color: var(--highlight); }
+        .section { background: var(--card-bg); border-radius: 12px; padding: 36px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+        .section h2 { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--highlight); }
+        .section h3 { font-size: 17px; font-weight: 600; color: var(--secondary); margin: 20px 0 12px; }
+        .info-grid { display: grid; grid-template-columns: 160px 1fr; gap: 8px 16px; font-size: 14px; }
+        .info-label { font-weight: 600; color: var(--text-light); }
+        .info-value { color: var(--text); }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th { background: var(--muted); color: var(--primary); padding: 12px 16px; text-align: left; font-weight: 700; font-size: 13px; }
+        td { padding: 10px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        tr:hover td { background: #f3f6f2; }
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin: 2px; }
+        .tag-red { background: #f6e3dd; color: #b35a42; }
+        .tag-green { background: #e3efe0; color: #4f7a52; }
+        .tag-blue { background: var(--accent-light); color: var(--accent); }
+        .tag-yellow { background: #fbf2dc; color: #8a6d00; }
+        .tag-gray { background: var(--muted); color: var(--secondary); }
+        .verdict { background: var(--accent); color: white; padding: 24px 32px; border-radius: 12px; text-align: center; margin: 24px 0; }
+        .verdict .label { font-size: 14px; opacity: 0.85; }
+        .verdict .value { font-size: 32px; font-weight: 800; margin: 8px 0; line-height: 1.3; }
+        .verdict .desc { font-size: 14px; opacity: 0.92; }
+        .tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+        .tier-card { border: 2px solid var(--border); border-radius: 12px; padding: 24px; position: relative; transition: transform 0.2s; }
+        .tier-card:hover { transform: translateY(-4px); }
+        .tier-card.recommended { border-color: var(--accent); box-shadow: 0 4px 20px rgba(111, 144, 121, 0.18); }
+        .tier-card .tier-badge { position: absolute; top: -12px; right: 16px; background: var(--highlight); color: white; padding: 2px 12px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+        .tier-card h4 { font-size: 16px; margin-bottom: 4px; }
+        .tier-card .price { font-size: 22px; font-weight: 800; color: var(--highlight); margin: 12px 0; }
+        .tier-card .duration { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+        .tier-card ul { list-style: none; padding: 0; }
+        .tier-card li { font-size: 13px; padding: 4px 0; padding-left: 18px; position: relative; line-height: 1.5; }
+        .tier-card li::before { content: "›"; position: absolute; left: 0; color: var(--highlight); font-weight: 700; }
+        .callout { background: var(--accent-light); border-left: 4px solid var(--accent); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 14px; }
+        .callout-info { background: var(--muted); border-left-color: var(--secondary); }
+        .callout-danger { background: #f7e6e0; border-left-color: var(--danger); }
+        .callout-success { background: #e7f1e4; border-left-color: #5a7a52; }
+        .callout-warn { background: #fbf2dc; border-left-color: #b8860b; }
+        .leverage-box { background: var(--primary); color: white; padding: 32px; border-radius: 12px; margin: 24px 0; text-align: center; }
+        .leverage-box .quote { font-size: 20px; font-weight: 700; line-height: 1.5; margin: 16px 0; }
+        .flow-steps { display: flex; gap: 0; margin: 20px 0; overflow-x: auto; }
+        .flow-step { flex: 1; min-width: 160px; padding: 16px; background: #eef2ec; position: relative; text-align: center; }
+        .flow-step:not(:last-child)::after { content: "›"; position: absolute; right: -8px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--highlight); font-weight: 700; z-index: 1; }
+        .flow-step .step-num { font-size: 11px; font-weight: 700; color: var(--highlight); margin-bottom: 4px; }
+        .flow-step .step-title { font-size: 13px; font-weight: 600; }
+        .flow-step .step-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .swot-item { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .swot-item h4 { font-size: 15px; margin-bottom: 10px; }
+        .swot-item ul { padding-left: 18px; }
+        .swot-item li { margin-bottom: 4px; }
+        .swot-s { background: #ffffff; border: 1px solid var(--border); }
+        .swot-w { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .swot-o { background: #ffffff; border: 1px solid var(--border); }
+        .swot-t { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .source-list { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+        .source-list a { color: var(--accent); text-decoration: none; }
+        .source-list a:hover { text-decoration: underline; }
+        .footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; }
+        .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+        .channel-card { border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+        .channel-card .ch-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .channel-card .ch-stat { font-size: 20px; font-weight: 800; color: var(--highlight); margin: 8px 0; }
+        .channel-card .ch-note { font-size: 12px; color: var(--text-light); }
+        .summary-section { border-left: 4px solid var(--accent); background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%); }
+        .summary-section h2 { border-bottom-color: var(--highlight); }
+        .summary-header { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+        .summary-header .sh-label { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+        .summary-header .sh-title { font-size: 16px; font-weight: 700; }
+        .summary-header .sh-sub { font-size: 13px; color: var(--text-light); }
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { padding: 16px; border-radius: 8px; text-align: center; }
+        .kpi-card.kpi-dark { background: var(--muted); color: var(--primary); }
+        .kpi-card.kpi-danger { background: var(--accent); color: white; }
+        .kpi-card.kpi-success { background: var(--accent-soft); color: var(--primary); }
+        .kpi-card .kpi-label { font-size: 12px; opacity: 0.7; }
+        .kpi-card .kpi-value { font-size: 24px; font-weight: 800; }
+        .kpi-card .kpi-sub { font-size: 11px; opacity: 0.7; }
+        .summary-oneliner { background: #15201b; color: white; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px; }
+        .summary-oneliner .sol-label { font-size: 13px; opacity: 0.7; margin-bottom: 8px; }
+        .summary-oneliner .sol-text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+        .summary-oneliner .sol-text .hl { color: #acd0b3; }
+        .summary-bottom { font-size: 14px; line-height: 1.8; }
+        .summary-bottom .hl { color: var(--highlight); font-weight: 800; }
+        .diagnosis-section { border: 2px solid var(--accent); }
+        .diagnosis-section h2 { border-bottom-color: var(--accent); color: var(--highlight); }
+        .diag-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .diag-box { padding: 16px; border-radius: 8px; }
+        .diag-box.diag-current { background: var(--accent-light); }
+        .diag-box.diag-ideal { background: #e7f1e4; }
+        .diag-box .db-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .diag-box.diag-current .db-label { color: var(--highlight); }
+        .diag-box.diag-ideal .db-label { color: #5a7a52; }
+        .diag-box ul { font-size: 14px; padding-left: 18px; margin: 0; }
+        .diag-note { font-size: 14px; margin: 8px 0 16px; padding: 12px 16px; background: var(--accent-light); border-radius: 8px; }
+        .spin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .spin-card { padding: 20px; border-radius: 10px; font-size: 14px; }
+        .spin-card h4 { font-size: 15px; margin-bottom: 10px; }
+        .spin-s { background: #ffffff; border: 1px solid var(--border); }
+        .spin-p { background: var(--accent-light); border: 1px solid var(--accent-soft); }
+        .spin-i { background: var(--accent-soft); }
+        .spin-n { background: #ffffff; border: 1px solid var(--border); }
+        .pain-layer { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+        .pain-level { flex: 1; min-width: 200px; padding: 16px; border-radius: 10px; font-size: 13px; }
+        .pain-level .level-tag { font-size: 11px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .pain-l1 { background: var(--muted); }
+        .pain-l2 { background: var(--accent-light); }
+        .pain-l3 { background: var(--accent-soft); }
+        .pain-l4 { background: var(--accent); color: white; }
+        .script-block { background: #f5f7f4; border-left: 3px solid var(--accent); padding: 16px 20px; margin: 12px 0; border-radius: 0 8px 8px 0; font-size: 14px; color: var(--secondary); }
+        .script-block .quote-mark { color: var(--accent); font-weight: 800; margin-right: 6px; }
+        .question-card { background: #f5f7f4; border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+        .question-card .q-num { font-size: 12px; font-weight: 700; color: var(--highlight); }
+        .question-card .q-text { font-size: 15px; font-weight: 600; margin: 4px 0 8px; }
+        .question-card .q-intent { font-size: 13px; color: var(--text-light); }
+        .question-card .q-branch { font-size: 12px; color: var(--secondary); margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border); }
+        .timeline-phase { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .timeline-phase .phase-time { font-size: 13px; font-weight: 700; color: var(--highlight); text-align: center; padding-top: 4px; }
+        .timeline-phase .phase-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .timeline-phase .phase-content p { font-size: 13px; color: var(--text-light); margin-bottom: 6px; }
+        .timeline-phase .phase-content .phase-script { font-size: 13px; color: var(--secondary); background: var(--accent-light); padding: 8px 12px; border-radius: 6px; margin-top: 6px; }
+        .source-cite { font-size: 11px; color: var(--text-light); font-weight: 400; margin-left: 4px; }
+        .fact-warn { background: #fbf2dc; border-left: 3px solid #b8860b; padding: 8px 12px; border-radius: 4px; margin: 8px 0; font-size: 13px; color: #6b5400; }
+        @media (max-width: 768px) {
+            .header { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .section { padding: 24px 16px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .tier-cards { grid-template-columns: 1fr; }
+            .swot-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-step:not(:last-child)::after { display: none; }
+            .channel-grid { grid-template-columns: 1fr; }
+            .summary-header { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .diag-compare { grid-template-columns: 1fr; }
+            .spin-grid { grid-template-columns: 1fr; }
+            .pain-layer { flex-direction: column; }
+            .timeline-phase { grid-template-columns: 1fr; }
+        }
+        .onepager { background: var(--primary); color:#fff; border-radius:14px; padding:40px; margin-bottom:28px; box-shadow:0 4px 24px rgba(0,0,0,0.10); }
+        .onepager .op-kicker { font-size:12px; letter-spacing:1.5px; color:#acd0b3; font-weight:700; margin-bottom:6px; }
+        .onepager .op-h { font-size:13px; color:#bdc9c1; margin-bottom:18px; }
+        .op-block { margin:24px 0; }
+        .op-block:last-child { margin-bottom:4px; }
+        .op-block .op-label { font-size:12px; font-weight:700; color:#acd0b3; letter-spacing:0.5px; margin-bottom:10px; }
+        .op-need { font-size:18px; font-weight:700; line-height:1.6; }
+        .op-need .muted { display:block; margin-top:10px; color:#c9d2cb; font-weight:500; font-size:14px; line-height:1.7; }
+        .op-do { display:grid; gap:10px; }
+        .op-do .do-item { background:rgba(255,255,255,0.06); border-left:3px solid var(--accent); padding:13px 16px; border-radius:0 8px 8px 0; font-size:14px; line-height:1.6; }
+        .op-do .do-item strong { color:#d3e8d6; }
+        .op-offer { background:rgba(111,144,121,0.20); border:1px solid var(--accent); border-radius:10px; padding:16px 20px; font-size:14px; line-height:1.7; }
+        .op-offer .hl { color:#acd0b3; font-weight:700; }
+        .leverage-box .teach-item { text-align:left; font-size:14px; margin:14px 0; padding-left:16px; border-left:3px solid rgba(255,255,255,0.4); }
+        .leverage-box .teach-item strong { color:#d3e8d6; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-badge">NEW BUSINESS 상담 준비 패키지 · v2 (인테이크 반영)</div>
+    <h1>작은습관 · &dm. cosmetics (앤디엠)</h1>
+    <div class="subtitle">루틴(습관) 기반 데일리 스킨케어 D2C · 주식회사 작은습관</div>
+    <div class="tagline">MAKE YOUR MISO · 작은 습관이 미소를 만든다</div>
+    <div class="date">작성일: 2026-06-14 · 인테이크(2026-05-25) 반영 v2 | Prepared by BRANDRISE (MarketingOS)</div>
+</div>
+
+<div class="container">
+
+    <!-- 인테이크 요약 -->
+    <div class="callout callout-success" style="margin-bottom:24px;">
+        <strong>✅ 상담 신청서(2026-05-25) 핵심:</strong> 대표 <strong>이지영</strong> 직접 신청 · 회사 <strong>주식회사 작은습관 / 더조히</strong> · 업종 제조/생산 · 목표 = <strong>신규 고객 확보 · 인지도 · 전환/매출 · 제품 홍보</strong> · 원하는 서비스 = <strong>브랜드 마케팅(브랜드 기획·아이덴티티·BI 개발)</strong> · 예산 <strong>1,000만원 이하</strong> · 기대 산출물 = <strong>맞춤형 마케팅 전략 로드맵</strong> · 콜 미팅(평일 오전 10~12시) · 유입 = 유튜브.
+        <br><strong>🔑 자가 진단 한 줄(원문):</strong> <em>"브랜드에 대한 컨셉이 뾰족하지 않고 마케팅을 제대로 못한 거 같습니다."</em>
+    </div>
+
+    <div class="callout callout-info" style="margin-bottom:24px;">
+        <strong>🏠 브랜드 구조 (확인):</strong> 주식회사 작은습관 = <strong>화장품 2개 브랜드를 운영하는 멀티브랜드 하우스</strong>. ① <strong>&dm. cosmetics(앤디엠)</strong> — 얼굴 스킨케어 "my daily/monthly" · MAKE YOUR MISO · anddm.com(⚠️현재 다운) ② <strong>더조히(The Johee)</strong> — 요거트 성분 바디케어(바디워시·로션·미스트, 온가족·민감성) · thejohee.com(라이브, 단 ⚠️대부분 품절). 공통 철학 = "작은 습관".
+        <br><strong>⚠️ 콜에서 확정:</strong> 이번 마케팅 대상이 <strong>어느 브랜드(또는 하우스 전체)</strong>인지 · 자사 제조 여부 · 예산 1,000만이 총액/월인지 · &dm 몰 다운 & 더조히 품절 사유.
+    </div>
+
+    <!-- 수주 한 장 (One-Pager) -->
+    <div class="onepager" id="one-pager">
+        <div class="op-kicker">수주 한 장</div>
+        <div class="op-h">콜 미팅 들어가기 전, 이 카드 하나면 된다. (아래 12섹션은 근거·깊이 백업)</div>
+        <div class="op-block">
+            <div class="op-label">그래서 진짜 니즈는</div>
+            <div class="op-need">"컨셉이 뾰족하지 않다"는 대표 본인 진단대로 — 포화된 K-뷰티에서 <b>차별화된 브랜드 컨셉·포지셔닝·BI를 다시 세우고, 그걸 실행할 마케팅 전략 로드맵</b>을 받고 싶은 것<span class="muted">표면 요청과 진짜 니즈가 <b>일치</b>한다(드문 케이스). 대표가 직접 "브랜드 컨셉이 뾰족하지 않고 마케팅을 제대로 못했다"고 자가 진단했고, 원하는 서비스로 <b>"브랜드 마케팅(브랜드 기획·아이덴티티·BI 개발)"</b>을, 산출물로 <b>"맞춤형 마케팅 전략 로드맵"</b>을 명시했다. 외부 관찰(IG ~1,380·국문 보도/리뷰 0·<b>&dm 몰 다운·더조히 대부분 품절</b>)도 "good concept, weak distribution"을 뒷받침. → 이건 채널 대행 건이 아니라 <b>브랜드 파운데이션(포지셔닝+BI) + 전략 로드맵</b> 건이며, 멀티브랜드(얼굴 &dm / 바디 더조히) 중 <b>어디에 집중할지부터</b> 정해야 한다.</span></div>
+        </div>
+        <div class="op-block">
+            <div class="op-label">그래서 우리가 해주는 것</div>
+            <div class="op-do">
+                <div class="do-item"><strong>① 뾰족한 컨셉·포지셔닝 재정의</strong> — "작은 습관 → 미소"라는 따뜻한 정서 위에, 토너패드 천지 시장에서 <strong>"왜 우리(성분·루틴·가치)"</strong>를 한 줄로 세우고 1차 타겟 확정</div>
+                <div class="do-item"><strong>② BI·아이덴티티 정리</strong> — 작은습관 ↔ &dm ↔ MAKE YOUR MISO 네이밍 체계 정돈 + 키 메시지·톤·비주얼 가이드(요청한 "BI 개발")</div>
+                <div class="do-item"><strong>③ 마케팅 전략 로드맵</strong> — 인지→전환 목표(신규고객·매출)에 맞춘 첫 GTM 경로·채널·콘텐츠·구매동선(몰 복구 포함) 우선순위 로드맵(요청 산출물)</div>
+            </div>
+        </div>
+        <div class="op-block">
+            <div class="op-label">첫 제안 & 다음 액션</div>
+            <div class="op-offer"><span class="hl">예산 1,000만원 이하 확정 → 프로젝트 단위 브랜드 파운데이션으로 설계.</span> 추천 = Core(브랜드 컨셉·BI·전략 로드맵 패키지, 1,000만 이하 맞춤). 정밀 견적은 콜에서 제품·몰·예산성격 확정 후 제안서로(2단계). &nbsp;|&nbsp; <span class="hl">다음 액션:</span> 콜 = 제품/몰 상태·"더조히" 정체·예산 성격 확정 + 컨셉 방향 합의 → 며칠 내 단일 추천 제안서</div>
+        </div>
+    </div>
+
+    <!-- Executive Summary -->
+    <div class="section summary-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <div class="summary-header">
+            <div>
+                <div class="sh-label">브랜드 / 회사</div>
+                <div class="sh-title">작은습관 · &dm. cosmetics (앤디엠)</div>
+                <div class="sh-sub">주식회사 작은습관 · 멀티브랜드 하우스 (&dm 얼굴 + 더조히 바디)</div>
+            </div>
+            <div>
+                <div class="sh-label">대표 / 컨택</div>
+                <div class="sh-title">이지영 대표 (CEO)</div>
+                <div class="sh-sub">jy@anddm.com · 010-5803-2416 · 강남 효성해링턴타워(서초) · 콜 미팅</div>
+            </div>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">기회 적합도</div>
+                <div class="kpi-value">4.2 / 5</div>
+                <div class="kpi-sub">Go · 표면요청=진짜니즈 일치</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">추천 Tier</div>
+                <div class="kpi-value">Core</div>
+                <div class="kpi-sub">브랜드 파운데이션 · 1,000만 이하</div>
+            </div>
+            <div class="kpi-card kpi-dark">
+                <div class="kpi-label">건 성격</div>
+                <div class="kpi-value">브랜드 기획·BI</div>
+                <div class="kpi-sub">채널 대행 ❌ · 컨셉+전략 로드맵</div>
+            </div>
+            <div class="kpi-card kpi-danger">
+                <div class="kpi-label">핵심 페인 (대표 진술)</div>
+                <div class="kpi-value">컨셉이 안 뾰족</div>
+                <div class="kpi-sub">+ 마케팅 실행 부재</div>
+            </div>
+        </div>
+        <div class="summary-oneliner">
+            <div class="sol-label">핵심 진단 한 줄 요약</div>
+            <div class="sol-text">
+                "작은 습관 → 미소"라는 따뜻한 정서 컨셉과 "my daily, my monthly" 루틴 구조는 있으나,<br>
+                <span class="hl">포화된 K-뷰티에서 "왜 우리"를 세울 뾰족한 컨셉·BI가 없고, 그것을 실행할 마케팅 전략이 비어 있음</span> — 대표 본인이 정확히 같은 진단을 내림.
+            </div>
+        </div>
+        <div class="summary-bottom">
+            <strong>기회 적합도:</strong> <span class="hl">4.2 / 5 — Go</span> &nbsp;|&nbsp;
+            <strong>추천 Tier:</strong> Core 브랜드 파운데이션(1,000만 이하 맞춤) &nbsp;|&nbsp;
+            <strong>콜 1차 목표:</strong> 제품/몰·예산성격 확정 + 컨셉 방향 합의 (정밀 견적은 제안서로)
+        </div>
+        <div class="callout callout-success" style="margin-top:16px;">
+            <strong>🟢 강한 신호:</strong> ① 표면 요청("브랜드 기획·BI 개발")과 진짜 니즈가 <strong>일치</strong> — 설득보다 실행. ② <strong>대표가 단독 의사결정자</strong>(이지영 직접 신청). ③ <strong>예산 명시</strong>(≤1,000만)로 Tier 분기 명확. ④ 원하는 산출물("전략 로드맵")이 <strong>BRANDRISE가 파는 것과 정확히 일치</strong>. 유입이 <strong>유튜브</strong>라 이미 우리 결을 보고 옴.
+        </div>
+        <div class="callout callout-danger">
+            <strong>🔴 단, 콜 전 정리할 것:</strong> 예산 1,000만이 <strong>프로젝트 총액인지/월인지</strong>(전자면 단발 파운데이션, 후자면 리테이너 가능) · 핵심 제품·공식몰 상태 · <strong>"더조히"의 정체</strong>(별도 브랜드면 스코프가 커짐). 이 3개로 견적 규모가 갈린다.
+        </div>
+    </div>
+
+    <!-- 핵심 문제점 & 진단 -->
+    <div class="section diagnosis-section" id="diagnosis">
+        <h2>핵심 문제점 & 진단</h2>
+
+        <div class="callout callout-success" style="margin-bottom:16px;"><strong>대표 자가 진단(원문):</strong> "브랜드에 대한 컨셉이 뾰족하지 않고 마케팅을 제대로 못한 거 같습니다." → 우리의 외부 관찰 진단과 <strong>정확히 일치</strong>. 진단을 설득할 필요가 없다 = 바로 해법으로.</div>
+
+        <h3>1. 컨셉 뾰족함 부재 — "왜 우리"가 안 선다 (Critical · 대표 인정)</h3>
+        <div class="diag-compare">
+            <div class="diag-box diag-current">
+                <div class="db-label">현재 상태</div>
+                <ul>
+                    <li>"작은 습관 / 미소 / my daily, my monthly" — 정서는 따뜻하나 <strong>기능적 차별점(성분·효능·가격·가치) 한 줄 부재</strong></li>
+                    <li>작은습관 ↔ &dm ↔ MAKE YOUR MISO 네이밍 체계 혼선</li>
+                    <li>포화 카테고리에서 "N번째 데일리 스킨케어"로 보일 위험</li>
+                </ul>
+            </div>
+            <div class="diag-box diag-ideal">
+                <div class="db-label">이상적 상태</div>
+                <ul>
+                    <li>정서 컨셉 + "왜 우리(기능적 이유)"가 한 문장으로 결합</li>
+                    <li>히어로 제품 1개를 중심으로 한 또렷한 포지션</li>
+                    <li>일관된 BI(네이밍·메시지·톤·비주얼)로 기억되는 브랜드</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2. 마케팅 실행·유통 부재 — "제대로 못했다" (High · 대표 인정)</h3>
+        <div class="diag-note">IG @anddm.official 약 1,380 팔로워(⚠️추정)로 도달 미미, 국문 보도·뷰티 플랫폼 리뷰 검색 0건, 공식몰 일시중단으로 구매 동선 점검 불가. 목표(신규고객·인지·전환·매출)는 분명한데 <strong>이를 끌어올 검증된 채널·콘텐츠·구매동선이 비어 있다.</strong> 단, 대표가 원하는 1차 산출물은 "실행 대행"이 아니라 <strong>"전략 로드맵"</strong> — 즉 무엇을 어떤 순서로 할지의 설계다.</div>
+
+        <h3>영역별 진단 요약</h3>
+        <table>
+            <tr><th>영역</th><th>현재 상태</th><th>심각도</th><th>GAP</th></tr>
+            <tr><td>브랜드 컨셉/포지셔닝</td><td>정서 컨셉 有, "왜 우리" 無 (대표 인정)</td><td><span class="tag tag-red">Critical</span></td><td><span class="tag tag-red">큼</span></td></tr>
+            <tr><td>BI/네이밍 체계</td><td>작은습관/&dm/MISO/더조히 혼선</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-yellow">중간</span></td></tr>
+            <tr><td>마케팅 실행/유통</td><td>도달 미미·리뷰/보도 0·실행 이력 부족</td><td><span class="tag tag-red">High</span></td><td><span class="tag tag-red">큼</span></td></tr>
+            <tr><td>구매 동선(몰)</td><td>공식몰 일시중단 (⚠️사유 확인)</td><td><span class="tag tag-yellow">Medium</span></td><td><span class="tag tag-yellow">중간</span></td></tr>
+            <tr><td>슬로건/정서 자산</td><td>"작은습관·MAKE YOUR MISO" 완성도 양호 (강점)</td><td><span class="tag tag-green">Low</span></td><td><span class="tag tag-green">작음</span></td></tr>
+        </table>
+
+        <div class="callout callout-danger">
+            <strong>진단 결론:</strong> 본 건의 1번 과제는 <strong>"뾰족한 컨셉·포지셔닝·BI 재정의"</strong>, 2번이 <strong>"그걸 실행하는 마케팅 전략 로드맵"</strong>이다. 정서 컨셉은 이미 좋은 출발점이니 <strong>버리지 말고 날카롭게 다듬는</strong> 방향(rebrand가 아니라 sharpen). 채널 대행을 먼저 팔면 미스핏 — 대표가 원하는 건 실행 이전의 "방향(로드맵)"이다.
+        </div>
+    </div>
+
+    <!-- 목차 -->
+    <div class="toc">
+        <h2>목차 (Table of Contents)</h2>
+        <div class="toc-grid">
+            <a href="#executive-summary">Executive Summary</a>
+            <a href="#diagnosis">핵심 문제점 & 진단</a>
+            <a href="#company-info">1. 기업 기초 정보</a>
+            <a href="#product-lineup">2. 주력 제품/서비스</a>
+            <a href="#digital-presence">3. 디지털 프레즌스 진단</a>
+            <a href="#competitors">4. 경쟁사 분석</a>
+            <a href="#market">5. 시장 환경</a>
+            <a href="#ceo-background">6. 대표자/경영진 프로필</a>
+            <a href="#swot">7. SWOT 분석</a>
+            <a href="#needs-analysis">8. 니즈 분석 (SPIN + JTBD)</a>
+            <a href="#gap-analysis">9. GAP 분석 & 기회 평가</a>
+            <a href="#quote">10. 견적 초안</a>
+            <a href="#strategy">11. 상담 전략 & 코칭</a>
+            <a href="#closing">12. 클로징 전략</a>
+        </div>
+    </div>
+
+    <!-- 1. 기업 기초 정보 -->
+    <div class="section" id="company-info">
+        <h2>1. 기업 기초 정보</h2>
+        <div class="info-grid">
+            <div class="info-label">법인명</div><div class="info-value">주식회사 작은습관 — 화장품 멀티브랜드 하우스</div>
+            <div class="info-label">브랜드 ① 얼굴</div><div class="info-value">&dm. cosmetics (앤디엠) — 얼굴 스킨케어 · "my daily/monthly" · MAKE YOUR MISO(미소·smile) · anddm.com(⚠️다운) · IG @anddm.official</div>
+            <div class="info-label">브랜드 ② 바디</div><div class="info-value">더조히 (The Johee) — 요거트 성분 바디케어(바디워시·로션·올데이미스트) · 온가족/민감성 · thejohee.com(라이브, ⚠️대부분 품절) · 14,500~59,000원 · 고객센터 070-4571-5303</div>
+            <div class="info-label">대표</div><div class="info-value">이지영 (CEO) · 인테이크 직접 신청</div>
+            <div class="info-label">업종</div><div class="info-value">제조/생산 (⚠️ 자체 제조인지 OEM/ODM 기획·판매인지 확인)</div>
+            <div class="info-label">소재지</div><div class="info-value">서울 서초구 강남대로51길 10, 효성 해링턴타워</div>
+            <div class="info-label">연락처</div><div class="info-value">jy@anddm.com · 010-5803-2416</div>
+            <div class="info-label">공식몰</div><div class="info-value">anddm.com (Cafe24) — ⚠️작성 시점 "일시 이용 불가"</div>
+            <div class="info-label">컨셉</div><div class="info-value">"맑고 건강한 피부를 위한 하루의 시작 — my daily, my monthly" (IG 바이오)</div>
+            <div class="info-label">카테고리</div><div class="info-value">스킨케어 화장품 D2C (⚠️핵심 품목 미확인 — 토너패드/앰플/크림류 추정)</div>
+            <div class="info-label">SNS</div><div class="info-value">Instagram @anddm.official · Facebook @anddm.official</div>
+            <div class="info-label">유입 경로</div><div class="info-value">유튜브 (BRANDRISE 콘텐츠 접점 추정 → 우리 결 이해도 ↑)</div>
+            <div class="info-label">설립/매출/투자</div><div class="info-value">⚠️ 미확인</div>
+        </div>
+        <div class="callout callout-info">
+            <strong>🏠 멀티브랜드 하우스 (상담 0순위):</strong> 작은습관(법인) 아래 <strong>&dm(얼굴) + 더조히(바디)</strong> 2개 브랜드. 한쪽은 몰이 다운, 한쪽은 대부분 품절 = <strong>둘 다 운영·유통이 정체</strong>. → 핵심 질문: "이번 마케팅은 어느 브랜드(또는 하우스 전체)를 위한 것인가?" 한정된 1,000만 예산에선 <strong>한 브랜드·한 히어로 제품에 집중</strong>이 정석. 두 브랜드의 네이밍·역할 정리 자체가 요청받은 "BI 개발"의 핵심.
+        </div>
+        <div class="fact-warn">본 섹션은 인테이크(2026-05-25) + IG/FB @anddm.official + anddm.com(Cafe24) 확인 기반. 그 외 ⚠️ 항목은 공개정보 부재로 미확인.</div>
+    </div>
+
+    <!-- 2. 주력 제품/서비스 -->
+    <div class="section" id="product-lineup">
+        <h2>2. 주력 제품/서비스</h2>
+        <h3>더조히 (The Johee) · 요거트 바디케어 [확인]</h3>
+        <table>
+            <tr><th>제품</th><th>가격</th><th>특징</th></tr>
+            <tr><td>올인원 바디워시 (요거트)</td><td>29,500원</td><td>요거트 성분 · 온가족 사용</td></tr>
+            <tr><td>올케어 로션 (요거트)</td><td>29,500원</td><td>온가족 로션 · 민감성</td></tr>
+            <tr><td>올데이 미스트</td><td>14,500원</td><td>데일리 수분 미스트</td></tr>
+            <tr><td>바디워시+로션 / 시너지UP 세트</td><td>59,000원~</td><td>세트 구성(번들)</td></tr>
+        </table>
+        <div class="callout callout-warn">⚠️ 더조히 공식몰은 <strong>대부분 품절(SOLD OUT)</strong> — 재고/생산 또는 운영 정체 신호(매출 누수). &dm(얼굴)은 공식몰 다운으로 라인업·가격 미확인(아래는 슬로건 기반 가설). 업종 "제조/생산" = 자체 제조 역량 가능성(원가·품질 강점, ⚠️확인).</div>
+        <h3>&dm. cosmetics · 얼굴 스킨케어 [가설]</h3>
+        <table>
+            <tr><th>추정 구성</th><th>가설 설명</th><th>근거</th></tr>
+            <tr><td><strong>my daily (데일리 루틴)</strong></td><td>매일 쓰는 기초 라인 — 토너/패드·앰플·크림 등 "작은 습관"의 일상 제품(추정)</td><td>"my daily" + "작은 습관" 슬로건</td></tr>
+            <tr><td><strong>my monthly (먼슬리 케어)</strong></td><td>주기적 집중 케어 — 마스크/필링/부스터 또는 정기구독(추정)</td><td>"my monthly" → 재구매/구독 구조 시사</td></tr>
+        </table>
+        <div class="callout">
+            <strong>컨셉의 강점:</strong> "작은 습관이 미소를 만든다 / MAKE YOUR MISO"는 성분 경쟁이 아니라 <strong>정서·루틴 차별화</strong> 시도이고, "my daily/monthly"는 <strong>구매 주기를 컨셉에 내장</strong>해 재구매·구독에 유리하다. 남은 과제는 이 정서 위에 <strong>"왜 이 제품"이라는 기능적 이유</strong>를 얹는 것 — 정확히 대표가 말한 "뾰족함".
+        </div>
+    </div>
+
+    <!-- 3. 디지털 프레즌스 진단 -->
+    <div class="section" id="digital-presence">
+        <h2>3. 디지털 프레즌스 진단</h2>
+        <div class="channel-grid">
+            <div class="channel-card">
+                <div class="ch-name">Instagram</div>
+                <div class="ch-stat">~1,380 ⚠️</div>
+                <div class="ch-note">@anddm.official · 도달 미미(추정)</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">국문 보도/리뷰</div>
+                <div class="ch-stat">0건</div>
+                <div class="ch-note">언론·글로우픽·블로그 검색 미발견</div>
+            </div>
+            <div class="channel-card">
+                <div class="ch-name">공식몰 2개</div>
+                <div class="ch-stat">다운+품절 ⚠️</div>
+                <div class="ch-note">anddm 다운 · thejohee 대부분 품절</div>
+            </div>
+        </div>
+        <table>
+            <tr><th>채널</th><th>상태</th><th>진단</th></tr>
+            <tr><td>IG @anddm.official</td><td>운영 중 · ~1,380(⚠️추정) · 바이오 정돈됨</td><td>톤·바이오는 양호하나 도달 규모 작음. 콘텐츠 빈도·릴스·전환 장치(프로필 링크·CTA) 실태 콜에서 확인</td></tr>
+            <tr><td>FB @anddm.official</td><td>존재</td><td>메타 광고 운영 여부 확인 포인트</td></tr>
+            <tr><td>공식몰 anddm.com (&dm)</td><td>⚠️ 일시 이용 불가</td><td>점검/리뉴얼/중단 여부 <strong>반드시 확인</strong> — 동선 끊겨 있으면 로드맵 0순위</td></tr>
+            <tr><td>공식몰 thejohee.com (더조히)</td><td>라이브 · ⚠️대부분 품절</td><td>스토어는 살아있으나 품절 다수 = <strong>매출 누수</strong>. 재입고·재고 운영 점검 필요</td></tr>
+            <tr><td>네이버/올리브영</td><td>⚠️ 입점 여부 미확인</td><td>D2C 전환 설계의 핵심 변수</td></tr>
+            <tr><td>유튜브</td><td>⚠️ 자사 채널 여부 미확인 (단, 유입 경로 = 유튜브)</td><td>대표가 유튜브로 BRANDRISE를 접함 → 영상 콘텐츠 친화 가능성</td></tr>
+        </table>
+        <div class="callout callout-danger">
+            <strong>핵심 발견:</strong> 브랜드 톤은 정돈됐으나 <strong>도달·신뢰(리뷰/보도)·구매 동선</strong> 세 축이 모두 얕거나 끊겨 있음 = "마케팅을 제대로 못했다"의 실체. 로드맵은 "컨셉 뾰족하게 → 히어로 제품 → 첫 채널 → 구매 동선 복구" 순.
+        </div>
+    </div>
+
+    <!-- 4. 경쟁사 분석 -->
+    <div class="section" id="competitors">
+        <h2>4. 경쟁사 분석</h2>
+        <div class="callout callout-warn">⚠️ 작은습관은 <strong>얼굴(&dm) + 바디(더조히) 두 카테고리</strong>에 걸쳐 있다. 아래 표는 얼굴 스킨케어 기준이며, <strong>더조히(요거트 바디케어·온가족) 직접 경쟁군은 일리윤·아토팜·세타필·존슨즈베이비·시드물 등 별도</strong>. 마케팅 집중 브랜드 확정 후 경쟁군을 좁힌다.</div>
+        <table>
+            <tr><th>브랜드</th><th>포지션</th><th>마케팅·차별화</th><th>작은습관 시사점</th></tr>
+            <tr><td><strong>아누아 (ANUA)</strong></td><td>어성초 토너패드 글로벌 히트</td><td>히어로 제품 1개 + 글로벌 인플루언서·아마존</td><td>"히어로 1개로 인지 뚫기"의 교과서 — 작은습관도 대표 제품 집중 필요</td></tr>
+            <tr><td><strong>토리든 (TORRIDEN)</strong></td><td>저분자 히알루론산 보습</td><td>성분 USP 명확 + 올리브영 강세</td><td>정서만으론 부족 — "왜 우리" 기능 한 줄이 필수임을 입증</td></tr>
+            <tr><td><strong>라운드랩 (Round Lab)</strong></td><td>독도/약콩 순한 데일리</td><td>"데일리 순함" 정서 + 라인 신뢰</td><td>작은습관 "데일리 루틴"과 최근접 — 차별점 확보가 관건</td></tr>
+            <tr><td><strong>비플레인 (Beplain)</strong></td><td>비건·저자극 데일리</td><td>가치(비건·미니멀) 컨셉형 D2C</td><td>"가치/정서 컨셉"으로 차별화한 인디 D2C 성공 경로 참고</td></tr>
+            <tr><td><strong>코스알엑스 (COSRX)</strong></td><td>성분 중심 트러블</td><td>글로벌 D2C·리뷰 자산</td><td>리뷰/소셜프루프 축적의 중요성</td></tr>
+        </table>
+        <div class="callout">
+            <strong>경쟁 구도의 핵심:</strong> 신규 인디가 이기는 길 = ① 히어로 제품 1개 ② 성분/효능 또는 가치의 명확한 한 줄 ③ 리뷰·UGC 축적 ④ 올리브영/인플루언서 시딩. "작은 습관" 정서 컨셉은 드물고 좋은 차별화 씨앗이지만 ①②와 결합돼야 작동.
+        </div>
+    </div>
+
+    <!-- 5. 시장 환경 -->
+    <div class="section" id="market">
+        <h2>5. 시장 환경</h2>
+        <table>
+            <tr><th>구분</th><th>내용 (⚠️ 카테고리 일반론)</th><th>비고</th></tr>
+            <tr><td><strong>K-뷰티 스킨케어</strong></td><td>국내외 동시 고성장, 인디 D2C 다수 글로벌 진출</td><td>기회 큼 = 신규 진입 난도 최고</td></tr>
+            <tr><td><strong>토너패드/데일리 기초</strong></td><td>최근 수년 폭발 성장, 신제품 과밀</td><td>차별화 없으면 매몰</td></tr>
+            <tr><td><strong>구독/정기배송</strong></td><td>"my monthly"와 맞닿음, 뷰티 구독 수요 점증</td><td>재구매 설계로 LTV 확보</td></tr>
+        </table>
+        <h3>2026 트렌드 & 시사점</h3>
+        <table>
+            <tr><th>트렌드</th><th>작은습관 시사점</th></tr>
+            <tr><td>스킨케어 루틴 콘텐츠(모닝/나이트 릴스) 소비 급증</td><td>"작은 습관 = 매일의 루틴"이 포맷과 정확히 일치 — 콘텐츠 무기</td></tr>
+            <tr><td>성분·효능 투명성 + 리뷰 신뢰 중심 구매</td><td>정서 컨셉에 기능적 근거·리뷰를 더해야 전환</td></tr>
+            <tr><td>올리브영·인플루언서 시딩이 인지 핵심 경로</td><td>페이드보다 신뢰 도달 우선 설계가 효율적(예산 1,000 이하에 적합)</td></tr>
+        </table>
+        <div class="callout callout-success">
+            <strong>기회 앵글:</strong> "작은 습관 / 매일의 루틴"은 지금 가장 잘 소비되는 콘텐츠 포맷(루틴 릴스)과 일치. 정서 컨셉 → 루틴 콘텐츠 → 히어로 제품 → 재구매(my monthly)로 잇는 내러티브가 가장 자연스러운 GTM 로드맵.
+        </div>
+    </div>
+
+    <!-- 6. 대표자/경영진 프로필 -->
+    <div class="section" id="ceo-background">
+        <h2>6. 대표자/경영진 프로필 — 이지영 대표</h2>
+        <div class="info-grid">
+            <div class="info-label">정체성</div><div class="info-value">주식회사 작은습관 대표(CEO) · 인테이크 직접 작성·신청 → 마케팅 의사결정 단독 가능성 ↑</div>
+            <div class="info-label">자가 진단</div><div class="info-value">"브랜드 컨셉이 뾰족하지 않고 마케팅을 제대로 못했다" — 문제를 정확히 인지하는 <strong>자기인식 높은 대표</strong></div>
+            <div class="info-label">원하는 것</div><div class="info-value">브랜드 기획·아이덴티티·BI 개발 + 맞춤형 마케팅 전략 로드맵 (방향 우선, 대행 아님)</div>
+            <div class="info-label">예산/조건</div><div class="info-value">1,000만원 이하 · 콜 미팅 선호 · 평일 오전 10~12시</div>
+            <div class="info-label">소재지</div><div class="info-value">강남 효성해링턴타워(서초) — 정돈된 입지(브랜드 투자 의지 시사, ⚠️해석)</div>
+            <div class="info-label">미확인</div><div class="info-value">경력·뷰티 업력·자체 제조 여부·"더조히" 사업 범위</div>
+        </div>
+        <div class="callout callout-danger">
+            <strong>상담 주의점 3가지:</strong><br>
+            1. <strong>진단을 다시 설득하지 말 것</strong> — 대표가 이미 "컨셉이 안 뾰족하다"고 인정. 시간은 진단이 아니라 "그래서 어떻게"에 써야 함.<br>
+            2. <strong>"작은 습관" 정서 컨셉 존중</strong> — 갈아엎기(rebrand)가 아니라 날카롭게 다듬기(sharpen)로. 본인이 만든 정서를 살려주는 톤.<br>
+            3. <strong>예산 1,000 이하·콜 미팅</strong> — 화면 공유 없는 전화일 수 있으니 말로 그림이 그려지게. 견적은 콜에서 푸시 X, 제안서로.
+        </div>
+    </div>
+
+    <!-- 7. SWOT 분석 -->
+    <div class="section" id="swot">
+        <h2>7. SWOT 분석</h2>
+        <div class="swot-grid">
+            <div class="swot-item swot-s">
+                <h4>💪 Strengths</h4>
+                <ul>
+                    <li>따뜻한 정서 컨셉 "작은 습관 → 미소 / MAKE YOUR MISO"</li>
+                    <li>"my daily/monthly" 구매 주기 내장(재구매·구독 유리)</li>
+                    <li>제조/생산 업종 — 자체 제조 역량 가능성(원가·품질)</li>
+                    <li>자기인식 높은 단독 의사결정 대표 · 강남 오피스</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-w">
+                <h4>⚠️ Weaknesses</h4>
+                <ul>
+                    <li>컨셉이 뾰족하지 않음 — "왜 우리" 부재 (대표 인정)</li>
+                    <li>도달 작음(IG ~1,380), 리뷰/보도 0, 마케팅 실행 이력 부족</li>
+                    <li>공식몰 일시중단 — 구매 동선 단절(⚠️)</li>
+                    <li>2개 브랜드 모두 정체 — &dm 몰 다운·더조히 대부분 품절</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-o">
+                <h4>🚀 Opportunities</h4>
+                <ul>
+                    <li>스킨케어 루틴 콘텐츠 급증 — 컨셉 정합</li>
+                    <li>인플루언서/올리브영 시딩으로 신뢰 도달(예산 효율)</li>
+                    <li>"my monthly" 정기구독 LTV 설계</li>
+                    <li>정서·가치 컨셉형 인디 D2C 성공 선례 다수</li>
+                </ul>
+            </div>
+            <div class="swot-item swot-t">
+                <h4>🔥 Threats</h4>
+                <ul>
+                    <li>토너패드/데일리 기초 = 최고 포화 카테고리</li>
+                    <li>자본·리뷰 큰 선발 브랜드 선점</li>
+                    <li>예산 1,000 이하 = 실행 범위 제약(선택과 집중 필수)</li>
+                    <li>차별화 없으면 "N번째 브랜드"로 매몰</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. 니즈 분석 (SPIN + JTBD) -->
+    <div class="section" id="needs-analysis">
+        <h2>8. 니즈 분석 (SPIN + JTBD)</h2>
+
+        <h3>표면 요청 (L1) — 원문</h3>
+        <div class="script-block"><span class="quote-mark">"</span>브랜드에 대한 컨셉이 뾰족하지 않고 마케팅을 제대로 못한 거 같습니다<span class="quote-mark">"</span> &nbsp;→&nbsp; 원하는 서비스: "브랜드 마케팅(브랜드 기획·아이덴티티·BI 개발)" / 산출물: "맞춤형 마케팅 전략 로드맵"</div>
+        <p style="font-size:14px;color:var(--text-light);"><strong>특이점:</strong> 표면 요청과 진짜 니즈가 거의 일치(드문 케이스). 대표가 이미 L3(컨셉·포지셔닝)까지 스스로 짚었다. 우리 역할은 진단이 아니라 <strong>그 진단을 실행 가능한 해법·로드맵으로 전환</strong>하는 것.</p>
+
+        <h3>SPIN 레이어링</h3>
+        <div class="spin-grid">
+            <div class="spin-card spin-s"><h4>S — Situation</h4>제조/생산 기반 스킨케어 D2C(주식회사 작은습관). 컨셉·IG·몰 셋업됨. 도달 작고 리뷰/보도 0, 몰 일시중단. 대표 직접 마케팅 의사결정. 예산 ≤1,000만.</div>
+            <div class="spin-card spin-p"><h4>P — Problem</h4>컨셉이 뾰족하지 않아 "왜 우리"가 안 서고(대표 인정), 마케팅 실행/유통이 비어 인지·전환·매출이 정체.</div>
+            <div class="spin-card spin-i"><h4>I — Implication (방치 시)</h4>포화 카테고리에서 차별화 창 닫힘 → 광고비 태워도 전환 0 → "마케팅 효과 없다" 오학습 → 제조 재고·런웨이 압박.</div>
+            <div class="spin-card spin-n"><h4>N — Need-Payoff (해결 시)</h4>뾰족한 컨셉·BI + 히어로 제품 + 첫 채널 로드맵 확보 → 도달이 구매·재구매로 전환되는 검증된 0→1 엔진, 그리고 대표가 따라갈 명확한 실행 순서.</div>
+        </div>
+
+        <h3>고민 계층 (Pain Hierarchy)</h3>
+        <div class="pain-layer">
+            <div class="pain-level pain-l1"><span class="level-tag">L1 표면 · ★★★★★</span>"마케팅을 제대로 못했다" (원문)</div>
+            <div class="pain-level pain-l2"><span class="level-tag">L2 전술 · ★★★☆☆</span>"인지·전환·매출을 올릴 채널/콘텐츠가 없다"</div>
+            <div class="pain-level pain-l3"><span class="level-tag">L3 전략 · ★★★★★</span>"브랜드 컨셉이 뾰족하지 않다 — 왜 우리를 사야 하는지가 안 선다" (대표 직접 진술)</div>
+            <div class="pain-level pain-l4"><span class="level-tag">L4 근본 · ★★★★☆</span>"좋은 정서를 반복 구매되는 브랜드로 만드는 BI·전략 체계가 없다"</div>
+        </div>
+        <div class="callout callout-success"><strong>핵심:</strong> 대부분 고객은 L2(채널)를 사오려 하는데, 이 대표는 <strong>이미 L3(컨셉)를 정확히 짚었다.</strong> 우리가 "컨셉부터"라고 설득할 필요가 없다 = 신뢰 비용 0, 바로 해법으로 진입 가능.</div>
+
+        <h3>JTBD</h3>
+        <table>
+            <tr><th>차원</th><th>Job Statement</th></tr>
+            <tr><td><strong>Functional</strong></td><td>"우리 브랜드의 컨셉을 뾰족하게 다듬고, 그걸 실행할 마케팅 전략 로드맵을 받아서 신규 고객·매출을 만들고 싶다"</td></tr>
+            <tr><td><strong>Emotional</strong></td><td>"공들인 '작은 습관' 정서가 시장에서 묻히지 않고 제대로 평가받게 하고, '마케팅 못한다'는 자책에서 벗어나고 싶다"</td></tr>
+            <tr><td><strong>Social</strong></td><td>"방향 못 잡는 초기 브랜드가 아니라, 전략이 선 브랜드로 보이고 싶다"</td></tr>
+        </table>
+    </div>
+
+    <!-- 9. GAP 분석 & 기회 평가 -->
+    <div class="section" id="gap-analysis">
+        <h2>9. GAP 분석 & 기회 평가</h2>
+        <table>
+            <tr><th>평가 항목 (가중)</th><th>점수</th><th>근거</th></tr>
+            <tr><td>니즈-서비스 핏 (30%)</td><td><span class="tag tag-green">5.0</span></td><td>요청("브랜드 기획·BI·전략 로드맵")이 BRANDRISE가 파는 것과 정확히 일치. 표면=진짜 니즈 일치, 대표가 컨셉까지 스스로 짚음</td></tr>
+            <tr><td>예산 (20%)</td><td><span class="tag tag-yellow">3.0 ⚠️</span></td><td>1,000만 이하 명시 = 분기 명확하나 규모 제약. 프로젝트 총액/월 여부에 따라 ±. 브랜드 파운데이션 단발엔 적정, 지속 리테이너엔 빠듯</td></tr>
+            <tr><td>의사결정 (15%)</td><td><span class="tag tag-green">5.0</span></td><td>이지영 대표 직접 신청·단독 결정. 품의 라인 없음 → 결정 속도 최상</td></tr>
+            <tr><td>긴급도 (15%)</td><td><span class="tag tag-green">4.0</span></td><td>"본격 시작" 자각 + 목표 4종(고객·인지·전환·매출) 명확. 단 콜 트리거(왜 지금) 확인</td></tr>
+            <tr><td>성장 잠재력 (10%)</td><td><span class="tag tag-green">3.5</span></td><td>제조 역량 + 구독 컨셉. 0→1 성공 시 리테이너·글로벌 확장 여지. 단 포화 카테고리 리스크</td></tr>
+            <tr><td>레퍼런스 가치 (10%)</td><td><span class="tag tag-green">4.0</span></td><td>"컨셉형 인디 뷰티 D2C 브랜드 파운데이션" = 포트폴리오 가치 높음</td></tr>
+        </table>
+        <div class="verdict">
+            <div class="label">종합 기회 적합도</div>
+            <div class="value">4.2 / 5.0 — Go</div>
+            <div class="desc">니즈-핏·의사결정·자기인식 모두 최상. 유일한 변수 = 예산 규모(1,000 이하)와 스코프 정합. 콜에서 예산 성격·제품/몰·"더조히"만 정리하면 명확한 수주 건. → 콜 목표 = 클로징 ❌, 방향 합의 + 스코프 확정.</div>
+        </div>
+        <h3>수주 확률 시나리오</h3>
+        <table>
+            <tr><th>시나리오</th><th>조건</th><th>대응</th></tr>
+            <tr><td>본격(권장)</td><td>1,000만 = 프로젝트 총액</td><td>Core 브랜드 파운데이션(컨셉+BI+로드맵) 단일 추천</td></tr>
+            <tr><td>경량</td><td>예산 더 타이트/단계적 원함</td><td>Lite(컨셉 1줄 + 로드맵 문서 중심)로 진입 → 효과 후 BI 확장</td></tr>
+            <tr><td>리테이너 전환</td><td>1,000만 = 월 예산</td><td>파운데이션 후 실행 리테이너로 연결(올리브영/시딩/콘텐츠)</td></tr>
+            <tr><td>스코프 확대</td><td>"더조히" 별도 브랜드</td><td>브랜드별 분리 견적 또는 우선순위 1개 집중 제안</td></tr>
+        </table>
+    </div>
+
+    <!-- 10. 견적 초안 -->
+    <div class="section" id="quote">
+        <h2>10. 견적 초안 (브랜드 파운데이션 · 프로젝트 단위)</h2>
+        <div class="callout callout-warn">⚠️ 예산 "1,000만원 이하" 명시 → 월 리테이너가 아니라 <strong>프로젝트 단위 브랜드 파운데이션</strong>으로 설계. 1,000만이 총액/월인지 콜에서 확정 후 정밀 견적은 제안서로(2단계). 모든 Tier에 대표 요청 산출물 "마케팅 전략 로드맵" 포함.</div>
+        <div class="tier-cards">
+            <div class="tier-card">
+                <h4>🟢 Lite</h4>
+                <div class="price">500만 대</div>
+                <div class="duration">3~4주 · 문서 중심</div>
+                <ul>
+                    <li>브랜드 진단 + 뾰족한 포지셔닝 1줄</li>
+                    <li>1차 타겟 정의 + 히어로 제품 선정</li>
+                    <li>네이밍 체계 정리(작은습관↔&dm↔MISO↔더조히)</li>
+                    <li>마케팅 전략 로드맵 (채널·우선순위 문서)</li>
+                </ul>
+            </div>
+            <div class="tier-card recommended">
+                <div class="tier-badge">추천</div>
+                <h4>⭐ Core</h4>
+                <div class="price">1,000만 이하</div>
+                <div class="duration">5~6주 · 파운데이션 풀</div>
+                <ul>
+                    <li>Lite 전체 +</li>
+                    <li><strong>BI/아이덴티티 개발 ⭐</strong> — 키 메시지·브랜드 보이스·비주얼 가이드(요청한 "BI 개발")</li>
+                    <li>히어로 제품 메시지·상세/콘텐츠 컨셉 설계</li>
+                    <li>실행형 마케팅 전략 로드맵(채널·콘텐츠·구매동선·KPI·일정)</li>
+                    <li>구매 동선(몰) 전환 점검 + 1차 콘텐츠 포맷</li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h4>🔶 Core + 실행</h4>
+                <div class="price">월 리테이너</div>
+                <div class="duration">파운데이션 후 · 확장</div>
+                <ul>
+                    <li>Core 산출물 기반 실행 대행</li>
+                    <li>첫 GTM 채널 운영(인플루언서 시딩/IG 릴스)</li>
+                    <li>올리브영/플랫폼 입점 지원</li>
+                    <li>(검증 후) 퍼포먼스 집행 + 월간 리포트</li>
+                    <li>⚠️ 예산 1,000 이하면 후속 단계로만 제안</li>
+                </ul>
+            </div>
+        </div>
+        <div class="leverage-box">
+            <div class="quote">"왜 Core가 가장 합리적인가"</div>
+            <div class="teach-item">대표가 원한 건 "브랜드 기획 + BI 개발 + 전략 로드맵" 세 가지 — Lite는 BI가 빠지고, 실행 리테이너는 예산 초과. <strong>Core가 요청 3종을 1,000만 안에 정확히 담는 안.</strong></div>
+            <div class="teach-item">컨셉만 뾰족해지고 실행 로드맵이 없으면 또 "마케팅 못함"으로 돌아간다 → Core는 <strong>컨셉 + 실행 설계까지</strong> 한 세트.</div>
+        </div>
+    </div>
+
+    <!-- 11. 상담 전략 & 코칭 -->
+    <div class="section" id="strategy">
+        <h2>11. 상담 전략 & 코칭 (콜 미팅)</h2>
+
+        <div class="callout callout-danger"><strong>🔴 이 콜의 본질:</strong> 진단은 끝났다(대표가 인정). 콜은 <strong>① 스코프 확정(제품/몰/더조히/예산성격) ② 컨셉 방향 합의 ③ 신뢰</strong>의 자리. 듣기 60 / 말하기 40(이미 니즈 명확하니 해법 비중 약간 ↑). 컨셉 갈아엎기 ❌, 다듬기 ✅. 콜이라 화면 없이 <strong>말로 그림</strong>. <strong>1차 목표 = 스코프 확정 + 방향 합의</strong>(견적 푸시 ❌).</div>
+
+        <h3>40~50분 콜 타임라인</h3>
+        <div class="timeline-phase">
+            <div class="phase-time">P1 라포<br>0–5분</div>
+            <div class="phase-content"><h4>컨셉 인정으로 시작</h4><p>유튜브로 우리를 봤으니 결은 통함. "작은 습관" 컨셉을 진심으로 칭찬</p><div class="phase-script">"'작은 습관이 미소를 만든다', 컨셉 자체가 참 따뜻하더라고요. 신청서에 '컨셉이 뾰족하지 않다'고 적어주셨는데, 제가 보기엔 좋은 정서가 이미 있어서 '버리는 게 아니라 날카롭게 다듬는' 작업이 될 것 같아요."</div></div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">P2 스코프 확정<br>5–20분 ⚠️핵심</div>
+            <div class="phase-content"><h4>제품·몰·더조히·예산성격</h4><p>견적 규모를 가르는 4가지를 자연스럽게 수집</p><div class="phase-script">"지금 제일 핵심 제품이 뭐예요? 자체 제조하시는 거고요?" → "공식몰이 잠깐 안 열리던데 점검 중이세요?" → "신청서에 '더조히'도 같이 적어주셨는데, 작은습관/앤디엠이랑 어떤 관계예요?"</div></div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">P3 컨셉 진단<br>20–32분</div>
+            <div class="phase-content"><h4>"왜 우리"의 공백을 같이 짚기</h4><p>대표가 이미 인정했으니 깊게. 정서 옆에 붙일 기능적 한 줄 후보를 함께 탐색</p><div class="phase-script">"고객이 수많은 토너패드 중에 작은습관을 고를 이유를 한 문장으로 만든다면, 지금은 뭐라고 말하고 계세요? (침묵) — 그 한 줄이 비어 있는 게 핵심이고, 그게 저희가 1번으로 채울 부분이에요."</div></div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">P4 방향 제시<br>32–45분</div>
+            <div class="phase-content"><h4>로드맵 골격 + Core 방향</h4><p>"컨셉 뾰족 → BI → 히어로 제품 → 첫 채널 → 구매동선" 순서를 말로 그림. 🔴 금액은 "제안서로"</p><div class="phase-script">"제 그림은 — 먼저 '왜 우리' 한 줄과 BI를 잡고, 히어로 제품 하나에 집중해서, 루틴 콘텐츠가 잘 먹히는 채널 한 곳에 꽂는 로드맵이에요. 산출물로 원하신 '전략 로드맵'이 정확히 이거고요. 이 방향 맞을까요?"</div></div>
+        </div>
+        <div class="timeline-phase">
+            <div class="phase-time">P5 클로징<br>45–50분</div>
+            <div class="phase-content"><h4>소프트 클로징 — 제안서 약속</h4><p>계약 압박 0. 방향 합의 + 제안서 일정</p><div class="phase-script">"오늘 들은 걸로 작은습관에 맞는 브랜드 파운데이션 안이랑 견적을 제안서로 며칠 안에 보내드릴게요. 좋은 컨셉을, 그 컨셉에 반응할 사람들에게 닿게 하는 첫 한 걸음입니다."</div></div>
+        </div>
+
+        <h3>핵심 질문 5개 (반드시)</h3>
+        <div class="question-card">
+            <div class="q-num">Q1 · 제품 & 몰 상태 ⚠️필수</div>
+            <div class="q-text">"핵심 제품과 가격대가 어떻게 되나요? 자체 제조이신가요? 공식몰이 지금 안 열리던데 어떤 상황이세요?"</div>
+            <div class="q-intent">의도: 히어로 제품·제조 역량·구매 동선 = 로드맵의 전제.</div>
+            <div class="q-branch">분기: ▸ 몰 중단/리뉴얼 → 동선 복구를 로드맵 0순위로 ▸ 자체 제조 → 원가·품질을 차별화 한 줄 후보로</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q2 · 어느 브랜드를 위한 마케팅인가 ⚠️필수</div>
+            <div class="q-text">"앤디엠(얼굴)이랑 더조히(요거트 바디) 두 브랜드를 운영하시던데, 이번 마케팅은 어느 쪽이세요? 아니면 회사(작은습관) 차원으로 둘 다 보시는 건가요?"</div>
+            <div class="q-intent">의도: 스코프·예산 배분의 핵심. 1,000만 이하에서 두 브랜드 동시는 비현실 → 1개 집중 유도.</div>
+            <div class="q-branch">분기: ▸ 한 브랜드 → 그 브랜드 히어로 집중 ▸ "둘 다" → "예산상 먼저 한쪽을 뾰족하게 만들고 그 공식을 두 번째에 복제하시죠"</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q3 · 예산 성격 (Tier 분기) ⚠️필수</div>
+            <div class="q-text">"마케팅 예산 1,000만원으로 적어주셨는데, 이번 프로젝트 전체로 생각하신 건가요 아니면 월 단위로 생각하신 거예요?"</div>
+            <div class="q-intent">의도: 총액이면 Core 단발, 월이면 파운데이션+리테이너. 🔴 이 자리 금액 제안 금지.</div>
+            <div class="q-branch">분기: ▸ 총액 → Core(1,000 이하) ▸ 월 → 파운데이션 후 실행 리테이너 연결</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q4 · 성공 기준 & 지금까지 시도</div>
+            <div class="q-text">"6개월 뒤 어떤 모습이면 성공이라고 보세요(매출·입점·인지)? 지금까지 마케팅으로 해보신 건 뭐가 있나요?"</div>
+            <div class="q-intent">의도: 목표 4종(고객·인지·전환·매출) 우선순위 + 오학습 이력으로 로드맵 KPI 정렬.</div>
+            <div class="q-branch">분기: ▸ "광고 효과 없었다" → "컨셉·전환 장치 문제일 수 있다" ▸ 명확한 매출 목표 → 그 숫자로 역산</div>
+        </div>
+        <div class="question-card">
+            <div class="q-num">Q5 · 컨셉 애착도 & 결정 시점</div>
+            <div class="q-text">"'작은 습관' 컨셉에 대표님 애착이 어느 정도세요? 그리고 언제까지 방향을 잡으면 좋겠다 하는 일정이 있으세요?"</div>
+            <div class="q-intent">의도: sharpen vs rebrand 범위 + 의사결정 타임라인(긴급도).</div>
+            <div class="q-branch">분기: ▸ 애착 큼 → 다듬기 강조 ▸ "바꿔도 된다" → 더 큰 BI 스코프 여지</div>
+        </div>
+
+        <h3>Challenger Teaching 3 (선별 사용)</h3>
+        <div class="leverage-box">
+            <div class="teach-item"><strong>① 컨셉을 갈아엎지 말고 날카롭게.</strong> "작은 습관 → 미소"는 이미 좋은 정서. 필요한 건 그 옆에 "그래서 무엇이 다른가(성분·루틴·가격)" 한 줄을 붙이는 것 = sharpen, not rebrand. (대표 자책을 덜어주는 멘트)</div>
+            <div class="teach-item"><strong>② 신규 브랜드는 라인 전체가 아니라 히어로 제품 1개로 뚫는다.</strong> 아누아·토리든 모두 단일 히어로로 인지를 만들었다. 예산 1,000 이하일수록 선택과 집중이 답.</div>
+            <div class="teach-item"><strong>③ '작은 습관 = 매일의 루틴'은 지금 가장 잘 소비되는 콘텐츠 포맷이다.</strong> 루틴 릴스가 폭발하는 지금, 컨셉과 포맷이 일치 = 광고비 적게 들이고도 도달을 만들 무기. "그 컨셉이 바로 마케팅 무기예요."</div>
+        </div>
+
+        <h3>예상 시나리오 & 대응</h3>
+        <table>
+            <tr><th>상황</th><th>대응 (바로 쓰는 멘트)</th></tr>
+            <tr><td>가격부터 물음</td><td>"오늘 들은 걸로 1,000만 안에 딱 맞는 안을 제안서로 잡아드릴게요. 그 전에 제품이랑 몰 상황만 몇 개 더 여쭐게요." → 🔴 숫자 즉답 X</td></tr>
+            <tr><td>"컨셉을 아예 바꿔야 하나"</td><td>"아니요, 정서는 살립니다. '작은 습관'은 좋은 자산이에요. 거기에 '왜 우리' 한 줄만 더하는 거예요." → 자책 완화 + 컨셉 존중</td></tr>
+            <tr><td>예산이 빠듯</td><td>"그럼 BI 풀까지 한 번에 가지 말고, 컨셉 1줄 + 히어로 + 로드맵부터(Lite) 잡고 효과 본 뒤 BI를 확장하시죠."</td></tr>
+            <tr><td>"더조히도 같이"</td><td>"좋아요, 다만 한 번에 둘 다 흐릿하게 가는 것보다 우선순위 1개를 먼저 뾰족하게 만들고 그 공식을 두 번째에 복제하는 게 예산상 효율적이에요."</td></tr>
+        </table>
+
+        <div class="callout callout-success">
+            <strong>💡 Trusted Advisor Quick Tip (무료):</strong> "IG 바이오·프로필 링크 오늘 바로 손보셔도 돼요. '작은습관'은 자기계발 콘텐츠랑, 'anddm'은 다른 브랜드랑 검색이 겹쳐요. 바이오 첫 줄에 <strong>'무엇이 다른 제품인지' 한 줄 + 바로 사는 링크</strong>를 박는 게 0원짜리 첫 수입니다. 예: <strong>'작은 습관이 미소를 만든다 · 매일의 [핵심성분] 루틴 → [구매 링크]'</strong>." → 비용 0·즉시 + 컨셉 존중 + 진짜 갭(뾰족함·전환) 정면.
+        </div>
+    </div>
+
+    <!-- 12. 클로징 전략 -->
+    <div class="section" id="closing">
+        <h2>12. 클로징 전략 — 2단계 클로징</h2>
+        <div class="callout callout-danger">🔴 예산 성격·제품/몰·더조히 확정 전 "콜에서 계약"은 무리. <strong>콜 = 스코프 확정 + 방향 합의 / 제안서 = 정밀 견적</strong>의 2단계.</div>
+
+        <div class="flow-steps">
+            <div class="flow-step"><div class="step-num">STEP 1</div><div class="step-title">콜 미팅 (이번)</div><div class="step-desc">제품/몰·더조히·예산성격 확정 + 컨셉 방향 합의. 견적 푸시 ❌</div></div>
+            <div class="flow-step"><div class="step-num">STEP 2</div><div class="step-title">감사 메시지 (24h)</div><div class="step-desc">핵심 합의 1줄 복창 + Quick Tip 재첨부 + 제안서 일정</div></div>
+            <div class="flow-step"><div class="step-num">STEP 3</div><div class="step-title">제안서 (며칠 내)</div><div class="step-desc">예산성격 기준 Lite/Core 단일 추천. 요청 3종(기획·BI·로드맵) 명시</div></div>
+            <div class="flow-step"><div class="step-num">STEP 4</div><div class="step-title">팔로업</div><div class="step-desc">제안서 리뷰 + 계약. 파운데이션 후 실행 리테이너 연결 경로</div></div>
+        </div>
+
+        <h3>내부 챔피언 & 의사결정 전략</h3>
+        <table>
+            <tr><th>요소</th><th>전략</th></tr>
+            <tr><td>의사결정권자</td><td>이지영 대표 단독. 설득 대상 1명 → 결정 속도 ↑. 자기인식 높음 = 진단 설득 불필요</td></tr>
+            <tr><td>신뢰 정렬</td><td>🔴 "작은 습관" 컨셉 존중(sharpen not rebrand) + "마케팅 못함" 자책 완화가 신뢰의 핵심</td></tr>
+            <tr><td>긴급성</td><td>목표 4종 명확 + 몰 이슈. "방향 잡고 시작하는 시점"의 기회비용 자연스럽게</td></tr>
+            <tr><td>리스크 제거</td><td>① Lite 저위험 진입로 ② 1,000만 안에 요청 3종 다 담는 Core ③ 파운데이션 후 계속 여부 판단</td></tr>
+        </table>
+
+        <h3>콜 후 액션 리스트</h3>
+        <table>
+            <tr><th>시점</th><th>액션</th></tr>
+            <tr><td>당일 24h</td><td>감사 메시지(핵심 합의 1줄 + Quick Tip + 제안서 일정) · 벤치마크 1장 첨부</td></tr>
+            <tr><td>제안서 착수</td><td>예산성격·제품/몰·더조히로 Tier 단일 추천 · 요청 3종(기획·BI·로드맵) 매핑 · 몰 이슈 반영</td></tr>
+            <tr><td>미회신 시</td><td>못 받은 항목을 가벼운 질문 1개로 회수 (압박 ❌)</td></tr>
+        </table>
+
+        <div class="leverage-box">
+            <div class="quote">클로징 멘트 방향</div>
+            <div class="teach-item" style="text-align:center;border:none;">"대표님이 만든 '작은 습관'이라는 좋은 컨셉을 버리는 게 아니라, <strong>뾰족하게 다듬어 그 컨셉에 반응할 사람들에게 닿게</strong> 하는 첫 한 걸음을 같이 떼는 겁니다."</div>
+        </div>
+    </div>
+
+    <!-- 참고 링크 -->
+    <div class="section">
+        <h2>참고 링크 & 출처</h2>
+        <div class="source-list">
+            <p>· 상담 신청서(2026-05-25): 이지영(대표/CEO) · 주식회사 작은습관/더조히 · 제조/생산 · 목표(신규고객·인지도·전환·홍보) · 서비스="브랜드 마케팅(기획·아이덴티티·BI 개발)" · 예산 1,000만 이하 · 산출물="맞춤형 마케팅 전략 로드맵" · 콜 미팅(평일 오전 10~12시) · 유입=유튜브 · 페인="컨셉이 뾰족하지 않고 마케팅을 제대로 못함"</p>
+            <p>· 컨택: jy@anddm.com · 010-5803-2416 · 강남 효성해링턴타워(서초구 강남대로51길 10)</p>
+            <p>· 공식 채널: Instagram <a href="https://www.instagram.com/anddm.official/">@anddm.official</a> (바이오 "맑고 건강한 피부를 위한 하루의 시작 - my daily, my monthly", 팔로워 약 1,380 ⚠️추정) · Facebook <a href="https://www.facebook.com/anddm.official/">@anddm.official</a></p>
+            <p>· 공식몰: anddm.com(&dm, Cafe24) ⚠️"일시 이용 불가" / <a href="https://thejohee.com/">thejohee.com</a>(더조히, 라이브 — 요거트 바디케어 14,500~59,000원, ⚠️대부분 품절)</p>
+            <p>· 웹 검색(2026-06-14): 국문 보도·뷰티 플랫폼 제품 리뷰 검색 0건 (공개 footprint 얕음)</p>
+            <p>· 카테고리 벤치마크: 아누아·토리든·라운드랩·비플레인·코스알엑스 (K-뷰티 데일리 스킨케어 일반론)</p>
+            <p>· 포맷 레퍼런스: <a href="https://hizsystem.github.io/brandrise/research/mixroom/">brandrise/research/mixroom</a></p>
+        </div>
+        <div class="fact-warn">⚠️ 본 브리프는 인테이크(확정 정보) + 얕은 공개 데이터(추정)로 구성. 제품·몰·"더조히"·예산성격 등 ⚠️ 항목은 콜에서 검증·확정할 것.</div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>BRANDRISE (MarketingOS) — New Business 상담 준비 패키지 · v2 (인테이크 반영)</p>
+    <p>이 문서는 상담 준비 목적으로 작성되었으며, 외부 공유를 금합니다.</p>
+</div>
+
+</body>
+</html>
