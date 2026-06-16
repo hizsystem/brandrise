@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <!--
-  BRANDRISE 상담 매뉴얼 (플레이북) v0.1 · 인디고 클린
-  · 목적: 대표·실장 상담·견적콜 녹취 → 반복 가능한 플레이북. "복제 뜨고 암기하고 소화."
-  · v0.1 출처: NGT 상담 녹취(권윤정 대표, 2026-06-10) 1건. → 애라 실장·견적콜 녹취로 확장.
-  · 영업 프로세스 1차(상담)·2차(견적) 단계와 연동. 배포: internal/consult-playbook/
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  BRANDRISE 상담 프로세스 플레이북 v3 (녹취 14건 실증 · 2026-06-16)        ║
+  ║  · 1차논의(6/15) §6 "상담 프로세스 = 실제 녹음본 기반 재정립"의 답.        ║
+  ║  · 대표·실장 상담 녹취 14건(상담 15개 브랜드)을 분석해 흐름·질문·화법 도출. ║
+  ║  · 디자인 = BRANDRISE 통합표준(인디고 단일·Pretendard) — prep/견적과 동일. ║
+  ║  · 내부 전용. 클라이언트 비공개. 회사소개 매뉴얼(00_회사소개매뉴얼)과 연동.  ║
+  ║  ── 구성 ── 한 장 / 5단계 / 2패턴 / 넥스트 질문 / 결핍(USP) / 유통처 /     ║
+  ║            견적 화법 / 클로징·상담후 / 실증 근거(부록)                     ║
+  ╚══════════════════════════════════════════════════════════════════════╝
 -->
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>브랜드라이즈 상담 매뉴얼 (플레이북) | BRANDRISE 내부</title>
+<title>BRANDRISE 상담 프로세스 플레이북 v3 — 녹취 14건 실증</title>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
 <style>
 :root{
@@ -23,86 +28,96 @@
 html{scroll-behavior:smooth}
 body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
   line-height:1.72;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+.hero{background:var(--ink);color:#fff;padding:64px 0 52px}
+.hero .in{max-width:1180px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:clamp(28px,4.6vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:14px}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
+.hero .sub{font-size:16px;color:#cbd5e1;font-weight:300;max-width:720px;line-height:1.75}
+.hero .meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.layout{max-width:1180px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:208px 1fr;gap:48px;align-items:start}
+nav.toc{position:sticky;top:28px;padding:36px 0;font-size:13.5px}
+nav.toc .nl{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--muted);margin:0 0 14px 12px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;border-left:2px solid transparent;transition:.15s;font-weight:500}
+nav.toc a:hover{color:var(--ink);background:var(--soft)}
+nav.toc a.on{color:var(--ac);background:var(--ac-50);border-left-color:var(--ac);font-weight:700}
+main{padding:36px 0 100px;min-width:0}
+section{margin-bottom:64px;scroll-margin-top:24px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+h2{font-size:25px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px;line-height:1.18}
+.lead{font-size:14.5px;color:var(--muted);margin-bottom:22px;line-height:1.7}
+h3{font-size:15px;font-weight:800;margin:26px 0 12px;color:var(--ink2);letter-spacing:-.01em;line-height:1.4}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.co{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:13.5px;line-height:1.75;border:1px solid var(--line)}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100)} .co.ok{background:var(--ok-50);border-color:#bbf7d0}
+.co.warn{background:var(--warn-50);border-color:#fde68a} .co.bad{background:var(--bad-50);border-color:#fecdd3}
+.co b{color:var(--ink)}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
+.t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
+.t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin:6px 0 4px;font-variant-numeric:tabular-nums}
+th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:left;padding:11px 13px;font-size:11.5px;border-bottom:1px solid var(--ac-100)}
+td{padding:11px 13px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b,td strong{color:var(--ink)}
+tbody tr:nth-child(even) td{background:var(--soft)}
+.op{background:linear-gradient(160deg,var(--ac-50),#fff 65%);border:1px solid var(--ac-100);border-radius:16px;padding:26px 28px}
+.op .opk{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--ac);margin-bottom:14px}
+.op .blk{margin-bottom:16px} .op .blk:last-child{margin-bottom:0}
+.op .bl{font-size:11px;font-weight:800;color:var(--ac-700);letter-spacing:.06em;margin-bottom:5px}
+.op .bt{font-size:14.5px;line-height:1.7;color:var(--ink2)} .op .bt b{color:var(--ink)}
+
+/* 5단계 타임라인 */
+.flow{border-left:2px solid var(--ac-100);padding-left:24px;margin:18px 0}
+.flow .st{position:relative;padding:6px 0 20px}
+.flow .st:last-child{padding-bottom:0}
+.flow .st::before{content:"";position:absolute;left:-31px;top:9px;width:11px;height:11px;border-radius:50%;background:var(--ac);border:2px solid #fff;box-shadow:0 0 0 2px var(--ac-100)}
+.flow .sn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.06em}
+.flow .stt{font-size:16px;font-weight:800;color:var(--ink);margin:2px 0 4px}
+.flow .sb{font-size:13px;color:var(--ink2);line-height:1.7}
+.flow .sg{display:inline-block;font-size:11.5px;font-weight:700;color:var(--ac-700);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:7px;padding:2px 9px;margin-top:7px}
+
+/* 화법 인용 박스 */
+.talk{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac);border-radius:10px;padding:14px 18px;margin:10px 0}
+.talk .src{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.04em;margin-bottom:6px}
+.talk .said{font-size:13.5px;color:var(--ink);line-height:1.7;font-weight:600}
+.talk .said::before{content:"“";color:var(--ac);font-weight:800}
+.talk .said::after{content:"”";color:var(--ac);font-weight:800}
+.talk .eff{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.6} .talk .eff b{color:var(--ink2)}
+
+/* 질문 카드 */
+.q{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac);border-radius:10px;padding:16px 18px;margin-bottom:10px}
+.q .qn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.05em;margin-bottom:5px}
+.q .qt{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.65}
+.q .qi{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.6}
+
+/* 패턴 2열 */
+.pat{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:20px 22px}
+.pat.a{border-color:var(--ac-100)} .pat.b{border-color:#bbf7d0}
+.pat .ph{font-size:13px;font-weight:800;letter-spacing:.02em;margin-bottom:4px}
+.pat.a .ph{color:var(--ac)} .pat.b .ph{color:var(--ok)}
+.pat .pd{font-size:12.5px;color:var(--muted);margin-bottom:12px;line-height:1.6}
+.pat ul{list-style:none} .pat li{font-size:12.5px;color:var(--ink2);padding:4px 0 4px 15px;position:relative;line-height:1.55}
+.pat li::before{content:"›";position:absolute;left:0;font-weight:800} .pat.a li::before{color:var(--ac)} .pat.b li::before{color:var(--ok)}
+
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px}
+footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
+@media(max-width:880px){.layout{grid-template-columns:1fr;gap:0;padding:0 22px}nav.toc{display:none}.hero .in{padding:0 22px}.grid2,.grid3{grid-template-columns:1fr}}
+@media print{.card,.talk,.q,.pat,.co{break-inside:avoid}}
 .mnav{background:#0b1220;border-bottom:1px solid rgba(255,255,255,.08)}
-.mnav .in{max-width:980px;margin:0 auto;padding:11px 40px;display:flex;gap:5px;flex-wrap:wrap;align-items:center;font-size:12.5px}
+.mnav .in{max-width:1180px;margin:0 auto;padding:11px 40px;display:flex;gap:5px;flex-wrap:wrap;align-items:center;font-size:12.5px}
 .mnav a{color:#cbd5e1;font-weight:600;text-decoration:none;padding:4px 9px;border-radius:7px;white-space:nowrap}
 .mnav a:hover{color:#fff;background:rgba(255,255,255,.06)}
 .mnav a.home{color:#a5b4fc;font-weight:800;letter-spacing:.03em}
 .mnav a.on{color:#fff;background:rgba(165,180,252,.16)}
-.mnav .sep{color:#334155;margin:0 2px}
-.hero{background:var(--ink);color:#fff;padding:58px 0 46px}
-.hero .in{max-width:980px;margin:0 auto;padding:0 40px}
-.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
-.hero h1{font-size:clamp(28px,4.6vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
-.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 3px;border-radius:2px}
-.hero .sub{font-size:15.5px;color:#cbd5e1;font-weight:300;max-width:720px}
-.hero .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
-.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
-.hero .chip b{color:#a5b4fc}
-.minitoc{max-width:980px;margin:0 auto;padding:14px 40px 0;font-size:12.5px;color:var(--muted)}
-.minitoc a{color:var(--muted);text-decoration:none;font-weight:600}
-.minitoc a:hover{color:var(--ac)}
-.wrap{max-width:980px;margin:0 auto;padding:30px 40px 100px}
-section{margin-bottom:58px;scroll-margin-top:18px}
-.sec-k{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:6px;padding:4px 10px;margin-bottom:12px}
-h2{font-size:25px;font-weight:800;letter-spacing:-.02em;margin-bottom:7px}
-.lead{font-size:14.5px;color:var(--muted);margin-bottom:22px;max-width:780px}
-h3{font-size:16px;font-weight:800;margin:26px 0 8px;letter-spacing:-.01em}
-
-.co{border-radius:12px;padding:14px 18px;margin:14px 0;font-size:13.5px;line-height:1.7;border:1px solid var(--line)}
-.co.ac{background:var(--ac-50);border-color:var(--ac-100)} .co.warn{background:var(--warn-50);border-color:#fde68a}
-.co.ok{background:var(--ok-50);border-color:#bbf7d0}
-.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase}
-.co.ac .lab{color:var(--ac)} .co.warn .lab{color:var(--warn)} .co.ok .lab{color:var(--ok)}
-.co b{color:var(--ink)}
-
-/* 원칙 카드 */
-.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:16px 0}
-.pcard{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
-.pcard .pn{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:var(--ac);color:#fff;font-size:13px;font-weight:800;margin-bottom:10px}
-.pcard .pt{font-size:15px;font-weight:800;margin-bottom:6px;letter-spacing:-.01em}
-.pcard .pb{font-size:12.5px;color:var(--ink2);line-height:1.6}
-
-/* 단계 플레이 */
-.flow{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:14px 0}
-.step{display:grid;grid-template-columns:120px 1fr;border-top:1px solid var(--line2)}
-.step:first-child{border-top:none}
-.step .sk{padding:16px 16px;font-size:12.5px;font-weight:800;color:var(--ac);background:var(--ac-50);border-right:1px solid var(--line2);display:flex;align-items:center}
-.step .sc{padding:15px 18px}
-.step .st{font-size:14.5px;font-weight:800;margin-bottom:4px}
-.step .sd{font-size:12.5px;color:var(--ink2);line-height:1.6}
-
-/* 멘트(인용) */
-.say{border-left:3px solid var(--ac);background:var(--soft);border-radius:0 10px 10px 0;padding:10px 16px;margin:8px 0;font-size:13px;color:var(--ink);line-height:1.65}
-.say::before{content:"\201C";color:var(--ac);font-weight:800;margin-right:3px}
-.say::after{content:"\201D";color:var(--ac);font-weight:800;margin-left:2px}
-.say .src{display:block;font-size:11px;color:var(--muted);font-weight:600;margin-top:5px}
-
-/* 온도 표 */
-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:left;padding:10px 13px;font-size:12px}
-td{padding:11px 13px;border-top:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
-td b{color:var(--ink)}
-tbody tr:nth-child(even) td{background:var(--soft)}
-.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px}
-.t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
-
-footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:980px;margin:0 auto}
-@media(max-width:880px){
-  .wrap,.hero .in,.minitoc,.mnav .in{padding-left:22px;padding-right:22px}
-  .step{grid-template-columns:1fr} .step .sk{border-right:none;border-bottom:1px solid var(--line2)}
-}
-@media print{
-  body{background:#fff}
-  .mnav{display:none}
-  .hero,.pcard .pn,.step .sk,.co,.say,th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  section,.pcard,.flow,.co,.say,table{break-inside:avoid}
-  .minitoc{display:none}
-}
-</style>
+.mnav .sep{color:#334155;margin:0 2px}</style>
 </head>
 <body>
-
 <nav class="mnav"><div class="in">
   <a class="home" href="../">BRANDRISE 매뉴얼</a><span class="sep">·</span>
   <a href="../sales-process/">영업 프로세스</a>
@@ -111,101 +126,268 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
   <a href="../quote-call-playbook/">견적콜</a>
 </div></nav>
 
+
 <div class="hero"><div class="in">
-  <div class="badge">BRANDRISE · 상담 매뉴얼 · PLAYBOOK v0.1</div>
-  <h1>브랜드라이즈 상담 <span class="hl">플레이북</span></h1>
-  <div class="sub">대표·실장의 상담을 <b style="color:#fff">복제 → 암기 → 소화</b>. 녹취에서 반복되는 무브를 뽑아 누구나 같은 수준으로 상담하게 한다.</div>
+  <div class="badge">SALES PLAYBOOK · 통합표준 v3 · 내부 전용</div>
+  <h1>상담 프로세스 <span class="hl">플레이북</span></h1>
+  <div class="sub">1차논의(6/15) §6 "상담 코칭은 실제 녹음본 기반으로 다시 잡는다"의 답. 대표·실장 상담 <b style="color:#fff">녹취 14건(15개 브랜드)</b>에서 흐름·질문·화법을 그대로 뽑아 정리했다 — 컨설팅 이론이 아니라 현장에서 실제로 통한 말.</div>
   <div class="meta">
-    <span class="chip">버전 <b>v0.1 (초안)</b></span>
-    <span class="chip">출처 <b>NGT 상담 녹취 · 권윤정 대표</b></span>
-    <span class="chip">연동 <b>영업 프로세스 1·2차</b></span>
-    <span class="chip">확장예정 <b>애라 실장·견적콜 녹취</b></span>
+    <span class="chip">흐름 <b>회사소개 → 청취 → 단계·유통 → 문제 → 견적 → 클로징</b></span>
+    <span class="chip">패턴 <b>A 런칭전 점검 / B 단계 짚기</b></span>
+    <span class="chip">근거 <b>녹취 14건 · 2026-06</b></span>
   </div>
 </div></div>
 
-<div class="minitoc">· <a href="#what">매뉴얼이란</a> · <a href="#principles">상담 5대 원칙</a> · <a href="#play">단계별 플레이</a> · <a href="#quote">견적 포지셔닝</a> · <a href="#temp">온도 읽기</a> · <a href="#case">케이스 NGT</a></div>
+<div class="layout">
+  <nav class="toc">
+    <div class="nl">PLAYBOOK 목차</div>
+    <a href="#onepager">플레이북 한 장</a>
+    <a href="#flow">상담 5단계</a>
+    <a href="#patterns">2패턴 (A·B)</a>
+    <a href="#questions">넥스트 질문 카드</a>
+    <a href="#diagnosis">결핍 도출 (USP)</a>
+    <a href="#channel">유통처 체크</a>
+    <a href="#quote">견적 화법</a>
+    <a href="#closing">클로징 · 상담 후</a>
+    <a href="#evidence">실증 근거</a>
+  </nav>
 
-<div class="wrap">
+  <main>
+    <!-- ===== 1. 한 장 ===== -->
+    <section id="onepager">
+      <div class="sec-k">ONE-PAGER</div>
+      <h2>플레이북 한 장</h2>
+      <p class="lead">상담 5분 전 이 카드 하나만 보면 된다. 나머지는 전부 백업.</p>
+      <div class="op">
+        <div class="opk">🎯 상담의 뼈대</div>
+        <div class="blk">
+          <div class="bl">흐름 — 6스텝</div>
+          <div class="bt"><b>① 회사소개</b>(고정 대본·12~15분, 끝나면 마이크 넘김) → <b>② 소개 청취</b>("직접 소개 한번 해주실 수 있을까요?") → <b>③ 사업 단계·유통처</b>("지금 사업 단계?") → <b>④ 문제 도출</b>(결핍 선지적→인정→재프레임) → <b>⑤ 견적의 답</b>(셀렉 메뉴판) → <b>⑥ 클로징</b>(다음 미팅·숙제·납기를 못 박는다).</div>
+        </div>
+        <div class="blk">
+          <div class="bl">두 패턴 — 단계로 갈린다</div>
+          <div class="bt"><b>A 런칭 전 점검형</b> = 매출·상품·런칭이 아직 없다 → "무엇부터" 체크리스트(기획·세팅). <b>B 단계 짚기형</b> = 이미 굴러간다 → 단계를 짚어 다음으로(리뉴얼·캠페인·리테이너). <b>녹취 분포 A 6 / B 7 / 혼합 2</b> — B가 다수.</div>
+        </div>
+        <div class="blk">
+          <div class="bl">현장에서 통한 무기 3가지</div>
+          <div class="bt"><b>① "왜 묻는지"를 같이 말하는 질문</b> — 타깃을 물으면 "그 타깃이 모이는 곳·언어·콘텐츠를 잡으려고요"까지. <b>② 결핍 직언</b> — "강점이 안 느껴졌어요 / 원료와 타깃이 연결이 안 돼요". 칭찬보다 빈칸이 다음 액션을 끈다. <b>③ 과잉 액션 차단</b> — "리브랜딩 하지 마세요, 다 돈이에요". 당장 수주보다 신뢰.</div>
+        </div>
+        <div class="blk">
+          <div class="bl">반드시 고칠 현장 습관 3가지 (녹취가 드러낸 구멍)</div>
+          <div class="bt"><b>① 단계 질문 0건</b> — 14건 모두 단계를 스토리에서 추론했다. 정형 질문으로 못 박기. <b>② 예산 근거가 안 보임</b> — 매출×15% 로직을 입으로. <b>③ 즉시 견적 0건</b> — 전부 "후속 전달"로 끝나 수주 온도 분기가 죽는다. 셀렉으로 자리에서 1차 견적을.</div>
+        </div>
+      </div>
+    </section>
 
-  <section id="what">
-    <div class="sec-k">WHY</div>
-    <h2>이 매뉴얼이 하는 일</h2>
-    <p class="lead">영업이 "대표 개인기"에 묶이면 회사가 못 큰다. 대표·실장의 상담·견적콜을 <b>녹취 → 반복 가능한 플레이북</b>으로 만들어, 신입도 같은 무브를 쓸 수 있게 한다.</p>
-    <div class="co ac"><span class="lab">읽는 법</span>아래 <b>원칙</b>은 "왜 그렇게 말하는가", <b>단계별 플레이</b>는 "언제 무엇을 말하는가", <b>멘트</b>는 대표의 실제 표현이다. 외우지 말고 <b>왜 먹히는지</b>를 소화할 것.</div>
-    <div class="co warn"><span class="lab">v0.1 한계</span>현재 <b>NGT 상담 1건(대표)</b>에서 추출. 애라 실장 상담·견적콜 녹취가 쌓이면 v0.2로 확장(특히 실장의 1차 분별·견적콜 클로징). <b>임애라 실장 검토·보강 예정.</b></div>
-  </section>
+    <!-- ===== 2. 5단계 ===== -->
+    <section id="flow">
+      <div class="sec-k">FLOW</div>
+      <h2>상담 5단계 골격</h2>
+      <p class="lead">녹취 14건의 실제 진행 순서를 복원하면 모두 같은 골격으로 흐른다. 단계마다 "할 일 + 현장에서 쓴 말".</p>
+      <div class="flow">
+        <div class="st">
+          <div class="sn">STEP 0</div>
+          <div class="stt">회사소개 (고정 대본)</div>
+          <div class="sb">대기업·글로벌(네슬레·CJ·하이네켄) IMC 팀 → 자사 브랜드 직접 출시 → 두 자릿수 매출이면 함께. <b>회사소개 매뉴얼(00_회사소개매뉴얼) ①~⑥을 그대로</b>. 사례는 상대 업종에 맞춰 2~3개만. 12~15분 안에 끝내고 <b>반드시 마이크를 넘긴다</b>("말씀해 주세요, 어떤 고민이 있으신지").</div>
+          <span class="sg">→ 회사소개 매뉴얼 연동</span>
+        </div>
+        <div class="st">
+          <div class="sn">STEP 1</div>
+          <div class="stt">소개 청취</div>
+          <div class="sb">"대표님이 직접 브랜드 소개 한번 해주실 수 있을까요?" 창업 배경·제품 스토리·대표 개인사를 메모하며 듣는다. 사전 PREP을 인지한 채로 — 단, 자료가 없으면 소개 요청이 곧 진단의 입력이 된다(루테아: 자료가 없어 소개부터 요청).</div>
+          <span class="sg">→ 단계·유통·USP의 1차 단서가 여기서 다 나온다</span>
+        </div>
+        <div class="st">
+          <div class="sn">STEP 2</div>
+          <div class="stt">사업 단계 · 유통처 체크</div>
+          <div class="sb"><b>"대표님, 지금 현재 사업 단계 알려 주세요"</b>로 연다(런칭 전 / 런칭 / 매출 드라이브). 단계가 추론될 때도 라벨을 입으로 확정. 폴백 질문: <span class="t n">"정식 런칭은 되신 거예요?"</span> <span class="t n">"올해 몇 년차세요?"</span>. 이어 유통처를 <b>기본 3종 + 비중 + 데이터 소유</b>로 캔다(§유통처 체크).</div>
+          <span class="sg">→ 단계가 우리 역할과 견적 결을 가른다</span>
+        </div>
+        <div class="st">
+          <div class="sn">STEP 3</div>
+          <div class="stt">문제 도출</div>
+          <div class="sb">유통처 있음 → 그곳 리뷰·VOC 분석 / 없음 → 왜 안 만드는지·뭐가 필요한지. 결핍은 <b>"선지적 → 대표 인정 → 재프레임"</b> 2박자로 끌어낸다. 최빈 결핍 = USP(§결핍 도출). 해법은 추상에서 멈추지 말고 <b>포지셔닝 한 줄</b>까지.</div>
+          <span class="sg">→ 도출된 문제 = 그대로 견적 항목</span>
+        </div>
+        <div class="st">
+          <div class="sn">STEP 4</div>
+          <div class="stt">견적의 답</div>
+          <div class="sb">문제를 셀렉 매트릭스 항목으로 옮긴다. "메뉴판처럼 준비했어요, 크게 3가지예요" + <b>추천을 명확히</b>. 화면에서 1차 견적을 바로 띄운다(PREP 셀렉 → 인라인 견적). 가격은 §견적 화법 7종으로.</div>
+          <span class="sg">→ 수주 높으면 시트 / 낮으면 링크 (클로징에서 분기)</span>
+        </div>
+        <div class="st">
+          <div class="sn">STEP 5</div>
+          <div class="stt">클로징</div>
+          <div class="sb"><b>다음 미팅일 · 클라이언트 숙제(예산 회신·자료) · 우리 산출물 납기</b> 3종을 마지막 1분에 못 박는다. "필요하면 연락 주세요"로 끝내지 않는다. Quick Tip 하나(계약 무관·지금 바로 쓸 것)로 마무리(§클로징).</div>
+          <span class="sg">→ 진단서는 항상 링크 / 견적은 온도로 분기</span>
+        </div>
+      </div>
+      <div class="co warn"><span class="lab">⚠ 시간 관리</span>마키노차야는 잡담·자기 회사 자랑이 길어 11분 만에 본론에 들어갔고, 루키노바는 콜 1시간 제한에 걸려 핵심 진단을 못 풀고 끝났다. <b>상담 시작에 소요 시간·아젠다를 합의</b>하고, 회사소개는 15분 안에 닫는다.</div>
+    </section>
 
-  <section id="principles">
-    <div class="sec-k">PRINCIPLES</div>
-    <h2>상담 5대 원칙</h2>
-    <p class="lead">NGT 녹취에서 반복된, 수주를 만드는 핵심 무브.</p>
-    <div class="principles">
-      <div class="pcard"><div class="pn">1</div><div class="pt">진단을 "근거 패키지"로 판다</div><div class="pb">"리브랜딩 비용"이 아니라 <b>"의사결정할 근거가 없어서 못 정하는 문제"</b>를 푸는 패키지로 포지셔닝. 고객의 진짜 갈증을 입구로.</div></div>
-      <div class="pcard"><div class="pn">2</div><div class="pt">외부 주도 명분을 준다</div><div class="pb">"직원은 리브랜딩 못 한다, 내부에서 하면 망한다." 외부(HIZ)가 해야 하는 이유를 논리로 깔아 <b>수주 명분</b>을 만든다.</div></div>
-      <div class="pcard"><div class="pn">3</div><div class="pt">커머디티를 디밸류한다</div><div class="pb">"예쁜 패키지·예쁜 글은 ChatGPT도 한다." 흔한 것을 깎아내리고 <b>진단·전략(우리만 하는 것)</b>의 가치를 띄운다.</div></div>
-      <div class="pcard"><div class="pn">4</div><div class="pt">범위를 선긋는다</div><div class="pb">"광고 직접 운영은 너무 헤비, 안 받습니다." <b>안 할 것을 명확히 거절</b>해서 오히려 신뢰와 전문성을 산다.</div></div>
-      <div class="pcard"><div class="pn">5</div><div class="pt">데이터를 열게 + 날짜를 박는다</div><div class="pb">"메타·매출·회원수 주세요" = 진단 입구 클로징. "12월 세일 → 1월 런칭" <b>캘린더로 긴급도를 고정</b>해 미룸을 막는다.</div></div>
-    </div>
-  </section>
+    <!-- ===== 3. 2패턴 ===== -->
+    <section id="patterns">
+      <div class="sec-k">TWO PATTERNS</div>
+      <h2>두 패턴 — 사업 단계로 갈린다</h2>
+      <p class="lead">한 미팅에 한 패턴이 아닐 수 있다(바디노트·명장주는 한 자리 2브랜드 = A+B 동시, 꽃빵은 국내 B + 글로벌 A 혼합).</p>
+      <div class="grid2">
+        <div class="pat a">
+          <div class="ph">A · 런칭 전 점검형</div>
+          <div class="pd">매출·상품·런칭이 아직 없다. "무엇부터 세팅할지" 순서를 짚는 체크리스트형. 견적은 기획·세팅 중심(경량 L1·단발).</div>
+          <ul>
+            <li>먼저 "정식 런칭은 됐나요?"로 상태 확정</li>
+            <li>기본 3종(자사몰·인스타·스마트스토어) 세팅 순서</li>
+            <li>브랜드 정리(누구에게·뭘·차별점) → 채널로 발신</li>
+            <li>매출 없음 → 가용 예산을 직접 묻는다(매출×15% 불가)</li>
+          </ul>
+          <div style="font-size:11.5px;color:var(--muted);margin-top:10px">실증: 토브 · 오늘의평야 · 파인더 · 노다지파이랩스 · (명장주)</div>
+        </div>
+        <div class="pat b">
+          <div class="ph">B · 단계 짚어주기형</div>
+          <div class="pd">이미 굴러간다(매출·채널 있음). 어디가 비었는지 단계를 짚어 다음으로 끌어올린다. 견적은 리뉴얼·캠페인·리테이너.</div>
+          <ul>
+            <li>"리브랜딩이냐 브랜드마케팅이냐" 먼저 가른다</li>
+            <li>현재 마케팅 지출을 항목별로 검증(낭비 도출)</li>
+            <li>채널 비중·재구매·데이터 소유로 자생 엔진 점검</li>
+            <li>리테이너 소액 + 시즌 캠페인 집중(턴키 설계)</li>
+          </ul>
+          <div style="font-size:11.5px;color:var(--muted);margin-top:10px">실증: 그리니팅 · 오들리 · 집지켜 · 리프트 · 루테아 · 가족컴퍼니 · 마키노차야</div>
+        </div>
+      </div>
+      <div class="co ac"><span class="lab">패턴 가르는 한 마디</span>그리니팅에서 대표가 던진 정의가 기준이 된다 — <b>"리브랜딩은 패키지 전면 교체, 가장 안 될 때 하는 것. 여기는 리브랜딩이 아니라 아직 브랜드 마케팅을 안 한 것 — 직원 바꾸는 정도."</b> 클라이언트의 과잉 액션(전면 리뉴얼)을 막고 저비용 다음 단계로 유도하는 동시에 신뢰를 키운다.</div>
+    </section>
 
-  <section id="play">
-    <div class="sec-k">PLAY · 1차 상담</div>
-    <h2>단계별 플레이 — 무엇을, 언제</h2>
-    <p class="lead">영업 프로세스 1차(상담) 흐름에 매핑. 각 단계의 목표와 대표의 실제 멘트.</p>
-    <div class="flow">
-      <div class="step"><div class="sk">콜 · 규모 파악</div><div class="sc"><div class="st">매출·체급·열을 먼저 읽는다</div><div class="sd">대면 전 콜에서 매출 규모·관심도·가능성을 가늠해 담당(대표 별표 vs 일반)을 가른다. "돈 냄새"를 맡는 감각이 배치를 결정.</div></div></div>
-      <div class="step"><div class="sk">오프닝</div><div class="sc"><div class="st">고객이 "진짜 못 푸는 것"을 말하게 한다</div><div class="sd">제품·매출 히스토리를 듣되, 표면 요청(리브랜딩) 아래의 진짜 페인을 끌어낸다.<div class="say">대표님이 아직 잘 모르겠어서 결정을 못 하시는 거예요. 정보를 제대로 넣어주는 사람이 없는 거죠<span class="src">— 권윤정 (27:56)</span></div></div></div></div>
-      <div class="step"><div class="sk">축 재정의</div><div class="sc"><div class="st">숨은 축을 찾아 무게중심을 옮긴다</div><div class="sd">고객/브리프가 생각한 축이 아니라, 상담 중 드러난 진짜 해자로 축을 재정의(NGT: 여성웰니스 → <b>"100% 제조사 정통성"</b>).<div class="say">100% 제조사 기반이 강점이에요. 소비자는 원산지에서 야채 사 먹고 싶어 한다. 그거예요<span class="src">— 권윤정 (19:37)</span></div></div></div></div>
-      <div class="step"><div class="sk">진단 포지셔닝</div><div class="sc"><div class="st">진단 = 의사결정 근거로 띄운다 (원칙 1·3)</div><div class="sd">진단을 비용이 아니라 "건강성 검사 + 결정 근거"로.<div class="say">리브랜딩은 동의. 근데 패키지 예쁘게 바꾸고 예쁜 글 쓰는 건 ChatGPT가 잘한다. 더 중요한 건 지금 우리의 건강성을 진단하는 것<span class="src">— 권윤정 (11:50)</span></div></div></div></div>
-      <div class="step"><div class="sk">골격 제시</div><div class="sc"><div class="st">6개월 3단계 로드맵을 그린다</div><div class="sd">서베이→사업계획 / 리브랜딩(외부 주도, 원칙 2) / 마케팅(예산 안에서 선택). "3개월 성과는 거짓말, 6개월 프로젝트."<div class="say">직원은 리브랜딩 못 합니다. 내부에서 하면 대부분 망해요. 저 같은 외부 사람은 쉽게 하죠<span class="src">— 권윤정 (14:33)</span></div></div></div></div>
-      <div class="step"><div class="sk">범위 선긋기</div><div class="sc"><div class="st">안 할 것을 거절한다 (원칙 4)</div><div class="sd">광고 직접 운영은 헤비하다며 제외. 현 대행 ROAS 0.3은 이관 권고만.<div class="say">ROAS 0.3은 바로 이관해야죠. 다 모았다가 한 번을 제대로 터뜨리는 걸 추천<span class="src">— 권윤정 (36:18)</span></div></div></div></div>
-      <div class="step"><div class="sk">클로징</div><div class="sc"><div class="st">데이터를 열게 하고 날짜를 박는다 (원칙 5)</div><div class="sd">진단 입구를 합의로 만들고, 데이터 요청 + 캘린더로 긴급도 고정.<div class="say">진단도 받고 견적도 받고 싶어서 → 메타 데이터 + 월별·채널별·제품별 매출 + 회원수 주세요<span class="src">— 대표/권윤정 (54:00)</span></div></div></div></div>
-    </div>
-    <div class="co ok"><span class="lab">상담 후</span>3일 내 <b>진단서 + 견적서</b> 송부. 진단의 병목 번호가 견적 블록에 1:1 대응 (영업 프로세스 1차→2차 연결).</div>
-  </section>
+    <!-- ===== 4. 넥스트 질문 ===== -->
+    <section id="questions">
+      <div class="sec-k">NEXT QUESTIONS</div>
+      <h2>넥스트를 끌어내는 질문 카드</h2>
+      <p class="lead">"핵심 질문"은 큰 도움이 안 됐다. 필요한 건 <b>다음(next)을 끌어내는 질문</b>뿐(1차논의 §6). 공통 무기는 "왜 묻는지를 함께 말하는 것".</p>
+      <div class="q"><div class="qn">CARD 1 · 타깃 → 채널·언어·콘텐츠 연쇄</div><div class="qt">"이 브랜드의 타깃을 어떻게 잡고 계세요? — 타깃을 여쭤본 건, 그 타깃들이 모이는 곳·반응하는 언어·콘텐츠를 잡고 갈 수 있기 때문이에요."</div><div class="qi">단일 질문(타깃)이 채널·언어·콘텐츠라는 다음 작업 묶음을 통째로 정당화한다. <span class="t n">루키노바</span></div></div>
+      <div class="q"><div class="qn">CARD 2 · 워너비/벤치마크 → 코어 메시지</div><div class="qt">"보고 계신 워너비 브랜드가 있으세요?" — (없다는 답에) "보고 있지 않지만 마음속엔 있으신 거예요. 대표님 안에 구축되는 메시지가 있을 테니까."</div><div class="qi">답이 "없음"이어도 "그래서 코어 메시지가 아직 안 잡혔다"는 진단 근거로 전환된다. <span class="t n">루키노바</span></div></div>
+      <div class="q"><div class="qn">CARD 3 · 지금 가장 갈증 → 산만한 대표 수렴</div><div class="qt">"비전(라이프스타일 확장)은 알겠고요 — 지금 이 시간에 그걸 다 할 순 없으니, <b>지금 가장 갈증이 있으신 게 무엇</b>인지?"</div><div class="qi">대표가 비전으로 흩어질 때 "오늘 풀 수 있는 것"으로 범위를 잘라 다음 액션으로 수렴. <span class="t n">루키노바</span></div></div>
+      <div class="q"><div class="qn">CARD 4 · 방문 동기 되짚기 → 기대 외화 / 판 키우기</div><div class="qt">"저희 방문을 받아주신 건, 조금만 더 하면 더 성장할 수 있다는 생각이 있으셔서가 아닐까요?" · "그런데 대표님 지금 라운드가 어떻게 돼요? 주요 투자사는?"</div><div class="qi">상대가 이미 가진 기대를 먼저 언어화 → "맞다, 그래서…"로 고민이 흘러나온다. 라운드·투자사를 물어 거래의 판을 키우기도(집지켜=마케팅 의뢰 → TF+투자자 연결). <span class="t n">마키노차야 · 집지켜</span></div></div>
+      <div class="q"><div class="qn">CARD 5 · 한 줄 정의 / 트래픽 잡기 → USP·CRM</div><div class="qt">"대표님이 생각하는 이 브랜드 <b>한 줄 정의</b>가 뭐예요?" · "1,600명이 들어왔는데 그냥 나갔네로 끝난 게 아니라 — 이 1,600명을 어떻게 잡을 거예요?"</div><div class="qi">추상적 비전을 한 줄로 압축시키고, 트래픽 자랑을 "전환·CRM 미설계" 과제로 재정의("무조건 고객 데이터를 확보하셔야 돼요"). <span class="t n">노다지 · 꽃빵</span></div></div>
+      <div class="q"><div class="qn">CARD 6 · 벤치마크 분해 → 모방의 표적 가르기</div><div class="qt">"그 브랜드의 <b>디자인</b>이 마음에 드신 거예요, 아니면 그 브랜드의 <b>행보</b>가 마음에 드신 거예요?"</div><div class="qi">워너비를 말하면 그게 표면(비주얼)인지 본질(포지셔닝·행보)인지 가른다 → 진짜 벤치마크 기준이 드러난다. <span class="t n">오픈놀(실장)</span></div></div>
+      <div class="q"><div class="qn">CARD 7 · 상품 최소선 → 커머스 인프라 점검</div><div class="qt">"팔 게 있어야 해요 — 유의미하려면 SKU가 적어도 20개는 있어야 하는데, 지금 4개잖아요."</div><div class="qi">콘텐츠·트래픽 자랑 전에 "그래서 뭘 파느냐"로 강제 전환. 상품·커머스 인프라 부재를 구체 과제(SKU 확보)로. <span class="t n">오늘의평야(실장)</span></div></div>
+      <div class="q"><div class="qn">CARD 8 · 콘텐츠 손절 기준 → 실행 우선순위</div><div class="qt">"올해 안에 콘텐츠가 필요한 이유를 못 찾으면, 콘텐츠는 버릴 거예요. <b>콘텐츠는 다 인건비</b>거든요."</div><div class="qi">"다 하자"는 욕심을 끊고 ROI 없는 활동을 손절. 우선순위를 비용 관점으로 못 박는다. <span class="t n">오픈놀(실장)</span></div></div>
+      <div class="co ok"><span class="lab">공통 원리</span><b>질문 → 즉시 그 답을 다음 액션·숫자에 연결</b>하는 "질문-연결" 2박자. 예산을 물었으면 곧장 과거 ROAS로, 타깃을 물었으면 곧장 채널·콘텐츠로. 질문만 하고 끊으면 신문(訊問)이 되고, 연결하면 컨설팅이 된다.</div>
+    </section>
 
-  <section id="quote">
-    <div class="sec-k">QUOTE</div>
-    <h2>견적 포지셔닝 원칙</h2>
-    <div class="co ac"><span class="lab">앵커링</span><b>진입 앵커 = 작은 yes</b> (데이터 진단 단독 착수 가능). <b>A/B 2안</b>으로 "차이를 눈으로" 보게 해 권장안을 선택하게 한다. 공통 항목 단가는 브랜드 불문 동일, 차이는 블록 깊이로.</div>
-    <div class="co"><span class="lab">티어 기준</span>대표가 들어가는 컨설팅 = 최소 5천(또는 3~4천 진입가, 억대 확장 확인 시). 견적은 싯가 — 기업 규모·브랜딩 의지로 총액을 잡고 기획파트로 미세조정.</div>
-    <div class="co"><span class="lab">견적콜은 별도 매뉴얼</span>견적 발송 후 결정을 돕는 견적콜 단계의 멘트·반론 처리는 전용 플레이북으로 분리됨 → <a href="../quote-call-playbook/" style="color:var(--ac);font-weight:700">견적콜 플레이북 ›</a> (쿠엔즈버킷 견적콜·권윤정 대표 기반)</div>
-  </section>
+    <!-- ===== 5. 결핍 도출 USP ===== -->
+    <section id="diagnosis">
+      <div class="sec-k">DIAGNOSIS</div>
+      <h2>결핍 도출 — 최빈 결핍은 USP</h2>
+      <p class="lead">상담노트·녹취 교차 분석에서 USP 결핍이 가장 잦았다(상담노트 세트 53~80%, 녹취 9건 중 6건). 핵심은 "없음"이 아니라 <b>"있는데 소비자 언어로 못 옮긴다(번역 실패)"</b>. 진단을 둘로 나눠야 처방이 갈린다.</p>
+      <div class="grid2">
+        <div class="card"><h3 style="margin-top:0">USP 발굴 — 정말 없는 경우</h3><p style="font-size:12.5px;color:var(--muted)">차별점 자체가 약하거나 모방(루테아 "헤이를 모티브로"). → <b>전략 진단</b>(블록: 데이터·전략, 브랜드 아이덴티티)이 먼저. 포지셔닝을 새로 세운다.</p></div>
+        <div class="card"><h3 style="margin-top:0">USP 번역 — 있는데 발신이 죽은 경우</h3><p style="font-size:12.5px;color:var(--muted)">강점은 데이터로 검증됐는데 언어·비주얼·콘텐츠가 공백(그리니팅·루키노바). → <b>콘텐츠·상세 리뉴얼</b>이 처방. "처음 본 사람이 3초 안에 이해하나?"가 판정 질문.</p></div>
+      </div>
+      <h3>결핍을 끌어내는 직언 5종 (대표 3 · 실장 2)</h3>
+      <div class="talk"><div class="src">오들리컴바인 — "강점이 안 느껴졌다"</div><div class="said">어느 게 강점이지 하는 게 좀 안 느껴졌던 것 같거든요. 대표님이 그래도 고집하고 가져가고 싶은 메시지가 뭔지.</div><div class="eff"><b>효과:</b> 칭찬 대신 빈칸을 먼저 던져 대표가 자기 강점을 직접 변호하게 만든다 → USP 후보가 대표 입에서 나온다.</div></div>
+      <div class="talk"><div class="src">꽃빵 — "연결이 안 된다"</div><div class="said">그 꽃의 원료가 Z세대에게 뭐가 좋은지가 연결이 안 되는 느낌이거든요. Z들은 꽃의 원료 자체엔 관심이 없다고 보거든요.</div><div class="eff"><b>효과:</b> 강점(꽃 원료)과 타깃(Z) 사이의 끊긴 선을 짚는다. 해법 = "아이덴티티는 못 바꾸니 꽃을 Z가 노는 방식으로 재설계".</div></div>
+      <div class="talk"><div class="src">파인더 — "물음표예요"</div><div class="said">저도 운영해 본 바로는, 그건 아무리 얘기해도 (소비자가 반응할지) 약간 물음표예요.</div><div class="eff"><b>효과:</b> 운영 경험을 근거로 근거 없는 가설(완두콩·제조공정 차별화)을 깨고 "쉽게 소화된다"는 다른 포지셔닝으로 전환을 정당화.</div></div>
+      <div class="talk"><div class="src">실장 — 구조 직언("감시자가 없다")</div><div class="said">그 홈페이지 만드는 팀이 CRM이나 퍼널 설계를 하나요, 아니면 예쁘게 오픈만 하나요?</div><div class="eff"><b>효과:</b> "팀이 나쁘다"가 아니라 "운영을 감시·설계하는 사람이 없다"로 구조를 짚는다 → 우리 역할(설계·감시자)을 정당화. <span class="t n">실장 진행분</span></div></div>
+      <div class="talk"><div class="src">실장 — 강자 자산 사수("왜 버려요, 몰빵")</div><div class="said">이걸 왜 버려요? 원 SKU로 34억이면 무조건 푸시예요. 돈을 분산해서 절대 쓰시면 안 돼요.</div><div class="eff"><b>효과:</b> 대표의 "리브랜딩 하지 마세요"와 같은 과잉·분산 차단. 검증된 강자 자산은 지키고 몰아주는 직언. <span class="t n">승만/슈퍼세이브(실장)</span></div></div>
+      <div class="co ac"><span class="lab">진단 공유 = "인정 → 아쉬움 → 기회" 3단</span>2차 미팅 진단 공유의 표준 화법(슈퍼세이브). <b>인정</b> "제품력은 확실해요" → <b>아쉬움</b> "근데 매출 10억인데 팔로워 1,300명, 원조인데 아무도 모르는 상황" → <b>기회</b> "반대로 지금 잡으면 기회예요. '정관장=홍삼'도 먼저 점유했기 때문이잖아요." 빈칸을 짚되 반드시 기회로 닫는다.</div>
+      <div class="co ok"><span class="lab">USP의 본질 (그리니팅)</span><b>"브랜딩은 자기 이야기를 잘하는 거예요. 지금은 대표님 이야기가 다 막혀 있어요."</b> · <b>"사람들은 제품 이야기가 아니라, 제품에 미친 파운더의 이야기를 듣고 싶어해요."</b> — USP 번역의 핵심은 대표 서사를 콘텐츠로 푸는 것.</div>
+    </section>
 
-  <section id="temp">
-    <div class="sec-k">READ</div>
-    <h2>온도 읽기 — 관심·긴급·예산</h2>
-    <p class="lead">상담 중 고객의 3축 온도를 읽어 클로징 압력을 조절한다 (NGT 기준 예시).</p>
-    <table>
-      <tr><th style="width:130px">축</th><th style="width:90px">신호</th><th>읽는 법 · 대응</th></tr>
-      <tr><td><b>관심도</b></td><td><span class="t b">높음 ★★★★</span></td><td>본인이 직접 신청, 라이브로 데이터까지 연다 → 진단 입구는 거의 확정. <b>입구를 빨리 합의</b>로 굳힌다.</td></tr>
-      <tr><td><b>긴급도</b></td><td><span class="t n">중간 ★★★</span></td><td>위기의식은 있으나 "몇 년째 못 정함" → <b>날짜(세일·런칭)로 데드라인을 박아</b> 미룸을 차단.</td></tr>
-      <tr><td><b>예산의지</b></td><td><span class="t n">중간 ★★★</span></td><td>컨설팅엔 열려 있으나 "다 바꿀 순 없다" 신중 → <b>단계적 흡수</b>(진입 앵커 → 확장)로 부담을 쪼갠다.</td></tr>
-    </table>
-  </section>
+    <!-- ===== 6. 유통처 ===== -->
+    <section id="channel">
+      <div class="sec-k">CHANNEL CHECK</div>
+      <h2>유통처 체크 — 기본 3종 + 비중 + 데이터 소유</h2>
+      <p class="lead">유통처를 "메인 어디?"만 물으면 USP·CRM 과제로 연결이 안 된다. 토브가 표준, 꽃빵이 완주 사례.</p>
+      <div class="talk"><div class="src">토브 — 기본 3종 프레임</div><div class="said">자사몰, 인스타그램, 네이버 스마트스토어 이 3개는 일단 기본이에요. 10개 20개 유통처 다 들어가면 좋지만, 브랜드 관리가 안 된 상태에서 들어가는 건 비추예요.</div><div class="eff"><b>자사몰 우선 근거 2가지:</b> ① 첫 매출이 바로 찍힌다 ② 고객 데이터가 우리에게 쌓인다. <b>운영:</b> 투트랙(자사몰+스마트스토어) 열되 자사몰 단가를 낮춰 유도.</div></div>
+      <div class="co ac"><span class="lab">2단 질문으로 캔다 (꽃빵이 유일하게 완주)</span><b>1단 "채널 비중 몇 대 몇이세요?"</b> (꽃빵 B2B:B2C=9:1, 오들리 쿠팡 80%, 루테아 자사몰 98:2) → <b>2단 "그 채널 고객 데이터는 누가 갖나요?"</b> (꽃빵: B2B 무신사가 데이터 독점 = 구조적 약점 도출). 2단까지 가야 CRM·자사몰 전환이라는 다음 과제가 나온다.</div>
+      <div class="co warn"><span class="lab">과잉 채널 경고</span>가족컴퍼니에 유튜브+인스타+스레드+개인채널을 동시에 권한 건 1인 운영 부담을 못 본 케이스. <b>히어로 제품 1개·핵심 채널부터</b>로 좁히는 게 맞다(상담노트 다수에서 분산이 문제로 반복).</div>
+    </section>
 
-  <section id="case">
-    <div class="sec-k">CASE</div>
-    <h2>케이스 — NGT (이 매뉴얼의 원천)</h2>
-    <p class="lead">2026-06-10 NGT 김수안 대표 상담(1:44). 진단+견적 송부 합의까지 도달. 위 원칙·플레이가 실제로 쓰인 한 건.</p>
-    <table>
-      <tr><th style="width:150px">무브</th><th>이 상담에서</th></tr>
-      <tr><td><b>축 재정의</b></td><td>"여성 웰니스" → <b>"100% 제조사 정통성"</b> (자사 원료공장·K-낙산균 = 경쟁사 못 따라오는 해자)</td></tr>
-      <tr><td><b>진단 포지셔닝</b></td><td>"건강성 진단이 먼저" — 리브랜딩 견적이 아니라 의사결정 근거로</td></tr>
-      <tr><td><b>외부 주도 명분</b></td><td>"직원은 리브랜딩 못 한다" → 외부 HIZ가 해야 하는 논리</td></tr>
-      <tr><td><b>범위 선긋기</b></td><td>광고 직접 운영 제외, ROAS 0.3 이관 권고만</td></tr>
-      <tr><td><b>클로징</b></td><td>데이터 요청 + "12월 세일 → 1월 런칭" 캘린더로 긴급도 고정</td></tr>
-    </table>
-    <div class="co ok"><span class="lab">결과</span>진단 입구 수주확률 80% · 6개월 리테이너 50%(진단 퀄리티가 클로징 레버). 전체 녹취·상담랩업은 로컬 비공개(`13.내추럴굿띵스`).</div>
-  </section>
+    <!-- ===== 7. 견적 화법 ===== -->
+    <section id="quote">
+      <div class="sec-k">QUOTE TALK</div>
+      <h2>견적 화법 11종</h2>
+      <p class="lead">금액은 시가(기업 규모·브랜딩 의지에 좌우)다. 고정할 수 없으니 <b>프레이밍</b>으로 정당화한다. 셀렉 매트릭스(PREP §기회·견적)가 항목별 단가라 아래 화법이 그대로 붙는다. ①~⑦ = 공통 / ⑧~⑪ = 대표·실장 고유기.</p>
+      <div class="talk"><div class="src">① 직원 N명 1년 총비용 프레임 — 그리니팅</div><div class="said">1년을 생각하시면, 내가 직원 두 명 쓸 1년 총비용을, 그걸 뛰어넘는 다섯 명이 붙어서 숏하게 하는 거예요. 그런 가격으로 계산하시는 게 맞아요.</div><div class="eff"><b>효과:</b> 절대 금액이 아니라 내부 채용 대비 비용으로 프레이밍 → 가격 저항이 줄어든다.</div></div>
+      <div class="talk"><div class="src">② A/B 복수안 + 볼륨 조절 — 바디노트·명장주</div><div class="said">5천 정도면 이 볼륨이 나와요. 도저히 못 쓰시겠다 하면 역으로 말씀 주세요 — 단계를 줄이거나, 기간을 줄이거나, 멤버를 줄여서 같은 과정을 볼륨만 낮춰 갈 수 있어요.</div><div class="eff"><b>효과:</b> 견적 거부를 "조정"으로 전환. 단, 현장에서 금액을 즉석 번복("3천은 취소할래요")하지 말 것 → 사전 견적 가이드(난이도 매트릭스)로 일관성 확보.</div></div>
+      <div class="talk"><div class="src">③ 경쟁사 가격 닻 — 바디노트</div><div class="said">저희가 5천 본 범위를, 어떤 팀은 3억을 부르더라고요.</div><div class="eff"><b>효과:</b> 더 큰 수를 먼저 보여 우리 견적을 합리적으로 보이게(앵커링). 단가 인하 요구엔 "7년차 리드만 투입이라 인원 추가 디스카운트는 없고, 기간·범위로 조정"으로 단가를 방어.</div></div>
+      <div class="talk"><div class="src">④ 금액 분해 — 미례국밥</div><div class="said">80만원 중 50만원이 광고비, 30만원이 세팅·운영비예요. 솔직히 테스트 예산이에요 — 어떤 소재가 어떤 타깃한테 먹히는지 데이터를 잡는 달입니다.</div><div class="eff"><b>효과:</b> 금액을 쪼개 보이면 "왜 이 가격"이 사라진다. 셀렉 항목별 단가를 그대로 분해해 설명.</div></div>
+      <div class="talk"><div class="src">⑤ 불포함 명시 + 자산 프레이밍 — XTeer</div><div class="said">콘텐츠 제작은 포함이 아니에요. 순수하게 비주얼 전략 + 가이드라인 + 전달 미팅 셋이에요. 한 번 만들면 2~3년 쓰는 자산입니다.</div><div class="eff"><b>효과:</b> 범위를 좁혀 신뢰를 주고, 단발 비용을 "자산"으로 재정의해 리테이너 거부감을 없앤다.</div></div>
+      <div class="talk"><div class="src">⑥ 인하우스 비교 앵커 — 슈퍼세이브</div><div class="said">Tier 1이 월 300만원인데, 인하우스 마케터 1명 뽑으면 인건비만 월 400~500이에요. 4대보험·퇴직금·교육비 빼면 저희가 훨씬 효율적이에요.</div><div class="eff"><b>효과:</b> 리테이너를 "채용 대안"으로 위치시킨다. ①과 같은 계열.</div></div>
+      <div class="talk"><div class="src">⑦ 리스크 리버설 = 진입 앵커 — 샘스캐빈</div><div class="said">풀 프로젝트 계약이 아니에요. 진단 하나만 해보시는 거예요. 마음에 안 드시면 거기서 끝내셔도 됩니다.</div><div class="eff"><b>효과:</b> 큰 약정의 부담을 없애고 블록1(진단) 단독 착수로 진입. 수주 첫 단추를 가볍게.</div></div>
+      <div class="talk"><div class="src">⑧ 지원사업 번들 — 대표 고유기</div><div class="said">견적을 받아놓고 정부 지원사업을 끌어오면, 실질 부담은 0에 가까워져요. 그 연결까지 저희가 봐드려요.</div><div class="eff"><b>효과:</b> 총액의 절대 크기를 "실부담"으로 무력화. 지원사업 매칭이 곧 수주 장벽 해소(남중 지원사업 스크리닝과 연계 가능).</div></div>
+      <div class="talk"><div class="src">⑨ 역-닻 — 대표 고유기</div><div class="said">다른 데서도 견적 받아보고 오세요. 비교해 보시면 저희가 뭘 다르게 하는지 더 잘 보이실 거예요.</div><div class="eff"><b>효과:</b> 비교를 막지 않고 권한다 → 차별점을 클라이언트가 스스로 납득. 자신감이 곧 신뢰.</div></div>
+      <div class="talk"><div class="src">⑩ 필수블록 고정 + 실행블록 가변 — 슈퍼맘약사</div><div class="said">1번(브랜드 기획)만 픽스하고 나머지는 다 빼셔도 돼요. 근데 1번만 팔 수는 없어요 — 그게 모든 것의 기준이니까.</div><div class="eff"><b>효과:</b> 블록형 견적서(STEP 구조)와 직결. 입구(기획)는 고정, 실행은 예산 따라 가변 → "착수 비용" 프레임으로 진입.</div></div>
+      <div class="talk"><div class="src">⑪ "예쁘게 하지 마세요" = 돈 아끼기 — 실장·대표</div><div class="said">얘는 대표님한테 어울리는 마케팅, 얘는 하지 마세요 — 돈 먹고 돈 먹기예요. 예쁘게만 하는 건 돈 버리는 거예요.</div><div class="eff"><b>효과:</b> 과잉·불필요 활동을 먼저 말려 "돈 아껴주는 집단"으로 신뢰 선취 → 정작 필요한 견적의 설득력이 올라간다.</div></div>
+      <div class="co ac"><span class="lab">메뉴판 + 추천 (전달 화법)</span>셀렉 결과를 말로 풀 때 — "메뉴판처럼 준비했어요, 크게 3가지예요. <b>솔직히 추천드리는 건 [L2/블록1]로 먼저</b>." 골라주되 추천을 분명히 한다("팔지 마라, 골라주라"). 외주가 싸게 부른 견적엔 "그건 쌓여요(=싸요), 잘하는 데가 아닌 거예요"로 저가=저품질 프레임.</div>
+    </section>
 
+    <!-- ===== 8. 클로징 ===== -->
+    <section id="closing">
+      <div class="sec-k">CLOSING · AFTER</div>
+      <h2>클로징 · 상담 후</h2>
+      <p class="lead">녹취 14건의 가장 큰 구멍 — 전부 "후속 전달"로 끝나 결정이 미뤄지고, 수주 온도와 무관하게 똑같이 흘러갔다. 마지막 1분을 설계한다.</p>
+      <h3>① 넥스트 강제 — 3종을 못 박는다</h3>
+      <div class="grid3">
+        <div class="card"><span class="t b">다음 미팅</span><p style="font-size:12.5px;color:var(--muted);margin-top:7px">"그럼 다음 미팅은 ○요일로 잡을게요." 날짜를 비워두지 않는다.</p></div>
+        <div class="card"><span class="t b">클라 숙제</span><p style="font-size:12.5px;color:var(--muted);margin-top:7px">예산 회신·채널 데이터·자료 — 클라이언트가 가져올 것을 지정.</p></div>
+        <div class="card"><span class="t b">우리 납기</span><p style="font-size:12.5px;color:var(--muted);margin-top:7px">"진단서는 ○요일, 견적은 그 후" — 산출물 납기를 약속.</p></div>
+      </div>
+      <div class="co bad"><span class="lab">하지 말 것</span>파인더·노다지처럼 <b>"필요하면 연락 주세요"로 끝내면 넥스트가 죽는다.</b> 좋은 본보기 = 오들리·꽃빵의 "포트폴리오 → 예산 회신 → 견적+진단" 2~3단 흐름.</div>
+      <div class="co ok"><span class="lab">수주 확정 단계 — 계약 클로징 (미례국밥 본보기)</span>넥스트 3종을 넘어 한 자리에서 <b>계약 기간 확정 · 결제조건(50% 선금 / 잔금은 세금계산서 후 7일) · 계약서 전달형태(PDF·웹링크) · 레퍼럴 요청</b>까지 못 박는다. 견적 발표가 끝이 아니라 계약 행동까지 이어붙이는 게 수주율을 가른다.</div>
+      <h3>② 산출물 4분기 전달</h3>
+      <table>
+        <tr><th>산출물</th><th>전달 형태</th><th>언제</th></tr>
+        <tr><td><b>진단서</b></td><td>링크 <span class="t b">항상</span></td><td>진단만 보낼 때 / 진단+견적 동봉(긴 버전)</td></tr>
+        <tr><td><b>견적 (수주 높음)</b></td><td>구글시트 <span class="t g">코 잡고</span></td><td>수주 확률 높은 건 — 옆에 설명·레퍼런스 붙인 마스터시트형</td></tr>
+        <tr><td><b>견적 (수주 낮음)</b></td><td>HTML 링크 <span class="t n">가볍게 털기</span></td><td>수주 의향 낮은 건 — 링크로 가볍게</td></tr>
+      </table>
+      <div class="co ac"><span class="lab">③ Quick Tip — 마무리 표준</span><b>"계약이랑 상관없이, 지금 바로 쓰실 수 있는 거 하나 알려드릴게요."</b> 비용 0·즉시 실행·자산 기반. 단계별 팁뱅크 — <b>런칭 전</b>: 인스타 바이오에 창업 스토리 한 줄 + 하이라이트 3개 / <b>매출 드라이브</b>: 톡딜 찜고객 한정수량 알림, 자사몰 재구매 쿠폰. 신뢰를 남기고 닫는다.</div>
+      <h3>④ 상담 후 24시간 + 재진단</h3>
+      <div class="co ok"><span class="lab">상담 후</span>당일 24h — 감사 + 핵심 3줄 + 미확인 변수 기록 → <b>/상담랩업</b>으로 사전 가설을 일치/수정/오류로 판정, 온도·수주확률 산출, 진단서+견적 발송. 진단은 1회성이 아님 — <b>한 달 뒤 재진단 + 매월 첫·마지막 주 체크(담당: 남중)</b>를 운영 룰로 고정.</div>
+    </section>
+
+    <!-- ===== 9. 실증 근거 ===== -->
+    <section id="evidence">
+      <div class="sec-k">EVIDENCE</div>
+      <h2>실증 근거 — 녹취 14건</h2>
+      <p class="lead">이 플레이북의 모든 화법은 아래 상담에서 실제로 나온 말이다. 화자 라벨은 녹화 계정 기준이라 부정확 — "누가 말했나"가 아니라 "무엇을 말했나" 기준으로 정리했다.</p>
+      <table>
+        <tr><th>브랜드</th><th>업종 · 단계</th><th>핵심 결핍</th><th>패턴</th></tr>
+        <tr><td><b>그리니팅</b></td><td>건강식품 · 3년차(드라이브)</td><td>USP 있으나 발신 죽음</td><td><span class="t g">B</span></td></tr>
+        <tr><td><b>루키노바</b></td><td>기능성 이너웨어 · 런칭 5개월</td><td>브랜드 정리·언어화 안 됨</td><td><span class="t g">B</span> 중도종료</td></tr>
+        <tr><td><b>마키노차야</b></td><td>외식 다점포 · 50억+</td><td>의사결정 구조(올드)</td><td><span class="t g">B</span></td></tr>
+        <tr><td><b>바디노트</b></td><td>B2B 웰니스복지</td><td>네이밍·채널 부재</td><td><span class="t g">B</span></td></tr>
+        <tr><td><b>명장주</b></td><td>전통주 신규</td><td>BI 전무·기획 공백</td><td><span class="t b">A</span></td></tr>
+        <tr><td><b>토브(더 로바)</b></td><td>화장품 에어폼 · 런칭 직전</td><td>채널 미세팅</td><td><span class="t b">A</span></td></tr>
+        <tr><td><b>집지켜(풀다)</b></td><td>핀테크 앱 · 프리A·MAU 52만</td><td>이미지·바이럴 부재</td><td><span class="t g">B</span></td></tr>
+        <tr><td><b>오들리컴바인</b></td><td>더마 화장품 · 쿠팡 1위</td><td>강점 미언어화·쿠팡 편중</td><td><span class="t g">B</span></td></tr>
+        <tr><td><b>오늘의평야(논논)</b></td><td>로컬 콘텐츠·커머스</td><td>팔 상품 부재(SKU 4)</td><td><span class="t b">A</span></td></tr>
+        <tr><td><b>파인더(W'GREEN)</b></td><td>단백질 쉐이크 · 신규 기획</td><td>재료 차별화 환상</td><td><span class="t b">A</span></td></tr>
+        <tr><td><b>리프트</b></td><td>자동차 애프터마켓 · B2C</td><td>싸구려 인식·마케팅 미확립</td><td><span class="t g">B</span></td></tr>
+        <tr><td><b>노다지파이랩스</b></td><td>교육 플랫폼 · 알파</td><td>마케팅 무경험·런칭 전</td><td><span class="t b">A</span></td></tr>
+        <tr><td><b>가족컴퍼니</b></td><td>천년초 + 소상공인 지원</td><td>온라인 판매 실행력</td><td><span class="t g">B</span></td></tr>
+        <tr><td><b>루테아(제니글로벌)</b></td><td>테이블웨어 · 런칭 후 급락</td><td>차별점 부재(모방)</td><td><span class="t g">B</span></td></tr>
+        <tr><td><b>꽃빵</b></td><td>꽃 원료 코스메틱 · Z세대</td><td>원료↔타깃 미연결</td><td><span class="t b">A</span>+<span class="t g">B</span></td></tr>
+      </table>
+      <div class="co ac"><span class="lab">분포 요약</span>패턴 <b>A 6 · B 7 · 혼합 2</b>. 사업단계 = 런칭 전·초기가 절반, 매출 드라이브가 절반. 최빈 결핍 = <b>USP(번역 실패형 다수)</b>. 견적 = <b>14건 모두 현장 즉시 제시 0건</b>(후속 전달) → 셀렉형 1차 견적이 이 플레이북의 핵심 개선점.</div>
+      <div class="co warn"><span class="lab">비표준 상담 분기 (1차 가설 · 샘플 1건씩)</span><b>의료·로컬(병원)</b> — 본브랜드 + 시술별 서브브랜딩 2층, "원장 비전 ↔ 환자 니즈 정렬"이 진단 축, 지역×시술·인테리어까지 원톤(온아치과). · <b>공공·지원사업</b> — 5단계 앞에 "입찰·과업구조 정렬"(평가표·공동수급)을 두고, 큰 회사 진입장벽엔 "브랜드라이즈 레이블 역제안". · <b>수주 후 킥오프</b> — 상담이 아니라 업무 분담·브랜드 매뉴얼·오픈 역산 일정(탭샵바).</div>
+      <div class="co ac"><span class="lab">실장 진행 녹취 보강 — 대표급 인사이트</span>위 표(대표 진행 14건)에 더해 <b>실장(애라) 전달 녹취</b>로 질문 카드 3종(벤치마크 분해·SKU 최소선·콘텐츠 손절)·결핍 직언 2종(감시자 부재·자산 사수)·견적 화법 4종(지원사업 번들·역닻·필수블록·과잉 차단)·계약 클로징을 보강. 실장 = 진단 정밀·운영 구멍을 숫자로 찌르는 실측형. <b>주의:</b> 파일명 일부 오기(현대오일뱅크=승만/슈퍼세이브, 절대콜=하예진 내용), 다수가 대표 주도분, 업종 분기는 각 1건뿐 가설 — "누가"보다 "무엇"으로 흡수.</div>
+      <div class="co"><span class="lab">출처 파일</span>학습 노트 <span class="t n">_통합작업/_학습_260616/01·02</span>(대표 녹취) · <span class="t n">10·11</span>(실장 녹취) · <span class="t n">06</span>(노션 영업 산출물) · 원본 <span class="t n">0. 노션 내 미팅 자료/</span>. 회사소개 = <span class="t n">00_회사소개매뉴얼/</span> 연동.</div>
+    </section>
+  </main>
 </div>
 
-<footer>
-  <b>BRANDRISE</b> by HIZ · 상담 매뉴얼 (플레이북) v0.1 · 내부<br>
-  출처: NGT 상담 녹취(권윤정 대표) · 애라 실장·견적콜 녹취로 확장 예정 (with 임애라 실장)<br>
-  © 2026 브랜드라이즈 by HIZ · 비공개 내부 문서
-</footer>
+<footer><div class="in">BRANDRISE (MarketingOS) · 상담 프로세스 플레이북 v3 — 녹취 14건 실증 · 내부 전용 · 클라이언트 비공개</div></footer>
 
+<script>
+const links=[...document.querySelectorAll('nav.toc a')];
+const sections=[...new Set(links.map(a=>a.getAttribute('href')))]
+  .map(href=>({href,el:document.querySelector(href)})).filter(s=>s.el);
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  const s=sections.find(s=>s.el===e.target); if(!s)return;
+  links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')===s.href));
+}})},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>obs.observe(s.el));
+</script>
 </body>
 </html>
