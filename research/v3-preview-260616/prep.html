@@ -527,7 +527,7 @@ sections.forEach(s=>obs.observe(s.el));
     return [].map.call(mx.querySelectorAll('tr[data-row]'),function(tr){
       var amts={}; [].forEach.call(tr.querySelectorAll('input[type=radio]'),function(r){ amts[r.getAttribute('data-lv')]=parseInt(r.value,10)||0; });
       var c=tr.querySelector('input:checked');
-      return { name:tr.getAttribute('data-name'), monthly:!!tr.getAttribute('data-monthly'),
+      return { key:tr.getAttribute('data-key'), name:tr.getAttribute('data-name'), monthly:!!tr.getAttribute('data-monthly'),
         L1:amts['L1']||0, L2:amts['L2']||0, L3:amts['L3']||0,
         sel:c?c.getAttribute('data-lv'):'제외', selAmt:(c&&c.getAttribute('data-lv')!=='제외')?(parseInt(c.value,10)||0):0 };
     });
@@ -537,34 +537,108 @@ sections.forEach(s=>obs.observe(s.el));
   function envNote(tot){ var rv=parseFloat(rev.value)||0; if(rv<=0) return ''; var half=Math.round(rv*750);
     return '<div class="co ac"><span class="lab">예산 ENVELOPE · 매출 기반 가늠자</span>연 마케팅비 ≈ <b>매출 × 15%</b> → 6개월치(매출억 × 750만)로 수주 규모를 가늠합니다. <b>매출 '+rv+'억 → 6개월 envelope ≈ '+fmt(half)+'만</b> · 선택 합계 '+fmt(tot)+'만 = '+(tot<=half?'<b>envelope 안에 합리적으로 듦.</b>':'<b>envelope 초과 — 항목·난이도 협의 조정.</b>')+'</div>'; }
 
-  // 📊 엑셀로 내보내기 (수주↑ · 코 잡고 정식) — 서식 있는 ExcelJS
+  // 견적 블록 표준 콘텐츠(클라이언트 고유사실 없는 범용 텍스트 — 재사용 안전). data-key로 매칭.
+  var QORDER=['IMC','진단','아이덴티티','디자인','촬영','마케팅','자사몰'];
+  var LVLABEL={L1:'경량(프리랜서)',L2:'표준(내부)',L3:'풀(외주·고사양)'};
+  var QC={
+    'IMC':{title:'브랜드 IMC 전략 파트너십 / 대행사 fee', period:'6개월 상시', plan:'● 운영 체계\n감(感) 운영 → 데이터 기반 월간 의사결정\n· 목표: 매출·광고 월간 리뷰 루틴 + 대시보드',
+      lines:[['월간 IMC 회의','매출·광고 데이터 분석 및 월 단위 마케팅 기획 리뷰 (정기 미팅 + 상시 슬랙 컨설팅)'],['AI 관리 대시보드','매출·광고 데이터 종합 분석 툴 제공 (웹 대시보드)'],['플랜 시트 납품','연간(월간) 플랜 시트 및 관리 데이터 최초 세팅']],
+      deliver:'연간(월간) 플랜 시트 및 관리 데이터 (매월 납품)'},
+    '진단':{title:'데이터 진단 + 시장 서베이 → 사업계획', period:'데이터 수령 즉시 착수 · 1~2개월', plan:'● 진단 먼저\n결정 가능한 정보로\n· 목표: 의사결정 근거 패키지 페이퍼화',
+      lines:[['1차 진단 — 데이터 정밀 분해','광고·매출·회원/CRM 백데이터 디깅 + 효율 분해·개선 권고'],['2차 진단 — 전략 페이퍼화','숨은 맥락(채널·조직·의사결정) + 노하우 → 의사결정 문서'],['시장 서베이','시장·소비자 조사 + 경쟁 분석·포지셔닝 수용도 검증'],['사업계획 골격','채널·제품·예산 로드맵 + 확장 시나리오']],
+      deliver:'데이터 진단서 + 전략 진단 페이퍼 + 시장 서베이 리포트 + 사업계획 골격'},
+    '아이덴티티':{title:'브랜드 아이덴티티 정립 + 제품체계 전략', period:'진단 직후 · 1~2개월', plan:'● 포지셔닝\n파는 것 → 브랜드로\n· 한 줄 축 공식화 + 제품 하우스 구조화',
+      lines:[['브랜드 워크숍','진단·서베이 공유 → 페르소나·니즈 정의 → 라인업 도출 (대표·핵심 멤버 참여)'],['브랜드 포지셔닝 전략','핵심 축 공식화 — 강점을 브랜드 언어로 번역 / 타겟·경쟁 포지셔닝'],['제품 라인업 전략','히어로/서브/확장 역할 정의 — 브랜드 하우스 구조화'],['브랜드 커뮤니케이션 가이드','핵심 메시지·슬로건·톤앤매너·채널별 말투 가이드']],
+      deliver:'포지셔닝 전략 문서 + 제품 라인업 역할 정의 + 커뮤니케이션 가이드'},
+    '디자인':{title:'브랜드 로고 & 패키지 디자인 리뉴얼', period:'아이덴티티 확정 후 · 2개월', plan:'● 시각화\n노후 디자인 → 정통성이 보이는 디자인',
+      lines:[['로고 리뉴얼','리뉴얼 방향 3안 → 최종 확정 + 컬러 시스템·타이포 가이드'],['패키지 디자인','메인·히어로 라인 패키지 — 채널 MD 호환'],['상세페이지 템플릿 리뉴얼','히어로 기준 신규 템플릿 — 내부 확장 적용 가능한 구조'],['브랜드 가이드라인','로고·컬러·패키지 규정 / 내부·외주 활용']],
+      deliver:'로고 리뉴얼 + 패키지 디자인 + 브랜드 가이드라인'},
+    '촬영':{title:'사진 촬영(제품·라이프스타일) + 콘텐츠 제작', period:'디자인 확정 후', plan:'● 시각 자산\n쓸 사진 확보 → 광고·상세 전용 소재',
+      lines:[['촬영 기획 및 디렉팅','콘셉트 기획·무드보드 / 셋업 / 현장 디렉팅 (1일 full day)'],['제품·라이프스타일 컷','전 라인업 제품 컷 + 라이프스타일 컷 — 입점·상세·광고 활용'],['콘텐츠 제작','광고 후킹 콘텐츠 + 랜딩용 상세 이미지']],
+      deliver:'제품 포트폴리오 컷 + 라이프스타일 컷 + 광고·상세 소재 (스튜디오 렌탈 실비 별도)'},
+    '마케팅':{title:'인스타그램 콘텐츠 기획 & 운영', period:'아이덴티티 확립 후 착수', plan:'● 자산 전환\n임대한 도달 → 소유한 팬덤(자사몰·CRM)',
+      lines:[['인스타그램 무드보드','연간 채널 운영 전략 — 시각 기준·레퍼런스 / 피드·릴스·스토리 구조'],['월 콘텐츠 기획보드','월 8~10건 기획 + 레퍼런스 — 콘텐츠 구조화 + CRM 메시지'],['캠페인 기획','시즌·런칭 캠페인 기획 + 인하우스 전수']],
+      deliver:'무드보드 + 월 콘텐츠 기획보드 + 캠페인 기획서'},
+    '자사몰':{title:'자사몰(카페24) 세팅', period:'1개월', plan:'● 판매 채널\n자사몰 자생 매출 기반 확보',
+      lines:[['사이트 기획·와이어프레임','메인·상품·상세·브랜드스토리·마이페이지 화면 구조 + 전환 UX'],['카페24 기본 셋팅','계정·배송/반품 정책·PG 결제 연동'],['UI 디자인 & 상품 페이지','쇼핑몰 UI 커스텀 + 상세 페이지 제작 + 오픈 QA']],
+      deliver:'쇼핑몰 셋팅 + 상세 페이지 디자인'}
+  };
+  // 선택된 블록을 표준 순서로 — {key,title,period,plan,lines,deliver,amount(원),level}
+  function selectedBlocks(){
+    var byKey={}; matrix().forEach(function(o){ if(o.selAmt>0) byKey[o.key]={amt:o.selAmt*10000, lv:o.sel}; });
+    var out=[]; QORDER.forEach(function(k){ if(byKey[k]&&QC[k]){ var b=QC[k]; out.push({key:k,title:b.title,period:b.period,plan:b.plan,lines:b.lines,deliver:b.deliver,amount:byKey[k].amt,level:byKey[k].lv}); } });
+    return out;
+  }
+
+  // 📊 엑셀로 내보내기 (수주↑ · 코 잡고 정식) — 실제 견적(강훈 5블록) 포맷 · ExcelJS
   var bX=document.getElementById('btnExcel');
   if(bX) bX.addEventListener('click',function(){
-    var m=matrix(), tot=selTotal(); if(!tot){ alert('선택된 항목이 없습니다.'); return; }
+    var blocks=selectedBlocks(), tot=selTotal()*10000; if(!blocks.length){ alert('선택된 항목이 없습니다.'); return; }
     var brand=brandName();
     ensureLib('https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js','ExcelJS',function(ok){
       if(!(ok&&window.ExcelJS)){
-        var rows=[['견적 항목','L1 경량','L2 표준','L3 풀','선택']].concat(m.map(function(o){return [o.name,lvCell(o.monthly,o.L1),lvCell(o.monthly,o.L2),lvCell(o.monthly,o.L3),o.sel];})); rows.push(['선택 합계','','','',tot]);
+        var rows=[['구분','항목','내용','단가','수량','계약 견적']];
+        blocks.forEach(function(b){ rows.push([b.title,'','','','','']); b.lines.forEach(function(l){ rows.push(['',l[0],l[1],'—','포함','포함']); }); rows.push(['','>> 최종 납품',b.deliver,'','','']); rows.push(['소계','','','','',b.amount]); });
+        rows.push(['합계 (VAT 별도)','','','','',tot]);
         var csv='﻿'+rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"';}).join(',');}).join('\n');
         dlBlob(csv,'text/csv;charset=utf-8', brand+'_1차견적_'+ymd()+'.csv');
         alert('엑셀 라이브러리 로드 실패 → CSV로 내보냈습니다(엑셀에서 열림).'); return;
       }
-      var AC='FF4F46E5', AC50='FFEEF2FF', AC700='FF3730A3', INK='FF0F172A', MUTE='FF64748B', PURP='FFA5B4FC';
-      var wb=new ExcelJS.Workbook(); var ws=wb.addWorksheet('1차 견적');
-      ws.columns=[{width:34},{width:15},{width:15},{width:17},{width:9}];
-      ws.mergeCells('A1:E1'); var t=ws.getCell('A1'); t.value=brand+' · 1차 견적'; t.font={bold:true,size:16,color:{argb:INK}};
-      ws.mergeCells('A2:E2'); var mt=ws.getCell('A2'); mt.value='생성일 '+ymdDash()+' · VAT 별도 · 단위 만원 · 단가 공유 원칙(브랜드 불문 동일)'; mt.font={size:10,color:{argb:MUTE}};
-      var hdr=['견적 항목','L1 경량(프리랜서)','L2 표준(내부)★','L3 풀(외주·고사양)','선택'], hr=ws.getRow(4); hr.height=24;
-      hdr.forEach(function(h,i){ var c=hr.getCell(i+1); c.value=h; c.font={bold:true,size:10,color:{argb:'FFFFFFFF'}}; c.fill={type:'pattern',pattern:'solid',fgColor:{argb:AC}}; c.alignment={vertical:'middle',horizontal:i===0?'left':(i===4?'center':'right')}; });
-      var r=5;
-      m.forEach(function(o){ var row=ws.getRow(r); row.getCell(1).value=o.name+(o.monthly?'  (월·6개월)':''); row.getCell(1).font={bold:true,color:{argb:INK}};
-        [['L1',o.L1],['L2',o.L2],['L3',o.L3]].forEach(function(p,idx){ var c=row.getCell(idx+2); if(o.monthly){ c.value='월 '+Math.round(p[1]/6);} else { c.value=p[1]; c.numFmt='#,##0'; } c.alignment={horizontal:'right'};
-          if(o.sel===p[0]){ c.fill={type:'pattern',pattern:'solid',fgColor:{argb:AC50}}; c.font={bold:true,color:{argb:AC700}}; } });
-        var sc=row.getCell(5); sc.value=o.sel; sc.alignment={horizontal:'center'}; sc.font={bold:true,color:{argb:o.sel==='제외'?'FF94A3B8':AC}}; r++; });
-      ws.mergeCells('A'+r+':D'+r); var tl=ws.getCell('A'+r); tl.value='선택 합계 (VAT 별도)'; tl.alignment={horizontal:'right'}; tl.font={bold:true,color:{argb:'FFFFFFFF'}};
-      var tv=ws.getCell('E'+r); tv.value=tot; tv.numFmt='#,##0'; tv.alignment={horizontal:'right'}; tv.font={bold:true,color:{argb:PURP}};
-      var trow=ws.getRow(r); trow.height=22; for(var ci=1;ci<=5;ci++){ trow.getCell(ci).fill={type:'pattern',pattern:'solid',fgColor:{argb:INK}}; } r+=2;
-      ['· 본 견적은 1차 제안이며 VAT 별도입니다. 항목·범위는 데이터 정밀 진단 결과에 따라 협의로 조정됩니다.','· 레벨: L1 경량(프리랜서) / L2 표준(내부) / L3 풀(외주·고사양). 단가 공유 원칙(브랜드 불문 동일).','· 월 단위 항목(IMC 파트너십)은 6개월 기준 합계입니다.'].forEach(function(n){ ws.mergeCells('A'+r+':E'+r); var c=ws.getCell('A'+r); c.value=n; c.font={size:10,color:{argb:MUTE}}; r++; });
+      var AC='FF4F46E5', AC50='FFEEF2FF', AC700='FF3730A3', GRAY='FFEFEFEF', GRAY2='FFD9D9D9', INK='FF0F172A', INK2='FF334155', MUTE='FF64748B', LINE='FFD9DEE6';
+      var thin={style:'thin',color:{argb:LINE}};
+      var wb=new ExcelJS.Workbook(); var ws=wb.addWorksheet('견적');
+      ws.columns=[{width:28},{width:30},{width:50},{width:13},{width:12},{width:16}];
+      function box(rr){ for(var c=1;c<=6;c++){ ws.getRow(rr).getCell(c).border={top:thin,left:thin,bottom:thin,right:thin}; } }
+      // 제목
+      ws.mergeCells('A1:D1'); var t=ws.getCell('A1'); t.value='[브랜드라이즈] '+brand+' 브랜드 컨설팅 — 1차 견적'; t.font={bold:true,size:14,color:{argb:INK}};
+      ws.mergeCells('E1:F1'); var dc=ws.getCell('E1'); dc.value=ymdDash()+' ver.'; dc.font={size:10,color:{argb:MUTE}}; dc.alignment={horizontal:'right'};
+      // KPI · 비고 (좌/우)
+      ws.mergeCells('A3:C3'); var kh=ws.getCell('A3'); kh.value='파트너십의 KPI'; kh.font={bold:true,size:11,color:{argb:'FFFFFFFF'}}; kh.fill={type:'pattern',pattern:'solid',fgColor:{argb:AC}};
+      ws.mergeCells('D3:F3'); var nh=ws.getCell('D3'); nh.value='비고'; nh.font={bold:true,size:11,color:{argb:'FFFFFFFF'}}; nh.fill={type:'pattern',pattern:'solid',fgColor:{argb:AC}};
+      ws.mergeCells('A4:C7'); var kt=ws.getCell('A4'); kt.value='· 데이터 정밀 진단 선행 — 결정을 내릴 수 있는 정보부터\n· 브랜드 아이덴티티 → 디자인·촬영·채널 순서 진행\n· 리테이너 + 캠페인 방식 · 인하우스 전수 목표'; kt.alignment={wrapText:true,vertical:'top'}; kt.font={size:10,color:{argb:INK2}};
+      ws.mergeCells('D4:F7'); var nt=ws.getCell('D4'); nt.value='· 본 견적의 금액은 VAT 별도 기준입니다.\n· 촬영 스튜디오 렌탈·패키지 인쇄 실비는 별도 산정.\n· 광고 매체비·퍼포먼스 광고 직접 운영은 범위 외.\n· 범위·금액은 데이터 정밀 진단 결과에 따라 협의 조정됩니다.'; nt.alignment={wrapText:true,vertical:'top'}; nt.font={size:10,color:{argb:INK2}};
+      for(var rr=3;rr<=7;rr++) box(rr);
+      // 헤더
+      var H=9; var hdr=['구분','항목','내용','단가','수량','계약 견적'];
+      hdr.forEach(function(h,i){ var c=ws.getRow(H).getCell(i+1); c.value=h; c.font={bold:true,size:10,color:{argb:AC700}}; c.fill={type:'pattern',pattern:'solid',fgColor:{argb:AC50}}; c.alignment={horizontal:i>=3?'center':'left',vertical:'middle'}; });
+      ws.getRow(H).height=20; box(H);
+      var r=H+1;
+      blocks.forEach(function(b){
+        var rH=r;
+        // 구분 헤더(블록 제목) — A:B 병합, C:F 병합=기간/레벨
+        ws.mergeCells('A'+rH+':B'+rH); var bt=ws.getCell('A'+rH); bt.value=b.title; bt.font={bold:true,size:11,color:{argb:INK}}; bt.alignment={vertical:'middle'};
+        ws.mergeCells('C'+rH+':F'+rH); var pc=ws.getCell('C'+rH); pc.value=b.period+'  ·  '+(LVLABEL[b.level]||b.level); pc.font={size:10,color:{argb:MUTE}}; pc.alignment={horizontal:'right',vertical:'middle'};
+        ws.getRow(rH).height=22; box(rH); r++;
+        // 항목 라인
+        b.lines.forEach(function(l){ var row=ws.getRow(r);
+          row.getCell(1).value=''; row.getCell(2).value=l[0]; row.getCell(2).font={bold:true,color:{argb:INK2}};
+          var d=row.getCell(3); d.value=l[1]; d.alignment={wrapText:true,vertical:'top'}; d.font={size:10,color:{argb:INK2}};
+          row.getCell(4).value='—'; row.getCell(5).value='포함'; row.getCell(6).value='포함';
+          [4,5,6].forEach(function(ci){ row.getCell(ci).alignment={horizontal:'center',vertical:'top'}; row.getCell(ci).font={size:10,color:{argb:MUTE}}; });
+          box(r); r++; });
+        // 납품물
+        var dr=ws.getRow(r); ws.mergeCells('B'+r+':F'+r);
+        dr.getCell(1).value='≫ 최종 납품'; dr.getCell(1).font={bold:true,size:9.5,color:{argb:AC700}};
+        var dd=dr.getCell(2); dd.value=b.deliver; dd.font={size:9.5,color:{argb:AC700}}; dd.alignment={wrapText:true,vertical:'top'};
+        for(var ci=1;ci<=6;ci++) dr.getCell(ci).fill={type:'pattern',pattern:'solid',fgColor:{argb:AC50}};
+        box(r); r++;
+        // 소계
+        ws.mergeCells('A'+r+':E'+r); var sl=ws.getCell('A'+r); sl.value='소       계'; sl.alignment={horizontal:'right'}; sl.font={bold:true,color:{argb:INK}};
+        var sv=ws.getCell('F'+r); sv.value=b.amount; sv.numFmt='#,##0'; sv.alignment={horizontal:'right'}; sv.font={bold:true,color:{argb:INK}};
+        for(var ci2=1;ci2<=6;ci2++) ws.getRow(r).getCell(ci2).fill={type:'pattern',pattern:'solid',fgColor:{argb:GRAY}};
+        box(r); r++;
+        // G 마케팅 가안 (블록 범위 병합) — 7열
+        ws.mergeCells('G'+rH+':G'+(r-1)); var gp=ws.getCell('G'+rH); gp.value=b.plan; gp.alignment={wrapText:true,vertical:'top'}; gp.font={size:9.5,color:{argb:INK2}};
+        for(var gr=rH;gr<=r-1;gr++) ws.getRow(gr).getCell(7).border={top:thin,left:thin,bottom:thin,right:thin};
+      });
+      // 합계
+      ws.mergeCells('A'+r+':E'+r); var hl=ws.getCell('A'+r); hl.value='합       계 (VAT 별도)'; hl.alignment={horizontal:'right'}; hl.font={bold:true,size:11,color:{argb:INK}};
+      var hv=ws.getCell('F'+r); hv.value=tot; hv.numFmt='#,##0'; hv.alignment={horizontal:'right'}; hv.font={bold:true,size:11,color:{argb:INK}};
+      for(var c3=1;c3<=6;c3++) ws.getRow(r).getCell(c3).fill={type:'pattern',pattern:'solid',fgColor:{argb:GRAY2}};
+      ws.getRow(r).height=22; box(r); r+=2;
+      // 추가 논의
+      ws.mergeCells('A'+r+':F'+r); var ad=ws.getCell('A'+r); ad.value='※ 본 견적은 1차 제안입니다. 세부 단가·산출물은 데이터 정밀 진단 결과에 따라 협의로 조정됩니다. (단가 공유 원칙 — 브랜드 불문 동일)'; ad.font={size:9.5,color:{argb:MUTE}}; ad.alignment={wrapText:true};
+      ws.getRow(1).height=22;
       wb.xlsx.writeBuffer().then(function(buf){ dlBlob(buf,'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', brand+'_1차견적_'+ymd()+'.xlsx'); });
     });
   });
