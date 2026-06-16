@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>KYH ANR 브랜드·사업 전략 진단서 | BRANDRISE</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.72;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+.hero{background:var(--ink);color:#fff;padding:60px 0 48px}
+.hero .in{max-width:960px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero .sub{font-size:15.5px;color:#cbd5e1;font-weight:300;max-width:680px;line-height:1.75}
+.hero .meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.wrap{max-width:960px;margin:0 auto;padding:36px 40px 100px}
+section{margin-bottom:50px;scroll-margin-top:24px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.lead{font-size:14.5px;color:var(--muted);margin-bottom:20px;line-height:1.7}
+h3{font-size:15px;font-weight:800;margin:24px 0 12px;color:var(--ink2);letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.co{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:13.5px;line-height:1.75;border:1px solid var(--line)}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100)} .co.ok{background:var(--ok-50);border-color:#bbf7d0}
+.co.warn{background:var(--warn-50);border-color:#fde68a} .co.bad{background:var(--bad-50);border-color:#fecdd3}
+.co b{color:var(--ink)}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
+.t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
+.t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0 4px}
+th{background:var(--soft);color:var(--ink2);font-weight:700;text-align:left;padding:10px 12px;font-size:11.5px;border-bottom:1px solid var(--line)}
+td{padding:11px 12px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b,td strong{color:var(--ink)}
+.verdict{background:var(--ink);color:#fff;border-radius:14px;padding:30px 28px;text-align:center;margin:14px 0}
+.verdict .vl{font-size:12px;color:#94a3b8;font-weight:600;letter-spacing:.1em}
+.verdict .vv{font-size:23px;font-weight:800;letter-spacing:-.01em;margin:12px 0;line-height:1.5}
+.verdict .vv em{font-style:normal;color:#a5b4fc}
+.verdict .vd{font-size:13.5px;color:#cbd5e1;line-height:1.75}
+.chs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 4px}
+.ch{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 18px;text-align:center}
+.ch.own{border:2px solid var(--ac);background:var(--ac-50)}
+.ch .cn{font-weight:700;font-size:13.5px;margin-bottom:4px}
+.ch .cv{font-size:25px;font-weight:800;color:var(--ac);margin:8px 0;letter-spacing:-.02em}
+.ch .cd{font-size:12px;color:var(--muted);line-height:1.6}
+.moat{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 4px}
+.mo{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+.mo h4{font-size:14px;font-weight:800;margin-bottom:6px}
+.mo p{font-size:12.5px;color:var(--muted);line-height:1.7}
+.mo .flag{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--ac)}
+.steps{display:flex;gap:14px;margin:18px 0 4px;overflow-x:auto}
+.st{flex:1;min-width:180px;padding:20px 18px;background:var(--soft);border:1px solid var(--line);border-radius:12px;position:relative}
+.st.on{background:var(--ac);border-color:var(--ac)}
+.st:not(:last-child)::after{content:"›";position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--ac);font-weight:800;z-index:1}
+.st .sn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.05em;margin-bottom:6px}
+.st.on .sn{color:rgba(255,255,255,.85)}
+.st .stt{font-size:14.5px;font-weight:800;color:var(--ink)}
+.st.on .stt{color:#fff}
+.st .sd{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.65}
+.st.on .sd{color:rgba(255,255,255,.9)}
+.lever{background:var(--ink);color:#fff;border-radius:14px;padding:30px 28px;margin:14px 0}
+.lever .lq{font-size:19px;font-weight:700;line-height:1.6;text-align:center}
+.lever .lq em{font-style:normal;color:#a5b4fc}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9}
+.hero h1{font-size:clamp(28px,4.6vw,40px)}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
+.minitoc{max-width:960px;margin:0 auto;padding:18px 40px 0;font-size:12.5px;color:var(--muted);letter-spacing:.01em}
+.minitoc a{color:var(--ink2);text-decoration:none;font-weight:700;transition:.15s}
+.minitoc a:hover{color:var(--ac)}
+.minitoc .sep{color:var(--line);margin:0 9px;font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
+.fcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
+.fcard .fk{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.fcard .fv{font-size:15px;font-weight:800;color:var(--ink)}
+.bn{display:flex;flex-direction:column;gap:10px;margin:14px 0 4px}
+.bcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 22px;
+  display:grid;grid-template-columns:48px 1fr auto;gap:0 18px;align-items:start}
+.bcard .bnum{grid-row:1/3;width:40px;height:40px;border-radius:11px;background:var(--ac-50);color:var(--ac-700);
+  font-size:18px;font-weight:800;display:flex;align-items:center;justify-content:center;letter-spacing:-.02em}
+.bcard.crit .bnum{background:var(--bad-50);color:var(--bad)}
+.bcard .bh{font-size:14.5px;font-weight:800;color:var(--ink);letter-spacing:-.01em;align-self:center}
+.bcard .bsev{align-self:center}
+.bcard .bd{grid-column:2/4;font-size:13px;color:var(--ink2);line-height:1.68;margin-top:6px}
+.bcard .bmap{grid-column:2/4;margin-top:10px;font-size:11.5px;font-weight:700;color:var(--ac);
+  display:inline-flex;align-items:center;gap:6px}
+section{margin-bottom:64px}
+.sec-k{display:inline-block;background:var(--ac-50);border:1px solid var(--ac-100);border-radius:7px;padding:4px 10px}
+h2{line-height:1.28}
+h3{letter-spacing:-.01em}
+table{margin:10px 0 6px}
+th{padding:11px 14px}
+td{padding:12px 14px}
+tbody tr:nth-child(even) td{background:var(--soft)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.co.ac.band{display:block;text-align:left}
+.co.ac.band .lab{color:var(--ac)}
+@media(max-width:880px){
+  .minitoc{padding:14px 22px 0;line-height:2}
+  .wrap{padding:28px 22px 80px}.hero .in{padding:0 22px}.hero h1{font-size:28px}.chs,.moat,.grid2,.grid3{grid-template-columns:1fr}.steps{flex-direction:column}.st:not(:last-child)::after{content:"";display:none}
+  .bcard{grid-template-columns:40px 1fr}
+  .bcard .bsev{grid-column:2/3;justify-self:start;margin-top:4px}
+  .bcard .bd,.bcard .bmap{grid-column:1/3}}
+@media print{
+  body{background:#fff}
+  .hero,.verdict,.lever,.st.on,.ch.own,.t,.co{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section{page-break-inside:avoid}
+  .fcard,.bcard,.co{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">BRAND · BUSINESS DIAGNOSIS · 1차 전략 진단</div>
+  <h1>KYH ANR 브랜드·사업 전략 <span class="hl">진단서</span></h1>
+  <div class="sub">"이해가 자유를 만듭니다" — 임상 경험을 <b style="color:#fff">돈 되는 사업 구조로 설계</b>하는 앞단부터.</div>
+  <div class="meta">
+    <span class="chip">수신 <b>KYH ANR · 김윤하 대표</b></span>
+    <span class="chip">작성 <b>브랜드라이즈 by HIZ</b></span>
+    <span class="chip">기준일 <b>2026-06-16</b></span>
+    <span class="chip">근거 <b>대면 상담 + 사전 인테이크</b></span>
+  </div>
+</div></div>
+
+<div class="minitoc">
+  <a href="#core">핵심 진단</a><span class="sep">·</span><a href="#structure">사업 구조</a><span class="sep">·</span><a href="#bottleneck">병목 진단</a><span class="sep">·</span><a href="#asset">숨은 자산</a><span class="sep">·</span><a href="#next">다음 단계</a><span class="sep">·</span><a href="#lever">레버리지</a>
+</div>
+
+<div class="wrap">
+
+  <section id="core">
+    <div class="sec-k">CORE DIAGNOSIS</div>
+    <h2>핵심 진단 한 줄</h2>
+    <div class="verdict">
+      <div class="vl">CORE DIAGNOSIS</div>
+      <div class="vv">KYH ANR은 <em>"실력이 없는 사람"이 아니라<br>"실력을 사업으로 설계할 앞단이 없는 사람"</em>이다.</div>
+      <div class="vd">임상 경험·방법론·스토리는 이미 강력하다. 비어 있는 건 그것을 <b style="color:#fff">"무엇을 어떤 순서로 팔 것인가"</b>로 옮기는 사업 설계와, 그 설계를 굴릴 <b style="color:#fff">초기 자본의 출처(정부지원사업)</b>다. 제품화·확장은 그다음이다.</div>
+    </div>
+  </section>
+
+  <section id="structure">
+    <div class="sec-k">STRUCTURE</div>
+    <h2>현재 수익 구조 해부 — 무엇이 돌고 무엇이 안 도나</h2>
+    <p class="lead">지금 안정적으로 도는 매출과, 대표님이 키우고 싶은 매출은 서로 다릅니다. "키우고 싶은 것"은 아직 0에서 출발합니다.</p>
+    <div class="chs">
+      <div class="ch own">
+        <div class="cn">근골격계 예방 강의</div>
+        <div class="cv">월 ~80만</div>
+        <div class="cd">현재 <b style="color:var(--ac)">유일한 안정 매출원</b>. 단 ANR 브랜드가 아닌 개인(강사) 명의 — 브랜드 자산으로 미이전.</div>
+      </div>
+      <div class="ch">
+        <div class="cn">ANR 1:1 케어</div>
+        <div class="cv">매출 0</div>
+        <div class="cd">가격(25만/회)·방법론은 확정, 아직 유료 판매 전. 대표 진단 = "1:1은 확장성이 낮다."</div>
+      </div>
+      <div class="ch">
+        <div class="cn">제품 (크림·건기식)</div>
+        <div class="cv">미투입</div>
+        <div class="cd">과거 ROK 크림(아로마·친환경) 개발 경험. "투자 많이 든다, 손대지 마라" 주변 조언 → 자본 대기 중.</div>
+      </div>
+    </div>
+
+    <h3>정부지원사업 1회 수혜 경험 (재현해야 할 모델)</h3>
+    <div class="card">
+      2023년 <b>AI 분석 프로그램</b>으로 예비창업패키지를 받았고, 그 자금으로 ROK 크림을 개발해 <b>와디즈 펀딩</b>까지 올렸습니다. 다만 예산 소진·자본 한계로 사업에서 이탈했습니다. 대표님 표현으로는 "운이 좋았다"였지만, 진단 관점에서는 <b>이미 한 번 검증된 자금 조달 경로</b>입니다 — 다음엔 운이 아니라 <b>설계된 매칭</b>으로 다시 탄다.
+    </div>
+
+    <div class="co ac band"><span class="lab">수치 출처 선 긋기 · 발언 기반 추정</span>위 수치는 상담(2026-06-16) 및 사전 인테이크 발언 기반 추정치입니다. 강의 매출·SNS 지표(인스타 4,823·스레드 5,495 주장)·측정 데이터의 정밀 확인은 <b>다음 단계(데이터·자료 수령)</b>에서 확정합니다. 핵심 메시지는 동일 — <b>안정 매출(강의)은 ANR 밖에 있고, 키우려는 ANR은 0에서 출발</b>하므로, 첫 과제는 "확장"이 아니라 "무엇부터 어떻게 돈으로 만들지"의 설계입니다.</div>
+  </section>
+
+  <section id="bottleneck">
+    <div class="sec-k">BOTTLENECKS</div>
+    <h2>5대 병목 진단</h2>
+    <p class="lead">실력(공급측)은 충분한데 사업측(방향 설계·자본 경로·포지셔닝)이 비어 있습니다. 심각도 순 — 번호는 다음 단계의 <b>1:1 코칭 어젠다</b>와 대응합니다.</p>
+    <div class="bn">
+      <div class="bcard crit">
+        <div class="bnum">1</div>
+        <div class="bh">사업 방향·모델이 미설계 — "무엇을 팔 것인가"</div>
+        <div class="bsev"><span class="t r">Critical</span></div>
+        <div class="bd">1:1 케어는 본인 진단대로 확장성이 낮고("단가 높이는 수밖에, 나만 할 수 있다"), 제품화는 자본 벽에 막혀 있습니다. 스토리·방법론은 강한데 "어떤 상품을, 어떤 순서로, 누구에게" 파는지가 한 장으로 정리돼 있지 않습니다. → 앞단 설계가 1순위.</div>
+        <div class="bmap">→ 코칭 어젠다 ①에 대응</div>
+      </div>
+      <div class="bcard crit">
+        <div class="bnum">2</div>
+        <div class="bh">초기 자본 경로 = 정부지원사업 레버가 필수</div>
+        <div class="bsev"><span class="t r">Critical</span></div>
+        <div class="bd">ANR 매출 0, 자본은 막 시작 단계, "대출은 최후의 카드"로 미루는 상황. 자비로 큰 마케팅·제품 투자를 감당하기 어렵습니다. 따라서 사업 설계·실행 비용은 <b>정부지원사업 자금으로 충당하는 구조</b>가 현실적이고, 이미 1회 수혜 경험이 있어 재현 가능성이 있습니다.</div>
+        <div class="bmap">→ 코칭 어젠다 ②에 대응</div>
+      </div>
+      <div class="bcard">
+        <div class="bnum">3</div>
+        <div class="bh">포지셔닝 미정 + 의료법 표현 리스크</div>
+        <div class="bsev"><span class="t y">High</span></div>
+        <div class="bd">'재활·치료'에 가깝게 갈지, '회복·웰니스(자기조절 루틴)'로 갈지가 아직 한 줄로 정리되지 않았습니다. 비의료기관 단독 운영에서는 '치료·재활' 표현에 규제 리스크가 있어, 메시지·홈페이지·제품 표현을 <b>'회복·웰니스·컨디셔닝'으로 통일</b>해야 가격 정당화와 법적 안전을 동시에 잡습니다.</div>
+        <div class="bmap">→ 코칭 어젠다 ③에 대응</div>
+      </div>
+      <div class="bcard">
+        <div class="bnum">4</div>
+        <div class="bh">방향이 여러 갈래 — 1인 리소스 대비 초점 과다</div>
+        <div class="bsev"><span class="t y">High</span></div>
+        <div class="bd">수면·통증·스트레스·제품(크림·건기식)·북미 진출이 동시에 열려 있습니다. 1인 운영에서 전부를 병행하면 어느 것도 첫 매출로 못 갑니다. 6개월 안에 <b>입구 하나</b>를 정하고 나머지는 후순위로 미는 우선순위 결정이 필요합니다.</div>
+        <div class="bmap">→ 코칭 어젠다 ④에 대응</div>
+      </div>
+      <div class="bcard">
+        <div class="bnum">5</div>
+        <div class="bh">신뢰자산이 ANR로 미전환·일부 미검증</div>
+        <div class="bsev"><span class="t y">Medium</span></div>
+        <div class="bd">공공·대기업 강의 30곳+ 레퍼런스는 강력하나 'ANR'이 아닌 개인 명의 실적입니다. 측정 데이터(뇌파·스트레스/수면 개선)도 자산이나 자가 측정이라 검증·표준화가 필요합니다. 신뢰자산을 <b>ANR 브랜드로 옮기고, 검증된 항목만 전면화</b>해야 합니다.</div>
+        <div class="bmap">→ 코칭 어젠다 ⑤에 대응</div>
+      </div>
+    </div>
+
+    <div class="co ac band"><span class="lab">병목 결론 · 발언 기반 추정</span>5대 병목의 공통 뿌리는 <b>"실력은 있는데 그것을 돈 되는 사업으로 옮길 앞단(방향·자본·포지셔닝)이 비어 있다"</b>는 것입니다. 위 진단은 상담 발언 기반이며, 강의 매출·SNS·측정 데이터의 정밀 수치는 자료 수령 후 확정합니다. <b>각 병목 ①~⑤는 다음 단계의 1:1 코칭 어젠다 ①~⑤로 그대로 이어집니다.</b></div>
+  </section>
+
+  <section id="asset">
+    <div class="sec-k">HIDDEN ASSET</div>
+    <h2>가장 큰 자산이 가장 안 보인다 — "사람이 직접 회복시킨 임상 스토리"</h2>
+    <p class="lead">웰니스 시장의 페인포인트는 "앱·건기식·일회성 마사지로는 진짜 안 바뀐다"는 불신입니다. KYH ANR은 사람이 직접 케어하고, 스스로 회복하는 루틴까지 남긴다 — 그런데 그 차별점이 아직 사업 언어로 정리돼 있지 않습니다.</p>
+    <div class="moat">
+      <div class="mo"><h4>임상 15년·약 2.5만 케이스</h4><p>직접 사람을 회복시켜 온 경험. 앱·건기식·일회성 마사지가 못 주는 "사람의 임상 경험"이 핵심 차별.</p><span class="flag">→ 현재: 사업 모델로 미전환</span></div>
+      <div class="mo"><h4>자기조절 루틴 (메서드 ③·④)</h4><p>호흡·턱·혀·눈·발 자기조절을 6주 루틴으로 정착. "받고 끝"이 아니라 "옆에 있는 친구처럼 일상화" — 반복·구독 매출의 씨앗.</p><span class="flag">→ 구독 모델로 설계 여지</span></div>
+      <div class="mo"><h4>측정 데이터 (뇌파 기반 참고)</h4><p>스트레스·수면·인지·자기조절 Before/After를 수치로 보여줌. "무형의 회복"을 객관화하는 도구.</p><span class="flag">→ 검증·표준화 후 신뢰자산</span></div>
+      <div class="mo"><h4>한·일 약사 파트너 + 정부지원 경험</h4><p>한국·일본 약사 면허 파트너(배우자)와 제품화 협업 가능 + 예창패·와디즈 수혜 경험. 제품·자금 양쪽의 재현 가능한 경로.</p><span class="flag">→ 중장기 제품·자금 레버</span></div>
+    </div>
+    <div class="co bad"><span class="lab">진단 결론</span>대표님은 임상 경험을 "확장성 없는 1:1"로만 보지만, 진단 결론은 반대입니다. <b>임상 스토리와 자기조절 루틴은 가장 강력한 차별 자산이며, 문제는 그것을 "팔 수 있는 사업 구조"로 옮기지 않았다는 것</b>뿐입니다. 컨설팅의 핵심 가치 = 이 자산을 <b>회복·웰니스 브랜드 언어로 번역하고, 정부지원사업을 지렛대로 첫 사업 모델을 설계·실행</b>하는 것입니다.</div>
+  </section>
+
+  <section id="next">
+    <div class="sec-k">NEXT STEP</div>
+    <h2>이 진단을 실행으로 — 다음 단계</h2>
+    <p class="lead">대표님의 진짜 니즈는 "혼자 200페이지로 쌓은 비전을 함께 정리하고 사업으로 옮길 팀"입니다. 본 1차 진단은 방향을 잡았고, 아래 순서로 실행에 옮깁니다.</p>
+    <div class="steps">
+      <div class="st on"><div class="sn">STEP 1 · 자금 경로</div><div class="stt">정부지원사업 매칭</div><div class="sd">HIZ 지원사업 예측 서비스(베타)로 KYH 상황에 맞는 사업을 탐색 + 담당자 추천 리스트 회신. 코칭·실행 비용의 출처를 먼저 확보.</div></div>
+      <div class="st"><div class="sn">STEP 2 · 사업 설계</div><div class="stt">1:1 코칭으로 방향 확정</div><div class="sd">월 단위 1:1 코칭으로 ①사업 모델 ②자금 ③포지셔닝(회복·웰니스) ④우선순위 ⑤신뢰자산 전환을 디벨롭. 비용은 STEP1 지원금으로 충당하는 구조.</div></div>
+      <div class="st"><div class="sn">STEP 3 · 확장</div><div class="stt">제품화·북미 웰니스</div><div class="sd">방향이 잡히면 크림·건기식 제품화와 북미 진출(타겟 맞춤 스토리·유통 전략)로 확장. 한·일 약사 파트너 활용.</div></div>
+    </div>
+    <div class="co warn"><span class="lab">필요 자료 (KYH → HIZ)</span>① 사업계획서·비전 정리본(현 200p+ 중 핵심) ② 강의 매출·이력 자료 ③ 측정 데이터 샘플(뇌파·Before/After) ④ SNS·홈페이지 현황 ⑤ 과거 예창패·와디즈 진행 자료<br><b>HIZ → KYH:</b> ① 정부지원사업 예측 링크/추천 리스트 ② 1:1 사업설계 코칭 진행 방식·비용안</div>
+  </section>
+
+  <section id="lever">
+    <div class="lever">
+      <div class="lq">"제품부터 만드는 게 아니다.<br><em>스토리를 돈 되는 사업으로 설계</em>하는 게 먼저고,<br>그 비용은 <em>정부지원사업</em>으로 댄다 — 이미 한 번 해보셨다."</div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <b>BRANDRISE</b> by HIZ · Brand · Business Consulting<br>
+  본 진단서는 2026-06-16 대면 상담 및 사전 인테이크 기반 <b>1차 전략 진단</b>입니다. 정량 수치는 자료 수령 후 확정되며, 임상 경력은 신뢰자산으로만 기술합니다.<br>
+  © 2026 브랜드라이즈 by HIZ · 비공개 — 수신처 제출용
+</footer>
+
+</body>
+</html>
