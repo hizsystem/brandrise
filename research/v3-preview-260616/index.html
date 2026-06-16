@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>v3 템플릿 미리보기 (내부 검토용) | BRANDRISE</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{--ink:#0f172a;--ink2:#334155;--muted:#64748b;--line:#e7e9ee;--bg:#fbfcfd;--card:#fff;--ac:#4f46e5;--ac-50:#eef2ff;--ac-100:#e0e7ff;--ac-700:#3730a3;--warn:#d97706;--warn-50:#fffbeb}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Pretendard,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:14px;word-break:keep-all}
+.hero{background:var(--ink);color:#fff;padding:48px 0 40px}
+.in{max-width:820px;margin:0 auto;padding:0 28px}
+.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:16px}
+h1{font-size:clamp(24px,4vw,30px);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:10px}
+.sub{font-size:14px;color:#cbd5e1;font-weight:300;max-width:640px}
+.wrap{max-width:820px;margin:0 auto;padding:28px 28px 80px}
+.warn{background:var(--warn-50);border:1px solid #fde68a;border-radius:12px;padding:14px 18px;margin:20px 0;font-size:13px;line-height:1.7;color:var(--ink2)}
+.warn b{color:var(--warn)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:18px 0}
+.c{display:block;border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:20px 22px;text-decoration:none;color:inherit;transition:.15s}
+.c:hover{border-color:var(--ac);box-shadow:0 4px 14px rgba(79,70,229,.10)}
+.c .k{font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--ac);margin-bottom:8px}
+.c .t{font-size:16px;font-weight:800;margin-bottom:6px}
+.c .d{font-size:12.5px;color:var(--muted);line-height:1.6}
+.c .go{margin-top:12px;font-size:12.5px;font-weight:700;color:var(--ac)}
+.note{font-size:12.5px;color:var(--muted);line-height:1.7;margin-top:8px}
+.note code{background:var(--ac-50);color:var(--ac-700);padding:2px 6px;border-radius:6px;font-size:12px}
+footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:var(--muted);font-size:12px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="hero"><div class="in">
+  <div class="badge">INTERNAL PREVIEW · 내부 검토용</div>
+  <h1>BRANDRISE v3 템플릿 미리보기</h1>
+  <div class="sub">상담 준비(PREP) · 견적서 v3 표준안. 항목·단가는 실제 견적(★BC-컨설팅 견적관리) 대조로 정비, 견적 내보내기는 실제 견적 디자인으로 재구축한 버전입니다.</div>
+</div></div>
+<div class="wrap">
+  <div class="warn"><b>⚠️ 정본 아님 — 내부 검토용 미리보기입니다.</b> 현재 정본 템플릿(<code>research/_template/</code>, <code>quote/_template/</code>)은 그대로이며, 이 페이지는 내부 컨펌 전 검토를 위해 따로 올린 것입니다. 컨펌 후 정본 승격 예정.</div>
+
+  <div class="cards">
+    <a class="c" href="prep.html">
+      <div class="k">PREP · 상담 준비</div>
+      <div class="t">prep v3 표준 (NGT 예시)</div>
+      <div class="d">7섹션 · 수주 한 장 맨 앞 · 사업단계/매출 envelope · 견적 셀렉 매트릭스(L1/L2/L3) → 1차 견적 자동 + 📊엑셀/📄HTML 내보내기.</div>
+      <div class="go">열기 →</div>
+    </a>
+    <a class="c" href="quote.html">
+      <div class="k">QUOTE · 견적서</div>
+      <div class="t">quote v3 (NGT 예시)</div>
+      <div class="d">진단맵 · PLAN A/B · 셀렉 결과 · 블록 0~5 상세 · 일정 · 비고. 인디고 클린 단일 디자인.</div>
+      <div class="go">열기 →</div>
+    </a>
+    <a class="c" href="quote-builder-v3.gs">
+      <div class="k">BUILDER · 구글시트</div>
+      <div class="t">quote-builder v3 (.gs)</div>
+      <div class="d">1,000만 초과 정본용 Apps Script 빌더. SELECT_MATRIX 단가표 = PREP 항목과 동기. (코드 파일 — 다운로드)</div>
+      <div class="go">소스 보기 →</div>
+    </a>
+  </div>
+
+  <div class="note">
+    <b>이번 정비 핵심</b><br>
+    · 견적 항목 7종을 실제 견적 블록명으로 정명: 데이터 진단 + 시장 서베이 / 브랜드 아이덴티티 정립 + 제품체계 전략 / 브랜드 로고 &amp; 패키지 디자인 리뉴얼 / 사진 촬영(제품·라이프스타일) + 콘텐츠 제작 / 인스타그램 콘텐츠 기획 &amp; 운영 / 브랜드 IMC 전략 파트너십 · 대행사 fee / 자사몰(카페24) 세팅.<br>
+    · IMC 파트너십 = 급별(월 60·실무 / 140·표준 / 300·디렉터). 단가 공유 원칙(브랜드 불문 동일).<br>
+    · PREP의 📊엑셀/📄HTML 내보내기 = 실제 견적 SELECTION RESULT 디자인(전 항목×L1/L2/L3 + 선택 표시 + TOTAL).
+  </div>
+</div>
+<footer><b>BRANDRISE</b> by HIZ · 내부 검토용 미리보기 (정본 아님) · 2026-06-16</footer>
+</body>
+</html>
