@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <!--
   ╔══════════════════════════════════════════════════════════════════════╗
-  ║  BRANDRISE PREP 통합표준 — KYH ANR (v3 템플릿 단독 작성 테스트)            ║
-  ║  · v3 표준 템플릿(prep-v3-standard-template.html)에서 NGT 콘텐츠를 전부    ║
-  ║    KYH ANR로 교체. CSS/레이아웃/셀렉매트릭스/인라인견적/JS/섹션순서 유지.    ║
+  ║  BRANDRISE PREP 통합표준 v3 — KYH ANR (대표 김윤하)                       ║
+  ║  · v3 표준 템플릿(prep-v3-standard-template.html) 골격에 KYH 콘텐츠 재배치.  ║
+  ║    CSS/레이아웃/셀렉매트릭스/인라인견적/JS(엑셀·HTML 내보내기)/7섹션 순서 유지.  ║
   ║  · 진단/니즈/적합도 = "가설" 표기. 정량 수치엔 출처 칩. 미확인 명기.        ║
+  ║  · 견적 매트릭스 = KYH 기준(진단 L1 500만만 체크, 입구형 소형).             ║
+  ║  · 의료법 언어 — '치료·재활' 회피, '회복·웰니스·컨디셔닝' 통일.             ║
+  ║  배포: research/kyh-anr-v2/                                             ║
   ╚══════════════════════════════════════════════════════════════════════╝
 -->
 
@@ -221,269 +224,16 @@ table.selmx label span{display:block;font-weight:400;color:var(--muted);font-siz
 <div class="layout">
   <nav class="toc">
     <div class="nl">PREP 목차</div>
-    <a href="#company">기업 · 정량</a>
-    <a href="#product">제품 · 채널</a>
-    <a href="#market">경쟁 · 시장</a>
-    <a href="#needs">SWOT · 니즈</a>
-    <a href="#stage">사업 단계</a>
-    <a href="#diagnosis">핵심 진단</a>
-    <a href="#deal">기회 · 견적</a>
     <a href="#onepager">수주 한 장</a>
-    <a href="#consult">상담 준비</a>
+    <a href="#diagnosis">핵심 진단</a>
+    <a href="#company">기업 · 제품 · 채널</a>
+    <a href="#market">시장 · 경쟁 · 니즈</a>
+    <a href="#deal">기회 · 견적</a>
+    <a href="#consult">상담 진행</a>
     <a href="#sources">참고 출처</a>
   </nav>
 
   <main>
-    <section id="company">
-      <div class="sec-k">COMPANY & SIGNALS</div>
-      <h2>기업 · 정량 시그널</h2>
-      <p class="lead">임상 15년·2.5만 케이스 물리치료사 1인이 직접 경험을 루틴·교육·제품으로 확장하는 초기 웰니스 브랜드. <span class="t y">가설</span> HIZ 풀에서 저예산·고(高)니즈핏 입구형 계약.</p>
-      <div class="grid2">
-        <div class="card">
-          <h3 style="margin-top:0">기업 기초</h3>
-          <div class="cards">
-            <div class="fcard"><div class="fk">브랜드 / 대표</div><div class="fv">KYH ANR (Keep Your Humanity) · 김윤하 <span class="t n">소개서</span></div></div>
-            <div class="fcard"><div class="fk">법인 / 등록</div><div class="fv">KYH(경영컨설팅업) · 2026.2.6 서울 등록 · 초기 <span class="t n">답변서</span></div></div>
-            <div class="fcard"><div class="fk">운영 형태</div><div class="fv">1인 운영 · 센터(서울 거점) 없음 <span class="t n">답변서</span></div></div>
-            <div class="fcard"><div class="fk">대표 이력</div><div class="fv">임상 15년 · 2.5만 케이스 물리치료사 <span class="t n">소개서/IG 바이오</span></div></div>
-            <div class="fcard"><div class="fk">슬로건 / 홈피</div><div class="fv">"이해가 자유를 만듭니다" · kyhanr.org</div></div>
-            <div class="fcard"><div class="fk">기존 거점</div><div class="fv">시흥 병원(접근성 낮음) <span class="t n">답변서</span></div></div>
-          </div>
-        </div>
-        <div class="card">
-          <h3 style="margin-top:0">정량 시그널 <span style="font-size:11px;color:var(--muted);font-weight:500">(값 · 출처)</span></h3>
-          <table>
-            <tr><td style="width:38%"><b>ANR 매출</b></td><td><b>0</b> (런칭 전) <span class="t n">답변서</span></td></tr>
-            <tr><td><b>안정 매출</b></td><td>근골격계 예방 강의 월 ~80만 (ANR과 별개·유일 안정) <span class="t n">답변서</span></td></tr>
-            <tr><td><b>메인 제품가</b></td><td>ANR 1:1 케어 <b>25만/회</b> (수기 20만 + 골드링 온열 5만) <span class="t n">답변서</span></td></tr>
-            <tr><td><b>패키지</b></td><td>6주 자기조절 루틴 패키지 <span class="t n">답변서</span></td></tr>
-            <tr><td><b>B2B 강의</b></td><td>30곳+ (국민연금공단·인천공항·현대자동차·한국마사회·KAIST·해양경찰청·공무원연금공단·교정시설4 등, 2022~26, 광고비 0) <span class="t n">소개서</span> ★ANR 아닌 '근골격계 강사/김윤하' 명의</td></tr>
-          </table>
-        </div>
-      </div>
-      <div class="co warn"><span class="lab">⚠️ 크레덴셜 미확인</span><b>독립 출처 확인 안 됨</b> — "2024 이달의 물리치료사" <span class="t y">미확인</span> · "우즈벡 대통령실 자문" <span class="t y">미확인</span> · "ACPR 이사" <span class="t y">미확인</span> · "연세대 보건과학과" <span class="t y">미확인</span>. (IG 바이오엔 "15년차"만 표기) → 미팅 전 팩트체크 필요. 신뢰자산 활용 시 검증된 항목만 전면화.</div>
-      <div class="co"><span class="lab">🔗 관련 링크 · 홈피 · SNS</span>
-        <a href="https://kyhanr.org" target="_blank" rel="noopener">홈피 kyhanr.org</a> ·
-        <a href="https://instagram.com/yoonhap_py" target="_blank" rel="noopener">IG @yoonhap_py</a>
-        <br><span style="color:var(--muted)">상담 전 라이브 확인 — 홈피 상담→결제 동선 유무 / IG·스레드 콘텐츠 톤·팔로워(주장값 교차검증). 팔로워는 로그인 필요·미확인.</span>
-      </div>
-    </section>
-
-    <section id="product">
-      <div class="sec-k">PRODUCT & CHANNEL</div>
-      <h2>제품 · 채널</h2>
-      <p class="lead">ANR 4단계 방법론 + 4대 수익구조 설계는 갖췄으나, 첫 매출 입구(1:1 케어)가 아직 안 돈다. 채널은 SNS·홈피·오프라인 네트워크 — 유료광고 0.</p>
-      <h3>ANR 방법 4단계 (메서드)</h3>
-      <table>
-        <tr><th>단계</th><th>내용</th><th>핵심</th></tr>
-        <tr><td><b>① 체크</b></td><td>문진 · 뇌파 참고</td><td>현재 상태 측정 <span class="t b">데이터 자산</span></td></tr>
-        <tr><td><b>② 케어</b></td><td>수기 · 온열(골드링)</td><td>1:1 케어 = 입구·핵심 경험</td></tr>
-        <tr><td><b>③ 훈련</b></td><td>호흡·턱·혀·눈·발 자기조절</td><td>스스로 회복하는 루틴 (차별점)</td></tr>
-        <tr><td><b>④ 일상화</b></td><td>6주 루틴 패키지로 정착</td><td>반복·구독 매출 연결 여지</td></tr>
-      </table>
-      <h3>4대 수익구조 (설계)</h3>
-      <table>
-        <tr><th style="width:18%">구조</th><th>내용</th></tr>
-        <tr><td><b>① 1:1 케어</b></td><td>입구·데이터 자산 (25만/회) — 첫 매출 전환의 핵심</td></tr>
-        <tr><td><b>② 제품</b></td><td>셀프케어·바디케어·화장품 (한·일 약사 파트너)</td></tr>
-        <tr><td><b>③ 교육·라이선싱</b></td><td>ANR 디렉터 양성</td></tr>
-        <tr><td><b>④ 콘텐츠·선물</b></td><td>콘텐츠 자산·선물(기프트) 형태</td></tr>
-      </table>
-      <h3>채널 현황 (유료광고 0)</h3>
-      <table>
-        <tr><th style="width:18%">구분</th><th>채널</th></tr>
-        <tr><td><b>자사</b></td><td>홈피 kyhanr.org · IG @yoonhap_py 4,823 <span class="t y">주장·미확인</span> · Threads 5,495 <span class="t y">주장·미확인</span></td></tr>
-        <tr><td><b>오프라인</b></td><td>오프라인 네트워크 (현재 <b>최대 유입</b>) · B2B 강의 현장</td></tr>
-        <tr><td><b>광고</b></td><td>유료광고 0</td></tr>
-      </table>
-      <div class="co ac"><span class="lab">🎤 진단 포인트</span>제품·방법론·수익구조 설계는 있으나, <b>"홈피·SNS·오프라인 → 1:1 케어 첫 결제"로 이어지는 전환 배관이 없음</b>. 오프라인 네트워크가 최대 유입인데 B2C ANR 전환은 0 → 미팅 1순위는 "현 유입이 왜 결제로 안 가나".</div>
-      <div class="co"><span class="lab">🔗 관련 링크 · SNS · 홈피</span>
-        <a href="https://instagram.com/yoonhap_py" target="_blank" rel="noopener">IG @yoonhap_py</a> ·
-        <a href="https://kyhanr.org" target="_blank" rel="noopener">홈피 kyhanr.org</a>
-        <br><span style="color:var(--muted)">콘텐츠 톤·팔로워(주장값 검증)·홈피 상담→결제 동선 점검. 의료법상 표현(치료·재활) 사용 여부도 함께 확인.</span>
-      </div>
-    </section>
-
-    <section id="market">
-      <div class="sec-k">COMPETITION & MARKET</div>
-      <h2>경쟁 · 시장 · 유사 케이스</h2>
-      <p class="lead">수면·웰니스 시장은 크고 성장 중. "임상 수기케어 + 자기조절 루틴" 교집합은 국내 거의 빈 블루오션 — KYH의 방어선이자 포지셔닝 축. <span class="t y">가설</span></p>
-      <h3>시장 (2026-06-16 확인)</h3>
-      <table>
-        <tr><th>지표</th><th>값</th><th>시사점</th></tr>
-        <tr><td>국내 수면시장</td><td>~3조 (2021) <span class="t n">직접 리서치</span></td><td>수요 충분 — KYH 우호</td></tr>
-        <tr><td>수면장애 인구</td><td>110만 (2022) <span class="t n">직접 리서치</span></td><td>타겟 모수 큼</td></tr>
-        <tr><td>웰니스 시장</td><td>~140조 <span class="t n">직접 리서치</span></td><td>셀프케어·구독 트렌드↑</td></tr>
-      </table>
-      <h3>경쟁 지형 (가설)</h3>
-      <table>
-        <tr><th>경쟁</th><th>포지션</th><th>KYH 시사점</th></tr>
-        <tr><td>수면센터·정신과</td><td>검사·약물 (의료)</td><td>약물 외 관리 수요를 KYH가 흡수</td></tr>
-        <tr><td>수면앱·매트리스(삼분의일)</td><td>제품·디바이스</td><td>'직접 경험+사람의 케어'로 차별</td></tr>
-        <tr><td>마사지·도수치료</td><td>~10.9만/회 · 의료기관 종속 <span class="t n">직접 리서치</span></td><td>KYH 25만 = 2~3배 → '럭셔리 회복' 포지셔닝 필요</td></tr>
-        <tr><td>수면 건기식(라포즈미·녹트리서치)</td><td>섭취형</td><td>루틴·케어와 결합 가능(보완재)</td></tr>
-        <tr><td>하이브리드 인접(젠테라피·미본·올롯)</td><td>웰니스·테라피</td><td>유사 드묾 — 교집합이 비어 있음</td></tr>
-      </table>
-      <div class="co"><span class="lab">🔗 관련 링크 · 경쟁 · 시장</span>
-        <a href="https://www.123sleep.kr" target="_blank" rel="noopener">삼분의일(수면 D2C)</a> ·
-        <a href="https://www.instagram.com/explore/search/keyword/?q=%EC%A0%A0%ED%85%8C%EB%9D%BC%ED%94%BC" target="_blank" rel="noopener">젠테라피·웰니스 인접 케이스</a>
-        <br><span style="color:var(--muted)">수면 디바이스·건기식 vs '사람 케어+루틴' 포지셔닝 비교. 가격대(마사지·도수 ~10.9만 / 호텔 스파 20~30만) 정당화 근거 확인. (시장 수치·URL = §참고 출처)</span>
-      </div>
-      <div class="co ac band"><span class="lab">시장 시사 (가설)</span><b>'임상 수기케어 + 자기조절 루틴' 교집합 = 국내 거의 빈 블루오션</b>. 가격 25만/회는 마사지·도수·PT의 2~3배이지만 <b>호텔 럭셔리 스파(20~30만)와 동급</b> → '럭셔리 회복 경험'으로 포지셔닝하면 정당화. 앱·마사지·건기식이 못 주는 "사람의 임상 경험 + 스스로 회복하는 루틴"이 KYH의 유일한 자리.</div>
-    </section>
-
-    <section id="needs">
-      <div class="sec-k">SWOT & NEEDS</div>
-      <h2>SWOT · 니즈 (표면 → 진짜)</h2>
-      <p class="lead">표면 = "첫 유료고객·반복매출로 연결". 진짜 = 센터·광고비 없는 1인 초기에 ANR 1:1을 첫 B2C 수익으로 만드는 전환 배관 + 포지셔닝(치료 vs 웰니스) 정리. <span class="t y">상담 전 가설</span></p>
-      <div class="swot">
-        <div class="sw s"><h4>Strengths</h4><ul><li>임상 15년·2.5만 케이스 직접 케어 (신뢰자산)</li><li>'직접 경험+자기조절 루틴'으로 앱·마사지·건기식과 차별</li><li>B2B 강의 30곳+(공공·대기업) 레퍼런스 (광고비 0)</li><li>측정 데이터(스트레스·수면·인지 개선) 보유</li></ul></div>
-        <div class="sw w"><h4>Weaknesses</h4><ul><li>ANR 1:1 B2C 전환 0 (첫 매출 미검증)</li><li>인프라 부재 — 서울 거점 없음, 시흥 병원 접근성 낮음</li><li>1인 운영 — 실행 리소스·예산 제약</li><li>B2B 강의 자산이 'ANR' 아닌 개인 명의 (미이전)</li></ul></div>
-        <div class="sw o"><h4>Opportunities</h4><ul><li>수면 3조·웰니스 140조 시장 + 셀프케어·구독↑</li><li>'수기케어+루틴' 교집합 = 빈 블루오션 선점</li><li>1인 의사결정 = 빠른 실행·피벗</li></ul></div>
-        <div class="sw tt"><h4>Threats</h4><ul><li><b>의료법 리스크</b> — '치료·재활·도수치료' 표현 금지(아래 진단)</li><li>가격 25만 진입장벽(마사지 2~3배)</li><li>센터 없음 = 1:1 케어 물리적 공간 제약</li></ul></div>
-      </div>
-      <h3>고민의 층위 (가설 · 표면 → 근본)</h3>
-      <div class="co"><b>① 표면</b> "ANR을 첫 유료고객·반복매출로 연결하고 싶다"(대표 명시) → <b>② 증상</b> 홈피·SNS·오프라인 유입은 있는데 1:1 케어 결제가 0 → <b>③ 구조</b> 유입→상담→결제로 이어지는 전환 배관과 한 줄 포지셔닝이 없음 → <b>④ 근본</b> 센터·광고비 없는 1인 초기 + 포지셔닝 미정(치료·재활 vs 웰니스) = 첫 매출 엔진 부재</div>
-      <div class="co ac band"><span class="lab">표면 vs 진짜 니즈 (가설)</span>표면 = "포지셔닝·로드맵 자문". 진짜 = <b>첫 매출 배관 + 포지셔닝 동시 세팅</b> — ①치료가 아닌 '회복·웰니스' 한 줄 축 확정 ②홈피→상담→결제 전환 동선 ③1차 타겟·수익모델 우선순위. 대표도 "포지셔닝/1차 타겟/수익모델 우선순위/6개월 로드맵/홈피·SNS 전환구조/공간 전략"을 직접 기대 → 니즈-서비스 핏 강함(단, 예산은 작음).</div>
-    </section>
-
-    <section id="stage">
-      <div class="sec-k">BUSINESS STAGE</div>
-      <h2>사업 단계 — 상담 첫 질문</h2>
-      <p class="lead">상담은 항상 이 질문으로 연다 — <b>"대표님, 지금 현재 사업 단계 알려 주세요."</b> 어느 구간이냐에 따라 우리 역할과 견적의 결이 완전히 갈린다. 단계가 정해지면 아래 <b>단계별 질문 세트</b>로 체크한다(범용 사전질의 대체).</p>
-      <div class="stages">
-        <div class="stage on">
-          <div class="sgn">STAGE 1 · KYH 판정</div>
-          <div class="sgt">런칭 전</div>
-          <div class="sgd">ANR 제품·가격(25만)·방법론은 준비됐으나 <b>매출 0·센터 없음</b>. 첫 매출 전환 경로·포지셔닝이 비어 있음.</div>
-          <span class="sgr">우리 역할 → 첫 매출 전환 경로 세팅(홈피→상담→결제) + 포지셔닝</span>
-        </div>
-        <div class="stage">
-          <div class="sgn">STAGE 2</div>
-          <div class="sgt">런칭</div>
-          <div class="sgd">제품·채널·용기 다 있음. 핵심은 "잘 됐나?" 점검.</div>
-          <span class="sgr">우리 역할 → 점검 → 안 됐으면 세팅·리뉴얼 개선</span>
-        </div>
-        <div class="stage">
-          <div class="sgn">STAGE 3</div>
-          <div class="sgt">매출 드라이브</div>
-          <div class="sgd">운영 중. 현재 마케팅을 분석해 성과 나는 것은 유지 / 무의미한 것은 새 제안(테스트).</div>
-          <span class="sgr">우리 역할 → 현재 마케팅 분석 → 유지 / 신규 제안</span>
-        </div>
-      </div>
-      <div class="co ac"><span class="lab">🔴 KYH = 런칭 전 단계</span>ANR 제품·가격·방법론 준비 완료, <b>매출 0·센터 없음</b>. 우리 일은 "운영 최적화"가 아니라 <b>첫 매출이 나오는 경로를 처음부터 세팅</b>(홈피→상담→결제 배관) + <b>포지셔닝(치료·재활 vs 웰니스) 정리</b>. 단계별 질문도 STAGE 1 세트로 연다.</div>
-      <h3>단계별 질문 세트 (상담 중 체크)</h3>
-      <div class="grid3">
-        <div class="card" style="border:2px solid var(--ac);background:var(--ac-50)"><h3 style="margin-top:0;color:var(--ac)">런칭 전 ★KYH</h3><ul style="list-style:none;font-size:12.5px;color:var(--ink2);line-height:1.7">
-          <li>· 제품 개발 어디까지(메서드·가격·인증)?</li>
-          <li>· 1:1 케어 공간은(센터 없이 어떻게)?</li>
-          <li>· 홈피·SNS에 상담→결제 동선 있나?</li>
-          <li>· 브랜드 한 줄 정의(치료 vs 웰니스)?</li>
-          <li>· 6개월 목표·예산 규모는?</li>
-        </ul></div>
-        <div class="card"><h3 style="margin-top:0;color:var(--ac)">런칭</h3><ul style="list-style:none;font-size:12.5px;color:var(--ink2);line-height:1.7">
-          <li>· 채널 세팅 됐나 → 잘 돌고 있나?</li>
-          <li>· 용기·패키지 리뉴얼 필요한가?</li>
-          <li>· 상세·콘텐츠가 타겟·트렌드에 맞나?</li>
-          <li>· 초기 반응(전환·후기) 데이터?</li>
-          <li>· 막히는 지점이 어디라고 느끼나?</li>
-        </ul></div>
-        <div class="card"><h3 style="margin-top:0;color:var(--ac)">매출 드라이브</h3><ul style="list-style:none;font-size:12.5px;color:var(--ink2);line-height:1.7">
-          <li>· 채널별 매출 비중·추이?</li>
-          <li>· 재구매율·LTV·CRM 상태?</li>
-          <li>· 현재 마케팅 중 성과 / 무의미한 것?</li>
-          <li>· 유통처 리뷰·VOC 분석해 봤나?</li>
-          <li>· 다음 성장축(구독·확장) 방향?</li>
-        </ul></div>
-      </div>
-    </section>
-
-    <section id="diagnosis">
-      <div class="sec-k">DIAGNOSIS (가설)</div>
-      <h2>핵심 진단</h2>
-      <p class="lead">제품·방법론·B2B 레퍼런스는 갖춤. 비어 있는 건 "첫 B2C 유료 전환 배관"과 "치료가 아닌 회복·웰니스 한 줄 포지셔닝". <span class="t y">상담 전 가설</span></p>
-      <div class="kpi">
-        <div class="k"><div class="lbl">임상 경험</div><div class="v">15년·2.5만</div><div class="s">케이스 직접 케어</div></div>
-        <div class="k"><div class="lbl">B2B 강의</div><div class="v">30곳+</div><div class="s">공공·대기업 (광고비 0)</div></div>
-        <div class="k"><div class="lbl">메인 제품가</div><div class="v">25만/회</div><div class="s">ANR 1:1 케어</div></div>
-        <div class="k alt"><div class="lbl">시급 과제</div><div class="v">첫 B2C 전환</div><div class="s">ANR 1:1 매출 0 → 결제 배관</div></div>
-      </div>
-      <div class="grid3" style="margin-top:14px">
-        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">ANR 1:1 B2C 전환 0</h3><p style="font-size:12.5px;color:var(--muted)">제품·가격·방법론은 있는데 첫 유료 케어 결제가 0. 원인=인프라(서울 거점 없음·시흥 접근성 낮음) + 홈피→상담→결제 배관 부재. <span class="t y">가설</span></p></div>
-        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">의료법 리스크 (포지셔닝 직결)</h3><p style="font-size:12.5px;color:var(--muted)">의료법56조·의료기사법 — 비의료기관·의사처방 없는 단독운영서 <b>'치료·재활·도수치료' 표현 금지</b>, 물치사도 단독 개설 불가. 페이지·메시지 전반 '회복·웰니스·컨디셔닝·자기조절 루틴'으로 통일 필요.</p></div>
-        <div class="card"><span class="t y">High</span><h3 style="margin:8px 0 6px">포지셔닝 미정 (치료 vs 웰니스)</h3><p style="font-size:12.5px;color:var(--muted)">임상 경력을 신뢰자산으로 쓰되 '치료 제공' 인상은 금지. 어디에 서느냐(럭셔리 회복 경험 vs 재활)가 가격·메시지·법적 안전 모두를 가른다. <span class="t y">가설</span></p></div>
-      </div>
-      <div class="co bad"><span class="lab">진단 결론 (가설)</span><b>ANR 매출 0</b> = "첫 매출 엔진 부재". 강점(임상 15년·2.5만 케이스·자기조절 루틴)을 <b>'치료가 아닌 럭셔리 회복·웰니스' 한 줄 축</b>으로 좁히고, 홈피→상담→결제 배관을 세우면 오프라인 네트워크 유입이 첫 유료 고객으로 전환된다. 핵심은 "확장"이 아니라 <b>"첫 결제가 나오는 배관 + 의료법 안전한 포지셔닝"</b>.</div>
-    </section>
-
-    <section id="deal">
-      <div class="sec-k">FIT & ESTIMATE</div>
-      <h2>기회 평가 · 견적 (가설)</h2>
-      <div class="verdict"><div class="vl">종합 기회 적합도 (상담 전 가설)</div><div class="vv">4.0 / 5.0</div><div class="vd">✅ GO — 니즈핏 강·블루오션·1인 의사결정 빠름. 감점: 예산 제약(ANR 매출 0) + 센터 부재</div></div>
-      <div class="grid2">
-        <div class="card"><h3 style="margin-top:0">적합도 (가중) <span class="t n">변별력 낮음 · 참고용</span></h3>
-          <p style="font-size:11.5px;color:var(--muted);margin:-4px 0 8px">※ 서비스 모르는 상태의 점수는 변별력이 낮음(미팅). 1차 판단은 아래 <b>매출 envelope</b>, 점수는 우선순위 판단용 참고. <span class="t y">가설</span></p>
-          <table>
-          <tr><td>니즈-핏 30%</td><td><b>5</b></td><td>첫 매출 배관+포지셔닝 = 코어 니즈</td></tr>
-          <tr><td>예산 20%</td><td><b>2</b></td><td>ANR 매출 0·강의 월 80만 — 제약</td></tr>
-          <tr><td>의사결정 15%</td><td><b>5</b></td><td>김윤하 대표 1인 = 즉결</td></tr>
-          <tr><td>긴급도 15%</td><td><b>4</b></td><td>6개월 첫 수익구조 검증 목표</td></tr>
-          <tr><td>성장·레퍼런스 20%</td><td><b>4</b></td><td>블루오션·B2B 강의 레퍼런스</td></tr>
-        </table></div>
-        <div class="card"><h3 style="margin-top:0">리스크 5종 · GO 분기점</h3><table>
-          <tr><td>의사결정</td><td><span class="t g">✅</span> 대표 1인 즉결</td></tr>
-          <tr><td>예산 흡수</td><td><span class="t r">⚠️</span> 매출 0 — 입구형 소형 필수</td></tr>
-          <tr><td>카테고리 핏</td><td><span class="t g">✅</span> 블루오션·니즈 명확</td></tr>
-          <tr><td>의료법</td><td><span class="t r">⚠️</span> '치료' 표현 금지 — 포지셔닝 직결</td></tr>
-          <tr><td>인프라(공간)</td><td><span class="t y">⚠️</span> 센터 없음 — 1:1 공간 전략 필요</td></tr>
-        </table></div>
-      </div>
-      <h3>매출 기반 예산·투입 추정 (envelope)</h3>
-      <div class="co ac"><span class="lab">1차 판단 = 매출 envelope</span><b>연 마케팅비 ≈ 매출 × 15%</b>(화장품 등 최대 30%) → <b>6개월치(매출억 × 750만)</b>로 환산해 수주 규모·투입 레벨을 가늠. <b>보조 질문:</b> "최근 3~6개월 마케팅/광고비 얼마 쓰세요?" (현재 유료광고 0)</div>
-      <table>
-        <tr><th>연매출 구간</th><th>연 마케팅비(×15%)</th><th>6개월 envelope</th><th>주력 투입</th></tr>
-        <tr><td>① ~1억</td><td>~1,500만</td><td>~750만</td><td>PM급 · 경량 진입</td></tr>
-        <tr><td>② 1~10억</td><td>1,500만~1.5억</td><td>750만~7,500만</td><td>팀장·PM급</td></tr>
-        <tr><td>③ 10~50억</td><td>1.5억~7.5억</td><td>7,500만~3.75억</td><td>팀장급(일부 대표)</td></tr>
-        <tr><td>④ 50~100억+</td><td>7,500만+</td><td>3.75억+</td><td>대표 투입 · 수주확률↑</td></tr>
-      </table>
-      <div class="co bad"><span class="lab">⚠️ KYH 적용 — 표준 패키지 현 예산 초과</span>ANR 매출 0 · 안정 매출 = 강의 월 80만(연 ~1,000만). ×15% ≈ 연 150만 → 6개월 envelope ≈ <b>75만</b>. <b>표준 셀렉(L2 풀)은 현 예산을 크게 초과</b> → 표준 패키지로 접근하면 안 됨. <b>맞춤 진입 패키지가 필요</b>하다. (단, 6개월 목표 합산 ~2,000만·센터 여부 변동 — 목표 수준 자체도 자문 희망)</div>
-
-      <h3>견적 셀렉 — 항목별 난이도 체크 <span class="t b">상담 중 선택 → 견적 자동</span></h3>
-      <div class="co ac"><span class="lab">셀렉 매트릭스</span>각 항목의 <b>투입 레벨</b>을 고르면 아래 <b>1차 견적서가 즉시 생성</b>된다. 레벨 = 투입 주체/사양 — <b>L1</b>=프리랜서(경량) / <b>L2 ★</b>=내부 히즈(표준) / <b>L3</b>=외주(풀·고사양). 항목명 옆 <span class="t n">회색 칩</span>=사업 단계. <b>단가 공유 원칙</b>: 단가는 브랜드 불문 동일. <b>KYH default = 입구형 최소 선택</b>(진단 L1만, 나머지 제외). (단위: 만원 · VAT 별도)</div>
-      <table class="selmx" id="selmx">
-        <thead><tr><th>견적 항목 <span class="t n">단계</span></th><th>제외</th><th>L1 프리랜서</th><th>L2 내부 ★</th><th>L3 외주</th></tr></thead>
-        <tbody>
-          <tr data-row data-name="데이터·전략 진단" data-key="진단"><td>데이터·전략 진단 <span class="t n">현재 마케팅 분석</span></td><td><label><input type="radio" name="s0" value="0" data-lv="제외">–</label></td><td><label><input type="radio" name="s0" value="500" data-lv="L1" checked>500</label></td><td class="lv2"><label><input type="radio" name="s0" value="1000" data-lv="L2">1,000</label></td><td><label><input type="radio" name="s0" value="2000" data-lv="L3">2,000</label></td></tr>
-          <tr data-row data-name="브랜드 아이덴티티·제품체계" data-key="아이덴티티"><td>브랜드 아이덴티티·제품체계 <span class="t n">브랜드 기획·USP</span></td><td><label><input type="radio" name="s1" value="0" data-lv="제외" checked>–</label></td><td><label><input type="radio" name="s1" value="1000" data-lv="L1">1,000</label></td><td class="lv2"><label><input type="radio" name="s1" value="2000" data-lv="L2">2,000</label></td><td><label><input type="radio" name="s1" value="3500" data-lv="L3">3,500</label></td></tr>
-          <tr data-row data-name="BI·로고·패키지 디자인" data-key="디자인"><td>BI·로고·패키지 디자인 <span class="t n">용기·디자인</span></td><td><label><input type="radio" name="s2" value="0" data-lv="제외" checked>–</label></td><td><label><input type="radio" name="s2" value="1500" data-lv="L1">1,500</label></td><td class="lv2"><label><input type="radio" name="s2" value="3000" data-lv="L2">3,000</label></td><td><label><input type="radio" name="s2" value="5000" data-lv="L3">5,000</label></td></tr>
-          <tr data-row data-name="촬영·콘텐츠" data-key="촬영"><td>촬영·콘텐츠 <span class="t n">채널 세팅(마케팅)</span></td><td><label><input type="radio" name="s3" value="0" data-lv="제외" checked>–</label></td><td><label><input type="radio" name="s3" value="500" data-lv="L1">500</label></td><td class="lv2"><label><input type="radio" name="s3" value="1500" data-lv="L2">1,500</label></td><td><label><input type="radio" name="s3" value="3000" data-lv="L3">3,000</label></td></tr>
-          <tr data-row data-name="마케팅·CRM·캠페인" data-key="마케팅"><td>마케팅·CRM·캠페인 <span class="t n">세부 마케팅</span></td><td><label><input type="radio" name="s4" value="0" data-lv="제외" checked>–</label></td><td><label><input type="radio" name="s4" value="1000" data-lv="L1">1,000</label></td><td class="lv2"><label><input type="radio" name="s4" value="2000" data-lv="L2">2,000</label></td><td><label><input type="radio" name="s4" value="4000" data-lv="L3">4,000</label></td></tr>
-          <tr data-row data-name="IMC 전략 파트너십" data-key="IMC" data-monthly="1"><td>IMC 전략 파트너십 <span class="t n">운영 파트너십·6개월</span></td><td><label><input type="radio" name="s5" value="0" data-lv="제외" checked>–</label></td><td><label><input type="radio" name="s5" value="480" data-lv="L1">480<span>월 80</span></label></td><td class="lv2"><label><input type="radio" name="s5" value="840" data-lv="L2">840<span>월 140</span></label></td><td><label><input type="radio" name="s5" value="1500" data-lv="L3">1,500<span>월 250</span></label></td></tr>
-          <tr data-row data-name="홈피·전환 배관(상담→결제) 세팅" data-key="자사몰"><td>홈피·전환 배관(상담→결제) 세팅 <span class="t n">채널 세팅(판매)·옵션</span></td><td><label><input type="radio" name="s6" value="0" data-lv="제외" checked>–</label></td><td><label><input type="radio" name="s6" value="1200" data-lv="L1">1,200</label></td><td class="lv2"><label><input type="radio" name="s6" value="2000" data-lv="L2">2,000</label></td><td><label><input type="radio" name="s6" value="3000" data-lv="L3">3,000</label></td></tr>
-        </tbody>
-      </table>
-      <div class="sel-sum">
-        <span>연매출 <input id="selRev" type="number" value="1" min="0">억</span>
-        <span>6개월 envelope(×15%): <b id="selEnv">—</b></span>
-      </div>
-
-      <div class="qsum">
-        <div class="qsh"><span>📋 1차 견적서 (셀렉 결과 · 자동)</span><span class="qst">VAT 별도 · 상담 중 즉시</span></div>
-        <table>
-          <thead><tr><th>항목</th><th style="width:14%;text-align:center">레벨</th><th style="width:22%;text-align:right">금액(만원)</th></tr></thead>
-          <tbody id="qsumBody"></tbody>
-          <tfoot><tr><td>합계 <span style="font-weight:400;color:#94a3b8">(KYH default = 진단 L1만)</span></td><td class="c" id="qsumLv">—</td><td class="num" id="qsumTotal">—</td></tr></tfoot>
-        </table>
-        <div class="qact">
-          <button class="btn solid" id="btnSheet" type="button">📋 구글시트 빌더용 셀렉 복사</button>
-          <button class="btn" id="btnReset" type="button">기본값(KYH 입구형) 복원</button>
-        </div>
-        <div class="qhint">화면 즉시 요약 = 상담 중 "바로 나오는" 1차 견적. <b>구글시트 견적</b>은 위 버튼으로 셀렉을 복사 → <code>quote-builder-template.gs</code>의 <code>SELECTION</code>에 붙여넣고 <code>buildSelectQuote()</code> 실행. <span class="t n">KYH default = 진단 L1만 = 500만</span></div>
-      </div>
-      <div class="co warn"><span class="lab">패키징 원칙 — 입구형 소형</span>ANR 매출 0 · 1인 초기 = 표준 패키지 초과. <b>진단·포지셔닝 입구형 소형 패키지</b>로 진입(예: <b>월 100만 × 3 ≈ 300만</b>, 대표 예산과 정합). 논리 = <b>"BI보다 첫 매출 배관(홈피→상담→결제 전환)에 먼저 투입"</b>. 흡수·검증 후 IMC·디자인 확장이 안전. 셀렉으로 항목 제외·난이도 조정해 총액을 예산 안에 맞춘다. <span class="t y">가설</span></div>
-    </section>
-
     <section id="onepager">
       <div class="sec-k">ONE-PAGER</div>
       <h2>수주 한 장</h2>
@@ -511,22 +261,206 @@ table.selmx label span{display:block;font-weight:400;color:var(--muted);font-siz
       </div>
     </section>
 
+    <section id="diagnosis">
+      <div class="sec-k">DIAGNOSIS (가설)</div>
+      <h2>핵심 진단</h2>
+      <p class="lead">제품·방법론·B2B 레퍼런스는 갖춤. 비어 있는 건 "첫 B2C 유료 전환 배관"과 "치료가 아닌 회복·웰니스 한 줄 포지셔닝". <span class="t n">상담 전 가설</span></p>
+      <div class="kpi">
+        <div class="k"><div class="lbl">임상 경험</div><div class="v">15년·2.5만</div><div class="s">케이스 직접 케어</div></div>
+        <div class="k"><div class="lbl">B2B 강의</div><div class="v">30곳+</div><div class="s">공공·대기업 (광고비 0)</div></div>
+        <div class="k"><div class="lbl">메인 제품가</div><div class="v">25만/회</div><div class="s">ANR 1:1 케어</div></div>
+        <div class="k alt"><div class="lbl">시급 과제</div><div class="v">첫 B2C 전환</div><div class="s">ANR 1:1 매출 0 → 결제 배관</div></div>
+      </div>
+      <div class="grid3" style="margin-top:14px">
+        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">ANR 1:1 B2C 전환 0</h3><p style="font-size:12.5px;color:var(--muted)">제품·가격·방법론은 있는데 첫 유료 케어 결제가 0. 원인=인프라(서울 거점 없음·시흥 접근성 낮음) + 홈피→상담→결제 배관 부재. <span class="t y">가설</span></p></div>
+        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">의료법 리스크 (포지셔닝 직결)</h3><p style="font-size:12.5px;color:var(--muted)">의료법56조·의료기사법 — 비의료기관·의사처방 없는 단독운영서 <b>'치료·재활·도수치료' 표현 금지</b>, 물치사도 단독 개설 불가. 페이지·메시지 전반 '회복·웰니스·컨디셔닝·자기조절 루틴'으로 통일 필요.</p></div>
+        <div class="card"><span class="t y">High</span><h3 style="margin:8px 0 6px">포지셔닝 미정 (치료 vs 웰니스)</h3><p style="font-size:12.5px;color:var(--muted)">임상 경력을 신뢰자산으로 쓰되 '치료 제공' 인상은 금지. 어디에 서느냐(럭셔리 회복 경험 vs 재활)가 가격·메시지·법적 안전 모두를 가른다. <span class="t y">가설</span></p></div>
+      </div>
+      <div class="co bad"><span class="lab">진단 결론 (가설)</span><b>ANR 매출 0</b> = "첫 매출 엔진 부재". 강점(임상 15년·2.5만 케이스·자기조절 루틴)을 <b>'치료가 아닌 럭셔리 회복·웰니스' 한 줄 축</b>으로 좁히고, 홈피→상담→결제 배관을 세우면 오프라인 네트워크 유입이 첫 유료 고객으로 전환된다. 핵심은 "확장"이 아니라 <b>"첫 결제가 나오는 배관 + 의료법 안전한 포지셔닝"</b>.</div>
+    </section>
+
+    <section id="company">
+      <div class="sec-k">COMPANY · PRODUCT · CHANNEL</div>
+      <h2>기업 · 제품 · 채널</h2>
+      <p class="lead">임상 15년·2.5만 케이스 물리치료사 1인이 직접 경험을 루틴·교육·제품으로 확장하는 초기 웰니스 브랜드. 제품·방법론·수익구조 설계는 있으나 첫 매출 입구(1:1 케어)가 아직 안 돈다. <span class="t y">가설</span></p>
+      <div class="grid2">
+        <div class="card">
+          <h3 style="margin-top:0">기업 기초</h3>
+          <div class="cards">
+            <div class="fcard"><div class="fk">브랜드 / 대표</div><div class="fv">KYH ANR (Keep Your Humanity) · 김윤하 <span class="t n">소개서</span></div></div>
+            <div class="fcard"><div class="fk">법인 / 등록</div><div class="fv">KYH(경영컨설팅업) · 2026.2.6 서울 등록 · 초기 <span class="t n">답변서</span></div></div>
+            <div class="fcard"><div class="fk">운영 형태</div><div class="fv">1인 운영 · 센터(서울 거점) 없음 <span class="t n">답변서</span></div></div>
+            <div class="fcard"><div class="fk">대표 이력</div><div class="fv">임상 15년 · 2.5만 케이스 물리치료사 <span class="t n">소개서/IG 바이오</span></div></div>
+            <div class="fcard"><div class="fk">슬로건 / 홈피</div><div class="fv">"이해가 자유를 만듭니다" · kyhanr.org</div></div>
+            <div class="fcard"><div class="fk">기존 거점</div><div class="fv">시흥 병원(접근성 낮음) <span class="t n">답변서</span></div></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">정량 시그널 <span style="font-size:11px;color:var(--muted);font-weight:500">(값 · 출처)</span></h3>
+          <table>
+            <tr><td style="width:38%"><b>ANR 매출</b></td><td><b>0</b> (런칭 전) <span class="t n">답변서</span></td></tr>
+            <tr><td><b>안정 매출</b></td><td>근골격계 예방 강의 월 ~80만 (ANR과 별개·유일 안정) <span class="t n">답변서</span></td></tr>
+            <tr><td><b>메인 제품가</b></td><td>ANR 1:1 케어 <b>25만/회</b> (수기 20만 + 골드링 온열 5만) <span class="t n">답변서</span></td></tr>
+            <tr><td><b>패키지</b></td><td>6주 자기조절 루틴 패키지 <span class="t n">답변서</span></td></tr>
+            <tr><td><b>B2B 강의</b></td><td>30곳+ (국민연금공단·인천공항·현대자동차·한국마사회·KAIST·해양경찰청 등, 2022~26, 광고비 0) <span class="t n">소개서</span> ★ANR 아닌 '근골격계 강사/김윤하' 명의</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="co warn"><span class="lab">⚠️ 크레덴셜 미확인</span><b>독립 출처 확인 안 됨</b> — "2024 이달의 물리치료사" <span class="t y">미확인</span> · "우즈벡 대통령실 자문" <span class="t y">미확인</span> · "ACPR 이사" <span class="t y">미확인</span> · "연세대 보건과학과" <span class="t y">미확인</span>. (IG 바이오엔 "15년차"만 표기) → 미팅 전 팩트체크 필요. 신뢰자산 활용 시 검증된 항목만 전면화.</div>
+
+      <h3>ANR 방법 4단계 (메서드) + 4대 수익구조</h3>
+      <table>
+        <tr><th style="width:18%">메서드</th><th>내용</th><th>핵심</th></tr>
+        <tr><td><b>① 체크</b></td><td>문진 · 뇌파 참고</td><td>현재 상태 측정 <span class="t b">데이터 자산</span></td></tr>
+        <tr><td><b>② 케어</b></td><td>수기 · 온열(골드링)</td><td>1:1 케어 = 입구·핵심 경험 (25만/회)</td></tr>
+        <tr><td><b>③ 훈련</b></td><td>호흡·턱·혀·눈·발 자기조절</td><td>스스로 회복하는 루틴 (차별점)</td></tr>
+        <tr><td><b>④ 일상화</b></td><td>6주 루틴 패키지로 정착</td><td>반복·구독 매출 연결 여지</td></tr>
+      </table>
+      <table>
+        <tr><th style="width:18%">수익구조</th><th>내용</th></tr>
+        <tr><td><b>① 1:1 케어</b></td><td>입구·데이터 자산 (25만/회) — 첫 매출 전환의 핵심</td></tr>
+        <tr><td><b>② 제품</b></td><td>셀프케어·바디케어·화장품 (한·일 약사 파트너)</td></tr>
+        <tr><td><b>③ 교육·라이선싱</b></td><td>ANR 디렉터 양성</td></tr>
+        <tr><td><b>④ 콘텐츠·선물</b></td><td>콘텐츠 자산·선물(기프트) 형태</td></tr>
+      </table>
+
+      <h3>채널 현황 (유료광고 0)</h3>
+      <table>
+        <tr><th style="width:18%">구분</th><th>채널</th></tr>
+        <tr><td><b>자사</b></td><td>홈피 kyhanr.org · IG @yoonhap_py 4,823 <span class="t y">주장·미확인</span> · Threads 5,495 <span class="t y">주장·미확인</span></td></tr>
+        <tr><td><b>오프라인</b></td><td>오프라인 네트워크 (현재 <b>최대 유입</b>) · B2B 강의 현장</td></tr>
+        <tr><td><b>광고</b></td><td>유료광고 0</td></tr>
+      </table>
+      <div class="co ac"><span class="lab">🎤 진단 포인트</span>제품·방법론·수익구조 설계는 있으나, <b>"홈피·SNS·오프라인 → 1:1 케어 첫 결제"로 이어지는 전환 배관이 없음</b>. 오프라인 네트워크가 최대 유입인데 B2C ANR 전환은 0 → 미팅 1순위는 "현 유입이 왜 결제로 안 가나". 채널별 비중·동선을 청취.</div>
+      <div class="co"><span class="lab">🔗 관련 링크 · 홈피 · SNS (라이브 확인)</span>
+        <a href="https://kyhanr.org" target="_blank" rel="noopener">홈피 kyhanr.org</a> ·
+        <a href="https://instagram.com/yoonhap_py" target="_blank" rel="noopener">IG @yoonhap_py</a>
+        <br><span style="color:var(--muted)">상담 전 라이브 확인 — 홈피 상담→결제 동선 유무 / IG·스레드 콘텐츠 톤·팔로워(주장값 교차검증, 로그인 필요·미확인) / 의료법상 표현(치료·재활) 사용 여부.</span>
+      </div>
+    </section>
+
+    <section id="market">
+      <div class="sec-k">MARKET · COMPETITION · NEEDS</div>
+      <h2>시장 · 경쟁 · 니즈</h2>
+      <p class="lead">수면·웰니스 시장은 크고 성장 중. "임상 수기케어 + 자기조절 루틴" 교집합은 국내 거의 빈 블루오션 — KYH의 방어선이자 포지셔닝 축. <span class="t y">가설</span></p>
+      <h3>시장 (2026-06-16 확인)</h3>
+      <table>
+        <tr><th>지표</th><th>값</th><th>시사점</th></tr>
+        <tr><td>국내 수면시장</td><td>~3조 (2021) <span class="t n">직접 리서치</span></td><td>수요 충분 — KYH 우호</td></tr>
+        <tr><td>수면장애 인구</td><td>110만 (2022) <span class="t n">직접 리서치</span></td><td>타겟 모수 큼</td></tr>
+        <tr><td>웰니스 시장</td><td>~140조 <span class="t n">직접 리서치</span></td><td>셀프케어·구독 트렌드↑</td></tr>
+      </table>
+      <h3>경쟁 지형 (가설)</h3>
+      <table>
+        <tr><th>경쟁</th><th>포지션</th><th>KYH 시사점</th></tr>
+        <tr><td>수면센터·정신과</td><td>검사·약물 (의료)</td><td>약물 외 관리 수요를 KYH가 흡수</td></tr>
+        <tr><td>수면앱·매트리스(삼분의일)</td><td>제품·디바이스</td><td>'직접 경험+사람의 케어'로 차별</td></tr>
+        <tr><td>마사지·도수치료</td><td>~10.9만/회 · 의료기관 종속 <span class="t n">직접 리서치</span></td><td>KYH 25만 = 2~3배 → '럭셔리 회복' 포지셔닝 필요</td></tr>
+        <tr><td>수면 건기식(라포즈미·녹트리서치)</td><td>섭취형</td><td>루틴·케어와 결합 가능(보완재)</td></tr>
+        <tr><td>하이브리드 인접(젠테라피·미본·올롯)</td><td>웰니스·테라피</td><td>유사 드묾 — 교집합이 비어 있음</td></tr>
+      </table>
+      <div class="co ac band"><span class="lab">시장 시사 (가설)</span><b>'임상 수기케어 + 자기조절 루틴' 교집합 = 국내 거의 빈 블루오션</b>. 가격 25만/회는 마사지·도수·PT의 2~3배이지만 <b>호텔 럭셔리 스파(20~30만)와 동급</b> → '럭셔리 회복 경험'으로 포지셔닝하면 정당화. 앱·마사지·건기식이 못 주는 "사람의 임상 경험 + 스스로 회복하는 루틴"이 KYH의 유일한 자리. (시장 수치·URL = §참고 출처)</div>
+      <h3>SWOT</h3>
+      <div class="swot">
+        <div class="sw s"><h4>Strengths</h4><ul><li>임상 15년·2.5만 케이스 직접 케어 (신뢰자산)</li><li>'직접 경험+자기조절 루틴'으로 앱·마사지·건기식과 차별</li><li>B2B 강의 30곳+(공공·대기업) 레퍼런스 (광고비 0)</li><li>측정 데이터(스트레스·수면·인지 개선) 보유</li></ul></div>
+        <div class="sw w"><h4>Weaknesses</h4><ul><li>ANR 1:1 B2C 전환 0 (첫 매출 미검증)</li><li>인프라 부재 — 서울 거점 없음, 시흥 병원 접근성 낮음</li><li>1인 운영 — 실행 리소스·예산 제약</li><li>B2B 강의 자산이 'ANR' 아닌 개인 명의 (미이전)</li></ul></div>
+        <div class="sw o"><h4>Opportunities</h4><ul><li>수면 3조·웰니스 140조 시장 + 셀프케어·구독↑</li><li>'수기케어+루틴' 교집합 = 빈 블루오션 선점</li><li>1인 의사결정 = 빠른 실행·피벗</li></ul></div>
+        <div class="sw tt"><h4>Threats</h4><ul><li><b>의료법 리스크</b> — '치료·재활·도수치료' 표현 금지</li><li>가격 25만 진입장벽(마사지 2~3배)</li><li>센터 없음 = 1:1 케어 물리적 공간 제약</li></ul></div>
+      </div>
+      <div class="co ac band"><span class="lab">표면 vs 진짜 니즈 (가설)</span>표면 = "ANR을 첫 유료고객·반복매출로 연결"(대표 명시). 진짜 = <b>첫 매출 배관 + 포지셔닝 동시 세팅</b> — ①치료가 아닌 '회복·웰니스' 한 줄 축 확정 ②홈피→상담→결제 전환 동선 ③1차 타겟·수익모델 우선순위. 근본 = 센터·광고비 없는 1인 초기 + 포지셔닝 미정 = 첫 매출 엔진 부재. 대표도 "포지셔닝/1차 타겟/수익모델 우선순위/6개월 로드맵/홈피·SNS 전환구조/공간 전략"을 직접 기대 → 니즈-서비스 핏 강함(단, 예산은 작음).</div>
+    </section>
+
+    <section id="deal">
+      <div class="sec-k">FIT & ESTIMATE</div>
+      <h2>기회 평가 · 견적 (가설)</h2>
+      <div class="verdict"><div class="vl">종합 기회 적합도 (상담 전 가설)</div><div class="vv">4.0 / 5.0</div><div class="vd">✅ GO — 니즈핏 강·블루오션·1인 의사결정 빠름. 감점: 예산 제약(ANR 매출 0) + 센터 부재</div></div>
+      <div class="grid2">
+        <div class="card"><h3 style="margin-top:0">적합도 (가중) <span class="t n">변별력 낮음 · 참고용</span></h3>
+          <p style="font-size:11.5px;color:var(--muted);margin:-4px 0 8px">※ 서비스 모르는 상태의 점수는 변별력이 낮음. 1차 판단은 아래 <b>매출 envelope</b>, 점수는 우선순위 참고. <span class="t y">가설</span></p>
+          <table>
+          <tr><td>니즈-핏 30%</td><td><b>5</b></td><td>첫 매출 배관+포지셔닝 = 코어 니즈</td></tr>
+          <tr><td>예산 20%</td><td><b>2</b></td><td>ANR 매출 0·강의 월 80만 — 제약</td></tr>
+          <tr><td>의사결정 15%</td><td><b>5</b></td><td>김윤하 대표 1인 = 즉결</td></tr>
+          <tr><td>긴급도 15%</td><td><b>4</b></td><td>6개월 첫 수익구조 검증 목표</td></tr>
+          <tr><td>성장·레퍼런스 20%</td><td><b>4</b></td><td>블루오션·B2B 강의 레퍼런스</td></tr>
+        </table></div>
+        <div class="card"><h3 style="margin-top:0">리스크 5종 · GO 분기점</h3><table>
+          <tr><td>의사결정</td><td><span class="t g">✅</span> 대표 1인 즉결</td></tr>
+          <tr><td>예산 흡수</td><td><span class="t r">⚠️</span> 매출 0 — 입구형 소형 필수</td></tr>
+          <tr><td>카테고리 핏</td><td><span class="t g">✅</span> 블루오션·니즈 명확</td></tr>
+          <tr><td>의료법</td><td><span class="t r">⚠️</span> '치료' 표현 금지 — 포지셔닝 직결</td></tr>
+          <tr><td>인프라(공간)</td><td><span class="t y">⚠️</span> 센터 없음 — 1:1 공간 전략 필요</td></tr>
+        </table></div>
+      </div>
+      <div class="co ac"><span class="lab">매출 envelope = 1차 판단</span><b>연 마케팅비 ≈ 매출 × 15%</b> → <b>6개월치(매출억 × 750만)</b>로 수주 규모를 가늠. <b>KYH 적용:</b> ANR 매출 0 · 안정 매출 = 강의 월 80만(연 ~1,000만) → 6개월 envelope ≈ <b>75만</b>. <b>표준 패키지(L2 풀)는 현 예산을 크게 초과</b> → 맞춤 진입 패키지 필요. <b>보조 질문:</b> "최근 3~6개월 마케팅/광고비 얼마 쓰세요?" (현재 유료광고 0)</div>
+
+      <h3>견적 셀렉 — 항목별 난이도 체크 <span class="t b">상담 중 선택 → 견적 자동</span></h3>
+      <div class="co ac"><span class="lab">셀렉 매트릭스</span>각 항목의 <b>투입 레벨</b>을 고르면 아래 <b>1차 견적서가 즉시 생성</b>된다. 레벨 = 투입 주체/사양 — <b>L1</b>=프리랜서(경량) / <b>L2 ★</b>=내부 히즈(표준) / <b>L3</b>=외주(풀·고사양). 항목명 옆 <span class="t n">회색 칩</span>=사업 단계. <b>단가 공유 원칙</b>: 단가는 브랜드 불문 동일. <b>KYH default = 입구형 최소 선택</b>(진단 L1만, 나머지 제외). (단위: 만원 · VAT 별도)</div>
+      <table class="selmx" id="selmx">
+        <thead><tr><th>견적 항목 <span class="t n">단계</span></th><th>제외</th><th>L1 프리랜서</th><th>L2 내부 ★</th><th>L3 외주</th></tr></thead>
+        <tbody>
+          <tr data-row data-name="데이터·전략 진단" data-key="진단"><td>데이터·전략 진단 <span class="t n">현재 마케팅 분석</span></td><td><label><input type="radio" name="s0" value="0" data-lv="제외">–</label></td><td><label><input type="radio" name="s0" value="500" data-lv="L1" checked>500</label></td><td class="lv2"><label><input type="radio" name="s0" value="1000" data-lv="L2">1,000</label></td><td><label><input type="radio" name="s0" value="2000" data-lv="L3">2,000</label></td></tr>
+          <tr data-row data-name="브랜드 아이덴티티·제품체계" data-key="아이덴티티"><td>브랜드 아이덴티티·제품체계 <span class="t n">브랜드 기획·USP</span></td><td><label><input type="radio" name="s1" value="0" data-lv="제외" checked>–</label></td><td><label><input type="radio" name="s1" value="1000" data-lv="L1">1,000</label></td><td class="lv2"><label><input type="radio" name="s1" value="2000" data-lv="L2">2,000</label></td><td><label><input type="radio" name="s1" value="3500" data-lv="L3">3,500</label></td></tr>
+          <tr data-row data-name="BI·로고·패키지 디자인" data-key="디자인"><td>BI·로고·패키지 디자인 <span class="t n">용기·디자인</span></td><td><label><input type="radio" name="s2" value="0" data-lv="제외" checked>–</label></td><td><label><input type="radio" name="s2" value="1500" data-lv="L1">1,500</label></td><td class="lv2"><label><input type="radio" name="s2" value="3000" data-lv="L2">3,000</label></td><td><label><input type="radio" name="s2" value="5000" data-lv="L3">5,000</label></td></tr>
+          <tr data-row data-name="촬영·콘텐츠" data-key="촬영"><td>촬영·콘텐츠 <span class="t n">채널 세팅(마케팅)</span></td><td><label><input type="radio" name="s3" value="0" data-lv="제외" checked>–</label></td><td><label><input type="radio" name="s3" value="500" data-lv="L1">500</label></td><td class="lv2"><label><input type="radio" name="s3" value="1500" data-lv="L2">1,500</label></td><td><label><input type="radio" name="s3" value="3000" data-lv="L3">3,000</label></td></tr>
+          <tr data-row data-name="마케팅·CRM·캠페인" data-key="마케팅"><td>마케팅·CRM·캠페인 <span class="t n">세부 마케팅</span></td><td><label><input type="radio" name="s4" value="0" data-lv="제외" checked>–</label></td><td><label><input type="radio" name="s4" value="1000" data-lv="L1">1,000</label></td><td class="lv2"><label><input type="radio" name="s4" value="2000" data-lv="L2">2,000</label></td><td><label><input type="radio" name="s4" value="4000" data-lv="L3">4,000</label></td></tr>
+          <tr data-row data-name="IMC 전략 파트너십" data-key="IMC" data-monthly="1"><td>IMC 전략 파트너십 <span class="t n">운영 파트너십·6개월</span></td><td><label><input type="radio" name="s5" value="0" data-lv="제외" checked>–</label></td><td><label><input type="radio" name="s5" value="480" data-lv="L1">480<span>월 80</span></label></td><td class="lv2"><label><input type="radio" name="s5" value="840" data-lv="L2">840<span>월 140</span></label></td><td><label><input type="radio" name="s5" value="1500" data-lv="L3">1,500<span>월 250</span></label></td></tr>
+          <tr data-row data-name="홈피·전환 배관(상담→결제) 세팅" data-key="자사몰"><td>홈피·전환 배관(상담→결제) 세팅 <span class="t n">채널 세팅(판매)·옵션</span></td><td><label><input type="radio" name="s6" value="0" data-lv="제외" checked>–</label></td><td><label><input type="radio" name="s6" value="1200" data-lv="L1">1,200</label></td><td class="lv2"><label><input type="radio" name="s6" value="2000" data-lv="L2">2,000</label></td><td><label><input type="radio" name="s6" value="3000" data-lv="L3">3,000</label></td></tr>
+        </tbody>
+      </table>
+      <div class="sel-sum">
+        <span>연매출 <input id="selRev" type="number" value="1" min="0">억</span>
+        <span>6개월 envelope(×15%): <b id="selEnv">—</b></span>
+      </div>
+
+      <div class="qsum">
+        <div class="qsh"><span>📋 1차 견적서 (셀렉 결과 · 자동)</span><span class="qst">VAT 별도 · 상담 중 즉시</span></div>
+        <table>
+          <thead><tr><th>항목</th><th style="width:14%;text-align:center">레벨</th><th style="width:22%;text-align:right">금액(만원)</th></tr></thead>
+          <tbody id="qsumBody"></tbody>
+          <tfoot><tr><td>합계 <span style="font-weight:400;color:#94a3b8">(KYH default = 진단 L1만 = 500만)</span></td><td class="c" id="qsumLv">—</td><td class="num" id="qsumTotal">—</td></tr></tfoot>
+        </table>
+        <div class="qact">
+          <button class="btn solid" id="btnExcel" type="button">📊 엑셀로 내보내기</button>
+          <button class="btn" id="btnHtml" type="button">📄 HTML로 내보내기</button>
+          <button class="btn" id="btnReset" type="button">기본값(KYH 입구형) 복원</button>
+        </div>
+        <div class="qhint">화면 즉시 요약 = 상담 중 "바로 나오는" 1차 견적. 셀렉 결과를 두 경로로 내보낸다 — <b>수주 높음 → 📊 엑셀</b>(코 잡고 정식 견적) · <b>수주 낮음 → 📄 HTML</b>(가볍게 링크로 털기). 단가 공유 원칙(브랜드 불문 동일). <span class="t n">KYH default = 진단 L1만 = 500만 (입구형 소형)</span></div>
+      </div>
+      <div class="co warn"><span class="lab">패키징 원칙 — 입구형 소형</span>ANR 매출 0 · 1인 초기 = 표준 패키지 초과. <b>진단·포지셔닝 입구형 소형 패키지</b>로 진입(예: <b>월 100만 × 3 ≈ 300만</b>, 대표 예산과 정합). 논리 = <b>"BI보다 첫 매출 배관(홈피→상담→결제 전환)에 먼저 투입"</b>. 흡수·검증 후 IMC·디자인 확장이 안전. 셀렉으로 항목 제외·난이도 조정해 총액을 예산 안에 맞춘다. (6개월 목표 합산 ~2,000만·센터 여부 변동 — 목표 수준 자체도 자문) <span class="t y">가설</span></div>
+    </section>
+
     <section id="consult">
-      <div class="sec-k">MEETING PREP</div>
-      <h2>상담 준비</h2>
-      <p class="lead">미팅 녹음 기반 실제 프로세스. 톤: 임상 15년 전문가 대표 = 막연한 "브랜딩" 화법 금지, 근거·데이터·레퍼런스. 전문성·B2B 성과 인정 후 "첫 B2C 매출 배관"으로 프레임. <b>의료법상 '치료' 표현 주의.</b></p>
+      <div class="sec-k">CONSULT</div>
+      <h2>상담 진행</h2>
+      <p class="lead">상담은 항상 <b>"대표님, 지금 현재 사업 단계 알려 주세요"</b>로 연다 — 구간에 따라 우리 역할·견적 결이 갈린다. 톤: 임상 15년 전문가 대표 = 막연한 "브랜딩" 화법 금지, 근거·데이터·레퍼런스. 전문성·B2B 성과 인정 후 "첫 B2C 매출 배관"으로 프레임. <b>의료법상 '치료' 표현 주의.</b></p>
+      <h3>사업 단계 — KYH = STAGE 1 (런칭 전)</h3>
+      <div class="stages">
+        <div class="stage on">
+          <div class="sgn">STAGE 1 · 런칭 전 ★KYH</div>
+          <div class="sgt">런칭 전</div>
+          <div class="sgd">ANR 제품·가격(25만)·방법론은 준비됐으나 <b>매출 0·센터 없음</b>. 첫 매출 전환 경로·포지셔닝이 비어 있음.</div>
+          <span class="sgr">역할 → 첫 매출 전환 경로 세팅(홈피→상담→결제) + 포지셔닝</span>
+        </div>
+        <div class="stage">
+          <div class="sgn">STAGE 2 · 런칭</div>
+          <div class="sgd">제품·채널·용기 다 있음. "잘 됐나?" 점검.</div>
+          <span class="sgr">역할 → 점검 → 세팅·리뉴얼 개선</span>
+        </div>
+        <div class="stage">
+          <div class="sgn">STAGE 3 · 매출 드라이브</div>
+          <div class="sgd">운영 중. 성과 나는 것 유지 / 무의미한 것 새 제안.</div>
+          <span class="sgr">역할 → 마케팅 분석 → 유지 / 신규 제안</span>
+        </div>
+      </div>
+      <div class="co ac"><span class="lab">🔴 단계별 질문 — STAGE 1 세트로 연다</span><b>① 제품 개발 어디까지</b>(메서드·가격·인증) · <b>② 1:1 케어 공간</b>(센터 없이 어떻게) · <b>③ 홈피·SNS에 상담→결제 동선 있나</b> · <b>④ 브랜드 한 줄 정의</b>(치료 vs 웰니스) · <b>⑤ 6개월 목표·예산 규모</b>. <span class="t n">우리 일은 "운영 최적화"가 아니라 첫 매출 경로를 처음부터 세팅 + 의료법 안전 포지셔닝.</span></div>
       <h3>상담 공통 흐름 (녹음 기반 4단계)</h3>
       <div class="tl">
         <div class="ph"><div class="pt">1 · 소개 청취</div><div class="pb">브랜드·사업·대표 배경을 듣는다(프랩 인지한 채로). 메모하며 시작.</div></div>
-        <div class="ph"><div class="pt">2 · 사업 단계·유통처 체크</div><div class="pb">"현재 사업 단계?" + 채널·공간 유무. KYH = 런칭 전 → §0 STAGE 1 질문 세트로 짚는다.</div></div>
+        <div class="ph"><div class="pt">2 · 사업 단계·유통처 체크</div><div class="pb">"현재 사업 단계?" + 채널·공간 유무. KYH = 런칭 전 → STAGE 1 질문 세트로 짚는다.</div></div>
         <div class="ph"><div class="pt">3 · 문제 도출</div><div class="pb">유입 있음(오프라인·SNS) → 왜 1:1 결제로 안 가나 / 센터 없음 → 공간·포지셔닝 어떻게. 단계별로 해결 가능한 문제가 나온다.</div></div>
         <div class="ph"><div class="pt">4 · 견적의 답</div><div class="pb">도출된 문제 = 견적 항목. §기회·견적의 셀렉을 상담 중 체크 → 1차 견적이 바로 나온다(입구형 소형 기준).</div></div>
       </div>
-      <div class="grid2">
-        <div class="card"><h3 style="margin-top:0">패턴 A · 런칭 전 점검형 <span class="t b">KYH</span></h3><p style="font-size:12.5px;color:var(--muted)">"제품·메서드 완료 → 채널·전환 배관 됐나?" 안 됐으면 하나씩 짚어 세팅 제안. 준비 단계 체크가 견적의 기준. 첫 매출 배관·포지셔닝 우선.</p></div>
-        <div class="card"><h3 style="margin-top:0">패턴 B · 단계별 짚어주기형</h3><p style="font-size:12.5px;color:var(--muted)">운영 중 → 채널·마케팅 분석해 성과 나는 것 유지 / 무의미한 것 제외. (KYH는 매출 0이라 해당 약함 — 입구 세팅이 먼저)</p></div>
-      </div>
-      <div class="co ac"><span class="lab">🎯 넥스트를 끌어내는 질문</span>"핵심 질문" 나열보다 <b>다음 단계를 끌어내는 질문</b> 하나가 중요(미팅). 답이 나오면 그게 바로 다음 단계·견적으로 연결된다. 아래 5개는 그 관점에서 압축한 KYH용 질문.</div>
       <div class="co ac"><span class="lab">🎤 아이스브레이킹</span>"임상 15년·2.5만 케이스에, 공공·대기업 강의를 광고비 0으로 30곳 넘게 — 사람을 직접 회복시켜 온 전문성이 이미 검증돼 있어요. 그런데 그 신뢰가 ANR 1:1 케어 '첫 결제'로는 아직 안 이어지고 있는 게 보였어요." → 즉시 신뢰 + 진짜 과제(첫 B2C 전환) 합의.</div>
       <div class="co warn"><span class="lab">⚠️ 상담 중 의료법 주의</span>대표·우리 모두 '치료·재활·도수치료' 단어 사용 금지(비의료기관 단독운영). 대화·문서·홈피 전반 <b>'회복·웰니스·컨디셔닝·자기조절 루틴'</b>으로 통일. 임상 경력은 <b>신뢰자산</b>으로만 언급, '치료 제공' 인상 금지. 미확인 크레덴셜(이달의 물리치료사·우즈벡 자문·ACPR·연세대)은 검증 전 전면화 금지.</div>
       <h3>반드시 물어볼 질문 5개</h3>
@@ -570,7 +504,7 @@ const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
 }})},{rootMargin:'-20% 0px -70% 0px'});
 sections.forEach(s=>obs.observe(s.el));
 
-// ===== 셀렉 매트릭스 → 인라인 1차 견적 + 구글시트 빌더용 셀렉 =====
+// ===== 셀렉 매트릭스 → 인라인 1차 견적 + 엑셀/HTML 내보내기 =====
 (function(){
   var mx=document.getElementById('selmx'); if(!mx) return;
   var rev=document.getElementById('selRev'), env=document.getElementById('selEnv');
@@ -584,7 +518,7 @@ sections.forEach(s=>obs.observe(s.el));
       if(lv==='제외'||v===0) return;
       sum+=v; lvs[lv]=(lvs[lv]||0)+1;
       html+='<tr><td>'+tr.getAttribute('data-name')+'</td><td class="c"><span class="t b">'+lv+'</span></td><td class="num">'+fmt(v)+'</td></tr>';
-      var o={key:tr.getAttribute('data-key'), level:lv};
+      var o={key:tr.getAttribute('data-key'), name:tr.getAttribute('data-name'), level:lv, amount:v};
       if(tr.getAttribute('data-monthly')) o.months=6;
       sel.push(o);
     });
@@ -597,15 +531,47 @@ sections.forEach(s=>obs.observe(s.el));
     mx._sel=sel;
   }
   mx.addEventListener('change',calc); rev.addEventListener('input',calc);
-  var bS=document.getElementById('btnSheet');
-  if(bS) bS.addEventListener('click',function(){
-    var sel=mx._sel||[];
-    var lines=sel.map(function(o){ return "  {key:'"+o.key+"', level:'"+o.level+"'"+(o.months?', months:'+o.months:'')+"}"; });
-    var txt="var SELECTION = [\n"+lines.join(",\n")+"\n];";
-    if(navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(txt).then(function(){ alert('구글시트 빌더용 셀렉을 복사했습니다.\n\nquote-builder-template.gs 의 SELECTION에 붙여넣고 buildSelectQuote() 실행:\n\n'+txt); },
-        function(){ window.prompt('아래 셀렉을 복사해 .gs SELECTION에 붙여넣으세요:', txt); });
-    } else { window.prompt('아래 셀렉을 복사해 .gs SELECTION에 붙여넣으세요:', txt); }
+  function totSum(){ var s=0; (mx._sel||[]).forEach(function(o){s+=o.amount||0;}); return s; }
+  function brandName(){ var h=document.querySelector('.hero h1'); return h?h.textContent.trim().replace(/\s+/g,' '):'BRAND'; }
+  function ymd(){ var d=new Date(), p=function(n){return(n<10?'0':'')+n;}; return ''+d.getFullYear()+p(d.getMonth()+1)+p(d.getDate()); }
+  function dlBlob(content,mime,fname){ var b=new Blob([content],{type:mime}), u=URL.createObjectURL(b), a=document.createElement('a'); a.href=u; a.download=fname; document.body.appendChild(a); a.click(); setTimeout(function(){URL.revokeObjectURL(u); a.remove();},800); }
+  function ensureXLSX(cb){ if(window.XLSX){cb(true);return;} var s=document.createElement('script'); s.src='https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js'; s.onload=function(){cb(!!window.XLSX);}; s.onerror=function(){cb(false);}; document.head.appendChild(s); }
+  // 📊 엑셀로 내보내기 (수주↑)
+  var bX=document.getElementById('btnExcel');
+  if(bX) bX.addEventListener('click',function(){
+    var sel=mx._sel||[]; if(!sel.length){ alert('선택된 항목이 없습니다.'); return; }
+    var brand=brandName(), tot=totSum();
+    ensureXLSX(function(ok){
+      if(ok && window.XLSX){
+        var aoa=[[brand+' 1차 견적'],['생성일 '+ymd()+' · VAT 별도 · 단위 만원'],[],['항목','레벨','금액(만원)']];
+        sel.forEach(function(o){ aoa.push([o.name, o.level+(o.months?' 월×'+o.months:''), o.amount]); });
+        aoa.push(['합계','',tot]);
+        var ws=XLSX.utils.aoa_to_sheet(aoa); ws['!cols']=[{wch:30},{wch:14},{wch:14}];
+        var wb=XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb,ws,'견적');
+        XLSX.writeFile(wb, brand+'_견적_'+ymd()+'.xlsx');
+      } else {
+        var rows=[['항목','레벨','금액(만원)']].concat(sel.map(function(o){return [o.name,o.level,o.amount];})); rows.push(['합계','',tot]);
+        var csv='﻿'+rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"';}).join(',');}).join('\n');
+        dlBlob(csv,'text/csv;charset=utf-8', brand+'_견적_'+ymd()+'.csv');
+        alert('엑셀 라이브러리 로드 실패 → CSV로 내보냈습니다(엑셀에서 열림).');
+      }
+    });
+  });
+  // 📄 HTML로 내보내기 (수주↓)
+  var bH=document.getElementById('btnHtml');
+  if(bH) bH.addEventListener('click',function(){
+    var sel=mx._sel||[]; if(!sel.length){ alert('선택된 항목이 없습니다.'); return; }
+    var brand=brandName(), tot=totSum();
+    var trs=sel.map(function(o){ return '<tr><td>'+o.name+'</td><td style="text-align:center">'+o.level+(o.months?' · 월×'+o.months:'')+'</td><td style="text-align:right">'+fmt(o.amount)+'만</td></tr>'; }).join('');
+    var doc='<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+brand+' 견적</title>'
+      +'<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">'
+      +'<style>body{font-family:Pretendard,sans-serif;max-width:760px;margin:40px auto;padding:0 24px;color:#0f172a;line-height:1.7}h1{font-size:26px;letter-spacing:-.02em;margin-bottom:4px}.meta{color:#64748b;font-size:13px;margin-bottom:24px}table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}th{background:#eef2ff;color:#3730a3;text-align:left;padding:11px 13px;font-size:12px}td{padding:11px 13px;border-bottom:1px solid #eef1f5}tfoot td{background:#0f172a;color:#fff;font-weight:800;border:0}tfoot td b{color:#a5b4fc}.note{color:#64748b;font-size:12px;margin-top:18px;line-height:1.6}footer{margin-top:32px;color:#94a3b8;font-size:12px;border-top:1px solid #e7e9ee;padding-top:16px}</style></head><body>'
+      +'<h1>'+brand+' · 1차 견적</h1><div class="meta">생성일 '+ymd().replace(/(\d{4})(\d{2})(\d{2})/,'$1-$2-$3')+' · VAT 별도 · 단위 만원</div>'
+      +'<table><thead><tr><th>항목</th><th style="text-align:center;width:20%">레벨</th><th style="text-align:right;width:22%">금액</th></tr></thead><tbody>'+trs+'</tbody>'
+      +'<tfoot><tr><td>합계</td><td></td><td style="text-align:right">'+fmt(tot)+'만 <b>('+(tot/10000).toFixed(3)+'억)</b></td></tr></tfoot></table>'
+      +'<div class="note">· 본 견적은 1차 제안이며 VAT 별도입니다. 항목·범위는 협의로 조정됩니다.<br>· 레벨: L1 경량(프리랜서) / L2 표준(내부) / L3 풀(외주·고사양).</div>'
+      +'<footer>BRANDRISE by HIZ · Brand · IMC Consulting</footer></body></html>';
+    dlBlob(doc,'text/html;charset=utf-8', brand+'_견적_'+ymd()+'.html');
   });
   var bR=document.getElementById('btnReset');
   if(bR) bR.addEventListener('click',function(){
