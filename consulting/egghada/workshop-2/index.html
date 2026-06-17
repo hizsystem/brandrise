@@ -140,7 +140,14 @@
   }
   .divider__number { font-size: 80px; font-weight: 900; opacity: 0.16; line-height: 1; margin-bottom: 6px; }
   .divider__title { font-size: 38px; font-weight: 900; letter-spacing: -1px; margin-bottom: 14px; }
-  .divider__desc { font-size: 15px; font-weight: 300; opacity: 0.75; max-width: 540px; line-height: 1.7; }
+  .divider__desc { font-size: 15px; font-weight: 300; opacity: 0.85; max-width: 540px; line-height: 1.7; }
+  .divider > * { position: relative; z-index: 2; }
+
+  /* ===================== PHOTO BACKGROUND (Higgsfield) ===================== */
+  .photobg { position: absolute; inset: 0; background-size: cover; background-position: center; z-index: 0; }
+  .photobg::after { content: ''; position: absolute; inset: 0; }
+  .photobg--cover::after { background: linear-gradient(90deg, rgba(13,36,26,0.95) 0%, rgba(13,36,26,0.80) 30%, rgba(13,36,26,0.34) 60%, rgba(13,36,26,0.05) 100%); }
+  .photobg--dark::after { background: linear-gradient(100deg, rgba(13,36,26,0.93) 0%, rgba(13,36,26,0.82) 45%, rgba(13,36,26,0.55) 100%); }
 
   /* ===================== CONTENT HEADER ===================== */
   .slide__header {
@@ -371,7 +378,7 @@
 <!-- SLIDE 1: COVER -->
 <!-- ============================================================ -->
 <div class="slide slide--gradient cover">
-  <div class="cover__yolk"></div>
+  <div class="photobg photobg--cover" style="background-image:url('img/cover.jpg')"></div>
   <div class="cover__badge">BRAND CONSULTING · WORKSHOP 2</div>
   <h1 class="cover__title serif">에그하다 2차 브랜딩 워크샵</h1>
   <p class="cover__subtitle">1차 인터뷰 기반 브랜드 제안 — 키워드 &amp; 컨셉 · 포지셔닝 &amp; 핵심 메시지 · 박람회 마케팅 플랜</p>
@@ -479,7 +486,8 @@
 <!-- ============================================================ -->
 <!-- SLIDE 4: DIVIDER ① -->
 <!-- ============================================================ -->
-<div class="slide slide--yolk-gradient divider">
+<div class="slide slide--gradient divider">
+  <div class="photobg photobg--dark" style="background-image:url('img/div1-yolk.jpg')"></div>
   <div class="divider__number">①</div>
   <div class="divider__title serif">브랜드 키워드 &amp; 컨셉 도출안</div>
   <div class="divider__desc">3대 자산 키워드 → 컨셉 3안 → 통합 제안 → 비주얼 컨셉</div>
@@ -760,6 +768,7 @@
 <!-- SLIDE 11: DIVIDER ② -->
 <!-- ============================================================ -->
 <div class="slide slide--green-gradient divider">
+  <div class="photobg photobg--dark" style="background-image:url('img/div2-flatlay.jpg')"></div>
   <div class="divider__number">②</div>
   <div class="divider__title serif">브랜드 포지셔닝 &amp; 핵심 메시지</div>
   <div class="divider__desc">포지셔닝 좌표 · 타깃 3층 · 난각 3번 원칙 · 핵심 메시지 A/B/C · 어록 자산</div>
@@ -1010,6 +1019,7 @@
 <!-- SLIDE 17: DIVIDER ③ -->
 <!-- ============================================================ -->
 <div class="slide slide--dark divider">
+  <div class="photobg photobg--dark" style="background-image:url('img/div3-giftbox.jpg')"></div>
   <div class="divider__number">③</div>
   <div class="divider__title serif">박람회 마케팅 플랜</div>
   <div class="divider__desc">타임라인 · 7/15 코엑스 티징 부스 · 사전 시딩 &amp; 콘텐츠</div>
@@ -1166,6 +1176,7 @@
 <!-- SLIDE 21: DIVIDER — 액션 -->
 <!-- ============================================================ -->
 <div class="slide slide--green-gradient divider">
+  <div class="photobg photobg--cover" style="background-image:url('img/cover.jpg')"></div>
   <div class="divider__number">✓</div>
   <div class="divider__title serif">액션 아이템 &amp; 다음 스텝</div>
   <div class="divider__desc">대표님 과제 · HIZ 과제 — 6/19 제출 · 7/15 티징을 향해</div>
