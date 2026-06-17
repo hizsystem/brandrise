@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>에그하다 2차 브랜딩 워크샵</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+
+  :root {
+    --bg: #ffffff;
+    --text: #20271f;
+    --muted: #7b8478;
+    --border: #e6e4da;
+
+    /* EGGHADA PALETTE — 노른자 옐로우 × 흰자 화이트 × 소백산 딥그린 */
+    --accent: #1f4d36;          /* 소백산 딥그린 (메인) */
+    --accent-light: #e9f1ea;
+    --accent-deep: #143527;
+    --yolk: #e8a92c;            /* 노른자 옐로우 (포인트) */
+    --yolk-light: #fbf2dd;
+    --yolk-deep: #c98a18;
+    --white-egg: #fdfcf7;       /* 흰자 크림 화이트 */
+
+    --green: #3f7d5b;
+    --green-light: #e7f1ec;
+    --blue: #4b6b8a;
+    --blue-light: #eaf0f5;
+    --orange: #d98324;
+    --orange-light: #fbefdd;
+    --red: #b94a3a;
+    --red-light: #f8ece9;
+    --purple: #6b5b8a;
+    --purple-light: #efecf5;
+
+    --gray-50: #f8f7f1;
+    --gray-100: #f1efe7;
+    --gray-200: #e6e4da;
+    --gray-600: #5a6056;
+
+    --hiz-orange: #e8492d;      /* HIZ 배지 전용 */
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .serif { font-family: 'Pretendard', sans-serif; }
+
+  /* ===================== SLIDE SYSTEM ===================== */
+  .slide {
+    width: 1122px;
+    height: 793px;
+    padding: 60px 70px;
+    margin: 0 auto 2px;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+  }
+  .slide--dark { background: var(--accent); color: #fff; }
+  .slide--gradient { background: linear-gradient(135deg, #143527 0%, #1f4d36 45%, #2f6b4a 100%); color: #fff; }
+  .slide--green-gradient { background: linear-gradient(135deg, #143527 0%, #1f4d36 40%, #3f7d5b 100%); color: #fff; }
+  .slide--yolk-gradient { background: linear-gradient(135deg, #c98a18 0%, #e8a92c 50%, #f0c15a 100%); color: #2a2410; }
+
+  /* ===================== COVER ===================== */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 100px 90px;
+    position: relative;
+  }
+  .cover__yolk {
+    position: absolute;
+    top: 50%; right: -120px;
+    transform: translateY(-50%);
+    width: 520px; height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 38%, #f6cf6a 0%, #e8a92c 55%, #c98a18 100%);
+    box-shadow: 0 0 120px rgba(232,169,44,0.35);
+    opacity: 0.92;
+  }
+  .cover__badge {
+    display: inline-block;
+    background: var(--hiz-orange);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    margin-bottom: 22px;
+    width: fit-content;
+    position: relative; z-index: 2;
+  }
+  .cover__title {
+    font-size: 46px;
+    font-weight: 900;
+    line-height: 1.22;
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+    position: relative; z-index: 2;
+  }
+  .cover__subtitle {
+    font-size: 17px;
+    font-weight: 300;
+    opacity: 0.9;
+    margin-bottom: 40px;
+    line-height: 1.7;
+    position: relative; z-index: 2;
+    max-width: 640px;
+  }
+  .cover__meta { font-size: 13px; opacity: 0.65; line-height: 2; position: relative; z-index: 2; }
+  .cover__logo {
+    position: absolute;
+    bottom: 32mm;
+    right: 36mm;
+    width: 56px; height: 56px;
+    background: var(--hiz-orange);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 900; color: #fff; font-style: italic;
+    z-index: 3;
+  }
+
+  /* ===================== SECTION DIVIDER ===================== */
+  .divider {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    padding: 100px 90px;
+  }
+  .divider__number { font-size: 80px; font-weight: 900; opacity: 0.16; line-height: 1; margin-bottom: 6px; }
+  .divider__title { font-size: 38px; font-weight: 900; letter-spacing: -1px; margin-bottom: 14px; }
+  .divider__desc { font-size: 15px; font-weight: 300; opacity: 0.75; max-width: 540px; line-height: 1.7; }
+
+  /* ===================== CONTENT HEADER ===================== */
+  .slide__header {
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--accent);
+  }
+  .slide__section-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--hiz-orange);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+  }
+  .slide__title {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.3;
+  }
+  .slide__page {
+    position: absolute;
+    bottom: 24px;
+    right: 36px;
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .slide--dark .slide__page,
+  .slide--gradient .slide__page,
+  .slide--green-gradient .slide__page { color: rgba(255,255,255,0.45); }
+  .slide--yolk-gradient .slide__page { color: rgba(42,36,16,0.5); }
+
+  .slide::after {
+    content: 'EGGHADA × HIZ BRAND RISE';
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--muted);
+    opacity: 0.5;
+  }
+  .slide--dark::after,
+  .slide--gradient::after,
+  .slide--green-gradient::after { color: rgba(255,255,255,0.4); }
+  .slide--yolk-gradient::after { color: rgba(42,36,16,0.45); }
+
+  /* ===================== GRIDS ===================== */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 14px; }
+  .grid-2-1 { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+  .grid-1-2 { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; }
+
+  /* ===================== CARDS ===================== */
+  .card {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .card--accent { border-left: 4px solid var(--accent); }
+  .card--yolk { border-left: 4px solid var(--yolk); }
+  .card--green { border-left: 4px solid var(--green); }
+  .card--blue { border-left: 4px solid var(--blue); }
+  .card--purple { border-left: 4px solid var(--purple); }
+  .card--red { border-left: 4px solid var(--red); }
+  .card--orange { border-left: 4px solid var(--orange); }
+  .card--filled { background: var(--gray-50); border: none; }
+  .card--dark { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); color: #fff; }
+
+  .card__icon { font-size: 24px; margin-bottom: 10px; }
+  .card__label {
+    font-size: 10px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;
+  }
+  .card__title { font-size: 15px; font-weight: 700; margin-bottom: 8px; line-height: 1.4; }
+  .card__value { font-size: 28px; font-weight: 900; color: var(--accent); line-height: 1.2; margin-bottom: 4px; }
+  .card__desc { font-size: 12.5px; color: var(--gray-600); line-height: 1.7; }
+
+  /* ===================== TAGS ===================== */
+  .tag {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    padding: 2px 8px; border-radius: 10px; margin: 2px 3px 2px 0;
+  }
+  .tag--green { background: var(--green-light); color: var(--green); }
+  .tag--yolk { background: var(--yolk-light); color: var(--yolk-deep); }
+  .tag--blue { background: var(--blue-light); color: var(--blue); }
+  .tag--purple { background: var(--purple-light); color: var(--purple); }
+  .tag--red { background: var(--red-light); color: var(--red); }
+  .tag--accent { background: var(--accent-light); color: var(--accent); }
+
+  /* ===================== LISTS ===================== */
+  .insight-list { list-style: none; padding: 0; }
+  .insight-list li {
+    position: relative; padding: 7px 0 7px 20px;
+    font-size: 13px; line-height: 1.6;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .insight-list li::before {
+    content: ''; position: absolute; left: 0; top: 13px;
+    width: 7px; height: 7px; background: var(--yolk); border-radius: 50%;
+  }
+  .insight-list li:last-child { border-bottom: none; }
+
+  /* ===================== TABLE ===================== */
+  .data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .data-table thead th {
+    background: var(--accent); color: #fff; padding: 9px 12px;
+    text-align: left; font-weight: 600; font-size: 11px;
+  }
+  .data-table thead th:first-child { border-radius: 6px 0 0 0; }
+  .data-table thead th:last-child { border-radius: 0 6px 0 0; }
+  .data-table tbody td {
+    padding: 9px 12px; border-bottom: 1px solid var(--gray-200);
+    vertical-align: top; line-height: 1.6;
+  }
+  .data-table tbody tr:nth-child(even) { background: var(--gray-50); }
+
+  /* ===================== SOURCE ===================== */
+  .source-note {
+    font-size: 9px; color: var(--muted); margin-top: 12px;
+    padding-top: 6px; border-top: 1px solid var(--gray-200);
+  }
+
+  /* ===================== KEYWORD ASSET ===================== */
+  .asset-egg {
+    background: var(--white-egg);
+    border: 1px solid var(--gray-200);
+    border-radius: 50% 50% 48% 48% / 60% 60% 40% 40%;
+    padding: 22px 18px 26px;
+    text-align: center;
+  }
+
+  /* ===================== POSITIONING MAP ===================== */
+  .map {
+    position: relative; width: 100%; height: 360px;
+    background: var(--gray-50); border-radius: 10px; border: 1px solid var(--gray-200);
+  }
+  .map__axis-x, .map__axis-y { position: absolute; background: var(--gray-600); }
+  .map__axis-x { left: 8%; right: 8%; top: 50%; height: 2px; }
+  .map__axis-y { top: 8%; bottom: 8%; left: 50%; width: 2px; }
+  .map__label { position: absolute; font-size: 11px; font-weight: 700; color: var(--gray-600); }
+  .map__label--top { top: 10px; left: 50%; transform: translateX(-50%); }
+  .map__label--bottom { bottom: 10px; left: 50%; transform: translateX(-50%); }
+  .map__label--left { left: 12px; top: 50%; transform: translateY(-50%); }
+  .map__label--right { right: 12px; top: 50%; transform: translateY(-50%); }
+  .map__point { position: absolute; transform: translate(-50%, -50%); text-align: center; }
+  .map__point-dot {
+    width: 14px; height: 14px; border-radius: 50%; margin: 0 auto 4px;
+    border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+  .map__point-name {
+    font-size: 11px; font-weight: 700; white-space: nowrap;
+    background: rgba(255,255,255,0.92); padding: 2px 6px; border-radius: 4px;
+  }
+  .map__point--target .map__point-dot {
+    width: 20px; height: 20px; background: var(--yolk);
+    box-shadow: 0 0 0 4px rgba(232,169,44,0.3);
+  }
+  .map__point--target .map__point-name { background: var(--yolk-deep); color: #fff; }
+
+  /* ===================== TIMELINE ===================== */
+  .timeline { position: relative; padding-left: 4px; }
+  .tl-line { position: absolute; left: 13px; top: 8px; bottom: 8px; width: 3px; background: var(--gray-200); }
+  .tl-item { position: relative; padding: 0 0 16px 44px; }
+  .tl-dot {
+    position: absolute; left: 4px; top: 2px; width: 22px; height: 22px;
+    border-radius: 50%; background: var(--accent); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 800; z-index: 2;
+  }
+  .tl-dot--yolk { background: var(--yolk); color: #2a2410; box-shadow: 0 0 0 4px rgba(232,169,44,0.25); }
+
+  /* ===================== NAV / PROGRESS ===================== */
+  #progressbar {
+    position: fixed; top: 0; left: 0; height: 4px; width: 0%;
+    background: linear-gradient(90deg, var(--yolk), var(--accent));
+    z-index: 9999; transition: width 0.25s ease;
+  }
+  #navhint {
+    position: fixed; bottom: 14px; right: 16px; z-index: 9999;
+    background: rgba(31,77,54,0.9); color: #fff;
+    font-size: 11px; font-weight: 600; padding: 6px 12px; border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+  #navhint b { color: var(--yolk-light); }
+
+  /* ===================== PRINT ===================== */
+  @media print {
+    #progressbar, #navhint { display: none !important; }
+    @page { size: 1122px 793px; margin: 0; }
+    html, body {
+      width: 1122px; margin: 0; padding: 0; background: #fff;
+      -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;
+    }
+    .slide {
+      width: 1122px !important; height: 793px !important;
+      margin: 0 !important; padding: 60px 70px !important;
+      page-break-after: always; page-break-inside: avoid;
+      break-after: page; break-inside: avoid;
+      overflow: hidden !important; box-shadow: none !important; border-radius: 0 !important;
+      display: block !important;
+    }
+    .slide:last-child { page-break-after: auto; break-after: auto; }
+  }
+
+  @media screen {
+    body { background: #d6d3c7; padding: 20px 0; }
+    .slide { box-shadow: 0 4px 24px rgba(0,0,0,0.14); border-radius: 4px; margin-bottom: 20px; }
+    /* 키보드 1슬라이드 모드 */
+    body.deckmode { padding: 0; background: #20271f; height: 100vh; overflow: hidden; }
+    body.deckmode .slide { display: none; margin: 0 auto; transform: scale(var(--scale, 1)); transform-origin: top center; }
+    body.deckmode .slide.active { display: block; }
+    body.deckmode { display: flex; align-items: center; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+<div id="progressbar"></div>
+<div id="navhint">← → 슬라이드 이동 · <b>F</b> 발표모드 · <span id="pageind">1 / 25</span></div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 1: COVER -->
+<!-- ============================================================ -->
+<div class="slide slide--gradient cover">
+  <div class="cover__yolk"></div>
+  <div class="cover__badge">BRAND CONSULTING · WORKSHOP 2</div>
+  <h1 class="cover__title serif">에그하다 2차 브랜딩 워크샵</h1>
+  <p class="cover__subtitle">1차 인터뷰 기반 브랜드 제안 — 키워드 &amp; 컨셉 · 포지셔닝 &amp; 핵심 메시지 · 박람회 마케팅 플랜</p>
+  <div class="cover__meta">
+    2026. 06. 16 &nbsp;|&nbsp; D-29 (7/15 코엑스 티징 런칭) &nbsp;|&nbsp; HIZ BRAND RISE &nbsp;|&nbsp; Confidential
+  </div>
+  <div class="cover__logo">H</div>
+  <span class="slide__page">01</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 2: 오늘의 아젠다 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">TODAY'S AGENDA</div>
+    <h2 class="slide__title">오늘 함께 볼 세 가지</h2>
+  </div>
+
+  <div class="grid-3" style="gap: 16px; margin-bottom: 18px;">
+    <div class="card card--yolk" style="padding: 22px;">
+      <div style="font-size: 40px; font-weight: 900; color: var(--yolk); line-height: 1;">①</div>
+      <div class="card__title serif" style="font-size: 18px; margin: 10px 0 8px;">브랜드 키워드 &amp; 컨셉 도출안</div>
+      <div class="card__desc" style="font-size: 12px;">
+        3대 자산 키워드(전문성·물·50년) → 컨셉 3안 비교 → 통합 제안 → 비주얼 컨셉
+      </div>
+    </div>
+    <div class="card card--accent" style="padding: 22px;">
+      <div style="font-size: 40px; font-weight: 900; color: var(--accent); line-height: 1;">②</div>
+      <div class="card__title serif" style="font-size: 18px; margin: 10px 0 8px;">브랜드 포지셔닝 &amp; 핵심 메시지</div>
+      <div class="card__desc" style="font-size: 12px;">
+        프리미엄 좌표 → 타깃 3층 → 난각 3번 커뮤니케이션 원칙 → 핵심 메시지 A/B/C → 어록 자산
+      </div>
+    </div>
+    <div class="card card--green" style="padding: 22px;">
+      <div style="font-size: 40px; font-weight: 900; color: var(--green); line-height: 1;">③</div>
+      <div class="card__title serif" style="font-size: 18px; margin: 10px 0 8px;">박람회 마케팅 플랜</div>
+      <div class="card__desc" style="font-size: 12px;">
+        6/16~9월 타임라인 → 7/15 코엑스 티징 부스 구성 → 사전 시딩 &amp; 콘텐츠 전략
+      </div>
+    </div>
+  </div>
+
+  <div style="background: linear-gradient(90deg, var(--accent) 0%, var(--yolk-deep) 100%); color: #fff; padding: 18px 24px; border-radius: 10px; display: flex; align-items: center; gap: 18px;">
+    <div style="font-size: 34px;">🥚</div>
+    <div>
+      <div style="font-size: 11px; font-weight: 800; letter-spacing: 2px; opacity: 0.8; margin-bottom: 4px;">WORKSHOP GOAL</div>
+      <div style="font-size: 16px; font-weight: 800; line-height: 1.5;">
+        "정부지원 제출(6/19)과 코엑스 티징(7/15)에 바로 쓸 수 있는 — 컨셉 1안 · 핵심 메시지 · 마케팅 드래프트를 오늘 함께 좁힌다."
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">02</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 3: 전제 (합의 톤) -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">GROUND RULES · 전제</div>
+    <h2 class="slide__title">브랜딩을 시작하기 전, 세 가지 합의</h2>
+  </div>
+
+  <div class="grid-3" style="gap: 16px; margin-bottom: 18px;">
+    <div class="card card--accent" style="padding: 20px;">
+      <div class="card__icon">🥉</div>
+      <div class="card__label" style="color: var(--accent);">전제 1 · 난각 3번 다루는 법</div>
+      <div class="card__title" style="font-size: 15px; margin-bottom: 8px;">동메달은 하지 않는다</div>
+      <div class="card__desc" style="font-size: 12px;">
+        3번을 전면에 내세우지 않는다. <strong>"알고 보니 3번이었네"</strong> 정도의 톤.
+        등급이 아니라 <strong>전문성·물·관리</strong>로 이야기를 끌고 간다.
+      </div>
+    </div>
+    <div class="card card--red" style="padding: 20px;">
+      <div class="card__icon">🚫</div>
+      <div class="card__label" style="color: var(--red);">전제 2 · 시장을 흔들지 않는다</div>
+      <div class="card__title" style="font-size: 15px; margin-bottom: 8px;">4번 공격 · 교란식 셀링 금지</div>
+      <div class="card__desc" style="font-size: 12px;">
+        띵굴마님식 4번 공격은 반면교사. <strong>3번도 많은 사업자가 먹고사는 시장</strong> —
+        남을 깎아 우리를 세우지 않는다.
+      </div>
+    </div>
+    <div class="card card--yolk" style="padding: 20px;">
+      <div class="card__icon">📖</div>
+      <div class="card__label" style="color: var(--yolk-deep);">전제 3 · 브랜딩의 정의</div>
+      <div class="card__title" style="font-size: 15px; margin-bottom: 8px;">없는 이야기를 짓지 않는다</div>
+      <div class="card__desc" style="font-size: 12px;">
+        브랜딩은 이야기를 만드는 게 아니라 <strong>대표님의 진짜 이야기를 추출·정리</strong>하는 작업.
+        오늘 제안은 모두 1차 인터뷰에서 나온 사실에서 출발한다.
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--filled serif" style="padding: 22px 28px; text-align: center;">
+    <div style="font-size: 18px; font-weight: 700; color: var(--accent); line-height: 1.6;">
+      "좋은 브랜딩은 새로 꾸미는 일이 아니라, 이미 가진 진짜를 잘 보이게 하는 일입니다."
+    </div>
+  </div>
+
+  <span class="slide__page">03</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 4: DIVIDER ① -->
+<!-- ============================================================ -->
+<div class="slide slide--yolk-gradient divider">
+  <div class="divider__number">①</div>
+  <div class="divider__title serif">브랜드 키워드 &amp; 컨셉 도출안</div>
+  <div class="divider__desc">3대 자산 키워드 → 컨셉 3안 → 통합 제안 → 비주얼 컨셉</div>
+  <span class="slide__page">04</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 5: 3대 자산 키워드 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">BRAND ASSET KEYWORDS</div>
+    <h2 class="slide__title">에그하다의 3대 자산 키워드 + 보조 키워드</h2>
+  </div>
+
+  <div class="grid-3" style="gap: 16px; margin-bottom: 16px;">
+    <div class="card card--yolk" style="padding: 18px;">
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+        <span style="background: var(--yolk); color:#2a2410; font-size:11px; font-weight:800; padding:3px 10px; border-radius:12px;">자산 1 · 최강 차별점</span>
+      </div>
+      <div class="card__title serif" style="font-size: 19px; color: var(--yolk-deep); margin-bottom: 8px;">전문성</div>
+      <div class="card__desc" style="font-size: 12px;">
+        농식품 벤처센터장 출신이 <strong>직접 귀농</strong>. 식품영양·식품공학 <strong>석사 · 영양사</strong>.
+        "계란을 키우는 사람"이 아니라 <strong>"계란을 연구한 사람"</strong> — 시장에 없는 포지션.
+      </div>
+    </div>
+    <div class="card card--accent" style="padding: 18px;">
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+        <span style="background: var(--accent); color:#fff; font-size:11px; font-weight:800; padding:3px 10px; border-radius:12px;">자산 2 · 맛의 증거</span>
+      </div>
+      <div class="card__title serif" style="font-size: 19px; color: var(--accent); margin-bottom: 8px;">물 (소백산)</div>
+      <div class="card__desc" style="font-size: 12px;">
+        맛을 결정하는, 변하지 않은 단 하나. <strong>"사료는 따라 해도 물은 못 따라 한다"</strong> —
+        영주 소백산 물이 곧 모방 불가능한 맛의 근거.
+      </div>
+    </div>
+    <div class="card card--green" style="padding: 18px;">
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+        <span style="background: var(--green); color:#fff; font-size:11px; font-weight:800; padding:3px 10px; border-radius:12px;">자산 3 · 정서적 신뢰</span>
+      </div>
+      <div class="card__title serif" style="font-size: 19px; color: var(--green); margin-bottom: 8px;">50년 헤리티지</div>
+      <div class="card__desc" style="font-size: 12px;">
+        아버지가 <strong>10년간 한 동씩 손수 지은 농장</strong>. 시간이 증명한 신뢰 —
+        하루아침에 만들 수 없는, 카피 불가능한 자산.
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--filled" style="padding: 16px 20px;">
+    <div class="card__label" style="margin-bottom: 8px;">SUPPORTING KEYWORDS · 보조 키워드 (메인 위에 얹는 근거)</div>
+    <div>
+      <span class="tag tag--accent">스마트팜 · 데이터 위생관리</span>
+      <span class="tag tag--green">무항생제 · HACCP</span>
+      <span class="tag tag--yolk">초신선 · 당일 생산</span>
+      <span class="tag tag--purple">에그하다 = Ag(농업)하다 · 확장성</span>
+    </div>
+  </div>
+
+  <div class="source-note">출처: 에그하다 1차 인터뷰 (2026.06) · HIZ BRAND RISE 정리</div>
+  <span class="slide__page">05</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 6: 컨셉 A -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">CONCEPT A</div>
+    <h2 class="slide__title">컨셉 A — 「50년의 기준」</h2>
+  </div>
+
+  <div class="grid-2-1" style="margin-bottom: 16px;">
+    <div class="card card--green" style="padding: 24px;">
+      <div class="card__label" style="color: var(--green);">CORE IDEA</div>
+      <div class="serif" style="font-size: 26px; font-weight: 900; color: var(--green); margin: 8px 0 14px;">시간이 증명한 신뢰</div>
+      <div class="card__desc" style="font-size: 13px; line-height: 1.9;">
+        50년 헤리티지를 전면에 세우는 안. 아버지가 한 동씩 지은 농장의 시간을 브랜드의 뿌리로 삼는다.
+        "오래 했다"가 아니라 <strong>"오래 같은 자리에서 같은 기준을 지켰다"</strong>는 정서적 신뢰가 핵심.
+      </div>
+    </div>
+    <div class="card card--filled serif" style="display:flex; flex-direction:column; justify-content:center; text-align:center; padding: 24px;">
+      <div style="font-size: 44px; margin-bottom: 8px;">🏡</div>
+      <div style="font-size: 14px; color: var(--green); font-weight: 700;">헤리티지 · 정서 · 신뢰</div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="gap: 16px;">
+    <div class="card card--accent" style="padding: 18px;">
+      <div class="card__label" style="color: var(--accent);">👍 강점</div>
+      <div class="card__desc" style="font-size: 12.5px;">정서적 신뢰가 강하다. 50년이라는 시간은 누구도 카피할 수 없는 진입 장벽.</div>
+    </div>
+    <div class="card card--red" style="padding: 18px;">
+      <div class="card__label" style="color: var(--red);">👎 약점</div>
+      <div class="card__desc" style="font-size: 12.5px;">차별성이 약하다(헤리티지 소구는 흔함). <strong>젊은 타깃</strong>에게 올드하게 보일 위험.</div>
+    </div>
+  </div>
+
+  <span class="slide__page">06</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 7: 컨셉 B (추천) -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">CONCEPT B · ⭐ RECOMMENDED BACKBONE</div>
+    <h2 class="slide__title">컨셉 B — 「농업 전문가의 계란」</h2>
+  </div>
+
+  <div class="grid-2-1" style="margin-bottom: 16px;">
+    <div class="card card--yolk" style="padding: 24px; background: var(--yolk-light); border-left-width: 6px;">
+      <div class="card__label" style="color: var(--yolk-deep);">CORE IDEA · 추천 골격</div>
+      <div class="serif" style="font-size: 26px; font-weight: 900; color: var(--yolk-deep); margin: 8px 0 14px;">전문가가 직접 키운다</div>
+      <div class="card__desc" style="font-size: 13px; line-height: 1.9;">
+        농식품 센터장 출신·식품영양 석사·영양사가 <strong>직접 귀농해 키운 계란</strong>.
+        "농부가 만든 계란"은 많지만 <strong>"식품 전문가가 연구하며 키운 계란"</strong>은 시장에 사실상 없다 —
+        독보적 차별성이자, 가격 프리미엄을 정당화하는 가장 강한 논리.
+      </div>
+    </div>
+    <div class="card serif" style="display:flex; flex-direction:column; justify-content:center; text-align:center; padding: 24px; background: linear-gradient(135deg, var(--yolk) 0%, var(--yolk-deep) 100%); color:#fff;">
+      <div style="font-size: 44px; margin-bottom: 8px;">👩‍🔬</div>
+      <div style="font-size: 14px; font-weight: 700;">전문성 · 차별성 · 신뢰</div>
+      <div style="font-size: 11px; opacity: 0.9; margin-top: 6px;">시장 공백 포지션</div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="gap: 16px;">
+    <div class="card card--accent" style="padding: 18px;">
+      <div class="card__label" style="color: var(--accent);">👍 강점</div>
+      <div class="card__desc" style="font-size: 12.5px;"><strong>독보적 차별성.</strong> 시장에 없는 포지션 — "전문가 계란"은 가농·풀무원도 갖지 못한 인물 자산.</div>
+    </div>
+    <div class="card card--green" style="padding: 18px;">
+      <div class="card__label" style="color: var(--green);">🔗 확장</div>
+      <div class="card__desc" style="font-size: 12.5px;">A(신뢰)·C(신선)·물(맛)을 모두 <strong>"전문가"라는 한 사람 아래</strong>로 묶을 수 있는 우산 컨셉.</div>
+    </div>
+  </div>
+
+  <span class="slide__page">07</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 8: 컨셉 C -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">CONCEPT C</div>
+    <h2 class="slide__title">컨셉 C — 「스마트팜의 매일」</h2>
+  </div>
+
+  <div class="grid-2-1" style="margin-bottom: 16px;">
+    <div class="card card--blue" style="padding: 24px;">
+      <div class="card__label" style="color: var(--blue);">CORE IDEA</div>
+      <div class="serif" style="font-size: 26px; font-weight: 900; color: var(--blue); margin: 8px 0 14px;">데이터로 관리하는 초신선</div>
+      <div class="card__desc" style="font-size: 13px; line-height: 1.9;">
+        스마트팜 · 데이터 위생관리 · 당일 생산을 전면에 세우는 안.
+        <strong>"오늘 낳은 계란을 오늘"</strong> — 젊은 소비자가 신뢰하는 데이터·기술 언어로 신선을 증명한다.
+      </div>
+    </div>
+    <div class="card card--filled serif" style="display:flex; flex-direction:column; justify-content:center; text-align:center; padding: 24px;">
+      <div style="font-size: 44px; margin-bottom: 8px;">📲</div>
+      <div style="font-size: 14px; color: var(--blue); font-weight: 700;">기술 · 신선 · 확장성</div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="gap: 16px;">
+    <div class="card card--accent" style="padding: 18px;">
+      <div class="card__label" style="color: var(--accent);">👍 강점</div>
+      <div class="card__desc" style="font-size: 12.5px;"><strong>젊은 타깃 · 확장성.</strong> 데이터·기술 언어는 D2C·구독·온라인 채널과 잘 맞는다.</div>
+    </div>
+    <div class="card card--red" style="padding: 18px;">
+      <div class="card__label" style="color: var(--red);">👎 약점</div>
+      <div class="card__desc" style="font-size: 12.5px;"><strong>정서가 부족하다.</strong> 차갑게 느껴지기 쉽고, 50년·물·사람 이야기를 담기 어렵다.</div>
+    </div>
+  </div>
+
+  <span class="slide__page">08</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 9: 통합 제안 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">INTEGRATED PROPOSAL · B 골격 강화</div>
+    <h2 class="slide__title">통합 제안 — 하나로 묶은 한 문장</h2>
+  </div>
+
+  <div class="card serif" style="background: linear-gradient(120deg, var(--accent) 0%, var(--accent-deep) 100%); color:#fff; padding: 30px 34px; border-radius: 14px; margin-bottom: 18px;">
+    <div style="font-size: 11px; font-weight: 800; letter-spacing: 2px; color: var(--yolk-light); margin-bottom: 12px;">PROPOSED CONCEPT STATEMENT</div>
+    <div style="font-size: 25px; font-weight: 900; line-height: 1.55;">
+      "농업 전문가가 <span style="color: var(--yolk-light);">스마트팜으로 키운</span>,<br>
+      가장 <span style="color: var(--yolk-light);">신선하고 깨끗한</span> 매일의 계란"
+    </div>
+  </div>
+
+  <div class="grid-4" style="gap: 12px;">
+    <div class="card card--yolk" style="padding: 16px; text-align:center;">
+      <div style="font-size: 13px; font-weight: 900; color: var(--yolk-deep);">B 골격</div>
+      <div class="card__desc" style="font-size: 11.5px; margin-top: 4px;">농업 전문가<br>(독보적 차별)</div>
+    </div>
+    <div class="card card--blue" style="padding: 16px; text-align:center;">
+      <div style="font-size: 13px; font-weight: 900; color: var(--blue);">C 신선</div>
+      <div class="card__desc" style="font-size: 11.5px; margin-top: 4px;">스마트팜·당일<br>(매일의 초신선)</div>
+    </div>
+    <div class="card card--green" style="padding: 16px; text-align:center;">
+      <div style="font-size: 13px; font-weight: 900; color: var(--green);">A 신뢰 배경</div>
+      <div class="card__desc" style="font-size: 11.5px; margin-top: 4px;">50년 헤리티지<br>(밑에 깔린 신뢰)</div>
+    </div>
+    <div class="card card--accent" style="padding: 16px; text-align:center;">
+      <div style="font-size: 13px; font-weight: 900; color: var(--accent);">물 (맛의 증거)</div>
+      <div class="card__desc" style="font-size: 11.5px; margin-top: 4px;">소백산 물<br>("깨끗한"의 근거)</div>
+    </div>
+  </div>
+
+  <div class="card card--filled" style="margin-top: 16px; padding: 14px 18px;">
+    <div class="card__desc" style="font-size: 12px;">
+      <strong style="color: var(--yolk-deep);">읽는 법:</strong> B를 골격으로 세우되, C는 "어떻게(신선)", A는 "왜 믿나(배경)", 물은 "무엇이 다른가(맛·깨끗)"의 증거로 배치한다. 네 자산이 따로 노는 게 아니라 한 문장 안에서 역할을 나눠 가진다.
+    </div>
+  </div>
+
+  <span class="slide__page">09</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 10: 비주얼 컨셉 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">VISUAL CONCEPT</div>
+    <h2 class="slide__title">비주얼 방향 — 헤리티지 × 모던, 그리고 노른자와 흰자</h2>
+  </div>
+
+  <div class="grid-2" style="gap: 18px; margin-bottom: 16px;">
+    <div class="card card--yolk" style="padding: 20px;">
+      <div class="card__icon">🔄</div>
+      <div class="card__title serif" style="font-size: 16px; color: var(--yolk-deep);">헤리티지 × 모던 반전</div>
+      <div class="card__desc" style="font-size: 12.5px;">
+        50년의 무게는 진중하게, 표현은 모던하게. 올드한 농장 클리셰를 버리고 <strong>세련된 프리미엄 톤</strong>으로 반전.
+      </div>
+    </div>
+    <div class="card card--accent" style="padding: 20px;">
+      <div class="card__icon">🥚</div>
+      <div class="card__title serif" style="font-size: 16px; color: var(--accent);">노른자–흰자 (부부)</div>
+      <div class="card__desc" style="font-size: 12.5px;">
+        <strong>옐로우(노른자) × 화이트(흰자)</strong>를 함께 키워가는 부부의 메타포로. 따뜻함과 단정함의 공존.
+      </div>
+    </div>
+    <div class="card card--green" style="padding: 20px;">
+      <div class="card__icon">🏔️</div>
+      <div class="card__title serif" style="font-size: 16px; color: var(--green);">소백산 초록 톤</div>
+      <div class="card__desc" style="font-size: 12.5px;">
+        영주 소백산의 자연을 <strong>딥그린</strong>으로. "물·자연·깨끗함"의 시각적 근거이자 프리미엄 안정감.
+      </div>
+    </div>
+    <div class="card card--red" style="padding: 20px;">
+      <div class="card__icon">🐔</div>
+      <div class="card__title serif" style="font-size: 16px; color: var(--red);">닭은 안고 찍지 않기</div>
+      <div class="card__desc" style="font-size: 12.5px;">
+        연출된 "닭 안은 농부" 컷은 지양. <strong>진정성 우선</strong> — 선별장·물·생산 과정의 진짜 장면으로 신뢰를 만든다.
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--filled" style="padding: 14px 20px; display:flex; align-items:center; gap: 18px;">
+    <div style="font-size:11px; font-weight:800; color: var(--accent); letter-spacing:1px;">PALETTE</div>
+    <div style="display:flex; gap:8px; align-items:center;">
+      <span style="width:42px;height:42px;border-radius:8px;background:#e8a92c;display:inline-block;"></span>
+      <span style="width:42px;height:42px;border-radius:8px;background:#fdfcf7;border:1px solid var(--gray-200);display:inline-block;"></span>
+      <span style="width:42px;height:42px;border-radius:8px;background:#1f4d36;display:inline-block;"></span>
+    </div>
+    <div class="card__desc" style="font-size:12px;">노른자 옐로우 · 흰자 크림 화이트 · 소백산 딥그린 + 세리프 헤드라인으로 헤리티지의 격(格) 부여</div>
+  </div>
+
+  <span class="slide__page">10</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 11: DIVIDER ② -->
+<!-- ============================================================ -->
+<div class="slide slide--green-gradient divider">
+  <div class="divider__number">②</div>
+  <div class="divider__title serif">브랜드 포지셔닝 &amp; 핵심 메시지</div>
+  <div class="divider__desc">포지셔닝 좌표 · 타깃 3층 · 난각 3번 원칙 · 핵심 메시지 A/B/C · 어록 자산</div>
+  <span class="slide__page">11</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 12: 포지셔닝 좌표 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">POSITIONING</div>
+    <h2 class="slide__title">포지셔닝 좌표 — 비어 있는 프리미엄 시장</h2>
+  </div>
+
+  <div class="grid-1-2" style="margin-bottom: 16px;">
+    <div>
+      <div class="card card--yolk" style="padding: 16px; margin-bottom: 12px;">
+        <div class="card__label" style="color: var(--yolk-deep);">시장 구조</div>
+        <div class="card__desc" style="font-size: 12px;">
+          계란 시장 <strong>≈ 1조 원</strong>인데 대기업 외 <strong>진짜 브랜드가 거의 없다</strong> → 비어 있는 프리미엄 시장.
+        </div>
+      </div>
+      <div class="card card--accent" style="padding: 16px;">
+        <div class="card__label" style="color: var(--accent);">목표 지위</div>
+        <div class="card__desc" style="font-size: 12px;">
+          가농·풀무원보다 <strong>한 단계 위</strong> — "전문성 있는 프리미엄".
+        </div>
+      </div>
+    </div>
+
+    <div class="map" style="height: 330px;">
+      <div class="map__axis-x"></div>
+      <div class="map__axis-y"></div>
+      <div class="map__label map__label--top">↑ 프리미엄 (고가)</div>
+      <div class="map__label map__label--bottom">↓ 대중가</div>
+      <div class="map__label map__label--left">← 일반 (양산)</div>
+      <div class="map__label map__label--right">전문성 →</div>
+
+      <div class="map__point map__point--target" style="top: 20%; left: 80%;">
+        <div class="map__point-dot"></div>
+        <div class="map__point-name">에그하다 (목표)</div>
+      </div>
+      <div class="map__point" style="top: 40%; left: 32%;">
+        <div class="map__point-dot" style="background: var(--accent);"></div>
+        <div class="map__point-name">풀무원</div>
+      </div>
+      <div class="map__point" style="top: 48%; left: 24%;">
+        <div class="map__point-dot" style="background: var(--blue);"></div>
+        <div class="map__point-name">가농바이오</div>
+      </div>
+      <div class="map__point" style="top: 78%; left: 28%;">
+        <div class="map__point-dot" style="background: var(--gray-600);"></div>
+        <div class="map__point-name">대형마트 PB</div>
+      </div>
+      <div class="map__point" style="top: 72%; left: 64%;">
+        <div class="map__point-dot" style="background: var(--green);"></div>
+        <div class="map__point-name">일반 산지 계란</div>
+      </div>
+
+      <div style="position:absolute; top:8%; right:8%; width:32%; height:32%; background:rgba(232,169,44,0.12); border:2px dashed var(--yolk-deep); border-radius:16px; pointer-events:none;"></div>
+      <div style="position:absolute; top:10%; right:10%; font-size:10px; font-weight:800; color:var(--yolk-deep); letter-spacing:1px;">WHITESPACE</div>
+    </div>
+  </div>
+
+  <div class="card card--red" style="padding: 14px 18px;">
+    <div class="card__label" style="color: var(--red);">가격 원칙</div>
+    <div class="card__desc" style="font-size: 12.5px;">
+      <strong>높게 걸고 내려오기 (O)</strong> / 낮게 깔고 올리기 (X). 초저가 금지, 조정은 <strong>할인으로만</strong>.
+      한번 낮게 깔면 프리미엄으로 못 올라온다.
+    </div>
+  </div>
+
+  <div class="source-note">시장 규모·경쟁 브랜드는 1차 인터뷰 내 대표 언급 기준 · 정량 수치는 <strong>[확인 필요]</strong></div>
+  <span class="slide__page">12</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 13: 타깃 3층 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">TARGET</div>
+    <h2 class="slide__title">타깃 3층 + 1차 출발 타깃</h2>
+  </div>
+
+  <div class="grid-3" style="gap: 16px; margin-bottom: 16px;">
+    <div class="card card--yolk" style="padding: 18px;">
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+        <span style="background: var(--yolk); color:#2a2410; font-size:11px; font-weight:800; padding:2px 9px; border-radius:11px;">1층</span>
+        <span class="serif" style="font-size:16px; font-weight:800;">민감층</span>
+      </div>
+      <div class="card__desc" style="font-size: 12px;">
+        <strong>가족 · 아이 · 부모.</strong> "내 식구가 먹는 계란"에 민감 — 안전·깨끗·신선을 가장 크게 산다.
+      </div>
+    </div>
+    <div class="card card--accent" style="padding: 18px;">
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+        <span style="background: var(--accent); color:#fff; font-size:11px; font-weight:800; padding:2px 9px; border-radius:11px;">2층</span>
+        <span class="serif" style="font-size:16px; font-weight:800;">단백질 관리층</span>
+      </div>
+      <div class="card__desc" style="font-size: 12px;">
+        <strong>운동 · 다이어트.</strong> 계란을 매일 다량 소비 — 품질·신선도에 기꺼이 더 낸다.
+      </div>
+    </div>
+    <div class="card card--green" style="padding: 18px;">
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+        <span style="background: var(--green); color:#fff; font-size:11px; font-weight:800; padding:2px 9px; border-radius:11px;">3층</span>
+        <span class="serif" style="font-size:16px; font-weight:800;">실속층</span>
+      </div>
+      <div class="card__desc" style="font-size: 12px;">
+        <strong>합리적 프리미엄.</strong> 무조건 싼 게 아니라 "이 가격이면 납득"을 찾는 층.
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="gap: 16px;">
+    <div class="card card--blue" style="padding: 18px;">
+      <div class="card__label" style="color: var(--blue);">1차 출발 타깃 (런칭 초기)</div>
+      <div class="card__title" style="font-size: 14px; margin-bottom: 6px;">대표 지인 + 구독 대기자</div>
+      <div class="card__desc" style="font-size: 12px;">
+        브랜드 <strong>인지도 0</strong>에서 출발. 신뢰 자산이 있는 가까운 관계부터 첫 고객·첫 리뷰를 만든다.
+      </div>
+    </div>
+    <div class="card card--red" style="padding: 18px; background: var(--red-light); border-left-width: 5px;">
+      <div class="card__label" style="color: var(--red);">핵심 인사이트</div>
+      <div class="serif" style="font-size: 17px; font-weight: 800; color: var(--red); margin: 4px 0;">"한번 사면 안 바꾼다"</div>
+      <div class="card__desc" style="font-size: 12px;">
+        계란은 <strong>재구매 락인(lock-in)</strong>이 강하다. 첫 구매 전환·첫인상이 LTV를 좌우 → 초기 한 명 한 명이 중요.
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">13</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 14: 난각 3번 커뮤니케이션 원칙 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">COMMUNICATION PRINCIPLE</div>
+    <h2 class="slide__title">난각 3번을 다루는 4가지 원칙</h2>
+  </div>
+
+  <div class="grid-2" style="gap: 16px; margin-bottom: 16px;">
+    <div class="card card--accent" style="padding: 18px;">
+      <div style="font-size: 22px;">🥉</div>
+      <div class="card__title" style="font-size: 15px; margin: 6px 0;">① 동메달 금지</div>
+      <div class="card__desc" style="font-size: 12px;">3번을 자랑하지도, 변명하지도 않는다. 등급은 브랜드의 주어가 아니다.</div>
+    </div>
+    <div class="card card--yolk" style="padding: 18px;">
+      <div style="font-size: 22px;">💬</div>
+      <div class="card__title" style="font-size: 15px; margin: 6px 0;">② "알고 보니 3번" 톤</div>
+      <div class="card__desc" style="font-size: 12px;">전문성·물·관리를 먼저 말한 뒤, 등급은 뒤늦게 자연스럽게 드러나는 정도.</div>
+    </div>
+    <div class="card card--green" style="padding: 18px;">
+      <div style="font-size: 22px;">🔁</div>
+      <div class="card__title" style="font-size: 15px; margin: 6px 0;">③ 약점 → 재정의</div>
+      <div class="card__desc" style="font-size: 12px;">"3번"을 <strong>전문성·스마트팜 관리</strong>의 언어로 재정의 — 등급 프레임 자체를 바꾼다.</div>
+    </div>
+    <div class="card card--red" style="padding: 18px;">
+      <div style="font-size: 22px;">🛡️</div>
+      <div class="card__title" style="font-size: 15px; margin: 6px 0;">④ 4번 공격 금지</div>
+      <div class="card__desc" style="font-size: 12px;">남을 깎지 않는다. 안티가 생기면 <strong>데이터로 차분히</strong> 대응.</div>
+    </div>
+  </div>
+
+  <div class="card card--filled" style="padding: 16px 20px;">
+    <div class="card__label" style="margin-bottom: 6px;">대표 어록 — 등급을 보는 관점</div>
+    <div class="serif" style="font-size: 15px; font-weight: 700; color: var(--accent); line-height: 1.7;">
+      "내가 1·2번 좋은 걸 모르나, 다 계산해 보니 3번이 최적이었다."
+    </div>
+  </div>
+
+  <span class="slide__page">14</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 15: 핵심 메시지 A/B/C -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">KEY MESSAGES</div>
+    <h2 class="slide__title">핵심 메시지 3안 — A / B / C</h2>
+  </div>
+
+  <div class="grid-3" style="gap: 16px; margin-bottom: 16px;">
+    <div class="card card--green" style="padding: 20px;">
+      <div class="card__label" style="color: var(--green);">A · 시간 · 신뢰</div>
+      <div class="serif" style="font-size: 19px; font-weight: 900; color: var(--green); margin: 10px 0; line-height: 1.4;">"50년, 변하지 않은 기준"</div>
+      <div class="card__desc" style="font-size: 12px;">헤리티지를 정면에. 정서적 신뢰가 가장 큰 강점, 단 차별성은 보조 필요.</div>
+    </div>
+    <div class="card card--yolk" style="padding: 20px; background: var(--yolk-light); border-left-width: 6px;">
+      <div class="card__label" style="color: var(--yolk-deep);">B · 전문성 ⭐</div>
+      <div class="serif" style="font-size: 19px; font-weight: 900; color: var(--yolk-deep); margin: 10px 0; line-height: 1.4;">"전문가가 키운 계란"</div>
+      <div class="card__desc" style="font-size: 12px;"><strong>추천 메인.</strong> 시장에 없는 포지션 — 통합 컨셉(B 골격)과 정확히 일치.</div>
+    </div>
+    <div class="card card--accent" style="padding: 20px;">
+      <div class="card__label" style="color: var(--accent);">C · 맛 · 물</div>
+      <div class="serif" style="font-size: 19px; font-weight: 900; color: var(--accent); margin: 10px 0; line-height: 1.4;">"소백산의 물이 키운 매일"</div>
+      <div class="card__desc" style="font-size: 12px;">맛의 차별을 감각적으로. "깨끗·신선"의 근거를 물로 묶는다.</div>
+    </div>
+  </div>
+
+  <div class="card card--filled" style="padding: 16px 20px;">
+    <div class="card__desc" style="font-size: 12.5px;">
+      <strong style="color: var(--yolk-deep);">운용 제안:</strong>
+      <strong>B를 메인 헤드라인</strong>으로 고정하고, A는 "About·브랜드 스토리"에서 신뢰의 배경으로, C는 "맛·후기·상세페이지"에서 감각적 증거로 분담 배치. 세 메시지는 경쟁이 아니라 역할 분담.
+    </div>
+  </div>
+
+  <span class="slide__page">15</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 16: 어록 자산 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">STORY ASSET · 대표 어록</div>
+    <h2 class="slide__title">스토리 인용 자산 — 카피로 바로 쓸 진짜 문장</h2>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:16px;">
+    <div class="card card--yolk" style="padding: 22px 26px;">
+      <div style="font-size: 30px; color: var(--yolk); line-height: 0.6; font-family: serif;">&ldquo;</div>
+      <div class="serif" style="font-size: 20px; font-weight: 700; color: var(--text); line-height: 1.6; margin: 4px 0;">이 집 계란 참 맛있다.</div>
+      <div class="card__desc" style="font-size: 11.5px;">→ 가장 단순하고 강한 입소문 카피. 후기·패키지 카피로 그대로 활용 가능.</div>
+    </div>
+    <div class="card card--accent" style="padding: 22px 26px;">
+      <div style="font-size: 30px; color: var(--accent); line-height: 0.6; font-family: serif;">&ldquo;</div>
+      <div class="serif" style="font-size: 20px; font-weight: 700; color: var(--text); line-height: 1.6; margin: 4px 0;">다 바뀌었는데 바뀌지 않은 단 하나, 물이에요.</div>
+      <div class="card__desc" style="font-size: 11.5px;">→ "물 = 맛의 증거" 메시지(C)의 핵심 근거 문장. 브랜드 스토리의 한 축.</div>
+    </div>
+    <div class="card card--green" style="padding: 22px 26px;">
+      <div style="font-size: 30px; color: var(--green); line-height: 0.6; font-family: serif;">&ldquo;</div>
+      <div class="serif" style="font-size: 20px; font-weight: 700; color: var(--text); line-height: 1.6; margin: 4px 0;">내가 1·2번 좋은 걸 모르나, 다 계산해 보니 3번이 최적이었다.</div>
+      <div class="card__desc" style="font-size: 11.5px;">→ 난각 3번을 "전문가의 판단"으로 재정의하는 결정적 문장. 안티 대응 자산.</div>
+    </div>
+  </div>
+
+  <div class="source-note">출처: 에그하다 1차 인터뷰 (2026.06) 대표 발언 발췌 · 실제 카피화 시 표현 정제 예정</div>
+  <span class="slide__page">16</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 17: DIVIDER ③ -->
+<!-- ============================================================ -->
+<div class="slide slide--dark divider">
+  <div class="divider__number">③</div>
+  <div class="divider__title serif">박람회 마케팅 플랜</div>
+  <div class="divider__desc">타임라인 · 7/15 코엑스 티징 부스 · 사전 시딩 &amp; 콘텐츠</div>
+  <span class="slide__page">17</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 18: 타임라인 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">TIMELINE</div>
+    <h2 class="slide__title">런칭 타임라인 — 6/16 → 9월 공식 런칭</h2>
+  </div>
+
+  <div class="timeline" style="margin-top: 8px;">
+    <div class="tl-line"></div>
+
+    <div class="tl-item">
+      <div class="tl-dot tl-dot--yolk">●</div>
+      <div style="font-size: 14px; font-weight: 800;">6/16 · 2차 워크샵 <span style="font-size:11px; color:var(--muted); font-weight:600;">(오늘)</span></div>
+      <div class="card__desc" style="font-size: 12px;">컨셉·핵심 메시지·마케팅 드래프트 좁히기</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">●</div>
+      <div style="font-size: 14px; font-weight: 800;">6/19 · 정부지원 제출</div>
+      <div class="card__desc" style="font-size: 12px;">BI 임시안 포함 제출 — 디자인 풀버전 아닌 방향·무드 수준</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">●</div>
+      <div style="font-size: 14px; font-weight: 800;">6/27~28 · 지인 30명 사전 시딩</div>
+      <div class="card__desc" style="font-size: 12px;">인스타 모객 시작 — 첫 고객·첫 리뷰·손편지 수집</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot tl-dot--yolk">★</div>
+      <div style="font-size: 14px; font-weight: 800; color: var(--yolk-deep);">7/15 · 코엑스 티징 런칭 <span style="font-size:11px; font-weight:700;">(D-29)</span></div>
+      <div class="card__desc" style="font-size: 12px;">농식품 박람회 부스 — 티징 최소 구성, 현장 구독 유도</div>
+    </div>
+    <div class="tl-item" style="padding-bottom: 0;">
+      <div class="tl-dot">●</div>
+      <div style="font-size: 14px; font-weight: 800;">9월 · 공식 런칭</div>
+      <div class="card__desc" style="font-size: 12px;">상세페이지·풀디자인 완성 — 본격 판매 개시 (투트랙)</div>
+    </div>
+  </div>
+
+  <div class="card card--filled" style="margin-top: 14px; padding: 12px 18px;">
+    <div class="card__desc" style="font-size: 12px;">
+      <strong style="color: var(--accent);">투트랙 원칙:</strong> 7/15는 "맛보기(티징)", 9월은 "완성본". 7/15에 모든 걸 끝내려 하지 않는다 — 무드·색상만 일부 공개, 풀디자인·상세페이지는 9월로 분리.
+    </div>
+  </div>
+
+  <span class="slide__page">18</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 19: 7/15 부스 구성 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">BOOTH · 7/15 코엑스 티징</div>
+    <h2 class="slide__title">티징 부스 — 최소 구성 &amp; 현장 구독 유도</h2>
+  </div>
+
+  <div class="grid-2" style="gap: 16px; margin-bottom: 16px;">
+    <div class="card card--accent" style="padding: 18px;">
+      <div class="card__label" style="color: var(--accent);">전시물 (최소 구성)</div>
+      <ul class="insight-list">
+        <li><strong>포스터 · 리플렛</strong> + 목업/실물 한두 개</li>
+        <li>디자인 <strong>색상 · 무드만 일부 공개</strong> (풀버전 X)</li>
+        <li>7월 더위 대비 <strong>신선도 동선 점검</strong> 필수</li>
+      </ul>
+    </div>
+    <div class="card card--yolk" style="padding: 18px;">
+      <div class="card__label" style="color: var(--yolk-deep);">굿즈 → 구독 전환 장치</div>
+      <ul class="insight-list">
+        <li><strong>에그 스탠드 굿즈</strong> (기성품 + 스티커 OK)</li>
+        <li>→ <strong>첫 구독자 증정</strong>으로 현장 구독 유도</li>
+        <li>방문자를 "구경꾼"이 아닌 "첫 고객"으로 전환</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2" style="gap: 16px;">
+    <div class="card card--green" style="padding: 16px;">
+      <div class="card__title" style="font-size: 14px; color: var(--green);">7/15 (티징)</div>
+      <div class="card__desc" style="font-size: 12px;">무드·색상 일부 + 목업 + 굿즈 → <strong>현장 구독자 확보</strong>가 목표 (판매 아님)</div>
+    </div>
+    <div class="card card--blue" style="padding: 16px;">
+      <div class="card__title" style="font-size: 14px; color: var(--blue);">9월 (공식)</div>
+      <div class="card__desc" style="font-size: 12px;">상세페이지 · 풀디자인 완성 → 본 판매. 티징과 <strong>역할을 분리</strong>한다.</div>
+    </div>
+  </div>
+
+  <div class="source-note"><strong>[확인 필요]</strong> 부스 위치·규격·박람회 정식 명칭·집기 반입 규정 — 코엑스 박람회 측 확인 후 확정</div>
+  <span class="slide__page">19</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 20: 사전 시딩 & 콘텐츠 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">SEEDING &amp; CONTENT</div>
+    <h2 class="slide__title">사전 시딩 &amp; 콘텐츠 전략</h2>
+  </div>
+
+  <div class="grid-3" style="gap: 14px; margin-bottom: 14px;">
+    <div class="card card--accent" style="padding: 16px;">
+      <div class="card__label" style="color: var(--accent);">인스타 2계정 운영</div>
+      <div class="card__desc" style="font-size: 12px;">
+        ① <strong>오피셜</strong> 계정 / ② <strong>개인(신규)</strong> 계정 — 개인 계정으로 <strong>먼저 모객</strong>한 뒤 오피셜로 연결.
+      </div>
+    </div>
+    <div class="card card--yolk" style="padding: 16px;">
+      <div class="card__label" style="color: var(--yolk-deep);">시딩 철학</div>
+      <div class="card__desc" style="font-size: 12px;">
+        <strong>"가장 어려운 사람(지인)에게 먼저"</strong> → 지인이 사면 누구나 산다. <strong>손편지 · 리뷰 수집</strong>으로 첫 신뢰 자산화.
+      </div>
+    </div>
+    <div class="card card--green" style="padding: 16px;">
+      <div class="card__label" style="color: var(--green);">증폭 레버</div>
+      <div class="card__desc" style="font-size: 12px;">
+        동생 인스타 <strong>(1.3만)</strong> · 브랜드라이즈 목장주 <strong>샤라웃</strong> · <strong>마르쉐 출점</strong>으로 도달 확장.
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--filled" style="padding: 16px 20px;">
+    <div class="card__label" style="margin-bottom: 10px;">콘텐츠 소재 — 진정성 우선, 연출 최소</div>
+    <div class="grid-4" style="gap: 12px;">
+      <div style="background:#fff; border-radius:8px; padding:12px; border-top:3px solid var(--accent);">
+        <div style="font-size:12px; font-weight:800;">생산 과정 사진</div>
+        <div class="card__desc" style="font-size:11px;">선별장 청소 후 깨끗한 현장</div>
+      </div>
+      <div style="background:#fff; border-radius:8px; padding:12px; border-top:3px solid var(--yolk);">
+        <div style="font-size:12px; font-weight:800;">사이즈별 용도 영상</div>
+        <div class="card__desc" style="font-size:11px;">"계란말이엔 특란, 장조림엔 중란"</div>
+      </div>
+      <div style="background:#fff; border-radius:8px; padding:12px; border-top:3px solid var(--green);">
+        <div style="font-size:12px; font-weight:800;">물·환기·닭 생애주기</div>
+        <div class="card__desc" style="font-size:11px;">전문성·관리 스토리</div>
+      </div>
+      <div style="background:#fff; border-radius:8px; padding:12px; border-top:3px solid var(--purple);">
+        <div style="font-size:12px; font-weight:800;">영주 장학재단 현물기부</div>
+        <div class="card__desc" style="font-size:11px;">지역·진정성 자산</div>
+      </div>
+    </div>
+  </div>
+
+  <span class="slide__page">20</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 21: DIVIDER — 액션 -->
+<!-- ============================================================ -->
+<div class="slide slide--green-gradient divider">
+  <div class="divider__number">✓</div>
+  <div class="divider__title serif">액션 아이템 &amp; 다음 스텝</div>
+  <div class="divider__desc">대표님 과제 · HIZ 과제 — 6/19 제출 · 7/15 티징을 향해</div>
+  <span class="slide__page">21</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 22: 액션 아이템 (2분할) -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">ACTION ITEMS</div>
+    <h2 class="slide__title">다음까지 — 누가 무엇을 해 올까</h2>
+  </div>
+
+  <div class="grid-2" style="gap: 18px;">
+    <div class="card card--accent" style="padding: 20px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+        <div style="width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;">🧑‍🌾</div>
+        <div class="card__title serif" style="font-size:17px; margin:0;">대표님</div>
+      </div>
+      <ul class="insight-list">
+        <li><strong>제품 시트</strong> — 규격 · 개수 (가격 제외)</li>
+        <li><strong>이력서</strong> — 전공 · 석사 · 귀농 서사</li>
+        <li><strong>선별장 청소</strong> + 생산 사진 촬영</li>
+        <li><strong>인스타 개설</strong> + 첫 포스팅</li>
+      </ul>
+    </div>
+
+    <div class="card card--yolk" style="padding: 20px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+        <div style="width:34px;height:34px;border-radius:50%;background:var(--hiz-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;font-style:italic;">H</div>
+        <div class="card__title serif" style="font-size:17px; margin:0;">HIZ</div>
+      </div>
+      <ul class="insight-list">
+        <li><strong>컨셉 3안 → 1안</strong> 확정</li>
+        <li><strong>핵심 메시지 A/B/C</strong> 확정</li>
+        <li><strong>7/15 티징</strong> 마케팅 드래프트</li>
+        <li><strong>BI 임시안</strong> (6/19 제출용)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="background: linear-gradient(90deg, var(--accent) 0%, var(--yolk-deep) 100%); color:#fff; padding: 16px 22px; border-radius: 10px; margin-top: 18px; display:flex; align-items:center; gap:16px;">
+    <div style="font-size:30px;">📅</div>
+    <div>
+      <div style="font-size:10px; font-weight:800; letter-spacing:2px; opacity:0.8;">NEAREST DEADLINE</div>
+      <div style="font-size:15px; font-weight:800;">6/19 정부지원 제출 — BI 임시안 필수 · 그 다음은 7/15 코엑스 티징 (D-29)</div>
+    </div>
+  </div>
+
+  <span class="slide__page">22</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 23: 미확인 항목 정리 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">TO BE CONFIRMED</div>
+    <h2 class="slide__title">확정 전 확인이 필요한 항목</h2>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="width:6%;">#</th>
+        <th style="width:34%;">항목</th>
+        <th style="width:40%;">내용</th>
+        <th style="width:20%;">상태</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td>계란 시장 규모 (≈1조 원)</td>
+        <td>대표 언급 기준 — 정량 출처 미확보</td>
+        <td><span class="tag tag--red">[확인 필요]</span></td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td>경쟁 브랜드 가격·지위</td>
+        <td>포지셔닝 맵 좌표는 정성 추정치</td>
+        <td><span class="tag tag--yolk">[추정]</span></td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td>7/15 부스 규격·박람회 정식명</td>
+        <td>위치·집기 반입 규정 미확정</td>
+        <td><span class="tag tag--red">[확인 필요]</span></td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td>난각 3번 / 무항생제 표기 규제</td>
+        <td>광고·패키지 문구 식약처 기준 확인 필요</td>
+        <td><span class="tag tag--red">[확인 필요]</span></td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td>HACCP · 무항생제 인증 보유 현황</td>
+        <td>실제 인증서 사본 확인 후 카피 사용</td>
+        <td><span class="tag tag--red">[확인 필요]</span></td>
+      </tr>
+      <tr>
+        <td><strong>6</strong></td>
+        <td>대표 어록 카피화</td>
+        <td>인터뷰 발췌 — 실제 표현 정제·검수 예정</td>
+        <td><span class="tag tag--green">진행 중</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="card card--filled" style="margin-top: 16px; padding: 14px 18px;">
+    <div class="card__desc" style="font-size: 12px;">
+      위 항목은 모두 1차 인터뷰 기반 제안 단계의 미확정 사항입니다. 컨셉·메시지 확정 전에 <strong>수치·규제·인증</strong>을 교차 검증한 뒤 외부 카피로 노출합니다.
+    </div>
+  </div>
+
+  <span class="slide__page">23</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 24: 한눈 요약 -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="slide__header">
+    <div class="slide__section-label">SUMMARY · 오늘의 결론 한 장</div>
+    <h2 class="slide__title">2차 워크샵 — 한눈 요약</h2>
+  </div>
+
+  <div class="grid-3" style="gap: 16px; margin-bottom: 16px;">
+    <div class="card card--yolk" style="padding: 18px;">
+      <div class="card__label" style="color: var(--yolk-deep);">① 컨셉</div>
+      <div class="serif" style="font-size: 15px; font-weight: 800; color: var(--yolk-deep); margin: 6px 0;">「농업 전문가의 계란」</div>
+      <div class="card__desc" style="font-size: 11.5px;">B 골격 + C 신선 + A 신뢰 + 물(맛) 통합. 헤리티지×모던 비주얼.</div>
+    </div>
+    <div class="card card--accent" style="padding: 18px;">
+      <div class="card__label" style="color: var(--accent);">② 메시지·포지셔닝</div>
+      <div class="serif" style="font-size: 15px; font-weight: 800; color: var(--accent); margin: 6px 0;">전문성 있는 프리미엄</div>
+      <div class="card__desc" style="font-size: 11.5px;">메인 "전문가가 키운 계란". 난각 3번은 "알고 보니" 톤, 4번 공격 금지.</div>
+    </div>
+    <div class="card card--green" style="padding: 18px;">
+      <div class="card__label" style="color: var(--green);">③ 마케팅</div>
+      <div class="serif" style="font-size: 15px; font-weight: 800; color: var(--green); margin: 6px 0;">시딩 → 7/15 → 9월</div>
+      <div class="card__desc" style="font-size: 11.5px;">지인부터 먼저, 코엑스 티징은 구독 전환, 풀디자인은 9월 투트랙.</div>
+    </div>
+  </div>
+
+  <div class="card card--filled serif" style="padding: 24px 28px; text-align:center;">
+    <div style="font-size: 11px; font-weight:800; letter-spacing:2px; color:var(--hiz-orange); margin-bottom:10px;">ONE LINE</div>
+    <div style="font-size: 21px; font-weight: 900; color: var(--accent); line-height: 1.6;">
+      "농업 전문가가 스마트팜으로 키운,<br>가장 신선하고 깨끗한 매일의 계란"
+    </div>
+  </div>
+
+  <span class="slide__page">24</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 25: CLOSING -->
+<!-- ============================================================ -->
+<div class="slide slide--gradient" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; position:relative; overflow:hidden;">
+  <div style="position:absolute; bottom:-160px; left:50%; transform:translateX(-50%); width:420px; height:420px; border-radius:50%; background:radial-gradient(circle at 40% 40%, #f6cf6a 0%, #e8a92c 60%, #c98a18 100%); opacity:0.5;"></div>
+  <div style="position:relative; z-index:2;">
+    <div style="font-size:12px; font-weight:600; letter-spacing:3px; opacity:0.55; margin-bottom:20px;">THANK YOU</div>
+    <h2 class="serif" style="font-size:36px; font-weight:900; margin-bottom:14px;">에그하다 × HIZ BRAND RISE</h2>
+    <p style="font-size:16px; opacity:0.85; margin-bottom:8px;">2차 브랜딩 워크샵 — 컨셉 · 핵심 메시지 · 박람회 플랜</p>
+    <p style="font-size:13px; opacity:0.55; margin-bottom:36px;">다음 마일스톤: 6/19 정부지원 제출 · 7/15 코엑스 티징 런칭 (D-29)</p>
+    <div style="width:60px; height:1px; background:rgba(255,255,255,0.3); margin:0 auto 20px;"></div>
+    <p style="font-size:11px; opacity:0.45;">Prepared by HIZ BRAND RISE · Confidential<br>2026. 06. 16</p>
+  </div>
+  <span class="slide__page">25</span>
+</div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var total = slides.length;
+  var idx = 0;
+  var deck = false;
+  var bar = document.getElementById('progressbar');
+  var ind = document.getElementById('pageind');
+
+  function fit(){
+    if(!deck) return;
+    var scale = Math.min(window.innerWidth/1122, window.innerHeight/793);
+    document.body.style.setProperty('--scale', scale);
+  }
+  function render(){
+    bar.style.width = ((idx+1)/total*100) + '%';
+    ind.textContent = (idx+1) + ' / ' + total;
+    if(deck){
+      slides.forEach(function(s,i){ s.classList.toggle('active', i===idx); });
+      fit();
+    }
+  }
+  function go(n){ idx = Math.max(0, Math.min(total-1, n));
+    if(deck){ render(); }
+    else { slides[idx].scrollIntoView({behavior:'smooth', block:'start'}); render(); }
+  }
+  function toggleDeck(){
+    deck = !deck;
+    document.body.classList.toggle('deckmode', deck);
+    if(deck){ render(); } else {
+      slides.forEach(function(s){ s.classList.remove('active'); });
+      document.body.style.removeProperty('--scale');
+      slides[idx].scrollIntoView({block:'start'});
+      render();
+    }
+  }
+  // 스크롤 모드에서 현재 슬라이드 추적
+  window.addEventListener('scroll', function(){
+    if(deck) return;
+    var mid = window.scrollY + window.innerHeight/2;
+    for(var i=0;i<slides.length;i++){
+      if(slides[i].offsetTop <= mid && slides[i].offsetTop + slides[i].offsetHeight > mid){ idx = i; break; }
+    }
+    bar.style.width = ((idx+1)/total*100) + '%';
+    ind.textContent = (idx+1) + ' / ' + total;
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowRight' || e.key === 'PageDown'){ e.preventDefault(); go(idx+1); }
+    else if(e.key === 'ArrowLeft' || e.key === 'PageUp'){ e.preventDefault(); go(idx-1); }
+    else if(e.key === 'Home'){ e.preventDefault(); go(0); }
+    else if(e.key === 'End'){ e.preventDefault(); go(total-1); }
+    else if(e.key === 'f' || e.key === 'F'){ e.preventDefault(); toggleDeck(); }
+    else if(e.key === 'Escape' && deck){ e.preventDefault(); toggleDeck(); }
+  });
+  window.addEventListener('resize', fit);
+  render();
+})();
+</script>
+
+</body>
+</html>
