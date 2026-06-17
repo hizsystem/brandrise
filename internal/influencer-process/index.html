@@ -18,10 +18,19 @@
   *{box-sizing:border-box;margin:0;padding:0}
   body{
     font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Segoe UI",Roboto,sans-serif;
-    color:var(--ink); background:var(--bg); line-height:1.65;
+    color:var(--ink); background:var(--bg); line-height:1.7; font-size:15px;
     -webkit-font-smoothing:antialiased; letter-spacing:-.01em;
     word-break:keep-all; overflow-wrap:break-word;
   }
+
+  /* ===== 가독성 공통: 핵심(굵게) · 멘트(.say) · 메모(.memo) 3분리, 큰 글씨 ===== */
+  .say{border-left:3px solid var(--brand);background:var(--brand-soft);border-radius:0 10px 10px 0;
+    padding:11px 16px;margin:11px 0;font-size:15px;color:var(--ink);font-weight:600;line-height:1.6}
+  .say::before{content:"\201C";color:var(--brand);font-weight:800}
+  .say::after{content:"\201D";color:var(--brand);font-weight:800}
+  .memo{display:block;font-size:13px;color:var(--ink2);line-height:1.65;margin-top:9px;
+    padding-left:13px;border-left:2px solid var(--line)}
+  .memo b{color:var(--ink);font-weight:700}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
   /* HERO */
@@ -47,7 +56,7 @@
   .sec-head{margin-bottom:30px}
   .sec-tag{font-size:13px;font-weight:700;color:var(--brand);letter-spacing:.06em;text-transform:uppercase}
   .sec-head h2{font-size:26px;font-weight:800;margin-top:6px;letter-spacing:-.02em}
-  .sec-head p{color:var(--ink2);margin-top:8px;font-size:15.5px;max-width:680px}
+  .sec-head p{color:var(--ink2);margin-top:8px;font-size:15px;max-width:720px;line-height:1.7}
 
   /* PURPOSE */
   .purpose{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
@@ -55,7 +64,7 @@
   .p-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px}
   .p-card .p-ico{font-size:26px;margin-bottom:10px}
   .p-card .p-t{font-size:16px;font-weight:800;margin-bottom:6px}
-  .p-card .p-d{font-size:13.5px;color:var(--ink2);line-height:1.6}
+  .p-card .p-d{font-size:13.5px;color:var(--ink2);line-height:1.62}
   .purpose-line{margin-top:18px;background:linear-gradient(135deg,#eef0ff,#f6f7ff);
     border:1px solid #dcdcff;border-radius:14px;padding:18px 22px;font-size:15px;color:var(--ink2)}
   .purpose-line b{color:var(--ink)}
@@ -65,12 +74,12 @@
   .nest-l2{background:var(--brand-soft);border:1px solid #d8d9ff;border-radius:14px;padding:16px;margin-top:14px}
   .nest-l3-wrap{background:var(--card);border:1px solid #d8d9ff;border-radius:12px;padding:14px;margin-top:12px}
   .nest-tag{font-size:15px;font-weight:800;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-  .nest-tag span{font-size:12.5px;font-weight:600;color:var(--ink3)}
-  .nest-eg{font-size:12.5px;color:var(--ink2);margin-top:4px;padding-left:2px}
-  .nest-l3-head{font-size:12.5px;font-weight:700;color:var(--brand-deep);margin-bottom:10px}
+  .nest-tag span{font-size:13px;font-weight:600;color:var(--ink3)}
+  .nest-eg{font-size:13px;color:var(--ink2);margin-top:5px;padding-left:2px}
+  .nest-l3-head{font-size:13px;font-weight:700;color:var(--brand-deep);margin-bottom:10px;line-height:1.55}
   .row-eg-head,.row-eg{display:grid;grid-template-columns:1.4fr 1fr .8fr 1fr 1fr .8fr;gap:6px;align-items:center}
-  .row-eg-head{font-size:11px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.03em;padding:0 10px 7px}
-  .row-eg{font-size:13px;background:#fafbff;border:1px solid var(--line2);border-radius:8px;padding:9px 10px;margin-bottom:6px}
+  .row-eg-head{font-size:11.5px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.03em;padding:0 10px 7px}
+  .row-eg{font-size:13.5px;background:#fafbff;border:1px solid var(--line2);border-radius:8px;padding:9px 10px;margin-bottom:6px}
   .row-eg.muted{opacity:.62}
   .row-eg .who{font-weight:700}
   .row-eg .ok{color:#0c6b6b;font-weight:700}
@@ -80,13 +89,13 @@
   @media(max-width:640px){
     .row-eg-head{display:none}
     .row-eg{grid-template-columns:1fr 1fr;gap:4px 10px}
-    .row-eg span{font-size:12.5px}
+    .row-eg span{font-size:13px}
   }
   .rules{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
   @media(max-width:760px){.rules{grid-template-columns:1fr}}
   .rule{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--brand);border-radius:12px;padding:18px 20px}
-  .rule .rk{font-size:12.5px;font-weight:800;color:var(--brand);margin-bottom:6px}
-  .rule .rv{font-size:14px;color:var(--ink2);line-height:1.6}
+  .rule .rk{font-size:13px;font-weight:800;color:var(--brand);margin-bottom:6px}
+  .rule .rv{font-size:14px;color:var(--ink2);line-height:1.65}
 
   /* FLOW STRIP */
   .flow{display:flex;gap:0;overflow-x:auto;padding:6px 2px 14px}
@@ -96,8 +105,8 @@
   .flow .dot{width:54px;height:54px;border-radius:14px;margin:0 auto 10px;display:flex;
     align-items:center;justify-content:center;font-size:22px;background:var(--brand-soft);
     border:1px solid #dcdcff;position:relative;z-index:1}
-  .flow .step .lbl{font-size:13px;font-weight:700}
-  .flow .step .sub{font-size:11.5px;color:var(--ink3);margin-top:2px}
+  .flow .step .lbl{font-size:13.5px;font-weight:700}
+  .flow .step .sub{font-size:12px;color:var(--ink3);margin-top:2px}
 
   /* PHASE CARDS */
   .phase{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
@@ -110,39 +119,41 @@
   .phase.rose .phase-num{background:var(--rose)}
   .phase-head{flex:1}
   .phase-head h3{font-size:19px;font-weight:800;letter-spacing:-.01em}
-  .phase-head .goal{font-size:14.5px;color:var(--ink2);margin-top:3px}
-  .phase-badge{flex:0 0 auto;font-size:12px;font-weight:700;color:var(--brand-deep);
+  .phase-head .goal{font-size:15px;color:var(--ink2);margin-top:4px;line-height:1.55}
+  .phase-badge{flex:0 0 auto;font-size:12.5px;font-weight:700;color:var(--brand-deep);
     background:var(--brand-soft);padding:5px 11px;border-radius:999px;white-space:nowrap}
   .phase.accent .phase-badge{color:#0c6b6b;background:var(--accent-soft)}
   .phase.amber .phase-badge{color:#92590a;background:var(--amber-soft)}
   .phase.rose .phase-badge{color:#a21052;background:var(--rose-soft)}
   .phase-body{padding:0 26px 24px;display:grid;grid-template-columns:1.6fr 1fr;gap:22px}
   @media(max-width:720px){.phase-body{grid-template-columns:1fr}}
-  .phase-body h4{font-size:12px;font-weight:700;color:var(--ink3);letter-spacing:.05em;
-    text-transform:uppercase;margin-bottom:9px}
+  .phase-body h4{font-size:12.5px;font-weight:700;color:var(--ink3);letter-spacing:.05em;
+    text-transform:uppercase;margin-bottom:10px}
   .acts{list-style:none}
-  .acts li{position:relative;padding-left:20px;font-size:14.5px;color:var(--ink);margin-bottom:7px}
+  .acts li{position:relative;padding-left:20px;font-size:15px;color:var(--ink);margin-bottom:9px;line-height:1.6}
+  .acts li b{color:var(--ink);font-weight:800}
   .acts li::before{content:"";position:absolute;left:2px;top:9px;width:7px;height:7px;
     border-radius:50%;background:var(--brand)}
   .phase.accent .acts li::before{background:var(--accent)}
   .phase.amber .acts li::before{background:var(--amber)}
   .phase.rose .acts li::before{background:var(--rose)}
   .meta-box{background:#fafbff;border:1px solid var(--line2);border-radius:12px;padding:16px 18px}
-  .meta-row{display:flex;gap:10px;font-size:13.5px;padding:6px 0;border-bottom:1px dashed var(--line)}
+  .meta-row{display:flex;gap:10px;font-size:13.5px;padding:7px 0;border-bottom:1px dashed var(--line);line-height:1.5}
   .meta-row:last-child{border-bottom:0}
   .meta-row .k{flex:0 0 64px;color:var(--ink3);font-weight:600}
   .meta-row .v{color:var(--ink);font-weight:500}
   .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
-  .tags span{font-size:11.5px;background:#eef1f8;color:var(--ink2);padding:3px 9px;border-radius:6px}
+  .tags span{font-size:12px;background:#eef1f8;color:var(--ink2);padding:3px 9px;border-radius:6px}
 
   /* TABLES */
   .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
-  table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:560px}
   thead th{background:#f3f4fb;text-align:left;padding:13px 16px;font-weight:700;
     color:var(--ink2);font-size:13px;border-bottom:1px solid var(--line)}
-  tbody td{padding:12px 16px;border-bottom:1px solid var(--line2);color:var(--ink)}
+  tbody td{padding:12px 16px;border-bottom:1px solid var(--line2);color:var(--ink);line-height:1.55}
+  tbody td b,tbody td strong{color:var(--ink);font-weight:800}
   tbody tr:last-child td{border-bottom:0}
-  .pill{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:6px}
+  .pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:6px}
   .pill.r{background:var(--brand-soft);color:var(--brand-deep)}
   .pill.a{background:var(--rose-soft);color:#a21052}
   .pill.c{background:var(--amber-soft);color:#92590a}
@@ -155,23 +166,23 @@
     padding:18px 16px;text-align:center}
   .stack .s-card .ico{font-size:24px;margin-bottom:8px}
   .stack .s-card .nm{font-weight:800;font-size:14.5px}
-  .stack .s-card .ds{font-size:12.5px;color:var(--ink3);margin-top:4px;line-height:1.5}
+  .stack .s-card .ds{font-size:13px;color:var(--ink3);margin-top:5px;line-height:1.55}
 
   /* SLA cards */
   .sla{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
   @media(max-width:820px){.sla{grid-template-columns:repeat(2,1fr)}}
   .sla .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
   .sla .card .big{font-size:24px;font-weight:800;color:var(--brand)}
-  .sla .card .lbl{font-size:13px;color:var(--ink2);margin-top:4px}
+  .sla .card .lbl{font-size:13.5px;color:var(--ink2);margin-top:5px;line-height:1.5}
 
   /* callout */
   .callout{background:linear-gradient(135deg,#eef0ff,#f6f7ff);border:1px solid #dcdcff;
     border-radius:14px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
   .callout .ic{font-size:22px}
   .callout .tx b{display:block;margin-bottom:3px;font-size:15px}
-  .callout .tx{font-size:14px;color:var(--ink2)}
+  .callout .tx{font-size:14px;color:var(--ink2);line-height:1.65}
 
-  footer{padding:40px 0 60px;color:var(--ink3);font-size:13px;text-align:center;border-top:1px solid var(--line);margin-top:20px}
+  footer{padding:40px 0 60px;color:var(--ink3);font-size:13px;text-align:center;border-top:1px solid var(--line);margin-top:20px;line-height:1.6}
   .divider-note{font-size:13px;color:var(--ink3);margin-top:10px}
 </style>
 </head>
@@ -181,7 +192,7 @@
   <div class="wrap">
     <span class="eyebrow">● 전사 운영 가이드 · INTERNAL</span>
     <h1>인플루언서 캠페인 프로세스</h1>
-    <p>브랜드사의 캠페인 기획부터 인플루언서 소싱·컨택·계약·실행·정산·사후관리까지. 누구나 같은 기준으로 일할 수 있도록 전체 흐름을 9단계로 표준화했습니다.</p>
+    <p>브랜드사 기획부터 소싱·컨택·계약·실행·정산·사후관리까지. 담당자가 바뀌어도 빠지는 단계 없이 같은 품질로 돌아가도록 전체 흐름을 9단계로 묶었습니다.</p>
     <div class="meta">
       <span>📋 단위: 캠페인</span>
       <span>🔗 단일 진실 원천: 캠페인 트래커</span>
@@ -197,28 +208,28 @@
     <div class="sec-head">
       <div class="sec-tag">Purpose</div>
       <h2>인플루언서 캠페인은 왜 하나</h2>
-      <p>단발성 광고가 아니라, <b>신뢰받는 사람의 목소리를 빌려 브랜드를 타겟에게 정확히 전하고, 그 결과를 측정·자산화</b>하는 활동입니다. 모든 캠페인은 아래 네 가지 목적 중 하나 이상을 노립니다.</p>
+      <p>단발 광고가 아니라, <b>믿고 보는 사람의 입을 빌려 브랜드를 타겟에게 제대로 꽂고, 그 결과를 숫자로 남기고 두고두고 쓰는</b> 일입니다. 모든 캠페인은 아래 네 가지 목적 중 하나 이상을 노립니다.</p>
     </div>
     <div class="purpose">
       <div class="p-card">
         <div class="p-ico">📣</div>
         <div class="p-t">인지 확대</div>
-        <div class="p-d">타겟 오디언스에게 브랜드·제품을 노출해 인지도를 끌어올린다.</div>
+        <div class="p-d">타겟이 모이는 채널에 브랜드·제품을 띄워 "이런 게 있네"를 만든다.</div>
       </div>
       <div class="p-card">
         <div class="p-ico">🤝</div>
         <div class="p-t">신뢰 형성</div>
-        <div class="p-d">광고가 아닌 '추천'의 형태로, 진정성 있는 메시지로 호감과 신뢰를 쌓는다.</div>
+        <div class="p-d">광고가 아니라 '진짜 쓰는 사람의 추천'으로 보이게 해서 호감과 신뢰를 쌓는다.</div>
       </div>
       <div class="p-card">
         <div class="p-ico">🎯</div>
         <div class="p-t">전환 · 매출</div>
-        <div class="p-d">정밀 타겟팅된 오디언스를 실제 방문·구매·전환으로 연결한다.</div>
+        <div class="p-d">잘 맞춘 타겟을 실제 방문·구매·전환까지 끌고 간다.</div>
       </div>
       <div class="p-card">
         <div class="p-ico">📦</div>
         <div class="p-t">콘텐츠 자산</div>
-        <div class="p-d">제작된 콘텐츠를 광고 소재·채널 운영에 2차 활용해 자산으로 남긴다.</div>
+        <div class="p-d">받은 콘텐츠를 광고 소재·채널 운영에 다시 써서 자산으로 남긴다.</div>
       </div>
     </div>
     <div class="purpose-line">
@@ -233,7 +244,7 @@
     <div class="sec-head">
       <div class="sec-tag">Overview</div>
       <h2>한눈에 보는 9단계</h2>
-      <p>기획(브랜드사)에서 출발해 사후관리까지. 앞 4단계는 '준비', 5~6단계는 '계약·실행', 뒤 3단계는 '마무리'입니다.</p>
+      <p>기획에서 출발해 사후관리까지. 앞 4단계는 '준비', 5~6단계는 '계약·실행', 뒤 3단계는 '마무리'로 묶입니다.</p>
     </div>
     <div class="flow">
       <div class="step"><div class="dot">🎯</div><div class="lbl">캠페인 기획</div><div class="sub">브랜드사</div></div>
@@ -255,8 +266,9 @@
     <div class="sec-head">
       <div class="sec-tag">Foundation</div>
       <h2>프로세스가 굴러가는 3층 구조</h2>
-      <p>모든 운영은 <b>브랜드 → 캠페인 → 협업 행(Row)</b> 세 층으로 쌓입니다. 핵심 규칙 하나만 기억하면 됩니다 —
-      <b>인플루언서 한 명과의 협업 전체(컨택부터 정산까지)가 캠페인 트래커의 '한 줄'</b>입니다.</p>
+      <p>모든 운영은 <b>브랜드 → 캠페인 → 협업 행(Row)</b> 세 층으로 쌓입니다. 규칙은 딱 하나입니다.</p>
+      <div class="say">인플루언서 한 명과의 협업 전체 — 컨택부터 정산까지 — 가 트래커의 '한 줄'이다.</div>
+      <span class="memo">이 한 줄만 지키면 "어디에 적지?"가 사라진다. 한 명 = 한 행, 그 안에 컨택일·단가·계약·게시일·정산이 차곡차곡 쌓인다.</span>
     </div>
 
     <!-- 중첩 구조 다이어그램 -->
@@ -292,11 +304,11 @@
     <div class="rules">
       <div class="rule">
         <div class="rk">왜 이렇게 나누나?</div>
-        <div class="rv"><b>브랜드</b>는 캠페인이 끝나도 남는 <b>저장소</b>, <b>캠페인</b>은 매번 새로 만드는 <b>일의 단위</b>, <b>행</b>은 그 안의 <b>실제 작업 기록</b>입니다. 층이 섞이면 "어디에 적어야 하지?"가 생기지만, 이렇게 나누면 자리가 정해집니다.</div>
+        <div class="rv"><b>브랜드</b>는 캠페인 끝나도 남는 <b>거래처 장부</b>, <b>캠페인</b>은 매번 새로 여는 <b>일감</b>, <b>행</b>은 그 안의 <b>실제 작업 기록</b>입니다. 층이 섞이면 "이거 어디다 적지?"가 생기는데, 이렇게 나눠두면 적을 자리가 정해집니다.</div>
       </div>
       <div class="rule">
-        <div class="rk">데이터는 한 곳에만</div>
-        <div class="rv">모든 입력은 <b>캠페인 트래커(협업 행)</b>에만 합니다. 정산 목록·월별 집계·완료 아카이브 같은 다른 화면은 이 행들을 <b>자동으로 추출</b>한 결과라, 같은 내용을 두 번 적지 않습니다.</div>
+        <div class="rk">입력은 한 곳에만</div>
+        <div class="rv">손으로 적는 건 <b>캠페인 트래커(협업 행)</b> 하나뿐입니다. 정산 목록·월별 집계·완료 아카이브 같은 다른 화면은 이 행을 <b>수식이 알아서 끌어다</b> 보여주는 거라, 같은 내용을 두 번 적을 일이 없습니다.</div>
       </div>
     </div>
   </div>
@@ -308,25 +320,27 @@
     <div class="sec-head">
       <div class="sec-tag">Playbook</div>
       <h2>단계별 상세 플레이북</h2>
-      <p>각 단계의 목적, 핵심 활동, 담당, 산출물, 사용 도구입니다.</p>
+      <p>단계마다 목적·핵심 활동·담당·산출물·도구, 그리고 현장에서 실제 쓰는 말까지 묶었습니다.</p>
     </div>
 
     <!-- 1 -->
     <div class="phase">
       <div class="phase-top">
         <div class="phase-num">1</div>
-        <div class="phase-head"><h3>캠페인 기획</h3><div class="goal">브랜드사의 목표를 '실행 가능한 캠페인 브리프'로 번역한다.</div></div>
+        <div class="phase-head"><h3>캠페인 기획</h3><div class="goal">브랜드사 목표를 '바로 실행 가능한 브리프'로 바꿔놓는다.</div></div>
         <div class="phase-badge">브랜드사 주도</div>
       </div>
       <div class="phase-body">
         <div>
           <h4>핵심 활동</h4>
           <ul class="acts">
-            <li>브랜드 목표 정의 — 인지도 / 전환 / 신제품 런칭 중 무엇인지 확정</li>
-            <li>타겟·채널 설정 — 인스타·유튜브·틱톡, 도달하려는 오디언스</li>
-            <li>예산 · KPI 확정 — 총예산, 산출물 수, 성과 지표(도달·저장·전환)</li>
-            <li>캠페인 브리프 작성 — 톤앤매너, 필수 메시지, 금지 표현, 일정</li>
+            <li><b>목표부터 못 박기</b> — 인지도냐, 전환이냐, 신제품 런칭이냐. 섞으면 캠페인이 흐려진다</li>
+            <li><b>타겟·채널 정하기</b> — 누구한테, 인스타·유튜브·틱톡 중 어디서</li>
+            <li><b>예산·KPI 확정</b> — 총예산, 받을 콘텐츠 수, 볼 지표(도달·저장·전환)</li>
+            <li><b>브리프 작성</b> — 톤앤매너, 꼭 넣을 메시지, 쓰면 안 되는 표현, 일정</li>
           </ul>
+          <div class="say">이번 캠페인, 한 줄로 뭘 얻으려는 거예요?</div>
+          <span class="memo">목표가 안 좁혀지면 소싱부터 흔들린다. 브랜드사가 "다 좋게요"라고 하면 인지/전환/런칭 중 <b>하나만</b> 1순위로 고른다.</span>
         </div>
         <div class="meta-box">
           <div class="meta-row"><span class="k">담당</span><span class="v">캠페인 담당 · 팀장 · (브랜드사)</span></div>
@@ -341,18 +355,19 @@
     <div class="phase">
       <div class="phase-top">
         <div class="phase-num">2</div>
-        <div class="phase-head"><h3>인플루언서 소싱</h3><div class="goal">브리프에 맞는 후보를 풀에서 매칭하고 숏리스트를 만든다.</div></div>
+        <div class="phase-head"><h3>인플루언서 소싱</h3><div class="goal">브리프에 맞는 후보를 풀에서 골라 컨택 리스트를 만든다.</div></div>
         <div class="phase-badge">캠페인 담당</div>
       </div>
       <div class="phase-body">
         <div>
           <h4>핵심 활동</h4>
           <ul class="acts">
-            <li>인플루언서 풀(마스터 DB)에서 카테고리·팔로워·과거 성과로 1차 필터</li>
-            <li>신규 발굴 — 해시태그·경쟁사 협업·추천으로 후보 보강</li>
-            <li>적합도 검증 — 인게이지먼트율, 오디언스 핏, 브랜드 적합성, 과거 이력</li>
-            <li>숏리스트 확정 — 목표 인원의 1.5~2배수로 컨택 후보 확보</li>
+            <li><b>풀에서 1차 추리기</b> — 마스터 DB에서 카테고리·팔로워·지난 성과로 거른다</li>
+            <li><b>새 후보 보강</b> — 해시태그 타고, 경쟁사 협업 보고, 추천받아 더 찾는다</li>
+            <li><b>진짜 맞는지 검증</b> — 팔로워 수보다 참여율·오디언스 핏·브랜드 결·지난 협업 이력</li>
+            <li><b>컨택 리스트 확정</b> — 거절·잠수 대비해 목표 인원의 1.5~2배로 잡는다</li>
           </ul>
+          <span class="memo"><b>팔로워 큰 게 답이 아니다.</b> 댓글·저장이 도는 계정, 우리 타겟이 실제로 보는 계정이 우선. 광고 떡칠 계정은 거른다.</span>
         </div>
         <div class="meta-box">
           <div class="meta-row"><span class="k">담당</span><span class="v">캠페인 담당</span></div>
@@ -367,18 +382,19 @@
     <div class="phase">
       <div class="phase-top">
         <div class="phase-num">3</div>
-        <div class="phase-head"><h3>컨택 · 아웃리치</h3><div class="goal">후보에게 캠페인을 제안하고 참여 의향을 확인한다.</div></div>
+        <div class="phase-head"><h3>컨택 · 아웃리치</h3><div class="goal">후보에게 제안을 보내고 할지 말지 답을 받는다.</div></div>
         <div class="phase-badge">캠페인 담당</div>
       </div>
       <div class="phase-body">
         <div>
           <h4>핵심 활동</h4>
           <ul class="acts">
-            <li>제안 메시지 발송 — 캠페인 개요·기대 산출물·일정·보상 범위 안내</li>
-            <li>채널별 톤 조정 — DM / 이메일 / 에이전시 경유 구분</li>
-            <li>1차 응답 수집 — 관심 · 보류 · 거절 분류, 상태값 기록</li>
-            <li>미응답 팔로업 — D+2 리마인드, 대체 후보 가동</li>
+            <li><b>제안 보내기</b> — 캠페인 뭐고, 뭘 만들어달라고, 언제까지, 보상은 어느 선인지</li>
+            <li><b>창구별로 톤 맞추기</b> — DM이냐, 이메일이냐, 소속사 통해서냐</li>
+            <li><b>답 분류·기록</b> — 관심 / 보류 / 거절로 나눠 트래커에 바로 찍는다</li>
+            <li><b>답 없으면 한 번 더</b> — 이틀 뒤 리마인드, 그래도 없으면 대체 후보로</li>
           </ul>
+          <span class="memo">첫 메시지에 단가까지 다 깔지 않는다. <b>관심 있는지부터</b> 확인하고, "괜찮으시면 단가·일정 맞춰볼게요"로 다음 턴을 연다.</span>
         </div>
         <div class="meta-box">
           <div class="meta-row"><span class="k">담당</span><span class="v">캠페인 담당</span></div>
@@ -393,18 +409,20 @@
     <div class="phase amber">
       <div class="phase-top">
         <div class="phase-num">4</div>
-        <div class="phase-head"><h3>협상 · 조건 조율</h3><div class="goal">단가·산출물·권리 조건을 양측이 합의하는 지점까지 맞춘다.</div></div>
+        <div class="phase-head"><h3>협상 · 조건 조율</h3><div class="goal">단가·산출물·권리를 양쪽이 OK 할 선까지 맞춘다.</div></div>
         <div class="phase-badge">캠페인 담당 · 팀장</div>
       </div>
       <div class="phase-body">
         <div>
           <h4>핵심 활동</h4>
           <ul class="acts">
-            <li>단가 · 산출물 협의 — 게시물 수, 포맷(릴스/피드/스토리), 일정</li>
-            <li>권리 조건 정의 — 2차 활용 범위·기간, 독점 여부, 가이드 준수</li>
-            <li>내부 검토 — 예산 대비 단가, 위험 조항, 법무 확인(필요 시)</li>
-            <li>최종 합의 — 확정 조건을 계약 변수로 정리</li>
+            <li><b>단가·산출물 맞추기</b> — 몇 개, 어떤 포맷(릴스/피드/스토리), 언제까지</li>
+            <li><b>권리 정하기</b> — 2차 활용 어디까지·얼마 동안, 경쟁사 동시 진행 막을지, 가이드 지킬지</li>
+            <li><b>내부에서 거르기</b> — 예산 대비 단가 맞나, 위험한 조항 없나(필요하면 법무)</li>
+            <li><b>합의 확정</b> — 정해진 조건을 계약에 넣을 항목으로 정리</li>
           </ul>
+          <div class="say">단가는 게시물 수랑 2차 활용 범위로 정해져요. 이 두 개부터 맞춰볼게요.</div>
+          <span class="memo">예산 넘으면 단가를 깎기보다 <b>산출물 수·2차 활용 기간을 줄여</b> 맞춘다. 입으로 합의한 건 반드시 계약 항목으로 옮겨 적는다.</span>
         </div>
         <div class="meta-box">
           <div class="meta-row"><span class="k">담당</span><span class="v">캠페인 담당 (R) · 팀장 (A) · 법무 (C)</span></div>
@@ -419,18 +437,19 @@
     <div class="phase rose">
       <div class="phase-top">
         <div class="phase-num">5</div>
-        <div class="phase-head"><h3>계약 체결</h3><div class="goal">표준 템플릿으로 전자계약을 발송하고 양측 서명을 완료한다.</div></div>
+        <div class="phase-head"><h3>계약 체결</h3><div class="goal">표준 템플릿으로 전자계약 보내고 양쪽 서명을 받는다.</div></div>
         <div class="phase-badge">모두싸인 · SLA 3영업일</div>
       </div>
       <div class="phase-body">
         <div>
           <h4>핵심 활동</h4>
           <ul class="acts">
-            <li>표준 템플릿 호출 — 인플루언서·캠페인·보상·권리 변수 자동 채움</li>
-            <li>서명 순서 설정 후 발송 — 내부 서명 → 인플루언서 모바일 서명</li>
-            <li>미서명 자동 리마인드 — D+2 · D+5, D+7 미완료 시 담당자 에스컬레이션</li>
-            <li>완료 PDF 자동 보관 + 사본 자동 배포 + 정산팀 통보</li>
+            <li><b>템플릿 불러오기</b> — 인플루언서·캠페인·보상·권리 값이 자동으로 채워진다</li>
+            <li><b>서명 순서 잡고 발송</b> — 우리가 먼저, 다음 인플루언서 모바일 서명</li>
+            <li><b>안 하면 자동 독촉</b> — 이틀·닷새 뒤 리마인드, 이레까지 안 되면 담당자에게 알림</li>
+            <li><b>끝나면 자동 정리</b> — 완료 PDF 보관 + 사본 배포 + 정산팀에 통보</li>
           </ul>
+          <span class="memo">계약서를 손으로 새로 쓰지 않는다. <b>협상에서 확정한 값이 템플릿에 그대로 꽂히는</b> 구조라, 사람이 할 일은 발송 버튼과 독촉뿐이다.</span>
         </div>
         <div class="meta-box">
           <div class="meta-row"><span class="k">담당</span><span class="v">캠페인 담당 (R) · 팀장 (A) · Admin</span></div>
@@ -445,18 +464,20 @@
     <div class="phase accent">
       <div class="phase-top">
         <div class="phase-num">6</div>
-        <div class="phase-head"><h3>콘텐츠 제작 · 실행</h3><div class="goal">가이드를 전달하고 게시 전 검수로 품질을 맞춘다.</div></div>
+        <div class="phase-head"><h3>콘텐츠 제작 · 실행</h3><div class="goal">가이드 주고, 올리기 전에 검수해서 품질을 맞춘다.</div></div>
         <div class="phase-badge">캠페인 담당</div>
       </div>
       <div class="phase-body">
         <div>
           <h4>핵심 활동</h4>
           <ul class="acts">
-            <li>콘텐츠 가이드 전달 — 필수 메시지, 해시태그, 멘션, 금지 표현</li>
-            <li>제품/협찬 배송 — 필요 시 발송·수령 확인</li>
-            <li>초안 검수 — 가이드 준수·브랜드 톤 확인, 1~2회 피드백</li>
-            <li>게시 일정 확정 — 최종 승인 후 업로드 일정 락</li>
+            <li><b>가이드 전달</b> — 꼭 넣을 메시지, 해시태그, 멘션, 쓰면 안 되는 표현</li>
+            <li><b>제품·협찬 발송</b> — 보낼 게 있으면 보내고, 받았는지 확인</li>
+            <li><b>초안 검수</b> — 가이드 지켰나·브랜드 톤 맞나 보고, 한두 번 피드백</li>
+            <li><b>게시일 확정</b> — 최종 OK 나면 올릴 날짜를 잠근다</li>
           </ul>
+          <div class="say">올리시기 전에 초안 한 번만 보여주실 수 있을까요? 금지 표현만 빠르게 확인할게요.</div>
+          <span class="memo">검수는 트집이 아니라 <b>광고 표기·금지 표현 사고를 막는 단계</b>. 피드백은 한두 번으로 끊고, 끌면 게시일이 밀린다.</span>
         </div>
         <div class="meta-box">
           <div class="meta-row"><span class="k">담당</span><span class="v">캠페인 담당 · (브랜드사 검수)</span></div>
@@ -471,18 +492,19 @@
     <div class="phase accent">
       <div class="phase-top">
         <div class="phase-num">7</div>
-        <div class="phase-head"><h3>게시 · 모니터링</h3><div class="goal">예정대로 게시되었는지 확인하고 성과를 추적한다.</div></div>
+        <div class="phase-head"><h3>게시 · 모니터링</h3><div class="goal">제대로 올라갔는지 확인하고 성과 숫자를 챙긴다.</div></div>
         <div class="phase-badge">캠페인 담당</div>
       </div>
       <div class="phase-body">
         <div>
           <h4>핵심 활동</h4>
           <ul class="acts">
-            <li>게시 확인 — URL·게시일 수집, 가이드 준수 최종 확인</li>
-            <li>성과 캡처 — 도달·좋아요·저장·댓글·조회수 등 KPI 수집</li>
-            <li>이슈 대응 — 누락·오기재·조기 삭제 시 즉시 협의</li>
-            <li>중간 집계 — 캠페인 단위 성과 롤업</li>
+            <li><b>게시 확인</b> — URL·올린 날 받아두고, 가이드대로 올렸나 마지막 확인</li>
+            <li><b>성과 캡처</b> — 도달·좋아요·저장·댓글·조회수 그날그날 떠둔다</li>
+            <li><b>사고 대응</b> — 빠뜨림·오기재·일찍 내림 생기면 바로 연락</li>
+            <li><b>중간 집계</b> — 캠페인 단위로 숫자를 모아본다</li>
           </ul>
+          <span class="memo">성과는 <b>지난 뒤 몰아 캡처하면 늦는다</b> — 게시 직후·48시간·종료 시점으로 떠두면 도달이 어떻게 붙는지 보인다. 멘션·해시태그 누락은 그날 잡아야 수정된다.</span>
         </div>
         <div class="meta-box">
           <div class="meta-row"><span class="k">담당</span><span class="v">캠페인 담당</span></div>
@@ -497,18 +519,19 @@
     <div class="phase">
       <div class="phase-top">
         <div class="phase-num">8</div>
-        <div class="phase-head"><h3>정산</h3><div class="goal">계약·게시 완료 건만 정산 대상으로 이관하고 송금한다.</div></div>
+        <div class="phase-head"><h3>정산</h3><div class="goal">계약·게시 다 끝난 건만 정산으로 넘기고 송금한다.</div></div>
         <div class="phase-badge">재무 · 자동 이관</div>
       </div>
       <div class="phase-body">
         <div>
           <h4>핵심 활동</h4>
           <ul class="acts">
-            <li>정산 대상 확정 — 서명 완료 + 게시 완료 건만 이관</li>
-            <li>증빙 확인 — 게시 URL·세금계산서/원천 처리</li>
-            <li>송금 실행 — 정산일 기준 지급, 완료 표기</li>
-            <li>아카이브 — 송금 완료 건은 완료 아카이브로 자동 이동</li>
+            <li><b>정산 대상 확정</b> — 서명 끝 + 게시 끝, 둘 다 된 건만 넘어온다</li>
+            <li><b>증빙 확인</b> — 게시 URL 있나, 세금계산서·원천 처리 됐나</li>
+            <li><b>송금</b> — 정산일에 지급하고 완료 표시</li>
+            <li><b>아카이브</b> — 송금 끝난 건은 완료함으로 자동으로 빠진다</li>
           </ul>
+          <span class="memo"><b>게시 안 된 건은 절대 정산으로 안 넘어간다</b> — 서명·게시 둘 다 채워져야 대상이 된다. 담당이 따로 골라 넘기지 않고 조건이 맞으면 자동.</span>
         </div>
         <div class="meta-box">
           <div class="meta-row"><span class="k">담당</span><span class="v">재무 (A) · 캠페인 담당 (I)</span></div>
@@ -523,18 +546,20 @@
     <div class="phase">
       <div class="phase-top">
         <div class="phase-num">9</div>
-        <div class="phase-head"><h3>결과 리포트 · 사후관리</h3><div class="goal">성과를 정리해 브랜드사에 보고하고 권리 만료를 관리한다.</div></div>
+        <div class="phase-head"><h3>결과 리포트 · 사후관리</h3><div class="goal">성과 정리해 브랜드사에 보고하고, 권리 만료를 챙긴다.</div></div>
         <div class="phase-badge">캠페인 담당 · 팀장</div>
       </div>
       <div class="phase-body">
         <div>
           <h4>핵심 활동</h4>
           <ul class="acts">
-            <li>캠페인 결과 리포트 — KPI 달성·인플루언서별 성과·인사이트</li>
-            <li>브랜드사 보고 — 다음 캠페인 제안으로 연결</li>
-            <li>2차 활용 관리 — 광고 소재 전환 범위·기간 추적</li>
-            <li>만료 알림 — 독점·2차 활용 종료 시점 관리, 우수 인플루언서 풀 업데이트</li>
+            <li><b>결과 리포트</b> — KPI 달성, 누가 잘 나왔나, 다음에 쓸 인사이트</li>
+            <li><b>브랜드사 보고</b> — 보고로 끝내지 말고 다음 캠페인 제안까지 붙인다</li>
+            <li><b>2차 활용 관리</b> — 광고 소재로 돌릴 범위·기간 챙기기</li>
+            <li><b>만료 알림</b> — 독점·2차 활용 끝나는 날 관리, 잘한 인플루언서는 풀에 별표</li>
           </ul>
+          <div class="say">이번에 @OOO 반응 좋았으니, 다음 캠페인도 같은 라인업으로 이어가실래요?</div>
+          <span class="memo">리포트는 끝이 아니라 <b>다음 일감의 시작</b>. 잘 나온 인플루언서는 풀에 표시해두면 다음 소싱이 빨라진다.</span>
         </div>
         <div class="meta-box">
           <div class="meta-row"><span class="k">담당</span><span class="v">캠페인 담당 (R) · 팀장 (A)</span></div>
@@ -583,7 +608,7 @@
     <div class="sec-head">
       <div class="sec-tag">Standards</div>
       <h2>운영 SLA</h2>
-      <p>각 단계가 늘어지지 않도록 정해둔 기준 시간입니다.</p>
+      <p>단계가 늘어지지 않게 정해둔 기준 시간입니다. 이 안에 못 끝내면 알림이 뜹니다.</p>
     </div>
     <div class="sla">
       <div class="card"><div class="big">1영업일</div><div class="lbl">정보 수집 → 계약 발송</div></div>
@@ -611,8 +636,8 @@
     </div>
     <div style="margin-top:18px" class="callout">
       <div class="ic">🔑</div>
-      <div class="tx"><b>단일 진실 원천(Single Source of Truth)</b>
-      데이터는 <b>캠페인 트래커</b>에 누적만 합니다. 정산·월별 집계·연간 트렌드·완료 아카이브 등 다른 뷰는 전부 수식으로 자동 추출되므로, 같은 정보를 두 번 입력하지 않습니다.</div>
+      <div class="tx"><b>입력은 트래커 한 곳에만</b>
+      손으로 적는 건 <b>캠페인 트래커</b> 하나뿐입니다. 정산·월별 집계·연간 트렌드·완료 아카이브 같은 다른 화면은 전부 수식이 알아서 끌어다 보여주니, 같은 정보를 두 번 적지 않습니다.</div>
     </div>
   </div>
 </section>

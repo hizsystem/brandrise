@@ -52,7 +52,7 @@ h3{font-size:15px;font-weight:800;margin:26px 0 12px;color:var(--ink2);letter-sp
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.co{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:13.5px;line-height:1.75;border:1px solid var(--line)}
+.co{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:14.5px;line-height:1.75;border:1px solid var(--line)}
 .co.ac{background:var(--ac-50);border-color:var(--ac-100)} .co.ok{background:var(--ok-50);border-color:#bbf7d0}
 .co.warn{background:var(--warn-50);border-color:#fde68a} .co.bad{background:var(--bad-50);border-color:#fecdd3}
 .co b{color:var(--ink)}
@@ -61,7 +61,7 @@ h3{font-size:15px;font-weight:800;margin:26px 0 12px;color:var(--ink2);letter-sp
 .t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
 .t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
 .t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
-table{width:100%;border-collapse:collapse;font-size:12.5px;margin:6px 0 4px;font-variant-numeric:tabular-nums}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0 4px;font-variant-numeric:tabular-nums}
 th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:left;padding:11px 13px;font-size:11.5px;border-bottom:1px solid var(--ac-100)}
 td{padding:11px 13px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
 td b,td strong{color:var(--ink)}
@@ -77,32 +77,41 @@ tbody tr:nth-child(even) td{background:var(--soft)}
 .flow .st{position:relative;padding:6px 0 20px}
 .flow .st:last-child{padding-bottom:0}
 .flow .st::before{content:"";position:absolute;left:-31px;top:9px;width:11px;height:11px;border-radius:50%;background:var(--ac);border:2px solid #fff;box-shadow:0 0 0 2px var(--ac-100)}
-.flow .sn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.06em}
-.flow .stt{font-size:16px;font-weight:800;color:var(--ink);margin:2px 0 4px}
-.flow .sb{font-size:13px;color:var(--ink2);line-height:1.7}
-.flow .sg{display:inline-block;font-size:11.5px;font-weight:700;color:var(--ac-700);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:7px;padding:2px 9px;margin-top:7px}
+.flow .st{padding:8px 0 26px}
+.flow .sn{font-size:12px;font-weight:800;color:var(--ac);letter-spacing:.06em}
+.flow .stt{font-size:19px;font-weight:800;color:var(--ink);margin:3px 0 8px}
+.flow .sb{font-size:15px;color:var(--ink2);line-height:1.75}
+/* ===== 가독성 공통: 핵심(굵게) · 멘트(.say) · 메모(.memo) 3분리, 큰 글씨 ===== */
+.sb>b:first-child,.sd>b:first-child{display:block;font-size:16px;font-weight:800;color:var(--ink);line-height:1.55}
+.sb b,.sd b{color:var(--ink)}
+.say{border-left:3px solid var(--ac);background:var(--soft);border-radius:0 10px 10px 0;padding:11px 17px;margin:11px 0;font-size:15px;color:var(--ink);font-weight:600;line-height:1.6}
+.say::before{content:"\201C";color:var(--ac);font-weight:800}
+.say::after{content:"\201D";color:var(--ac);font-weight:800}
+.memo{display:block;font-size:13px;color:var(--muted);line-height:1.65;margin-top:9px;padding-left:13px;border-left:2px solid var(--line)}
+.memo b{color:var(--ink2);font-weight:700}
+.flow .sg{display:inline-block;font-size:13px;font-weight:700;color:var(--ac-700);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:7px;padding:4px 11px;margin-top:10px}
 
 /* 화법 인용 박스 */
 .talk{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac);border-radius:10px;padding:14px 18px;margin:10px 0}
 .talk .src{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.04em;margin-bottom:6px}
-.talk .said{font-size:13.5px;color:var(--ink);line-height:1.7;font-weight:600}
+.talk .said{font-size:15px;color:var(--ink);line-height:1.65;font-weight:600}
 .talk .said::before{content:"“";color:var(--ac);font-weight:800}
 .talk .said::after{content:"”";color:var(--ac);font-weight:800}
-.talk .eff{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.6} .talk .eff b{color:var(--ink2)}
+.talk .eff{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.62} .talk .eff b{color:var(--ink2)}
 
 /* 질문 카드 */
 .q{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac);border-radius:10px;padding:16px 18px;margin-bottom:10px}
 .q .qn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.05em;margin-bottom:5px}
-.q .qt{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.65}
-.q .qi{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.6}
+.q .qt{font-size:15px;font-weight:600;color:var(--ink);line-height:1.6}
+.q .qi{font-size:13px;color:var(--muted);margin-top:7px;line-height:1.62}
 
 /* 패턴 2열 */
 .pat{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:20px 22px}
 .pat.a{border-color:var(--ac-100)} .pat.b{border-color:#bbf7d0}
 .pat .ph{font-size:13px;font-weight:800;letter-spacing:.02em;margin-bottom:4px}
 .pat.a .ph{color:var(--ac)} .pat.b .ph{color:var(--ok)}
-.pat .pd{font-size:12.5px;color:var(--muted);margin-bottom:12px;line-height:1.6}
-.pat ul{list-style:none} .pat li{font-size:12.5px;color:var(--ink2);padding:4px 0 4px 15px;position:relative;line-height:1.55}
+.pat .pd{font-size:14px;color:var(--muted);margin-bottom:12px;line-height:1.6}
+.pat ul{list-style:none} .pat li{font-size:14px;color:var(--ink2);padding:5px 0 5px 16px;position:relative;line-height:1.55}
 .pat li::before{content:"›";position:absolute;left:0;font-weight:800} .pat.a li::before{color:var(--ac)} .pat.b li::before{color:var(--ok)}
 
 footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px}
@@ -162,7 +171,7 @@ footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
         <div class="opk">🎯 상담의 뼈대</div>
         <div class="blk">
           <div class="bl">흐름 — 6스텝</div>
-          <div class="bt"><b>① 회사소개</b>(고정 대본·12~15분, 끝나면 마이크 넘김) → <b>② 소개 청취</b>("직접 소개 한번 해주실 수 있을까요?") → <b>③ 사업 단계·유통처</b>("지금 사업 단계?") → <b>④ 문제 도출</b>(결핍 선지적→인정→재프레임) → <b>⑤ 견적의 답</b>(셀렉 메뉴판) → <b>⑥ 클로징</b>(다음 미팅·숙제·납기를 못 박는다).</div>
+          <div class="bt"><b>① 회사소개</b>(고정 대본·12~15분, 끝나면 마이크 넘김) → <b>② 소개 청취</b>("직접 소개 한번 해주실 수 있을까요?") → <b>③ 사업 단계·유통처</b>("지금 사업 단계?") → <b>④ 문제 도출</b>(막힌 지점 짚어 대표가 인정 → USP) → <b>⑤ 견적의 답</b>(문제를 그대로 견적 항목으로, 메뉴판처럼) → <b>⑥ 클로징</b>(다음 미팅·숙제·납기를 못 박는다).</div>
         </div>
         <div class="blk">
           <div class="bl">두 패턴 — 단계로 갈린다</div>
@@ -188,37 +197,47 @@ footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
         <div class="st">
           <div class="sn">STEP 0</div>
           <div class="stt">회사소개 (고정 대본)</div>
-          <div class="sb">대기업·글로벌(네슬레·CJ·하이네켄) IMC 팀 → 자사 브랜드 직접 출시 → 두 자릿수 매출이면 함께. <b>회사소개 매뉴얼(00_회사소개매뉴얼) ①~⑥을 그대로</b>. 사례는 상대 업종에 맞춰 2~3개만. 12~15분 안에 끝내고 <b>반드시 마이크를 넘긴다</b>("말씀해 주세요, 어떤 고민이 있으신지").</div>
+          <div class="sb"><b>회사소개 매뉴얼 ①~⑥, 12~15분. 끝나면 바로 마이크를 넘긴다.</b>
+            <div class="say">말씀해 주세요. 어떤 고민이 있으신지.</div></div>
           <span class="sg">→ 회사소개 매뉴얼 연동</span>
         </div>
         <div class="st">
           <div class="sn">STEP 1</div>
           <div class="stt">소개 청취</div>
-          <div class="sb">"대표님이 직접 브랜드 소개 한번 해주실 수 있을까요?" 창업 배경·제품 스토리·대표 개인사를 메모하며 듣는다. 사전 PREP을 인지한 채로 — 단, 자료가 없으면 소개 요청이 곧 진단의 입력이 된다(루테아: 자료가 없어 소개부터 요청).</div>
+          <div class="sb"><b>대표가 직접 소개하게 하고, 창업 배경·제품 스토리·대표 개인사를 메모하며 듣는다.</b>
+            <div class="say">대표님이 직접 브랜드 소개 한번 해주실 수 있을까요?</div>
+            <span class="memo">여기서 단계·유통·USP 단서가 다 나온다. 자료가 없으면 이 소개가 곧 진단의 시작(예: 루테아).</span></div>
           <span class="sg">→ 단계·유통·USP의 1차 단서가 여기서 다 나온다</span>
         </div>
         <div class="st">
           <div class="sn">STEP 2</div>
           <div class="stt">사업 단계 · 유통처 체크</div>
-          <div class="sb"><b>"대표님, 지금 현재 사업 단계 알려 주세요"</b>로 연다(런칭 전 / 런칭 / 매출 드라이브). 단계가 추론될 때도 라벨을 입으로 확정. 폴백 질문: <span class="t n">"정식 런칭은 되신 거예요?"</span> <span class="t n">"올해 몇 년차세요?"</span>. 이어 유통처를 <b>기본 3종 + 비중 + 데이터 소유</b>로 캔다(§유통처 체크).</div>
+          <div class="sb"><b>사업 단계를 말로 확정하고, 유통처를 3종·매출 비중·고객 데이터가 누구 거인지까지 캔다.</b>
+            <div class="say">대표님, 지금 사업 단계 알려 주세요.</div>
+            <span class="memo">단계 = 런칭 전 / 런칭 / 매출 드라이브. 폴백 <span class="t n">정식 런칭 되셨어요?</span> <span class="t n">올해 몇 년차세요?</span></span></div>
           <span class="sg">→ 단계가 우리 역할과 견적 결을 가른다</span>
         </div>
         <div class="st">
           <div class="sn">STEP 3</div>
           <div class="stt">문제 도출</div>
-          <div class="sb">유통처 있음 → 그곳 리뷰·VOC 분석 / 없음 → 왜 안 만드는지·뭐가 필요한지. 결핍은 <b>"선지적 → 대표 인정 → 재프레임"</b> 2박자로 끌어낸다. 최빈 결핍 = USP(§결핍 도출). 해법은 추상에서 멈추지 말고 <b>포지셔닝 한 줄</b>까지.</div>
+          <div class="sb"><b>막힌 지점을 먼저 짚어준다 — 칭찬 말고 빈칸을. 대표가 인정하면, 그걸 USP·포지셔닝 한 줄로 바꿔준다.</b>
+            <div class="say">솔직히 말씀드리면, 강점이 잘 안 느껴졌어요. 원료랑 타깃이 따로 놀아요.</div>
+            <span class="memo">빈칸은 유통처 있으면 리뷰·VOC에서, 없으면 "왜 안 만드는지"에서 찾는다. 가장 자주 나온 결핍이 곧 USP(§결핍 도출).</span></div>
           <span class="sg">→ 도출된 문제 = 그대로 견적 항목</span>
         </div>
         <div class="st">
           <div class="sn">STEP 4</div>
           <div class="stt">견적의 답</div>
-          <div class="sb">문제를 셀렉 매트릭스 항목으로 옮긴다. "메뉴판처럼 준비했어요, 크게 3가지예요" + <b>추천을 명확히</b>. 화면에서 1차 견적을 바로 띄운다(PREP 셀렉 → 인라인 견적). 가격은 §견적 화법 7종으로.</div>
+          <div class="sb"><b>상담에서 나온 문제를 그대로 견적 항목으로 만들어, 화면에서 1차 견적을 바로 보여준다.</b>
+            <div class="say">메뉴판처럼 준비했어요. 크게 3가지예요.</div>
+            <span class="memo">"이 중에 이걸 추천한다"까지 분명히 짚는다. 가격 화법은 §견적 화법으로.</span></div>
           <span class="sg">→ 수주 높으면 시트 / 낮으면 링크 (클로징에서 분기)</span>
         </div>
         <div class="st">
           <div class="sn">STEP 5</div>
           <div class="stt">클로징</div>
-          <div class="sb"><b>다음 미팅일 · 클라이언트 숙제(예산 회신·자료) · 우리 산출물 납기</b> 3종을 마지막 1분에 못 박는다. "필요하면 연락 주세요"로 끝내지 않는다. Quick Tip 하나(계약 무관·지금 바로 쓸 것)로 마무리(§클로징).</div>
+          <div class="sb"><b>다음 미팅일 · 클라 숙제(예산 회신·자료) · 산출물 납기 — 3종을 마지막 1분에 못 박는다.</b>
+            <span class="memo">"필요하면 연락 주세요"로 끝내지 않는다. 지금 바로 쓸 팁 하나 주고 마무리(§클로징).</span></div>
           <span class="sg">→ 진단서는 항상 링크 / 견적은 온도로 분기</span>
         </div>
       </div>
@@ -240,7 +259,7 @@ footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
             <li>브랜드 정리(누구에게·뭘·차별점) → 채널로 발신</li>
             <li>매출 없음 → 가용 예산을 직접 묻는다(매출×15% 불가)</li>
           </ul>
-          <div style="font-size:11.5px;color:var(--muted);margin-top:10px">실증: 토브 · 오늘의평야 · 파인더 · 노다지파이랩스 · (명장주)</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:10px">실증: 토브 · 오늘의평야 · 파인더 · 노다지파이랩스 · (명장주)</div>
         </div>
         <div class="pat b">
           <div class="ph">B · 단계 짚어주기형</div>
@@ -251,7 +270,7 @@ footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
             <li>채널 비중·재구매·데이터 소유로 자생 엔진 점검</li>
             <li>리테이너 소액 + 시즌 캠페인 집중(턴키 설계)</li>
           </ul>
-          <div style="font-size:11.5px;color:var(--muted);margin-top:10px">실증: 그리니팅 · 오들리 · 집지켜 · 리프트 · 루테아 · 가족컴퍼니 · 마키노차야</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:10px">실증: 그리니팅 · 오들리 · 집지켜 · 리프트 · 루테아 · 가족컴퍼니 · 마키노차야</div>
         </div>
       </div>
       <div class="co ac"><span class="lab">패턴 가르는 한 마디</span>그리니팅에서 대표가 던진 정의가 기준이 된다 — <b>"리브랜딩은 패키지 전면 교체, 가장 안 될 때 하는 것. 여기는 리브랜딩이 아니라 아직 브랜드 마케팅을 안 한 것 — 직원 바꾸는 정도."</b> 클라이언트의 과잉 액션(전면 리뉴얼)을 막고 저비용 다음 단계로 유도하는 동시에 신뢰를 키운다.</div>
@@ -279,8 +298,8 @@ footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
       <h2>결핍 도출 — 최빈 결핍은 USP</h2>
       <p class="lead">상담노트·녹취 교차 분석에서 USP 결핍이 가장 잦았다(상담노트 세트 53~80%, 녹취 9건 중 6건). 핵심은 "없음"이 아니라 <b>"있는데 소비자 언어로 못 옮긴다(번역 실패)"</b>. 진단을 둘로 나눠야 처방이 갈린다.</p>
       <div class="grid2">
-        <div class="card"><h3 style="margin-top:0">USP 발굴 — 정말 없는 경우</h3><p style="font-size:12.5px;color:var(--muted)">차별점 자체가 약하거나 모방(루테아 "헤이를 모티브로"). → <b>전략 진단</b>(블록: 데이터·전략, 브랜드 아이덴티티)이 먼저. 포지셔닝을 새로 세운다.</p></div>
-        <div class="card"><h3 style="margin-top:0">USP 번역 — 있는데 발신이 죽은 경우</h3><p style="font-size:12.5px;color:var(--muted)">강점은 데이터로 검증됐는데 언어·비주얼·콘텐츠가 공백(그리니팅·루키노바). → <b>콘텐츠·상세 리뉴얼</b>이 처방. "처음 본 사람이 3초 안에 이해하나?"가 판정 질문.</p></div>
+        <div class="card"><h3 style="margin-top:0">USP 발굴 — 정말 없는 경우</h3><p style="font-size:13.5px;color:var(--muted)">차별점 자체가 약하거나 모방(루테아 "헤이를 모티브로"). → <b>전략 진단</b>(블록: 데이터·전략, 브랜드 아이덴티티)이 먼저. 포지셔닝을 새로 세운다.</p></div>
+        <div class="card"><h3 style="margin-top:0">USP 번역 — 있는데 발신이 죽은 경우</h3><p style="font-size:13.5px;color:var(--muted)">강점은 데이터로 검증됐는데 언어·비주얼·콘텐츠가 공백(그리니팅·루키노바). → <b>콘텐츠·상세 리뉴얼</b>이 처방. "처음 본 사람이 3초 안에 이해하나?"가 판정 질문.</p></div>
       </div>
       <h3>결핍을 끌어내는 직언 5종 (대표 3 · 실장 2)</h3>
       <div class="talk"><div class="src">오들리컴바인 — "강점이 안 느껴졌다"</div><div class="said">어느 게 강점이지 하는 게 좀 안 느껴졌던 것 같거든요. 대표님이 그래도 고집하고 가져가고 싶은 메시지가 뭔지.</div><div class="eff"><b>효과:</b> 칭찬 대신 빈칸을 먼저 던져 대표가 자기 강점을 직접 변호하게 만든다 → USP 후보가 대표 입에서 나온다.</div></div>
@@ -328,9 +347,9 @@ footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
       <p class="lead">녹취 14건의 가장 큰 구멍 — 전부 "후속 전달"로 끝나 결정이 미뤄지고, 수주 온도와 무관하게 똑같이 흘러갔다. 마지막 1분을 설계한다.</p>
       <h3>① 넥스트 강제 — 3종을 못 박는다</h3>
       <div class="grid3">
-        <div class="card"><span class="t b">다음 미팅</span><p style="font-size:12.5px;color:var(--muted);margin-top:7px">"그럼 다음 미팅은 ○요일로 잡을게요." 날짜를 비워두지 않는다.</p></div>
-        <div class="card"><span class="t b">클라 숙제</span><p style="font-size:12.5px;color:var(--muted);margin-top:7px">예산 회신·채널 데이터·자료 — 클라이언트가 가져올 것을 지정.</p></div>
-        <div class="card"><span class="t b">우리 납기</span><p style="font-size:12.5px;color:var(--muted);margin-top:7px">"진단서는 ○요일, 견적은 그 후" — 산출물 납기를 약속.</p></div>
+        <div class="card"><span class="t b">다음 미팅</span><p style="font-size:13.5px;color:var(--muted);margin-top:7px">"그럼 다음 미팅은 ○요일로 잡을게요." 날짜를 비워두지 않는다.</p></div>
+        <div class="card"><span class="t b">클라 숙제</span><p style="font-size:13.5px;color:var(--muted);margin-top:7px">예산 회신·채널 데이터·자료 — 클라이언트가 가져올 것을 지정.</p></div>
+        <div class="card"><span class="t b">우리 납기</span><p style="font-size:13.5px;color:var(--muted);margin-top:7px">"진단서는 ○요일, 견적은 그 후" — 산출물 납기를 약속.</p></div>
       </div>
       <div class="co bad"><span class="lab">하지 말 것</span>파인더·노다지처럼 <b>"필요하면 연락 주세요"로 끝내면 넥스트가 죽는다.</b> 좋은 본보기 = 오들리·꽃빵의 "포트폴리오 → 예산 회신 → 견적+진단" 2~3단 흐름.</div>
       <div class="co ok"><span class="lab">수주 확정 단계 — 계약 클로징 (미례국밥 본보기)</span>넥스트 3종을 넘어 한 자리에서 <b>계약 기간 확정 · 결제조건(50% 선금 / 잔금은 세금계산서 후 7일) · 계약서 전달형태(PDF·웹링크) · 레퍼럴 요청</b>까지 못 박는다. 견적 발표가 끝이 아니라 계약 행동까지 이어붙이는 게 수주율을 가른다.</div>

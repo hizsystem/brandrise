@@ -57,38 +57,42 @@ h2{font-size:25px;font-weight:800;letter-spacing:-.02em;margin-bottom:7px}
 .lead{font-size:14.5px;color:var(--muted);margin-bottom:22px;max-width:780px}
 h3{font-size:16px;font-weight:800;margin:26px 0 8px;letter-spacing:-.01em}
 
-.co{border-radius:12px;padding:14px 18px;margin:14px 0;font-size:13.5px;line-height:1.7;border:1px solid var(--line)}
+.co{border-radius:12px;padding:14px 18px;margin:14px 0;font-size:15px;line-height:1.7;border:1px solid var(--line)}
 .co.ac{background:var(--ac-50);border-color:var(--ac-100)} .co.warn{background:var(--warn-50);border-color:#fde68a}
 .co.ok{background:var(--ok-50);border-color:#bbf7d0}
 .co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase}
 .co.ac .lab{color:var(--ac)} .co.warn .lab{color:var(--warn)} .co.ok .lab{color:var(--ok)}
 .co b{color:var(--ink)}
 
+/* 보조 메모 (작게) */
+.memo{display:block;font-size:13px;color:var(--muted);line-height:1.65;margin-top:9px;padding-left:13px;border-left:2px solid var(--line)}
+.memo b{color:var(--ink2);font-weight:700}
+
 /* 원칙 카드 */
 .principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:16px 0}
 .pcard{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
 .pcard .pn{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:var(--ac);color:#fff;font-size:13px;font-weight:800;margin-bottom:10px}
-.pcard .pt{font-size:15px;font-weight:800;margin-bottom:6px;letter-spacing:-.01em}
-.pcard .pb{font-size:12.5px;color:var(--ink2);line-height:1.6}
+.pcard .pt{font-size:15.5px;font-weight:800;margin-bottom:6px;letter-spacing:-.01em}
+.pcard .pb{font-size:13.5px;color:var(--ink2);line-height:1.62}
 
 /* 단계 플레이 */
 .flow{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:14px 0}
-.step{display:grid;grid-template-columns:120px 1fr;border-top:1px solid var(--line2)}
+.step{display:grid;grid-template-columns:130px 1fr;border-top:1px solid var(--line2)}
 .step:first-child{border-top:none}
-.step .sk{padding:16px 16px;font-size:12.5px;font-weight:800;color:var(--ac);background:var(--ac-50);border-right:1px solid var(--line2);display:flex;align-items:center}
-.step .sc{padding:15px 18px}
-.step .st{font-size:14.5px;font-weight:800;margin-bottom:4px}
-.step .sd{font-size:12.5px;color:var(--ink2);line-height:1.6}
+.step .sk{padding:16px 16px;font-size:13px;font-weight:800;color:var(--ac);background:var(--ac-50);border-right:1px solid var(--line2);display:flex;align-items:center}
+.step .sc{padding:16px 18px}
+.step .st{font-size:16px;font-weight:800;margin-bottom:6px;color:var(--ink);line-height:1.5}
+.step .sd{font-size:15px;color:var(--ink2);line-height:1.68}
 
 /* 멘트(인용) */
-.say{border-left:3px solid var(--ac);background:var(--soft);border-radius:0 10px 10px 0;padding:10px 16px;margin:8px 0;font-size:13px;color:var(--ink);line-height:1.65}
+.say{border-left:3px solid var(--ac);background:var(--soft);border-radius:0 10px 10px 0;padding:11px 17px;margin:11px 0;font-size:15px;color:var(--ink);font-weight:600;line-height:1.62}
 .say::before{content:"\201C";color:var(--ac);font-weight:800;margin-right:3px}
 .say::after{content:"\201D";color:var(--ac);font-weight:800;margin-left:2px}
-.say .src{display:block;font-size:11px;color:var(--muted);font-weight:600;margin-top:5px}
+.say .src{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-top:6px}
 
-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
 th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:left;padding:10px 13px;font-size:12px}
-td{padding:11px 13px;border-top:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td{padding:12px 13px;border-top:1px solid var(--line2);vertical-align:top;color:var(--ink2);line-height:1.6}
 td b{color:var(--ink)}
 tbody tr:nth-child(even) td{background:var(--soft)}
 .t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px}
@@ -121,7 +125,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
 <div class="hero"><div class="in">
   <div class="badge">BRANDRISE · 견적콜 매뉴얼 · PLAYBOOK v0.2</div>
   <h1>브랜드라이즈 견적콜 <span class="hl">플레이북</span></h1>
-  <div class="sub">견적은 보냈다. 이제 <b style="color:#fff">결정을 돕는</b> 자리다. 견적을 "설명"하는 게 아니라 전략의 일부로 열어, 가격 저항과 범위 공포를 신뢰로 바꾼다.</div>
+  <div class="sub">견적은 보냈다. 이제 <b style="color:#fff">결정을 돕는</b> 자리다. 견적서를 읽어주는 게 아니라 전략으로 다시 펼쳐, "비싸다"와 "일이 커진다"는 부담을 신뢰로 바꾼다.</div>
   <div class="meta">
     <span class="chip">버전 <b>v0.2</b></span>
     <span class="chip">근거 <b>견적콜·미팅 6건 (대표·실장·실무팀)</b></span>
@@ -137,8 +141,8 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
   <section id="what">
     <div class="sec-k">WHY</div>
     <h2>견적콜이 하는 일</h2>
-    <p class="lead">견적콜은 <b>견적서를 읽어주는 자리가 아니다.</b> "구체적으로 어떤 액티비티가 들어 있는지" 막혀서 결정을 못 하는 고객에게, 견적을 <b>전략의 일부</b>로 다시 열어 보이고 결정을 당기는 자리다.</p>
-    <div class="co ac"><span class="lab">견적콜의 출발</span>먼저 <b>견적 반응부터 묻는다.</b> "견적 보셨을 때 어떠셨어요?" — 고객이 어디서 막혔는지(가격? 범위? 액티비티 불명?)를 듣고 거기에 맞춰 푼다. 일방 설명이 아니라 막힘 해소.<div class="say">그 저희가 견적을 보셨을 때 혹시 어떠셨어요?<span class="src">— 권윤정 (00:01:44)</span></div></div>
+    <p class="lead">견적콜은 <b>견적서를 읽어주는 자리가 아니다.</b> "이 견적에 뭐가 들어 있는지 모르겠다"며 결정을 못 하는 고객에게, 견적을 <b>전략으로 다시 펼쳐</b> 보이고 결정을 당기는 자리다.</p>
+    <div class="co ac"><span class="lab">견적콜의 출발 — 반응부터 묻는다</span>설명을 쏟기 전에 먼저 묻는다. 고객이 어디서 막혔는지(가격이냐, 범위냐, 내용이 안 그려지냐)를 듣고 거기에 맞춰 푼다.<div class="say">그 저희가 견적을 보셨을 때 혹시 어떠셨어요?<span class="src">— 권윤정 (00:01:44)</span></div></div>
     <div class="co warn"><span class="lab">v0.2 적용범위</span>원천은 <b>쿠엔즈버킷 1건(권윤정 대표)</b>. v0.2에서 <b>실장·실무팀 진행 5건</b>(하예진·슈퍼맘약사·에그하다·미례국밥+선행)으로 화법 매트릭스·클로징·실장/대표 차이를 보강. <b>단가 수치는 보안상 미기재(구조·화법만)</b> — 단가·항목 확정은 6/17 미팅 후. 상담 단계 무브는 → <a href="../consult-playbook/" style="color:var(--ac);font-weight:700">상담 플레이북 ›</a></div>
   </section>
 
@@ -150,7 +154,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
       <div class="pcard"><div class="pn">1</div><div class="pt">견적서를 "전략의 일부"로 연다</div><div class="pb">화면 <b>왼쪽=견적(할 일)</b>, <b>오른쪽=전략 그림</b>("타사는 이렇게 하고, 당신에게 지금 필요한 건 이것"). 견적은 메뉴판이 아니라 <b>당신을 위한 그림</b>으로 보인다.</div></div>
       <div class="pcard"><div class="pn">2</div><div class="pt">비싼 값을 "내재화"로 정당화한다</div><div class="pb">"저흰 오래 쓰기엔 비싼 팀." 대신 견적 안에 <b>대표·직원 학습</b>을 깐다. 우리가 빠진 뒤에도 예산 쓸 힘이 생기게 — 가격 저항을 <b>학습 가치</b>로 전환.</div></div>
       <div class="pcard"><div class="pn">3</div><div class="pt">범위 공포를 신뢰로 받는다</div><div class="pb">일이 커진다는 두려움엔 인정 + 안심. "견적보다 무조건 많이 해드린다. 견적은 보수적으로 — 나중에 견적서 들고 안 싸우려고. <b>성공 안 시키는 브랜드 없다.</b>"</div></div>
-      <div class="pcard"><div class="pn">4</div><div class="pt">데이터로 액티비티의 값을 증명한다</div><div class="pb">추상적 항목을 측정가능 가치로. <b>UTM·ROAS·AI 대시보드</b>. "묵직하게 3천 쓰는 계산법 → 100만 원에 다 링크 달아 추적." 견적 항목이 왜 돈값인지를 숫자로.</div></div>
+      <div class="pcard"><div class="pn">4</div><div class="pt">데이터로 항목값을 증명한다</div><div class="pb">두루뭉술한 항목을 숫자로 바꾼다. <b>UTM·ROAS·AI 대시보드</b>로 "어떤 매체에서 어떻게 왔는지" 다 추적. 견적 항목이 왜 돈값인지를 지표로 보인다.</div></div>
       <div class="pcard"><div class="pn">5</div><div class="pt">희소성으로 결정을 당긴다</div><div class="pb">"프로젝트 많아 인력 재배치가 필요. <b>일찍 결정하는 팀이 먼저 가져간다.</b>" + PM=본인이 직접 들어간다는 신뢰로 매듭. 미룸을 구조로 차단.</div></div>
     </div>
   </section>
@@ -160,7 +164,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
     <h2>단계별 플레이 — 무엇을, 언제</h2>
     <p class="lead">영업 프로세스 2차(견적) 흐름에 매핑. 각 단계의 목표와 권윤정 대표의 실제 멘트.</p>
     <div class="flow">
-      <div class="step"><div class="sk">오프닝 · 반응 묻기</div><div class="sc"><div class="st">견적 반응부터 듣고 막힘을 잡는다</div><div class="sd">"어떠셨어요?"로 시작. 고객이 "액티비티가 뭔지 설명을 들어야겠다" = <b>이해 공백</b>이 막힘. 그 공백을 채우는 콜로 방향을 잡는다.</div></div></div>
+      <div class="step"><div class="sk">오프닝 · 반응 묻기</div><div class="sc"><div class="st">견적 반응부터 듣고 막힘을 잡는다</div><div class="sd">"어떠셨어요?"로 시작. 고객이 "뭘 하는 건지 설명을 듣고 싶다"고 하면 막힌 건 가격이 아니라 <b>내용이 안 그려지는 것</b>이다. 그 빈칸을 채우는 콜로 방향을 잡는다.</div></div></div>
       <div class="step"><div class="sk">화면 구조</div><div class="sc"><div class="st">좌(견적) · 우(전략 그림)로 연다 (원칙 1)</div><div class="sd">견적을 줄별로 풀되, 옆에 "타사는 이렇게, 당신은 지금 이게 필요" 그림을 붙여 견적을 전략으로 격상.<div class="say">왼쪽이 견적이고, 오른쪽은 저희가 타사랑 할 때 이런 방식으로 합니다. 근데 프렌즈버킷이 지금 필요한 건 이거다 하는 저의 그림인 거라고 보시면 돼요<span class="src">— 권윤정 (00:02:56)</span></div></div></div></div>
       <div class="step"><div class="sk">핵심 판단</div><div class="sc"><div class="st">견적의 0번 = "대표 학습"을 먼저 박는다</div><div class="sd">견적 전체를 관통하는 한 줄 판단을 먼저 선언. 쿠엔즈버킷 = "대표님이 마케팅 이해도가 너무 필요하다" → 정기 회의(0번)가 견적의 뼈대.<div class="say">제가 판단했던 첫 번째는, 대표님이 마케팅에 대한 이해도가 너무 필요하다였습니다<span class="src">— 권윤정 (00:02:56)</span></div></div></div></div>
       <div class="step"><div class="sk">가격 정당화</div><div class="sc"><div class="st">"비싼 팀"을 내재화로 되받는다 (원칙 2)</div><div class="sd">비싼 값을 숨기지 않고 명분으로. 성과를 내면서 <b>직원을 키워드린다</b> — 우리가 빠진 뒤에도 예산 쓸 힘.<div class="say">저희는 장기로 오래 일하기엔 비싼 팀이에요. 그래서 항상 같이 하는 게 내재화. 저희가 성과를 낼 때 대표님은 동시에 직원을 키우시는 게 제일 좋습니다<span class="src">— 권윤정 (00:03:57)</span></div></div></div></div>
@@ -178,22 +182,22 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
   <section id="matrix">
     <div class="sec-k">TACTICS</div>
     <h2>견적 화법 11종 — 실증 매트릭스</h2>
-    <p class="lead">견적콜·미팅 6건에서 반복된 가격 화법. ①~⑦은 검증된 기본기, <b>⑧~⑪은 5건에서 새로 잡힌 신설 화법</b>(주로 대표 고유기). 외우지 말고 <b>어느 상황에 무엇을 꺼낼지</b>를 익힌다. <b>금액은 보안상 생략 — 구조만.</b></p>
+    <p class="lead">견적콜·미팅 6건에서 반복된 가격 화법. ①~⑦은 검증된 기본기, <b>⑧~⑪은 5건에서 새로 잡힌 신설 화법</b>(주로 대표 고유기). 외우지 말고 <b>어느 상황에 무엇을 꺼낼지</b>를 익힌다. <b>금액은 보안상 생략 — 화법 구조만.</b></p>
     <table>
       <tr><th style="width:46px">#</th><th style="width:210px">화법</th><th>무엇을 / 언제</th><th style="width:130px">근거 케이스</th></tr>
       <tr><td class="c"><b>①</b></td><td><b>직원 N명 1년 총비용 비교</b></td><td>"이 일을 인하우스로 하면 직원 몇 명·1년 인건비"로 견적을 상대화. ⑥ 인하우스 앵커와 합류.</td><td><span class="t n">변형</span> 미례국밥</td></tr>
       <tr><td class="c"><b>②</b></td><td><b>A/B·볼륨 조절</b></td><td>견적을 <b>두 영역으로 정의</b>(빠른 패키지 vs 생애주기 동행)하거나 "최소 비용·줄여도 된다"로 여지를 연다. 고객에게 떠넘기지 말고 <b>컨설팅 영역 자체를 둘로</b> 가른다.</td><td><span class="t b">강함</span> 에그하다·미례국밥·슈퍼맘</td></tr>
       <tr><td class="c"><b>③</b></td><td><b>상한 닻(앵커)</b></td><td>"풀버전으로 가면 훨씬 커진다, 지금은 소액 트라이"로 <b>자기 견적 안에서 상·하한</b>을 보인다. 경쟁사 3억 닻보다 안전한 변형.</td><td><span class="t b">변형</span> 미례국밥</td></tr>
-      <tr><td class="c"><b>④</b></td><td><b>금액 분해</b></td><td>총액을 <b>세팅 : 콘텐츠</b>로, 월비를 <b>광고 : 운영</b>으로 쪼개 "왜 이 값인지"를 구조로 보인다. 셀렉형 1차 견적의 핵심.</td><td><span class="t b">원문 확인</span> 미례국밥</td></tr>
+      <tr><td class="c"><b>④</b></td><td><b>금액 분해</b></td><td>총액을 <b>세팅 : 콘텐츠</b>로, 월비를 <b>광고 : 운영</b>으로 쪼개 "왜 이 값인지"를 구조로 보인다. 자리에서 1차 견적을 줄 때 핵심.</td><td><span class="t b">원문 확인</span> 미례국밥</td></tr>
       <tr><td class="c"><b>⑤</b></td><td><b>불포함 + 자산 프레이밍</b></td><td>"홈페이지·커머스·촬영은 이 견적에 빠져 있다"고 명시해 신뢰 확보. 빠진 것도 결국 너의 자산이 된다로 연결.</td><td><span class="t n">부분</span> 슈퍼맘</td></tr>
       <tr><td class="c"><b>⑥</b></td><td><b>인하우스 비교 앵커</b></td><td>"직원을 쓸 거냐, 팀을 써서 알아서 굴러가게 하고 헤드만 체크할 거냐 — 저희를 <b>인하우스 팀</b>으로 보세요."</td><td><span class="t b">확인</span> 미례국밥</td></tr>
-      <tr><td class="c"><b>⑦</b></td><td><b>리스크 리버설 = 진입 앵커</b></td><td>"앞 단(디자인·스토리)만 작게 견적, 좋으면 확장"·"한 달만 트라이". 작은 yes로 문턱을 낮춘다(PLAN A의 화법판).</td><td><span class="t b">확인</span> 슈퍼맘·에그하다·미례국밥</td></tr>
+      <tr><td class="c"><b>⑦</b></td><td><b>작게 시작 = 진입 앵커</b></td><td>"앞 단(디자인·스토리)만 작게 견적 잡고, 좋으면 확장"·"한 달만 해보시라". 작은 OK 하나로 계약 문턱을 낮춘다.</td><td><span class="t b">확인</span> 슈퍼맘·에그하다·미례국밥</td></tr>
       <tr><td class="c"><b>⑧</b></td><td><b>지원사업 번들링</b> <span class="t b">신설</span></td><td>"견적은 받아두고 <b>정부지원을 끌어와 메운다</b> → 실질 부담을 0에 수렴." 소상공인·농식품·스타트업에 강력. <b>조건: 업력·지원 자격 확인</b>(지원사업 스크리닝과 연동).</td><td>슈퍼맘·에그하다</td></tr>
       <tr><td class="c"><b>⑨</b></td><td><b>역-닻 "다른 데서 견적 받아오세요"</b> <span class="t b">신설</span></td><td>경쟁사 견적을 <b>고객이 직접 확인</b>하게 만든 뒤 "실패의 공수 + 대기업 데이터를 다 가진 곳은 없다"로 차별화를 스스로 납득시킨다. 신뢰 선행형 클로징.</td><td>슈퍼맘 선행</td></tr>
       <tr><td class="c"><b>⑩</b></td><td><b>필수블록 고정 + 실행블록 가변</b> <span class="t b">신설</span></td><td>"<b>1번(기획)만 픽스, 2·3·4는 무너뜨려도 된다.</b> 단 1번만 따로는 못 판다 — 우리의 모든 게 거기 있어서." 풀세트 압도감을 쪼개는 ②의 한국형 변형. 블록형 견적서 STEP 구조와 직결.</td><td>슈퍼맘</td></tr>
       <tr><td class="c"><b>⑪</b></td><td><b>"예쁘게 하지 마세요"(가격편)</b> <span class="t b">신설</span></td><td>"고감도 비주얼·촬영은 돈이고, 지금 단계엔 오히려 매출을 잃는다." 결핍 직언의 가격 버전 — 당장 견적은 줄지만 신뢰로 장기 수주.</td><td>슈퍼맘 선행</td></tr>
     </table>
-    <div class="co ac"><span class="lab">⑩ → 셀렉 매트릭스 반영 검토</span>"기획=필수 고정 / 나머지=토글"을 견적 셀렉 UI에 넣으면 ⑩이 도구로 굳는다. (PREP·견적 정본 작업과 연계 — 6/17 미팅 의제.)</div>
+    <div class="co ac"><span class="lab">⑩ → 견적서 양식 반영 검토</span>"기획=필수 고정 / 나머지=선택"을 견적서 양식에 넣으면 ⑩이 매번 쓰는 도구가 된다. (PREP·견적 정본 작업과 연계 — 6/17 미팅 의제.)</div>
   </section>
 
   <section id="closing">
@@ -207,7 +211,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
       <div class="step"><div class="sk">4 · 다음 미팅 강제</div><div class="sc"><div class="st">"바로 다음 주에 미팅이 돼야 한다"</div><div class="sd">우선순위·스케줄링을 먼저 짜서 "다음 주엔 이것부터 액션"을 그림으로 전달하겠다고 약속 — 빈손으로 헤어지지 않는다.</div></div></div>
       <div class="step"><div class="sk">5 · 클라 숙제 + 레퍼럴</div><div class="sc"><div class="st">고객에게 시장조사 숙제를 주고, 추천을 청한다</div><div class="sd">"오늘 중에라도 잘 나가는 업체 10곳만 리서치해 주시면"(에그하다·미례국밥 공통) — 참여로 결속을 만든다. + "주변에 추천해 주셔도 됩니다"로 레퍼럴 씨앗.</div></div></div>
     </div>
-    <div class="co warn"><span class="lab">구조적 빈칸</span>실장 단독(하예진)·대표(쿠엔즈버킷)는 <b>모두 "후속 전달"로 끝났다.</b> 가격 클로징이 가장 비는 지점 = 견적콜의 최우선 개선점. <b>셀렉형 1차 견적 + 위 5종 못 박기</b>를 표준 무브로.</div>
+    <div class="co warn"><span class="lab">구조적 빈칸</span>실장 단독(하예진)·대표(쿠엔즈버킷)는 <b>모두 "후속 전달"로 끝났다.</b> 가격 클로징이 가장 비는 지점 = 견적콜의 최우선 개선점. <b>자리에서 1차 견적을 주고 위 5종을 못 박는 것</b>을 표준으로.</div>
   </section>
 
   <section id="obj">
@@ -235,7 +239,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
     <div class="say">견적 보셨을 때 혹시 어떠셨어요? <span class="src">— 오프닝, 반응부터 묻기</span></div>
     <div class="say">왼쪽이 견적이고, 오른쪽은 저희가 타사랑 일할 때 방식이에요. 근데 프렌즈버킷이 지금 필요한 건 이거다 하는 저의 그림인 거라고 보시면 돼요. <span class="src">— 견적을 전략으로 격상</span></div>
     <div class="say">저희는 오래 쓰기엔 비싼 팀이에요. 그래서 항상 같이 하는 게 내재화입니다. 저희가 성과를 낼 때 대표님은 동시에 직원을 키우시는 게 제일 좋아요. <span class="src">— 가격 정당화</span></div>
-    <div class="say">광고비 3천을 묵직하게 쓰는 계산법을 갖고 계시면 계속 묵직하게 쓰셔야 돼요. 100만 원에도 다 UTM 링크를 달아서, 어떤 매체로 어떤 루트로 왔는지 지표를 같이 봅니다. <span class="src">— 액티비티의 값 증명</span></div>
+    <div class="say">광고비 3천을 묵직하게 쓰는 계산법을 갖고 계시면 계속 묵직하게 쓰셔야 돼요. 100만 원에도 다 UTM 링크를 달아서, 어떤 매체로 어떤 루트로 왔는지 지표를 같이 봅니다. <span class="src">— 항목값을 숫자로 증명</span></div>
     <div class="say">개선 지점은 딱 두 개예요. 1번 새로운 옷으로 다시 읽힌다, 2번 자사몰에서 내 고객을 만든다. 여기까지 이해되세요? <span class="src">— 압축 + 중간 확인</span></div>
     <div class="say">저는 견적보다 무조건 많이 해드려요. 근데 견적엔 다 안 씁니다. 견적서 들고 나중에 싸우면 안 되니까요. 저흰 성공 안 시키는 브랜드가 없어요. <span class="src">— 범위 공포 → 신뢰</span></div>
     <div class="say">제가 한 달에 끝낸다고 하면 사기꾼이죠. 정권 주시면 2.5달에도 끝내요. 근데 대표님이 학습하시는 게 저희를 쓰는 이유여야 합니다. <span class="src">— 기간 프레이밍</span></div>
@@ -255,9 +259,9 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
     <div class="principles">
       <div class="pcard"><div class="pn">실</div><div class="pt">실장(애라) = 진단 정밀</div><div class="pb"><b>"처음 본 고객의 눈"</b>으로 트리거 포인트를 읽고, "3초 안에 셀링포인트가 보이나"·"모든 결정에 근거가 없다(USP 부재)"로 결핍을 짚는다. 가격은 안 꺼내고 <b>진단 밀도</b>로 승부 — 단, 현장 견적은 0(후속 전달).</div></div>
       <div class="pcard"><div class="pn">대</div><div class="pt">대표(권윤정) = 가격 무력화</div><div class="pb"><b>착수 비용 재정의·지원사업 번들링(⑧)·역-닻(⑨)·생태계 편입.</b> "이 금액은 너의 사업개발이 통째로 든 착수금" / "지원금 끌어와 메운다" / "다른 데 받아와 봐라"로 가격 저항 자체를 해체한다.</div></div>
-      <div class="pcard"><div class="pn">팀</div><div class="pt">실무팀 = 셀렉형 견적·클로징 실물</div><div class="pb">미례국밥 1건이 <b>현장 금액 분해(④)·볼륨 조절(②)·계약일·선금·다음주 미팅</b>까지 자리에서 끝낸 유일 케이스. 1차 견적과 클로징의 <b>완성형 본보기</b>.</div></div>
+      <div class="pcard"><div class="pn">팀</div><div class="pt">실무팀 = 현장 견적·클로징 실물</div><div class="pb">미례국밥 1건이 <b>현장 금액 분해(④)·볼륨 조절(②)·계약일·선금·다음주 미팅</b>까지 자리에서 끝낸 유일 케이스. 1차 견적과 클로징의 <b>완성형 본보기</b>.</div></div>
     </div>
-    <div class="co warn"><span class="lab">배치 원칙</span>실장 단독 견적콜은 <b>가격 클로징이 비는 지점</b> → ① 셀렉형 1차 견적을 미리 준비해 들어가거나 ② 가격 무력화가 필요한 자리엔 <b>대표 동반</b>(또는 대표 화법 ⑧⑨를 차용). 진단은 실장, 클로징은 대표/실무팀 구조가 가장 강하다.</div>
+    <div class="co warn"><span class="lab">배치 원칙</span>실장 단독 견적콜은 <b>가격 클로징이 비는 지점</b> → ① 현장에서 줄 1차 견적을 미리 준비해 들어가거나 ② 가격 부담을 풀어야 하는 자리엔 <b>대표 동반</b>(또는 대표 화법 ⑧⑨를 차용). 진단은 실장, 클로징은 대표/실무팀 구조가 가장 강하다.</div>
   </section>
 
   <section id="case">

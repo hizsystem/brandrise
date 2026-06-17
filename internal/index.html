@@ -32,16 +32,16 @@ body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);colo
 .wrap{max-width:1000px;margin:0 auto;padding:38px 40px 100px}
 .sec-k{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:6px;padding:4px 10px;margin-bottom:12px}
 h2{font-size:22px;font-weight:800;letter-spacing:-.02em;margin-bottom:7px}
-.lead{font-size:14px;color:var(--muted);margin-bottom:22px;max-width:760px}
+.lead{font-size:14.5px;color:var(--muted);margin-bottom:22px;max-width:760px;line-height:1.7}
 section{margin-bottom:48px}
 
 /* 영업 흐름 띠 (산출물 매핑) */
 .flowbar{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 8px}
 .fb{flex:1;min-width:150px;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:13px 15px;position:relative}
 .fb:not(:last-child)::after{content:"›";position:absolute;right:-9px;top:50%;transform:translateY(-50%);font-size:17px;color:var(--ac);font-weight:800;z-index:1}
-.fb .k{font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--ac);margin-bottom:3px}
-.fb .t{font-size:14px;font-weight:800;margin-bottom:6px}
-.fb .dv{font-size:11px;color:var(--muted);font-weight:600;border-top:1px dashed var(--line);padding-top:6px}
+.fb .k{font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--ac);margin-bottom:4px}
+.fb .t{font-size:14.5px;font-weight:800;margin-bottom:6px}
+.fb .dv{font-size:12.5px;color:var(--muted);font-weight:600;border-top:1px dashed var(--line);padding-top:6px}
 .fb .dv b{color:var(--ink2);font-weight:700}
 .fb.win{background:var(--ink);border-color:var(--ink)} .fb.win .k{color:#a5b4fc} .fb.win .t{color:#fff} .fb.win .dv{color:#94a3b8;border-color:rgba(255,255,255,.14)} .fb.win .dv b{color:#cbd5e1}
 
@@ -51,10 +51,10 @@ section{margin-bottom:48px}
 .mapcard .ml{flex:0 0 auto}
 .mapcard .ml .ph{font-size:11px;font-weight:800;background:var(--ac);color:#fff;border-radius:99px;padding:4px 13px}
 .mapcard .mm{flex:1;min-width:0}
-.mapcard .mm .mt{font-size:16.5px;font-weight:800;letter-spacing:-.01em;margin-bottom:3px}
-.mapcard .mm .md{font-size:12.5px;color:var(--ink2);line-height:1.55}
-.mapcard .mr{flex:0 0 auto;color:var(--ac);font-weight:800;font-size:12.5px;white-space:nowrap}
-.mapcard .mr .src{display:block;font-size:10.5px;color:var(--muted);font-weight:600;margin-top:4px;text-align:right}
+.mapcard .mm .mt{font-size:17px;font-weight:800;letter-spacing:-.01em;margin-bottom:4px}
+.mapcard .mm .md{font-size:14px;color:var(--ink2);line-height:1.6}
+.mapcard .mr{flex:0 0 auto;color:var(--ac);font-weight:800;font-size:13.5px;white-space:nowrap}
+.mapcard .mr .src{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-top:5px;text-align:right}
 
 /* 매뉴얼 카드 */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:13px;margin:14px 0}
@@ -63,10 +63,10 @@ section{margin-bottom:48px}
 .mc .mh{padding:16px 19px 12px;display:flex;align-items:center;gap:9px;border-bottom:1px solid var(--line2)}
 .mc .ph{font-size:10.5px;font-weight:800;background:var(--ac);color:#fff;border-radius:99px;padding:3px 10px;flex:0 0 auto}
 .mc .mt{font-size:15.5px;font-weight:800;letter-spacing:-.01em}
-.mc .mb{padding:13px 19px 14px;font-size:12.5px;color:var(--ink2);line-height:1.6;flex:1}
-.mc .mf{padding:0 19px 15px;font-size:11.5px;color:var(--muted)}
-.mc .go{color:var(--ac);font-weight:800;font-size:12px}
-.mc .src{display:block;margin-top:6px;font-size:10.5px;color:var(--muted)}
+.mc .mb{padding:13px 19px 14px;font-size:14px;color:var(--ink2);line-height:1.62;flex:1}
+.mc .mf{padding:0 19px 15px;font-size:12.5px;color:var(--muted)}
+.mc .go{color:var(--ac);font-weight:800;font-size:13px}
+.mc .src{display:block;margin-top:6px;font-size:12px;color:var(--muted)}
 
 /* 산출물 템플릿 카드 (변형: soft 헤더 + 점선 테두리 느낌) */
 .tpl .mh{background:var(--soft)}
@@ -108,16 +108,16 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
   <section>
     <div class="sec-k">MANUALS</div>
     <h2>매뉴얼 — 어떻게 말하는가</h2>
-    <p class="lead">단계마다 복제 가능한 플레이북. 녹취에서 반복되는 무브를 뽑아 누구나 같은 수준으로 플레이한다.</p>
+    <p class="lead">단계마다 그대로 따라 하는 플레이북. 실제 상담 녹취에서 반복되는 흐름·질문·화법을 뽑아, 누구나 같은 수준으로 상담한다.</p>
     <div class="cards">
       <a class="mc" href="company-intro/">
         <div class="mh"><span class="ph">진입</span><span class="mt">회사소개 매뉴얼</span></div>
-        <div class="mb">상담 첫 15분 회사 소개를 누구나 같은 수준으로. ①~⑥ 통대본 + 사례 카드 선택표 + 금지 5가지 + 부록 A(STEP·체크리스트).</div>
+        <div class="mb">상담 첫 15분 회사 소개를 누구나 같은 수준으로 하게 돕는다. ①~⑥ 통대본 + 사례 카드 선택표 + 하지 말 것 5가지 + 부록 A(STEP·체크리스트).</div>
         <div class="mf"><span class="go">매뉴얼 열기 ›</span><span class="src">v4 · 대표 녹취 3건 + 갭 보강</span></div>
       </a>
       <a class="mc" href="consult-playbook/">
         <div class="mh"><span class="ph">1차</span><span class="mt">상담 플레이북</span></div>
-        <div class="mb">대표·실장 상담을 복제·암기·소화. 상담 5단계 · 2패턴 · 넥스트 질문 8종 · 결핍 직언 5종 · 견적 화법 11종 · 클로징.</div>
+        <div class="mb">대표·실장의 상담을 그대로 따라 하게 돕는다. 상담 5단계 · 2패턴 · 다음을 끌어내는 질문 8종 · 결핍 직언 5종 · 견적 화법 11종 · 클로징.</div>
         <div class="mf"><span class="go">플레이북 열기 ›</span><span class="src">v3 · 대표 녹취 14건 + 실장 녹취 12건 실증</span></div>
       </a>
       <a class="mc" href="quote-call-playbook/">
@@ -135,7 +135,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
     <div class="cards">
       <a class="mc tpl" href="../research/_template/prep-v2-template.html">
         <div class="mh"><span class="ph">1차</span><span class="mt">PREP</span></div>
-        <div class="mb">상담 전 내부 준비 — 직접 리서치 기반 가설 정리. 고객에게 안 나가는 무장 문서.</div>
+        <div class="mb">상담 전 내부 준비용. 직접 리서치해 가설을 정리해 두는 문서로, 고객에게는 나가지 않는다.</div>
         <div class="mf"><span class="go">템플릿 열기 ›</span><span class="src">research/_template · 좌측 사이드바형</span></div>
       </a>
       <a class="mc tpl" href="../research/_template/diagnosis-template.html">
