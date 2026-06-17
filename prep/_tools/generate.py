@@ -9,7 +9,8 @@ import html
 import json
 from pathlib import Path
 
-PREP_DIR = Path("/Users/seulki/PROJECT/brandrise/prep")
+# 스크립트 위치(prep/_tools/) 기준으로 prep/ 디렉토리를 잡는다 — 머신 독립.
+PREP_DIR = Path(__file__).resolve().parent.parent
 OUT_DIR = PREP_DIR  # write back into prep/
 
 # Tier metadata (from README curation)
@@ -266,6 +267,99 @@ def paragraph_to_html(text: str) -> str:
     return "\n    ".join(out)
 
 
+# Tier 코드별 명칭 (Tier 기준선 라인엔 코드+단가만 있어 명칭은 표준 매핑으로 보강)
+TIER_NAMES = {"T0": "진단형", "T1": "Foundation", "T2": "Build", "T3": "Scale"}
+# 라벨별 짧은 캡션 — 본문 라벨이 길 때 화면용으로 축약(원문 보존, 표시만 교체)
+TIER_BLOCK_CAPTIONS = {"추천 Tier": "추천", "근거": "근거", "대안": "대안",
+                       "단계적 접근(권장)": "단계적 접근", "단계적 접근": "단계적 접근",
+                       "Tier 기준선": "기준선"}
+
+
+def render_tier_section(content: str) -> str:
+    """'추정 Tier 견적 범위' 섹션을 시각화: 추천 콜아웃 + Tier 레일(T0~T3) + 라벨 블록.
+
+    소스는 ``- **라벨**: 값`` 최상위 불릿 + 들여쓴 하위 불릿 구조. 파싱 실패 시
+    호출부에서 일반 card-dark로 폴백하도록 빈 문자열을 반환한다.
+    """
+    items = []  # [label, value, [sub, ...]]
+    cur = None
+    for raw in content.split("\n"):
+        if not raw.strip():
+            continue
+        if re.match(r"^\s{2,}[-*]\s+", raw) and cur is not None:
+            cur[2].append(raw.strip()[2:].strip())
+            continue
+        m = re.match(r"^[-*]\s+\*\*(.+?)\*\*\s*[:：]\s*(.*)$", raw.strip())
+        if m:
+            cur = [m.group(1).strip(), m.group(2).strip(), []]
+            items.append(cur)
+        elif cur is not None:
+            cur[1] = (cur[1] + " " + raw.strip()).strip()
+
+    if not items:
+        return ""
+
+    order = [it[0] for it in items]
+    fields = {it[0]: (it[1], it[2]) for it in items}
+
+    def find(*keys):
+        for k in order:
+            if any(k.startswith(key) for key in keys):
+                return fields[k]
+        return None
+
+    rec = find("추천 Tier")
+    baseline = find("Tier 기준선")
+    rec_codes = set(re.findall(r"T[0-3]", rec[0])) if rec else set()
+
+    parts = []
+
+    # 추천 Tier 헤드라인 콜아웃
+    if rec and rec[0]:
+        parts.append(
+            '<div class="tier-rec"><div class="rk">추천 Tier</div>'
+            f'<div class="rv">{md_inline_to_html(rec[0])}</div></div>'
+        )
+
+    # Tier 레일 — 기준선 4단계를 가로 카드로, 추천 Tier는 강조
+    if baseline and baseline[0]:
+        chips = []
+        for chunk in baseline[0].split("·"):
+            chunk = chunk.strip()
+            cm = re.match(r"(T[0-3])\s+(.+)", chunk)
+            if not cm:
+                continue
+            code = cm.group(1)
+            price, _, dur = cm.group(2).strip().partition("/")
+            name = TIER_NAMES.get(code, "")
+            cls = "tier-chip rec" if code in rec_codes else "tier-chip"
+            chips.append(
+                f'<div class="{cls}"><div class="tc">{code}</div>'
+                f'<div class="tn">{html.escape(name)}</div>'
+                f'<div class="tp">{html.escape(price.strip())}</div>'
+                f'<div class="td">{html.escape(dur.strip())}</div></div>'
+            )
+        if chips:
+            parts.append('<div class="tier-rail">' + "".join(chips) + "</div>")
+
+    # 나머지 라벨 블록 (근거 · 대안 · 단계적 접근 등) — 추천/기준선은 위에서 처리
+    for label in order:
+        if label.startswith("추천 Tier") or label.startswith("Tier 기준선"):
+            continue
+        value, subs = fields[label]
+        cap = TIER_BLOCK_CAPTIONS.get(label, label)
+        bv = md_inline_to_html(value) if value else ""
+        if subs:
+            lis = "".join(f"<li>{md_inline_to_html(s)}</li>" for s in subs)
+            bv += f"<ul>{lis}</ul>"
+        parts.append(
+            f'<div class="tier-block"><div class="bk">{html.escape(cap)}</div>'
+            f'<div class="bv">{bv}</div></div>'
+        )
+
+    return '<div class="tier-wrap">\n    ' + "\n    ".join(parts) + "\n    </div>"
+
+
 # ---------- HTML template ----------
 
 PREP_TEMPLATE = """<!DOCTYPE html>
@@ -451,6 +545,59 @@ PREP_TEMPLATE = """<!DOCTYPE html>
     .card-dark a:hover {{ color: var(--white); }}
     .card-dark ul li::marker, .card-dark ol li::marker {{ color: var(--accent-soft); }}
 
+    /* TIER ESTIMATE — 견적 시각화 */
+    .tier-wrap {{
+      background: var(--black); color: var(--white);
+      border-radius: 14px; padding: 30px 32px 32px;
+    }}
+    .tier-rec {{
+      display: flex; gap: 16px; align-items: flex-start;
+      background: linear-gradient(135deg, rgba(127,184,159,0.16), rgba(127,184,159,0.03));
+      border: 1px solid rgba(127,184,159,0.32); border-left: 3px solid var(--accent-soft);
+      border-radius: 12px; padding: 18px 22px; margin-bottom: 24px;
+    }}
+    .tier-rec .rk {{
+      flex-shrink: 0; font-size: 10px; letter-spacing: 1.5px; font-weight: 800;
+      text-transform: uppercase; color: var(--accent-soft); padding-top: 4px;
+    }}
+    .tier-rec .rv {{ font-size: 15.5px; font-weight: 700; line-height: 1.55; color: #fff; }}
+    .tier-rec .rv strong {{ color: var(--accent-soft); font-weight: 800; }}
+
+    .tier-rail {{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 26px; }}
+    .tier-chip {{
+      position: relative; border-radius: 12px; padding: 16px 15px 15px;
+      border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.035);
+    }}
+    .tier-chip .tc {{ font-size: 19px; font-weight: 800; letter-spacing: 0.5px; color: rgba(255,255,255,0.5); }}
+    .tier-chip .tn {{ font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.38); margin-bottom: 12px; }}
+    .tier-chip .tp {{ font-size: 14.5px; font-weight: 800; color: #fff; line-height: 1.3; }}
+    .tier-chip .td {{ font-size: 11.5px; color: rgba(255,255,255,0.45); margin-top: 4px; }}
+    .tier-chip.rec {{
+      background: var(--accent); border-color: var(--accent-soft);
+      box-shadow: 0 8px 24px rgba(46,93,79,0.4);
+    }}
+    .tier-chip.rec .tc {{ color: #fff; }}
+    .tier-chip.rec .tn {{ color: rgba(255,255,255,0.7); }}
+    .tier-chip.rec .td {{ color: rgba(255,255,255,0.72); }}
+    .tier-chip.rec::after {{
+      content: "추천"; position: absolute; top: -9px; right: 11px;
+      background: var(--accent-soft); color: var(--black);
+      font-size: 9.5px; font-weight: 800; letter-spacing: 0.5px;
+      padding: 2px 9px; border-radius: 20px;
+    }}
+
+    .tier-block {{ border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; margin-top: 15px; }}
+    .tier-block:first-of-type {{ border-top: none; padding-top: 0; margin-top: 0; }}
+    .tier-block .bk {{
+      font-size: 10px; letter-spacing: 1.5px; font-weight: 800;
+      text-transform: uppercase; color: var(--accent-soft); margin-bottom: 7px;
+    }}
+    .tier-block .bv {{ font-size: 14px; color: rgba(255,255,255,0.86); line-height: 1.65; }}
+    .tier-block .bv strong {{ color: var(--accent-soft); }}
+    .tier-block .bv ul {{ margin: 6px 0 0; padding-left: 18px; }}
+    .tier-block .bv ul li {{ margin-bottom: 5px; }}
+    .tier-block .bv ul li::marker {{ color: var(--accent-soft); }}
+
     /* QUESTIONS as numbered cards */
     .q-grid {{ display: grid; gap: 12px; }}
     .q-item {{
@@ -489,10 +636,27 @@ PREP_TEMPLATE = """<!DOCTYPE html>
       .container {{ padding: 0 24px; }}
       section {{ padding: 52px 0; }}
       .card {{ padding: 24px 22px; }}
+      .tier-wrap {{ padding: 24px 20px 22px; }}
+      .tier-rail {{ grid-template-columns: repeat(2, 1fr); }}
+      .tier-rec {{ flex-direction: column; gap: 6px; }}
     }}
 
     @media print {{
       body {{ background: var(--white); font-size: 11px; }}
+      .tier-wrap {{ background: var(--gray-100); color: var(--black); }}
+      .tier-rec {{ background: var(--accent-light); }}
+      .tier-rec .rv {{ color: var(--black); }}
+      .tier-rec .rv strong, .tier-rec .rk, .tier-block .bk {{ color: var(--accent); }}
+      .tier-chip {{ border-color: var(--gray-300); background: var(--white); }}
+      .tier-chip .tc {{ color: var(--gray-500); }}
+      .tier-chip .tn {{ color: var(--gray-500); }}
+      .tier-chip .tp {{ color: var(--black); }}
+      .tier-chip .td {{ color: var(--gray-700); }}
+      .tier-chip.rec {{ background: var(--accent-light); border-color: var(--accent); box-shadow: none; }}
+      .tier-chip.rec .tc, .tier-chip.rec .tp {{ color: var(--accent); }}
+      .tier-chip.rec .tn, .tier-chip.rec .td {{ color: var(--gray-700); }}
+      .tier-block .bv {{ color: var(--gray-700); }}
+      .tier-block .bv strong {{ color: var(--accent); }}
       .topnav, .footer {{ display: none; }}
       .hero {{ background: var(--white); color: var(--black); padding: 32px 0; }}
       .hero h1 {{ color: var(--black); font-size: 28px; }}
@@ -563,7 +727,7 @@ SECTION_RENDER_ORDER = [
     ("핵심 페인 (가설)", "PAIN POINTS", "사전 검색 기반 가설 페인", "card"),
     ("핵심 페인 (가설·리서치 검증됨)", "PAIN POINTS", "리서치 검증 페인", "card"),
     ("컨설팅 가설 (브랜드라이즈가 풀 수 있는 것)", "CONSULTING HYPOTHESIS", "브랜드라이즈가 풀 수 있는 것", "card-dark"),
-    ("추정 Tier 견적 범위", "TIER ESTIMATE", "예상 견적 Tier·단가 범위 + 단계적 접근 옵션", "card-dark"),
+    ("추정 Tier 견적 범위", "TIER ESTIMATE", "예상 견적 Tier·단가 범위 + 단계적 접근 옵션", "tier"),
     ("리스크 시그널", "RISK SIGNALS", "GO 분기점 — 의사결정·핏·예산·동명·운영 5종", "card"),
     ("미팅 시 확인 질문", "MEETING QUESTIONS", "사전상담 도입 5분 어젠다 + 정량 진단", "questions"),
     ("정식 리서치 승급 시 우선 파야 할 영역", "FULL RESEARCH ROADMAP", "정식 승급 시 심화 영역", "card"),
@@ -674,6 +838,11 @@ def render_brand_html(md_path: Path, slug: str, applicant_meta: tuple) -> str:
                      for ln in content.split("\n") if ln.strip()]
             li_html = "\n".join(f"      <li>{md_inline_to_html(ln)}</li>" for ln in lines if ln)
             body_html = f'<ul class="src-list">\n{li_html}\n    </ul>'
+        elif kind == "tier":
+            body_html = render_tier_section(content)
+            if not body_html:  # 파싱 실패 시 기존 card-dark로 폴백
+                inner = paragraph_to_html(content)
+                body_html = f'<div class="card card-dark">\n    {inner}\n    </div>'
         elif kind == "card-dark":
             inner = paragraph_to_html(content)
             body_html = f'<div class="card card-dark">\n    {inner}\n    </div>'
@@ -950,17 +1119,20 @@ def main():
     written = []
 
     # Render each brand
+    rendered_slugs = set()  # 이번 실행에서 이미 렌더한 slug (다중신청자 brand 중복 방지)
     for slug, applicant, brand, date, participants, confirmed in DISPLAY_ORDER:
         md_path = PREP_DIR / f"{slug}.md"
         if not md_path.exists():
             print(f"SKIP: {md_path}")
             continue
 
-        # If multi-applicant brand (mixroom, whatsup-house), only render once
-        out_dir = OUT_DIR / slug
-        if (out_dir / "index.html").exists() and slug in ("mixroom", "whatsup-house"):
-            # Already rendered for first applicant
+        # 다중신청자 brand(mixroom, whatsup-house 등)는 첫 등장 때만 렌더.
+        # 파일시스템 존재가 아니라 이번 실행 기록으로 판정 — 안 그러면 이전 산출물 탓에 영구 스킵.
+        if slug in rendered_slugs:
             continue
+        rendered_slugs.add(slug)
+
+        out_dir = OUT_DIR / slug
 
         out_dir.mkdir(parents=True, exist_ok=True)
         html_str = render_brand_html(md_path, slug, (slug, applicant, brand, date, participants, confirmed))

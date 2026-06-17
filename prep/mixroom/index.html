@@ -96,6 +96,69 @@
       line-height: 1.85; margin-bottom: 36px;
     }
 
+    /* EXECUTIVE SUMMARY */
+    .exec-section { background: var(--bg); padding: 56px 0 0; }
+    .exec-wrap {
+      background: var(--white); border-radius: 18px;
+      border: 1px solid var(--gray-200);
+      padding: 40px 44px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+    }
+    .exec-head {
+      padding-bottom: 22px; border-bottom: 1px solid var(--gray-200); margin-bottom: 26px;
+    }
+    .exec-head h2 { font-size: 22px; font-weight: 900; letter-spacing: -0.02em; color: var(--black); }
+    .exec-meta {
+      display: grid; grid-template-columns: 1.4fr 1fr;
+      gap: 32px; margin-bottom: 28px;
+    }
+    .exec-meta-block .k {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gray-500); margin-bottom: 8px;
+    }
+    .exec-meta-block .v { font-size: 14px; line-height: 1.65; color: var(--text); }
+    .exec-meta-block .v .name { font-size: 17px; font-weight: 800; color: var(--black); display: block; margin-bottom: 6px; letter-spacing: -0.01em; }
+    .exec-cards {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin-bottom: 24px;
+    }
+    .exec-mini { border-radius: 12px; padding: 22px 20px; text-align: center; min-height: 110px; display: flex; flex-direction: column; justify-content: center; }
+    .exec-mini .mlabel {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 10px; opacity: 0.75;
+    }
+    .exec-mini .mvalue { font-size: 15px; font-weight: 900; letter-spacing: -0.01em; line-height: 1.4; }
+    .exec-mini.c1 { background: var(--accent); color: white; }
+    .exec-mini.c2 { background: var(--black); color: white; }
+    .exec-mini.c3 { background: #786E5C; color: white; }
+    .exec-mini.c4 { background: #B89B6B; color: white; }
+    .exec-diagnosis {
+      background: var(--black); color: white;
+      border-radius: 14px; padding: 26px 32px; margin-bottom: 22px;
+    }
+    .exec-diagnosis .dlabel {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      color: var(--accent-soft); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .exec-diagnosis .dtext { font-size: 14px; line-height: 1.85; }
+    .exec-diagnosis .dtext strong { color: var(--accent-soft); }
+    .exec-judgment {
+      display: flex; flex-wrap: wrap; gap: 10px 22px;
+      padding-top: 20px; border-top: 1px solid var(--gray-200);
+      font-size: 13px; color: var(--gray-700); line-height: 1.7;
+    }
+    .exec-judgment strong { color: var(--accent); font-weight: 800; }
+    @media (max-width: 720px) {
+      .exec-wrap { padding: 28px 22px; }
+      .exec-meta { grid-template-columns: 1fr; gap: 20px; }
+      .exec-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media print {
+      .exec-section { padding: 24px 0 0; }
+      .exec-wrap { box-shadow: none; border-color: var(--gray-300); padding: 24px; }
+      .exec-mini { min-height: auto; padding: 14px 12px; }
+    }
+
     /* CARDS */
     .card {
       background: var(--white); border-radius: 14px;
@@ -117,6 +180,59 @@
     .card-dark a { color: var(--accent-soft); border-color: rgba(127,184,159,0.3); }
     .card-dark a:hover { color: var(--white); }
     .card-dark ul li::marker, .card-dark ol li::marker { color: var(--accent-soft); }
+
+    /* TIER ESTIMATE — 견적 시각화 */
+    .tier-wrap {
+      background: var(--black); color: var(--white);
+      border-radius: 14px; padding: 30px 32px 32px;
+    }
+    .tier-rec {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: linear-gradient(135deg, rgba(127,184,159,0.16), rgba(127,184,159,0.03));
+      border: 1px solid rgba(127,184,159,0.32); border-left: 3px solid var(--accent-soft);
+      border-radius: 12px; padding: 18px 22px; margin-bottom: 24px;
+    }
+    .tier-rec .rk {
+      flex-shrink: 0; font-size: 10px; letter-spacing: 1.5px; font-weight: 800;
+      text-transform: uppercase; color: var(--accent-soft); padding-top: 4px;
+    }
+    .tier-rec .rv { font-size: 15.5px; font-weight: 700; line-height: 1.55; color: #fff; }
+    .tier-rec .rv strong { color: var(--accent-soft); font-weight: 800; }
+
+    .tier-rail { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 26px; }
+    .tier-chip {
+      position: relative; border-radius: 12px; padding: 16px 15px 15px;
+      border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.035);
+    }
+    .tier-chip .tc { font-size: 19px; font-weight: 800; letter-spacing: 0.5px; color: rgba(255,255,255,0.5); }
+    .tier-chip .tn { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.38); margin-bottom: 12px; }
+    .tier-chip .tp { font-size: 14.5px; font-weight: 800; color: #fff; line-height: 1.3; }
+    .tier-chip .td { font-size: 11.5px; color: rgba(255,255,255,0.45); margin-top: 4px; }
+    .tier-chip.rec {
+      background: var(--accent); border-color: var(--accent-soft);
+      box-shadow: 0 8px 24px rgba(46,93,79,0.4);
+    }
+    .tier-chip.rec .tc { color: #fff; }
+    .tier-chip.rec .tn { color: rgba(255,255,255,0.7); }
+    .tier-chip.rec .td { color: rgba(255,255,255,0.72); }
+    .tier-chip.rec::after {
+      content: "추천"; position: absolute; top: -9px; right: 11px;
+      background: var(--accent-soft); color: var(--black);
+      font-size: 9.5px; font-weight: 800; letter-spacing: 0.5px;
+      padding: 2px 9px; border-radius: 20px;
+    }
+
+    .tier-block { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; margin-top: 15px; }
+    .tier-block:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+    .tier-block .bk {
+      font-size: 10px; letter-spacing: 1.5px; font-weight: 800;
+      text-transform: uppercase; color: var(--accent-soft); margin-bottom: 7px;
+    }
+    .tier-block .bv { font-size: 14px; color: rgba(255,255,255,0.86); line-height: 1.65; }
+    .tier-block .bv strong { color: var(--accent-soft); }
+    .tier-block .bv ul { margin: 6px 0 0; padding-left: 18px; }
+    .tier-block .bv ul li { margin-bottom: 5px; }
+    .tier-block .bv ul li::marker { color: var(--accent-soft); }
 
     /* QUESTIONS as numbered cards */
     .q-grid { display: grid; gap: 12px; }
@@ -156,10 +272,27 @@
       .container { padding: 0 24px; }
       section { padding: 52px 0; }
       .card { padding: 24px 22px; }
+      .tier-wrap { padding: 24px 20px 22px; }
+      .tier-rail { grid-template-columns: repeat(2, 1fr); }
+      .tier-rec { flex-direction: column; gap: 6px; }
     }
 
     @media print {
       body { background: var(--white); font-size: 11px; }
+      .tier-wrap { background: var(--gray-100); color: var(--black); }
+      .tier-rec { background: var(--accent-light); }
+      .tier-rec .rv { color: var(--black); }
+      .tier-rec .rv strong, .tier-rec .rk, .tier-block .bk { color: var(--accent); }
+      .tier-chip { border-color: var(--gray-300); background: var(--white); }
+      .tier-chip .tc { color: var(--gray-500); }
+      .tier-chip .tn { color: var(--gray-500); }
+      .tier-chip .tp { color: var(--black); }
+      .tier-chip .td { color: var(--gray-700); }
+      .tier-chip.rec { background: var(--accent-light); border-color: var(--accent); box-shadow: none; }
+      .tier-chip.rec .tc, .tier-chip.rec .tp { color: var(--accent); }
+      .tier-chip.rec .tn, .tier-chip.rec .td { color: var(--gray-700); }
+      .tier-block .bv { color: var(--gray-700); }
+      .tier-block .bv strong { color: var(--accent); }
       .topnav, .footer { display: none; }
       .hero { background: var(--white); color: var(--black); padding: 32px 0; }
       .hero h1 { color: var(--black); font-size: 28px; }
@@ -201,13 +334,55 @@
 </header>
 
 
+<section class="exec-section">
+  <div class="container">
+    <div class="exec-wrap">
+      <div class="exec-head"><h2>Executive Summary</h2></div>
+      <div class="exec-meta">
+        <div class="exec-meta-block">
+          <div class="k">기업 / 브랜드</div>
+          <div class="v"><span class="name">믹스룸 (Mixroom)</span>Mixroom Co. Ltd · "AI Co-Producer" 컨셉 모바일 기반 음악 제작 협업 플랫폼 · "MOSS" 운영 · 2026-04 iOS/Android 정식 출시 · 무료 다운로드 · 시드 단계 · 자체 사이트 mixroom.ai 운영</div>
+        </div>
+        <div class="exec-meta-block">
+          <div class="k">대표이사</div>
+          <div class="v"><span class="name">손한솔 · 대표 (david@mixroom.ai) + 노도원 · 디자이너 (eric@mixroom.ai)</span><strong>2인 동석 참여확정(Y)</strong>, 디자이너 동석 = BI/디자인 시스템·앱 UX 의제 시그널</div>
+        </div>
+      </div>
+      <div class="exec-cards">
+        <div class="exec-mini c1">
+          <div class="mlabel">추정 단계</div>
+          <div class="mvalue">시드~초기 (2026-04 글로벌 출시 직후)</div>
+        </div>
+        <div class="exec-mini c2">
+          <div class="mlabel">추천 Tier</div>
+          <div class="mvalue">T1 Foundation (500~1,500만 / 4주)</div>
+        </div>
+        <div class="exec-mini c3">
+          <div class="mlabel">핵심 자산</div>
+          <div class="mvalue">대표+디자이너 2인 동석 + 글로벌 양대 OS 동시 출시</div>
+        </div>
+        <div class="exec-mini c4">
+          <div class="mlabel">핵심 리스크</div>
+          <div class="mvalue">글로벌 경쟁(Moises·Suno) + ASO 미정착</div>
+        </div>
+      </div>
+      <div class="exec-diagnosis">
+        <div class="dlabel">핵심 진단 한 줄 요약</div>
+        <div class="dtext"><strong>2026-04 iOS/Android 글로벌 양대 OS 동시 출시 직후 + 대표·디자이너 2인 동석(참여확정 Y)</strong> = 출시 직후 골든타임 + 디자인·BI 동시 컨설팅 의지 명확. 단 시드 단계 + 글로벌 경쟁(Moises·Suno) + ASO·앱스토어 디스커버리 미정착 = T2 풀스코프 흡수력 미검증. <strong>T1 진단 → 글로벌 PMF 확보 후 T2 단계적</strong>이 정석.</div>
+      </div>
+      <div class="exec-judgment">추천 <strong>T1 Foundation · 500~1,500만 / 4주</strong> (글로벌 PMF 확보 후 T2 Build 2,000~5,000만/3개월 단계적 승급) / Entry Move <strong>디자이너 동석 이유(BI/디자인 시스템/앱 UX 중 어디) 1순위 청취</strong> / 레버 <strong>"Co-Producer = 인간 주도 협업" 메시지 정제 + ASO 1차 진단 + 크리에이터 데모 영상 3종</strong></div>
+    </div>
+  </div>
+</section>
+
+
 <section>
   <div class="container">
     <div class="sec-label">ONE-LINER</div>
     <h2>한 줄 요약</h2>
     <p class="sec-desc">사업 본질 한 줄</p>
     <div class="card">
-    <p>"AI Co-Producer" 컨셉의 모바일 기반 음악 제작 협업 플랫폼 — 생성형이 아닌 "창작자 의도 존중" 포지셔닝의 한국 오디오테크 스타트업 (Mixroom Co. Ltd, by MOSS).</p>
+    <p>"AI Co-Producer" 컨셉의 모바일 기반 음악 제작 협업 플랫폼 — 생성형이 아닌 "창작자 의도 존중" 포지셔닝의 한국 오디오테크 스타트업 (Mixroom Co. Ltd, by MOSS). 2026-04 iOS/Android 정식 출시 + 무료 다운로드 단계. <strong>대표 손한솔 + 디자이너 노도원 2인 동석(참여확정 Y) = HIZ 핵심 타깃 시점</strong>.</p>
     </div>
   </div>
 </section>
@@ -218,7 +393,66 @@
     <h2>추정 단계</h2>
     <p class="sec-desc">현재 추정 단계</p>
     <div class="card">
-    <p><strong>시드~초기</strong> — 2026년 4월 iOS/Android 정식 출시, 무료 다운로드 단계. PMF·초기 유저 확보 구간.</p>
+    <p><strong>시드~초기 (글로벌 양대 OS 동시 출시 직후, 2026-04).</strong> PMF·초기 유저 확보 구간 + 글로벌 디스커버리 셋업 초기. 대표·디자이너 2인 동석 = 본격 컨설팅 의지·내부 의사결정 정렬 시그널.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">QUANTITATIVE SIGNALS</div>
+    <h2>정량 시그널</h2>
+    <p class="sec-desc">검색으로 확보된 정량 데이터 (매출·인력·SNS·인증·펀딩)</p>
+    <div class="card">
+    <p>| 항목 | 값 | 출처 |
+|---|---|---|
+| 법인명 | Mixroom Co. Ltd (운영 브랜드 "MOSS") | Mixroom 공식 사이트 |
+| 대표 | 손한솔 (david@mixroom.ai) | 신청 자료 |
+| 동석 디자이너 | 노도원 (eric@mixroom.ai) | 신청 자료 — 참여확정 Y |
+| 사업자 / 설립일 | 미확인 — 미팅 청취 | 검색 |
+| 도메인 | mixroom.ai | 공식 |
+| 제품 | AI Co-Producer 모바일 앱 (iOS + Android) | The Beat Community 2026-04 |
+| 출시 시점 | 2026-04 iOS/Android 정식 출시 | The Beat Community |
+| 가격 모델 | 무료 다운로드 | The Beat Community |
+| 포지셔닝 | "생성형 AI가 아닌, 창작자 의도 존중" Co-Producer | 공식 사이트 |
+| 타겟 | B2C 뮤지션·크리에이터 + B2B(레이블/스튜디오) 가능성 | 공식 사이트 |
+| 채널 | IG / YT / TikTok 운영 여부 미확인 | 미확인 — 미팅 청취 |
+| ASO / 다운로드 / DAU·MAU | 미확인 — 미팅 청취 1순위 | — |
+| 투자 단계 | 시드 추정 (출시 시점·무료 다운로드) | 미확인 — 미팅 청취 |
+| <strong>신청자 매칭</strong> | <strong>명확 매칭</strong> — 손한솔 대표 + 노도원 디자이너 2인 동석, 양측 회사 이메일(@mixroom.ai)·전화 모두 명시 | 신청 자료 |</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">ANALOG CASES</div>
+    <h2>유사 케이스 인접도</h2>
+    <p class="sec-desc">HIZ 기존 케이스 풀과의 매핑</p>
+    <div class="card">
+    <ul>
+      <li><strong>HIZ 풀에 모바일 앱·AI 플랫폼 케이스 부재</strong> — D2C 물리 제품 중심 SOP와 거리 있음. 단 ASO·콘텐츠 시스템·글로벌 채널은 표준 SOP 적용 가능.</li>
+      <li><strong>노다지파이랩스 (가장 가까움)</strong>: Pre-launch/초기 + 글로벌 타겟 + 빌더형 대표 운영 + 외부 마케팅 협업 경험 부재 = 단계 인접. 다만 노다지는 Web3·D-50 압축 일정, 믹스룸은 양대 OS 출시 직후 = 시점 차이.</li>
+      <li><strong>위타민(우르실) / 리솔츠 초기</strong>: 자사 제품 + 자사 디자이너 시스템 + 글로벌 진출 의지 = 디자인 시스템·BI 의제 톤 인접.</li>
+      <li><strong>어프리데이 / 큐라펄스</strong>: 시드 단계 글로벌 진출 직전 = 자금·예산 흡수력 검증 필요라는 점에서 인접.</li>
+      <li><strong>요약</strong>: 글로벌 AI 앱 = HIZ 신규 영역이나 ASO·콘텐츠·BI 영역 SOP 적용 가능 + 단 글로벌 CAC·앱마케팅 풀스코프는 외부 파트너 필요.</li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">NAME COLLISION</div>
+    <h2>동명 충돌 식별</h2>
+    <p class="sec-desc">동일·유사 사명 식별 결과</p>
+    <div class="card">
+    <p>| 충돌 대상 | 카테고리 | 출처 | 본 신청자 무관 여부 |
+|---|---|---|---|
+| Mixroom (일본·중국 노래방·믹싱 스튜디오 다수) | 노래방·믹싱 스튜디오 | 검색 | 무관 (별개 사업) — 글로벌 SEO·앱스토어 검색 충돌 가능 |
+| MOSS (운영 모회사/브랜드 명) | 자체 | 공식 | 동일 운영사 — "Mixroom by MOSS" 그룹 명칭 정리 필요 |
+| Moises (글로벌 경쟁사) | AI 음악 분리·믹싱 | 검색 | 직접 경쟁 (사명 유사 + 카테고리 동일) |</p>
+    <p>→ <strong>앱스토어 ASO + 글로벌 SEO 충돌 위험 중</strong>: "Mixroom" 검색 시 일본·중국 노래방 다수 + Moises 경쟁사 = 식별 비용 큼. <strong>Co-Producer 차별화 한 줄 + ASO 키워드 차별화 1순위 의제</strong>.</p>
     </div>
   </div>
 </section>
@@ -233,6 +467,8 @@
       <li>글로벌 경쟁(Moises, Suno 등) 대비 "Co-Producer = 인간 주도 협업" 차별점이 한국·해외 유저에게 명확히 전달 안 됨</li>
       <li>앱 단독 출시 직후라 ASO·앱스토어 리뷰·초기 디스커버리(틱톡/유튜브 숏폼 크리에이터 침투) 미정립 가능성</li>
       <li>B2C 뮤지션·크리에이터 타겟 SNS 운영과 B2B(레이블/스튜디오) 메시지 분리 전략 부재 추정 — 디자이너 동석은 BI/콘텐츠 시스템 고민 시그널</li>
+      <li>시드 단계 = 글로벌 CAC 풀스코프 예산 흡수력 미검증</li>
+      <li>양대 OS 동시 출시 + 글로벌 무료 다운로드 = 데이터 트래킹·KPI 정립 시점</li>
     </ul>
     </div>
   </div>
@@ -246,10 +482,42 @@
     <div class="card card-dark">
     <ul>
       <li><strong>6영역 중 약점 추정</strong>: 브랜드 정체성(Co-Producer 메시지 정제) / 콘텐츠(크리에이터 데모 영상) / 채널(앱 + IG/YT/TikTok 분리) / 퍼포먼스(ASO + 글로벌 CAC)</li>
-      <li><strong>30일</strong>: AI 음악 카테고리 내 포지셔닝 명문화 + ASO 1차 진단 + 디자인 시스템 갭 체크</li>
-      <li><strong>90일</strong>: 크리에이터 콘텐츠 시스템 구축, 글로벌 IG/TikTok 채널 셋업, 키 데모 영상 3종</li>
-      <li><strong>180일</strong>: 글로벌 CAC 최적화 + 시리즈 투자용 브랜드 자산화</li>
+      <li><strong>30일</strong>: AI 음악 카테고리 내 포지셔닝 명문화 + ASO 1차 진단 + 디자인 시스템 갭 체크 + Co-Producer 메시지 5안 → 1안</li>
+      <li><strong>90일</strong>: 크리에이터 콘텐츠 시스템 구축, 글로벌 IG/TikTok 채널 셋업, 키 데모 영상 3종 + ASO 키워드 v1</li>
+      <li><strong>180일</strong>: 글로벌 CAC 최적화 + 시리즈 투자용 브랜드 자산화 (T2 Build 본격 진입 시점)</li>
     </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">TIER ESTIMATE</div>
+    <h2>추정 Tier 견적 범위</h2>
+    <p class="sec-desc">예상 견적 Tier·단가 범위 + 단계적 접근 옵션</p>
+    <div class="tier-wrap">
+    <div class="tier-rec"><div class="rk">추천 Tier</div><div class="rv"><strong>T1 Foundation (500~1,500만 / 4주) → 글로벌 PMF 확보 후 T2 Build (2,000~5,000만 / 3개월) 단계적 승급</strong></div></div>
+    <div class="tier-rail"><div class="tier-chip"><div class="tc">T0</div><div class="tn">진단형</div><div class="tp">100~300만</div><div class="td">2주</div></div><div class="tier-chip rec"><div class="tc">T1</div><div class="tn">Foundation</div><div class="tp">500~1,500만</div><div class="td">4주</div></div><div class="tier-chip rec"><div class="tc">T2</div><div class="tn">Build</div><div class="tp">2,000~5,000만</div><div class="td">8~12주</div></div><div class="tier-chip"><div class="tc">T3</div><div class="tn">Scale</div><div class="tp">7,000만+</div><div class="td">16주+</div></div></div>
+    <div class="tier-block"><div class="bk">근거</div><div class="bv">시드 단계 + 양대 OS 출시 직후 = 풀스코프 빌드(T2/T3) 흡수력 미검증. ASO·메시지 정체성 진단·디자인 시스템 갭 체크가 우선. <strong>T1 진단 → 결과 보고 T2 본격 빌드 단계적 접근 권장</strong>.</div></div>
+    <div class="tier-block"><div class="bk">대안</div><div class="bv"><ul><li>시드 자금 라운드 클로징 직후·예산 흡수력 충분 시 → T2 Build 2,000~3,000만/3개월 즉시 진입</li><li>글로벌 6채널·다국어·풀 ASO 마케팅 동시 진입 시 → T3 Scale 5,000만+/6개월 (단 HIZ 단독 풀스코프 어려움, 글로벌 앱마케팅 파트너 필요)</li></ul></div></div>
+    <div class="tier-block"><div class="bk">단계적 접근(권장 케이스 ★)</div><div class="bv">본 건은 <strong>T1 Foundation 4주 진단 → T2 Build 3개월 단계 분리</strong>가 정석. 출시 직후 PMF 데이터 확보 → T2 단계 결정.</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">RISK SIGNALS</div>
+    <h2>리스크 시그널</h2>
+    <p class="sec-desc">GO 분기점 — 의사결정·핏·예산·동명·운영 5종</p>
+    <div class="card">
+    <p>| # | 항목 | 본 건 |
+|---|---|---|
+| 1 | <strong>의사결정 라인</strong> | ✅ <strong>클린 + 강한 시그널</strong> — 손한솔 대표 본인 + 노도원 디자이너 2인 동석(참여확정 Y) = 내부 의사결정 정렬 완료 시그널. 외부 투자자·이사회 결재 라인 미팅 시 확인 |
+| 2 | <strong>매출·예산 흡수력</strong> | ⚠️ <strong>시드 단계 = 미검증.</strong> 무료 다운로드 + 출시 직후 매출 0 추정. 시드 자금 라운드 규모·클로징·마케팅 가용 예산 미팅 시 1순위 청취. T1 진입가 흡수 가능 추정, T2 풀스코프는 검증 후 결정 |
+| 3 | <strong>카테고리 핏 거리</strong> | ⚠️ <strong>부분 핏</strong> — 모바일 앱·AI 플랫폼 = HIZ 신규 영역. 단 ASO·콘텐츠·BI·디자인 시스템은 표준 SOP 적용 가능. 글로벌 CAC·앱마케팅 풀스코프는 외부 파트너 필요 |
+| 4 | <strong>동명·사명 분산</strong> | ⚠️ <strong>글로벌 SEO·ASO 충돌 위험</strong> — "Mixroom" 일본·중국 노래방 다수 + 경쟁사 Moises 사명 유사 + "Mixroom by MOSS" 그룹 명칭 정리 필요. ASO 키워드 차별화 1순위 의제 |
+| 5 | <strong>운영 흡수력</strong> | ⚠️ <strong>2인 동석 = 내부 의지 있음, 단 인하우스 마케팅 인력 미확인.</strong> 대표·디자이너 외 마케팅·콘텐츠 운영 주체 미확인. 미팅 시 인하우스 인력 구성·외주 비중 청취 필요 |</p>
     </div>
   </div>
 </section>
@@ -260,11 +528,32 @@
     <h2>미팅 시 확인 질문</h2>
     <p class="sec-desc">사전상담 도입 5분 어젠다 + 정량 진단</p>
     <div class="q-grid">
-      <div class="q-item"><div class="q-num">1</div><div class="q-text">출시 후 다운로드 수, DAU/MAU, 리텐션 D7/D30 지표?</div></div>
-      <div class="q-item"><div class="q-num">2</div><div class="q-text">최근 6개월 마케팅 시도(앱 마케팅, 인플루언서, PR 등)와 결과?</div></div>
-      <div class="q-item"><div class="q-num">3</div><div class="q-text">투자 단계 / 시리즈 라운드 계획 / 마케팅 예산 규모?</div></div>
-      <div class="q-item"><div class="q-num">4</div><div class="q-text">컨설팅으로 풀고 싶은 1순위 — 글로벌 진출인지, 국내 PMF인지, 브랜드 자산화인지?</div></div>
-      <div class="q-item"><div class="q-num">5</div><div class="q-text">디자이너(노도원) 동석 이유 — BI 리뉴얼 / 콘텐츠 시스템 / 앱 UX 중 어디?</div></div>
+      <div class="q-item"><div class="q-num">1</div><div class="q-text"><strong>(1순위)</strong> 디자이너(노도원) 동석 이유 — BI 리뉴얼 / 콘텐츠 시스템 / 앱 UX / 디자인 시스템 중 어디? (미팅 도입부 1순위)</div></div>
+      <div class="q-item"><div class="q-num">2</div><div class="q-text">출시 후 다운로드 수, DAU/MAU, 리텐션 D7/D30 지표? 앱스토어 평점·리뷰 수?</div></div>
+      <div class="q-item"><div class="q-num">3</div><div class="q-text">최근 6개월 마케팅 시도(앱 마케팅, 인플루언서, PR 등)와 결과? 글로벌 vs 한국 비중?</div></div>
+      <div class="q-item"><div class="q-num">4</div><div class="q-text">투자 단계 / 시리즈 라운드 계획 / 마케팅 예산 규모 + 가용 월 예산 흡수력?</div></div>
+      <div class="q-item"><div class="q-num">5</div><div class="q-text">컨설팅으로 풀고 싶은 1순위 — 글로벌 진출인지, 국내 PMF인지, 브랜드 자산화인지? 6~12개월 기대 변화?</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">FULL RESEARCH ROADMAP</div>
+    <h2>정식 리서치 승급 시 우선 파야 할 영역</h2>
+    <p class="sec-desc">정식 승급 시 심화 영역</p>
+    <div class="card">
+    <ul>
+      <li><strong>PMF 데이터</strong>: 출시 후 누적 다운로드·DAU/MAU·D7/D30 리텐션·전환·평균 세션 시간 / 글로벌 vs 한국 비중 / 앱스토어 평점·리뷰 분석</li>
+      <li><strong>글로벌 AI 음악 카테고리 경쟁 3사 분석</strong>:</li>
+      <li>Moises (AI 음악 분리·믹싱 글로벌 1위, 사명 유사)</li>
+      <li>Suno (생성형 AI 음악)</li>
+      <li>BandLab (음악 협업 플랫폼)</li>
+      <li>+ LANDR / Soundtrap 등 2차 풀</li>
+      <li><strong>자금 라운드 구조</strong>: 시드 규모·VC·전략 투자자·시리즈 A 계획 + 자금 사용 계획(마케팅 vs 개발 vs 글로벌)</li>
+      <li><strong>글로벌 진출 전략</strong>: 우선순위 국가(미국·일본·동남아·EU) + 현지화 콘텐츠 + 인플루언서·크리에이터 파트너십 시드</li>
+      <li><strong>(선택) 디자인 시스템 진단</strong>: 앱 UX·BI·콘텐츠 디자인 시스템 갭 체크 (노도원 디자이너 동석 = HIZ 디자인 협업 가능성 검토)</li>
+    </ul>
     </div>
   </div>
 </section>
@@ -277,6 +566,7 @@
     <ul class="src-list">
       <li><a href="https://www.mixroom.ai/" target="_blank" rel="noopener">Mixroom 공식 사이트</a></li>
       <li><a href="https://thebeatcommunity.com/2026/04/06/mixroom-co-ltd-release-mixroom-ai-co-producer-ios-android-a-free-download/" target="_blank" rel="noopener">Mixroom AI Co-Producer 출시 보도 (The Beat Community, 2026-04)</a></li>
+      <li>신청 자료(2026-05-11 사전상담) — 손한솔 대표 + 노도원 디자이너 2인 동석 참여확정</li>
     </ul>
   </div>
 </section>

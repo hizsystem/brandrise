@@ -96,6 +96,69 @@
       line-height: 1.85; margin-bottom: 36px;
     }
 
+    /* EXECUTIVE SUMMARY */
+    .exec-section { background: var(--bg); padding: 56px 0 0; }
+    .exec-wrap {
+      background: var(--white); border-radius: 18px;
+      border: 1px solid var(--gray-200);
+      padding: 40px 44px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+    }
+    .exec-head {
+      padding-bottom: 22px; border-bottom: 1px solid var(--gray-200); margin-bottom: 26px;
+    }
+    .exec-head h2 { font-size: 22px; font-weight: 900; letter-spacing: -0.02em; color: var(--black); }
+    .exec-meta {
+      display: grid; grid-template-columns: 1.4fr 1fr;
+      gap: 32px; margin-bottom: 28px;
+    }
+    .exec-meta-block .k {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gray-500); margin-bottom: 8px;
+    }
+    .exec-meta-block .v { font-size: 14px; line-height: 1.65; color: var(--text); }
+    .exec-meta-block .v .name { font-size: 17px; font-weight: 800; color: var(--black); display: block; margin-bottom: 6px; letter-spacing: -0.01em; }
+    .exec-cards {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin-bottom: 24px;
+    }
+    .exec-mini { border-radius: 12px; padding: 22px 20px; text-align: center; min-height: 110px; display: flex; flex-direction: column; justify-content: center; }
+    .exec-mini .mlabel {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 10px; opacity: 0.75;
+    }
+    .exec-mini .mvalue { font-size: 15px; font-weight: 900; letter-spacing: -0.01em; line-height: 1.4; }
+    .exec-mini.c1 { background: var(--accent); color: white; }
+    .exec-mini.c2 { background: var(--black); color: white; }
+    .exec-mini.c3 { background: #786E5C; color: white; }
+    .exec-mini.c4 { background: #B89B6B; color: white; }
+    .exec-diagnosis {
+      background: var(--black); color: white;
+      border-radius: 14px; padding: 26px 32px; margin-bottom: 22px;
+    }
+    .exec-diagnosis .dlabel {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      color: var(--accent-soft); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .exec-diagnosis .dtext { font-size: 14px; line-height: 1.85; }
+    .exec-diagnosis .dtext strong { color: var(--accent-soft); }
+    .exec-judgment {
+      display: flex; flex-wrap: wrap; gap: 10px 22px;
+      padding-top: 20px; border-top: 1px solid var(--gray-200);
+      font-size: 13px; color: var(--gray-700); line-height: 1.7;
+    }
+    .exec-judgment strong { color: var(--accent); font-weight: 800; }
+    @media (max-width: 720px) {
+      .exec-wrap { padding: 28px 22px; }
+      .exec-meta { grid-template-columns: 1fr; gap: 20px; }
+      .exec-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media print {
+      .exec-section { padding: 24px 0 0; }
+      .exec-wrap { box-shadow: none; border-color: var(--gray-300); padding: 24px; }
+      .exec-mini { min-height: auto; padding: 14px 12px; }
+    }
+
     /* CARDS */
     .card {
       background: var(--white); border-radius: 14px;
@@ -117,6 +180,59 @@
     .card-dark a { color: var(--accent-soft); border-color: rgba(127,184,159,0.3); }
     .card-dark a:hover { color: var(--white); }
     .card-dark ul li::marker, .card-dark ol li::marker { color: var(--accent-soft); }
+
+    /* TIER ESTIMATE — 견적 시각화 */
+    .tier-wrap {
+      background: var(--black); color: var(--white);
+      border-radius: 14px; padding: 30px 32px 32px;
+    }
+    .tier-rec {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: linear-gradient(135deg, rgba(127,184,159,0.16), rgba(127,184,159,0.03));
+      border: 1px solid rgba(127,184,159,0.32); border-left: 3px solid var(--accent-soft);
+      border-radius: 12px; padding: 18px 22px; margin-bottom: 24px;
+    }
+    .tier-rec .rk {
+      flex-shrink: 0; font-size: 10px; letter-spacing: 1.5px; font-weight: 800;
+      text-transform: uppercase; color: var(--accent-soft); padding-top: 4px;
+    }
+    .tier-rec .rv { font-size: 15.5px; font-weight: 700; line-height: 1.55; color: #fff; }
+    .tier-rec .rv strong { color: var(--accent-soft); font-weight: 800; }
+
+    .tier-rail { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 26px; }
+    .tier-chip {
+      position: relative; border-radius: 12px; padding: 16px 15px 15px;
+      border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.035);
+    }
+    .tier-chip .tc { font-size: 19px; font-weight: 800; letter-spacing: 0.5px; color: rgba(255,255,255,0.5); }
+    .tier-chip .tn { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.38); margin-bottom: 12px; }
+    .tier-chip .tp { font-size: 14.5px; font-weight: 800; color: #fff; line-height: 1.3; }
+    .tier-chip .td { font-size: 11.5px; color: rgba(255,255,255,0.45); margin-top: 4px; }
+    .tier-chip.rec {
+      background: var(--accent); border-color: var(--accent-soft);
+      box-shadow: 0 8px 24px rgba(46,93,79,0.4);
+    }
+    .tier-chip.rec .tc { color: #fff; }
+    .tier-chip.rec .tn { color: rgba(255,255,255,0.7); }
+    .tier-chip.rec .td { color: rgba(255,255,255,0.72); }
+    .tier-chip.rec::after {
+      content: "추천"; position: absolute; top: -9px; right: 11px;
+      background: var(--accent-soft); color: var(--black);
+      font-size: 9.5px; font-weight: 800; letter-spacing: 0.5px;
+      padding: 2px 9px; border-radius: 20px;
+    }
+
+    .tier-block { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; margin-top: 15px; }
+    .tier-block:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+    .tier-block .bk {
+      font-size: 10px; letter-spacing: 1.5px; font-weight: 800;
+      text-transform: uppercase; color: var(--accent-soft); margin-bottom: 7px;
+    }
+    .tier-block .bv { font-size: 14px; color: rgba(255,255,255,0.86); line-height: 1.65; }
+    .tier-block .bv strong { color: var(--accent-soft); }
+    .tier-block .bv ul { margin: 6px 0 0; padding-left: 18px; }
+    .tier-block .bv ul li { margin-bottom: 5px; }
+    .tier-block .bv ul li::marker { color: var(--accent-soft); }
 
     /* QUESTIONS as numbered cards */
     .q-grid { display: grid; gap: 12px; }
@@ -156,10 +272,27 @@
       .container { padding: 0 24px; }
       section { padding: 52px 0; }
       .card { padding: 24px 22px; }
+      .tier-wrap { padding: 24px 20px 22px; }
+      .tier-rail { grid-template-columns: repeat(2, 1fr); }
+      .tier-rec { flex-direction: column; gap: 6px; }
     }
 
     @media print {
       body { background: var(--white); font-size: 11px; }
+      .tier-wrap { background: var(--gray-100); color: var(--black); }
+      .tier-rec { background: var(--accent-light); }
+      .tier-rec .rv { color: var(--black); }
+      .tier-rec .rv strong, .tier-rec .rk, .tier-block .bk { color: var(--accent); }
+      .tier-chip { border-color: var(--gray-300); background: var(--white); }
+      .tier-chip .tc { color: var(--gray-500); }
+      .tier-chip .tn { color: var(--gray-500); }
+      .tier-chip .tp { color: var(--black); }
+      .tier-chip .td { color: var(--gray-700); }
+      .tier-chip.rec { background: var(--accent-light); border-color: var(--accent); box-shadow: none; }
+      .tier-chip.rec .tc, .tier-chip.rec .tp { color: var(--accent); }
+      .tier-chip.rec .tn, .tier-chip.rec .td { color: var(--gray-700); }
+      .tier-block .bv { color: var(--gray-700); }
+      .tier-block .bv strong { color: var(--accent); }
       .topnav, .footer { display: none; }
       .hero { background: var(--white); color: var(--black); padding: 32px 0; }
       .hero h1 { color: var(--black); font-size: 28px; }
@@ -201,13 +334,55 @@
 </header>
 
 
+<section class="exec-section">
+  <div class="container">
+    <div class="exec-wrap">
+      <div class="exec-head"><h2>Executive Summary</h2></div>
+      <div class="exec-meta">
+        <div class="exec-meta-block">
+          <div class="k">기업 / 브랜드</div>
+          <div class="v"><span class="name">와썹하우스 (Whatsup House)</span>와썹하우스 (Whatsup House) · <strong>공개 검색 식별 불가</strong> · 공식 사이트·SNS·사업자 정보 미확인 · 사명 패턴(캐주얼 톤 "와썹" + 공간성 "하우스") = 공간·F&amp;B·쉐어하우스·라이프스타일 매장 추정 · 대표+마케팅 2인 동석 = 최소 2인 팀 운영체</div>
+        </div>
+        <div class="exec-meta-block">
+          <div class="k">대표이사</div>
+          <div class="v"><span class="name">김형섭 (대표) + 황민영 (마케팅) **2인 동석**</span>개인 이메일(naver.com) 사용, 사업자 식별 미확인. <strong>공개 매칭 출처 부재 — 미팅 첫 5분 사업 본질 청취 필수</strong></div>
+        </div>
+      </div>
+      <div class="exec-cards">
+        <div class="exec-mini c1">
+          <div class="mlabel">추정 단계</div>
+          <div class="mvalue">초기~성장 초입 (2인 팀, 외부 노출 약함)</div>
+        </div>
+        <div class="exec-mini c2">
+          <div class="mlabel">추천 Tier</div>
+          <div class="mvalue">T1 Foundation 500~1,000만 / 3~4주</div>
+        </div>
+        <div class="exec-mini c3">
+          <div class="mlabel">핵심 자산</div>
+          <div class="mvalue">대표+마케터 2인 동석 = 의사결정 속도·실행력 신호</div>
+        </div>
+        <div class="exec-mini c4">
+          <div class="mlabel">핵심 리스크</div>
+          <div class="mvalue">사업 본질 미식별 — 미팅 첫 5분 필수</div>
+        </div>
+      </div>
+      <div class="exec-diagnosis">
+        <div class="dlabel">핵심 진단 한 줄 요약</div>
+        <div class="dtext"><strong>검색 식별 불가 = 가장 큰 리스크이자 가장 큰 의제.</strong> 마케팅 담당자가 있음에도 외부 디지털 노출 0 = 콘텐츠·채널 시스템·방향성 부재 가능성 큼. 대표+마케터 2인 동석 = <strong>의사결정 속도 빠르고 작은 결재로 즉시 실행 가능</strong> = T1 진입 최적 구조. 사업 본질 청취가 미팅 첫 5분에 결정.</div>
+      </div>
+      <div class="exec-judgment">추천 <strong>T1 Foundation 500~1,000만 / 3~4주</strong> (작은 결재로 빠른 진입) / Entry Move <strong>미팅 첫 5분 사업 본질·BM·타겟·매출 단계 청취 → 즉시 30일 진단 합의</strong> / 레버 <strong>2인 동석 = 실행력 + 마케터 활용 → 진단→콘텐츠 SOP 시스템 빠른 정착</strong></div>
+    </div>
+  </div>
+</section>
+
+
 <section>
   <div class="container">
     <div class="sec-label">ONE-LINER</div>
     <h2>한 줄 요약</h2>
     <p class="sec-desc">사업 본질 한 줄</p>
     <div class="card">
-    <p>정보 부족 — 검색상 식별 가능한 공식 사이트/SNS/사업자 정보 미확인. 사명("하우스") 패턴상 공간·F&amp;B·쉐어하우스·라이프스타일 매장 중 하나일 가능성, 미팅 시 확인 필요. 대표+마케팅 2인 동반 신청 → 팀 단위 운영체.</p>
+    <p><strong>정보 부족 — 공개 검색으로 사업 본질 식별 불가.</strong> 공식 사이트·SNS·사업자 정보 미확인. 사명 패턴 "와썹"(캐주얼 톤) + "하우스"(공간성) 결합 = <strong>공간·F&amp;B·쉐어하우스·라이프스타일 매장 중 하나로 추정</strong>, 미팅 시 확인 필수. <strong>대표(김형섭) + 마케팅(황민영) 2인 동석</strong> = 최소 2인 팀 운영체 = <strong>단순 1인 사업이 아닌 의사결정 속도·실행력 높은 신호</strong>.</p>
     </div>
   </div>
 </section>
@@ -218,7 +393,64 @@
     <h2>추정 단계</h2>
     <p class="sec-desc">현재 추정 단계</p>
     <div class="card">
-    <p>초기~성장 초입 — 별도 마케팅 담당자(황민영)가 존재하고, 대표가 직접 동석한다는 점에서 단순 1인 사업이 아닌 최소 2인 이상 팀 구성. 외부 디지털 노출은 약한 상태로 추정.</p>
+    <p><strong>초기~성장 초입</strong> — 별도 마케팅 담당자(황민영) 존재 + 대표 직접 동석 = 최소 2인 팀 구성. <strong>외부 디지털 노출 0</strong> = 외부 브랜딩·채널 운영 부재. 매출·점포·고객 수 등 미확인. 사업자등록·법인 여부도 식별 불가 (개인 이메일 naver.com 사용 = 개인사업자 가능성 추정).</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">QUANTITATIVE SIGNALS</div>
+    <h2>정량 시그널</h2>
+    <p class="sec-desc">검색으로 확보된 정량 데이터 (매출·인력·SNS·인증·펀딩)</p>
+    <div class="card">
+    <p>| 항목 | 값 | 출처 |
+|---|---|---|
+| 사업체명 | 와썹하우스 (Whatsup House) | 신청 데이터 |
+| 대표 | 김형섭 | 신청 데이터 |
+| 마케팅 | 황민영 (동석) | 신청 데이터 |
+| 대표 이메일 | 9885342@naver.com (개인) | 신청 데이터 |
+| 마케팅 이메일 | hmy5556@naver.com (개인) | 신청 데이터 |
+| 사업자 형태 | 미확인 (개인사업자 추정) | — |
+| 공식 사이트·SNS | <strong>검색 식별 0</strong> | — |
+| 사업 카테고리 | <strong>미확인</strong> — 사명 패턴상 공간·F&amp;B·쉐어하우스·라이프스타일 추정 | 추정 |
+| 매출·점포·고객 | 미확인 — 미팅 청취 1순위 | — |
+| <strong>신청자 매칭</strong> | <strong>매칭 시도 결과 0</strong> — 공개 웹 직접 매칭 출처 부재. 미팅 시 사업 본질 첫 5분 청취 필수 | — |</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">ANALOG CASES</div>
+    <h2>유사 케이스 인접도</h2>
+    <p class="sec-desc">HIZ 기존 케이스 풀과의 매핑</p>
+    <div class="card">
+    <ul>
+      <li><strong>참고 케이스 풀에 정확한 매칭 없음 — 사업 본질 미식별 = 핏 검증 불가능 상태.</strong> 미팅에서 사업 본질 확정 후 케이스 매핑 가능.</li>
+      <li><strong>마키노차야</strong>: F&amp;B 매장+가맹 모집 단계 = 만약 F&amp;B·공간 사업이면 인접도 높음</li>
+      <li><strong>MK (예정 법인)</strong>: Zero-to-One 단계 = 만약 사업 아이템 미확정이면 인접도 일부</li>
+      <li><strong>와이림</strong>: 매출·인력 슬림 + 외부 디지털 자산 부재 = 운영 구조 인접 가능</li>
+      <li><strong>노다지파이랩스 / W'GREEN</strong>: Pre-launch + 외부 노출 0 단계 인접 가능</li>
+      <li><strong>요약</strong>: <strong>미팅 첫 5분 사업 본질 청취 후 케이스 매핑 가능</strong>. 현재 시점 핏 판정 불가.</li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">NAME COLLISION</div>
+    <h2>동명 충돌 식별</h2>
+    <p class="sec-desc">동일·유사 사명 식별 결과</p>
+    <div class="card">
+    <p>| 충돌 대상 | 카테고리 | 출처 | 본 신청자 무관 여부 |
+|---|---|---|---|
+| Whatsup·왓썹·와썹·What's Up (일반 어휘) | 다수 (인사말 일반 표현) | 검색 | 카테고리 검색 점유 매우 어려움 |
+| Whatsup (해외 OTT·앱·인사말 다수) | 다수 | 검색 | 무관 (별개) |
+| 김형섭 (동명이인 다수) | 다수 | 검색 | 무관 (동명이인) |
+| 와썹맨 (박준형 유튜브) | 콘텐츠 | 검색 | 무관 (별개) |</p>
+    <p>→ <strong>"와썹" + "하우스" 모두 일반 어휘 = 사명 식별 비용 매우 큼</strong>. 신규 검색 점유 어려움 = 사업 정의 후 사명 변경·서브 브랜딩 검토 영역.</p>
     </div>
   </div>
 </section>
@@ -230,9 +462,11 @@
     <p class="sec-desc">사전 검색 기반 가설 페인</p>
     <div class="card">
     <ul>
-      <li>사업 본질이 외부 검색으로 식별되지 않음 → 브랜드 인지·검색 점유 약함 가설</li>
-      <li>마케팅 담당자(황민영)가 있음에도 검색에 잡히지 않음 → 콘텐츠·채널 운영의 시스템·방향성 부재 가설</li>
-      <li>"와썹"이라는 캐주얼 톤 + "하우스" 공간성 결합에서 정체성·타겟 정의 모호 가능성</li>
+      <li><strong>사업 본질이 외부 검색으로 식별되지 않음 = 가장 결정적 페인.</strong> 마케팅 담당자(황민영) 존재에도 검색·SNS 노출 0 = <strong>콘텐츠·채널 운영의 시스템·방향성 부재</strong> 가능성 큼. "마케터는 있는데 마케팅이 안 됨" 패턴.</li>
+      <li><strong>사명 "와썹+하우스" 일반 어휘 결합 = 정체성·타겟 정의 모호 위험.</strong> "와썹" 캐주얼 톤 vs "하우스" 공간성 = 타겟 세대·페르소나·톤앤매너 정렬 부재 가능.</li>
+      <li><strong>개인 이메일(naver.com) 사용 = 브랜드 도메인 이메일 부재</strong> = 외부 신뢰도·전문성 인식 약함. 법인 도메인·자사몰·공식 채널 전면 부재 추정.</li>
+      <li><strong>대표+마케터 2인 = 의사결정 속도·실행력 강점이나 인하우스 디자인·콘텐츠 풀세트 운영 불가</strong> = 외부 파트너 의존 자연스러움. 컨설팅 산출물 운영 주체 합의 필요.</li>
+      <li><strong>사업자 형태·매출 단계 미확인</strong> = 견적 흡수력 검증 불가. 미팅 청취 후 Tier 확정.</li>
     </ul>
     </div>
   </div>
@@ -244,9 +478,45 @@
     <h2>컨설팅 가설 (브랜드라이즈가 풀 수 있는 것)</h2>
     <p class="sec-desc">브랜드라이즈가 풀 수 있는 것</p>
     <div class="card card-dark">
-    <ul>
-      <li>2인 동석은 <strong>의사결정 속도·실행력이 빠르다</strong>는 신호 → 진단 후 즉시 액션 가능. 6영역 중 <strong>브랜드 정체성</strong>(타겟·톤) + <strong>콘텐츠 시스템</strong>(마케팅 담당자 활용)이 1순위. 30일: 정체성 정의·마케팅 SOP 점검 → 90일: 콘텐츠 시스템 정착·핵심 채널 KPI → 180일: 퍼포먼스·데이터 대시보드.</li>
-    </ul>
+    <p><strong>사업 본질 미식별 = 가설 작성 한계 있음.</strong> 미팅 첫 5분 사업 본질 청취 후 가설 수립이 본질.</p>
+    <p>가정 시나리오:
+- <strong>A. F&amp;B·공간 매장</strong> = 마키노차야 SOP 인접, 30일 정체성·메뉴·공간 톤 정의 → 90일 인스타·블로그 콘텐츠 시스템 → 180일 가맹·확장 검토
+- <strong>B. 쉐어하우스·임대 공간</strong> = 인테리어·라이프스타일 콘텐츠 + 입주자 모집 퍼널 시스템화
+- <strong>C. 라이프스타일 매장·D2C</strong> = HIZ 표준 D2C SOP 적용, 자사몰·인스타·인플루언서 시드
+- <strong>D. 신규 런칭 전 단계</strong> = MK 케이스 인접, BI·네이밍·MVP 채널 1개 셋업</p>
+    <p>공통 6영역 중 <strong>브랜드 정체성(타겟·톤·BI) + 콘텐츠 시스템(마케터 활용)</strong> 1순위. 30일: 정체성 정의 + 마케팅 SOP 점검. 90일: 콘텐츠 시스템 정착 + 핵심 채널 KPI. 180일: 퍼포먼스·데이터 가설 + 시즌·이벤트 운영.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">TIER ESTIMATE</div>
+    <h2>추정 Tier 견적 범위</h2>
+    <p class="sec-desc">예상 견적 Tier·단가 범위 + 단계적 접근 옵션</p>
+    <div class="tier-wrap">
+    <div class="tier-rec"><div class="rk">추천 Tier</div><div class="rv"><strong>T1 Foundation (500~1,000만 / 3~4주)</strong> — 작은 결재로 빠른 진입</div></div>
+    <div class="tier-rail"><div class="tier-chip"><div class="tc">T0</div><div class="tn">진단형</div><div class="tp">100~300만</div><div class="td">2주</div></div><div class="tier-chip rec"><div class="tc">T1</div><div class="tn">Foundation</div><div class="tp">500~1,500만</div><div class="td">4주</div></div><div class="tier-chip"><div class="tc">T2</div><div class="tn">Build</div><div class="tp">2,000~5,000만</div><div class="td">8~12주</div></div><div class="tier-chip"><div class="tc">T3</div><div class="tn">Scale</div><div class="tp">7,000만+</div><div class="td">16주+</div></div></div>
+    <div class="tier-block"><div class="bk">근거</div><div class="bv">2인 팀 = 의사결정 속도·실행력 강점 = <strong>T1 진단·방향만 잡으면 즉시 실행 가능</strong>. 사업 본질 미식별 + 매출 미검증 = 풀스코프 부담. 작은 결재로 진단 + 마케팅 SOP 정착 우선.</div></div>
+    <div class="tier-block"><div class="bk">대안</div><div class="bv"><ul><li>미팅 결과 매출·예산 명확 + 사업 본질 D2C·F&amp;B 매장 확정 = <strong>T2 Build (2,000~3,000만 / 8~10주)</strong> 콘텐츠 시스템 + 채널 빌드업</li><li>사업 본질이 Pre-launch / 사업 아이템 미확정 = <strong>T0 진단형 (200~300만 / 2주)</strong> BI·네이밍·MVP 채널 정의 자문 보고서</li><li>풀스코프 D2C + 매장 마케팅 + 가맹 모집 = <strong>T2 상단 (3,500~5,000만 / 3개월)</strong></li></ul></div></div>
+    <div class="tier-block"><div class="bk">단계적 접근</div><div class="bv"><strong>본 건 강력 권장.</strong> 사업 본질 청취 후 T0/T1/T2 분기 결정. <strong>미팅 첫 5분이 모든 것을 결정</strong>.</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">RISK SIGNALS</div>
+    <h2>리스크 시그널</h2>
+    <p class="sec-desc">GO 분기점 — 의사결정·핏·예산·동명·운영 5종</p>
+    <div class="card">
+    <p>| # | 항목 | 본 건 |
+|---|---|---|
+| 1 | <strong>의사결정 라인</strong> | ✅ 클린 (강점) — 대표 김형섭 본인 + 마케팅 황민영 2인 동석 = <strong>외부 보드 없을 가능성 큼, 결재 속도 매우 빠름</strong>. 실행력 신호 강함 |
+| 2 | <strong>매출·예산 흡수력</strong> | ⚠️ 미검증 — 매출·점포·고객 수 모두 비공개. 2인 팀 슬림 운영 = T1(500~1,000만) 흡수 가능성 높음, T2 풀스코프는 미팅 청취 후 결정 |
+| 3 | <strong>카테고리 핏 거리</strong> | 🔴 <strong>사업 본질 미식별 = 카테고리 핏 판정 불가</strong> (1순위 리스크) — 미팅 첫 5분 청취 후 결정. F&amp;B/공간/D2C 확정 시 핏 양호 가능성 |
+| 4 | <strong>동명·사명 분산</strong> | 🔴 사명 식별 비용 매우 큼 — "와썹"+"하우스" 모두 일반 어휘. 신규 검색 점유 어려움. <strong>사명 변경·서브 브랜딩 검토 영역</strong> |
+| 5 | <strong>운영 흡수력</strong> | ⚠️ 슬림 — 2인 팀 = 인하우스 디자인·콘텐츠 풀세트 불가. 단 마케터 존재 = 외부 파트너 협업 채널 명확. 컨설팅 산출물 운영 주체 합의 필요 |</p>
     </div>
   </div>
 </section>
@@ -257,11 +527,29 @@
     <h2>미팅 시 확인 질문</h2>
     <p class="sec-desc">사전상담 도입 5분 어젠다 + 정량 진단</p>
     <div class="q-grid">
-      <div class="q-item"><div class="q-num">1</div><div class="q-text">정확한 사업 모델(공간/F&amp;B/쉐어/온라인 등)과 매출 단계·고객 수는?</div></div>
-      <div class="q-item"><div class="q-num">2</div><div class="q-text">황민영 마케터의 현재 R&amp;R과 최근 6개월간 마케팅 시도·결과는?</div></div>
-      <div class="q-item"><div class="q-num">3</div><div class="q-text">의사결정 구조(대표 단독/공동) + 월 마케팅 가용 예산은?</div></div>
-      <div class="q-item"><div class="q-num">4</div><div class="q-text">컨설팅 후 6개월에 가장 보고 싶은 변화 1가지는?</div></div>
-      <div class="q-item"><div class="q-num">5</div><div class="q-text">(선택) "와썹"이라는 캐주얼 톤이 노리는 1차 타겟 페르소나는?</div></div>
+      <div class="q-item"><div class="q-num">1</div><div class="q-text"><strong>(1순위·미팅 첫 5분)</strong> <strong>정확한 사업 모델은? (공간/F&amp;B/쉐어하우스/D2C/온라인/오프라인 매장 중)</strong> 매출 단계·고객 수·점포 수? 사업자 형태(개인/법인)?</div></div>
+      <div class="q-item"><div class="q-num">2</div><div class="q-text"><strong>황민영 마케터의 현재 R&amp;R</strong>과 최근 6개월간 마케팅 시도·결과? <strong>외부 디지털 노출 0인 이유</strong> — 의도된 정책인지 시스템 부재인지?</div></div>
+      <div class="q-item"><div class="q-num">3</div><div class="q-text"><strong>의사결정 구조</strong> — 대표 단독 결재 / 공동 의사결정 / 외부 투자사 있는지? <strong>월 마케팅 가용 예산 범위</strong>?</div></div>
+      <div class="q-item"><div class="q-num">4</div><div class="q-text">컨설팅 후 <strong>6개월에 가장 보고 싶은 변화 1가지</strong>는? 사업 본질 정립 / 매출 증대 / 인지도 / 신규 채널 / 점포 확장 중?</div></div>
+      <div class="q-item"><div class="q-num">5</div><div class="q-text"><strong>(선택)</strong> "와썹" 캐주얼 톤 노리는 <strong>1차 타겟 페르소나</strong>는? 사명 "와썹하우스" 확정인지·검토 단계인지? <strong>법인화·외부 투자 계획</strong>은?</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-label">FULL RESEARCH ROADMAP</div>
+    <h2>정식 리서치 승급 시 우선 파야 할 영역</h2>
+    <p class="sec-desc">정식 승급 시 심화 영역</p>
+    <div class="card">
+    <ul>
+      <li><strong>사업 본질 정의 (1순위)</strong>: 정확한 BM·카테고리·SKU·매장·서비스 / 사업자등록·법인 여부 / 매출 단계·점포·고객 수</li>
+      <li><strong>타겟·페르소나 정의</strong>: 1차 타겟 세대·성별·라이프스타일 / 톤앤매너 방향</li>
+      <li><strong>사명·BI 검토</strong>: "와썹하우스" 확정 여부 / 사명 변경·서브 브랜딩 가능성 / 도메인·상표 출원 상태</li>
+      <li><strong>경쟁 3사 분석</strong>: 사업 본질 확정 후 카테고리별 직접 경쟁사 3개</li>
+      <li><strong>마케터 R&amp;R·SOP 진단</strong>: 황민영 현 운영 콘텐츠·채널 / 인하우스 가능 범위 / 외주·HIZ 운영 옵션</li>
+      <li><strong>(선택) 자금·예산 라운드</strong>: 자기자본 / 외부 투자 / 정부지원(소상공인·소진공) 신청 이력·계획</li>
+    </ul>
     </div>
   </div>
 </section>
@@ -272,7 +560,8 @@
     <h2>출처</h2>
     <p class="sec-desc">참고 출처</p>
     <ul class="src-list">
-      <li>정보 부족 — 검색에서 본 브랜드와 직접 매칭되는 출처 미확인</li>
+      <li><strong>공개 웹 직접 매칭 출처 부재</strong> — 미팅 시 사업 본질·BM·매출·점포 직접 청취 필수</li>
+      <li>신청 데이터 (govent/sangdam): 대표 김형섭 / 마케팅 황민영 / 2인 동석 / 개인 이메일 naver.com</li>
     </ul>
   </div>
 </section>

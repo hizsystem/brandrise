@@ -181,6 +181,59 @@
     .card-dark a:hover { color: var(--white); }
     .card-dark ul li::marker, .card-dark ol li::marker { color: var(--accent-soft); }
 
+    /* TIER ESTIMATE — 견적 시각화 */
+    .tier-wrap {
+      background: var(--black); color: var(--white);
+      border-radius: 14px; padding: 30px 32px 32px;
+    }
+    .tier-rec {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: linear-gradient(135deg, rgba(127,184,159,0.16), rgba(127,184,159,0.03));
+      border: 1px solid rgba(127,184,159,0.32); border-left: 3px solid var(--accent-soft);
+      border-radius: 12px; padding: 18px 22px; margin-bottom: 24px;
+    }
+    .tier-rec .rk {
+      flex-shrink: 0; font-size: 10px; letter-spacing: 1.5px; font-weight: 800;
+      text-transform: uppercase; color: var(--accent-soft); padding-top: 4px;
+    }
+    .tier-rec .rv { font-size: 15.5px; font-weight: 700; line-height: 1.55; color: #fff; }
+    .tier-rec .rv strong { color: var(--accent-soft); font-weight: 800; }
+
+    .tier-rail { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 26px; }
+    .tier-chip {
+      position: relative; border-radius: 12px; padding: 16px 15px 15px;
+      border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.035);
+    }
+    .tier-chip .tc { font-size: 19px; font-weight: 800; letter-spacing: 0.5px; color: rgba(255,255,255,0.5); }
+    .tier-chip .tn { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.38); margin-bottom: 12px; }
+    .tier-chip .tp { font-size: 14.5px; font-weight: 800; color: #fff; line-height: 1.3; }
+    .tier-chip .td { font-size: 11.5px; color: rgba(255,255,255,0.45); margin-top: 4px; }
+    .tier-chip.rec {
+      background: var(--accent); border-color: var(--accent-soft);
+      box-shadow: 0 8px 24px rgba(46,93,79,0.4);
+    }
+    .tier-chip.rec .tc { color: #fff; }
+    .tier-chip.rec .tn { color: rgba(255,255,255,0.7); }
+    .tier-chip.rec .td { color: rgba(255,255,255,0.72); }
+    .tier-chip.rec::after {
+      content: "추천"; position: absolute; top: -9px; right: 11px;
+      background: var(--accent-soft); color: var(--black);
+      font-size: 9.5px; font-weight: 800; letter-spacing: 0.5px;
+      padding: 2px 9px; border-radius: 20px;
+    }
+
+    .tier-block { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; margin-top: 15px; }
+    .tier-block:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+    .tier-block .bk {
+      font-size: 10px; letter-spacing: 1.5px; font-weight: 800;
+      text-transform: uppercase; color: var(--accent-soft); margin-bottom: 7px;
+    }
+    .tier-block .bv { font-size: 14px; color: rgba(255,255,255,0.86); line-height: 1.65; }
+    .tier-block .bv strong { color: var(--accent-soft); }
+    .tier-block .bv ul { margin: 6px 0 0; padding-left: 18px; }
+    .tier-block .bv ul li { margin-bottom: 5px; }
+    .tier-block .bv ul li::marker { color: var(--accent-soft); }
+
     /* QUESTIONS as numbered cards */
     .q-grid { display: grid; gap: 12px; }
     .q-item {
@@ -219,10 +272,27 @@
       .container { padding: 0 24px; }
       section { padding: 52px 0; }
       .card { padding: 24px 22px; }
+      .tier-wrap { padding: 24px 20px 22px; }
+      .tier-rail { grid-template-columns: repeat(2, 1fr); }
+      .tier-rec { flex-direction: column; gap: 6px; }
     }
 
     @media print {
       body { background: var(--white); font-size: 11px; }
+      .tier-wrap { background: var(--gray-100); color: var(--black); }
+      .tier-rec { background: var(--accent-light); }
+      .tier-rec .rv { color: var(--black); }
+      .tier-rec .rv strong, .tier-rec .rk, .tier-block .bk { color: var(--accent); }
+      .tier-chip { border-color: var(--gray-300); background: var(--white); }
+      .tier-chip .tc { color: var(--gray-500); }
+      .tier-chip .tn { color: var(--gray-500); }
+      .tier-chip .tp { color: var(--black); }
+      .tier-chip .td { color: var(--gray-700); }
+      .tier-chip.rec { background: var(--accent-light); border-color: var(--accent); box-shadow: none; }
+      .tier-chip.rec .tc, .tier-chip.rec .tp { color: var(--accent); }
+      .tier-chip.rec .tn, .tier-chip.rec .td { color: var(--gray-700); }
+      .tier-block .bv { color: var(--gray-700); }
+      .tier-block .bv strong { color: var(--accent); }
       .topnav, .footer { display: none; }
       .hero { background: var(--white); color: var(--black); padding: 32px 0; }
       .hero h1 { color: var(--black); font-size: 28px; }
@@ -431,17 +501,12 @@
     <div class="sec-label">TIER ESTIMATE</div>
     <h2>추정 Tier 견적 범위</h2>
     <p class="sec-desc">예상 견적 Tier·단가 범위 + 단계적 접근 옵션</p>
-    <div class="card card-dark">
-    <ul>
-      <li><strong>추천 Tier</strong>: <strong>T1 Foundation (1,000~1,500만 / 4주) → T2 Build 승급 단계적 접근 ★ 강력 권장</strong></li>
-      <li><strong>근거</strong>: 직영 2점 + 가맹 모집 시작 단계 + 매출·직원수 미공개 = 일반 T2 풀스코프(3,000~5,000만) 흡수력 미검증. <strong>T1 진단 + 본사 통합 인스타·가맹 리드 시스템 v1</strong>으로 시작, 결과 보고 T2 빌드 승급.</li>
-      <li><strong>단계적 접근 옵션 (강력 권장 케이스)</strong>: T1(1,000~1,500만/4주) → T2(2,500~4,000만/3개월) 단계적 승급 — 매출 규모 + 신지은 대표가 역삼점 직접 운영 = <strong>외부 컨설팅 동시 핸들 가능 여부 검증 필요</strong> = 단계적 접근 가장 적합.</li>
-      <li><strong>대안</strong>:</li>
-      <li>미팅에서 매출·자금 흡수력 충분하고 가맹 본격 확장 의지 강하면 → <strong>T2 Build(3,000~4,000만/3~4개월)</strong> 바로 진입 가능</li>
-      <li>가맹 본격 확장 + 다점포(10~30점) 운영 시스템 + 배달·구독 D2C 풀스택 → <strong>T3 Scale(7,000만+/6개월+)</strong> — 단, 직영 2점 + 가맹 시작 단계에서는 과다 위험, <strong>점포 수 10점+ 도달 후 권장</strong></li>
-      <li>진단 비용 부담 시 → <strong>T0 진단형(300~500만/2~3주)</strong> 단축 옵션</li>
-      <li><strong>Tier 기준선</strong>: T0 100~300만/2주 · T1 500~1,500만/4주 · T2 2,000~5,000만/8~12주 · T3 7,000만+/16주+</li>
-    </ul>
+    <div class="tier-wrap">
+    <div class="tier-rec"><div class="rk">추천 Tier</div><div class="rv"><strong>T1 Foundation (1,000~1,500만 / 4주) → T2 Build 승급 단계적 접근 ★ 강력 권장</strong></div></div>
+    <div class="tier-rail"><div class="tier-chip"><div class="tc">T0</div><div class="tn">진단형</div><div class="tp">100~300만</div><div class="td">2주</div></div><div class="tier-chip rec"><div class="tc">T1</div><div class="tn">Foundation</div><div class="tp">500~1,500만</div><div class="td">4주</div></div><div class="tier-chip rec"><div class="tc">T2</div><div class="tn">Build</div><div class="tp">2,000~5,000만</div><div class="td">8~12주</div></div><div class="tier-chip"><div class="tc">T3</div><div class="tn">Scale</div><div class="tp">7,000만+</div><div class="td">16주+</div></div></div>
+    <div class="tier-block"><div class="bk">근거</div><div class="bv">직영 2점 + 가맹 모집 시작 단계 + 매출·직원수 미공개 = 일반 T2 풀스코프(3,000~5,000만) 흡수력 미검증. <strong>T1 진단 + 본사 통합 인스타·가맹 리드 시스템 v1</strong>으로 시작, 결과 보고 T2 빌드 승급.</div></div>
+    <div class="tier-block"><div class="bk">단계적 접근 옵션 (강력 권장 케이스)</div><div class="bv">T1(1,000~1,500만/4주) → T2(2,500~4,000만/3개월) 단계적 승급 — 매출 규모 + 신지은 대표가 역삼점 직접 운영 = <strong>외부 컨설팅 동시 핸들 가능 여부 검증 필요</strong> = 단계적 접근 가장 적합.</div></div>
+    <div class="tier-block"><div class="bk">대안</div><div class="bv"><ul><li>미팅에서 매출·자금 흡수력 충분하고 가맹 본격 확장 의지 강하면 → <strong>T2 Build(3,000~4,000만/3~4개월)</strong> 바로 진입 가능</li><li>가맹 본격 확장 + 다점포(10~30점) 운영 시스템 + 배달·구독 D2C 풀스택 → <strong>T3 Scale(7,000만+/6개월+)</strong> — 단, 직영 2점 + 가맹 시작 단계에서는 과다 위험, <strong>점포 수 10점+ 도달 후 권장</strong></li><li>진단 비용 부담 시 → <strong>T0 진단형(300~500만/2~3주)</strong> 단축 옵션</li></ul></div></div>
     </div>
   </div>
 </section>
