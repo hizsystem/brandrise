@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <!--
-  BRANDRISE 견적콜 매뉴얼 (플레이북) v0.1 · 인디고 클린
+  BRANDRISE 견적콜 매뉴얼 (플레이북) v0.2 · 인디고 클린
   · 목적: 견적 발송 후 "견적콜"로 결정을 돕는 무브를 반복 가능하게. 상담 플레이북의 2차(견적) 짝.
   · v0.1 출처: 쿠엔즈버킷 견적콜 녹취(권윤정 대표, 2026-06-12) 1건.
     ※ 녹취 화자 라벨 "우성민(Green)"은 녹화 계정 ID이며, 실제 발화자는 권윤정 대표.
+  · v0.2 보강(2026-06-16 학습): 실장·실무팀 진행 5건 추가 분석
+    (하예진[실장 단독]·슈퍼맘약사[대표]·에그하다[대표]·미례국밥[실무팀], +선행 1건).
+    근거: _통합작업/_학습_260616/10_실장녹취-견적화법.md.
+    추가분 — 견적 화법 매트릭스(②~⑦ 실증 + ⑧⑨⑩⑪ 신설), 클로징 5종(미례국밥 표준 사례),
+    실장 vs 대표 화법 차이, 반론 2종.
+    ※ 단가 수치는 보안(로컬 전용)이라 본 매뉴얼엔 미기재 — 구조·화법만. 단가 확정은 6/17 미팅 후.
   · 영업 프로세스 2차(견적) 단계와 연동. 배포: internal/quote-call-playbook/
 -->
 <html lang="ko">
@@ -113,18 +119,18 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
 </div></nav>
 
 <div class="hero"><div class="in">
-  <div class="badge">BRANDRISE · 견적콜 매뉴얼 · PLAYBOOK v0.1</div>
+  <div class="badge">BRANDRISE · 견적콜 매뉴얼 · PLAYBOOK v0.2</div>
   <h1>브랜드라이즈 견적콜 <span class="hl">플레이북</span></h1>
   <div class="sub">견적은 보냈다. 이제 <b style="color:#fff">결정을 돕는</b> 자리다. 견적을 "설명"하는 게 아니라 전략의 일부로 열어, 가격 저항과 범위 공포를 신뢰로 바꾼다.</div>
   <div class="meta">
-    <span class="chip">버전 <b>v0.1 (초안)</b></span>
-    <span class="chip">출처 <b>쿠엔즈버킷 견적콜 · 권윤정 대표</b></span>
+    <span class="chip">버전 <b>v0.2</b></span>
+    <span class="chip">근거 <b>견적콜·미팅 6건 (대표·실장·실무팀)</b></span>
     <span class="chip">연동 <b>영업 프로세스 2차(견적)</b></span>
     <span class="chip">짝 매뉴얼 <b>상담 플레이북</b></span>
   </div>
 </div></div>
 
-<div class="minitoc">· <a href="#what">견적콜이란</a> · <a href="#principles">견적콜 5대 원칙</a> · <a href="#play">단계별 플레이</a> · <a href="#obj">반론 처리</a> · <a href="#say">바로 쓰는 멘트</a> · <a href="#case">케이스 쿠엔즈버킷</a></div>
+<div class="minitoc">· <a href="#what">견적콜이란</a> · <a href="#principles">5대 원칙</a> · <a href="#play">단계별 플레이</a> · <a href="#matrix">견적 화법 11종</a> · <a href="#closing">클로징 5종</a> · <a href="#obj">반론 처리</a> · <a href="#say">바로 쓰는 멘트</a> · <a href="#roles">실장 vs 대표</a> · <a href="#case">케이스</a></div>
 
 <div class="wrap">
 
@@ -133,7 +139,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
     <h2>견적콜이 하는 일</h2>
     <p class="lead">견적콜은 <b>견적서를 읽어주는 자리가 아니다.</b> "구체적으로 어떤 액티비티가 들어 있는지" 막혀서 결정을 못 하는 고객에게, 견적을 <b>전략의 일부</b>로 다시 열어 보이고 결정을 당기는 자리다.</p>
     <div class="co ac"><span class="lab">견적콜의 출발</span>먼저 <b>견적 반응부터 묻는다.</b> "견적 보셨을 때 어떠셨어요?" — 고객이 어디서 막혔는지(가격? 범위? 액티비티 불명?)를 듣고 거기에 맞춰 푼다. 일방 설명이 아니라 막힘 해소.<div class="say">그 저희가 견적을 보셨을 때 혹시 어떠셨어요?<span class="src">— 권윤정 (00:01:44)</span></div></div>
-    <div class="co warn"><span class="lab">v0.1 한계</span>현재 <b>쿠엔즈버킷 견적콜 1건(권윤정 대표)</b>에서 추출. 애라 실장 견적콜·다른 체급 케이스가 쌓이면 v0.2로 확장. <b>임애라 실장 검토·보강 예정.</b> 상담 단계 무브는 → <a href="../consult-playbook/" style="color:var(--ac);font-weight:700">상담 플레이북 ›</a></div>
+    <div class="co warn"><span class="lab">v0.2 적용범위</span>원천은 <b>쿠엔즈버킷 1건(권윤정 대표)</b>. v0.2에서 <b>실장·실무팀 진행 5건</b>(하예진·슈퍼맘약사·에그하다·미례국밥+선행)으로 화법 매트릭스·클로징·실장/대표 차이를 보강. <b>단가 수치는 보안상 미기재(구조·화법만)</b> — 단가·항목 확정은 6/17 미팅 후. 상담 단계 무브는 → <a href="../consult-playbook/" style="color:var(--ac);font-weight:700">상담 플레이북 ›</a></div>
   </section>
 
   <section id="principles">
@@ -169,6 +175,41 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
     <div class="co ok"><span class="lab">콜 후</span>결정 데드라인을 합의로 받아둔다("내부 상의 후 언제까지 알려드릴게요"). 늘어지면 희소성(인력 재배치) 카드를 다시. 계약 합의 시 → 영업 프로세스 3차(계약·마스터시트 셋업)로.</div>
   </section>
 
+  <section id="matrix">
+    <div class="sec-k">TACTICS</div>
+    <h2>견적 화법 11종 — 실증 매트릭스</h2>
+    <p class="lead">견적콜·미팅 6건에서 반복된 가격 화법. ①~⑦은 검증된 기본기, <b>⑧~⑪은 5건에서 새로 잡힌 신설 화법</b>(주로 대표 고유기). 외우지 말고 <b>어느 상황에 무엇을 꺼낼지</b>를 익힌다. <b>금액은 보안상 생략 — 구조만.</b></p>
+    <table>
+      <tr><th style="width:46px">#</th><th style="width:210px">화법</th><th>무엇을 / 언제</th><th style="width:130px">근거 케이스</th></tr>
+      <tr><td class="c"><b>①</b></td><td><b>직원 N명 1년 총비용 비교</b></td><td>"이 일을 인하우스로 하면 직원 몇 명·1년 인건비"로 견적을 상대화. ⑥ 인하우스 앵커와 합류.</td><td><span class="t n">변형</span> 미례국밥</td></tr>
+      <tr><td class="c"><b>②</b></td><td><b>A/B·볼륨 조절</b></td><td>견적을 <b>두 영역으로 정의</b>(빠른 패키지 vs 생애주기 동행)하거나 "최소 비용·줄여도 된다"로 여지를 연다. 고객에게 떠넘기지 말고 <b>컨설팅 영역 자체를 둘로</b> 가른다.</td><td><span class="t b">강함</span> 에그하다·미례국밥·슈퍼맘</td></tr>
+      <tr><td class="c"><b>③</b></td><td><b>상한 닻(앵커)</b></td><td>"풀버전으로 가면 훨씬 커진다, 지금은 소액 트라이"로 <b>자기 견적 안에서 상·하한</b>을 보인다. 경쟁사 3억 닻보다 안전한 변형.</td><td><span class="t b">변형</span> 미례국밥</td></tr>
+      <tr><td class="c"><b>④</b></td><td><b>금액 분해</b></td><td>총액을 <b>세팅 : 콘텐츠</b>로, 월비를 <b>광고 : 운영</b>으로 쪼개 "왜 이 값인지"를 구조로 보인다. 셀렉형 1차 견적의 핵심.</td><td><span class="t b">원문 확인</span> 미례국밥</td></tr>
+      <tr><td class="c"><b>⑤</b></td><td><b>불포함 + 자산 프레이밍</b></td><td>"홈페이지·커머스·촬영은 이 견적에 빠져 있다"고 명시해 신뢰 확보. 빠진 것도 결국 너의 자산이 된다로 연결.</td><td><span class="t n">부분</span> 슈퍼맘</td></tr>
+      <tr><td class="c"><b>⑥</b></td><td><b>인하우스 비교 앵커</b></td><td>"직원을 쓸 거냐, 팀을 써서 알아서 굴러가게 하고 헤드만 체크할 거냐 — 저희를 <b>인하우스 팀</b>으로 보세요."</td><td><span class="t b">확인</span> 미례국밥</td></tr>
+      <tr><td class="c"><b>⑦</b></td><td><b>리스크 리버설 = 진입 앵커</b></td><td>"앞 단(디자인·스토리)만 작게 견적, 좋으면 확장"·"한 달만 트라이". 작은 yes로 문턱을 낮춘다(PLAN A의 화법판).</td><td><span class="t b">확인</span> 슈퍼맘·에그하다·미례국밥</td></tr>
+      <tr><td class="c"><b>⑧</b></td><td><b>지원사업 번들링</b> <span class="t b">신설</span></td><td>"견적은 받아두고 <b>정부지원을 끌어와 메운다</b> → 실질 부담을 0에 수렴." 소상공인·농식품·스타트업에 강력. <b>조건: 업력·지원 자격 확인</b>(지원사업 스크리닝과 연동).</td><td>슈퍼맘·에그하다</td></tr>
+      <tr><td class="c"><b>⑨</b></td><td><b>역-닻 "다른 데서 견적 받아오세요"</b> <span class="t b">신설</span></td><td>경쟁사 견적을 <b>고객이 직접 확인</b>하게 만든 뒤 "실패의 공수 + 대기업 데이터를 다 가진 곳은 없다"로 차별화를 스스로 납득시킨다. 신뢰 선행형 클로징.</td><td>슈퍼맘 선행</td></tr>
+      <tr><td class="c"><b>⑩</b></td><td><b>필수블록 고정 + 실행블록 가변</b> <span class="t b">신설</span></td><td>"<b>1번(기획)만 픽스, 2·3·4는 무너뜨려도 된다.</b> 단 1번만 따로는 못 판다 — 우리의 모든 게 거기 있어서." 풀세트 압도감을 쪼개는 ②의 한국형 변형. 블록형 견적서 STEP 구조와 직결.</td><td>슈퍼맘</td></tr>
+      <tr><td class="c"><b>⑪</b></td><td><b>"예쁘게 하지 마세요"(가격편)</b> <span class="t b">신설</span></td><td>"고감도 비주얼·촬영은 돈이고, 지금 단계엔 오히려 매출을 잃는다." 결핍 직언의 가격 버전 — 당장 견적은 줄지만 신뢰로 장기 수주.</td><td>슈퍼맘 선행</td></tr>
+    </table>
+    <div class="co ac"><span class="lab">⑩ → 셀렉 매트릭스 반영 검토</span>"기획=필수 고정 / 나머지=토글"을 견적 셀렉 UI에 넣으면 ⑩이 도구로 굳는다. (PREP·견적 정본 작업과 연계 — 6/17 미팅 의제.)</div>
+  </section>
+
+  <section id="closing">
+    <div class="sec-k">CLOSING</div>
+    <h2>클로징 5종 — 넥스트를 못 박는다</h2>
+    <p class="lead">견적콜의 고질병은 <b>"견적서는 후속 전달"로 끝나 넥스트가 죽는</b> 것. 분석한 견적 미팅 6건 중 <b>미례국밥(실무팀) 1건만</b>이 정반대로 마지막 3분에 모든 넥스트를 못 박았다 — 이걸 <b>클로징 표준 사례</b>로 둔다.</p>
+    <div class="flow">
+      <div class="step"><div class="sk">1 · 계약 트리거</div><div class="sc"><div class="st">"설득되셨으면 계약서 보내드릴게요"</div><div class="sd">콜 안에서 다음 행동(계약서 발송)을 선언한다. "오늘 늦으면 내일" — 계약서는 미리 가도 된다며 속도를 만든다.</div></div></div>
+      <div class="step"><div class="sk">2 · 계약일·결제조건</div><div class="sc"><div class="st">시작일·계약기간·결제를 그 자리에서 확정</div><div class="sd">"시작 ○월 ○일 ~ ○월 ○일"로 기간을 박고, <b>선금 비율 + 잔금(종료·세금계산서 후 N일)</b>까지 구두로 합의. (비율·금액은 보안 — 매뉴얼 미기재.)</div></div></div>
+      <div class="step"><div class="sk">3 · 전달 형태</div><div class="sc"><div class="st">진단서=링크 / 견적=시트·HTML / 계약서=PDF·웹링크</div><div class="sd">"PDF는 깨질 수 있어 웹용 링크를 추천, 파일이 편하면 파일로도." 산출물별 전달 형태를 정해 다음 단계를 매끄럽게.</div></div></div>
+      <div class="step"><div class="sk">4 · 다음 미팅 강제</div><div class="sc"><div class="st">"바로 다음 주에 미팅이 돼야 한다"</div><div class="sd">우선순위·스케줄링을 먼저 짜서 "다음 주엔 이것부터 액션"을 그림으로 전달하겠다고 약속 — 빈손으로 헤어지지 않는다.</div></div></div>
+      <div class="step"><div class="sk">5 · 클라 숙제 + 레퍼럴</div><div class="sc"><div class="st">고객에게 시장조사 숙제를 주고, 추천을 청한다</div><div class="sd">"오늘 중에라도 잘 나가는 업체 10곳만 리서치해 주시면"(에그하다·미례국밥 공통) — 참여로 결속을 만든다. + "주변에 추천해 주셔도 됩니다"로 레퍼럴 씨앗.</div></div></div>
+    </div>
+    <div class="co warn"><span class="lab">구조적 빈칸</span>실장 단독(하예진)·대표(쿠엔즈버킷)는 <b>모두 "후속 전달"로 끝났다.</b> 가격 클로징이 가장 비는 지점 = 견적콜의 최우선 개선점. <b>셀렉형 1차 견적 + 위 5종 못 박기</b>를 표준 무브로.</div>
+  </section>
+
   <section id="obj">
     <div class="sec-k">OBJECTIONS</div>
     <h2>반론 처리 — 견적콜에서 나오는 진짜 말들</h2>
@@ -181,6 +222,9 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
       <tr><td><b>"사진·영상 수량은 견적에 포함? 추가도 되나?"</b></td><td><b>"견적보다 무조건 많이 해드린다. 다만 견적엔 보수적으로 적는다 — 나중에 견적서로 안 싸우려고."</b> 양 불안을 신뢰로 덮는다.</td></tr>
       <tr><td><b>"권 대표님 말고 밑에서 담당할 PM이 누구냐"</b></td><td><b>"저는 제가 안 들어가는 건 잘 없습니다."</b> + 실장급 5년 이상 호흡·대기업 경력·MD 라인. PM 불안을 사람으로 매듭.</td></tr>
       <tr><td><b>"내부에서 좀 논의할 시간을 달라" / "늦어도 되냐"</b></td><td>시간은 주되 늘어짐엔 No. <b>"일찍 결정하는 팀이 먼저 가져간다. 저희도 인력 재배치가 필요해 언제 결정할지 알려달라."</b> 희소성으로 마감.</td></tr>
+      <tr><td><b>"풀세트 견적이 너무 크다 / 다 못 하겠다"</b></td><td><b>"1번(기획)만 픽스, 나머지는 다 무너뜨려도 됩니다."</b> 단 1번만 따로는 못 판다(우리의 모든 게 거기 있어서). 필수블록 고정 + 실행블록 가변(화법 ⑩)으로 부담을 쪼갠다.</td></tr>
+      <tr><td><b>"A안·B안 중 뭘 골라야 할지 모르겠다"</b></td><td>고객에게 떠넘기지 않는다. <b>"컨설팅 영역이 둘이에요 — 패키지만 빨리 가는 것, 생애주기를 통째로 가는 것. 견적이 둘이고 가용 예산은 얼마세요?"</b> 영역을 정의하고 예산을 직접 묻는다(화법 ②).</td></tr>
+      <tr><td><b>"예산이 부족하다 / 지금은 돈이 없다"</b></td><td>(자격 확인 후) <b>"견적은 받아두고 정부지원을 같이 끌어와 메웁니다."</b> 실질 부담을 0에 수렴(화법 ⑧). ※업력·지원 자격 먼저 확인.</td></tr>
     </table>
   </section>
 
@@ -197,6 +241,23 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
     <div class="say">제가 한 달에 끝낸다고 하면 사기꾼이죠. 정권 주시면 2.5달에도 끝내요. 근데 대표님이 학습하시는 게 저희를 쓰는 이유여야 합니다. <span class="src">— 기간 프레이밍</span></div>
     <div class="say">저희는 일찍 결정하는 팀이 먼저 가져가는 구조예요. 언제 결정하실 수 있는지 알려주세요. <span class="src">— 클로징, 희소성</span></div>
     <div class="say">저는 제가 안 들어가는 건 잘 없습니다. 저희 실장급도 다 저랑 5년 이상 한, 대기업 경력에 MD랑 직접 커뮤니케이션 하는 라인이에요. <span class="src">— PM 신뢰 매듭</span></div>
+    <div class="say">이거 1번만 픽스하시고요. 나머지는 다 무너뜨려도 돼요. 근데 1번만 따로는 못 팔아요 — 저희의 모든 게 거기 들어가 있어서. <span class="src">— 필수블록 고정(⑩)</span></div>
+    <div class="say">컨설팅 영역이 두 가지예요. 패키지만 해서 빨리 가는 거랑, 생애주기를 통째로 같이 가는 거. 견적이 두 개고요 — 지금 쓰실 수 있는 예산은 어느 정도세요? <span class="src">— A/B 영역 정의 + 예산 질의(②)</span></div>
+    <div class="say">견적서는 받아두세요. 지원사업 제가 다 끌고 올게요. 그렇게 해서 돈을 넣으시면 됩니다. <span class="src">— 지원사업 번들링(⑧, 자격 확인 후)</span></div>
+    <div class="say">다른 데서도 견적 받아보세요. 비즈니스 컨설팅까지 하는 회사가 별로 없어요. 실패의 공수랑 대기업 데이터를 다 가진 데는 없거든요. <span class="src">— 역-닻(⑨)</span></div>
+    <div class="say">설득되셨으면 계약서 보내드릴게요. 시작일·기간 잡고, 선금 들어가고 잔금은 종료 후 정산이에요. 그럼 바로 다음 주에 미팅 한 번 더 가야 돼요. <span class="src">— 클로징, 넥스트 못 박기</span></div>
+  </section>
+
+  <section id="roles">
+    <div class="sec-k">ROLES</div>
+    <h2>실장 vs 대표 — 누가 무엇을 맡나</h2>
+    <p class="lead">5건을 화자로 가르면, <b>"실장 화법"이라 묶인 가격 부분의 상당수가 실은 대표 화법</b>이다. 실장 단독 시 견적 클로징이 비는 게 구조다 — 누가 들어가야 하는지를 알고 배치한다.</p>
+    <div class="principles">
+      <div class="pcard"><div class="pn">실</div><div class="pt">실장(애라) = 진단 정밀</div><div class="pb"><b>"처음 본 고객의 눈"</b>으로 트리거 포인트를 읽고, "3초 안에 셀링포인트가 보이나"·"모든 결정에 근거가 없다(USP 부재)"로 결핍을 짚는다. 가격은 안 꺼내고 <b>진단 밀도</b>로 승부 — 단, 현장 견적은 0(후속 전달).</div></div>
+      <div class="pcard"><div class="pn">대</div><div class="pt">대표(권윤정) = 가격 무력화</div><div class="pb"><b>착수 비용 재정의·지원사업 번들링(⑧)·역-닻(⑨)·생태계 편입.</b> "이 금액은 너의 사업개발이 통째로 든 착수금" / "지원금 끌어와 메운다" / "다른 데 받아와 봐라"로 가격 저항 자체를 해체한다.</div></div>
+      <div class="pcard"><div class="pn">팀</div><div class="pt">실무팀 = 셀렉형 견적·클로징 실물</div><div class="pb">미례국밥 1건이 <b>현장 금액 분해(④)·볼륨 조절(②)·계약일·선금·다음주 미팅</b>까지 자리에서 끝낸 유일 케이스. 1차 견적과 클로징의 <b>완성형 본보기</b>.</div></div>
+    </div>
+    <div class="co warn"><span class="lab">배치 원칙</span>실장 단독 견적콜은 <b>가격 클로징이 비는 지점</b> → ① 셀렉형 1차 견적을 미리 준비해 들어가거나 ② 가격 무력화가 필요한 자리엔 <b>대표 동반</b>(또는 대표 화법 ⑧⑨를 차용). 진단은 실장, 클로징은 대표/실무팀 구조가 가장 강하다.</div>
   </section>
 
   <section id="case">
@@ -214,13 +275,24 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
     </table>
     <div class="co ok"><span class="lab">결과</span>고객 "내용은 다 이해, 내부 논의 후 결정 회신" — 결정 대기. 범위 방대함을 인지하되 방향엔 동의. 전체 녹취·원문은 로컬 비공개(`7. 브랜드 라이즈/_쿠앤즈버킷`).</div>
     <div class="co warn"><span class="lab">기록 주의</span>녹취 화자 라벨 <b>"우성민(Green)"은 녹화 계정 ID</b>이며 실제 발화자는 <b>권윤정 대표</b>(콜 중 고객이 "권 대표님"이라 호명, 화자가 "제가 직접 들어간다"로 응답해 교차 확인). 모든 멘트는 권윤정 대표 발화.</div>
+
+    <h3>케이스 — 미례국밥 (클로징 표준 사례)</h3>
+    <p class="lead">2026-03-25 미례국밥(돼지우동) 대면. 5건 중 <b>현장 금액 분해·계약 확정이 모두 일어난 유일 케이스</b> — 1차 견적과 클로징의 완성형. 실무팀(팀장·리드·포토) 진행.</p>
+    <table>
+      <tr><th style="width:150px">무브</th><th>이 미팅에서</th></tr>
+      <tr><td><b>금액 분해(④)</b></td><td>총액을 "세팅 : 콘텐츠"로, 월비를 "광고 : 운영"으로 자리에서 쪼개 제시 (수치는 보안)</td></tr>
+      <tr><td><b>볼륨 조절(②)</b></td><td>"최소 비용·줄여도 됨" 선제 개방 + "풀버전이면 훨씬 큼, 지금은 소액 트라이"로 상·하한 닻(③)</td></tr>
+      <tr><td><b>인하우스 앵커(⑥)</b></td><td>"직원 쓸 거냐, 팀을 인하우스처럼 두고 헤드만 체크할 거냐"로 견적을 상대화</td></tr>
+      <tr><td><b>클로징 5종</b></td><td>계약서 발송 선언 → 시작일·기간 확정 → 선금/잔금 → 전달 형태 → <b>"다음 주 미팅 강제"</b> + 클라 숙제·레퍼럴까지 마지막 3분에 전부</td></tr>
+    </table>
+    <div class="co ok"><span class="lab">결과</span>현장에서 계약 의사·일정 합의. <b>"후속 전달로 끝나 넥스트가 죽는"</b> 다른 5건과 정반대 — 본 매뉴얼 §클로징의 표준. 원문·단가는 로컬 비공개.</div>
   </section>
 
 </div>
 
 <footer>
-  <b>BRANDRISE</b> by HIZ · 견적콜 매뉴얼 (플레이북) v0.1 · 내부<br>
-  출처: 쿠엔즈버킷 견적콜 녹취(권윤정 대표, 2026-06-12) · 애라 실장·타 체급 케이스로 확장 예정<br>
+  <b>BRANDRISE</b> by HIZ · 견적콜 매뉴얼 (플레이북) v0.2 · 내부<br>
+  근거: 쿠엔즈버킷(권윤정 대표, 2026-06-12) + 실장·실무팀 진행 5건(하예진·슈퍼맘약사·에그하다·미례국밥+선행) · 단가 수치는 보안상 미기재<br>
   © 2026 브랜드라이즈 by HIZ · 비공개 내부 문서
 </footer>
 
