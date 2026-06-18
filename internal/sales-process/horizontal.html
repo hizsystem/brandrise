@@ -40,8 +40,8 @@ h2{font-size:23px;font-weight:800;letter-spacing:-.02em;margin-bottom:7px}
 .lead{font-size:14.5px;color:var(--muted);margin-bottom:22px;max-width:820px;line-height:1.7}
 
 /* ===== 가로 프로세스 맵 ===== */
-.pmap{display:flex;align-items:stretch;gap:20px;overflow-x:auto;padding:6px 2px 20px}
-.phase{flex:1 1 0;min-width:208px;display:flex;flex-direction:column;position:relative}
+.pmap{display:flex;align-items:stretch;gap:16px;overflow-x:auto;padding:6px 2px 20px}
+.phase{flex:1 1 0;min-width:186px;display:flex;flex-direction:column;position:relative}
 .phase:not(:last-child)::after{content:"›";position:absolute;right:-22px;top:30px;transform:translateY(-50%);font-size:24px;font-weight:800;color:var(--ac);z-index:2}
 .ph-h{background:var(--ac-50);border:1px solid var(--ac-100);border-radius:12px 12px 0 0;padding:12px 15px}
 .ph-h .k{font-size:10.5px;font-weight:800;letter-spacing:.12em;color:var(--ac);margin-bottom:2px}
@@ -69,7 +69,7 @@ h2{font-size:23px;font-weight:800;letter-spacing:-.02em;margin-bottom:7px}
 .ifn .nd.hub{border-left:3px solid var(--ac);background:var(--ac-50);border-color:var(--ac-100)}
 .ifn .nd.win{background:var(--ink);border-color:var(--ink)} .ifn .nd.win .nm{color:#fff} .ifn .nd.win .ds{color:#94a3b8}
 .ifn .ar{display:flex;align-items:center;justify-content:center;height:16px;color:var(--ac);font-size:11px;font-weight:800}
-.ifn .side{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:10px;font-weight:800;color:var(--ac);background:#fff;border:1px dashed var(--ac-100);border-radius:6px;padding:2px 7px}
+.ifn .side{display:inline-block;margin-top:5px;font-size:10px;font-weight:800;color:var(--ac);background:var(--ac-50);border:1px dashed var(--ac-100);border-radius:6px;padding:2px 7px}
 .ifn .nd.win .side{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#c7d2fe}
 .tg{font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:5px;white-space:nowrap}
 .tg.k{background:var(--warn-50);color:var(--warn)}
@@ -170,7 +170,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
       <div class="phase">
         <div class="ph-h"><div class="k">PHASE 1</div><div class="n">1차 · 상담</div><div class="nd">사전질문 → PREP → 상담 → 진단서</div></div>
         <div class="ph-body">
-          <div class="pstep"><div class="pt"><span class="pn">1</span>메일 — 사전 질문지</div><div class="pd"><b>상담 전 질문지를 보내 자료를 미리 받는다.</b> 받은 자료가 PREP 재료가 된다.</div><div class="pg"><span class="tg n">사전 자료</span></div></div>
+          <div class="pstep"><div class="pt"><span class="pn">1</span>메일 — 사전 질문지 발송</div><div class="pd"><b>상담 전 질문지를 보내 자료를 미리 받는다.</b> 받은 자료가 PREP 재료가 된다.</div><div class="pg"><span class="tg n">사전 자료</span></div></div>
           <div class="pstep"><div class="pt"><span class="pn">2</span>PREP 작성 (내부)</div><div class="pd"><b>상담 전 내부 준비.</b> 받은 자료·리서치로 "막힌 지점" 가설을 미리 세운다.</div><div class="pg"><span class="tg o">📄 PREP</span></div></div>
           <div class="pstep"><div class="pt"><span class="pn">3</span>상담 진행</div><div class="pd"><b>대면/콜. 첫 15분 회사소개 후 마이크를 넘긴다.</b> 대표(★) 건은 대표가 직접 전략 제시.<span class="memo">진행 골격·화법은 상담 플레이북을 따른다.</span></div><div class="pg"><span class="tg n">일반</span><span class="tg s">★ 대표</span></div></div>
           <div class="pstep"><div class="pt"><span class="pn">4</span>상담 완료 → 진단서</div><div class="pd"><b>끝나면 3일 안에 진단서 발송.</b> 완료 처리하면 알림톡.</div><div class="pg"><span class="tg k">🔔 완료</span></div></div>
@@ -222,7 +222,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
       <a class="dcard" href="../../research/_template/prep-v2-template.html"><div class="dh"><span>PREP</span><span class="ph">1차</span></div><div class="db">상담 전 내부 준비 (가설·리서치). <span class="lk">템플릿 열기 ›</span></div></a>
       <a class="dcard" href="../../research/_template/diagnosis-template.html"><div class="dh"><span>진단서</span><span class="ph">1차</span></div><div class="db">상담 후 고객 제출 — 견적 근거. <span class="lk">템플릿 열기 ›</span></div></a>
       <a class="dcard" href="../../quote/_template/quote-template.html"><div class="dh"><span>견적서 HTML</span><span class="ph">2차</span></div><div class="db">A/B안 · 1,000만 이하 정본. <span class="lk">템플릿 열기 ›</span></div></a>
-      <a class="dcard" href="../../quote/_template/quote-builder-template.gs"><div class="dh"><span>견적 구글시트</span><span class="ph">2차</span></div><div class="db">1,000만 초과 정본 (강훈 5블록). <span class="lk">빌더 열기 ›</span></div></a>
+      <a class="dcard" href="https://docs.google.com/spreadsheets/d/1CQd9N7kuyibZzEbZ8XUltTRyPY9TRY7nvPWqse6YlPQ/edit" target="_blank" rel="noopener"><div class="dh"><span>견적 시트</span><span class="ph">2차</span></div><div class="db">1,000만 초과 정본 (강훈 5블록). <span class="lk">시트 열기 ↗</span></div></a>
     </div>
   </section>
 
