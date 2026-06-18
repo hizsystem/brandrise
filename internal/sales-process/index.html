@@ -90,6 +90,18 @@ body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);colo
 .t.lk.pend{background:#fff;color:var(--muted);border:1px dashed var(--line)}
 .t.man{background:var(--ac-50);color:var(--ac);border:1px solid var(--ac-100)} .t.man:hover{background:var(--ac-100)}
 
+/* 유입 수렴 퍼널 (3경로 → 브랜드라이즈) */
+.ifn{margin:9px 0 2px}
+.ifn .nd{position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 11px}
+.ifn .nd .nm{font-size:13.5px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+.ifn .nd .ds{font-size:11.5px;font-weight:600;color:var(--muted);margin-top:1px}
+.ifn .nd.yt{border-left:3px solid var(--ac)}
+.ifn .nd.hub{border-left:3px solid var(--ac);background:var(--ac-50);border-color:var(--ac-100)}
+.ifn .nd.win{background:var(--ink);border-color:var(--ink)} .ifn .nd.win .nm{color:#fff} .ifn .nd.win .ds{color:#94a3b8}
+.ifn .ar{display:flex;align-items:center;justify-content:center;height:17px;color:var(--ac);font-size:12px;font-weight:800}
+.ifn .side{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-size:10.5px;font-weight:800;color:var(--ac);background:#fff;border:1px dashed var(--ac-100);border-radius:6px;padding:2px 7px}
+.ifn .nd.win .side{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#c7d2fe}
+
 /* 컬럼 하단 요약 밴드 */
 .cnote{border-radius:11px;padding:12px 14px;font-size:13px;line-height:1.6;margin-top:4px;border:1px solid var(--ac-100);background:var(--ac-50);color:var(--ink2)}
 .cnote .l{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--ac);margin-bottom:5px;text-transform:uppercase}
@@ -153,7 +165,15 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     <!-- ===== 유입 ===== -->
     <div class="col">
       <div class="chead"><div class="ck">INFLOW</div><div class="ct">유입 · 영업</div><div class="cs">자체 · 정부지원 · 대표 인프라</div></div>
-      <div class="sc"><div class="top"><span class="sn">·</span><span class="stt">자체 채널 · 브랜드라이즈</span></div><div class="sd"><b>주력 유입 — 세 경로가 모두 브랜드라이즈 상담으로 수렴한다.</b><span class="memo">① 유튜브 → 고벤처포럼 → 브랜드라이즈 &nbsp; ② 고벤처포럼 → 브랜드라이즈 &nbsp; ③ 브랜드라이즈 직접. 유튜브로 인지시키고, 고벤처 행사에서 만나, 상담으로 닫는다.</span></div><div class="shot">예시 사진</div><div class="tags"><span class="t lk pend">🔗 고벤처포럼 · 유튜브</span></div></div>
+      <div class="sc"><div class="top"><span class="sn">·</span><span class="stt">자체 유입 · 3경로</span></div><div class="sd"><b>주력 유입 — 세 경로가 모두 브랜드라이즈 상담으로 수렴한다.</b> 대표 유튜브로 인지시키고, 고벤처포럼에서 만나, 상담으로 닫는다.</div>
+        <div class="ifn">
+          <div class="nd yt"><div class="nm">대표 유튜브</div><div class="ds">대표 채널로 인지</div></div>
+          <div class="ar">▼</div>
+          <div class="nd hub"><div class="nm">고벤처포럼</div><div class="ds">행사에서 만남</div><span class="side">← 직접 참여</span></div>
+          <div class="ar">▼</div>
+          <div class="nd win"><div class="nm">브랜드라이즈 상담</div><div class="ds">상담 · 수주</div><span class="side">← 직접 유입</span></div>
+        </div>
+        <div class="tags"><span class="t lk pend">🔗 고벤처포럼 · 대표 유튜브</span></div></div>
       <div class="sc"><div class="top"><span class="sn">·</span><span class="stt">정부지원사업</span></div><div class="sd"><b>수요는 많은데 중간에 많이 빠진다.</b> 들어온 수·이탈 수를 재서 채널값을 측정하는 용도.</div><div class="shot">예시 사진</div></div>
       <div class="sc"><div class="top"><span class="sn">·</span><span class="stt">대표 인프라</span></div><div class="sd"><b>대표 개인 인스타 등 개인 자산에서 유입.</b> 회사 채널로 합치고 대표 개인기에서 떼어내는 게 목표.</div><div class="shot">예시 사진</div></div>
       <div class="cnote"><span class="l">1차 분별 · 감각</span><b>들어온 건마다 매출 규모 · 의지(열) · 가능성을 보고 담당을 붙인다.</b> <span class="t star">★ 대표</span> 건과 일반 건으로 가른다. "돈 되는 건"을 빨리 알아보는 감각이 첫 단추.</div>
