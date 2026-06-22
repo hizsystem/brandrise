@@ -173,10 +173,12 @@ footer .in{max-width:1360px;margin:0 auto;padding:0 40px}
 
 /* 5) 디자인·가독성 격상 (v2-③) — 인디고 토큰 안에서 "디자인된 문서" */
 /* v4 에디토리얼 챕터 — 큰 솔리드 번호 오프너 + 굵은 구분선 + 대폭 여백 */
-section{margin-bottom:120px;counter-increment:sec;border-top:2px solid var(--ink);padding-top:34px;position:relative}
+section{margin-bottom:116px;counter-increment:sec;border-top:2px solid var(--ink);padding:34px 0 0 108px;position:relative}
 main>section:first-child{border-top:none;padding-top:0}
-.sec-k{display:block;background:none;border:none;border-radius:0;padding:0;font-size:12px;letter-spacing:.2em;color:var(--ac);margin-bottom:18px}
-.sec-k::before{content:counter(sec,decimal-leading-zero);display:block;font-size:56px;font-weight:800;color:var(--ac);letter-spacing:-.04em;line-height:.9;margin-bottom:4px;font-variant-numeric:tabular-nums}
+.sec-k{display:block;background:none;border:none;border-radius:0;padding:0;font-size:12px;letter-spacing:.2em;color:var(--ac);margin-bottom:14px}
+.sec-k::before{content:counter(sec,decimal-leading-zero);position:absolute;left:0;top:30px;font-size:62px;font-weight:800;color:var(--ac);letter-spacing:-.04em;line-height:.9;font-variant-numeric:tabular-nums}
+main>section:first-child .sec-k::before{top:0}
+@media(max-width:880px){section{padding-left:0!important}.sec-k::before{position:static;display:block;margin-bottom:4px}}
 h2{font-size:34px;margin-bottom:16px;letter-spacing:-.025em}
 h2{line-height:1.18}
 h3{letter-spacing:-.01em;line-height:1.4}
