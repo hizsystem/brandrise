@@ -195,34 +195,74 @@ tbody tr:nth-child(even) td, table tr:nth-child(even) td{background:var(--soft)}
 .stage .sgt{font-size:15px;font-weight:800;color:var(--ink);margin:4px 0 8px}
 .stage .sgd{font-size:12px;color:var(--muted);line-height:1.55}
 .stage .sgr{display:block;margin-top:10px;font-size:11.5px;color:var(--ac-700);font-weight:700}
-table.selmx{font-size:12.5px}
-table.selmx th{text-align:center}
-table.selmx th:first-child{text-align:left}
-table.selmx td{text-align:center;vertical-align:middle}
-table.selmx td:first-child{text-align:left;font-weight:600;color:var(--ink)}
-table.selmx td.lv2{background:var(--ac-50)}
-table.selmx td{padding:13px 11px}
-table.selmx label{display:block;cursor:pointer;padding:9px 6px;border-radius:8px;font-weight:600;color:var(--ink2);line-height:1.35}
-table.selmx label:hover{background:var(--ac-100)}
-table.selmx input[type=radio]{margin-right:4px;accent-color:var(--ac)}
-table.selmx label span{display:block;font-weight:400;color:var(--muted);font-size:.8em;margin-top:1px}
-.sel-sum{display:flex;flex-wrap:wrap;gap:18px;align-items:center;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:14px 0;font-size:13px}
-.sel-sum b{color:var(--ac);font-size:15px}
-.sel-sum input{width:74px;padding:5px 8px;border:1px solid var(--line);border-radius:7px;font-family:inherit;font-size:13px;text-align:right}
-.qsum{border:2px solid var(--ac);border-radius:16px;overflow:hidden;margin:16px 0}
-.qsum .qsh{background:var(--ac);color:#fff;padding:13px 20px;font-size:13px;font-weight:800;letter-spacing:.02em;display:flex;justify-content:space-between;align-items:center}
-.qsum .qsh .qst{font-size:11px;font-weight:700;color:#c7d2fe}
-.qsum table{margin:0}
-.qsum th{background:var(--ac-50)}
-.qsum td.c{text-align:center} .qsum td.num{text-align:right;font-variant-numeric:tabular-nums}
-.qsum tfoot td{background:var(--ink);color:#fff;font-weight:800;font-size:14px;border:0}
-.qsum tfoot td b{color:#a5b4fc}
-.qsum .qact{display:flex;gap:10px;flex-wrap:wrap;padding:14px 20px;background:var(--soft);border-top:1px solid var(--line)}
-.qsum .btn{font-family:inherit;font-size:12.5px;font-weight:700;border:1px solid var(--ac);background:var(--card);color:var(--ac);border-radius:9px;padding:9px 16px;cursor:pointer;transition:.15s}
-.qsum .btn:hover{background:var(--ac);color:#fff}
-.qsum .btn.solid{background:var(--ac);color:#fff}
-.qsum .btn.solid:hover{background:var(--ac-700);border-color:var(--ac-700)}
-.qsum .qhint{font-size:11.5px;color:var(--muted);padding:0 20px 14px;background:var(--soft);line-height:1.6}
+.sel-component{container-type:inline-size}
+.sel-split{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.9fr);gap:18px;align-items:start}
+.pane-k{font-size:11px;font-weight:800;letter-spacing:0;color:var(--muted);margin-bottom:9px}
+.selmx{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);font-variant-numeric:tabular-nums}
+.selmx .hd,.selmx .rw{display:grid;grid-template-columns:minmax(142px,1.6fr) repeat(4,minmax(62px,1fr))}
+.selmx .hd{background:var(--soft);border-bottom:1px solid var(--line)}
+.selmx .hd>div{padding:11px 8px;font-size:11px;font-weight:800;color:var(--ink2);text-align:center;line-height:1.25}
+.selmx .hd>div:first-child{text-align:left}
+.selmx .hd .ls{display:block;font-size:9.5px;font-weight:600;color:var(--muted)}
+.selmx .hd .star{color:var(--ac)}
+.selmx .rw{border-bottom:1px solid var(--line2)}
+.selmx .rw:last-child{border-bottom:0}
+.selmx .rw:hover{background:var(--soft)}
+.selmx .nm{padding:13px 14px;display:flex;flex-direction:column;gap:3px;justify-content:center}
+.selmx .nm b{font-size:13px;font-weight:700;color:var(--ink);line-height:1.35}
+.selmx .opt{margin:7px 5px;border:1.5px solid var(--line);border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:9px 3px;cursor:pointer;transition:.12s;background:var(--card);position:relative;min-height:42px;text-align:center}
+.selmx .opt .amt{font-size:13.5px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:0}
+.selmx .opt .sub{font-size:9px;font-weight:600;color:var(--muted);margin-top:1px}
+.selmx .opt.ex{border-style:dashed}
+.selmx .opt.ex .amt{color:var(--muted)}
+.selmx .opt:hover,.selmx .opt:focus-visible{border-color:var(--ac-100);background:var(--ac-50);outline:0}
+.selmx .opt.on{background:var(--ac);border-color:var(--ac);box-shadow:0 6px 15px -8px var(--ac)}
+.selmx .opt.on .amt{color:var(--card)}
+.selmx .opt.on .sub{color:var(--ac-100)}
+.selmx .opt.on.ex{background:var(--ink2);border-color:var(--ink2)}
+.selmx .opt.on.ex .amt{color:var(--card)}
+.selmx .opt.on::after{content:"✓";position:absolute;top:2px;right:5px;font-size:9px;font-weight:800;color:var(--ac-100)}
+.qpane{position:sticky;top:20px;border:2px solid var(--ac);border-radius:16px;overflow:hidden;background:var(--card)}
+.qsh{background:var(--ac);color:var(--card);padding:18px 20px}
+.qsh .ttl{font-size:12.5px;font-weight:800;color:var(--ac-100);letter-spacing:0}
+.qsh .big{margin-top:7px;line-height:1.02}
+.qsh .big .won{font-size:30px;font-weight:800;letter-spacing:0;font-variant-numeric:tabular-nums}
+.qsh .big .eok{font-size:13px;font-weight:600;color:var(--ac-100);margin-left:6px}
+.env{padding:14px 20px;border-bottom:1px solid var(--line)}
+.env .et{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;margin-bottom:8px;font-size:12px;color:var(--muted)}
+.env .et input{width:54px;padding:3px 6px;border:1px solid var(--line);border-radius:6px;font-family:inherit;font-size:12px;text-align:right}
+.env .et .st{font-weight:800}
+.env .et .st.ok{color:var(--ok)}
+.env .et .st.over{color:var(--bad)}
+.env .bar{position:relative;height:10px;border-radius:99px;background:var(--ac-50);overflow:hidden}
+.env .bar .fill{height:100%;border-radius:99px;background:var(--ac);transition:width .3s,background .3s}
+.env .bar.over .fill{background:var(--bad)}
+.env .cap{margin-top:7px;font-size:11px;color:var(--muted);line-height:1.5}
+.env .cap b{color:var(--ink)}
+.qlist{padding:6px 8px;max-height:none}
+.qrow{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid var(--line2)}
+.qrow:last-child{border-bottom:0}
+.qrow .qn{flex:1;font-size:12.5px;color:var(--ink2);line-height:1.4}
+.qrow .lvb{display:inline-block;font-size:9.5px;font-weight:800;padding:1px 6px;border-radius:5px;background:var(--ac-50);color:var(--ac);margin-right:6px;vertical-align:1px}
+.qrow.edited .lvb{background:var(--warn-50);color:var(--warn)}
+.qrow .amtin{width:78px;text-align:right;font-family:inherit;font-size:14px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;border:1px solid transparent;border-radius:7px;padding:5px 8px;background:transparent;transition:.12s}
+.qrow .amtin:hover{background:var(--soft)}
+.qrow .amtin:focus{outline:0;border-color:var(--ac);background:var(--card);box-shadow:0 0 0 3px var(--ac-50)}
+.qrow.edited .amtin{color:var(--ac-700)}
+.qrow .unit{font-size:11px;color:var(--muted)}
+.qfoot{display:flex;justify-content:space-between;align-items:center;background:var(--ink);color:var(--card);padding:13px 20px;font-size:13px;font-weight:800}
+.qfoot .ft{color:var(--ac-100);font-size:16px;font-variant-numeric:tabular-nums}
+.qact{display:flex;gap:8px;flex-wrap:wrap;padding:13px 16px;background:var(--soft);border-top:1px solid var(--line)}
+.qact .btn{font-family:inherit;font-size:12px;font-weight:700;border:1px solid var(--ac);background:var(--card);color:var(--ac);border-radius:9px;padding:8px 13px;cursor:pointer;transition:.15s}
+.qact .btn:hover{background:var(--ac);color:var(--card)}
+.qact .btn.solid{background:var(--ac);color:var(--card)}
+.qact .btn.solid:hover{background:var(--ac-700);border-color:var(--ac-700)}
+.qhint{font-size:11px;color:var(--muted);padding:0 16px 13px;background:var(--soft);line-height:1.55}
+.savest{font-weight:800;color:var(--muted)}
+.savest.ok{color:var(--ok)}
+@container (max-width:660px){.sel-component .sel-split{grid-template-columns:1fr}.sel-component .qpane{position:relative;top:auto}}
+@media(max-width:680px){.sel-split{grid-template-columns:1fr}.qpane{position:relative;top:auto}}
+@media(max-width:560px){.selmx{overflow-x:auto}.selmx .hd,.selmx .rw{min-width:620px}.qrow{align-items:flex-start;flex-wrap:wrap}.qrow .amtin{margin-left:auto}}
 /* 링크(이미지 캡처 대체) */
 .co a{color:var(--ac);font-weight:700;text-decoration:none;border-bottom:1px solid var(--ac-100);word-break:break-all}
 .co a:hover{border-color:var(--ac)}
@@ -408,38 +448,45 @@ table.selmx label span{display:block;font-weight:400;color:var(--muted);font-siz
       </div>
       <div class="co ac"><span class="lab">매출 envelope = 1차 판단</span><b>연 마케팅비 ≈ 매출 × 15%</b> → <b>6개월치(매출억 × 750만)</b>로 수주 규모를 가늠. <b>NGT 적용:</b> 매출 약 135억 → 6개월 envelope ≈ <b>10억</b> 여력 → 아래 셀렉 1.034억은 합리적으로 듦. <b>보조 질문:</b> "최근 3~6개월 마케팅/광고비 얼마 쓰세요?"</div>
 
-      <h3>견적 셀렉 — 항목별 난이도 체크 <span class="t b">상담 중 선택 → 견적 자동</span></h3>
-      <div class="co ac"><span class="lab">셀렉 매트릭스</span>각 항목의 <b>투입 레벨</b>을 고르면 아래 <b>1차 견적서가 즉시 생성</b>된다. 레벨 = 투입 주체/사양 — <b>L1</b>=프리랜서(경량) / <b>L2 ★</b>=내부 히즈(표준) / <b>L3</b>=외주(풀·고사양). 항목명 옆 <span class="t n">회색 칩</span>=사업 단계. <b>단가 공유 원칙</b>: 단가는 브랜드 불문 동일. (단위: 만원 · VAT 별도)</div>
-      <table class="selmx" id="selmx">
-        <thead><tr><th>견적 항목 <span class="t n">단계</span></th><th>제외</th><th>L1 프리랜서</th><th>L2 내부 ★</th><th>L3 외주</th></tr></thead>
-        <tbody>
-          <tr data-row data-name="데이터 진단 + 시장 서베이" data-key="진단"><td>데이터 진단 + 시장 서베이 <span class="t n">사업계획·포지셔닝</span></td><td><label><input type="radio" name="s0" value="0" data-lv="제외">–</label></td><td><label><input type="radio" name="s0" value="500" data-lv="L1">500</label></td><td class="lv2"><label><input type="radio" name="s0" value="1000" data-lv="L2" checked>1,000</label></td><td><label><input type="radio" name="s0" value="2000" data-lv="L3">2,000</label></td></tr>
-          <tr data-row data-name="브랜드 아이덴티티 정립 + 제품체계 전략" data-key="아이덴티티"><td>브랜드 아이덴티티 정립 + 제품체계 전략 <span class="t n">포지셔닝·메시지</span></td><td><label><input type="radio" name="s1" value="0" data-lv="제외">–</label></td><td><label><input type="radio" name="s1" value="1000" data-lv="L1">1,000</label></td><td class="lv2"><label><input type="radio" name="s1" value="2000" data-lv="L2" checked>2,000</label></td><td><label><input type="radio" name="s1" value="3500" data-lv="L3">3,500</label></td></tr>
-          <tr data-row data-name="브랜드 로고 & 패키지 디자인 리뉴얼" data-key="디자인"><td>브랜드 로고 &amp; 패키지 디자인 리뉴얼 <span class="t n">로고·패키지·가이드</span></td><td><label><input type="radio" name="s2" value="0" data-lv="제외">–</label></td><td><label><input type="radio" name="s2" value="1500" data-lv="L1">1,500</label></td><td class="lv2"><label><input type="radio" name="s2" value="3000" data-lv="L2" checked>3,000</label></td><td><label><input type="radio" name="s2" value="5000" data-lv="L3">5,000</label></td></tr>
-          <tr data-row data-name="사진 촬영(제품·라이프스타일) + 콘텐츠 제작" data-key="촬영"><td>사진 촬영(제품·라이프스타일) + 콘텐츠 제작 <span class="t n">촬영·광고 소재</span></td><td><label><input type="radio" name="s3" value="0" data-lv="제외">–</label></td><td><label><input type="radio" name="s3" value="500" data-lv="L1">500</label></td><td class="lv2"><label><input type="radio" name="s3" value="1500" data-lv="L2" checked>1,500</label></td><td><label><input type="radio" name="s3" value="3000" data-lv="L3">3,000</label></td></tr>
-          <tr data-row data-name="인스타그램 콘텐츠 기획 & 운영" data-key="마케팅"><td>인스타그램 콘텐츠 기획 &amp; 운영 <span class="t n">무드보드·월 콘텐츠</span></td><td><label><input type="radio" name="s4" value="0" data-lv="제외">–</label></td><td><label><input type="radio" name="s4" value="1000" data-lv="L1">1,000</label></td><td class="lv2"><label><input type="radio" name="s4" value="2000" data-lv="L2" checked>2,000</label></td><td><label><input type="radio" name="s4" value="4000" data-lv="L3">4,000</label></td></tr>
-          <tr data-row data-name="브랜드 IMC 전략 파트너십 / 대행사 fee" data-key="IMC" data-monthly="1"><td>브랜드 IMC 전략 파트너십 / 대행사 fee <span class="t n">회의·대시보드·6개월</span></td><td><label><input type="radio" name="s5" value="0" data-lv="제외">–</label></td><td><label><input type="radio" name="s5" value="360" data-lv="L1">360<span>월 60·실무</span></label></td><td class="lv2"><label><input type="radio" name="s5" value="840" data-lv="L2" checked>840<span>월 140·표준</span></label></td><td><label><input type="radio" name="s5" value="1800" data-lv="L3">1,800<span>월 300·디렉터</span></label></td></tr>
-          <tr data-row data-name="자사몰(카페24) 세팅" data-key="자사몰"><td>자사몰(카페24) 세팅 <span class="t n">채널 세팅(판매)·옵션</span></td><td><label><input type="radio" name="s6" value="0" data-lv="제외" checked>–</label></td><td><label><input type="radio" name="s6" value="1200" data-lv="L1">1,200</label></td><td class="lv2"><label><input type="radio" name="s6" value="2000" data-lv="L2">2,000</label></td><td><label><input type="radio" name="s6" value="3000" data-lv="L3">3,000</label></td></tr>
-        </tbody>
-      </table>
-      <div class="sel-sum">
-        <span>연매출 <input id="selRev" type="number" value="135" min="0">억</span>
-        <span>6개월 envelope(×15%): <b id="selEnv">—</b></span>
-      </div>
-
-      <div class="qsum">
-        <div class="qsh"><span>📋 1차 견적서 (셀렉 결과 · 자동)</span><span class="qst">VAT 별도 · 상담 중 즉시</span></div>
-        <table>
-          <thead><tr><th>항목</th><th style="width:14%;text-align:center">레벨</th><th style="width:22%;text-align:right">금액(만원)</th></tr></thead>
-          <tbody id="qsumBody"></tbody>
-          <tfoot><tr><td>합계 <span style="font-weight:400;color:#94a3b8">(자사몰 제외 시 = NGT 정합)</span></td><td class="c" id="qsumLv">—</td><td class="num" id="qsumTotal">—</td></tr></tfoot>
-        </table>
-        <div class="qact">
-          <button class="btn solid" id="btnExcel" type="button">📊 엑셀로 내보내기</button>
-          <button class="btn" id="btnHtml" type="button">📄 HTML로 내보내기</button>
-          <button class="btn" id="btnReset" type="button">기본값(NGT L2) 복원</button>
+      <h3>견적 셀렉 <span class="t b">상담 중 선택 → 견적 자동</span></h3>
+      <div class="sel-component">
+        <div class="sel-split">
+          <div>
+            <div class="pane-k">투입 레벨 선택 — L1 프리랜서 / L2 내부 히즈 ★ / L3 외주·풀</div>
+            <div class="selmx" id="selmx">
+              <div class="hd">
+                <div>견적 항목 <span class="t n">단계</span></div>
+                <div>제외</div>
+                <div>L1<span class="ls">프리랜서</span></div>
+                <div class="star">L2 ★<span class="ls">내부 히즈</span></div>
+                <div>L3<span class="ls">외주·풀</span></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="pane-k">1차 견적서 · 실시간</div>
+            <div class="qpane">
+              <div class="qsh">
+                <div class="ttl">📋 1차 견적서 · 셀렉 결과</div>
+                <div class="big"><span class="won" id="bigWon">—</span><span class="eok" id="bigEok"></span></div>
+              </div>
+              <div class="env">
+                <div class="et"><span>연매출 <input id="rev" type="number" value="135" min="0">억 · envelope <b id="envAmt">—</b></span><span class="st" id="envSt">—</span></div>
+                <div class="bar" id="bar"><div class="fill" id="fill" style="width:0"></div></div>
+                <div class="cap" id="envCap"></div>
+              </div>
+              <div class="qlist" id="qlist"></div>
+              <div class="qfoot"><span>합계 · VAT 별도</span><span class="ft" id="qtot">—</span></div>
+              <div class="qact">
+                <button class="btn solid" id="btnSave" type="button">💾 저장</button>
+                <button class="btn" id="btnExcel" type="button">📊 엑셀</button>
+                <button class="btn" id="btnHtml" type="button">📄 HTML</button>
+                <button class="btn" id="btnReset" type="button">기본값 복원</button>
+              </div>
+              <div class="qhint"><span class="savest" id="saveSt">자동 저장 켜짐</span> · 손댄 금액엔 레벨칩이 <b style="color:var(--warn)">조정</b> 색으로 바뀐다. 단가 공유 원칙(브랜드 불문 동일).</div>
+            </div>
+          </div>
         </div>
-        <div class="qhint">화면 즉시 요약 = 상담 중 "바로 나오는" 1차 견적. 셀렉 결과를 두 경로로 내보낸다 — <b>수주 높음 → 📊 엑셀</b>(코 잡고 정식 견적) · <b>수주 낮음 → 📄 HTML</b>(가볍게 링크로 털기). 단가 공유 원칙(브랜드 불문 동일). <span class="t n">NGT 전 항목 L2(자사몰 제외) = 1.034억</span></div>
       </div>
       <div class="co warn"><span class="lab">패키징 원칙</span>자생 성장 10년 = 외부 컨설팅 첫 케이스 가능성 → <b>진단(블록 1)으로 입구</b>, 흡수력 확인 후 IMC 운영 확장이 안전. 글로벌 4개국 동시는 HIZ 운영 체계 범위 초과 → <b>우선 1~2개국 압축</b> 합의. 셀렉으로 항목 제외·난이도 조정해 총액을 envelope 안에 맞춘다.</div>
     </section>
@@ -519,55 +566,143 @@ sections.forEach(s=>obs.observe(s.el));
 // ===== 셀렉 매트릭스 → 인라인 1차 견적 + 구글시트 빌더용 셀렉 =====
 (function(){
   var mx=document.getElementById('selmx'); if(!mx) return;
-  var rev=document.getElementById('selRev'), env=document.getElementById('selEnv');
-  var body=document.getElementById('qsumBody'), tot=document.getElementById('qsumTotal'), lvc=document.getElementById('qsumLv');
-  function fmt(n){return n.toLocaleString();}
-  function calc(){
-    var rows=[].slice.call(mx.querySelectorAll('tr[data-row]')), sum=0, html='', sel=[], lvs={};
-    rows.forEach(function(tr){
-      var c=tr.querySelector('input:checked'); if(!c) return;
-      var v=parseInt(c.value,10)||0, lv=c.getAttribute('data-lv');
-      if(lv==='제외'||v===0) return;
-      sum+=v; lvs[lv]=(lvs[lv]||0)+1;
-      html+='<tr><td>'+tr.getAttribute('data-name')+'</td><td class="c"><span class="t b">'+lv+'</span></td><td class="num">'+fmt(v)+'</td></tr>';
-      var o={key:tr.getAttribute('data-key'), name:tr.getAttribute('data-name'), level:lv, amount:v};
-      if(tr.getAttribute('data-monthly')) o.months=6;
-      sel.push(o);
-    });
-    body.innerHTML = html || '<tr><td colspan="3" style="color:#94a3b8;text-align:center;padding:18px">선택된 항목 없음</td></tr>';
-    tot.innerHTML = fmt(sum)+'만 <b>('+(sum/10000).toFixed(3)+'억)</b>';
-    var keys=Object.keys(lvs); lvc.textContent = keys.length ? (keys.length===1 ? keys[0] : '혼합') : '—';
-    var r=parseFloat(rev.value)||0;
-    if(r<=0){ env.innerHTML='<span style="color:#d97706">매출 전 — 펀딩/마케팅 예산으로 판단</span>'; }
-    else { var half=Math.round(r*750); env.innerHTML=fmt(half)+'만 · '+(sum<=half?'<span style="color:#0e9f6e">✓ 안에 듦</span>':'<span style="color:#e11d48">⚠ 초과</span>'); }
-    mx._sel=sel;
-  }
-  mx.addEventListener('change',calc); rev.addEventListener('input',calc);
-  function totSum(){ var s=0; (mx._sel||[]).forEach(function(o){s+=o.amount||0;}); return s; }
+  var ITEMS=[
+    {key:'진단',name:'데이터 진단 + 시장 서베이',stage:'사업계획·포지셔닝',ex:0,L1:500,L2:1000,L3:2000,def:'L2'},
+    {key:'아이덴티티',name:'브랜드 아이덴티티 정립 + 제품체계 전략',stage:'포지셔닝·메시지',ex:0,L1:1000,L2:2000,L3:3500,def:'L2'},
+    {key:'디자인',name:'브랜드 로고 & 패키지 디자인 리뉴얼',stage:'로고·패키지·가이드',ex:0,L1:1500,L2:3000,L3:5000,def:'L2'},
+    {key:'촬영',name:'사진 촬영 + 콘텐츠 제작',stage:'촬영·광고 소재',ex:0,L1:500,L2:1500,L3:3000,def:'L2'},
+    {key:'마케팅',name:'인스타그램 콘텐츠 기획 & 운영',stage:'무드보드·월 콘텐츠',ex:0,L1:1000,L2:2000,L3:4000,def:'L2'},
+    {key:'IMC',name:'브랜드 IMC 전략 파트너십 / 대행사 fee',stage:'회의·대시보드·6개월',ex:0,L1:360,L2:840,L3:1800,monthly:1,def:'L2'},
+    {key:'자사몰',name:'자사몰(카페24) 세팅',stage:'채널 세팅·옵션',ex:0,L1:1200,L2:2000,L3:3000,def:'ex'}
+  ];
+  var LV=['ex','L1','L2','L3'], LVN={ex:'제외',L1:'L1',L2:'L2',L3:'L3'};
+  var sel={}, override={}, saveTimer=null;
+  var rev=document.getElementById('rev'), ql=document.getElementById('qlist'), qtot=document.getElementById('qtot');
+  var bigWon=document.getElementById('bigWon'), bigEok=document.getElementById('bigEok'), envAmt=document.getElementById('envAmt');
+  var envSt=document.getElementById('envSt'), envCap=document.getElementById('envCap'), bar=document.getElementById('bar'), fill=document.getElementById('fill');
+  var stEl=document.getElementById('saveSt');
+  ITEMS.forEach(function(it){ sel[it.key]=it.def; });
+  function fmt(n){return (parseFloat(n)||0).toLocaleString();}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
   function brandName(){ var h=document.querySelector('.hero h1'); return h?h.textContent.trim().replace(/\s+/g,' '):'BRAND'; }
+  function brandSlug(){return brandName().toLowerCase().replace(/[^\w가-힣]+/g,'-').replace(/^-+|-+$/g,'')||'brand';}
   function ymd(){ var d=new Date(), p=function(n){return(n<10?'0':'')+n;}; return ''+d.getFullYear()+p(d.getMonth()+1)+p(d.getDate()); }
   function ymdDash(){ return ymd().replace(/(\d{4})(\d{2})(\d{2})/,'$1-$2-$3'); }
   function won(manwon){ return (manwon*10000).toLocaleString()+'원'; }
   function dlBlob(content,mime,fname){ var b=new Blob([content],{type:mime}), u=URL.createObjectURL(b), a=document.createElement('a'); a.href=u; a.download=fname; document.body.appendChild(a); a.click(); setTimeout(function(){URL.revokeObjectURL(u); a.remove();},800); }
   function ensureLib(src,glob,cb){ if(window[glob]){cb(true);return;} var s=document.createElement('script'); s.src=src; s.onload=function(){cb(!!window[glob]);}; s.onerror=function(){cb(false);}; document.head.appendChild(s); }
-  // 전체 셀렉 매트릭스(전 항목 × L1/L2/L3 + 선택) — 실제 견적 SELECTION RESULT와 동일 구조로 내보내기 위함
-  function matrix(){
-    return [].map.call(mx.querySelectorAll('tr[data-row]'),function(tr){
-      var amts={}; [].forEach.call(tr.querySelectorAll('input[type=radio]'),function(r){ amts[r.getAttribute('data-lv')]=parseInt(r.value,10)||0; });
-      var c=tr.querySelector('input:checked');
-      return { key:tr.getAttribute('data-key'), name:tr.getAttribute('data-name'), monthly:!!tr.getAttribute('data-monthly'),
-        L1:amts['L1']||0, L2:amts['L2']||0, L3:amts['L3']||0,
-        sel:c?c.getAttribute('data-lv'):'제외', selAmt:(c&&c.getAttribute('data-lv')!=='제외')?(parseInt(c.value,10)||0):0 };
+  var SKEY='brandrise:selmx:'+(location.pathname||brandSlug());
+  function lvAmt(it,lv){ return lv==='ex'?0:it[lv]; }
+  function hasOverride(k){ return Object.prototype.hasOwnProperty.call(override,k); }
+  function effAmt(it){ return hasOverride(it.key)?override[it.key]:lvAmt(it,sel[it.key]); }
+  function cleanAmt(v){ var n=parseInt(v,10); return isNaN(n)?0:Math.max(0,n); }
+  function pad(n){return(n<10?'0':'')+n;}
+  function hhmm(ts){var d=new Date(ts);return pad(d.getHours())+':'+pad(d.getMinutes());}
+  function setStatus(txt,ok){ if(!stEl) return; stEl.textContent=txt; stEl.className='savest'+(ok?' ok':''); }
+  function writeSave(ts){
+    try{ localStorage.setItem(SKEY,JSON.stringify({sel:sel,override:override,rev:rev?rev.value:'',ts:ts})); }catch(e){}
+  }
+  function save(silent){
+    if(saveTimer){ clearTimeout(saveTimer); saveTimer=null; }
+    if(silent){
+      saveTimer=setTimeout(function(){ var ts=Date.now(); writeSave(ts); setStatus('자동 저장됨 '+hhmm(ts),false); },300);
+    }else{ var ts=Date.now(); writeSave(ts); setStatus('저장됨 ✓ '+hhmm(ts),true); }
+  }
+  function load(){
+    try{
+      var s=JSON.parse(localStorage.getItem(SKEY)||'null'); if(!s) return null;
+      if(s.sel) ITEMS.forEach(function(it){ if(s.sel[it.key]&&LV.indexOf(s.sel[it.key])>-1) sel[it.key]=s.sel[it.key]; });
+      if(s.override){
+        override={};
+        ITEMS.forEach(function(it){ if(s.override[it.key]!=null) override[it.key]=cleanAmt(s.override[it.key]); });
+      }
+      if(rev&&s.rev!=null) rev.value=s.rev;
+      return s.ts||0;
+    }catch(e){ return null; }
+  }
+  function buildMatrix(){
+    ITEMS.forEach(function(it){
+      var rw=document.createElement('div'); rw.className='rw'; rw.setAttribute('data-key',it.key);
+      var h='<div class="nm"><b>'+esc(it.name)+'</b><span class="t n">'+esc(it.stage)+'</span></div>';
+      LV.forEach(function(lv){
+        var amt=lvAmt(it,lv);
+        var label=lv==='ex'?'–':(it.monthly?('월 '+Math.round(amt/6)):fmt(amt));
+        var sub=lv==='ex'?'제외':(it.monthly?(fmt(amt)+'·6개월'):'');
+        h+='<div class="opt'+(lv==='ex'?' ex':'')+'" data-lv="'+lv+'" role="button" tabindex="0" aria-pressed="false"><span class="amt">'+label+'</span>'+(sub?'<span class="sub">'+sub+'</span>':'')+'</div>';
+      });
+      rw.innerHTML=h; mx.appendChild(rw);
+      [].forEach.call(rw.querySelectorAll('.opt'),function(o){
+        function choose(){ sel[it.key]=o.getAttribute('data-lv'); delete override[it.key]; render(false); }
+        o.addEventListener('click',choose);
+        o.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); choose(); } });
+      });
     });
   }
-  function selTotal(){ return matrix().reduce(function(s,o){return s+o.selAmt;},0); }
+  function matrix(){
+    return ITEMS.map(function(it){
+      var base=sel[it.key]||it.def, edited=hasOverride(it.key), amt=effAmt(it);
+      return {key:it.key,name:it.name,monthly:!!it.monthly,L1:it.L1,L2:it.L2,L3:it.L3,
+        sel:edited?'조정':(base==='ex'?'제외':base), baseSel:base, selAmt:(base!=='ex'||edited)?amt:0, override:edited};
+    });
+  }
+  function selTotal(){ return matrix().reduce(function(s,o){return s+(o.selAmt||0);},0); }
   function lvCell(monthly,amt){ return monthly?('월 '+Math.round(amt/6)):fmt(amt); }
+  function render(skipSave){
+    [].forEach.call(mx.querySelectorAll('.rw'),function(rw){
+      var k=rw.getAttribute('data-key');
+      [].forEach.call(rw.querySelectorAll('.opt'),function(o){
+        var on=o.getAttribute('data-lv')===sel[k];
+        o.classList.toggle('on',on); o.setAttribute('aria-pressed',on?'true':'false');
+      });
+    });
+    var html='';
+    ITEMS.forEach(function(it){
+      if(sel[it.key]==='ex'&&!hasOverride(it.key)) return;
+      var amt=effAmt(it), ed=hasOverride(it.key), lvtxt=ed?'조정':LVN[sel[it.key]];
+      html+='<div class="qrow'+(ed?' edited':'')+'" data-key="'+it.key+'">'+
+        '<span class="qn"><span class="lvb">'+lvtxt+'</span>'+esc(it.name)+(it.monthly?' (월 '+Math.round(amt/6)+')':'')+'</span>'+
+        '<input class="amtin" type="number" min="0" step="10" value="'+amt+'" data-key="'+it.key+'"><span class="unit">만</span></div>';
+    });
+    ql.innerHTML=html||'<div style="text-align:center;color:var(--muted);padding:22px;font-size:13px">선택된 항목 없음</div>';
+    [].forEach.call(ql.querySelectorAll('.amtin'),function(inp){
+      inp.addEventListener('input',function(){
+        var k=inp.getAttribute('data-key'), row=inp.parentNode, chip=row.querySelector('.lvb');
+        override[k]=cleanAmt(inp.value);
+        row.classList.add('edited'); if(chip) chip.textContent='조정';
+        totals(); save(true);
+      });
+      inp.addEventListener('change',function(){ override[inp.getAttribute('data-key')]=cleanAmt(inp.value); render(false); });
+    });
+    totals();
+    if(!skipSave) save(true);
+  }
+  function totals(){
+    var sum=selTotal();
+    qtot.textContent=fmt(sum)+'만';
+    bigWon.textContent=(sum*10000).toLocaleString()+'원';
+    bigEok.textContent='('+(sum/10000).toFixed(3)+'억)';
+    var rv=parseFloat(rev.value)||0, half=Math.round(rv*750);
+    envAmt.textContent=half?fmt(half)+'만':'—';
+    if(half<=0){
+      fill.style.width='0'; bar.classList.remove('over'); envSt.textContent=''; envSt.className='st';
+      envCap.innerHTML='매출 전 — 예산으로 판단'; return;
+    }
+    var pct=Math.min(100,Math.round(sum/half*100)), over=sum>half;
+    fill.style.width=pct+'%'; bar.classList.toggle('over',over);
+    envSt.className='st '+(over?'over':'ok'); envSt.textContent=over?'⚠ 초과':'✓ 안에 듦';
+    envCap.innerHTML='선택 <b>'+(sum/10000).toFixed(3)+'억</b> / envelope <b>'+(half/10000).toFixed(2)+'억</b> 대비 '+pct+'%'+(over?' — 항목·난이도 조정':'');
+  }
+  if(rev) rev.addEventListener('input',function(){ totals(); save(true); });
+  var bS=document.getElementById('btnSave');
+  if(bS) bS.addEventListener('click',function(){ save(false); });
+  window.addEventListener('beforeunload',function(){ if(saveTimer){ clearTimeout(saveTimer); writeSave(Date.now()); } });
+  // 전체 셀렉 매트릭스(전 항목 × L1/L2/L3 + 선택) — 실제 견적 SELECTION RESULT와 동일 구조로 내보내기 위함
   function envNote(tot){ var rv=parseFloat(rev.value)||0; if(rv<=0) return ''; var half=Math.round(rv*750);
     return '<div class="co ac"><span class="lab">예산 ENVELOPE · 매출 기반 가늠자</span>연 마케팅비 ≈ <b>매출 × 15%</b> → 6개월치(매출억 × 750만)로 수주 규모를 가늠합니다. <b>매출 '+rv+'억 → 6개월 envelope ≈ '+fmt(half)+'만</b> · 선택 합계 '+fmt(tot)+'만 = '+(tot<=half?'<b>envelope 안에 합리적으로 듦.</b>':'<b>envelope 초과 — 항목·난이도 협의 조정.</b>')+'</div>'; }
 
   // 견적 블록 표준 콘텐츠(클라이언트 고유사실 없는 범용 텍스트 — 재사용 안전). data-key로 매칭.
   var QORDER=['IMC','진단','아이덴티티','디자인','촬영','마케팅','자사몰'];
-  var LVLABEL={L1:'경량(프리랜서)',L2:'표준(내부)',L3:'풀(외주·고사양)'};
+  var LVLABEL={L1:'경량(프리랜서)',L2:'표준(내부)',L3:'풀(외주·고사양)','조정':'조정 견적'};
   var QC={
     'IMC':{title:'브랜드 IMC 전략 파트너십 / 대행사 fee', period:'6개월 상시', plan:'● 운영 체계\n감(感) 운영 → 데이터 기반 월간 의사결정\n· 목표: 매출·광고 월간 리뷰 루틴 + 대시보드',
       lines:[['월간 IMC 회의','매출·광고 데이터 분석 및 월 단위 마케팅 기획 리뷰 (정기 미팅 + 상시 슬랙 컨설팅)'],['AI 관리 대시보드','매출·광고 데이터 종합 분석 툴 제공 (웹 대시보드)'],['플랜 시트 납품','연간(월간) 플랜 시트 및 관리 데이터 최초 세팅']],
@@ -677,9 +812,9 @@ sections.forEach(s=>obs.observe(s.el));
     var m=matrix(), tot=selTotal(); if(!tot){ alert('선택된 항목이 없습니다.'); return; }
     var brand=brandName();
     var rows=m.map(function(o){
-      function cell(lv,amt){ return '<td'+(o.sel===lv?' class="hit"':'')+'>'+lvCell(o.monthly,amt)+'</td>'; }
-      var chip=o.sel==='제외'?'<span class="t n">제외</span>':'<span class="t b">'+o.sel+'</span>';
-      return '<tr><td class="nm">'+o.name+(o.monthly?' <span class="t n">월·6개월</span>':'')+'</td>'+cell('L1',o.L1)+cell('L2',o.L2)+cell('L3',o.L3)+'<td class="c">'+chip+'</td></tr>';
+      function cell(lv,amt){ return '<td'+(!o.override&&o.baseSel===lv?' class="hit"':'')+'>'+lvCell(o.monthly,amt)+'</td>'; }
+      var chip=o.override?'<span class="t b">조정 '+fmt(o.selAmt)+'만</span>':(o.sel==='제외'?'<span class="t n">제외</span>':'<span class="t b">'+o.sel+'</span>');
+      return '<tr><td class="nm">'+esc(o.name)+(o.monthly?' <span class="t n">월·6개월</span>':'')+'</td>'+cell('L1',o.L1)+cell('L2',o.L2)+cell('L3',o.L3)+'<td class="c">'+chip+'</td></tr>';
     }).join('');
     var css=':root{--ink:#0f172a;--ink2:#334155;--muted:#64748b;--line:#e7e9ee;--line2:#eef1f5;--bg:#fbfcfd;--card:#fff;--soft:#f6f8fb;--ac:#4f46e5;--ac-50:#eef2ff;--ac-100:#e0e7ff;--ac-700:#3730a3}'
       +'*{margin:0;padding:0;box-sizing:border-box}body{font-family:Pretendard,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:14px;word-break:keep-all}'
@@ -714,11 +849,15 @@ sections.forEach(s=>obs.observe(s.el));
   });
   var bR=document.getElementById('btnReset');
   if(bR) bR.addEventListener('click',function(){
-    var def={s0:'1000',s1:'2000',s2:'3000',s3:'1500',s4:'2000',s5:'840',s6:'0'};
-    Object.keys(def).forEach(function(n){ var el=mx.querySelector('input[name="'+n+'"][value="'+def[n]+'"]'); if(el) el.checked=true; });
-    rev.value='135'; calc();
+    ITEMS.forEach(function(it){ sel[it.key]=it.def; });
+    override={};
+    rev.value='135';
+    render(false);
   });
-  calc();
+  buildMatrix();
+  var restoredTs=load();
+  render(true);
+  if(restoredTs){ setStatus('이전 작업 복원됨 · 마지막 저장 '+hhmm(restoredTs),false); }
 })();
 </script>
 </body>
