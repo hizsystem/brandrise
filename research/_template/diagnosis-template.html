@@ -154,11 +154,11 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
 .shot .scap b{color:var(--ink2)}
 
 /* ★ v2-③ 디자인·가독성 격상 (인디고 토큰 내) */
-section{margin-bottom:64px;counter-increment:sec;border-top:2px solid var(--ink);padding-top:34px}  /* 섹션 호흡 ↑ + 에디토리얼 챕터 구분 */
+section{margin-bottom:64px;counter-increment:sec;border-top:2px solid var(--ink);padding:34px 0 0 108px;position:relative}  /* 섹션 호흡 ↑ + 에디토리얼 챕터(좌측 마진 번호) */
 section:first-of-type{border-top:none;padding-top:0}
 .sec-k{display:inline-block;background:var(--ac-50);border:1px solid var(--ac-100);border-radius:7px;padding:4px 10px}  /* sec-k 칩화 */
-.sec-k{position:relative}
-.sec-k::before{content:counter(sec,decimal-leading-zero);position:absolute;left:0;bottom:calc(100% + 8px);font-size:56px;font-weight:800;color:var(--ac);letter-spacing:-.04em;line-height:.9}
+.sec-k::before{content:counter(sec,decimal-leading-zero);position:absolute;left:0;top:30px;font-size:62px;font-weight:800;color:var(--ac);letter-spacing:-.04em;line-height:.9;font-variant-numeric:tabular-nums}  /* 좌측 여백 마진 번호 */
+.wrap>section:first-of-type .sec-k::before{top:0}
 h2{line-height:1.28}
 h3{letter-spacing:-.01em}
 table{margin:10px 0 6px}
@@ -171,6 +171,8 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 
 @media(max-width:880px){
   .minitoc{padding:14px 22px 0;line-height:2}
+  section{padding-left:0!important}
+  .sec-k::before{position:static;display:block;margin-bottom:4px;top:auto}
   .shots{grid-template-columns:1fr}.wrap{padding:28px 22px 80px}.hero .in{padding:0 22px}.hero h1{font-size:28px}.chs,.moat,.grid2,.grid3{grid-template-columns:1fr}.steps{flex-direction:column}.st:not(:last-child)::after{content:"";display:none}
   .layer{grid-template-columns:110px 1fr}
   .layer .lp{border-right:none}

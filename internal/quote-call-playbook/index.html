@@ -52,10 +52,10 @@ body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);colo
 .minitoc a{color:var(--muted);text-decoration:none;font-weight:600}
 .minitoc a:hover{color:var(--ac)}
 .wrap{max-width:980px;margin:0 auto;padding:30px 40px 100px;counter-reset:sec}
-section{counter-increment:sec;border-top:2px solid var(--ink);padding-top:34px;position:relative;margin-bottom:90px;scroll-margin-top:18px}
+section{counter-increment:sec;border-top:2px solid var(--ink);padding:34px 0 0 108px;position:relative;margin-bottom:90px;scroll-margin-top:18px}
 .wrap>section:first-child{border-top:none;padding-top:0}
-section::before{content:counter(sec,decimal-leading-zero);display:block;font-size:56px;font-weight:800;color:var(--ac);letter-spacing:-.04em;line-height:.9;margin-bottom:6px;font-variant-numeric:tabular-nums}
-.wrap>section:first-child::before{margin-top:0}
+section::before{content:counter(sec,decimal-leading-zero);position:absolute;left:0;top:30px;font-size:62px;font-weight:800;color:var(--ac);letter-spacing:-.04em;line-height:.9;font-variant-numeric:tabular-nums}  /* 좌측 여백 마진 번호 */
+.wrap>section:first-child::before{top:0}
 .sec-k{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:6px;padding:4px 10px;margin-bottom:12px}
 h2{font-size:34px;font-weight:800;letter-spacing:-.025em;margin-bottom:7px;line-height:1.14}
 .lead{font-size:18px;color:var(--muted);margin-bottom:22px;max-width:780px}
@@ -106,6 +106,8 @@ tbody tr:nth-child(even) td{background:var(--soft)}
 footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:980px;margin:0 auto}
 @media(max-width:880px){
   .wrap,.hero .in,.minitoc,.mnav .in{padding-left:22px;padding-right:22px}
+  section{padding-left:0!important}
+  section::before{position:static;display:block;margin-bottom:4px;top:auto}
   .step{grid-template-columns:1fr} .step .sk{border-right:none;border-bottom:1px solid var(--line2)}
 }
 @media print{
