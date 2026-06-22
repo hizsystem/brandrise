@@ -32,10 +32,11 @@ body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);colo
 .mnav a.home{color:#a5b4fc;font-weight:800;letter-spacing:.03em}
 .mnav a.on{color:#fff;background:rgba(165,180,252,.16)}
 .mnav .sep{color:#334155;margin:0 2px}
-.hero{background:var(--ink);color:#fff;padding:50px 0 40px}
-.hero .in{max-width:1480px;margin:0 auto;padding:0 44px}
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 42%,#4338ca 100%);color:#fff;padding:50px 0 40px;position:relative;overflow:hidden}
+.hero::after{content:"PROCESS";position:absolute;right:-2%;bottom:-18%;font-size:clamp(140px,20vw,320px);font-weight:800;color:#fff;opacity:.05;line-height:.8;letter-spacing:-.04em;pointer-events:none}
+.hero .in{max-width:1480px;margin:0 auto;padding:0 44px;position:relative;z-index:1}
 .hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:18px}
-.hero h1{font-size:clamp(27px,4.4vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:11px}
+.hero h1{font-size:clamp(38px,4.8vw,56px);font-weight:800;letter-spacing:-.03em;line-height:1.08;margin-bottom:11px}
 .hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 3px;border-radius:2px}
 .hero .sub{font-size:15.5px;color:#cbd5e1;font-weight:300;max-width:780px;line-height:1.7}
 .hero .meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
