@@ -30,7 +30,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
-  line-height:1.72;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+  line-height:1.72;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:15px}
 .hero{background:var(--ink);color:#fff;padding:64px 0 52px}
 .hero .in{max-width:1180px;margin:0 auto;padding:0 40px}
 .hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
@@ -39,6 +39,13 @@ body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);colo
 .hero .meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
 .hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
 .hero .chip b{color:#a5b4fc}
+.hero .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.hero .lnk{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;text-decoration:none;padding:8px 15px;border-radius:9px;transition:.15s}
+.hero .lnk svg{width:14px;height:14px}
+.hero .lnk.store{background:#fff;color:var(--ink)}
+.hero .lnk.store:hover{background:#e2e8f0}
+.hero .lnk.sns{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.hero .lnk.sns:hover{background:rgba(255,255,255,.14)}
 .layout{max-width:1180px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:208px 1fr;gap:48px;align-items:start}
 nav.toc{position:sticky;top:28px;padding:36px 0;font-size:13.5px}
 nav.toc .nl{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--muted);margin:0 0 14px 12px}
@@ -49,12 +56,12 @@ main{padding:36px 0 100px;min-width:0}
 section{margin-bottom:54px;scroll-margin-top:24px}
 .sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
 h2{font-size:25px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
-.lead{font-size:14.5px;color:var(--muted);margin-bottom:22px;line-height:1.7}
+.lead{font-size:15.5px;color:var(--muted);margin-bottom:22px;line-height:1.7}
 h3{font-size:15px;font-weight:800;margin:26px 0 12px;color:var(--ink2);letter-spacing:-.01em}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.co{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:13.5px;line-height:1.75;border:1px solid var(--line)}
+.co{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:14.5px;line-height:1.75;border:1px solid var(--line)}
 .co.ac{background:var(--ac-50);border-color:var(--ac-100)} .co.ok{background:var(--ok-50);border-color:#bbf7d0}
 .co.warn{background:var(--warn-50);border-color:#fde68a} .co.bad{background:var(--bad-50);border-color:#fecdd3}
 .co b{color:var(--ink)}
@@ -71,20 +78,30 @@ h3{font-size:15px;font-weight:800;margin:26px 0 12px;color:var(--ink2);letter-sp
 .kpi .v{font-size:25px;font-weight:800;letter-spacing:-.02em}
 .kpi .s{font-size:11px;color:#cbd5e1;margin-top:3px;line-height:1.5}
 .kpi .k.alt .s{color:#fecdd3}
-.op{background:linear-gradient(160deg,var(--ac-50),#fff 65%);border:1px solid var(--ac-100);border-radius:16px;padding:26px 28px}
-.op .opk{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--ac);margin-bottom:14px}
-.op .blk{margin-bottom:16px} .op .blk:last-child{margin-bottom:0}
-.op .bl{font-size:11px;font-weight:800;color:var(--ac-700);letter-spacing:.06em;margin-bottom:5px}
-.op .bt{font-size:14.5px;line-height:1.7;color:var(--ink2)}
-.op .do{font-size:13.5px;line-height:1.7;color:var(--ink2);padding:3px 0} .op .do b{color:var(--ink)}
-table{width:100%;border-collapse:collapse;font-size:12.5px;margin:6px 0 4px}
-th{background:var(--soft);color:var(--ink2);font-weight:700;text-align:left;padding:9px 11px;font-size:11.5px;border-bottom:1px solid var(--line)}
+.op{background:var(--ink);color:#fff;border-radius:16px;padding:30px}
+.op .opk{font-size:11px;font-weight:800;letter-spacing:.14em;color:#a5b4fc;margin-bottom:18px}
+.op .blk{margin-bottom:22px} .op .blk:last-child{margin-bottom:0}
+.op .bl{font-size:11px;font-weight:800;color:#a5b4fc;letter-spacing:.08em;margin-bottom:9px}
+/* 진짜 니즈: 큰 결론 한 줄 + 흐린 근거 2단 */
+.op .need{font-size:17px;font-weight:700;line-height:1.62}
+.op .need b{color:#c7d2fe}
+.op .need .ev{display:block;margin-top:11px;font-size:13.5px;font-weight:500;color:#cbd5e1;line-height:1.72}
+.op .need .ev b{color:#e2e8f0}
+/* 해주는 것: ①②③ 분리 박스 */
+.op .do{display:grid;gap:9px}
+.op .do .item{background:rgba(255,255,255,.06);border-left:3px solid var(--ac);padding:12px 15px;border-radius:0 8px 8px 0;font-size:13.5px;line-height:1.62;color:#e2e8f0}
+.op .do .item b{color:#c7d2fe}
+/* 첫 제안: 강조 박스 */
+.op .offer{background:rgba(79,70,229,.24);border:1px solid var(--ac);border-radius:10px;padding:15px 18px;font-size:13.5px;line-height:1.7;color:#e9ecf5}
+.op .offer b{color:#c7d2fe}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0 4px}
+th{background:var(--soft);color:var(--ink2);font-weight:700;text-align:left;padding:9px 11px;font-size:12.5px;border-bottom:1px solid var(--line)}
 td{padding:9px 11px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
 td b,td strong{color:var(--ink)}
 .q{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac);border-radius:10px;padding:16px 18px;margin-bottom:10px}
 .q .qn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.05em;margin-bottom:5px}
-.q .qt{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.65}
-.q .qi{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.6}
+.q .qt{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.65}
+.q .qi{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.6}
 .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0}
 .tier{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px;position:relative}
 .tier.rec{border:2px solid var(--ac);box-shadow:0 8px 24px -12px rgba(79,70,229,.4)}
@@ -94,7 +111,7 @@ td b,td strong{color:var(--ink)}
 .tier .tp{font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
 .tier .td{font-size:11.5px;color:var(--muted);margin-bottom:12px}
 .tier ul{list-style:none}
-.tier li{font-size:12px;color:var(--ink2);padding:4px 0 4px 15px;position:relative;line-height:1.55}
+.tier li{font-size:13px;color:var(--ink2);padding:4px 0 4px 15px;position:relative;line-height:1.55}
 .tier li::before{content:"›";position:absolute;left:0;color:var(--ac);font-weight:800}
 .tl{border-left:2px solid var(--line);padding-left:20px;margin:10px 0}
 .tl .ph{position:relative;padding:10px 0}
@@ -108,7 +125,7 @@ td b,td strong{color:var(--ink)}
 .sw.w{background:var(--bad-50)} .sw.w h4{color:var(--bad)}
 .sw.o{background:var(--ac-50)} .sw.o h4{color:var(--ac)}
 .sw.tt{background:var(--warn-50)} .sw.tt h4{color:var(--warn)}
-.sw li{font-size:12px;color:var(--ink2);margin-left:15px;padding:2px 0;line-height:1.5}
+.sw li{font-size:13px;color:var(--ink2);margin-left:15px;padding:2px 0;line-height:1.5}
 .verdict{background:var(--ink);color:#fff;border-radius:14px;padding:24px;text-align:center;margin:14px 0}
 .verdict .vl{font-size:12px;color:#94a3b8;font-weight:600}
 .verdict .vv{font-size:34px;font-weight:800;letter-spacing:-.02em;margin:6px 0;color:#a5b4fc}
@@ -132,8 +149,8 @@ footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
 .fcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
 .fcard .fk{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
-.fcard .fv{font-size:15px;font-weight:800;color:var(--ink)}
-.fcard .fs{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.55;font-weight:500}
+.fcard .fv{font-size:16px;font-weight:800;color:var(--ink)}
+.fcard .fs{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.55;font-weight:500}
 
 /* 4) ★ 리서치 캡처 그리드 — 광고 대시보드·경쟁사·SNS 현황 (상담 전 직접 리서치 캡처 자리) */
 .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:16px 0 6px}
@@ -161,7 +178,38 @@ th{background:var(--ac-50);color:var(--ac-700);padding:11px 13px}
 td{padding:11px 13px}
 tbody tr:nth-child(even) td, table tr:nth-child(even) td{background:var(--soft)}
 
-@media(max-width:880px){.shots{grid-template-columns:1fr}}
+/* ===== 플로우 재구성 컴포넌트 (인디고 클린) ===== */
+/* Executive Summary 2-up 헤더 */
+.shdr{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:4px 0 16px}
+.shdr .sh{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.shdr .sh .shl{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:6px}
+.shdr .sh .sht{font-size:15px;font-weight:800;color:var(--ink)}
+.shdr .sh .shs{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.55}
+/* 핵심 진단 한 줄(다크) */
+.oneline{background:var(--ink);color:#fff;border-radius:12px;padding:18px 22px;margin:14px 0}
+.oneline .oll{font-size:11px;font-weight:800;letter-spacing:.1em;color:#a5b4fc;margin-bottom:8px}
+.oneline .olt{font-size:15.5px;font-weight:700;line-height:1.6}
+.oneline .olt b{color:#c7d2fe}
+/* 60분 타임라인 */
+.tlp{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.tlp:last-child{border-bottom:none}
+.tlp .tpt{font-size:12px;font-weight:800;color:var(--ac);text-align:center;padding-top:3px;line-height:1.45}
+.tlp .tpc h4{font-size:14px;font-weight:800;margin-bottom:4px}
+.tlp .tpc p{font-size:13px;color:var(--muted);line-height:1.6}
+.tlp .tpc .say{font-size:12.5px;color:var(--ink2);background:var(--ac-50);border:1px solid var(--ac-100);padding:7px 11px;border-radius:7px;margin-top:7px;line-height:1.55}
+/* Challenger Teaching 3 */
+.teach{display:grid;gap:9px;margin:12px 0 4px}
+.teach .ti{background:var(--soft);border:1px solid var(--line);border-left:3px solid var(--ac);padding:13px 16px;border-radius:0 10px 10px 0;font-size:13.5px;line-height:1.62;color:var(--ink2)}
+.teach .ti b{color:var(--ink)}
+/* 클로징 STEP 플로우 */
+.fsteps{display:flex;gap:8px;margin:14px 0 4px}
+.fstep{flex:1;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:13px 12px;position:relative}
+.fstep:not(:last-child)::after{content:"›";position:absolute;right:-8px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--ac);font-weight:800;z-index:1}
+.fstep .fsn{font-size:10.5px;font-weight:800;color:var(--ac);margin-bottom:5px;letter-spacing:.05em}
+.fstep .fst{font-size:12.5px;font-weight:800;color:var(--ink);margin-bottom:3px}
+.fstep .fsd{font-size:11.5px;color:var(--muted);line-height:1.5}
+
+@media(max-width:880px){.shots{grid-template-columns:1fr}.shdr{grid-template-columns:1fr}.tlp{grid-template-columns:1fr}.fsteps{flex-direction:column}.fstep:not(:last-child)::after{display:none}}
 @media print{
   .evi,.fcard,.card,.shot{break-inside:avoid}
 }
@@ -179,19 +227,31 @@ tbody tr:nth-child(even) td, table tr:nth-child(even) td{background:var(--soft)}
     <span class="chip">미팅 <b>6/10(수) 14:00 대면(마포)</b></span>
     <span class="chip">상담 전 PREP · 인테이크+리서치 기반</span>
   </div>
+  <div class="links">
+    <a class="lnk store" href="https://naturalgoodthings.com/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 01-8 0"></path></svg>
+      자사몰 바로가기
+    </a>
+    <a class="lnk sns" href="https://www.instagram.com/official.ngt/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      @official.ngt
+    </a>
+  </div>
 </div></div>
 
 <div class="layout">
   <nav class="toc">
     <div class="nl">PREP 목차</div>
     <a href="#onepager">수주 한 장</a>
+    <a href="#exec">한눈에</a>
     <a href="#diagnosis">핵심 진단</a>
     <a href="#company">기업 · 정량</a>
     <a href="#product">제품 · 채널</a>
     <a href="#market">경쟁 · 시장</a>
     <a href="#needs">SWOT · 니즈</a>
     <a href="#deal">기회 · 견적</a>
-    <a href="#consult">상담 준비</a>
+    <a href="#consult">상담 진행</a>
+    <a href="#closing">클로징</a>
     <a href="#sources">참고 출처</a>
   </nav>
 
@@ -201,38 +261,54 @@ tbody tr:nth-child(even) td, table tr:nth-child(even) td{background:var(--soft)}
       <h2>수주 한 장</h2>
       <p class="lead">미팅(6/10) 직전 이 카드 하나면 된다. 아래는 인테이크·리서치 기반 가설 백업.</p>
       <div class="op">
-        <div class="opk">🎯 수주 한 장</div>
+        <div class="opk">수주 한 장</div>
         <div class="blk">
           <div class="bl">그래서 진짜 니즈는 (가설)</div>
-          <div class="bt">대표가 말한 "<b>온라인에서 NGT만의 팬덤·뾰족한 축</b>"은 — 인플루언서·공동구매로 쌓은 인지도를 <b>자사몰 브랜드 자산</b>으로 전환하는 것. 7개 라인 30+ SKU·7개국으로 벌어진 메시지를 하나의 축으로 좁히고, 자사몰의 <b>브랜딩·콘텐츠·광고·CRM을 유기적으로 연결</b>해야 50억(하반기) 성장이 자생적으로 돈다.</div>
+          <div class="need">대표가 말한 "<b>온라인에서 NGT만의 팬덤·뾰족한 축</b>"은 — 인플루언서·공동구매로 쌓은 인지도를 <b>자사몰 브랜드 자산</b>으로 전환하는 것.
+            <span class="ev">7개 라인·30+ SKU·7개국으로 벌어진 메시지를 하나의 축으로 좁히고, 자사몰의 브랜딩·콘텐츠·광고·CRM을 유기적으로 연결해야 하반기 50억이 자생적으로 돈다.</span>
+          </div>
         </div>
         <div class="blk">
           <div class="bl">그래서 우리가 해주는 것</div>
-          <div class="do"><b>① 브랜드 축 뾰족화</b> — "자사 발효공장·K-낙산균(국내 유일)·여성 생애주기"를 "데이터로 증명하는 이너케어"라는 한 줄 축으로. 마스터 브랜드 아키텍처 정리</div>
-          <div class="do"><b>② 자사몰 팬덤·CRM 시스템</b> — 인플루언서 인지도 → 자사몰 재구매·멤버십·구독 전환 구조 (효소 1위 충성고객 자산화)</div>
-          <div class="do"><b>③ 콘텐츠·광고·CRM 통합 IMC</b> — 조구만 IP의 '일회성'을 자산화 구조로. 본 계정 콘텐츠 정상화 + 퍼포먼스 연결</div>
+          <div class="do">
+            <div class="item"><b>① 브랜드 축 뾰족화</b> — "자사 발효공장·K-낙산균(국내 유일)·여성 생애주기"를 "데이터로 증명하는 이너케어"라는 한 줄 축으로. 마스터 브랜드 아키텍처 정리</div>
+            <div class="item"><b>② 자사몰 팬덤·CRM 시스템</b> — 인플루언서 인지도 → 자사몰 재구매·멤버십·구독 전환 구조 (효소 1위 충성고객 자산화)</div>
+            <div class="item"><b>③ 콘텐츠·광고·CRM 통합 IMC</b> — 조구만 IP의 '일회성'을 자산화 구조로. 본 계정 콘텐츠 정상화 + 퍼포먼스 연결</div>
+          </div>
         </div>
         <div class="blk">
           <div class="bl">첫 제안 & 다음 액션</div>
-          <div class="bt"><b>T1 진단(1,500~2,000만 / 4주)</b>으로 채널·LTV·브랜드 아키텍처 진단 → <b>T2/T3 빌드</b> 승급. 자생 성장 10년 = 외부 컨설팅 첫 케이스 가능성 → 단계적 흡수가 안전. 미팅서 채널별 매출 비중·재구매율·예산 청취가 1순위.</div>
+          <div class="offer"><b>T1 진단(1,500~2,000만 / 4주)</b>으로 채널·LTV·브랜드 아키텍처 진단 → <b>T2/T3 빌드</b> 승급. 자생 성장 10년 = 외부 컨설팅 첫 케이스 가능성 → 단계적 흡수가 안전. 미팅서 채널별 매출 비중·재구매율·예산 청취가 1순위.</div>
         </div>
       </div>
     </section>
 
-    <section id="diagnosis">
-      <div class="sec-k">DIAGNOSIS (가설)</div>
-      <h2>핵심 진단</h2>
-      <p class="lead">제품·인증·글로벌은 이미 최상위. 비어 있는 건 "인플루언서 인지도 → 자사몰 자생 엔진" 전환과 "한 줄 브랜드 축". <span class="t n">상담 전 가설</span></p>
+    <section id="exec">
+      <div class="sec-k">EXECUTIVE SUMMARY</div>
+      <h2>한눈에</h2>
+      <p class="lead">회사·대표·핵심 수치·판정을 한 화면에. 상세 근거는 아래 섹션.</p>
+      <div class="shdr">
+        <div class="sh"><div class="shl">회사</div><div class="sht">(주)네츄럴굿띵스 (NGT)</div><div class="shs">자사 발효 원료공장 보유 10년차 여성 이너케어 · 효소 7년 연속 1위</div></div>
+        <div class="sh"><div class="shl">대표</div><div class="sht">김수안 (Sandy)</div><div class="shs">본인 직접 상담 신청 · 최종 의사결정권자</div></div>
+      </div>
       <div class="kpi">
         <div class="k"><div class="lbl">효소 카테고리</div><div class="v">7년 연속 1위</div><div class="s">KCSI 2019~2025</div></div>
         <div class="k"><div class="lbl">글로벌</div><div class="v">7개국</div><div class="s">중·대만·일·몽·호·베·이</div></div>
         <div class="k"><div class="lbl">제품 라인</div><div class="v">7라인 30+</div><div class="s">효소·장·다이어트·여성…</div></div>
         <div class="k alt"><div class="lbl">시급 과제</div><div class="v">온라인 팬덤</div><div class="s">인플루언서 의존 → 자사몰 자산</div></div>
       </div>
-      <div class="grid3" style="margin-top:14px">
-        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">인플루언서·공구 의존</h3><p style="font-size:12.5px;color:var(--muted)">성장을 인플루언서/공동구매가 견인 — 자사몰 팬덤·재구매·CRM 자생 엔진이 약함. 대표가 직접 짚은 1순위 과제.</p></div>
-        <div class="card"><span class="t y">High</span><h3 style="margin:8px 0 6px">메시지 산만 (30+ SKU)</h3><p style="font-size:12.5px;color:var(--muted)">7개 라인·30+ SKU·7개국 → "NGT가 뭐 하는 브랜드"인지 한 줄이 흐림. 효소·발효·여성 이너케어 중 핵심 축 미확정.</p></div>
-        <div class="card"><span class="t y">High</span><h3 style="margin:8px 0 6px">캠페인의 일회성</h3><p style="font-size:12.5px;color:var(--muted)">조구만 IP 콜라보 = 인지도엔 기여하나 자산화·팬덤 연결 실패(대표 자가진단). 캠페인→CRM 연결 구조 부재.</p></div>
+      <div class="oneline"><div class="oll">핵심 진단 한 줄</div><div class="olt">제품·인증·글로벌은 최상위. 비어 있는 건 <b>인플루언서 인지도 → 자사몰 자생 엔진</b> 전환과 <b>한 줄 브랜드 축</b>.</div></div>
+      <div class="co ac band"><span class="lab">판정 (상담 전 가설)</span><b>기회 적합도 4.4 / 5.0 · GO</b> &nbsp;|&nbsp; 추천 <b>T1 진단 → T2 빌드</b> &nbsp;|&nbsp; 기대 <b>자사몰 팬덤·CRM 자생 엔진 + 하반기 50억 성장 동력</b></div>
+    </section>
+
+    <section id="diagnosis">
+      <div class="sec-k">DIAGNOSIS (가설)</div>
+      <h2>핵심 진단</h2>
+      <p class="lead">제품·인증·글로벌은 이미 최상위. 비어 있는 건 "인플루언서 인지도 → 자사몰 자생 엔진" 전환과 "한 줄 브랜드 축". <span class="t n">상담 전 가설</span></p>
+      <div class="grid3">
+        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">인플루언서·공구 의존</h3><p style="font-size:13.5px;color:var(--muted)">성장을 인플루언서/공동구매가 견인 — 자사몰 팬덤·재구매·CRM 자생 엔진이 약함. 대표가 직접 짚은 1순위 과제.</p></div>
+        <div class="card"><span class="t y">High</span><h3 style="margin:8px 0 6px">메시지 산만 (30+ SKU)</h3><p style="font-size:13.5px;color:var(--muted)">7개 라인·30+ SKU·7개국 → "NGT가 뭐 하는 브랜드"인지 한 줄이 흐림. 효소·발효·여성 이너케어 중 핵심 축 미확정.</p></div>
+        <div class="card"><span class="t y">High</span><h3 style="margin:8px 0 6px">캠페인의 일회성</h3><p style="font-size:13.5px;color:var(--muted)">조구만 IP 콜라보 = 인지도엔 기여하나 자산화·팬덤 연결 실패(대표 자가진단). 캠페인→CRM 연결 구조 부재.</p></div>
       </div>
       <div class="co bad"><span class="lab">진단 결론 (가설)</span><b>매출이 169억(2022)→135억(2023)으로 꺾인 것</b>(공시)이 "다음 성장축 부재"를 뒷받침. 강점(<b>자사 발효공장·K-낙산균 국내 유일·여성 생애주기 라인업</b>)을 "데이터로 증명하는 이너케어"라는 <b>한 축</b>으로 좁히고, 자사몰 <b>콘텐츠·광고·CRM을 통합</b>하면 — 인플루언서 인지도가 브랜드 자산으로 쌓이고 하반기 50억이 자생적으로 돈다. 핵심은 "채널 확장"이 아니라 "팬덤 구조".</div>
     </section>
@@ -399,18 +475,64 @@ tbody tr:nth-child(even) td, table tr:nth-child(even) td{background:var(--soft)}
     </section>
 
     <section id="consult">
-      <div class="sec-k">MEETING PREP</div>
-      <h2>상담 준비 (6/10 미팅)</h2>
+      <div class="sec-k">MEETING FLOW</div>
+      <h2>상담 진행 (6/10 미팅)</h2>
       <p class="lead">톤: 10년차 카테고리 1위 대표 = 막연한 "브랜딩" 화법 금지, 근거·데이터·레퍼런스. 제품·성과 인정 후 "다음 축"으로 프레임.</p>
-      <div class="co ac"><span class="lab">🎤 아이스브레이킹</span>"효소 7년 연속 1위에 자사 발효공장·K-낙산균까지 — 국내에 이만한 이너케어 전문성을 가진 브랜드가 드뭅니다. 그런데 그 신뢰가 자사몰·콘텐츠에서는 아직 '팬덤'으로 안 쌓이고 인플루언서에 묶여 있는 게 보였어요." → 즉시 신뢰 + 진짜 과제 합의.</div>
+      <div class="co ac"><span class="lab">아이스브레이킹</span>"효소 7년 연속 1위에 자사 발효공장·K-낙산균까지 — 국내에 이만한 이너케어 전문성을 가진 브랜드가 드뭅니다. 그런데 그 신뢰가 자사몰·콘텐츠에서는 아직 '팬덤'으로 안 쌓이고 인플루언서에 묶여 있는 게 보였어요." → 즉시 신뢰 + 진짜 과제 합의.</div>
+      <h3>60분 타임라인</h3>
+      <div class="tlp"><div class="tpt">0–5분<br>P1</div><div class="tpc"><h4>라포</h4><p>효소 1위·자사 발효공장을 구체적으로 인정하며 연다(아첨 X, 근거 O).</p><div class="say">"국내에 이만한 이너케어 전문성을 가진 브랜드가 드뭅니다."</div></div></div>
+      <div class="tlp"><div class="tpt">5–20분<br>P2</div><div class="tpc"><h4>상황 확인</h4><p>채널별 매출 비중·자사몰 LTV·월 예산 청취(Q1·Q5). "제가 이해한 게 맞는지" 프레이밍으로 풍부하게 말하게.</p></div></div>
+      <div class="tlp"><div class="tpt">20–40분<br>P3 ★</div><div class="tpc"><h4>깊은 진단</h4><p>브랜드 축(Q2)·인플루언서→팬덤(Q3)·글로벌 우선순위(Q4) 집중. "이대로 6개월 후?"로 끌어올림.</p></div></div>
+      <div class="tlp"><div class="tpt">40–50분<br>P4</div><div class="tpc"><h4>인사이트 공유</h4><p>아래 Teaching 3개 전달 — 대표가 P3에서 한 말과 연결.</p><div class="say">"방금 말씀하신 게 정확히 이거예요."</div></div></div>
+      <div class="tlp"><div class="tpt">50–58분<br>P5</div><div class="tpc"><h4>솔루션 방향</h4><p>T1 진단을 입구로 → T2/T3 사다리. 금액은 "범위"만, 단정 금지.</p></div></div>
+      <div class="tlp"><div class="tpt">58–60분<br>P6</div><div class="tpc"><h4>클로징 연결</h4><p>"오늘 핵심은 ___ 맞으시죠?" 요약 확인 + 제안서 발송일 합의(상세는 클로징 섹션).</p></div></div>
       <h3>반드시 물어볼 질문 5개</h3>
       <div class="q"><div class="qn">Q1 · 채널별 매출 (1순위)</div><div class="qt">"자사몰 vs 오픈마켓(쿠팡·29CM·네이버) vs 공구·인플루언서 vs 글로벌 매출 비중과 추이는? 자사몰 재구매율·LTV는 어느 정도세요?"</div><div class="qi">L4(자생 엔진) 검증 + T1 진단 방향</div></div>
       <div class="q"><div class="qn">Q2 · 브랜드 축 / 아키텍처</div><div class="qt">"30+ SKU를 'NGT 마스터 브랜드' 하나로 가실지, 효소·여성건강 등 서브 축으로 나누실지? '한 줄로 NGT는 무엇'을 뭐라고 답하고 싶으세요?"</div><div class="qi">메시지 산만(L3) — 뾰족한 축의 핵심</div></div>
       <div class="q"><div class="qn">Q3 · 인플루언서 → 팬덤</div><div class="qt">"공구·인플루언서로 들어온 고객이 자사몰 단골로 남나요? 조구만 IP 같은 캠페인이 매출·구독으로 이어진 비중은?"</div><div class="qi">아쉬웠던 사례(자산화 실패) 직접 확인</div></div>
       <div class="q"><div class="qn">Q4 · 글로벌 우선순위</div><div class="qt">"7개국 중 6개월 무게를 둘 곳은? 자체 운영 vs 현지 파트너 vs 라이브커머스 비중과 로드맵은?"</div><div class="qi">SOP 범위 — 2개국 압축 합의 / T3 판별</div></div>
       <div class="q"><div class="qn">Q5 · 예산 · 조직 · 기대</div><div class="qt">"월 마케팅 예산 규모와 의사결정 구조(대표 직결 vs 팀 위임)? 11명 중 마케팅·콘텐츠 인하우스 구성은? 컨설팅 6~12개월 1순위 기대는?"</div><div class="qi">Tier 적합도 + 외부 컨설팅 흡수력</div></div>
-      <div class="co bad"><span class="lab">예상 반론 대비</span><b>"우린 이미 잘 팔린다"</b> → "맞습니다, 그래서 더 — 인플루언서가 식거나 올영 W케어가 들어오면 받칠 자사몰 자산이 필요합니다." · <b>"내부에서 한다"</b> → "11명이 제품·글로벌·공구까지 도는 구조에 팬덤·CRM·콘텐츠 시스템을 동시에 얹기는 어렵습니다 — 설계는 저희, 운영은 내부 분업." · <b>"컨설팅 처음이라"</b> → "그래서 T1 진단부터. 큰 약정 전에 채널·LTV를 데이터로 먼저 봅니다."</div>
-      <div class="co ok"><span class="lab">상담 후 액션</span>당일 24h — 감사 + 핵심 3줄(브랜드 축·자사몰 팬덤·통합 IMC) + 미확인 5변수(채널 매출·재구매율·예산·글로벌 우선순위·조직) 기록 → T1 진단 범위서 + 견적 발송, 착수 일정 제안.</div>
+      <h3>Challenger Teaching 3</h3>
+      <div class="teach">
+        <div class="ti"><b>① 제조사 정통성이 가장 강력한 무기인데 안 보입니다.</b> 자사 발효공장·K-낙산균(국내 유일)은 경쟁사가 못 따라오는 자산인데, "촌스럽다"는 인식이 이걸 묻어두고 있습니다. 자산이 없는 게 아니라 안 보이는 것.</div>
+        <div class="ti"><b>② 인플루언서 인지도는 "임대한 도달"입니다.</b> 자사몰 팬덤·재구매로 전환 안 하면 셀러가 식는 순간 매출이 같이 빠집니다. 10년 쌓은 신뢰가 NGT가 아니라 셀러에게 쌓였습니다.</div>
+        <div class="ti"><b>③ 30+ SKU는 폭이 아니라 산만함입니다.</b> "NGT=무엇"이 한 줄로 안 잡히면 광고도 안 먹힙니다. 효소·발효·여성 이너케어 중 한 축을 뾰족하게 세우는 게 먼저.</div>
+      </div>
+      <h3>예상 반론 &amp; 대응</h3>
+      <table>
+        <tr><th style="width:34%">예상 반론</th><th>대응</th></tr>
+        <tr><td><b>"우린 이미 잘 팔린다"</b></td><td>"맞습니다, 그래서 더 — 인플루언서가 식거나 올영 W케어가 들어오면 받칠 자사몰 자산이 필요합니다."</td></tr>
+        <tr><td><b>"내부에서 한다"</b></td><td>"11명이 제품·글로벌·공구까지 도는 구조에 팬덤·CRM·콘텐츠를 동시에 얹기는 어렵습니다 — 설계는 저희, 운영은 내부 분업."</td></tr>
+        <tr><td><b>"컨설팅 처음이라"</b></td><td>"그래서 T1 진단부터. 큰 약정 전에 채널·LTV를 데이터로 먼저 봅니다."</td></tr>
+      </table>
+    </section>
+
+    <section id="closing">
+      <div class="sec-k">CLOSING</div>
+      <h2>클로징</h2>
+      <p class="lead">"할까 말까"가 아니라 "T1이냐 T2냐"를 고민하게 — 작은 yes로 시작해 단계로 확장.</p>
+      <div class="fsteps">
+        <div class="fstep"><div class="fsn">STEP 1</div><div class="fst">요약 확인</div><div class="fsd">"오늘 핵심은 ___ 맞으시죠?" 누적 동의</div></div>
+        <div class="fstep"><div class="fsn">STEP 2</div><div class="fst">사다리 제시</div><div class="fsd">T3(최종 그림) 앵커 → T1→T2 사다리</div></div>
+        <div class="fstep"><div class="fsn">STEP 3</div><div class="fst">진입 합의</div><div class="fsd">T1 진단으로 작게 착수 — 큰 약정 전 데이터부터</div></div>
+        <div class="fstep"><div class="fsn">STEP 4</div><div class="fst">제안서 일정</div><div class="fsd">발송일 못박기 + 범위·금액 협의</div></div>
+        <div class="fstep"><div class="fsn">STEP 5</div><div class="fst">팔로업 확정</div><div class="fsd">"제안서 후 통화" 날짜 확정</div></div>
+      </div>
+      <h3>긴급성 &amp; 리스크 제거</h3>
+      <table>
+        <tr><th style="width:24%">레버</th><th>전략 / 스크립트</th></tr>
+        <tr><td><b>긴급성</b></td><td>매출 169억→135억 꺾임 + 하반기 50억 목표 — "다음 성장축을 지금 안 깔면 인플루언서가 식을 때 받칠 게 없습니다."</td></tr>
+        <tr><td><b>낮은 진입장벽</b></td><td>T1 진단으로 작게 시작 — "큰 약정 없이 채널·LTV부터 데이터로 확인"</td></tr>
+        <tr><td><b>강점 인정</b></td><td>효소 1위·발효공장 인정 → 파트너십을 "대체"가 아니라 "증폭"으로 포지셔닝</td></tr>
+      </table>
+      <h3>상담 후 액션</h3>
+      <table>
+        <tr><th style="width:30%">액션</th><th>내용 · 시점</th></tr>
+        <tr><td>감사 메시지 (24h)</td><td>핵심 3줄(브랜드 축·자사몰 팬덤·통합 IMC) 재확인 + 제안서 발송일 명시</td></tr>
+        <tr><td>확보 데이터 기록</td><td>채널별 매출 비중·재구매율·월 예산·글로벌 우선순위·조직 — 5변수</td></tr>
+        <tr><td>제안서 착수</td><td>T1 진단 범위·견적 확정 (T1→T2 사다리)</td></tr>
+        <tr><td>팔로업 미팅</td><td>"제안서 받으신 후 통화" 날짜 못박기</td></tr>
+      </table>
     </section>
 
     <section id="sources">
