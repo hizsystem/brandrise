@@ -37,7 +37,8 @@
 html{scroll-behavior:smooth}
 body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
   line-height:1.75;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:16.5px}
-.hero{background:var(--ink);color:#fff;padding:64px 0 52px}
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 42%,#4338ca 100%);color:#fff;padding:84px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"PREP";position:absolute;right:-2%;bottom:-18%;font-size:clamp(160px,22vw,360px);font-weight:800;letter-spacing:-.04em;color:#fff;opacity:.05;line-height:.8;pointer-events:none}
 .hero .in{max-width:1360px;margin:0 auto;padding:0 40px}
 .hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
 .hero h1{font-size:42px;font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:14px}
@@ -140,7 +141,7 @@ footer .in{max-width:1360px;margin:0 auto;padding:0 40px}
 
 /* ===== veggiet DNA 가산 컴포넌트 (인디고 클린 토큰만 사용) ===== */
 /* 1) 에디토리얼 커버 — h1 형광 언더라인 + clamp 반응형 */
-.hero h1{font-size:clamp(40px,6vw,64px)}
+.hero h1{font-size:clamp(46px,7vw,78px);line-height:1.04}
 .hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
 
 /* 2) evidence 박스 (직접 리서치 캡처·증빙 액자) */
@@ -175,8 +176,8 @@ footer .in{max-width:1360px;margin:0 auto;padding:0 40px}
 section{margin-bottom:120px;counter-increment:sec;border-top:2px solid var(--ink);padding-top:34px;position:relative}
 main>section:first-child{border-top:none;padding-top:0}
 .sec-k{display:block;background:none;border:none;border-radius:0;padding:0;font-size:12px;letter-spacing:.2em;color:var(--ac);margin-bottom:18px}
-.sec-k::before{content:counter(sec,decimal-leading-zero);display:block;font-size:60px;font-weight:800;color:var(--ac);letter-spacing:-.03em;line-height:.9;margin-bottom:10px;font-variant-numeric:tabular-nums}
-h2{font-size:42px;margin-bottom:16px}
+.sec-k::before{content:counter(sec,decimal-leading-zero);display:block;font-size:96px;font-weight:800;color:var(--ac);letter-spacing:-.04em;line-height:.85;margin-bottom:6px;font-variant-numeric:tabular-nums}
+h2{font-size:50px;margin-bottom:18px;letter-spacing:-.03em}
 h2{line-height:1.18}
 h3{letter-spacing:-.01em;line-height:1.4}
 /* 섹션 결론 풀폭 인디고 밴드 (.co.ac.band) — 베지어트 컬러 블록 역할 */
@@ -355,7 +356,7 @@ tbody tr:nth-child(even) td, table tr:nth-child(even) td{background:var(--soft)}
         <div class="card"><span class="t y">High</span><h3 style="margin:8px 0 6px">캠페인의 일회성</h3><p style="font-size:12.5px;color:var(--muted)">조구만 IP 콜라보 = 인지도엔 기여하나 자산화·팬덤 연결 실패(대표 자가진단). 캠페인→CRM 연결 구조 부재.</p></div>
       </div>
       <div class="co bad"><span class="lab">진단 결론 (가설)</span><b>매출 169억→135억 둔화</b>(공시) = "다음 성장축 부재". 강점(자사 발효공장·K-낙산균·여성 라인업)을 <b>"데이터로 증명하는 이너케어" 한 축</b>으로 좁히고 자사몰 콘텐츠·광고·CRM을 통합하면, 인플루언서 인지도가 브랜드 자산으로 쌓인다. 핵심은 "채널 확장"이 아니라 <b>"팬덤 구조"</b>.</div>
-      <div class="co ac band"><span class="lab">USP 상태 진단 — 발굴형 vs 번역형 (가설)</span>최빈 결핍은 USP다. 단 "차별점이 없다"보다 <b>"있는데 소비자 언어로 못 옮긴다"</b>가 더 잦다(상담 분석 53~80%) — 둘은 처방이 갈린다. <b>발굴형</b>(차별점 자체가 약함·모방) → 전략 진단·브랜드 아이덴티티가 먼저 / <b>번역형</b>(강점은 데이터로 검증됐는데 발신이 죽음) → 콘텐츠·상세·CRM 리뉴얼이 처방. 판정 질문 = <b>"처음 본 사람이 3초 안에 이해하나?"</b><br><b>NGT = 번역형.</b> 자사 발효공장·K-낙산균·효소 7년 1위 강점은 명확 — 비어 있는 건 그 신뢰를 자사몰·콘텐츠에서 "팬덤 언어"로 옮기는 발신. → 처방은 새 포지셔닝(발굴)이 아니라 <b>콘텐츠·CRM 번역</b>.</div>
+      <div class="co ac band"><span class="lab">USP 상태 — NGT = 번역형</span>USP는 '없는' 게 아니라 '<b>못 옮기는</b>' 경우가 더 많다. NGT 강점(발효공장·K-낙산균·효소 1위)은 명확한데, 그 신뢰가 자사몰·콘텐츠에서 팬덤 언어로 발신되지 않았다. 처방은 새 포지셔닝이 아니라 <b>콘텐츠·CRM 번역</b>.</div>
     </section>
 
     <section id="company">
