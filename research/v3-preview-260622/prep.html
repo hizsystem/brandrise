@@ -67,10 +67,10 @@ h3{font-size:16.5px;font-weight:800;margin:36px 0 14px;color:var(--ink2);letter-
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.co{border-radius:12px;padding:20px 24px;margin:24px 0;font-size:15.5px;line-height:1.85;border:1px solid var(--line);max-width:780px;text-wrap:pretty}
+.co{border:1px solid var(--line2);border-left:3px solid var(--line);border-radius:0 10px 10px 0;padding:16px 22px;margin:24px 0;font-size:15.5px;line-height:1.85;max-width:780px;text-wrap:pretty}
 h2,h3{text-wrap:balance}
-.co.ac{background:var(--ac-50);border-color:var(--ac-100)} .co.ok{background:var(--ok-50);border-color:#bbf7d0}
-.co.warn{background:var(--warn-50);border-color:#fde68a} .co.bad{background:var(--bad-50);border-color:#fecdd3}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100);border-left-color:var(--ac)} .co.ok{background:var(--ok-50);border-color:#bbf7d0;border-left-color:var(--ok)}
+.co.warn{background:var(--warn-50);border-color:#fde68a;border-left-color:var(--warn)} .co.bad{background:var(--bad-50);border-color:#fecdd3;border-left-color:var(--bad)}
 .co b,.co strong{color:var(--ink);font-weight:600}
 .co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
 .co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
@@ -178,8 +178,8 @@ h3{letter-spacing:-.01em;line-height:1.4}
 .co.ac.band{padding:20px 24px;border-radius:14px;font-size:14px;line-height:1.78}
 /* 표 가독성: zebra + th 인디고 틴트 + 셀 패딩 + 숫자 tabular-nums */
 table{font-variant-numeric:tabular-nums}
-th{background:var(--ac-50);color:var(--ac-700);padding:11px 13px}
-td{padding:11px 13px}
+th{background:var(--ac-50);color:var(--ac-700);padding:13px 15px}
+td{padding:13px 15px}
 tbody tr:nth-child(even) td, table tr:nth-child(even) td{background:var(--soft)}
 
 @media(max-width:880px){.shots{grid-template-columns:1fr}}
