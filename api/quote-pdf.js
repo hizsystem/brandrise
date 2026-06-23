@@ -76,7 +76,8 @@ module.exports = async (req, res) => {
     res.setHeader('Content-Disposition',
       "attachment; filename=\"quote.pdf\"; filename*=UTF-8''" + encodeURIComponent(safe) + '.pdf');
     res.setHeader('Cache-Control', 'no-store');
-    res.status(200).send(pdf);
+    // page.pdf()는 Uint8Array 반환 → Buffer로 감싸야 res.send가 JSON 직렬화 않고 raw 바이트 전송.
+    res.status(200).send(Buffer.from(pdf));
   } catch (e) {
     res.status(500).send('PDF render failed: ' + (e && e.message ? e.message : 'unknown'));
   } finally {
