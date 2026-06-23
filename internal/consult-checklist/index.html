@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE 1차 상담 체크리스트 · 인디고 클린
+  · 목적: 1차 상담 단계에서 빠뜨림 방지. 상담 플레이북(consult-playbook) 6단계·질문·결핍 직언·클로징을 행동 항목으로 환원.
+  · 구성: [상담 전 준비] / [상담 중] / [상담 후 follow-up] 3구간 체크박스.
+  · 체크 상태는 브라우저 localStorage에 저장(이 브라우저 한정).
+  · 배포: internal/consult-checklist/index.html · 내부 전용.
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>1차 상담 체크리스트 | BRANDRISE 내부</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  font-size:14px;line-height:1.7;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+
+/* hero — 단색 다크, 플랫 */
+.hero{background:var(--ink);color:#fff;padding:38px 0 30px}
+.hero .in{max-width:920px;margin:0 auto;padding:0 28px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:16px}
+.hero h1{font-size:clamp(24px,3.6vw,32px);font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:9px}
+.hero .sub{font-size:14px;color:#cbd5e1;font-weight:300;max-width:660px;line-height:1.7}
+
+.wrap{max-width:920px;margin:0 auto;padding:30px 28px 80px}
+
+/* 진행 바 */
+.prog{position:sticky;top:50px;z-index:20;background:var(--bg);border:1px solid var(--line);border-radius:12px;
+  padding:13px 18px;margin-bottom:26px;display:flex;align-items:center;gap:14px}
+.prog .bar{flex:1;height:8px;background:var(--ac-50);border-radius:99px;overflow:hidden}
+.prog .fill{height:100%;width:0;background:var(--ac);border-radius:99px;transition:width .25s ease}
+.prog .pct{font-size:13px;font-weight:800;color:var(--ac);font-variant-numeric:tabular-nums;white-space:nowrap}
+.prog .reset{font-size:12px;font-weight:700;color:var(--muted);background:none;border:1px solid var(--line);
+  border-radius:8px;padding:6px 11px;cursor:pointer;white-space:nowrap}
+.prog .reset:hover{color:var(--bad);border-color:#fecdd3;background:var(--bad-50)}
+
+/* 섹션 */
+.sec{margin-bottom:34px}
+.sec-k{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--ac);
+  background:var(--ac-50);border:1px solid var(--ac-100);border-radius:999px;padding:4px 12px;margin-bottom:10px}
+.sec h2{font-size:21px;font-weight:800;letter-spacing:-.02em;margin-bottom:3px}
+.sec .lead{font-size:13.5px;color:var(--muted);margin-bottom:14px;line-height:1.65}
+.sec .scnt{font-size:12px;font-weight:700;color:var(--muted);float:right;margin-top:6px;font-variant-numeric:tabular-nums}
+
+/* 그룹 카드 */
+.grp{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px 4px;margin-bottom:12px}
+.grp .gh{font-size:12px;font-weight:800;color:var(--ac-700);letter-spacing:.02em;padding:11px 18px 7px;
+  display:flex;align-items:center;gap:8px}
+.grp .gh .step{font-size:10.5px;font-weight:800;color:var(--ac);background:var(--ac-50);border-radius:6px;padding:2px 8px;letter-spacing:.04em}
+
+/* 체크 항목 */
+.item{display:flex;gap:11px;padding:11px 18px;border-top:1px solid var(--line2);align-items:flex-start;cursor:pointer}
+.grp .gh + .item{border-top:none}
+.item:hover{background:var(--soft)}
+.item input[type=checkbox]{appearance:none;-webkit-appearance:none;flex:0 0 auto;width:19px;height:19px;margin-top:1px;
+  border:1.5px solid #c5cbd6;border-radius:6px;background:#fff;cursor:pointer;position:relative;transition:.12s}
+.item input[type=checkbox]:hover{border-color:var(--ac)}
+.item input[type=checkbox]:checked{background:var(--ac);border-color:var(--ac)}
+.item input[type=checkbox]:checked::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;
+  border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.item .body{flex:1;min-width:0}
+.item .ti{font-size:14px;font-weight:600;color:var(--ink);line-height:1.5}
+.item input:checked ~ .body .ti{color:var(--muted);text-decoration:line-through;text-decoration-color:#cbd5e1}
+.item .say{display:block;border-left:3px solid var(--ac);background:var(--soft);border-radius:0 8px 8px 0;
+  padding:7px 12px;margin-top:7px;font-size:13px;color:var(--ink);font-weight:600;line-height:1.55}
+.item .say::before{content:"\201C";color:var(--ac);font-weight:800}
+.item .say::after{content:"\201D";color:var(--ac);font-weight:800}
+.item input:checked ~ .body .say{opacity:.5}
+.item .memo{display:block;font-size:12px;color:var(--muted);line-height:1.55;margin-top:6px;padding-left:11px;border-left:2px solid var(--line)}
+.item .memo b{color:var(--ink2);font-weight:700}
+
+.co{border:1px solid var(--line);border-left:3px solid var(--ac);border-radius:0 10px 10px 0;
+  padding:13px 17px;margin:6px 0 0;font-size:13px;line-height:1.65;color:var(--ink2)}
+.co.warn{background:var(--warn-50);border-color:#fde68a;border-left-color:var(--warn)}
+.co.bad{background:var(--bad-50);border-color:#fecdd3;border-left-color:var(--bad)}
+.co .lab{display:block;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+.co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
+.co b{color:var(--ink)}
+
+footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--muted);font-size:12px}
+footer .in{max-width:920px;margin:0 auto;padding:0 28px}
+footer a{color:var(--ac);text-decoration:none;font-weight:600}
+@media(max-width:560px){.prog{top:44px}.sec .scnt{float:none;display:block;margin:0 0 8px}}
+@media print{.prog .reset{display:none}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">CONSULT CHECKLIST · 내부 전용</div>
+  <h1>1차 상담 체크리스트</h1>
+  <div class="sub">빠뜨림 방지용 한 장. 상담 플레이북 6단계를 그대로 행동으로 쪼갰다. 체크는 이 브라우저에 저장된다 — 미팅 들어가기 직전·진행 중·끝나고 따라 찍으면 된다.</div>
+</div></div>
+
+<div class="wrap">
+
+  <div class="prog">
+    <div class="bar"><div class="fill" id="fill"></div></div>
+    <span class="pct" id="pct">0%</span>
+    <button class="reset" id="reset">전체 초기화</button>
+  </div>
+
+  <!-- ===== A. 상담 전 준비 ===== -->
+  <section class="sec" data-sec="A">
+    <span class="scnt" data-cnt>0 / 0</span>
+    <div class="sec-k">A · 상담 전 준비</div>
+    <h2>들어가기 전에</h2>
+    <p class="lead">자료를 미리 흡수하고, 첫 한마디와 견적 메뉴판을 손에 쥐고 들어간다. 준비 없이 들어가면 청취가 진단으로 안 넘어간다.</p>
+
+    <div class="grp">
+      <div class="gh">자료 흡수 · 사전 리서치</div>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">사전질문 답변·소개서(PPTX/PDF)·광고 대시보드 등 소스 폴더를 다 읽었다</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">원본 채널(인스타·자사몰·스마트스토어·유튜브)을 직접 열어봤다 — SaaS DB 말고 실물</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">대표가 볼 워너비/경쟁 브랜드를 미리 짚어 뒀다</span><span class="memo">없으면 "마음속 워너비 → 코어 메시지 미정"으로 진단 전환할 준비.</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">/상담준비 산출물(research 페이지 + 슬랙 브리프)을 확인했다</span></span></label>
+    </div>
+
+    <div class="grp">
+      <div class="gh">가설 · 진단 무기</div>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">"이 브랜드의 결핍은 ___" 사전 가설을 한 줄로 적었다</span><span class="memo">최빈 결핍 = USP(있는데 소비자 언어로 못 옮기는 번역 실패형이 다수).</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">A(런칭 전 점검) / B(단계 짚기) 중 어느 패턴일지 1차 분류했다</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">데이터 접근 권한(광고 계정·GA·채널 인사이트) 요청 여부를 정했다</span></span></label>
+    </div>
+
+    <div class="grp">
+      <div class="gh">견적 · 진행 세팅</div>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">견적 빌더(셀렉)로 1차 견적 초안을 화면에 띄울 준비를 했다</span><span class="memo">14건 전부 즉시 견적 0건이 가장 큰 구멍. 자리에서 메뉴판처럼 보여줄 것.</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">예산 로직(매출×약 15% / 매출 없으면 가용 예산 직접 질문)을 미리 정했다</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">회사소개 대본(12~15분)과 첫 질문을 손에 쥐었다</span><span class="say">말씀해 주세요. 어떤 고민이 있으신지.</span></span></label>
+    </div>
+  </section>
+
+  <!-- ===== B. 상담 중 ===== -->
+  <section class="sec" data-sec="B">
+    <span class="scnt" data-cnt>0 / 0</span>
+    <div class="sec-k">B · 상담 중</div>
+    <h2>미팅 안에서 — 6단계</h2>
+    <p class="lead">청취만 하지 말고, 질문을 즉시 다음 액션·숫자에 연결한다(질문-연결 2박자). 칭찬보다 빈칸. 마지막 1분에 넥스트를 못 박는다.</p>
+
+    <div class="grp">
+      <div class="gh"><span class="step">STEP 0·1</span> 회사소개 → 소개 청취</div>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">소요 시간·아젠다를 시작에 합의했다 (시간 초과 방지)</span><span class="memo">잡담이 길어 본론을 11분에 시작한 사례, 콜 1시간 제한에 핵심 진단을 못 푼 사례 있음.</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">회사소개를 15분 안에 닫고 마이크를 넘겼다</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">대표가 직접 소개하게 하고, 창업 배경·제품 스토리·개인사를 메모했다</span><span class="say">대표님이 직접 브랜드 소개 한번 해주실 수 있을까요?</span></span></label>
+    </div>
+
+    <div class="grp">
+      <div class="gh"><span class="step">STEP 2</span> 사업 단계 · 유통처</div>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">사업 단계를 말로 확정했다 (런칭 전 / 런칭 / 매출 드라이브)</span><span class="say">대표님, 지금 사업 단계 알려 주세요.</span><span class="memo">추론하지 말고 정형 질문으로 못 박기. 폴백: "정식 런칭 되셨어요?" / "올해 몇 년차세요?"</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">유통처 기본 3종(자사몰·인스타·스마트스토어)과 채널 비중을 캤다</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">"그 채널 고객 데이터는 누가 갖나요?"까지 2단으로 물었다</span><span class="memo">2단까지 가야 CRM·자사몰 전환이라는 다음 과제가 나온다.</span></span></label>
+    </div>
+
+    <div class="grp">
+      <div class="gh"><span class="step">STEP 3</span> 문제 도출 · 결핍 직언</div>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">막힌 지점을 먼저 짚었다 — 칭찬 말고 빈칸을</span><span class="say">솔직히 강점이 잘 안 느껴졌어요. 원료랑 타깃이 따로 놀아요.</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">대표가 인정한 결핍을 USP·포지셔닝 한 줄로 바꿔줬다</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">진단은 "인정 → 아쉬움 → 기회" 3단으로 닫았다 (빈칸을 짚되 기회로 마무리)</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">과잉 액션(전면 리브랜딩·과잉 채널)을 말렸다 — "그건 돈이에요"</span><span class="memo">당장 수주보다 "돈 아껴주는 집단"이라는 신뢰가 다음 수주를 끈다.</span></span></label>
+    </div>
+
+    <div class="grp">
+      <div class="gh"><span class="step">STEP 4·5</span> 견적의 답 → 클로징</div>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">상담에서 나온 문제를 그대로 견적 항목으로 1차 견적을 보여줬다</span><span class="say">메뉴판처럼 준비했어요. 크게 3가지예요.</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">"이 중 이걸 추천한다"까지 골라줬다 (팔지 말고 골라주라)</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">가격을 프레이밍으로 정당화했다 (직원 N명 비용·금액 분해·자산 등)</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">넥스트 3종 — 다음 미팅일 · 클라 숙제 · 우리 납기를 못 박았다</span><span class="memo">"필요하면 연락 주세요"로 끝내지 않는다. 날짜를 비워두지 않는다.</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">다음 단계(견적 / 진단서 발송)를 명시적으로 합의했다</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">비용 0·즉시 실행 가능한 Quick Tip 하나를 주고 마무리했다</span><span class="say">계약이랑 상관없이, 지금 바로 쓰실 수 있는 거 하나 알려드릴게요.</span></span></label>
+    </div>
+  </section>
+
+  <!-- ===== C. 상담 후 follow-up ===== -->
+  <section class="sec" data-sec="C">
+    <span class="scnt" data-cnt>0 / 0</span>
+    <div class="sec-k">C · 상담 후 follow-up</div>
+    <h2>끝나고 — 24시간 안에</h2>
+    <p class="lead">전달이 늦으면 온도가 식는다. 당일 안에 핵심을 되짚고, 사전 가설을 판정하고, 산출물을 형태에 맞춰 보낸다.</p>
+
+    <div class="grp">
+      <div class="gh">즉시 (24시간)</div>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">감사 + 결핍 한 줄로 되짚기 + 미확인 변수를 정리해 보냈다</span><span class="memo">상담에서 합의한 결핍·다음 단계를 짧게 재확인. 식기 전에.</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">/상담랩업으로 사전 가설을 일치/수정/오류로 판정했다</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">대표 온도(관심·긴급·예산)와 수주 확률을 산출했다</span></span></label>
+    </div>
+
+    <div class="grp">
+      <div class="gh">산출물 전달</div>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">진단서를 링크로 보냈다 (진단서는 항상 링크)</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">견적을 온도에 맞춰 전달했다 — 수주 높음=구글시트 / 낮음=HTML 링크</span><span class="memo">수주 높은 건은 설명·레퍼런스 붙인 마스터시트로 "코 잡고", 낮은 건은 링크로 가볍게.</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">수주 확정 건은 계약 클로징까지 못 박았다 (기간·결제조건·계약서 형태·레퍼럴)</span></span></label>
+    </div>
+
+    <div class="grp">
+      <div class="gh">운영 룰</div>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">파이프라인 보드에 상태·온도·넥스트를 갱신했다</span></span></label>
+      <label class="item"><input type="checkbox"><span class="body"><span class="ti">재진단 일정을 걸었다 — 한 달 뒤 재진단 + 매월 첫·마지막 주 체크</span><span class="memo">진단은 1회성이 아니다. 담당: 남중.</span></span></label>
+    </div>
+
+    <div class="co warn"><span class="lab">하지 말 것</span><b>"필요하면 연락 주세요"로 끝내면 넥스트가 죽는다.</b> 좋은 본보기 = "포트폴리오 → 예산 회신 → 견적+진단"의 2~3단 흐름. 견적 발표가 끝이 아니라 계약 행동까지 이어붙이는 게 수주율을 가른다.</div>
+  </section>
+
+</div>
+
+<footer><div class="in">BRANDRISE (MarketingOS) · 1차 상담 체크리스트 · 내부 전용 · 전체 흐름은 <a href="/internal/consult-playbook/">상담 플레이북</a> 참고</div></footer>
+
+<script>
+(function(){
+  var KEY='br-consult-checklist-v1';
+  var boxes=[].slice.call(document.querySelectorAll('.item input[type=checkbox]'));
+  // 안정적 키: 인덱스 기반(문서 구조 변경 시 자동 리셋)
+  boxes.forEach(function(b,i){ b.dataset.k='c'+i; });
+
+  function load(){
+    var saved={};
+    try{ saved=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){ saved={}; }
+    boxes.forEach(function(b){ if(saved[b.dataset.k]) b.checked=true; });
+  }
+  function save(){
+    var o={};
+    boxes.forEach(function(b){ if(b.checked) o[b.dataset.k]=1; });
+    try{ localStorage.setItem(KEY, JSON.stringify(o)); }catch(e){}
+  }
+  function render(){
+    var done=boxes.filter(function(b){return b.checked;}).length;
+    var total=boxes.length;
+    var pct= total? Math.round(done/total*100):0;
+    document.getElementById('fill').style.width=pct+'%';
+    document.getElementById('pct').textContent=pct+'%';
+    // 섹션별 카운트
+    document.querySelectorAll('section.sec').forEach(function(sec){
+      var bs=[].slice.call(sec.querySelectorAll('.item input[type=checkbox]'));
+      var d=bs.filter(function(b){return b.checked;}).length;
+      var el=sec.querySelector('[data-cnt]');
+      if(el) el.textContent=d+' / '+bs.length;
+    });
+  }
+  boxes.forEach(function(b){
+    b.addEventListener('change',function(){ save(); render(); });
+  });
+  document.getElementById('reset').addEventListener('click',function(){
+    if(!confirm('이 브라우저에 저장된 체크를 전부 지웁니다. 계속할까요?')) return;
+    boxes.forEach(function(b){ b.checked=false; });
+    try{ localStorage.removeItem(KEY); }catch(e){}
+    render();
+  });
+  load(); render();
+})();
+</script>
+<script src="/internal/nav.js"></script>
+</body>
+</html>

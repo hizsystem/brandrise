@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE 회사소개 원페이저 — 첫 접촉·메일 첨부용 한 장짜리 회사소개.
+  · 용도: 복제해 쓰는 내부 템플릿. "보여주는 한 장"(매뉴얼 company-intro는 "말하는 대본").
+  · 톤·핵심 메시지 = internal/company-intro 매뉴얼 정렬. 인디고 클린. 인쇄 가능(A4 1장 기준).
+  · 자료에 없는 구체 실적·고객사명은 [사례] 자리표시. 공용 네비 = /internal/nav.js. 배포: internal/company-onepager/
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>BRANDRISE by HIZ · 회사소개 원페이저</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --bad:#e11d48;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  font-size:14px;line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased}
+
+/* 헤더 — 단색 다크 */
+.hero{background:var(--ink);color:#fff;padding:38px 0 30px}
+.hero .in{max-width:920px;margin:0 auto;padding:0 28px}
+.hero .badge{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;
+  border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:4px 12px;margin-bottom:14px}
+.hero h1{font-size:clamp(24px,3.6vw,32px);font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:9px}
+.hero h1 b{color:#a5b4fc}
+.hero .sub{font-size:14px;color:#cbd5e1;font-weight:300;max-width:660px}
+
+.wrap{max-width:920px;margin:0 auto;padding:30px 28px 80px}
+
+/* 한 줄 정의 */
+.def{border:1px solid var(--ac-100);background:var(--ac-50);border-radius:14px;padding:18px 22px;margin-bottom:26px}
+.def .sec-k{margin-bottom:9px}
+.def p{font-size:16px;font-weight:700;color:var(--ink);line-height:1.6}
+.def p b{color:var(--ac-700)}
+
+.sec-k{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.13em;color:var(--ac);
+  background:var(--ac-50);border:1px solid var(--ac-100);border-radius:6px;padding:3px 10px}
+
+.block{margin-bottom:26px}
+.block>.sec-k{margin-bottom:11px}
+.block .bt{font-size:17px;font-weight:800;letter-spacing:-.02em;margin:0 0 4px}
+.block .bd{font-size:13px;color:var(--muted);margin-bottom:13px}
+
+/* ③ 영업 흐름 4단계 띠 */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:13px;overflow:hidden;background:var(--card)}
+.fstep{padding:15px 16px;border-right:1px solid var(--line2);position:relative}
+.fstep:last-child{border-right:none}
+.fstep .fn{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--ac);background:var(--ac-50);
+  border:1px solid var(--ac-100);border-radius:999px;padding:2px 9px;display:inline-block;margin-bottom:8px}
+.fstep .ft{font-size:14px;font-weight:800;margin-bottom:3px}
+.fstep .fdt{font-size:12px;color:var(--ink2);line-height:1.55}
+.fstep::after{content:"›";position:absolute;right:-8px;top:50%;transform:translateY(-50%);z-index:2;
+  color:var(--ac);font-size:16px;font-weight:800;background:var(--bg);width:16px;text-align:center}
+.fstep:last-child::after{display:none}
+
+/* ④ 만드는 것 — 칩 */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:flex;flex-direction:column;gap:2px;border:1px solid var(--line);border-radius:11px;
+  background:var(--card);padding:11px 15px;min-width:150px;flex:1 1 150px}
+.chip .ct{font-size:13.5px;font-weight:800;color:var(--ink)}
+.chip .cd{font-size:11.5px;color:var(--muted);line-height:1.45}
+.chip.lead{border-color:var(--ac-100);background:var(--ac-50)}
+.chip.lead .ct{color:var(--ac-700)}
+.imc{margin-top:11px;font-size:12.5px;color:var(--ink2);background:var(--soft);border:1px solid var(--line);
+  border-radius:10px;padding:10px 14px;line-height:1.6}
+.imc b{color:var(--ac-700)}
+
+/* ⑤ 협업 방식 */
+.work{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.wcard{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px 17px}
+.wcard .wt{font-size:13.5px;font-weight:800;margin-bottom:4px}
+.wcard .wd{font-size:12.5px;color:var(--ink2);line-height:1.6}
+.wcard .wd b{color:var(--ink)}
+
+/* ⑥ CTA */
+.cta{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  background:var(--ink);color:#fff;border-radius:14px;padding:20px 24px;margin-top:8px}
+.cta .ctt{font-size:15px;font-weight:800;line-height:1.4}
+.cta .cts{font-size:12.5px;color:#cbd5e1;margin-top:3px}
+.cta .ctb{font-size:13px;font-weight:800;color:var(--ink);background:#fff;border-radius:10px;
+  padding:11px 20px;text-decoration:none;white-space:nowrap}
+
+footer{border-top:1px solid var(--line);padding:22px 0;text-align:center;color:var(--muted);
+  font-size:12px;line-height:1.85;max-width:920px;margin:0 auto}
+
+@media(max-width:720px){
+  .flow{grid-template-columns:1fr 1fr}
+  .fstep:nth-child(2)::after{display:none}
+  .fstep{border-bottom:1px solid var(--line2)}
+  .work{grid-template-columns:1fr}
+}
+@media print{
+  body{background:#fff;font-size:12.5px}
+  #br-topnav{display:none}
+  .hero,.def,.fstep .fn,.sec-k,.chip.lead,.cta,.wcard,.fstep::after{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .wrap{padding:18px 24px 24px}
+  .block,.def,.cta,.flow,.work{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">BRANDRISE by HIZ · 브랜드 / IMC 컨설팅</div>
+  <h1>브랜드라이즈 — <b>팔리는 브랜드</b>를 설계합니다</h1>
+  <div class="sub">대기업·글로벌 브랜드 리뉴얼로 검증된 팀이, 직접 자사 브랜드를 키워본 경험을 더해 컨설팅합니다.</div>
+</div></div>
+
+<div class="wrap">
+
+  <!-- ② 한 줄 정의 -->
+  <div class="def">
+    <span class="sec-k">한 줄로</span>
+    <p>시장 리서치와 전략 설계부터 브랜드 아이덴티티·디자인·콘텐츠·채널·자사몰까지, <b>하나의 메시지로 묶어 매출로 잇는 IMC 컨설팅</b>을 합니다.</p>
+  </div>
+
+  <!-- ③ 영업 흐름 4단계 -->
+  <div class="block">
+    <span class="sec-k">어떻게 진행되나</span>
+    <p class="bt" style="margin-top:11px">진입 → 상담 → 견적 → 수주</p>
+    <p class="bd">소개로 만나, 진단으로 시작합니다. 다짜고짜 실행부터 제안하지 않습니다.</p>
+    <div class="flow">
+      <div class="fstep">
+        <span class="fn">진입</span>
+        <div class="ft">소개·문의</div>
+        <div class="fdt">고객사 소개로 만납니다. 먼저 회사·일하는 방식을 짧게 소개합니다.</div>
+      </div>
+      <div class="fstep">
+        <span class="fn">상담</span>
+        <div class="ft">진단 상담</div>
+        <div class="fdt">대표님 고민을 듣고, 데이터로 1차 진단 — 어디가 비어 있는지 짚습니다.</div>
+      </div>
+      <div class="fstep">
+        <span class="fn">견적</span>
+        <div class="ft">제안·견적</div>
+        <div class="fdt">진단을 바탕으로 우선순위와 범위를 정리해 견적서로 드립니다.</div>
+      </div>
+      <div class="fstep">
+        <span class="fn">수주</span>
+        <div class="ft">계약·실행</div>
+        <div class="fdt">합의된 범위로 시작합니다. 시장 서베이 → 브랜딩 → 마케팅 순서로 진행합니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ④ 무엇을 만드는가 -->
+  <div class="block">
+    <span class="sec-k">무엇을 만드나</span>
+    <p class="bt" style="margin-top:11px">진단부터 실행까지, 필요한 만큼</p>
+    <p class="bd">A부터 Z까지 다 합니다. 다만 진짜 차이는 리서치·전략 앞단에서 납니다.</p>
+    <div class="chips">
+      <div class="chip lead"><span class="ct">브랜드 진단</span><span class="cd">데이터 기반 1차 진단 + 상담 진단서</span></div>
+      <div class="chip lead"><span class="ct">시장 리서치·전략</span><span class="cd">누구와 싸워 어떻게 이길지, 성장 방향 설계</span></div>
+      <div class="chip"><span class="ct">브랜드 아이덴티티</span><span class="cd">메시지·포지셔닝·브랜드 바이블</span></div>
+      <div class="chip"><span class="ct">디자인·패키지</span><span class="cd">취향이 아니라 시장에 맞춘 설계</span></div>
+      <div class="chip"><span class="ct">콘텐츠·SNS</span><span class="cd">채널 운영·인플루언서·시딩 기획</span></div>
+      <div class="chip"><span class="ct">광고·퍼포먼스</span><span class="cd">캠페인 설계·집행, 재구매까지 연결</span></div>
+      <div class="chip"><span class="ct">자사몰·CRM</span><span class="cd">팔리는 동선과 재구매 구조 설계</span></div>
+    </div>
+    <div class="imc"><b>IMC 마케팅</b> — 하나의 메시지, 다양한 활동. 흩어진 마케팅을 하나로 묶어 봅니다.</div>
+  </div>
+
+  <!-- ⑤ 협업 방식 -->
+  <div class="block">
+    <span class="sec-k">어떻게 함께 일하나</span>
+    <p class="bt" style="margin-top:11px">파트너로 붙어, 안에서 직접</p>
+    <p class="bd">단발 프로젝트보다, 성장 단계마다 구조를 함께 바꾸는 파트너십을 지향합니다.</p>
+    <div class="work">
+      <div class="wcard">
+        <div class="wt">리테이너 + 캠페인</div>
+        <div class="wd">장기 파트너십(리테이너)으로 브랜드를 함께 키우고, 시점마다 <b>뾰족한 캠페인</b>을 얹습니다. 브랜드는 일관되게, 캠페인은 날카롭게.</div>
+      </div>
+      <div class="wcard">
+        <div class="wt">인하우스처럼, 전수</div>
+        <div class="wd">내부 팀처럼 붙어 일하고, 쌓인 노하우와 데이터를 <b>고객사에 전수</b>합니다. 작은 회사가 직접 갖추기 어려운 구조를 대신 채웁니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 레퍼런스 자리표시 -->
+  <div class="block">
+    <span class="sec-k">레퍼런스</span>
+    <p class="bd" style="margin-top:11px">대기업·글로벌부터 스몰 브랜드까지. (메일 발송 시 상대 업종에 맞는 사례로 교체)</p>
+    <div class="chips">
+      <div class="chip"><span class="ct">[사례] 식품·F&amp;B</span><span class="cd">늙은 브랜드 회춘 / 재구매 설계</span></div>
+      <div class="chip"><span class="ct">[사례] 뷰티·건기식</span><span class="cd">매출은 있으나 브랜드가 없던 곳 리뉴얼</span></div>
+      <div class="chip"><span class="ct">[사례] 글로벌·대기업</span><span class="cd">프리미엄 전환 / 장기 파트너십</span></div>
+      <div class="chip"><span class="ct">[사례] 디자인·패키지</span><span class="cd">패키지 리뉴얼 후 입점·성장</span></div>
+    </div>
+  </div>
+
+  <!-- ⑥ CTA -->
+  <div class="cta">
+    <div>
+      <div class="ctt">고민 한 줄만 주시면, 진단부터 시작합니다.</div>
+      <div class="cts">메일·전화로 편하게 — 첫 상담은 진단 상담입니다.</div>
+    </div>
+    <a class="ctb" href="mailto:[상담 문의 메일]">상담 문의하기 ›</a>
+  </div>
+
+</div>
+
+<footer>
+  <b>BRANDRISE</b> by HIZ · 브랜드 / IMC 컨설팅 · 회사소개 원페이저<br>
+  © 2026 브랜드라이즈 by HIZ · 비공개 내부 템플릿 (복제해 사용)
+</footer>
+
+<script src="/internal/nav.js"></script>
+</body>
+</html>

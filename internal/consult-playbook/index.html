@@ -28,8 +28,7 @@
 html{scroll-behavior:smooth}
 body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
   line-height:1.74;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:16.5px}
-.hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 42%,#4338ca 100%);color:#fff;padding:64px 0 52px;position:relative;overflow:hidden}
-.hero::after{content:"PLAYBOOK";position:absolute;right:-2%;bottom:-18%;font-size:clamp(140px,20vw,320px);font-weight:800;color:#fff;opacity:.05;line-height:.8;letter-spacing:-.04em;pointer-events:none}
+.hero{background:#0f172a;color:#fff;padding:64px 0 52px;position:relative;overflow:hidden}
 .hero .in{max-width:1180px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
 .hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
 .hero h1{font-size:clamp(38px,4.8vw,56px);font-weight:800;letter-spacing:-.03em;line-height:1.08;margin-bottom:14px}
@@ -142,15 +141,6 @@ details.acc .accb{padding:6px 20px 18px}
 details.acc .accb>:first-child{margin-top:14px}</style>
 </head>
 <body>
-<nav class="mnav"><div class="in">
-  <a class="home" href="../">BRANDRISE 매뉴얼</a><span class="sep">·</span>
-  <a href="../sales-process/">영업 프로세스</a>
-  <a href="../company-intro/">회사소개</a>
-  <a class="on" href="../consult-playbook/">상담</a>
-  <a href="../quote-call-playbook/">견적콜</a>
-</div></nav>
-
-
 <div class="hero"><div class="in">
   <div class="badge">SALES PLAYBOOK · 통합표준 v3 · 내부 전용</div>
   <h1>상담 프로세스 <span class="hl">플레이북</span></h1>
@@ -429,5 +419,6 @@ const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
 }})},{rootMargin:'-20% 0px -70% 0px'});
 sections.forEach(s=>obs.observe(s.el));
 </script>
+<script src="/internal/nav.js"></script>
 </body>
 </html>

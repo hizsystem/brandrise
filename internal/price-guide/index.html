@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE 단가 기준표 — 내부 단가 정책 단일 출처(SSOT).
+  · 값 출처: internal/quote-builder/index.html 의 MX 배열(7항목 × L1/L2/L3, 단위 만원, IMC=월 단가). 그대로 옮김.
+  · 임의 변경 금지 — 빌더 MX와 항상 일치시킬 것. 공용 네비 = /internal/nav.js. 배포: internal/price-guide/index.html
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>단가 기준표 · BRANDRISE 내부</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --bad:#e11d48;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased;font-size:14px}
+
+.hero{background:var(--ink);color:#fff;padding:38px 0 30px}
+.hero .in{max-width:920px;margin:0 auto;padding:0 28px}
+.hero .badge{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:4px 12px;margin-bottom:13px}
+.hero h1{font-size:clamp(24px,3.6vw,32px);font-weight:800;letter-spacing:-.03em;line-height:1.14;margin-bottom:9px}
+.hero .sub{font-size:14px;color:#cbd5e1;font-weight:300;max-width:660px}
+
+.wrap{max-width:920px;margin:0 auto;padding:30px 28px 80px}
+
+.sec-k{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.12em;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:999px;padding:3px 11px;margin-bottom:11px}
+
+/* 원칙 안내 박스 */
+.note{border:1px solid var(--ac-100);background:var(--ac-50);border-radius:13px;padding:15px 18px;margin-bottom:24px}
+.note .nl{font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--ac);margin-bottom:6px;text-transform:uppercase}
+.note p{font-size:13.5px;color:var(--ink2);line-height:1.7}
+.note p b{color:var(--ink)}
+
+/* 단가표 */
+.tbl-wrap{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+thead th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:right;padding:12px 14px;border-bottom:1px solid var(--ac-100);white-space:nowrap}
+thead th.it{text-align:left}
+thead th .lab{display:block;font-size:11px;font-weight:700;color:var(--muted);margin-top:2px}
+thead th.l2{background:var(--ink);color:#fff}
+thead th.l2 .lab{color:#a5b4fc}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--line2);text-align:right;font-variant-numeric:tabular-nums}
+tbody tr:last-child td{border-bottom:none}
+tbody td.it{text-align:left}
+tbody td.it .k{font-size:14px;font-weight:800;letter-spacing:-.01em}
+tbody td.it .d{font-size:12px;color:var(--muted);font-weight:500;margin-top:1px;line-height:1.45}
+tbody td.l2{background:var(--soft);font-weight:800;color:var(--ink)}
+tbody td .won{font-size:11px;color:var(--muted);font-weight:600;margin-left:1px}
+tbody td .mo{font-size:11px;color:var(--ac);font-weight:700;margin-left:2px}
+tbody tr.imc td.it .k::after{content:"월";font-size:10.5px;font-weight:800;color:#fff;background:var(--ac);border-radius:5px;padding:1px 6px;margin-left:7px;vertical-align:1px}
+
+.tnote{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.7}
+.tnote b{color:var(--ink2)}
+
+/* 하단 액션 + 보안 */
+.act{margin-top:26px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.act a{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:800;color:#fff;background:var(--ac);border-radius:10px;padding:11px 18px;text-decoration:none}
+.act a:hover{background:var(--ac-700)}
+.act .sub{font-size:12.5px;color:var(--muted);font-weight:600}
+
+.sec-warn{margin-top:24px;border:1px solid #fbcfe8;background:#fff1f5;border-radius:13px;padding:14px 18px}
+.sec-warn .wl{font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--bad);margin-bottom:5px}
+.sec-warn p{font-size:13px;color:var(--ink2);line-height:1.7}
+.sec-warn p b{color:var(--bad)}
+
+footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:920px;margin:0 auto}
+
+@media(max-width:680px){
+  thead th .lab{display:none}
+  tbody td.it .d{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">BRANDRISE · 내부 단가 정책</div>
+  <h1>단가 기준표</h1>
+  <div class="sub">견적 빌더가 쓰는 단가를 한곳에 모은 단일 기준. 항목별 L1·L2·L3 단가는 여기서만 관리한다.</div>
+</div></div>
+
+<div class="wrap">
+
+  <div class="sec-k">단가 공유 원칙</div>
+  <div class="note">
+    <div class="nl">원칙</div>
+    <p><b>공통 항목 단가는 브랜드 불문 동일하게 둔다.</b> 클라이언트마다 값을 깎지 않는다. 총액 조정은 <b>항목을 빼거나, 수량을 줄이거나, 블록 깊이(L1·L2·L3)를 바꿔서만</b> 한다. 같은 항목에 다른 단가를 쓰면 클라이언트 간 견적이 어긋난다.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th class="it">항목</th>
+          <th>L1<span class="lab">프리랜서</span></th>
+          <th class="l2">L2 ★<span class="lab">내부 기준</span></th>
+          <th>L3<span class="lab">외주</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="it"><div class="k">데이터 진단 + 시장 서베이</div><div class="d">진단</div></td>
+          <td>500<span class="won">만</span></td>
+          <td class="l2">1,000<span class="won">만</span></td>
+          <td>2,000<span class="won">만</span></td>
+        </tr>
+        <tr>
+          <td class="it"><div class="k">브랜드 아이덴티티 정립 + 제품체계 전략</div><div class="d">아이덴티티</div></td>
+          <td>1,000<span class="won">만</span></td>
+          <td class="l2">2,000<span class="won">만</span></td>
+          <td>3,500<span class="won">만</span></td>
+        </tr>
+        <tr>
+          <td class="it"><div class="k">브랜드 로고 &amp; 패키지 디자인 리뉴얼</div><div class="d">디자인</div></td>
+          <td>1,500<span class="won">만</span></td>
+          <td class="l2">3,000<span class="won">만</span></td>
+          <td>5,000<span class="won">만</span></td>
+        </tr>
+        <tr>
+          <td class="it"><div class="k">사진 촬영(제품·라이프스타일) + 콘텐츠 제작</div><div class="d">촬영</div></td>
+          <td>500<span class="won">만</span></td>
+          <td class="l2">1,500<span class="won">만</span></td>
+          <td>3,000<span class="won">만</span></td>
+        </tr>
+        <tr>
+          <td class="it"><div class="k">인스타그램 콘텐츠 기획 &amp; 운영</div><div class="d">마케팅</div></td>
+          <td>1,000<span class="won">만</span></td>
+          <td class="l2">2,000<span class="won">만</span></td>
+          <td>4,000<span class="won">만</span></td>
+        </tr>
+        <tr class="imc">
+          <td class="it"><div class="k">브랜드 IMC 전략 파트너십 / 대행사 fee</div><div class="d">IMC · 월 단가</div></td>
+          <td>60<span class="won">만</span><span class="mo">/월</span></td>
+          <td class="l2">140<span class="won">만</span><span class="mo">/월</span></td>
+          <td>300<span class="won">만</span><span class="mo">/월</span></td>
+        </tr>
+        <tr>
+          <td class="it"><div class="k">자사몰(카페24) 세팅</div><div class="d">자사몰</div></td>
+          <td>1,200<span class="won">만</span></td>
+          <td class="l2">2,000<span class="won">만</span></td>
+          <td>3,000<span class="won">만</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tnote">
+    단위 만원. <b>L2(내부 기준 ★)</b>가 기본값 — 빌더 셀렉도 L2로 시작한다. <b>IMC</b>는 1회성이 아니라 <b>월 단가</b>(파트너십·대행사 fee). L1=프리랜서 투입 / L3=외주 일임 기준.
+  </div>
+
+  <div class="act">
+    <a href="/internal/quote-builder/">🧮 견적 빌더에서 바로 적용</a>
+    <span class="sub">셀렉 매트릭스가 이 단가를 그대로 불러온다.</span>
+  </div>
+
+  <div class="sec-warn">
+    <div class="wl">보안 주의</div>
+    <p><b>내부 전용 · 외부 공유 금지.</b> 단가 정책은 클라이언트·외부에 노출하지 않는다. 고객에게 나가는 금액은 견적서(견적 빌더 산출물)로만 전달한다.</p>
+  </div>
+
+</div>
+
+<footer>
+  <b>BRANDRISE</b> by HIZ · 단가 기준표 (내부)<br>
+  값 출처 = 견적 빌더 MX 배열 · 빌더 단가와 항상 일치 유지 · 비공개 내부 문서
+</footer>
+
+<script src="/internal/nav.js"></script>
+</body>
+</html>

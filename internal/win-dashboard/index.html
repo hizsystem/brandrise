@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE 수주·전환 대시보드 · 인디고 클린
+  · 진행 중 브랜드의 단계·금액을 집계해 한눈에. 데이터: ../pipeline-data.js (전역 BR)
+  · 단계 변경은 파이프라인 보드의 localStorage를 그대로 읽는다(브라우저별).
+  · 금액/단가는 내부 전용 — 외부 공유 금지.
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>BRANDRISE 수주·전환 대시보드</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+  --slate:#64748b; --slate-50:#f1f5f9; --amber:#d97706; --indigo:#4f46e5; --green:#0e9f6e; --red:#e11d48;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.7;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+
+.hero{background:var(--ink);color:#fff;padding:38px 0 30px}
+.hero .in{max-width:920px;margin:0 auto;padding:0 28px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:14px}
+.hero h1{font-size:clamp(24px,3.6vw,32px);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:9px}
+.hero .sub{font-size:14px;color:#cbd5e1;font-weight:300;max-width:680px}
+
+.wrap{max-width:920px;margin:0 auto;padding:30px 28px 80px}
+.sec-k{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.12em;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:999px;padding:3px 11px;margin-bottom:13px}
+.sec{margin-bottom:34px}
+
+/* 수주 헤드라인 카드 */
+.kpis{display:flex;gap:11px;flex-wrap:wrap;margin-bottom:8px}
+.kpi{flex:1;min-width:200px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.kpi.win{border-color:#bbf7d0;background:var(--ok-50)}
+.kpi .k{font-size:12px;font-weight:700;color:var(--muted);margin-bottom:7px}
+.kpi .v{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.05}
+.kpi.win .v{color:var(--ok)}
+.kpi .x{font-size:12px;color:var(--muted);margin-top:6px}
+
+/* 단계별 요약 타일 */
+.tiles{display:flex;gap:9px;flex-wrap:wrap}
+.tile{flex:1;min-width:150px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 16px;border-left-width:4px}
+.tile.t-slate{border-left-color:var(--slate)} .tile.t-amber{border-left-color:var(--amber)}
+.tile.t-indigo{border-left-color:var(--indigo)} .tile.t-green{border-left-color:var(--green)} .tile.t-red{border-left-color:var(--red)}
+.tile .l{font-size:12px;font-weight:700;color:var(--ink2)}
+.tile .n{font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1;margin-top:7px}
+.tile .n small{font-size:13px;font-weight:700;color:var(--muted)}
+.tile .amt{font-size:12.5px;font-weight:700;color:var(--muted);margin-top:6px}
+
+/* 단계별 금액 합계 표 */
+table{width:100%;border-collapse:collapse;border:1px solid var(--line);border-radius:13px;overflow:hidden;font-size:13.5px}
+thead th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:left;padding:11px 15px;border-bottom:1px solid var(--ac-100);font-size:12.5px}
+thead th.r,tbody td.r{text-align:right}
+tbody td{padding:11px 15px;border-bottom:1px solid var(--line2)}
+tbody tr:last-child td{border-bottom:0}
+tbody td .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:middle}
+tbody .num{font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink2)}
+tfoot td{padding:12px 15px;border-top:2px solid var(--line);font-weight:800;background:var(--soft)}
+tfoot td.r{text-align:right;font-variant-numeric:tabular-nums}
+
+/* funnel */
+.funnel{display:flex;flex-direction:column;gap:12px}
+.frow{display:flex;align-items:center;gap:14px}
+.frow .fl{flex:0 0 132px;font-size:13px;font-weight:700;color:var(--ink2)}
+.fbar-wrap{flex:1;background:var(--soft);border:1px solid var(--line);border-radius:9px;overflow:hidden;height:38px;display:flex;align-items:center}
+.fbar{height:100%;display:flex;align-items:center;padding:0 13px;border-radius:0;min-width:fit-content;transition:width .4s ease}
+.fbar .fc{font-size:13.5px;font-weight:800;color:#fff;white-space:nowrap}
+.fbar.b-slate{background:var(--slate)} .fbar.b-indigo{background:var(--indigo)} .fbar.b-green{background:var(--green)}
+.fnote{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.6}
+.fnote b{color:var(--ink2)}
+.conv{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.conv .c{flex:1;min-width:180px;border:1px solid var(--line);border-radius:11px;padding:12px 15px;background:var(--card)}
+.conv .c .cl{font-size:11.5px;font-weight:700;color:var(--muted)}
+.conv .c .cv{font-size:20px;font-weight:800;letter-spacing:-.02em;margin-top:4px;color:var(--ac-700)}
+
+.empty{border:1px dashed var(--line);border-radius:13px;padding:40px 20px;text-align:center;color:var(--muted);font-size:13.5px;background:var(--soft)}
+
+footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:920px;margin:0 auto}
+.foot-note{font-size:11.5px;color:var(--muted);margin-top:8px}
+@media(max-width:760px){ .wrap,.hero .in{padding-left:22px;padding-right:22px} .frow .fl{flex-basis:96px} }
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">BRANDRISE · WIN DASHBOARD</div>
+  <h1>수주·전환 대시보드</h1>
+  <div class="sub">진행 중인 브랜드를 단계·금액으로 집계한다. 단계는 파이프라인 보드에서 바꾼 값을 그대로 읽는다(이 브라우저 기준).</div>
+</div></div>
+
+<div class="wrap">
+
+  <div class="sec">
+    <span class="sec-k">수주 현황</span>
+    <div class="kpis" id="kpis"></div>
+  </div>
+
+  <div class="sec">
+    <span class="sec-k">단계별 브랜드 수</span>
+    <div class="tiles" id="tiles"></div>
+  </div>
+
+  <div class="sec">
+    <span class="sec-k">단계별 파이프라인 금액</span>
+    <div id="amtTable"></div>
+  </div>
+
+  <div class="sec">
+    <span class="sec-k">전환 퍼널</span>
+    <div id="funnel"></div>
+  </div>
+
+</div>
+
+<footer>
+  <b>BRANDRISE</b> by HIZ · 수주·전환 대시보드<br>
+  데이터 = ../pipeline-data.js · 단계는 파이프라인 보드 저장값 반영
+  <div class="foot-note">금액·단가는 내부 전용. 외부 공유 금지.</div>
+</footer>
+
+<script src="../pipeline-data.js"></script>
+<script>
+(function(){
+  if (typeof BR === 'undefined' || !BR.allBrands) {
+    document.querySelector('.wrap').innerHTML =
+      '<div class="empty">데이터를 불러오지 못했습니다. (../pipeline-data.js 로드 실패)</div>';
+    return;
+  }
+
+  var brands = BR.allBrands();
+  var STAGES = BR.STAGES;
+
+  function amt(b){ return (b && typeof b.amount === 'number') ? b.amount : 0; }
+
+  // 단계별 집계: count, 금액합, 금액있는 건수
+  function tally(){
+    var t = {};
+    STAGES.forEach(function(s){ t[s.id] = { count:0, sum:0, withAmt:0 }; });
+    brands.forEach(function(b){
+      var sid = BR.getStage(b.slug);
+      if(!t[sid]) t[sid] = { count:0, sum:0, withAmt:0 };
+      t[sid].count++;
+      var a = amt(b);
+      t[sid].sum += a;
+      if(a > 0) t[sid].withAmt++;
+    });
+    return t;
+  }
+  var T = tally();
+
+  // ── ① 수주 KPI ──────────────────────────────────────────────
+  function renderKpis(){
+    var won = T['won'] || { count:0, sum:0 };
+    // 활성 파이프라인 = 드랍 제외 전 단계
+    var activeCount = 0, activeSum = 0;
+    STAGES.forEach(function(s){
+      if(s.id === 'dropped') return;
+      var x = T[s.id] || {count:0,sum:0};
+      activeCount += x.count; activeSum += x.sum;
+    });
+    var html =
+      '<div class="kpi win"><div class="k">수주 완료 금액</div>'+
+        '<div class="v">'+BR.won(won.sum)+'</div>'+
+        '<div class="x">'+won.count+'건 수주</div></div>'+
+      '<div class="kpi"><div class="k">활성 파이프라인 금액 (드랍 제외)</div>'+
+        '<div class="v">'+BR.won(activeSum)+'</div>'+
+        '<div class="x">'+activeCount+'개 브랜드</div></div>'+
+      '<div class="kpi"><div class="k">전체 진행 브랜드</div>'+
+        '<div class="v">'+brands.length+'<small style="font-size:14px;color:var(--muted);font-weight:700"> 개</small></div>'+
+        '<div class="x">단계 '+STAGES.length+'종으로 분류</div></div>';
+    document.getElementById('kpis').innerHTML = html;
+  }
+
+  // ── ② 단계별 브랜드 수 타일 ──────────────────────────────────
+  function renderTiles(){
+    var html = '';
+    STAGES.forEach(function(s){
+      var x = T[s.id] || { count:0, sum:0, withAmt:0 };
+      var amtLine = x.sum > 0
+        ? BR.won(x.sum) + (x.withAmt < x.count ? ' <span style="font-weight:600">('+x.withAmt+'/'+x.count+'건 금액)</span>' : '')
+        : (x.count ? '금액 미입력' : '—');
+      html += '<div class="tile t-'+s.tone+'">'+
+        '<div class="l">'+s.label+'</div>'+
+        '<div class="n">'+x.count+'<small> 개</small></div>'+
+        '<div class="amt">'+amtLine+'</div></div>';
+    });
+    document.getElementById('tiles').innerHTML = html;
+  }
+
+  // ── ③ 단계별 금액 합계 표 ────────────────────────────────────
+  function renderAmtTable(){
+    var totalCount = 0, totalSum = 0;
+    var rows = STAGES.map(function(s){
+      var x = T[s.id] || { count:0, sum:0, withAmt:0 };
+      totalCount += x.count; totalSum += x.sum;
+      return '<tr>'+
+        '<td><span class="dot" style="background:var(--'+s.tone+')"></span>'+s.label+'</td>'+
+        '<td class="r num">'+x.count+'</td>'+
+        '<td class="r num">'+(x.sum>0 ? BR.won(x.sum) : '—')+'</td>'+
+        '</tr>';
+    }).join('');
+    var html =
+      '<table><thead><tr><th>단계</th><th class="r">브랜드 수</th><th class="r">금액 합계</th></tr></thead>'+
+      '<tbody>'+rows+'</tbody>'+
+      '<tfoot><tr><td>합계 (드랍 포함)</td><td class="r">'+totalCount+'</td><td class="r">'+BR.won(totalSum)+'</td></tr></tfoot>'+
+      '</table>';
+    document.getElementById('amtTable').innerHTML = html;
+  }
+
+  // ── ④ 전환 퍼널: 협의중 → 발송 → 수주 ───────────────────────
+  // 누적 정의: 발송됨 = sent+won (발송 후 수주된 것 포함), 협의중 단계 도달 = 전체 활성(드랍 제외)
+  function renderFunnel(){
+    var consult = (T['consult']||{count:0}).count;
+    var pending = (T['pending']||{count:0}).count;
+    var sent    = (T['sent']||{count:0}).count;
+    var won     = (T['won']||{count:0}).count;
+
+    // 퍼널 단계(깔때기 누적): 협의 진입 ⊇ 발송 ⊇ 수주
+    var fConsult = consult + pending + sent + won; // 상담 협의에 진입한 전체(활성)
+    var fSent    = sent + won;                      // 견적 발송 도달(발송완료 + 발송 후 수주)
+    var fWon     = won;                             // 수주 도달
+
+    if(fConsult === 0){
+      document.getElementById('funnel').innerHTML = '<div class="empty">집계할 활성 브랜드가 없습니다.</div>';
+      return;
+    }
+    var max = fConsult;
+    function bar(cls,label,n){
+      var pct = Math.max((n/max)*100, n>0?14:3); // 0건도 가는 막대 보이게
+      return '<div class="frow"><div class="fl">'+label+'</div>'+
+        '<div class="fbar-wrap"><div class="fbar '+cls+'" style="width:'+pct.toFixed(1)+'%">'+
+        '<span class="fc">'+n+'개</span></div></div></div>';
+    }
+    var bars =
+      bar('b-slate','협의 진입',fConsult)+
+      bar('b-indigo','견적 발송',fSent)+
+      bar('b-green','수주 완료',fWon);
+
+    // 전환율
+    function rate(a,b){ return b>0 ? Math.round((a/b)*100)+'%' : '—'; }
+    var conv =
+      '<div class="conv">'+
+        '<div class="c"><div class="cl">협의 → 발송</div><div class="cv">'+rate(fSent,fConsult)+'</div></div>'+
+        '<div class="c"><div class="cl">발송 → 수주</div><div class="cv">'+rate(fWon,fSent)+'</div></div>'+
+        '<div class="c"><div class="cl">협의 → 수주 (전체)</div><div class="cv">'+rate(fWon,fConsult)+'</div></div>'+
+      '</div>';
+
+    var note =
+      '<div class="fnote">누적 깔때기: <b>견적 발송</b>=발송 완료 + 발송 후 수주, <b>수주 완료</b>는 발송에 포함. '+
+      '드랍('+((T['dropped']||{count:0}).count)+'개)은 퍼널에서 제외.</div>';
+
+    document.getElementById('funnel').innerHTML =
+      '<div class="funnel">'+bars+'</div>'+note+conv;
+  }
+
+  renderKpis();
+  renderTiles();
+  renderAmtTable();
+  renderFunnel();
+})();
+</script>
+<script src="/internal/nav.js"></script>
+</body>
+</html>

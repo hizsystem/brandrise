@@ -85,7 +85,12 @@ table.selmx label span{display:block;font-weight:400;color:var(--muted);font-siz
 .addrow{padding:10px 16px;border-top:1px dashed var(--line);background:#fff}
 .addrow button{font-family:inherit;font-size:12.5px;font-weight:700;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:9px;padding:7px 13px;cursor:pointer}
 .addrow button:hover{background:var(--ac-100)}
-.qsum .qact{display:flex;gap:10px;flex-wrap:wrap;padding:14px 20px;background:var(--soft);border-top:1px solid var(--line)}
+.qsum .qact{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end;padding:14px 20px;background:var(--soft);border-top:1px solid var(--line)}
+.qsum .qg{display:flex;flex-direction:column;gap:6px}
+.qsum .qgl{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.qsum .qgb{display:flex;gap:7px;flex-wrap:wrap}
+.qsum .btn.danger{border-color:#fecdd3;color:var(--bad)}
+.qsum .btn.danger:hover{background:var(--bad);color:#fff;border-color:var(--bad)}
 .qsum .btn{font-family:inherit;font-size:12.5px;font-weight:700;border:1px solid var(--ac);background:var(--card);color:var(--ac);border-radius:9px;padding:9px 16px;cursor:pointer;transition:.15s}
 .qsum .btn:hover{background:var(--ac);color:#fff}
 .qsum .btn.solid{background:var(--ac);color:#fff} .qsum .btn.solid:hover{background:var(--ac-700);border-color:var(--ac-700)}
@@ -103,7 +108,6 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
 <body>
 
 <div class="hero"><div class="in">
-  <a class="back" href="../pipeline/">‹ 파이프라인 보드</a>
   <div class="badge">BRANDRISE · 견적 빌더</div>
   <h1 id="h1"></h1>
   <div class="meta" id="meta"></div>
@@ -136,14 +140,20 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
       </table>
       <div class="addrow"><button id="btnAddLine" type="button">＋ 항목 추가</button></div>
       <div class="qact">
-        <button class="btn solid" id="btnPreview" type="button">🖥 견적서 미리보기</button>
-        <button class="btn" id="btnExcel" type="button">📊 엑셀로 내보내기</button>
-        <button class="btn" id="btnHtml" type="button">📄 HTML로 내보내기</button>
-        <button class="btn" id="btnPdf" type="button">📥 PDF 다운로드</button>
-        <button class="btn" id="btnSend" type="button">📤 발송용 링크</button>
-        <button class="btn solid" id="btnReview" type="button">✅ 검토용 링크</button>
-        <button class="btn" id="btnReset" type="button">기본값 복원</button>
-        <button class="btn ok" id="btnMark" type="button">✅ 발송 완료로 표시</button>
+        <div class="qg"><span class="qgl">보기</span><div class="qgb">
+          <button class="btn" id="btnPreview" type="button">🖥 미리보기</button>
+        </div></div>
+        <div class="qg"><span class="qgl">내보내기</span><div class="qgb">
+          <button class="btn" id="btnPdf" type="button">📥 PDF</button>
+          <button class="btn" id="btnExcel" type="button">📊 엑셀</button>
+          <button class="btn" id="btnHtml" type="button">📄 HTML</button>
+        </div></div>
+        <div class="qg"><span class="qgl">공유 · 발송</span><div class="qgb">
+          <button class="btn solid" id="btnReview" type="button">✅ 검토용 링크</button>
+          <button class="btn solid" id="btnSend" type="button">📤 발송용 링크</button>
+          <button class="btn ok" id="btnMark" type="button">발송 완료</button>
+        </div></div>
+        <button class="btn danger" id="btnReset" type="button" style="margin-left:auto" title="모든 수정을 기본값으로 되돌립니다">↺ 기본값 복원</button>
       </div>
       <div class="qhint">셀렉에서 고른 항목이 위로 내려옵니다. 줄을 직접 수정하면 <span class="t e">수정</span> 표시가 붙고 셀렉을 바꿔도 그 줄은 유지됩니다. 내보내기 — <b>수주 높음 → 📊 엑셀</b> · <b>수주 낮음 → 📄 HTML</b>. 수정 내용은 이 브라우저에 자동 저장됩니다.<br>공유 링크 — <b>📤 발송용</b>=클라이언트용(보기 전용) · <b>✅ 검토용</b>=대표·실장 발송 전 확인용(열어서 직접 수정 후 발송용/인쇄 생성). 둘 다 비밀번호 없이 열리고 서버에 저장되지 않습니다.</div>
     </div>
@@ -155,6 +165,7 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
 
 <footer><b>BRANDRISE</b> by HIZ · 견적 빌더 · 셀렉 매트릭스 → 편집형 1차 견적 + 강훈 5블록 내보내기</footer>
 
+<script src="/internal/nav.js"></script>
 <script src="../pipeline-data.js"></script>
 <script src="../../share/lz-string.min.js"></script>
 <script src="../../share/quote-doc.js"></script>
