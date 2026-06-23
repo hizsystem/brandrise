@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE POST-MEETING 랩업 (정제판/공개용) — 블루피노(BLUPINO)
+  · prep(research/blupino/) 인디고 디자인 시스템 재사용.
+  · ⚠️ 공개 배포본 — 내부 민감정보(수주확률·가격저항·대표 예산한도·경쟁사 단가·클로징 전략) 제외.
+    원본 내부 랩업은 AI(private) clients/brandrise/prep/blupino-post-meeting-wrap.md.
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>블루피노 (BLUPINO) — 상담 랩업 | BRANDRISE</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.72;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+.hero{background:var(--ink);color:#fff;padding:64px 0 52px}
+.hero .in{max-width:1180px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:clamp(28px,4.6vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:14px}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
+.hero .sub{font-size:16px;color:#cbd5e1;font-weight:300;max-width:760px;line-height:1.75}
+.hero .meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.hero .back{display:inline-block;margin-top:24px;font-size:12.5px;color:#a5b4fc;text-decoration:none;font-weight:600}
+.layout{max-width:1180px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:208px 1fr;gap:48px;align-items:start}
+nav.toc{position:sticky;top:28px;padding:36px 0;font-size:13.5px}
+nav.toc .nl{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--muted);margin:0 0 14px 12px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;border-left:2px solid transparent;transition:.15s;font-weight:500}
+nav.toc a:hover{color:var(--ink);background:var(--soft)}
+main{padding:36px 0 100px;min-width:0}
+section{margin-bottom:54px;scroll-margin-top:24px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+h2{font-size:25px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.lead{font-size:14.5px;color:var(--muted);margin-bottom:22px;line-height:1.7}
+h3{font-size:15px;font-weight:800;margin:26px 0 12px;color:var(--ink2);letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.co{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:13.5px;line-height:1.75;border:1px solid var(--line)}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100)} .co.ok{background:var(--ok-50);border-color:#bbf7d0}
+.co.warn{background:var(--warn-50);border-color:#fde68a} .co.bad{background:var(--bad-50);border-color:#fecdd3}
+.co b{color:var(--ink)}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
+.t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
+.t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 4px}
+.kpi .k{background:var(--ink);color:#fff;border-radius:12px;padding:18px}
+.kpi .lbl{font-size:11px;color:#94a3b8;font-weight:600;margin-bottom:4px}
+.kpi .v{font-size:21px;font-weight:800;letter-spacing:-.02em}
+.kpi .s{font-size:11px;color:#cbd5e1;margin-top:3px;line-height:1.5}
+.op{background:linear-gradient(160deg,var(--ac-50),#fff 65%);border:1px solid var(--ac-100);border-radius:16px;padding:26px 28px}
+.op .opk{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--ac);margin-bottom:14px}
+.op .blk{margin-bottom:16px} .op .blk:last-child{margin-bottom:0}
+.op .bl{font-size:11px;font-weight:800;color:var(--ac-700);letter-spacing:.06em;margin-bottom:5px}
+.op .bt{font-size:14.5px;line-height:1.7;color:var(--ink2)} .op .bt b{color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin:6px 0 4px}
+th{background:var(--soft);color:var(--ink2);font-weight:700;text-align:left;padding:9px 11px;font-size:11.5px;border-bottom:1px solid var(--line)}
+td{padding:9px 11px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b,td strong{color:var(--ink)}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sw{border-radius:12px;padding:16px 18px;border:1px solid var(--line)}
+.sw h4{font-size:12.5px;font-weight:800;margin-bottom:8px}
+.sw.o{background:var(--ok-50)} .sw.o h4{color:var(--ok)}
+.sw.tt{background:var(--warn-50)} .sw.tt h4{color:var(--warn)}
+.sw li{font-size:12px;color:var(--ink2);margin-left:15px;padding:2px 0;line-height:1.5}
+.tl{border-left:2px solid var(--line);padding-left:20px;margin:10px 0}
+.tl .ph{position:relative;padding:10px 0}
+.tl .ph::before{content:"";position:absolute;left:-26px;top:14px;width:9px;height:9px;border-radius:50%;background:var(--ac)}
+.tl .pt{font-size:12px;font-weight:800;color:var(--ac)}
+.tl .pb{font-size:13px;color:var(--ink2);margin-top:2px}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px}
+footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
+footer a{color:var(--ac);text-decoration:none}
+@media(max-width:880px){.layout{grid-template-columns:1fr;gap:0;padding:0 22px}nav.toc{display:none}.hero .in{padding:0 22px}.grid2,.kpi,.swot{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="in">
+    <div class="badge">POST-MEETING 랩업</div>
+    <h1>블루피노 <span class="hl">(BLUPINO)</span></h1>
+    <div class="sub">코스트코 본사가 먼저 발굴한 무첨가 사과 탄산음료 — 검증된 제품을 '받아낼' 브랜드 토대 구축 파트너십 제안</div>
+    <div class="meta">
+      <div class="chip">상담일 <b>2026-06-19</b> (콜 1시간 4분)</div>
+      <div class="chip">대표 <b>이석모</b> · 농업회사법인 ㈜청년연구소</div>
+      <div class="chip">상태 <b>견적 발송 · 견적콜/방문(6/24) 예정</b></div>
+    </div>
+    <a class="back" href="../">← 사전 상담 준비(PREP)로 돌아가기</a>
+  </div>
+</div>
+
+<div class="layout">
+  <nav class="toc">
+    <div class="nl">목차</div>
+    <a href="#summary">상담 한눈에</a>
+    <a href="#core">핵심 자산</a>
+    <a href="#facts">확인된 사실</a>
+    <a href="#task">핵심 과제</a>
+    <a href="#direction">추천 방향</a>
+    <a href="#risk">기회 · 유의점</a>
+    <a href="#next">다음 단계</a>
+  </nav>
+
+  <main>
+    <section id="summary">
+      <div class="sec-k">EXECUTIVE SUMMARY</div>
+      <h2>상담 한눈에</h2>
+      <p class="lead">제품·시장 검증이 이미 끝난 보기 드문 "실적 백업형" 브랜드. 과제는 마케팅 미숙이 아니라, 검증된 수요를 받아낼 브랜드 정체성·D2C 시스템의 부재다.</p>
+      <div class="kpi">
+        <div class="k"><div class="lbl">제품 검증</div><div class="v">코스트코 발굴</div><div class="s">슈퍼데모 하루 3천 캔 완판 · 정규납품 제안</div></div>
+        <div class="k"><div class="lbl">모기업 자산</div><div class="v">꿀땡이 사과</div><div class="s">네이버 사과 매출 top3 · 9~10년차</div></div>
+        <div class="k"><div class="lbl">투자 모멘텀</div><div class="v">투자사 5곳</div><div class="s">IR 후 명함 · 초기창업패키지 선정</div></div>
+        <div class="k"><div class="lbl">D2C 현황</div><div class="v">자사몰 미운영</div><div class="s">백지 상태 → 초기 quick win 용이</div></div>
+      </div>
+      <div class="co ac">
+        <span class="lab">한 줄 요약</span>
+        코스트코 본사가 먼저 "골드메달 마르티넬리보다 낫다"며 발굴한 무첨가 사과 탄산음료. <b>제품력과 시장 검증은 끝난 자산</b>이고, 지금 필요한 건 그 가치를 담을 <b>'BLUPINO'라는 그릇(브랜드 정체성)</b>과 검증된 신뢰를 흐르게 할 <b>D2C 첫 채널</b>이다.
+      </div>
+    </section>
+
+    <section id="core">
+      <div class="sec-k">KEY ASSETS</div>
+      <h2>주목하는 핵심 자산</h2>
+      <p class="lead">시드 단계임에도 일반 초기 브랜드와 결이 다른, 검증된 무기들.</p>
+      <div class="grid2">
+        <div class="card"><h3 style="margin-top:0">① 검증된 제품력</h3>코스트코 본사가 먼저 컨택 → 슈퍼데모 막판 하루 3천 캔 완판, 수도권 정규납품 제안까지 받음. "맛·시장성은 이미 증명됐다"는 강력한 서사.</div>
+        <div class="card"><h3 style="margin-top:0">② 투자 모멘텀</h3>IR 이후 투자사 5곳 명함, 초기창업패키지 선정. 2년 전 0건에서 코스트코 검증으로 반전 — 외부 자금 유입 임박.</div>
+        <div class="card"><h3 style="margin-top:0">③ 명확한 USP + 진정성</h3>무첨가 사과 탄산이라는 또렷한 USP + 농사→제조→판매를 직접 하는 청송 농업법인 스토리. 저비용 고진정성 콘텐츠 엔진(대표 유튜브 직접운영 의지).</div>
+        <div class="card"><h3 style="margin-top:0">④ 미션 정렬</h3>"농업인이 브랜딩으로 성공한 케이스를 만들고 싶다" — 미션 드리븐 대표. 브랜드라이즈 레퍼런스로도 매력적인 win-win.</div>
+      </div>
+    </section>
+
+    <section id="facts">
+      <div class="sec-k">CONFIRMED FACTS</div>
+      <h2>상담에서 확인된 사실</h2>
+      <p class="lead">사전 가설 대비 실제 확인된 구조. "마케팅 약한 시드"가 아니라 "검증은 됐는데 D2C 인프라가 비어 있는 회사".</p>
+      <table>
+        <tr><th style="width:30%">항목</th><th>확인 내용</th></tr>
+        <tr><td><b>브랜드 정체성</b></td><td>BLUPINO ↔ 모기업(꿀땡이 사과) 분산 — "분산"이 아니라 원물(저수익) → 음료 포커싱의 <b>의도적 재배치 과도기</b>. BLUPINO 단일 브랜드 자산화가 1순위.</td></tr>
+        <tr><td><b>매출 구조</b></td><td>B2B 납품(약 200매장) 중심 + 소비자 직접 판매 일부. <b>자사몰 미운영</b>(네이버쇼핑·쿠팡만) — B2B 신뢰가 D2C로 흐르지 않음.</td></tr>
+        <tr><td><b>생산 캐파</b></td><td>대표 직접 제조·행사. 생산 캐파 한계가 코스트코 정규납품을 받지 못한 직접 원인 — 마케팅 성과의 천장 변수.</td></tr>
+        <tr><td><b>타깃</b></td><td>"정확한 타깃 불확실"을 대표가 답답해함 — 20~40 여성 vs 아이용 부모, 1차 타깃 확정이 브랜드 작업의 출발점.</td></tr>
+        <tr><td><b>채널 의지</b></td><td>대표 유튜브 직접운영 의지 높음. 디자인 변경·시딩 아이디어까지 선제 제시 — 관심·참여도 매우 높음.</td></tr>
+      </table>
+    </section>
+
+    <section id="task">
+      <div class="sec-k">CORE TASKS</div>
+      <h2>핵심 과제 3가지</h2>
+      <p class="lead">제품·시장은 증명됐기에, 지금 필요한 건 그 가치를 '담는 그릇'을 먼저 단단히 만드는 일.</p>
+      <div class="co ac"><span class="lab">과제 ①</span><b>검증된 제품을 담을 브랜드 정체성·전략 정립</b> — 제품은 증명됐지만, 그 가치를 담아낼 'BLUPINO'라는 그릇이 아직 자산화되지 않았다.</div>
+      <div class="co ac"><span class="lab">과제 ②</span><b>흩어진 채널을 한 방향으로</b> — B2B 200여 매장에서 검증된 신뢰를 D2C·인스타·유튜브로 흐르게 하는 전환 퍼널이 비어 있다.</div>
+      <div class="co ac"><span class="lab">과제 ③</span><b>제품의 격에 맞는 비주얼 자산</b> — 농사→제조→판매를 직접 하는 진정성에 비해, 그것을 보여줄 시각 언어가 아직 따라오지 못했다.</div>
+    </section>
+
+    <section id="direction">
+      <div class="sec-k">RECOMMENDED DIRECTION</div>
+      <h2>추천 방향</h2>
+      <div class="op">
+        <div class="opk">BRANDRISE 제안</div>
+        <div class="blk"><div class="bl">코어 방향</div><div class="bt"><b>브랜드 전략·정체성 정립을 1단계로 세우고, 그 위에 비주얼과 콘텐츠를 단계적으로 쌓아 올린다.</b> 한 번에 다 벌이지 않고 효과가 큰 것부터 순서대로 — 최소 비용으로 가장 빠르게 자리 잡는다.</div></div>
+        <div class="blk"><div class="bl">1단계 — 브랜드 토대</div><div class="bt">시장·경쟁·타깃 분석 → 포지셔닝·메시지 체계 고정 → BLUPINO 단일 브랜드 자산화 + 코스트코·투자 검증 서사 정리. 7월 신세계 행사·코스트코 재진입·투자 IR에 바로 쓸 자산까지.</div></div>
+        <div class="blk"><div class="bl">2단계 — D2C 첫 채널 · 콘텐츠</div><div class="bt">인스타그램 리뉴얼·콘텐츠 운영 + 촬영(청송 사과밭·제조 현장의 진정성을 비주얼 자산으로) + 인플루언서 시딩으로 검증된 제품을 입소문으로.</div></div>
+        <div class="blk"><div class="bl">진행 방식</div><div class="bt">단계적 진입 — 토대(1단계)로 시작해 성과·신뢰 확인 후 확장. 상세 범위·투자 규모는 별도 견적(A/B안)으로 안내.</div></div>
+      </div>
+    </section>
+
+    <section id="risk">
+      <div class="sec-k">OPPORTUNITY & WATCH-OUTS</div>
+      <h2>기회 · 유의점</h2>
+      <div class="swot">
+        <div class="sw o">
+          <h4>기회</h4>
+          <ul>
+            <li>코스트코 "여건 되면 재연락" — 강력한 성공 서사·레퍼런스 소재</li>
+            <li>투자사·초기창업패키지 등 외부 자금 유입 임박</li>
+            <li>모기업(꿀땡이 사과) 교차 트래픽·예산 여력 잠재 풀</li>
+            <li>자사몰 미운영 = D2C 백지 → 빠른 초기 성과(quick win)</li>
+            <li>대표 유튜브 직접운영 의지 = 저비용 고진정성 콘텐츠 엔진</li>
+            <li>"농업인 브랜딩 성공사례" 미션 = win-win 레퍼런스</li>
+          </ul>
+        </div>
+        <div class="sw tt">
+          <h4>유의점</h4>
+          <ul>
+            <li>생산 캐파 병목 — 마케팅 성과의 천장 변수, KPI를 "매출 폭발"이 아닌 "D2C 채널 구축·브랜드 자산화"로 관리</li>
+            <li>운영 인력 연속성 — 산출물 유지보수 주체 합의 필요</li>
+            <li>대표의 신중한 의사결정 성향 — 신뢰·동행 서사 기반 진행</li>
+            <li>BLUPINO 단독 매출·1차 타깃은 1단계 진단에서 확정</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="next">
+      <div class="sec-k">NEXT STEPS</div>
+      <h2>다음 단계</h2>
+      <div class="tl">
+        <div class="ph"><div class="pt">STEP 1 · 견적서 발송</div><div class="pb">브랜드 토대(코어) + 인스타·촬영(풀) 2안 구성 — 구글시트로 발송.</div></div>
+        <div class="ph"><div class="pt">STEP 2 · 견적콜 / 방문 미팅 (6/24)</div><div class="pb">범위·우선순위를 함께 짚고, 1차 타깃·캐파 등 추가 확인.</div></div>
+        <div class="ph"><div class="pt">STEP 3 · 착수 (합의 시)</div><div class="pb">브랜드 토대 1단계 착수 → 성과·신뢰 확인 후 D2C·콘텐츠 단계 확장.</div></div>
+      </div>
+      <div class="co ok" style="margin-top:18px"><span class="lab">참고</span>도움이 되실 <b>FPRO AF(앞으로) 농식품 박람회</b>(코엑스, 7/15~17) 정보도 함께 전달드릴 예정입니다. 🍎</div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="in">
+    <div>BRANDRISE · MarketingOS Post-Meeting Wrap</div>
+    <div style="margin-top:6px">작성: 우성민 (Green) · 2026-06-19 상담 기반 정리</div>
+    <div style="margin-top:6px"><a href="../">← 사전 상담 준비(PREP)</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
