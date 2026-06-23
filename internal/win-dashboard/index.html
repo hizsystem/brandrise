@@ -261,7 +261,8 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
   }
 
   BR.ready(function(){
-    T = tally();   // 시트 라이브 로드 후 집계
+    brands = BR.allBrands();   // 시트 라이브 로드 후 최신 브랜드 재확보
+    T = tally();
     renderKpis();
     renderTiles();
     renderAmtTable();
