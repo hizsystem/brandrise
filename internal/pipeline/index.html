@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE 파이프라인 보드 · 인디고 클린
+  · 진행 중 브랜드를 단계별로 그룹핑해 한눈에. 단계 변경은 localStorage 저장(브라우저별).
+  · '견적서 작성' → ../quote-builder/?brand={slug}.  데이터: ../pipeline-data.js
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>BRANDRISE 파이프라인 보드</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+  --slate:#64748b; --slate-50:#f1f5f9;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.6;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+.hero{background:var(--ink);color:#fff;padding:46px 0 38px}
+.hero .in{max-width:1120px;margin:0 auto;padding:0 40px}
+.hero .back{display:inline-block;margin-bottom:14px;color:#a5b4fc;text-decoration:none;font-size:12.5px;font-weight:600}
+.hero .back:hover{color:#c7d2fe}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:15px}
+.hero h1{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-.03em;line-height:1.14;margin-bottom:10px}
+.hero .sub{font-size:14.5px;color:#cbd5e1;font-weight:300;max-width:660px}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 40px 90px}
+
+/* 요약 타일 (클릭 → 해당 그룹 스크롤) */
+.summary{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:8px}
+.sc{flex:1;min-width:128px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 16px;cursor:pointer;transition:.12s;border-left-width:4px}
+.sc:hover{box-shadow:0 5px 16px rgba(15,23,42,.07)}
+.sc .n{font-size:25px;font-weight:800;letter-spacing:-.02em;line-height:1}
+.sc .l{font-size:12px;font-weight:700;color:var(--ink2);margin-top:6px}
+.sc.t-slate{border-left-color:var(--slate)} .sc.t-amber{border-left-color:var(--warn)}
+.sc.t-indigo{border-left-color:var(--ac)} .sc.t-green{border-left-color:var(--ok)} .sc.t-red{border-left-color:var(--bad)}
+
+.boardtools{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:14px 0 26px}
+.boardtools button{font-family:inherit;font-size:13px;font-weight:800;color:#fff;background:var(--ac);border:0;border-radius:10px;padding:10px 16px;cursor:pointer;transition:.12s;flex:0 0 auto}
+.boardtools button:hover{background:var(--ac-700)}
+.boardtools .bt-note{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* 단계 그룹 */
+.group{margin-bottom:30px}
+.ghead{display:flex;align-items:center;gap:9px;margin-bottom:13px;padding-bottom:9px;border-bottom:2px solid var(--line)}
+.ghead .dot{width:11px;height:11px;border-radius:50%}
+.ghead .gl{font-size:16px;font-weight:800;letter-spacing:-.01em}
+.ghead .gc{font-size:12.5px;font-weight:700;color:#fff;border-radius:999px;padding:2px 9px}
+.t-slate .gc{background:var(--slate)} .t-amber .gc{background:var(--warn)}
+.t-indigo .gc{background:var(--ac)} .t-green .gc{background:var(--ok)} .t-red .gc{background:var(--bad)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:13px}
+
+/* 카드 */
+.bc{border:1px solid var(--line);border-left-width:5px;border-radius:14px;background:var(--card);
+  padding:16px 17px 14px;display:flex;flex-direction:column;gap:11px;transition:.15s}
+.bc:hover{box-shadow:0 6px 20px rgba(79,70,229,.09)}
+.bc.t-slate{border-left-color:var(--slate)} .bc.t-amber{border-left-color:var(--warn)}
+.bc.t-indigo{border-left-color:var(--ac)} .bc.t-green{border-left-color:var(--ok)} .bc.t-red{border-left-color:var(--bad);opacity:.62}
+.bc .nm{font-size:17px;font-weight:800;letter-spacing:-.01em;line-height:1.3}
+.bc .slug{font-size:11.5px;color:var(--muted);margin-top:2px;font-weight:500}
+
+.row{display:flex;align-items:center;gap:8px}
+.row .lbl{font-size:11.5px;font-weight:700;color:var(--muted);flex:0 0 auto}
+.bc select{flex:1;font-family:inherit;font-size:13px;font-weight:700;color:var(--ink2);
+  border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:var(--soft);cursor:pointer}
+.bc select:focus{outline:none;border-color:var(--ac)}
+
+.acts{display:flex;gap:7px}
+.btn{flex:1;text-align:center;font-size:13px;font-weight:800;border-radius:10px;padding:9px 10px;
+  text-decoration:none;cursor:pointer;border:1px solid transparent;transition:.12s}
+.btn.pri{background:var(--ac);color:#fff} .btn.pri:hover{background:var(--ac-700)}
+.btn.sec{background:var(--card);color:var(--ac);border-color:var(--ac-100);flex:0 0 auto;padding:9px 14px}
+.btn.sec:hover{background:var(--ac-50)}
+.btn.off{background:var(--soft);color:var(--muted);cursor:default;border-color:var(--line);flex:0 0 auto;padding:9px 14px}
+.btn.del{background:var(--card);color:var(--bad);border-color:#fecdd3;flex:0 0 auto;padding:9px 12px}
+.btn.del:hover{background:var(--bad-50)}
+.bc .badge2.cust{background:#ecfeff;color:#0e7490;margin-left:6px}
+
+footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:1120px;margin:0 auto}
+@media(max-width:880px){ .wrap,.hero .in{padding-left:22px;padding-right:22px} }
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <a class="back" href="../">‹ 내부 매뉴얼 허브</a>
+  <div class="badge">BRANDRISE · PIPELINE</div>
+  <h1>진행 중인 상담 브랜드</h1>
+  <div class="sub">브랜드를 현재 단계별로 묶어 한눈에 본다. 견적 대기 브랜드는 바로 견적서를 작성한다.</div>
+</div></div>
+
+<div class="wrap">
+  <div class="summary" id="summary"></div>
+  <div class="boardtools">
+    <button id="btnAddBrand" type="button">＋ 브랜드(프로젝트) 추가</button>
+    <span class="bt-note">단계·추가 브랜드는 <b>이 브라우저에만</b> 저장됩니다(정적 사이트 — 공용 서버 없음). 개인 진행 관리용 · 타일을 누르면 해당 단계로 이동.</span>
+  </div>
+  <div id="groups"></div>
+</div>
+
+<footer>
+  <b>BRANDRISE</b> by HIZ · 파이프라인 보드<br>
+  단계 5종 · 견적 빌더 연동 · 진행 중 16개 브랜드 (2026-06-23 기준)
+</footer>
+
+<script src="../pipeline-data.js"></script>
+<script>
+(function(){
+  var summary=document.getElementById('summary'), groups=document.getElementById('groups');
+
+  function counts(){
+    var c={}; BR.STAGES.forEach(function(s){c[s.id]=0;});
+    BR.allBrands().forEach(function(b){ c[BR.getStage(b.slug)]++; });
+    return c;
+  }
+  function prepHref(b){ return '../../research/'+(b.prepSlug||b.slug)+'/'; }
+
+  function renderSummary(){
+    var c=counts(), html='';
+    BR.STAGES.forEach(function(s){
+      html+='<div class="sc t-'+s.tone+'" data-go="grp-'+s.id+'"><div class="n">'+c[s.id]+'</div><div class="l">'+s.label+'</div></div>';
+    });
+    summary.innerHTML=html;
+    [].forEach.call(summary.querySelectorAll('.sc'),function(el){
+      el.onclick=function(){var t=document.getElementById(el.getAttribute('data-go'));if(t)t.scrollIntoView({behavior:'smooth'});};
+    });
+  }
+
+  function card(b){
+    var stageId=BR.getStage(b.slug), st=BR.stageById(stageId);
+    var opts='';
+    BR.STAGES.forEach(function(s){ opts+='<option value="'+s.id+'"'+(s.id===stageId?' selected':'')+'>'+s.label+'</option>'; });
+    var qLabel=(stageId==='sent'||stageId==='won')?'견적서 열기':'견적서 작성';
+    var prepBtn=b.prep
+      ? '<a class="btn sec" href="'+prepHref(b)+'" target="_blank" rel="noopener">prep ↗</a>'
+      : '<span class="btn off">prep 없음</span>';
+    var delBtn=b.custom?'<button class="btn del" data-del="'+b.slug+'" title="브랜드 삭제">삭제</button>':'';
+    var custBadge=b.custom?'<span class="badge2 cust">추가</span>':'';
+    return '<div class="bc t-'+st.tone+'">'+
+      '<div><div class="nm">'+b.name+custBadge+'</div><div class="slug">'+b.slug+'</div></div>'+
+      '<div class="row"><span class="lbl">단계</span><select data-slug="'+b.slug+'">'+opts+'</select></div>'+
+      '<div class="acts">'+
+        '<a class="btn pri" href="../quote-builder/?brand='+encodeURIComponent(b.slug)+'&name='+encodeURIComponent(b.name)+'">'+qLabel+' →</a>'+
+        prepBtn+delBtn+
+      '</div></div>';
+  }
+
+  function renderGroups(){
+    var c=counts(), all=BR.allBrands(), html='';
+    BR.STAGES.forEach(function(s){
+      var list=all.filter(function(b){return BR.getStage(b.slug)===s.id;});
+      if(!list.length) return;
+      html+='<div class="group t-'+s.tone+'" id="grp-'+s.id+'">'+
+        '<div class="ghead"><span class="dot" style="background:var(--'+s.tone+')"></span>'+
+        '<span class="gl">'+s.label+'</span><span class="gc">'+c[s.id]+'</span></div>'+
+        '<div class="grid">'+list.map(card).join('')+'</div></div>';
+    });
+    groups.innerHTML=html;
+    [].forEach.call(groups.querySelectorAll('select'),function(sel){
+      sel.onchange=function(){ BR.writeStage(sel.getAttribute('data-slug'),sel.value); renderAll(); };
+    });
+    [].forEach.call(groups.querySelectorAll('[data-del]'),function(btn){
+      btn.onclick=function(){
+        var s=btn.getAttribute('data-del');
+        if(confirm('추가한 브랜드 "'+s+'"를 삭제할까요? (단계·견적 작성 내용도 함께 삭제됩니다)')){ BR.removeCustom(s); renderAll(); }
+      };
+    });
+  }
+
+  document.getElementById('btnAddBrand').onclick=function(){
+    var nm=prompt('추가할 브랜드(프로젝트) 이름을 입력하세요.');
+    if(nm===null) return;
+    nm=nm.trim(); if(!nm){ alert('이름을 입력해 주세요.'); return; }
+    var b=BR.addCustom(nm);
+    if(b){ BR.writeStage(b.slug,'consult'); renderAll(); }
+  };
+
+  function renderAll(){ renderSummary(); renderGroups(); }
+  renderAll();
+})();
+</script>
+</body>
+</html>

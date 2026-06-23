@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE 견적 빌더 (통합·편집형) · 인디고 클린
+  · 엔진 = PREP 셀렉 매트릭스(항목 × 제외/L1/L2/L3) + 매출 envelope + 엑셀/HTML 내보내기.
+  · 편집 = 항목 추가/삭제/이름변경 · L1/L2/L3 단가 직접 수정 · 수량/개월 조정.
+  · 통합 = 브랜드별 진입(?brand=&name=) · 자동저장(localStorage) · 인페이지 미리보기+인쇄 · 보드 발송완료 연동.
+  · 데이터: ../pipeline-data.js
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>BRANDRISE 견적 빌더</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.7;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+.hero{background:var(--ink);color:#fff;padding:34px 0 28px}
+.hero .in{max-width:1000px;margin:0 auto;padding:0 36px}
+.hero .back{display:inline-block;margin-bottom:12px;color:#a5b4fc;text-decoration:none;font-size:12.5px;font-weight:600}
+.hero .back:hover{color:#c7d2fe}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:12px}
+.hero h1{font-size:clamp(24px,3.6vw,32px);font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.hero .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.hero .chip{font-size:12px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 12px;color:#cbd5e1}
+.hero .chip b{color:#a5b4fc} .hero .chip a{color:#c7d2fe;text-decoration:none}
+.wrap{max-width:1000px;margin:0 auto;padding:26px 36px 110px}
+.sec-k{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:999px;padding:4px 12px;margin-bottom:10px}
+h2{font-size:21px;font-weight:800;letter-spacing:-.02em;margin-bottom:7px}
+.lead{font-size:13.5px;color:var(--muted);margin-bottom:14px;line-height:1.7}
+
+.co{border-radius:12px;padding:14px 18px;margin:12px 0;font-size:13px;line-height:1.7;border:1px solid var(--line)}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100)} .co.warn{background:var(--warn-50);border-color:#fde68a}
+.co b{color:var(--ink)} .co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase;color:var(--ac)}
+.co.warn .lab{color:var(--warn)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
+.t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+
+.mxscroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table.selmx{width:100%;border-collapse:collapse;font-size:12.5px;min-width:680px}
+table.selmx th{text-align:center;background:var(--ac-50);color:var(--ac-700);font-weight:800;padding:10px 8px;font-size:11px;border-bottom:1px solid var(--ac-100)}
+table.selmx th:first-child{text-align:left}
+table.selmx td{text-align:center;vertical-align:middle;padding:9px 8px;border-bottom:1px solid var(--line2)}
+table.selmx td.lv2{background:var(--ac-50)}
+table.selmx tr:last-child td{border-bottom:0}
+.nm-in{width:100%;border:1px solid transparent;border-radius:6px;padding:6px 7px;font-family:inherit;font-size:13px;font-weight:600;color:var(--ink);background:transparent}
+.nm-in:hover{background:var(--soft)} .nm-in:focus{outline:none;border-color:var(--ac);background:#fff}
+.mtag{display:inline-block;font-size:10px;color:var(--muted);background:#f1f5f9;border-radius:5px;padding:1px 6px;margin-left:4px}
+.lvcell{display:flex;align-items:center;justify-content:center;gap:5px}
+.lvcell input[type=radio]{accent-color:var(--ac);width:15px;height:15px;cursor:pointer;flex:0 0 auto}
+.amt{width:62px;text-align:right;border:1px solid var(--line);border-radius:6px;padding:5px 6px;font-family:inherit;font-size:12.5px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.amt:focus{outline:none;border-color:var(--ac)}
+.exc input[type=radio]{accent-color:var(--muted);width:15px;height:15px;cursor:pointer}
+.qty-in{width:52px;text-align:center;border:1px solid var(--line);border-radius:6px;padding:5px 4px;font-family:inherit;font-size:12.5px}
+.qty-in:focus{outline:none;border-color:var(--ac)}
+.qunit{font-size:10px;color:var(--muted);margin-top:2px}
+.delrow{color:var(--bad);background:none;border:none;cursor:pointer;font-size:17px;line-height:1;padding:2px 6px}
+.delrow:hover{opacity:.6}
+.addrow{margin:10px 0 0}
+.addrow button{font-family:inherit;font-size:12.5px;font-weight:700;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:9px;padding:8px 14px;cursor:pointer}
+.addrow button:hover{background:var(--ac-100)}
+
+.sel-sum{display:flex;flex-wrap:wrap;gap:18px;align-items:center;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:14px 0;font-size:13px}
+.sel-sum b{color:var(--ac);font-size:15px}
+.sel-sum input{width:80px;padding:5px 8px;border:1px solid var(--line);border-radius:7px;font-family:inherit;font-size:13px;text-align:right}
+
+.qsum{border:2px solid var(--ac);border-radius:16px;overflow:hidden;margin:16px 0}
+.qsum .qsh{background:var(--ac);color:#fff;padding:13px 20px;font-size:13px;font-weight:800;letter-spacing:.02em;display:flex;justify-content:space-between;align-items:center}
+.qsum .qsh .qst{font-size:11px;font-weight:700;color:#c7d2fe}
+.qsum table{width:100%;border-collapse:collapse;margin:0;font-size:13px}
+.qsum th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:left;padding:10px 14px;font-size:11.5px}
+.qsum td{padding:11px 14px;border-bottom:1px solid var(--line2);color:var(--ink2)}
+.qsum td.c{text-align:center} .qsum td.num{text-align:right;font-variant-numeric:tabular-nums}
+.qsum tfoot td{background:var(--ink);color:#fff;font-weight:800;font-size:14px;border:0}
+.qsum tfoot td b{color:#a5b4fc}
+.qsum .qact{display:flex;gap:10px;flex-wrap:wrap;padding:14px 20px;background:var(--soft);border-top:1px solid var(--line)}
+.qsum .btn{font-family:inherit;font-size:12.5px;font-weight:700;border:1px solid var(--ac);background:var(--card);color:var(--ac);border-radius:9px;padding:9px 16px;cursor:pointer;transition:.15s}
+.qsum .btn:hover{background:var(--ac);color:#fff}
+.qsum .btn.solid{background:var(--ac);color:#fff} .qsum .btn.solid:hover{background:var(--ac-700);border-color:var(--ac-700)}
+.qsum .btn.ok{border-color:var(--ok);color:var(--ok)} .qsum .btn.ok:hover{background:var(--ok);color:#fff}
+.qsum .qhint{font-size:11.5px;color:var(--muted);padding:0 20px 14px;background:var(--soft);line-height:1.6}
+
+#doc{display:none;background:#fff;border:1px solid var(--line);border-radius:16px;margin-top:24px;overflow:hidden}
+#doc.show{display:block}
+#doc iframe{width:100%;border:0;display:block}
+
+footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.8;max-width:1000px;margin:0 auto}
+@media(max-width:760px){ .wrap,.hero .in{padding-left:18px;padding-right:18px} }
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <a class="back" href="../pipeline/">‹ 파이프라인 보드</a>
+  <div class="badge">BRANDRISE · 견적 빌더</div>
+  <h1 id="h1"></h1>
+  <div class="meta" id="meta"></div>
+</div></div>
+
+<div class="wrap">
+  <section>
+    <div class="sec-k">SELECT · EDIT</div>
+    <h2>견적 셀렉 — 항목·난이도·단가 편집</h2>
+    <div class="co ac"><span class="lab">셀렉 매트릭스 (편집 가능)</span>각 항목의 <b>투입 레벨</b> 라디오를 고르면 <b>1차 견적이 즉시 합산</b>됩니다. <b>L1</b>=프리랜서(경량) / <b>L2 ★</b>=내부 히즈(표준) / <b>L3</b>=외주(풀). 금액·항목명·수량은 <b>그 자리에서 수정</b>, 행 추가/삭제도 가능합니다. <b>단가 공유 원칙</b>: 기본 단가는 브랜드 불문 동일 — 이 건만 조정하세요. (단위: 만원 · VAT 별도)</div>
+    <div class="mxscroll">
+      <table class="selmx">
+        <thead><tr>
+          <th style="min-width:200px">견적 항목</th>
+          <th class="exc">제외</th><th>L1 프리랜서</th><th>L2 내부 ★</th><th>L3 외주</th>
+          <th>수량/개월</th><th></th>
+        </tr></thead>
+        <tbody id="mxbody"></tbody>
+      </table>
+    </div>
+    <div class="addrow"><button id="btnAdd" type="button">＋ 항목 추가</button></div>
+
+    <div class="sel-sum">
+      <span>연매출 <input id="selRev" type="number" value="0" min="0">억</span>
+      <span>6개월 envelope(×15%): <b id="selEnv">—</b></span>
+      <span style="color:var(--muted);font-size:12px">매출 입력 시 수주 규모 가늠</span>
+    </div>
+
+    <div class="qsum">
+      <div class="qsh"><span>📋 1차 견적서 (셀렉 결과 · 자동)</span><span class="qst">VAT 별도 · 상담 중 즉시</span></div>
+      <table>
+        <thead><tr><th>항목</th><th style="width:14%;text-align:center">레벨</th><th style="width:24%;text-align:right">금액(만원)</th></tr></thead>
+        <tbody id="qsumBody"></tbody>
+        <tfoot><tr><td>합계</td><td class="c" id="qsumLv">—</td><td class="num" id="qsumTotal">—</td></tr></tfoot>
+      </table>
+      <div class="qact">
+        <button class="btn solid" id="btnPreview" type="button">🖥 견적서 미리보기</button>
+        <button class="btn" id="btnExcel" type="button">📊 엑셀로 내보내기</button>
+        <button class="btn" id="btnHtml" type="button">📄 HTML로 내보내기</button>
+        <button class="btn" id="btnReset" type="button">기본값 복원</button>
+        <button class="btn ok" id="btnMark" type="button">✅ 발송 완료로 표시</button>
+      </div>
+      <div class="qhint">미리보기 = 화면에서 견적서 확인 후 인쇄·PDF. 내보내기 — <b>수주 높음 → 📊 엑셀</b>(코 잡고 정식 견적) · <b>수주 낮음 → 📄 HTML</b>(가볍게 링크로). 수정 내용은 이 브라우저에 자동 저장됩니다.</div>
+    </div>
+    <div class="co warn"><span class="lab">패키징 원칙</span>외부 컨설팅 첫 케이스면 <b>진단(블록 1)으로 입구</b> → 흡수력 확인 후 IMC 운영 확장이 안전. 항목 제외·난이도 조정으로 총액을 매출 envelope 안에 맞춥니다.</div>
+  </section>
+
+  <div id="doc"></div>
+</div>
+
+<footer><b>BRANDRISE</b> by HIZ · 견적 빌더 · 편집형 셀렉 매트릭스 + 강훈 5블록 내보내기</footer>
+
+<script src="../pipeline-data.js"></script>
+<script>
+(function(){
+  function qp(k){var m=new RegExp('[?&]'+k+'=([^&]*)').exec(location.search);return m?decodeURIComponent(m[1].replace(/\+/g,' ')):'';}
+  var slug=qp('brand'), nameQ=qp('name');
+  var brand=BR.brandBySlug(slug);
+  var BRAND=(brand&&brand.name)||nameQ||slug||'BRAND';
+  function brandName(){ return BRAND; }
+  document.getElementById('h1').textContent=BRAND+' · 1차 견적';
+  var prepSlug=brand?(brand.prepSlug||brand.slug):'';
+  var metaHtml='<span class="chip">기준 <b>셀렉 매트릭스</b></span>';
+  if(brand&&brand.prep) metaHtml+='<span class="chip">근거 <a href="../../research/'+prepSlug+'/" target="_blank" rel="noopener">prep 열기 ↗</a></span>';
+  document.getElementById('meta').innerHTML=metaHtml;
+
+  var rev=document.getElementById('selRev'), env=document.getElementById('selEnv');
+  var mxbody=document.getElementById('mxbody');
+  var body=document.getElementById('qsumBody'), tot=document.getElementById('qsumTotal'), lvc=document.getElementById('qsumLv');
+  function fmt(n){return (n||0).toLocaleString();}
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+  // 기본 행 (월 항목 IMC = 월 단가 × 개월). amount 단위: 만원
+  function defaultRows(){ return [
+    {key:'진단',     name:'데이터 진단 + 시장 서베이',              monthly:false, L1:500, L2:1000, L3:2000, sel:'L2',  qty:1},
+    {key:'아이덴티티', name:'브랜드 아이덴티티 정립 + 제품체계 전략',   monthly:false, L1:1000,L2:2000, L3:3500, sel:'L2',  qty:1},
+    {key:'디자인',   name:'브랜드 로고 & 패키지 디자인 리뉴얼',       monthly:false, L1:1500,L2:3000, L3:5000, sel:'L2',  qty:1},
+    {key:'촬영',     name:'사진 촬영(제품·라이프스타일) + 콘텐츠 제작', monthly:false, L1:500, L2:1500, L3:3000, sel:'L2',  qty:1},
+    {key:'마케팅',   name:'인스타그램 콘텐츠 기획 & 운영',           monthly:false, L1:1000,L2:2000, L3:4000, sel:'L2',  qty:1},
+    {key:'IMC',      name:'브랜드 IMC 전략 파트너십 / 대행사 fee',    monthly:true,  L1:60,  L2:140,  L3:300,  sel:'L2',  qty:6},
+    {key:'자사몰',   name:'자사몰(카페24) 세팅',                    monthly:false, L1:1200,L2:2000, L3:3000, sel:'제외', qty:1}
+  ];}
+
+  var state={ rows:null, customSeq:0 };
+  function load(){
+    var q=slug?BR.readQuote(slug):null;
+    if(q&&q.rows&&q.rows.length){ state.rows=q.rows; if(q.rev!=null) rev.value=q.rev; }
+    else state.rows=defaultRows();
+  }
+  function persist(){ if(slug) BR.writeQuote(slug,{rows:state.rows, rev:rev.value}); }
+
+  var LV=['L1','L2','L3'];
+  function selAmt(r){ return r.sel==='제외'?0:((+r[r.sel]||0)*(+r.qty||0)); }
+
+  function renderMatrix(){
+    var html='';
+    state.rows.forEach(function(r,i){
+      function lvCellHtml(lv){
+        var cls=(lv==='L2')?' class="lv2"':'';
+        return '<td'+cls+'><div class="lvcell">'+
+          '<input type="radio" name="r'+i+'" data-lv="'+lv+'"'+(r.sel===lv?' checked':'')+'>'+
+          '<input class="amt" data-lv="'+lv+'" type="number" min="0" value="'+(+r[lv]||0)+'"></div></td>';
+      }
+      html+='<tr data-idx="'+i+'">'+
+        '<td style="text-align:left"><input class="nm-in" type="text" value="'+esc(r.name)+'">'+(r.monthly?'<span class="mtag">월·'+(+r.qty||0)+'개월</span>':'')+'</td>'+
+        '<td class="exc"><input type="radio" name="r'+i+'" data-lv="제외"'+(r.sel==='제외'?' checked':'')+'></td>'+
+        lvCellHtml('L1')+lvCellHtml('L2')+lvCellHtml('L3')+
+        '<td><input class="qty-in" type="number" min="0" value="'+(+r.qty||0)+'"><div class="qunit">'+(r.monthly?'개월':'수량')+'</div></td>'+
+        '<td><button class="delrow" title="삭제">×</button></td>'+
+      '</tr>';
+    });
+    mxbody.innerHTML=html;
+    bindMatrix();
+    calc();
+  }
+
+  function bindMatrix(){
+    [].forEach.call(mxbody.querySelectorAll('tr[data-idx]'),function(tr){
+      var i=+tr.getAttribute('data-idx'), r=state.rows[i];
+      [].forEach.call(tr.querySelectorAll('input[type=radio]'),function(rd){
+        rd.onchange=function(){ r.sel=rd.getAttribute('data-lv'); calc(); persist(); };
+      });
+      [].forEach.call(tr.querySelectorAll('input.amt'),function(a){
+        a.oninput=function(){ r[a.getAttribute('data-lv')]=+a.value||0; calc(); persist(); };
+      });
+      var nm=tr.querySelector('.nm-in'); nm.oninput=function(){ r.name=nm.value; persist(); };
+      var q=tr.querySelector('.qty-in'); q.oninput=function(){ r.qty=+q.value||0; var tag=tr.querySelector('.mtag'); if(tag) tag.textContent='월·'+(+r.qty||0)+'개월'; calc(); persist(); };
+      tr.querySelector('.delrow').onclick=function(){ state.rows.splice(i,1); persist(); renderMatrix(); };
+    });
+  }
+
+  document.getElementById('btnAdd').onclick=function(){
+    state.customSeq++;
+    state.rows.push({key:'c'+state.customSeq, name:'새 항목', monthly:false, L1:0, L2:0, L3:0, sel:'L2', qty:1, custom:true});
+    persist(); renderMatrix();
+  };
+
+  function calc(){
+    var sum=0, html='', lvs={};
+    state.rows.forEach(function(r){
+      var amt=selAmt(r); if(amt<=0) return;
+      sum+=amt; lvs[r.sel]=(lvs[r.sel]||0)+1;
+      html+='<tr><td>'+esc(r.name)+(r.monthly?' <span class="t n">월·'+(+r.qty||0)+'개월</span>':((+r.qty||1)!==1?' <span class="t n">×'+(+r.qty||0)+'</span>':''))+'</td>'+
+        '<td class="c"><span class="t b">'+r.sel+'</span></td><td class="num">'+fmt(amt)+'</td></tr>';
+    });
+    body.innerHTML = html || '<tr><td colspan="3" style="color:#94a3b8;text-align:center;padding:18px">선택된 항목 없음</td></tr>';
+    tot.innerHTML = fmt(sum)+'만 <b>('+(sum/10000).toFixed(3)+'억)</b>';
+    var keys=Object.keys(lvs); lvc.textContent = keys.length ? (keys.length===1 ? keys[0] : '혼합') : '—';
+    var rv=parseFloat(rev.value)||0;
+    if(rv<=0){ env.innerHTML='<span style="color:#d97706">매출 전 — 펀딩/마케팅 예산으로 판단</span>'; }
+    else { var half=Math.round(rv*750); env.innerHTML=fmt(half)+'만 · '+(sum<=half?'<span style="color:#0e9f6e">✓ 안에 듦</span>':'<span style="color:#e11d48">⚠ 초과</span>'); }
+  }
+  rev.addEventListener('input',function(){ calc(); persist(); });
+
+  function ymd(){ var d=new Date(), p=function(n){return(n<10?'0':'')+n;}; return ''+d.getFullYear()+p(d.getMonth()+1)+p(d.getDate()); }
+  function ymdDash(){ return ymd().replace(/(\d{4})(\d{2})(\d{2})/,'$1-$2-$3'); }
+  function won(manwon){ return (manwon*10000).toLocaleString()+'원'; }
+  function selTotal(){ var s=0; state.rows.forEach(function(r){ s+=selAmt(r); }); return s; }
+  function dlBlob(content,mime,fname){ var b=new Blob([content],{type:mime}), u=URL.createObjectURL(b), a=document.createElement('a'); a.href=u; a.download=fname; document.body.appendChild(a); a.click(); setTimeout(function(){URL.revokeObjectURL(u); a.remove();},800); }
+  function ensureLib(src,glob,cb){ if(window[glob]){cb(true);return;} var s=document.createElement('script'); s.src=src; s.onload=function(){cb(!!window[glob]);}; s.onerror=function(){cb(false);}; document.head.appendChild(s); }
+  function lvLineLabel(r,lv){ var v=+r[lv]||0; return r.monthly?('월 '+fmt(v)):fmt(v); }
+  function envNote(t){ var rv=parseFloat(rev.value)||0; if(rv<=0) return ''; var half=Math.round(rv*750);
+    return '<div class="co ac"><span class="lab">예산 ENVELOPE · 매출 기반 가늠자</span>연 마케팅비 ≈ <b>매출 × 15%</b> → 6개월치(매출억 × 750만)로 수주 규모를 가늠합니다. <b>매출 '+rv+'억 → 6개월 envelope ≈ '+fmt(half)+'만</b> · 선택 합계 '+fmt(t)+'만 = '+(t<=half?'<b>envelope 안에 합리적으로 듦.</b>':'<b>envelope 초과 — 항목·난이도 협의 조정.</b>')+'</div>'; }
+
+  // 견적 블록 표준 콘텐츠 (data-key 매칭, 커스텀 항목은 최소 블록)
+  var LVLABEL={L1:'경량(프리랜서)',L2:'표준(내부)',L3:'풀(외주·고사양)'};
+  var QC={
+    'IMC':{period:'6개월 상시', plan:'● 운영 체계\n감(感) 운영 → 데이터 기반 월간 의사결정\n· 목표: 매출·광고 월간 리뷰 루틴 + 대시보드',
+      lines:[['월간 IMC 회의','매출·광고 데이터 분석 및 월 단위 마케팅 기획 리뷰 (정기 미팅 + 상시 슬랙 컨설팅)'],['AI 관리 대시보드','매출·광고 데이터 종합 분석 툴 제공 (웹 대시보드)'],['플랜 시트 납품','연간(월간) 플랜 시트 및 관리 데이터 최초 세팅']],
+      deliver:'연간(월간) 플랜 시트 및 관리 데이터 (매월 납품)'},
+    '진단':{period:'데이터 수령 즉시 착수 · 1~2개월', plan:'● 진단 먼저\n결정 가능한 정보로\n· 목표: 의사결정 근거 패키지 페이퍼화',
+      lines:[['1차 진단 — 데이터 정밀 분해','광고·매출·회원/CRM 백데이터 디깅 + 효율 분해·개선 권고'],['2차 진단 — 전략 페이퍼화','숨은 맥락(채널·조직·의사결정) + 노하우 → 의사결정 문서'],['시장 서베이','시장·소비자 조사 + 경쟁 분석·포지셔닝 수용도 검증'],['사업계획 골격','채널·제품·예산 로드맵 + 확장 시나리오']],
+      deliver:'데이터 진단서 + 전략 진단 페이퍼 + 시장 서베이 리포트 + 사업계획 골격'},
+    '아이덴티티':{period:'진단 직후 · 1~2개월', plan:'● 포지셔닝\n파는 것 → 브랜드로\n· 한 줄 축 공식화 + 제품 하우스 구조화',
+      lines:[['브랜드 워크숍','진단·서베이 공유 → 페르소나·니즈 정의 → 라인업 도출 (대표·핵심 멤버 참여)'],['브랜드 포지셔닝 전략','핵심 축 공식화 — 강점을 브랜드 언어로 번역 / 타겟·경쟁 포지셔닝'],['제품 라인업 전략','히어로/서브/확장 역할 정의 — 브랜드 하우스 구조화'],['브랜드 커뮤니케이션 가이드','핵심 메시지·슬로건·톤앤매너·채널별 말투 가이드']],
+      deliver:'포지셔닝 전략 문서 + 제품 라인업 역할 정의 + 커뮤니케이션 가이드'},
+    '디자인':{period:'아이덴티티 확정 후 · 2개월', plan:'● 시각화\n노후 디자인 → 정통성이 보이는 디자인',
+      lines:[['로고 리뉴얼','리뉴얼 방향 3안 → 최종 확정 + 컬러 시스템·타이포 가이드'],['패키지 디자인','메인·히어로 라인 패키지 — 채널 MD 호환'],['상세페이지 템플릿 리뉴얼','히어로 기준 신규 템플릿 — 내부 확장 적용 가능한 구조'],['브랜드 가이드라인','로고·컬러·패키지 규정 / 내부·외주 활용']],
+      deliver:'로고 리뉴얼 + 패키지 디자인 + 브랜드 가이드라인'},
+    '촬영':{period:'디자인 확정 후', plan:'● 시각 자산\n쓸 사진 확보 → 광고·상세 전용 소재',
+      lines:[['촬영 기획 및 디렉팅','콘셉트 기획·무드보드 / 셋업 / 현장 디렉팅 (1일 full day)'],['제품·라이프스타일 컷','전 라인업 제품 컷 + 라이프스타일 컷 — 입점·상세·광고 활용'],['콘텐츠 제작','광고 후킹 콘텐츠 + 랜딩용 상세 이미지']],
+      deliver:'제품 포트폴리오 컷 + 라이프스타일 컷 + 광고·상세 소재 (스튜디오 렌탈 실비 별도)'},
+    '마케팅':{period:'아이덴티티 확립 후 착수', plan:'● 자산 전환\n임대한 도달 → 소유한 팬덤(자사몰·CRM)',
+      lines:[['인스타그램 무드보드','연간 채널 운영 전략 — 시각 기준·레퍼런스 / 피드·릴스·스토리 구조'],['월 콘텐츠 기획보드','월 8~10건 기획 + 레퍼런스 — 콘텐츠 구조화 + CRM 메시지'],['캠페인 기획','시즌·런칭 캠페인 기획 + 인하우스 전수']],
+      deliver:'무드보드 + 월 콘텐츠 기획보드 + 캠페인 기획서'},
+    '자사몰':{period:'1개월', plan:'● 판매 채널\n자사몰 자생 매출 기반 확보',
+      lines:[['사이트 기획·와이어프레임','메인·상품·상세·브랜드스토리·마이페이지 화면 구조 + 전환 UX'],['카페24 기본 셋팅','계정·배송/반품 정책·PG 결제 연동'],['UI 디자인 & 상품 페이지','쇼핑몰 UI 커스텀 + 상세 페이지 제작 + 오픈 QA']],
+      deliver:'쇼핑몰 셋팅 + 상세 페이지 디자인'}
+  };
+  // 선택 항목 → 견적 블록 (행 순서 유지). 커스텀/편집 항목도 포함.
+  function selectedBlocks(){
+    var out=[];
+    state.rows.forEach(function(r){
+      var amt=selAmt(r); if(amt<=0) return;
+      var c=QC[r.key];
+      out.push({ title:r.name, period:c?c.period:'협의', plan:c?c.plan:'● 상담 협의 항목',
+        lines:c?c.lines:[[r.name,'상담에서 합의한 작업 범위']], deliver:c?c.deliver:'협의 산출물',
+        amount:amt*10000, level:r.sel });
+    });
+    return out;
+  }
+
+  function buildQuoteDoc(){
+    var t=selTotal(); if(!t) return null;
+    var brand=brandName();
+    var rows=state.rows.map(function(r){
+      function cell(lv){ return '<td'+(r.sel===lv?' class="hit"':'')+'>'+lvLineLabel(r,lv)+'</td>'; }
+      var chip=r.sel==='제외'?'<span class="t n">제외</span>':'<span class="t b">'+r.sel+'</span>';
+      var qtag=r.monthly?' <span class="t n">월·'+(+r.qty||0)+'개월</span>':((+r.qty||1)!==1?' <span class="t n">×'+(+r.qty||0)+'</span>':'');
+      return '<tr><td class="nm">'+esc(r.name)+qtag+'</td>'+cell('L1')+cell('L2')+cell('L3')+'<td class="c">'+chip+'</td></tr>';
+    }).join('');
+    var css=':root{--ink:#0f172a;--ink2:#334155;--muted:#64748b;--line:#e7e9ee;--line2:#eef1f5;--bg:#fbfcfd;--card:#fff;--soft:#f6f8fb;--ac:#4f46e5;--ac-50:#eef2ff;--ac-100:#e0e7ff;--ac-700:#3730a3}'
+      +'*{margin:0;padding:0;box-sizing:border-box}body{font-family:Pretendard,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:14px;word-break:keep-all}'
+      +'.hero{background:var(--ink);color:#fff;padding:48px 0 40px}.hero .in{max-width:860px;margin:0 auto;padding:0 32px}'
+      +'.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:18px}'
+      +'.hero h1{font-size:clamp(26px,4.4vw,34px);font-weight:800;letter-spacing:-.03em;line-height:1.18;margin-bottom:10px}.hero h1 .hl{background:linear-gradient(transparent 60%,rgba(165,180,252,.55) 60%);padding:0 2px}'
+      +'.hero .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.hero .chip{font-size:12px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 12px}.hero .chip b{color:#a5b4fc}'
+      +'.wrap{max-width:860px;margin:0 auto;padding:32px 32px 80px}.sec-k{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:999px;padding:4px 12px;margin-bottom:12px}'
+      +'h2{font-size:22px;font-weight:800;letter-spacing:-.025em;margin-bottom:8px}.lead{font-size:13.5px;color:var(--ink2);margin-bottom:16px}'
+      +'table{width:100%;border-collapse:collapse;font-size:12.5px;margin:8px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-variant-numeric:tabular-nums}'
+      +'th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:right;padding:11px 13px;font-size:11.5px;border-bottom:1px solid var(--ac-100)}th:first-child{text-align:left}'
+      +'td{padding:12px 13px;border-bottom:1px solid var(--line2);text-align:right;color:var(--ink2)}td.nm{text-align:left;font-weight:700;color:var(--ink)}td.c{text-align:center}td.hit{background:var(--ac-50);font-weight:800;color:var(--ac-700)}'
+      +'tr:nth-child(even) td{background:var(--soft)}tr:nth-child(even) td.hit{background:var(--ac-100)}'
+      +'.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px}.t.b{background:var(--ac-50);color:var(--ac)}.t.n{background:#f1f5f9;color:var(--muted)}'
+      +'.total{background:var(--ink);color:#fff;border-radius:14px;padding:22px 26px;display:flex;justify-content:space-between;align-items:center;margin:16px 0;flex-wrap:wrap;gap:8px}'
+      +'.total .tl2{font-size:13px;color:#94a3b8;font-weight:700;letter-spacing:.06em}.total .tv{font-size:26px;font-weight:800;letter-spacing:-.02em;color:#a5b4fc}.total .tv small{font-size:13px;font-weight:600;color:#cbd5e1;margin-left:8px}'
+      +'.co{border-radius:12px;padding:14px 18px;margin:12px 0;font-size:13px;line-height:1.7;border:1px solid var(--line)}.co.ac{background:var(--ac-50);border-color:var(--ac-100)}.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase;color:var(--ac)}.co b{color:var(--ink)}'
+      +'footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.8;margin-top:8px}'
+      +'@media print{.hero,.total,.co,td.hit,th{-webkit-print-color-adjust:exact;print-color-adjust:exact}}';
+    var doc='<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>'+esc(brand)+' · 1차 견적 | BRANDRISE</title>'
+      +'<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet"><style>'+css+'</style></head><body>'
+      +'<div class="hero"><div class="in"><div class="badge">BRAND CONSULTING QUOTE · 1차 견적</div><h1>'+esc(brand)+' · 1차 <span class="hl">견적</span></h1>'
+      +'<div class="meta"><span class="chip">견적일 <b>'+ymdDash()+'</b></span><span class="chip">선택 합계 <b>'+won(t)+' (VAT 별도)</b></span><span class="chip">기준 <b>셀렉 매트릭스 L 결과</b></span></div></div></div>'
+      +'<div class="wrap"><section><div class="sec-k">SELECTION RESULT</div><h2>견적 셀렉 결과 — 항목별 난이도</h2>'
+      +'<p class="lead">PREP 상담 셀렉(항목별 L1·L2·L3)으로 정해진 단가입니다. <b>L2(내부 표준)가 기준선</b>, L1은 경량(프리랜서), L3은 풀(외주·고사양). <b>단가 공유 원칙</b>: 공통 항목 단가는 브랜드 불문 동일합니다. (단위: 만원 · VAT 별도)</p>'
+      +'<table><thead><tr><th>견적 항목</th><th style="width:16%">L1 경량(프리랜서)</th><th style="width:16%">L2 표준(내부)★</th><th style="width:18%">L3 풀(외주·고사양)</th><th class="c" style="width:10%">선택</th></tr></thead><tbody>'+rows+'</tbody></table>'
+      +'<div class="total"><div class="tl2">선택 합계 (L 셀렉 결과)</div><div class="tv">'+won(t)+' <small>= '+fmt(t)+'만 · '+(t/10000).toFixed(3)+'억 · VAT 별도</small></div></div>'
+      +envNote(t)
+      +'<div class="co"><span class="lab">비고</span>· 본 견적은 <b>1차 제안</b>이며 VAT 별도입니다. 항목·범위는 데이터 정밀 진단 결과에 따라 협의로 조정됩니다.<br>· 레벨: L1 경량(프리랜서) / L2 표준(내부) / L3 풀(외주·고사양).<br>· 월 단위 항목은 개월 기준 합계입니다. 촬영 스튜디오·인쇄 실비는 별도 산정.</div>'
+      +'</section></div><footer><b>BRANDRISE</b> by HIZ · Brand · IMC Consulting<br>본 1차 견적은 상담 준비(PREP) 셀렉 결과 기반입니다 — 확정 견적은 진단 후 별도 발송됩니다.</footer></body></html>';
+    return doc;
+  }
+
+  var docEl=document.getElementById('doc');
+  document.getElementById('btnPreview').addEventListener('click',function(){
+    var doc=buildQuoteDoc(); if(!doc){ alert('선택된 항목이 없습니다.'); return; }
+    docEl.classList.add('show');
+    docEl.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:var(--soft);border-bottom:1px solid var(--line)">'
+      +'<b style="font-size:13px">견적서 미리보기</b><button id="docPrint" style="font-family:inherit;font-size:12.5px;font-weight:700;border:1px solid var(--ac);background:var(--ac);color:#fff;border-radius:9px;padding:8px 16px;cursor:pointer">🖨 인쇄 · PDF</button></div>'
+      +'<iframe id="docFrame"></iframe>';
+    var ifr=document.getElementById('docFrame'); ifr.srcdoc=doc;
+    ifr.onload=function(){ try{ ifr.style.height=(ifr.contentWindow.document.body.scrollHeight+40)+'px'; }catch(e){ ifr.style.height='1200px'; } };
+    document.getElementById('docPrint').onclick=function(){ ifr.contentWindow.focus(); ifr.contentWindow.print(); };
+    docEl.scrollIntoView({behavior:'smooth'});
+  });
+
+  document.getElementById('btnExcel').addEventListener('click',function(){
+    var blocks=selectedBlocks(), t=selTotal()*10000; if(!blocks.length){ alert('선택된 항목이 없습니다.'); return; }
+    var brand=brandName();
+    ensureLib('https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js','ExcelJS',function(ok){
+      if(!(ok&&window.ExcelJS)){
+        var rows=[['구분','항목','내용','단가','수량','계약 견적']];
+        blocks.forEach(function(b){ rows.push([b.title,'','','','','']); b.lines.forEach(function(l){ rows.push(['',l[0],l[1],'—','포함','포함']); }); rows.push(['','>> 최종 납품',b.deliver,'','','']); rows.push(['소계','','','','',b.amount]); });
+        rows.push(['합계 (VAT 별도)','','','','',t]);
+        var csv='﻿'+rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"';}).join(',');}).join('\n');
+        dlBlob(csv,'text/csv;charset=utf-8', brand+'_1차견적_'+ymd()+'.csv');
+        alert('엑셀 라이브러리 로드 실패 → CSV로 내보냈습니다(엑셀에서 열림).'); return;
+      }
+      var AC='FF4F46E5', AC50='FFEEF2FF', AC700='FF3730A3', GRAY='FFEFEFEF', GRAY2='FFD9D9D9', INK='FF0F172A', INK2='FF334155', MUTE='FF64748B', LINE='FFD9DEE6';
+      var thin={style:'thin',color:{argb:LINE}};
+      var wb=new ExcelJS.Workbook(); var ws=wb.addWorksheet('견적');
+      ws.columns=[{width:28},{width:30},{width:50},{width:13},{width:12},{width:16}];
+      function box(rr){ for(var c=1;c<=6;c++){ ws.getRow(rr).getCell(c).border={top:thin,left:thin,bottom:thin,right:thin}; } }
+      ws.mergeCells('A1:D1'); var tt=ws.getCell('A1'); tt.value='[브랜드라이즈] '+brand+' 브랜드 컨설팅 — 1차 견적'; tt.font={bold:true,size:14,color:{argb:INK}};
+      ws.mergeCells('E1:F1'); var dc=ws.getCell('E1'); dc.value=ymdDash()+' ver.'; dc.font={size:10,color:{argb:MUTE}}; dc.alignment={horizontal:'right'};
+      ws.mergeCells('A3:C3'); var kh=ws.getCell('A3'); kh.value='파트너십의 KPI'; kh.font={bold:true,size:11,color:{argb:'FFFFFFFF'}}; kh.fill={type:'pattern',pattern:'solid',fgColor:{argb:AC}};
+      ws.mergeCells('D3:F3'); var nh=ws.getCell('D3'); nh.value='비고'; nh.font={bold:true,size:11,color:{argb:'FFFFFFFF'}}; nh.fill={type:'pattern',pattern:'solid',fgColor:{argb:AC}};
+      ws.mergeCells('A4:C7'); var kt=ws.getCell('A4'); kt.value='· 데이터 정밀 진단 선행 — 결정을 내릴 수 있는 정보부터\n· 브랜드 아이덴티티 → 디자인·촬영·채널 순서 진행\n· 리테이너 + 캠페인 방식 · 인하우스 전수 목표'; kt.alignment={wrapText:true,vertical:'top'}; kt.font={size:10,color:{argb:INK2}};
+      ws.mergeCells('D4:F7'); var nt=ws.getCell('D4'); nt.value='· 본 견적의 금액은 VAT 별도 기준입니다.\n· 촬영 스튜디오 렌탈·패키지 인쇄 실비는 별도 산정.\n· 광고 매체비·퍼포먼스 광고 직접 운영은 범위 외.\n· 범위·금액은 데이터 정밀 진단 결과에 따라 협의 조정됩니다.'; nt.alignment={wrapText:true,vertical:'top'}; nt.font={size:10,color:{argb:INK2}};
+      for(var rr=3;rr<=7;rr++) box(rr);
+      var H=9; var hdr=['구분','항목','내용','단가','수량','계약 견적'];
+      hdr.forEach(function(h,i){ var c=ws.getRow(H).getCell(i+1); c.value=h; c.font={bold:true,size:10,color:{argb:AC700}}; c.fill={type:'pattern',pattern:'solid',fgColor:{argb:AC50}}; c.alignment={horizontal:i>=3?'center':'left',vertical:'middle'}; });
+      ws.getRow(H).height=20; box(H);
+      var r=H+1;
+      blocks.forEach(function(b){
+        var rH=r;
+        ws.mergeCells('A'+rH+':B'+rH); var bt=ws.getCell('A'+rH); bt.value=b.title; bt.font={bold:true,size:11,color:{argb:INK}}; bt.alignment={vertical:'middle'};
+        ws.mergeCells('C'+rH+':F'+rH); var pc=ws.getCell('C'+rH); pc.value=b.period+'  ·  '+(LVLABEL[b.level]||b.level); pc.font={size:10,color:{argb:MUTE}}; pc.alignment={horizontal:'right',vertical:'middle'};
+        ws.getRow(rH).height=22; box(rH); r++;
+        b.lines.forEach(function(l){ var row=ws.getRow(r);
+          row.getCell(1).value=''; row.getCell(2).value=l[0]; row.getCell(2).font={bold:true,color:{argb:INK2}};
+          var d=row.getCell(3); d.value=l[1]; d.alignment={wrapText:true,vertical:'top'}; d.font={size:10,color:{argb:INK2}};
+          row.getCell(4).value='—'; row.getCell(5).value='포함'; row.getCell(6).value='포함';
+          [4,5,6].forEach(function(ci){ row.getCell(ci).alignment={horizontal:'center',vertical:'top'}; row.getCell(ci).font={size:10,color:{argb:MUTE}}; });
+          box(r); r++; });
+        var dr=ws.getRow(r); ws.mergeCells('B'+r+':F'+r);
+        dr.getCell(1).value='≫ 최종 납품'; dr.getCell(1).font={bold:true,size:9.5,color:{argb:AC700}};
+        var dd=dr.getCell(2); dd.value=b.deliver; dd.font={size:9.5,color:{argb:AC700}}; dd.alignment={wrapText:true,vertical:'top'};
+        for(var ci=1;ci<=6;ci++) dr.getCell(ci).fill={type:'pattern',pattern:'solid',fgColor:{argb:AC50}};
+        box(r); r++;
+        ws.mergeCells('A'+r+':E'+r); var sl=ws.getCell('A'+r); sl.value='소       계'; sl.alignment={horizontal:'right'}; sl.font={bold:true,color:{argb:INK}};
+        var sv=ws.getCell('F'+r); sv.value=b.amount; sv.numFmt='#,##0'; sv.alignment={horizontal:'right'}; sv.font={bold:true,color:{argb:INK}};
+        for(var ci2=1;ci2<=6;ci2++) ws.getRow(r).getCell(ci2).fill={type:'pattern',pattern:'solid',fgColor:{argb:GRAY}};
+        box(r); r++;
+        ws.mergeCells('G'+rH+':G'+(r-1)); var gp=ws.getCell('G'+rH); gp.value=b.plan; gp.alignment={wrapText:true,vertical:'top'}; gp.font={size:9.5,color:{argb:INK2}};
+        for(var gr=rH;gr<=r-1;gr++) ws.getRow(gr).getCell(7).border={top:thin,left:thin,bottom:thin,right:thin};
+      });
+      ws.mergeCells('A'+r+':E'+r); var hl=ws.getCell('A'+r); hl.value='합       계 (VAT 별도)'; hl.alignment={horizontal:'right'}; hl.font={bold:true,size:11,color:{argb:INK}};
+      var hv=ws.getCell('F'+r); hv.value=t; hv.numFmt='#,##0'; hv.alignment={horizontal:'right'}; hv.font={bold:true,size:11,color:{argb:INK}};
+      for(var c3=1;c3<=6;c3++) ws.getRow(r).getCell(c3).fill={type:'pattern',pattern:'solid',fgColor:{argb:GRAY2}};
+      ws.getRow(r).height=22; box(r); r+=2;
+      ws.mergeCells('A'+r+':F'+r); var ad=ws.getCell('A'+r); ad.value='※ 본 견적은 1차 제안입니다. 세부 단가·산출물은 데이터 정밀 진단 결과에 따라 협의로 조정됩니다. (단가 공유 원칙 — 브랜드 불문 동일)'; ad.font={size:9.5,color:{argb:MUTE}}; ad.alignment={wrapText:true};
+      ws.getRow(1).height=22;
+      wb.xlsx.writeBuffer().then(function(buf){ dlBlob(buf,'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', brand+'_1차견적_'+ymd()+'.xlsx'); });
+    });
+  });
+
+  document.getElementById('btnHtml').addEventListener('click',function(){
+    var doc=buildQuoteDoc(); if(!doc){ alert('선택된 항목이 없습니다.'); return; }
+    dlBlob(doc,'text/html;charset=utf-8', brandName()+'_1차견적_'+ymd()+'.html');
+  });
+
+  document.getElementById('btnReset').addEventListener('click',function(){
+    if(!confirm('편집한 항목·단가를 모두 기본값으로 되돌릴까요?')) return;
+    state.rows=defaultRows(); rev.value='0'; persist(); renderMatrix();
+  });
+
+  document.getElementById('btnMark').addEventListener('click',function(){
+    if(!slug){ alert('브랜드가 지정되지 않아 단계를 저장할 수 없습니다.'); return; }
+    BR.writeStage(slug,'sent'); persist();
+    if(confirm(BRAND+' — 단계를 "견적서 발송 완료"로 표시했습니다.\n보드로 돌아갈까요?')) location.href='../pipeline/';
+  });
+
+  load();
+  renderMatrix();
+})();
+</script>
+</body>
+</html>
