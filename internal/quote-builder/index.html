@@ -139,6 +139,7 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
         <button class="btn solid" id="btnPreview" type="button">🖥 견적서 미리보기</button>
         <button class="btn" id="btnExcel" type="button">📊 엑셀로 내보내기</button>
         <button class="btn" id="btnHtml" type="button">📄 HTML로 내보내기</button>
+        <button class="btn" id="btnPdf" type="button">📥 PDF 다운로드</button>
         <button class="btn" id="btnSend" type="button">📤 발송용 링크</button>
         <button class="btn solid" id="btnReview" type="button">✅ 검토용 링크</button>
         <button class="btn" id="btnReset" type="button">기본값 복원</button>
@@ -443,6 +444,18 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
   document.getElementById('btnHtml').addEventListener('click',function(){
     var doc=buildQuoteDoc(); if(!doc){ alert('견적 항목이 없습니다.'); return; }
     dlBlob(doc,'text/html;charset=utf-8', brandName()+'_1차견적_'+ymd()+'.html');
+  });
+
+  // 📥 PDF — 서버 함수(api/quote-pdf)가 견적 HTML을 headless 크롬으로 렌더해 PDF 반환. 인증 게이트 안에서만 동작.
+  document.getElementById('btnPdf').addEventListener('click',function(){
+    var doc=buildQuoteDoc(); if(!doc){ alert('견적 항목이 없습니다.'); return; }
+    var btn=this, old=btn.textContent; btn.disabled=true; btn.textContent='PDF 생성 중…';
+    var fname=brandName()+'_1차견적_'+ymd();
+    fetch('/api/quote-pdf',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({html:doc, name:fname})})
+      .then(function(r){ if(!r.ok) return r.text().then(function(t){ throw new Error(r.status+' '+(t||'')); }); return r.blob(); })
+      .then(function(blob){ dlBlob(blob,'application/pdf', fname+'.pdf'); })
+      .catch(function(e){ alert('PDF 생성 실패 ('+e.message+').\n미리보기 → 🖨 인쇄 → "PDF로 저장"으로 받아 주세요.'); })
+      .then(function(){ btn.disabled=false; btn.textContent=old; });
   });
 
   // 🔗 공유 링크 — 견적을 lz-string으로 해시(#q=)에 통째 인코딩. 저장소 없이 링크 하나로 공유.
