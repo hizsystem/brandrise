@@ -139,6 +139,7 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
         <button class="btn solid" id="btnPreview" type="button">🖥 견적서 미리보기</button>
         <button class="btn" id="btnExcel" type="button">📊 엑셀로 내보내기</button>
         <button class="btn" id="btnHtml" type="button">📄 HTML로 내보내기</button>
+        <button class="btn" id="btnShare" type="button">🔗 공유 링크 복사</button>
         <button class="btn" id="btnReset" type="button">기본값 복원</button>
         <button class="btn ok" id="btnMark" type="button">✅ 발송 완료로 표시</button>
       </div>
@@ -153,6 +154,8 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
 <footer><b>BRANDRISE</b> by HIZ · 견적 빌더 · 셀렉 매트릭스 → 편집형 1차 견적 + 강훈 5블록 내보내기</footer>
 
 <script src="../pipeline-data.js"></script>
+<script src="../../share/lz-string.min.js"></script>
+<script src="../../share/quote-doc.js"></script>
 <script>
 (function(){
   function qp(k){var m=new RegExp('[?&]'+k+'=([^&]*)').exec(location.search);return m?decodeURIComponent(m[1].replace(/\+/g,' ')):'';}
@@ -322,6 +325,8 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
   }
 
   function buildQuoteDoc(){
+    // 공유 모듈(BRQuote)을 정본으로 사용 — 빌더·공유뷰어·PDF가 동일 출력. 로드 실패 시 아래 인라인 폴백.
+    if(window.BRQuote){ return BRQuote.buildDoc({brand:brandName(), lines:state.lines, rev:rev.value, date:ymdDash()}); }
     var t=selTotal(); if(!t) return null;
     var brand=brandName();
     var rows=state.lines.filter(function(l){return lineTotal(l)>0;}).map(function(l){
@@ -437,6 +442,18 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
   document.getElementById('btnHtml').addEventListener('click',function(){
     var doc=buildQuoteDoc(); if(!doc){ alert('견적 항목이 없습니다.'); return; }
     dlBlob(doc,'text/html;charset=utf-8', brandName()+'_1차견적_'+ymd()+'.html');
+  });
+
+  // 🔗 공유 링크 — 견적을 lz-string으로 해시(#q=)에 통째 인코딩. 저장소 없이 링크 하나로 공유.
+  document.getElementById('btnShare').addEventListener('click',function(){
+    if(!selTotal()){ alert('견적 항목이 없습니다.'); return; }
+    if(!window.LZString || !window.BRQuote){ alert('공유 모듈을 불러오지 못했습니다. 새로고침 후 다시 시도해 주세요.'); return; }
+    var packed=BRQuote.pack({brand:brandName(), lines:state.lines, rev:rev.value, date:ymdDash()});
+    var url=location.origin+'/share/quote/#q='+LZString.compressToEncodedURIComponent(JSON.stringify(packed));
+    var ok='공유 링크를 복사했습니다.\n받는 사람은 비밀번호 없이 이 링크로 견적을 봅니다.\n(링크 안에 견적 내용이 담겨 있어 한 번 보내면 회수·만료되지 않습니다.)';
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(function(){ alert(ok); }, function(){ prompt('아래 링크를 복사하세요:', url); });
+    } else { prompt('아래 링크를 복사하세요:', url); }
   });
 
   document.getElementById('btnReset').addEventListener('click',function(){
