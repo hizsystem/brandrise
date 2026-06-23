@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!-- BRANDRISE 내부 허브 — 재구성 미리보기(목업). 공용 네비 + 운영/매뉴얼 존 분리 + 단색 통일. -->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRANDRISE 내부 허브 (재구성 미리보기)</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3; --ok:#0e9f6e;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased;font-size:14px}
+
+/* ── 공용 상단 네비 (전 페이지 공유) ── */
+.topnav{position:sticky;top:0;z-index:20;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.07)}
+.topnav .in{max-width:1080px;margin:0 auto;padding:0 32px;display:flex;align-items:center;gap:18px;height:54px}
+.topnav .wm{font-size:13.5px;font-weight:800;letter-spacing:-.01em;color:#fff;white-space:nowrap}
+.topnav .wm b{color:#a5b4fc}
+.topnav .links{display:flex;align-items:center;gap:2px;margin-left:6px;flex:1;flex-wrap:wrap}
+.topnav a{font-size:12.5px;font-weight:600;color:#cbd5e1;text-decoration:none;padding:7px 11px;border-radius:8px;white-space:nowrap}
+.topnav a:hover{background:rgba(255,255,255,.08);color:#fff}
+.topnav a.on{background:rgba(165,180,252,.18);color:#fff;font-weight:800}
+.topnav .sep{width:1px;height:18px;background:rgba(255,255,255,.14);margin:0 8px}
+.topnav .grp{font-size:10px;font-weight:800;letter-spacing:.1em;color:#64748b;padding:0 6px}
+
+/* ── hero (단색 통일) ── */
+.hero{background:var(--ink);color:#fff;padding:48px 0 40px}
+.hero .in{max-width:1080px;margin:0 auto;padding:0 32px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:18px}
+.hero h1{font-size:clamp(28px,4.4vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1.14;margin-bottom:12px}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.5) 60%);padding:0 3px}
+.hero .sub{font-size:15px;color:#cbd5e1;font-weight:300;max-width:640px}
+
+.wrap{max-width:1080px;margin:0 auto;padding:34px 32px 90px}
+.zone{margin-bottom:46px}
+.zk{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+.zk .n{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:999px;padding:4px 11px}
+.zk h2{font-size:20px;font-weight:800;letter-spacing:-.02em}
+.zlead{font-size:13.5px;color:var(--muted);margin:7px 0 18px}
+
+/* 운영 도구 — 큰 카드 2개 */
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.opc{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:18px;background:var(--card);padding:22px 24px;text-decoration:none;color:inherit;transition:.15s;border-top:3px solid var(--ac)}
+.opc:hover{box-shadow:0 10px 30px rgba(79,70,229,.10);transform:translateY(-1px)}
+.opc .ic{font-size:22px;margin-bottom:12px}
+.opc .t{font-size:18px;font-weight:800;letter-spacing:-.01em;margin-bottom:6px}
+.opc .d{font-size:13.5px;color:var(--ink2);line-height:1.6;flex:1}
+.opc .go{margin-top:14px;color:var(--ac);font-weight:800;font-size:13.5px}
+.opc .meta{font-size:12px;color:var(--muted);margin-top:4px}
+
+/* 영업 흐름 띠 */
+.flowbar{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 6px}
+.fb{flex:1;min-width:140px;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:12px 14px;position:relative}
+.fb:not(:last-child)::after{content:"›";position:absolute;right:-9px;top:50%;transform:translateY(-50%);font-size:17px;color:var(--ac);font-weight:800;z-index:1}
+.fb .k{font-size:11px;font-weight:800;color:var(--ac);margin-bottom:3px}
+.fb .t{font-size:13.5px;font-weight:800}
+.fb.win{background:var(--ink);border-color:var(--ink)}.fb.win .k{color:#a5b4fc}.fb.win .t{color:#fff}
+
+/* 카드 그리드 (매뉴얼·산출물) */
+.subk{font-size:12px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin:22px 0 10px;text-transform:uppercase}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.mc{border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:.15s}
+.mc:hover{border-color:var(--ac-100);box-shadow:0 5px 16px rgba(79,70,229,.08)}
+.mc .mh{padding:14px 17px 10px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line2)}
+.mc .ph{font-size:10px;font-weight:800;background:var(--ac);color:#fff;border-radius:999px;padding:3px 9px}
+.mc.tpl .ph{background:#fff;color:var(--ac-700);border:1px solid var(--ac-100)}
+.mc .mt{font-size:14.5px;font-weight:800}
+.mc .mb{padding:11px 17px 12px;font-size:13px;color:var(--ink2);line-height:1.55;flex:1}
+.mc .mf{padding:0 17px 13px;font-size:12px}
+.mc .go{color:var(--ac);font-weight:800}
+.mc .src{display:block;margin-top:5px;color:var(--muted)}
+
+footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:1080px;margin:0 auto}
+@media(max-width:820px){ .ops{grid-template-columns:1fr} .topnav .in{height:auto;padding-top:8px;padding-bottom:8px} }
+</style>
+</head>
+<body>
+
+<!-- 공용 네비: 운영 도구(좌) ‖ 매뉴얼(우), 현재=허브 -->
+<nav class="topnav"><div class="in">
+  <span class="wm">BRANDRISE <b>허브</b></span>
+  <div class="links">
+    <span class="grp">운영</span>
+    <a href="#" class="on">허브</a>
+    <a href="#">파이프라인</a>
+    <a href="#">견적빌더</a>
+    <span class="sep"></span>
+    <span class="grp">매뉴얼</span>
+    <a href="#">회사소개</a>
+    <a href="#">상담</a>
+    <a href="#">견적콜</a>
+    <a href="#">프로세스</a>
+  </div>
+</div></nav>
+
+<div class="hero"><div class="in">
+  <div class="badge">BRANDRISE · 내부 운영 허브</div>
+  <h1>영업을 <span class="hl">시스템</span>으로</h1>
+  <div class="sub">매일 쓰는 운영 도구는 위에서 바로, 단계별 매뉴얼·산출물 표준은 아래에서. 한 화면에서 영업 흐름 전체를 잡는다.</div>
+</div></div>
+
+<div class="wrap">
+
+  <!-- ZONE 1 — 운영(매일 쓰는 도구) -->
+  <section class="zone">
+    <div class="zk"><span class="n">운영</span><h2>매일 쓰는 도구</h2></div>
+    <p class="zlead">진행 중인 상담을 관리하고, 견적을 만들어 검토·발송한다.</p>
+    <div class="ops">
+      <a class="opc" href="#">
+        <div class="ic">🗂️</div>
+        <div class="t">파이프라인 보드</div>
+        <div class="d">진행 중 브랜드를 단계별로(협의중·견적 대기·발송 완료·수주·드랍) 관리. 카드에서 바로 견적 작성으로.</div>
+        <div class="go">보드 열기 ›<span class="meta">진행 중 16개 브랜드</span></div>
+      </a>
+      <a class="opc" href="#">
+        <div class="ic">🧮</div>
+        <div class="t">견적 빌더</div>
+        <div class="d">셀렉 매트릭스로 견적을 짜고 → PDF·엑셀로 내보내기 → 검토용/발송용 링크로 공유. 발송 전 대표·실장 확인까지 한 흐름.</div>
+        <div class="go">빌더 열기 ›<span class="meta">PDF · 공유 링크 · 검토 편집</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ZONE 2 — 영업 흐름 + 매뉴얼·산출물(참고) -->
+  <section class="zone">
+    <div class="zk"><span class="n">참고</span><h2>영업 흐름 · 매뉴얼 · 산출물</h2></div>
+    <p class="zlead">상담은 <b style="color:var(--ink2)">회사소개</b>로 열고 → <b style="color:var(--ink2)">상담</b>으로 진단(PREP·진단서) → <b style="color:var(--ink2)">견적콜</b>로 결정(견적서) → 수주.</p>
+    <div class="flowbar">
+      <div class="fb"><div class="k">진입</div><div class="t">회사소개</div></div>
+      <div class="fb"><div class="k">1차</div><div class="t">상담 · 진단</div></div>
+      <div class="fb"><div class="k">2차</div><div class="t">견적콜</div></div>
+      <div class="fb win"><div class="k">결과</div><div class="t">수주</div></div>
+    </div>
+
+    <div class="subk">매뉴얼 — 어떻게 말하는가</div>
+    <div class="cards">
+      <a class="mc" href="#"><div class="mh"><span class="ph">진입</span><span class="mt">회사소개 매뉴얼</span></div><div class="mb">상담 첫 15분 회사 소개 통대본 + 사례 카드 + 하지 말 것 5가지.</div><div class="mf"><span class="go">열기 ›</span><span class="src">v4 · 대표 녹취 3건</span></div></a>
+      <a class="mc" href="#"><div class="mh"><span class="ph">1차</span><span class="mt">상담 플레이북</span></div><div class="mb">상담 6단계 · 질문 8종 · 견적 화법 11종 · 클로징.</div><div class="mf"><span class="go">열기 ›</span><span class="src">v3 · 녹취 14건</span></div></a>
+      <a class="mc" href="#"><div class="mh"><span class="ph">2차</span><span class="mt">견적콜 플레이북</span></div><div class="mb">발송 후 결정 콜 — 5대 원칙 + 반론 처리 + 멘트.</div><div class="mf"><span class="go">열기 ›</span><span class="src">v0.2 · 6건</span></div></a>
+      <a class="mc" href="#"><div class="mh"><span class="ph">지도</span><span class="mt">영업 프로세스</span></div><div class="mb">유입→상담→견적→계약→수주 전체 지도와 알림톡.</div><div class="mf"><span class="go">열기 ›</span><span class="src">2026-06-12 시스템화</span></div></a>
+    </div>
+
+    <div class="subk">산출물 표준 템플릿 — 무엇을 만드는가</div>
+    <div class="cards">
+      <a class="mc tpl" href="#"><div class="mh"><span class="ph">1차</span><span class="mt">📄 PREP</span></div><div class="mb">상담 전 내부 준비용 가설 정리. 고객에 안 나감.</div><div class="mf"><span class="go">템플릿 ›</span><span class="src">정본 템플릿</span></div></a>
+      <a class="mc tpl" href="#"><div class="mh"><span class="ph">1차</span><span class="mt">📄 진단서</span></div><div class="mb">상담 후 고객 제출 — 무료 가치 증명·견적 근거.</div><div class="mf"><span class="go">템플릿 ›</span><span class="src">병목 번호카드</span></div></a>
+      <a class="mc tpl" href="#"><div class="mh"><span class="ph">2차</span><span class="mt">📄 견적서</span></div><div class="mb">셀렉으로 항목·난이도 → 단가 합산, A/B 2안.</div><div class="mf"><span class="go">템플릿 ›</span><span class="src">v4 · A/B 2안</span></div></a>
+      <a class="mc tpl" href="#"><div class="mh"><span class="ph">2차</span><span class="mt">📄 견적 시트</span></div><div class="mb">강훈 5블록 — 1,000만 초과 큰 건 설계용.</div><div class="mf"><span class="go">시트 ↗</span><span class="src">Google Sheets</span></div></a>
+    </div>
+  </section>
+
+</div>
+
+<footer><b>BRANDRISE</b> by HIZ · 내부 운영 허브 · 비공개 내부 문서</footer>
+
+</body>
+</html>
