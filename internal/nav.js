@@ -9,7 +9,8 @@
   var OP = [
     { h: '/internal/sales-process/', t: '영업 프로세스' },
     { h: '/internal/pipeline/',      t: '파이프라인 보드' },
-    { h: '/internal/quote-builder/', t: '견적 빌더' }
+    { h: '/internal/quote-builder/', t: '견적 빌더' },
+    { h: '/internal/win-dashboard/', t: '수주 현황' }
   ];
   var MAN = [
     { h: '/internal/company-intro/',      t: '회사소개' },
@@ -35,7 +36,8 @@
     + '@media print{#br-topnav{display:none}}';
 
   function nv(x) { return '<a class="nv' + (on(x.h) ? ' on' : '') + '" href="' + x.h + '">' + x.t + '</a>'; }
-  var html = '<div class="in"><a class="wm" href="/internal/">BRANDRISE <b>대문</b></a><div class="lk">'
+  var html = '<div class="in"><a class="wm" href="/internal/">BRANDRISE <b>세일즈 OS</b></a><div class="lk">'
+    + '<span class="grp">도구</span>'
     + OP.map(nv).join('')
     + '<span class="sep"></span><span class="grp">단계 매뉴얼</span>'
     + MAN.map(nv).join('')

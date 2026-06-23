@@ -161,7 +161,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     // 활성 파이프라인 = 드랍 제외 전 단계
     var activeCount = 0, activeSum = 0;
     STAGES.forEach(function(s){
-      if(s.id === 'dropped') return;
+      if(s.id === 'dropped' || s.id === 'won') return;  // 진행 중만 = 닫힌 건(수주·중단) 제외
       var x = T[s.id] || {count:0,sum:0};
       activeCount += x.count; activeSum += x.sum;
     });
@@ -169,7 +169,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
       '<div class="kpi win"><div class="k">수주 완료 금액</div>'+
         '<div class="v">'+BR.won(won.sum)+'</div>'+
         '<div class="x">'+won.count+'건 수주</div></div>'+
-      '<div class="kpi"><div class="k">활성 파이프라인 금액 (드랍 제외)</div>'+
+      '<div class="kpi"><div class="k">진행 중 파이프라인 (수주·중단 제외)</div>'+
         '<div class="v">'+BR.won(activeSum)+'</div>'+
         '<div class="x">'+activeCount+'개 브랜드</div></div>'+
       '<div class="kpi"><div class="k">전체 진행 브랜드</div>'+
