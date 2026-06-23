@@ -37,11 +37,14 @@ module.exports = async (req, res) => {
   const rawName = (body && body.name) || 'quote';
   if (!html || typeof html !== 'string' || html.length > 600000) { res.status(400).send('Bad Request'); return; }
 
-  const chromium = require('@sparticuz/chromium');
-  const puppeteer = require('puppeteer-core');
-
   let browser;
   try {
+    // ESM 전용 패키지(@sparticuz/chromium@149, puppeteer-core@25) → CJS에서는 동적 import.
+    const chromiumMod = await import('@sparticuz/chromium');
+    const chromium = chromiumMod.default || chromiumMod;
+    const puppeteerMod = await import('puppeteer-core');
+    const puppeteer = puppeteerMod.default || puppeteerMod;
+
     browser = await puppeteer.launch({
       args: chromium.args,
       defaultViewport: { width: 920, height: 1300, deviceScaleFactor: 2 },
