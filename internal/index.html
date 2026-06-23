@@ -167,6 +167,7 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
 <script>
 (function(){
   if(!window.BR || !document.getElementById('kpis')) return;
+  BR.ready(function(){
   var active=0, activeSum=0, sent=0, won=0, wonSum=0;
   BR.allBrands().forEach(function(b){
     var st=BR.getStage(b.slug), amt=+b.amount||0;
@@ -180,7 +181,8 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
     '<div class="kpi"><div class="k">진행 중 파이프라인 (수주·중단 제외)</div><div class="v">'+w(activeSum)+'</div></div>'+
     '<div class="kpi"><div class="k">견적 발송 완료</div><div class="v">'+sent+'<small> 개</small></div></div>'+
     '<div class="kpi win"><div class="k">수주 완료</div><div class="v">'+won+'<small> 개 · '+w(wonSum)+'</small></div></div>';
-  document.getElementById('kpiNote').textContent='※ 파이프라인 보드(이 브라우저) 기준. 자세히는 상단 네비 「수주 현황」.';
+  document.getElementById('kpiNote').textContent='※ 구글 시트(BC-BR) 활성 파이프라인 기준 · 자동 반영. 회사 전체 수치는 상단 네비 「수주 현황」.';
+  });
 })();
 </script>
 <script src="/internal/nav.js"></script>

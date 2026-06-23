@@ -224,7 +224,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     if(el) el.textContent=BR.allBrands().length;
   }
   function renderAll(){ renderSummary(); renderGroups(); renderCount(); }
-  renderAll();
+  BR.ready(renderAll);   // 시트 라이브 로드 후 렌더
 })();
 </script>
 </body>

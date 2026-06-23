@@ -260,10 +260,13 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
       '<div class="funnel">'+bars+'</div>'+note+conv;
   }
 
-  renderKpis();
-  renderTiles();
-  renderAmtTable();
-  renderFunnel();
+  BR.ready(function(){
+    T = tally();   // 시트 라이브 로드 후 집계
+    renderKpis();
+    renderTiles();
+    renderAmtTable();
+    renderFunnel();
+  });
 })();
 </script>
 <script src="/internal/nav.js"></script>
