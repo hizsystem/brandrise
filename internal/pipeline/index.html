@@ -44,7 +44,9 @@ body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);colo
 .boardtools{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:14px 0 26px}
 .boardtools button{font-family:inherit;font-size:13px;font-weight:800;color:#fff;background:var(--ac);border:0;border-radius:10px;padding:10px 16px;cursor:pointer;transition:.12s;flex:0 0 auto}
 .boardtools button:hover{background:var(--ac-700)}
-.boardtools .bt-note{font-size:12px;color:var(--muted);line-height:1.5}
+.boardtools button.ghost{background:var(--card);color:var(--ink2);border:1px solid var(--line)}
+.boardtools button.ghost:hover{background:var(--soft);color:var(--ink)}
+.boardtools .bt-note{font-size:12px;color:var(--muted);line-height:1.5;flex:1;min-width:200px}
 
 /* 단계 그룹 */
 .group{margin-bottom:30px}
@@ -82,6 +84,11 @@ body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);colo
 .btn.del{background:var(--card);color:var(--bad);border-color:#fecdd3;flex:0 0 auto;padding:9px 12px}
 .btn.del:hover{background:var(--bad-50)}
 .bc .badge2.cust{background:#ecfeff;color:#0e7490;margin-left:6px}
+.wait{font-size:11px;font-weight:800;border-radius:999px;padding:3px 9px;white-space:nowrap;flex:0 0 auto}
+.wait.ok{background:var(--ok-50);color:var(--ok)} .wait.warn{background:var(--warn-50);color:var(--warn)}
+.wait.bad{background:var(--bad-50);color:var(--bad)} .wait.mute{background:var(--slate-50);color:var(--muted)}
+.bc .cdate{flex:1;font-family:inherit;font-size:12.5px;color:var(--ink2);border:1px solid var(--line);border-radius:9px;padding:7px 9px;background:var(--soft)}
+.bc .cdate:focus{outline:none;border-color:var(--ac)}
 
 footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:1120px;margin:0 auto}
 @media(max-width:880px){ .wrap,.hero .in{padding-left:22px;padding-right:22px} }
@@ -100,7 +107,8 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
   <div class="summary" id="summary"></div>
   <div class="boardtools">
     <button id="btnAddBrand" type="button">＋ 브랜드(프로젝트) 추가</button>
-    <span class="bt-note">단계·추가 브랜드는 <b>이 브라우저에만</b> 저장됩니다(정적 사이트 — 공용 서버 없음). 개인 진행 관리용 · 타일을 누르면 해당 단계로 이동.</span>
+    <button id="btnRestore" type="button" class="ghost">기본 16개 복원</button>
+    <span class="bt-note">단계·상담일·추가 브랜드는 <b>이 브라우저에만</b> 저장됩니다(정적 사이트 — 공용 서버 없음). 개인 진행 관리용 · 타일을 누르면 해당 단계로 이동.</span>
   </div>
   <div id="groups"></div>
 </div>
@@ -120,7 +128,18 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     BR.allBrands().forEach(function(b){ c[BR.getStage(b.slug)]++; });
     return c;
   }
-  function prepHref(b){ return '../../research/'+(b.prepSlug||b.slug)+'/'; }
+  function prepHref(b){ return b.prepUrl ? b.prepUrl : '../../research/'+(b.prepSlug||b.slug)+'/'; }
+  // 상담일 경과 → 배지
+  function waitBadge(b,stageId){
+    var d=BR.daysSince(b.slug); if(d===null) return '';
+    var waiting=(stageId==='consult'||stageId==='pending'||stageId==='sent');
+    var cls, txt;
+    if(d<0){ cls='mute'; txt='상담 '+(-d)+'일 전'; }
+    else if(d===0){ cls='ok'; txt='오늘 상담'; }
+    else if(!waiting){ cls='mute'; txt=d+'일 경과'; }
+    else { cls=(d>=8?'bad':(d>=4?'warn':'ok')); txt=d+'일 대기'; }
+    return '<span class="wait '+cls+'">'+txt+'</span>';
+  }
 
   function renderSummary(){
     var c=counts(), html='';
@@ -141,21 +160,30 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     var prepBtn=b.prep
       ? '<a class="btn sec" href="'+prepHref(b)+'" target="_blank" rel="noopener">prep ↗</a>'
       : '<span class="btn off">prep 없음</span>';
-    var delBtn=b.custom?'<button class="btn del" data-del="'+b.slug+'" title="브랜드 삭제">삭제</button>':'';
     var custBadge=b.custom?'<span class="badge2 cust">추가</span>':'';
     return '<div class="bc t-'+st.tone+'">'+
-      '<div><div class="nm">'+b.name+custBadge+'</div><div class="slug">'+b.slug+'</div></div>'+
+      '<div class="top"><div><div class="nm">'+b.name+custBadge+'</div><div class="slug">'+b.slug+'</div></div>'+waitBadge(b,stageId)+'</div>'+
       '<div class="row"><span class="lbl">단계</span><select data-slug="'+b.slug+'">'+opts+'</select></div>'+
+      '<div class="row"><span class="lbl">상담일</span><input class="cdate" type="date" data-date="'+b.slug+'" value="'+BR.getDate(b.slug)+'"></div>'+
       '<div class="acts">'+
         '<a class="btn pri" href="../quote-builder/?brand='+encodeURIComponent(b.slug)+'&name='+encodeURIComponent(b.name)+'">'+qLabel+' →</a>'+
-        prepBtn+delBtn+
+        prepBtn+
+        '<button class="btn del" data-del="'+b.slug+'" title="삭제">삭제</button>'+
       '</div></div>';
   }
 
+  function sortByWait(list){
+    // 상담일 오래된(오래 대기) 순 먼저, 미설정은 뒤로
+    return list.slice().sort(function(a,b){
+      var da=BR.getDate(a.slug), db=BR.getDate(b.slug);
+      if(da&&db) return da<db?-1:(da>db?1:0);
+      if(da) return -1; if(db) return 1; return 0;
+    });
+  }
   function renderGroups(){
     var c=counts(), all=BR.allBrands(), html='';
     BR.STAGES.forEach(function(s){
-      var list=all.filter(function(b){return BR.getStage(b.slug)===s.id;});
+      var list=sortByWait(all.filter(function(b){return BR.getStage(b.slug)===s.id;}));
       if(!list.length) return;
       html+='<div class="group t-'+s.tone+'" id="grp-'+s.id+'">'+
         '<div class="ghead"><span class="dot" style="background:var(--'+s.tone+')"></span>'+
@@ -166,10 +194,13 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     [].forEach.call(groups.querySelectorAll('select'),function(sel){
       sel.onchange=function(){ BR.writeStage(sel.getAttribute('data-slug'),sel.value); renderAll(); };
     });
+    [].forEach.call(groups.querySelectorAll('.cdate'),function(inp){
+      inp.onchange=function(){ BR.setDate(inp.getAttribute('data-date'),inp.value); renderAll(); };
+    });
     [].forEach.call(groups.querySelectorAll('[data-del]'),function(btn){
       btn.onclick=function(){
-        var s=btn.getAttribute('data-del');
-        if(confirm('추가한 브랜드 "'+s+'"를 삭제할까요? (단계·견적 작성 내용도 함께 삭제됩니다)')){ BR.removeCustom(s); renderAll(); }
+        var s=btn.getAttribute('data-del'), b=BR.brandBySlug(s), nm=b?b.name:s;
+        if(confirm('"'+nm+'"를 보드에서 삭제할까요?\n(단계·상담일·견적 작성 내용도 함께 삭제됩니다. 기본 브랜드는 "기본 16개 복원"으로 되살릴 수 있습니다.)')){ BR.removeBrand(s); renderAll(); }
       };
     });
   }
@@ -178,8 +209,14 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     var nm=prompt('추가할 브랜드(프로젝트) 이름을 입력하세요.');
     if(nm===null) return;
     nm=nm.trim(); if(!nm){ alert('이름을 입력해 주세요.'); return; }
-    var b=BR.addCustom(nm);
+    var url=prompt('prep(리서치) 페이지 주소가 있으면 입력하세요. 없으면 비워두세요.\n(신규 프로젝트는 보통 아직 prep이 없으니 비워두면 "prep 없음"으로 표시됩니다.)','');
+    if(url===null) url='';
+    var b=BR.addCustom(nm,url);
     if(b){ BR.writeStage(b.slug,'consult'); renderAll(); }
+  };
+
+  document.getElementById('btnRestore').onclick=function(){
+    if(confirm('숨긴(삭제한) 기본 브랜드를 모두 되살릴까요? (추가한 브랜드는 영향 없음)')){ BR.restoreHidden(); renderAll(); }
   };
 
   function renderAll(){ renderSummary(); renderGroups(); }

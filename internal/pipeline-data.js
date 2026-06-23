@@ -37,36 +37,70 @@
 
   // ── localStorage 키 + 헬퍼 ──────────────────────────────────────
   var STAGE_KEY = 'br_pipeline_stage_v1';        // { slug: stageId }
-  var CUSTOM_KEY = 'br_custom_brands_v1';        // [ {slug,name,prep:false,custom:true} ]
+  var CUSTOM_KEY = 'br_custom_brands_v1';        // [ {slug,name,prep,prepUrl?,custom:true} ]
+  var HIDDEN_KEY = 'br_hidden_brands_v1';        // [ slug ] — 숨긴 기본 브랜드
+  var DATE_KEY = 'br_consult_date_v1';           // { slug: 'YYYY-MM-DD' } 상담일
   var QUOTE_KEY = function (slug) { return 'br_quote_' + slug + '_v1'; };
 
-  // ── 사용자가 추가한 브랜드(프로젝트) ─────────────────────────────
+  // ── 사용자가 추가한 브랜드(프로젝트) + 기본 브랜드 숨김 ────────────
   function readCustom() {
     try { return JSON.parse(localStorage.getItem(CUSTOM_KEY)) || []; }
     catch (e) { return []; }
   }
   function writeCustom(list) { localStorage.setItem(CUSTOM_KEY, JSON.stringify(list)); }
-  function allBrands() { return BRANDS.concat(readCustom()); }
+  function readHidden() {
+    try { return JSON.parse(localStorage.getItem(HIDDEN_KEY)) || []; }
+    catch (e) { return []; }
+  }
+  function writeHidden(list) { localStorage.setItem(HIDDEN_KEY, JSON.stringify(list)); }
+
+  function allBrands() {
+    var hidden = readHidden();
+    var base = BRANDS.filter(function (b) { return hidden.indexOf(b.slug) < 0; });
+    return base.concat(readCustom());
+  }
 
   function slugify(name) {
     var base = String(name || '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
     if (!base) base = 'brand';
-    var used = {}; allBrands().forEach(function (b) { used[b.slug] = 1; });
+    var used = {}; BRANDS.concat(readCustom()).forEach(function (b) { used[b.slug] = 1; });
     var s = base, n = 2;
     while (used[s]) { s = base + '-' + n; n++; }
     return s;
   }
-  function addCustom(name) {
+  function addCustom(name, prepUrl) {
     var nm = String(name || '').trim(); if (!nm) return null;
-    var b = { slug: slugify(nm), name: nm, prep: false, custom: true };
+    var url = String(prepUrl || '').trim();
+    var b = { slug: slugify(nm), name: nm, prep: !!url, custom: true };
+    if (url) b.prepUrl = url;
     var list = readCustom(); list.push(b); writeCustom(list);
     return b;
   }
-  function removeCustom(slug) {
-    writeCustom(readCustom().filter(function (b) { return b.slug !== slug; }));
-    // 단계·견적 데이터도 정리
+  // 모든 카드 삭제 가능: 커스텀=목록서 제거 / 기본=숨김 목록에 추가
+  function removeBrand(slug) {
+    var custom = readCustom();
+    if (custom.some(function (b) { return b.slug === slug; })) {
+      writeCustom(custom.filter(function (b) { return b.slug !== slug; }));
+    } else {
+      var h = readHidden(); if (h.indexOf(slug) < 0) { h.push(slug); writeHidden(h); }
+    }
     var m = readStages(); if (m[slug]) { delete m[slug]; localStorage.setItem(STAGE_KEY, JSON.stringify(m)); }
+    var d = readDates(); if (d[slug]) { delete d[slug]; writeDates(d); }
     try { localStorage.removeItem(QUOTE_KEY(slug)); } catch (e) {}
+  }
+  function restoreHidden() { writeHidden([]); }   // 숨긴 기본 브랜드 전체 복원
+
+  // ── 상담일 ──────────────────────────────────────────────────────
+  function readDates() { try { return JSON.parse(localStorage.getItem(DATE_KEY)) || {}; } catch (e) { return {}; } }
+  function writeDates(m) { localStorage.setItem(DATE_KEY, JSON.stringify(m)); }
+  function getDate(slug) { return readDates()[slug] || ''; }
+  function setDate(slug, val) { var m = readDates(); if (val) m[slug] = val; else delete m[slug]; writeDates(m); }
+  // 상담일로부터 경과 일수 (오늘 기준, 미설정 시 null)
+  function daysSince(slug) {
+    var v = getDate(slug); if (!v) return null;
+    var d = new Date(v + 'T00:00:00'); if (isNaN(d.getTime())) return null;
+    var now = new Date(); now.setHours(0, 0, 0, 0);
+    return Math.round((now.getTime() - d.getTime()) / 86400000);
   }
 
   function readStages() {
@@ -100,7 +134,8 @@
 
   g.BR = {
     STAGES: STAGES, BRANDS: BRANDS,
-    allBrands: allBrands, addCustom: addCustom, removeCustom: removeCustom, readCustom: readCustom,
+    allBrands: allBrands, addCustom: addCustom, removeBrand: removeBrand, readCustom: readCustom, restoreHidden: restoreHidden,
+    getDate: getDate, setDate: setDate, daysSince: daysSince,
     readStages: readStages, writeStage: writeStage, getStage: getStage,
     readQuote: readQuote, writeQuote: writeQuote,
     stageById: stageById, brandBySlug: brandBySlug, won: won

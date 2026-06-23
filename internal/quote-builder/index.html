@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <!--
-  BRANDRISE 견적 빌더 (통합·편집형) · 인디고 클린
-  · 엔진 = PREP 셀렉 매트릭스(항목 × 제외/L1/L2/L3) + 매출 envelope + 엑셀/HTML 내보내기.
-  · 편집 = 항목 추가/삭제/이름변경 · L1/L2/L3 단가 직접 수정 · 수량/개월 조정.
-  · 통합 = 브랜드별 진입(?brand=&name=) · 자동저장(localStorage) · 인페이지 미리보기+인쇄 · 보드 발송완료 연동.
-  · 데이터: ../pipeline-data.js
+  BRANDRISE 견적 빌더 (셀렉→편집형) · 인디고 클린
+  · 셀렉 매트릭스 = 선택 전용(제외/L1/L2/L3, 단가 고정). 고르면 1차 견적으로 자동 반영.
+  · 1차 견적 = 편집 가능(항목명·단가·수량 수정 + 항목 추가/삭제). 손댄 줄은 보존.
+  · 매출 envelope + 엑셀(강훈 5블록)/HTML 내보내기 + 인페이지 미리보기·인쇄 + 보드 발송완료 연동.
+  · 브랜드별 진입(?brand=&name=) · 자동저장(localStorage). 데이터: ../pipeline-data.js
 -->
 <html lang="ko">
 <head>
@@ -43,45 +43,48 @@ h2{font-size:21px;font-weight:800;letter-spacing:-.02em;margin-bottom:7px}
 .co b{color:var(--ink)} .co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase;color:var(--ac)}
 .co.warn .lab{color:var(--warn)}
 .t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
-.t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+.t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)} .t.e{background:var(--warn-50);color:var(--warn)} .t.c{background:#ecfeff;color:#0e7490}
 
+/* 셀렉 매트릭스 (선택 전용) */
 .mxscroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
-table.selmx{width:100%;border-collapse:collapse;font-size:12.5px;min-width:680px}
+table.selmx{width:100%;border-collapse:collapse;font-size:12.5px;min-width:560px}
 table.selmx th{text-align:center;background:var(--ac-50);color:var(--ac-700);font-weight:800;padding:10px 8px;font-size:11px;border-bottom:1px solid var(--ac-100)}
 table.selmx th:first-child{text-align:left}
-table.selmx td{text-align:center;vertical-align:middle;padding:9px 8px;border-bottom:1px solid var(--line2)}
+table.selmx td{text-align:center;vertical-align:middle;padding:6px 6px;border-bottom:1px solid var(--line2)}
+table.selmx td:first-child{text-align:left;font-weight:600;color:var(--ink)}
 table.selmx td.lv2{background:var(--ac-50)}
 table.selmx tr:last-child td{border-bottom:0}
-.nm-in{width:100%;border:1px solid transparent;border-radius:6px;padding:6px 7px;font-family:inherit;font-size:13px;font-weight:600;color:var(--ink);background:transparent}
-.nm-in:hover{background:var(--soft)} .nm-in:focus{outline:none;border-color:var(--ac);background:#fff}
-.mtag{display:inline-block;font-size:10px;color:var(--muted);background:#f1f5f9;border-radius:5px;padding:1px 6px;margin-left:4px}
-.lvcell{display:flex;align-items:center;justify-content:center;gap:5px}
-.lvcell input[type=radio]{accent-color:var(--ac);width:15px;height:15px;cursor:pointer;flex:0 0 auto}
-.amt{width:62px;text-align:right;border:1px solid var(--line);border-radius:6px;padding:5px 6px;font-family:inherit;font-size:12.5px;color:var(--ink2);font-variant-numeric:tabular-nums}
-.amt:focus{outline:none;border-color:var(--ac)}
-.exc input[type=radio]{accent-color:var(--muted);width:15px;height:15px;cursor:pointer}
-.qty-in{width:52px;text-align:center;border:1px solid var(--line);border-radius:6px;padding:5px 4px;font-family:inherit;font-size:12.5px}
-.qty-in:focus{outline:none;border-color:var(--ac)}
-.qunit{font-size:10px;color:var(--muted);margin-top:2px}
-.delrow{color:var(--bad);background:none;border:none;cursor:pointer;font-size:17px;line-height:1;padding:2px 6px}
-.delrow:hover{opacity:.6}
-.addrow{margin:10px 0 0}
-.addrow button{font-family:inherit;font-size:12.5px;font-weight:700;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:9px;padding:8px 14px;cursor:pointer}
-.addrow button:hover{background:var(--ac-100)}
+table.selmx label{display:block;cursor:pointer;padding:8px 6px;border-radius:8px;font-weight:600;color:var(--ink2);line-height:1.3}
+table.selmx label:hover{background:var(--ac-100)}
+table.selmx input[type=radio]{margin-right:4px;accent-color:var(--ac)}
+table.selmx label span{display:block;font-weight:400;color:var(--muted);font-size:.78em;margin-top:1px}
 
 .sel-sum{display:flex;flex-wrap:wrap;gap:18px;align-items:center;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:14px 0;font-size:13px}
 .sel-sum b{color:var(--ac);font-size:15px}
 .sel-sum input{width:80px;padding:5px 8px;border:1px solid var(--line);border-radius:7px;font-family:inherit;font-size:13px;text-align:right}
 
+/* 1차 견적 (편집형) */
 .qsum{border:2px solid var(--ac);border-radius:16px;overflow:hidden;margin:16px 0}
 .qsum .qsh{background:var(--ac);color:#fff;padding:13px 20px;font-size:13px;font-weight:800;letter-spacing:.02em;display:flex;justify-content:space-between;align-items:center}
 .qsum .qsh .qst{font-size:11px;font-weight:700;color:#c7d2fe}
 .qsum table{width:100%;border-collapse:collapse;margin:0;font-size:13px}
-.qsum th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:left;padding:10px 14px;font-size:11.5px}
-.qsum td{padding:11px 14px;border-bottom:1px solid var(--line2);color:var(--ink2)}
-.qsum td.c{text-align:center} .qsum td.num{text-align:right;font-variant-numeric:tabular-nums}
+.qsum th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:left;padding:10px 14px;font-size:11px}
+.qsum th.r{text-align:right} .qsum th.c{text-align:center}
+.qsum td{padding:8px 12px;border-bottom:1px solid var(--line2);color:var(--ink2);vertical-align:middle}
+.qsum td.c{text-align:center} .qsum td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink)}
 .qsum tfoot td{background:var(--ink);color:#fff;font-weight:800;font-size:14px;border:0}
 .qsum tfoot td b{color:#a5b4fc}
+.qe-name{width:100%;border:1px solid transparent;border-radius:6px;padding:6px 7px;font-family:inherit;font-size:13px;font-weight:700;color:var(--ink);background:transparent}
+.qe-name:hover{background:var(--soft)} .qe-name:focus{outline:none;border-color:var(--ac);background:#fff}
+.qe-amt{width:96px;text-align:right;border:1px solid var(--line);border-radius:6px;padding:6px 7px;font-family:inherit;font-size:12.5px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.qe-qty{width:54px;text-align:center;border:1px solid var(--line);border-radius:6px;padding:6px 5px;font-family:inherit;font-size:12.5px}
+.qe-amt:focus,.qe-qty:focus{outline:none;border-color:var(--ac)}
+.qe-del{color:var(--bad);background:none;border:none;cursor:pointer;font-size:17px;line-height:1;padding:2px 6px}
+.qe-del:hover{opacity:.6}
+.qe-unit{font-size:10px;color:var(--muted);margin-top:2px}
+.addrow{padding:10px 16px;border-top:1px dashed var(--line);background:#fff}
+.addrow button{font-family:inherit;font-size:12.5px;font-weight:700;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:9px;padding:7px 13px;cursor:pointer}
+.addrow button:hover{background:var(--ac-100)}
 .qsum .qact{display:flex;gap:10px;flex-wrap:wrap;padding:14px 20px;background:var(--soft);border-top:1px solid var(--line)}
 .qsum .btn{font-family:inherit;font-size:12.5px;font-weight:700;border:1px solid var(--ac);background:var(--card);color:var(--ac);border-radius:9px;padding:9px 16px;cursor:pointer;transition:.15s}
 .qsum .btn:hover{background:var(--ac);color:#fff}
@@ -108,20 +111,15 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
 
 <div class="wrap">
   <section>
-    <div class="sec-k">SELECT · EDIT</div>
-    <h2>견적 셀렉 — 항목·난이도·단가 편집</h2>
-    <div class="co ac"><span class="lab">셀렉 매트릭스 (편집 가능)</span>각 항목의 <b>투입 레벨</b> 라디오를 고르면 <b>1차 견적이 즉시 합산</b>됩니다. <b>L1</b>=프리랜서(경량) / <b>L2 ★</b>=내부 히즈(표준) / <b>L3</b>=외주(풀). 금액·항목명·수량은 <b>그 자리에서 수정</b>, 행 추가/삭제도 가능합니다. <b>단가 공유 원칙</b>: 기본 단가는 브랜드 불문 동일 — 이 건만 조정하세요. (단위: 만원 · VAT 별도)</div>
+    <div class="sec-k">SELECT</div>
+    <h2>견적 셀렉 — 항목별 난이도 (선택)</h2>
+    <div class="co ac"><span class="lab">셀렉 매트릭스</span>각 항목의 <b>투입 레벨</b>을 고르면 아래 <b>1차 견적</b>으로 자동 반영됩니다. <b>L1</b>=프리랜서(경량) / <b>L2 ★</b>=내부 히즈(표준) / <b>L3</b>=외주(풀). <b>수정은 아래 1차 견적에서</b> — 항목명·단가·수량을 직접 고치고 항목도 추가할 수 있습니다. <b>단가 공유 원칙</b>: 기본 단가는 브랜드 불문 동일. (단위: 만원 · VAT 별도)</div>
     <div class="mxscroll">
       <table class="selmx">
-        <thead><tr>
-          <th style="min-width:200px">견적 항목</th>
-          <th class="exc">제외</th><th>L1 프리랜서</th><th>L2 내부 ★</th><th>L3 외주</th>
-          <th>수량/개월</th><th></th>
-        </tr></thead>
+        <thead><tr><th style="min-width:200px">견적 항목</th><th>제외</th><th>L1 프리랜서</th><th>L2 내부 ★</th><th>L3 외주</th></tr></thead>
         <tbody id="mxbody"></tbody>
       </table>
     </div>
-    <div class="addrow"><button id="btnAdd" type="button">＋ 항목 추가</button></div>
 
     <div class="sel-sum">
       <span>연매출 <input id="selRev" type="number" value="0" min="0">억</span>
@@ -130,12 +128,13 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
     </div>
 
     <div class="qsum">
-      <div class="qsh"><span>📋 1차 견적서 (셀렉 결과 · 자동)</span><span class="qst">VAT 별도 · 상담 중 즉시</span></div>
+      <div class="qsh"><span>📋 1차 견적 (편집 가능)</span><span class="qst">VAT 별도 · 항목·단가·수량 직접 수정</span></div>
       <table>
-        <thead><tr><th>항목</th><th style="width:14%;text-align:center">레벨</th><th style="width:24%;text-align:right">금액(만원)</th></tr></thead>
-        <tbody id="qsumBody"></tbody>
-        <tfoot><tr><td>합계</td><td class="c" id="qsumLv">—</td><td class="num" id="qsumTotal">—</td></tr></tfoot>
+        <thead><tr><th>항목</th><th class="c" style="width:11%">레벨</th><th class="r" style="width:20%">단가(만원)</th><th class="c" style="width:13%">수량</th><th class="r" style="width:18%">합계(만원)</th><th style="width:5%"></th></tr></thead>
+        <tbody id="qbody"></tbody>
+        <tfoot><tr><td colspan="4">합계 <span id="qLv" style="font-weight:600;color:#94a3b8;margin-left:6px"></span></td><td class="num" id="qTotal" style="color:#a5b4fc;text-align:right">—</td><td></td></tr></tfoot>
       </table>
+      <div class="addrow"><button id="btnAddLine" type="button">＋ 항목 추가</button></div>
       <div class="qact">
         <button class="btn solid" id="btnPreview" type="button">🖥 견적서 미리보기</button>
         <button class="btn" id="btnExcel" type="button">📊 엑셀로 내보내기</button>
@@ -143,15 +142,15 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
         <button class="btn" id="btnReset" type="button">기본값 복원</button>
         <button class="btn ok" id="btnMark" type="button">✅ 발송 완료로 표시</button>
       </div>
-      <div class="qhint">미리보기 = 화면에서 견적서 확인 후 인쇄·PDF. 내보내기 — <b>수주 높음 → 📊 엑셀</b>(코 잡고 정식 견적) · <b>수주 낮음 → 📄 HTML</b>(가볍게 링크로). 수정 내용은 이 브라우저에 자동 저장됩니다.</div>
+      <div class="qhint">셀렉에서 고른 항목이 위로 내려옵니다. 줄을 직접 수정하면 <span class="t e">수정</span> 표시가 붙고 셀렉을 바꿔도 그 줄은 유지됩니다. 내보내기 — <b>수주 높음 → 📊 엑셀</b> · <b>수주 낮음 → 📄 HTML</b>. 수정 내용은 이 브라우저에 자동 저장됩니다.</div>
     </div>
-    <div class="co warn"><span class="lab">패키징 원칙</span>외부 컨설팅 첫 케이스면 <b>진단(블록 1)으로 입구</b> → 흡수력 확인 후 IMC 운영 확장이 안전. 항목 제외·난이도 조정으로 총액을 매출 envelope 안에 맞춥니다.</div>
+    <div class="co warn"><span class="lab">패키징 원칙</span>외부 컨설팅 첫 케이스면 <b>진단으로 입구</b> → 흡수력 확인 후 확장이 안전. 항목 제외·난이도 조정으로 총액을 매출 envelope 안에 맞춥니다.</div>
   </section>
 
   <div id="doc"></div>
 </div>
 
-<footer><b>BRANDRISE</b> by HIZ · 견적 빌더 · 편집형 셀렉 매트릭스 + 강훈 5블록 내보내기</footer>
+<footer><b>BRANDRISE</b> by HIZ · 견적 빌더 · 셀렉 매트릭스 → 편집형 1차 견적 + 강훈 5블록 내보내기</footer>
 
 <script src="../pipeline-data.js"></script>
 <script>
@@ -168,87 +167,112 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
   document.getElementById('meta').innerHTML=metaHtml;
 
   var rev=document.getElementById('selRev'), env=document.getElementById('selEnv');
-  var mxbody=document.getElementById('mxbody');
-  var body=document.getElementById('qsumBody'), tot=document.getElementById('qsumTotal'), lvc=document.getElementById('qsumLv');
+  var mxbody=document.getElementById('mxbody'), qbody=document.getElementById('qbody');
+  var qTotal=document.getElementById('qTotal'), qLv=document.getElementById('qLv');
   function fmt(n){return (n||0).toLocaleString();}
   function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
-  // 기본 행 (월 항목 IMC = 월 단가 × 개월). amount 단위: 만원
-  function defaultRows(){ return [
-    {key:'진단',     name:'데이터 진단 + 시장 서베이',              monthly:false, L1:500, L2:1000, L3:2000, sel:'L2',  qty:1},
-    {key:'아이덴티티', name:'브랜드 아이덴티티 정립 + 제품체계 전략',   monthly:false, L1:1000,L2:2000, L3:3500, sel:'L2',  qty:1},
-    {key:'디자인',   name:'브랜드 로고 & 패키지 디자인 리뉴얼',       monthly:false, L1:1500,L2:3000, L3:5000, sel:'L2',  qty:1},
-    {key:'촬영',     name:'사진 촬영(제품·라이프스타일) + 콘텐츠 제작', monthly:false, L1:500, L2:1500, L3:3000, sel:'L2',  qty:1},
-    {key:'마케팅',   name:'인스타그램 콘텐츠 기획 & 운영',           monthly:false, L1:1000,L2:2000, L3:4000, sel:'L2',  qty:1},
-    {key:'IMC',      name:'브랜드 IMC 전략 파트너십 / 대행사 fee',    monthly:true,  L1:60,  L2:140,  L3:300,  sel:'L2',  qty:6},
-    {key:'자사몰',   name:'자사몰(카페24) 세팅',                    monthly:false, L1:1200,L2:2000, L3:3000, sel:'제외', qty:1}
-  ];}
+  // 셀렉 매트릭스 (고정). amount = 단위당 만원(월 항목은 월 단가).
+  var MX=[
+    {key:'진단',     name:'데이터 진단 + 시장 서베이',              monthly:false, L1:500, L2:1000, L3:2000},
+    {key:'아이덴티티', name:'브랜드 아이덴티티 정립 + 제품체계 전략',   monthly:false, L1:1000,L2:2000, L3:3500},
+    {key:'디자인',   name:'브랜드 로고 & 패키지 디자인 리뉴얼',       monthly:false, L1:1500,L2:3000, L3:5000},
+    {key:'촬영',     name:'사진 촬영(제품·라이프스타일) + 콘텐츠 제작', monthly:false, L1:500, L2:1500, L3:3000},
+    {key:'마케팅',   name:'인스타그램 콘텐츠 기획 & 운영',           monthly:false, L1:1000,L2:2000, L3:4000},
+    {key:'IMC',      name:'브랜드 IMC 전략 파트너십 / 대행사 fee',    monthly:true,  L1:60,  L2:140,  L3:300},
+    {key:'자사몰',   name:'자사몰(카페24) 세팅',                    monthly:false, L1:1200,L2:2000, L3:3000}
+  ];
+  function mxByKey(k){ for(var i=0;i<MX.length;i++) if(MX[i].key===k) return MX[i]; return null; }
+  function mxIndex(k){ for(var i=0;i<MX.length;i++) if(MX[i].key===k) return i; return 999; }
+  var LV=['L1','L2','L3'];
 
-  var state={ rows:null, customSeq:0 };
+  var defSel={'진단':'L2','아이덴티티':'L2','디자인':'L2','촬영':'L2','마케팅':'L2','IMC':'L2','자사몰':'제외'};
+  var state={ sel:{}, lines:[], seq:0 };
+
   function load(){
     var q=slug?BR.readQuote(slug):null;
-    if(q&&q.rows&&q.rows.length){ state.rows=q.rows; if(q.rev!=null) rev.value=q.rev; }
-    else state.rows=defaultRows();
+    if(q&&q.v===3){                       // 신버전 저장본만 신뢰 (구버전 형식 무시)
+      state.sel=q.sel||{}; state.lines=Array.isArray(q.lines)?q.lines:[]; state.seq=q.seq||state.lines.length;
+      if(q.rev!=null) rev.value=q.rev;
+      return;
+    }
+    state.sel={}; Object.keys(defSel).forEach(function(k){state.sel[k]=defSel[k];});
+    state.lines=[]; state.seq=0;
+    reconcile();                          // 최초엔 기본 셀렉에서 생성
   }
-  function persist(){ if(slug) BR.writeQuote(slug,{rows:state.rows, rev:rev.value}); }
+  function persist(){ if(slug) BR.writeQuote(slug,{v:3, sel:state.sel, lines:state.lines, seq:state.seq, rev:rev.value}); }
 
-  var LV=['L1','L2','L3'];
-  function selAmt(r){ return r.sel==='제외'?0:((+r[r.sel]||0)*(+r.qty||0)); }
+  function findLine(key){ for(var i=0;i<state.lines.length;i++) if(state.lines[i].srcKey===key) return state.lines[i]; return null; }
+  // 셀렉 → 1차 견적 반영 (수정한 줄·추가 줄 보존)
+  function reconcile(){
+    var present={};
+    MX.forEach(function(m){
+      var lv=state.sel[m.key]; if(!lv||lv==='제외') return;
+      present[m.key]=1;
+      var amt=m[lv], line=findLine(m.key);
+      if(line){ line.level=lv; if(!line.edited){ line.amount=amt; line.name=m.name; line.monthly=m.monthly; } }
+      else { state.lines.push({id:'L'+(++state.seq), name:m.name, amount:amt, qty:m.monthly?6:1, monthly:m.monthly, srcKey:m.key, level:lv, edited:false, custom:false}); }
+    });
+    state.lines=state.lines.filter(function(l){ return l.custom || present[l.srcKey]; });
+    state.lines.sort(function(a,b){ return (a.custom?900+ (a.id||''):mxIndex(a.srcKey)) > (b.custom?900+(b.id||''):mxIndex(b.srcKey)) ? 1 : -1; });
+  }
 
+  // ── 셀렉 매트릭스 렌더 (선택 전용) ──
   function renderMatrix(){
     var html='';
-    state.rows.forEach(function(r,i){
-      function lvCellHtml(lv){
-        var cls=(lv==='L2')?' class="lv2"':'';
-        return '<td'+cls+'><div class="lvcell">'+
-          '<input type="radio" name="r'+i+'" data-lv="'+lv+'"'+(r.sel===lv?' checked':'')+'>'+
-          '<input class="amt" data-lv="'+lv+'" type="number" min="0" value="'+(+r[lv]||0)+'"></div></td>';
-      }
-      html+='<tr data-idx="'+i+'">'+
-        '<td style="text-align:left"><input class="nm-in" type="text" value="'+esc(r.name)+'">'+(r.monthly?'<span class="mtag">월·'+(+r.qty||0)+'개월</span>':'')+'</td>'+
-        '<td class="exc"><input type="radio" name="r'+i+'" data-lv="제외"'+(r.sel==='제외'?' checked':'')+'></td>'+
-        lvCellHtml('L1')+lvCellHtml('L2')+lvCellHtml('L3')+
-        '<td><input class="qty-in" type="number" min="0" value="'+(+r.qty||0)+'"><div class="qunit">'+(r.monthly?'개월':'수량')+'</div></td>'+
-        '<td><button class="delrow" title="삭제">×</button></td>'+
+    MX.forEach(function(m,i){
+      function cell(lv,extra){ var sel=state.sel[m.key]===lv;
+        return '<td'+(lv==='L2'?' class="lv2"':'')+'><label><input type="radio" name="m'+i+'" data-key="'+m.key+'" data-lv="'+lv+'"'+(sel?' checked':'')+'>'+(lv==='제외'?'–':fmt(m[lv]))+(extra||'')+'</label></td>'; }
+      html+='<tr>'+
+        '<td>'+esc(m.name)+(m.monthly?' <span class="t n">월 단가·6개월</span>':'')+'</td>'+
+        cell('제외')+cell('L1',m.monthly?'<span>/월</span>':'')+cell('L2',m.monthly?'<span>/월</span>':'')+cell('L3',m.monthly?'<span>/월</span>':'')+
       '</tr>';
     });
     mxbody.innerHTML=html;
-    bindMatrix();
-    calc();
-  }
-
-  function bindMatrix(){
-    [].forEach.call(mxbody.querySelectorAll('tr[data-idx]'),function(tr){
-      var i=+tr.getAttribute('data-idx'), r=state.rows[i];
-      [].forEach.call(tr.querySelectorAll('input[type=radio]'),function(rd){
-        rd.onchange=function(){ r.sel=rd.getAttribute('data-lv'); calc(); persist(); };
-      });
-      [].forEach.call(tr.querySelectorAll('input.amt'),function(a){
-        a.oninput=function(){ r[a.getAttribute('data-lv')]=+a.value||0; calc(); persist(); };
-      });
-      var nm=tr.querySelector('.nm-in'); nm.oninput=function(){ r.name=nm.value; persist(); };
-      var q=tr.querySelector('.qty-in'); q.oninput=function(){ r.qty=+q.value||0; var tag=tr.querySelector('.mtag'); if(tag) tag.textContent='월·'+(+r.qty||0)+'개월'; calc(); persist(); };
-      tr.querySelector('.delrow').onclick=function(){ state.rows.splice(i,1); persist(); renderMatrix(); };
+    [].forEach.call(mxbody.querySelectorAll('input[type=radio]'),function(rd){
+      rd.onchange=function(){ state.sel[rd.getAttribute('data-key')]=rd.getAttribute('data-lv'); reconcile(); renderLines(); persist(); };
     });
   }
 
-  document.getElementById('btnAdd').onclick=function(){
-    state.customSeq++;
-    state.rows.push({key:'c'+state.customSeq, name:'새 항목', monthly:false, L1:0, L2:0, L3:0, sel:'L2', qty:1, custom:true});
-    persist(); renderMatrix();
+  // ── 1차 견적 렌더 (편집형) ──
+  function lineTotal(l){ return (+l.amount||0)*(+l.qty||0); }
+  function renderLines(){
+    var html='';
+    state.lines.forEach(function(l,i){
+      var lvtag = l.custom?'<span class="t c">추가</span>':('<span class="t b">'+(l.level||'-')+'</span>'+(l.edited?'<span class="t e">수정</span>':''));
+      html+='<tr data-i="'+i+'">'+
+        '<td><input class="qe-name" type="text" value="'+esc(l.name)+'">'+(l.monthly?'<span class="qe-unit">월 단가 기준</span>':'')+'</td>'+
+        '<td class="c">'+lvtag+'</td>'+
+        '<td class="r"><input class="qe-amt" type="number" min="0" value="'+(+l.amount||0)+'"></td>'+
+        '<td class="c"><input class="qe-qty" type="number" min="0" value="'+(+l.qty||0)+'"><div class="qe-unit">'+(l.monthly?'개월':'수량')+'</div></td>'+
+        '<td class="num">'+fmt(lineTotal(l))+'</td>'+
+        '<td><button class="qe-del" title="삭제">×</button></td>'+
+      '</tr>';
+    });
+    qbody.innerHTML = html || '<tr><td colspan="6" style="color:#94a3b8;text-align:center;padding:20px">셀렉에서 항목을 고르거나 ＋항목 추가</td></tr>';
+    bindLines(); calc();
+  }
+  function bindLines(){
+    [].forEach.call(qbody.querySelectorAll('tr[data-i]'),function(tr){
+      var i=+tr.getAttribute('data-i'), l=state.lines[i];
+      var nm=tr.querySelector('.qe-name'); if(nm) nm.oninput=function(){ l.name=nm.value; l.edited=true; markEdited(tr); persist(); };
+      var am=tr.querySelector('.qe-amt'); if(am) am.oninput=function(){ l.amount=+am.value||0; l.edited=true; markEdited(tr); tr.querySelector('.num').textContent=fmt(lineTotal(l)); calc(); persist(); };
+      var qt=tr.querySelector('.qe-qty'); if(qt) qt.oninput=function(){ l.qty=+qt.value||0; l.edited=true; markEdited(tr); tr.querySelector('.num').textContent=fmt(lineTotal(l)); calc(); persist(); };
+      var dl=tr.querySelector('.qe-del'); if(dl) dl.onclick=function(){ state.lines.splice(i,1); persist(); renderLines(); };
+    });
+  }
+  function markEdited(tr){ if(!tr.querySelector('.t.e') && !tr.querySelector('.t.c')){ var c=tr.querySelector('td.c'); if(c) c.insertAdjacentHTML('beforeend','<span class="t e">수정</span>'); } }
+
+  document.getElementById('btnAddLine').onclick=function(){
+    state.lines.push({id:'L'+(++state.seq), name:'새 항목', amount:0, qty:1, monthly:false, srcKey:null, level:null, edited:true, custom:true});
+    persist(); renderLines();
   };
 
   function calc(){
-    var sum=0, html='', lvs={};
-    state.rows.forEach(function(r){
-      var amt=selAmt(r); if(amt<=0) return;
-      sum+=amt; lvs[r.sel]=(lvs[r.sel]||0)+1;
-      html+='<tr><td>'+esc(r.name)+(r.monthly?' <span class="t n">월·'+(+r.qty||0)+'개월</span>':((+r.qty||1)!==1?' <span class="t n">×'+(+r.qty||0)+'</span>':''))+'</td>'+
-        '<td class="c"><span class="t b">'+r.sel+'</span></td><td class="num">'+fmt(amt)+'</td></tr>';
-    });
-    body.innerHTML = html || '<tr><td colspan="3" style="color:#94a3b8;text-align:center;padding:18px">선택된 항목 없음</td></tr>';
-    tot.innerHTML = fmt(sum)+'만 <b>('+(sum/10000).toFixed(3)+'억)</b>';
-    var keys=Object.keys(lvs); lvc.textContent = keys.length ? (keys.length===1 ? keys[0] : '혼합') : '—';
+    var sum=0, lvs={};
+    state.lines.forEach(function(l){ sum+=lineTotal(l); if(l.level) lvs[l.level]=(lvs[l.level]||0)+1; });
+    qTotal.innerHTML = fmt(sum)+'만 ('+(sum/10000).toFixed(3)+'억)';
+    var keys=Object.keys(lvs); qLv.textContent = keys.length ? (keys.length===1?keys[0]:'혼합') : '';
     var rv=parseFloat(rev.value)||0;
     if(rv<=0){ env.innerHTML='<span style="color:#d97706">매출 전 — 펀딩/마케팅 예산으로 판단</span>'; }
     else { var half=Math.round(rv*750); env.innerHTML=fmt(half)+'만 · '+(sum<=half?'<span style="color:#0e9f6e">✓ 안에 듦</span>':'<span style="color:#e11d48">⚠ 초과</span>'); }
@@ -258,14 +282,12 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
   function ymd(){ var d=new Date(), p=function(n){return(n<10?'0':'')+n;}; return ''+d.getFullYear()+p(d.getMonth()+1)+p(d.getDate()); }
   function ymdDash(){ return ymd().replace(/(\d{4})(\d{2})(\d{2})/,'$1-$2-$3'); }
   function won(manwon){ return (manwon*10000).toLocaleString()+'원'; }
-  function selTotal(){ var s=0; state.rows.forEach(function(r){ s+=selAmt(r); }); return s; }
+  function selTotal(){ var s=0; state.lines.forEach(function(l){ s+=lineTotal(l); }); return s; }
   function dlBlob(content,mime,fname){ var b=new Blob([content],{type:mime}), u=URL.createObjectURL(b), a=document.createElement('a'); a.href=u; a.download=fname; document.body.appendChild(a); a.click(); setTimeout(function(){URL.revokeObjectURL(u); a.remove();},800); }
   function ensureLib(src,glob,cb){ if(window[glob]){cb(true);return;} var s=document.createElement('script'); s.src=src; s.onload=function(){cb(!!window[glob]);}; s.onerror=function(){cb(false);}; document.head.appendChild(s); }
-  function lvLineLabel(r,lv){ var v=+r[lv]||0; return r.monthly?('월 '+fmt(v)):fmt(v); }
   function envNote(t){ var rv=parseFloat(rev.value)||0; if(rv<=0) return ''; var half=Math.round(rv*750);
     return '<div class="co ac"><span class="lab">예산 ENVELOPE · 매출 기반 가늠자</span>연 마케팅비 ≈ <b>매출 × 15%</b> → 6개월치(매출억 × 750만)로 수주 규모를 가늠합니다. <b>매출 '+rv+'억 → 6개월 envelope ≈ '+fmt(half)+'만</b> · 선택 합계 '+fmt(t)+'만 = '+(t<=half?'<b>envelope 안에 합리적으로 듦.</b>':'<b>envelope 초과 — 항목·난이도 협의 조정.</b>')+'</div>'; }
 
-  // 견적 블록 표준 콘텐츠 (data-key 매칭, 커스텀 항목은 최소 블록)
   var LVLABEL={L1:'경량(프리랜서)',L2:'표준(내부)',L3:'풀(외주·고사양)'};
   var QC={
     'IMC':{period:'6개월 상시', plan:'● 운영 체계\n감(感) 운영 → 데이터 기반 월간 의사결정\n· 목표: 매출·광고 월간 리뷰 루틴 + 대시보드',
@@ -290,27 +312,21 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
       lines:[['사이트 기획·와이어프레임','메인·상품·상세·브랜드스토리·마이페이지 화면 구조 + 전환 UX'],['카페24 기본 셋팅','계정·배송/반품 정책·PG 결제 연동'],['UI 디자인 & 상품 페이지','쇼핑몰 UI 커스텀 + 상세 페이지 제작 + 오픈 QA']],
       deliver:'쇼핑몰 셋팅 + 상세 페이지 디자인'}
   };
-  // 선택 항목 → 견적 블록 (행 순서 유지). 커스텀/편집 항목도 포함.
   function selectedBlocks(){
-    var out=[];
-    state.rows.forEach(function(r){
-      var amt=selAmt(r); if(amt<=0) return;
-      var c=QC[r.key];
-      out.push({ title:r.name, period:c?c.period:'협의', plan:c?c.plan:'● 상담 협의 항목',
-        lines:c?c.lines:[[r.name,'상담에서 합의한 작업 범위']], deliver:c?c.deliver:'협의 산출물',
-        amount:amt*10000, level:r.sel });
+    return state.lines.filter(function(l){return lineTotal(l)>0;}).map(function(l){
+      var c=QC[l.srcKey];
+      return { title:l.name, period:c?c.period:'협의', plan:c?c.plan:'● 상담 협의 항목',
+        lines:c?c.lines:[[l.name,'상담에서 합의한 작업 범위']], deliver:c?c.deliver:'협의 산출물',
+        amount:lineTotal(l)*10000, level:l.level||'-' };
     });
-    return out;
   }
 
   function buildQuoteDoc(){
     var t=selTotal(); if(!t) return null;
     var brand=brandName();
-    var rows=state.rows.map(function(r){
-      function cell(lv){ return '<td'+(r.sel===lv?' class="hit"':'')+'>'+lvLineLabel(r,lv)+'</td>'; }
-      var chip=r.sel==='제외'?'<span class="t n">제외</span>':'<span class="t b">'+r.sel+'</span>';
-      var qtag=r.monthly?' <span class="t n">월·'+(+r.qty||0)+'개월</span>':((+r.qty||1)!==1?' <span class="t n">×'+(+r.qty||0)+'</span>':'');
-      return '<tr><td class="nm">'+esc(r.name)+qtag+'</td>'+cell('L1')+cell('L2')+cell('L3')+'<td class="c">'+chip+'</td></tr>';
+    var rows=state.lines.filter(function(l){return lineTotal(l)>0;}).map(function(l){
+      var qtag=l.monthly?' <span class="t n">월·'+(+l.qty||0)+'개월</span>':((+l.qty||1)!==1?' <span class="t n">×'+(+l.qty||0)+'</span>':'');
+      return '<tr><td class="nm">'+esc(l.name)+qtag+'</td><td>'+fmt(l.amount)+'</td><td class="c">'+(+l.qty||0)+'</td><td><b>'+fmt(lineTotal(l))+'</b></td></tr>';
     }).join('');
     var css=':root{--ink:#0f172a;--ink2:#334155;--muted:#64748b;--line:#e7e9ee;--line2:#eef1f5;--bg:#fbfcfd;--card:#fff;--soft:#f6f8fb;--ac:#4f46e5;--ac-50:#eef2ff;--ac-100:#e0e7ff;--ac-700:#3730a3}'
       +'*{margin:0;padding:0;box-sizing:border-box}body{font-family:Pretendard,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:14px;word-break:keep-all}'
@@ -322,31 +338,31 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
       +'h2{font-size:22px;font-weight:800;letter-spacing:-.025em;margin-bottom:8px}.lead{font-size:13.5px;color:var(--ink2);margin-bottom:16px}'
       +'table{width:100%;border-collapse:collapse;font-size:12.5px;margin:8px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-variant-numeric:tabular-nums}'
       +'th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:right;padding:11px 13px;font-size:11.5px;border-bottom:1px solid var(--ac-100)}th:first-child{text-align:left}'
-      +'td{padding:12px 13px;border-bottom:1px solid var(--line2);text-align:right;color:var(--ink2)}td.nm{text-align:left;font-weight:700;color:var(--ink)}td.c{text-align:center}td.hit{background:var(--ac-50);font-weight:800;color:var(--ac-700)}'
-      +'tr:nth-child(even) td{background:var(--soft)}tr:nth-child(even) td.hit{background:var(--ac-100)}'
-      +'.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px}.t.b{background:var(--ac-50);color:var(--ac)}.t.n{background:#f1f5f9;color:var(--muted)}'
+      +'td{padding:12px 13px;border-bottom:1px solid var(--line2);text-align:right;color:var(--ink2)}td.nm{text-align:left;font-weight:700;color:var(--ink)}td.c{text-align:center}'
+      +'tr:nth-child(even) td{background:var(--soft)}'
+      +'.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px}.t.n{background:#f1f5f9;color:var(--muted)}'
       +'.total{background:var(--ink);color:#fff;border-radius:14px;padding:22px 26px;display:flex;justify-content:space-between;align-items:center;margin:16px 0;flex-wrap:wrap;gap:8px}'
       +'.total .tl2{font-size:13px;color:#94a3b8;font-weight:700;letter-spacing:.06em}.total .tv{font-size:26px;font-weight:800;letter-spacing:-.02em;color:#a5b4fc}.total .tv small{font-size:13px;font-weight:600;color:#cbd5e1;margin-left:8px}'
       +'.co{border-radius:12px;padding:14px 18px;margin:12px 0;font-size:13px;line-height:1.7;border:1px solid var(--line)}.co.ac{background:var(--ac-50);border-color:var(--ac-100)}.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase;color:var(--ac)}.co b{color:var(--ink)}'
       +'footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.8;margin-top:8px}'
-      +'@media print{.hero,.total,.co,td.hit,th{-webkit-print-color-adjust:exact;print-color-adjust:exact}}';
+      +'@media print{.hero,.total,.co,th{-webkit-print-color-adjust:exact;print-color-adjust:exact}}';
     var doc='<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>'+esc(brand)+' · 1차 견적 | BRANDRISE</title>'
       +'<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet"><style>'+css+'</style></head><body>'
       +'<div class="hero"><div class="in"><div class="badge">BRAND CONSULTING QUOTE · 1차 견적</div><h1>'+esc(brand)+' · 1차 <span class="hl">견적</span></h1>'
-      +'<div class="meta"><span class="chip">견적일 <b>'+ymdDash()+'</b></span><span class="chip">선택 합계 <b>'+won(t)+' (VAT 별도)</b></span><span class="chip">기준 <b>셀렉 매트릭스 L 결과</b></span></div></div></div>'
-      +'<div class="wrap"><section><div class="sec-k">SELECTION RESULT</div><h2>견적 셀렉 결과 — 항목별 난이도</h2>'
-      +'<p class="lead">PREP 상담 셀렉(항목별 L1·L2·L3)으로 정해진 단가입니다. <b>L2(내부 표준)가 기준선</b>, L1은 경량(프리랜서), L3은 풀(외주·고사양). <b>단가 공유 원칙</b>: 공통 항목 단가는 브랜드 불문 동일합니다. (단위: 만원 · VAT 별도)</p>'
-      +'<table><thead><tr><th>견적 항목</th><th style="width:16%">L1 경량(프리랜서)</th><th style="width:16%">L2 표준(내부)★</th><th style="width:18%">L3 풀(외주·고사양)</th><th class="c" style="width:10%">선택</th></tr></thead><tbody>'+rows+'</tbody></table>'
-      +'<div class="total"><div class="tl2">선택 합계 (L 셀렉 결과)</div><div class="tv">'+won(t)+' <small>= '+fmt(t)+'만 · '+(t/10000).toFixed(3)+'억 · VAT 별도</small></div></div>'
+      +'<div class="meta"><span class="chip">견적일 <b>'+ymdDash()+'</b></span><span class="chip">합계 <b>'+won(t)+' (VAT 별도)</b></span></div></div></div>'
+      +'<div class="wrap"><section><div class="sec-k">QUOTE</div><h2>1차 견적 내역</h2>'
+      +'<p class="lead">PREP 상담 셀렉 기반 1차 제안입니다. <b>단가 공유 원칙</b>: 공통 항목 단가는 브랜드 불문 동일. (단위: 만원 · VAT 별도)</p>'
+      +'<table><thead><tr><th>항목</th><th style="width:20%">단가(만원)</th><th class="c" style="width:12%">수량</th><th style="width:22%">합계(만원)</th></tr></thead><tbody>'+rows+'</tbody></table>'
+      +'<div class="total"><div class="tl2">합계 (VAT 별도)</div><div class="tv">'+won(t)+' <small>= '+fmt(t)+'만 · '+(t/10000).toFixed(3)+'억</small></div></div>'
       +envNote(t)
-      +'<div class="co"><span class="lab">비고</span>· 본 견적은 <b>1차 제안</b>이며 VAT 별도입니다. 항목·범위는 데이터 정밀 진단 결과에 따라 협의로 조정됩니다.<br>· 레벨: L1 경량(프리랜서) / L2 표준(내부) / L3 풀(외주·고사양).<br>· 월 단위 항목은 개월 기준 합계입니다. 촬영 스튜디오·인쇄 실비는 별도 산정.</div>'
-      +'</section></div><footer><b>BRANDRISE</b> by HIZ · Brand · IMC Consulting<br>본 1차 견적은 상담 준비(PREP) 셀렉 결과 기반입니다 — 확정 견적은 진단 후 별도 발송됩니다.</footer></body></html>';
+      +'<div class="co"><span class="lab">비고</span>· 본 견적은 <b>1차 제안</b>이며 VAT 별도입니다. 항목·범위는 데이터 정밀 진단 결과에 따라 협의로 조정됩니다.<br>· 월 단위 항목은 개월 기준 합계입니다. 촬영 스튜디오·인쇄 실비는 별도 산정.</div>'
+      +'</section></div><footer><b>BRANDRISE</b> by HIZ · Brand · IMC Consulting<br>본 1차 견적은 상담 준비(PREP) 셀렉 기반입니다 — 확정 견적은 진단 후 별도 발송됩니다.</footer></body></html>';
     return doc;
   }
 
   var docEl=document.getElementById('doc');
   document.getElementById('btnPreview').addEventListener('click',function(){
-    var doc=buildQuoteDoc(); if(!doc){ alert('선택된 항목이 없습니다.'); return; }
+    var doc=buildQuoteDoc(); if(!doc){ alert('견적 항목이 없습니다.'); return; }
     docEl.classList.add('show');
     docEl.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:var(--soft);border-bottom:1px solid var(--line)">'
       +'<b style="font-size:13px">견적서 미리보기</b><button id="docPrint" style="font-family:inherit;font-size:12.5px;font-weight:700;border:1px solid var(--ac);background:var(--ac);color:#fff;border-radius:9px;padding:8px 16px;cursor:pointer">🖨 인쇄 · PDF</button></div>'
@@ -358,7 +374,7 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
   });
 
   document.getElementById('btnExcel').addEventListener('click',function(){
-    var blocks=selectedBlocks(), t=selTotal()*10000; if(!blocks.length){ alert('선택된 항목이 없습니다.'); return; }
+    var blocks=selectedBlocks(), t=selTotal()*10000; if(!blocks.length){ alert('견적 항목이 없습니다.'); return; }
     var brand=brandName();
     ensureLib('https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js','ExcelJS',function(ok){
       if(!(ok&&window.ExcelJS)){
@@ -419,13 +435,14 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
   });
 
   document.getElementById('btnHtml').addEventListener('click',function(){
-    var doc=buildQuoteDoc(); if(!doc){ alert('선택된 항목이 없습니다.'); return; }
+    var doc=buildQuoteDoc(); if(!doc){ alert('견적 항목이 없습니다.'); return; }
     dlBlob(doc,'text/html;charset=utf-8', brandName()+'_1차견적_'+ymd()+'.html');
   });
 
   document.getElementById('btnReset').addEventListener('click',function(){
-    if(!confirm('편집한 항목·단가를 모두 기본값으로 되돌릴까요?')) return;
-    state.rows=defaultRows(); rev.value='0'; persist(); renderMatrix();
+    if(!confirm('수정한 내용을 모두 기본값으로 되돌릴까요?')) return;
+    state.sel={}; Object.keys(defSel).forEach(function(k){state.sel[k]=defSel[k];});
+    state.lines=[]; state.seq=0; rev.value='0'; reconcile(); renderMatrix(); renderLines(); persist();
   });
 
   document.getElementById('btnMark').addEventListener('click',function(){
@@ -436,6 +453,7 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
 
   load();
   renderMatrix();
+  renderLines();
 })();
 </script>
 </body>
