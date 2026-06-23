@@ -14,25 +14,54 @@
     { id: 'dropped', label: '플젝 드랍',        tone: 'red' }
   ];
 
-  // ── 진행 중 브랜드 (2026-06-23 기준) ─────────────────────────────
-  // prep: 리서치 페이지 유무. prepSlug 지정 시 research/{prepSlug}/, 미지정 시 research/{slug}/.
+  // ── 진행 중 브랜드 (2026-06-23 기준, 바이럴시트 참조) ──────────────
+  // prep: 리서치 페이지 유무. prepSlug 지정 시 research/{prepSlug}/.
+  // 금액=원(총액/월). consultDate=상담일(기본). defaultStage=견적 발송분은 'sent'.
+  // owner=담당자 · source=유입경로 · scope=작업범위 · quoteSent=견적 발송일/형태.
   var BRANDS = [
-    { slug: 'dayna',               name: '데이나 (리테이너)',        prep: false },
-    { slug: 'supersave',           name: '슈퍼세이브 (곰보배추)',     prep: false },
-    { slug: 'afreeday',            name: 'A Free Day (부족한녀석들)', prep: true, prepSlug: 'budokhan-nyeoseokdeul' },
-    { slug: 'queensbucket',        name: '쿠앤즈버킷',               prep: true  },
-    { slug: 'simbak',              name: '심박',                    prep: true  },
-    { slug: 'ecomom-sangol',       name: '에코맘',                  prep: true  },
-    { slug: 'ashuniverse',         name: '아슈니버스',               prep: true  },
-    { slug: 'lutea',               name: '루테아 / 제니글로벌',       prep: true  },
-    { slug: 'mixroom',             name: '믹스룸',                  prep: true  },
-    { slug: 'natural-good-things', name: '네추럴굿띵스',             prep: true  },
-    { slug: 'yoosom',              name: '마티어 (유솜)',            prep: true  },
-    { slug: 'kkotppang',           name: '꽃빵',                    prep: true  },
-    { slug: 'small-habit',         name: '작은 습관 (&dm)',          prep: true, prepSlug: 'anddm' },
-    { slug: 'healernet',           name: '힐러넷 (요프리)',          prep: true  },
-    { slug: 'elegaiter',           name: '사이클룩스 / Elegaiter',    prep: true  },
-    { slug: 'blupino',             name: '블루피노',                 prep: true  }
+    { slug: 'dayna', name: '데이나 (리테이너)', prep: false,
+      company: '다영에이치비앤비', amount: 120000000, monthly: 20000000, scope: '마케팅 리테이너' },
+    { slug: 'supersave', name: '슈퍼세이브 (곰보배추)', prep: false,
+      company: '주식회사 승만', source: '권윤정 대표', owner: '이슬기', amount: 12000000, monthly: 2000000,
+      scope: '마케팅 리테이너 / 월간 회의', tier: '1T', contract: '26/07/01~26/12/31' },
+    { slug: 'afreeday', name: 'A Free Day (부족한녀석들)', prep: true, prepSlug: 'budokhan-nyeoseokdeul',
+      company: '부족한 녀석들', source: '이상학 부회장', owner: '우성민', amount: 50000000, monthly: 8333333,
+      scope: '이커머스 셋팅 / 인스타그램', tier: '2T' },
+    { slug: 'queensbucket', name: '쿠앤즈버킷', prep: true,
+      source: '이상학 부회장', owner: '우성민', amount: 97800000, monthly: 16300000,
+      scope: '인스타그램 / 리브랜딩', tier: '2T', quoteSentDate: '2026-06-07', quoteType: '견적서(메일 sheet)', defaultStage: 'sent' },
+    { slug: 'simbak', name: '심박', prep: true,
+      source: '이상학 부회장', owner: '우성민', consultDate: '2026-05-28', amount: 50000000, monthly: 8333333,
+      scope: '인스타그램 / 패키지 디자인', tier: '2T', quoteSentDate: '2026-06-08', quoteType: '견적서(메일 sheet)', defaultStage: 'sent' },
+    { slug: 'ecomom-sangol', name: '에코맘', prep: true,
+      company: '에코맘의 산골이유식', source: '이상학 부회장', owner: '이슬기', amount: 200000000, monthly: 33333333,
+      scope: '컨설팅', tier: '1T' },
+    { slug: 'ashuniverse', name: '아슈니버스', prep: true,
+      owner: '이슬기', consultDate: '2026-06-08', amount: 55000000, monthly: 9166667,
+      scope: '브랜드 기획 / 메타', note: '8월까지 자체 브랜드 점검 / 9월 스타트 니즈',
+      quoteSentDate: '2026-06-16', quoteType: '견적서(메일 sheet)', defaultStage: 'sent' },
+    { slug: 'lutea', name: '루테아 / 제니글로벌', prep: true,
+      owner: '임애라', consultDate: '2026-06-09', amount: 22000000, monthly: 3666667,
+      scope: '브랜드 점검·정리 / 광고', note: '미팅시 적극도 낮음',
+      quoteSentDate: '2026-06-16', quoteType: '견적서(메일 pdf)', defaultStage: 'sent' },
+    { slug: 'mixroom', name: '믹스룸', prep: true,
+      owner: '이슬기', consultDate: '2026-06-09' },
+    { slug: 'natural-good-things', name: '네추럴굿띵스', prep: true,
+      source: '권윤정 대표', owner: '우성민', consultDate: '2026-06-10' },
+    { slug: 'yoosom', name: '마티어 (유솜)', prep: true,
+      source: '유튜브(떙.큐)', owner: '우성민', consultDate: '2026-06-12' },
+    { slug: 'kkotppang', name: '꽃빵', prep: true,
+      source: '스타트업 플랫폼', owner: '임애라', consultDate: '2026-06-12' },
+    { slug: 'small-habit', name: '작은 습관 (&dm)', prep: true, prepSlug: 'anddm',
+      source: '유튜브(떙.큐)', owner: '이슬기', consultDate: '2026-06-15', amount: 100000000, monthly: 16666667,
+      scope: '토탈 브랜딩 - B급' },
+    { slug: 'healernet', name: '힐러넷 (요프리)', prep: true,
+      source: '고벤처포럼', owner: '임애라', consultDate: '2026-06-15', amount: 86000000, monthly: 17200000,
+      scope: '토탈 브랜딩 - C급', quoteSentDate: '2026-06-19', quoteType: '견적콜(메일 sheet)', defaultStage: 'sent' },
+    { slug: 'elegaiter', name: '사이클룩스 / Elegaiter', prep: true,
+      source: '고벤처포럼', owner: '임애라', consultDate: '2026-06-15' },
+    { slug: 'blupino', name: '블루피노', prep: true,
+      source: '고벤처포럼', owner: '우성민', consultDate: '2026-06-19' }
   ];
 
   // ── localStorage 키 + 헬퍼 ──────────────────────────────────────
@@ -93,7 +122,10 @@
   // ── 상담일 ──────────────────────────────────────────────────────
   function readDates() { try { return JSON.parse(localStorage.getItem(DATE_KEY)) || {}; } catch (e) { return {}; } }
   function writeDates(m) { localStorage.setItem(DATE_KEY, JSON.stringify(m)); }
-  function getDate(slug) { return readDates()[slug] || ''; }
+  function getDate(slug) {
+    var m = readDates(); if (slug in m) return m[slug];
+    var b = brandBySlug(slug); return (b && b.consultDate) || '';
+  }
   function setDate(slug, val) { var m = readDates(); if (val) m[slug] = val; else delete m[slug]; writeDates(m); }
   // 상담일로부터 경과 일수 (오늘 기준, 미설정 시 null)
   function daysSince(slug) {
@@ -111,7 +143,10 @@
     var m = readStages(); m[slug] = stageId;
     localStorage.setItem(STAGE_KEY, JSON.stringify(m));
   }
-  function getStage(slug) { return readStages()[slug] || 'consult'; }
+  function getStage(slug) {
+    var m = readStages(); if (m[slug]) return m[slug];
+    var b = brandBySlug(slug); return (b && b.defaultStage) || 'consult';
+  }
 
   function readQuote(slug) {
     try { return JSON.parse(localStorage.getItem(QUOTE_KEY(slug))); }
