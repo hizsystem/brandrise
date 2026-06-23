@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <!--
-  BRANDRISE 단가 기준표 — 내부 단가 정책 단일 출처(SSOT).
-  · 값 출처: internal/quote-builder/index.html 의 MX 배열(7항목 × L1/L2/L3, 단위 만원, IMC=월 단가). 그대로 옮김.
-  · 임의 변경 금지 — 빌더 MX와 항상 일치시킬 것. 공용 네비 = /internal/nav.js. 배포: internal/price-guide/index.html
+  BRANDRISE 단가 기준표 — 내부 단가 정책 표시(렌더) 페이지.
+  · 값 출처(SSOT): /internal/price-data.js 의 BRPRICE.MX (7항목 × L1/L2/L3, 단위 만원, IMC=월 단가).
+  · 단가는 price-data.js 한 곳에서만 고친다 — 견적 빌더(quote-builder)와 이 표가 같은 정본을 읽는다.
+  · 이 파일엔 단가 숫자를 박지 않는다. tbody는 아래 스크립트가 BRPRICE.MX를 순회해 생성한다.
+  · 공용 네비 = /internal/nav.js. 배포: internal/price-guide/index.html
 -->
 <html lang="ko">
 <head>
@@ -104,50 +106,7 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
           <th>L3<span class="lab">외주</span></th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td class="it"><div class="k">데이터 진단 + 시장 서베이</div><div class="d">진단</div></td>
-          <td>500<span class="won">만</span></td>
-          <td class="l2">1,000<span class="won">만</span></td>
-          <td>2,000<span class="won">만</span></td>
-        </tr>
-        <tr>
-          <td class="it"><div class="k">브랜드 아이덴티티 정립 + 제품체계 전략</div><div class="d">아이덴티티</div></td>
-          <td>1,000<span class="won">만</span></td>
-          <td class="l2">2,000<span class="won">만</span></td>
-          <td>3,500<span class="won">만</span></td>
-        </tr>
-        <tr>
-          <td class="it"><div class="k">브랜드 로고 &amp; 패키지 디자인 리뉴얼</div><div class="d">디자인</div></td>
-          <td>1,500<span class="won">만</span></td>
-          <td class="l2">3,000<span class="won">만</span></td>
-          <td>5,000<span class="won">만</span></td>
-        </tr>
-        <tr>
-          <td class="it"><div class="k">사진 촬영(제품·라이프스타일) + 콘텐츠 제작</div><div class="d">촬영</div></td>
-          <td>500<span class="won">만</span></td>
-          <td class="l2">1,500<span class="won">만</span></td>
-          <td>3,000<span class="won">만</span></td>
-        </tr>
-        <tr>
-          <td class="it"><div class="k">인스타그램 콘텐츠 기획 &amp; 운영</div><div class="d">마케팅</div></td>
-          <td>1,000<span class="won">만</span></td>
-          <td class="l2">2,000<span class="won">만</span></td>
-          <td>4,000<span class="won">만</span></td>
-        </tr>
-        <tr class="imc">
-          <td class="it"><div class="k">브랜드 IMC 전략 파트너십 / 대행사 fee</div><div class="d">IMC · 월 단가</div></td>
-          <td>60<span class="won">만</span><span class="mo">/월</span></td>
-          <td class="l2">140<span class="won">만</span><span class="mo">/월</span></td>
-          <td>300<span class="won">만</span><span class="mo">/월</span></td>
-        </tr>
-        <tr>
-          <td class="it"><div class="k">자사몰(카페24) 세팅</div><div class="d">자사몰</div></td>
-          <td>1,200<span class="won">만</span></td>
-          <td class="l2">2,000<span class="won">만</span></td>
-          <td>3,000<span class="won">만</span></td>
-        </tr>
-      </tbody>
+      <tbody id="mxBody"><!-- 행은 /internal/price-data.js 의 BRPRICE.MX에서 동적 생성 (정본 단일 출처) --></tbody>
     </table>
   </div>
   <div class="tnote">
@@ -168,9 +127,33 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
 
 <footer>
   <b>BRANDRISE</b> by HIZ · 단가 기준표 (내부)<br>
-  값 출처 = 견적 빌더 MX 배열 · 빌더 단가와 항상 일치 유지 · 비공개 내부 문서
+  값 출처 = /internal/price-data.js (BRPRICE.MX) · 견적 빌더와 단일 정본 공유 · 비공개 내부 문서
 </footer>
 
+<!-- 단가 정본(SSOT) — 빌더와 공유. 단가는 여기서만 고친다. -->
+<script src="/internal/price-data.js"></script>
+<script>
+(function () {
+  var MX = (window.BRPRICE && window.BRPRICE.MX) || [];
+  var body = document.getElementById('mxBody');
+  if (!body) return;
+  var nf = function (v) { return Number(v).toLocaleString('ko-KR'); };
+  var cell = function (v, isL2, isMonthly) {
+    var mo = isMonthly ? '<span class="mo">/월</span>' : '';
+    return '<td' + (isL2 ? ' class="l2"' : '') + '>' + nf(v) + '<span class="won">만</span>' + mo + '</td>';
+  };
+  var rows = MX.map(function (r) {
+    var desc = r.monthly ? r.key + ' · 월 단가' : r.key;
+    return '<tr' + (r.monthly ? ' class="imc"' : '') + '>'
+      + '<td class="it"><div class="k">' + r.name + '</div><div class="d">' + desc + '</div></td>'
+      + cell(r.L1, false, r.monthly)
+      + cell(r.L2, true,  r.monthly)
+      + cell(r.L3, false, r.monthly)
+      + '</tr>';
+  });
+  body.innerHTML = rows.join('');
+})();
+</script>
 <script src="/internal/nav.js"></script>
 </body>
 </html>

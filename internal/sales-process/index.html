@@ -3,8 +3,8 @@
   BRANDRISE 영업 프로세스 로드맵 (가로형) · 인디고 클린
   · 레이아웃 출처: 우성민(성민) Figma 로드맵(zCdzAClrvVg4uXZDDs5QdL, node 3:3) — 5단계 세로 컬럼을 가로로.
     원본 Figma는 남중 View 권한이라 직접 편집 불가 → 동일 구조를 HTML로 재구현(매뉴얼 허브와 통일·링크 라이브 연결).
-  · 콘텐츠 출처: 2026-06-12 시스템화 회의. 카드 = 약식 설명 + 예시 이미지 슬롯 + 산출물/매뉴얼 링크.
-  · 5컬럼 균등 분할(가로 스크롤 없이 한 화면) · 카드마다 예시 사진 자리.
+  · 콘텐츠 출처: 2026-06-12 시스템화 회의. 카드 = 약식 설명 + 이미지 자리(준비 중) + 산출물/매뉴얼 링크.
+  · 5컬럼 균등 분할(가로 스크롤 없이 한 화면).
   · 배포: internal/sales-process/index.html
 -->
 <html lang="ko">
@@ -74,12 +74,10 @@ body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);colo
 .say::after{content:"\201D";color:var(--ac);font-weight:800}
 .memo{display:block;font-size:12px;color:var(--muted);line-height:1.55;margin-top:7px;padding-left:11px;border-left:2px solid var(--line)}
 .memo b{color:var(--ink2);font-weight:700}
-/* 예시 이미지 슬롯 */
-.shot{margin-top:8px;height:62px;border:1px dashed #cdd3de;border-radius:8px;
-  background:linear-gradient(135deg,#f7f9fc 25%,#f1f4f9 25%,#f1f4f9 50%,#f7f9fc 50%,#f7f9fc 75%,#f1f4f9 75%);
-  background-size:14px 14px;display:flex;align-items:center;justify-content:center;gap:5px;
-  font-size:10.5px;color:var(--muted);font-weight:700}
-.shot::before{content:"🖼";font-size:12px;filter:grayscale(.2)}
+/* 이미지 준비 중 자리표시 (회색·약식) */
+.shot{margin-top:8px;height:40px;border:1px solid var(--line2);border-radius:8px;
+  background:var(--soft);display:flex;align-items:center;justify-content:center;
+  font-size:10.5px;color:#aab2bf;font-weight:600;letter-spacing:.01em}
 .sc .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
 .t{display:inline-flex;align-items:center;font-size:12px;font-weight:700;padding:3px 9px;border-radius:6px;white-space:nowrap;text-decoration:none}
 .t.kakao{background:var(--warn-50);color:var(--warn)}
@@ -87,7 +85,7 @@ body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);colo
 .t.out{background:var(--ac-50);color:var(--ac)}
 .t.n{background:#f1f5f9;color:var(--muted)}
 .t.lk{background:var(--ac);color:#fff} .t.lk:hover{background:var(--ac-700)}
-.t.lk.pend{background:#fff;color:var(--muted);border:1px dashed var(--line)}
+.t.lk.pend{background:#fff;color:#aab2bf;border:1px dashed var(--line);cursor:default;font-weight:600}
 .t.man{background:var(--ac-50);color:var(--ac);border:1px solid var(--ac-100)} .t.man:hover{background:var(--ac-100)}
 
 /* 유입 수렴 퍼널 (3경로 → 브랜드라이즈) */
@@ -165,9 +163,9 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
           <div class="ar">▼</div>
           <div class="nd win"><div class="nm">브랜드라이즈 상담</div><div class="ds">상담 · 수주</div><span class="side">← 직접 유입</span></div>
         </div>
-        <div class="tags"><span class="t lk pend">🔗 고벤처포럼 · 대표 유튜브</span></div></div>
-      <div class="sc"><div class="top"><span class="sn">·</span><span class="stt">정부지원사업</span></div><div class="sd"><b>수요는 많은데 중간에 많이 빠진다.</b> 들어온 수·이탈 수를 재서 채널값을 측정하는 용도.</div><div class="shot">예시 사진</div></div>
-      <div class="sc"><div class="top"><span class="sn">·</span><span class="stt">대표 인프라</span></div><div class="sd"><b>대표 개인 인스타 등 개인 자산에서 유입.</b> 회사 채널로 합치고 대표 개인기에서 떼어내는 게 목표.</div><div class="shot">예시 사진</div></div>
+        <div class="tags"><span class="t lk pend">고벤처포럼 · 대표 유튜브 (준비 중)</span></div></div>
+      <div class="sc"><div class="top"><span class="sn">·</span><span class="stt">정부지원사업</span></div><div class="sd"><b>수요는 많은데 중간에 많이 빠진다.</b> 들어온 수·이탈 수를 재서 채널값을 측정하는 용도.</div><div class="shot">이미지 준비 중</div></div>
+      <div class="sc"><div class="top"><span class="sn">·</span><span class="stt">대표 인프라</span></div><div class="sd"><b>대표 개인 인스타 등 개인 자산에서 유입.</b> 회사 채널로 합치고 대표 개인기에서 떼어내는 게 목표.</div><div class="shot">이미지 준비 중</div></div>
       <div class="cnote"><span class="l">유입 핵심</span><b>어디서 오는가.</b> 세 경로 모두 브랜드라이즈 상담으로 모은다 — 대표 개인기·행사 의존을 회사 채널로 합치는 게 목표.</div>
     </div>
 
@@ -176,9 +174,9 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     <!-- ===== 영업 ===== -->
     <div class="col">
       <div class="chead"><div class="ck">SALES</div><div class="ct">영업</div><div class="cs">접수 → 분별 → 담당 배치</div></div>
-      <div class="sc"><div class="top"><span class="sn">1</span><span class="stt">상담 신청 접수</span></div><div class="sd"><b>광고 · 랜딩 · 채널에서 진단 신청이 들어온다.</b> 접수되면 신청자에게 알림톡 자동 발송.</div><div class="shot">예시 사진</div><div class="tags"><span class="t lk pend">🔗 진단 신청 랜딩</span><span class="t kakao">🔔 신청 접수</span></div></div>
-      <div class="sc"><div class="top"><span class="sn">2</span><span class="stt">콜 · 1차 분별</span></div><div class="sd"><b>전화로 매출 규모 · 의지(열) · 가능성 · 유입경로를 확인하고, <span class="t star">★ 대표</span> 건과 일반 건으로 가른다.</b><span class="memo">"돈 되는 건"을 빨리 알아보는 감각이 첫 단추. 여기서 잡은 규모·온도가 담당 배치와 견적 결을 가른다.</span></div><div class="shot">예시 사진</div><div class="tags"><span class="t out">유입경로</span><span class="t star">★ 대표</span></div></div>
-      <div class="sc"><div class="top"><span class="sn">3</span><span class="stt">스케줄링 — 담당 배치</span></div><div class="sd"><b>운영 시트에 담당자와 일정을 잡는다.</b> <span class="t star">★ 대표</span> 건은 따로 분기. 일정 잡히면 고객에게 알림톡.</div><div class="shot">예시 사진</div><div class="tags"><span class="t lk pend">🔗 운영 시트</span><span class="t kakao">🔔 일정 확정</span><span class="t star">★ 대표</span></div></div>
+      <div class="sc"><div class="top"><span class="sn">1</span><span class="stt">상담 신청 접수</span></div><div class="sd"><b>광고 · 랜딩 · 채널에서 진단 신청이 들어온다.</b> 접수되면 신청자에게 알림톡 자동 발송.</div><div class="shot">이미지 준비 중</div><div class="tags"><span class="t lk pend">진단 신청 랜딩 (준비 중)</span><span class="t kakao">🔔 신청 접수</span></div></div>
+      <div class="sc"><div class="top"><span class="sn">2</span><span class="stt">콜 · 1차 분별</span></div><div class="sd"><b>전화로 매출 규모 · 의지(열) · 가능성 · 유입경로를 확인하고, <span class="t star">★ 대표</span> 건과 일반 건으로 가른다.</b><span class="memo">"돈 되는 건"을 빨리 알아보는 감각이 첫 단추. 여기서 잡은 규모·온도가 담당 배치와 견적 결을 가른다.</span></div><div class="shot">이미지 준비 중</div><div class="tags"><span class="t out">유입경로</span><span class="t star">★ 대표</span></div></div>
+      <div class="sc"><div class="top"><span class="sn">3</span><span class="stt">스케줄링 — 담당 배치</span></div><div class="sd"><b>운영 시트에 담당자와 일정을 잡는다.</b> <span class="t star">★ 대표</span> 건은 따로 분기. 일정 잡히면 고객에게 알림톡.</div><div class="shot">이미지 준비 중</div><div class="tags"><span class="t lk pend">운영 시트 (준비 중)</span><span class="t kakao">🔔 일정 확정</span><span class="t star">★ 대표</span></div></div>
       <div class="cnote"><span class="l">영업 핵심</span><b>받아서 거르고, 누구에게 붙일지 정한다.</b> 매출 규모·의지(열)로 ★ 대표 건과 일반 건을 가르는 게 영업의 첫 일.</div>
     </div>
 
@@ -187,10 +185,10 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     <!-- ===== 1차 상담 ===== -->
     <div class="col">
       <div class="chead"><div class="ck">PHASE 1</div><div class="ct">1차 · 상담</div><div class="cs">사전질문 → PREP → 상담 → 진단서</div></div>
-      <div class="sc"><div class="top"><span class="sn">1</span><span class="stt">메일 — 사전 질문지 발송</span></div><div class="sd"><b>상담 전 질문지를 메일로 보내 자료를 미리 받는다.</b> 받은 자료가 PREP의 리서치 재료가 된다.</div><div class="shot">예시 사진</div><div class="tags"><span class="t lk pend">🔗 사전질문 폼</span><span class="t n">사전 자료</span></div></div>
-      <div class="sc"><div class="top"><span class="sn">2</span><span class="stt">PREP 작성 (내부)</span></div><div class="sd"><b>상담 전 내부 준비 문서.</b> 받은 자료와 리서치로 "이 브랜드가 막힌 지점" 가설을 미리 세워 둔다.</div><div class="shot">예시 사진</div><div class="tags"><a class="t lk" href="../../research/_template/prep-v2-template.html">🔗 PREP 템플릿</a><span class="t out">📄 PREP</span></div></div>
-      <div class="sc"><div class="top"><span class="sn">3</span><span class="stt">상담 진행</span></div><div class="sd"><b>대면 또는 콜로 상담. 첫 15분은 회사소개, 그다음 마이크를 넘긴다.</b> <span class="t star">★ 대표</span> 건은 대표가 직접 전략을 제시.<span class="memo">진행 골격·질문·화법은 <b>상담 플레이북</b>을 그대로 따른다.</span></div><div class="shot">예시 사진</div><div class="tags"><a class="t man" href="../company-intro/">▸ 회사소개</a><a class="t man" href="../consult-playbook/">▸ 상담 플레이북</a><span class="t star">★ 대표</span></div></div>
-      <div class="sc"><div class="top"><span class="sn">4</span><span class="stt">상담 완료 → 진단서</span></div><div class="sd"><b>상담 끝나면 3일 안에 진단서를 보낸다.</b> 완료 처리하면 고객에게 알림톡.</div><div class="shot">예시 사진</div><div class="tags"><a class="t lk" href="../../research/_template/diagnosis-template.html">🔗 진단서 템플릿</a><span class="t kakao">🔔 완료</span></div></div>
+      <div class="sc"><div class="top"><span class="sn">1</span><span class="stt">메일 — 사전 질문지 발송</span></div><div class="sd"><b>상담 전 질문지를 메일로 보내 자료를 미리 받는다.</b> 받은 자료가 PREP의 리서치 재료가 된다.</div><div class="shot">이미지 준비 중</div><div class="tags"><span class="t lk pend">사전질문 폼 (준비 중)</span><span class="t n">사전 자료</span></div></div>
+      <div class="sc"><div class="top"><span class="sn">2</span><span class="stt">PREP 작성 (내부)</span></div><div class="sd"><b>상담 전 내부 준비 문서.</b> 받은 자료와 리서치로 "이 브랜드가 막힌 지점" 가설을 미리 세워 둔다.</div><div class="shot">이미지 준비 중</div><div class="tags"><a class="t lk" href="../../research/_template/prep-v2-template.html">🔗 PREP 템플릿</a><span class="t out">📄 PREP</span></div></div>
+      <div class="sc"><div class="top"><span class="sn">3</span><span class="stt">상담 진행</span></div><div class="sd"><b>대면 또는 콜로 상담. 첫 15분은 회사소개, 그다음 마이크를 넘긴다.</b> <span class="t star">★ 대표</span> 건은 대표가 직접 전략을 제시.<span class="memo">진행 골격·질문·화법은 <b>상담 플레이북</b>을 그대로 따른다.</span></div><div class="shot">이미지 준비 중</div><div class="tags"><a class="t man" href="../company-intro/">▸ 회사소개</a><a class="t man" href="../consult-playbook/">▸ 상담 플레이북</a><span class="t star">★ 대표</span></div></div>
+      <div class="sc"><div class="top"><span class="sn">4</span><span class="stt">상담 완료 → 진단서</span></div><div class="sd"><b>상담 끝나면 3일 안에 진단서를 보낸다.</b> 완료 처리하면 고객에게 알림톡.</div><div class="shot">이미지 준비 중</div><div class="tags"><a class="t lk" href="../../research/_template/diagnosis-template.html">🔗 진단서 템플릿</a><span class="t kakao">🔔 완료</span></div></div>
       <div class="cnote"><span class="l">1차 산출물</span><b>PREP</b>(내부 준비) + <b>진단서</b>(고객에게 제출 · 견적 근거). 진단서에서 짚은 병목 번호가 2차 견적 블록과 1:1로 붙는다.</div>
     </div>
 
@@ -199,10 +197,10 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     <!-- ===== 2차 견적 ===== -->
     <div class="col">
       <div class="chead"><div class="ck">PHASE 2</div><div class="ct">2차 · 견적</div><div class="cs">초안 → 컨펌 → 발송 → 견적콜</div></div>
-      <div class="sc"><div class="top"><span class="sn">1</span><span class="stt">견적 초안 작성</span></div><div class="sd"><b>진단서에서 짚은 병목을 그대로 견적 블록으로 옮긴다.</b> 규모에 따라 HTML 견적서 또는 구글시트로 나눠 만든다.</div><div class="shot">예시 사진</div><div class="tags"><a class="t lk" href="../../quote/_template/quote-template.html">🔗 견적 템플릿</a><span class="t out">📄 견적서</span></div></div>
-      <div class="sc"><div class="top"><span class="sn">2</span><span class="stt">컨펌 — 내부 → 대표</span></div><div class="sd"><b>내부에서 한 번 보고, 대표가 최종 컨펌한다.</b> 이때 총액이 규모에 맞는 티어인지 확인.</div><div class="shot">예시 사진</div><div class="tags"><span class="t star">★ 컨펌</span></div></div>
-      <div class="sc"><div class="top"><span class="sn">3</span><span class="stt">견적 발송 — A/B안</span></div><div class="sd"><b>두 안을 같이 보낸다.</b> 차이가 눈에 보이게 만들고 추천안을 분명히 짚어 준다.<span class="memo">단가를 즉석에서 깎거나 번복하지 않는다 — A/B로 미리 갈라 일관성 유지.</span></div><div class="shot">예시 사진</div><div class="tags"><span class="t out">A / B안</span></div></div>
-      <div class="sc"><div class="top"><span class="sn">4</span><span class="stt">견적콜</span></div><div class="sd"><b>전화로 설명이 부족했던 부분을 채운다.</b> 잘 안 풀리면 대표에게 SOS.<span class="memo">콜 화법은 <b>견적콜 플레이북</b> 참고.</span></div><div class="shot">예시 사진</div><div class="tags"><a class="t man" href="../quote-call-playbook/">▸ 견적콜 플레이북</a><span class="t n">결정 지원</span></div></div>
+      <div class="sc"><div class="top"><span class="sn">1</span><span class="stt">견적 초안 작성</span></div><div class="sd"><b>진단서에서 짚은 병목을 그대로 견적 블록으로 옮긴다.</b> 규모에 따라 HTML 견적서 또는 구글시트로 나눠 만든다.</div><div class="shot">이미지 준비 중</div><div class="tags"><a class="t lk" href="../../quote/_template/quote-template.html">🔗 견적 템플릿</a><span class="t out">📄 견적서</span></div></div>
+      <div class="sc"><div class="top"><span class="sn">2</span><span class="stt">컨펌 — 내부 → 대표</span></div><div class="sd"><b>내부에서 한 번 보고, 대표가 최종 컨펌한다.</b> 이때 총액이 규모에 맞는 티어인지 확인.</div><div class="shot">이미지 준비 중</div><div class="tags"><span class="t star">★ 컨펌</span></div></div>
+      <div class="sc"><div class="top"><span class="sn">3</span><span class="stt">견적 발송 — A/B안</span></div><div class="sd"><b>두 안을 같이 보낸다.</b> 차이가 눈에 보이게 만들고 추천안을 분명히 짚어 준다.<span class="memo">단가를 즉석에서 깎거나 번복하지 않는다 — A/B로 미리 갈라 일관성 유지.</span></div><div class="shot">이미지 준비 중</div><div class="tags"><span class="t out">A / B안</span></div></div>
+      <div class="sc"><div class="top"><span class="sn">4</span><span class="stt">견적콜</span></div><div class="sd"><b>전화로 설명이 부족했던 부분을 채운다.</b> 잘 안 풀리면 대표에게 SOS.<span class="memo">콜 화법은 <b>견적콜 플레이북</b> 참고.</span></div><div class="shot">이미지 준비 중</div><div class="tags"><a class="t man" href="../quote-call-playbook/">▸ 견적콜 플레이북</a><span class="t n">결정 지원</span></div></div>
       <div class="cnote"><span class="l">2차 산출물</span><b>견적서 (A/B안)</b> — A안 = 작은 yes를 받는 진입 앵커, B안 = 권장(풀 범위). 공통 항목 단가는 브랜드 불문 같게 두고, 차이는 블록 깊이로만 조정.</div>
     </div>
 
@@ -211,8 +209,8 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     <!-- ===== 3차 계약 ===== -->
     <div class="col">
       <div class="chead"><div class="ck">PHASE 3</div><div class="ct">3차 · 계약</div><div class="cs">계약 → 셋업(마스터시트)</div></div>
-      <div class="sc"><div class="top"><span class="sn">1</span><span class="stt">계약</span></div><div class="sd"><b>범위와 금액을 확정한다.</b> 부담스러워하면 데이터 진단 하나만 먼저 착수하는 가벼운 진입도 연다.</div><div class="shot">예시 사진</div><div class="tags"><span class="t n">수주</span></div></div>
-      <div class="sc"><div class="top"><span class="sn">2</span><span class="stt">셋업 — 마스터시트</span></div><div class="sd"><b>월간 플랜과 관리 데이터를 마스터시트에 깐다.</b> 첫 워크숍에 대표가 들어가 전략을 잡고, 이후 인하우스로 넘긴다.</div><div class="shot">예시 사진</div><div class="tags"><span class="t lk pend">🔗 마스터시트</span></div></div>
+      <div class="sc"><div class="top"><span class="sn">1</span><span class="stt">계약</span></div><div class="sd"><b>범위와 금액을 확정한다.</b> 부담스러워하면 데이터 진단 하나만 먼저 착수하는 가벼운 진입도 연다.</div><div class="shot">이미지 준비 중</div><div class="tags"><span class="t n">수주</span></div></div>
+      <div class="sc"><div class="top"><span class="sn">2</span><span class="stt">셋업 — 마스터시트</span></div><div class="sd"><b>월간 플랜과 관리 데이터를 마스터시트에 깐다.</b> 첫 워크숍에 대표가 들어가 전략을 잡고, 이후 인하우스로 넘긴다.</div><div class="shot">이미지 준비 중</div><div class="tags"><span class="t lk pend">마스터시트 (준비 중)</span></div></div>
       <div class="cnote warn"><span class="l">첫 끝발</span><b>첫 워크숍 · 디자인 미팅은 대표가 직접 들어간다 — 전략을 짜고, 녹음하고, 매뉴얼로 남긴다.</b> 그다음부터는 팀이 받는다. 첫 단추만 잘 끼우면 나머지가 쉬워진다.</div>
     </div>
 
@@ -221,7 +219,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     <!-- ===== 수주 ===== -->
     <div class="col">
       <div class="chead win"><div class="ck">RESULT</div><div class="ct">수주</div><div class="cs">운영 인하우스 전수</div></div>
-      <div class="sc"><div class="top"><span class="sn ok">✓</span><span class="stt">운영 착수</span></div><div class="sd"><b>마스터시트로 매월 운영하고, 운영 노하우를 인하우스(클라이언트 내부)로 넘긴다.</b></div><div class="shot">예시 사진</div><div class="tags"><span class="t n">전수</span></div></div>
+      <div class="sc"><div class="top"><span class="sn ok">✓</span><span class="stt">운영 착수</span></div><div class="sd"><b>마스터시트로 매월 운영하고, 운영 노하우를 인하우스(클라이언트 내부)로 넘긴다.</b></div><div class="shot">이미지 준비 중</div><div class="tags"><span class="t n">전수</span></div></div>
       <div class="cnote ok"><span class="l">목표</span><b>대표 개인기를 누구나 굴릴 수 있는 시스템으로.</b> 쌓인 운영 데이터가 다음 영업의 근거가 된다.</div>
     </div>
 

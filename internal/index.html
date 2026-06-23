@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>BRANDRISE 세일즈 OS · 영업 운영 시스템</title>
+<title>BRANDRISE 시스템 · 영업 운영 허브</title>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
 <style>
 :root{
@@ -61,6 +61,16 @@ body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);colo
 .lnk.todo .tag{margin-left:auto;font-size:9.5px;font-weight:800;color:var(--muted);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:2px 7px}
 .lnk .new{margin-left:auto;font-size:9.5px;font-weight:800;color:var(--ok);background:#ecfdf5;border:1px solid #a7f3d0;border-radius:999px;padding:2px 7px}
 
+/* 현황 KPI 타일 */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:8px}
+.kpi{border:1px solid var(--line);border-radius:13px;background:var(--card);padding:14px 16px}
+.kpi .k{font-size:11.5px;color:var(--muted);font-weight:700}
+.kpi .v{font-size:21px;font-weight:800;letter-spacing:-.02em;margin-top:6px}
+.kpi .v small{font-size:12px;color:var(--muted);font-weight:700}
+.kpi.win{background:#ecfdf5;border-color:#a7f3d0}.kpi.win .v{color:var(--ok)}
+.kpi-note{font-size:11px;color:var(--muted);margin:0 2px 22px}
+@media(max-width:760px){.kpis{grid-template-columns:1fr 1fr}}
+
 footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:1180px;margin:0 auto}
 @media(max-width:920px){ .board{grid-template-columns:1fr 1fr} }
 @media(max-width:560px){ .board{grid-template-columns:1fr} }
@@ -75,6 +85,9 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
 </div></div>
 
 <div class="wrap">
+
+  <div class="kpis" id="kpis"></div>
+  <div class="kpi-note" id="kpiNote"></div>
 
   <div class="whole">
     <a class="wl" href="/internal/sales-process/"><div class="ic">🗺️</div><div class="m"><div class="t">영업 프로세스 전체 지도</div><div class="d">유입→수주 전체 흐름·표준·알림톡</div></div><div class="go">지도 ›</div></a>
@@ -100,7 +113,7 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
 
     <!-- 1차 상담 -->
     <div class="col">
-      <div class="ch"><div class="top"><span class="num">1차</span><span class="nm">상담 · 진단</span></div><span class="ph">결핍 끌어내 진단으로</span></div>
+      <div class="ch"><div class="top"><span class="num">1차</span><span class="nm">상담 · 진단</span></div><span class="ph">고민 듣고 진단으로</span></div>
       <div class="body">
         <div class="grp"><div class="gl">매뉴얼</div>
           <a class="lnk" href="/internal/consult-playbook/"><span class="ai">💬</span><span class="an">상담 플레이북<span class="sub">v3 · 6단계·화법</span></span></a>
@@ -149,7 +162,27 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
 
 </div>
 
-<footer><b>BRANDRISE</b> 세일즈 OS · by HIZ · 비공개 내부 문서</footer>
+<footer><b>BRANDRISE</b> 시스템 · by HIZ · 비공개 내부 문서</footer>
+<script src="pipeline-data.js"></script>
+<script>
+(function(){
+  if(!window.BR || !document.getElementById('kpis')) return;
+  var active=0, activeSum=0, sent=0, won=0, wonSum=0;
+  BR.allBrands().forEach(function(b){
+    var st=BR.getStage(b.slug), amt=+b.amount||0;
+    if(st==='won'){ won++; wonSum+=amt; }
+    else if(st!=='dropped'){ active++; activeSum+=amt; }
+    if(st==='sent') sent++;
+  });
+  function w(n){ return (+n||0).toLocaleString()+'원'; }
+  document.getElementById('kpis').innerHTML=
+    '<div class="kpi"><div class="k">진행 중 브랜드</div><div class="v">'+active+'<small> 개</small></div></div>'+
+    '<div class="kpi"><div class="k">진행 중 파이프라인 (수주·중단 제외)</div><div class="v">'+w(activeSum)+'</div></div>'+
+    '<div class="kpi"><div class="k">견적 발송 완료</div><div class="v">'+sent+'<small> 개</small></div></div>'+
+    '<div class="kpi win"><div class="k">수주 완료</div><div class="v">'+won+'<small> 개 · '+w(wonSum)+'</small></div></div>';
+  document.getElementById('kpiNote').textContent='※ 파이프라인 보드(이 브라우저) 기준. 자세히는 상단 네비 「수주 현황」.';
+})();
+</script>
 <script src="/internal/nav.js"></script>
 </body>
 </html>

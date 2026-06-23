@@ -106,15 +106,15 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
   <div class="summary" id="summary"></div>
   <div class="boardtools">
     <button id="btnAddBrand" type="button">＋ 브랜드(프로젝트) 추가</button>
-    <button id="btnRestore" type="button" class="ghost">기본 16개 복원</button>
-    <span class="bt-note">단계·상담일·추가 브랜드는 <b>이 브라우저에만</b> 저장됩니다(정적 사이트 — 공용 서버 없음). 개인 진행 관리용 · 타일을 누르면 해당 단계로 이동.</span>
+    <button id="btnRestore" type="button" class="ghost">기본 브랜드 복원</button>
+    <span class="bt-note">단계·상담일·추가 브랜드는 <b>이 브라우저에만</b> 저장됩니다(동료와 공유 안 됨). 개인 진행 관리용 · 타일을 누르면 해당 단계로 이동.</span>
   </div>
   <div id="groups"></div>
 </div>
 
 <footer>
   <b>BRANDRISE</b> by HIZ · 파이프라인 보드<br>
-  단계 5종 · 견적 빌더 연동 · 진행 중 16개 브랜드 (2026-06-23 기준)
+  단계 5종 · 견적 빌더 연동 · 진행 중 <span id="brandCount">—</span>개 브랜드
 </footer>
 
 <script src="/internal/nav.js"></script>
@@ -200,7 +200,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     [].forEach.call(groups.querySelectorAll('[data-del]'),function(btn){
       btn.onclick=function(){
         var s=btn.getAttribute('data-del'), b=BR.brandBySlug(s), nm=b?b.name:s;
-        if(confirm('"'+nm+'"를 보드에서 삭제할까요?\n(단계·상담일·견적 작성 내용도 함께 삭제됩니다. 기본 브랜드는 "기본 16개 복원"으로 되살릴 수 있습니다.)')){ BR.removeBrand(s); renderAll(); }
+        if(confirm('"'+nm+'"를 보드에서 삭제할까요?\n(단계·상담일·견적 작성 내용도 함께 삭제됩니다. 기본 브랜드는 "기본 브랜드 복원"으로 되살릴 수 있습니다.)')){ BR.removeBrand(s); renderAll(); }
       };
     });
   }
@@ -219,7 +219,11 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     if(confirm('숨긴(삭제한) 기본 브랜드를 모두 되살릴까요? (추가한 브랜드는 영향 없음)')){ BR.restoreHidden(); renderAll(); }
   };
 
-  function renderAll(){ renderSummary(); renderGroups(); }
+  function renderCount(){
+    var el=document.getElementById('brandCount');
+    if(el) el.textContent=BR.allBrands().length;
+  }
+  function renderAll(){ renderSummary(); renderGroups(); renderCount(); }
   renderAll();
 })();
 </script>

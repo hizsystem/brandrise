@@ -166,6 +166,7 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
 <footer><b>BRANDRISE</b> by HIZ · 견적 빌더 · 셀렉 매트릭스 → 편집형 1차 견적 + 강훈 5블록 내보내기</footer>
 
 <script src="/internal/nav.js"></script>
+<script src="/internal/price-data.js"></script>
 <script src="../pipeline-data.js"></script>
 <script src="../../share/lz-string.min.js"></script>
 <script src="../../share/quote-doc.js"></script>
@@ -188,16 +189,8 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
   function fmt(n){return (n||0).toLocaleString();}
   function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
-  // 셀렉 매트릭스 (고정). amount = 단위당 만원(월 항목은 월 단가).
-  var MX=[
-    {key:'진단',     name:'데이터 진단 + 시장 서베이',              monthly:false, L1:500, L2:1000, L3:2000},
-    {key:'아이덴티티', name:'브랜드 아이덴티티 정립 + 제품체계 전략',   monthly:false, L1:1000,L2:2000, L3:3500},
-    {key:'디자인',   name:'브랜드 로고 & 패키지 디자인 리뉴얼',       monthly:false, L1:1500,L2:3000, L3:5000},
-    {key:'촬영',     name:'사진 촬영(제품·라이프스타일) + 콘텐츠 제작', monthly:false, L1:500, L2:1500, L3:3000},
-    {key:'마케팅',   name:'인스타그램 콘텐츠 기획 & 운영',           monthly:false, L1:1000,L2:2000, L3:4000},
-    {key:'IMC',      name:'브랜드 IMC 전략 파트너십 / 대행사 fee',    monthly:true,  L1:60,  L2:140,  L3:300},
-    {key:'자사몰',   name:'자사몰(카페24) 세팅',                    monthly:false, L1:1200,L2:2000, L3:3000}
-  ];
+  // 셀렉 매트릭스 = 단가 정본(price-data.js)에서 읽음. ★단가는 거기 한 곳에서만 고친다.
+  var MX = (window.BRPRICE && window.BRPRICE.MX) || [];
   function mxByKey(k){ for(var i=0;i<MX.length;i++) if(MX[i].key===k) return MX[i]; return null; }
   function mxIndex(k){ for(var i=0;i<MX.length;i++) if(MX[i].key===k) return i; return 999; }
   var LV=['L1','L2','L3'];

@@ -86,6 +86,23 @@ body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);colo
 .cta .cts{font-size:12.5px;color:#cbd5e1;margin-top:3px}
 .cta .ctb{font-size:13px;font-weight:800;color:var(--ink);background:#fff;border-radius:10px;
   padding:11px 20px;text-decoration:none;white-space:nowrap}
+/* CTA 자리표시(깨진 메일 링크) — 비활성 */
+.cta .ctb.is-placeholder{background:rgba(255,255,255,.45);color:#94a3b8;cursor:not-allowed;
+  border:1px dashed rgba(255,255,255,.55)}
+.cta .ctb.is-placeholder .needfill{display:block;font-size:10.5px;font-weight:700;color:#fca5a5;
+  letter-spacing:0;margin-top:2px}
+
+/* 발송 전 경고 배너 — 화면 전용, 인쇄/PDF 시 숨김 */
+.predispatch{background:var(--ac-50);border-bottom:1px solid var(--ac-100);color:var(--ac-700)}
+.predispatch .in{max-width:920px;margin:0 auto;padding:11px 28px;display:flex;align-items:flex-start;gap:10px}
+.predispatch .pdi{flex:0 0 auto;font-size:14px;line-height:1.5}
+.predispatch .pdt{font-size:12.5px;font-weight:700;line-height:1.55}
+.predispatch .pdt b{color:var(--bad)}
+
+/* [사례]·자리표시 — 점선 테두리/회색으로 자리표시임을 명시 */
+.is-placeholder-chip{border-style:dashed!important;border-color:#cbd5e1!important;background:#f8fafc!important}
+.is-placeholder-chip .ct{color:#64748b!important}
+.is-placeholder-chip .cd{color:#94a3b8!important}
 
 footer{border-top:1px solid var(--line);padding:22px 0;text-align:center;color:var(--muted);
   font-size:12px;line-height:1.85;max-width:920px;margin:0 auto}
@@ -99,6 +116,7 @@ footer{border-top:1px solid var(--line);padding:22px 0;text-align:center;color:v
 @media print{
   body{background:#fff;font-size:12.5px}
   #br-topnav{display:none}
+  .predispatch{display:none}
   .hero,.def,.fstep .fn,.sec-k,.chip.lead,.cta,.wcard,.fstep::after{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .wrap{padding:18px 24px 24px}
   .block,.def,.cta,.flow,.work{break-inside:avoid}
@@ -106,6 +124,12 @@ footer{border-top:1px solid var(--line);padding:22px 0;text-align:center;color:v
 </style>
 </head>
 <body>
+
+<!-- 발송 전 경고 배너 — 화면 전용(인쇄·PDF 시 자동 숨김). 클라이언트에 보내기 전 자리표시 교체 확인용. -->
+<div class="predispatch"><div class="in">
+  <span class="pdi">⚠️</span>
+  <span class="pdt">발송 전 확인 — 이 페이지에는 <b>자리표시(예: [사례]·상담 문의 메일)</b>가 남아 있습니다. 클라이언트에 보내기 전 [사례] 4건과 연락처(메일 주소)를 실제 내용으로 교체하세요. (이 배너는 인쇄·PDF에는 나오지 않습니다.)</span>
+</div></div>
 
 <div class="hero"><div class="in">
   <div class="badge">BRANDRISE by HIZ · 브랜드 / IMC 컨설팅</div>
@@ -189,10 +213,10 @@ footer{border-top:1px solid var(--line);padding:22px 0;text-align:center;color:v
     <span class="sec-k">레퍼런스</span>
     <p class="bd" style="margin-top:11px">대기업·글로벌부터 스몰 브랜드까지. (메일 발송 시 상대 업종에 맞는 사례로 교체)</p>
     <div class="chips">
-      <div class="chip"><span class="ct">[사례] 식품·F&amp;B</span><span class="cd">늙은 브랜드 회춘 / 재구매 설계</span></div>
-      <div class="chip"><span class="ct">[사례] 뷰티·건기식</span><span class="cd">매출은 있으나 브랜드가 없던 곳 리뉴얼</span></div>
-      <div class="chip"><span class="ct">[사례] 글로벌·대기업</span><span class="cd">프리미엄 전환 / 장기 파트너십</span></div>
-      <div class="chip"><span class="ct">[사례] 디자인·패키지</span><span class="cd">패키지 리뉴얼 후 입점·성장</span></div>
+      <div class="chip is-placeholder-chip"><span class="ct">[사례] 식품·F&amp;B</span><span class="cd">늙은 브랜드 회춘 / 재구매 설계</span></div>
+      <div class="chip is-placeholder-chip"><span class="ct">[사례] 뷰티·건기식</span><span class="cd">매출은 있으나 브랜드가 없던 곳 리뉴얼</span></div>
+      <div class="chip is-placeholder-chip"><span class="ct">[사례] 글로벌·대기업</span><span class="cd">프리미엄 전환 / 장기 파트너십</span></div>
+      <div class="chip is-placeholder-chip"><span class="ct">[사례] 디자인·패키지</span><span class="cd">패키지 리뉴얼 후 입점·성장</span></div>
     </div>
   </div>
 
@@ -202,7 +226,8 @@ footer{border-top:1px solid var(--line);padding:22px 0;text-align:center;color:v
       <div class="ctt">고민 한 줄만 주시면, 진단부터 시작합니다.</div>
       <div class="cts">메일·전화로 편하게 — 첫 상담은 진단 상담입니다.</div>
     </div>
-    <a class="ctb" href="mailto:[상담 문의 메일]">상담 문의하기 ›</a>
+    <!-- 자리표시 CTA — 메일 주소 입력 전까지 비활성(href 제거). 실제 주소로 교체 시 href="mailto:..."로 복원. -->
+    <span class="ctb is-placeholder" role="link" aria-disabled="true">상담 문의하기 ›<span class="needfill">(메일 주소 입력 필요)</span></span>
   </div>
 
 </div>

@@ -15,7 +15,7 @@
   function envNote(rev,t){
     var rv=parseFloat(rev)||0; if(rv<=0) return '';
     var half=Math.round(rv*750);
-    return '<div class="co ac"><span class="lab">예산 ENVELOPE · 매출 기반 가늠자</span>연 마케팅비 ≈ <b>매출 × 15%</b> → 6개월치(매출억 × 750만)로 수주 규모를 가늠합니다. <b>매출 '+rv+'억 → 6개월 envelope ≈ '+fmt(half)+'만</b> · 선택 합계 '+fmt(t)+'만 = '+(t<=half?'<b>envelope 안에 합리적으로 듦.</b>':'<b>envelope 초과 — 항목·난이도 협의 조정.</b>')+'</div>';
+    return '<div class="co ac"><span class="lab">예산 가늠자 · 매출 기반</span>연 마케팅비 ≈ <b>매출 × 15%</b> → 6개월치(매출억 × 750만)로 수주 규모를 가늠합니다. <b>매출 '+rv+'억 → 6개월 가용 예산 ≈ '+fmt(half)+'만</b> · 선택 합계 '+fmt(t)+'만 = '+(t<=half?'<b>예산 안에 합리적으로 듦.</b>':'<b>예산 초과 — 항목·난이도 협의 조정.</b>')+'</div>';
   }
 
   var CSS=':root{--ink:#0f172a;--ink2:#334155;--muted:#64748b;--line:#e7e9ee;--line2:#eef1f5;--bg:#fbfcfd;--card:#fff;--soft:#f6f8fb;--ac:#4f46e5;--ac-50:#eef2ff;--ac-100:#e0e7ff;--ac-700:#3730a3}'

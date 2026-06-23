@@ -36,7 +36,7 @@
     + '@media print{#br-topnav{display:none}}';
 
   function nv(x) { return '<a class="nv' + (on(x.h) ? ' on' : '') + '" href="' + x.h + '">' + x.t + '</a>'; }
-  var html = '<div class="in"><a class="wm" href="/internal/">BRANDRISE <b>세일즈 OS</b></a><div class="lk">'
+  var html = '<div class="in"><a class="wm" href="/internal/">BRANDRISE <b>시스템</b></a><div class="lk">'
     + '<span class="grp">도구</span>'
     + OP.map(nv).join('')
     + '<span class="sep"></span><span class="grp">단계 매뉴얼</span>'
