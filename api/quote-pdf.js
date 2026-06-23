@@ -21,7 +21,8 @@ function verifyToken(token, secret) {
 function getCookie(req, name) {
   const c = req.headers.cookie || '';
   const m = c.match(new RegExp('(?:^|;\\s*)' + name + '=([^;]+)'));
-  return m ? decodeURIComponent(m[1]) : '';
+  if (!m) return '';
+  try { return decodeURIComponent(m[1]); } catch (e) { return ''; }
 }
 
 module.exports = async (req, res) => {
@@ -53,16 +54,23 @@ module.exports = async (req, res) => {
     });
     const page = await browser.newPage();
 
-    // SSRF 차단 — 폰트 CDN과 data URI 외 모든 외부 요청 차단.
+    // 견적 HTML은 정적(스크립트 없음) → JS 실행 차단으로 임의 코드/네트워크 프로빙 봉쇄.
+    await page.setJavaScriptEnabled(false);
+
+    // SSRF 차단 — 폰트 CDN(정확한 호스트명)과 data URI 외 모든 요청 차단. (부분일치 우회 방지)
     await page.setRequestInterception(true);
     page.on('request', (r) => {
       const u = r.url();
-      if (u.startsWith('data:') || u.indexOf('cdn.jsdelivr.net') !== -1) r.continue();
+      if (u.indexOf('data:') === 0) { r.continue(); return; }
+      let host = '';
+      try { host = new URL(u).hostname; } catch (e) {}
+      if (host === 'cdn.jsdelivr.net') r.continue();
       else r.abort();
     });
 
     await page.setContent(html, { waitUntil: 'networkidle0', timeout: 20000 });
-    try { await page.evaluateHandle('document.fonts.ready'); } catch (e) {}
+    // 폰트는 CSS @font-face(jsdelivr) — networkidle0로 다운로드 완료. JS를 껐으므로 fonts.ready 대신 짧게 안정화 대기.
+    await new Promise((r) => setTimeout(r, 350));
 
     const pdf = await page.pdf({
       format: 'A4',

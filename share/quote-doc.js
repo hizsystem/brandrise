@@ -9,7 +9,7 @@
   function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
   function fmt(n){ return (+n||0).toLocaleString(); }
   function won(manwon){ return ((+manwon||0)*10000).toLocaleString()+'원'; }
-  function lineTotal(l){ return (+l.amount||0)*(+l.qty||0); }
+  function lineTotal(l){ var a=+l.amount, q=+l.qty; if(!isFinite(a)||!isFinite(q)) return 0; return (a>0?a:0)*(q>0?q:0); }
   function today(){ var d=new Date(), p=function(n){return(n<10?'0':'')+n;}; return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate()); }
 
   function envNote(rev,t){
@@ -74,11 +74,15 @@
            .map(function(l){ return { n:l.name, a:+l.amount||0, q:+l.qty||0, m:l.monthly?1:0 }; })
     };
   }
+  // 공유 링크는 외부 입력(누구나 #q= 조작 가능) → 길이·개수·숫자 상한으로 뷰어 멈춤·비정상값 방어.
+  function clampNum(n){ n=+n; return (isFinite(n) && n>=0) ? Math.min(n, 1e9) : 0; }
+  function clampStr(s){ s=String(s==null?'':s); return s.length>300 ? s.slice(0,300) : s; }
   function unpack(p){
     p=p||{};
+    var arr=Array.isArray(p.l)?p.l.slice(0,80):[];
     return {
-      brand: p.b, rev: p.r, date: p.d,
-      lines: (Array.isArray(p.l)?p.l:[]).map(function(x){ return { name:x.n, amount:x.a, qty:x.q, monthly:!!x.m }; })
+      brand: clampStr(p.b), rev: clampNum(p.r), date: clampStr(p.d),
+      lines: arr.map(function(x){ x=x||{}; return { name:clampStr(x.n), amount:clampNum(x.a), qty:clampNum(x.q), monthly:!!x.m }; })
     };
   }
 

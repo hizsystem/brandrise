@@ -192,6 +192,7 @@
     if(!window.LZString || !window.BRQuote){ fail('표시할 수 없습니다', '필요한 구성요소를 불러오지 못했습니다. 새로고침해 주세요.'); return; }
     var enc=hashParam('q');
     if(!enc){ fail('견적 정보가 없습니다', '이 페이지는 공유 링크로 열어야 견적이 표시됩니다. 받은 링크 전체를 다시 확인해 주세요.'); return; }
+    if(enc.length>60000){ fail('링크를 열 수 없습니다', '링크가 비정상적으로 큽니다. 보낸 사람에게 다시 받아 주세요.'); return; }
     var json=LZString.decompressFromEncodedURIComponent(enc);
     if(!json){ fail('링크를 읽을 수 없습니다', '링크가 손상되었거나 일부만 복사되었을 수 있습니다. 받은 링크 전체를 다시 열어 주세요.'); return; }
     var packed=JSON.parse(json);
