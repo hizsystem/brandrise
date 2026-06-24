@@ -111,7 +111,6 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
   <div class="summary" id="summary"></div>
   <div class="boardtools">
     <button id="btnAddBrand" type="button">＋ 브랜드(프로젝트) 추가</button>
-    <button id="btnRestore" type="button" class="ghost">기본 브랜드 복원</button>
     <span class="bt-note">단계·상담일·추가 브랜드는 <b>이 브라우저에만</b> 저장됩니다(동료와 공유 안 됨). 개인 진행 관리용 · 타일을 누르면 해당 단계로 이동.</span>
   </div>
   <div id="groups"><div class="notice">구글 시트에서 파이프라인을 불러오는 중…</div></div>
@@ -216,7 +215,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     [].forEach.call(groups.querySelectorAll('[data-del]'),function(btn){
       btn.onclick=function(){
         var s=btn.getAttribute('data-del'), b=BR.brandBySlug(s), nm=b?b.name:s;
-        if(confirm('"'+nm+'"를 보드에서 삭제할까요?\n(단계·상담일·견적 작성 내용도 함께 삭제됩니다. 기본 브랜드는 "기본 브랜드 복원"으로 되살릴 수 있습니다.)')){ BR.removeBrand(s); renderAll(); }
+        if(confirm('"'+nm+'"를 이 브라우저 보드에서 숨길까요?\n(단계·상담일·견적 작성 내용도 함께 지워집니다. 시트 원본은 그대로이며, 새로고침해도 숨김은 유지됩니다.)')){ BR.removeBrand(s); renderAll(); }
       };
     });
   }
@@ -229,10 +228,6 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     if(url===null) url='';
     var b=BR.addCustom(nm,url);
     if(b){ BR.writeStage(b.slug,'consult'); renderAll(); }
-  };
-
-  document.getElementById('btnRestore').onclick=function(){
-    if(confirm('숨긴(삭제한) 기본 브랜드를 모두 되살릴까요? (추가한 브랜드는 영향 없음)')){ BR.restoreHidden(); renderAll(); }
   };
 
   function renderCount(){
