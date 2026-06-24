@@ -108,9 +108,29 @@ module.exports = async (req, res) => {
       });
     });
 
+    // BR 신규수주 월별 표 (col6~9: 월별구분·프로젝트수·금액·전환율 / 대기업 BC 제외, 시작일 기준)
+    const monthly = { basis: 'BR 신규 수주', total: null, note: '', rows: [] };
+    for (let i = 0; i < rows.length; i++) {
+      if (s(rows[i][6]) !== 'BR 기준') continue;
+      monthly.total = { count: num(rows[i][7]), amount: num(rows[i][8]) };
+      monthly.note = s(rows[i][9]);
+      for (let j = i + 1; j < rows.length; j++) {
+        const m = s(rows[j][6]);
+        if (m === '월별 구분') continue;        // 헤더 행
+        if (!/^\d+월$/.test(m)) break;          // 월 라벨 끝 → 표 종료
+        const cnt = num(rows[j][7]), amt = num(rows[j][8]);
+        if (cnt > 0 || amt > 0) {               // 데이터 있는 달만
+          const rt = s(rows[j][9]);
+          monthly.rows.push({ month: m, count: cnt, amount: amt, rate: rt === '' ? null : Number(rt) });
+        }
+      }
+      break;
+    }
+
     const payload = {
       ok: true, brands: brands, summary: summary,
       kpi: { target: kpiTarget, rate: kpiRate },
+      monthly: monthly,
       updatedAt: Date.now()
     };
     _cache = { at: Date.now(), payload: payload };   // 워밍 캐시 갱신

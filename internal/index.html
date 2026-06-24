@@ -68,8 +68,27 @@ body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);colo
 .kpi .v{font-size:21px;font-weight:800;letter-spacing:-.02em;margin-top:6px}
 .kpi .v small{font-size:12px;color:var(--muted);font-weight:700}
 .kpi.win{background:#ecfdf5;border-color:#a7f3d0}.kpi.win .v{color:var(--ok)}
-.kpi-note{font-size:11px;color:var(--muted);margin:0 2px 22px}
+.kpi-note{font-size:11px;color:var(--muted);margin:0 2px 14px}
 @media(max-width:760px){.kpis{grid-template-columns:1fr 1fr}}
+
+/* BR 신규수주 월별 현황 */
+.mbox{border:1px solid var(--line);border-radius:13px;background:var(--card);padding:15px 18px;margin-bottom:22px}
+.mbox .mhead{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:11px;flex-wrap:wrap}
+.mbox .mt{font-size:13.5px;font-weight:800;letter-spacing:-.01em}
+.mbox .mt small{font-size:11px;font-weight:600;color:var(--muted);margin-left:6px}
+.mbox .mtot{font-size:13px;font-weight:800;color:var(--ac)}
+.mtable{width:100%;border-collapse:collapse;font-size:12.5px}
+.mtable th{text-align:left;font-weight:700;color:var(--muted);font-size:11px;padding:0 8px 7px;border-bottom:1px solid var(--line)}
+.mtable th:last-child,.mtable td.rate{text-align:right}
+.mtable td{padding:7px 8px;border-bottom:1px solid var(--line2)}
+.mtable tr:last-child td{border-bottom:0}
+.mtable td.mo{font-weight:800;color:var(--ink2);white-space:nowrap;width:44px}
+.mtable td.ct{color:var(--ink2);white-space:nowrap;width:52px}
+.mtable td.amt{position:relative}
+.mtable td.amt .bar{position:absolute;left:8px;top:50%;transform:translateY(-50%);height:18px;background:var(--ac-50);border-radius:5px;z-index:0}
+.mtable td.amt .amtv{position:relative;z-index:1;font-weight:700;color:var(--ink)}
+.mtable td.rate{font-weight:800;color:var(--ac);white-space:nowrap;width:54px}
+.mbox .mnote{font-size:10.5px;color:var(--muted);margin-top:9px}
 
 footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:1180px;margin:0 auto}
 @media(max-width:920px){ .board{grid-template-columns:1fr 1fr} }
@@ -88,6 +107,7 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
 
   <div class="kpis" id="kpis"></div>
   <div class="kpi-note" id="kpiNote"></div>
+  <div id="brMonthly"></div>
 
   <div class="whole">
     <a class="wl" href="/internal/sales-process/"><div class="ic">🗺️</div><div class="m"><div class="t">영업 프로세스 전체 지도</div><div class="d">유입→수주 전체 흐름·표준·알림톡</div></div><div class="go">지도 ›</div></a>
@@ -182,6 +202,26 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
     '<div class="kpi"><div class="k">견적 발송 완료</div><div class="v">'+sent+'<small> 개</small></div></div>'+
     '<div class="kpi win"><div class="k">수주 완료</div><div class="v">'+won+'<small> 개 · '+w(wonSum)+'</small></div></div>';
   document.getElementById('kpiNote').textContent='※ 구글 시트(BC-BR) 활성 파이프라인 기준 · 자동 반영. 회사 전체 수치는 상단 네비 「수주 현황」.';
+
+  // ── BR 신규 수주 · 월별 현황 (대기업 BC 제외, 시작일 기준) ──
+  function fmt(n){ n=+n||0; if(n>=1e8) return (n/1e8).toFixed(n%1e8===0?0:2).replace(/\.?0+$/,'')+'억'; if(n>=1e4) return Math.round(n/1e4).toLocaleString()+'만'; return n.toLocaleString()+'원'; }
+  var mo=BR.monthly?BR.monthly():null, mEl=document.getElementById('brMonthly');
+  if(mEl && mo && mo.rows && mo.rows.length){
+    var maxAmt=Math.max.apply(null,mo.rows.map(function(r){return +r.amount||0;}))||1;
+    var rowsHtml=mo.rows.map(function(r){
+      var pct=Math.max(4,Math.round((+r.amount||0)/maxAmt*100));
+      var rate=(r.rate==null)?'—':Math.round(r.rate*100)+'%';
+      return '<tr><td class="mo">'+r.month+'</td><td class="ct">'+r.count+'건</td>'+
+        '<td class="amt"><span class="bar" style="width:'+pct+'%"></span><span class="amtv">'+fmt(r.amount)+'</span></td>'+
+        '<td class="rate">'+rate+'</td></tr>';
+    }).join('');
+    var tot=mo.total||{count:0,amount:0};
+    mEl.innerHTML='<div class="mbox"><div class="mhead">'+
+      '<div class="mt">BR 신규 수주 · 월별 현황<small>'+(mo.note||'')+'</small></div>'+
+      '<div class="mtot">총 '+tot.count+'건 · '+fmt(tot.amount)+'</div></div>'+
+      '<table class="mtable"><thead><tr><th>월</th><th>프로젝트</th><th>금액</th><th>전환율</th></tr></thead><tbody>'+rowsHtml+'</tbody></table>'+
+      '<div class="mnote">대기업 BC(기존 진행) 제외한 26년 신규 수주 기준.</div></div>';
+  }
   });
 })();
 </script>
