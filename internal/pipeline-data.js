@@ -18,7 +18,6 @@
 
   // ── 단계 정의 (id / 라벨 / 색 토큰) ──────────────────────────────
   var STAGES = [
-    { id: 'consult', label: '수주 협의중',     tone: 'slate' },
     { id: 'pending', label: '견적서 발송 대기', tone: 'amber' },
     { id: 'sent',    label: '견적서 발송 완료', tone: 'indigo' },
     { id: 'won',     label: '수주 완료',        tone: 'green' },
@@ -112,7 +111,7 @@
   }
   function getStage(slug) {
     var m = readStages(); if (m[slug]) return m[slug];
-    var b = brandBySlug(slug); return (b && b.defaultStage) || 'consult';
+    var b = brandBySlug(slug); return (b && b.defaultStage) || 'pending';
   }
 
   function readQuote(slug) {

@@ -28,8 +28,11 @@ function getCookie(req, name) {
   try { return decodeURIComponent(m[1]); } catch (e) { return ''; }
 }
 
+// 시트 '상태' 컬럼 값 → 보드 단계. 협의중 계열(수주/견적 협의중)은 '견적 전달'(col18) 유무로
+// 발송완료(sent)/발송대기(pending) 세분 — 시트 요약셀의 funnel과 동일 기준.
 const STAGE = {
-  '수주 협의중': 'consult', '견적서 발송 대기': 'pending', '견적서 발송 완료': 'sent',
+  '수주 협의중': 'consult', '견적 협의중': 'consult',
+  '견적서 발송 대기': 'pending', '견적서 발송 완료': 'sent',
   '수주 완료': 'won', '플젝 드랍': 'dropped'
 };
 function s(v) { return v == null ? '' : String(v).trim(); }
@@ -42,13 +45,6 @@ function parseDate(v) {
   var pad = function (x) { return (x.length < 2 ? '0' : '') + x; };
   return y + '-' + pad(m[2]) + '-' + pad(m[3]);
 }
-// 계약 시작 "26/07/01~..." → 연*12+월 (없으면 null)
-function contractStart(v) {
-  var m = s(v).match(/(\d{2})[\/.](\d{1,2})/);
-  if (!m) return null;
-  return (2000 + Number(m[1])) * 12 + Number(m[2]);
-}
-
 module.exports = async (req, res) => {
   const secret = process.env.AUTH_SECRET;
   if (!secret) { res.status(503).send('Server auth not configured'); return; }
@@ -72,7 +68,6 @@ module.exports = async (req, res) => {
     const data = await r.json();
     const rows = (data && data.rows) || [];
 
-    const ACTIVE_FROM = 2026 * 12 + 7; // 26/07 이후 시작분만 '수주완료'로 보드 노출
     const brands = [];
     const summary = {};
     let kpiTarget = 0, kpiRate = 0;
@@ -89,12 +84,10 @@ module.exports = async (req, res) => {
       }
       const name = s(c3);
       if (!name) return;                        // 프로젝트 목록 행
-      if (/OOS|이월/.test(name)) return;        // 서브 라인 제외
-      if (stage === 'dropped') return;          // 드랍 제외(보드)
-      if (stage === 'won') {
-        const cs = contractStart(row[7]);
-        if (cs !== null && cs < ACTIVE_FROM) return; // 이미 진행 중인 기존 수주 제외(최근/예정 수주만)
-      }
+      // 전체 표시: OOS·이월·드랍·기존수주 모두 포함(사용자 결정 2026-06-24).
+      // 협의중 계열은 견적 전달일(col18) 유무로 발송완료/대기 분기.
+      var st = stage;
+      if (st === 'consult') st = s(row[18]) ? 'sent' : 'pending';
       brands.push({
         slug: 'br-' + (s(row[1]) || idx),
         name: name,
@@ -111,7 +104,7 @@ module.exports = async (req, res) => {
         prep: /PREP/i.test(s(row[17])),
         quoteSentDate: s(row[18]),
         quoteType: s(row[19]),
-        defaultStage: stage
+        defaultStage: st
       });
     });
 

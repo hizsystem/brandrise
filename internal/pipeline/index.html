@@ -136,7 +136,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
   // 상담일 경과 → 배지
   function waitBadge(b,stageId){
     var d=BR.daysSince(b.slug); if(d===null) return '';
-    var waiting=(stageId==='consult'||stageId==='pending'||stageId==='sent');
+    var waiting=(stageId==='pending'||stageId==='sent');
     var cls, txt;
     if(d<0){ cls='mute'; txt='상담 '+(-d)+'일 전'; }
     else if(d===0){ cls='ok'; txt='오늘 상담'; }
@@ -227,7 +227,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     var url=prompt('prep(리서치) 페이지 주소가 있으면 입력하세요. 없으면 비워두세요.\n(신규 프로젝트는 보통 아직 prep이 없으니 비워두면 "prep 없음"으로 표시됩니다.)','');
     if(url===null) url='';
     var b=BR.addCustom(nm,url);
-    if(b){ BR.writeStage(b.slug,'consult'); renderAll(); }
+    if(b){ BR.writeStage(b.slug,'pending'); renderAll(); }
   };
 
   function renderCount(){
