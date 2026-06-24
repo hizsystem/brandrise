@@ -68,6 +68,10 @@ body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);colo
 .kpi .v{font-size:21px;font-weight:800;letter-spacing:-.02em;margin-top:6px}
 .kpi .v small{font-size:12px;color:var(--muted);font-weight:700}
 .kpi.win{background:#ecfdf5;border-color:#a7f3d0}.kpi.win .v{color:var(--ok)}
+.kpi.goal{background:var(--ac-50);border-color:#c7d2fe}.kpi.goal .v{color:var(--ac)}
+.kpi .gbar{height:6px;background:#fff;border:1px solid #c7d2fe;border-radius:999px;margin-top:9px;overflow:hidden}
+.kpi .gbar span{display:block;height:100%;background:var(--ac);border-radius:999px}
+.kpi .gsub{font-size:10.5px;color:var(--muted);font-weight:600;margin-top:6px}
 .kpi-note{font-size:11px;color:var(--muted);margin:0 2px 14px}
 @media(max-width:760px){.kpis{grid-template-columns:1fr 1fr}}
 
@@ -188,23 +192,29 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
 (function(){
   if(!window.BR || !document.getElementById('kpis')) return;
   BR.ready(function(){
-  var active=0, activeSum=0, sent=0, won=0, wonSum=0;
+  function fmt(n){ n=+n||0; if(n>=1e8) return (n/1e8).toFixed(n%1e8===0?0:2).replace(/\.?0+$/,'')+'억'; if(n>=1e4) return Math.round(n/1e4).toLocaleString()+'만'; return n.toLocaleString()+'원'; }
+
+  // ── 단계 funnel 타일: 발송대기 → 발송완료 → 수주완료 + 목표달성률 (전체·BC 포함) ──
+  var pend={c:0,s:0}, snt={c:0,s:0}, wn={c:0,s:0};
   BR.allBrands().forEach(function(b){
     var st=BR.getStage(b.slug), amt=+b.amount||0;
-    if(st==='won'){ won++; wonSum+=amt; }
-    else if(st!=='dropped'){ active++; activeSum+=amt; }
-    if(st==='sent') sent++;
+    if(st==='pending'){ pend.c++; pend.s+=amt; }
+    else if(st==='sent'){ snt.c++; snt.s+=amt; }
+    else if(st==='won'){ wn.c++; wn.s+=amt; }
   });
-  function w(n){ return (+n||0).toLocaleString()+'원'; }
+  var kpi=BR.kpi?BR.kpi():{};
+  var rate=(kpi && kpi.rate!=null)?Math.round(kpi.rate*1000)/10:null;   // 80.6
+  var tile=function(label,c,s){ return '<div class="kpi"><div class="k">'+label+'</div><div class="v">'+c+'<small> 개 · '+fmt(s)+'</small></div></div>'; };
   document.getElementById('kpis').innerHTML=
-    '<div class="kpi"><div class="k">진행 중 브랜드</div><div class="v">'+active+'<small> 개</small></div></div>'+
-    '<div class="kpi"><div class="k">진행 중 파이프라인 (수주·중단 제외)</div><div class="v">'+w(activeSum)+'</div></div>'+
-    '<div class="kpi"><div class="k">견적 발송 완료</div><div class="v">'+sent+'<small> 개</small></div></div>'+
-    '<div class="kpi win"><div class="k">수주 완료</div><div class="v">'+won+'<small> 개 · '+w(wonSum)+'</small></div></div>';
-  document.getElementById('kpiNote').textContent='※ 구글 시트(BC-BR) 활성 파이프라인 기준 · 자동 반영. 회사 전체 수치는 상단 네비 「수주 현황」.';
+    tile('견적서 발송 대기', pend.c, pend.s)+
+    tile('견적서 발송 완료', snt.c, snt.s)+
+    '<div class="kpi win"><div class="k">수주 완료</div><div class="v">'+wn.c+'<small> 개 · '+fmt(wn.s)+'</small></div></div>'+
+    '<div class="kpi goal"><div class="k">목표 달성률</div><div class="v">'+(rate==null?'—':rate+'<small>%</small>')+'</div>'+
+      (rate==null?'':'<div class="gbar"><span style="width:'+Math.min(100,rate)+'%"></span></div>')+
+      '<div class="gsub">수주 '+fmt(wn.s)+' / 목표 '+fmt(kpi.target||0)+'</div></div>';
+  document.getElementById('kpiNote').textContent='※ 진행 파이프라인 = 구글 시트(BC-BR) 전체(대기업 BC 포함) · 자동 반영. 아래 「BR 신규 수주」는 BC 제외 기준. 회사 전체는 상단 네비 「수주 현황」.';
 
   // ── BR 신규 수주 · 월별 현황 (대기업 BC 제외, 시작일 기준) ──
-  function fmt(n){ n=+n||0; if(n>=1e8) return (n/1e8).toFixed(n%1e8===0?0:2).replace(/\.?0+$/,'')+'억'; if(n>=1e4) return Math.round(n/1e4).toLocaleString()+'만'; return n.toLocaleString()+'원'; }
   var mo=BR.monthly?BR.monthly():null, mEl=document.getElementById('brMonthly');
   if(mEl && mo && mo.rows && mo.rows.length){
     var maxAmt=Math.max.apply(null,mo.rows.map(function(r){return +r.amount||0;}))||1;

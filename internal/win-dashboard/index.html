@@ -199,7 +199,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     var totalCount = 0, totalSum = 0;
     var rows = STAGES.map(function(s){
       var x = T[s.id] || { count:0, sum:0, withAmt:0 };
-      totalCount += x.count; totalSum += x.sum;
+      if(s.id !== 'dropped'){ totalCount += x.count; totalSum += x.sum; }  // 드랍은 합계서 제외
       return '<tr>'+
         '<td><span class="dot" style="background:var(--'+s.tone+')"></span>'+s.label+'</td>'+
         '<td class="r num">'+x.count+'</td>'+
@@ -209,7 +209,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     var html =
       '<table><thead><tr><th>단계</th><th class="r">브랜드 수</th><th class="r">금액 합계</th></tr></thead>'+
       '<tbody>'+rows+'</tbody>'+
-      '<tfoot><tr><td>합계 (드랍 포함)</td><td class="r">'+totalCount+'</td><td class="r">'+BR.won(totalSum)+'</td></tr></tfoot>'+
+      '<tfoot><tr><td>합계 (드랍 제외)</td><td class="r">'+totalCount+'</td><td class="r">'+BR.won(totalSum)+'</td></tr></tfoot>'+
       '</table>';
     document.getElementById('amtTable').innerHTML = html;
   }
