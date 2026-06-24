@@ -95,6 +95,29 @@ body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);colo
 .notice b{display:block;font-size:15px;color:var(--ink2);margin-bottom:6px}
 .notice.err b{color:var(--bad)}
 .notice .retry{display:inline-block;margin-top:12px;font-size:13px;font-weight:800;color:#fff;background:var(--ac);border-radius:9px;padding:8px 16px;text-decoration:none;cursor:pointer}
+
+/* 그룹 접기/펴기 */
+.ghead{cursor:pointer;user-select:none}
+.ghead .chev{margin-left:auto;font-size:12px;color:var(--muted);transition:transform .15s;flex:0 0 auto}
+.group.collapsed .chev{transform:rotate(-90deg)}
+.group.collapsed .grid{display:none}
+.group.collapsed .ghead{margin-bottom:0;border-bottom-style:dashed;opacity:.7}
+
+/* 브랜드 추가 모달 */
+.modal-ov{position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px}
+.modal-ov[hidden]{display:none}
+.modal{background:var(--card);border-radius:18px;width:100%;max-width:420px;padding:26px 26px 22px;box-shadow:0 20px 60px rgba(15,23,42,.32)}
+.modal h3{font-size:18px;font-weight:800;letter-spacing:-.02em;margin-bottom:5px}
+.modal .msub{font-size:12px;color:var(--muted);margin-bottom:18px;line-height:1.55}
+.modal .fld{margin-bottom:14px}
+.modal .fld label{display:block;font-size:12px;font-weight:700;color:var(--ink2);margin-bottom:6px}
+.modal .fld label .opt{color:var(--muted);font-weight:500}
+.modal .fld input,.modal .fld select{width:100%;font-family:inherit;font-size:14px;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--soft)}
+.modal .fld input:focus,.modal .fld select:focus{outline:none;border-color:var(--ac);background:#fff}
+.modal .mbtns{display:flex;gap:9px;margin-top:20px}
+.modal .mbtns button{flex:1;font-family:inherit;font-size:14px;font-weight:800;border-radius:11px;padding:11px;cursor:pointer;border:1px solid transparent}
+.modal .mbtns .ok{background:var(--ac);color:#fff} .modal .mbtns .ok:hover{background:var(--ac-700)}
+.modal .mbtns .cancel{background:var(--card);color:var(--ink2);border-color:var(--line)} .modal .mbtns .cancel:hover{background:var(--soft)}
 footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:1120px;margin:0 auto}
 @media(max-width:880px){ .wrap,.hero .in{padding-left:22px;padding-right:22px} }
 </style>
@@ -111,14 +134,26 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
   <div class="summary" id="summary"></div>
   <div class="boardtools">
     <button id="btnAddBrand" type="button">＋ 브랜드(프로젝트) 추가</button>
-    <span class="bt-note">단계·상담일·추가 브랜드는 <b>이 브라우저에만</b> 저장됩니다(동료와 공유 안 됨). 개인 진행 관리용 · 타일을 누르면 해당 단계로 이동.</span>
+    <button id="btnCollapseAll" type="button" class="ghost">모두 접기</button>
+    <span class="bt-note">단계·상담일·추가 브랜드·접힘은 <b>이 브라우저에만</b> 저장됩니다(동료와 공유 안 됨). 그룹 제목을 누르면 접고/펴집니다.</span>
   </div>
   <div id="groups"><div class="notice">구글 시트에서 파이프라인을 불러오는 중…</div></div>
 </div>
 
+<div class="modal-ov" id="addModal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <h3 id="mTitle">브랜드(프로젝트) 추가</h3>
+    <div class="msub">이 브라우저에만 저장됩니다(동료와 공유 안 됨). 시트에 정식 등록하려면 BC-BR 시트에 직접 추가하세요.</div>
+    <div class="fld"><label for="mName">프로젝트명 *</label><input id="mName" type="text" placeholder="예: 새 프로젝트" autocomplete="off"></div>
+    <div class="fld"><label for="mStage">단계</label><select id="mStage"></select></div>
+    <div class="fld"><label for="mPrep">prep(리서치) 페이지 주소 <span class="opt">— 없으면 비워두세요</span></label><input id="mPrep" type="text" placeholder="https://… (선택)" autocomplete="off"></div>
+    <div class="mbtns"><button type="button" class="cancel" id="mCancel">취소</button><button type="button" class="ok" id="mOk">추가</button></div>
+  </div>
+</div>
+
 <footer>
   <b>BRANDRISE</b> by HIZ · 파이프라인 보드<br>
-  단계 5종 · 견적 빌더 연동 · 진행 중 <span id="brandCount">—</span>개 브랜드
+  단계 4종 · 견적 빌더 연동 · 전체 <span id="brandCount">—</span>개 프로젝트
 </footer>
 
 <script src="/internal/nav.js"></script>
@@ -126,6 +161,14 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
 <script>
 (function(){
   var summary=document.getElementById('summary'), groups=document.getElementById('groups');
+
+  // ── 그룹 접힘 상태(이 브라우저). 기본: 플젝 드랍만 접힘 ──
+  var COLLAPSE_KEY='br_group_collapsed_v1';
+  function readCollapsed(){ try{return JSON.parse(localStorage.getItem(COLLAPSE_KEY))||{};}catch(e){return {};} }
+  function isCollapsed(id){ var m=readCollapsed(); return (id in m)?!!m[id]:(id==='dropped'); }
+  function setCollapsed(id,val){ var m=readCollapsed(); m[id]=!!val; localStorage.setItem(COLLAPSE_KEY,JSON.stringify(m)); }
+  function allCollapsed(){ var g=groups.querySelectorAll('.group'); return g.length>0 && [].every.call(g,function(x){return x.classList.contains('collapsed');}); }
+  function updateCollapseBtn(){ var b=document.getElementById('btnCollapseAll'); if(b) b.textContent=allCollapsed()?'모두 펴기':'모두 접기'; }
 
   function counts(){
     var c={}; BR.STAGES.forEach(function(s){c[s.id]=0;});
@@ -152,7 +195,12 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     });
     summary.innerHTML=html;
     [].forEach.call(summary.querySelectorAll('.sc'),function(el){
-      el.onclick=function(){var t=document.getElementById(el.getAttribute('data-go'));if(t)t.scrollIntoView({behavior:'smooth'});};
+      el.onclick=function(){
+        var id=el.getAttribute('data-go'), t=document.getElementById(id);
+        if(!t) return;
+        if(t.classList.contains('collapsed')){ t.classList.remove('collapsed'); setCollapsed(id.replace('grp-',''),false); updateCollapseBtn(); }
+        t.scrollIntoView({behavior:'smooth'});
+      };
     });
   }
 
@@ -200,12 +248,20 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     BR.STAGES.forEach(function(s){
       var list=sortByWait(all.filter(function(b){return BR.getStage(b.slug)===s.id;}));
       if(!list.length) return;
-      html+='<div class="group t-'+s.tone+'" id="grp-'+s.id+'">'+
-        '<div class="ghead"><span class="dot" style="background:var(--'+s.tone+')"></span>'+
-        '<span class="gl">'+s.label+'</span><span class="gc">'+c[s.id]+'</span></div>'+
+      var col=isCollapsed(s.id);
+      html+='<div class="group t-'+s.tone+(col?' collapsed':'')+'" id="grp-'+s.id+'">'+
+        '<div class="ghead" data-grp="'+s.id+'"><span class="dot" style="background:var(--'+s.tone+')"></span>'+
+        '<span class="gl">'+s.label+'</span><span class="gc">'+c[s.id]+'</span><span class="chev">▾</span></div>'+
         '<div class="grid">'+list.map(card).join('')+'</div></div>';
     });
     groups.innerHTML=html;
+    // 그룹 제목 클릭 → 접기/펴기(재렌더 없이 토글 + 저장)
+    [].forEach.call(groups.querySelectorAll('.ghead'),function(h){
+      h.onclick=function(){
+        var id=h.getAttribute('data-grp'), g=h.parentNode, willCollapse=!g.classList.contains('collapsed');
+        g.classList.toggle('collapsed',willCollapse); setCollapsed(id,willCollapse); updateCollapseBtn();
+      };
+    });
     [].forEach.call(groups.querySelectorAll('select'),function(sel){
       sel.onchange=function(){ BR.writeStage(sel.getAttribute('data-slug'),sel.value); renderAll(); };
     });
@@ -218,17 +274,44 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
         if(confirm('"'+nm+'"를 이 브라우저 보드에서 숨길까요?\n(단계·상담일·견적 작성 내용도 함께 지워집니다. 시트 원본은 그대로이며, 새로고침해도 숨김은 유지됩니다.)')){ BR.removeBrand(s); renderAll(); }
       };
     });
+    updateCollapseBtn();
   }
 
-  document.getElementById('btnAddBrand').onclick=function(){
-    var nm=prompt('추가할 브랜드(프로젝트) 이름을 입력하세요.');
-    if(nm===null) return;
-    nm=nm.trim(); if(!nm){ alert('이름을 입력해 주세요.'); return; }
-    var url=prompt('prep(리서치) 페이지 주소가 있으면 입력하세요. 없으면 비워두세요.\n(신규 프로젝트는 보통 아직 prep이 없으니 비워두면 "prep 없음"으로 표시됩니다.)','');
-    if(url===null) url='';
-    var b=BR.addCustom(nm,url);
-    if(b){ BR.writeStage(b.slug,'pending'); renderAll(); }
+  // ── 모두 접기/펴기 ──
+  document.getElementById('btnCollapseAll').onclick=function(){
+    var collapse=!allCollapsed();
+    [].forEach.call(groups.querySelectorAll('.group'),function(g){
+      g.classList.toggle('collapsed',collapse); setCollapsed(g.id.replace('grp-',''),collapse);
+    });
+    updateCollapseBtn();
   };
+
+  // ── 브랜드 추가 모달 ──
+  var addModal=document.getElementById('addModal');
+  function openAdd(){
+    var sel=document.getElementById('mStage'), opts='';
+    BR.STAGES.forEach(function(s){ opts+='<option value="'+s.id+'"'+(s.id==='pending'?' selected':'')+'>'+s.label+'</option>'; });
+    sel.innerHTML=opts;
+    document.getElementById('mName').value=''; document.getElementById('mPrep').value='';
+    addModal.hidden=false; setTimeout(function(){document.getElementById('mName').focus();},30);
+  }
+  function closeAdd(){ addModal.hidden=true; }
+  function submitAdd(){
+    var nm=document.getElementById('mName').value.trim();
+    if(!nm){ document.getElementById('mName').focus(); return; }
+    var b=BR.addCustom(nm, document.getElementById('mPrep').value.trim());
+    if(b){ BR.writeStage(b.slug, document.getElementById('mStage').value); }
+    closeAdd(); renderAll();
+  }
+  document.getElementById('btnAddBrand').onclick=openAdd;
+  document.getElementById('mCancel').onclick=closeAdd;
+  document.getElementById('mOk').onclick=submitAdd;
+  addModal.onclick=function(e){ if(e.target===addModal) closeAdd(); };
+  document.addEventListener('keydown',function(e){
+    if(addModal.hidden) return;
+    if(e.key==='Escape') closeAdd();
+    else if(e.key==='Enter'){ e.preventDefault(); submitAdd(); }
+  });
 
   function renderCount(){
     var el=document.getElementById('brandCount');
