@@ -135,22 +135,40 @@
   function won(n) { return (n || 0).toLocaleString('ko-KR') + '원'; }
 
   // ── 시트 라이브 로드 (/api/pipeline) ──────────────────────────────
-  function _fireReady() { _loaded = true; var cbs = _readyCbs; _readyCbs = []; cbs.forEach(function (cb) { try { cb(); } catch (e) {} }); }
-  function ready(cb) { if (_loaded) { try { cb(); } catch (e) {} } else _readyCbs.push(cb); }
+  // _readyCbs는 비우지 않는다 → 캐시 즉시표시 후 백그라운드 갱신 때 다시 렌더(렌더는 멱등).
+  function _fireReady() { _loaded = true; _readyCbs.forEach(function (cb) { try { cb(); } catch (e) {} }); }
+  function ready(cb) { _readyCbs.push(cb); if (_loaded) { try { cb(); } catch (e) {} } }
+
+  var CACHE_KEY = 'br_pipeline_cache_v1';   // 직전 시트 응답(회사 공통 데이터라 안전)
+  function _apply(d) {
+    if (d && d.ok && Array.isArray(d.brands)) {
+      BRANDS.length = 0; d.brands.forEach(function (b) { BRANDS.push(b); });
+      _summary = d.summary || {}; _kpi = d.kpi || {}; _loadOk = true;
+      return true;
+    }
+    return false;
+  }
   function loadLive() {
     if (typeof fetch !== 'function') { _loadOk = false; _fireReady(); return; }
-    fetch('/api/pipeline', { credentials: 'same-origin' })
+    // 0) 직전 캐시 즉시 표시(체감 0초) — 시트 왕복 ~2초 동안 빈 화면 안 보이게.
+    try { if (_apply(JSON.parse(localStorage.getItem(CACHE_KEY)))) _fireReady(); } catch (e) {}
+    // 1) 백그라운드 최신화 (12초 타임아웃 → 무한 스피너 방지)
+    var ctrl = (typeof AbortController === 'function') ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 12000);
+    fetch('/api/pipeline', { credentials: 'same-origin', signal: ctrl ? ctrl.signal : undefined })
       .then(function (r) { return r.ok ? r.json() : Promise.reject('http ' + r.status); })
       .then(function (d) {
-        if (d && d.ok && Array.isArray(d.brands)) {
-          BRANDS.length = 0;
-          d.brands.forEach(function (b) { BRANDS.push(b); });
-          _summary = d.summary || {}; _kpi = d.kpi || {};
-          _loadOk = true;
-        } else { _loadOk = false; }
+        clearTimeout(timer);
+        if (_apply(d)) { try { localStorage.setItem(CACHE_KEY, JSON.stringify(d)); } catch (e) {} }
+        else if (_loadOk !== true) { _loadOk = false; }
         _fireReady();
       })
-      .catch(function (e) { _loadOk = false; try { console.warn('pipeline 라이브 로드 실패:', e); } catch (x) {} _fireReady(); });
+      .catch(function (e) {
+        clearTimeout(timer);
+        if (_loadOk !== true) _loadOk = false;   // 캐시도 없을 때만 '실패' 표시
+        try { console.warn('pipeline 라이브 로드 실패:', e); } catch (x) {}
+        _fireReady();
+      });
   }
 
   g.BR = {
