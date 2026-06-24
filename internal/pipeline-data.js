@@ -5,6 +5,17 @@
  * · 수정 시 두 페이지(pipeline/, quote-builder/)가 함께 읽으므로 여기 한 곳만 고친다.
  */
 (function (g) {
+  // ── 옛 정적 복사본(github.io) 차단 ───────────────────────────────
+  //   github.io엔 서버(/api/pipeline)가 없어 구글시트에 닿지 못한다(영원히 빈 보드).
+  //   시트 라이브는 Vercel에만 있으므로 같은 경로의 운영 사이트로 즉시 이동.
+  try {
+    if (location.hostname.indexOf('github.io') >= 0) {
+      var _p = location.pathname.replace(/^\/[^/]+/, '');   // '/brandrise' 프로젝트 접두 제거
+      location.replace('https://brandrise-hiz.vercel.app' + _p + location.search + location.hash);
+      return;
+    }
+  } catch (e) {}
+
   // ── 단계 정의 (id / 라벨 / 색 토큰) ──────────────────────────────
   var STAGES = [
     { id: 'consult', label: '수주 협의중',     tone: 'slate' },
@@ -18,6 +29,7 @@
   //   전엔 하드코딩이었으나 이제 시트가 원본(손복사 없음). loadLive()가 BRANDS를 채우고 ready 발화.
   var BRANDS = [];
   var _loaded = false, _readyCbs = [], _summary = {}, _kpi = {};
+  var _loadOk = null;   // null=로드 전, true=시트 로드 성공, false=실패(빈 화면과 구분)
 
   // ── localStorage 키 + 헬퍼 ──────────────────────────────────────
   var STAGE_KEY = 'br_pipeline_stage_v1';        // { slug: stageId }
@@ -126,7 +138,7 @@
   function _fireReady() { _loaded = true; var cbs = _readyCbs; _readyCbs = []; cbs.forEach(function (cb) { try { cb(); } catch (e) {} }); }
   function ready(cb) { if (_loaded) { try { cb(); } catch (e) {} } else _readyCbs.push(cb); }
   function loadLive() {
-    if (typeof fetch !== 'function') { _fireReady(); return; }
+    if (typeof fetch !== 'function') { _loadOk = false; _fireReady(); return; }
     fetch('/api/pipeline', { credentials: 'same-origin' })
       .then(function (r) { return r.ok ? r.json() : Promise.reject('http ' + r.status); })
       .then(function (d) {
@@ -134,10 +146,11 @@
           BRANDS.length = 0;
           d.brands.forEach(function (b) { BRANDS.push(b); });
           _summary = d.summary || {}; _kpi = d.kpi || {};
-        }
+          _loadOk = true;
+        } else { _loadOk = false; }
         _fireReady();
       })
-      .catch(function (e) { try { console.warn('pipeline 라이브 로드 실패:', e); } catch (x) {} _fireReady(); });
+      .catch(function (e) { _loadOk = false; try { console.warn('pipeline 라이브 로드 실패:', e); } catch (x) {} _fireReady(); });
   }
 
   g.BR = {
@@ -147,7 +160,7 @@
     readStages: readStages, writeStage: writeStage, getStage: getStage,
     readQuote: readQuote, writeQuote: writeQuote,
     stageById: stageById, brandBySlug: brandBySlug, won: won,
-    ready: ready, loaded: function () { return _loaded; },
+    ready: ready, loaded: function () { return _loaded; }, loadOk: function () { return _loadOk; },
     summary: function () { return _summary; }, kpi: function () { return _kpi; }
   };
 

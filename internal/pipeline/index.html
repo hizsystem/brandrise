@@ -90,6 +90,11 @@ body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);colo
 .bc .cdate{flex:1;font-family:inherit;font-size:12.5px;color:var(--ink2);border:1px solid var(--line);border-radius:9px;padding:7px 9px;background:var(--soft)}
 .bc .cdate:focus{outline:none;border-color:var(--ac)}
 
+.notice{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:34px 22px;text-align:center;color:var(--muted);font-size:13.5px;line-height:1.7}
+.notice.err{border-color:#fecdd3;background:var(--bad-50);color:var(--bad)}
+.notice b{display:block;font-size:15px;color:var(--ink2);margin-bottom:6px}
+.notice.err b{color:var(--bad)}
+.notice .retry{display:inline-block;margin-top:12px;font-size:13px;font-weight:800;color:#fff;background:var(--ac);border-radius:9px;padding:8px 16px;text-decoration:none;cursor:pointer}
 footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:1120px;margin:0 auto}
 @media(max-width:880px){ .wrap,.hero .in{padding-left:22px;padding-right:22px} }
 </style>
@@ -109,7 +114,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     <button id="btnRestore" type="button" class="ghost">기본 브랜드 복원</button>
     <span class="bt-note">단계·상담일·추가 브랜드는 <b>이 브라우저에만</b> 저장됩니다(동료와 공유 안 됨). 개인 진행 관리용 · 타일을 누르면 해당 단계로 이동.</span>
   </div>
-  <div id="groups"></div>
+  <div id="groups"><div class="notice">구글 시트에서 파이프라인을 불러오는 중…</div></div>
 </div>
 
 <footer>
@@ -182,6 +187,17 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
   }
   function renderGroups(){
     var c=counts(), all=BR.allBrands(), html='';
+    if(!all.length){
+      // 빈 화면과 '로드 실패'를 구분해 안내 (조용한 빈 보드 방지)
+      if(BR.loadOk()===false){
+        groups.innerHTML='<div class="notice err"><b>파이프라인을 불러오지 못했습니다</b>'+
+          '로그인이 만료됐거나 일시적 오류일 수 있습니다. 다시 시도하거나 로그인 후 새로고침하세요.'+
+          '<br><a class="retry" href="javascript:location.reload()">새로고침</a></div>';
+      } else {
+        groups.innerHTML='<div class="notice"><b>표시할 브랜드가 없습니다</b>구글 시트(BC-BR)에 진행 중인 브랜드가 없거나 필터에 걸렸습니다.</div>';
+      }
+      return;
+    }
     BR.STAGES.forEach(function(s){
       var list=sortByWait(all.filter(function(b){return BR.getStage(b.slug)===s.id;}));
       if(!list.length) return;
