@@ -4,6 +4,12 @@
 // · 매핑: BC-BR 탭. 보드=활성(협의중·발송 + 7월~ 시작 수주, 드랍·OOS·이월 제외). 요약=시트 상단 집계셀.
 const crypto = require('crypto');
 
+// 모듈 레벨 캐시(워밍된 람다 인스턴스가 재사용) — Apps Script 왕복(~2초, 콜드 시 10초+)을 대부분 건너뜀.
+// · 누수 위험 0: 인증은 매 요청 함수에서 확인(CDN 캐싱 아님).
+// · 실패 시 스테일 폴백: Apps Script가 죽어도 직전 데이터를 내려 빈 보드 방지.
+let _cache = null;            // { at:number, payload:object }
+const CACHE_TTL = 90 * 1000;  // 90초
+
 function verifyToken(token, secret) {
   if (!token) return false;
   const i = token.lastIndexOf('.');
@@ -47,6 +53,14 @@ module.exports = async (req, res) => {
   const secret = process.env.AUTH_SECRET;
   if (!secret) { res.status(503).send('Server auth not configured'); return; }
   if (!verifyToken(getCookie(req, 'br_auth'), secret)) { res.status(401).send('Unauthorized'); return; }
+
+  // 워밍 캐시 즉답 (90초 이내) — 시트 왕복 생략.
+  if (_cache && (Date.now() - _cache.at) < CACHE_TTL) {
+    res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('X-Pipeline-Cache', 'HIT');
+    res.status(200).json(_cache.payload);
+    return;
+  }
 
   const base = process.env.SHEET_APPS_URL, tok = process.env.SHEET_TOKEN;
   if (!base || !tok) { res.status(503).json({ error: 'sheet not configured' }); return; }
@@ -101,13 +115,23 @@ module.exports = async (req, res) => {
       });
     });
 
-    res.setHeader('Cache-Control', 'no-store');
-    res.status(200).json({
+    const payload = {
       ok: true, brands: brands, summary: summary,
       kpi: { target: kpiTarget, rate: kpiRate },
       updatedAt: Date.now()
-    });
+    };
+    _cache = { at: Date.now(), payload: payload };   // 워밍 캐시 갱신
+    res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('X-Pipeline-Cache', 'MISS');
+    res.status(200).json(payload);
   } catch (e) {
+    // 시트 호출 실패 → 직전 데이터라도 내려 빈 보드 방지(스테일 폴백).
+    if (_cache && _cache.payload) {
+      res.setHeader('Cache-Control', 'no-store');
+      res.setHeader('X-Pipeline-Cache', 'STALE');
+      res.status(200).json(_cache.payload);
+      return;
+    }
     res.status(502).json({ error: 'sheet read failed: ' + (e && e.message ? e.message : 'unknown') });
   }
 };

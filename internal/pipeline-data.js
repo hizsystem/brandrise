@@ -152,9 +152,9 @@
     if (typeof fetch !== 'function') { _loadOk = false; _fireReady(); return; }
     // 0) 직전 캐시 즉시 표시(체감 0초) — 시트 왕복 ~2초 동안 빈 화면 안 보이게.
     try { if (_apply(JSON.parse(localStorage.getItem(CACHE_KEY)))) _fireReady(); } catch (e) {}
-    // 1) 백그라운드 최신화 (12초 타임아웃 → 무한 스피너 방지)
+    // 1) 백그라운드 최신화 (20초 타임아웃 → Apps Script 콜드 스타트 여유, 무한 스피너 방지)
     var ctrl = (typeof AbortController === 'function') ? new AbortController() : null;
-    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 12000);
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 20000);
     fetch('/api/pipeline', { credentials: 'same-origin', signal: ctrl ? ctrl.signal : undefined })
       .then(function (r) { return r.ok ? r.json() : Promise.reject('http ' + r.status); })
       .then(function (d) {
