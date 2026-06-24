@@ -282,11 +282,13 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
     updateCollapseBtn();
   }
 
-  // ── 시트와 동기화: 로컬 변경(단계·상담일·숨김·추가) 초기화 후 시트 그대로 재로드 ──
+  // ── 시트와 동기화: 로컬 변경(단계·상담일·숨김·추가)만 비우고 즉시 원복 + 배경에서 시트 최신화 ──
+  //   시트 데이터는 이미 메모리에 있어 새로고침/네트워크 없이 즉시 그린다(체감 0초).
   document.getElementById('btnSync').onclick=function(){
-    if(!confirm('시트 원본 상태로 되돌릴까요?\n\n이 브라우저에서 바꾼 단계·상담일·숨긴(삭제) 브랜드·추가한 브랜드가 모두 지워지고,\n구글 시트(BC-BR) 그대로 다시 불러옵니다.\n(작성한 견적서 내용은 유지됩니다.)')) return;
-    ['br_pipeline_stage_v1','br_consult_date_v1','br_hidden_brands_v1','br_custom_brands_v1','br_pipeline_cache_v1'].forEach(function(k){ try{localStorage.removeItem(k);}catch(e){} });
-    location.reload();
+    if(!confirm('시트 원본 상태로 되돌릴까요?\n\n이 브라우저에서 바꾼 단계·상담일·숨긴(삭제) 브랜드·추가한 브랜드가 모두 지워지고,\n구글 시트(BC-BR) 그대로 돌아갑니다.\n(작성한 견적서 내용은 유지됩니다.)')) return;
+    ['br_pipeline_stage_v1','br_consult_date_v1','br_hidden_brands_v1','br_custom_brands_v1'].forEach(function(k){ try{localStorage.removeItem(k);}catch(e){} });
+    renderAll();                 // 즉시 원복(메모리의 시트 데이터)
+    if(BR.refresh) BR.refresh(); // 배경에서 시트 최신값 재확인(완료 시 자동 재렌더)
   };
 
   // ── 모두 접기/펴기 ──

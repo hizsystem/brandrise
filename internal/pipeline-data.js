@@ -178,6 +178,7 @@
     readQuote: readQuote, writeQuote: writeQuote,
     stageById: stageById, brandBySlug: brandBySlug, won: won,
     ready: ready, loaded: function () { return _loaded; }, loadOk: function () { return _loadOk; },
+    refresh: function () { try { localStorage.removeItem(CACHE_KEY); } catch (e) {} loadLive(); },  // 배경 시트 최신화
     summary: function () { return _summary; }, kpi: function () { return _kpi; }
   };
 
