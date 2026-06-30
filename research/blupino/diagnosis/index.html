@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE 진단서 — 블루피노(BLUPINO) · 2026-06-24 2차 상담 기반 1차 전략 진단
+  · 인디고 클린 통합표준(diagnosis-template) 재사용 — 색/컴포넌트 신규 생성 금지.
+  · 수치는 상담 발언 기반 추정 → 데이터 진단(T1)에서 확정. 병목 ①~④ ↔ 견적 블록 대응.
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>블루피노 (BLUPINO) 브랜드 전략 진단서 | BRANDRISE</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.75;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:16.5px}
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 42%,#4338ca 100%);color:#fff;padding:60px 0 48px;position:relative;overflow:hidden}
+.hero::after{content:"DIAGNOSIS";position:absolute;right:-2%;bottom:-18%;font-size:clamp(140px,20vw,320px);font-weight:800;letter-spacing:-.04em;color:#fff;opacity:.05;line-height:.8;pointer-events:none}
+.hero .in{max-width:960px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero .sub{font-size:15.5px;color:#cbd5e1;font-weight:300;max-width:680px;line-height:1.75}
+.hero .meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.wrap{max-width:960px;margin:0 auto;padding:36px 40px 100px;counter-reset:sec}
+section{margin-bottom:50px;scroll-margin-top:24px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+h2{font-size:34px;font-weight:800;letter-spacing:-.025em;margin-bottom:6px}
+.lead{font-size:18px;color:var(--ink2);margin-bottom:20px;line-height:1.7}
+h3{font-size:20px;font-weight:800;margin:24px 0 12px;color:var(--ink);letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.co{border:1px solid var(--line2);border-left:3px solid var(--line);border-radius:0 10px 10px 0;padding:18px 24px;margin:14px 0;font-size:16px;line-height:1.8;text-wrap:pretty}
+.co.ac{background:var(--ac-50);border-left-color:var(--ac)} .co.ok{background:var(--ok-50);border-left-color:var(--ok)}
+.co.warn{background:var(--warn-50);border-left-color:var(--warn)} .co.bad{background:var(--bad-50);border-left-color:var(--bad)}
+.co b,.co strong{color:var(--ink);font-weight:600}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
+.t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
+.t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0 4px}
+th{background:var(--soft);color:var(--ink2);font-weight:700;text-align:left;padding:10px 12px;font-size:12.5px;border-bottom:1px solid var(--line)}
+td{padding:11px 12px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b,td strong{color:var(--ink)}
+.verdict{background:var(--ink);color:#fff;border-radius:14px;padding:30px 28px;text-align:center;margin:14px 0}
+.verdict .vl{font-size:12px;color:#94a3b8;font-weight:600;letter-spacing:.1em}
+.verdict .vv{font-size:23px;font-weight:800;letter-spacing:-.01em;margin:12px 0;line-height:1.5}
+.verdict .vv em{font-style:normal;color:#a5b4fc}
+.verdict .vd{font-size:14.5px;color:#cbd5e1;line-height:1.75}
+.chs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 4px}
+.ch{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 18px;text-align:center}
+.ch.own{border:2px solid var(--ac);background:var(--ac-50)}
+.ch .cn{font-weight:700;font-size:13.5px;margin-bottom:4px}
+.ch .cv{font-size:25px;font-weight:800;color:var(--ac);margin:8px 0;letter-spacing:-.02em}
+.ch .cd{font-size:13px;color:var(--muted);line-height:1.6}
+.moat{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 4px}
+.mo{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+.mo h4{font-size:14px;font-weight:800;margin-bottom:6px}
+.mo p{font-size:13.5px;color:var(--muted);line-height:1.7}
+.mo .flag{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--ac)}
+.steps{display:flex;gap:14px;margin:18px 0 4px;overflow-x:auto}
+.st{flex:1;min-width:180px;padding:20px 18px;background:var(--soft);border:1px solid var(--line);border-radius:12px;position:relative}
+.st.on{background:var(--ac);border-color:var(--ac)}
+.st:not(:last-child)::after{content:"›";position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--ac);font-weight:800;z-index:1}
+.st .sn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.05em;margin-bottom:6px}
+.st.on .sn{color:rgba(255,255,255,.85)}
+.st .stt{font-size:14.5px;font-weight:800;color:var(--ink)}
+.st.on .stt{color:#fff}
+.st .sd{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.65}
+.st.on .sd{color:rgba(255,255,255,.9)}
+.lever{background:var(--ink);color:#fff;border-radius:14px;padding:30px 28px;margin:14px 0}
+.lever .lq{font-size:19px;font-weight:700;line-height:1.6;text-align:center}
+.lever .lq em{font-style:normal;color:#a5b4fc}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9}
+.hero h1{font-size:clamp(38px,4.8vw,56px);line-height:1.08}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
+.minitoc{max-width:960px;margin:0 auto;padding:18px 40px 0;font-size:12.5px;color:var(--muted);letter-spacing:.01em}
+.minitoc a{color:var(--ink2);text-decoration:none;font-weight:700;transition:.15s}
+.minitoc a:hover{color:var(--ac)}
+.minitoc .sep{color:var(--line);margin:0 9px;font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
+.fcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
+.fcard .fk{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.fcard .fv{font-size:16px;font-weight:800;color:var(--ink)}
+.bn{display:flex;flex-direction:column;gap:10px;margin:14px 0 4px}
+.bcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 22px;
+  display:grid;grid-template-columns:48px 1fr auto;gap:0 18px;align-items:start}
+.bcard .bnum{grid-row:1/3;width:40px;height:40px;border-radius:11px;background:var(--ac-50);color:var(--ac-700);
+  font-size:18px;font-weight:800;display:flex;align-items:center;justify-content:center;letter-spacing:-.02em}
+.bcard.crit .bnum{background:var(--bad-50);color:var(--bad)}
+.bcard .bh{font-size:14.5px;font-weight:800;color:var(--ink);letter-spacing:-.01em;align-self:center}
+.bcard .bsev{align-self:center}
+.bcard .bd{grid-column:2/4;font-size:13.5px;color:var(--ink2);line-height:1.68;margin-top:6px}
+.bcard .bmap{grid-column:2/4;margin-top:10px;font-size:11.5px;font-weight:700;color:var(--ac);
+  display:inline-flex;align-items:center;gap:6px}
+section{margin-bottom:64px;counter-increment:sec;border-top:2px solid var(--ink);padding:34px 0 0 108px;position:relative}
+section:first-of-type{border-top:none;padding-top:0}
+.sec-k{display:inline-block;background:var(--ac-50);border:1px solid var(--ac-100);border-radius:7px;padding:4px 10px}
+.sec-k::before{content:counter(sec,decimal-leading-zero);position:absolute;left:0;top:30px;font-size:62px;font-weight:800;color:var(--ac);letter-spacing:-.04em;line-height:.9;font-variant-numeric:tabular-nums}
+.wrap>section:first-of-type .sec-k::before{top:0}
+h2{line-height:1.28}
+h3{letter-spacing:-.01em}
+table{margin:10px 0 6px}
+th{padding:13px 15px}
+td{padding:13px 15px}
+tbody tr:nth-child(even) td{background:var(--soft)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.co.ac.band{display:block;text-align:left}
+.co.ac.band .lab{color:var(--ac)}
+@media(max-width:880px){
+  .minitoc{padding:14px 22px 0;line-height:2}
+  section{padding-left:0!important}
+  .sec-k::before{position:static;display:block;margin-bottom:4px;top:auto}
+  .wrap{padding:28px 22px 80px}.hero .in{padding:0 22px}.hero h1{font-size:28px}.chs,.moat,.grid2,.grid3{grid-template-columns:1fr}.steps{flex-direction:column}.st:not(:last-child)::after{content:"";display:none}
+  .bcard{grid-template-columns:40px 1fr}
+  .bcard .bsev{grid-column:2/3;justify-self:start;margin-top:4px}
+  .bcard .bd,.bcard .bmap{grid-column:1/3}}
+@media print{
+  body{background:#fff}
+  .hero,.verdict,.lever,.st.on,.ch.own,.t,.co{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section{page-break-inside:avoid}
+  .fcard,.bcard,.co{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">BRAND STRATEGY DIAGNOSIS · 1차 전략 진단</div>
+  <h1>블루피노 (BLUPINO) 브랜드 <span class="hl">진단서</span></h1>
+  <div class="sub">제품·시장 검증은 끝났다 — 이제 필요한 건 <b style="color:#fff">그 가치를 담을 'BLUPINO'라는 그릇</b>이다.</div>
+  <div class="meta">
+    <span class="chip">수신 <b>농업회사법인 ㈜청년연구소 이석모 대표</b></span>
+    <span class="chip">작성 <b>브랜드라이즈 by HIZ</b></span>
+    <span class="chip">기준일 <b>2026-06-24 (2차 상담)</b></span>
+    <span class="chip">근거 <b>대면 상담 + 공개 리서치</b></span>
+  </div>
+</div></div>
+
+<div class="minitoc">
+  <a href="#core">핵심 진단</a><span class="sep">·</span><a href="#structure">매출 구조</a><span class="sep">·</span><a href="#bottleneck">병목 진단</a><span class="sep">·</span><a href="#asset">숨은 자산</a><span class="sep">·</span><a href="#next">다음 단계</a><span class="sep">·</span><a href="#lever">레버리지</a>
+</div>
+
+<div class="wrap">
+
+  <section id="core">
+    <div class="sec-k">CORE DIAGNOSIS</div>
+    <h2>핵심 진단 한 줄</h2>
+    <div class="verdict">
+      <div class="vl">CORE DIAGNOSIS</div>
+      <div class="vv">블루피노는 <em>"마케팅 못 하는 시드"가 아니라<br>"검증을 끝내고도 그 가치를 담을 그릇이 비어 있는 회사"</em>다.</div>
+      <div class="vd">코스트코 본사가 먼저 발굴하고("골드메달보다 낫다"), 무인양품이 PB로 가져가려는 무첨가 사과 탄산음료. 제품력·시장성은 증명됐다.<br><b style="color:#fff">지금 필요한 건 그 검증을 받아낼 'BLUPINO' 브랜드(그릇)와, 과포화된 전략을 의사결정으로 정리하는 일</b>이다.</div>
+    </div>
+  </section>
+
+  <section id="structure">
+    <div class="sec-k">STRUCTURE</div>
+    <h2>매출 구조 해부 — 어디를 키울 것인가</h2>
+    <p class="lead">"사과 원물 유통"과 "음료 브랜드"는 전혀 다른 사업입니다. 마진 낮은 원물은 줄이고, 검증된 음료를 브랜드로 키우는 재배치가 이미 시작됐습니다.</p>
+    <div class="chs">
+      <div class="ch">
+        <div class="cn">사과 원물 유통 (꿀땡이 사과)</div>
+        <div class="cv">의도적 축소</div>
+        <div class="cd">네이버 사과 top3·9~10년차. 작년 약 20억(평년 37억). 마진 5% 미만 — "많이 팔수록 일만 늘어" 직접 농사분만 남기고 축소 중.</div>
+      </div>
+      <div class="ch">
+        <div class="cn">B2B 납품 (카페·베이커리·호텔)</div>
+        <div class="cv">약 200매장</div>
+        <div class="cd">박람회(카페쇼 등) 5년으로 확보한 거래선. 코스트코 발굴·무인양품 PB까지 — 검증의 핵심 채널.</div>
+      </div>
+      <div class="ch own">
+        <div class="cn">음료 브랜드 (BLUPINO · 직접 통제)</div>
+        <div class="cv">월 약 2,500만</div>
+        <div class="cd">작년 음료만 3.5~4억(올해 5억+ 목표). 자사몰 미운영 = D2C 백지. <b style="color:var(--ac)">바로 이 자산이 과제.</b></div>
+      </div>
+    </div>
+
+    <div class="co ac band"><span class="lab">수치 출처 선 긋기 · 발언 기반 추정</span><b>위 수치는 2차 상담(2026-06-24) 발언 기반 추정치</b>입니다. 음료/원물 분리 손익, SKU별(주스·탄산·캔·병) 마진, 채널별(B2B·코스트코·소비자) 비중은 <b>1차 데이터 진단</b>에서 확정합니다. 핵심은 동일 — 외형이 아니라 <b>검증된 음료를 BLUPINO 브랜드 자산으로 키우는 것</b>이 목표입니다.</div>
+  </section>
+
+  <section id="bottleneck">
+    <div class="sec-k">BOTTLENECKS</div>
+    <h2>4대 병목 진단</h2>
+    <p class="lead">제품(공급측)은 세계 유일 기술인데 수요측(전략 우선순위·브랜드 자산·채널·비주얼)이 비어 있습니다. 심각도 순 — 번호는 견적서 블록과 대응.</p>
+    <div class="bn">
+      <div class="bcard crit">
+        <div class="bnum">1</div>
+        <div class="bh">전략이 과포화 — 우선순위·투트랙이 안 잡혀 있다</div>
+        <div class="bsev"><span class="t r">Critical</span></div>
+        <div class="bd">자판기·쌀음료·웰니스·수출·선물박스·유튜브 등 기회가 동시에 쏟아지는데 "뭐부터 건드릴지" 미정. 국내 사과 IP(브랜드 비즈)와 해외 웰니스 드링크 IP(투자·수출)라는 두 축의 우선순위를 먼저 정리해야 모든 실행이 정렬된다. → 브랜드/사업 워크샵이 입구.</div>
+        <div class="bmap">→ 견적서 블록 ⓪(워크샵·전략)에 대응</div>
+      </div>
+      <div class="bcard crit">
+        <div class="bnum">2</div>
+        <div class="bh">검증된 제품을 담을 'BLUPINO' 그릇이 비어 있다</div>
+        <div class="bsev"><span class="t r">Critical</span></div>
+        <div class="bd">제품은 증명됐지만 BLUPINO는 아직 "예쁜 제품"에 머물러, 무인양품 같은 채널이 넣었다 빼는 갑을 싸움에 취약. 단일 브랜드 자산화(정체성·메시지·비주얼)로 "아무도 못 건드는 브랜드"가 돼야 가격·협상력을 가진다. 수출까지 보면 10년 가는 미국향 디자인이 필요.</div>
+        <div class="bmap">→ 견적서 블록 ①(BI·패키지)에 대응</div>
+      </div>
+      <div class="bcard">
+        <div class="bnum">3</div>
+        <div class="bh">B2B 신뢰가 D2C·콘텐츠로 흐르지 않는다</div>
+        <div class="bsev"><span class="t y">High</span></div>
+        <div class="bd">200여 매장의 B2B 신뢰가 자사몰·인스타로 연결되는 퍼널이 비어 있음. 자사몰 미운영, 인스타 방치. 네이버 광고는 비용만 치솟고(재작년 5억·작년 3억) 효율 하락 — 대표는 유튜브를 고민하나 식품은 인스타가 적합(브랜딩 후 유튜브는 어그로 리스크).</div>
+        <div class="bmap">→ 견적서 추가 논의(인스타·자사몰·CRM)에 대응</div>
+      </div>
+      <div class="bcard">
+        <div class="bnum">4</div>
+        <div class="bh">제품의 격에 비해 비주얼 자산이 비어 있다</div>
+        <div class="bsev"><span class="t y">High</span></div>
+        <div class="bd">3대째 청송 농부 + 당일 착즙 제조라는 강한 진정성에 비해, 그것을 보여줄 시각 언어가 따라오지 못함. 선물 박스도 "포스트코 박스 그대로" — 여름 선물 수요를 못 받는다. 카페쇼에서 "예쁘게 한 번 하니 매출이 바로 올랐다"는 경험이 비주얼의 힘을 이미 증명.</div>
+        <div class="bmap">→ 견적서 블록 ②(촬영·비주얼)에 대응</div>
+      </div>
+    </div>
+
+    <div class="co ac band"><span class="lab">병목 결론 · 발언 기반 추정</span>제품(공급측)은 세계 유일(캔 충진)인데 <b>수요측(전략 우선순위·브랜드 자산·채널·비주얼)이 비어 있는 것</b>이 4대 병목의 공통 뿌리입니다. <b>각 병목 ⓪~③이 견적서 블록에 1:1 대응</b>하며, 검증이 끝난 만큼 "그릇 먼저 단단히"가 가장 빠른 길입니다.</div>
+  </section>
+
+  <section id="asset">
+    <div class="sec-k">HIDDEN ASSET</div>
+    <h2>일반 시드와 결이 다른 — 이미 검증된 무기들</h2>
+    <p class="lead">대부분의 초기 브랜드가 "검증"을 위해 싸우는 동안, 블루피노는 그 단계를 이미 통과했습니다. 문제는 이 무기들이 BLUPINO 브랜드 자산으로 모이지 않았다는 것뿐입니다.</p>
+    <div class="moat">
+      <div class="mo"><h4>캔 충진 — 전 세계 유일 기술</h4><p>과채주스 100%에 탄산을 캔으로 충진하는 건 거품 이슈로 전 세계가 병(瓶)뿐. 블루피노만 가능. OEM 불가 = 독점 해자.</p><span class="flag">→ IR·브랜드의 핵심 USP (특허 확보 권고)</span></div>
+      <div class="mo"><h4>코스트코 본사 발굴 + 무인양품 PB</h4><p>코스트코 본사가 먼저 "골드메달보다 낫다"며 컨택, 슈퍼데모 하루 완판·정규납품 제안. 무인양품 PB ODM 3종 진행 — 제품·시장 검증 완료.</p><span class="flag">→ 강력한 성공 서사 / 단 "받아낼 그릇" 필요</span></div>
+      <div class="mo"><h4>3대째 청송 농부 정통성</h4><p>농사→제조→판매를 직접 하는 청송 농업법인. 농식품 업계 청년 성공사례로 인지. 저비용·고진정성 콘텐츠 엔진.</p><span class="flag">→ 현재 비주얼·콘텐츠로 미전환</span></div>
+      <div class="mo"><h4>투자·정부지원 모멘텀</h4><p>농금원 IR 후 투자사 5곳 제안, 초기창업패키지 선정. 내년 팁스·스케일업·식품벤처육성 적격. 5억 투자 시 캐파 5배·원가 700~800원.</p><span class="flag">→ 브랜드·IR 장표로 판 키울 시점</span></div>
+    </div>
+    <div class="co bad"><span class="lab">진단 결론</span>대표님 스스로 "브랜딩만 되면 검증은 끝났다"고 진단하셨습니다. 본 진단도 동일합니다 — <b>제품은 이미 이겼고, 비어 있는 건 그 가치를 담을 브랜드와 그것을 키울 전략 우선순위</b>입니다. 컨설팅의 핵심 가치 = 이 검증된 무기들을 <b>BLUPINO 단일 브랜드 자산으로 모으고, 국내 사과 IP·해외 웰니스 IP 두 축으로 정렬하는 것</b>입니다.</div>
+  </section>
+
+  <section id="next">
+    <div class="sec-k">NEXT STEP</div>
+    <h2>이 진단을 의사결정으로 — 다음 단계</h2>
+    <p class="lead">대표님께 지금 가장 필요한 건 "결정을 내릴 수 있는 프레임"입니다. 브랜딩보다 워크샵이 먼저인 이유 — 소화 속도에 맞춰 한 단계씩 쌓아야 어그러지지 않습니다.</p>
+    <div class="steps">
+      <div class="st on"><div class="sn">STEP 1 · 워크샵</div><div class="stt">브랜드·사업 전략</div><div class="sd">대표 동행 워크샵으로 과포화된 아이디어를 의사결정 프레임으로. 내년 사업플랜 + IR 전략 + 투트랙(국내 사과 IP / 해외 웰니스 IP) 우선순위 정리. (약 1개월)</div></div>
+      <div class="st"><div class="sn">STEP 2 · 브랜드 토대</div><div class="stt">BLUPINO 그릇</div><div class="sd">포지셔닝·메시지 + BLUPINO 단일 브랜드 자산화. 250ml 통일 라벨·캔 정비, 미국 수출 염두 디자인. 7월 신세계·코스트코 재진입·IR에 바로 쓸 자산까지.</div></div>
+      <div class="st"><div class="sn">STEP 3 · 콘텐츠·D2C</div><div class="stt">검증을 흐르게</div><div class="sd">청송 사과밭·제조현장 촬영(비주얼 자산) + 인스타 리뉴얼·시딩 + 자사몰 D2C 첫 채널. 정부지원·투자 유입에 맞춰 단계 확장.</div></div>
+    </div>
+    <div class="co warn"><span class="lab">필요 데이터 (클라이언트 → HIZ)</span>① 음료/원물 분리 매출(월별·채널별·SKU별) ② B2B 거래선·코스트코·무인양품 진행 현황 ③ 자사몰·인스타 현황 ④ 초창패·투자 IR 자료<br><b>HIZ → 클라이언트:</b> 본 진단서 + 단계별 견적서(워크샵 입구 + 2안: 코어/풀)</div>
+  </section>
+
+  <section id="lever">
+    <div class="lever">
+      <div class="lq">"제품은 이미 이겼다.<br>지금 필요한 건 <em>그 가치를 담을 그릇</em>과,<br><em>무엇부터 할지</em>를 정하는 한 번의 정리다."</div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <b>BRANDRISE</b> by HIZ · Brand · IMC Consulting<br>
+  본 진단서는 2026-06-24 2차 상담 및 공개 리서치 기반 <b>1차 전략 진단</b>입니다. 정량 수치는 데이터 정밀 진단 단계에서 확정됩니다.<br>
+  © 2026 브랜드라이즈 by HIZ · 비공개 — 수신처 제출용
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  BRANDRISE PREP 통합표준 템플릿 v2 — 크린지 프렌즈 (Cringe Friends)     ║
+  ║  · 인테이크 자료 수령 완료. 대표 직접 제공 기반.                          ║
+  ║  · 사업소개서 교차 검증 완료.                                           ║
+  ╚══════════════════════════════════════════════════════════════════════╝
+-->
+
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>크린지 프렌즈 (Cringe Friends) — NB 상담 준비 PREP | BRANDRISE</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.72;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:15px}
+.hero{background:var(--ink);color:#fff;padding:64px 0 52px}
+.hero .in{max-width:1180px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:42px;font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:14px}
+.hero .sub{font-size:16px;color:#cbd5e1;font-weight:300;max-width:700px;line-height:1.75}
+.hero .meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.hero .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.hero .lnk{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;text-decoration:none;padding:8px 15px;border-radius:9px;transition:.15s}
+.hero .lnk svg{width:14px;height:14px}
+.hero .lnk.store{background:#fff;color:var(--ink)}
+.hero .lnk.store:hover{background:#e2e8f0}
+.hero .lnk.sns{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.hero .lnk.sns:hover{background:rgba(255,255,255,.14)}
+.layout{max-width:1180px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:208px 1fr;gap:48px;align-items:start}
+nav.toc{position:sticky;top:28px;padding:36px 0;font-size:13.5px}
+nav.toc .nl{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--muted);margin:0 0 14px 12px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;border-left:2px solid transparent;transition:.15s;font-weight:500}
+nav.toc a:hover{color:var(--ink);background:var(--soft)}
+nav.toc a.on{color:var(--ac);background:var(--ac-50);border-left-color:var(--ac);font-weight:700}
+main{padding:36px 0 100px;min-width:0}
+section{margin-bottom:64px;scroll-margin-top:24px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+h2{font-size:25px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px;line-height:1.18}
+.lead{font-size:15.5px;color:var(--muted);margin-bottom:22px;line-height:1.7}
+h3{font-size:15px;font-weight:800;margin:26px 0 12px;color:var(--ink2);letter-spacing:-.01em;line-height:1.4}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.co{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:14.5px;line-height:1.75;border:1px solid var(--line)}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100)} .co.ok{background:var(--ok-50);border-color:#bbf7d0}
+.co.warn{background:var(--warn-50);border-color:#fde68a} .co.bad{background:var(--bad-50);border-color:#fecdd3}
+.co b{color:var(--ink)}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
+.t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
+.t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 4px}
+.kpi .k{background:var(--ink);color:#fff;border-radius:12px;padding:18px}
+.kpi .k.alt{background:var(--bad)}
+.kpi .lbl{font-size:11px;color:#94a3b8;font-weight:600;margin-bottom:4px}
+.kpi .k.alt .lbl{color:#fecdd3}
+.kpi .v{font-size:25px;font-weight:800;letter-spacing:-.02em}
+.kpi .s{font-size:11px;color:#cbd5e1;margin-top:3px;line-height:1.5}
+.kpi .k.alt .s{color:#fecdd3}
+.op{background:var(--ink);color:#fff;border-radius:16px;padding:30px}
+.op .opk{font-size:11px;font-weight:800;letter-spacing:.14em;color:#a5b4fc;margin-bottom:18px}
+.op .blk{margin-bottom:22px} .op .blk:last-child{margin-bottom:0}
+.op .bl{font-size:11px;font-weight:800;color:#a5b4fc;letter-spacing:.08em;margin-bottom:9px}
+.op .need{font-size:17px;font-weight:700;line-height:1.62}
+.op .need b{color:#c7d2fe}
+.op .need .ev{display:block;margin-top:11px;font-size:13.5px;font-weight:500;color:#cbd5e1;line-height:1.72}
+.op .need .ev b{color:#e2e8f0}
+.op .do{display:grid;gap:9px}
+.op .do .item{background:rgba(255,255,255,.06);border-left:3px solid var(--ac);padding:12px 15px;border-radius:0 8px 8px 0;font-size:13.5px;line-height:1.62;color:#e2e8f0}
+.op .do .item b{color:#c7d2fe}
+.op .offer{background:rgba(79,70,229,.24);border:1px solid var(--ac);border-radius:10px;padding:15px 18px;font-size:13.5px;line-height:1.7;color:#e9ecf5}
+.op .offer b{color:#c7d2fe}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0 4px;font-variant-numeric:tabular-nums}
+th{background:var(--ac-50);color:var(--ac-700);font-weight:700;text-align:left;padding:11px 13px;font-size:12.5px;border-bottom:1px solid var(--line)}
+td{padding:11px 13px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b,td strong{color:var(--ink)}
+tbody tr:nth-child(even) td, table tr:nth-child(even) td{background:var(--soft)}
+.q{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac);border-radius:10px;padding:16px 18px;margin-bottom:10px}
+.q .qn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.05em;margin-bottom:5px}
+.q .qt{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.65}
+.q .qi{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.6}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px;position:relative}
+.tier.rec{border:2px solid var(--ac);box-shadow:0 8px 24px -12px rgba(79,70,229,.4)}
+.tier .rb{position:absolute;top:-11px;left:18px;background:var(--ac);color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;padding:3px 11px;border-radius:9px}
+.tier .tn{font-size:12px;font-weight:800;color:var(--muted)}
+.tier .tt{font-size:12.5px;color:var(--muted);margin:2px 0 10px}
+.tier .tp{font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.tier .td{font-size:11.5px;color:var(--muted);margin-bottom:12px}
+.tier ul{list-style:none}
+.tier li{font-size:13px;color:var(--ink2);padding:4px 0 4px 15px;position:relative;line-height:1.55}
+.tier li::before{content:"›";position:absolute;left:0;color:var(--ac);font-weight:800}
+.tl{border-left:2px solid var(--line);padding-left:20px;margin:10px 0}
+.tl .ph{position:relative;padding:10px 0}
+.tl .ph::before{content:"";position:absolute;left:-26px;top:14px;width:9px;height:9px;border-radius:50%;background:var(--ac)}
+.tl .pt{font-size:12px;font-weight:800;color:var(--ac)}
+.tl .pb{font-size:13px;color:var(--ink2);margin-top:2px}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sw{border-radius:12px;padding:16px 18px;border:1px solid var(--line)}
+.sw h4{font-size:12.5px;font-weight:800;margin-bottom:8px}
+.sw.s{background:var(--ok-50)} .sw.s h4{color:var(--ok)}
+.sw.w{background:var(--bad-50)} .sw.w h4{color:var(--bad)}
+.sw.o{background:var(--ac-50)} .sw.o h4{color:var(--ac)}
+.sw.tt{background:var(--warn-50)} .sw.tt h4{color:var(--warn)}
+.sw li{font-size:13px;color:var(--ink2);margin-left:15px;padding:2px 0;line-height:1.5}
+.verdict{background:var(--ink);color:#fff;border-radius:14px;padding:24px;text-align:center;margin:14px 0}
+.verdict .vl{font-size:12px;color:#94a3b8;font-weight:600}
+.verdict .vv{font-size:34px;font-weight:800;letter-spacing:-.02em;margin:6px 0;color:#a5b4fc}
+.verdict .vd{font-size:13px;color:#cbd5e1}
+.evi{border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:14px 0}
+.evi .eh{padding:11px 16px;font-size:12.5px;font-weight:800;background:var(--soft);border-bottom:1px solid var(--line);color:var(--ink2)}
+.evi img{display:block;width:100%;height:auto}
+.evi .en{padding:9px 16px;font-size:12px;color:var(--muted);border-top:1px dashed var(--line)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
+.fcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
+.fcard .fk{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.fcard .fv{font-size:16px;font-weight:800;color:var(--ink)}
+.fcard .fs{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.55;font-weight:500}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:16px 0 6px}
+.shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.shot .sk{display:flex;align-items:center;gap:7px;padding:9px 13px;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--ac);background:var(--ac-50);border-bottom:1px solid var(--ac-100)}
+.shot .sk::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--ac)}
+.shot .sfig{aspect-ratio:16/10;background:var(--soft);display:block;width:100%;object-fit:cover}
+.shot .sph{aspect-ratio:16/10;background:repeating-linear-gradient(45deg,var(--soft),var(--soft) 10px,#f0f3f8 10px,#f0f3f8 20px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted);text-align:center;padding:14px}
+.shot .sph .ic{font-size:22px;opacity:.5}
+.shot .sph .pl{font-size:12px;font-weight:700;color:var(--ink2)}
+.shot .scap{padding:10px 14px;font-size:12px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line2)}
+.shot .scap b{color:var(--ink2)}
+/* Executive Summary 2-up */
+.shdr{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:4px 0 16px}
+.shdr .sh{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.shdr .sh .shl{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:6px}
+.shdr .sh .sht{font-size:15px;font-weight:800;color:var(--ink)}
+.shdr .sh .shs{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.55}
+/* 핵심 진단 한 줄 */
+.oneline{background:var(--ink);color:#fff;border-radius:12px;padding:18px 22px;margin:14px 0}
+.oneline .oll{font-size:11px;font-weight:800;letter-spacing:.1em;color:#a5b4fc;margin-bottom:8px}
+.oneline .olt{font-size:15.5px;font-weight:700;line-height:1.6}
+.oneline .olt b{color:#c7d2fe}
+/* 60분 타임라인 */
+.tlp{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.tlp:last-child{border-bottom:none}
+.tlp .tpt{font-size:12px;font-weight:800;color:var(--ac);text-align:center;padding-top:3px;line-height:1.45}
+.tlp .tpc h4{font-size:14px;font-weight:800;margin-bottom:4px}
+.tlp .tpc p{font-size:13px;color:var(--muted);line-height:1.6}
+.tlp .tpc .say{font-size:12.5px;color:var(--ink2);background:var(--ac-50);border:1px solid var(--ac-100);padding:7px 11px;border-radius:7px;margin-top:7px;line-height:1.55}
+/* Challenger Teaching */
+.teach{display:grid;gap:9px;margin:12px 0 4px}
+.teach .ti{background:var(--soft);border:1px solid var(--line);border-left:3px solid var(--ac);padding:13px 16px;border-radius:0 10px 10px 0;font-size:13.5px;line-height:1.62;color:var(--ink2)}
+.teach .ti b{color:var(--ink)}
+/* 클로징 STEP 플로우 */
+.fsteps{display:flex;gap:8px;margin:14px 0 4px}
+.fstep{flex:1;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:13px 12px;position:relative}
+.fstep:not(:last-child)::after{content:"›";position:absolute;right:-8px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--ac);font-weight:800;z-index:1}
+.fstep .fsn{font-size:10.5px;font-weight:800;color:var(--ac);margin-bottom:5px;letter-spacing:.05em}
+.fstep .fst{font-size:12.5px;font-weight:800;color:var(--ink);margin-bottom:3px}
+.fstep .fsd{font-size:11.5px;color:var(--muted);line-height:1.5}
+/* 공통 밴드 */
+.co.ac.band{padding:20px 24px;border-radius:14px;font-size:14px;line-height:1.78}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px}
+footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
+.hero h1{font-size:clamp(28px,4.6vw,42px)}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
+@media(max-width:880px){.layout{grid-template-columns:1fr;gap:0;padding:0 22px}nav.toc{display:none}.hero .in{padding:0 22px}.hero h1{font-size:30px}.grid2,.grid3,.kpi,.tiers,.swot{grid-template-columns:1fr}.shots{grid-template-columns:1fr}.shdr{grid-template-columns:1fr}.tlp{grid-template-columns:1fr}.fsteps{flex-direction:column}.fstep:not(:last-child)::after{display:none}}
+@media print{.evi,.fcard,.card,.shot{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">NEW BUSINESS PREP · 통합표준 · 인테이크 수령 완료</div>
+  <h1>크린지 프렌즈 <span class="hl">(Cringe Friends)</span></h1>
+  <div class="sub">자아 탐구·진로 설계 콘텐츠 + 커뮤니티 스타트업. 창업 8개월, 광고비 0원으로 SNS 합산 1.47만 팬덤·누적 B2B 수주 2,140만 원. 지금 가장 시급한 건 <b style="color:#fff">정체성 재정비("미디어인지 커뮤니티인지 제작사인지 모르겠다")와 B2B 외주 의존 탈피</b>.</div>
+  <div class="meta">
+    <span class="chip">기회 적합도(추정) <b>4.2 / 5.0 · GO</b></span>
+    <span class="chip">추천 <b>T1 정체성 진단 → T2 수익구조 빌드</b></span>
+    <span class="chip">인테이크 <b>수령 완료 · 대표 직접 제공</b></span>
+    <span class="chip">대표 <b>이연주 · hello@crngfriends.com</b></span>
+  </div>
+  <div class="links">
+    <a class="lnk sns" href="https://www.instagram.com/crngfriends/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      @crngfriends
+    </a>
+    <a class="lnk sns" href="https://www.youtube.com/@CringeFriendsOfficial" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.4 19.54C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 001.94-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
+      YouTube
+    </a>
+    <a class="lnk sns" href="https://discord.gg/e9PxXBwfR" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057c.001.022.015.045.036.057a19.9 19.9 0 005.993 3.03.077.077 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.036-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"></path></svg>
+      Discord
+    </a>
+  </div>
+</div></div>
+
+<div class="layout">
+  <nav class="toc">
+    <div class="nl">PREP 목차</div>
+    <a href="#onepager">수주 한 장</a>
+    <a href="#exec">한눈에</a>
+    <a href="#diagnosis">핵심 진단</a>
+    <a href="#company">기업 · 정량</a>
+    <a href="#product">제품 · 채널</a>
+    <a href="#market">경쟁 · 시장</a>
+    <a href="#revenue">수익화 전략</a>
+    <a href="#needs">SWOT · 니즈</a>
+    <a href="#deal">기회 · 견적</a>
+    <a href="#consult">상담 진행</a>
+    <a href="#closing">클로징</a>
+    <a href="#sources">참고 출처</a>
+  </nav>
+
+  <main>
+
+    <!-- ── ONE-PAGER ── -->
+    <section id="onepager">
+      <div class="sec-k">ONE-PAGER</div>
+      <h2>수주 한 장</h2>
+      <p class="lead">미팅 직전 이 카드 하나면 된다. 인테이크·사업소개서·직접 리서치 기반.</p>
+      <div class="op">
+        <div class="opk">수주 한 장</div>
+        <div class="blk">
+          <div class="bl">그래서 진짜 니즈는</div>
+          <div class="need">
+            "마케팅 체계화"라는 말 뒤에 — <b>정체성 재정비가 모든 실행을 막고 있다.</b>
+            <span class="ev">창업 8개월 만에 광고 0원으로 1.47만 팬덤·2,140만 B2B 수주를 만든 팀이다. 콘텐츠 실력과 팬덤 신뢰는 이미 증명됐다. 문제는 그 자산들을 하나의 <b>브랜드 이야기</b>로 묶을 축이 없다는 것 — "우리가 미디어인지, 커뮤니티인지, 제작사인지 모르겠다"는 말이 나오는 상태에서는 웹사이트도, 광고도, 반복 현금흐름 설계도 방향이 안 나온다. 정체성 → 수익구조 → 마케팅 루틴 순서가 지금 크린지 프렌즈에 필요한 스텝이다.</span>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="bl">그래서 우리가 해주는 것</div>
+          <div class="do">
+            <div class="item"><b>① 정체성 축 정의</b> — "크린지 프렌즈가 뭔지" 한 줄. B2C(콘텐츠·커뮤니티)와 B2B(제작 용역·브랜드 캠페인)를 하나의 브랜드 아래 공존시키는 구조. 팬덤이 운영진 개인 SNS가 아닌 크린지 프렌즈 브랜드 자산으로 쌓이도록 전환</div>
+            <div class="item"><b>② 반복 현금흐름 모델 설계</b> — B2B 1회성 외주 탈피. 유튜브 멤버십 → 자체 오프라인 프로그램 → 자체 플랫폼 구독으로 이어지는 B2C 수익 루프 설계. 연말 목표(5천만~1억) 달성 로드맵</div>
+            <div class="item"><b>③ 웹사이트 + 마케팅 SOP</b> — 자체 디지털 허브를 모든 채널의 중심으로 세우고, 자연 유입에만 의존하던 구조를 보완하는 최소한의 마케팅 루틴 수립</div>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="bl">첫 제안 & 다음 액션</div>
+          <div class="offer"><b>T1 정체성 진단(500~800만 / 4주)</b>으로 브랜드 축 정의·수익모델 우선순위·채널 전략 방향부터. 대표 포함 3인 팀 = 빠른 결정 가능 → <b>T1 결과물로 T2 빌드 자연 전환</b> 목표. 미팅에서 "5년 후 크린지 프렌즈가 어떤 회사이길 원하는지"가 1순위 청취 포인트.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── EXEC ── -->
+    <section id="exec">
+      <div class="sec-k">EXECUTIVE SUMMARY</div>
+      <h2>한눈에</h2>
+      <p class="lead">회사·대표·핵심 수치·판정을 한 화면에. 상세 근거는 아래 섹션.</p>
+      <div class="shdr">
+        <div class="sh"><div class="shl">회사</div><div class="sht">크린지 프렌즈 (Cringe Friends)</div><div class="shs">자아 탐구·진로 설계 콘텐츠 + 커뮤니티 스타트업 · 2025.10 창업</div></div>
+        <div class="sh"><div class="shl">대표</div><div class="sht">이연주 CEO</div><div class="shs">본인 직접 상담 신청 · 최종 의사결정권자 · PwC·삼정KPMG 출신</div></div>
+      </div>
+      <div class="kpi">
+        <div class="k"><div class="lbl">SNS 합산 팬덤</div><div class="v">1.47만</div><div class="s">인스타 7,745 + 유튜브 6,730<br>광고비 0원 자연 유입</div></div>
+        <div class="k"><div class="lbl">누적 매출</div><div class="v">2,140만</div><div class="s">2026.05~ 발생<br>B2B 중심 (블랙페이퍼 등)</div></div>
+        <div class="k"><div class="lbl">트레바리 잔존율</div><div class="v">74%</div><div class="s">17명 / 23명<br>커뮤니티 충성도 검증</div></div>
+        <div class="k alt"><div class="lbl">가장 시급한 과제</div><div class="v">정체성 재정비</div><div class="s">B2B 의존 탈피<br>웹사이트 미오픈</div></div>
+      </div>
+      <div class="oneline">
+        <div class="oll">핵심 진단 한 줄</div>
+        <div class="olt">콘텐츠 실력·팬덤·B2B 레퍼런스는 이미 검증. 비어 있는 건 <b>"크린지 프렌즈가 뭔지" 한 줄 축</b>과 그 위에 굴러가는 <b>B2C 반복 수익 구조</b>.</div>
+      </div>
+      <div class="co ac band"><span class="lab">판정 (인테이크 기반)</span><b>기회 적합도 4.2 / 5.0 · GO</b> &nbsp;|&nbsp; 추천 <b>T1 정체성 진단 → T2 수익구조 빌드</b> &nbsp;|&nbsp; 기대 <b>브랜드 축 정의 + 반복 현금흐름 설계 + 연말 목표 달성 로드맵</b></div>
+    </section>
+
+    <!-- ── DIAGNOSIS ── -->
+    <section id="diagnosis">
+      <div class="sec-k">DIAGNOSIS</div>
+      <h2>핵심 진단</h2>
+      <p class="lead">팬덤과 콘텐츠 실력은 증명됐다. 비어 있는 건 "크린지 프렌즈라는 브랜드가 뭔지"와 그 브랜드로 굴러가는 반복 수익 구조. <span class="t g">인테이크 기반</span></p>
+      <div class="grid3">
+        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">브랜드 정체성 불명확</h3><p style="font-size:13.5px;color:var(--muted)">"우리의 정체성이 무엇인가?"가 내부에서조차 합의되지 않은 상태. 미디어인지·커뮤니티인지·콘텐츠 제작사인지 포지션이 흔들리면 채용·파트너십·채널 전략 모든 의사결정이 느려진다. 대표가 직접 꼽은 시급 과제.</p></div>
+        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">B2B 외주 의존 수익 구조</h3><p style="font-size:13.5px;color:var(--muted)">누적 2,140만 원 중 대부분이 블랙페이퍼 등 1회성 외주 수주. 외주 없는 달엔 현금흐름이 끊기는 구조 — B2C 반복 수익이 없으면 성장이 아닌 생존 게임이 된다. 대표 본인이 "외주 의존도 낮추기"를 시급 과제 1순위로 명시.</p></div>
+        <div class="card"><span class="t y">High</span><h3 style="margin:8px 0 6px">마케팅 체계 전무 · 웹사이트 미오픈</h3><p style="font-size:13.5px;color:var(--muted)">창업 이래 기획·제작에만 집중해 마케팅을 챙기지 못함. 광고비 집행 이력 없음. 웹사이트 미오픈으로 팬을 자체 허브로 데려올 수 없는 상태. 자연 유입으로 1.47만 팬덤을 만든 건 실력이지만, 이게 지속 가능한 성장 루틴이 되려면 최소한의 SOP가 필요하다.</p></div>
+      </div>
+      <div class="co bad"><span class="lab">진단 결론</span>콘텐츠 IP·팬덤 신뢰·B2B 레퍼런스는 이미 검증됐다. 문제는 이것들을 하나의 <b>브랜드 이야기</b>로 묶는 축이 없다는 것. 정체성이 정리되면 웹사이트·유튜브 멤버십·자체 오프라인 이벤트·B2B 패키징 모두 자연스럽게 방향이 생긴다. <b>정체성 재정비 → 반복 현금흐름 설계 → 마케팅 루틴</b> — 이 순서가 지금 크린지 프렌즈에 필요한 스텝이다.</div>
+    </section>
+
+    <!-- ── COMPANY ── -->
+    <section id="company">
+      <div class="sec-k">COMPANY & SIGNALS</div>
+      <h2>기업 · 정량 시그널</h2>
+      <p class="lead">2025년 10월 창업. 공동창업자 3인 소규모 팀. 인테이크 + 사업소개서 기반 — 주요 수치 확인 완료.</p>
+      <div class="grid2">
+        <div class="card">
+          <h3 style="margin-top:0">기업 기초</h3>
+          <div class="cards">
+            <div class="fcard"><div class="fk">기업명 / SNS</div><div class="fv">크린지 프렌즈 · @crngfriends</div></div>
+            <div class="fcard"><div class="fk">설립 / 사업자 등록</div><div class="fv">2025.10 창업</div><div class="fs">2026.02 개인사업자 등록</div></div>
+            <div class="fcard"><div class="fk">대표이사</div><div class="fv">이연주 CEO</div><div class="fs">전략·운영 총괄 / PwC·삼정KPMG 출신</div></div>
+            <div class="fcard"><div class="fk">조직 규모</div><div class="fv">3인 (공동창업자)</div><div class="fs">8월 투자·운영 인력 증원 예정</div></div>
+            <div class="fcard"><div class="fk">홈페이지</div><div class="fv">미오픈 (시급 과제)</div><div class="fs">crngfriends.com 준비 중</div></div>
+            <div class="fcard"><div class="fk">소재지</div><div class="fv">서울 중구</div><div class="fs">동호로14길 19, 4층 410호</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">정량 시그널 <span style="font-size:11px;color:var(--muted);font-weight:500">(인테이크 + 직접 확인)</span></h3>
+          <table>
+            <tr><td style="width:38%"><b>누적 매출</b></td><td>약 2,140만 원 <span class="t g">2026.05~ 발생</span></td></tr>
+            <tr><td><b>인스타그램</b></td><td>팔로워 7,745명 · 누적 조회수 536만 회 <span class="t b">38배 성장</span></td></tr>
+            <tr><td><b>유튜브</b></td><td>구독자 6,730명 · 누적 조회수 31만 회 <span class="t b">2.3배 성장</span></td></tr>
+            <tr><td><b>디스코드 커뮤니티</b></td><td>멤버 130명 <span class="t n">영상 링크 자연 유입</span></td></tr>
+            <tr><td><b>트레바리 모임</b></td><td>가오픈 신청 80명 → 실결제 23명 → 잔존 17명 <span class="t g">잔존율 74%</span></td></tr>
+            <tr><td><b>광고비 집행</b></td><td>0원 <span class="t n">광고 미집행</span></td></tr>
+            <tr><td><b>주요 파트너</b></td><td>블랙페이퍼, 포포, 하우스오브낭만, 말해보카, WIP, Hypebeast, 트레바리, 아워익스프레스, 럭스매거진, 053매거진</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <h3>팀 구성 · 역할</h3>
+      <div class="grid3">
+        <div class="card">
+          <h3 style="margin-top:0;font-size:13px">이연주 · CEO</h3>
+          <p style="font-size:13px;color:var(--muted)">콘텐츠 기획 총괄 + 운영(재무·회계·데이터 분석) + 대외 커뮤니케이션. PwC Consulting·삼정KPMG 출신 — 플랫폼 전략·디지털 신사업 이해도. ABKCO Music 뉴욕 본사 손익·전략 경험. NYU 경영.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0;font-size:13px">공동창업자 A · Creative Director</h3>
+          <p style="font-size:13px;color:var(--muted)">콘텐츠 기획·편집·제작 총괄. 크리에이터 @biinggala (1만 팔로워). 링글·Insta360 등 브랜드 광고 콘텐츠 제작. 최근 90일 누적 조회수 464만 회. 인하대 의류디자인·S/W.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0;font-size:13px">공동창업자 B · Visual Architect</h3>
+          <p style="font-size:13px;color:var(--muted)">디자인·시각화·촬영·편집·자체 콘텐츠 출연. 크리에이터 @cotta.tv (1.7만 팔로워). Jente·Thug Club 마케팅 협업. 053매거진·링롱댕 등 2030 매체 네트워크. 홍익대 건축학.</p>
+        </div>
+      </div>
+
+      <h3>주요 연혁</h3>
+      <div class="tl">
+        <div class="ph"><div class="pt">2025.10</div><div class="pb">크린지 프렌즈 창업, 핵심 팀 구성. &lt;소명을 찾아서&gt; 인터뷰 시리즈 SNS 연재 시작. 유럽 5개국 촬영 착수.</div></div>
+        <div class="ph"><div class="pt">2025.12</div><div class="pb">하입비스트, 럭스매거진, 아워익스프레스 등 매체 파트너십 확보. 유럽 5개국(영국·프랑스·네덜란드·독일·벨기에) 21건 인터뷰 촬영 완료. 인스타그램 인기 급상승.</div></div>
+        <div class="ph"><div class="pt">2026.02</div><div class="pb">크린지 프렌즈 개인사업자 등록.</div></div>
+        <div class="ph"><div class="pt">2026.03</div><div class="pb">트레바리 오프라인 자아 탐구 모임 정식 오픈 — 인기 모임 1위, 출시 2일차 완판. 가오픈 신청 80명.</div></div>
+        <div class="ph"><div class="pt">2026.04</div><div class="pb">블랙페이퍼 B2B 수주 (1,430만 원) — 여기어때 &lt;72시간 소개팅&gt; 시즌2 제작 참여. 워크인프로그레스(WIP) 공간 파트너십 체결.</div></div>
+        <div class="ph"><div class="pt">2026.05~</div><div class="pb">포포 &lt;죽어도 사랑해&gt; 제작 참여. 하우스오브낭만 × IAMSHOP 20주년 브랜드 캠페인 기획·제작. 말해보카 PPL·브랜디드 콘텐츠 제작. 누적 매출 2,140만 원 달성 (2026.06 현재).</div></div>
+      </div>
+
+      <h3>직접 리서치 캡처 — SNS · 채널</h3>
+      <div class="shots">
+        <figure class="shot">
+          <div class="sk">인스타그램 현황</div>
+          <div class="sph"><div class="ic">📸</div><div class="pl">@crngfriends 그리드 캡처</div></div>
+          <figcaption class="scap"><b>@crngfriends</b> · 팔로워 7,745명 · 숏폼·롱폼 혼합 · 25~34세 56%, 18~24세 27%</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="sk">유튜브 채널</div>
+          <div class="sph"><div class="ic">▶️</div><div class="pl">@CringeFriendsOfficial 채널</div></div>
+          <figcaption class="scap"><b>유튜브</b> · 구독자 6,730명 · &lt;소명을 찾아서&gt; 롱폼 인터뷰 시리즈 중심</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="sk">매체 피처링</div>
+          <div class="sph"><div class="ic">📰</div><div class="pl">하입비스트·럭스매거진 보도</div></div>
+          <figcaption class="scap"><b>Hypebeast KR (53.9만)</b> · "억지로 의미를 만들지 않아서 더 좋고, 보다 보면 나도 어딘가 떠나야 할 것 같은 기분이 든다"</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ── PRODUCT ── -->
+    <section id="product">
+      <div class="sec-k">PRODUCT & CHANNEL</div>
+      <h2>제품 · 서비스 · 채널</h2>
+      <p class="lead">B2C(콘텐츠·커뮤니티)와 B2B(제작 용역·브랜드 캠페인)가 병행. 채널은 인스타·유튜브·디스코드 — 자체 디지털 허브(웹사이트)가 없다.</p>
+
+      <h3>B2C 제품 · 서비스</h3>
+      <table>
+        <tr><th>제품/서비스</th><th>형태</th><th>현황</th><th>수익 연결</th></tr>
+        <tr><td><b>소명을 찾아서</b></td><td>인터뷰 시리즈 (롱폼·숏폼) — 6개국 21건 촬영 완료</td><td><span class="t g">주 1회 연재 중</span></td><td>유튜브 멤버십 (런칭 예정) · 광고 수익</td></tr>
+        <tr><td><b>숲케치북</b></td><td>신진 예술가의 꿈을 그려주는 콘텐츠</td><td><span class="t b">운영 중</span></td><td>콘텐츠 수익 · 브랜드 협업</td></tr>
+        <tr><td><b>트레바리 오프라인 모임</b></td><td>자아 탐구 커뮤니티 프로그램 · 인기 1위 완판</td><td><span class="t g">잔존율 74% 검증</span></td><td>참가비 (인당 35만 × 정산율 30% = 179만)</td></tr>
+        <tr><td><b>자체 오프라인 이벤트</b></td><td>워크숍·네트워킹</td><td><span class="t y">하반기 기획 예정</span></td><td>참가비 (자체 마진 100%)</td></tr>
+        <tr><td><b>디스코드 커뮤니티</b></td><td>온라인 자아 탐구 커뮤니티 · 멤버 130명</td><td><span class="t n">무료 운영</span></td><td>향후 유료 전환 옵션</td></tr>
+      </table>
+
+      <h3>B2B 제품 · 서비스</h3>
+      <table>
+        <tr><th>클라이언트</th><th>서비스 내용</th><th>규모</th><th>상태</th></tr>
+        <tr><td><b>블랙페이퍼 (여기어때)</b></td><td>콘텐츠 제작 용역 — &lt;72시간 소개팅&gt; 시즌2</td><td>1,430만 원</td><td><span class="t g">완료</span></td></tr>
+        <tr><td><b>포포</b></td><td>콘텐츠 제작 용역 — &lt;죽어도 사랑해&gt;</td><td>미공개</td><td><span class="t g">완료</span></td></tr>
+        <tr><td><b>하우스오브낭만 × IAMSHOP</b></td><td>브랜드 캠페인 기획·제작 — 20주년 콘텐츠</td><td>미공개</td><td><span class="t g">완료</span></td></tr>
+        <tr><td><b>말해보카</b></td><td>PPL·브랜디드 콘텐츠 제작</td><td>미공개</td><td><span class="t b">진행 중 추정</span></td></tr>
+      </table>
+
+      <h3>채널 현황</h3>
+      <div class="co ac"><span class="lab">채널 인벤토리</span>
+        <b>인스타그램</b> @crngfriends — 팔로워 7,745명 · 누적 조회수 536만 회 ·
+        <b>유튜브</b> @CringeFriendsOfficial — 구독자 6,730명 · 누적 조회수 31만 회 ·
+        <b>디스코드</b> 멤버 130명 ·
+        <b>운영진 SNS 합산</b> 2.7만 (교차 유입 채널 활용 중) ·
+        <b>웹사이트</b> crngfriends.com <span class="t r">미오픈 · 가장 시급한 과제</span><br>
+        <span style="color:var(--muted)">🎤 진단 포인트: SNS 채널은 훌륭하다. 비어 있는 건 "모든 채널을 묶는 자체 허브(웹사이트)" — 이게 없으면 팬이 어디서 더 깊이 참여할지 모른다. 운영진 개인 SNS(2.7만)가 공식 SNS(1.47만)보다 많다는 것도 체크 포인트.</span>
+      </div>
+    </section>
+
+    <!-- ── MARKET ── -->
+    <section id="market">
+      <div class="sec-k">COMPETITION & MARKET</div>
+      <h2>경쟁 · 시장 · 유사 케이스</h2>
+      <p class="lead">자아 탐구·진로 설계 민간 시장은 사실상 공백 — 정책과 민간 모두 역량 개발·취업 준비 후행 단계에 집중. 크린지 프렌즈가 선점할 수 있는 블루오션.</p>
+
+      <h3>시장 규모 (자사 추정 · 사업소개서 기반)</h3>
+      <div class="grid3">
+        <div class="card" style="text-align:center">
+          <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:6px">TAM</div>
+          <div style="font-size:22px;font-weight:800;color:var(--ink)">3,735억 원</div>
+          <div style="font-size:12.5px;color:var(--muted);margin-top:4px">전국 24~34세 직장인 + 19~34세 취업준비생</div>
+        </div>
+        <div class="card" style="text-align:center">
+          <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:6px">SAM</div>
+          <div style="font-size:22px;font-weight:800;color:var(--ink)">466억 원</div>
+          <div style="font-size:12.5px;color:var(--muted);margin-top:4px">번아웃·진로 불안 경험 청년</div>
+        </div>
+        <div class="card" style="text-align:center">
+          <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:6px">SOM (목표)</div>
+          <div style="font-size:22px;font-weight:800;color:var(--ac)">연 13억 원</div>
+          <div style="font-size:12.5px;color:var(--muted);margin-top:4px">수도권 오프라인 접근 청년 · 초기 5%</div>
+        </div>
+      </div>
+      <div class="co ac" style="margin-top:10px"><span class="lab">시장 배경</span>쉬었음 청년 72만 명 (CAGR 7%, 2025 기준) · 연평균 사회적 비용 11.2조 원 · 이 중 59%가 "직무 적합성 불일치"를 조기 퇴사 사유 1위로 꼽음 <span class="t b">Source: KOSIS, 한국경제인협회, 인크루트</span>. 자아 탐구 단계에 특화된 민간 서비스 공백 — 크린지 프렌즈가 개척하려는 시장.</div>
+
+      <h3>경쟁 지형</h3>
+      <table>
+        <tr><th>경쟁</th><th>포지션</th><th>크린지 프렌즈 시사점</th></tr>
+        <tr><td><b>트레바리</b></td><td>독서 모임 기반 커뮤니티 플랫폼</td><td>현재 협업 파트너 → 자체 플랫폼 전환 시 직접 경쟁. 잔존율 74% 이미 증명 → 이탈 방어 선제 필요</td></tr>
+        <tr><td><b>itdaa / LINKareer</b></td><td>현직자 멘토링·진로 탐색</td><td><span class="t n">인접</span> 정보 탐색 단계 — 크린지 프렌즈는 그 이전 자아 탐구 단계. 직접 충돌보다 연계 가능성</td></tr>
+        <tr><td><b>코멘토 / 탈잉 / 클래스101</b></td><td>역량 개발·직무 교육 플랫폼</td><td>후행 단계 — 크린지 프렌즈는 이 서비스들의 상위 깔때기(Top of Funnel) 포지션 가능</td></tr>
+        <tr><td><b>자기계발 유튜브 크리에이터</b></td><td>동기부여·자기계발 콘텐츠</td><td><span class="t y">간접 경쟁</span> 차별점: 성공 공식 아닌 "진행 중인 서사" 집중. 진정성 콘텐츠 전략으로 이미 차별화 완료</td></tr>
+        <tr><td><b>워크넷 / 청년인생설계학교</b></td><td>정부 자아 탐구 지원 정책</td><td>청년 친화도·접근성·지속성 모두 낮음 — 민간에서 보완하는 포지션</td></tr>
+      </table>
+
+      <h3>유사 케이스 매핑 (HIZ 케이스 풀)</h3>
+      <table>
+        <tr><th>케이스</th><th>인접도</th><th>시사점</th></tr>
+        <tr><td><b>콘텐츠 IP → 커뮤니티 → 플랫폼 전환</b></td><td><span class="t g">가장 가까움</span></td><td>미디어 팬덤을 커뮤니티 멤버십으로 전환하는 구조 — 수익 루프 설계가 핵심 과제</td></tr>
+        <tr><td><b>크리에이터 이코노미 브랜드</b></td><td><span class="t b">구조 유사</span></td><td>운영진 개인 SNS(2.7만) + 공식 SNS(1.47만) 교차 구조 — 개인 브랜드와 회사 브랜드 분리 설계 필요</td></tr>
+        <tr><td><b>커뮤니티 기반 D2C</b></td><td><span class="t n">인접</span></td><td>팬덤 → 유료 멤버십 → 오프라인 행사 전환 공식 — 잔존율 74% 검증됐으므로 즉시 적용 가능</td></tr>
+      </table>
+
+      <div class="co ac band"><span class="lab">시장 시사</span>자아 탐구 민간 시장은 공백이고, 크린지 프렌즈는 이미 1.47만 팬덤으로 선점에 성공했다. 문제는 이 팬덤이 <b>"크린지 프렌즈 브랜드의 팬"인지 "운영진 개인의 팬"인지</b> 아직 불분명하다는 것. 브랜드 축이 서면 커뮤니티·플랫폼·B2B 모두가 하나의 이야기로 수렴된다.</div>
+    </section>
+
+    <!-- ── REVENUE ── -->
+    <section id="revenue">
+      <div class="sec-k">MONETIZATION GUIDE</div>
+      <h2>수익화 전략 · 벤치마킹</h2>
+      <p class="lead">외주 의존 탈피 + 자체 콘텐츠/서비스 수익화에 성공한 사례들의 공통 패턴, 그리고 크린지 프렌즈가 실제로 가동할 수 있는 단계별 경로.</p>
+
+      <h3>글로벌·국내 벤치마킹 케이스</h3>
+      <div class="co ac band"><span class="lab">공통 패턴</span><b>① 무료 콘텐츠로 신뢰 축적 → ② 유료 경험(오프라인·코호트) → ③ 커뮤니티 멤버십 → ④ B2B 기업 교육</b>. 크린지 프렌즈는 이미 ①을 마쳤다. ②③을 아직 하지 않은 상태.</div>
+      <table>
+        <tr><th style="width:18%">케이스</th><th style="width:20%">무료 채널</th><th style="width:24%">자체 수익화 방법</th><th style="width:18%">핵심 전환점</th><th>크린지 시사점</th></tr>
+        <tr>
+          <td><b>School of Life</b><br><span class="t b">UK · 자아탐구</span></td>
+          <td>YouTube 8M 구독 (철학·심리·자아 탐구 콘텐츠 무료)</td>
+          <td>온라인 코스 £30~200 · 오프라인 워크숍 · 책·굿즈 · B2B 기업 교육</td>
+          <td>"지식을 팔지 않고 경험을 판다" — 콘텐츠 → 배움의 경험으로 상품화</td>
+          <td><span class="t g">가장 가깝다</span> "소명을 찾아서" = SoL 인터뷰 시리즈와 구조 동일. 한국어 버전 포지션 가능.</td>
+        </tr>
+        <tr>
+          <td><b>On Being (Krista Tippett)</b><br><span class="t b">US · 의미·목적 인터뷰</span></td>
+          <td>팟캐스트·공영라디오 (삶의 의미, 소명 인터뷰 시리즈)</td>
+          <td>청취자 멤버십 기부 · 라이브 이벤트 · 재단·파트너십</td>
+          <td>인터뷰 IP → 커뮤니티 멤버십. "이 대화가 계속되길 원한다면 멤버가 돼주세요."</td>
+          <td><span class="t g">포맷 완전 동일</span> 인터뷰 후 "이 시리즈를 응원하고 싶다면" 멤버십 전환 멘트 직접 벤치마크.</td>
+        </tr>
+        <tr>
+          <td><b>The Futur (Chris Do)</b><br><span class="t b">US · 크리에이터 교육</span></td>
+          <td>YouTube 3.3M (디자인·비즈니스 무료 강의)</td>
+          <td>유료 Pro 커뮤니티 $99/월 · 코스 $500~2,000 · 코칭·이벤트</td>
+          <td>무료 콘텐츠 신뢰 → 유료 커뮤니티 전환. 디스코드를 멤버십 허브로 활용.</td>
+          <td>디스코드 130명 → 유료 커뮤니티 전환 참고. "무료 소비자 → 유료 멤버" 전환 경로.</td>
+        </tr>
+        <tr>
+          <td><b>폴인 (fol:in)</b><br><span class="t n">KR · 지식 미디어</span></td>
+          <td>뉴스레터·무료 아티클 (커리어·자기계발)</td>
+          <td>멤버십 월정액 → B2B 기업 교육 → 카카오 인수</td>
+          <td>무료 콘텐츠 독자 → 멤버십 → B2B 교육. B2C 안정화 후 B2B 확장.</td>
+          <td>B2C 멤버십으로 현금흐름 안정화 후 B2B 고단가 확장. 크린지의 2~3년 차 모델.</td>
+        </tr>
+        <tr>
+          <td><b>트레바리</b><br><span class="t n">KR · 오프라인 커뮤니티</span></td>
+          <td>—</td>
+          <td>시즌 멤버십 약 23만원 · B2B 기업 독서모임</td>
+          <td>오프라인 모임 → 유료 구조화 → B2B 기업 확장.</td>
+          <td>크린지는 지금 트레바리 <i>안에</i> 있다. 자체 독립 시 정산 30% → 마진 100%로 전환. 이탈 타이밍이 중요.</td>
+        </tr>
+        <tr>
+          <td><b>체인지업 (면접왕 이형)</b><br><span class="t g">KR · 가장 가깝다</span></td>
+          <td>유튜브 60만 구독 (취업·커리어 무료 콘텐츠)</td>
+          <td>Freemium 구조: 디스코드 커뮤니티 무료 입장 → 심화 클래스·1:1 커피챗·AI 도구·4주 캠프(8.9만원) 유료. DTS 챌린지(평일 매일 5가지 인증)로 무료 참여자를 유료 전환.</td>
+          <td>콘텐츠 IP → 디스코드 All-in → Freemium 수익화. 외주 없이 자체 B2C 구조 완성.</td>
+          <td><span class="t g">즉시 적용 가능</span> 디스코드 130명 대상 "소명 탐구 데일리 챌린지" 운영 → 유료 코호트 전환 레버. 구독자 40배 차이가 있지만 <b>방법론</b>은 그대로 쓸 수 있다.</td>
+        </tr>
+      </table>
+
+      <h3>크린지 프렌즈 수익화 경로 (단계별)</h3>
+      <div class="co warn"><span class="lab">핵심 원칙</span>지금 당장 "모든 걸 동시에" 수익화하면 팬덤이 피로해진다. <b>① 자체 경험 → ② 디지털 자산 → ③ 코호트 → ④ 멤버십</b> 순서로, 팬이 자연스럽게 돈을 쓰고 싶어지는 경로를 먼저 만드는 게 우선이다. B2B는 지속하되 포지셔닝·단가 올리기.</div>
+      <table>
+        <tr><th style="width:12%">단계</th><th style="width:20%">수익원</th><th>구조</th><th style="width:22%">단가 × 규모 (초기 예시)</th><th style="width:12%">준비 기간</th></tr>
+        <tr>
+          <td><span class="t g">① 즉시</span></td>
+          <td><b>자체 오프라인 프로그램</b></td>
+          <td>트레바리 병행 or 독립. 크린지 브랜드 자체 자아탐구 워크숍·모임. 장소는 WIP 파트너십 활용 가능.</td>
+          <td>15만 × 25명 = <b>375만/회</b><br><span style="font-size:12px;color:var(--muted)">(트레바리 정산 기준 ~160만 vs 자체 375만)</span></td>
+          <td>즉시 가능</td>
+        </tr>
+        <tr>
+          <td><span class="t g">② 1~2개월</span></td>
+          <td><b>디지털 자산 판매</b></td>
+          <td>소명탐구 워크북 PDF / 자아탐구 가이드 Notion 템플릿. 인스타·유튜브 영상 속 링크로 직접 연결. Gumroad 또는 자체 결제 페이지.</td>
+          <td>9,900원 × 200명 = <b>198만</b><br><span style="font-size:12px;color:var(--muted)">(1회 판매, 재고 없음)</span></td>
+          <td>2~4주</td>
+        </tr>
+        <tr>
+          <td><span class="t b">③ 1~2개월</span></td>
+          <td><b>뉴스레터 유료화</b></td>
+          <td>Stibee / Substack. 기존 무료 구독자 기반 + 유료 전용 에세이·인터뷰 후기·미공개 콘텐츠. "소명을 찾아서 제작 비하인드" 유료 레이어.</td>
+          <td>9,900원/월 × 200명 = <b>198만/월</b><br><span style="font-size:12px;color:var(--muted)">(현재 뉴스레터 있으면 즉시 전환 가능)</span></td>
+          <td>2~4주</td>
+        </tr>
+        <tr>
+          <td><span class="t r">④ 2~3개월 ★</span></td>
+          <td><b>코호트 프로그램</b></td>
+          <td>"소명을 찾아서" IP 기반 6주 자아탐구 코스. 소그룹 집중형 (온·오프 혼합). 인터뷰이 초청 Q&A 포함 → 팬에게 특별한 경험 제공. 기수당 20~25명 정원.</td>
+          <td>39만 × 20명 = <b>780만/기수</b><br>연 4기 = <b>3,120만</b></td>
+          <td>4~6주 준비</td>
+        </tr>
+        <tr>
+          <td><span class="t b">⑤ 3~4개월</span></td>
+          <td><b>커뮤니티 유료 멤버십</b></td>
+          <td>Discord 유료 채널 or 자체 멤버십 플랫폼(Notion/웹사이트). 전용 콘텐츠·월 Q&A·오프라인 이벤트 우선 예약 혜택.</td>
+          <td>2만원/월 × 100명 = <b>200만/월</b><br><span style="font-size:12px;color:var(--muted)">(디스코드 130명 기반 전환)</span></td>
+          <td>웹사이트 오픈 후</td>
+        </tr>
+        <tr>
+          <td><span class="t n">⑥ 지속</span></td>
+          <td><b>B2B 패키지 고도화</b></td>
+          <td>단순 외주 → "자아탐구 콘텐츠 캠페인 전문" 포지셔닝. 기업 ESG·MZ 소통 교육·강연 패키지 추가. 팬덤·리서치 자산으로 단가 협상력 상승.</td>
+          <td>700~1,500만/건<br><span style="font-size:12px;color:var(--muted)">(현재 500만/건 → 단가 인상)</span></td>
+          <td>정체성 정립 후</td>
+        </tr>
+      </table>
+
+      <h3>6개월 매출 시뮬레이션</h3>
+      <div class="grid2">
+        <div class="card">
+          <h3 style="margin-top:0">보수적 시나리오 (~3,000만)</h3>
+          <table>
+            <tr><td>B2B 외주 유지 (3건 × 500만)</td><td><b>1,500만</b></td></tr>
+            <tr><td>자체 오프라인 프로그램 2회</td><td><b>750만</b></td></tr>
+            <tr><td>코호트 1기</td><td><b>600만</b></td></tr>
+            <tr><td>디지털 워크북 + 뉴스레터 3개월</td><td><b>250만</b></td></tr>
+            <tr><td style="font-weight:700;color:var(--ink)">합계</td><td style="font-weight:800;color:var(--ink);font-size:16px">~3,100만</td></tr>
+          </table>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">적극적 시나리오 (~6,000만)</h3>
+          <table>
+            <tr><td>B2B 고도화 (5건 × 700만)</td><td><b>3,500만</b></td></tr>
+            <tr><td>코호트 2기 (39만 × 20명 × 2)</td><td><b>1,560만</b></td></tr>
+            <tr><td>자체 오프라인 3회</td><td><b>900만</b></td></tr>
+            <tr><td>멤버십·디지털 3개월</td><td><b>500만</b></td></tr>
+            <tr><td style="font-weight:700;color:var(--ac)">합계</td><td style="font-weight:800;color:var(--ac);font-size:16px">~6,460만</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="co ok"><span class="lab">결론</span>목표(5천만) 달성 가능 범위 안에 있다. 가장 빠른 레버 2개: <b>① 자체 오프라인 프로그램 독립 (즉시)</b> + <b>④ 코호트 프로그램 런칭 (2~3개월)</b>. B2B는 기존 유지하되 단가 올리기. 뉴스레터·멤버십은 장기 복리로 쌓이는 구조 — 급하게 하지 않아도 됨.</div>
+
+      <h3>콘텐츠 정체기 탈출 전략</h3>
+      <div class="co bad"><span class="lab">정체기 진단 (가설)</span>구독자·팔로워 성장이 느려진 이유 — <b>롱폼 의존 + 업로드 빈도 낮음 + 숏폼 미활용</b>의 조합. 새 촬영 없이 기존 21건 인터뷰 자산 클리핑만으로 숏폼 콘텐츠 60~100개 확보 가능. 지금 당장 실행 가능한 가장 빠른 레버.</div>
+      <div class="teach">
+        <div class="ti"><b>① 숏폼 클리핑 (즉시 · 가장 빠른 레버)</b> — 롱폼 인터뷰 1편에서 30~60초 핵심 순간 3~5개를 추출해 릴스·쇼츠로 업로드. 기존 21건 인터뷰 = 클립 63~105개. 새 촬영 없이 6~15주치 숏폼 콘텐츠 즉시 확보. 알고리즘 노출 빈도가 3~5배 올라간다.</div>
+        <div class="ti"><b>② 제목·썸네일 SEO 전환</b> — "소명을 찾아서 EP.1" 같은 제목 대신 "나는 뭘 하면서 살아야 하나", "20대 진로 고민", "사회초년생 번아웃", "퇴사하고 싶다" 등 타겟이 실제로 검색하는 키워드를 제목 앞에. 기존 업로드 영상 제목 리뉴얼만으로도 알고리즘 신호 개선.</div>
+        <div class="ti"><b>③ 시즌제 구조화 + 팬 참여 캠페인</b> — "소명을 찾아서 시즌1 파이널" 영상 + "시즌2 인터뷰이를 추천해주세요" 캠페인. 팬이 직접 참여하는 공모 = 댓글·공유 급증. "내 추천이 채택됐다"는 참여 유인. 시즌 전환으로 기대감 리셋.</div>
+        <div class="ti"><b>④ 인접 크리에이터 콜라보 (비용 없는 팔로워 확장)</b> — 유사 타겟(2030 자기계발·진로·라이프스타일) 1만+ 크리에이터와 교차 출연·콜라보. 크린지 프렌즈는 이미 하입비스트·럭스매거진 피처링 레퍼런스가 있어 콜라보 제안이 쉬운 포지션. 광고비 0원으로 신규 팔로워 유입.</div>
+        <div class="ti"><b>⑤ 커뮤니티 내 팬 이야기 콘텐츠화</b> — 디스코드 130명, 트레바리 17명이 가진 "소명 고민" 이야기를 콘텐츠 소재로 활용. "시청자의 소명 고민 대신 물어봤습니다" 시리즈. 팬이 콘텐츠 참여자가 되는 순간 팬덤 결속력이 올라가고, 공유율이 올라간다.</div>
+      </div>
+    </section>
+
+    <!-- ── NEEDS ── -->
+    <section id="needs">
+      <div class="sec-k">SWOT & NEEDS</div>
+      <h2>SWOT · 니즈 (SPIN + JTBD)</h2>
+      <p class="lead">표면 = "마케팅 체계화". 진짜 = 정체성 재정비 후 B2C 반복 수익 구조 설계. <span class="t g">인테이크 기반</span></p>
+      <div class="swot">
+        <div class="sw s"><h4>Strengths</h4><ul>
+          <li>광고 0원으로 1.47만 팬덤 — 진정성 콘텐츠 실력 검증</li>
+          <li>팬덤 신뢰도 높음 — 운영진에 대한 진심 신뢰</li>
+          <li>콘텐츠 IP 다각화 — &lt;소명을 찾아서&gt;, 숲케치북</li>
+          <li>글로벌 네트워크 — 유럽 6개국 21건 촬영 완료</li>
+          <li>트레바리 잔존율 74% — 커뮤니티 충성도 실증</li>
+          <li>B2B 레퍼런스 다양화 — 블랙페이퍼·포포·하우스오브낭만·말해보카</li>
+          <li>CEO 컨설팅 출신 전략 기획 역량 (PwC·삼정KPMG)</li>
+        </ul></div>
+        <div class="sw w"><h4>Weaknesses</h4><ul>
+          <li>브랜드 정체성 불명확 — 내부 합의 부재</li>
+          <li>B2B 외주 의존 · B2C 반복 수익 無</li>
+          <li>웹사이트 미오픈 — 자체 디지털 허브 없음</li>
+          <li>마케팅 체계 전무 — 광고 0원, SOP 없음</li>
+          <li>3인 소규모 — 실행 병목 위험</li>
+          <li>운영진 개인 SNS > 공식 SNS — 브랜드 종속 위험</li>
+        </ul></div>
+        <div class="sw o"><h4>Opportunities</h4><ul>
+          <li>자아 탐구 민간 시장 공백 — 선점 가능</li>
+          <li>쉬었음 청년 72만명 (CAGR 7%) 타겟 시장 확대</li>
+          <li>유튜브 멤버십 → 자체 플랫폼 구독 전환 경로 명확</li>
+          <li>트레바리 → 자체 오프라인 프로그램 독립 가능</li>
+          <li>유럽 콘텐츠 IP로 글로벌 확장 기반 확보</li>
+          <li>B2B 패키징 고도화 시 단가 상승 가능</li>
+        </ul></div>
+        <div class="sw tt"><h4>Threats</h4><ul>
+          <li>콘텐츠 미디어 시장 포화 — 차별화 지속 필요</li>
+          <li>운영진 개인 SNS 의존 → 이탈 시 브랜드 위기</li>
+          <li>트레바리 플랫폼 종속 — 자체 독립 타이밍 놓치면 교섭력 약화</li>
+          <li>B2B 외주 단가 압박·관계 의존 리스크</li>
+          <li>3인 팀 — 핵심 인력 이탈 시 운영 리스크</li>
+        </ul></div>
+      </div>
+
+      <h3>Pain Hierarchy (표면 → 근본)</h3>
+      <div class="co"><b>L1 표면</b> "마케팅 체계화가 필요함 / 광고를 못 챙겼다" → <b>L2 전술</b> 지금까지 제작에만 집중해 팬덤을 매출로 연결하는 채널·SOP가 없음 → <b>L3 전략</b> B2C와 B2B 중 어디에 집중할지, 크린지 프렌즈가 뭔지 정리가 안 된 상태 → <b>L4 근본</b> "우리의 정체성이 무엇인가?"에 대한 내부 합의 부재 → 모든 의사결정이 흔들림</div>
+      <div class="co ac band"><span class="lab">표면 vs 진짜 니즈</span>표면 = "마케팅·웹사이트". 진짜 = <b>브랜드 정체성 축 정의 → 반복 현금흐름 설계 → 마케팅 SOP</b> 순서. 정체성 없이 광고를 때리면 메시지가 분산된다. 팬덤이 "크린지 프렌즈"가 아닌 운영진 개인의 팬인 상태가 지속되면 브랜드가 아닌 개인에 모든 게 종속된다. 브랜드라이즈가 이 구조를 바꾸는 설계를 해줄 수 있다.</div>
+    </section>
+
+    <!-- ── DEAL ── -->
+    <section id="deal">
+      <div class="sec-k">FIT & ESTIMATE</div>
+      <h2>기회 평가 · 견적 (가설)</h2>
+      <div class="verdict"><div class="vl">종합 기회 적합도 (인테이크 기반)</div><div class="vv">4.2 / 5.0</div><div class="vd">✅ GO — 니즈핏 강·팬덤 이미 검증·CEO 직접 참여. 감점: 초기 스타트업 예산 타이트 가능성</div></div>
+      <div class="grid2">
+        <div class="card"><h3 style="margin-top:0">적합도 (가중)</h3><table>
+          <tr><td>니즈-핏 30%</td><td><b>5</b></td><td>브랜딩·수익모델 설계 = 코어 서비스 완벽 핏</td></tr>
+          <tr><td>예산 20%</td><td><b>3</b></td><td>초기 스타트업 — 예산 타이트 가능성</td></tr>
+          <tr><td>의사결정 15%</td><td><b>5</b></td><td>3인 소규모 → 빠른 결정 · CEO 직접 대응</td></tr>
+          <tr><td>긴급도 15%</td><td><b>5</b></td><td>연말 목표(5천만~1억)·정체성 재정비 모두 즉시 시급</td></tr>
+          <tr><td>성장·레퍼런스 20%</td><td><b>4</b></td><td>자아 탐구 시장 개척 선례 = 高 레퍼런스 가치</td></tr>
+        </table></div>
+        <div class="card"><h3 style="margin-top:0">리스크 5종 · GO 분기점</h3><table>
+          <tr><td>의사결정</td><td><span class="t g">✅</span> CEO 직접 참여 · 빠른 결정 구조</td></tr>
+          <tr><td>예산 흡수</td><td><span class="t y">⚠️</span> 초기 스타트업 — T1 소형 계약 우선 설계</td></tr>
+          <tr><td>니즈 핏</td><td><span class="t g">✅</span> 정체성·수익모델·마케팅 SOP 완벽 핏</td></tr>
+          <tr><td>실행 병목</td><td><span class="t y">⚠️</span> 3인 팀 — 컨설팅 실행 지원 범위 협의 필요</td></tr>
+          <tr><td>레퍼런스 가치</td><td><span class="t g">✅</span> 자아탐구 스타트업 선례 = 신규 버티컬 개척</td></tr>
+        </table></div>
+      </div>
+
+      <h3>HIZ Tier 기준선 → 3-Tier 견적 (초안)</h3>
+      <table>
+        <tr><th>Tier</th><th>기준 단가</th><th>본 건</th></tr>
+        <tr><td>T1</td><td>500~1,500만</td><td><span class="t b">T1 정체성 진단 + 수익모델 방향 500~800만 (권장 입구)</span></td></tr>
+        <tr><td><b>T2 Build</b></td><td>1,500~3,000만</td><td><span class="t r">브랜드 빌드 + 채널 전략 + 마케팅 SOP (핵심)</span></td></tr>
+        <tr><td>T3 Scale</td><td>3,000만+</td><td>플랫폼 전략 + B2B 체계화 + 스케일 설계</td></tr>
+      </table>
+      <div class="tiers">
+        <div class="tier">
+          <div class="tn">🟢 T1 · 정체성 진단</div>
+          <div class="tt">브랜드 축·수익모델 방향·채널 진단 (입구)</div>
+          <div class="tp">500~800만</div>
+          <div class="td">4주</div>
+          <ul>
+            <li>크린지 프렌즈 브랜드 정체성 축 정의</li>
+            <li>B2C vs B2B 역할 구조화</li>
+            <li>반복 현금흐름 모델 우선순위 분석</li>
+            <li>채널 현황 진단 (인스타·유튜브·디스코드)</li>
+            <li>웹사이트 전략 방향 수립</li>
+          </ul>
+        </div>
+        <div class="tier rec">
+          <div class="rb">추천</div>
+          <div class="tn">🔵 T2 · 브랜드 빌드</div>
+          <div class="tt">정체성 + 수익구조 + 마케팅 SOP 설계</div>
+          <div class="tp">1,500~2,500만</div>
+          <div class="td">3개월</div>
+          <ul>
+            <li>T1 진단 +</li>
+            <li>브랜드 메시지·비주얼 가이드라인</li>
+            <li>유튜브 멤버십 → 자체 구독 전환 설계</li>
+            <li>자체 오프라인 프로그램 패키징</li>
+            <li>B2B 서비스 패키징 + 단가 전략</li>
+            <li>웹사이트 기획 + 마케팅 SOP</li>
+          </ul>
+        </div>
+        <div class="tier">
+          <div class="tn">🟣 T3 · 스케일 설계</div>
+          <div class="tt">플랫폼 전략 + B2B 체계화 + 성장 로드맵</div>
+          <div class="tp">3,000만+</div>
+          <div class="td">6개월</div>
+          <ul>
+            <li>T2 전체 +</li>
+            <li>자아 탐구 O2O 플랫폼 기획·전략</li>
+            <li>B2B 영업 체계화 + 신규 버티컬 확장</li>
+            <li>Pre-Seed 투자 유치 준비 지원</li>
+            <li>아시아 글로벌 확장 콘텐츠 전략</li>
+          </ul>
+        </div>
+      </div>
+      <div class="co warn"><span class="lab">패키징 원칙</span>초기 스타트업 특성상 예산 유연성 제한 가능 → <b>T1 진단 500~800만으로 부담 없는 입구</b> 제안. 연말 목표 달성 로드맵이 T1 결과물 → T2 승급 자연 연결. 계약 규모보다 <b>자아 탐구 시장 개척 사례 레퍼런스 확보</b>가 HIZ 자산 측면에서 중요.</div>
+    </section>
+
+    <!-- ── CONSULT ── -->
+    <section id="consult">
+      <div class="sec-k">MEETING FLOW</div>
+      <h2>상담 진행</h2>
+      <p class="lead">이번 상담의 목적은 수주가 아닌 가이드. 콘텐츠 실력은 이미 검증됐다 — 제3자 전문가 관점에서 두 가지 핵심 문제를 짚어주고, 실행 가능한 방향을 제시하는 것이 오늘의 목표.</p>
+      <div class="co ac"><span class="lab">아이스브레이킹</span>"광고비 0원, 창업 8개월에 블랙페이퍼·하우스오브낭만·말해보카 레퍼런스까지 — 솔직히 여기까지 온 것 자체가 대단해요. 오늘은 잘하고 있는 거 확인하는 자리가 아니라, 이 실력이 '브랜드로 쌓이려면' 뭐가 필요한지 같이 생각해보는 자리예요. <b>오늘 어떤 걸 얻어가시면 좋겠어요?</b>" → 먼저 듣는다. 대표가 먼저 말한 그 언어로 이후 Teaching을 연결해야 꽂힌다.</div>
+
+      <h3>60분 타임라인</h3>
+      <div class="tlp"><div class="tpt">0–8분<br>P1</div><div class="tpc"><h4>라포 + 프레임 설정</h4><p>구체적 수치로 실력 인정. 상담 목적을 "방향 잡는 자리"로 먼저 설정. "오늘 어떤 걸 얻어가시면 좋겠어요?" — 대표가 먼저 말하면 이후 인사이트가 훨씬 잘 꽂힌다.</p><div class="say">"광고비 한 번 안 쓰고 이 팬덤과 레퍼런스를 만든 건 — 콘텐츠 실력이에요."</div></div></div>
+      <div class="tlp"><div class="tpt">8–25분<br>P2 ★</div><div class="tpc"><h4>진단 1 — 정체성</h4><p>Q1 → Q2 → Q3 순서로. "제가 이해한 게 맞는지" 프레임으로 풍부하게 말하게. 답이 모호하면 끌어올리고, 답이 명확하면 왜 외부에서 안 보이는지 파고든다. 이 단계에서 충분히 들어야 P4 Teaching이 꽂힌다.</p><div class="say">"세 분이 각자 대답하면 같은 답이 나와요?"</div></div></div>
+      <div class="tlp"><div class="tpt">25–40분<br>P3 ★</div><div class="tpc"><h4>진단 2 — 수익 구조</h4><p>Q4 → Q5 → Q+심화 순서. 직접 말하지 않고 질문으로 끌어내는 것이 포인트 — 대표 스스로 "아, 이게 문제구나"를 발견해야 설득이 필요 없다.</p><div class="say">"외주 빼고 순수하게 크린지 프렌즈 자체로 나온 돈이 지금까지 있나요?"</div></div></div>
+      <div class="tlp"><div class="tpt">40–52분<br>P4 ★</div><div class="tpc"><h4>인사이트 공유 + 방향 제시</h4><p>Teaching 3개 전달 — 반드시 P2·P3에서 대표가 한 말에 연결해서. 이후 체인지업·소명 프로젝트 사례 소개. 3가지 실행 옵션 제시는 "이런 방법이 있다"지, "이걸 하라"가 아니다.</p><div class="say">"방금 말씀하신 게 정확히 이거예요." / "이게 해결되면 어떤 그림이 나오는지 같이 볼게요."</div></div></div>
+      <div class="tlp"><div class="tpt">52–58분<br>P5</div><div class="tpc"><h4>실행 우선순위 정리</h4><p>지금 바로 할 수 있는 것 / 1~2개월 후 / 장기로 나눠서. 모든 걸 한꺼번에 하면 아무것도 안 된다는 것을 명확히. 팀 3명의 실행 여력을 고려해서 현실적으로.</p></div></div>
+      <div class="tlp"><div class="tpt">58–60분<br>P6</div><div class="tpc"><h4>정리 + 다음 단계</h4><p>"오늘 핵심 3가지만 요약하면 ___." 확인 후, 스스로 할 수 있는 것 vs 도움이 필요한 것 자연스럽게 구분. 제안서 얘기는 대표가 먼저 물어보면 하고, 안 하면 안 꺼낸다.</p></div></div>
+
+      <h3>핵심 질문 — [진단 1] 정체성</h3>
+      <div class="q"><div class="qn">Q1 · 정체성 한 줄 (가장 먼저, 가장 중요)</div><div class="qt">"크린지 프렌즈를 한 줄로 설명한다면 뭐라고 하세요? 지금 세 분이 각자 대답하면 같은 답이 나와요?"</div><div class="qi">정체성 합의 수준 확인. 답이 다르면 — 내부 합의가 없는 것이 근본 원인. 답이 같으면 — 왜 외부 팬에게는 그게 안 느껴지는가로 파고들 것. 어느 쪽이든 Teaching ①로 자연 연결된다.</div></div>
+      <div class="q"><div class="qn">Q2 · 5년 후 그림</div><div class="qt">"5년 후 크린지 프렌즈가 어떤 회사이길 원해요? 미디어·커뮤니티 플랫폼·콘텐츠 제작사 — 셋 중 하나만 골라야 한다면?"</div><div class="qi">셋이 동시에 가능하지만, 무엇을 중심에 놓느냐에 따라 웹사이트 구조·채용·수익모델이 완전히 달라진다. 대표 본인의 비전이 가장 중요한 데이터. 명확하게 안 나오면 그것 자체가 오늘 가장 큰 발견이다.</div></div>
+      <div class="q"><div class="qn">Q3 · CTA 구조</div><div class="qt">"소명을 찾아서 영상을 끝까지 다 본 시청자가, 그 다음에 뭘 해야 하는지 지금 알 수 있어요? 어디로 가면 되나요?"</div><div class="qi">콘텐츠 → 커뮤니티 전환 장치 유무 확인. 없다면 — 팬이 팬으로만 남고 고객이 되지 않는 구조적 이유. 면접왕 이형의 "모의면접 신청" 구조와 연결해서 설명 가능.</div></div>
+
+      <h3>핵심 질문 — [진단 2] 수익 구조</h3>
+      <div class="q"><div class="qn">Q4 · B2C 수익 현황</div><div class="qt">"외주 작업 빼고, 순수하게 크린지 프렌즈 자체 콘텐츠나 서비스로 나온 돈이 지금까지 있나요?"</div><div class="qi">B2C 수익 제로 상태를 직접 말하지 않고 질문으로 끌어내는 것이 포인트. 대표가 스스로 "없어요"라고 말하는 순간, Teaching ②·③이 자연스럽게 꽂힌다. 강요 없이 발견하게.</div></div>
+      <div class="q"><div class="qn">Q5 · 트레바리 독립 병목</div><div class="qt">"트레바리 잔존율 74%면 꽤 높아요. 그런데 자체 프로그램으로 가져가지 않고 트레바리 안에 있는 이유가 뭐예요? 뭐가 막혀 있어요?"</div><div class="qi">장소·결제·홍보·자신감 중 어디에 막혔는지 파악. 트레바리 정산 30% vs 자체 100% 수치는 직접 말하지 않아도 됨 — 대표가 스스로 계산하게 두는 게 낫다.</div></div>
+      <div class="q"><div class="qn">Q+ · 간절한 순간 (심화 · P3 후반)</div><div class="qt">"지금 팬들이 가장 간절한 순간이 언제예요? 영상 끝까지 보고 가장 공감한 그 순간에 크린지 프렌즈가 줄 수 있는 게 뭔가요?"</div><div class="qi">수익 모델 설계의 핵심. "타겟이 돈 없는 사람이 아니라 간절한 사람"이라는 것을 대표 스스로 발견하게 하는 것이 목표. Teaching ③으로 연결.</div></div>
+
+      <h3>Challenger Teaching 3</h3>
+      <div class="co warn" style="margin-bottom:14px"><span class="lab">Teaching 원칙</span>반드시 P2·P3에서 대표가 한 말에 연결해서. "방금 말씀하신 게 정확히 이거예요" — 강의가 아니라 대화 속 발견이어야 꽂힌다.</div>
+      <div class="teach">
+        <div class="ti"><b>① 콘텐츠 다음이 없습니다.</b> "소명을 찾아서"를 끝까지 본 팬이 그 다음에 뭘 해야 하는지 모른다. 인스타·유튜브·디스코드·트레바리에 팬이 흩어진 채, 이 채널들을 하나로 묶는 허브가 없다. 면접왕 이형이 "모의면접 신청"으로 시청자를 참여자로 바꾼 것처럼 — 콘텐츠를 보는 사람을 "참여하는 사람"으로 전환하는 장치가 필요하다. 시청자 공개 모집 프로그램이 이 역할을 할 수 있다.</div>
+        <div class="ti"><b>② 팬덤이 브랜드가 아닌 운영진 개인에 쌓여 있습니다.</b> 공식 SNS(1.47만)보다 운영진 개인 SNS(2.7만)가 더 크다. 지금 팬들이 "크린지 프렌즈"를 믿는 건지, "이연주·최희건·정세운"을 믿는 건지 — 브랜드가 없으면 사람이 떠날 때 팬덤도 같이 흔들린다. 콘텐츠 실력은 이미 증명됐다. 이제 그 실력이 개인이 아닌 브랜드 자산으로 쌓이는 구조가 필요한 시점이다.</div>
+        <div class="ti"><b>③ 타겟이 "돈 없는 사람"이 아니라 "간절한 사람"입니다.</b> 취준생·이직자는 평소엔 아끼지만, "이게 내 방향을 잡아준다면" 30만원도 낸다. 문제는 그 간절한 순간에 크린지 프렌즈가 줄 수 있는 상품이 없다는 것. 영상 콘텐츠를 유료화하는 게 아니라 — 팬이 가장 간절한 그 순간에 필요한 경험(진단·프로그램·커뮤니티)을 만드는 것이 답이다.</div>
+      </div>
+
+      <h3>인사이트 공유 — 벤치마킹 케이스 2개</h3>
+      <div class="grid2">
+        <div class="card">
+          <h3 style="margin-top:0">체인지업 (면접왕 이형)</h3>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:10px">유튜브 60만 → 디스코드 All-in → Freemium 구조</p>
+          <table>
+            <tr><td style="width:38%"><b>무료</b></td><td>디스코드 커뮤니티 입장 · 매뉴얼</td></tr>
+            <tr><td><b>유료</b></td><td>심화 클래스 · 커피챗 1:1 · 4주 캠프 8.9만원</td></tr>
+            <tr><td><b>핵심 장치</b></td><td>DTS 챌린지 — 평일 매일 5가지 인증·스터디 습관화 → 유료 전환</td></tr>
+          </table>
+          <div class="co ac" style="margin:10px 0 0;padding:11px 14px;font-size:13px"><b>크린지 적용 포인트</b>: 디스코드 130명 대상 "소명 탐구 데일리 챌린지" — 매일 질문 하나 + 인증. 콘텐츠 소비자 → 참여자 전환의 가장 빠른 레버. 진입 장벽 없이, 안에서만 유료.</div>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">소명 프로젝트 (미미미누 헬스터디 구조)</h3>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:10px">시청자 공개 선발 → 3개월 밀착 → 비포/애프터</p>
+          <table>
+            <tr><td style="width:38%"><b>구조</b></td><td>6명 공개 선발 (지원 동기 영상·글) → 3개월 매달 인터뷰</td></tr>
+            <tr><td><b>콘텐츠 효과</b></td><td>지원 과정 자체가 1차 콘텐츠 · 시리즈 18편 자동 생성</td></tr>
+            <tr><td><b>결말</b></td><td>"그래서 지금 뭘 하기로 했어요?" — 방향이 생긴 것 자체가 비포/애프터</td></tr>
+          </table>
+          <div class="co ac" style="margin:10px 0 0;padding:11px 14px;font-size:13px"><b>간접 수익</b>: 직접 수익화는 어렵지만 — B2B 스폰서십 연결 · 코호트의 "실제 사례" 활용 · 책 챕터 원고. 참가자 6명이 자연스럽게 코호트 1기 씨앗이 된다.</div>
+        </div>
+      </div>
+
+      <h3>실행 우선순위 — 지금 바로 vs 나중에</h3>
+      <table>
+        <tr><th style="width:16%">타이밍</th><th style="width:38%">실행 항목</th><th>한 줄 이유</th></tr>
+        <tr><td><span class="t g">즉시</span></td><td><b>숏폼 클리핑</b> — 기존 21건 인터뷰 → 릴스·쇼츠 주 3회</td><td>새 촬영 없이 알고리즘 노출 3~5배. 가장 빠른 콘텐츠 레버.</td></tr>
+        <tr><td><span class="t g">즉시</span></td><td><b>영상 말미 CTA 삽입</b> — "다음 단계는 여기로"</td><td>팬을 커뮤니티·신청 페이지로 보내는 최소 전환 장치.</td></tr>
+        <tr><td><span class="t b">1~2개월</span></td><td><b>소명 프로젝트 기획·공개 모집</b></td><td>팬 참여 유인 + 콘텐츠 18편 + 커뮤니티 씨앗 동시 확보.</td></tr>
+        <tr><td><span class="t b">1~2개월</span></td><td><b>자체 오프라인 이벤트 1회</b> (WIP 공간 활용)</td><td>트레바리 독립 테스트. 마진 30% → 100% 전환 검증.</td></tr>
+        <tr><td><span class="t b">1~2개월</span></td><td><b>자아탐구 진단 툴 MVP</b> (Typeform 기반 · 9,900원)</td><td>간절한 순간 포착. 결과 공유 → 바이럴. 콘텐츠 소재 재가공.</td></tr>
+        <tr><td><span class="t r">2~3개월</span></td><td><b>코호트 1기</b> — 소명 프로젝트 IP 기반 6주 과정</td><td>39만 × 20명 = 780만. 가장 큰 B2C 단일 수익 레버.</td></tr>
+        <tr><td><span class="t n">장기</span></td><td><b>책 출판</b></td><td>IP 자산화·강연 기회 확대. 지금 수익 레버로는 부적합.</td></tr>
+      </table>
+    </section>
+
+    <!-- ── CLOSING ── -->
+    <section id="closing">
+      <div class="sec-k">CLOSING</div>
+      <h2>클로징</h2>
+      <p class="lead">수주 클로징이 아닌 가이드 클로징. "오늘 방향이 잡혔다"는 느낌으로 마무리 — 제안서·계약 이야기는 대표가 먼저 물어보면 하고, 안 물어보면 꺼내지 않는다.</p>
+      <div class="fsteps">
+        <div class="fstep"><div class="fsn">STEP 1</div><div class="fst">핵심 3가지 요약</div><div class="fsd">"오늘 가장 중요한 게 ___ 맞죠?" — 대화에서 나온 대표의 말로 요약. 기준표 읽듯 하면 안 됨. 딱 세 줄.</div></div>
+        <div class="fstep"><div class="fsn">STEP 2</div><div class="fst">지금 바로 할 것</div><div class="fsd">스스로 할 수 있는 것 1~2개 구체적으로 짚어주기. "이건 오늘 밤부터 해도 돼요" — 가능한 것, 명확한 것.</div></div>
+        <div class="fstep"><div class="fsn">STEP 3</div><div class="fst">도움 필요한 부분</div><div class="fsd">구조·설계가 필요한 부분을 자연스럽게. 강요 아닌 "이런 게 있으면 훨씬 빨라진다" 프레임. 대표가 물어보면 패키지 이야기로.</div></div>
+        <div class="fstep"><div class="fsn">STEP 4</div><div class="fst">다음 연락 합의</div><div class="fsd">"한 달 후에 어떻게 됐는지 꼭 듣고 싶어요" — 영업이 아니라 진심. 날짜·방법 가볍게 합의.</div></div>
+      </div>
+
+      <h3>상담 중 기록 항목</h3>
+      <table>
+        <tr><th style="width:30%">기록 항목</th><th>수집 포인트</th></tr>
+        <tr><td><b>정체성 Q 응답</b></td><td>Q1 한 줄 정의 — 세 분이 같은 답? / Q2 5년 후 그림 (미디어·커뮤니티·제작사 중)</td></tr>
+        <tr><td><b>수익 현황</b></td><td>B2C 수익 유무 · 트레바리 독립 병목 이유 · 연말 목표 수치</td></tr>
+        <tr><td><b>가장 꽂힌 것</b></td><td>Teaching 3개 중 대표가 "맞아요"를 가장 강하게 한 것 — 다음 연락 때 그걸 먼저 꺼낸다.</td></tr>
+        <tr><td><b>간절한 순간</b></td><td>팬들이 가장 필요로 하는 그 순간에 대한 대표 본인의 답 — 수익모델 설계의 씨앗</td></tr>
+        <tr><td><b>다음 단계 합의</b></td><td>스스로 할 것 vs 도움 요청 여부 · 다음 연락 시점</td></tr>
+      </table>
+    </section>
+
+    <!-- ── SOURCES ── -->
+    <section id="sources">
+      <div class="sec-k">SOURCES</div>
+      <h2>참고 출처</h2>
+      <p class="lead">① 클라이언트 인테이크 수령 완료 ② 사업소개서 수령 (지원사업 활용 자료) ③ 직접 리서치 (2026-06-27).</p>
+      <div class="co ok"><span class="lab">① 클라이언트 인테이크 (수령 완료)</span>
+        대표 이연주 직접 제공 — 현재 조직도·누적 매출(2,140만)·제품 목록 (B2C: 소명을 찾아서, 숲케치북, 트레바리, 자체 이벤트 / B2B: 블랙페이퍼, 포포, 하우스오브낭만, 말해보카)·B2B 클라이언트·타겟 정의·가장 시급한 과제·6개월 목표(5천만~1억)·컨설팅 기대사항 포함. <b>COMPANY·PRODUCT·NEEDS·CONSULT 섹션 인테이크 기반 작성 완료.</b>
+      </div>
+      <div class="co ac"><span class="lab">② 사업소개서 수령 (지원사업 활용 자료)</span>
+        문제 정의·시장 분석 (KOSIS·한국경제인협회·인크루트·한국고용정보원) ·
+        고객가치 제안 (TAM 3,735억·SAM 466억·SOM 연 13억) ·
+        수익모델 구조도 · 경쟁 분석 · 3개년 매출 목표 (26년 4,447만 → 27년 1.6억 → 28년 5.6억) ·
+        팀 상세 이력 (이연주·최희건·정세운) ·
+        채널 성과 (인스타 536만 조회·유튜브 31만 조회) ·
+        트레바리 모객 성과·고객 피드백 ·
+        <span class="t y">Note: 수치 일부 업데이트 필요 (사업소개서 작성 시점 기준 — 인테이크 최신 수치 우선 적용)</span>
+      </div>
+      <div class="co warn"><span class="lab">③ 직접 리서치 (2026-06-27 확인)</span>
+        <b>인스타그램</b> @crngfriends 존재·팔로워·콘텐츠 톤 확인 ·
+        <b>유튜브</b> @CringeFriendsOfficial 채널·구독자 확인 ·
+        <b>디스코드</b> 커뮤니티 링크 확인 ·
+        <b>트레바리</b> 클럽 현황 확인 ·
+        <b>하입비스트·럭스매거진·아워익스프레스·053매거진</b> 보도 내용 확인 ·
+        <span class="t y">⚠️ 미확인: 웹사이트 (미오픈) · B2B 프로젝트별 단가 세부 내역 · 팀 증원 예산 · B2C/B2B 매출 비중</span>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer><div class="in">BRANDRISE (MarketingOS) · 크린지 프렌즈 (Cringe Friends) NB 상담 준비 PREP — 통합표준 v2 · 인테이크 수령 완료 · 내부 전용</div></footer>
+
+<script>
+const links=[...document.querySelectorAll('nav.toc a')];
+const sections=[...new Set(links.map(a=>a.getAttribute('href')))]
+  .map(href=>({href,el:document.querySelector(href)})).filter(s=>s.el);
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  const s=sections.find(s=>s.el===e.target); if(!s)return;
+  links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')===s.href));
+}})},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>obs.observe(s.el));
+</script>
+</body>
+</html>

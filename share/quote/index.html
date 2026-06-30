@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE 견적서 공유 뷰어 · 비게이트(/share/quote/)
+  · 링크 해시(#q=) = lz-string 압축 견적. 받는 사람이 비번 없이 연다(캐퍼빌리티 링크).
+  · 모드 2종 — 기본=보기 전용(발송용, 클라). #q=...&e=1 → 검토 편집모드(내부 검토자: 대표·실장).
+    검토자는 항목·단가·수량을 고친 뒤 [발송용 링크]/[인쇄]로 최종본을 만든다.
+  · 렌더는 공유 모듈 BRQuote. 단가 등은 링크 안에 들어있고 서버 저장 없음.
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>BRANDRISE · 견적서</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+  :root{--ink:#0f172a;--ink2:#334155;--muted:#64748b;--line:#e7e9ee;--line2:#eef1f5;--bg:#fbfcfd;--card:#fff;--soft:#f6f8fb;--ac:#4f46e5;--ac-50:#eef2ff;--ac-100:#e0e7ff;--ac-700:#3730a3;--ok:#0e9f6e;--bad:#e11d48}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Pretendard',-apple-system,sans-serif;background:#0f172a;color:#0f172a}
+  .bar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:12px;
+    background:#0f172a;color:#fff;padding:11px 18px;border-bottom:1px solid rgba(255,255,255,.08);flex-wrap:wrap}
+  .bar .b{font-size:12.5px;font-weight:700;letter-spacing:.04em;color:#cbd5e1}
+  .bar .b b{color:#a5b4fc}
+  .bar .rv{font-size:11px;font-weight:800;letter-spacing:.04em;background:rgba(165,180,252,.16);color:#c7d2fe;border-radius:999px;padding:4px 11px;margin-left:8px}
+  .bar .grp{display:flex;gap:8px;flex-wrap:wrap}
+  .bar button{font-family:inherit;font-size:12.5px;font-weight:800;color:#0f172a;background:#a5b4fc;border:0;border-radius:9px;padding:9px 15px;cursor:pointer;transition:.12s}
+  .bar button:hover{background:#c7d2fe}
+  .bar button.ghost{background:rgba(255,255,255,.1);color:#e2e8f0}
+  .bar button.ghost:hover{background:rgba(255,255,255,.18)}
+
+  /* 검토 편집 패널 */
+  .ed{display:none;max-width:900px;margin:0 auto;padding:22px 22px 8px}
+  .ed.show{display:block}
+  .ed .note{background:var(--ac-50);border:1px solid var(--ac-100);border-radius:12px;padding:13px 16px;font-size:13px;color:var(--ink2);line-height:1.6;margin-bottom:16px}
+  .ed .note b{color:var(--ac-700)}
+  .ed .meta{display:flex;gap:18px;flex-wrap:wrap;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin-bottom:14px;font-size:13px;font-weight:700;color:var(--ink2)}
+  .ed .meta input{font-family:inherit;font-size:13px;border:1px solid var(--line);border-radius:8px;padding:7px 10px;color:var(--ink)}
+  .ed .meta input:focus{outline:none;border-color:var(--ac)}
+  .ed .meta .brand{min-width:220px}.ed .meta .rev{width:72px;text-align:right}
+  table.et{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px}
+  table.et th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:left;padding:10px 12px;font-size:11px}
+  table.et th.r{text-align:right}table.et th.c{text-align:center}
+  table.et td{padding:7px 10px;border-bottom:1px solid var(--line2);vertical-align:middle}
+  table.et tr:last-child td{border-bottom:0}
+  .et .en{width:100%;border:1px solid transparent;border-radius:6px;padding:6px 7px;font-family:inherit;font-size:13px;font-weight:700;color:var(--ink);background:transparent}
+  .et .en:hover{background:var(--soft)}.et .en:focus{outline:none;border-color:var(--ac);background:#fff}
+  .et .ea{width:96px;text-align:right;border:1px solid var(--line);border-radius:6px;padding:6px 7px;font-family:inherit;font-size:12.5px;color:var(--ink2);font-variant-numeric:tabular-nums}
+  .et .eq{width:56px;text-align:center;border:1px solid var(--line);border-radius:6px;padding:6px 5px;font-family:inherit;font-size:12.5px}
+  .et .ea:focus,.et .eq:focus{outline:none;border-color:var(--ac)}
+  .et .sum{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink)}
+  .et .mtag{font-size:10px;color:var(--muted);margin-top:2px}
+  .et .del{color:var(--bad);background:none;border:none;cursor:pointer;font-size:17px;line-height:1;padding:2px 6px}
+  .et .del:hover{opacity:.6}
+  .ed .tools{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:12px 2px 4px}
+  .ed .tools .add{font-family:inherit;font-size:12.5px;font-weight:700;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:9px;padding:8px 14px;cursor:pointer}
+  .ed .tools .add:hover{background:var(--ac-100)}
+  .ed .tools .tot{margin-left:auto;font-size:14px;font-weight:800;color:var(--ink)}
+  .ed .tools .tot b{color:var(--ac)}
+  .ed .pvlabel{font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--muted);margin:18px 2px 8px}
+
+  #frame{width:100%;border:0;display:block;background:#fbfcfd;min-height:calc(100vh - 46px)}
+  .ed.show ~ #frame{min-height:560px;border-top:1px solid var(--line)}
+  .msg{max-width:560px;margin:80px auto;padding:0 24px;text-align:center;color:#fff}
+  .msg .ic{font-size:40px;margin-bottom:14px}
+  .msg h1{font-size:20px;font-weight:800;margin-bottom:10px;letter-spacing:-.02em}
+  .msg p{font-size:14px;color:#94a3b8;line-height:1.7}
+  @media print{ .bar,.ed{display:none!important} #frame{min-height:0} }
+</style>
+</head>
+<body>
+
+<div class="bar" id="bar" style="display:none">
+  <div class="b">BRANDRISE · <b>견적서</b><span class="rv" id="rvBadge" style="display:none">검토·편집</span></div>
+  <div class="grp" id="barActs"></div>
+</div>
+
+<div class="ed" id="ed">
+  <div class="note"><b>검토용</b> — 발송 전 확인 단계입니다. 항목·단가·수량을 고친 뒤, 아래 <b>📤 발송용 링크</b>로 클라이언트에 보낼 최종본을 만드세요. (이 편집은 서버에 저장되지 않습니다 — 고친 내용은 새 링크에 담깁니다.)</div>
+  <div class="meta">
+    <span>브랜드 <input class="brand" id="edBrand" type="text"></span>
+    <span>연매출 <input class="rev" id="edRev" type="number" min="0">억</span>
+  </div>
+  <table class="et"><thead><tr><th>항목</th><th class="r" style="width:120px">단가(만원)</th><th class="c" style="width:80px">수량</th><th class="r" style="width:120px">합계(만원)</th><th style="width:36px"></th></tr></thead><tbody id="edBody"></tbody></table>
+  <div class="tools"><button class="add" id="edAdd" type="button">＋ 항목 추가</button><span class="tot">합계 <b id="edTotal">—</b></span></div>
+  <div class="pvlabel">미리보기 (보낼 모습)</div>
+</div>
+
+<iframe id="frame" style="display:none"></iframe>
+
+<div class="msg" id="msg">
+  <div class="ic">🔗</div>
+  <h1>견적서를 불러오는 중…</h1>
+  <p>잠시만 기다려 주세요.</p>
+</div>
+
+<script src="../lz-string.min.js"></script>
+<script src="../quote-doc.js"></script>
+<script>
+(function(){
+  var bar=document.getElementById('bar'), barActs=document.getElementById('barActs'),
+      frame=document.getElementById('frame'), msg=document.getElementById('msg'),
+      ed=document.getElementById('ed'), rvBadge=document.getElementById('rvBadge');
+
+  function fail(title, detail){
+    msg.style.display='block'; bar.style.display='none'; frame.style.display='none'; ed.classList.remove('show');
+    msg.innerHTML='<div class="ic">⚠️</div><h1>'+title+'</h1><p>'+detail+'</p>';
+  }
+  function fmt(n){ return (+n||0).toLocaleString(); }
+
+  // 해시(#q=...&e=1) — 해시는 서버로 안 가서 단가가 로그·리퍼러에 안 남는다.
+  function hashParam(k){ var m=new RegExp('[#&]'+k+'=([^&]+)').exec(location.hash||''); return m?m[1]:''; }
+
+  function buildLink(state, edit){
+    var enc=LZString.compressToEncodedURIComponent(JSON.stringify(BRQuote.pack(state)));
+    return location.origin+'/share/quote/#q='+enc+(edit?'&e=1':'');
+  }
+  function copy(url, okMsg){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(function(){ alert(okMsg); }, function(){ prompt('아래 링크를 복사하세요:', url); });
+    } else { prompt('아래 링크를 복사하세요:', url); }
+  }
+  function renderPreview(state){
+    var doc=BRQuote.buildDoc(state);
+    frame.style.display='block';
+    frame.srcdoc=doc||'<!DOCTYPE html><body style="font-family:Pretendard,sans-serif;color:#64748b;padding:40px;text-align:center">표시할 견적 항목이 없습니다.</body>';
+    frame.onload=function(){ try{ frame.style.height=(frame.contentWindow.document.body.scrollHeight+40)+'px'; }catch(e){} };
+  }
+  function printFrame(){ try{ frame.contentWindow.focus(); frame.contentWindow.print(); }catch(e){ window.print(); } }
+
+  // ── 보기 전용(발송용) ──
+  function showView(state, packed){
+    bar.style.display='flex'; rvBadge.style.display='none'; ed.classList.remove('show'); msg.style.display='none';
+    barActs.innerHTML='<button id="aPrint" type="button">🖨 인쇄 · PDF로 저장</button>';
+    renderPreview(state);
+    if(packed && packed.b) document.title=packed.b+' · 견적서 | BRANDRISE';
+    document.getElementById('aPrint').onclick=printFrame;
+  }
+
+  // ── 검토 편집모드 ──
+  function showEdit(state){
+    bar.style.display='flex'; rvBadge.style.display='inline-block'; ed.classList.add('show'); msg.style.display='none';
+    barActs.innerHTML=''; // 액션은 편집 패널 하단에 둠
+    document.getElementById('edBrand').value=state.brand||'';
+    document.getElementById('edRev').value=(state.rev!=null?state.rev:'');
+    var lines=state.lines.slice();
+
+    function calc(){ var t=0; lines.forEach(function(l){ t+=(+l.amount||0)*(+l.qty||0); }); document.getElementById('edTotal').textContent=fmt(t)+'만 · '+(t/10000).toFixed(3)+'억'; return t; }
+    function cur(){ return { brand:document.getElementById('edBrand').value||'BRAND', rev:document.getElementById('edRev').value, date:state.date, lines:lines }; }
+    function sync(){ renderPreview(cur()); }
+
+    function rows(){
+      var b=document.getElementById('edBody'), h='';
+      lines.forEach(function(l,i){
+        h+='<tr data-i="'+i+'">'
+          +'<td><input class="en" type="text" value="'+(BRQuote.esc(l.name))+'">'+(l.monthly?'<div class="mtag">월 단가 기준</div>':'')+'</td>'
+          +'<td class="r"><input class="ea" type="number" min="0" value="'+(+l.amount||0)+'"></td>'
+          +'<td class="c"><input class="eq" type="number" min="0" value="'+(+l.qty||0)+'"><div class="mtag">'+(l.monthly?'개월':'수량')+'</div></td>'
+          +'<td class="sum">'+fmt((+l.amount||0)*(+l.qty||0))+'</td>'
+          +'<td><button class="del" title="삭제">×</button></td></tr>';
+      });
+      b.innerHTML=h||'<tr><td colspan="5" style="color:#94a3b8;text-align:center;padding:18px">＋ 항목 추가로 시작</td></tr>';
+      [].forEach.call(b.querySelectorAll('tr[data-i]'),function(tr){
+        var i=+tr.getAttribute('data-i');
+        var nm=tr.querySelector('.en'), am=tr.querySelector('.ea'), qt=tr.querySelector('.eq'), dl=tr.querySelector('.del');
+        nm.oninput=function(){ lines[i].name=nm.value; sync(); };
+        am.oninput=function(){ lines[i].amount=+am.value||0; tr.querySelector('.sum').textContent=fmt((+lines[i].amount||0)*(+lines[i].qty||0)); calc(); sync(); };
+        qt.oninput=function(){ lines[i].qty=+qt.value||0; tr.querySelector('.sum').textContent=fmt((+lines[i].amount||0)*(+lines[i].qty||0)); calc(); sync(); };
+        dl.onclick=function(){ lines.splice(i,1); rows(); calc(); sync(); };
+      });
+      calc();
+    }
+    document.getElementById('edAdd').onclick=function(){ lines.push({name:'새 항목',amount:0,qty:1,monthly:false}); rows(); sync(); };
+    document.getElementById('edBrand').oninput=sync;
+    document.getElementById('edRev').oninput=sync;
+
+    barActs.innerHTML='<button id="aSend" type="button">📤 발송용 링크 복사</button>'
+      +'<button id="aEdit" class="ghost" type="button">✅ 검토용 링크 복사</button>'
+      +'<button id="aPrint" class="ghost" type="button">🖨 인쇄 · PDF</button>';
+    document.getElementById('aSend').onclick=function(){
+      if(!calc()){ alert('견적 항목이 없습니다.'); return; }
+      copy(buildLink(cur(),false), '발송용(보기 전용) 링크를 복사했습니다.\n클라이언트에게 보내세요. 받는 사람은 수정할 수 없습니다.');
+    };
+    document.getElementById('aEdit').onclick=function(){
+      copy(buildLink(cur(),true), '검토용(편집 가능) 링크를 복사했습니다.\n다른 검토자에게 넘기면 이어서 수정할 수 있습니다.');
+    };
+    document.getElementById('aPrint').onclick=printFrame;
+
+    rows(); sync();
+  }
+
+  try{
+    if(!window.LZString || !window.BRQuote){ fail('표시할 수 없습니다', '필요한 구성요소를 불러오지 못했습니다. 새로고침해 주세요.'); return; }
+    var enc=hashParam('q');
+    if(!enc){ fail('견적 정보가 없습니다', '이 페이지는 공유 링크로 열어야 견적이 표시됩니다. 받은 링크 전체를 다시 확인해 주세요.'); return; }
+    if(enc.length>60000){ fail('링크를 열 수 없습니다', '링크가 비정상적으로 큽니다. 보낸 사람에게 다시 받아 주세요.'); return; }
+    var json=LZString.decompressFromEncodedURIComponent(enc);
+    if(!json){ fail('링크를 읽을 수 없습니다', '링크가 손상되었거나 일부만 복사되었을 수 있습니다. 받은 링크 전체를 다시 열어 주세요.'); return; }
+    var packed=JSON.parse(json);
+    var state=BRQuote.unpack(packed);
+    var editMode=hashParam('e')==='1';
+    if(editMode){ showEdit(state); }
+    else {
+      if(!BRQuote.buildDoc(state)){ fail('견적 내용이 비어 있습니다', '이 링크에는 표시할 견적 항목이 없습니다.'); return; }
+      showView(state, packed);
+    }
+  }catch(e){
+    fail('견적서를 표시할 수 없습니다', '링크가 올바르지 않습니다. 보낸 사람에게 링크를 다시 받아 주세요.');
+  }
+})();
+</script>
+</body>
+</html>

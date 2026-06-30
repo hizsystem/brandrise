@@ -2,8 +2,10 @@
   "name": "brandrise-pages",
   "version": "1.0.0",
   "private": true,
-  "description": "BRANDRISE 산출물 정적 사이트 + Edge 인증 게이트 (Vercel)",
+  "description": "BRANDRISE 산출물 정적 사이트 + Edge 인증 게이트 + 견적 PDF 함수 (Vercel)",
   "dependencies": {
-    "@vercel/edge": "^1.2.1"
+    "@vercel/edge": "^1.2.1",
+    "@sparticuz/chromium": "149.0.0",
+    "puppeteer-core": "25.2.0"
   }
 }

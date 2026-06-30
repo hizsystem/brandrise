@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE 파이프라인 보드 · 인디고 클린
+  · 진행 중 브랜드를 단계별로 그룹핑해 한눈에. 단계 변경은 localStorage 저장(브라우저별).
+  · '견적서 작성' → ../quote-builder/?brand={slug}.  데이터: ../pipeline-data.js
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>BRANDRISE 파이프라인 보드</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+  --slate:#64748b; --slate-50:#f1f5f9;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.6;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+.hero{background:var(--ink);color:#fff;padding:46px 0 38px}
+.hero .in{max-width:1120px;margin:0 auto;padding:0 40px}
+.hero .back{display:inline-block;margin-bottom:14px;color:#a5b4fc;text-decoration:none;font-size:12.5px;font-weight:600}
+.hero .back:hover{color:#c7d2fe}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:15px}
+.hero h1{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-.03em;line-height:1.14;margin-bottom:10px}
+.hero .sub{font-size:14.5px;color:#cbd5e1;font-weight:300;max-width:660px}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 40px 90px}
+
+/* 요약 타일 (클릭 → 해당 그룹 스크롤) */
+.summary{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:8px}
+.sc{flex:1;min-width:128px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 16px;cursor:pointer;transition:.12s;border-left-width:4px}
+.sc:hover{box-shadow:0 5px 16px rgba(15,23,42,.07)}
+.sc .n{font-size:25px;font-weight:800;letter-spacing:-.02em;line-height:1}
+.sc .l{font-size:12px;font-weight:700;color:var(--ink2);margin-top:6px}
+.sc.t-slate{border-left-color:var(--slate)} .sc.t-amber{border-left-color:var(--warn)}
+.sc.t-indigo{border-left-color:var(--ac)} .sc.t-green{border-left-color:var(--ok)} .sc.t-red{border-left-color:var(--bad)}
+
+.boardtools{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:14px 0 26px}
+.boardtools button{font-family:inherit;font-size:13px;font-weight:800;color:#fff;background:var(--ac);border:0;border-radius:10px;padding:10px 16px;cursor:pointer;transition:.12s;flex:0 0 auto}
+.boardtools button:hover{background:var(--ac-700)}
+.boardtools button.ghost{background:var(--card);color:var(--ink2);border:1px solid var(--line)}
+.boardtools button.ghost:hover{background:var(--soft);color:var(--ink)}
+.boardtools .bt-note{font-size:12px;color:var(--muted);line-height:1.5;flex:1;min-width:200px}
+
+/* 단계 그룹 */
+.group{margin-bottom:30px}
+.ghead{display:flex;align-items:center;gap:9px;margin-bottom:13px;padding-bottom:9px;border-bottom:2px solid var(--line)}
+.ghead .dot{width:11px;height:11px;border-radius:50%}
+.ghead .gl{font-size:16px;font-weight:800;letter-spacing:-.01em}
+.ghead .gc{font-size:12.5px;font-weight:700;color:#fff;border-radius:999px;padding:2px 9px}
+.t-slate .gc{background:var(--slate)} .t-amber .gc{background:var(--warn)}
+.t-indigo .gc{background:var(--ac)} .t-green .gc{background:var(--ok)} .t-red .gc{background:var(--bad)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:13px}
+
+/* 카드 */
+.bc{border:1px solid var(--line);border-left-width:5px;border-radius:14px;background:var(--card);
+  padding:16px 17px 14px;display:flex;flex-direction:column;gap:11px;transition:.15s}
+.bc:hover{box-shadow:0 6px 20px rgba(79,70,229,.09)}
+.bc.t-slate{border-left-color:var(--slate)} .bc.t-amber{border-left-color:var(--warn)}
+.bc.t-indigo{border-left-color:var(--ac)} .bc.t-green{border-left-color:var(--ok)} .bc.t-red{border-left-color:var(--bad);opacity:.62}
+.bc .nm{font-size:17px;font-weight:800;letter-spacing:-.01em;line-height:1.3}
+.bc .slug{font-size:11.5px;color:var(--muted);margin-top:2px;font-weight:500}
+
+.row{display:flex;align-items:center;gap:8px}
+.row .lbl{font-size:11.5px;font-weight:700;color:var(--muted);flex:0 0 auto}
+.bc select{flex:1;font-family:inherit;font-size:13px;font-weight:700;color:var(--ink2);
+  border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:var(--soft);cursor:pointer}
+.bc select:focus{outline:none;border-color:var(--ac)}
+
+.acts{display:flex;gap:7px}
+.btn{flex:1;text-align:center;font-size:13px;font-weight:800;border-radius:10px;padding:9px 10px;
+  text-decoration:none;cursor:pointer;border:1px solid transparent;transition:.12s}
+.btn.pri{background:var(--ac);color:#fff} .btn.pri:hover{background:var(--ac-700)}
+.btn.sec{background:var(--card);color:var(--ac);border-color:var(--ac-100);flex:0 0 auto;padding:9px 14px}
+.btn.sec:hover{background:var(--ac-50)}
+.btn.off{background:var(--soft);color:var(--muted);cursor:default;border-color:var(--line);flex:0 0 auto;padding:9px 14px}
+.btn.del{background:var(--card);color:var(--bad);border-color:#fecdd3;flex:0 0 auto;padding:9px 12px}
+.btn.del:hover{background:var(--bad-50)}
+.bc .badge2.cust{background:#ecfeff;color:#0e7490;margin-left:6px}
+.wait{font-size:11px;font-weight:800;border-radius:999px;padding:3px 9px;white-space:nowrap;flex:0 0 auto}
+.wait.ok{background:var(--ok-50);color:var(--ok)} .wait.warn{background:var(--warn-50);color:var(--warn)}
+.wait.bad{background:var(--bad-50);color:var(--bad)} .wait.mute{background:var(--slate-50);color:var(--muted)}
+.bc .cdate{flex:1;font-family:inherit;font-size:12.5px;color:var(--ink2);border:1px solid var(--line);border-radius:9px;padding:7px 9px;background:var(--soft)}
+.bc .cdate:focus{outline:none;border-color:var(--ac)}
+
+.notice{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:34px 22px;text-align:center;color:var(--muted);font-size:13.5px;line-height:1.7}
+.notice.err{border-color:#fecdd3;background:var(--bad-50);color:var(--bad)}
+.notice b{display:block;font-size:15px;color:var(--ink2);margin-bottom:6px}
+.notice.err b{color:var(--bad)}
+.notice .retry{display:inline-block;margin-top:12px;font-size:13px;font-weight:800;color:#fff;background:var(--ac);border-radius:9px;padding:8px 16px;text-decoration:none;cursor:pointer}
+
+/* 시트와 동기화 버튼 */
+.boardtools button.sync{color:var(--ac);border-color:var(--ac-100)}
+.boardtools button.sync:hover{background:var(--ac-50);color:var(--ac-700)}
+
+/* 그룹 접기/펴기 */
+.ghead{cursor:pointer;user-select:none}
+.ghead .chev{margin-left:auto;font-size:12px;color:var(--muted);transition:transform .15s;flex:0 0 auto}
+.group.collapsed .chev{transform:rotate(-90deg)}
+.group.collapsed .grid{display:none}
+.group.collapsed .ghead{margin-bottom:0;border-bottom-style:dashed;opacity:.7}
+
+/* 브랜드 추가 모달 */
+.modal-ov{position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px}
+.modal-ov[hidden]{display:none}
+.modal{background:var(--card);border-radius:18px;width:100%;max-width:420px;padding:26px 26px 22px;box-shadow:0 20px 60px rgba(15,23,42,.32)}
+.modal h3{font-size:18px;font-weight:800;letter-spacing:-.02em;margin-bottom:5px}
+.modal .msub{font-size:12px;color:var(--muted);margin-bottom:18px;line-height:1.55}
+.modal .fld{margin-bottom:14px}
+.modal .fld label{display:block;font-size:12px;font-weight:700;color:var(--ink2);margin-bottom:6px}
+.modal .fld label .opt{color:var(--muted);font-weight:500}
+.modal .fld input,.modal .fld select{width:100%;font-family:inherit;font-size:14px;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--soft)}
+.modal .fld input:focus,.modal .fld select:focus{outline:none;border-color:var(--ac);background:#fff}
+.modal .mbtns{display:flex;gap:9px;margin-top:20px}
+.modal .mbtns button{flex:1;font-family:inherit;font-size:14px;font-weight:800;border-radius:11px;padding:11px;cursor:pointer;border:1px solid transparent}
+.modal .mbtns .ok{background:var(--ac);color:#fff} .modal .mbtns .ok:hover{background:var(--ac-700)}
+.modal .mbtns .cancel{background:var(--card);color:var(--ink2);border-color:var(--line)} .modal .mbtns .cancel:hover{background:var(--soft)}
+footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:1120px;margin:0 auto}
+@media(max-width:880px){ .wrap,.hero .in{padding-left:22px;padding-right:22px} }
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">BRANDRISE · PIPELINE</div>
+  <h1>진행 중인 상담 브랜드</h1>
+  <div class="sub">브랜드를 현재 단계별로 묶어 한눈에 본다. 견적 대기 브랜드는 바로 견적서를 작성한다.</div>
+</div></div>
+
+<div class="wrap">
+  <div class="summary" id="summary"></div>
+  <div class="boardtools">
+    <button id="btnAddBrand" type="button">＋ 브랜드(프로젝트) 추가</button>
+    <button id="btnCollapseAll" type="button" class="ghost">모두 접기</button>
+    <button id="btnSync" type="button" class="ghost sync">↻ 시트와 동기화</button>
+    <span class="bt-note">단계·상담일·추가 브랜드·접힘은 <b>이 브라우저에만</b> 저장됩니다(동료와 공유 안 됨). 잘못 바꿨으면 <b>시트와 동기화</b>로 시트 원본 상태로 되돌립니다.</span>
+  </div>
+  <div id="groups"><div class="notice">구글 시트에서 파이프라인을 불러오는 중…</div></div>
+</div>
+
+<div class="modal-ov" id="addModal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <h3 id="mTitle">브랜드(프로젝트) 추가</h3>
+    <div class="msub">이 브라우저에만 저장됩니다(동료와 공유 안 됨). 시트에 정식 등록하려면 BC-BR 시트에 직접 추가하세요.</div>
+    <div class="fld"><label for="mName">프로젝트명 *</label><input id="mName" type="text" placeholder="예: 새 프로젝트" autocomplete="off"></div>
+    <div class="fld"><label for="mStage">단계</label><select id="mStage"></select></div>
+    <div class="fld"><label for="mPrep">prep(리서치) 페이지 주소 <span class="opt">— 없으면 비워두세요</span></label><input id="mPrep" type="text" placeholder="https://… (선택)" autocomplete="off"></div>
+    <div class="mbtns"><button type="button" class="cancel" id="mCancel">취소</button><button type="button" class="ok" id="mOk">추가</button></div>
+  </div>
+</div>
+
+<footer>
+  <b>BRANDRISE</b> by HIZ · 파이프라인 보드<br>
+  단계 4종 · 견적 빌더 연동 · 전체 <span id="brandCount">—</span>개 프로젝트
+</footer>
+
+<script src="/internal/nav.js"></script>
+<script src="../pipeline-data.js"></script>
+<script>
+(function(){
+  var summary=document.getElementById('summary'), groups=document.getElementById('groups');
+
+  // ── 그룹 접힘 상태(이 브라우저). 기본: 플젝 드랍만 접힘 ──
+  var COLLAPSE_KEY='br_group_collapsed_v1';
+  function readCollapsed(){ try{return JSON.parse(localStorage.getItem(COLLAPSE_KEY))||{};}catch(e){return {};} }
+  function isCollapsed(id){ var m=readCollapsed(); return (id in m)?!!m[id]:(id==='dropped'); }
+  function setCollapsed(id,val){ var m=readCollapsed(); m[id]=!!val; localStorage.setItem(COLLAPSE_KEY,JSON.stringify(m)); }
+  function allCollapsed(){ var g=groups.querySelectorAll('.group'); return g.length>0 && [].every.call(g,function(x){return x.classList.contains('collapsed');}); }
+  function updateCollapseBtn(){ var b=document.getElementById('btnCollapseAll'); if(b) b.textContent=allCollapsed()?'모두 펴기':'모두 접기'; }
+
+  function counts(){
+    var c={}; BR.STAGES.forEach(function(s){c[s.id]=0;});
+    BR.allBrands().forEach(function(b){ c[BR.getStage(b.slug)]++; });
+    return c;
+  }
+  function prepHref(b){ return b.prepUrl ? b.prepUrl : '../../research/'+(b.prepSlug||b.slug)+'/'; }
+  // 상담일 경과 → 배지
+  function waitBadge(b,stageId){
+    var d=BR.daysSince(b.slug); if(d===null) return '';
+    var waiting=(stageId==='pending'||stageId==='sent');
+    var cls, txt;
+    if(d<0){ cls='mute'; txt='상담 '+(-d)+'일 전'; }
+    else if(d===0){ cls='ok'; txt='오늘 상담'; }
+    else if(!waiting){ cls='mute'; txt=d+'일 경과'; }
+    else { cls=(d>=8?'bad':(d>=4?'warn':'ok')); txt=d+'일 대기'; }
+    return '<span class="wait '+cls+'">'+txt+'</span>';
+  }
+
+  function renderSummary(){
+    var c=counts(), html='';
+    BR.STAGES.forEach(function(s){
+      html+='<div class="sc t-'+s.tone+'" data-go="grp-'+s.id+'"><div class="n">'+c[s.id]+'</div><div class="l">'+s.label+'</div></div>';
+    });
+    summary.innerHTML=html;
+    [].forEach.call(summary.querySelectorAll('.sc'),function(el){
+      el.onclick=function(){
+        var id=el.getAttribute('data-go'), t=document.getElementById(id);
+        if(!t) return;
+        if(t.classList.contains('collapsed')){ t.classList.remove('collapsed'); setCollapsed(id.replace('grp-',''),false); updateCollapseBtn(); }
+        t.scrollIntoView({behavior:'smooth'});
+      };
+    });
+  }
+
+  function card(b){
+    var stageId=BR.getStage(b.slug), st=BR.stageById(stageId);
+    var opts='';
+    BR.STAGES.forEach(function(s){ opts+='<option value="'+s.id+'"'+(s.id===stageId?' selected':'')+'>'+s.label+'</option>'; });
+    var qLabel=(stageId==='sent'||stageId==='won')?'견적서 열기':'견적서 작성';
+    var prepBtn=b.prep
+      ? '<a class="btn sec" href="'+prepHref(b)+'" target="_blank" rel="noopener">prep ↗</a>'
+      : '<span class="btn off">prep 없음</span>';
+    var custBadge=b.custom?'<span class="badge2 cust">추가</span>':'';
+    return '<div class="bc t-'+st.tone+'">'+
+      '<div class="top"><div><div class="nm">'+b.name+custBadge+'</div><div class="slug">'+b.slug+'</div></div>'+waitBadge(b,stageId)+'</div>'+
+      '<div class="row"><span class="lbl">단계</span><select data-slug="'+b.slug+'">'+opts+'</select></div>'+
+      '<div class="row"><span class="lbl">상담일</span><input class="cdate" type="date" data-date="'+b.slug+'" value="'+BR.getDate(b.slug)+'"></div>'+
+      '<div class="acts">'+
+        '<a class="btn pri" href="../quote-builder/?brand='+encodeURIComponent(b.slug)+'&name='+encodeURIComponent(b.name)+'">'+qLabel+' →</a>'+
+        prepBtn+
+        '<button class="btn del" data-del="'+b.slug+'" title="삭제">삭제</button>'+
+      '</div></div>';
+  }
+
+  function sortByWait(list){
+    // 상담일 오래된(오래 대기) 순 먼저, 미설정은 뒤로
+    return list.slice().sort(function(a,b){
+      var da=BR.getDate(a.slug), db=BR.getDate(b.slug);
+      if(da&&db) return da<db?-1:(da>db?1:0);
+      if(da) return -1; if(db) return 1; return 0;
+    });
+  }
+  function renderGroups(){
+    var c=counts(), all=BR.allBrands(), html='';
+    if(!all.length){
+      // 빈 화면과 '로드 실패'를 구분해 안내 (조용한 빈 보드 방지)
+      if(BR.loadOk()===false){
+        groups.innerHTML='<div class="notice err"><b>파이프라인을 불러오지 못했습니다</b>'+
+          '로그인이 만료됐거나 일시적 오류일 수 있습니다. 다시 시도하거나 로그인 후 새로고침하세요.'+
+          '<br><a class="retry" href="javascript:location.reload()">새로고침</a></div>';
+      } else {
+        groups.innerHTML='<div class="notice"><b>표시할 브랜드가 없습니다</b>구글 시트(BC-BR)에 진행 중인 브랜드가 없거나 필터에 걸렸습니다.</div>';
+      }
+      return;
+    }
+    BR.STAGES.forEach(function(s){
+      var list=sortByWait(all.filter(function(b){return BR.getStage(b.slug)===s.id;}));
+      if(!list.length) return;
+      var col=isCollapsed(s.id);
+      html+='<div class="group t-'+s.tone+(col?' collapsed':'')+'" id="grp-'+s.id+'">'+
+        '<div class="ghead" data-grp="'+s.id+'"><span class="dot" style="background:var(--'+s.tone+')"></span>'+
+        '<span class="gl">'+s.label+'</span><span class="gc">'+c[s.id]+'</span><span class="chev">▾</span></div>'+
+        '<div class="grid">'+list.map(card).join('')+'</div></div>';
+    });
+    groups.innerHTML=html;
+    // 그룹 제목 클릭 → 접기/펴기(재렌더 없이 토글 + 저장)
+    [].forEach.call(groups.querySelectorAll('.ghead'),function(h){
+      h.onclick=function(){
+        var id=h.getAttribute('data-grp'), g=h.parentNode, willCollapse=!g.classList.contains('collapsed');
+        g.classList.toggle('collapsed',willCollapse); setCollapsed(id,willCollapse); updateCollapseBtn();
+      };
+    });
+    [].forEach.call(groups.querySelectorAll('select'),function(sel){
+      sel.onchange=function(){ BR.writeStage(sel.getAttribute('data-slug'),sel.value); renderAll(); };
+    });
+    [].forEach.call(groups.querySelectorAll('.cdate'),function(inp){
+      inp.onchange=function(){ BR.setDate(inp.getAttribute('data-date'),inp.value); renderAll(); };
+    });
+    [].forEach.call(groups.querySelectorAll('[data-del]'),function(btn){
+      btn.onclick=function(){
+        var s=btn.getAttribute('data-del'), b=BR.brandBySlug(s), nm=b?b.name:s;
+        if(confirm('"'+nm+'"를 이 브라우저 보드에서 숨길까요?\n(단계·상담일·견적 작성 내용도 함께 지워집니다. 시트 원본은 그대로이며, 새로고침해도 숨김은 유지됩니다.)')){ BR.removeBrand(s); renderAll(); }
+      };
+    });
+    updateCollapseBtn();
+  }
+
+  // ── 시트와 동기화: 로컬 변경(단계·상담일·숨김·추가)만 비우고 즉시 원복 + 배경에서 시트 최신화 ──
+  //   시트 데이터는 이미 메모리에 있어 새로고침/네트워크 없이 즉시 그린다(체감 0초).
+  document.getElementById('btnSync').onclick=function(){
+    if(!confirm('시트 원본 상태로 되돌릴까요?\n\n이 브라우저에서 바꾼 단계·상담일·숨긴(삭제) 브랜드·추가한 브랜드가 모두 지워지고,\n구글 시트(BC-BR) 그대로 돌아갑니다.\n(작성한 견적서 내용은 유지됩니다.)')) return;
+    ['br_pipeline_stage_v1','br_consult_date_v1','br_hidden_brands_v1','br_custom_brands_v1'].forEach(function(k){ try{localStorage.removeItem(k);}catch(e){} });
+    renderAll();                 // 즉시 원복(메모리의 시트 데이터)
+    if(BR.refresh) BR.refresh(); // 배경에서 시트 최신값 재확인(완료 시 자동 재렌더)
+  };
+
+  // ── 모두 접기/펴기 ──
+  document.getElementById('btnCollapseAll').onclick=function(){
+    var collapse=!allCollapsed();
+    [].forEach.call(groups.querySelectorAll('.group'),function(g){
+      g.classList.toggle('collapsed',collapse); setCollapsed(g.id.replace('grp-',''),collapse);
+    });
+    updateCollapseBtn();
+  };
+
+  // ── 브랜드 추가 모달 ──
+  var addModal=document.getElementById('addModal');
+  function openAdd(){
+    var sel=document.getElementById('mStage'), opts='';
+    BR.STAGES.forEach(function(s){ opts+='<option value="'+s.id+'"'+(s.id==='pending'?' selected':'')+'>'+s.label+'</option>'; });
+    sel.innerHTML=opts;
+    document.getElementById('mName').value=''; document.getElementById('mPrep').value='';
+    addModal.hidden=false; setTimeout(function(){document.getElementById('mName').focus();},30);
+  }
+  function closeAdd(){ addModal.hidden=true; }
+  function submitAdd(){
+    var nm=document.getElementById('mName').value.trim();
+    if(!nm){ document.getElementById('mName').focus(); return; }
+    var b=BR.addCustom(nm, document.getElementById('mPrep').value.trim());
+    if(b){ BR.writeStage(b.slug, document.getElementById('mStage').value); }
+    closeAdd(); renderAll();
+  }
+  document.getElementById('btnAddBrand').onclick=openAdd;
+  document.getElementById('mCancel').onclick=closeAdd;
+  document.getElementById('mOk').onclick=submitAdd;
+  addModal.onclick=function(e){ if(e.target===addModal) closeAdd(); };
+  document.addEventListener('keydown',function(e){
+    if(addModal.hidden) return;
+    if(e.key==='Escape') closeAdd();
+    else if(e.key==='Enter'){ e.preventDefault(); submitAdd(); }
+  });
+
+  function renderCount(){
+    var el=document.getElementById('brandCount');
+    if(el) el.textContent=BR.allBrands().length;
+  }
+  function renderAll(){ renderSummary(); renderGroups(); renderCount(); }
+  BR.ready(renderAll);   // 시트 라이브 로드 후 렌더
+})();
+</script>
+</body>
+</html>

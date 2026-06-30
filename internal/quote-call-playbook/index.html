@@ -38,8 +38,7 @@ body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);colo
 .mnav a.home{color:#a5b4fc;font-weight:800;letter-spacing:.03em}
 .mnav a.on{color:#fff;background:rgba(165,180,252,.16)}
 .mnav .sep{color:#334155;margin:0 2px}
-.hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 42%,#4338ca 100%);color:#fff;padding:58px 0 46px;position:relative;overflow:hidden}
-.hero::after{content:"PLAYBOOK";position:absolute;right:-2%;bottom:-18%;font-size:clamp(140px,20vw,320px);font-weight:800;color:#fff;opacity:.05;line-height:.8;letter-spacing:-.04em;pointer-events:none}
+.hero{background:#0f172a;color:#fff;padding:58px 0 46px;position:relative;overflow:hidden}
 .hero .in{max-width:980px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
 .hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
 .hero h1{font-size:clamp(38px,4.8vw,56px);font-weight:800;letter-spacing:-.03em;line-height:1.08;margin-bottom:12px}
@@ -120,14 +119,6 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
 </style>
 </head>
 <body>
-
-<nav class="mnav"><div class="in">
-  <a class="home" href="../">BRANDRISE 매뉴얼</a><span class="sep">·</span>
-  <a href="../sales-process/">영업 프로세스</a>
-  <a href="../company-intro/">회사소개</a>
-  <a href="../consult-playbook/">상담</a>
-  <a class="on" href="../quote-call-playbook/">견적콜</a>
-</div></nav>
 
 <div class="hero"><div class="in">
   <div class="badge">BRANDRISE · 견적콜 매뉴얼 · PLAYBOOK v0.2</div>
@@ -307,5 +298,6 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
   © 2026 브랜드라이즈 by HIZ · 비공개 내부 문서
 </footer>
 
+<script src="/internal/nav.js"></script>
 </body>
 </html>

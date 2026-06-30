@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE 온보딩 체크리스트 — 수주(계약) 직후 시작 절차.
+  · 4구간: 계약·정산 셋업 / 자료·계정 수령 / 킥오프·일정 합의 / 운영 전환.
+  · 체크 상태는 localStorage 저장(브라우저별). 공용 서버 없음 — 개인 진행 관리용.
+  · 디자인 = BRANDRISE 인디고 클린(Pretendard) — 다른 /internal 페이지와 동일.
+  · 공용 네비 = /internal/nav.js. 내부 전용 · 클라이언트 비공개.
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>BRANDRISE 온보딩 체크리스트 — 수주 직후 시작 절차</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --bad:#e11d48;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.7;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+
+.hero{background:var(--ink);color:#fff;padding:38px 0 30px}
+.hero .in{max-width:920px;margin:0 auto;padding:0 28px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:14px}
+.hero h1{font-size:clamp(24px,3.6vw,32px);font-weight:800;letter-spacing:-.03em;line-height:1.14;margin-bottom:9px}
+.hero .sub{font-size:14px;color:#cbd5e1;font-weight:300;max-width:680px}
+
+.wrap{max-width:920px;margin:0 auto;padding:30px 28px 80px}
+
+/* 진행 바 */
+.prog{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px}
+.prog .ring{flex:0 0 auto;font-size:22px;font-weight:800;letter-spacing:-.02em;color:var(--ac);font-variant-numeric:tabular-nums;min-width:64px}
+.prog .bar{flex:1;height:9px;border-radius:999px;background:var(--ac-50);overflow:hidden}
+.prog .bar i{display:block;height:100%;width:0;background:var(--ac);border-radius:999px;transition:width .25s}
+.prog .meta{flex:0 0 auto;font-size:12.5px;font-weight:700;color:var(--ink2);white-space:nowrap}
+.prog .meta b{color:var(--ok)}
+
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.tools button{font-family:inherit;font-size:12.5px;font-weight:700;color:var(--ink2);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 14px;cursor:pointer;transition:.12s}
+.tools button:hover{background:var(--soft);color:var(--ink)}
+.tools .note{font-size:12px;color:var(--muted);line-height:1.5;flex:1;min-width:200px;align-self:center}
+
+/* 구간 */
+.sec{margin-bottom:26px}
+.sec-head{display:flex;align-items:baseline;gap:10px;margin:0 0 12px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:999px;padding:3px 11px;white-space:nowrap}
+.sec-head h2{font-size:18px;font-weight:800;letter-spacing:-.02em}
+.sec-head .cnt{margin-left:auto;font-size:12px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums;align-self:center}
+.sec-head .cnt.done{color:var(--ok)}
+.sec .desc{font-size:13px;color:var(--muted);margin:-4px 0 12px}
+
+.list{border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden}
+.item{display:flex;align-items:flex-start;gap:13px;padding:14px 16px;border-bottom:1px solid var(--line2);cursor:pointer;transition:background .1s}
+.item:last-child{border-bottom:none}
+.item:hover{background:var(--soft)}
+.item input{flex:0 0 auto;width:19px;height:19px;margin-top:1px;accent-color:var(--ac);cursor:pointer}
+.item .body{flex:1;min-width:0}
+.item .t{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.45}
+.item .d{font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.55}
+.item.checked .t{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line)}
+.item.checked .d{opacity:.7}
+
+footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:920px;margin:0 auto}
+@media(max-width:680px){ .wrap,.hero .in{padding-left:22px;padding-right:22px} }
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">BRANDRISE · 온보딩</div>
+  <h1>수주 직후 온보딩 체크리스트</h1>
+  <div class="sub">계약이 확정되면 여기부터 시작한다. 네 구간을 위에서 아래로 따라가면 운영 전환까지 누락 없이 넘어간다.</div>
+</div></div>
+
+<div class="wrap">
+
+  <div class="prog">
+    <div class="ring" id="pct">0%</div>
+    <div class="bar"><i id="bar"></i></div>
+    <div class="meta"><b id="doneN">0</b> / <span id="totN">0</span> 완료</div>
+  </div>
+
+  <div class="tools">
+    <button id="btnReset" type="button">전체 초기화</button>
+    <span class="note">체크 상태는 <b>이 브라우저에만</b> 저장됩니다(정적 사이트 — 공용 서버 없음). 브랜드별로 따로 관리하려면 브라우저 프로필을 나눠 쓰세요.</span>
+  </div>
+
+  <div id="lists"></div>
+
+</div>
+
+<footer>
+  <b>BRANDRISE</b> by HIZ · 온보딩 체크리스트 · 비공개 내부 문서<br>
+  계약 확정 직후 시작 절차 4구간 · 운영 전환까지
+</footer>
+
+<script src="/internal/nav.js"></script>
+<script>
+(function(){
+  // 4구간 체크리스트. id는 localStorage 키 — 항목 문구를 바꿔도 체크 유지되도록 고정.
+  var DATA = [
+    {
+      k: '계약·정산 셋업',
+      label: 'A',
+      desc: '돈과 문서를 먼저 닫는다. 여기가 비면 운영이 멈춘다.',
+      items: [
+        ['a1', '계약서 날인·교환 완료', '범위·기간·금액·해지 조건 확인 후 양측 서명본 보관'],
+        ['a2', '계약 범위·산출물 목록 확정', '월 산출물 종류·수량·검수 기준을 글로 합의(구두 합의는 분쟁 소지)'],
+        ['a3', '결제 조건·세금계산서 정보 수령', '입금일·분할 여부·담당자 이메일, 사업자등록증 사본'],
+        ['a4', '1차 청구·세금계산서 발행 일정 등록', '회계 담당에 공유, 캘린더에 청구일 반복 일정 고정'],
+        ['a5', '내부 계약 정보 등록', '파이프라인 보드 단계 "수주"로 변경 + 사내 관리 시트에 계약 행 추가']
+      ]
+    },
+    {
+      k: '자료·계정 수령',
+      label: 'B',
+      desc: '운영에 필요한 권한과 원본 자료를 한 번에 받아둔다.',
+      items: [
+        ['b1', '브랜드 자산 원본 수령', '로고(ai/svg)·폰트·컬러 가이드·제품컷·기존 콘텐츠'],
+        ['b2', '채널 계정 권한 수령', '인스타·네이버 플레이스·홈페이지·광고 계정 관리자/편집 권한'],
+        ['b3', '광고·분석 계정 접근 확인', 'Meta 비즈니스·네이버 광고·GA 등 데이터 열람 권한 확보'],
+        ['b4', '브랜드 톤·금지어 가이드 확보', '쓰면 안 되는 표현·경쟁사 언급 규칙·심의 주의 항목 정리'],
+        ['b5', '담당자·의사결정 라인 파악', '실무 연락 담당, 최종 승인권자, 응답 가능 시간대 기록']
+      ]
+    },
+    {
+      k: '킥오프·일정 합의',
+      label: 'C',
+      desc: '첫 미팅에서 목표와 리듬을 못 박는다.',
+      items: [
+        ['c1', '킥오프 미팅 일정 확정', '계약 확정 후 1주 내, 양측 결정권자 참석으로 잡기'],
+        ['c2', '킥오프 안건·목표 정리해 사전 공유', '1·2개월 목표, 첫 산출물, 확인 필요 사항을 미팅 전 발송'],
+        ['c3', '월간 정기 회의 캘린더 고정', '반복 일정으로 등록 + 양측 참석자 초대(빠짐 방지)'],
+        ['c4', '커뮤니케이션 채널 합의', '주 소통 채널(슬랙/카톡/메일)·응답 SLA·긴급 연락 경로 정함'],
+        ['c5', '1개월차 산출물 일정·마감 합의', '초안·검수·발행 날짜를 역산해 캘린더에 표시']
+      ]
+    },
+    {
+      k: '운영 전환',
+      label: 'D',
+      desc: '매뉴얼 작업에서 굴러가는 운영으로 넘긴다.',
+      items: [
+        ['d1', '마스터시트 생성·담당 배정', '브랜드 운영 시트 만들고 항목별 담당자·마감 컬럼 채우기'],
+        ['d2', '채널 운영 세팅', '콘텐츠 캘린더·발행 권한·예약 도구·태그 규칙 설정'],
+        ['d3', '월간 보고 양식·KPI 정의', '무엇을 어떤 지표로 보고할지 합의, 보고 템플릿 확정'],
+        ['d4', '내부 인수인계', '영업 담당 → 운영 담당에게 맥락·약속·금지사항 전달'],
+        ['d5', '첫 콘텐츠·캠페인 착수', '1개월차 첫 산출물 제작 시작 + 진행 상황 클라이언트 공유']
+      ]
+    }
+  ];
+
+  var STORE = 'br_onboarding_v1';
+  function load(){ try { return JSON.parse(localStorage.getItem(STORE)) || {}; } catch(e){ return {}; } }
+  function save(s){ try { localStorage.setItem(STORE, JSON.stringify(s)); } catch(e){} }
+  var state = load();
+
+  var lists = document.getElementById('lists');
+  var allIds = [];
+  DATA.forEach(function(sec){ sec.items.forEach(function(it){ allIds.push(it[0]); }); });
+
+  function render(){
+    var html = '';
+    DATA.forEach(function(sec){
+      var done = sec.items.filter(function(it){ return state[it[0]]; }).length;
+      var tot = sec.items.length;
+      var cntCls = (done === tot) ? ' done' : '';
+      html += '<div class="sec">'
+        + '<div class="sec-head"><span class="sec-k">' + sec.label + '</span>'
+        + '<h2>' + sec.k + '</h2>'
+        + '<span class="cnt' + cntCls + '">' + done + '/' + tot + '</span></div>'
+        + '<div class="desc">' + sec.desc + '</div>'
+        + '<div class="list">'
+        + sec.items.map(function(it){
+            var on = !!state[it[0]];
+            return '<label class="item' + (on ? ' checked' : '') + '">'
+              + '<input type="checkbox" data-id="' + it[0] + '"' + (on ? ' checked' : '') + '>'
+              + '<span class="body"><span class="t">' + it[1] + '</span>'
+              + '<span class="d">' + it[2] + '</span></span></label>';
+          }).join('')
+        + '</div></div>';
+    });
+    lists.innerHTML = html;
+
+    [].forEach.call(lists.querySelectorAll('input[type=checkbox]'), function(cb){
+      cb.onchange = function(){
+        var id = cb.getAttribute('data-id');
+        if (cb.checked) state[id] = 1; else delete state[id];
+        save(state);
+        render();
+      };
+    });
+    renderProgress();
+  }
+
+  function renderProgress(){
+    var done = allIds.filter(function(id){ return state[id]; }).length;
+    var tot = allIds.length;
+    var pct = tot ? Math.round(done / tot * 100) : 0;
+    document.getElementById('pct').textContent = pct + '%';
+    document.getElementById('bar').style.width = pct + '%';
+    document.getElementById('doneN').textContent = done;
+    document.getElementById('totN').textContent = tot;
+  }
+
+  document.getElementById('btnReset').onclick = function(){
+    if (confirm('체크한 항목을 모두 초기화할까요?')){ state = {}; save(state); render(); }
+  };
+
+  render();
+})();
+</script>
+</body>
+</html>
