@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>그리니팅 1차 브랜드 워크샵 — 고도화 리서치 종합 | BRANDRISE</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.72;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
+
+.hero{background:var(--ink);color:#fff;padding:60px 0 48px}
+.hero .in{max-width:1180px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;
+  border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:18px}
+.hero h1{font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1.14;margin-bottom:14px}
+.hero .sub{font-size:15.5px;color:#cbd5e1;font-weight:300;max-width:760px;line-height:1.75}
+.hero .sub b{color:#fff;font-weight:600}
+.hero .meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
+  border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+
+.layout{max-width:1180px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:210px 1fr;gap:46px;align-items:start}
+nav.toc{position:sticky;top:22px;padding:34px 0;font-size:13px}
+nav.toc .nl{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--muted);margin:16px 0 10px 12px}
+nav.toc .nl:first-child{margin-top:0}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:7px 12px;border-radius:8px;
+  border-left:2px solid transparent;transition:.15s;font-weight:500}
+nav.toc a:hover{color:var(--ink);background:var(--soft)}
+nav.toc a.on{color:var(--ac);background:var(--ac-50);border-left-color:var(--ac);font-weight:700}
+main{padding:34px 0 100px;min-width:0}
+
+section{margin-bottom:52px;scroll-margin-top:22px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.lead{font-size:14.5px;color:var(--muted);margin-bottom:20px;line-height:1.7}
+h3{font-size:15px;font-weight:800;margin:26px 0 12px;color:var(--ink2);letter-spacing:-.01em}
+h4{font-size:13.5px;font-weight:800;margin:16px 0 8px;color:var(--ink2)}
+p{margin-bottom:10px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.co{border-radius:12px;padding:15px 18px;margin:12px 0;font-size:13.5px;line-height:1.72;border:1px solid var(--line)}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100)} .co.ok{background:var(--ok-50);border-color:#bbf7d0}
+.co.warn{background:var(--warn-50);border-color:#fde68a} .co.bad{background:var(--bad-50);border-color:#fecdd3}
+.co b{color:var(--ink)}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
+
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
+.t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
+.t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 4px}
+.kpi .k{background:var(--ink);color:#fff;border-radius:12px;padding:16px 18px}
+.kpi .k.alt{background:var(--bad)}
+.kpi .lbl{font-size:11px;color:#94a3b8;font-weight:600;margin-bottom:4px}
+.kpi .k.alt .lbl{color:#fecdd3}
+.kpi .v{font-size:24px;font-weight:800;letter-spacing:-.02em}
+.kpi .s{font-size:11px;color:#cbd5e1;margin-top:3px;line-height:1.5}
+.kpi .k.alt .s{color:#fecdd3}
+
+.op{background:linear-gradient(160deg,var(--ac-50),#fff 65%);border:1px solid var(--ac-100);border-radius:16px;padding:24px 26px}
+.op .opk{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--ac);margin-bottom:14px}
+.op .blk{margin-bottom:15px} .op .blk:last-child{margin-bottom:0}
+.op .bl{font-size:11px;font-weight:800;color:var(--ac-700);letter-spacing:.06em;margin-bottom:5px}
+.op .bt{font-size:14.5px;line-height:1.72;color:var(--ink2)} .op .bt b{color:var(--ink)}
+.op .do{font-size:13.5px;line-height:1.7;color:var(--ink2);padding:3px 0} .op .do b{color:var(--ink)}
+
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin:8px 0 4px}
+th{background:var(--soft);color:var(--ink2);font-weight:700;text-align:left;padding:9px 11px;font-size:11.5px;border-bottom:1px solid var(--line)}
+td{padding:9px 11px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b,td strong{color:var(--ink)}
+.tbwrap{overflow-x:auto}
+
+.q{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac);border-radius:10px;padding:15px 18px;margin-bottom:10px}
+.q .qn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.05em;margin-bottom:5px}
+.q .qt{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.65}
+.q .qi{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.6}
+
+.arch{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0}
+.arch .row{display:grid;grid-template-columns:120px 1fr;gap:0;border-bottom:1px solid var(--line)}
+.arch .row:last-child{border-bottom:0}
+.arch .lyr{padding:16px 16px;font-weight:800;font-size:13px;display:flex;flex-direction:column;justify-content:center;color:#fff}
+.arch .r1 .lyr{background:#6366f1} .arch .r2 .lyr{background:#4338ca} .arch .r3 .lyr{background:#312e81}
+.arch .lyr .sm{font-size:11px;font-weight:600;opacity:.85;margin-top:3px}
+.arch .bd{padding:15px 18px;background:var(--card)}
+.arch .bd .tt{font-weight:800;font-size:14px;color:var(--ink);margin-bottom:3px}
+.arch .bd .ds{font-size:12.5px;color:var(--muted)}
+
+/* Positioning scatter */
+.pmap{position:relative;height:440px;border:1px solid var(--line);border-radius:14px;background:
+  linear-gradient(90deg,transparent 49.6%,var(--line) 49.6%,var(--line) 50.4%,transparent 50.4%),
+  linear-gradient(180deg,transparent 49.6%,var(--line) 49.6%,var(--line) 50.4%,transparent 50.4%),var(--card);
+  margin:16px 0}
+.pmap .zone{position:absolute;top:8px;right:10px;width:calc(50% - 18px);height:calc(50% - 18px);
+  background:var(--bad-50);border:1px dashed #fecdd3;border-radius:10px}
+.pmap .dot{position:absolute;transform:translate(-50%,-50%);font-size:11px;color:var(--ink2);white-space:nowrap}
+.pmap .dot::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ac);margin-right:5px;vertical-align:middle}
+.pmap .dot.gr{color:var(--bad);font-weight:800;font-size:12.5px}
+.pmap .dot.gr::before{width:11px;height:11px;background:var(--bad)}
+.pmap .dot.gl::before{background:#0ea5e9}
+.pmap .axl{position:absolute;font-size:11px;font-weight:700;color:var(--muted)}
+.pmap .zlab{position:absolute;top:14px;right:16px;font-size:11px;font-weight:800;color:var(--bad);letter-spacing:.04em}
+
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 18px;position:relative}
+.tier.rec{border:2px solid var(--ac);box-shadow:0 8px 24px -12px rgba(79,70,229,.4)}
+.tier .rb{position:absolute;top:-11px;left:16px;background:var(--ac);color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;padding:3px 11px;border-radius:9px}
+.tier .tn{font-size:12px;font-weight:800;color:var(--ac)}
+.tier .tt{font-size:14px;font-weight:800;color:var(--ink);margin:4px 0 8px}
+.tier .tag{font-size:11px;color:var(--muted);margin-bottom:10px}
+.tier ul{list-style:none} .tier li{font-size:12px;color:var(--ink2);padding:3px 0 3px 14px;position:relative;line-height:1.5}
+.tier li::before{content:"›";position:absolute;left:0;color:var(--ac);font-weight:800}
+.tier .role{margin-top:10px;font-size:11.5px;font-weight:700;padding:5px 9px;border-radius:8px;background:var(--soft);color:var(--ink2)}
+
+.persona{border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:12px;background:var(--card)}
+.persona .ph{display:flex;align-items:baseline;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.persona .pn{font-size:15px;font-weight:800;color:var(--ink)}
+.persona .pr{font-size:11.5px;color:var(--muted)}
+.persona .prow{font-size:12.5px;color:var(--ink2);margin:4px 0;line-height:1.6}
+.persona .prow b{color:var(--ink)}
+
+.footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:var(--muted);font-size:12px}
+.footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
+.src{font-size:11.5px;color:var(--muted);line-height:1.85}
+.src a{color:var(--ac);text-decoration:none}
+
+@media(max-width:880px){
+  .layout{grid-template-columns:1fr;gap:0;padding:0 20px}
+  nav.toc{display:none}
+  .hero .in{padding:0 20px}.hero h1{font-size:28px}
+  .grid2,.grid3,.kpi,.tiers{grid-template-columns:1fr}
+  .arch .row{grid-template-columns:96px 1fr}
+  .pmap{height:380px}
+}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">1차 브랜드 워크샵 · 고도화 리서치 종합 · 내부 전용</div>
+  <h1>그리니팅 — 공동구매가 만든 18억을<br>브랜드가 만드는 매출로</h1>
+  <div class="sub">에그하다는 <b>없던 브랜드</b>를 그렸다. 그리니팅은 <b>이미 잘하는 브랜드</b>의 다음이다. 제품·데이터·매출·팬은 이미 있다 — 빠진 건 그걸 <b>브랜드가 만드는 자생 성장엔진</b>으로 조립하는 일. 이 리포트는 7/8 워크샵의 시장·경쟁·타겟·방향 재료다.</div>
+  <div class="meta">
+    <span class="chip">워크샵 <b>7/8(수) 오전 · 약 140분</b></span>
+    <span class="chip">단계 <b>수주 확정 → 실행 착수</b></span>
+    <span class="chip">계약 <b>6개월 IMC 파트너십 6,900만</b></span>
+    <span class="chip">작성 <b>2026-07-05</b></span>
+  </div>
+</div></div>
+
+<div class="layout">
+  <nav class="toc">
+    <div class="nl">종합</div>
+    <a href="#thesis">한 장 요약</a>
+    <a href="#frame">워크샵 프레이밍</a>
+    <div class="nl">리서치 4축</div>
+    <a href="#market">시장 (05)</a>
+    <a href="#comp">경쟁 지형 (06–16)</a>
+    <a href="#target">타겟·고객 (20)</a>
+    <a href="#direction">방향성 (17·21·22)</a>
+    <div class="nl">진행·리스크</div>
+    <a href="#runsheet">워크샵 런오브쇼 (23)</a>
+    <a href="#risk">리스크 · 규제</a>
+    <a href="#mapping">덱 매핑 · 공백</a>
+    <a href="#src">출처</a>
+  </nav>
+
+  <main>
+
+  <!-- ============ THESIS ============ -->
+  <section id="thesis">
+    <div class="sec-k">THE ONE PAGE</div>
+    <h2>한 장 요약 — 4개 리서치가 가리키는 하나의 방향</h2>
+    <p class="lead">시장·경쟁·타겟·방향성을 따로 팠는데, 네 갈래가 같은 척추로 모였다. 그게 확신의 근거다.</p>
+    <div class="op">
+      <div class="opk">🎯 척추 한 문장</div>
+      <div class="blk">
+        <div class="bl">그래서 다음은</div>
+        <div class="bt">그리니팅의 다음 레벨은 <b>"더 좋은 스무디"가 아니라 "스무디라는 카테고리에서 나오는 것"</b>이다. 국내 경쟁사가 전부 <b>투입(원물·인증·산지·권위)</b>에서 멈출 때, 그리니팅만 <b>산출(DPPH 92%·당류 3g의 측정값)</b>을 전면에 걸어 "측정으로 고르는 웰니스"라는 빈 좌표를 국내 최초로 점유한다.</div>
+      </div>
+      <div class="blk">
+        <div class="bl">어떻게 (3층 신뢰 아키텍처)</div>
+        <div class="do"><b>① 얼굴 = 대표</b> (Route B) — 공구 53%가 산 그 사람. 최초아 파운더 IP로 진입, 기존 팬 자산을 하나도 안 깬다.</div>
+        <div class="do"><b>② 심장 = 데이터</b> (Route A) — DPPH 92%·당류 3g. 국내 무주공산, 경쟁사가 못 훔치는 정체성. "데이터가 우리의 약사".</div>
+        <div class="do"><b>③ 뿌리 = 원물</b> (Route C) — 비가열 HPP·유기농. 리드가 아니라 "왜 그 숫자가 나오나"의 증명 재료로 편입.</div>
+      </div>
+      <div class="blk">
+        <div class="bl">누구에게 · 언제</div>
+        <div class="bt">코어 타겟 = <b>저속노화 이너뷰티 3040 여성(A)</b>. 189만(김미경TV)을 다 잡지 말고 그 안의 'A'를 골라내는 그릇으로 받는다. 데드라인 = <b>8월말 스튜 + 9월 김미경TV</b> 노출 전에 서사·자사몰 퍼널 완성. 노출 후엔 늦다.</div>
+      </div>
+    </div>
+    <div class="kpi">
+      <div class="k"><div class="lbl">연 매출</div><div class="v">18억 → 26억</div><div class="s">4억→18억 자력 성장·목표 26억</div></div>
+      <div class="k"><div class="lbl">DPPH 산출증명</div><div class="v">국내 0건</div><div class="s">경쟁 10곳 전부 '투입' 소구</div></div>
+      <div class="k alt"><div class="lbl">공구 채널 의존</div><div class="v">53%</div><div class="s">정체 원인 · 전환 대상</div></div>
+      <div class="k"><div class="lbl">빈 좌표 이웃</div><div class="v">AG1 뿐</div><div class="s">국내 우상단 경쟁자 0</div></div>
+    </div>
+  </section>
+
+  <!-- ============ FRAMING ============ -->
+  <section id="frame">
+    <div class="sec-k">WORKSHOP FRAMING</div>
+    <h2>워크샵 프레이밍 — 그리려 온 게 아니라 꺼내러 왔다</h2>
+    <p class="lead">1차 워크샵은 우리가 브랜드를 그려 보여주는 자리가 아니라, 대표 머릿속의 그리니팅을 꺼내 함께 정리하고 방향을 좁히는 자리다.</p>
+    <div class="grid2">
+      <div class="co bad" style="margin:0"><span class="lab">에그하다 (없던 브랜드)</span>브랜드가 <b>백지</b>였다. 무에서 유를 그렸다. 정답을 새로 만드는 작업.</div>
+      <div class="co ok" style="margin:0"><span class="lab">그리니팅 (이미 잘하는 브랜드)</span>제품력(비가열·저당·DPPH 92%)·매출 18억·리뷰 4.9·9.7만팩·정기구독 200명이 <b>이미 있다</b>. 우리 일은 <b>있는 걸 깨지 않고 위로 쌓는 것</b>. 부정 금지.</div>
+    </div>
+    <div class="co ac"><span class="lab">진단 — 이름이 문제가 아니다</span><b>L1</b> "리브랜딩 하고 싶다"(표면) → <b>L2</b> DPPH 등 검증 데이터를 상세페이지에 미기재(무료 탄약 방치) → <b>L3</b> "스무디" 카테고리 안에선 프리미엄 정당화 서사 불가 → <b>L4 근본</b> 공구 53% 탈피한 <b>자생 성장엔진 부재</b>. → 이름만 바꾸면 통증 재발. 필요한 건 <b>카테고리 점프 + 데이터·파운더 자산의 콘텐츠 전환</b>.</div>
+    <div class="co ok"><span class="lab">✔ 대표 상담 육성(2026-06-09 녹취)으로 전 전략 검증됨</span>이 진단·방향은 추정이 아니라 대표 발언과 1:1로 맞는다. <b>"아버지가 식품 제조만 30년"</b>(제조 30년 딸) · <b>"시칠리아섬 가서 레몬 컨테이너 직접 가져왔다"</b> · <b>"노화·이너뷰티 관리하는데 바빠서 못 챙기는 사람을 돕는 브랜드가 되고 싶었다"</b>(A세그먼트) · <b>"검색하면 스무디로 나오는데, 애초에 스무디 브랜드로 시작한 게 아니다 · 식품 브랜드 포지셔닝이면 설득이 어렵다 · 미국처럼 데이터 기반으로 리프레이밍 해야 하나"</b>(카테고리 재정의) · <b>"항산화 실험을 맡겼더니 소거능력이 높게 나왔다 · 데이터·효과 입증을 보여주는 브랜드로 가면 신뢰를 주지 않을까"</b>(Route A) · <b>"리브랜딩 해야 되나 했는데, 그게 아니라고 명확히 짚어주셨다"</b>(L1 함정 수긍). 정기구독은 <b>~500명</b>(녹취, 기존 200 상향). 추가 벤치마크 = <b>블룸(Bloom, 미국 그린스 파우더)</b> — 대표가 3년 전부터 주시.</div>
+  </section>
+
+  <!-- ============ MARKET ============ -->
+  <section id="market">
+    <div class="sec-k">MARKET · 덱 05 고도화</div>
+    <h2>시장 — 세 성장 시장이 겹치는 교차점</h2>
+    <p class="lead">전체 건기식은 정체(2025 +0.2%)지만, 그리니팅이 선 자리는 세 개의 성장 시장이 겹친다. 좁은 "착즙주스"에 자기구속하면 풀무원 독주 레드오션이고, "측정된 데일리 웰니스"로 넓히면 성장하는 물이다.</p>
+    <div class="tbwrap"><table>
+      <tr><th>시장</th><th>규모 · 성장</th><th>그리니팅 시사점</th></tr>
+      <tr><td><b>건강식품 D2C</b></td><td>국내 건기식 5조 9,626억(2025, <b>+0.2% 정체</b>)·온라인 채널 <b>71%</b></td><td>기성 카테고리는 포화. 하지만 D2C 유통은 이미 열림 → "새 카테고리 정의"가 성장의 유일한 길</td></tr>
+      <tr><td><b>건강즙·클렌즈</b></td><td>"건강즙" <b>1조 원대</b> 급성장·2030 유입 / 협의 착즙주스는 풀무원 독주 정체</td><td>"스무디/디톡스"에 갇히면 좁은 싸움. "데일리 웰니스 루틴"으로 프레임 확대</td></tr>
+      <tr><td><b>HMR 상온간편식</b></td><td>2025년 <b>10조 전망</b>·연 <b>15%+</b> 고성장</td><td>8월말 토마토 비프스튜(상온·첨가물0) = 브랜드를 "음료→데일리 웰니스 식탁"으로 넓히는 교두보</td></tr>
+    </table></div>
+
+    <h3>핵심 소비 트렌드 8종 — 전부 그리니팅 자산과 정렬</h3>
+    <div class="tbwrap"><table>
+      <tr><th>트렌드</th><th>근거</th><th>그리니팅 시사점</th></tr>
+      <tr><td>저당·무가당·대체당</td><td>'저당→무당·대체당' 진화</td><td>당류 <b>3g/100g</b> = 이미 최전선. 숫자로 전면화</td></tr>
+      <tr><td>클린라벨·무첨가</td><td>구매 최우려=식품첨가물 <b>23.7%</b>(1위)</td><td>"첨가물 0종" 명시가 전환 레버</td></tr>
+      <tr><td>항산화·이너뷰티</td><td>폴리페놀·항산화 소구 확산</td><td>DPPH 92%·안토시아닌 186mg = 완벽한 탄약</td></tr>
+      <tr><td><b>롱제비티·저속노화</b></td><td>글로벌 276억→670억 달러(CAGR 9.4%)·예방 중심 이동</td><td>낡은 "디톡스/클렌즈" 버리고 <b>"저속노화 데일리 항산화"</b>로 갈아탐</td></tr>
+      <tr><td>데이터·성분 투명성</td><td>관심이 '무엇을'→'왜 이걸(선택근거)'로 이동</td><td>시험성적서·수치 공개가 신뢰 통화. KATR가 정답지</td></tr>
+      <tr><td>정기구독·멤버십</td><td>구독경제 100조 돌파 전망·72%가 월 2개+</td><td>데일리 소비재는 구독 최적. 락인은 국내 <b>선점 공백</b></td></tr>
+      <tr><td>공구 피로→자사몰</td><td>'양→질' 전환, 콘텐츠→구매 직결</td><td>공구 53% 의존 탈피가 시장 흐름과 일치</td></tr>
+      <tr><td>숏폼 커머스</td><td>라이브커머스 4.7조(+35%)</td><td>숏폼 CTR 3.76%(이미지 2배) = 이미 이 채널에서 이김</td></tr>
+    </table></div>
+
+    <h3>글로벌 벤치마크 — "데이터·과학으로 카테고리를 재정의한" 공식</h3>
+    <div class="tbwrap"><table>
+      <tr><th>브랜드</th><th>규모</th><th>메커니즘</th><th>그리니팅 이식</th></tr>
+      <tr><td><b>AG1</b></td><td>$600M(2024)</td><td>'그린 파우더' 버리고 "Foundational Nutrition" 상위 카테고리 신설 + 성분표 투명공개</td><td>"스무디" 버리고 "측정 웰니스" 신설 + DPPH 전면화</td></tr>
+      <tr><td><b>ARMRA</b></td><td>~$150M</td><td>닥터 파운더 서사 + 쇼핑·사이언스 한 화면 융합. 구독전환 35%</td><td>파운더 IP + 상세페이지에 시험값 융합(DPPH 방치 해법)</td></tr>
+      <tr><td><b>IM8</b></td><td>$120M ARR(1년)</td><td>셀럽(베컴)+과학기관+롱제비티 상위 서사, 첫해 폭발</td><td><b>김미경TV = 그리니팅의 '베컴 순간'</b>. 단 노출 전 서사 완비 필수</td></tr>
+      <tr><td><b>Daily Harvest</b> <span class="t r">반면교사</span></td><td>리콜로 타격</td><td>냉동 클린밀 개척했으나 <b>신원료 리콜(28,000개·470건+ 질병)→$23M 합의</b></td><td>스튜 런칭 시 <b>식품안전을 마케팅 속도보다 앞세워라</b></td></tr>
+    </table></div>
+    <div class="co ac"><span class="lab">창(Window) — 왜 지금인가</span>① 비어 있는 좌표(고가×산출증명)에 그리니팅만 데이터 자산 보유 ② 글로벌이 답을 증명 완료 ③ <b>8월말 스튜 + 9월 김미경TV 대량 노출 직전</b>. 노출 전에 "측정된 웰니스" 서사·자사몰 퍼널을 완성하면 공구 53% 의존을 이번 하반기에 자생 성장으로 전환. <b>노출 후엔 늦다.</b></div>
+    <div class="co warn"><span class="lab">규제 주의</span>그리니팅 제품은 건강기능식품(기능성 인증)이 아닌 <b>일반식품</b>. "항산화 효능" 직접 단정은 식품표시광고법 리스크 → 데이터는 <b>"성분 팩트(DPPH 92% 시험결과)"</b>로 제시, 효능 단정은 규제 검수 후. (상세 §리스크)</div>
+  </section>
+
+  <!-- ============ COMPETITION ============ -->
+  <section id="comp">
+    <div class="sec-k">COMPETITION · 덱 06–16 고도화</div>
+    <h2>경쟁 지형 — 국내 10곳 전부 하단, 우상단은 비어 있다</h2>
+    <p class="lead">국내 경쟁사 개별 실측 결과, 덱의 "빈 좌표" 가설은 보정이 아니라 <b>강화</b>됐다. 국내 유일한 이웃은 글로벌 AG1뿐 — 덱에 "우리는 국내 AG1"으로 명시 가능.</p>
+
+    <div class="pmap">
+      <span class="zlab">비어 있는 좌표 · 국내 0</span>
+      <span class="axl" style="top:6px;left:12px">↑ 산출 증명 (측정 데이터 · DPPH·당류g)</span>
+      <span class="axl" style="bottom:6px;left:12px">↓ 투입 소구 (원물·인증·산지·권위)</span>
+      <span class="axl" style="top:50%;left:10px;transform:translateY(-50%)">← 대중가</span>
+      <span class="axl" style="top:50%;right:10px;transform:translateY(-50%)">프리미엄 →</span>
+      <!-- 그리니팅 목표 (7.5, 8) -->
+      <span class="dot gr" style="left:78%;top:16%">그리니팅 (목표)</span>
+      <!-- AG1 (9,7) gll -->
+      <span class="dot gl" style="left:90%;top:28%">AG1 (글로벌)</span>
+      <!-- 국내 전부 하단 -->
+      <span class="dot" style="left:70%;top:76%">올가니카</span>
+      <span class="dot" style="left:80%;top:70%">애플트리김약사네</span>
+      <span class="dot" style="left:62%;top:70%">라티브</span>
+      <span class="dot" style="left:60%;top:65%">타이거모닝</span>
+      <span class="dot" style="left:72%;top:73%">플루니 ⚠</span>
+      <span class="dot" style="left:44%;top:78%">풀무원녹즙</span>
+      <span class="dot" style="left:31%;top:80%">순수식품</span>
+      <span class="dot" style="left:52%;top:80%">욕망스무디</span>
+      <span class="dot" style="left:14%;top:88%">솔리몬</span>
+    </div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:-4px">좌표는 추정 스케일(X 대중가 1↔프리미엄 10 / Y 투입소구 1↔산출증명 10). 국내 10곳 전부 Y≤3.</p>
+
+    <h3>🔴 최우선 경쟁자 — 베르베르 × 플루니 (대표 지목 · 파운더 IP 거울)</h3>
+    <div class="co bad"><span class="lab">대표님이 상담에서 직접 지목한 브랜드</span><b>베르베르 = 플루니의 파운더다.</b> 인플루언서 <b>베르베르(@berberlog · 팔로워 26.8만)</b>가 "직장인 퇴근 후 <b>찐 채소 스무디</b> 레시피"로 공감·팬을 쌓았고, 국내 최대 MCN <b>트리즈커머스</b>가 이를 상업화한 브랜드가 <b>플루니(Ploonie)</b>다(트리즈커머스 PB, 3분기 사상 최대 실적). "채소는 익히고"라는 <b>그리니팅과 똑같은 콘셉트</b> + 5종 컬러·100% 과채·설탕/첨가물0·냉동, 5입 42,500원(동급). 채널 = D2C 정기배송·공구 + <b>CJ온스타일 완판 · 신세계 청담 · 올영 온라인</b>.</div>
+    <div class="co ac"><span class="lab">대표 상담 육성(2026-06-09) — 방향 교정</span>대표는 베르베르를 <b>"저희 스무디 경쟁사"</b>로 명시하며 <b>"너무 세다"</b>고 했다. 단 순서는 반대다 — <b>그리니팅이 먼저다</b>(2025.1 정식판매·올영도 선입점). 대표 발언: <b>"이분(베르베르)이 우리 브랜드를 너무 따라했다. 브랜드 스토리 놓고 비교하면 너무 비슷"</b> / <b>"뒤에 트리즈라는 대형 기획사가 껴 있다. 이분은 얼굴마담, 제품은 뒤에서 다 만든다"</b> / <b>"저는 혼자 싸우고 저기는 대형기획사 끼고 싸워서 밀린다 → 대표님 힘을 빌려야겠다"</b>(=수주 동기). 우리 팀 관찰: <b>"플루니는 베르베르 서사가 안 들린다(제품만). 근데 대표님 얘긴 너무 진정성 있다."</b> → <b>결정적 차이 = 베르베르엔 2층(측정 데이터)도, 진짜 서사도 없다.</b> 그리니팅 승부수 = <b>"제조 30년 딸 정통성(1층) + KATR DPPH(2층)"</b> — 대형기획사와의 감성·스펙 정면전이 아니라 <b>진정성 서사 + 측정 데이터로 층위를 달리하는 것.</b> 3층 아키텍처가 정확히 이 답이다.</div>
+
+    <h3>🟦 채널 타깃 — 올리브베러 (올리브영 K-웰니스 플랫폼)</h3>
+    <div class="co ac"><span class="lab">대표가 함께 지목한 채널 — 자사몰 다음의 프리미엄 웰니스 진열대</span><b>올리브베러(OLIVE BETTER)</b> = 올리브영이 2026.1 광화문에 연 <b>K-웰니스 큐레이션 플랫폼</b>(130평·500여 브랜드·3천여 종·강남역 확장·앱인앱 헬스+). 6테마(Eat/Nourish/Fit/Glow/Relax/Care Well). "웰니스의 민주화". <b>올영 냉동 스무디는 사실상 플루니 vs 그리니팅 양강</b>이고 그리니팅은 <b>이미 올영 온라인 입점</b>(냉동고 이슈로 양쪽 다 오프라인 미입점 = 온라인이 전장). → 그리니팅 자리 = <b>Eat·Nourish·Glow Well</b>. "측정 웰니스"는 올리브베러가 내세우는 <b>science·wellness 큐레이션 기준과 정합</b>(감성 IP만으론 부족한 지점 = 데이터로 큐레이터를 설득). <b>채널 3단</b> = ①자사몰 정기구독 락인 ②올리브베러 온라인 입점으로 브랜드 신뢰 ③9월 김미경TV 유입을 두 채널로 수신.</div>
+
+    <h3>경쟁사 요약 대시보드</h3>
+    <div class="tbwrap"><table>
+      <tr><th>브랜드</th><th>포지션</th><th>대표 단가</th><th>핵심 무기(유형)</th><th>훔칠 것 / 피할 것</th></tr>
+      <tr><td><b>솔리몬</b></td><td>대중가 레몬 앵커</td><td>990ml ml당 ~5원(최저)</td><td>산지·100%원액(투입)</td><td>산지 스토리 / 가격 바닥 — 덕분에 진짜레몬 프리미엄 방어선 확보</td></tr>
+      <tr><td><b>순수식품</b></td><td>가성비 유기농즙</td><td>레몬즙 ml당 27~43원 [추정]</td><td>유기농·NFC(투입)</td><td>'싸다+좋다' 명료 카피 / 가성비 포지션(내려가면 안 됨)</td></tr>
+      <tr><td><b>애플트리김약사네</b></td><td>최고가 앵커·약사권위</td><td>레몬즙 ml당 ~51원~</td><td>약사·유기농(권위)</td><td>프리미엄 정당화 신뢰구조 / <b>인물 의존 리스크</b>(에스더 구조)</td></tr>
+      <tr><td><b>올가니카</b></td><td>프리미엄 클렌즈 원조</td><td>클렌즈 프리미엄대</td><td>유기농·홀푸드·클렌즈(헤리티지)</td><td>홀푸드 신뢰 / <b>'클렌즈·디톡스' 프레임 자체</b>(이미 원조 선점)</td></tr>
+      <tr><td><b>라티브</b> ⭐</td><td>통째 갈기 프리미엄주스</td><td>100ml×14 40,600원(ml당 ~29원)</td><td>원물통째·무첨가+<b>정기배송</b>(투입+루틴)</td><td><b>'퍼펙트 모닝' 프로그램형 구독</b>(락인 실증) / 무첨가에서 멈춤 → DPPH 얹어 위로</td></tr>
+      <tr><td><b>풀무원녹즙</b></td><td>대기업 신선배송 구독</td><td>병당 2,000~3,300원</td><td>신선·매일배송·대기업(신뢰)</td><td>구독 리텐션 UX·'아침습관' / 물류 정면경쟁(4인 조직 불가)</td></tr>
+      <tr><td><b>타이거모닝</b></td><td>웰니스 '샷' D2C</td><td>30일팩 구독</td><td>슈퍼푸드·흡수설계+디자인(투입)</td><td>무신사·29CM식 <b>감도 채널 전략</b> / 샷 카테고리(폼 다름)</td></tr>
+      <tr><td><b>베르베르·플루니</b> 🔴</td><td>파운더 IP 거울(대표 지목)</td><td>5입 42,500(팩당 ~8,500)</td><td>인플루언서 26.8만 IP+100%과채(감성)</td><td>파운더 IP→브랜드화 모델 / <b>2층(데이터) 없음 = 승부처</b></td></tr>
+      <tr><td><b>욕망스무디</b></td><td>독일 수입 냉동스무디</td><td>[미확인]</td><td>N2 급속동결·무첨가(기술)</td><td>'급속동결로 영양보존' 기술서사 / <b>효능 오인 광고</b>(GS홈쇼핑 경고 사례)</td></tr>
+      <tr><td>슈퍼브레시피</td><td colspan="4"><span class="t y">미확인</span> 검색 4회로 실체 확인 실패 → 덱에 억지 카드화 말고 대표에게 정확한 브랜드명·URL 확인 권장</td></tr>
+    </table></div>
+
+    <div class="co ac"><span class="lab">"국내 아무도 산출을 전면에 안 쓴다" — 검증: 참(True)</span>각 경쟁사 상세페이지 전면 언어를 실측한 결과 전부 <b>투입</b>(유기농·NFC·산지·통째갈기·급속동결·약사권위). <b>DPPH·안토시아닌 mg·당류 g 같은 '측정된 산출값'을 전면에 쓰는 국내 브랜드 = 0건.</b> 그리니팅 KATR 데이터가 국내 무주공산의 차별화 탄약 — Route A의 근거.</div>
+    <div class="co ok"><span class="lab">경쟁 대비 차별화 3줄</span><b>①</b> 제품은 이미 플루니·라티브와 같은 링. 스펙으로 못 이김 → <b>카테고리를 갈아타야 산다.</b> <b>②</b> 모두 투입에서 멈출 때 그리니팅만 산출을 전면에 → 인물 권위 붕괴 리스크를 <b>"데이터가 우리의 약사"</b>로 대체. <b>③</b> 락인은 국내가 비어있다(라티브가 유일 시도) → Daily Harvest식 계단가 + 파운더 IP로 공구를 자사몰 구독으로 전환.</div>
+
+    <h3>➕ 경쟁사 보강 — 남중님 1차 리스트 밖 (대표 육성 + 올리브베러 실측)</h3>
+    <div class="tbwrap"><table>
+      <tr><th>추가 경쟁사</th><th>근거·정체</th><th>그리니팅 차별</th></tr>
+      <tr><td><b>달심</b> (올리브베러)</td><td>퍼플 클렌즈 주스(100ml 30팩 63,700). 대표 직접: "껍질째 갈았다지만 공장서 다 가열해 영양 박살"</td><td><b>비가열 HPP로 정면 반박</b> (대표가 쓴 차별 논거)</td></tr>
+      <tr><td><b>푸드올로지 톡스올로지</b></td><td>48h ABC 클렌즈, 배우 <b>서현</b> PICK(올리브베러), 21,000~</td><td>셀럽·이벤트성 클렌즈 vs 데일리 데이터 웰니스</td></tr>
+      <tr><td><b>낫띵베러</b></td><td>유기농 드링킷·마시는 샐러드·양배추즙(1,600~), <b>올리브베러 PICK</b></td><td>투입(유기농) 소구, 산출 데이터 없음 — 자리 구분</td></tr>
+      <tr><td><b>BD사이언스</b></td><td>유기농 레몬즙·애사비·올리브오일 스틱. <b>이대호</b> 기용 후 매출 3배</td><td>진짜레몬 직접경쟁 — 비타민C 성적서로 "살아있는 영양"</td></tr>
+      <tr><td><b>마녀스프</b> (오뚜기)</td><td>저가 수프. 대표: "오뚜기가 마녀스프 TV광고" — <b>스튜 카테고리 경쟁</b></td><td>8월말 토마토 비프스튜 = "저가 수프" 아닌 프리미엄 스튜</td></tr>
+      <tr><td><b>블룸(Bloom)</b> 🌐</td><td>미국 그린스파우더. 대표: "블룸이 너무 잘해서 한국 들어오겠다 싶었다"</td><td>글로벌 그린스파우더 벤치(AG1과 함께) · 에라원(Erewhon) 리테일 참조</td></tr>
+    </table></div>
+  </section>
+
+  <!-- ============ TARGET ============ -->
+  <section id="target">
+    <div class="sec-k">TARGET · 덱 20 고도화</div>
+    <h2>타겟·고객 — 18억을 만든 손님과, 26억을 만들 손님은 다른 사람이다</h2>
+    <p class="lead">공구 53%는 인플루언서의 팬을 빌려 쓰는 구조 — 매출은 있는데 고객은 인플루언서 자산으로 남는다. 타겟을 좁힌다는 건 "빌린 고객을 우리 고객으로 전환할 대상을 정한다"는 뜻.</p>
+    <div class="grid2">
+      <div class="co warn" style="margin:0"><span class="lab">지금 유입 (반응형 · reactive)</span>공구·방송·할인 신호가 있을 때 산다. "그 인플루언서 스무디"로 기억. 충성은 인플루언서·할인에 귀속. 정상가엔 잘 안 넘어옴. → 매출이 <b>이벤트 의존</b>으로 출렁이는 구조.</div>
+      <div class="co ok" style="margin:0"><span class="lab">지향 (능동형 · proactive · 팬)</span>"왜 먹는지"에 설득돼 재방문. 제품이 아니라 <b>자기관리 습관</b>으로 산다. "DPPH 92%·저당 3g — 근거 있는 걸 먹는다"는 선택의 자부심. <b>가격이 아니라 의미로 산다.</b></div>
+    </div>
+    <div class="co ac"><span class="lab">전환은 불가능한 게 아니라 아직 안 한 것</span>이미 자사몰 37% + 정기구독 ~200명 = <b>이미 넘어온 사람들이 있다.</b> 국내 실증(애즈유): 인플루언서 공구 팬덤을 자사몰로 전환하자 <b>신규가입 +827%, 매출 +187%</b>. 전환의 지렛대는 "신규 유입"이 아니라 <b>"이미 산 9.7만 명에게 왜 계속 먹어야 하는지를 주는 것"</b>이다. 지금까지 그 말을 한 적이 없다.</div>
+
+    <h3>핵심 세그먼트 3개 (JTBD 기반)</h3>
+    <div class="tbwrap"><table>
+      <tr><th>세그먼트</th><th>JTBD (고용 이유)</th><th>반응하는 증거</th><th>역할</th></tr>
+      <tr><td><b>A · 저속노화 이너뷰티</b> 3040 여성</td><td>"바르는 걸론 부족. 안에서부터 근거 있게 매일" = 먹는 안티에이징</td><td>DPPH 92%·안토시아닌 숫자 / 저당 3g / 비가열</td><td><span class="t r">🥇 코어</span> Route A</td></tr>
+      <tr><td><b>B · 관리하는 다이어터</b> 2030</td><td>"살은 빼되 영양은. 죄책감 없는 한 끼"</td><td>저당 3g(혈당) / 간편 아침 / 스튜 확장</td><td><span class="t b">🥈 볼륨</span></td></tr>
+      <tr><td><b>C · 가족 게이트키퍼</b> 4050</td><td>"내 가족 몸에 넣는 거니까 믿을 수 있는 걸"</td><td>첨가물0·유기농국산 / 대표 서사 / 김미경TV 신뢰</td><td><span class="t g">🥉 확장</span> Route B·189만 수신</td></tr>
+    </table></div>
+    <div class="co bad"><span class="lab">좁히기 결론</span><b>A를 브랜드 얼굴로 삼는다.</b> A는 근거·의미·프리미엄을 모두 소화하는 유일한 층 = "측정 웰니스" 재정의를 가장 잘 받는다. <b>"A의 언어로 브랜드를 만들면 B·C는 따라온다. 반대로 B(가격·다이어트)를 얼굴로 삼으면 A를 잃고 레드오션에 갇힌다."</b></div>
+
+    <h3>페르소나 3인 — 대표에게 "이 사람 맞나요?" 물을 수준</h3>
+    <div class="persona">
+      <div class="ph"><span class="pn">이서연 (37)</span><span class="pr">세그먼트 A · 저속노화 이너뷰티 · <b style="color:var(--bad)">브랜드 코어</b></span></div>
+      <div class="prow"><b>불안:</b> "나이 드는 게 보이기 시작. 광고 문구 말고 진짜 근거 있는 걸 먹고 싶다. 비싼 거 사놓고 효과 없을까 겁난다."</div>
+      <div class="prow"><b>해결:</b> DPPH 92%·비가열·저당 = "근거 있는 안티에이징을 매일"이라는 확신 + "제대로 골랐다"는 자부심</div>
+      <div class="prow"><b>채널:</b> 인스타→자사몰(정기구독 유력). 공구로 만나도 <b>이유에 설득되면 단골 되는 유일한 층.</b></div>
+    </div>
+    <div class="persona">
+      <div class="ph"><span class="pn">김하늘 (29)</span><span class="pr">세그먼트 B · 관리하는 다이어터 · 볼륨</span></div>
+      <div class="prow"><b>불안:</b> "살은 빼야 하는데 굶으면 무너진다. 설탕 든 스무디는 싫고 맹물 같은 건 맛없어 못 먹는다."</div>
+      <div class="prow"><b>해결:</b> 저당 3g + 비가열 = "죄책감 없이 든든한 한 끼"(스튜로 확장). <b>전환하려면 정기구독 할인+루틴 콘텐츠 락인 필요.</b></div>
+    </div>
+    <div class="persona">
+      <div class="ph"><span class="pn">박정은 (48)</span><span class="pr">세그먼트 C · 가족 게이트키퍼 · 확장·방송 수신</span></div>
+      <div class="prow"><b>불안:</b> "요즘 먹거리 못 믿겠다. 아이·남편한테 좋은 거 먹이고 싶은데 뭘 믿나. 비싸도 안전하면 산다."</div>
+      <div class="prow"><b>해결:</b> 첨가물0·유기농국산 + 대표(제조 30년의 딸) 얼굴 = "믿고 온 가족에게 줄 수 있는 것." <b>방송 후광 없이 자사몰 단독 재방문은 약함 → 대표 IP·정기배송 필요.</b></div>
+    </div>
+
+    <div class="co ac"><span class="lab">9월 김미경TV 189만 — 다 잡지 말고 'A'를 골라내라</span>189만은 40~50대 신뢰 후광 반응층(박정은형). 전환 동선 없이 받으면 "또 하나의 스무디"로 영구 각인. <b>받는 그릇</b> = 랜딩 첫 화면 "DPPH 92%·비가열·저당 3g" 숫자 3개 + KATR 라벨 + 대표 서사 + 정기구독 첫달 락인. <b>189만 전체 전환율 1%보다, 그 안에 섞인 A성향의 재구매 궤도 진입이 26억을 만든다.</b> 좁히는 게 곧 넓히는 길.</div>
+  </section>
+
+  <!-- ============ DIRECTION ============ -->
+  <section id="direction">
+    <div class="sec-k">DIRECTION · 덱 17·21·22 고도화 (크라운)</div>
+    <h2>방향성 — 3 Routes를 택1하지 말고 3층으로 통합</h2>
+    <p class="lead">덱의 3 Routes(A 측정 / B 대표 / C 원산)는 폐기 대상이 아니다. 압박테스트 결과 셋 다 살아남되 <b>역할이 다르다</b>. 그게 통합의 근거다.</p>
+
+    <h3>1단계 · 카테고리 점프 — "스무디"를 벗어야 프리미엄이 정당해진다</h3>
+    <div class="co warn"><span class="lab">왜 카테고리부터인가</span>"스무디"라 부르는 순간 비교 대상이 카페 음료 → 43,500원이 "비싼 주스". "디톡스/클렌즈"라 부르는 순간 비교 대상이 3일짜리 이벤트 → 데일리 반복구매와 충돌(공구 의존과 같은 뿌리). <b>비교 대상을 바꾸는 것이 포지셔닝의 전부다.</b> AG1은 'greens powder'를 거부하고 "Foundational Nutrition"으로 점프해 가격저항을 없앴다.</div>
+    <div class="tbwrap"><table>
+      <tr><th>카테고리 프레임</th><th>장점</th><th>리스크</th><th>역할</th></tr>
+      <tr><td><b>CAT-1 측정되는 항산화 웰니스</b><br>"먹은 게 몸에 남는지 숫자로 증명"</td><td>국내 무주공산·DPPH 독점·프리미엄 자동 정당화·빈 좌표와 일치</td><td>"항산화" 다소 학술적·규제 효능단정 주의</td><td><span class="t r">지붕(5년 정체성)</span></td></tr>
+      <tr><td><b>CAT-2 데일리 클린 뉴트리션</b><br>"매일 챙기는 첨가물0 진짜 채소 한 팩"</td><td>가장 대중적·전 라인 수용·데일리 습관재로 공구 이벤트성 탈피</td><td>"클린"에 머물면 순수식품·올가니카와 겹침</td><td><span class="t b">진입 언어(첫 구매)</span></td></tr>
+      <tr><td>CAT-3 기능성 채소 원물 그대로</td><td>원산·비가열 스토리 강력·스튜 확장</td><td>국내 최대 레드오션(풀무원·올가니카·플루니)·DPPH 못 살림</td><td><span class="t n">근거로 하위 편입</span></td></tr>
+    </table></div>
+    <div class="co ok"><span class="lab">추천</span><b>대중에게는 "매일 챙기는 진짜 채소"(CAT-2)로 팔고, 브랜드로는 "숫자로 증명되는 항산화"(CAT-1)로 기억되게 한다.</b> CAT-3(원물)은 폐기가 아니라 "왜 그 숫자가 나오나"의 증명 재료로 하위 배치.</div>
+
+    <h3>2단계 · 3 Routes 압박테스트 (기준: 기존 자산을 살리는가)</h3>
+    <div class="tbwrap"><table>
+      <tr><th>Route</th><th>뾰족함</th><th>자산 정합</th><th>방어력</th><th>판정</th></tr>
+      <tr><td><b>A 측정으로 말한다</b></td><td>★★★★★ 국내 선점 0</td><td>★★★★☆ 리뷰4.9를 데이터로 승격</td><td>★★★★★</td><td><b>엔진(증명)</b> — 혼자 달리면 차갑고 규제 살얼음</td></tr>
+      <tr><td><b>B 대표가 먼저 먹는</b></td><td>★★★★☆ 서사 복제불가</td><td>★★★★★ 공구 팬 100% 계승</td><td>★★★☆☆</td><td><b>얼굴(진입)</b> — 혼자면 인물 리스크에 흔들림</td></tr>
+      <tr><td><b>C 재료의 원산</b></td><td>★★☆☆☆ 최대 레드오션</td><td>★★★☆☆ DPPH 못 살림</td><td>★★★★★</td><td><b>연료(근거)</b> — 리드로 쓰면 빈 좌표 버리고 하강</td></tr>
+    </table></div>
+
+    <h3>3단계 · 통합 — 3층 신뢰 아키텍처</h3>
+    <div class="arch">
+      <div class="row r1"><div class="lyr">1층 · 얼굴<span class="sm">신뢰 / 진입</span></div><div class="bd"><div class="tt">Route B "대표가 먼저 먹는다"</div><div class="ds">최초아 파운더 IP · 공구 53%가 산 그 사람. 처음 만나는 접점, 기존 팬 계승. 신뢰가 문을 연다.</div></div></div>
+      <div class="row r2"><div class="lyr">2층 · 심장<span class="sm">증명 / 엔진</span></div><div class="bd"><div class="tt">Route A "숫자로 증명된다"</div><div class="ds">DPPH 92% · 당류 3g · KATR. 브랜드 정체성이자 왜 다른가의 답. 경쟁사가 못 훔치는 것.</div></div></div>
+      <div class="row r3"><div class="lyr">3층 · 뿌리<span class="sm">근거 / 연료</span></div><div class="bd"><div class="tt">Route C "원물 그대로라서"</div><div class="ds">비가열 HPP · 유기농 원물. 왜 그 숫자가 나오나의 근거. 증명의 재료.</div></div></div>
+    </div>
+    <div class="co ac"><span class="lab">한 문장에 3 Routes가 다 들어간다 (고객 여정)</span>"대표가 매일 아침 먹는(B) 이 채소 한 팩은, 활성산소를 92% 잡는다는 게 시험으로 증명됐고(A), 그건 비가열로 원물을 그대로 갈았기 때문이다(C)." → <b>택1의 손실 없이 셋을 다 쓴다. 기존 자산을 하나도 안 깬다.</b></div>
+
+    <h3>포지셔닝 스테이트먼트 2안</h3>
+    <div class="tiers" style="grid-template-columns:1fr 1fr">
+      <div class="tier"><div class="tn">안 1 · 데이터 리드 (AG1 모델)</div><div class="tt">A를 얼굴로 — 지향</div><div class="tag" style="font-size:12px;color:var(--ink2);line-height:1.65">뭐가 진짜 효과 있는지 지쳐버린 3040 웰니스 소비자에게, <b>'측정되는 데일리 항산화'</b>에서, 시험 데이터(DPPH 92%·당류 3g)로 증명하기 때문에, 원물·인증만 앞세우는 브랜드와 달리 <b>"오늘 챙긴 게 헛되지 않았다는 확신"</b>을 준다.</div><div class="role">뾰족함 최대 · 규제 검수 필수</div></div>
+      <div class="tier rec"><div class="rb">진입 추천</div><div class="tn">안 2 · 파운더 신뢰 리드 (헤밀레 모델)</div><div class="tt">B를 얼굴로 — 진입</div><div class="tag" style="font-size:12px;color:var(--ink2);line-height:1.65">가족에게 먹일 걸 고르듯 꼼꼼한 3040에게, <b>'매일 챙기는 진짜 채소 한 팩'</b>에서, 만든 사람이 매일 아침 먹고 그 믿음이 데이터로도 증명되기 때문에, 광고모델·인증마크로 신뢰를 빌려오는 브랜드와 달리 <b>"믿고 매일 먹을 하루의 기본"</b>을 준다.</div><div class="role">공구 팬 100% 계승 · 인물 리스크는 "데이터로도 증명" 절로 분산</div></div>
+    </div>
+    <div class="co ac"><span class="lab">추천</span><b>안 2를 '진입', 안 1을 '지향'으로 묶는다.</b> 지금 커뮤니케이션은 안2 톤으로 시작하되, 브랜드가 최종적으로 서고 싶은 자리는 안1이라고 워크샵에서 합의받는다. (3층 아키텍처와 일치)</div>
+
+    <h3>파운더 IP — "대표 계정 먼저, 브랜드가 따라온다" (검증: 조건부 참)</h3>
+    <div class="grid2">
+      <div class="co ok" style="margin:0"><span class="lab">따라야 할 모델 · 김소형 헤밀레</span>유튜브 175만 개인 IP → 자사몰 직결, 매출 <b>+77%</b>. 공구/외부채널→자사몰 전환의 실증된 길. 그리니팅 이식: "제조 30년의 딸, 매일 아침 내 아이와 먹는" 서사를 대표 인스타로 발신 → 공구 팬을 자사몰 정기구독으로 이관.</div>
+      <div class="co bad" style="margin:0"><span class="lab">피해야 할 함정 · 에스더포뮬러</span>여에스더 개인 신뢰로 2,700억+ → <b>광고 표시광고법 위반 영업정지 2개월(2024.1) → 영업익 492억→60억 급락.</b> 교훈: 인물에 100% 태우면 논란 한 번에 무너진다. → B(대표) 위에 A(데이터)를 반드시 얹어 "<b>데이터가 우리의 약사</b>". 효능 주장은 제3자 시험성적서로 위임.</div>
+    </div>
+    <div class="co ac"><span class="lab">파운더 IP 3원칙</span><b>①</b> 얼굴은 대표, 증거는 데이터(역할 분리=리스크 분리) <b>②</b> 대표 계정=브랜드 계정의 상류, 9월 김미경TV 전에 톤 확립 <b>③</b> 파운더 서사 3종 고정: 제조 30년 아버지의 딸 / 매일 아침 내 아이와 먹는다 / 왜 첨가물0·비가열을 고집하나.</div>
+  </section>
+
+  <!-- ============ RUN SHEET ============ -->
+  <section id="runsheet">
+    <div class="sec-k">RUN OF SHOW · 덱 23 수렴</div>
+    <h2>워크샵 런오브쇼 — 대표 입으로 정하게 하는 질문</h2>
+    <p class="lead">우리 추천은 명확하다(3층 아키텍처·A코어·안2 진입). 대표가 정할 것은 "어느 층을 얼굴로 가장 크게 세울까" = 톤의 무게중심. 아래 질문으로 좁힌다.</p>
+
+    <h3>타겟을 좁히는 질문 3개</h3>
+    <div class="q"><div class="qn">Q1 · 팬의 얼굴</div><div class="qt">"지금 자사몰 정상가로 다시 사주는 ~200명, 이분들은 이서연(근거)·김하늘(다이어터)·박정은(가족) 중 누구에 가깝나요?"</div><div class="qi">→ 실제 팬의 얼굴 확정. 브랜드가 누구의 언어로 말할지 결정된다.</div></div>
+    <div class="q"><div class="qn">Q2 · 재구매 트리거 (L4 검증)</div><div class="qt">"공구로 처음 산 분들이 자사몰로 '왜' 다시 오나요 — 가격인가요, 효능을 느껴서인가요, 대표님을 믿어서인가요?"</div><div class="qi">→ 재구매 트리거의 정체 = 서사 방향(A/B/C)을 가른다.</div></div>
+    <div class="q"><div class="qn">Q3 · 189만의 용도</div><div class="qt">"9월 189만을 '많이 파는 것'으로 받을지, '그중 계속 볼 팬을 골라내는 것'으로 받을지 하나만 고른다면요?"</div><div class="qi">→ "용기 있게 좁히자"는 제안의 동의를 받는 결정적 질문.</div></div>
+
+    <h3>방향을 정하는 질문 4개</h3>
+    <div class="q"><div class="qn">Q4 · 카테고리 결심</div><div class="qt">"5년 뒤 그리니팅이 검색·소개될 때 어떤 단어로 불리고 싶나 — '건강한 스무디'인가, '숫자로 증명하는 항산화 브랜드'인가?"</div><div class="qi">→ CAT-1 지붕 합의.</div></div>
+    <div class="q"><div class="qn">Q5 · 얼굴의 무게중심</div><div class="qt">"브랜드 첫 얼굴로 대표님이 직접 전면에 서는 게 편한가, 데이터·제품이 앞에 서고 대표는 신뢰 보증으로 남는 게 편한가?"</div><div class="qi">→ 안1 vs 안2 톤 확정(3층 중 1층 크기).</div></div>
+    <div class="q"><div class="qn">Q6 · 파운더 IP 각오</div><div class="qt">"9월 김미경TV 전에 대표님 개인 계정을 키워야 한다. 카메라 앞에 정기적으로 설 준비가 되어 있나, 얼마나?"</div><div class="qi">→ 헤밀레 모델 실행 가능성 실측.</div></div>
+    <div class="q"><div class="qn">Q7 · 버릴 것의 합의</div><div class="qt">"우상단으로 가려면 '디톡스·클렌즈' 같은 이벤트성 언어를 홈페이지에서 내려야 한다. 지금 매출 나오는 이 단어들을 바꿀 각오가 되어 있나?"</div><div class="qi">→ 카테고리 점프의 실행 저항 사전 확인.</div></div>
+
+    <div class="co ok"><span class="lab">2차 워크샵으로 넘길 과제</span><b>①</b> 네이밍/태그라인 확정(카테고리 결심 이후에만 — 오늘 성급히 이름 안 정함 = L1 함정 회피) <b>②</b> 파운더 콘텐츠 파일럿(대표 개인 계정 톤 3종 + 첫 릴스, 김미경TV 전 테스트) <b>③</b> DPPH 데이터의 상세페이지 이식안(규제 검수 후 "시험결과 인용") <b>④</b> CAT-2 진입→CAT-1 락인 퍼널(첫 구매→2회차 데이터 노출→정기구독 전환).</div>
+    <div class="co ac"><span class="lab">진행 팁 · 끌리는 순서 투표</span>3 Routes A/B/C 점 투표로 대표 선호를 받되, <b>"역할이 다르다(택1 아님)"를 먼저 설명.</b> A 1등 → 데이터 브랜드형(안1), B 1등 → 파운더 브랜드형(안2)으로 확정.</div>
+  </section>
+
+  <!-- ============ RISK ============ -->
+  <section id="risk">
+    <div class="sec-k">RISK & REGULATION</div>
+    <h2>리스크 · 규제 — 속도보다 앞세울 것</h2>
+    <div class="grid2">
+      <div class="co bad" style="margin:0"><span class="lab">① 최상위 · 식품표시광고법</span>제품은 <b>일반식품</b>(건기식 아님). "항산화·활성산소 소거·디톡스"를 기능성처럼 쓰면 위반 소지(에스더 영업정지·욕망스무디 GS홈쇼핑 경고가 실증). DPPH는 <b>"제3자 시험성적서 결과 수치"로 사실 적시</b>만, 효능 단정 금지. <b>모든 확정 카피 food-regulation-advisor 검수 후 발신.</b></div>
+      <div class="co warn" style="margin:0"><span class="lab">② 신제품 식품안전 · Daily Harvest 반면교사</span>8월말 토마토 비프스튜(상온 저산성 신원료 한끼)는 리콜 1회 = 18억 신뢰 붕괴. <b>HACCP·상온유통 안정성 검증을 마케팅 속도보다 앞세워라.</b></div>
+      <div class="co warn" style="margin:0"><span class="lab">③ 베르베르·플루니 거울 경쟁</span>대표 지목. 파운더 IP(26.8만)+MCN 화력으로 같은 콘셉트를 이미 실행. 스펙·감성 정면승부는 소모전 → <b>측정 데이터(2층)</b>로 층위 차별화(§경쟁).</div>
+      <div class="co warn" style="margin:0"><span class="lab">④ 인물 리스크 분산</span>파운더 IP는 3층 중 1층. 위에 데이터층 필수. "데이터가 우리의 약사" — 대표가 흔들려도 숫자는 안 흔들린다.</div>
+    </div>
+    <div class="co ac" style="margin-top:14px"><span class="lab">미국 수출 (참고)</span><b>레몬즙 = 1순위 파일럿</b>(산성식품, LACF/AF 부담 낮음 · 단 비가열 Juice HACCP 검토). <b>토마토 비프스튜 = 규제 난도 高</b>(비프=저산성 → LACF 분류 가능성, FCE 등록+SID 공정신고 필수, 리드타임 6~12개월 톤으로 안내). 실제 진입 전 FDA 전문 컨설팅 필수.</div>
+  </section>
+
+  <!-- ============ MAPPING ============ -->
+  <section id="mapping">
+    <div class="sec-k">DECK MAPPING & GAPS</div>
+    <h2>덱 매핑 · 후속 확인 필요</h2>
+    <p class="lead">이 리포트는 남중님 클코가 잡은 24슬라이드 덱을 <b>대체가 아니라 고도화</b>한다. 어느 인사이트가 어느 슬라이드로 가는지, 그리고 대표 확인이 필요한 공백.</p>
+    <div class="tbwrap"><table>
+      <tr><th>덱 슬라이드</th><th>이 리포트에서 보강할 것</th></tr>
+      <tr><td>05 시장 개요(+심화)</td><td>세 시장 교차점 규모·트렌드 8종·글로벌 벤치 4사·창(window) 3줄</td></tr>
+      <tr><td>06–16 경쟁사</td><td>개별 프로파일(단가·무기·훔칠것/피할것)·<b>베르베르×플루니 파운더 IP 거울</b>·"국내·글로벌 산출 0건" 검증표</td></tr>
+      <tr><td>신규 · 개별 경쟁사 장표</td><td><b>남중님 경쟁사 템플릿으로 개별 딥프로파일 신규 제작</b> — 베르베르×플루니 · 달심 · 푸드올로지 · 낫띵베러 · BD사이언스 · 마녀스프 · 블룸(글로벌) + 올리브베러 채널. (한 장 압축 아님 — 브랜드당 1장)</td></tr>
+      <tr><td>17 포지셔닝 맵</td><td>국내 10곳 하단 실측 좌표로 빈 좌표 <b>강화</b> → "우리는 국내 AG1" 명시</td></tr>
+      <tr><td>20 타겟 페르소나(+심화)</td><td>세그먼트 3·페르소나 3인·현재vs지향·189만 수신 설계</td></tr>
+      <tr><td>21·22 키워드·3 Routes</td><td>3층 아키텍처 통합·카테고리 점프·포지셔닝 2안</td></tr>
+      <tr><td>23 수렴</td><td>대표 질문 7개·투표 장치·2차 과제</td></tr>
+    </table></div>
+    <div class="co warn"><span class="lab">대표에게 확인 필요 (리서치 공백)</span><b>①</b> 슈퍼브레시피 — 브랜드 실체 미확인, 정확한 명칭·URL 확인(덱 억지 카드화 금지) <b>②</b> 그리니팅 인스타 = <b>@greeniting.official 확인</b>(팔로워 정확 수치만 미실측) <b>③</b> 정기구독 ~200명의 실제 페르소나(Q1로 확정) <b>④</b> 플루니/욕망스무디 정확 단가는 일부 추정치 <b>⑤</b> <b>대표 상담 녹취록</b> = Tiro 미보관(2026-06-25 온보딩 이전 건). 베르베르 등 대표 언급 원문은 Granola/파일 등 별도 소스 확인 필요.</div>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section id="src">
+    <div class="sec-k">SOURCES</div>
+    <h2>출처</h2>
+    <p class="src">
+      <b>시장:</b> 한국건강기능식품협회 2025(5조9,626억·온라인71%) · 헤럴드경제 2024(건강즙 1조) · 풀무원 뉴스룸(녹즙 20년 1.2조) · KREI(HMR 연15%) · MRFR(롱제비티 276억→670억$) · 오픈서베이 2025(구독경제 100조) · 대한경제 2025(라이브커머스 4.7조) · Forbes 2024(AG1 $600M) · Pati Group(ARMRA) · BeautyMatter/Entrepreneur 2025(IM8) · FDA/ClassAction.org(Daily Harvest 리콜·$23M) · FDA 21 CFR 108(FCE·SID).<br>
+      <b>경쟁사:</b> 각 브랜드 공식몰·SSG·컬리·올리브영·무신사·29CM 실측 / 플루니·베르베르 CJ온스타일·신세계·올영 입점: sentv·edaily·donga 2026-06 / 트리즈커머스·베르베르(@berberlog 26.8만) 관계: thevc·한경매거진 / 풀무원녹즙 매출 758→765→729억: DealSiteTV.<br>
+      <b>딥리서치(대표 지목 반영):</b> Perplexity Sonar deep-research + Grok Live(web·x) + WebSearch 3중 교차 (2026-07-05) → <code>research/greeniting-workshop/deep/</code>. 올리브베러 = 올리브영 K-웰니스 플랫폼(2026.1 광화문): 헤럴드경제·CJ뉴스·ZDNet.<br>
+      <b>타겟:</b> 오픈서베이 건기식 트렌드 2025 · 화해 밀레니얼 소비 · 애즈유 D2C 전환(신규+827%·매출+187%, 뉴스와이어).<br>
+      <b>방향성:</b> drinkag1.com(카테고리 명명) · 머니투데이 2025.08(에스더 영업익 492억→60억)·강남구청 영업정지 2024.01 · 김소형 헤밀레(NB prep 인용).<br>
+      <b>그리니팅 팩트:</b> greeniting.com 실측 · NB prep(brandrise-pages/research/greeniting-v2) · 계약서·RevOps 인테이크(2026-06~07).<br>
+      <span style="color:var(--bad)">규율: 수치·브랜드명 최소 2회 교차검증. [추정]/[미확인] 표기분은 대표 확인·재실측으로 확정 필요.</span>
+    </p>
+  </section>
+
+  </main>
+</div>
+
+<div class="footer"><div class="in">BRANDRISE (MarketingOS) · 그리니팅 1차 브랜드 워크샵 — 고도화 리서치 종합 · 2026-07-05 · 내부 전용</div></div>
+
+<script>
+const links=[...document.querySelectorAll('nav.toc a')];
+const map=links.map(a=>({a,el:document.querySelector(a.getAttribute('href'))}));
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  links.forEach(l=>l.classList.remove('on'));
+  const m=map.find(m=>m.el===e.target); if(m)m.a.classList.add('on');}})},{rootMargin:'-15% 0px -75% 0px'});
+map.forEach(m=>m.el&&obs.observe(m.el));
+</script>
+</body>
+</html>
