@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=1080, initial-scale=1" />
+<title>브랜드라이즈 위클리</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  /* 브랜드라이즈 디자인 토큰 정렬 (PM 요청 3E47FF 액센트 적용) */
+  :root{
+    --brand:#3E47FF;        /* PM 지정 메인 */
+    --brand-ink:#1B2199;
+    --brand-050:#EEF0FF;    /* == --ac-50 계열 */
+    --ink:#0f172a;          /* brandrise primary ink */
+    --body:#334155;         /* brandrise body */
+    --sub:#64748b;          /* brandrise muted */
+    --warn:#d97706;         /* brandrise semantic warn */
+    --bad:#e11d48;          /* brandrise semantic bad */
+    --line:#E7E9F0;
+    --bg:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#DADDE3}
+  body{
+    font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    color:var(--ink);
+  }
+  /* 캡처 대상 */
+  #card{
+    width:1080px;
+    margin:0 auto;
+    background:var(--bg);
+    padding:0 0 56px;
+  }
+
+  /* ── 헤더 ── */
+  .head{
+    padding:52px 56px 30px;
+    border-bottom:1px solid var(--line);
+  }
+  .brand-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--brand-050);color:var(--brand);
+    font-weight:800;font-size:22px;letter-spacing:-.02em;
+    padding:8px 16px;border-radius:999px;margin-bottom:20px;
+  }
+  .brand-tag .dot{width:10px;height:10px;border-radius:50%;background:var(--brand)}
+  .head h1{font-size:52px;font-weight:900;letter-spacing:-.035em;line-height:1.08}
+  .head .sub{margin-top:12px;color:var(--sub);font-size:26px;font-weight:600;letter-spacing:-.02em}
+  .head .meta{margin-top:18px;display:flex;gap:10px;align-items:center;color:var(--brand);font-weight:700;font-size:22px}
+  .head .meta .bar{width:1px;height:18px;background:#C9CDF6}
+
+  /* ── 섹션 공통 헤더 (정부지원사업/뉴스 동일 컴포넌트) ── */
+  .section{padding:34px 56px 8px}
+  .sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+  .sec-flag{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--brand);color:#fff;
+    font-size:27px;font-weight:900;letter-spacing:-.03em;
+    padding:12px 22px;border-radius:14px;
+    box-shadow:0 10px 24px rgba(62,71,255,.28);
+  }
+  .sec-flag.light{background:var(--brand-050);color:var(--brand);box-shadow:none}
+  .sec-flag .ic{font-size:25px}
+  .sec-badge{color:var(--sub);font-size:19px;font-weight:800;letter-spacing:.02em}
+  .hint{margin:12px 2px 20px;color:var(--sub);font-size:19px;font-weight:600}
+
+  .grant{
+    display:flex;align-items:stretch;gap:20px;
+    padding:24px;border:1px solid var(--line);border-radius:18px;
+    margin-bottom:14px;position:relative;
+  }
+  .grant.hot{border-color:#C7CBFF;background:linear-gradient(180deg,#F7F8FF, #fff)}
+  .dday{
+    flex:0 0 96px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:var(--brand);color:#fff;border-radius:14px;padding:12px 8px;
+  }
+  .dday.warn{background:var(--bad)}
+  .dday.calm{background:var(--ink)}
+  .dday .n{font-size:34px;font-weight:900;line-height:1}
+  .dday .l{font-size:15px;font-weight:700;opacity:.9;margin-top:4px}
+  .g-body{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center}
+  .g-field{color:var(--brand);font-size:18px;font-weight:800;letter-spacing:-.01em}
+  .g-title{font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1.28;margin:6px 0 10px}
+  .g-row{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{
+    font-size:18px;font-weight:700;color:#3A3F4A;
+    background:#F2F4F7;border-radius:9px;padding:6px 12px;
+  }
+  .chip.amt{background:var(--brand-050);color:var(--brand-ink)}
+  .g-go{align-self:center;margin-left:6px;flex:0 0 auto;color:#C3C8D4;font-size:40px;font-weight:400;line-height:1}
+
+  /* ── 링크(클릭) 공통 ── */
+  a.grant,.ncard li a{text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent}
+  a.grant{cursor:pointer;transition:border-color .15s, box-shadow .15s, transform .15s}
+  a.grant:hover{border-color:var(--brand);box-shadow:0 8px 22px rgba(62,71,255,.14);transform:translateY(-1px)}
+  a.grant:hover .g-go{color:var(--brand)}
+  .ncard li a{display:flex;gap:12px;flex:1;transition:color .15s}
+  .ncard li a:hover .t{color:var(--brand);text-decoration:underline;text-underline-offset:3px;text-decoration-color:#C7CBFF}
+
+  /* ── 카테고리 뉴스 (정부지원사업과 동일한 카드 규칙) ── */
+  .news{padding-top:30px}
+  .ncard{
+    border:1px solid var(--line);border-radius:18px;
+    padding:22px 24px;margin-bottom:14px;
+  }
+  .ncard-head{
+    display:flex;align-items:center;gap:14px;
+    margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--line);
+  }
+  .ncard-head .emo{
+    flex:0 0 52px;width:52px;height:52px;border-radius:13px;background:var(--brand-050);
+    display:flex;align-items:center;justify-content:center;font-size:28px;line-height:1;
+  }
+  .ncard-head .cat-name{font-size:24px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+  .ncard ul{list-style:none;display:flex;flex-direction:column;gap:13px}
+  .ncard li{display:flex;gap:12px;font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.36;color:var(--body)}
+  .ncard li .b{color:var(--brand);font-weight:900;flex:0 0 auto}
+
+  /* ── 푸터 ── */
+  .foot{padding:34px 56px 0;margin-top:10px;color:var(--sub);font-size:19px;font-weight:600;text-align:center;line-height:1.6}
+  .foot b{color:var(--brand)}
+</style>
+</head>
+<body>
+  <div id="card"><!-- rendered here --></div>
+
+  <script id="data" type="application/json">
+  {
+  "issue": {
+    "brand": "브랜드라이즈",
+    "title": "위클리 정부지원사업",
+    "subtitle": "오늘의 창업·지원 뉴스 브리핑",
+    "date": "2026-07-06",
+    "weekLabel": "2026년 7월 1주차"
+  },
+  "grants": [
+    {
+      "title": "2026년 초기창업패키지 예비창업자 모집",
+      "org": "중소벤처기업부·창업진흥원",
+      "deadline": "2026-07-11",
+      "amount": "최대 1억원",
+      "field": "창업사업화",
+      "url": "https://www.k-startup.go.kr",
+      "highlight": true
+    },
+    {
+      "title": "글로벌 진출 지원 바우처 (수출바우처) 2차 공고",
+      "org": "중소벤처기업부·KOTRA",
+      "deadline": "2026-07-18",
+      "amount": "최대 3,000만원",
+      "field": "해외진출",
+      "url": "https://www.exportvoucher.com"
+    },
+    {
+      "title": "예비·초기 스타트업 R&D 기술개발 지원",
+      "org": "중소벤처기업부",
+      "deadline": "2026-07-24",
+      "amount": "최대 1.2억원",
+      "field": "R&D",
+      "url": "https://www.smtech.go.kr"
+    },
+    {
+      "title": "소상공인 브랜드·디자인 개발 지원사업",
+      "org": "소상공인시장진흥공단",
+      "deadline": "2026-07-31",
+      "amount": "최대 500만원",
+      "field": "브랜딩",
+      "url": "https://www.sbiz.or.kr"
+    }
+  ],
+  "news": [
+    {
+      "category": "브랜드 전략",
+      "emoji": "🎯",
+      "items": [
+        { "title": "바세린의 회춘 비결…150살 브랜드가 Z세대와 친해지는 법", "url": "" },
+        { "title": "리브랜딩 나선 전통 식품 기업들…‘올드’ 벗고 팬덤 만든다", "url": "" },
+        { "title": "브랜드 헤리티지를 파는 시대…‘오래됨’이 프리미엄이 되다", "url": "" }
+      ]
+    },
+    {
+      "category": "마케팅 트렌드",
+      "emoji": "📈",
+      "items": [
+        { "title": "숏폼이 바꾼 광고 문법…‘3초 안에 잡아라’ 경쟁 격화", "url": "" },
+        { "title": "AI 카피라이팅 전면 도입…브랜드 톤앤매너는 사람이 지킨다", "url": "" },
+        { "title": "리테일 미디어 급성장…커머스가 곧 광고판 되는 이유", "url": "" }
+      ]
+    },
+    {
+      "category": "MZ·소비 트렌드",
+      "emoji": "✨",
+      "items": [
+        { "title": "‘2030’ 어른이 바글바글 문구거리…폐업 고민하던 상인들 ‘방글방글’", "url": "" },
+        { "title": "“800잔 마셔도 도전한다”…1만2천명 홀린 메가커피 프리퀀시", "url": "" },
+        { "title": "가치소비의 진화…이제는 ‘브랜드 서사’에 지갑을 연다", "url": "" }
+      ]
+    },
+    {
+      "category": "콘텐츠·크리에이터",
+      "emoji": "🎬",
+      "items": [
+        { "title": "브랜드가 직접 웹예능 만든다…‘광고 같지 않은 광고’ 전성시대", "url": "" },
+        { "title": "크리에이터 커머스 폭발…팔로워보다 ‘구매전환’이 몸값 기준", "url": "" },
+        { "title": "UGC 마케팅 재조명…소비자가 만든 콘텐츠가 매출 견인", "url": "" }
+      ]
+    }
+  ]
+}
+
+  </script>
+
+  <script>
+    function ddayInfo(deadline, base){
+      const d = new Date(deadline+"T00:00:00");
+      const b = new Date(base+"T00:00:00");
+      const diff = Math.round((d-b)/86400000);
+      let cls = "";
+      if(diff <= 3) cls = "warn";
+      else if(diff >= 14) cls = "calm";
+      const n = diff < 0 ? "마감" : (diff === 0 ? "D-DAY" : "D-"+diff);
+      return {n, cls, diff};
+    }
+    function esc(s){return (s||"").replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
+
+    const raw = document.getElementById("data").textContent.trim();
+    let DATA;
+    try { DATA = JSON.parse(raw); }
+    catch(e){ document.getElementById("card").innerHTML = "<pre style='padding:40px'>데이터 JSON 오류: "+e.message+"</pre>"; throw e; }
+
+    const I = DATA.issue;
+    const base = I.date;
+
+    const href = u => (u && /^https?:\/\//.test(u)) ? esc(u) : "";
+
+    const grantsHtml = DATA.grants.map(g=>{
+      const dd = ddayInfo(g.deadline, base);
+      const url = href(g.url);
+      const inner = `
+        <div class="dday ${dd.cls}"><span class="n">${dd.n}</span><span class="l">${g.deadline.slice(5).replace('-','.')} 마감</span></div>
+        <div class="g-body">
+          <div class="g-field">${esc(g.field)}</div>
+          <div class="g-title">${esc(g.title)}</div>
+          <div class="g-row">
+            <span class="chip">${esc(g.org)}</span>
+            <span class="chip amt">💰 ${esc(g.amount)}</span>
+          </div>
+        </div>
+        ${url ? '<span class="g-go">›</span>' : ''}`;
+      return url
+        ? `<a class="grant ${g.highlight?'hot':''}" href="${url}" target="_blank" rel="noopener">${inner}</a>`
+        : `<div class="grant ${g.highlight?'hot':''}">${inner}</div>`;
+    }).join("");
+
+    const newsHtml = DATA.news.map(c=>`
+      <div class="ncard">
+        <div class="ncard-head"><span class="emo">${c.emoji||"📰"}</span><span class="cat-name">${esc(c.category)}</span></div>
+        <ul>${c.items.map(it=>{
+          const url = href(it.url);
+          const body = `<span class="b">•</span><span class="t">${esc(it.title)}</span>`;
+          return `<li>${url ? `<a href="${url}" target="_blank" rel="noopener">${body}</a>` : body}</li>`;
+        }).join("")}</ul>
+      </div>`).join("");
+
+    document.getElementById("card").innerHTML = `
+      <div class="head">
+        <div class="brand-tag"><span class="dot"></span>${esc(I.brand)}</div>
+        <h1>${esc(I.title)}</h1>
+        <div class="sub">${esc(I.subtitle)}</div>
+        <div class="meta"><span>${esc(I.weekLabel)}</span><span class="bar"></span><span>${I.date.replace(/-/g,'.')}</span></div>
+      </div>
+
+      <div class="section grants">
+        <div class="sec-head">
+          <div class="sec-flag"><span class="ic">🏛️</span>이번 주 꼭 챙길 정부지원사업</div>
+          <span class="sec-badge">마감임박 순</span>
+        </div>
+        <div class="hint">브랜드라이즈 연동 데이터 기준</div>
+        ${grantsHtml}
+      </div>
+
+      <div class="section news">
+        <div class="sec-head">
+          <div class="sec-flag light"><span class="ic">📈</span>오늘의 브랜딩·마케팅 트렌드</div>
+          <span class="sec-badge">DAILY</span>
+        </div>
+        <div class="hint">매일 갱신되는 산업 트렌드</div>
+        ${newsHtml}
+      </div>
+
+      <div class="foot">
+        매일 아침 <b>브랜드라이즈</b> 구독자 채널로 전해드립니다 · 정부지원사업 신청은 각 공고 원문을 확인하세요
+      </div>`;
+  </script>
+</body>
+</html>
