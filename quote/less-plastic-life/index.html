@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<!-- BRANDRISE 견적서 · 인디고 클린 통합표준 (NGT 템플릿 복제 → Less Plastic Life). 색/컴포넌트 신규 제작 없음.
-     구조: 로고·심볼 디자인 3버전(본문) + 브랜딩 풀 파트너십(부록). 작업 주체 비공개 — 범위·결과물로만 차등.
-     단가는 신규 기준(성민 확정 대상): 로고·심볼 800/2,000/4,500, 파트너십 8,000. price-data.js 등재 예정. -->
+<!--
+  BRANDRISE 견적서 · 인디고 클린 통합표준 (quote/_template/quote-template.html 기반)
+  · Less Plastic Life — 브랜드 아이덴티티(BI) 단일 견적 (2026-07-08)
+  · ⛔ 클라이언트별 컬러 금지 — 인디고 단일 액센트.
+-->
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>[Less Plastic Life] 로고·심볼 디자인 견적서 | BRANDRISE</title>
+<title>[Less Plastic Life] 브랜드 아이덴티티(BI) 견적서 | BRANDRISE</title>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
 <style>
 :root{
   --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
   --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
   --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
-  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -22,42 +24,46 @@ body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);colo
   line-height:1.75;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:16.5px}
 .hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 42%,#4338ca 100%);color:#fff;padding:60px 0 48px;position:relative;overflow:hidden}
 .hero::after{content:"QUOTE";position:absolute;right:-2%;bottom:-18%;font-size:clamp(140px,20vw,320px);font-weight:800;letter-spacing:-.04em;color:#fff;opacity:.05;line-height:.8;pointer-events:none}
-.hero .in{max-width:960px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
+.hero .in{max-width:920px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
 .hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
-.hero h1{font-size:36px;font-weight:800;letter-spacing:-.03em;line-height:1.18;margin-bottom:12px}
-.hero .sub{font-size:15.5px;color:#cbd5e1;font-weight:300;max-width:700px;line-height:1.75}
+.hero h1{font-size:clamp(30px,4.4vw,44px);font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:12px}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
+.hero .sub{font-size:15.5px;color:#cbd5e1;font-weight:300;max-width:660px;line-height:1.75}
 .hero .meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
 .hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
 .hero .chip b{color:#a5b4fc}
-.wrap{max-width:960px;margin:0 auto;padding:36px 40px 100px}
-section{margin-bottom:64px;scroll-margin-top:24px}
+.mini-index{max-width:920px;margin:0 auto;padding:14px 40px 0;font-size:12.5px;color:var(--muted)}
+.mini-index a{color:var(--ink2);text-decoration:none;font-weight:700;transition:.15s}
+.mini-index a:hover{color:var(--ac)}
+.mini-index .sep{color:var(--line);margin:0 9px}
+.wrap{max-width:920px;margin:0 auto;padding:36px 40px 100px}
+section{margin-bottom:60px;scroll-margin-top:24px}
 .sec-k{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:999px;padding:4px 12px;margin-bottom:12px}
-h2{font-size:34px;font-weight:800;letter-spacing:-.025em;line-height:1.22;margin-bottom:8px}
-.lead{font-size:18px;color:var(--ink2);margin-bottom:24px;line-height:1.75}
-h3{font-size:20px;font-weight:800;margin:34px 0 6px;color:var(--ink);letter-spacing:-.01em}
-h3 .t{vertical-align:2px}
-.bmeta{font-size:12.5px;color:var(--muted);margin-bottom:10px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
-.co{border:1px solid var(--line2);border-left:3px solid var(--line);border-radius:0 10px 10px 0;padding:18px 24px;margin:10px 0 14px;font-size:16px;line-height:1.8;text-wrap:pretty}
+h2{font-size:clamp(26px,3.4vw,32px);font-weight:800;letter-spacing:-.025em;line-height:1.22;margin-bottom:8px}
+.lead{font-size:17.5px;color:var(--ink2);margin-bottom:22px;line-height:1.75;text-wrap:pretty}
+h3{font-size:19px;font-weight:800;margin:30px 0 6px;color:var(--ink);letter-spacing:-.01em}
+.co{border:1px solid var(--line2);border-left:3px solid var(--line);border-radius:0 10px 10px 0;padding:18px 24px;margin:14px 0;font-size:15.5px;line-height:1.8;text-wrap:pretty}
 .co.ac{background:var(--ac-50);border-left-color:var(--ac)} .co.ok{background:var(--ok-50);border-left-color:var(--ok)}
-.co.warn{background:var(--warn-50);border-left-color:var(--warn)} .co.bad{background:var(--bad-50);border-left-color:var(--bad)}
+.co.warn{background:var(--warn-50);border-left-color:var(--warn)}
 .co b,.co strong{color:var(--ink);font-weight:600}
 .co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase}
-.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
-.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
-.t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
-.t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
-table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0 4px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
-th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:left;padding:13px 15px;font-size:12.5px;letter-spacing:.01em;border-bottom:1px solid var(--ac-100)}
+.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+.fcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
+.fcard .fk{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--ac);margin-bottom:7px}
+.fcard .fv{font-size:15.5px;font-weight:800;color:var(--ink);line-height:1.4}
+.fcard .fn{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.55}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0 4px;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-variant-numeric:tabular-nums}
+th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:left;padding:13px 15px;font-size:12.5px;border-bottom:1px solid var(--ac-100)}
 td{padding:13px 15px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
 table tr:nth-child(even) td{background:var(--soft)}
 td b,td strong{color:var(--ink)}
-td.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
-td.c{text-align:center;white-space:nowrap}
-table tr.sub td{background:var(--ac-50);font-weight:800;color:var(--ink);border-top:1px solid var(--ac-100)}
-table tr.sub td.num{color:var(--ac-700)}
-.steps{display:flex;gap:8px;margin:14px 0 4px}
-.stp{flex:1;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:12px 12px;position:relative;font-size:13px;line-height:1.6}
+td.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink)}
+td.it{font-weight:700;color:var(--ink);white-space:nowrap}
+table tr.sub td{background:var(--ink);font-weight:800;color:#fff;border-top:1px solid var(--ink)}
+table tr.sub td.num{color:#a5b4fc;font-size:16px}
+.steps{display:flex;gap:8px;margin:16px 0 4px}
+.stp{flex:1;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:14px 14px;position:relative;font-size:13px;line-height:1.6}
 .stp:not(:last-child)::after{content:"›";position:absolute;right:-9px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--ac);font-weight:800;z-index:1}
 .stp .sn{font-size:11px;font-weight:800;color:var(--ac);margin-bottom:4px}
 .stp .sb{color:var(--ink2)}
@@ -65,135 +71,113 @@ table tr.sub td.num{color:var(--ac-700)}
 .total .tl2{font-size:13px;color:#94a3b8;font-weight:700;letter-spacing:.08em}
 .total .tv{font-size:30px;font-weight:800;letter-spacing:-.02em;color:#a5b4fc}
 .total .tv small{font-size:13px;font-weight:600;color:#cbd5e1;margin-left:8px}
+.dl{list-style:none;margin:8px 0}
+.dl li{position:relative;padding:8px 0 8px 22px;font-size:14.5px;color:var(--ink2);border-bottom:1px solid var(--line2);line-height:1.6}
+.dl li:last-child{border-bottom:0}
+.dl li::before{content:"›";position:absolute;left:4px;color:var(--ac);font-weight:800}
+.dl li b{color:var(--ink)}
 footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9}
-.hero h1{font-size:clamp(38px,4.8vw,56px);line-height:1.08}
-.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
-.mini-index{max-width:960px;margin:0 auto;padding:14px 40px 0;font-size:12.5px;color:var(--muted);letter-spacing:.01em}
-.mini-index a{color:var(--ink2);text-decoration:none;font-weight:700;transition:.15s}
-.mini-index a:hover{color:var(--ac)}
-.mini-index .sep{color:var(--line);margin:0 9px}
-/* 3버전 티어 카드 */
-.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 12px}
-.tier{border:1.5px solid var(--line);border-radius:16px;padding:22px 22px;background:var(--card);display:flex;flex-direction:column}
-.tier.rec{background:var(--ink);color:#fff;border-color:var(--ink)}
-.tier .tk{font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--muted);margin-bottom:6px}
-.tier.rec .tk{color:#a5b4fc}
-.tier .tn{font-size:17px;font-weight:800;margin-bottom:12px;letter-spacing:-.01em}
-.tier .tp{font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
-.tier.rec .tp{color:#a5b4fc}
-.tier .tp small{font-size:12px;font-weight:600;color:var(--muted);margin-left:5px}
-.tier.rec .tp small{color:#cbd5e1}
-.tier .td{margin-top:14px;font-size:13px;line-height:1.65;color:var(--ink2)}
-.tier.rec .td{color:#e2e8f0}
-.tier .tbadge{margin-top:auto;padding-top:14px;font-size:12px;font-weight:700;color:var(--ac)}
-.tier.rec .tbadge{color:#a5b4fc}
-.appx{border:1.5px dashed var(--line);border-radius:16px;padding:6px 26px 22px;background:var(--soft)}
-@media(max-width:880px){.wrap{padding:28px 22px 80px}.hero .in{padding:0 22px}.hero h1{font-size:27px}.steps{flex-direction:column}.stp:not(:last-child)::after{content:"";display:none}.tiers{grid-template-columns:1fr}.mini-index{padding:12px 22px 0}.appx{padding:6px 18px 18px}}
+.pdf-btn{position:fixed;top:16px;right:16px;z-index:100;font-family:inherit;font-size:13px;font-weight:700;color:#fff;background:var(--ac);border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:10px 16px;cursor:pointer;box-shadow:0 8px 20px -6px rgba(79,70,229,.55);transition:.15s}
+.pdf-btn:hover{background:var(--ac-700)}
+@media(max-width:820px){.wrap{padding:28px 22px 80px}.hero .in{padding:0 22px}.mini-index{padding:12px 22px 0}.steps{flex-direction:column}.stp:not(:last-child)::after{content:"";display:none}.pdf-btn{top:auto;bottom:16px;right:16px}}
+@page{margin:12mm}
 @media print{
   body{background:#fff}
-  .hero,.total,.t,.co,.tier.rec{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  section,.tier,.total{page-break-inside:avoid}
+  .pdf-btn{display:none}
+  .hero,.total,.co,.fcard{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section{page-break-inside:avoid}
 }
 </style>
 </head>
 <body>
 
+<button class="pdf-btn" onclick="window.print()" aria-label="PDF로 저장">⬇ PDF 저장</button>
+
 <div class="hero"><div class="in">
-  <div class="badge">BRAND CONSULTING QUOTE · 견적서</div>
-  <h1>[Less Plastic Life] 로고·심볼 디자인 <span class="hl">견적서</span></h1>
-  <div class="sub">로고·심볼 디자인을 <b style="color:#fff">3가지 버전</b>으로 제안합니다. 브랜딩 풀 파트너십은 부록으로 함께 담았습니다.</div>
+  <div class="badge">BRAND IDENTITY QUOTE · 견적서</div>
+  <h1>[Less Plastic Life] 브랜드 아이덴티티(BI) <span class="hl">견적서</span></h1>
+  <div class="sub">요청하신 BI 패키지 — 로고 시스템·컬러/폰트 가이드부터 명함·온라인 브랜드소개서까지. 시장·타겟 방향 위에 얹은 로고로, 초기 브랜드의 첫 인상을 한 번에 세팅합니다.</div>
   <div class="meta">
-    <span class="chip">수신 <b>Less Plastic Life 정경민 대표</b></span>
-    <span class="chip">견적일 <b>2026-07-06</b></span>
-    <span class="chip">로고·심볼 <b>800만 ~ 4,500만원</b></span>
-    <span class="chip">부록 · 파트너십 <b>8,000만원~ (VAT 별도)</b></span>
+    <span class="chip">수신 <b>Less Plastic Life · 정경민 대표</b></span>
+    <span class="chip">견적일 <b>2026-07-08</b></span>
+    <span class="chip">기간 <b>착수 후 약 1개월</b></span>
+    <span class="chip">총액 <b>15,500,000원 (VAT 별도)</b></span>
   </div>
 </div></div>
 
 <div class="mini-index">
-  <a href="#versions">3가지 버전</a><span class="sep">·</span><a href="#compare">버전 비교</a><span class="sep">·</span><a href="#appendix">부록 · 파트너십</a><span class="sep">·</span><a href="#flow">일정</a><span class="sep">·</span><a href="#notes">비고</a>
+  <a href="#approach">접근</a><span class="sep">·</span><a href="#estimate">견적</a><span class="sep">·</span><a href="#deliverables">산출물</a><span class="sep">·</span><a href="#flow">일정</a><span class="sep">·</span><a href="#notes">비고</a>
 </div>
 
 <div class="wrap">
 
-  <section id="versions">
-    <div class="sec-k">LOGO &amp; SYMBOL</div>
-    <h2>로고·심볼 디자인 — 3가지 버전</h2>
-    <p class="lead">같은 로고·심볼이라도 <b>얼마나 깊이 파고 정교하게 마감하느냐</b>에 따라 완성도가 달라집니다. 세 가지 완성도로 나눠 드립니다.</p>
-    <div class="tiers">
-      <div class="tier">
-        <div class="tk">버전 1 · 에센셜</div>
-        <div class="tn">기본 완성도</div>
-        <div class="tp">800<small>만원~ · VAT 별도</small></div>
-        <div class="td">핵심 로고·심볼을 깔끔하게. 시안 2안·수정 2회로 브랜드의 얼굴을 빠르게 세우는 실무 완성도.</div>
-        <div class="tbadge">빠르게, 깔끔하게</div>
-      </div>
-      <div class="tier">
-        <div class="tk">버전 2 · 스탠다드</div>
-        <div class="tn">전문 완성도</div>
-        <div class="tp">2,000<small>만원~ · VAT 별도</small></div>
-        <div class="td">시장·비주얼 리서치를 반영하고 더 넓게 탐색한 로고. 시안 3안·충분한 수정에 컬러·타이포 시스템과 가이드라인까지 — 제품·기관 앞에서 전문적으로 서는 완성도.</div>
-        <div class="tbadge">깊이 있게, 완결형으로</div>
-      </div>
-      <div class="tier">
-        <div class="tk">버전 3 · 프리미엄</div>
-        <div class="tn">최고 완성도</div>
-        <div class="tp">4,500<small>만원~ · VAT 별도</small></div>
-        <div class="td">심화 리서치·다안 탐색과 디테일 마감까지 밀어붙인 로고. 글로벌·대기업 접점에서도 흔들리지 않는 정교함.</div>
-        <div class="tbadge">정교하게, 최고 수준으로</div>
-      </div>
+  <section id="approach">
+    <div class="sec-k">APPROACH</div>
+    <h2>이 가격은 로고 값이 아니라, 리서치·기획 위에 세운 설계 값입니다</h2>
+    <p class="lead">브랜드라이즈의 디자인은 시안 외주가 아니라 <b>시장·타겟·경쟁을 읽어 브랜드 방향을 잡고, 그 근거 위에 로고·컬러·폰트를 설계</b>하는 작업입니다. 가격은 여기서 형성됩니다.</p>
+    <div class="co ac"><span class="lab">가격이 이렇게 형성된 이유</span>같은 로고 3타입이어도 <b>"왜 이 형태·이 컬러·이 폰트인가"의 답이 리서치에서 나옵니다.</b> 방향 없이 뽑은 로고는 출시 후 흔들려 다시 만드는 비용이 두 번 들지만, 근거 위에 세운 BI는 명함·소개서·제품 적용까지 톤이 한 번에 맞습니다. 이 견적은 그 <b>기획·리서치 기반 설계</b>의 값입니다.</div>
+    <div class="cards">
+      <div class="fcard"><div class="fk">BI 로고 시스템</div><div class="fv">로고 3타입 + 컬러·폰트 가이드</div><div class="fn">텍스트·심볼·조합형 + 사용 규정</div></div>
+      <div class="fcard"><div class="fk">온라인 소개서</div><div class="fv">원페이지 브랜드소개서</div><div class="fn">브랜드 스토리·제품 (모바일 대응)</div></div>
+      <div class="fcard"><div class="fk">명함</div><div class="fv">양면 + 인쇄용 데이터</div><div class="fn">브랜드의 첫 물성 접점</div></div>
+      <div class="fcard"><div class="fk">제품 목업</div><div class="fv">BI 적용 제품 컷</div><div class="fn">확정 아이덴티티 적용 이미지</div></div>
     </div>
-    <div class="co ac"><span class="lab">버전 차이 = 완성도의 깊이</span>세 버전의 차이는 <b>딸려오는 산출물 개수가 아니라, 투입되는 전문성과 탐색·마감의 깊이</b>입니다. 로고 디자인은 이 깊이에 따라 <b>1,000만원 이하부터 1억 이상까지</b> 폭이 넓습니다 — 위 구간은 지금 Less Plastic Life 단계에 맞춰 잡았습니다.</div>
   </section>
 
-  <section id="compare">
-    <div class="sec-k">COMPARE</div>
-    <h2>버전별 포함 내역</h2>
-    <p class="lead">세 버전의 차이는 <b>탐색과 마감의 깊이</b>입니다. 상위 버전은 하위 버전을 모두 포함합니다.</p>
+  <section id="estimate">
+    <div class="sec-k">ESTIMATE</div>
+    <h2>견적 상세</h2>
+    <p class="lead">요청하신 산출물 범위 그대로 구성했습니다. 표 컬럼: 항목 / 내용 / 금액 (VAT 별도).</p>
     <table>
-      <tr><th style="width:34%">구분</th><th class="c" style="width:22%">버전 1 · 에센셜</th><th class="c" style="width:22%">버전 2 · 스탠다드</th><th class="c" style="width:22%">버전 3 · 프리미엄</th></tr>
-      <tr><td><b>로고·심볼 시안 탐색</b></td><td class="c">2안</td><td class="c">3안</td><td class="c">3안+ 심화 다안</td></tr>
-      <tr><td><b>시장·비주얼 리서치</b></td><td class="c">기본</td><td class="c">반영</td><td class="c">심화</td></tr>
-      <tr><td><b>수정 라운드</b></td><td class="c">2회</td><td class="c">충분히</td><td class="c">충분히</td></tr>
-      <tr><td><b>컬러·타이포</b></td><td class="c">기본</td><td class="c">시스템(국·영문)</td><td class="c">시스템(정밀)</td></tr>
-      <tr><td><b>제작 호환 규정</b> (각인·금형·식품용기 등)</td><td class="c">—</td><td class="c">✓</td><td class="c">✓</td></tr>
-      <tr><td><b>브랜드 가이드라인</b></td><td class="c">최소</td><td class="c">✓</td><td class="c">✓ 확장</td></tr>
-      <tr><td><b>마감 정교함 (디테일)</b></td><td class="c">표준</td><td class="c">높음</td><td class="c">최고</td></tr>
-      <tr><td><b>글로벌·확장 대응</b></td><td class="c">—</td><td class="c">기본</td><td class="c">다국어·파트너십 마크</td></tr>
-      <tr class="sub"><td>가격 (VAT 별도)</td><td class="c">800만원~</td><td class="c">2,000만원~</td><td class="c">4,500만원~</td></tr>
+      <tr><th style="width:24%">항목</th><th>내용</th><th style="width:16%;text-align:right">금액</th></tr>
+      <tr>
+        <td class="it">BI 로고 시스템</td>
+        <td>텍스트타입 · 심볼타입 · 조합형 <b>로고 3종</b> + 브랜드 <b>컬러·폰트 가이드보드</b>(사용 규정 포함). 시장·타겟 방향 위에 설계</td>
+        <td class="num">9,000,000</td>
+      </tr>
+      <tr>
+        <td class="it">온라인 브랜드소개서</td>
+        <td>브랜드 스토리·제품을 담은 <b>원페이지 웹 소개서</b> (모바일 대응). 확정 BI 적용</td>
+        <td class="num">3,000,000</td>
+      </tr>
+      <tr>
+        <td class="it">명함 디자인</td>
+        <td><b>양면 레이아웃</b> + 인쇄용 데이터(CMYK · 재단여백 · 아웃라인) + 후가공 사양 가이드</td>
+        <td class="num">2,000,000</td>
+      </tr>
+      <tr>
+        <td class="it">제품 목업 이미지</td>
+        <td>확정 BI를 적용한 <b>제품 적용 컷(목업)</b></td>
+        <td class="num">1,500,000</td>
+      </tr>
+      <tr class="sub"><td colspan="2">합계 (VAT 별도)</td><td class="num">15,500,000</td></tr>
     </table>
-    <div class="co ok"><span class="lab">로고 방향</span>세 버전 모두 — 식물·재활용을 직접 묘사하기보다 <b>전환·감소·순환을 추상적으로</b> 표현합니다. 글로벌 B2B·기관에서 전문적으로 보이면서, 제품 각인·패키지에 작게 적용해도 살아있는 심볼을 목표로 합니다.</div>
+    <div class="total">
+      <div class="tl2">TOTAL</div>
+      <div class="tv">15,500,000원 <small>VAT 별도</small></div>
+    </div>
   </section>
 
-  <section id="appendix">
-    <div class="sec-k">APPENDIX · 부록</div>
-    <h2>브랜딩 풀 파트너십</h2>
-    <p class="lead">로고는 방향성이 문장으로 눌린 뒤에 가장 잘 나옵니다. 장기 파트너를 고려하신다면, 로고 앞에 브랜딩 기획을 함께 세우는 구성을 부록으로 담았습니다. (하반기 투자유치 IR 자료로도 활용)</p>
-    <div class="appx">
-      <h3>브랜딩 기획 워크숍 → 아이덴티티 → 로고·심볼 <span class="t n">약 4~5개월</span></h3>
-      <div class="bmeta"><b>납품물:</b> 사전 인터뷰·리서치 → 브랜딩 워크숍 → 브랜드 코어 문서 + 브랜딩 소개서(IR 겸용) → 아이덴티티·제품체계 전략 → 로고·심볼(스탠다드 내장)</div>
-      <table>
-        <tr><th>구성</th><th>내용</th><th class="c" style="width:14%">비고</th><th class="num" style="width:16%">금액</th></tr>
-        <tr><td><b>브랜딩 기획 워크숍 + IR 소개서</b></td><td>사전 인터뷰·시장/경쟁/비주얼 리서치·네이밍 점유 진단 → 워크숍 3회로 타겟 축·소구·포지셔닝 확정 → 브랜드 코어 문서 + 브랜딩 소개서(투자유치 IR 겸용)</td><td class="c">3개월</td><td class="num">30,000,000</td></tr>
-        <tr><td><b>브랜드 아이덴티티 + 제품체계 전략</b></td><td>"메이커 + Hospitality + 실무형 ESG 파트너" 축 공식화 / B2B·B2G·B2C 층별 타겟·소구 정의 / 제품 라인업 역할 / 커뮤니케이션 가이드</td><td class="c">1~2개월</td><td class="num">20,000,000</td></tr>
-        <tr><td><b>로고 · 심볼 디자인</b></td><td>확정된 브리프 위에 로고·심볼 (버전 2 스탠다드 = 시스템·제작호환·가이드라인 포함)</td><td class="c">약 2개월</td><td class="num">30,000,000</td></tr>
-        <tr class="sub"><td colspan="3">합계 (VAT 별도)</td><td class="num">80,000,000</td></tr>
-      </table>
-      <div class="total">
-        <div class="tl2">APPENDIX · 브랜딩 풀 파트너십</div>
-        <div class="tv">80,000,000원~ <small>VAT 별도</small></div>
-      </div>
-      <div class="co ac"><span class="lab">왜 부록인가</span>대표님 1순위는 로고·심볼이라 <b>본문은 로고 3버전</b>입니다. 다만 방향성 워크숍을 앞에 두면 로고가 "다시 만들 일 없이" 나오고, 그 산출물(브랜딩 소개서)이 투자유치 IR 자료가 됩니다 — 장기 파트너로 갈 때의 선택지로 참고해 주세요.</div>
-    </div>
+  <section id="deliverables">
+    <div class="sec-k">DELIVERABLES</div>
+    <h2>최종 납품물</h2>
+    <ul class="dl">
+      <li><b>로고 파일</b> — 텍스트·심볼·조합형 3종 / 전 포맷 (AI · SVG · PNG · JPG)</li>
+      <li><b>브랜드 가이드보드</b> — 로고 사용 규정 · 컬러 팔레트 · 국·영문 폰트 시스템 (PDF)</li>
+      <li><b>명함 디자인</b> — 양면 시안 + 인쇄용 데이터 (AI · 인쇄용 PDF, 재단여백 3mm)</li>
+      <li><b>온라인 브랜드소개서</b> — 원페이지 웹 소개서 (반응형) + 이미지·PDF 사본</li>
+      <li><b>제품 목업 이미지</b> — BI 적용 제품 컷 (고해상도 이미지)</li>
+    </ul>
   </section>
 
   <section id="flow">
     <div class="sec-k">SCHEDULE</div>
-    <h2>예상 진행 순서</h2>
+    <h2>진행 순서 <span style="font-size:13px;font-weight:700;color:var(--muted)">· 착수 후 약 1개월</span></h2>
     <div class="steps">
-      <div class="stp"><div class="sn">로고 · 버전 1~2</div><div class="sb">약 4~6주 — 방향 협의 → 시안 → 확정 → 가이드</div></div>
-      <div class="stp"><div class="sn">로고 · 버전 3</div><div class="sb">약 6~8주 — 심화 리서치·모션·확장 애플리케이션 포함</div></div>
-      <div class="stp"><div class="sn">부록 · 파트너십</div><div class="sb">약 4~5개월 — 워크숍 → 아이덴티티 → 로고까지 순차</div></div>
+      <div class="stp"><div class="sn">1주차</div><div class="sb">킥오프 · 브랜드 방향·레퍼런스 정렬 (기획안 공유 기반)</div></div>
+      <div class="stp"><div class="sn">2주차</div><div class="sb">로고 시안 — 방향 3안 제시</div></div>
+      <div class="stp"><div class="sn">3주차</div><div class="sb">선택안 디벨롭 · 컬러/폰트 가이드 · 명함 · 목업</div></div>
+      <div class="stp"><div class="sn">4주차</div><div class="sb">온라인 소개서 · 최종 납품물 정리</div></div>
     </div>
   </section>
 
@@ -201,18 +185,20 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
     <div class="sec-k">NOTES</div>
     <h2>비고</h2>
     <div class="co"><span class="lab">공통 조건</span>
-      · 본 견적의 금액은 <b>VAT 별도</b> 기준이며, <b>1차 제안</b>입니다 — 범위 확정 후 협의 조정합니다.<br>
-      · 인쇄·목업·실사 촬영 등 실비는 별도 산정.<br>
-      · 패키지 양산 디자인·SNS 콘텐츠 운영·자사몰 구축 등은 본 견적에서 제외 — 장기 파트너십 단계에서 별도 협의.<br>
-      · 네이밍("Less Plastic Life")은 대표 확정사항으로 존중하되, 검색 점유·해외 동명 리스크는 별첨 진단서에서 함께 짚었습니다.
+      · 금액은 <b>VAT 별도</b> 기준입니다.<br>
+      · 명함 인쇄비·용지·후가공 등 <b>인쇄 실비</b>와 제품 촬영 실비는 별도입니다 (목업은 디자인 적용 이미지 기준).<br>
+      · 로고는 <b>방향 3안 → 1안 선택 후 디벨롭</b>으로 진행하며, 디벨롭 단계 수정은 2회까지 포함됩니다.<br>
+      · 온라인 브랜드소개서는 <b>원페이지 디자인 기준</b>이며, 쇼핑몰·다페이지 웹사이트 구축은 범위 외입니다.<br>
+      · 본 견적의 유효기간은 발행일로부터 <b>30일</b>입니다.<br>
+      · 결제 조건 — 착수 50% / 최종 납품 50% (계약 시 협의).
     </div>
   </section>
 
 </div>
 
 <footer>
-  <b>BRANDRISE</b> by HIZ · Brand · IMC Consulting<br>
-  본 견적서는 2026-07-06 화상 상담 및 1차 전략 진단 기반 <b>1차 제안</b>입니다. 금액·범위는 협의 후 조정됩니다.<br>
+  <b>BRANDRISE</b> by HIZ · Brand Identity Consulting<br>
+  본 견적서는 2026-07-06 상담 및 2026-07-08 협의 기반입니다.<br>
   © 2026 브랜드라이즈 by HIZ · 비공개 — Less Plastic Life 제출용
 </footer>
 
