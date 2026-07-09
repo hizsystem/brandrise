@@ -134,7 +134,7 @@ em { font-style: normal; background: var(--accent-soft); color: var(--accent); p
   <div class="hero">
     <div class="hero-badge">2026.07.10 (금)</div>
     <h1>메타 광고, 큰 그림</h1>
-    <p>어려운 용어는 다 빼고, <strong>그림 5장</strong>으로 광고가 어떻게 돌아가는지만 잡습니다.</p>
+    <p>어려운 용어는 다 빼고, <strong>그림 몇 장</strong>으로 광고가 어떻게 돌아가는지만 잡습니다.</p>
   </div>
 
   <!-- 01 왜 -->
@@ -247,31 +247,63 @@ em { font-style: normal; background: var(--accent-soft); color: var(--accent); p
     </div>
     <div class="callout">
       <div class="callout-title">비유하면</div>
-      <p>매장 입구의 <strong>계수기</strong> + 계산대의 <strong>장부</strong>. 오래 돌릴수록 장부가 두꺼워지고, 메타가 점점 더 잘 팝니다.</p>
+      <p>매장에 설치한 <strong>CCTV + 포스(POS)기</strong>입니다. 누가 들어와서, 뭘 집었다 놨고, 뭘 계산했는지 다 남습니다. 이 기록을 메타에 보내주면 메타가 <strong>"사는 손님의 얼굴"을 익힙니다</strong> — 그래서 광고를 오래 돌릴수록 점점 더 잘 팝니다.</p>
     </div>
   </section>
 
-  <!-- 04 3층 상자 -->
+  <!-- 04 구조 트리 -->
   <section class="day">
     <div class="day-head"><span class="day-tag">04</span></div>
-    <h2>광고는 3층 상자에 담겨 있다</h2>
-    <div class="day-lead">광고관리자 화면이 복잡해 보여도, 실체는 상자 3개가 겹쳐 있는 것뿐.</div>
-    <div class="boxes">
-      <div class="box-label">🎯 캠페인 — "무엇을 시킬까"</div>
-      <div class="box-desc">목표를 정하는 가장 큰 상자 (그물 치기? 건져 올리기?)</div>
-      <div class="boxes-mid">
-        <div class="box-label">👥 광고세트 — "누구에게 · 얼마로"</div>
-        <div class="box-desc">타겟과 하루 예산을 정하는 중간 상자</div>
-        <div class="ads-row">
-          <div class="ad-card"><div class="ico">🖼️</div><div class="t">광고 A</div><div class="d">실제 보이는 이미지·카피</div></div>
-          <div class="ad-card win"><div class="ico">🖼️</div><div class="t">광고 B ✓</div><div class="d">반응 좋음 → 예산 몰아줌</div></div>
-          <div class="ad-card"><div class="ico">🖼️</div><div class="t">광고 C</div><div class="d">반응 없음 → 자연 도태</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="callout">
-      <div class="callout-title">그래서 소재를 여러 개 만듭니다</div>
-      <p>맨 안쪽 상자(광고)를 여러 개 넣으면, <strong>메타가 알아서 이긴 소재에 돈을 몰아줍니다.</strong> 우리는 후보만 잘 만들면 됩니다.</p>
+    <h2>광고 계정의 구조 — 캠페인 → 광고세트 → 광고</h2>
+    <div class="day-lead">메타 공식 가이드에 나오는 구조도 그대로입니다. 위에서 아래로 <strong>"왜 → 누구에게 → 무엇을"</strong> 순서로 정합니다.</div>
+    <div class="viz">
+      <svg viewBox="0 0 640 320" role="img" aria-label="캠페인 아래 광고세트 두 개, 그 아래 광고들이 달린 트리 구조도">
+        <line x1="320" y1="66" x2="320" y2="88" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="170" y1="88" x2="470" y2="88" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="170" y1="88" x2="170" y2="110" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="470" y1="88" x2="470" y2="110" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="170" y1="176" x2="170" y2="196" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="90" y1="196" x2="250" y2="196" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="90" y1="196" x2="90" y2="218" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="250" y1="196" x2="250" y2="218" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="470" y1="176" x2="470" y2="196" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="390" y1="196" x2="550" y2="196" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="390" y1="196" x2="390" y2="218" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="550" y1="196" x2="550" y2="218" stroke="#c9ced8" stroke-width="2"/>
+
+        <rect x="220" y="16" width="200" height="50" rx="10" fill="#1a1d23"/>
+        <text x="320" y="37" font-size="14" font-weight="800" fill="#ffffff" text-anchor="middle">🎯 캠페인</text>
+        <text x="320" y="55" font-size="11.5" fill="#c9ced8" text-anchor="middle">왜? — 목표 (트래픽 / 판매)</text>
+
+        <rect x="80" y="110" width="180" height="66" rx="10" fill="#fff2ea" stroke="#f07030" stroke-width="1.6"/>
+        <text x="170" y="133" font-size="13.5" font-weight="800" fill="#f07030" text-anchor="middle">👥 광고세트 A</text>
+        <text x="170" y="151" font-size="11.5" fill="#5b6371" text-anchor="middle">누구에게? — 타겟</text>
+        <text x="170" y="167" font-size="11.5" fill="#5b6371" text-anchor="middle">얼마로? — 하루 예산</text>
+
+        <rect x="380" y="110" width="180" height="66" rx="10" fill="#fff2ea" stroke="#f07030" stroke-width="1.6"/>
+        <text x="470" y="133" font-size="13.5" font-weight="800" fill="#f07030" text-anchor="middle">👥 광고세트 B</text>
+        <text x="470" y="151" font-size="11.5" fill="#5b6371" text-anchor="middle">다른 타겟 또는</text>
+        <text x="470" y="167" font-size="11.5" fill="#5b6371" text-anchor="middle">다른 예산으로 실험</text>
+
+        <rect x="40" y="218" width="100" height="60" rx="8" fill="#ffffff" stroke="#e6e9ef" stroke-width="1.5"/>
+        <text x="90" y="243" font-size="12" font-weight="700" fill="#1a1d23" text-anchor="middle">🖼️ 광고 1</text>
+        <text x="90" y="261" font-size="10.5" fill="#8b94a3" text-anchor="middle">이미지·카피</text>
+
+        <rect x="200" y="218" width="100" height="60" rx="8" fill="#ffffff" stroke="#f07030" stroke-width="2"/>
+        <text x="250" y="243" font-size="12" font-weight="700" fill="#f07030" text-anchor="middle">🖼️ 광고 2 ✓</text>
+        <text x="250" y="261" font-size="10.5" fill="#f07030" text-anchor="middle">반응 좋음 → 예산 몰림</text>
+
+        <rect x="340" y="218" width="100" height="60" rx="8" fill="#ffffff" stroke="#e6e9ef" stroke-width="1.5"/>
+        <text x="390" y="243" font-size="12" font-weight="700" fill="#1a1d23" text-anchor="middle">🖼️ 광고 3</text>
+        <text x="390" y="261" font-size="10.5" fill="#8b94a3" text-anchor="middle">이미지·카피</text>
+
+        <rect x="500" y="218" width="100" height="60" rx="8" fill="#ffffff" stroke="#e6e9ef" stroke-width="1.5"/>
+        <text x="550" y="243" font-size="12" font-weight="700" fill="#1a1d23" text-anchor="middle">🖼️ 광고 4</text>
+        <text x="550" y="261" font-size="10.5" fill="#8b94a3" text-anchor="middle">이미지·카피</text>
+
+        <text x="320" y="308" font-size="11.5" fill="#8b94a3" text-anchor="middle">위 → 아래: 왜(목표) → 누구에게·얼마로(타겟·예산) → 무엇을(소재)</text>
+      </svg>
+      <div class="viz-caption">우리가 매일 만지는 건 맨 아래 <strong>광고(소재) 켜고 끄기</strong>. 예산은 메타가 <strong>이긴 소재에 자동으로 몰아줍니다</strong> — 그래서 후보를 여러 개 넣습니다.</div>
     </div>
   </section>
 
@@ -292,6 +324,18 @@ em { font-style: normal; background: var(--accent-soft); color: var(--accent); p
     <div class="callout">
       <div class="callout-title">오늘의 전부</div>
       <p>그물을 치고(트래픽) → 건져 올리고(전환) → 깔때기에서 <strong>새는 곳을 찾아 고친다.</strong> 메타 광고 운영은 이 반복입니다.</p>
+    </div>
+  </section>
+
+  <!-- 06 보너스 -->
+  <section class="day">
+    <div class="day-head"><span class="day-tag">06</span></div>
+    <h2>이것까지 알면 광고 대화가 됩니다 — 보너스 3</h2>
+    <div class="day-lead">오늘 꼭 안 외워도 됩니다. "이런 게 있구나"만.</div>
+    <div class="flow" style="grid-template-columns:1fr 1fr 1fr; gap:10px;">
+      <div class="fstep"><div class="ico">🔨</div><div class="t">광고비는 정가가 없다 — 경매</div><div class="d">같은 화면 자리를 두고 여러 브랜드가 입찰 경쟁. 메타는 <strong>사람들이 좋아하는 광고를 싸게</strong> 태워줍니다 → 소재가 좋으면 광고비가 내려가는 이유</div></div>
+      <div class="fstep"><div class="ico">🎣</div><div class="t">도망간 물고기 다시 — 리타겟팅</div><div class="d">그물에 들어왔다가(사이트 방문) 안 사고 나간 사람에게 다시 보여주는 광고. <strong>전환율이 가장 높은</strong> 그물질 — 픽셀 기록 덕분에 가능</div></div>
+      <div class="fstep"><div class="ico">🌱</div><div class="t">처음 며칠은 연습 — 학습 기간</div><div class="d">새 광고를 켜면 메타가 "누구한테 보여줄지" 연습하는 기간이 있습니다. <strong>첫 2~3일 숫자로 판단하지 않기</strong> — 그물 던지는 폼 잡는 중</div></div>
     </div>
   </section>
 
