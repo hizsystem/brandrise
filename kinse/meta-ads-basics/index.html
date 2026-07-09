@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>메타 광고 기본기 — 오햅삐 팀 세션</title>
+<meta name="robots" content="noindex">
+</head>
+<body>
+
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-alt: #f8f9fb;
+  --text: #1a1d23;
+  --text-soft: #5b6371;
+  --text-mute: #8b94a3;
+  --border: #e6e9ef;
+  --border-soft: #eff1f5;
+  --accent: #f07030;
+  --accent-soft: #fff2ea;
+  --accent-line: #fce0cf;
+  --good: #10b981;
+  --warn: #f59e0b;
+  --bad: #ef4444;
+  --radius: 10px;
+  --sidebar-w: 280px;
+  --content-max: 760px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* Layout */
+.page { min-height: 100vh; }
+.main {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 48px 24px 120px;
+}
+
+/* Hero */
+.hero {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+  margin-bottom: 40px;
+  background: var(--bg);
+}
+.hero-badge {
+  display: inline-block;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  letter-spacing: 0.02em;
+}
+.hero h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 12px; }
+.hero p { color: var(--text-soft); font-size: 15px; max-width: 560px; }
+.hero-meta { display: flex; gap: 20px; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border-soft); font-size: 13px; color: var(--text-mute); flex-wrap: wrap; }
+.hero-meta span strong { color: var(--text); font-weight: 700; }
+
+/* Section */
+.day { margin-bottom: 56px; scroll-margin-top: 16px; }
+.day-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; flex-wrap: wrap; }
+.day-tag {
+  background: var(--text);
+  color: white;
+  font-size: 11px; font-weight: 700;
+  padding: 3px 9px; border-radius: 100px;
+  letter-spacing: 0.04em;
+}
+.day-tag.ex { background: var(--accent); }
+.day-time { font-size: 13px; color: var(--text-mute); }
+.day h2 { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.3; margin: 6px 0 18px; }
+.day-lead {
+  font-size: 16px; color: var(--text-soft);
+  margin-bottom: 28px;
+  padding-left: 14px; border-left: 3px solid var(--accent);
+}
+h3 { font-size: 18px; font-weight: 700; margin: 24px 0 10px; letter-spacing: -0.01em; }
+p { margin-bottom: 12px; color: var(--text); }
+p.soft { color: var(--text-soft); font-size: 14.5px; }
+ul, ol { margin: 8px 0 14px 20px; }
+li { margin-bottom: 6px; color: var(--text-soft); }
+li strong, p strong { font-weight: 700; color: var(--text); }
+em { font-style: normal; background: var(--accent-soft); color: var(--accent); padding: 0 4px; border-radius: 3px; font-weight: 600; }
+
+/* Callouts */
+.callout {
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 14px 0;
+  font-size: 14.5px;
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+}
+.callout-title { font-weight: 700; font-size: 13px; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+.callout.tip { border-color: var(--accent-line); background: var(--accent-soft); }
+.callout.tip .callout-title { color: var(--accent); }
+.callout.warn { border-color: #fde68a; background: #fffbeb; }
+.callout.warn .callout-title { color: #b45309; }
+.callout.good { border-color: #bbf7d0; background: #f0fdf4; }
+.callout.good .callout-title { color: #15803d; }
+.callout p:last-child { margin-bottom: 0; }
+
+/* Table */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border-soft); vertical-align: top; }
+th { background: var(--bg-alt); font-weight: 700; font-size: 13px; color: var(--text-soft); border-bottom: 1px solid var(--border); white-space: nowrap; }
+tbody tr:hover { background: var(--bg-alt); }
+td .term { font-weight: 700; color: var(--text); white-space: nowrap; }
+td .eng { display: block; font-size: 11px; color: var(--text-mute); font-family: 'SF Mono', Menlo, monospace; margin-top: 1px; }
+.pill { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 100px; white-space: nowrap; }
+.pill.good { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+.pill.warn { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
+.pill.bad { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+.num-cell { font-variant-numeric: tabular-nums; }
+
+/* Formula cards */
+.formula { display: flex; flex-wrap: wrap; gap: 10px; align-items: stretch; margin: 18px 0 4px; }
+.fx { flex: 1 1 150px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 13px 15px; }
+.fx .k { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-mute); font-weight: 700; }
+.fx .v { font-weight: 800; font-size: 17px; margin-top: 2px; }
+.fx .d { color: var(--text-soft); font-size: 13px; margin-top: 1px; }
+.fx.op { flex: 0 0 auto; display: flex; align-items: center; border: none; background: none; padding: 0 2px; font-size: 20px; font-weight: 700; color: var(--text-mute); }
+
+/* 3-layer stack */
+.stack { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin: 14px 0; }
+.layer { padding: 14px 16px; background: var(--bg); border-bottom: 1px solid var(--border-soft); }
+.layer:last-child { border-bottom: none; }
+.layer .lh { display: flex; align-items: center; gap: 10px; }
+.layer .badge { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 100px; letter-spacing: .04em; }
+.layer.l1 .badge { background: var(--accent); color: #fff; }
+.layer.l2 .badge { background: var(--accent-soft); color: var(--accent); }
+.layer.l3 .badge { background: var(--bg-alt); color: var(--text-soft); border: 1px solid var(--border); }
+.layer .name { font-weight: 700; font-size: 15px; }
+.layer .desc { color: var(--text-soft); font-size: 13.5px; margin-top: 4px; }
+.layer.l2 { margin-left: 18px; } .layer.l3 { margin-left: 36px; }
+
+/* Toggle (details/summary) — 가이드 동일 */
+details.toggle {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  margin: 10px 0;
+  overflow: hidden;
+  transition: background .15s;
+}
+details.toggle[open] { background: var(--bg-alt); border-color: var(--accent-line); }
+details.toggle summary {
+  padding: 14px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+}
+details.toggle summary::-webkit-details-marker { display: none; }
+details.toggle summary::before {
+  content: "+";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+details.toggle[open] summary::before { content: "−"; background: var(--accent); color: white; }
+details.toggle summary:hover { color: var(--accent); }
+details.toggle summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+details.toggle .toggle-body { padding: 4px 18px 16px 50px; font-size: 14.5px; }
+details.toggle .toggle-body p { margin-bottom: 10px; }
+
+/* Case block */
+.case { margin-bottom: 34px; }
+.case-head { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+.case-no {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 26px; height: 26px; border-radius: 100px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 13px; font-weight: 800;
+}
+.case-head h3 { margin: 0; }
+.ask { font-size: 15px; color: var(--text); font-weight: 600; margin: 10px 0 8px; }
+.ask::before { content: "🔎 "; }
+.alabel { display: inline-block; font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 5px; margin-right: 8px; letter-spacing: .03em; vertical-align: 1px; }
+.alabel.prob { background: #fef2f2; color: #b91c1c; }
+.alabel.fix { background: #f0fdf4; color: #15803d; }
+
+/* Footer */
+.footer {
+  margin-top: 80px; padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 13px; color: var(--text-mute);
+  text-align: center;
+}
+
+/* Mobile */
+@media (max-width: 880px) {
+  .main { padding: 24px 18px 80px; }
+  .hero { padding: 24px 20px; }
+  .hero h1 { font-size: 24px; }
+  .day h2 { font-size: 22px; }
+}
+</style>
+
+<div class="page">
+
+<main class="main">
+
+  <div class="hero">
+    <div class="hero-badge">2026.07.10 (금)</div>
+    <h1>메타 광고 기본기</h1>
+    <p><strong>누구에게</strong> × <strong>무엇을</strong> × <strong>무엇을 시킬지</strong> — 메타 광고는 결국 이 3가지를 정하고, 숫자를 보며 고치는 일입니다.</p>
+    <div class="formula">
+      <div class="fx"><div class="k">누구에게</div><div class="v">타겟</div><div class="d">어떤 사람에게</div></div>
+      <div class="fx op">×</div>
+      <div class="fx"><div class="k">무엇을</div><div class="v">소재</div><div class="d">어떤 이미지·영상·카피</div></div>
+      <div class="fx op">×</div>
+      <div class="fx"><div class="k">무엇을 시킬지</div><div class="v">목표</div><div class="d">구경? 구매?</div></div>
+    </div>
+    <div class="hero-meta">
+      <span>구성 <strong>기본기 3 + 실전 6</strong></span>
+      <span>소요 <strong>약 20분</strong></span>
+      <span>데이터 <strong>danaspick 광고 캠페인 실측</strong></span>
+    </div>
+  </div>
+
+  <!-- 01 -->
+  <section class="day" id="s1">
+    <div class="day-head"><span class="day-tag">01</span><span class="day-time">Why Meta Ads</span></div>
+    <h2>메타 광고를 하는 이유</h2>
+    <div class="day-lead">핵심 3가지 — 콘텐츠 강점 보유 브랜드일수록 유리.</div>
+    <ul>
+      <li><strong>오가닉 도달의 천장</strong> — 팔로워·알고리즘이 정하는 도달 한계. 광고 = <em>도달을 구매하는 유일한 레버</em></li>
+      <li><strong>검증된 콘텐츠의 증폭</strong> — 오가닉에서 이미 터진 소재를 광고로 확대. 소재 리스크 최소화</li>
+      <li><strong>데이터 자산 축적</strong> — 집행 → 픽셀 데이터 축적 → 타겟 정밀화 → 광고비 효율 상승 사이클</li>
+    </ul>
+    <div class="callout tip">
+      <div class="callout-title">한 줄 정리</div>
+      <p>광고는 콘텐츠를 대체하는 게 아니라, <strong>잘 터진 콘텐츠를 증폭하는 확성기</strong>입니다. 확성기는 목소리 좋은 사람이 들 때 가장 쎕니다.</p>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section class="day" id="s2">
+    <div class="day-head"><span class="day-tag">02</span><span class="day-time">Glossary</span></div>
+    <h2>필수 용어 9</h2>
+    <div class="day-lead">메타 광고가 어렵게 느껴지는 이유의 8할은 용어. 이 9개면 광고관리자 화면과 리포트가 읽히기 시작합니다.</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>용어</th><th>뜻</th><th>비유</th></tr></thead>
+        <tbody>
+          <tr><td><span class="term">노출</span><span class="eng">Impressions</span></td><td>광고가 화면에 보인 <strong>횟수</strong> (같은 사람 3번 = 노출 3)</td><td>전단지를 흔든 총 횟수</td></tr>
+          <tr><td><span class="term">도달</span><span class="eng">Reach</span></td><td>광고를 본 <strong>사람 수</strong> (같은 사람 3번 = 도달 1). 노출÷도달 = 1인당 본 횟수(빈도)</td><td>전단지를 받은 사람 수</td></tr>
+          <tr><td><span class="term">클릭</span><span class="eng">Clicks</span></td><td>광고를 누른 횟수</td><td>전단지를 받아 든 사람</td></tr>
+          <tr><td><span class="term">CTR</span><span class="eng">Click-Through Rate</span></td><td>본 사람 중 누른 비율 — <strong>소재 매력도 지표</strong></td><td>흔든 전단지 100장 중 몇 장을 받아 갔나</td></tr>
+          <tr><td><span class="term">CPC</span><span class="eng">Cost Per Click</span></td><td>클릭 1번당 비용</td><td>손님 한 명을 문 앞까지 데려온 값</td></tr>
+          <tr><td><span class="term">전환 · 구매</span><span class="eng">Conversion · Purchase</span></td><td>광고를 보고 실제로 구매한 것</td><td>전단지 받은 사람이 계산까지 마친 것</td></tr>
+          <tr><td><span class="term">ROAS</span><span class="eng">Return On Ad Spend</span></td><td>광고비 1원당 매출 — <strong>최종 성적표</strong></td><td>전단지 10만원 뿌려 매출 40만원이면 ROAS 4</td></tr>
+          <tr><td><span class="term">픽셀</span><span class="eng">Meta Pixel</span></td><td>사이트에 심는 추적 코드 — 방문·구매를 메타에 전달</td><td>매장 입구의 계수기 + 계산대 장부</td></tr>
+          <tr><td><span class="term">리타겟팅</span><span class="eng">Retargeting</span></td><td>방문했지만 안 산 사람 대상 재노출 광고 — <strong>전환율 최고</strong></td><td>문 앞까지 왔다 간 손님 어깨를 톡톡</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout tip">
+      <div class="callout-title">목표는 딱 2종류</div>
+      <p>캠페인 생성 시 맨 먼저 목표 선택: <strong>트래픽</strong>(사람 모으기 — 일단 구경) vs <strong>판매·전환</strong>(사게 하기 — 살 사람만 안내). 기본 순서 = <strong>트래픽으로 씨 뿌리기 → 판매로 거두기</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section class="day" id="s3">
+    <div class="day-head"><span class="day-tag">03</span><span class="day-time">Campaign / Ad Set / Ad</span></div>
+    <h2>캠페인 구조 — 3층</h2>
+    <div class="day-lead">광고관리자 화면이 복잡해 보이는 이유 = 이 3층이 겹쳐 있어서. 이것만 알면 됩니다.</div>
+    <div class="stack">
+      <div class="layer l1"><div class="lh"><span class="badge">1층</span><span class="name">캠페인 <span class="eng" style="display:inline">Campaign</span></span></div><div class="desc">무엇을 시킬지 — <strong>목표</strong> (트래픽? 판매?)</div></div>
+      <div class="layer l2"><div class="lh"><span class="badge">2층</span><span class="name">광고세트 <span class="eng" style="display:inline">Ad Set</span></span></div><div class="desc">누구에게(타겟) · 얼마나(예산) · 언제까지(기간)</div></div>
+      <div class="layer l3"><div class="lh"><span class="badge">3층</span><span class="name">광고 <span class="eng" style="display:inline">Ad</span></span></div><div class="desc">실제 눈에 보이는 이미지·영상·카피</div></div>
+    </div>
+    <p class="soft">캠페인 1개 → 광고세트 여러 개 → 광고 여러 개. 일상 운영 = <strong>3층(광고) ON/OFF</strong>. 예산 배분 = <strong>메타 자동(이긴 광고에 집중)</strong> — 소재 여러 개 경쟁 구조의 이유.</p>
+  </section>
+
+  <!-- 04 실전 실측 -->
+  <section class="day" id="s4">
+    <div class="day-head"><span class="day-tag">04</span><span class="day-time">실측 — 7/7~9 우리 계정</span></div>
+    <h2>실전 — 숫자에서 액션으로</h2>
+    <div class="day-lead">지표는 읽는 게 아니라 <strong>액션을 정하는 재료</strong>. 이번 주 실제 화면의 숫자 3장면으로 "이 숫자를 보면 무엇을 하는가"를 연습합니다.</div>
+
+    <div class="case">
+      <div class="case-head"><span class="case-no">A</span><h3>소재 간 CTR 격차 → 교체 판단</h3></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>광고 (7/9)</th><th>지출</th><th>노출</th><th>CTR</th><th>구매</th></tr></thead>
+          <tbody>
+            <tr><td><span class="term">SOS A (상시)</span></td><td class="num-cell">₩79,379</td><td class="num-cell">6,939</td><td><span class="pill good">3.42%</span></td><td class="num-cell">0</td></tr>
+            <tr><td><span class="term">진정 라인 타임딜</span></td><td class="num-cell">₩41,306</td><td class="num-cell">5,529</td><td><span class="pill bad">0.67%</span></td><td class="num-cell">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="ask">같은 날, 같은 계정. 타임딜은 40% 할인 혜택까지 실렸는데 CTR이 1/5. 어떤 액션을 해야 할까요?</p>
+      <details class="toggle"><summary>진단 &amp; 액션</summary>
+        <div class="toggle-body">
+          <p><span class="alabel prob">진단</span><strong>혜택 좋음 ≠ 소재 좋음.</strong> 타임딜 소재는 가격·기간 정보 위주 — 첫 3초에 스크롤을 멈출 훅 부재.</p>
+          <p><span class="alabel fix">액션</span>① 충분한 노출(수천)에서 CTR 3배 이상 차이 → <strong>진 소재 OFF·예산 회수</strong> ② 이긴 소재의 훅 문법을 타임딜 포맷에 이식 → <strong>3~5개 후보로 재경쟁</strong> ③ 타겟·예산은 유지 — 범인은 소재.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="case-no">B</span><h3>높은 CTR의 함정 → 표본 크기 확인</h3></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>광고 (7/9)</th><th>지출</th><th>노출</th><th>CTR</th><th>구매</th><th>구매당 비용</th></tr></thead>
+          <tbody>
+            <tr><td><span class="term">SOS B</span></td><td class="num-cell">₩2,076</td><td><span class="pill warn">61</span></td><td><span class="pill good">3.28%</span></td><td class="num-cell">1</td><td class="num-cell">₩2,076</td></tr>
+            <tr><td><span class="term">미니 3종 B</span></td><td class="num-cell">₩98,618</td><td class="num-cell">4,522</td><td class="num-cell">1.13%</td><td class="num-cell">4</td><td class="num-cell">₩24,655</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="ask">SOS B가 CTR도 높고 구매당 비용도 12배 저렴합니다. SOS B에 예산을 몰아야 할까요?</p>
+      <details class="toggle"><summary>진단 &amp; 액션</summary>
+        <div class="toggle-body">
+          <p><span class="alabel prob">진단</span><strong>아직 판단 불가 — 표본 부족.</strong> 노출 61회 = 전단지 61장. 구매 1건은 실력일 수도, 우연일 수도. 미니 3종 B는 노출 4,522·구매 4건 = <strong>검증된 승자</strong>.</p>
+          <p><span class="alabel fix">액션</span>① <strong>판단 최소 기준부터</strong> (예: 노출 1,000+ 또는 지출 2~3만원+) ② 기준 미달 소재는 결론 유보 ③ 초기 숫자에 예산 몰빵 금지.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="case-no">C</span><h3>한 소재의 예산 독식 → 자동 배분 이해</h3></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>전환 세트 내 광고 (7/9)</th><th>지출</th><th>구매</th></tr></thead>
+          <tbody>
+            <tr><td><span class="term">미니 3종 B</span></td><td class="num-cell"><span class="pill warn">₩98,618</span></td><td class="num-cell">4</td></tr>
+            <tr><td><span class="term">클렌저 B</span></td><td class="num-cell">₩32,498</td><td class="num-cell">0</td></tr>
+            <tr><td><span class="term">SOS B</span></td><td class="num-cell">₩2,076</td><td class="num-cell">1</td></tr>
+            <tr><td><span class="term">데이나스픽 세트 B · 판테놀 · 수분락</span></td><td class="num-cell">₩0~15</td><td class="num-cell">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="ask">한 세트 안에서 미니 3종 B가 예산을 거의 다 먹었습니다. 나머지 소재는 기회조차 없었는데 — 문제일까요?</p>
+      <details class="toggle"><summary>진단 &amp; 액션</summary>
+        <div class="toggle-body">
+          <p><span class="alabel prob">진단</span><strong>독식 자체는 메타의 정상 동작</strong> — 초기 반응이 좋은 소재에 예산을 집중시키는 자동 배분입니다. 문제는 독식하는 소재가 "성과를 내면서" 먹는지, "지출만" 먹는지.</p>
+          <p><span class="alabel fix">액션</span>독식 판단 3갈래 — ① <strong>독식 + 구매 발생</strong>(지금 상황) → 그대로 둔다. 이긴 소재다 ② <strong>독식 + 구매 0</strong> → OFF하고 예산을 다른 소재로 ③ 기회를 못 받은 소재 중 꼭 검증하고 싶은 게 있으면 → <strong>별도 세트로 분리</strong>해 강제로 예산 배정.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="callout good">
+      <div class="callout-title">숫자 → 액션 3원칙</div>
+      <p>① <strong>표본이 충분한가</strong>(케이스 B) ② <strong>독식은 성과와 함께인가</strong>(케이스 C) ③ 둘 다 통과하면 그때 <strong>소재·예산 액션</strong>(케이스 A). 순서를 지키면 잘못된 결정의 대부분을 피합니다.</p>
+    </div>
+  </section>
+
+  <!-- 05 예시 -->
+  <section class="day" id="s5">
+    <div class="day-head"><span class="day-tag ex">05</span><span class="day-time">예시 — 데이터가 쌓이면 곧 만날 상황</span></div>
+    <h2>곧 만날 상황 — 예시 3</h2>
+    <div class="day-lead">아직 우리 계정에 데이터가 없어 <strong>예시 숫자</strong>로 감만 잡아둡니다. 다음 주부터 실측으로 다시 봅니다.</div>
+
+    <div class="case">
+      <div class="case-head"><span class="case-no">D</span><h3>CTR 높은데 ROAS 낮음 → 랜딩·가격 점검</h3></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>예시</th><th>CTR</th><th>클릭</th><th>구매</th><th>ROAS</th></tr></thead>
+          <tbody>
+            <tr><td><span class="term">소재 X</span></td><td><span class="pill good">2.8%</span></td><td class="num-cell">900</td><td class="num-cell">2</td><td><span class="pill bad">0.4</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <details class="toggle"><summary>진단 &amp; 액션</summary>
+        <div class="toggle-body">
+          <p><span class="alabel prob">진단</span>광고는 제 역할을 했습니다(잘 눌렀으니까). 구매에서만 떨어졌다면 <strong>상세페이지·가격·후기·결제 흐름</strong>이 범인.</p>
+          <p><span class="alabel fix">액션</span>① 직접 광고를 눌러 결제 직전까지 가보기 ② 상세페이지 첫 화면·가격·후기 보강 ③ 광고가 아니라 <strong>사이트를 고칠 자리</strong>.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="case-no">E</span><h3>장바구니 많은데 결제 없음 → 결제 문턱 점검</h3></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>예시</th><th>장바구니 담기</th><th>결제 시작</th><th>구매</th></tr></thead>
+          <tbody>
+            <tr><td><span class="term">소재 Y</span></td><td><span class="pill good">120</span></td><td class="num-cell">30</td><td><span class="pill bad">3</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <details class="toggle"><summary>진단 &amp; 액션</summary>
+        <div class="toggle-body">
+          <p><span class="alabel prob">진단</span>살 마음은 있었는데(담았으니까) 결제 문턱에서 이탈 — <strong>배송비 노출 타이밍·회원가입 강제·결제수단 부족</strong>이 단골 범인.</p>
+          <p><span class="alabel fix">액션</span>① 결제 흐름을 직접 끝까지 걸어보기 ② 장바구니 이탈자 대상 <strong>리타겟팅 + 쿠폰</strong> ③ 무료배송 기준 안내 위치 조정.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="case-no">F</span><h3>CPC 급등 → 소재 피로도(빈도) 체크</h3></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>예시</th><th>1주차</th><th>3주차</th></tr></thead>
+          <tbody>
+            <tr><td><span class="term">CPC</span></td><td class="num-cell">₩300</td><td><span class="pill bad">₩800</span></td></tr>
+            <tr><td><span class="term">빈도 (노출÷도달)</span></td><td class="num-cell">1.2</td><td><span class="pill warn">4.5</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <details class="toggle"><summary>진단 &amp; 액션</summary>
+        <div class="toggle-body">
+          <p><span class="alabel prob">진단</span>같은 사람이 같은 광고를 4~5번씩 보는 중 — <strong>소재 피로</strong>. 질려서 안 누르니 클릭 단가가 오릅니다. (아까 배운 <strong>도달·빈도</strong>가 여기서 쓰입니다)</p>
+          <p><span class="alabel fix">액션</span>① 빈도 3~4 넘으면 <strong>소재 교체 신호</strong> (통상 2~3주 주기) ② 새 소재 투입 또는 타겟 확장으로 새 사람에게 도달.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  
+
+  <div class="footer">HIZ Marketing · 2026.07.10</div>
+
+</main>
+</div>
+
+</body>
+</html>
