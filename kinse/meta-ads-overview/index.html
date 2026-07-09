@@ -111,7 +111,11 @@ em { font-style: normal; background: var(--accent-soft); color: var(--accent); p
 
 /* Funnel */
 .funnel { margin: 16px 0; }
-.fun-row { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+.fun-row { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; flex-wrap: wrap; }
+@media (max-width: 620px) {
+  .fun-row { gap: 6px; }
+  .fun-meaning { flex-basis: 100%; padding: 0 4px 6px; }
+}
 .fun-bar { height: 52px; border-radius: 8px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; color: #fff; font-weight: 700; font-size: 14px; min-width: 150px; }
 .fun-bar .n { font-size: 16px; font-weight: 800; font-variant-numeric: tabular-nums; }
 .fun-meaning { font-size: 13.5px; color: var(--text-soft); flex: 1; }
@@ -136,27 +140,27 @@ em { font-style: normal; background: var(--accent-soft); color: var(--accent); p
   <!-- 01 왜 -->
   <section class="day">
     <div class="day-head"><span class="day-tag">01</span></div>
-    <h2>데이나 혼자 파는 것에는 한계가 있다</h2>
-    <div class="day-lead">지금도 잘 팔립니다. 그런데 "데이나가 직접 알리는 만큼만" 팔립니다.</div>
+    <h2>데이나님 혼자 파는 것에는 한계가 있다</h2>
+    <div class="day-lead">가게로 비유하면 — 지금은 <strong>단골 손님(팔로워)</strong>과 <strong>지나가다 들른 손님(알고리즘 추천)</strong>만큼 팔립니다. 장사는 잘되는데, 손님 수를 우리가 정할 수 없습니다.</div>
     <div class="compare">
       <div class="panel now">
         <span class="p-tag">지금</span>
-        <div style="font-size:34px">👩‍💼</div>
-        <h3>데이나가 직접 알린다</h3>
-        <div class="p-num">팔로워만큼</div>
-        <div class="p-unit">피드를 본 사람까지만 · 하루는 24시간</div>
+        <div style="font-size:34px">🏪</div>
+        <h3>데이나님이 직접 알린다</h3>
+        <div class="p-num">닿는 만큼</div>
+        <div class="p-unit">팔로워(단골) + 알고리즘이 실어주는 만큼(그날그날 운)<br>— 범위도 시점도 우리가 못 정함</div>
       </div>
       <div class="panel ad">
         <span class="p-tag">광고</span>
         <div style="font-size:34px">📣</div>
         <h3>메타가 대신 알린다</h3>
-        <div class="p-num">수천만 명</div>
-        <div class="p-unit">인스타·페북 전체 사용자 · 24시간 잠들지 않음</div>
+        <div class="p-num">원하는 만큼</div>
+        <div class="p-unit">수천만 명 중 원하는 사람에게 · 원하는 날에 · 원하는 예산만큼<br>— 전부 우리가 정함</div>
       </div>
     </div>
     <div class="callout">
       <div class="callout-title">한 줄 정리</div>
-      <p>광고는 <strong>한계가 없는 액티베이션</strong>입니다. 데이나의 콘텐츠는 그대로 두고, 보여주는 범위만 돈으로 키우는 것.</p>
+      <p>광고는 <strong>한계가 없는 액티베이션</strong>입니다. 데이나님의 콘텐츠는 그대로 두고, <strong>확성기 볼륨을 돈으로 키우는 것</strong> — 운에 맡기던 도달을 우리 손으로 가져옵니다.</p>
     </div>
   </section>
 
@@ -164,7 +168,8 @@ em { font-style: normal; background: var(--accent-soft); color: var(--accent); p
   <section class="day">
     <div class="day-head"><span class="day-tag">02</span></div>
     <h2>광고는 딱 2종류 — 그물 치기 &amp; 건져 올리기</h2>
-    <div class="day-lead">메타 광고는 <strong>트래픽</strong>과 <strong>전환</strong>, 둘뿐입니다. 그물로 생각하면 끝.</div>
+    <div class="day-lead">정확히는 메타 광고 목표가 6가지 있지만*, 물건 파는 브랜드의 주력은 사실상 <strong>트래픽</strong>과 <strong>전환(판매)</strong> 2가지. 그물로 생각하면 끝.</div>
+    <p style="font-size:12.5px; color:var(--text-mute); margin:-14px 0 18px;">* 인지도 · <em>트래픽</em> · 참여 · 잠재고객 · 앱 홍보 · <em>판매</em> — 나머지 4개는 목적이 다를 때(브랜드 알리기, 상담 신청 받기 등) 꺼내 씁니다.</p>
 
     <div class="viz">
       <div class="viz-title">① 그물 치기 = 트래픽 광고</div>
