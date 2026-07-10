@@ -127,6 +127,25 @@ em { font-style: normal; background: var(--accent-soft); color: var(--accent); p
 .fun-drop { font-size: 12px; color: var(--text-mute); padding-left: 4px; margin: -4px 0 6px; }
 
 .footer { margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-mute); text-align: center; }
+
+/* Data tables (실데이터) */
+.dt-title { font-weight: 800; font-size: 15px; margin: 4px 0 8px; }
+.dt-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border); border-radius: var(--radius); }
+.dt { border-collapse: collapse; width: max-content; min-width: 100%; font-size: 13px; }
+.dt-traffic { min-width: 780px; }
+.dt thead th { background: var(--bg-alt); color: var(--text-soft); font-weight: 700; font-size: 11.5px; text-align: right; padding: 10px 10px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.dt thead th span { font-weight: 500; color: var(--text-mute); font-size: 10.5px; }
+.dt thead th.c-img, .dt thead th.c-name { text-align: left; }
+.dt td { padding: 8px 10px; text-align: right; border-bottom: 1px solid var(--border-soft); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.dt td.c-img { padding: 6px 8px; text-align: center; width: 52px; }
+.dt td.c-img img { width: 42px; height: 42px; object-fit: cover; border-radius: 7px; border: 1px solid var(--border); display: block; }
+.dt td.c-name { text-align: left; font-weight: 700; color: var(--text); white-space: normal; min-width: 116px; }
+.dt td.hl { font-weight: 800; color: var(--text); }
+.dt tbody tr:hover { background: var(--bg-alt); }
+.dt tr.dt-win { background: var(--accent-soft); }
+.dt tr.dt-win:hover { background: var(--accent-soft); }
+.dt tr.dt-win td.c-name { color: var(--accent); }
+.dt tr.dt-total td { border-top: 2px solid var(--border); border-bottom: none; font-weight: 800; background: var(--bg-alt); }
 </style>
 
 <div class="main">
@@ -338,6 +357,59 @@ em { font-style: normal; background: var(--accent-soft); color: var(--accent); p
       <div class="fstep"><div class="ico">🌱</div><div class="t">처음 며칠은 연습 — 학습 기간</div><div class="d">새 광고를 켜면 메타가 "누구한테 보여줄지" 연습하는 기간이 있습니다. <strong>첫 2~3일 숫자로 판단하지 않기</strong> — 그물 던지는 폼 잡는 중</div></div>
     </div>
   </section>
+
+  <!-- 07 실데이터 -->
+  <section class="day">
+    <div class="day-head"><span class="day-tag">07</span></div>
+    <h2>지금 우리 광고 실제 성적 (7/10 시점)</h2>
+    <div class="day-lead">위 개념을 <strong>실제 데이터</strong>로. 옆으로 넘겨서 보세요 →</div>
+
+    <div class="dt-title">🎣 트래픽 — 그물 던지기 (사이트로 유입)</div>
+    <div class="dt-wrap">
+    <table class="dt dt-traffic">
+      <thead><tr><th class="c-img">소재</th><th class="c-name">광고</th><th>지출</th><th>결과<br><span>랜딩 조회</span></th><th>CPC</th><th>CTR</th><th>도달</th><th>노출</th><th>빈도</th></tr></thead>
+      <tbody>
+        <tr><td class="c-img"><img src="img/sos-a.jpg" alt="SOS A" loading="lazy"></td><td class="c-name">SOS A</td><td>₩188,961</td><td class="hl">490</td><td>₩318</td><td>3.28%</td><td>14,204</td><td>18,087</td><td>1.27</td></tr>
+        <tr><td class="c-img"><img src="img/hydro-summer-a.jpg" alt="하이드로 여름수분 A" loading="lazy"></td><td class="c-name">하이드로 여름수분 A</td><td>₩65,418</td><td class="hl">167</td><td>₩322</td><td>2.96%</td><td>5,998</td><td>6,850</td><td>1.14</td></tr>
+        <tr><td class="c-img"><img src="img/cleanser-a.jpg" alt="클렌저 A" loading="lazy"></td><td class="c-name">클렌저 A</td><td>₩35,636</td><td class="hl">96</td><td>₩297</td><td>1.46%</td><td>6,791</td><td>8,217</td><td>1.21</td></tr>
+        <tr><td class="c-img"><img src="img/set-a.jpg" alt="데이나스픽 세트 A" loading="lazy"></td><td class="c-name">데이나스픽 세트 A</td><td>₩27,400</td><td class="hl">67</td><td>₩280</td><td>1.34%</td><td>4,235</td><td>7,337</td><td>1.73</td></tr>
+        <tr><td class="c-img"><img src="img/hydro-vitb-a.jpg" alt="하이드로 비타민B 부스팅 A" loading="lazy"></td><td class="c-name">하이드로 비타민B 부스팅 A</td><td>₩26,444</td><td class="hl">69</td><td>₩326</td><td>1.28%</td><td>2,969</td><td>6,328</td><td>2.13</td></tr>
+        <tr><td class="c-img"><img src="img/hydro-lemon-a.jpg" alt="하이드로 레몬 올제로 A" loading="lazy"></td><td class="c-name">하이드로 레몬 올제로 A</td><td>₩9,440</td><td class="hl">18</td><td>₩350</td><td>3.15%</td><td>822</td><td>858</td><td>1.04</td></tr>
+        <tr><td class="c-img"><img src="img/hydro-balance-a.jpg" alt="하이드로 밸런스 A" loading="lazy"></td><td class="c-name">하이드로 밸런스 A</td><td>₩3,744</td><td class="hl">6</td><td>₩374</td><td>1.23%</td><td>738</td><td>810</td><td>1.10</td></tr>
+        <tr><td class="c-img"><img src="img/mini3-a.jpg" alt="미니 3종 A" loading="lazy"></td><td class="c-name">미니 3종 A</td><td>₩1,900</td><td class="hl">5</td><td>₩317</td><td>2.33%</td><td>242</td><td>258</td><td>1.07</td></tr>
+        <tr class="dt-total"><td class="c-img"></td><td class="c-name">합계 · 8개</td><td>₩358,943</td><td class="hl">918</td><td>—</td><td>—</td><td>35,999</td><td>48,745</td><td>—</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="dt-title" style="margin-top:26px;">💳 전환 — 건져 올리기 (실제 구매)</div>
+    <div class="dt-wrap">
+    <table class="dt">
+      <thead><tr><th class="c-img">소재</th><th class="c-name">광고</th><th>지출</th><th>결과<br><span>구매</span></th><th>구매 전환값</th><th>ROAS</th></tr></thead>
+      <tbody>
+        <tr class="dt-win"><td class="c-img"><img src="img/mini3-b.jpg" alt="미니 3종 B" loading="lazy"></td><td class="c-name">미니 3종 B</td><td>₩205,273</td><td class="hl">7</td><td>₩411,300</td><td>2.00</td></tr>
+        <tr><td class="c-img"><img src="img/soothing-timedeal.jpg" alt="진정 라인 타임딜" loading="lazy"></td><td class="c-name">진정 라인 타임딜</td><td>₩96,192</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/hydro-summer-b.jpg" alt="하이드로 여름수분 B" loading="lazy"></td><td class="c-name">하이드로 여름수분 B</td><td>₩69,419</td><td class="hl">1</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/cleanser-b.jpg" alt="클렌저 B" loading="lazy"></td><td class="c-name">클렌저 B</td><td>₩38,785</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/hydro-lemon-b.jpg" alt="하이드로 레몬 올제로 B" loading="lazy"></td><td class="c-name">하이드로 레몬 올제로 B</td><td>₩36,974</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/cleanser-timedeal.jpg" alt="클렌저 라인 타임딜" loading="lazy"></td><td class="c-name">클렌저 라인 타임딜</td><td>₩19,862</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/allcare-sun.jpg" alt="올케어 선크림 (단품)" loading="lazy"></td><td class="c-name">올케어 선크림 (단품)</td><td>₩6,245</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/hydro-vitb-b.jpg" alt="하이드로 비타민B 부스팅 B" loading="lazy"></td><td class="c-name">하이드로 비타민B 부스팅 B</td><td>₩3,415</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/hydro-balance-b.jpg" alt="하이드로 밸런스 B" loading="lazy"></td><td class="c-name">하이드로 밸런스 B</td><td>₩3,126</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/sos-b.jpg" alt="SOS B" loading="lazy"></td><td class="c-name">SOS B</td><td>₩2,779</td><td class="hl">1</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/panthenol.jpg" alt="판테놀 크림" loading="lazy"></td><td class="c-name">판테놀 크림</td><td>₩173</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/set-b.jpg" alt="데이나스픽 세트 B" loading="lazy"></td><td class="c-name">데이나스픽 세트 B</td><td>₩55</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/serum.jpg" alt="수분락 세럼" loading="lazy"></td><td class="c-name">수분락 세럼</td><td>₩34</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr class="dt-total"><td class="c-img"></td><td class="c-name">합계 · 13개</td><td>₩482,332</td><td class="hl">9</td><td>₩411,300</td><td>0.85</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout">
+      <div class="callout-title">한눈에</div>
+      <p>지출은 <strong>반응 좋은 소재(SOS A·미니 3종)</strong>에 자동으로 몰렸습니다. 전환값은 아직 <strong>미니 3종 B 한 곳(₩411,300·ROAS 2.0)</strong>에 집중 — 저가 미끼로 들어와 크게 담아간 신호입니다. 나머지 전환값 0은 <strong>초기 픽셀이 금액을 못 넘긴 구간</strong>(7/9까지)이라 실제보다 낮게 잡힌 것으로, 오늘 보정 중입니다.</p>
+    </div>
+  </section>
+
 
   <div class="footer">HIZ Marketing · 2026.07.10</div>
 
