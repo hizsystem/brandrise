@@ -12,15 +12,9 @@
 <meta name="robots" content="noindex,nofollow">
 <title>BRANDRISE 수주·전환 대시보드</title>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<link href="../base.css" rel="stylesheet">
 <style>
-:root{
-  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
-  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
-  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
-  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
-  --slate:#64748b; --slate-50:#f1f5f9; --amber:#d97706; --indigo:#4f46e5; --green:#0e9f6e; --red:#e11d48;
-}
-*{margin:0;padding:0;box-sizing:border-box}
+:root{--slate:var(--muted);--amber:var(--warn);--indigo:var(--ac);--green:var(--ok);--red:var(--bad)}
 html{scroll-behavior:smooth}
 body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
   line-height:1.7;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
@@ -70,7 +64,11 @@ tfoot td.r{text-align:right;font-variant-numeric:tabular-nums}
 .frow{display:flex;align-items:center;gap:14px}
 .frow .fl{flex:0 0 132px;font-size:13px;font-weight:700;color:var(--ink2)}
 .fbar-wrap{flex:1;background:var(--soft);border:1px solid var(--line);border-radius:9px;overflow:hidden;height:38px;display:flex;align-items:center}
-.fbar{height:100%;display:flex;align-items:center;padding:0 13px;border-radius:0;min-width:fit-content;transition:width .4s ease}
+/* 트랜지션 없음이 의도다: renderFunnel()이 innerHTML로 막대를 새로 만들며 인라인 width를
+   최종값으로 박아 시작값이 없다 — width 트랜지션은 애초에 발화하지 않았다(죽은 선언, 제거).
+   scaleX로 바꾸면 자식(.fc 숫자)까지 스케일돼 찌그러지고, width는 layout을 유발한다.
+   읽기 전용 대시보드라 등장 모션의 값어치도 낮다. */
+.fbar{height:100%;display:flex;align-items:center;padding:0 13px;border-radius:0;min-width:fit-content}
 .fbar .fc{font-size:13.5px;font-weight:800;color:#fff;white-space:nowrap}
 .fbar.b-slate{background:var(--slate)} .fbar.b-indigo{background:var(--indigo)} .fbar.b-green{background:var(--green)}
 .fnote{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.6}

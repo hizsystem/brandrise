@@ -13,21 +13,14 @@
 <meta name="robots" content="noindex,nofollow">
 <title>BRANDRISE 견적 빌더</title>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<link href="../base.css" rel="stylesheet">
 <style>
-:root{
-  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
-  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
-  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
-  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
-}
-*{margin:0;padding:0;box-sizing:border-box}
+
 html{scroll-behavior:smooth}
 body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
   line-height:1.7;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:14px}
 .hero{background:var(--ink);color:#fff;padding:34px 0 28px}
 .hero .in{max-width:1000px;margin:0 auto;padding:0 36px}
-.hero .back{display:inline-block;margin-bottom:12px;color:#a5b4fc;text-decoration:none;font-size:12.5px;font-weight:600}
-.hero .back:hover{color:#c7d2fe}
 .hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:12px}
 .hero h1{font-size:clamp(24px,3.6vw,32px);font-weight:800;letter-spacing:-.02em;line-height:1.15}
 .hero .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
@@ -91,7 +84,8 @@ table.selmx label span{display:block;font-weight:400;color:var(--muted);font-siz
 .qsum .qgb{display:flex;gap:7px;flex-wrap:wrap}
 .qsum .btn.danger{border-color:#fecdd3;color:var(--bad)}
 .qsum .btn.danger:hover{background:var(--bad);color:#fff;border-color:var(--bad)}
-.qsum .btn{font-family:inherit;font-size:12.5px;font-weight:700;border:1px solid var(--ac);background:var(--card);color:var(--ac);border-radius:9px;padding:9px 16px;cursor:pointer;transition:.15s}
+.qsum .btn{font-family:inherit;font-size:12.5px;font-weight:700;border:1px solid var(--ac);background:var(--card);color:var(--ac);border-radius:9px;padding:9px 16px;cursor:pointer;
+  transition:background-color var(--t-hover) var(--ease-out),color var(--t-hover) var(--ease-out),border-color var(--t-hover) var(--ease-out),transform var(--t-press) var(--ease-out)}
 .qsum .btn:hover{background:var(--ac);color:#fff}
 .qsum .btn.solid{background:var(--ac);color:#fff} .qsum .btn.solid:hover{background:var(--ac-700);border-color:var(--ac-700)}
 .qsum .btn.ok{border-color:var(--ok);color:var(--ok)} .qsum .btn.ok:hover{background:var(--ok);color:#fff}
