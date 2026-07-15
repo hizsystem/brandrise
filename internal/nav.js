@@ -10,12 +10,17 @@
     { h: '/internal/sales-process/', t: '영업 프로세스' },
     { h: '/internal/pipeline/',      t: '파이프라인 보드' },
     { h: '/internal/quote-builder/', t: '견적 빌더' },
+    { h: '/internal/price-guide/',   t: '단가 기준표' },
     { h: '/internal/win-dashboard/', t: '수주 현황' }
   ];
+  // 단계 순서(진입→1차→2차→3차)로 나열 — index 보드의 척추와 동일하게 읽히도록.
   var MAN = [
-    { h: '/internal/company-intro/',      t: '회사소개' },
-    { h: '/internal/consult-playbook/',   t: '상담' },
-    { h: '/internal/quote-call-playbook/',t: '견적콜' }
+    { h: '/internal/company-intro/',        t: '회사소개' },
+    { h: '/internal/company-onepager/',     t: '원페이저' },
+    { h: '/internal/consult-playbook/',     t: '상담' },
+    { h: '/internal/consult-checklist/',    t: '상담 체크' },
+    { h: '/internal/quote-call-playbook/',  t: '견적콜' },
+    { h: '/internal/onboarding-checklist/', t: '온보딩 체크' }
   ];
 
   function norm(p) { return p.replace(/index\.html$/, '').replace(/\/+$/, '/'); }
