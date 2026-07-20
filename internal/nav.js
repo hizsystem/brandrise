@@ -20,7 +20,8 @@
     { h: '/internal/consult-playbook/',     t: '상담' },
     { h: '/internal/consult-checklist/',    t: '상담 체크' },
     { h: '/internal/quote-call-playbook/',  t: '견적콜' },
-    { h: '/internal/onboarding-checklist/', t: '온보딩 체크' }
+    { h: '/internal/onboarding-checklist/', t: '온보딩 체크' },
+    { h: '/internal/branding-workshop/', t: '워크샵' }
   ];
 
   function norm(p) { return p.replace(/index\.html$/, '').replace(/\/+$/, '/'); }

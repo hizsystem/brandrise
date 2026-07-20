@@ -111,7 +111,23 @@
   }
   function getStage(slug) {
     var m = readStages(); if (m[slug]) return m[slug];
+    return sheetStage(slug);
+  }
+  // 시트(BC-BR) 원본 단계 — localStorage 변경을 무시한다.
+  //   /api/pipeline은 읽기 전용이라 보드에서 바꾼 단계는 시트로 올라가지 않는다.
+  //   여러 사람이 같은 숫자를 봐야 하는 집계 화면(수주 대시보드)은 반드시 이걸 쓴다.
+  function sheetStage(slug) {
     var b = brandBySlug(slug); return (b && b.defaultStage) || 'pending';
+  }
+  // 시트와 다른 로컬 단계 변경 건수 — "내 화면만 다른" 상태를 사용자에게 알리는 용도.
+  function stageOverrides() {
+    var m = readStages(), out = [];
+    allBrands().forEach(function (b) {
+      if (m[b.slug] && m[b.slug] !== sheetStage(b.slug)) {
+        out.push({ slug: b.slug, name: b.name, local: m[b.slug], sheet: sheetStage(b.slug) });
+      }
+    });
+    return out;
   }
 
   function readQuote(slug) {
@@ -175,6 +191,7 @@
     allBrands: allBrands, addCustom: addCustom, removeBrand: removeBrand, readCustom: readCustom, restoreHidden: restoreHidden,
     getDate: getDate, setDate: setDate, daysSince: daysSince,
     readStages: readStages, writeStage: writeStage, getStage: getStage,
+    sheetStage: sheetStage, stageOverrides: stageOverrides,
     readQuote: readQuote, writeQuote: writeQuote,
     stageById: stageById, brandBySlug: brandBySlug, won: won,
     ready: ready, loaded: function () { return _loaded; }, loadOk: function () { return _loadOk; },

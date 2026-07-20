@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-  BRANDRISE 견적콜 매뉴얼 (플레이북) v0.2 · 인디고 클린
+  BRANDRISE 견적콜 매뉴얼 (플레이북) v1 · 인디고 클린
   · 목적: 견적 발송 후 "견적콜"로 결정을 돕는 무브를 반복 가능하게. 상담 플레이북의 2차(견적) 짝.
   · v0.1 출처: 쿠엔즈버킷 견적콜 녹취(권윤정 대표, 2026-06-12) 1건.
     ※ 녹취 화자 라벨 "우성민(Green)"은 녹화 계정 ID이며, 실제 발화자는 권윤정 대표.
@@ -9,6 +9,9 @@
     근거: _통합작업/_학습_260616/10_실장녹취-견적화법.md.
     추가분 — 견적 화법 매트릭스(②~⑦ 실증 + ⑧⑨⑩⑪ 신설), 클로징 5종(미례국밥 표준 사례),
     실장 vs 대표 화법 차이, 반론 2종.
+  · v1 보강(2026-07-20 학습): 7월 상담 3건(모노드24·딥라이트/꾸욱·페스토요일) 랩업 되먹임.
+    추가분 — 견적 전 3게이트(실행가능성·캐파·예산성격), 화법 ⑫⑬, 반론 3종, 케이스 3건.
+    셋 다 "견적을 내기 전에 확인했어야 할 것"에서 나온 학습이라 게이트를 새 섹션으로 세웠다.
     ※ 단가 수치는 보안(로컬 전용)이라 본 매뉴얼엔 미기재 — 구조·화법만. 단가 확정은 6/17 미팅 후.
   · 영업 프로세스 2차(견적) 단계와 연동. 배포: internal/quote-call-playbook/
 -->
@@ -96,6 +99,7 @@ td b{color:var(--ink)}
 tbody tr:nth-child(even) td{background:var(--soft)}
 .t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px}
 .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+.t.g{background:var(--ok-50);color:var(--ok)} .t.y{background:var(--warn-50);color:var(--warn)}
 
 footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9;max-width:980px;margin:0 auto}
 @media(max-width:880px){
@@ -116,18 +120,18 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
 <body>
 
 <div class="hero"><div class="in">
-  <div class="badge">BRANDRISE · 견적콜 매뉴얼 · PLAYBOOK v0.2</div>
+  <div class="badge">BRANDRISE · 견적콜 매뉴얼 · PLAYBOOK v1</div>
   <h1>브랜드라이즈 견적콜 <span class="hl">플레이북</span></h1>
   <div class="sub">견적은 보냈다. 이제 <b style="color:#fff">결정을 돕는</b> 자리다. 견적서를 읽어주는 게 아니라 전략으로 다시 펼쳐, "비싸다"와 "일이 커진다"는 부담을 신뢰로 바꾼다.</div>
   <div class="meta">
-    <span class="chip">버전 <b>v0.2</b></span>
-    <span class="chip">근거 <b>견적콜·미팅 6건 (대표·실장·실무팀)</b></span>
+    <span class="chip">버전 <b>v1</b></span>
+    <span class="chip">근거 <b>견적콜·미팅 9건 (대표·실장·실무팀)</b></span>
     <span class="chip">연동 <b>영업 프로세스 2차(견적)</b></span>
     <span class="chip">짝 매뉴얼 <b>상담 플레이북</b></span>
   </div>
 </div></div>
 
-<div class="minitoc">· <a href="#what">견적콜이란</a> · <a href="#principles">5대 원칙</a> · <a href="#play">단계별 플레이</a> · <a href="#matrix">견적 화법 11종</a> · <a href="#closing">클로징 5종</a> · <a href="#obj">반론 처리</a> · <a href="#say">바로 쓰는 멘트</a> · <a href="#roles">실장 vs 대표</a> · <a href="#case">케이스</a></div>
+<div class="minitoc">· <a href="#what">견적콜이란</a> · <a href="#principles">5대 원칙</a> · <a href="#pregate">견적 전 3게이트</a> · <a href="#play">단계별 플레이</a> · <a href="#matrix">견적 화법 13종</a> · <a href="#closing">클로징 5종</a> · <a href="#obj">반론 처리</a> · <a href="#say">바로 쓰는 멘트</a> · <a href="#roles">실장 vs 대표</a> · <a href="#case">케이스</a></div>
 
 <div class="wrap">
 
@@ -136,7 +140,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
     <h2>견적콜이 하는 일</h2>
     <p class="lead">견적콜은 <b>견적서를 읽어주는 자리가 아니다.</b> "이 견적에 뭐가 들어 있는지 모르겠다"며 결정을 못 하는 고객에게, 견적을 <b>전략으로 다시 펼쳐</b> 보이고 결정을 당기는 자리다.</p>
     <div class="co ac"><span class="lab">견적콜의 출발 — 반응부터 묻는다</span>설명을 쏟기 전에 먼저 묻는다. 고객이 어디서 막혔는지(가격이냐, 범위냐, 내용이 안 그려지냐)를 듣고 거기에 맞춰 푼다.<div class="say">그 저희가 견적을 보셨을 때 혹시 어떠셨어요?<span class="src">— 권윤정 (00:01:44)</span></div></div>
-    <div class="co warn"><span class="lab">v0.2 적용범위</span>원천은 <b>쿠엔즈버킷 1건(권윤정 대표)</b>. v0.2에서 <b>실장·실무팀 진행 5건</b>(하예진·슈퍼맘약사·에그하다·미례국밥+선행)으로 화법 매트릭스·클로징·실장/대표 차이를 보강. <b>단가 수치는 보안상 미기재(구조·화법만)</b> — 단가·항목 확정은 6/17 미팅 후. 상담 단계 무브는 → <a href="../consult-playbook/" style="color:var(--ac);font-weight:700">상담 플레이북 ›</a></div>
+    <div class="co warn"><span class="lab">v1 적용범위</span>원천은 <b>쿠엔즈버킷 1건(권윤정 대표)</b>. v0.2에서 <b>실장·실무팀 5건</b>(하예진·슈퍼맘약사·에그하다·미례국밥+선행)으로 화법 매트릭스·클로징·실장/대표 차이를 보강. <b>v1에서 7월 3건</b>(모노드24·딥라이트/꾸욱·페스토요일)으로 <b>견적 전 3게이트</b>와 화법 ⑫⑬을 추가. <b>단가 수치는 보안상 미기재(구조·화법만)</b>. 상담 단계 무브는 → <a href="../consult-playbook/" style="color:var(--ac);font-weight:700">상담 플레이북 ›</a></div>
   </section>
 
   <section id="principles">
@@ -149,6 +153,41 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
       <div class="pcard"><div class="pn">3</div><div class="pt">범위 공포를 신뢰로 받는다</div><div class="pb">일이 커진다는 두려움엔 인정 + 안심. "견적보다 무조건 많이 해드린다. 견적은 보수적으로 — 나중에 견적서 들고 안 싸우려고. <b>성공 안 시키는 브랜드 없다.</b>"</div></div>
       <div class="pcard"><div class="pn">4</div><div class="pt">데이터로 항목값을 증명한다</div><div class="pb">두루뭉술한 항목을 숫자로 바꾼다. <b>UTM·ROAS·AI 대시보드</b>로 "어떤 매체에서 어떻게 왔는지" 다 추적. 견적 항목이 왜 돈값인지를 지표로 보인다.</div></div>
       <div class="pcard"><div class="pn">5</div><div class="pt">희소성으로 결정을 당긴다</div><div class="pb">"프로젝트 많아 인력 재배치가 필요. <b>일찍 결정하는 팀이 먼저 가져간다.</b>" + PM=본인이 직접 들어간다는 신뢰로 매듭. 미룸을 구조로 차단.</div></div>
+    </div>
+  </section>
+
+  <section id="pregate">
+    <div class="sec-k">PRE-GATE</div>
+    <h2>견적 전 3게이트</h2>
+    <p class="lead">7월 상담 3건에서 같은 자리가 무너졌다. 셋 다 화법 문제가 아니라 <b>견적을 내기 전에 확인하지 않은 것</b> 때문이었다. 견적 항목을 짜기 전에 이 셋을 통과시킨다.</p>
+
+    <table>
+      <tr><th style="width:132px">게이트</th><th>묻는 것</th><th style="width:150px">안 물었을 때</th></tr>
+      <tr>
+        <td><b>① 실행가능성</b></td>
+        <td>이 레버를 <b>클라이언트가 실제로 만질 수 있나.</b> 채널이 셀러에게 그 권한을 주는지 먼저 확인한다. 대시보드에 숫자가 보인다고 우리가 움직일 수 있는 건 아니다.</td>
+        <td>1순위 제안이 통째로 실행불가로 판명 — 콜 한복판에서 카드가 사라진다</td>
+      </tr>
+      <tr>
+        <td><b>② 공급 캐파</b></td>
+        <td>주문이 늘면 <b>만들어 낼 수 있나.</b> 하루 생산량·재고·인력 상한을 숫자로 받는다.</td>
+        <td>캐파가 상한인데 획득 예산을 판다 — 팔수록 사고가 난다</td>
+      </tr>
+      <tr>
+        <td><b>③ 예산 성격</b></td>
+        <td>얼마가 아니라 <b>어떤 돈인지.</b> 현금 선불이 되는 돈인가, 성과가 나야 나오는 돈인가. 광고로 크게 데인 이력이 있나.</td>
+        <td>총액을 우리가 미리 깎거나, 반대로 선불형 견적만 내밀어 대화가 끊긴다</td>
+      </tr>
+    </table>
+
+    <div class="co bad">
+      <span class="lab">③이 특히 자주 어긋난다</span>
+      두 방향으로 다 틀린다. <b>딥라이트</b>는 우리가 상한을 낮게 잡아뒀는데 대표가 <b>"금액이 높더라도 견적을 달라"</b>고 역제안했다. <b>모노드24</b>는 반대로 광고에 크게 데여 선불 자체를 못 받는 상태였고, 성과연동 입구를 열자 그 자리에서 수용됐다. <b>예산 상한을 우리가 추정해 미리 깎지 않는다</b> — 성격만 묻고 금액은 대표가 말하게 둔다.
+    </div>
+
+    <div class="co ac">
+      <span class="lab">처방은 우리가 해본 것만</span>
+      "커뮤니티를 키우자"·"UGC를 돌리자" 같은 처방은 <b>대표가 이미 다 해보고 실패한</b> 경우가 많다. 꺼내기 전에 해봤는지 묻고, 우리도 실행 경험이 없으면 처방으로 팔지 않는다. 채널이 막혔는지 여부도 정책 문서가 아니라 <b>광고 라이브러리 실측</b>으로 판단한다 — 정책만 읽고 "구조적으로 막혔다"고 썼다가, 경쟁사는 같은 채널에서 광고 495개를 돌리고 있던 사례가 있다.
     </div>
   </section>
 
@@ -174,8 +213,8 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
 
   <section id="matrix">
     <div class="sec-k">TACTICS</div>
-    <h2>견적 화법 11종 — 실증 매트릭스</h2>
-    <p class="lead">견적콜·미팅 6건에서 반복된 가격 화법. ①~⑦은 검증된 기본기, <b>⑧~⑪은 5건에서 새로 잡힌 신설 화법</b>(주로 대표 고유기). 외우지 말고 <b>어느 상황에 무엇을 꺼낼지</b>를 익힌다. <b>금액은 보안상 생략 — 화법 구조만.</b></p>
+    <h2>견적 화법 13종 — 실증 매트릭스</h2>
+    <p class="lead">견적콜·미팅 9건에서 반복된 가격 화법. ①~⑦은 검증된 기본기, ⑧~⑪은 실장·실무팀 5건에서 잡힌 화법(주로 대표 고유기), <b>⑫⑬은 7월 3건에서 새로 잡힌 것</b>. 외우지 말고 <b>어느 상황에 무엇을 꺼낼지</b>를 익힌다. <b>금액은 보안상 생략 — 화법 구조만.</b></p>
     <table>
       <tr><th style="width:46px">#</th><th style="width:210px">화법</th><th>무엇을 / 언제</th><th style="width:130px">근거 케이스</th></tr>
       <tr><td class="c"><b>①</b></td><td><b>직원 N명 1년 총비용 비교</b></td><td>"이 일을 인하우스로 하면 직원 몇 명·1년 인건비"로 견적을 상대화. ⑥ 인하우스 앵커와 합류.</td><td><span class="t n">변형</span> 미례국밥</td></tr>
@@ -189,6 +228,8 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
       <tr><td class="c"><b>⑨</b></td><td><b>역-닻 "다른 데서 견적 받아오세요"</b> <span class="t b">신설</span></td><td>경쟁사 견적을 <b>고객이 직접 확인</b>하게 만든 뒤 "실패의 공수 + 대기업 데이터를 다 가진 곳은 없다"로 차별화를 스스로 납득시킨다. 신뢰 선행형 클로징.</td><td>슈퍼맘 선행</td></tr>
       <tr><td class="c"><b>⑩</b></td><td><b>필수블록 고정 + 실행블록 가변</b> <span class="t b">신설</span></td><td>"<b>1번(기획)만 픽스, 2·3·4는 무너뜨려도 된다.</b> 단 1번만 따로는 못 판다 — 우리의 모든 게 거기 있어서." 풀세트 압도감을 쪼개는 ②의 한국형 변형. 블록형 견적서 STEP 구조와 직결.</td><td>슈퍼맘</td></tr>
       <tr><td class="c"><b>⑪</b></td><td><b>"예쁘게 하지 마세요"(가격편)</b> <span class="t b">신설</span></td><td>"고감도 비주얼·촬영은 돈이고, 지금 단계엔 오히려 매출을 잃는다." 결핍 직언의 가격 버전 — 당장 견적은 줄지만 신뢰로 장기 수주.</td><td>슈퍼맘 선행</td></tr>
+      <tr><td class="c"><b>⑫</b></td><td><b>성과연동 입구</b> <span class="t g">v1 신설</span></td><td>선불이 막힌 고객에게 <b>돈이 나중에 나가는 구조</b>를 먼저 연다. 인플루언서 공동구매처럼 수수료율로 붙는 형태 — "리스트업은 저희가 하고, 수수료로 받겠습니다." 광고비를 크게 태우고 실패한 이력이 있으면 사실상 유일한 입구다. <b>단, 성과연동은 현금 계약이 아니다</b> — 딜 사이즈가 공수에 못 미치는지 먼저 계산한다.</td><td><span class="t g">수용</span> 모노드24</td></tr>
+      <tr><td class="c"><b>⑬</b></td><td><b>상한을 묻지 말고 열어둔다</b> <span class="t g">v1 신설</span></td><td>예산을 우리가 추정해 미리 깎지 않는다. 성격만 확인하고 <b>범위를 다 보여준 견적</b>을 낸다. 대표가 "금액이 높더라도 달라"고 하면 그건 예산이 있다는 뜻이다 — 낮춰 잡은 견적은 그 신호를 못 받는다. ⑦(작게 시작)과 반대 상황이므로 <b>게이트 ③에서 성격을 먼저 가른 뒤</b> 둘 중 하나를 고른다.</td><td>딥라이트</td></tr>
     </table>
     <div class="co ac"><span class="lab">⑩ → 견적서 양식 반영 검토</span>"기획=필수 고정 / 나머지=선택"을 견적서 양식에 넣으면 ⑩이 매번 쓰는 도구가 된다. (PREP·견적 정본 작업과 연계 — 6/17 미팅 의제.)</div>
   </section>
@@ -222,6 +263,9 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
       <tr><td><b>"풀세트 견적이 너무 크다 / 다 못 하겠다"</b></td><td><b>"1번(기획)만 픽스, 나머지는 다 무너뜨려도 됩니다."</b> 단 1번만 따로는 못 판다(우리의 모든 게 거기 있어서). 필수블록 고정 + 실행블록 가변(화법 ⑩)으로 부담을 쪼갠다.</td></tr>
       <tr><td><b>"A안·B안 중 뭘 골라야 할지 모르겠다"</b></td><td>고객에게 떠넘기지 않는다. <b>"컨설팅 영역이 둘이에요 — 패키지만 빨리 가는 것, 생애주기를 통째로 가는 것. 견적이 둘이고 가용 예산은 얼마세요?"</b> 영역을 정의하고 예산을 직접 묻는다(화법 ②).</td></tr>
       <tr><td><b>"예산이 부족하다 / 지금은 돈이 없다"</b></td><td>(자격 확인 후) <b>"견적은 받아두고 정부지원을 같이 끌어와 메웁니다."</b> 실질 부담을 0에 수렴(화법 ⑧). ※업력·지원 자격 먼저 확인.</td></tr>
+      <tr><td><b>"광고에 돈 태웠다가 크게 데였다 / 선불은 못 하겠다"</b> <span class="t g">v1</span></td><td>선불을 설득하지 않는다. <b>돈이 나중에 나가는 구조를 먼저 연다</b> — "리스트업은 저희가 하고 수수료로 받겠습니다"(화법 ⑫). 실패 이력을 부정하지 말고 그 구조 자체를 바꿔서 입구를 만든다. <b>단 성과연동은 현금 계약이 아니므로</b>, 예상 딜 사이즈가 우리 공수에 맞는지 먼저 계산하고 연다.</td></tr>
+      <tr><td><b>"금액이 높아도 되니 제대로 된 견적을 달라"</b> <span class="t g">v1</span></td><td>깎아서 내밀지 않는다. 이 말은 <b>예산이 있다는 신호</b>다. 범위를 다 보여준 견적을 내고, 줄이는 건 그다음에 ⑩(필수블록 고정)으로 한다. 우리가 미리 낮춰 잡으면 이 신호를 못 받는다(화법 ⑬).</td></tr>
+      <tr><td><b>"지금도 물량을 못 대는데 광고를 더 하라고?"</b> <span class="t g">v1</span></td><td>맞다고 인정하고 <b>획득 예산을 팔지 않는다.</b> 캐파가 상한이면 광고는 사고를 키운다. 견적을 생산·공급 정비 쪽으로 옮기거나, 캐파가 풀릴 때까지 범위를 좁힌다(견적 전 게이트 ②).</td></tr>
     </table>
   </section>
 
@@ -283,13 +327,35 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
       <tr><td><b>클로징 5종</b></td><td>계약서 발송 선언 → 시작일·기간 확정 → 선금/잔금 → 전달 형태 → <b>"다음 주 미팅 강제"</b> + 클라 숙제·레퍼럴까지 마지막 3분에 전부</td></tr>
     </table>
     <div class="co ok"><span class="lab">결과</span>현장에서 계약 의사·일정 합의. <b>"후속 전달로 끝나 넥스트가 죽는"</b> 다른 5건과 정반대 — 본 매뉴얼 §클로징의 표준. 원문·단가는 로컬 비공개.</div>
+
+    <h3>케이스 — 7월 3건 (v1 학습)</h3>
+    <p class="lead">셋 다 <b>견적을 내기 전에 확인했어야 할 것</b>에서 갈렸다. §견적 전 3게이트가 여기서 나왔다.</p>
+    <table>
+      <tr><th style="width:112px">케이스</th><th style="width:150px">어긋난 지점</th><th>남긴 것</th></tr>
+      <tr>
+        <td><b>모노드24</b><br><span class="t g">착지</span></td>
+        <td>예산 성격(게이트 ③)</td>
+        <td>광고비를 크게 태우고 실패한 이력 때문에 <b>선불 자체가 막힌 상태</b>. 인플루언서 공동구매를 제안하자 그 자리에서 수용 — <b>화법 ⑫ 성과연동 입구</b>의 원천. 단 성과연동이라 현금 계약은 아니고, 1차 물량이 작으면 우리 공수에 못 미친다는 한계도 같이 나왔다.</td>
+      </tr>
+      <tr>
+        <td><b>딥라이트/꾸욱</b><br><span class="t y">진행</span></td>
+        <td>실행가능성 + 예산 상한</td>
+        <td>사전 분석에서 "이 채널은 구조적으로 막혔다"고 판단했으나 <b>경쟁사는 같은 채널에서 광고 495개를 돌리고 있었다</b> — 정책 문서만 읽은 오판. 예산도 우리가 낮게 잡아뒀는데 대표가 <b>"금액이 높더라도 견적을 달라"</b>고 역제안. <b>화법 ⑬</b>과 "채널 판단은 광고 라이브러리 실측으로"의 원천.</td>
+      </tr>
+      <tr>
+        <td><b>페스토요일</b><br><span class="t y">진행</span></td>
+        <td>공급 캐파(게이트 ②)</td>
+        <td>획득은 이미 작동 중(리뷰·광고 다수 집행)이고 병목은 재구매였다. 최대 카드가 <b>수제 생산 캐파</b>라 못 만들면 광고를 팔면 안 되는 케이스 — <b>캐파가 상한이면 획득 예산을 제안하지 않는다</b>는 게이트의 원천.</td>
+      </tr>
+    </table>
+    <div class="co warn"><span class="lab">공통 교훈</span>세 건 다 <b>화법이 부족해서가 아니라 전제가 틀려서</b> 흔들렸다. 견적 항목을 짜기 전에 3게이트를 통과시키면 콜에서 카드가 사라지는 일이 줄어든다. 랩업 원문은 각 브랜드 폴더에 로컬 비공개.</div>
   </section>
 
 </div>
 
 <footer>
-  <b>BRANDRISE</b> by HIZ · 견적콜 매뉴얼 (플레이북) v0.2 · 내부<br>
-  근거: 쿠엔즈버킷(권윤정 대표, 2026-06-12) + 실장·실무팀 진행 5건(하예진·슈퍼맘약사·에그하다·미례국밥+선행) · 단가 수치는 보안상 미기재<br>
+  <b>BRANDRISE</b> by HIZ · 견적콜 매뉴얼 (플레이북) v1 · 내부<br>
+  근거: 쿠엔즈버킷(권윤정 대표, 2026-06-12) + 실장·실무팀 5건(하예진·슈퍼맘약사·에그하다·미례국밥+선행) + 7월 3건(모노드24·딥라이트/꾸욱·페스토요일) · 단가 수치는 보안상 미기재<br>
   © 2026 브랜드라이즈 by HIZ · 비공개 내부 문서
 </footer>
 
