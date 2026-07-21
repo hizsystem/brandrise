@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE PREP — soroh/소로 (주식회사 이트어스) · 순수 퍼포먼스/그로스 리퍼
+  · 통합표준 prep-v2 템플릿(NGT) 복제 · 색/컴포넌트/레이아웃 그대로.
+  · PREP 원칙: 진단/니즈/적합도 = "가설". 직접 리서치 확인일 명기(2026-07-21).
+  · 상담 2026-07-21(화) 14:30.
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>소로 (SOROH) — NB 상담 준비 PREP | BRANDRISE</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.75;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:16.5px}
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 42%,#4338ca 100%);color:#fff;padding:84px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"PREP";position:absolute;right:-2%;bottom:-18%;font-size:clamp(160px,22vw,360px);font-weight:800;letter-spacing:-.04em;color:#fff;opacity:.05;line-height:.8;pointer-events:none}
+.hero .in{max-width:1360px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:42px;font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:14px}
+.hero .sub{font-size:16px;color:#cbd5e1;font-weight:300;max-width:700px;line-height:1.75}
+.hero .meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.hero .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.hero .lnk{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;text-decoration:none;padding:8px 15px;border-radius:9px;transition:.15s}
+.hero .lnk svg{width:14px;height:14px}
+.hero .lnk.store{background:#fff;color:var(--ink)}
+.hero .lnk.store:hover{background:#e2e8f0}
+.hero .lnk.sns{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.hero .lnk.sns:hover{background:rgba(255,255,255,.14)}
+.layout{max-width:1360px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:208px 1fr;gap:48px;align-items:start}
+nav.toc{position:sticky;top:28px;padding:36px 0;font-size:13.5px}
+nav.toc .nl{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--muted);margin:0 0 14px 12px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;border-left:2px solid transparent;transition:.15s;font-weight:500}
+nav.toc a:hover{color:var(--ink);background:var(--soft)}
+nav.toc a.on{color:var(--ac);background:var(--ac-50);border-left-color:var(--ac);font-weight:700}
+main{padding:36px 0 100px;min-width:0;counter-reset:sec}
+section{margin-bottom:54px;scroll-margin-top:24px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+h2{font-size:29px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+.lead{font-size:18px;color:var(--ink2);margin-bottom:32px;line-height:1.8;text-wrap:balance}
+h3{font-size:20px;font-weight:800;margin:34px 0 12px;color:var(--ink);letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.co{border:1px solid var(--line2);border-left:3px solid var(--line);border-radius:0 10px 10px 0;padding:18px 24px;margin:20px 0;font-size:16px;line-height:1.8;text-wrap:pretty}
+h2,h3{text-wrap:balance}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100);border-left-color:var(--ac)} .co.ok{background:var(--ok-50);border-color:#bbf7d0;border-left-color:var(--ok)}
+.co.warn{background:var(--warn-50);border-color:#fde68a;border-left-color:var(--warn)} .co.bad{background:var(--bad-50);border-color:#fecdd3;border-left-color:var(--bad)}
+.co b,.co strong{color:var(--ink);font-weight:600}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
+.t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
+.t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 4px}
+.kpi .k{background:var(--ink);color:#fff;border-radius:12px;padding:18px}
+.kpi .k.alt{background:var(--bad)}
+.kpi .lbl{font-size:11px;color:#94a3b8;font-weight:600;margin-bottom:4px}
+.kpi .k.alt .lbl{color:#fecdd3}
+.kpi .v{font-size:28px;font-weight:800;letter-spacing:-.02em}
+.kpi .s{font-size:11px;color:#cbd5e1;margin-top:3px;line-height:1.5}
+.kpi .k.alt .s{color:#fecdd3}
+.op{background:var(--ink);color:#fff;border-radius:16px;padding:30px}
+.op .opk{font-size:11px;font-weight:800;letter-spacing:.14em;color:#a5b4fc;margin-bottom:18px}
+.op .blk{margin-bottom:22px} .op .blk:last-child{margin-bottom:0}
+.op .bl{font-size:11px;font-weight:800;color:#a5b4fc;letter-spacing:.08em;margin-bottom:9px}
+.op .need{font-size:17px;font-weight:700;line-height:1.62}
+.op .need b{color:#c7d2fe}
+.op .need .ev{display:block;margin-top:11px;font-size:13.5px;font-weight:500;color:#cbd5e1;line-height:1.72}
+.op .need .ev b{color:#e2e8f0}
+.op .do{display:grid;gap:9px}
+.op .do .item{background:rgba(255,255,255,.06);border-left:3px solid var(--ac);padding:12px 15px;border-radius:0 8px 8px 0;font-size:13.5px;line-height:1.62;color:#e2e8f0}
+.op .do .item b{color:#c7d2fe}
+.op .offer{background:rgba(79,70,229,.24);border:1px solid var(--ac);border-radius:10px;padding:15px 18px;font-size:13.5px;line-height:1.7;color:#e9ecf5}
+.op .offer b{color:#c7d2fe}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0 4px}
+th{background:var(--soft);color:var(--ink2);font-weight:700;text-align:left;padding:9px 11px;font-size:12.5px;border-bottom:1px solid var(--line)}
+td{padding:9px 11px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b,td strong{color:var(--ink)}
+.q{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac);border-radius:10px;padding:16px 18px;margin-bottom:10px}
+.q .qn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.05em;margin-bottom:5px}
+.q .qt{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.65}
+.q .qi{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.6}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px;position:relative}
+.tier.rec{border:2px solid var(--ac);box-shadow:0 8px 24px -12px rgba(79,70,229,.4)}
+.tier .rb{position:absolute;top:-11px;left:18px;background:var(--ac);color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;padding:3px 11px;border-radius:9px}
+.tier .tn{font-size:12px;font-weight:800;color:var(--muted)}
+.tier .tt{font-size:12.5px;color:var(--muted);margin:2px 0 10px}
+.tier .tp{font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.tier .td{font-size:11.5px;color:var(--muted);margin-bottom:12px}
+.tier ul{list-style:none}
+.tier li{font-size:13px;color:var(--ink2);padding:4px 0 4px 15px;position:relative;line-height:1.55}
+.tier li::before{content:"›";position:absolute;left:0;color:var(--ac);font-weight:800}
+.tl{border-left:2px solid var(--line);padding-left:20px;margin:10px 0}
+.tl .ph{position:relative;padding:10px 0}
+.tl .ph::before{content:"";position:absolute;left:-26px;top:14px;width:9px;height:9px;border-radius:50%;background:var(--ac)}
+.tl .pt{font-size:12px;font-weight:800;color:var(--ac)}
+.tl .pb{font-size:13px;color:var(--ink2);margin-top:2px}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sw{border-radius:12px;padding:16px 18px;border:1px solid var(--line)}
+.sw h4{font-size:12.5px;font-weight:800;margin-bottom:8px}
+.sw.s{background:var(--ok-50)} .sw.s h4{color:var(--ok)}
+.sw.w{background:var(--bad-50)} .sw.w h4{color:var(--bad)}
+.sw.o{background:var(--ac-50)} .sw.o h4{color:var(--ac)}
+.sw.tt{background:var(--warn-50)} .sw.tt h4{color:var(--warn)}
+.sw li{font-size:13px;color:var(--ink2);margin-left:15px;padding:2px 0;line-height:1.5}
+.verdict{background:var(--ink);color:#fff;border-radius:14px;padding:24px;text-align:center;margin:14px 0}
+.verdict .vl{font-size:12px;color:#94a3b8;font-weight:600}
+.verdict .vv{font-size:34px;font-weight:800;letter-spacing:-.02em;margin:6px 0;color:#a5b4fc}
+.verdict .vd{font-size:13px;color:#cbd5e1}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px}
+footer .in{max-width:1360px;margin:0 auto;padding:0 40px}
+@media(max-width:880px){.layout{grid-template-columns:1fr;gap:0;padding:0 22px}nav.toc{display:none}.hero .in{padding:0 22px}.hero h1{font-size:30px}.grid2,.grid3,.kpi,.tiers,.swot{grid-template-columns:1fr}}
+
+.hero h1{font-size:clamp(38px,4.8vw,56px);line-height:1.08}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
+.fcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
+.fcard .fk{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.fcard .fv{font-size:16px;font-weight:800;color:var(--ink)}
+.fcard .fs{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.55;font-weight:500}
+
+section{margin-bottom:116px;counter-increment:sec;border-top:2px solid var(--ink);padding:34px 0 0 108px;position:relative}
+main>section:first-child{border-top:none;padding-top:0}
+.sec-k{display:block;background:none;border:none;border-radius:0;padding:0;font-size:12px;letter-spacing:.2em;color:var(--ac);margin-bottom:14px}
+.sec-k::before{content:counter(sec,decimal-leading-zero);position:absolute;left:0;top:30px;font-size:62px;font-weight:800;color:var(--ac);letter-spacing:-.04em;line-height:.9;font-variant-numeric:tabular-nums}
+main>section:first-child .sec-k::before{top:0}
+@media(max-width:880px){section{padding-left:0!important}.sec-k::before{position:static;display:block;margin-bottom:4px}}
+h2{font-size:34px;margin-bottom:16px;letter-spacing:-.025em}
+h2{line-height:1.18}
+h3{letter-spacing:-.01em;line-height:1.4}
+.co.ac.band{padding:18px 22px;font-size:16px;line-height:1.85}
+table{font-variant-numeric:tabular-nums}
+th{background:var(--ac-50);color:var(--ac-700);padding:13px 15px}
+td{padding:13px 15px}
+tbody tr:nth-child(even) td, table tr:nth-child(even) td{background:var(--soft)}
+@media print{.fcard,.card{break-inside:avoid}}
+
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.stage{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px;position:relative}
+.stage.on{border:2px solid var(--ac);background:var(--ac-50)}
+.stage .sgn{font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--muted)}
+.stage.on .sgn{color:var(--ac)}
+.stage .sgt{font-size:15px;font-weight:800;color:var(--ink);margin:4px 0 8px}
+.stage .sgd{font-size:12px;color:var(--muted);line-height:1.55}
+.stage .sgr{display:block;margin-top:10px;font-size:11.5px;color:var(--ac-700);font-weight:700}
+.co a{color:var(--ac);font-weight:700;text-decoration:none;border-bottom:1px solid var(--ac-100);word-break:break-all}
+.co a:hover{border-color:var(--ac)}
+@media(max-width:880px){.stages{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">NEW BUSINESS PREP · 통합표준</div>
+  <h1>소로 <span class="hl">SOROH</span></h1>
+  <div class="sub">롱제비티 이너뷰티 D2C(주식회사 이트어스). 대표는 <b style="color:#fff">"이제 막 런칭, 데이터 전혀 없음"</b>이라 썼지만 실측은 <b style="color:#fff">출시 12개월·신세계 완판·시드 투자 완료</b>. 없는 건 브랜드 데이터가 아니라 <b style="color:#fff">유료 획득 채널 하나</b>다.</div>
+  <div class="meta">
+    <span class="chip">사업 단계 <b>STAGE 2~3 · 유료채널만 STAGE 1</b></span>
+    <span class="chip">기회 적합도(추정) <b>4.0 / 5.0 · 조건부 GO</b></span>
+    <span class="chip">추천 <b>그로스 파일럿 스프린트 8주</b></span>
+    <span class="chip">상담 <b>2026-07-21(화) 14:30</b> · 남중 역할 <b>미정</b></span>
+    <span class="chip">트랙 <b>순수 퍼포먼스/그로스 리퍼</b></span>
+  </div>
+  <div class="links">
+    <a class="lnk store" href="https://soroh.kr/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 01-8 0"></path></svg>
+      자사몰 soroh.kr
+    </a>
+    <a class="lnk sns" href="https://www.instagram.com/soroh.official/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      @soroh.official
+    </a>
+    <a class="lnk sns" href="https://besuccess.com/?p=181770" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"></path><path d="M18 14h-8M15 18h-5M10 6h8v4h-8V6z"></path></svg>
+      시드 투자 보도
+    </a>
+  </div>
+</div></div>
+
+<div class="layout">
+  <nav class="toc">
+    <div class="nl">PREP 목차</div>
+    <a href="#onepager">수주 한 장</a>
+    <a href="#diagnosis">핵심 진단</a>
+    <a href="#company">기업 · 제품 · 채널</a>
+    <a href="#market">시장 · 경쟁 · 니즈</a>
+    <a href="#deal">기회 · 견적</a>
+    <a href="#consult">상담 진행</a>
+    <a href="#sources">참고 출처</a>
+  </nav>
+
+  <main>
+    <section id="onepager">
+      <div class="sec-k">ONE-PAGER</div>
+      <h2>수주 한 장</h2>
+      <p class="lead">상담 직전 이 카드 하나면 된다. 아래는 인테이크·직접 리서치 기반 가설 백업. <span class="t n">상담 전 가설</span></p>
+      <div class="op">
+        <div class="opk">수주 한 장</div>
+        <div class="blk">
+          <div class="bl">진짜 니즈 (가설)</div>
+          <div class="need">표면 = "데이터 0인 신규 브랜드, 퍼포먼스 광고 파일럿". <b>진짜 니즈</b> = <b>할인 없이 프리미엄이 유료 채널에서 성립하는지 판정</b>하는 것. 그리고 오프라인 프리미엄 채널(신세계·5성급 호텔·청담 스파)에서 이미 통한 신뢰를 <b>온라인 소재 언어로 번역</b>하는 것.
+            <span class="ev">문장의 무게가 "광고 성과"가 아니라 <b>"할인에 의존하지 않는 프리미엄 가격의 제품을 판매해야 하는 만큼"</b>에 쏠려 있다. 광고는 수단으로만 등장한다. 사고 싶은 건 광고 운영이 아니라 <b>무할인이 먹히는지에 대한 답</b>. (확신 72%)</span>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="bl">그래서 우리가 해주는 것</div>
+          <div class="do">
+            <div class="item"><b>① 자기모순 정리 (광고 켜기 전, 돈 안 드는 일)</b> — 무할인을 선언했는데 자사몰 상품명엔 "최대 25% 할인", 배너엔 "5만원 쿠폰팩". 소재와 랜딩이 서로를 부순다</div>
+            <div class="item"><b>② 카테고리 언어 교체</b> — 시장은 "롱제비티"(95건)가 아니라 <b>"저속노화"(292건)</b>로 검색·소비한다. 교육 예산이 아니라 단어 문제</div>
+            <div class="item"><b>③ 증거 번역 + 성공기준 계약</b> — SCI 논문 원료·신세계 완판·호텔 제휴를 소재로. 8주 뒤 판정 기준을 계약서에 숫자로 선고정</div>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="bl">첫 제안 &amp; 다음 액션</div>
+          <div class="offer"><b>T2 그로스 파일럿 스프린트(8주 · 800만~980만 · 매체비 별도)</b>가 메인. 부담 크면 <b>T1 진단(180만~300만 단발)</b>으로 입구. 결제는 <b>마일스톤 3분할(40/30/30 · 4주차 중단권)</b>. 미팅 1순위 청취 = <b>①예산 성격(매체비냐 대행비냐 단발이냐) ②"신규 브랜드"의 정체 ③제품 인허가 지위(건기식/일반식품)</b>.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="diagnosis">
+      <div class="sec-k">DIAGNOSIS (가설)</div>
+      <h2>핵심 진단</h2>
+      <p class="lead">대표는 "데이터가 전혀 없다"를 문제로 본다. 진단은 다르다 — 데이터는 <b>유료 채널에만</b> 없다. 근본은 <b>①선언과 실제의 자기모순 ②카테고리 언어 불일치 ③번역되지 않은 증거</b>. <span class="t n">상담 전 가설</span></p>
+      <div class="kpi">
+        <div class="k"><div class="lbl">브랜드 업력</div><div class="v">약 12개월</div><div class="s">2025-07 출시 · "이제 막 런칭"과 불일치</div></div>
+        <div class="k alt"><div class="lbl">유료 광고 이력</div><div class="v">0건</div><div class="s">Meta 라이브러리 전체기간 · "데이터 0"은 여기만 사실</div></div>
+        <div class="k"><div class="lbl">시장 언어</div><div class="v">292 vs 95</div><div class="s">저속노화 vs 롱제비티 (KR 액티브)</div></div>
+        <div class="k alt"><div class="lbl">무할인 선언 vs 실제</div><div class="v">최대 25%</div><div class="s">상품명에 할인율 + 5만원 쿠폰팩</div></div>
+      </div>
+      <div class="grid3" style="margin-top:14px">
+        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">선언과 실제의 자기모순</h3><p style="font-size:12.5px;color:var(--muted)">"할인에 의존하지 않는 프리미엄"이 과제라는데, 자사몰 상품명이 <b>「올레샷 폴리페놀 10배 오미자샷 (최대 25% 할인)」</b>이고 상단 상시 배너는 <b>"1초 회원가입시 50,000원 쿠폰팩 발급"</b>. 지금 광고를 태우면 소재는 프리미엄을, 랜딩은 할인을 말한다. 소비자는 숫자를 믿는다.</p></div>
+        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">카테고리 언어 불일치</h3><p style="font-size:12.5px;color:var(--muted)">대표는 "국내에서 아직 생소한 롱제비티"를 전제로 깔았다. 실측은 <b>저속노화 292건 액티브</b>(더후 NAD 앰풀·파지티브호텔 등 대기업 포함) vs 롱제비티 95건. 카테고리가 생소한 게 아니라 <b>부르는 이름이 다르다</b>. 예산 문제가 아니라 단어 문제 = 1,000만 안에서 풀린다.</p></div>
+        <div class="card"><span class="t y">High</span><h3 style="margin:8px 0 6px">증거가 소재로 번역된 적 없다</h3><p style="font-size:12.5px;color:var(--muted)">신세계 강남·본점 1차 물량 완판, 5성급 호텔·청담 스파 입점, 스트롱벤처스 시드, 100% 국내산 원료. 신생 브랜드로선 상위권 신뢰 자산인데 <b>유료 소재로 만들어진 적이 0번</b>. 무할인 프리미엄의 전환은 소재 개수가 아니라 증거 밀도로 갈린다.</p></div>
+      </div>
+      <div class="co bad"><span class="lab">진단 결론 (가설)</span><b>갭은 "데이터가 없다"가 아니라 "브랜드가 스스로와 싸우고 있다"에 있다.</b> 무할인을 말하면서 할인을 걸고, 시장이 안 쓰는 단어로 카테고리를 부르고, 최상급 증거를 소재로 만들지 않았다. 이 상태로 1,000만을 태우면 8주 뒤 남는 결론은 "안 팔린다"가 아니라 <b>"모르겠다"</b> — 대표가 가장 원치 않는 결말이다. 처방 순서 = <b>모순 정리 → 언어 교체 → 증거 번역 → 그다음 집행</b>.</div>
+      <div class="co warn"><span class="lab">★ 인테이크 진술과 실측이 어긋난다 — 상담 첫 5분에 정리할 것</span>대표는 <b>"이제 막 런칭하는 신규 브랜드 / 마케팅 데이터가 전혀 없는 상태"</b>라고 썼다. 실측: 제로 오미자샷은 <b>2025년 7월 출시</b>, 3개월 만에 신세계 강남점·본점 1차 물량 완판, 2026년 4월 스트롱벤처스 시드 투자 공표, 자사몰 가동 중(통신판매 신고 2024-서울종로-1397). <b>유료 획득 채널로 한정하면 "데이터 0"은 사실</b>(Meta 라이브러리 "오미자샷" 전체기간 0건). <b>단정 금지</b> — ①대표가 유료 채널만 뜻했거나 ②별도 신규 라인을 준비 중이거나 ③표현이 느슨했을 수 있다. 어느 쪽인지가 STAGE 판정 절반을 바꾼다. <span class="t y">Q2로 확인</span></div>
+    </section>
+
+    <section id="company">
+      <div class="sec-k">COMPANY · PRODUCT · CHANNEL</div>
+      <h2>기업 · 제품 · 채널</h2>
+      <p class="lead">시드 투자를 받은 롱제비티 이너뷰티 D2C. 오프라인 프리미엄 채널에서는 검증 끝, 온라인 유료 획득은 백지. <span class="t y">상담 확인</span> 자사몰 월 주문·객단가·재구매율·인허가 지위.</p>
+      <div class="grid2">
+        <div class="card">
+          <h3 style="margin-top:0">기업 기초</h3>
+          <div class="cards">
+            <div class="fcard"><div class="fk">브랜드 / 대표</div><div class="fv">소로(SOROH) · 우승준</div><div class="fs">"Longevity rooted in heritage" · "시간 앞에 선명한 나의 결"</div></div>
+            <div class="fcard"><div class="fk">법인 / 사업자</div><div class="fv">주식회사 이트어스 · 892-87-03256</div><div class="fs">통신판매 2024-서울종로-1397</div></div>
+            <div class="fcard"><div class="fk">소재지</div><div class="fv">강원 인제군 상남면 내린천로 1446</div><div class="fs">자사몰 푸터 기재 · 산지 연계 여부 상담 확인</div></div>
+            <div class="fcard"><div class="fk">투자</div><div class="fv">스트롱벤처스 시드</div><div class="fs">2026-04 공표 · 금액 비공개</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">정량 시그널 <span style="font-size:11px;color:var(--muted);font-weight:500">(값 · 출처)</span></h3>
+          <table>
+            <tr><td style="width:34%"><b>제로 플로우 오미자샷</b></td><td>판매가 <b>35,800원</b> <span class="t n">soroh.kr 직접확인 07-21</span></td></tr>
+            <tr><td><b>올레샷 오미자샷</b></td><td>상품명 원문 <b>「올레샷 폴리페놀 10배 오미자샷 (최대 25% 할인)」</b> <span class="t r">무할인 선언과 모순</span></td></tr>
+            <tr><td><b>상시 배너</b></td><td><b>"1초 회원가입시 50,000원 쿠폰팩 발급"</b> <span class="t r">상시 할인 구조</span></td></tr>
+            <tr><td><b>사이트 타이틀</b></td><td>"소로 Soroh | 신세계강남 입점 <b>차세대 디톡스샷</b>" <span class="t y">규제 어휘</span></td></tr>
+            <tr><td><b>유료 광고</b></td><td>Meta 라이브러리 "오미자샷"·"SOROH" <b>전체기간 0건</b> <span class="t n">직접확인 07-21</span></td></tr>
+            <tr><td><b>인스타 @soroh.official</b></td><td>계정 존재 확인 · 팔로워·게시물 수 <b>미확인</b> <span class="t y">로그인 필요</span></td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="co ac"><span class="lab">★ 브랜드명 어원 — 리서치로 이미 확보 (상담에서 더 깊이 팔 것)</span>보도에 따르면 브랜드명 <b>'소로'는 한옥 구조에서 균형을 잡는 부재(小累)</b>에서 착안했다. 슬로건 "Longevity rooted in heritage"와 정확히 맞물린다. <b>이건 소재 앵글 1순위 재료다</b> — 롱제비티는 국내 인지가 낮아 제품 설명으로는 스크롤이 안 멈춘다. "왜 한옥의 균형 부재인가"는 멈춘다. 상담에서는 어원을 아는 상태로 <b>"왜 하필 균형이었나 / 대표님 개인적 계기"</b>까지 파고들 것.</div>
+
+      <h3>제품 · 가격</h3>
+      <table>
+        <tr><th style="width:26%">상품</th><th>구성 · 가격 · 소구</th></tr>
+        <tr><td><b>제로 플로우 오미자샷</b></td><td>35,800원. 한 포에 올리브오일 225ml 상당 폴리페놀 + 프리바이오틱스. 자체 개발 공법 생오미자, <b>원료 100% 국내산</b> <span class="t n">언론보도</span></td></tr>
+        <tr><td><b>올레샷 폴리페놀 10배</b></td><td>상품명에 "(최대 25% 할인)" 포함. 가격 미표시 <span class="t y">직접확인 시 미노출</span></td></tr>
+        <tr><td><b>추가 라인</b></td><td>립버터밤 등 라인업 확장 언급 <span class="t y">확인 필요</span> — 투자금으로 라인업 확장 계획</td></tr>
+        <tr><td><b>인허가 지위</b></td><td><b>미확인 — 건강기능식품인지 일반식품인지</b>. 이 답에 따라 쓸 수 있는 말이 전부 달라진다 <span class="t r">Q3 최우선</span></td></tr>
+      </table>
+
+      <h3>채널 현황 — 우리가 만질 수 있는 것과 없는 것</h3>
+      <table>
+        <tr><th style="width:26%">채널</th><th style="width:16%">조작 가능</th><th>처방 성격</th></tr>
+        <tr><td><b>자사몰 soroh.kr</b>(카페24)</td><td><span class="t g">가능</span></td><td>가격·번들·쿠폰·상세·픽셀 전부 셀러 콘솔에서 조작 → <b>HIZ 실행 처방</b></td></tr>
+        <tr><td><b>메타·인스타 광고</b></td><td><span class="t g">가능</span></td><td>계정 신규 개설 필요할 수 있음 → <b>HIZ 실행 처방</b></td></tr>
+        <tr><td><b>인스타 @soroh.official</b></td><td><span class="t g">가능</span></td><td>오가닉 자산 → HIZ 실행 처방</td></tr>
+        <tr><td><b>신세계 강남·본점 식품관</b></td><td><span class="t r">불가</span></td><td>백화점 MD 편성 영역. 셀러가 진열·랭킹·프로모션 조작 불가 → <b>대표 액션(MD 협의)</b></td></tr>
+        <tr><td><b>5성급 호텔 · 청담 스파</b></td><td><span class="t r">불가</span></td><td>제휴 영역 → <b>대표 액션</b></td></tr>
+      </table>
+      <div class="co bad"><span class="lab">★ 성과 판정 범위를 계약서에 못 박을 것</span>소로 매출 기반의 상당 부분이 <b>우리가 손댈 수 없는 폐쇄 채널</b>(백화점·호텔·스파)에 있다. 파일럿 성과는 <b>자사몰 D2C 한정</b>으로만 판정해야 하며, 오프라인 매출 증감을 성공기준에 섞으면 8주 뒤 책임 소재가 붕괴한다. (2026-07-20 모노드24 건에서 카카오선물하기 처방이 "셀러가 만질 수 없는 영역"이라 통째로 무너진 전례 — 같은 실수 반복 금지.)</div>
+      <div class="co"><span class="lab">관련 링크 · 라이브 확인</span>
+        <a href="https://soroh.kr/" target="_blank" rel="noopener">자사몰 soroh.kr</a> ·
+        <a href="https://www.instagram.com/soroh.official/" target="_blank" rel="noopener">IG @soroh.official</a> ·
+        <a href="https://besuccess.com/?p=181770" target="_blank" rel="noopener">beSUCCESS 시드 투자</a> ·
+        <a href="https://platum.kr/archives/284734" target="_blank" rel="noopener">platum 시드 투자·미국 진출</a> ·
+        <a href="https://www.socialvalue.kr/news/view/1065572523149448" target="_blank" rel="noopener">소셜밸류 1차 물량 소진</a> ·
+        <a href="https://www.enetnews.co.kr/news/articleView.html?idxno=43610" target="_blank" rel="noopener">이넷뉴스 네스트호텔 패키지</a>
+      </div>
+    </section>
+
+    <section id="market">
+      <div class="sec-k">MARKET · COMPETITION · NEEDS</div>
+      <h2>시장 · 경쟁 · 니즈</h2>
+      <p class="lead">카테고리는 막혀 있지 않다. 이미 붐빈다 — 다만 <b>다른 이름으로</b>. 그리고 상위 소재는 앵글 다양성이 사실상 0이다. <span class="t n">상담 전 가설</span></p>
+
+      <h3>Meta 광고 라이브러리 실측 (KR · 2026-07-21 직접 조회)</h3>
+      <table>
+        <tr><th style="width:22%">키워드</th><th style="width:16%">액티브 광고</th><th>관측</th></tr>
+        <tr><td><b>NMN</b></td><td><b>589건</b></td><td>성분 기반 최대 물량군</td></tr>
+        <tr><td><b>저속노화</b></td><td><b>292건</b></td><td>시장이 실제로 쓰는 카테고리 언어. 대기업 참전(더후 비첩 NAD 파워 앰풀·파지티브호텔 올리브오일 캡슐)</td></tr>
+        <tr><td><b>롱제비티</b></td><td>95건</td><td>대표가 쓰는 언어. 저속노화의 <b>1/3</b></td></tr>
+        <tr><td><b>오미자샷 / SOROH</b></td><td><b>0건</b></td><td>전체기간 0 — "유료 데이터 0"은 사실로 확정</td></tr>
+      </table>
+      <div class="co bad"><span class="lab">★ 상위 소재 앵글 = 거의 전부 할인·리스크 제거</span>실측된 상위 소재 카피: 프란츠 <b>"[7월 45%OFF]"</b> · 트루엔뉴트리션 <b>"최대 67% 특가"</b> · 피부백과 <b>"리뉴얼 9,900원 특가"</b> · 웰니스꿀템 <b>"[만족보장] 환불 100%보장"</b> · 알로라 <b>"12팩 구매시 2팩 UP"</b>. <b>앵글 다양성이 0에 가깝다</b> — 무할인·근거 중심 소재가 들어갈 시각적 공간은 열려 있다.</div>
+      <div class="co warn"><span class="lab">양날 — 무할인 프리미엄 판정 (가설)</span><b>차별 앵글 쪽</b>: 할인 일색 피드에서 무할인·증거 소재는 튄다. <b>자살 쪽</b>: 이미 붙은 광고 물량이 오디언스를 "이 카테고리는 할인해서 사는 것"으로 학습시켰다. 같은 오디언스에게 무할인 첫 구매를 요구하면 전환 마찰이 구조적으로 높다. <b>여기에 1,000만이 겹치는 게 진짜 급소</b> — 구매 최적화는 주당 전환 수가 임계 미만이면 학습을 못 끝낸다. 데이터 0 + 프리미엄 CPA + 소액이면 캠페인이 학습을 벗어나기 전에 예산이 끝난다.</div>
+      <div class="co ac band"><span class="lab">처방 (가설) — 무할인은 지키되 전환 지점을 낮춘다</span>구매 CPA로 유의성을 사려 하지 말 것. 최적화 이벤트를 상위 지표(랜딩 체류·장바구니·구독 대기·리드)로 내려 <b>학습을 성립시키고</b>, 무할인 오퍼는 가격이 아니라 <b>조건</b>(체험 단위·구독 첫 회차·번들·반품 보장)으로 마찰만 제거한다. <b>할인은 안 하되 리스크는 대신 진다.</b></div>
+
+      <h3>SWOT (퍼포먼스·그로스 관점)</h3>
+      <div class="swot">
+        <div class="sw s"><h4>Strengths</h4><ul><li>신생 브랜드 상위권 신뢰 자산 — 신세계 강남·본점 완판, 5성급 호텔·청담 스파, 스트롱벤처스 시드</li><li>원료 100% 국내산 · 폴리페놀 소구 명확(올리브오일 225ml 상당)</li><li>브랜드명 서사 보유(한옥 균형 부재) = 소재 앵글 재료</li><li>자사몰 카페24 = 가격·번들·픽셀 직접 조작 가능</li></ul></div>
+        <div class="sw w"><h4>Weaknesses</h4><ul><li>유료 획득 데이터 0 · 계측 배관 상태 불명</li><li>무할인 선언 ↔ 상품명 할인율·5만원 쿠폰팩 자기모순</li><li>시장이 안 쓰는 언어("롱제비티")로 카테고리 지칭</li><li>최상급 증거가 소재로 번역된 적 0회</li></ul></div>
+        <div class="sw o"><h4>Opportunities</h4><ul><li>경쟁 소재 앵글 다양성 0 → 증거형 소재 진입 공간</li><li>"저속노화" 언어로 교체만 해도 초기 CTR 이동 여지</li><li>시드 투자 직후 · 라인업 확장 · 하반기 미국 진출 = 확장 경로 명확</li><li>백화점·호텔 입점 이력이 광고 신뢰 소구로 직결</li></ul></div>
+        <div class="sw tt"><h4>Threats</h4><ul><li><b>표시광고 규제</b> — 일반식품이면 "저속노화·디톡스·항노화" 소구 전면 위험</li><li>할인 학습된 오디언스에 무할인 첫 구매 요구</li><li>1,000만이 Meta 학습 임계 미만일 위험 → "모르겠다"로 종료</li><li>대기업 참전(더후 등) — 도달 단가 상승</li></ul></div>
+      </div>
+      <div class="co bad"><span class="lab">★ 규제 리스크 — 상담에서 우리가 먼저 꺼낼 것 (최대 카드)</span>자사몰 타이틀이 <b>"차세대 디톡스샷"</b>, 브랜드 소구어가 <b>"저속노화"</b>다. 제품이 건강기능식품 인정을 받은 게 아니라 <b>일반식품</b>이라면, 식품표시광고법상 <b>건강기능식품 오인·혼동 표시</b> 및 <b>질병 예방·치료 효능 오인</b>에 걸릴 수 있는 어휘군이다. 자사몰에서 넘어갔더라도 <b>메타 유료 광고는 노출량과 신고 경로가 다르다</b> — 광고를 켜는 순간 리스크가 실현될 확률이 급등한다. <b>(확인 필요: 건기식 인정 여부 · 기능성 표시 식품 여부 · 기존 심의 이력)</b> 이건 나쁜 소식이 아니라 <b>우리 카드</b>다. 그리니팅(저당·식사대용 판정)·여주온(혈당 개별인정형) 건에서 HIZ가 실제로 수행한 작업이고, 광고 대행사가 먼저 짚어주면 자리가 "광고 대행사"에서 "이 카테고리를 아는 파트너"로 바뀐다.</div>
+      <div class="co ac band"><span class="lab">표면 vs 진짜 니즈 (가설 · 확신%)</span><b>표면</b> = "퍼포먼스 마케팅(그로스 광고) 대행". <b>진짜</b> — <b>①(72%)</b> 무할인 프리미엄이 유료 채널에서 성립하는지에 대한 <b>판정</b>(문장 무게가 "할인에 의존하지 않는"에 쏠려 있음) · <b>②(50%)</b> 적은 돈으로 결론까지 가는 <b>설계</b>("제한된 예산 안에서"라는 조건절) · <b>③(40%)</b> 1,000만은 상한이 아니라 <b>입구</b>일 가능성("파일럿"은 소액 테스트 후 확대를 전제) — 확대 조건을 먼저 정의하면 딜 사이즈가 커진다.</div>
+    </section>
+
+    <section id="deal">
+      <div class="sec-k">FIT &amp; ESTIMATE</div>
+      <h2>기회 평가 · 견적 (가설)</h2>
+      <div class="verdict"><div class="vl">종합 기회 적합도 (상담 전 추정)</div><div class="vv">4.0 / 5.0</div><div class="vd">조건부 GO — 예산·역량 정합 높고 확장 경로(리테이너·촬영·미국 이관) 명확. 감점: 표시광고 규제 리스크, 유료 데이터 0에서의 성과 책임, 낮은 예산 상한.</div></div>
+      <div class="grid2">
+        <div class="card"><h3 style="margin-top:0">축별 점수</h3><table>
+          <tr><td style="width:44%">① 예산 적합도</td><td><b>4.0</b> 1,000만이 소형 세팅 패키지 상단에 정확히 얹힘. 시드 직후라 자금 안정</td></tr>
+          <tr><td>② HIZ 역량 적합도</td><td><b>4.5</b> 메타 운영·크리에이티브 검증·카페24 전환 개선 = 주력 역량과 정면 일치</td></tr>
+          <tr><td>③ 의사결정 속도</td><td><b>4.5</b> 대표 직접 문의 · 소규모 조직 추정 · 결재 단계 얕음</td></tr>
+          <tr><td>④ 확장 가능성</td><td><b>4.5</b> 시드 + 라인업 확장 + 하반기 미국 진출 → 리테이너·촬영·이관 경로</td></tr>
+          <tr><td>⑤ 리스크(높을수록 안전)</td><td><b>2.5</b> 표시광고 규제 · 데이터 0 성과 책임 · 재계약 여지 얇음</td></tr>
+        </table></div>
+        <div class="card"><h3 style="margin-top:0">GO 조건 · No-Go 분기</h3><table>
+          <tr><td>조건 ①</td><td><span class="t y">필수</span> 파일럿 성공기준을 계약서에 <b>숫자로</b> 고정</td></tr>
+          <tr><td>조건 ②</td><td><span class="t y">필수</span> 목표 3개 중 <b>하나로 좁히는 데 대표 동의</b></td></tr>
+          <tr><td>조건 ③</td><td><span class="t y">필수</span> 규제 리스크를 우리 관리 항목으로 편입</td></tr>
+          <tr><td>조건 ④</td><td><span class="t y">필수</span> 성과 판정 범위 = <b>자사몰 D2C 한정</b> 명시</td></tr>
+          <tr><td>No-Go</td><td><span class="t r">중단</span> ROAS·매출 보장 요구 / 매체비 포함 1,000만으로 목표 3개 전부 / 광고계정·데이터 접근 불가</td></tr>
+        </table></div>
+      </div>
+
+      <h3>3-Tier 견적 <span class="t b">예산 1,000만 이하 준수 · 매체비 별도 · VAT 별도 · 제안</span></h3>
+      <div class="tiers">
+        <div class="tier">
+          <div class="tn">T1 · 진단</div>
+          <div class="tt">퍼포먼스 준비 진단 (3주 · 단발)</div>
+          <div class="tp">180만~300만원</div>
+          <div class="td">돈 태우기 전 "태울 수 있는 상태"인지 판정</div>
+          <ul>
+            <li>계측 배관 진단(픽셀·전환API·GA4·UTM)</li>
+            <li>자사몰 전환 구간 + 할인 스택 정리안</li>
+            <li>표시광고 규제 스크리닝 · 대체 어휘안</li>
+            <li>카테고리 언어 결정(롱제비티/저속노화)</li>
+            <li>파일럿 성공기준 설계서</li>
+          </ul>
+        </div>
+        <div class="tier rec">
+          <div class="rb">추천 · 메인</div>
+          <div class="tn">T2 · 파일럿</div>
+          <div class="tt">그로스 파일럿 스프린트 (8주)</div>
+          <div class="tp">800만~980만원</div>
+          <div class="td">매체비 별도 · 범위 상한 계약 명시</div>
+          <ul>
+            <li>T1 전부 +</li>
+            <li>메시지 축 <b>3개</b> · 소재 <b>12편</b>(정적8+영상4, 보유 에셋 재편집)</li>
+            <li>캠페인 설계·세팅·8주 운영</li>
+            <li>계측 배관 구축 · 상세 전환 개선 권고 1회</li>
+            <li>격주 리포트 4회 + 격주 미팅 4회</li>
+            <li><b>그로스 플레이북</b> — 이긴 축·진 축·다음 3개월 확장안</li>
+          </ul>
+        </div>
+        <div class="tier">
+          <div class="tn">T3 · 확장(월)</div>
+          <div class="tt">월 운영 리테이너</div>
+          <div class="tp">월 500만~</div>
+          <div class="td">최소 3개월 · 졸업 트리거 충족 후</div>
+          <ul>
+            <li>소재 생산·회전 엔진 상시화</li>
+            <li>채널 확장 · 인스타 오가닉 운영</li>
+            <li>월간 리포트</li>
+            <li><b>졸업 트리거</b> 아래 3중 판정 전부 충족 시에만</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>파일럿 성공기준 — 3중 판정 (계약서에 숫자로 고정)</h3>
+      <table>
+        <tr><th style="width:20%">판정축</th><th style="width:34%">기준</th><th>왜 필요한가</th></tr>
+        <tr><td><b>획득 효율</b></td><td>신규고객 CAC ≤ 목표 CAC <span class="t y">(상담 후 확정)</span></td><td>목표 CAC = 객단가 × 기여마진율 × 기대 재구매 횟수. <b>대표의 원가·재구매 데이터로 역산</b> — 상담 전 임의 수치를 던지면 근거 없이 우리 목을 조인다</td></tr>
+        <tr><td><b>안정성</b></td><td>동일 메시지 축에서 <b>3주 연속</b> 목표 달성</td><td>단발 스파이크를 성공으로 오인하지 않기 위한 장치</td></tr>
+        <tr><td><b>재현성</b></td><td>목표 CAC를 넘긴 <b>승리 소재 2편 이상</b></td><td>1편만 이기면 그건 운이다. "재현 가능한 성장 공식"이라는 대표 요구의 정의 그 자체</td></tr>
+      </table>
+      <div class="co ok"><span class="lab">★ 졸업 트리거 — 실패했을 때 리테이너를 안 팔겠다고 먼저 말할 것</span><b>3중 판정 전부 충족</b> → T3 월 운영 전환. <b>효율·안정성 충족·재현성 미달</b> → 소재 집중 4주 연장(별도). <b>획득 효율 미달</b> → <b>리테이너 제안 안 함</b>. 원인이 채널인지 제품·가격인지 플레이북에 판정해 넘긴다. 데이터 0에서 시작하는 대표가 가장 두려워하는 건 실패가 아니라 <b>실패해도 계속 청구되는 구조</b>다. 이 문장이 이 제안의 신뢰 축.</div>
+      <div class="co ac"><span class="lab">리스크 분담 — 마일스톤 3분할 (기본안)</span><b>계약 40% → 4주차 중간 판정 30% → 8주 종료·플레이북 인도 30%.</b> 4주차에 양측이 계속 여부를 결정하고, 중단하면 잔여 60%는 청구하지 않고 그 시점까지의 학습 문서를 인도한다. 대표 최대 손실이 40%로 제한되고 우리는 4주치 공수를 회수한다. <b>대표가 주저하면 → T1 진단 선행(금액 일부 T2 차감)으로 착지.</b> 성과연동형은 대표가 <b>먼저 물었을 때만</b> 꺼낸다 — 먼저 내밀면 자신 없어 보인다.</div>
+      <div class="co warn"><span class="lab">딜사이즈 경고 — 범위 상한 없이 수주하면 적자</span>T2 980만/8주 = <b>월환산 490만</b>으로 인스타 운영 리테이너(월 500만)보다 낮다. 수지를 맞추는 방법은 셋뿐이고 전부 계약서에 써야 한다. <b>①범위 상한 명시</b>(소재 12편·축 3개·리포트 4회·미팅 4회. "될 때까지"는 절대 쓰지 않는다 — 데이터 0 클라는 초반 성과 미달 시 소재 증편을 무한 요구하고 그 요구가 정당해 보여 거절이 어렵다) <b>②회차 제한</b>(주간 아니라 격주) <b>③표준화 재사용</b>(계측 배관·규제 스크리닝·플레이북 포맷은 공용 템플릿). <b>지뢰</b>: 촬영(800~1,000만)을 파일럿에 끼워 넣지 말 것 · 자사몰 개편을 "권고" 이상으로 약속하지 말 것 · <b>미국 진출을 파일럿에 언급하지 말 것</b>(1,000만 안에 미국을 넣으면 국내도 미국도 둘 다 실패). 이 건은 브랜드라이즈 <b>브랜딩 컨설팅 견적 체계(대표참여 5천~1억)와 무관한 별도 그로스 트랙</b>. 성민/PM 확정 필요.</div>
+    </section>
+
+    <section id="consult">
+      <div class="sec-k">CONSULT</div>
+      <h2>상담 진행</h2>
+      <p class="lead">2026-07-21(화) <b>14:30</b> · 남중 역할 미정. 톤: <b>이 대표는 그로스 용어를 정확히 쓴다</b>("가설 검증"·"재현 가능한 성장 공식"·"파일럿"). 퍼널·CAC·A/B 설명은 즉시 벤더 강등. 시간은 전부 <b>"몇 주에 뭘 몇 개 만들어 뭘 기준으로 죽이는가"</b>에 쓴다.</p>
+
+      <h3>사업 단계 — 브랜드는 STAGE 2~3, 유료 획득만 STAGE 1</h3>
+      <div class="stages">
+        <div class="stage">
+          <div class="sgn">STAGE 1 · 런칭 전</div>
+          <div class="sgd">팔 게 정해졌고 전환 배관만 없음. <b>소로의 유료 획득 채널만 여기</b>(광고 이력 0건).</div>
+          <span class="sgr">역할 → 획득 경로 세팅</span>
+        </div>
+        <div class="stage on">
+          <div class="sgn">STAGE 2~3 ★소로(브랜드 전체)</div>
+          <div class="sgd">제품·가격 확정, 매출·유통·투자 있음(신세계 완판·호텔·시드). 유료 채널로 옮겨 태울 때 무엇이 깨지는지가 문제.</div>
+          <span class="sgr">역할 → 파일럿으로 판정 → 확장</span>
+        </div>
+        <div class="stage">
+          <div class="sgn">STAGE 3 · 매출 드라이브</div>
+          <div class="sgd">획득 공식 확정 후 도달.</div>
+          <span class="sgr">역할 → 월 운영 리테이너</span>
+        </div>
+      </div>
+      <div class="co warn"><span class="lab">판정 근거 · 오분류 경고</span>"런칭 전"으로 반올림하면 안 된다. STAGE 1 처방(포지셔닝·전환 경로 세팅)을 팔면 대표는 <b>"그건 이미 했다"</b>고 답한다. 실제 문제는 <b>오프라인 프리미엄 채널에서 통한 구매 동기(백화점 큐레이션·호텔 경험·판매사원 설명)가 메타 피드에서 재현되지 않는다</b>는 것. 단 <b>대표가 "신규 브랜드"라고 쓴 이유가 별도 신규 라인 때문이면 이 판정 절반이 바뀐다</b> → Q2로 확정.</div>
+
+      <h3>반드시 물어볼 질문 5개</h3>
+      <div class="q"><div class="qn">Q1 · 예산 성격 ★절대 생략 금지</div><div class="qt">"견적 얘기 전에 하나만 정리하고 갈게요. 적어주신 1,000만원이 <b>광고에 태울 돈</b>이에요, 저희한테 주는 <b>운영비</b>예요, 아니면 <b>둘 다 합쳐서 한 번에 끝내는 프로젝트 비용</b>이에요? 깎거나 올리자는 게 아니고, 이거에 따라 그릴 그림이 완전히 달라져서요. 그리고 몇 개월로 보고 계세요?"</div><div class="qi">2026-07-20 딥라이트·모노드24 <b>2건 연속 미질문</b> → 실링 오판으로 딜 손실. 매체비 포함 총액이면 목표 하나로 압축 필수 / 월 대행비면 티어가 완전히 다름(1,000만은 실링이 아니라 하한) / 단발이면 파일럿 1회로 딱 떨어짐</div></div>
+      <div class="q"><div class="qn">Q2 · "신규 브랜드"의 정체 ★실측과 진술 충돌</div><div class="qt">"찾아보니까 제로 오미자샷이 작년 7월에 나와서 신세계에서 1차 물량 완판하셨더라고요. 스트롱벤처스 투자도 받으셨고요. 그런데 '이제 막 런칭하는 신규 브랜드'라고 적어주셔서요 — <b>새로 준비 중인 별도 라인이 있으신 거예요?</b> 아니면 온라인 직판을 이제 시작하신다는 뜻이었을까요?"</div><div class="qi">인테이크 진술과 실측이 어긋나는 지점. 신규 라인이면 STAGE 판정·처방 절반이 바뀐다. <b>지적이 아니라 "제가 찾아봤습니다"의 증명으로 던질 것</b> — 첫 5분 신뢰 확보 포인트</div></div>
+      <div class="q"><div class="qn">Q3 · 제품 인허가 지위 ★롱제비티 급소</div><div class="qt">"제품이 식약처 기준으로는 뭐로 돼 있어요? <b>건강기능식품</b>이에요, <b>일반식품</b>이에요? 지금 사이트에 '차세대 디톡스샷', '저속노화' 쓰고 계신데 심의 받으신 적 있으세요?"</div><div class="qi">같은 제품이라도 등록 지위에 따라 <b>광고에서 할 수 있는 말이 완전히 달라진다</b>. 일반식품이면 항노화·디톡스 효능 표현이 전면 막히고 크리에이티브 축을 루틴·원료 사실로 이동해야 한다. "아직 확인 안 해봤다"가 나오면 <b>이 상담 최대 발견</b> — 광고 얘기를 멈추고 여기부터 정리하자고 제안</div></div>
+      <div class="q"><div class="qn">Q4 · 단위경제 3종 (성공기준의 분모)</div><div class="qt">"숫자 몇 개만요 — 자사몰에서 한 달에 몇 건 정도 나가요? 객단가랑 재구매율은요? 원가 빼면 얼마 남아요? 그래서 <b>한 명 데려오는 데 얼마까지 쓸 수 있다</b>고 보세요? 그리고 백화점·호텔 매출이랑 자사몰 비중이 대략 어떻게 돼요?"</div><div class="qi">목표 CAC는 대표가 스스로 말해야 파일럿 성패 기준이 합의된다. 채널 비중은 <b>성과 판정 범위(자사몰 한정)</b>를 못 박는 근거. 즉답하면 사업 감각 있음 → 그 자리에서 성공기준 확정</div></div>
+      <div class="q"><div class="qn">Q5 · 브랜드명·창업 계기 (어원은 이미 알고 들어간다)</div><div class="qt">"소로가 한옥에서 균형 잡는 부재라고 하시더라고요. 그 이름 좋던데 — <b>왜 하필 '균형'이었어요?</b> 롱제비티 하시게 된 개인적인 계기가 있으셨어요?"</div><div class="qi">어원은 보도로 확보 → <b>아는 상태로 한 겹 더 파는 질문</b>이라 훨씬 강하다. 롱제비티는 카테고리 인지가 낮아 제품 설명으로는 스크롤이 안 멈춘다 — 사람이 왜 이걸 만들었는지가 첫 소재 앵글 1순위. 개인 서사 나오면 창업자 UGC형 소재축 신설</div></div>
+      <div class="co warn"><span class="lab">온도 프로브 (사이사이 흘리듯)</span>"팀은 몇 분이세요? 소재는 안에서 만드실 수 있어요 — 한 달에 몇 개까지 나와요?" · "광고는 아직 한 번도 안 돌리신 거 맞죠? 네이버 검색광고나 인플루언서 협찬 포함해서요." · "픽셀이랑 구매 이벤트는 지금 어디까지 잡혀 있어요?" · "하반기 미국 진출이랑 이번 건은 같은 트랙이에요, 별개예요?" → 실행 캐파 · "데이터 0"의 정확한 범위 · 계측 상태 · 확장 시야.</div>
+
+      <h3>상담 흐름 (60분)</h3>
+      <div class="tl">
+        <div class="ph"><div class="pt">0~3분 · 오프닝</div><div class="pb">회사 소개 2분 넘기지 않는다. 롱제비티를 고른 것 자체를 인정하고 들어간다.</div></div>
+        <div class="ph"><div class="pt">3~11분 · 현황 스캔 (Q2)</div><div class="pb">"신규 브랜드"의 실체 확인 → STAGE 확정. 리서치한 티를 여기서 낸다.</div></div>
+        <div class="ph"><div class="pt">11~14분 · 예산 성격 (Q1)</div><div class="pb"><b>협상 아니고 설계 입력값</b>이라고 명시하고 물어 방어를 푼다. 총액 협상은 뒤로.</div></div>
+        <div class="ph"><div class="pt">14~22분 · 브랜드·제품 (Q5)</div><div class="pb">이름 유래 → 창업 계기 → 왜 이 제품. 대표가 길게 말하게 둔다. 여기서 나온 문장이 소재 원재료.</div></div>
+        <div class="ph"><div class="pt">22~30분 · 인허가·표현 제약 (Q3)</div><div class="pb"><b>승부처.</b> "데이터가 없는 것보다 말할 수 있는 게 뭔지 모르는 게 먼저"로 프레임 이동. 여기서 자리가 바뀐다.</div></div>
+        <div class="ph"><div class="pt">30~38분 · 단위경제·광고 이력 (Q4)</div><div class="pb">객단가·마진·목표 CAC·채널 비중. 파일럿 성공 기준의 숫자를 대표 입에서 받아낸다.</div></div>
+        <div class="ph"><div class="pt">38~50분 · 우리 방법론 (계약이 갈리는 12분)</div><div class="pb">기초 설명 없이 바로 구체안 — 몇 주에 소재 몇 개, 어떤 변수를 고정하고 뭘 바꾸는지, 몇 명 모이면 판단하고 뭘 기준으로 죽이는지, 매주 무슨 문서를 받는지. <b>다른 대행사는 이걸 문장으로 못 준다.</b></div></div>
+        <div class="ph"><div class="pt">50~60분 · 착지 + 다음 스텝</div><div class="pb">목표 3개 중 하나로 압축 · 파일럿 범위 구두 합의 · 확장 조건 명시 · 대표 숙제 3개 · 3영업일 내 설계서+견적 발송 · <b>다음 통화 날짜를 지금 캘린더에 박는다.</b></div></div>
+      </div>
+      <div class="co ac"><span class="lab">오프닝 (파트너 포지션으로 여는 문장)</span>"상담 전에 광고 라이브러리를 좀 봤는데요, 이 카테고리 액티브 광고가 900건 가까이 돌고 있더라고요. 그런데 상위 소재가 <b>전부 할인</b>이에요. 45% 할인, 67% 특가, 9,900원. 대표님이 무할인을 고수하시는 게 저희가 볼 땐 <b>유일하게 비어 있는 자리</b>인데, 문제는 1,000만으로 그걸 증명하는 방법이거든요. 그 얘기 하러 왔습니다."</div>
+      <div class="co ok"><span class="lab">클로징 멘트</span>"오늘 크게 벌리자는 얘기는 안 할게요. 지금 소로는 광고를 못 해서 안 되는 게 아니라, <b>뭐가 먹히는지를 아직 아무도 모르는 상태</b>예요. 저희도 모르고 대표님도 모르죠. 그래서 첫 8주는 매출을 약속하는 게 아니라 그걸 알아내는 데 씁니다. 뭘 말할 수 있는지 정리하고, 소재를 여러 갈래로 만들어 돌리고, 뭐가 반응하는지 숫자로 잘라냅니다. 살아남는 조합이 나오면 그때 돈을 키우는 거고요. 안 나오면 왜 안 나왔는지를 문서로 드립니다 — 그것도 대표님한테는 자산이에요. 다음 단계에서 안 헤매니까. <b>그리고 그때는 월 운영 제안 안 드립니다.</b> 설계랑 비용은 사흘 안에 정리해서 보내드릴게요."</div>
+      <div class="co bad"><span class="lab">Quick Tip · 상담 직전 30초</span><b>①</b> 그로스 용어를 아는 사람이다 — 퍼널·CAC·A/B 설명 금지. <b>②</b> 절대 하면 안 되는 말: <b>"일단 광고 돌려보면서 최적화하죠"</b>(데이터 0에서 최적화는 없고 이 대표는 그걸 안다). <b>③</b> 반드시 해야 하는 말: <b>"1,000만으로 세 개 다는 못 합니다. 첫 8주는 매출이 아니라 뭐가 먹히는지를 확정하는 데 씁니다."</b> <b>④</b> 승부는 Q3(인허가)에서 난다 — 표시광고 제약을 먼저 꺼내는 순간 "광고 대행사" 자리에서 벗어난다. <b>⑤</b> 할인 모순(25%·5만원 쿠폰팩)은 <b>지적이 아니라 "돈 안 드는 첫 개선"</b>으로 포장해 꺼낼 것.</div>
+
+      <h3>예상 반론 · 거절해야 하는 조건</h3>
+      <table>
+        <tr><th style="width:26%">상황</th><th>대응 워딩</th></tr>
+        <tr><td><b>"광고 대행사 다 똑같은 말 하던데요"</b></td><td>"그래서 말로 안 하고 하나 보여드릴게요. 이번 주에 <b>소로가 광고에 쓸 수 있는 말과 못 쓰는 말</b>을 한 장으로 정리해 보내드립니다. 비용 안 받습니다. 다른 데서 이거 주는 곳 있으면 거기 가세요." <span class="t r">무료 1장은 반드시 지킬 것</span></td></tr>
+        <tr><td><b>"1,000만으로 되긴 하나요?"</b></td><td>"안 되는 걸 먼저 말씀드릴게요. 매출을 몇 배 만드는 건 안 됩니다. 세 개 목표 동시도 안 되고요. 되는 건 <b>뭐가 먹히는지 확정하는 것</b>. 그게 잡히면 그다음 쓰는 돈은 도박이 아니라 복사가 됩니다. 솔직히 지금 1억을 태워도 결과는 더 안 좋아져요. 뭘 태울지를 모르는 상태라서요."</td></tr>
+        <tr><td><b>"성과 보장 되나요?"</b></td><td><span class="t r">거절</span> "안 됩니다. 보장한다는 곳은 대개 이미 살 사람을 다시 데려와 숫자를 만듭니다. 소로는 그 모수가 아직 없어요. 대신 저희가 보장하는 게 있어요 — <b>언제 접을지를 미리 정합니다.</b> 시작 전에 문서로 합의하고 들어갑니다."</td></tr>
+        <tr><td><b>매체비 포함 1,000만으로 목표 3개</b></td><td><span class="t r">거절</span> "그 돈으로 셋 다 하면 셋 다 안 됩니다. 광고비가 쪼개지면 아무 데서도 판단할 만큼 데이터가 안 모여요. 하나만 고르시죠."</td></tr>
+        <tr><td><b>효능·항노화 강하게 써달라</b></td><td><span class="t r">거절</span> "그건 못 씁니다. 걸리면 광고 반려로 끝나는 게 아니라 대표님 사업에 처분이 갑니다. 대신 그 안에서 제일 세게 갈 수 있는 선을 찾아드릴게요."</td></tr>
+        <tr><td><b>"생각해보겠다"</b></td><td>"그럼요. 그런데 지금 뭘 고민하시는 건지만 알려주세요 — <b>금액</b>이에요, <b>저희가 잘할지</b>예요, 아니면 <b>지금이 광고 태울 때가 맞나</b>예요? 세 개가 답이 완전히 달라서요." → 항상 <b>날짜로</b> 마무리</td></tr>
+      </table>
+    </section>
+
+    <section id="sources">
+      <div class="sec-k">SOURCES</div>
+      <h2>참고 출처</h2>
+      <p class="lead">① 클라이언트 제공 ② 직접 리서치(라이브 확인 2026-07-21).</p>
+      <div class="co"><span class="lab">① 클라이언트 제공</span>인테이크 폼(우승준 대표) — 주식회사 이트어스·브랜드 소로(SOROH)·헬스/뷰티·목표 3종(신규고객·인지도·매출전환)·관심 서비스 퍼포먼스 마케팅·<b>예산 1,000만원 이하</b>·기대 결과 "파일럿 테스트를 통한 빠른 매출 성과 검증"·상담 가능 평일 오전10~12/오후13~17. 고민 원문 = "이제 막 런칭하는 신규 브랜드인 만큼 마케팅 데이터가 전혀 없는 상태… 국내에서는 아직 생소한 롱제비티 카테고리에서 할인에 의존하지 않는 프리미엄 가격의 제품을 판매해야 하는 만큼, 제한된 예산 안에서 고객과 크리에이티브를 데이터 기반으로 반복 검증하며 재현 가능한 성장 공식을 만들어가는 것이 가장 큰 과제".</div>
+      <div class="co ac"><span class="lab">② 직접 리서치 (2026-07-21 확인)</span>
+        <a href="https://soroh.kr/" target="_blank" rel="noopener">soroh.kr</a> — 제품·가격(제로 플로우 오미자샷 35,800원)·상품명 할인율 표기·"1초 회원가입시 50,000원 쿠폰팩"·슬로건·사업자정보(892-87-03256·통신판매 2024-서울종로-1397·강원 인제군) 직접확인 ·
+        <b>Meta 광고 라이브러리</b>(KR, 직접 조회) — "오미자샷"·"SOROH" 전체기간 <b>0건</b> / "저속노화" 액티브 <b>292건</b> / "NMN" <b>589건</b> / "롱제비티" <b>95건</b>, 상위 소재 카피 실측 ·
+        <a href="https://besuccess.com/?p=181770" target="_blank" rel="noopener">beSUCCESS</a>·<a href="https://platum.kr/archives/284734" target="_blank" rel="noopener">platum</a> — 스트롱벤처스 시드 투자(금액 비공개)·하반기 미국 진출·브랜드명 어원(한옥 균형 부재)·원료 100% 국내산 ·
+        <a href="https://www.socialvalue.kr/news/view/1065572523149448" target="_blank" rel="noopener">소셜밸류</a> — 2025-07 출시·3개월 만에 신세계 강남점·본점 1차 물량 소진 ·
+        <a href="https://www.enetnews.co.kr/news/articleView.html?idxno=43610" target="_blank" rel="noopener">이넷뉴스</a> — 네스트호텔 단독 객실 패키지 ·
+        <a href="https://www.enetnews.co.kr/news/articleView.html?idxno=47563" target="_blank" rel="noopener">이넷뉴스</a> — 하우스 오브 신세계 청담 '트웰브 마켓' 입점.
+      </div>
+      <div class="co warn"><span class="lab">미확인 항목 — 상담에서 확인 (단정 금지)</span><b>①</b> 제품의 건강기능식품 인정 여부 <span class="t r">규제 등급이 여기서 갈림</span> <b>②</b> "이제 막 런칭"의 정체 — 소로 전체인지 별도 신규 라인인지 <b>③</b> 자사몰 월 주문·객단가·재구매율·마진 <b>④</b> 인스타 @soroh.official 팔로워·게시물 수(로그인 필요) <b>⑤</b> 네이버 검색광고·인플루언서 협찬 이력 = "데이터 0"의 정확한 범위 <b>⑥</b> 픽셀·전환API·GA4 세팅 상태 <b>⑦</b> 백화점·호텔 매출 비중 <b>⑧</b> 립버터밤 등 추가 라인 실재 여부. 정확한 팔로워·트래픽은 도구 없이 확정 불가 → <b>Apify 활성화</b> 시 정량화 권장.</div>
+    </section>
+  </main>
+</div>
+
+<footer><div class="in">BRANDRISE (MarketingOS) · 소로(SOROH) NB 상담 준비 PREP — 통합표준 · 순수 퍼포먼스/그로스 리퍼 · 상담 전(인테이크+리서치) · 내부 전용</div></footer>
+
+<script>
+const links=[...document.querySelectorAll('nav.toc a')];
+const sections=[...new Set(links.map(a=>a.getAttribute('href')))]
+  .map(href=>({href,el:document.querySelector(href)})).filter(s=>s.el);
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  const s=sections.find(s=>s.el===e.target); if(!s)return;
+  links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')===s.href));
+}})},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>obs.observe(s.el));
+</script>
+</body>
+</html>
