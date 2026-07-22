@@ -1,0 +1,1048 @@
+<!--
+  BRANDRISE PREP — 페스토요일(Pestoyoil) · 상담 전 PREP (통합표준 v4 기반)
+  · 상담: 2026-07-15(수) 15:00~16:00 · AFPRO 부스(코엑스) · 남중 리드
+  · 제공 자료 = 상담 신청 폼 3줄이 전부. 나머지 전부 직접 리서치 + 가설.
+  · PREP 원칙: ①녹취·랩업 참고 금지(상담 전 문서) ②진단·니즈·적합도 전부 "가설" 표기
+    ③직접 리서치 + 출처/확인일 명기 ④레포 PUBLIC — 연락처 PII 미기재
+  · 검증 메모(중요): 카페24 미렌더 템플릿에 {$soldout_icon} 등 플레이스홀더가 있어
+    텍스트 추출 시 "전 품목 품절"로 오독됨 → 렌더된 DOM 기준 품절 0건(정상 판매 중).
+    이 페이지 수치는 브라우저 렌더 확인분 우선.
+-->
+
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>페스토요일 (Pestoyoil) — NB 상담 준비 PREP | BRANDRISE</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.75;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:16.5px}
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 42%,#4338ca 100%);color:#fff;padding:84px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"PREP";position:absolute;right:-2%;bottom:-18%;font-size:clamp(160px,22vw,360px);font-weight:800;letter-spacing:-.04em;color:#fff;opacity:.05;line-height:.8;pointer-events:none}
+.hero .in{max-width:1360px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:42px;font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:14px}
+.hero .sub{font-size:16px;color:#cbd5e1;font-weight:300;max-width:700px;line-height:1.75}
+.hero .meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.hero .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.hero .lnk{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;text-decoration:none;padding:8px 15px;border-radius:9px;transition:.15s}
+.hero .lnk svg{width:14px;height:14px}
+.hero .lnk.store{background:#fff;color:var(--ink)}
+.hero .lnk.store:hover{background:#e2e8f0}
+.hero .lnk.sns{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.hero .lnk.sns:hover{background:rgba(255,255,255,.14)}
+.layout{max-width:1360px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:208px 1fr;gap:48px;align-items:start}
+nav.toc{position:sticky;top:28px;padding:36px 0;font-size:13.5px}
+nav.toc .nl{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--muted);margin:0 0 14px 12px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;border-left:2px solid transparent;transition:.15s;font-weight:500}
+nav.toc a:hover{color:var(--ink);background:var(--soft)}
+nav.toc a.on{color:var(--ac);background:var(--ac-50);border-left-color:var(--ac);font-weight:700}
+main{padding:36px 0 100px;min-width:0;counter-reset:sec}
+section{margin-bottom:54px;scroll-margin-top:24px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+h2{font-size:29px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+.lead{font-size:18px;color:var(--ink2);margin-bottom:32px;line-height:1.8;text-wrap:balance}
+h3{font-size:20px;font-weight:800;margin:34px 0 12px;color:var(--ink);letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.co{border:1px solid var(--line2);border-left:3px solid var(--line);border-radius:0 10px 10px 0;padding:18px 24px;margin:20px 0;font-size:16px;line-height:1.8;text-wrap:pretty}
+h2,h3{text-wrap:balance}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100);border-left-color:var(--ac)} .co.ok{background:var(--ok-50);border-color:#bbf7d0;border-left-color:var(--ok)}
+.co.warn{background:var(--warn-50);border-color:#fde68a;border-left-color:var(--warn)} .co.bad{background:var(--bad-50);border-color:#fecdd3;border-left-color:var(--bad)}
+.co b,.co strong{color:var(--ink);font-weight:600}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
+.t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
+.t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 4px}
+.kpi .k{background:var(--ink);color:#fff;border-radius:12px;padding:18px}
+.kpi .k.alt{background:var(--bad)}
+.kpi .lbl{font-size:11px;color:#94a3b8;font-weight:600;margin-bottom:4px}
+.kpi .k.alt .lbl{color:#fecdd3}
+.kpi .v{font-size:28px;font-weight:800;letter-spacing:-.02em}
+.kpi .s{font-size:11px;color:#cbd5e1;margin-top:3px;line-height:1.5}
+.kpi .k.alt .s{color:#fecdd3}
+.op{background:var(--ink);color:#fff;border-radius:16px;padding:30px}
+.op .opk{font-size:11px;font-weight:800;letter-spacing:.14em;color:#a5b4fc;margin-bottom:18px}
+.op .blk{margin-bottom:22px} .op .blk:last-child{margin-bottom:0}
+.op .bl{font-size:11px;font-weight:800;color:#a5b4fc;letter-spacing:.08em;margin-bottom:9px}
+.op .need{font-size:17px;font-weight:700;line-height:1.62}
+.op .need b{color:#c7d2fe}
+.op .need .ev{display:block;margin-top:11px;font-size:13.5px;font-weight:500;color:#cbd5e1;line-height:1.72}
+.op .need .ev b{color:#e2e8f0}
+.op .do{display:grid;gap:9px}
+.op .do .item{background:rgba(255,255,255,.06);border-left:3px solid var(--ac);padding:12px 15px;border-radius:0 8px 8px 0;font-size:13.5px;line-height:1.62;color:#e2e8f0}
+.op .do .item b{color:#c7d2fe}
+.op .offer{background:rgba(79,70,229,.24);border:1px solid var(--ac);border-radius:10px;padding:15px 18px;font-size:13.5px;line-height:1.7;color:#e9ecf5}
+.op .offer b{color:#c7d2fe}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0 4px}
+th{background:var(--soft);color:var(--ink2);font-weight:700;text-align:left;padding:9px 11px;font-size:12.5px;border-bottom:1px solid var(--line)}
+td{padding:9px 11px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b,td strong{color:var(--ink)}
+.q{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac);border-radius:10px;padding:16px 18px;margin-bottom:10px}
+.q .qn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.05em;margin-bottom:5px}
+.q .qt{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.65}
+.q .qi{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.6}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px;position:relative}
+.tier.rec{border:2px solid var(--ac);box-shadow:0 8px 24px -12px rgba(79,70,229,.4)}
+.tier .rb{position:absolute;top:-11px;left:18px;background:var(--ac);color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;padding:3px 11px;border-radius:9px}
+.tier .tn{font-size:12px;font-weight:800;color:var(--muted)}
+.tier .tt{font-size:12.5px;color:var(--muted);margin:2px 0 10px}
+.tier .tp{font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.tier .td{font-size:11.5px;color:var(--muted);margin-bottom:12px}
+.tier ul{list-style:none}
+.tier li{font-size:13px;color:var(--ink2);padding:4px 0 4px 15px;position:relative;line-height:1.55}
+.tier li::before{content:"›";position:absolute;left:0;color:var(--ac);font-weight:800}
+.tl{border-left:2px solid var(--line);padding-left:20px;margin:10px 0}
+.tl .ph{position:relative;padding:10px 0}
+.tl .ph::before{content:"";position:absolute;left:-26px;top:14px;width:9px;height:9px;border-radius:50%;background:var(--ac)}
+.tl .pt{font-size:12px;font-weight:800;color:var(--ac)}
+.tl .pb{font-size:13px;color:var(--ink2);margin-top:2px}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sw{border-radius:12px;padding:16px 18px;border:1px solid var(--line)}
+.sw h4{font-size:12.5px;font-weight:800;margin-bottom:8px}
+.sw.s{background:var(--ok-50)} .sw.s h4{color:var(--ok)}
+.sw.w{background:var(--bad-50)} .sw.w h4{color:var(--bad)}
+.sw.o{background:var(--ac-50)} .sw.o h4{color:var(--ac)}
+.sw.tt{background:var(--warn-50)} .sw.tt h4{color:var(--warn)}
+.sw li{font-size:13px;color:var(--ink2);margin-left:15px;padding:2px 0;line-height:1.5}
+.verdict{background:var(--ink);color:#fff;border-radius:14px;padding:24px;text-align:center;margin:14px 0}
+.verdict .vl{font-size:12px;color:#94a3b8;font-weight:600}
+.verdict .vv{font-size:34px;font-weight:800;letter-spacing:-.02em;margin:6px 0;color:#a5b4fc}
+.verdict .vd{font-size:13px;color:#cbd5e1}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px}
+footer .in{max-width:1360px;margin:0 auto;padding:0 40px}
+@media(max-width:880px){.layout{grid-template-columns:1fr;gap:0;padding:0 22px}nav.toc{display:none}.hero .in{padding:0 22px}.hero h1{font-size:30px}.grid2,.grid3,.kpi,.tiers,.swot{grid-template-columns:1fr}}
+
+/* ===== veggiet DNA 가산 컴포넌트 (인디고 클린 토큰만 사용) ===== */
+/* 1) 에디토리얼 커버 — h1 형광 언더라인 + clamp 반응형 */
+.hero h1{font-size:clamp(38px,4.8vw,56px);line-height:1.08}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
+
+/* 2) evidence 박스 (직접 리서치 캡처·증빙 액자) */
+.evi{border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:14px 0}
+.evi .eh{padding:11px 16px;font-size:12.5px;font-weight:800;background:var(--soft);border-bottom:1px solid var(--line);color:var(--ink2)}
+.evi img{display:block;width:100%;height:auto}
+.evi .en{padding:9px 16px;font-size:12px;color:var(--muted);border-top:1px dashed var(--line)}
+
+/* 3) 역할/팩트 카드 그리드 (핵심 팩트 스캔형 3~4열) */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
+.fcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
+.fcard .fk{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.fcard .fv{font-size:16px;font-weight:800;color:var(--ink)}
+.fcard .fs{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.55;font-weight:500}
+
+/* 4) ★ 리서치 캡처 그리드 — 광고 대시보드·경쟁사·SNS 현황 (상담 전 직접 리서치 캡처 자리) */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:16px 0 6px}
+.shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.shot .sk{display:flex;align-items:center;gap:7px;padding:9px 13px;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--ac);background:var(--ac-50);border-bottom:1px solid var(--ac-100)}
+.shot .sk::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--ac)}
+.shot .sfig{aspect-ratio:16/10;background:var(--soft);display:block;width:100%;object-fit:cover}
+/* 빈 슬롯(placeholder) 상태 — 점선 안내 */
+.shot .sph{aspect-ratio:16/10;background:repeating-linear-gradient(45deg,var(--soft),var(--soft) 10px,#f0f3f8 10px,#f0f3f8 20px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted);text-align:center;padding:14px}
+.shot .sph .ic{font-size:22px;opacity:.5}
+.shot .sph .pl{font-size:12px;font-weight:700;color:var(--ink2)}
+.shot .scap{padding:10px 14px;font-size:12px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line2)}
+.shot .scap b{color:var(--ink2)}
+
+/* 5) 디자인·가독성 격상 (v2-③) — 인디고 토큰 안에서 "디자인된 문서" */
+/* v4 에디토리얼 챕터 — 큰 솔리드 번호 오프너 + 굵은 구분선 + 대폭 여백 */
+section{margin-bottom:116px;counter-increment:sec;border-top:2px solid var(--ink);padding:34px 0 0 108px;position:relative}
+main>section:first-child{border-top:none;padding-top:0}
+.sec-k{display:block;background:none;border:none;border-radius:0;padding:0;font-size:12px;letter-spacing:.2em;color:var(--ac);margin-bottom:14px}
+.sec-k::before{content:counter(sec,decimal-leading-zero);position:absolute;left:0;top:30px;font-size:62px;font-weight:800;color:var(--ac);letter-spacing:-.04em;line-height:.9;font-variant-numeric:tabular-nums}
+main>section:first-child .sec-k::before{top:0}
+@media(max-width:880px){section{padding-left:0!important}.sec-k::before{position:static;display:block;margin-bottom:4px}}
+h2{font-size:34px;margin-bottom:16px;letter-spacing:-.025em}
+h2{line-height:1.18}
+h3{letter-spacing:-.01em;line-height:1.4}
+/* 섹션 결론 풀폭 인디고 밴드 (.co.ac.band) — 베지어트 컬러 블록 역할 */
+.co.ac.band{padding:18px 22px;font-size:16px;line-height:1.85}
+/* 표 가독성: zebra + th 인디고 틴트 + 셀 패딩 + 숫자 tabular-nums */
+table{font-variant-numeric:tabular-nums}
+th{background:var(--ac-50);color:var(--ac-700);padding:13px 15px}
+td{padding:13px 15px}
+tbody tr:nth-child(even) td, table tr:nth-child(even) td{background:var(--soft)}
+
+@media(max-width:880px){.shots{grid-template-columns:1fr}}
+@media print{
+  .evi,.fcard,.card,.shot{break-inside:avoid}
+}
+
+/* ===== v3 신규: 사업 단계 / 셀렉 매트릭스 / 인라인 1차 견적 ===== */
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.stage{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px;position:relative}
+.stage.on{border:2px solid var(--ac);background:var(--ac-50)}
+.stage .sgn{font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--muted)}
+.stage.on .sgn{color:var(--ac)}
+.stage .sgt{font-size:15px;font-weight:800;color:var(--ink);margin:4px 0 8px}
+.stage .sgd{font-size:12px;color:var(--muted);line-height:1.55}
+.stage .sgr{display:block;margin-top:10px;font-size:11.5px;color:var(--ac-700);font-weight:700}
+.sel-component{container-type:inline-size}
+.sel-split{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.9fr);gap:18px;align-items:start}
+.pane-k{font-size:11px;font-weight:800;letter-spacing:0;color:var(--muted);margin-bottom:9px}
+.selmx{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);font-variant-numeric:tabular-nums}
+.selmx .hd,.selmx .rw{display:grid;grid-template-columns:minmax(142px,1.6fr) repeat(4,minmax(62px,1fr))}
+.selmx .hd{background:var(--soft);border-bottom:1px solid var(--line)}
+.selmx .hd>div{padding:11px 8px;font-size:11px;font-weight:800;color:var(--ink2);text-align:center;line-height:1.25}
+.selmx .hd>div:first-child{text-align:left}
+.selmx .hd .ls{display:block;font-size:9.5px;font-weight:600;color:var(--muted)}
+.selmx .hd .star{color:var(--ac)}
+.selmx .rw{border-bottom:1px solid var(--line2)}
+.selmx .rw:last-child{border-bottom:0}
+.selmx .rw:hover{background:var(--soft)}
+.selmx .nm{padding:13px 14px;display:flex;flex-direction:column;gap:3px;justify-content:center}
+.selmx .nm b{font-size:13px;font-weight:700;color:var(--ink);line-height:1.35}
+.selmx .opt{margin:7px 5px;border:1.5px solid var(--line);border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:9px 3px;cursor:pointer;transition:.12s;background:var(--card);position:relative;min-height:42px;text-align:center}
+.selmx .opt .amt{font-size:13.5px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:0}
+.selmx .opt .sub{font-size:9px;font-weight:600;color:var(--muted);margin-top:1px}
+.selmx .opt.ex{border-style:dashed}
+.selmx .opt.ex .amt{color:var(--muted)}
+.selmx .opt:hover,.selmx .opt:focus-visible{border-color:var(--ac-100);background:var(--ac-50);outline:0}
+.selmx .opt.on{background:var(--ac);border-color:var(--ac);box-shadow:0 6px 15px -8px var(--ac)}
+.selmx .opt.on .amt{color:var(--card)}
+.selmx .opt.on .sub{color:var(--ac-100)}
+.selmx .opt.on.ex{background:var(--ink2);border-color:var(--ink2)}
+.selmx .opt.on.ex .amt{color:var(--card)}
+.selmx .opt.on::after{content:"✓";position:absolute;top:2px;right:5px;font-size:9px;font-weight:800;color:var(--ac-100)}
+.qpane{position:sticky;top:20px;border:2px solid var(--ac);border-radius:16px;overflow:hidden;background:var(--card)}
+.qsh{background:var(--ac);color:var(--card);padding:18px 20px}
+.qsh .ttl{font-size:12.5px;font-weight:800;color:var(--ac-100);letter-spacing:0}
+.qsh .big{margin-top:7px;line-height:1.02}
+.qsh .big .won{font-size:30px;font-weight:800;letter-spacing:0;font-variant-numeric:tabular-nums}
+.qsh .big .eok{font-size:13px;font-weight:600;color:var(--ac-100);margin-left:6px}
+.env{padding:14px 20px;border-bottom:1px solid var(--line)}
+.env .et{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;margin-bottom:8px;font-size:12px;color:var(--muted)}
+.env .et input{width:54px;padding:3px 6px;border:1px solid var(--line);border-radius:6px;font-family:inherit;font-size:12px;text-align:right}
+.env .et .st{font-weight:800}
+.env .et .st.ok{color:var(--ok)}
+.env .et .st.over{color:var(--bad)}
+.env .bar{position:relative;height:10px;border-radius:99px;background:var(--ac-50);overflow:hidden}
+.env .bar .fill{height:100%;border-radius:99px;background:var(--ac);transition:width .3s,background .3s}
+.env .bar.over .fill{background:var(--bad)}
+.env .cap{margin-top:7px;font-size:11px;color:var(--muted);line-height:1.5}
+.env .cap b{color:var(--ink)}
+.qlist{padding:6px 8px;max-height:none}
+.qrow{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid var(--line2)}
+.qrow:last-child{border-bottom:0}
+.qrow .qn{flex:1;font-size:12.5px;color:var(--ink2);line-height:1.4}
+.qrow .lvb{display:inline-block;font-size:9.5px;font-weight:800;padding:1px 6px;border-radius:5px;background:var(--ac-50);color:var(--ac);margin-right:6px;vertical-align:1px}
+.qrow.edited .lvb{background:var(--warn-50);color:var(--warn)}
+.qrow .amtin{width:78px;text-align:right;font-family:inherit;font-size:14px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;border:1px solid transparent;border-radius:7px;padding:5px 8px;background:transparent;transition:.12s}
+.qrow .amtin:hover{background:var(--soft)}
+.qrow .amtin:focus{outline:0;border-color:var(--ac);background:var(--card);box-shadow:0 0 0 3px var(--ac-50)}
+.qrow.edited .amtin{color:var(--ac-700)}
+.qrow .unit{font-size:11px;color:var(--muted)}
+.qfoot{display:flex;justify-content:space-between;align-items:center;background:var(--ink);color:var(--card);padding:13px 20px;font-size:13px;font-weight:800}
+.qfoot .ft{color:var(--ac-100);font-size:16px;font-variant-numeric:tabular-nums}
+.qact{display:flex;gap:8px;flex-wrap:wrap;padding:13px 16px;background:var(--soft);border-top:1px solid var(--line)}
+.qact .btn{font-family:inherit;font-size:12px;font-weight:700;border:1px solid var(--ac);background:var(--card);color:var(--ac);border-radius:9px;padding:8px 13px;cursor:pointer;transition:.15s}
+.qact .btn:hover{background:var(--ac);color:var(--card)}
+.qact .btn.solid{background:var(--ac);color:var(--card)}
+.qact .btn.solid:hover{background:var(--ac-700);border-color:var(--ac-700)}
+.qhint{font-size:11px;color:var(--muted);padding:0 16px 13px;background:var(--soft);line-height:1.55}
+.savest{font-weight:800;color:var(--muted)}
+.savest.ok{color:var(--ok)}
+@container (max-width:660px){.sel-component .sel-split{grid-template-columns:1fr}.sel-component .qpane{position:relative;top:auto}}
+@media(max-width:680px){.sel-split{grid-template-columns:1fr}.qpane{position:relative;top:auto}}
+@media(max-width:560px){.selmx{overflow-x:auto}.selmx .hd,.selmx .rw{min-width:620px}.qrow{align-items:flex-start;flex-wrap:wrap}.qrow .amtin{margin-left:auto}}
+/* 링크(이미지 캡처 대체) */
+.co a{color:var(--ac);font-weight:700;text-decoration:none;border-bottom:1px solid var(--ac-100);word-break:break-all}
+.co a:hover{border-color:var(--ac)}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">NEW BUSINESS PREP · 통합표준</div>
+  <h1>페스토요일 <span class="hl">(Pestoyoil)</span></h1>
+  <div class="sub">"Flavor your days" — 국내산 100% 바질·당일제조 수제 페스토 D2C(충남 계룡·업력 1년 9개월). 제품과 원칙은 뾰족한데, <b style="color:#fff">"페스토를 왜/어떻게 먹는지" 수요 자체가 얇은 카테고리</b>에서 광고·상세페이지·SNS를 동시에 고민 중.</div>
+  <div class="meta">
+    <span class="chip">사업 단계 <b>STAGE 2~3 추정 (매출·광고 실태 미확인 · 상담 확정)</b></span>
+    <span class="chip">기회 적합도(추정) <b>3.0 / 5.0 · 조건부 GO</b></span>
+    <span class="chip">추천 <b>소액 진단 입구 → Land &amp; Expand</b></span>
+    <span class="chip">미팅 <b>7/15(수) 15:00~16:00 · AFPRO 부스(코엑스)</b></span>
+    <span class="chip">상담 전 PREP · 인테이크 3줄 + 직접 리서치 (녹취 없음 · 전량 가설)</span>
+  </div>
+  <div class="links">
+    <a class="lnk store" href="https://pestoyoil.com/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 01-8 0"></path></svg>
+      자사몰 바로가기
+    </a>
+    <a class="lnk sns" href="https://www.instagram.com/pestoyoil/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      @pestoyoil
+    </a>
+    <a class="lnk sns" href="https://www.tiktok.com/@pestoyoil" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"></path></svg>
+      TikTok
+    </a>
+  </div>
+</div></div>
+
+<div class="layout">
+  <nav class="toc">
+    <div class="nl">PREP 목차</div>
+    <a href="#onepager">수주 한 장</a>
+    <a href="#diagnosis">핵심 진단</a>
+    <a href="#company">기업 · 제품 · 채널</a>
+    <a href="#market">시장 · 경쟁 · 니즈</a>
+    <a href="#deal">기회 · 견적</a>
+    <a href="#govfit">정부지원사업</a>
+    <a href="#consult">상담 진행</a>
+    <a href="#sources">참고 출처</a>
+  </nav>
+
+  <main>
+    <section id="onepager">
+      <div class="sec-k">ONE-PAGER</div>
+      <h2>수주 한 장</h2>
+      <p class="lead">부스 상담(7/15 15:00) 직전 이 카드 하나면 된다. 제공 자료는 <b>신청 폼 3줄이 전부</b> — 아래는 전부 직접 리서치 위에 세운 가설.</p>
+      <div class="op">
+        <div class="opk">수주 한 장</div>
+        <div class="blk">
+          <div class="bl">USP & 진짜 니즈 (가설)</div>
+          <div class="need"><b>USP</b> = "국내산 100% 바질을 주문 즉시 당일제조하는 소용량 수제 페스토." <b>진짜 니즈</b> = 광고를 더 잘 돌리는 게 아니라 — <b>산 사람이 페스토를 안 써서 재구매가 멈춘 것</b>을 푸는 것.
+            <span class="ev">신규 획득은 이미 작동한다(<b>누적 7만+ 자칭 · 바질 리뷰 2,845건 · 유튜브 쇼츠 158만 조회</b>). 그런데 리뷰의 <b>73%가 바질 하나</b>고 <b>홈쿡 키트 6종은 합쳐서 94건(2.4%)</b>이다. 안 쓰면 안 떨어지고, 안 떨어지면 재구매가 없다. <b>광고를 늘릴수록 "안 쓰는 사람"이 늘어난다.</b></span>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="bl">그래서 우리가 해주는 것</div>
+          <div class="do">
+            <div class="item"><b>① 어디가 새는지 판정</b> — 광고·상세·SNS 3개를 한 번에 던진 건 범인을 모른다는 뜻. 3개를 다 사면 3배 쓰고도 못 고친다. 진단이 먼저</div>
+            <div class="item"><b>② 상세페이지 = 결제 판단 정보 복구</b> — 17,900원인데 <b>몇 g인지 안 적혀 있다</b>. 이탈 원인은 디자인이 아니라 정보 부재</div>
+            <div class="item"><b>③ 사용법 콘텐츠로 재구매 엔진</b> — 유튜브 158만 도달했는데 구독 61명. 도달이 자산으로 안 남는다. SNS 방향과 재구매가 <b>같은 문제</b> — 하나 고치면 둘이 풀린다</div>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="bl">첫 제안 & 다음 액션</div>
+          <div class="offer"><b>T1 전환 진단 (500만 / 3주)</b>으로 입구. 부스 워크인 = 신뢰 0·시간 짧음·예산 미확인이라 <b>1,300만을 던지면 "비교해볼게요"로 끝난다.</b> 승격 시 T2(1,300만). <b>부스의 유일한 목표 = 후속 미팅 확보.</b> 1순위 청취 = ①결재권(임주혁 vs 임소현) ②월 광고비·ROAS ③재구매율.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="diagnosis">
+      <div class="sec-k">DIAGNOSIS (가설)</div>
+      <h2>핵심 진단</h2>
+      <p class="lead">획득은 이미 작동한다 — 리뷰 2,845건·유튜브 158만 조회가 그 증거다. 멈춘 건 <b>재구매</b>고, 원인은 <b>"사고 나서 안 쓴다"</b>. 요청 3줄은 전부 이 하나의 증상으로 보인다. <span class="t n">상담 전 가설</span></p>
+      <div class="kpi">
+        <div class="k"><div class="lbl">바질페스토 리뷰</div><div class="v">2,845</div><div class="s">JSON-LD 07-15 · 획득은 작동 중</div></div>
+        <div class="k"><div class="lbl">메타 광고</div><div class="v">24개 ACTIVE</div><div class="s">07-02~07-13 집행 · Ad Library 확인</div></div>
+        <div class="k"><div class="lbl">유튜브 조회 / 구독</div><div class="v">158만 / 61</div><div class="s">전부 쇼츠 · 도달이 안 남는다</div></div>
+        <div class="k alt"><div class="lbl">시급 과제</div><div class="v">재구매 · 원툴</div><div class="s">리뷰 73% 바질 · 키트 6종 94건</div></div>
+      </div>
+      <div class="grid3" style="margin-top:14px">
+        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">스펙이 18화면 아래 이미지 안에</h3><p style="font-size:12.5px;color:var(--muted)"><b>중량·유통기한·원산지는 있다 — 18.1번째 화면 "INFORMATION" 이미지 안에.</b> <span class="t r">"없다"고 말하면 반박당한다(초기 판정 정정)</span> 상세는 <b>이미지 26장·본문 텍스트 0자</b>라 <b>사람도 검색엔진도 못 찾는다</b>. 바질 <b>함량은 아예 미공개</b> — 경쟁사는 전부 숫자로 낸다.</p></div>
+        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">홈쿡 키트 6종 = 리뷰 94건</h3><p style="font-size:12.5px;color:var(--muted)">바질 2,845 · 썬드라이 <b>471</b> 양강(73%). 진짜 실패는 <b>키트 6종 합계 94건(2.4%)</b> — SKU 절반이 여기다. <b>키트가 "쓰는 법"의 정답인데 안 팔린다</b> = 상품이 아니라 설명의 문제. 규명 전 확장 캠페인 수주 금지.</p></div>
+        <div class="card"><span class="t y">High</span><h3 style="margin:8px 0 6px">쓰는 법을 안 가르친다</h3><p style="font-size:12.5px;color:var(--muted)">레시피 게시판 3건 · <b>2024-11 이후 20개월 정지</b>. 상세에 사용 가이드 0. 페스토는 "사놓고 다 못 쓰는" 카테고리인데 재구매 엔진을 만들다 말았다.</p></div>
+      </div>
+      <div class="co bad"><span class="lab">진단 결론 (가설)</span><b>병목은 신규 획득이 아니다 — 7만·2,845·158만 조회가 획득 작동을 증명한다.</b> 병목은 ①산 사람이 두 번째를 안 사고 ②두 번째 제품이 안 팔린다는 것. <b>두 원인이 같다 — 페스토를 쓸 줄 모른다.</b> 광고는 이 문제를 못 고친다. 오히려 광고를 늘릴수록 안 쓰는 사람이 늘어난다.</div>
+      <div class="co ac band"><span class="lab">USP 상태 — 페스토요일 = 무기를 안 쓰는 형</span>페스토의 진짜 통증은 <b>"한 통 사면 다 못 쓰고 상한다"</b>다. 페스토요일의 <b>소용량 + 주문 즉시 당일제조</b>는 바로 그 통증의 답인데 — 광고 24개 중 <b>16개가 "100% 핸드메이드"라는 원료 자랑만 반복</b>한다. "왜 국내산인가"가 아니라 <b>"왜 이 용량인가"</b>를 말해야 가격이 설명되고, 어제 달린 리뷰 <i>"가격때문에 자주 못사서 아쉬워요"</i>에도 답이 된다.</div>
+    </section>
+
+    <section id="company">
+      <div class="sec-k">COMPANY · PRODUCT · CHANNEL</div>
+      <h2>기업 · 제품 · 채널</h2>
+      <p class="lead">충남 계룡의 <b>창업 21개월</b> 개인사업자. 체급은 작지만 <b>실매출이 있는 브랜드</b>(매출 0인 STAGE 0 케이스와 질적으로 다름)이고, <b>D2C 전업이 아니라 브런치카페 겸업</b>이다.</p>
+      <div class="grid2">
+        <div class="card">
+          <h3 style="margin-top:0">기업 기초</h3>
+          <div class="cards">
+            <div class="fcard"><div class="fk">상호 / 대표</div><div class="fv">페스토요일 · <b>임소현</b></div><div class="fs">자사몰 푸터 기준. <b>신청자는 임주혁</b> — 관계 미확인</div></div>
+            <div class="fcard"><div class="fk">사업자</div><div class="fv">892-16-02510</div><div class="fs"><b>개인사업자·일반과세</b> <span class="t g">bizno 확인</span> · 업태=도소매/전자상거래 소매업</div></div>
+            <div class="fcard"><div class="fk">업력</div><div class="fv">1년 9개월</div><div class="fs">사업자 등록일 <b>2024-10-11</b>(논산세무서·계속사업자) · 통신판매 2024-충남계룡-0103 · 유튜브 개설 2024-10-16 <span class="t g">3중 일치</span></div></div>
+            <div class="fcard"><div class="fk">거점</div><div class="fv">충남 계룡시 엄사면</div><div class="fs">향한매봉1길 10, 2층 — IG 바이오상 "키친"</div></div>
+            <div class="fcard"><div class="fk">조직</div><div class="fv">창업 시 1명</div><div class="fs">2024-10 시점 메타 기준 · 현재 미확인 · 채용공고 0(사람인·잡코리아·원티드)</div></div>
+            <div class="fcard"><div class="fk">★ 인허가</div><div class="fv">즉석판매제조가공업<br>+ 일반음식점</div><div class="fs"><b>식품제조가공업 없음 · HACCP 없음</b> <span class="t r">= 확장 천장</span> · 식품안전나라 2건(동일 주소·대표)</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">정량 시그널 <span style="font-size:11px;color:var(--muted);font-weight:500">(값 · 출처)</span></h3>
+          <table>
+            <tr><td style="width:34%"><b>바질페스토 리뷰</b></td><td><b>2,845건</b> · 평점 4.7 <span class="t n">JSON-LD 07-15</span> — 획득이 작동한다는 최강 증거 <span class="t n">렌더 리뷰탭은 2,778 · 집계시점 차</span></td></tr>
+            <tr><td><b>누적 판매</b></td><td>"7만 +" <span class="t y">브랜드 자칭</span> (상품명에 표기) — 검증 불가. 리뷰율 약 4%로 D2C 통상치(3~10%)와 정합 <span class="t n">확신 70%</span></td></tr>
+            <tr><td><b>메타 광고</b></td><td><b>24개 ACTIVE</b> · 집행 2026-07-02~07-13 · 계정통화 USD <span class="t n">Ad Library 직접확인</span> — 광고를 이미 돌리고 있다</td></tr>
+            <tr><td><b>유튜브</b></td><td>구독 <b>61명</b> / 총 조회 <b>1,578,676회</b> <span class="t n">직접확인</span> — 전부 쇼츠. <b>도달은 터지는데 브랜드로 안 남는다</b></td></tr>
+            <tr><td><b>IG @pestoyoil</b></td><td>팔로워 <b>7,177</b> · 게시물 147 <span class="t n">직접확인 07-15</span> · 바이오 이메일 = <b>신청자 본인 주소와 일치</b> → IG 운영자 = 임주혁 <span class="t y">가설</span></td></tr>
+            <tr><td><b>매출</b></td><td><b>미확인</b> — 누적 역산 시 연 3~6억대 <span class="t y">추정</span>(기간·채널 불명, 근거 약함)</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="co warn"><span class="lab">★ 결재자 불명 — 이 딜의 1번 리스크</span>자사몰 대표는 <b>임소현</b>, 상담 신청자는 <b>임주혁</b>. 성만 같고 관계는 <b>근거 없음</b>. 다만 IG 바이오 이메일(<code>ju.flavor@</code>)이 신청자 주소와 일치 → <b>마케팅·채널 운영 담당</b>일 가능성. 결재권자면 의사결정이 빠르고, 전달자면 "상의해볼게요"로 끝난다. <b>확인 전 클로징 금지.</b> <span class="t n">동명이인 주의 — 검색 상위 "충남작물조합 임주혁 전무"는 별개 가능성 높음(마인드퍼폼 정주용 건과 같은 함정)</span></div>
+
+      <h3>제품 라인 (11 SKU · 리뷰 = 판매량 프록시)</h3>
+      <table>
+        <tr><th style="width:30%">제품</th><th style="width:18%">가격 (정가)</th><th style="width:10%">평점</th><th style="width:12%">리뷰</th><th>메모</th></tr>
+        <tr><td><b>수제 바질페스토 150g</b> <span class="t b">주력</span></td><td><b>17,900</b> (22,000·19%↓)</td><td>4.7</td><td><b>2,845</b></td><td>"[누적 판매 7만 +]" 상품명 표기 · 1개 / <b>2개+무배 33,900(23%↓)</b> / <b>3개+무배 48,900(25%↓) BEST</b></td></tr>
+        <tr><td><b>썬드라이토마토</b> <span class="t b">2위</span></td><td>16,900 (20,000)</td><td>4.8</td><td><b>471</b></td><td>★ 커리페스토의 <b>약 2배</b> — "바질 원툴"이 아니라 <b>양강</b></td></tr>
+        <tr><td>수제 커리페스토</td><td>16,900 (20,000·15%↓)</td><td>4.6</td><td>249</td><td>"6시간 동안 끓여낸"</td></tr>
+        <tr><td>시그니처 페스토 3종 세트</td><td><b>50,000</b> (62,000·19%↓)</td><td>4.6</td><td><b>202</b></td><td>★ <b>최고 객단가에서 이미 검증됨</b> · 애드온 크래커+2,000·미니치즈+6,000·선물박스+2,500</td></tr>
+        <tr><td>생바질 파스타 키트</td><td>27,000 (33,700·20%↓)</td><td>4.9</td><td>27</td><td rowspan="6" style="vertical-align:middle;background:var(--bad-50)"><b>홈쿡 키트 6종 = 리뷰 합계 94건(전체의 2.4%)</b><br>SKU 수는 절반 이상인데 판매 기여는 미미. <b>확장 시도가 반복 실패</b>. 커리 디핑소스는 <b>평점 3.7 — 유일한 4점 미만</b></td></tr>
+        <tr><td>치킨 커리 키트</td><td>24,000</td><td>4.7</td><td>26</td></tr>
+        <tr><td>썬드라이토마토 브루스케타 키트</td><td>29,000</td><td>5.0</td><td>25</td></tr>
+        <tr><td>바질 샌드위치 키트</td><td>29,000</td><td>4.4</td><td>7</td></tr>
+        <tr><td>치킨커리 타코 키트</td><td>27,900 (35,000·20%↓)</td><td>5.0</td><td>6</td></tr>
+        <tr><td>커리 디핑소스 키트</td><td>28,000</td><td><b>3.7</b></td><td>3</td></tr>
+        <tr><td>참나물페스토 150g <span class="t n">시즈널</span></td><td>15,900 (20,000·20%↓)</td><td>5.0</td><td>8</td><td>★ 국내산 원물의 <b>계절성을 시즌 상품으로 뒤집은 유일한 시도</b> — 확장 축 후보</td></tr>
+      </table>
+      <div class="co bad"><span class="lab">원툴 구조 — 리뷰 73%가 바질 <span class="t y">85%에서 정정</span></span>총 리뷰 <b>약 3,872건 중 바질페스토 2,845 = 73%</b>. 초기 집계는 썬드라이토마토(471)를 누락해 85%로 봤으나 <b>정정</b> — 정확히는 <b>바질+썬드라이 양강</b>이고, 진짜 실패는 <b>홈쿡 키트 6종(합계 94건·2.4%)</b>이다. <b>키트가 "쓰는 법"의 정답인데 안 팔린다</b> — 상품이 틀린 게 아니라 설명이 없는 것. <span class="t n">리뷰수: JSON-LD 2,845 / 렌더 리뷰탭 2,778 — 둘 다 라이브값, 집계 시점 차</span></div>
+      <div class="co warn"><span class="lab">노출 우선순위가 실적과 역행</span>홈 노출 순서 = 타코키트(리뷰 <b>6</b>) → 바질(2,845) → 커리(249) → 파스타키트(27) → 선물세트(202) → <b>썬드라이토마토(471)가 6번째</b> → 참나물(8). <b>리뷰 6건짜리 신상이 최상단, 471건 2위 상품이 6번째다.</b> 상담에서 짚을 즉시 개선 지점.</div>
+      <div class="co ok"><span class="lab">전 제품 정상 판매 중 — 품절 아님</span>초기 자동 파싱에서 "전 품목 품절"로 읽혔으나 <b>오독</b>이었다. 카페24 미렌더 템플릿의 <code>{$soldout_icon}</code> 플레이스홀더를 실제 상태로 오인한 것 — <b>렌더된 DOM 기준 품절 표기 0건</b>, 전 제품 구매 동선 정상. <span class="t n">상담에서 "품절이던데요" 류 발언 금지</span></div>
+
+      <h3>채널 현황 — 도달은 터지는데 브랜드로 안 남는다</h3>
+      <table>
+        <tr><th style="width:16%">채널</th><th style="width:26%">실측 (2026-07-15)</th><th>메모</th></tr>
+        <tr><td><b>★ 유튜브</b></td><td>구독 <b>61명</b> / 총 조회 <b>1,578,676회</b></td><td>2024-10-16 개설 · <b>전부 쇼츠, 롱폼 0</b> · 채널 설명 "페스토요일 첫 쇼핑몰 생존기". <b>158만 도달을 만들고 구독 61명이 남았다</b> — 콘텐츠 능력은 증명, 자산화가 0</td></tr>
+        <tr><td><b>인스타</b></td><td>팔로워 <b>7,177</b> / 게시물 147</td><td>콘텐츠가 <b>이미 용도·레시피 중심</b>("5월의 미식 참나물 #1~7" 시리즈) — <span class="t g">칭찬으로 열 것, 지적 금지</span></td></tr>
+        <tr><td><b>틱톡</b></td><td>팔로워 <b>330</b> / 영상 41 / 좋아요 1,483</td><td>조회 최고 5.98만·2.51만인데 최신 5개는 944~3,900. <b>잘된 게 용도형("집에서도 레스토랑급 파스타가?")</b> · ★자막 <b>"하루 딱 50개만 만들어요"</b></td></tr>
+        <tr><td><b>자사몰</b></td><td>pestoyoil.com (카페24)</td><td>멤버십 · 배송비 4,000 / 30,000↑ 무료 · 2·3개 묶음으로 문턱 해소 설계 있음</td></tr>
+        <tr><td><b>★ 오프라인</b></td><td><b>브런치카페 겸업</b> · 플레이스 리뷰 320</td><td>"페스토요일 브런치카페" — <b>동일 주소 2층에서 카페+제조+D2C 동시 운영</b>. D2C 전업이 아니다 → 캐파 논의가 더 무겁다. 메뉴 바질크림수제비 17,900 등</td></tr>
+        <tr><td>스마트스토어</td><td>입점 <b>확인</b> (검색 노출)</td><td>smartstore.naver.com/pestoyoil · 429로 가격·리뷰 직접검증 실패</td></tr>
+        <tr><td>광고</td><td>메타 <b>24개 ACTIVE</b></td><td>07-02~07-13 · 계정통화 USD · <b>16개 동일 카피</b> · 인플루언서 1건(@bbangsoon._2)</td></tr>
+        <tr><td>쿠팡 · 언론 · 펀딩</td><td>미확인 / <b>0건</b> / <b>0건</b></td><td>쿠팡 403 · 네이버 뉴스 0건 · 와디즈 이력 없음</td></tr>
+      </table>
+      <div class="co ac band"><span class="lab">★ SNS 방향 질문에 대한 정면 답</span><b>"도달은 이미 터뜨리셨다."</b> 유튜브 쇼츠 총 조회 <b>158만</b>은 웬만한 브랜드보다 낫다. 그런데 <b>구독 61명</b>이고, 틱톡은 330명이다. <b>그 트래픽이 채널에도 자사몰에도 남지 않는다.</b> 문제는 콘텐츠 능력이 아니라 <b>자산화 구조</b> — 그리고 인스타엔 이미 "먹는 방법" 147개가 쌓여 있다. <b>새로 찍을 게 아니라 있는 걸 옮기고 남기는 설계.</b></div>
+      <div class="co"><span class="lab">관련 링크 · 라이브 확인</span>
+        <a href="https://pestoyoil.com" target="_blank" rel="noopener">자사몰</a> ·
+        <a href="https://pestoyoil.com/product/detail.html?product_no=17" target="_blank" rel="noopener">바질페스토 상세(#17 · 고시 미표기 근거)</a> ·
+        <a href="https://pestoyoil.com/board/gallery/list.html?board_no=8" target="_blank" rel="noopener">레시피 게시판(20개월 정지)</a> ·
+        <a href="https://www.instagram.com/pestoyoil/" target="_blank" rel="noopener">IG @pestoyoil</a> ·
+        <a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=KR&view_all_page_id=473486765850449" target="_blank" rel="noopener">Meta Ad Library (24개 ACTIVE)</a>
+      </div>
+    </section>
+
+    <section id="market">
+      <div class="sec-k">MARKET · COMPETITION · NEEDS</div>
+      <h2>시장 · 경쟁 · 니즈</h2>
+      <p class="lead">페스토 카테고리의 진짜 경쟁자는 시판 페스토가 아니라 <b>①그냥 안 해먹기 ②직접 만들기</b>다. 콘텐츠 생태계가 소비자에게 <b>사라고 하지 않고 만들라고 가르친다</b>. <span class="t n">상담 전 가설</span></p>
+      <h3>경쟁 지형 — 100g당 환산 (2026-07-15 직접 확인)</h3>
+      <table>
+        <tr><th style="width:16%">브랜드</th><th style="width:14%">용량·가격</th><th style="width:11%">100g당</th><th style="width:11%">리뷰</th><th>포지션 · 시사점</th></tr>
+        <tr style="background:var(--ac-50)"><td><b>페스토요일</b></td><td>150g · 17,900</td><td><b>11,933</b></td><td>2,845 / 4.7</td><td>주문즉시 당일제조 · <b>수제 7개 중 3번째로 비싼데 바질 함량 미공개</b></td></tr>
+        <tr><td><b>프롬워터</b> <span class="t r">최대 위협</span></td><td><b>150g · 14,900</b></td><td><b>9,933</b></td><td><b>3,775 / 4.9</b></td><td>★ <b>같은 규격에 100g당 17% 저렴 + 리뷰가 더 많다.</b> <b>식물공장 직접재배</b>·함량 35% 공개·<b>롯데백화점 입점</b>·5성급 호텔 납품 → <b>"국내산 바질"이 차별점이 되지 못한다</b></td></tr>
+        <tr><td>압구정메이드</td><td>230g · 26,900</td><td>11,696</td><td>2,818 / 4.89</td><td>"12만개 누적" · 정기구독</td></tr>
+        <tr><td>초록담</td><td>250g · 24,900</td><td>9,960</td><td>895 / 4.92</td><td><b>가평잣·의성마늘·말돈소금 전면 공개</b> · 직접 농사 · 쿠팡·당근</td></tr>
+        <tr><td>쿡루트</td><td>200g · 21,900</td><td>10,950</td><td>778 / 4.9</td><td>저염 기능 소구 · 가평잣</td></tr>
+        <tr><td>오늘바질</td><td>150g · 19,400</td><td>12,934</td><td>206 / 4.96</td><td><b>롯데홈쇼핑</b> · 선물세트·정기구독</td></tr>
+        <tr><td>이태리정미소</td><td>150g · 22,000</td><td>14,667</td><td>41 / 4.85</td><td>무농약 생바질 <b>25% 명시</b>·코라티나 EVOO·유리병·<b>-20℃ 냉동</b>(보관법 전면) · 수확 5분 내 제조</td></tr>
+        <tr style="background:var(--bad-50)"><td><b>데체코</b> <span class="t n">수입·가격앵커</span></td><td>190g · 6,956</td><td><b>3,661</b></td><td><b>컬리 39,303 / 4.91</b></td><td>★ <b>바질 37%</b>·유리병·상온. <b>컬리 리뷰 39,303건이 "페스토 = 190g 7천원"을 대중 기준값으로 굳혔다</b> — 페스토요일은 100g당 <b>3.3배</b></td></tr>
+        <tr><td>사클라 / 커클랜드</td><td>190g·7,800 / 624g·24,800</td><td>4,105 / 3,974</td><td>156 / —</td><td>보급형 유기농 / 코스트코 대용량 최저가</td></tr>
+        <tr><td><b>"직접 만들기"·"안 해먹기"</b> <span class="t r">진짜 경쟁</span></td><td>—</td><td>—</td><td>—</td><td>페스토 콘텐츠 생태계가 <b>사라고 하지 않고 만들라고 가르친다</b>(만개의레시피·유튜브 DIY 편중). 페스토는 필수재가 아니다 — 안 사도 아무 일 없다</td></tr>
+      </table>
+      <div class="co bad"><span class="lab">경쟁에서 나온 사실 — 근거 없는 프리미엄</span><b>경쟁사는 전부 바질 함량을 숫자로 낸다</b> — 데체코 37% · 프롬워터 35% · 이태리정미소 25%. <b>페스토요일만 미공개</b>다. 수제 카테고리 7개 중 <b>위에서 3번째로 비싼 가격</b>인데(이태리정미소 14,667 &gt; 오늘바질 12,934 &gt; <b>페스토요일 11,933</b> &gt; 압구정 11,696 &gt; 쿡루트 10,950 &gt; 초록담 9,960 &gt; 프롬워터 9,933) 그 근거를 공개하지 않는다. → 리뷰의 <i>"가격때문에 자주 못사서 아쉬워요"</i>(2026-07-14)가 여기서 나온다. <span class="t n">폰타나=샘표, 페스토가 아니라 크림 파스타소스라 직접경쟁 제외 / 오뚜기·CJ·바릴라 페스토는 국내유통 확인 실패로 제외</span></div>
+
+      <h3>시장 — 파스타소스와 바질페스토가 정반대 사분면에 있다</h3>
+      <table>
+        <tr><th style="width:26%">지표</th><th style="width:22%">값</th><th>출처 · 해석</th></tr>
+        <tr><td>소스류 <b>소매</b> 시장</td><td>1조 3,570억 <span class="t y">-1.6%</span></td><td>aT 2025 소스류 세분시장(2024년 기준) · ⚠️<b>생산액 5.4조와 혼동 금지</b> — 소스류는 B2B가 52~55%. 소비재 모수는 소매 1.36조</td></tr>
+        <tr><td><b>파스타소스</b> 소매</td><td>1,198억 <span class="t r">-4.7%</span></td><td><b>2021년 1,494억 피크 후 4년 연속 역성장.</b> 대상 37.0%+샘표 26.1% = <b>63.1% 과점</b>, 상위 4사 전부 역성장</td></tr>
+        <tr style="background:var(--ok-50)"><td><b>★ 바질페스토</b></td><td><b>네이버 소스류 검색어 1위</b></td><td>2024.4~2025.3 (6위→6위→<b>1위</b>) · aT 소비자조사(n=500) "현재 경쟁력 × 성장잠재력" 매트릭스에서 <b>바질페스토=성장 가능성 높음</b> / 파스타·피자소스=성장잠재력 열위</td></tr>
+        <tr><td>바질페스토 단독 규모</td><td><b>미확인</b></td><td>1차 통계로 분리 불가 — "기타 소스 및 조미료"(2,447억)에 타르타르·갈릭과 묶임</td></tr>
+      </table>
+      <div class="co ac band"><span class="lab">포지셔닝 근거 (통계로 방어됨)</span>같은 이탈리안 계열인데 <b>파스타소스는 4년 역성장·63% 과점</b>이고 <b>바질페스토는 검색어 1위·성장유망 사분면</b>이다. → <b>페스토요일이 "파스타소스 회사"가 아니라 "페스토 브랜드"로 서야 하는 통계적 근거.</b> 카테고리 선택 자체는 이미 옳다.</div>
+      <div class="co bad"><span class="lab">⚠️ 상담에서 쓰면 안 되는 숫자 2개</span><b>①"프리미엄 소스 수요 성장"</b> — aT 보고서 200p 전문에 "프리미엄" 0회·"고급" 0회. <b>국내 1차 통계로 방어 불가.</b> 보고서가 쓰는 기회 프레임은 건강·기능성(저염·저당) / 글로벌 퓨전 / D2C다. <b>②"밀키트 2025년 7,000억"</b> — 2020년 유로모니터 <b>전망치</b>이고 실제로 빗나갔다(식약처 기준 2023년 간편조리세트 2,119억, 프레시지 적자, CJ 쿡킷 철수).</div>
+      <div class="co warn"><span class="lab">국내산 바질 4계절 — "불가능"이 아니라 "비용 드는 일"</span>노지 수확은 <b>6월 중순~9월 하순</b>. <b>지금이 성수기 한복판이고 9월이면 끝난다</b> → 답이 4개월 안에 나와야 하니 긴급도가 구조적으로 높다. 겨울 국내산은 <b>①시설하우스 ②야간 최저 18℃ 가온 ③인공광 보광</b>이 필요하고, 그러고도 실패한다(RDA 김천 실사례 2025-01: 일조 부족 도장 + TSWV 바이러스 양성 → <b>재정식 권장</b>). 바질 산지 = 충남 논산·전북 익산·경기 이천. <b>바질 국가통계 없음</b>(KOSIS 0건).<br><b>→ 상담에서 파고들 건 진위가 아니라 구체성이다:</b> ①겨울 물량을 4개 농가 중 어디서 받나 — <b>가온인가?</b>(무가온이면 "4계절 국내산"은 성립 안 함) ②<b>겨울 단가가 여름의 몇 배인가?</b>(숫자가 붙으면 문구가 <b>원가 스토리</b>로 승격) ③<b>4개 농가는 강점인가 리스크인가?</b>(RDA 사례는 바이러스로 재정식까지 — 한 곳 무너지면 대체 없음)</div>
+
+      <h3>SWOT (가설)</h3>
+      <div class="swot">
+        <div class="sw s"><h4>Strengths</h4><ul><li><b>리뷰 2,845 / 평점 4.7</b> — 창업 21개월 개인사업자가 만든 실적. 07-14·15 연속 리뷰 = 일 단위 판매 생존</li><li><b>카테고리 선택이 통계와 맞다</b> — 파스타소스는 4년 역성장, 바질페스토는 검색어 1위·성장유망</li><li><b>상세 뼈대 판단이 옳다</b> — 후기 0화면 → 가격 1.4화면 → 비교표 2.3화면, 브랜드 서사는 5.8화면으로 후치. 하단 fixed CTA 상시</li><li><b>유튜브 쇼츠 158만 조회</b> — 콘텐츠로 도달을 만든 실증</li><li>소용량+당일제조 = 카테고리 통증("다 못 쓰고 상함")의 정답을 이미 보유</li></ul></div>
+        <div class="sw w"><h4>Weaknesses</h4><ul><li><b>상세 15.64MB · 이미지 26장 · 본문 텍스트 0자 · 15.1화면</b> — 최강 무기(후기)가 로딩 뒤에 있다</li><li><b>alt가 "악세사리" 템플릿 잔재</b>(18장 빈 값 + 8장 카페24 샘플) — 검색·접근성 자산 0</li><li><b>프리미엄 가격의 근거 미공개</b> — 바질 함량 미공개(경쟁사는 전부 공개). 스펙은 18.1화면 이미지 안</li><li><b>도달이 브랜드로 안 남는다</b> — 유튜브 158만/구독 61, 틱톡 330, 언론 0건, 대표 프로필 0건</li><li><b>배송비가 접혀 있고 무료배송 게이지가 부정확</b> — 17,900원에 배송비 4,000(22%)이 결제 단계에서 처음 드러남</li><li>홈쿡 키트 6종 = 리뷰 94건(2.4%)</li></ul></div>
+        <div class="sw o"><h4>Opportunities</h4><ul><li><b>검색 수요는 이미 있는데 검색 자산이 0</b>(텍스트 0자·alt 파손·언론 0건) → <b>텍스트화만 해도 먹을 게 있다</b></li><li><b>선물세트 리뷰 202 / 50,000원</b> — 최고 객단가에서 이미 검증. 명절·기업 선물 확장 여지</li><li><b>업셀 설계가 비어 있다</b> — 2·3개 옵션과 크래커·치즈 애드온이 있는데 게이지가 "30,000원 더"로 고정</li><li><b>참나물 시즈널</b> — 계절성을 시즌 상품으로 뒤집은 유일한 시도, 확장 축 후보</li><li><b>카페 겸업 = 실증 자산</b>(플레이스 리뷰 320) — 페스토를 쓰는 장면 자체가 D2C 신뢰 재료</li></ul></div>
+        <div class="sw tt"><h4>Threats</h4><ul><li>★ <b>즉석판매제조가공업이 확장 천장</b> — 마트·편의점·B2B·로켓배송 <b>법적 불가</b>. 식품제조가공업 등록이 선결과제</li><li><b>프롬워터</b> — 같은 150g에 17% 저렴·리뷰 3,775·롯데백화점·식물공장. "국내산" 차별점 무력화</li><li><b>데체코가 굳힌 가격 인식</b> — 컬리 리뷰 39,303건이 "페스토=190g 7천원"을 기준값으로. 페스토요일은 3.3배</li><li><b>겨울 원물 리스크</b> — 야간 18℃ 가온+인공광 필요, RDA 사례는 바이러스로 재정식. 4개 농가 중 한 곳 무너지면 대체 없음</li><li><b>1인 + 카페 겸업</b> — 마케팅을 늘리는 순간 제조가 병목(주문즉시 당일제조)</li></ul></div>
+      </div>
+      <div class="co ac band"><span class="lab">표면 vs 진짜 니즈 (가설 · 확신 70%)</span><b>표면</b> = "광고효율 / 상세 이탈 / SNS 방향" — 3개 다 실행 전술 레이어고, 퍼널 3구간에 하나씩이다. 한 사람이 이걸 동시에 들고 왔다 = <b>어디가 새는지 본인도 모른다</b>는 신호.<br><b>진짜</b> = 광고를 더 잘 돌리는 문제가 아니라 <b>산 사람이 안 써서 재구매가 멈춘 문제</b>. 그리고 그걸 <b>대신 판정해줄 사람</b>이 필요한 것. → <b>HIZ가 팔 것은 실행 대행이 아니라 진단.</b> 부스에서 "중량이 안 적혀 있다" 하나만 짚어도 진단 능력이 3분 만에 증명된다.</div>
+      <div class="co warn"><span class="lab">Pain Layer</span><b>표면통증</b> — ROAS가 안 나온다 · 상세에서 나간다 · SNS에 뭘 올릴지 모르겠다.<br><b>근본통증</b>(느끼지만 언어화 못 함) — 성수기 4개월에 1년치가 몰리는데 제조 상한이 있고, 광고·재고·수요가 서로 대화하지 않는다. 6배 가격을 방어할 서사가 없어 유입돼도 가격에서 멈춘다.<br><b>미인지통증</b>(가장 큰 기회) — 페스토는 <b>"사놓고 다 못 쓰는" 카테고리</b>다. 유통기한 짧다·큰 통 사면 다 못 쓴다·소분해 냉동한다가 반복되는 불만. <b>페스토요일의 소용량+당일제조는 정확히 그 답인데, 광고 16/24가 "핸드메이드" 원료 자랑만 반복하며 자기 무기를 안 쓰고 있다.</b></div>
+    </section>
+
+    <section id="deal">
+      <div class="sec-k">FIT & ESTIMATE</div>
+      <h2>기회 평가 · 견적 (가설)</h2>
+      <div class="verdict"><div class="vl">종합 기회 적합도 (상담 전 추정)</div><div class="vv">3.0 / 5.0</div><div class="vd">⚠️ 조건부 GO — "간다. 작게 들어가고, 억지로 키우지 않는다." 실매출은 있으나 억대 경로가 안 보임 + 결재자 불명</div></div>
+      <div class="grid2">
+        <div class="card"><h3 style="margin-top:0">적합도 (5축 평균) <span class="t n">참고용 · 후하게 주지 않음</span></h3>
+          <table>
+          <tr><td>① 예산 체력</td><td><b>2.5</b> — 실지불력 존재(광고 24개 집행). 단 객단가 1.7만·상시할인·개인사업자 추정 → <b>대표 참여 체급(8천~1억)엔 명백히 미달</b></td></tr>
+          <tr><td>② 의사결정 속도</td><td><b>3.0</b> — 소형이라 구조상 빠를 것이나 <b>임주혁 결재권 미확인</b>. 결정권자면 4.5 / 전달자면 2.0 → 중간값</td></tr>
+          <tr><td>③ 문제 명확도</td><td><b>3.0</b> — 요청 3건이 구체적인 건 +. 단 <b>증상 나열이지 원인 진단이 아님</b></td></tr>
+          <tr><td>④ HIZ 역량 적합</td><td><b>4.5</b> — 요청 3건이 코어와 정면 일치. 감점 = <b>진짜 병목 일부(용량·가격·라인)가 범위 밖</b></td></tr>
+          <tr><td>⑤ 확장 가능성</td><td><b>2.0</b> — <b>홈쿡 키트 6종이 리뷰 94건 = 확장력의 반증.</b> 게다가 <b>즉석판매제조가공업이라 B2B·마트 진입이 법적으로 막혀 있다</b> → 억대 경로 불투명</td></tr>
+        </table></div>
+        <div class="card"><h3 style="margin-top:0">리스크 · GO 분기점</h3><table>
+          <tr><td>결재자</td><td><span class="t r">⚠️</span> <b>임주혁 ≠ 임소현(대표)</b> — 확인 전 클로징 금지</td></tr>
+          <tr><td>예산 체급</td><td><span class="t r">⚠️</span> 8천~1억 불가. <b>큰 견적 제시 자체를 안 한다</b></td></tr>
+          <tr><td>캐파 천장</td><td><span class="t r">⚠️</span> <b>"하루 50개"</b> — 못 만들면 광고 팔면 안 됨</td></tr>
+          <tr><td>★ 인허가 천장</td><td><span class="t r">⚠️</span> 즉석판매제조가공업만 → <b>B2B·마트·로켓배송 법적 불가</b></td></tr>
+          <tr><td>실매출</td><td><span class="t g">✅</span> 리뷰 2,845 · 광고 24개 · 유튜브 158만 = 매출 0 케이스와 다름</td></tr>
+        </table></div>
+      </div>
+      <div class="co ac"><span class="lab">승격 조건 (명확히)</span><b>Q2가 월 광고비 300만+ <u>그리고</u> Q4에서 임주혁 = 결정권자</b> → T2 즉시. <b>하나라도 미달 → T1(500만) 고정.</b> 졸업 트리거(계약 명시) = ①개선안 3건 자체 실행 후 지표 변화 확인 ②월 광고비 300만+ ③임주혁·임소현 양측 참여.</div>
+      <div class="co warn"><span class="lab">매출 envelope = 1차 판단 <span class="t y">근거 약함</span></span><b>연 마케팅비 ≈ 매출 × 15%</b> → <b>6개월치(매출억 × 750만)</b>로 규모 가늠. <b>페스토요일 적용:</b> 매출 <b>미확인</b> — 누적 7만 자칭 역산 시 연 3~6억 <b>추정</b>(기간·채널 불명이라 신뢰도 낮음). 4억 가정 시 envelope ≈ <b>3,000만</b> → T1 500만·T2 1,300만은 무난, T3 2,100만이 상한선. <b>이 숫자는 상담 전엔 못 믿는다 — Q2("월 매출·광고비")로 반드시 실측할 것.</b></div>
+
+      <h3>견적 셀렉 <span class="t b">상담 중 선택 → 견적 자동</span></h3>
+      <div class="sel-component">
+        <div class="sel-split">
+          <div>
+            <div class="pane-k">투입 레벨 선택 — L1 프리랜서 / L2 내부 히즈 ★ / L3 외주·풀</div>
+            <div class="selmx" id="selmx">
+              <div class="hd">
+                <div>견적 항목 <span class="t n">단계</span></div>
+                <div>제외</div>
+                <div>L1<span class="ls">프리랜서</span></div>
+                <div class="star">L2 ★<span class="ls">내부 히즈</span></div>
+                <div>L3<span class="ls">외주·풀</span></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="pane-k">1차 견적서 · 실시간</div>
+            <div class="qpane">
+              <div class="qsh">
+                <div class="ttl">📋 1차 견적서 · 셀렉 결과</div>
+                <div class="big"><span class="won" id="bigWon">—</span><span class="eok" id="bigEok"></span></div>
+              </div>
+              <div class="env">
+                <div class="et"><span>연매출 <input id="rev" type="number" value="4" min="0">억 · envelope <b id="envAmt">—</b></span><span class="st" id="envSt">—</span></div>
+                <div class="bar" id="bar"><div class="fill" id="fill" style="width:0"></div></div>
+                <div class="cap" id="envCap"></div>
+              </div>
+              <div class="qlist" id="qlist"></div>
+              <div class="qfoot"><span>합계 · VAT 별도</span><span class="ft" id="qtot">—</span></div>
+              <div class="qact">
+                <button class="btn solid" id="btnSave" type="button">💾 저장</button>
+                <button class="btn" id="btnExcel" type="button">📊 엑셀</button>
+                <button class="btn" id="btnHtml" type="button">📄 HTML</button>
+                <button class="btn" id="btnReset" type="button">기본값 복원</button>
+              </div>
+              <div class="qhint"><span class="savest" id="saveSt">자동 저장 켜짐</span> · 손댄 금액엔 레벨칩이 <b style="color:var(--warn)">조정</b> 색으로 바뀐다. 단가 공유 원칙(브랜드 불문 동일).</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3>3-Tier 요약 <span class="t b">부스에선 T1만 꺼낸다</span></h3>
+      <div class="tiers">
+        <div class="tier rec"><div class="rb">추천 · 입구</div><div class="tn">T1 · 전환 진단</div><div class="tt">3주</div><div class="tp">500만원</div><div class="td">VAT 별도</div><ul><li>광고·상세·SNS 3영역 통합 진단</li><li>상품정보고시 누락 전수 점검표</li><li>이탈 지점 진단 + 상세 경량화 처방</li><li>재구매·원툴 구조 분석</li><li>광고 단위경제 점검</li><li>개선 우선순위 로드맵</li></ul></div>
+        <div class="tier"><div class="tn">T2 · 진단 + 콘텐츠 방향</div><div class="tt">6~8주</div><div class="tp">1,300만원</div><div class="td">승격 조건 충족 시</div><ul><li>T1 전부</li><li>인스타 무드보드 (500)</li><li>콘텐츠 기획 — 사용법·레시피 축 (300)</li><li>상세페이지 개선 설계안</li><li>격주 리뷰콜</li></ul></div>
+        <div class="tier"><div class="tn">T3 · + 실물</div><div class="tt">10~12주</div><div class="tp">2,100만원</div><div class="td">envelope 상한선</div><ul><li>T2 전부</li><li>하우스 스튜디오 촬영 (800)</li><li>촬영물 상세·피드 적용</li></ul></div>
+      </div>
+      <div class="co warn"><span class="lab">패키징 원칙 — 단가는 깎지 않는다</span><b>항목을 빼서 총액을 낮춘다.</b> 체급상 디자인(3,000만)·인스타 운영 리테이너(월 500만)는 <b>항목 자체를 제외</b>했다 — 단가를 깎은 게 아니다(공통 항목 단가는 브랜드 불문 동일). <b>부스에서 1,300만을 던지면 "비교해볼게요"로 끝난다 — T1으로 입구.</b> T1은 현장에서 절반이 증명된다: 상세 고시 누락·이미지 15.6MB를 휴대폰으로 같이 띄우면 T1 가치가 즉석 입증된다. <b>이게 이 딜의 최대 무기.</b></div>
+      <div class="co bad"><span class="lab">무료 컨설팅화 방지 — 선 긋기</span>부스에서 <b>"고시가 비어 있다·이미지가 무겁다"는 사실은 무료</b>로 준다. 그러나 <b>전수 점검표·개선 설계는 T1 스콥</b>이다 — 그 자리에서 선을 긋는다. 또한 <b>용량·가격·라인 결정은 HIZ 범위 밖</b>(제품 의사결정) → 스콥에 "제품·가격은 진단·제안까지, 결정은 클라이언트" 명시. <b>원툴 규명 전 확장 캠페인 수주 금지</b> — 4번째 실패가 HIZ에 귀속된다.</div>
+    </section>
+
+    <section id="govfit">
+      <div class="sec-k">GOV SUPPORT MATCH · GovFit</div>
+      <h2>정부지원사업 추천</h2>
+      <p class="lead">GovFit 매칭 엔진(공공지원 통합 실시간)에 페스토요일 프로필을 넣어 매칭한 결과. 엔진 점수는 <b>관심분야·업종·지역 키워드 규칙점수(AI 미사용)</b>라 자격과 무관하다 — 아래 5건은 <b>점수순이 아니라 자격 실심사로 직접 골라낸 것</b>. 스냅샷 2026-07-15.</p>
+
+      <div class="grid2">
+        <div class="card">
+          <div style="font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:9px;text-transform:uppercase">매칭에 넣은 프로필</div>
+          <div style="font-size:16px;font-weight:700;color:var(--ink)">식품제조·소매 · 충남(계룡) · 1년 9개월</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:6px;line-height:1.6">매출 <b style="color:var(--ink2)">미확인</b> · <b style="color:var(--ink2)">개인사업자·일반과세</b>(bizno 확인 · 등록일 2024-10-11) · <b style="color:var(--ink2)">소상공인 추정</b> <span class="t y">가설</span> · 관심 [홍보/마케팅 · 수출/판로 · 자금/금융 · 창업]</div>
+        </div>
+        <div class="card">
+          <div style="font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:9px;text-transform:uppercase">스냅샷 메타</div>
+          <div style="font-size:16px;font-weight:700;color:var(--ink)">통합 후보 998건 → 자격 선별 5</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:6px;line-height:1.6">출처 기업마당·보조금24·K-Startup·과기정통부·온통청년(5개 공공) · 규칙기반(AI 미사용) · <a href="https://govfit-alpha.vercel.app/" target="_blank" rel="noopener">GovFit 엔진</a></div>
+        </div>
+      </div>
+
+      <div class="co bad"><span class="lab">정직 고지 — 엔진 점수는 못 쓴다</span>이번 매칭은 상위 후보 점수가 <b>전부 48로 평평</b>하게 나왔다(변별력 0). 그래서 "적합도 순 상위 5"를 그대로 싣는 건 의미가 없어, <b>998건을 지역·업종·규모 자격으로 직접 걸러</b> 페스토요일이 실제로 넣을 수 있는 것만 남겼다. 걸러진 대부분은 지역(전남·부산·전북) 한정이거나 업종(미래차·뿌리산업·문화콘텐츠) 한정이라 대상 미달. <b>열쇠는 "소상공인" 자격</b> — 아래 4건이 전부 소상공인 판로·유통 트랙이다. <span class="t y">단 소상공인 해당 여부(식품제조업 상시근로자 10인 미만) 자체가 미확인 — 상담에서 확인 필요.</span></div>
+
+      <table>
+        <tr><th style="width:28px">#</th><th>사업명 · 주관</th><th style="width:64px">분류</th><th style="width:104px">마감(D-day)</th><th style="width:170px">대상 · 자격 판정</th></tr>
+        <tr>
+          <td><b>1</b></td>
+          <td><a href="https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000124326" target="_blank" rel="noopener"><b>제11회 소상공인 쇼케이스데이 발표 희망기업 모집</b></a><br><span style="color:var(--muted);font-size:12.5px">중소벤처기업부 / 중소상공인희망재단</span></td>
+          <td><span class="t b">창업</span></td>
+          <td>2026-08-10 <span class="t y">D-26</span></td>
+          <td><span class="t g">부합</span> 라이프스타일형 창의 아이템 보유 <b>창업 7년 이내 소상공인</b> — 업력 2년·수제 페스토가 정확히 이 정의</td>
+        </tr>
+        <tr>
+          <td><b>2</b></td>
+          <td><a href="https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000122875" target="_blank" rel="noopener"><b>2026년 2차 유통플랫폼 MD 상담회 소상공인 모집</b></a><br><span style="color:var(--muted);font-size:12.5px">중소벤처기업부 / 한국중소벤처기업유통원</span></td>
+          <td><span class="t b">홍보/마케팅</span></td>
+          <td>2026-09-30 <span class="t n">D-77</span></td>
+          <td><span class="t g">부합</span> 소상공인기본법 제2조 소상공인 — <b>유통 MD 직접 대면</b>, 자사몰 밖 판로가 필요한 지금 단계에 유효</td>
+        </tr>
+        <tr>
+          <td><b>3</b></td>
+          <td><a href="https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000120474" target="_blank" rel="noopener"><b>2026년 판판셀러 지원사업 온라인쇼핑몰 통합관리시스템</b></a><br><span style="color:var(--muted);font-size:12.5px">중소벤처기업부 / 한국중소벤처기업유통원</span></td>
+          <td><span class="t b">수출/판로</span></td>
+          <td>2026-12-27 <span class="t n">D-165</span></td>
+          <td><span class="t g">부합</span> 제조·위탁 생산 소비재 완제품 보유 소기업·소상공인 — 다채널 판매 통합관리</td>
+        </tr>
+        <tr>
+          <td><b>4</b></td>
+          <td><a href="https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000123797" target="_blank" rel="noopener"><b>2026년 스마트 플래그십 스토어 (소담상회 with LOTTE ON)</b></a><br><span style="color:var(--muted);font-size:12.5px">중소벤처기업부 / 한국중소벤처기업유통원</span></td>
+          <td><span class="t b">수출/판로</span></td>
+          <td>2026-12-31 <span class="t n">D-169</span></td>
+          <td><span class="t g">부합</span> 소상공인기본법 제2조 소상공인 — 롯데온 연계 입점·노출</td>
+        </tr>
+        <tr>
+          <td><b>5</b></td>
+          <td><a href="https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000124316" target="_blank" rel="noopener"><b>2026년 London Food&amp;Drink Festival 연계 K-푸드 영국시장 진출</b></a><br><span style="color:var(--muted);font-size:12.5px">산업통상부 / 대한무역투자진흥공사(KOTRA)</span></td>
+          <td><span class="t b">수출/판로</span></td>
+          <td>2026-07-31 <span class="t r">D-16</span></td>
+          <td><span class="t y">조건부</span> 품목이 <b>스낵·음료·레디밀(HMR)</b> 한정 — 페스토는 소스라 품목 해석 갭. 업력 2년·냉장 유통에 영국 진출은 시기상조 <span class="t n">참고용</span></td>
+        </tr>
+      </table>
+
+      <div class="co ac"><span class="lab">해석 · 상담 활용</span>페스토요일은 <b>정부지원 각도가 실제로 살아있는 드문 케이스</b>다 — 소상공인·업력 2년·라이프스타일 식품이라 판로·유통 트랙 4건이 자격 부합. 특히 <b>①소상공인 쇼케이스데이(D-26)</b>는 마감이 가깝고 정의가 정확히 맞는다. 다만 <b>정부지원은 브랜딩 예산과 별개 트랙</b>이라는 점을 분명히 하고, 견적 제안과 섞지 말 것. 이건 <b>선행 호의</b>다 — 부스에서 "이거 마감 8/10인데 조건 딱 맞으실 것 같다"고 짚어주면 비용 0으로 신뢰가 붙고, Land &amp; Expand의 입구가 된다.</div>
+    </section>
+
+    <section id="consult">
+      <div class="sec-k">CONSULT</div>
+      <h2>상담 진행 (7/15 15:00 · AFPRO 부스)</h2>
+      <p class="lead"><b>부스 워크인 = 서서 하는 15~20분 대화다.</b> 60분 정식 미팅이 아니다 — 자료 펴지 말고, 남중은 말을 30%만 한다. <b>오늘의 목표는 계약이 아니라 다음 미팅 확보.</b></p>
+
+      <div class="co bad"><span class="lab">★ 부스 나가기 전 30초 체크리스트</span>
+        ☐ <b>"품절이던데요" 절대 금지</b> — 정상 판매 중(초기 파싱 오독) ·
+        ☐ <b>인스타는 칭찬으로 열기</b> — 이미 용도 제안 잘함(147개·"5월의 미식" 시리즈). 지적하면 신뢰 즉사 ·
+        ☐ 대표 = <b>임소현</b>(사실) / 임주혁과의 관계 = <b>미확인</b> — "형제세요?" 넘겨짚기 금지 ·
+        ☐ Quick Tip 숫자: <b>26장 / 15.6MB / 평균 616KB / 폭 1,220px vs 폰 390px</b> — <b>지연로딩 있음</b>을 반드시 함께 ·
+        ☐ Q3(하루 50개) 답이 "못 만든다"면 <b>광고 팔지 말 것</b> ·
+        ☐ 나오기 전 <b>캘린더 초대 발송 완료</b> ·
+        ☐ <b>"용량이 안 적혀 있다" 금지</b> — 있다(18.1화면 이미지 안). "18화면이라 아무도 못 찾는다"로 바꿔 말할 것 ·
+        ☐ <b>확장 얘기 나오면 인허가 천장</b> — 즉석판매제조가공업만 있어 B2B·마트·로켓배송 법적 불가
+      </div>
+
+      <h3>사업 단계 — 페스토요일 = STAGE 3, 단 정비는 STAGE 2에서 멈춤</h3>
+      <div class="stages">
+        <div class="stage">
+          <div class="sgn">STAGE 1 · 런칭 전</div>
+          <div class="sgd">팔 게 정해졌고 전환 배관만 없음.</div>
+          <span class="sgr">역할 → 첫 매출 경로 세팅</span>
+        </div>
+        <div class="stage on">
+          <div class="sgn">STAGE 2 · 런칭 ★ 기반은 여기서 멈춤</div>
+          <div class="sgd">스펙이 18화면 이미지 안에만 = 런칭 마감이 안 끝남. 레시피 20개월 정지. 홈쿡 키트 6종 = 리뷰 94건.</div>
+          <span class="sgr">역할 → 점검 → 정비 (진단+개선 패키지)</span>
+        </div>
+        <div class="stage on">
+          <div class="sgn">STAGE 3 · 매출 드라이브 ★ 매출은 여기</div>
+          <div class="sgd">리뷰 2,845·광고 24개 ACTIVE·유튜브 158만·일 단위 유입. 요청 언어가 "광고효율·전환율" = 운영자의 언어.</div>
+          <span class="sgr">역할 → 리테이너 아님. STAGE 2로 되돌아가는 정비</span>
+        </div>
+      </div>
+      <div class="co ac band"><span class="lab">판정 (확신 70%)</span><b>매출은 STAGE 3인데 기반 정비는 STAGE 2에서 멈췄다.</b> 획득만으로 여기까지 왔고, 그게 한계에 닿자 "광고효율"을 묻기 시작한 것으로 보인다. → HIZ 역할은 <b>리테이너가 아니라 점검·정비</b>. 결제 구조도 "진단+개선 패키지"가 맞다. <span class="t y">라벨로 반올림하지 말 것 — Q2 답이 "광고 사실상 미집행"이면 실질 STAGE 2</span></div>
+
+      <h3>필수 질문 Top 3 <span class="t b">부스에서 자연스럽게 — 취조 금지</span></h3>
+      <div class="q"><div class="qn">Q1 · 결재권 (1순위 · 이거 없이 클로징 금지)</div><div class="qt">"명함 보니까 주혁님이신데, 자사몰에는 대표님이 <b>임소현</b> 님으로 돼 있더라고요. 두 분이 같이 하시는 구조예요? 마케팅 쪽은 주혁님이 다 보시는 거고요?"</div><div class="qi"><b>부스 최대 리스크 = 결정권 없는 사람과 20분 좋은 얘기 하고 끝나는 것.</b> "제가 결정합니다" → 그대로 진행 / "대표님과 상의" → <b>다음 미팅에 임소현 동석을 못 박는 게 오늘의 목표로 바뀜</b>. 관계는 상대가 말하게 두고 넘겨짚지 않는다.</div></div>
+      <div class="q"><div class="qn">Q2 · 광고 실태 · 채널 비중</div><div class="qt">"지금 광고는 돌리고 계세요? 메타 쪽이세요, 네이버 쪽이세요? 월에 대충 얼마나 쓰시고요." → "매출은 어느 선에서 움직여요? 자사몰이 거의 다예요, 아니면 스마트스토어나 오프라인·도매도 있어요?"</div><div class="qi">이 두 개 없이는 <b>견적도 진단도 못 낸다</b>. 월 300만+ → STAGE 3 확정·T2 승격 가능 / 미집행·찔끔 → <b>실질 STAGE 2, 광고 얘기를 하면 안 된다</b>. <span class="t n">우리가 아는 것: 메타 24개 ACTIVE(07-02~07-13). 링크트리 6개 링크가 전부 자사몰이나, 누적 7만을 자사몰만으로 설명하기 어려움 → 도매·오프라인 존재 가능성</span></div></div>
+      <div class="q"><div class="qn">Q3 · ★ 캐파 — 오늘의 차별점</div><div class="qt">"틱톡에 <b>'하루 딱 50개만 만든다'</b>고 올리신 거 봤어요. 진짜 수제구나 싶더라고요. 지금도 그 정도예요?" → <b>"광고 태워서 주문이 갑자기 3배 들어오면, 만들어서 내보내실 수 있으세요?"</b></div><div class="qi"><b>이 브랜드의 급소.</b> "만들 수 있다" → 광고·전환 최적화가 맞는 처방 / <b>"빠듯하다·못 만든다" → 광고를 팔면 서로 망한다.</b> 객단가(번들·선물세트·정기구독)와 생산 구조가 먼저. <b>"지금 광고 늘리시면 안 돼요"라고 말해주는 대행사는 없다 — 여기서 신뢰가 수직 상승한다.</b> 효과 = 우리 콘텐츠까지 보고 왔다는 신호 + 광고 팔러 온 게 아니라는 신호를 한 번에.</div></div>
+      <div class="co bad"><span class="lab">⚠️ 입 밖에 내지 말 것</span><b>하루 50개 × 2년 ≈ 36,500개 &lt; 누적 7만개</b> — 숫자가 안 맞는다. 캐파가 늘었거나·자사몰 밖 채널이 있거나·"하루 50개"가 희소성 문구이거나 셋 중 하나다. <b>이 계산을 꺼내면 취조가 된다.</b> Q3를 칭찬으로 열고 캐파로 착지시키면, 상대가 <b>스스로 채널 구조를 말하면서 Q2의 답이 저절로 채워진다.</b></div>
+      <div class="co ac"><span class="lab">시간 남을 때 후속</span>"광고, 상세페이지, SNS 세 개 주셨는데 — <b>지금 제일 급한 거 하나만 고르면</b> 뭐예요?" · "바질 말고는 왜 안 팔린다고 보세요?"(원툴 자각 = 진단 수용도) · "가격 얘기 하시는 분들 많죠?"(리뷰에 <i>"가격때문에 자주 못사서 아쉬"</i> 실재 → 객단가·번들 대화로 연결)</div>
+
+      <h3>타임라인 (부스 15~20분)</h3>
+      <div class="tl">
+        <div class="ph"><div class="pt">0:00–2:00 · 아이스브레이크</div><div class="pb">"페스토요일이면 그 국내산 바질 그거죠? 인스타 <b>'5월의 미식' 참나물 시리즈</b> 잘 보고 있었어요." → 바로 <b>Q1(결재권)</b>. <b>이미 알고 왔다는 신호 = 즉시 신뢰. 이 한 마디가 오늘 전체를 결정한다.</b></div></div>
+        <div class="ph"><div class="pt">2:00–7:00 · 진단 (듣기)</div><div class="pb"><b>Q2(광고·매출) → Q3(캐파).</b> 받아적는다. <b>반박·제안 금지</b> — 여기서 처방 꺼내면 싸구려 된다.</div></div>
+        <div class="ph"><div class="pt">7:00–11:00 · 가치 제시</div><div class="pb"><b>Quick Tip 투척.</b> 폰으로 상세페이지 같이 스크롤하며. <b>오늘의 승부처.</b></div></div>
+        <div class="ph"><div class="pt">11:00–14:00 · 다음 단계</div><div class="pb">클로징 스크립트. <b>날짜를 그 자리에서 못 박는다.</b> 계약 아님.</div></div>
+        <div class="ph"><div class="pt">14:00–15:00 · 마무리</div><div class="pb">연락처 교환 + <b>캘린더 초대를 그 자리에서 발송</b>. Q1 답에 따라 대표 동석 요청. <b>명함만 받으면 90% 증발.</b></div></div>
+      </div>
+      <div class="co"><span class="lab">확장 블록 (더 붙잡을 때 +10~15분)</span>①<b>예산 체력 probe</b> — "이런 거 보통 어느 정도 생각하고 계셨어요? 맞출 수 있는 선인지만 보려고요." ②<b>오프라인·팝업</b> — 계룡 키친·존잼 팝업(대전 중구, 6.27~28). "팝업 오신 분들 자사몰로 넘어오세요?" ③<b>가격 저항</b> → 객단가·번들(2·3개 무료배송은 이미 설계돼 있음 — 얼마나 먹히는지) ④<b>틱톡 vs 인스타</b>(보조 팁) ⑤<b>견적 레인지</b> — 상대가 먼저 물을 때만, 숫자 확정 금지("진단 보고 나서요")</div>
+
+      <h3>Quick Tip — 공짜로 주고 나오는 것</h3>
+      <div class="co ac band"><span class="lab">주는 것 — "상세 이탈, 카피 문제가 아니라 무게 문제일 수 있어요"</span>
+        "주혁님, 상세페이지 이탈 물어보셨잖아요. 오늘 아침에 바질페스토 페이지 열어서 재봤는데요.<br><br>
+        <b>이미지가 26장이고, 다 합치면 15.6MB예요. 한 장 평균이 600KB, 제일 큰 게 1.4MB. 그리고 상세에 글자가 한 자도 없어요 — 26장 전부 이미지예요.</b><br>
+        지연로딩은 걸려 있어서 한 번에 다 받진 않아요. 근데 손님이 스크롤하면 600KB~1.4MB짜리를 26번 받는 거예요. <b>스크롤 속도가 로딩보다 빨라서 중간중간 빈 칸이 뜹니다.</b><br><br>
+        그리고 이미지 폭이 1,220px인데 폰 화면은 390px이에요. <b>3배 큰 걸 보내서 줄여서 보여주고 있는 거죠.</b> 그만큼이 그냥 버려지는 거고요.<br>
+        페이지 전체 길이가 폰 기준 12,000px, 열네 번 넘게 넘겨야 끝나요.<br><br>
+        <b>폭을 800px로 줄이고 WebP로 바꾸면 4분의 1쯤 됩니다. 3~4MB요.</b> squoosh.app 무료고, 카페24 에디터에서 다시 올리시면 돼요. 사람 안 써도 반나절이면 해요.<br>
+        카피는 그 다음에 봐도 돼요. 지금은 <b>손님이 카피를 읽기 전에 나가고 있을 수 있어서요.</b>"
+      </div>
+      <div class="co bad"><span class="lab">정확도 가드 — 과장 금지</span><b>지연로딩은 걸려 있다.</b> "15.6MB를 한 번에 받는다"고 말하면 <b>틀린 말</b>이고, 개발자에게 확인당하면 신뢰를 잃는다. 위 멘트대로 정확히. · <b>"전환율 O% 오른다" 단정 금지</b>(근거 없음) — "이탈이 줄어들 여지가 있다"까지. · 26장 → 12~15장 통합 권고는 <b>유료 작업 영역</b> — 부스에선 압축까지만 준다.</div>
+      <div class="co bad"><span class="lab">보조 카드 ① — ★정정됨. "없다"고 하지 말 것</span><span class="t r">초기 판정 뒤집힘</span> 중량·유통기한·원산지는 <b>있다</b> — 상세 <b>18.1번째 화면</b>의 "INFORMATION 제품정보표" <b>이미지 안에</b>. 렌더 텍스트 검사에서 0회로 나온 건 이미지라 추출이 안 된 것뿐. <b>"안 적혀 있다"고 하면 그 자리에서 반박당한다.</b><br><b>대신 이렇게:</b> <i>"용량 적어두신 거 봤어요. 근데 그게 열여덟 번째 화면이에요. 그리고 이미지라서 네이버도 못 읽어요 — 사람도 검색엔진도 못 찾는 자리에 있는 거죠."</i> → <b>"18화면"이라는 숫자가 오히려 더 세다.</b> (바질페스토 = 150g)<br><b>진짜로 없는 것 = 바질 함량.</b> 데체코 37%·프롬워터 35%·이태리정미소 25%는 다 공개한다. <b>페스토요일만 미공개인데 수제 7개 중 3번째로 비싸다.</b></div>
+      <div class="co bad"><span class="lab">★ 보조 카드 ③ — 인허가가 확장 천장 (가장 구조적)</span>식품안전나라 확인: 인허가가 <b>즉석판매제조가공업 + 일반음식점 2건뿐</b>이다. <b>식품제조가공업 없음 · HACCP 없음.</b> 즉석판매제조가공업은 <b>최종소비자 직접 판매만 가능</b> — 지금 D2C·택배는 적법하나 <b>마트·편의점·B2B 납품·쿠팡 로켓배송(도매 매입)은 법적으로 불가</b>하다.<br>→ 대표가 "판로 넓히고 싶다"고 하면: <i>"그거 지금 인허가로는 안 됩니다. 식품제조가공업 등록이 먼저예요."</i> <b>이 말 할 수 있는 대행사가 없다.</b> 그리고 이건 <b>Q3(하루 50개) 캐파와 같은 뿌리</b> — 제조 능력과 제조 자격이 동시에 천장이다.</div>
+      <div class="co ac"><span class="lab">★ 보조 카드 ④ — "SNS 방향" 질문에 대한 정면 답</span><i>"도달은 이미 터뜨리셨어요. 유튜브 쇼츠 총 조회가 <b>158만</b>이에요 — 웬만한 브랜드보다 나아요. 근데 <b>구독이 61명</b>이에요. 틱톡도 330명이고요. <b>그 트래픽이 채널에도 자사몰에도 안 남고 있는 거죠.</b>"</i><br>→ <b>콘텐츠 능력은 증명됨(칭찬으로 준다). 문제는 자산화 구조.</b> 그리고 인스타엔 이미 "먹는 방법"이 147개 쌓여 있다 — <b>새로 찍을 게 아니라 있는 걸 옮기고 남기는 설계.</b> 이게 재구매 해법과 같은 물건이다.</div>
+      <div class="co ac"><span class="lab">보조 카드 ② — 틱톡 (대화 길어지면)</span>"틱톡이랑 인스타가 완전 따로 놀고 있어요. <b>인스타는 7,177명인데 틱톡은 330명이거든요.</b> 근데 틱톡 조회수는 나와요 — 제일 잘된 게 <b>5만 9천</b>, 그다음이 2만 5천. 재밌는 게 2만 5천 나온 게 <b>"집에서도 레스토랑급 파스타가 가능하다고요?"</b> — 먹는 방법 얘기예요. 반대로 최근 5개는 다 제품 자랑인데 <b>900~3,900</b>에서 멈췄고요. 그런데 <b>인스타엔 그 "먹는 방법"이 147개나 쌓여 있어요.</b> 참나물 김밥, 커리치킨 샌드위치, 5월의 미식 시리즈. 그거 틱톡에 안 올라가 있더라고요. <b>새로 찍으실 것도 없어요 — 있는 거 옮기는 것부터요.</b>" <span class="t g">인스타 칭찬으로 열어야 한다</span></div>
+
+      <h3>클로징 — 목표는 다음 미팅</h3>
+      <div class="co ok"><span class="lab">스크립트</span>레버리지 3개: ①Quick Tip을 이미 공짜로 줬다(상호성) ②오늘 15분으론 겉만 봤다(미완결) ③진단은 무료다(허들 제거).<br><br>
+        "주혁님, 오늘 제가 드린 건 <b>밖에서 15분 본 거예요.</b> 상세페이지 무게 같은 건 밖에서도 재지니까.<br>
+        근데 정작 제일 중요한 건 못 봤어요. <b>광고 계정 안에서 어디서 돈이 새는지, 유입이 상세 어디쯤에서 끊기는지</b> — 이건 계정을 열어봐야 나와요.<br><br>
+        그래서 이렇게 하시죠. <b>30분만 화면 공유해주시면, 광고계정·상세페이지·SNS 세 개 묶어서 진단서로 정리해서 드릴게요. 무료로요.</b><br>
+        보시고 저희랑 안 하셔도 그 문서는 그냥 쓰시면 돼요. 어차피 고칠 건 고쳐야 하니까.<br><br>
+        <b>다음 주 화요일이랑 목요일 중에 언제가 편하세요?</b>"<br><br>
+        → <b>"지금 캘린더 초대 바로 보내드릴게요. 메일 주소가 (신청서 주소) 맞으세요?"</b> <span class="t n">주소는 상담차트 참조 — PUBLIC 레포라 미기재</span> — 그 자리에서 발송. 박람회 명함은 다음 주면 사라진다.
+      </div>
+      <div class="co warn"><span class="lab">Q1이 "대표님과 상의"였다면 (필수)</span>"그럼 그 자리에 <b>소현 대표님도 같이 계시면</b> 좋겠어요. 두 번 설명하면 저도 힘들고 주혁님이 전달하시기도 애매하잖아요. 30분이면 되니까 같이 잡으시죠." → 결정권자 동석을 조건으로 걸면 <b>진지도도 걸러진다</b>.<br><b>금지</b>: 견적 숫자 먼저 꺼내기(Q3 답 모르는 상태의 숫자는 전부 헛발) · "제안서 보내드릴게요"(날짜 없는 약속 = 증발).</div>
+
+      <h3>예상 반론 · 대응</h3>
+      <div class="co"><span class="lab">"지금 돈이 없어요 / 예산이 빠듯해요"</span>"네, 그러실 것 같았어요. <b>그래서 지금 광고 늘리시라는 말씀 안 드린 거예요.</b> 진단은 돈 안 들어요. 30분 화면 공유면 되고요. 보시고 아니다 싶으면 그 문서로 직접 고치셔도 돼요. 어차피 지금 예산으로 광고 태워봤자, <b>상세에서 새면 그 돈이 그대로 빠지는 거라서요.</b> 어디서 새는지부터 보시죠."</div>
+      <div class="co"><span class="lab">"대행사 써봤는데 별로였어요"</span>"어디까지 해주다 끝났어요? (듣기) 그거 물어보는 이유가 있는데요 — <b>보통 소재만 갈아끼우다 끝나거든요.</b> 상세도 캐파도 안 보고요. 아까 <b>하루 50개</b> 말씀하셨잖아요. <b>그 얘기 물어본 대행사 있었어요?</b> 저희가 다르다고 말로 하면 그것도 똑같은 소리라서, 진단서 보시고 판단하시면 돼요." <span class="t n">반박하지 않고 Q3를 증거로 쓴다</span></div>
+      <div class="co"><span class="lab">"우리가 직접 해보려고요"</span>"그게 맞을 수도 있어요. 솔직히 <b>인스타는 이미 잘하고 계세요. 147개에 7천 명이면 저희가 손댈 게 별로 없어요.</b> 직접 하시는 게 나은 것도 있고 안 되는 것도 있는데 — <b>그 경계를 아는 게 돈 버는 거거든요.</b> 진단서에 "이건 직접 하세요", "이건 맡기세요" 나눠서 드릴게요." <span class="t n">정면충돌 금지 · 인스타를 진심으로 인정(사실이다)</span></div>
+      <div class="co"><span class="lab">"박람회 끝나고 연락드릴게요" (가장 흔한 회피)</span>"그럼요. 근데 <b>오늘 부스 스무 군데 도시잖아요. 다음 주면 저희 기억 안 나실 거예요. 솔직히 저도 그래요.</b> 지금 캘린더만 잡아두시죠. 다음 주 화요일 어떠세요? <b>안 되시면 그때 취소하시면 돼요.</b>"</div>
+      <div class="co warn"><span class="lab">"생산이 벅차서 마케팅 할 때가 아니에요" (Q3에서 나올 수 있음)</span>"<b>그러면 지금 광고 하시면 안 되는 게 맞아요.</b> 태워봤자 못 만드시면 리뷰만 나빠지니까요. 근데 그 경우엔 할 게 따로 있어요 — <b>같은 50개를 팔아도 객단가를 올리는 쪽이요.</b> 지금 2개·3개 무료배송 설계는 이미 해두셨던데, 그게 실제로 얼마나 먹히는지는 보셨어요? <b>캐파 안 늘리고 매출 올리는 게 가능한지, 그것부터 보시죠.</b>" <span class="t g">광고를 못 파는 상황이 곧 기회 — 정직하게 물러서면 진단·구조 컨설팅으로 자연 전환</span></div>
+
+      <div class="co ok"><span class="lab">상담 후 액션</span>당일 24h — 감사 + 핵심 3줄(재구매·원툴·상세 정보구조) + 미확인 변수(결재권·월 매출·광고비/ROAS·재구매율·캐파·채널 비중) 기록 → <b>무료 진단 일정 확정</b>. 정리는 <b>/상담랩업</b>으로.</div>
+    </section>
+
+<section id="sources">
+      <div class="sec-k">SOURCES</div>
+      <h2>참고 출처</h2>
+      <p class="lead">① 클라이언트 제공 ② 직접 리서치(라이브 확인 2026-07-15). <b>클라이언트가 준 건 신청 폼 3줄이 전부다</b> — 사전질문 답변도, 소개서도, 광고 데이터도 없다. 나머지는 전부 직접 리서치와 그 위에 세운 가설이다.</p>
+      <div class="co"><span class="lab">① 클라이언트 제공 (이게 전부)</span>
+        AFPRO 부스 상담 신청 폼 (2026-07-15 08:51 접수 · 유입 afpro-popup · 신청자 임주혁) — 요청 원문 3줄:
+        <b>"광고효율 퍼포먼스 마케팅 / 상세페이지 이탈방지 및 전환율 개선 / sns 콘텐츠 방향"</b>.
+        <span class="t n">희망일정 7/15(수) 15:00~16:00</span> <span class="t y">사전질문 답변·소개서·광고 대시보드 전무</span>
+      </div>
+      <div class="co ac"><span class="lab">② 직접 리서치 (2026-07-15 확인)</span>
+        <a href="https://pestoyoil.com" target="_blank" rel="noopener">자사몰 pestoyoil.com</a>(카페24 · 제품 라인·가격·상세페이지 구조·푸터 사업자정보 직접 확인) ·
+        <a href="https://www.instagram.com/pestoyoil/" target="_blank" rel="noopener">IG @pestoyoil</a> ·
+        <a href="https://www.tiktok.com/@pestoyoil" target="_blank" rel="noopener">TikTok @pestoyoil</a> ·
+        <a href="https://pf.kakao.com/_MJLRn" target="_blank" rel="noopener">카카오채널</a> ·
+        <a href="https://govfit-alpha.vercel.app/" target="_blank" rel="noopener">GovFit 매칭</a>(998건 → 자격 선별 5건, 스냅샷 2026-07-15) ·
+        <b>기업마당(bizinfo.go.kr)</b> 공고 자격요건 원문 대조 ·
+        <a href="https://www.foodsafetykorea.go.kr/portal/specialinfo/searchInfoCompany.do?menu_grp=MENU_NEW01&menu_no=2815" target="_blank" rel="noopener">식품안전나라</a>(인허가 2건·즉석판매제조가공업 20240710084 / 일반음식점 20240710199) ·
+        <a href="https://bizno.net/article/8921602510" target="_blank" rel="noopener">bizno</a>(개인사업자·등록일 2024-10-11·논산세무서) ·
+        <a href="https://www.youtube.com/@%ED%8E%98%EC%8A%A4%ED%86%A0%EC%9A%94%EC%9D%BC/about" target="_blank" rel="noopener">유튜브 @페스토요일</a>(구독 61·총 조회 1,578,676) ·
+        <a href="https://www.atfis.or.kr/home/board/FB0027.do?act=read&subSkinYn=N&bpoId=5818" target="_blank" rel="noopener">aT 2025 소스류 세분시장 보고서</a>(소매 1.36조·파스타소스 -4.7%·바질페스토 검색 1위) ·
+        <a href="https://astis.rda.go.kr/api/field/rewardCont.ps?cntntsNo=258357" target="_blank" rel="noopener">RDA 현장기술지원</a>(겨울 바질 가온 18℃·TSWV 재정식 사례) ·
+        <a href="https://www.kurly.com/goods/5031466" target="_blank" rel="noopener">마켓컬리 데체코</a>(리뷰 39,303 = 가격 앵커) ·
+        <b>네이버 플레이스</b>(페스토요일 브런치카페·리뷰 320)
+      </div>
+      <div class="co warn"><span class="lab">미확인 — 상담에서 채울 것</span>
+        <b>매출 규모·광고 집행 여부/예산</b>(견적의 전제인데 통째로 비어 있음) ·
+        <b>임주혁 ↔ 임소현 관계 및 의사결정권</b>(자사몰 푸터 대표는 임소현, 신청자는 임주혁 — 성만 같고 관계 미확인) ·
+        <b>소상공인 해당 여부</b>(상시근로자 10인 미만 — GovFit 4건의 자격 전제) ·
+        <b>채널별 매출 비중</b>(자사몰 vs 스마트스토어 vs 오프라인·B2B) ·
+        <b>매출·손익 전부</b>(개인사업자 공시의무 없음 — "누적 7만+"는 자사 주장, 검증 불가) ·
+        <b>현재 직원 수</b>(창업 시 1명은 2024-10 시점값) ·
+        <b>바질 함량·겨울 조달 구조</b>("4개 농가 4계절"의 출처가 상세 이미지뿐 — 가온 여부·겨울 단가 확인) ·
+        <b>쿠팡 입점</b>(403) · <b>바질페스토 단독 시장규모</b>(1차 통계 분리 불가) · <b>네이버 검색량 계절성</b>(데이터랩 키 필요)
+        <span class="t n">교차 불일치(사소): 대표전화가 자사몰 042-841-2735 / bizno 2736 / 플레이스 0507-1341-2735로 갈림</span>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer><div class="in">BRANDRISE (MarketingOS) · 페스토요일(Pestoyoil) NB 상담 준비 PREP — 통합표준 · 상담 전(신청폼 3줄+직접 리서치) · 전량 가설 · 내부 전용</div></footer>
+
+<script>
+const links=[...document.querySelectorAll('nav.toc a')];
+const sections=[...new Set(links.map(a=>a.getAttribute('href')))]
+  .map(href=>({href,el:document.querySelector(href)})).filter(s=>s.el);
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  const s=sections.find(s=>s.el===e.target); if(!s)return;
+  links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')===s.href));
+}})},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>obs.observe(s.el));
+
+// ===== 셀렉 매트릭스 → 인라인 1차 견적 + 구글시트 빌더용 셀렉 =====
+(function(){
+  var mx=document.getElementById('selmx'); if(!mx) return;
+  var ITEMS=[
+    {key:'진단',name:'전환 진단 — 광고·상세·SNS 3영역 통합 (T1)',stage:'이탈지점·단위경제·원툴 구조',ex:0,L1:500,L2:1000,L3:2000,def:'L1'},
+    {key:'무드보드',name:'인스타 무드보드 (피그마)',stage:'톤·비주얼 축',ex:0,L1:300,L2:500,L3:800,def:'ex'},
+    {key:'기획',name:'콘텐츠 기획 — 사용법·레시피 축 (재구매 엔진)',stage:'기획만 · 운영 별도',ex:0,L1:200,L2:300,L3:600,def:'ex'},
+    {key:'상세',name:'상세페이지 개선 설계안 (고시·정보구조·경량화)',stage:'설계 · 제작 별도',ex:0,L1:1200,L2:2000,L3:3000,def:'ex'},
+    {key:'촬영',name:'하우스 스튜디오 촬영 (제품·사용 컷)',stage:'스타일리스트 없음',ex:0,L1:500,L2:800,L3:1500,def:'ex'},
+    {key:'마케팅',name:'인스타 콘텐츠 운영 (월 6~8건)',stage:'월 단위 · 6개월',ex:0,L1:300,L2:500,L3:900,monthly:1,def:'ex'},
+    {key:'IMC',name:'IMC 전략 파트너십 / 대행사 fee',stage:'회의·대시보드·6개월',ex:0,L1:360,L2:840,L3:1800,monthly:1,def:'ex'}
+  ];
+  var LV=['ex','L1','L2','L3'], LVN={ex:'제외',L1:'L1',L2:'L2',L3:'L3'};
+  var sel={}, override={}, saveTimer=null;
+  var rev=document.getElementById('rev'), ql=document.getElementById('qlist'), qtot=document.getElementById('qtot');
+  var bigWon=document.getElementById('bigWon'), bigEok=document.getElementById('bigEok'), envAmt=document.getElementById('envAmt');
+  var envSt=document.getElementById('envSt'), envCap=document.getElementById('envCap'), bar=document.getElementById('bar'), fill=document.getElementById('fill');
+  var stEl=document.getElementById('saveSt');
+  ITEMS.forEach(function(it){ sel[it.key]=it.def; });
+  function fmt(n){return (parseFloat(n)||0).toLocaleString();}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  function brandName(){ var h=document.querySelector('.hero h1'); return h?h.textContent.trim().replace(/\s+/g,' '):'BRAND'; }
+  function brandSlug(){return brandName().toLowerCase().replace(/[^\w가-힣]+/g,'-').replace(/^-+|-+$/g,'')||'brand';}
+  function ymd(){ var d=new Date(), p=function(n){return(n<10?'0':'')+n;}; return ''+d.getFullYear()+p(d.getMonth()+1)+p(d.getDate()); }
+  function ymdDash(){ return ymd().replace(/(\d{4})(\d{2})(\d{2})/,'$1-$2-$3'); }
+  function won(manwon){ return (manwon*10000).toLocaleString()+'원'; }
+  function dlBlob(content,mime,fname){ var b=new Blob([content],{type:mime}), u=URL.createObjectURL(b), a=document.createElement('a'); a.href=u; a.download=fname; document.body.appendChild(a); a.click(); setTimeout(function(){URL.revokeObjectURL(u); a.remove();},800); }
+  function ensureLib(src,glob,cb){ if(window[glob]){cb(true);return;} var s=document.createElement('script'); s.src=src; s.onload=function(){cb(!!window[glob]);}; s.onerror=function(){cb(false);}; document.head.appendChild(s); }
+  var SKEY='brandrise:selmx:'+(location.pathname||brandSlug());
+  function lvAmt(it,lv){ return lv==='ex'?0:it[lv]; }
+  function hasOverride(k){ return Object.prototype.hasOwnProperty.call(override,k); }
+  function effAmt(it){ return hasOverride(it.key)?override[it.key]:lvAmt(it,sel[it.key]); }
+  function cleanAmt(v){ var n=parseInt(v,10); return isNaN(n)?0:Math.max(0,n); }
+  function pad(n){return(n<10?'0':'')+n;}
+  function hhmm(ts){var d=new Date(ts);return pad(d.getHours())+':'+pad(d.getMinutes());}
+  function setStatus(txt,ok){ if(!stEl) return; stEl.textContent=txt; stEl.className='savest'+(ok?' ok':''); }
+  function writeSave(ts){
+    try{ localStorage.setItem(SKEY,JSON.stringify({sel:sel,override:override,rev:rev?rev.value:'',ts:ts})); }catch(e){}
+  }
+  function save(silent){
+    if(saveTimer){ clearTimeout(saveTimer); saveTimer=null; }
+    if(silent){
+      saveTimer=setTimeout(function(){ var ts=Date.now(); writeSave(ts); setStatus('자동 저장됨 '+hhmm(ts),false); },300);
+    }else{ var ts=Date.now(); writeSave(ts); setStatus('저장됨 ✓ '+hhmm(ts),true); }
+  }
+  function load(){
+    try{
+      var s=JSON.parse(localStorage.getItem(SKEY)||'null'); if(!s) return null;
+      if(s.sel) ITEMS.forEach(function(it){ if(s.sel[it.key]&&LV.indexOf(s.sel[it.key])>-1) sel[it.key]=s.sel[it.key]; });
+      if(s.override){
+        override={};
+        ITEMS.forEach(function(it){ if(s.override[it.key]!=null) override[it.key]=cleanAmt(s.override[it.key]); });
+      }
+      if(rev&&s.rev!=null) rev.value=s.rev;
+      return s.ts||0;
+    }catch(e){ return null; }
+  }
+  function buildMatrix(){
+    ITEMS.forEach(function(it){
+      var rw=document.createElement('div'); rw.className='rw'; rw.setAttribute('data-key',it.key);
+      var h='<div class="nm"><b>'+esc(it.name)+'</b><span class="t n">'+esc(it.stage)+'</span></div>';
+      LV.forEach(function(lv){
+        var amt=lvAmt(it,lv);
+        var label=lv==='ex'?'–':(it.monthly?('월 '+Math.round(amt/6)):fmt(amt));
+        var sub=lv==='ex'?'제외':(it.monthly?(fmt(amt)+'·6개월'):'');
+        h+='<div class="opt'+(lv==='ex'?' ex':'')+'" data-lv="'+lv+'" role="button" tabindex="0" aria-pressed="false"><span class="amt">'+label+'</span>'+(sub?'<span class="sub">'+sub+'</span>':'')+'</div>';
+      });
+      rw.innerHTML=h; mx.appendChild(rw);
+      [].forEach.call(rw.querySelectorAll('.opt'),function(o){
+        function choose(){ sel[it.key]=o.getAttribute('data-lv'); delete override[it.key]; render(false); }
+        o.addEventListener('click',choose);
+        o.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); choose(); } });
+      });
+    });
+  }
+  function matrix(){
+    return ITEMS.map(function(it){
+      var base=sel[it.key]||it.def, edited=hasOverride(it.key), amt=effAmt(it);
+      return {key:it.key,name:it.name,monthly:!!it.monthly,L1:it.L1,L2:it.L2,L3:it.L3,
+        sel:edited?'조정':(base==='ex'?'제외':base), baseSel:base, selAmt:(base!=='ex'||edited)?amt:0, override:edited};
+    });
+  }
+  function selTotal(){ return matrix().reduce(function(s,o){return s+(o.selAmt||0);},0); }
+  function lvCell(monthly,amt){ return monthly?('월 '+Math.round(amt/6)):fmt(amt); }
+  function render(skipSave){
+    [].forEach.call(mx.querySelectorAll('.rw'),function(rw){
+      var k=rw.getAttribute('data-key');
+      [].forEach.call(rw.querySelectorAll('.opt'),function(o){
+        var on=o.getAttribute('data-lv')===sel[k];
+        o.classList.toggle('on',on); o.setAttribute('aria-pressed',on?'true':'false');
+      });
+    });
+    var html='';
+    ITEMS.forEach(function(it){
+      if(sel[it.key]==='ex'&&!hasOverride(it.key)) return;
+      var amt=effAmt(it), ed=hasOverride(it.key), lvtxt=ed?'조정':LVN[sel[it.key]];
+      html+='<div class="qrow'+(ed?' edited':'')+'" data-key="'+it.key+'">'+
+        '<span class="qn"><span class="lvb">'+lvtxt+'</span>'+esc(it.name)+(it.monthly?' (월 '+Math.round(amt/6)+')':'')+'</span>'+
+        '<input class="amtin" type="number" min="0" step="10" value="'+amt+'" data-key="'+it.key+'"><span class="unit">만</span></div>';
+    });
+    ql.innerHTML=html||'<div style="text-align:center;color:var(--muted);padding:22px;font-size:13px">선택된 항목 없음</div>';
+    [].forEach.call(ql.querySelectorAll('.amtin'),function(inp){
+      inp.addEventListener('input',function(){
+        var k=inp.getAttribute('data-key'), row=inp.parentNode, chip=row.querySelector('.lvb');
+        override[k]=cleanAmt(inp.value);
+        row.classList.add('edited'); if(chip) chip.textContent='조정';
+        totals(); save(true);
+      });
+      inp.addEventListener('change',function(){ override[inp.getAttribute('data-key')]=cleanAmt(inp.value); render(false); });
+    });
+    totals();
+    if(!skipSave) save(true);
+  }
+  function totals(){
+    var sum=selTotal();
+    qtot.textContent=fmt(sum)+'만';
+    bigWon.textContent=(sum*10000).toLocaleString()+'원';
+    bigEok.textContent='('+(sum/10000).toFixed(3)+'억)';
+    var rv=parseFloat(rev.value)||0, half=Math.round(rv*750);
+    envAmt.textContent=half?fmt(half)+'만':'—';
+    if(half<=0){
+      fill.style.width='0'; bar.classList.remove('over'); envSt.textContent=''; envSt.className='st';
+      envCap.innerHTML='매출 전 — 예산으로 판단'; return;
+    }
+    var pct=Math.min(100,Math.round(sum/half*100)), over=sum>half;
+    fill.style.width=pct+'%'; bar.classList.toggle('over',over);
+    envSt.className='st '+(over?'over':'ok'); envSt.textContent=over?'⚠ 초과':'✓ 안에 듦';
+    envCap.innerHTML='선택 <b>'+(sum/10000).toFixed(3)+'억</b> / envelope <b>'+(half/10000).toFixed(2)+'억</b> 대비 '+pct+'%'+(over?' — 항목·난이도 조정':'');
+  }
+  if(rev) rev.addEventListener('input',function(){ totals(); save(true); });
+  var bS=document.getElementById('btnSave');
+  if(bS) bS.addEventListener('click',function(){ save(false); });
+  window.addEventListener('beforeunload',function(){ if(saveTimer){ clearTimeout(saveTimer); writeSave(Date.now()); } });
+  // 전체 셀렉 매트릭스(전 항목 × L1/L2/L3 + 선택) — 실제 견적 SELECTION RESULT와 동일 구조로 내보내기 위함
+  function envNote(tot){ var rv=parseFloat(rev.value)||0; if(rv<=0) return ''; var half=Math.round(rv*750);
+    return '<div class="co ac"><span class="lab">예산 ENVELOPE · 매출 기반 가늠자</span>연 마케팅비 ≈ <b>매출 × 15%</b> → 6개월치(매출억 × 750만)로 수주 규모를 가늠합니다. <b>매출 '+rv+'억 → 6개월 envelope ≈ '+fmt(half)+'만</b> · 선택 합계 '+fmt(tot)+'만 = '+(tot<=half?'<b>envelope 안에 합리적으로 듦.</b>':'<b>envelope 초과 — 항목·난이도 협의 조정.</b>')+'</div>'; }
+
+  // 견적 블록 표준 콘텐츠(클라이언트 고유사실 없는 범용 텍스트 — 재사용 안전). data-key로 매칭.
+  var QORDER=['IMC','진단','아이덴티티','디자인','촬영','마케팅','자사몰'];
+  var LVLABEL={L1:'경량(프리랜서)',L2:'표준(내부)',L3:'풀(외주·고사양)','조정':'조정 견적'};
+  var QC={
+    'IMC':{title:'브랜드 IMC 전략 파트너십 / 대행사 fee', period:'6개월 상시', plan:'● 운영 체계\n감(感) 운영 → 데이터 기반 월간 의사결정\n· 목표: 매출·광고 월간 리뷰 루틴 + 대시보드',
+      lines:[['월간 IMC 회의','매출·광고 데이터 분석 및 월 단위 마케팅 기획 리뷰 (정기 미팅 + 상시 슬랙 컨설팅)'],['AI 관리 대시보드','매출·광고 데이터 종합 분석 툴 제공 (웹 대시보드)'],['플랜 시트 납품','연간(월간) 플랜 시트 및 관리 데이터 최초 세팅']],
+      deliver:'연간(월간) 플랜 시트 및 관리 데이터 (매월 납품)'},
+    '진단':{title:'데이터 진단 + 시장 서베이 → 사업계획', period:'데이터 수령 즉시 착수 · 1~2개월', plan:'● 진단 먼저\n결정 가능한 정보로\n· 목표: 의사결정 근거 패키지 페이퍼화',
+      lines:[['1차 진단 — 데이터 정밀 분해','광고·매출·회원/CRM 백데이터 디깅 + 효율 분해·개선 권고'],['2차 진단 — 전략 페이퍼화','숨은 맥락(채널·조직·의사결정) + 노하우 → 의사결정 문서'],['시장 서베이','시장·소비자 조사 + 경쟁 분석·포지셔닝 수용도 검증'],['사업계획 골격','채널·제품·예산 로드맵 + 확장 시나리오']],
+      deliver:'데이터 진단서 + 전략 진단 페이퍼 + 시장 서베이 리포트 + 사업계획 골격'},
+    '아이덴티티':{title:'브랜드 아이덴티티 정립 + 제품체계 전략', period:'진단 직후 · 1~2개월', plan:'● 포지셔닝\n파는 것 → 브랜드로\n· 한 줄 축 공식화 + 제품 하우스 구조화',
+      lines:[['브랜드 워크숍','진단·서베이 공유 → 페르소나·니즈 정의 → 라인업 도출 (대표·핵심 멤버 참여)'],['브랜드 포지셔닝 전략','핵심 축 공식화 — 강점을 브랜드 언어로 번역 / 타겟·경쟁 포지셔닝'],['제품 라인업 전략','히어로/서브/확장 역할 정의 — 브랜드 하우스 구조화'],['브랜드 커뮤니케이션 가이드','핵심 메시지·슬로건·톤앤매너·채널별 말투 가이드']],
+      deliver:'포지셔닝 전략 문서 + 제품 라인업 역할 정의 + 커뮤니케이션 가이드'},
+    '디자인':{title:'브랜드 로고 & 패키지 디자인 리뉴얼', period:'아이덴티티 확정 후 · 2개월', plan:'● 시각화\n노후 디자인 → 정통성이 보이는 디자인',
+      lines:[['로고 리뉴얼','리뉴얼 방향 3안 → 최종 확정 + 컬러 시스템·타이포 가이드'],['패키지 디자인','메인·히어로 라인 패키지 — 채널 MD 호환'],['상세페이지 템플릿 리뉴얼','히어로 기준 신규 템플릿 — 내부 확장 적용 가능한 구조'],['브랜드 가이드라인','로고·컬러·패키지 규정 / 내부·외주 활용']],
+      deliver:'로고 리뉴얼 + 패키지 디자인 + 브랜드 가이드라인'},
+    '촬영':{title:'사진 촬영(제품·라이프스타일) + 콘텐츠 제작', period:'디자인 확정 후', plan:'● 시각 자산\n쓸 사진 확보 → 광고·상세 전용 소재',
+      lines:[['촬영 기획 및 디렉팅','콘셉트 기획·무드보드 / 셋업 / 현장 디렉팅 (1일 full day)'],['제품·라이프스타일 컷','전 라인업 제품 컷 + 라이프스타일 컷 — 입점·상세·광고 활용'],['콘텐츠 제작','광고 후킹 콘텐츠 + 랜딩용 상세 이미지']],
+      deliver:'제품 포트폴리오 컷 + 라이프스타일 컷 + 광고·상세 소재 (스튜디오 렌탈 실비 별도)'},
+    '마케팅':{title:'인스타그램 콘텐츠 기획 & 운영', period:'아이덴티티 확립 후 착수', plan:'● 자산 전환\n임대한 도달 → 소유한 팬덤(자사몰·CRM)',
+      lines:[['인스타그램 무드보드','연간 채널 운영 전략 — 시각 기준·레퍼런스 / 피드·릴스·스토리 구조'],['월 콘텐츠 기획보드','월 8~10건 기획 + 레퍼런스 — 콘텐츠 구조화 + CRM 메시지'],['캠페인 기획','시즌·런칭 캠페인 기획 + 인하우스 전수']],
+      deliver:'무드보드 + 월 콘텐츠 기획보드 + 캠페인 기획서'},
+    '자사몰':{title:'자사몰(카페24) 세팅', period:'1개월', plan:'● 판매 채널\n자사몰 자생 매출 기반 확보',
+      lines:[['사이트 기획·와이어프레임','메인·상품·상세·브랜드스토리·마이페이지 화면 구조 + 전환 UX'],['카페24 기본 셋팅','계정·배송/반품 정책·PG 결제 연동'],['UI 디자인 & 상품 페이지','쇼핑몰 UI 커스텀 + 상세 페이지 제작 + 오픈 QA']],
+      deliver:'쇼핑몰 셋팅 + 상세 페이지 디자인'}
+  };
+  // 선택된 블록을 표준 순서로 — {key,title,period,plan,lines,deliver,amount(원),level}
+  function selectedBlocks(){
+    var byKey={}; matrix().forEach(function(o){ if(o.selAmt>0) byKey[o.key]={amt:o.selAmt*10000, lv:o.sel}; });
+    var out=[]; QORDER.forEach(function(k){ if(byKey[k]&&QC[k]){ var b=QC[k]; out.push({key:k,title:b.title,period:b.period,plan:b.plan,lines:b.lines,deliver:b.deliver,amount:byKey[k].amt,level:byKey[k].lv}); } });
+    return out;
+  }
+
+  // 📊 엑셀로 내보내기 (수주↑ · 코 잡고 정식) — 실제 견적(강훈 5블록) 포맷 · ExcelJS
+  var bX=document.getElementById('btnExcel');
+  if(bX) bX.addEventListener('click',function(){
+    var blocks=selectedBlocks(), tot=selTotal()*10000; if(!blocks.length){ alert('선택된 항목이 없습니다.'); return; }
+    var brand=brandName();
+    ensureLib('https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js','ExcelJS',function(ok){
+      if(!(ok&&window.ExcelJS)){
+        var rows=[['구분','항목','내용','단가','수량','계약 견적']];
+        blocks.forEach(function(b){ rows.push([b.title,'','','','','']); b.lines.forEach(function(l){ rows.push(['',l[0],l[1],'—','포함','포함']); }); rows.push(['','>> 최종 납품',b.deliver,'','','']); rows.push(['소계','','','','',b.amount]); });
+        rows.push(['합계 (VAT 별도)','','','','',tot]);
+        var csv='﻿'+rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"';}).join(',');}).join('\n');
+        dlBlob(csv,'text/csv;charset=utf-8', brand+'_1차견적_'+ymd()+'.csv');
+        alert('엑셀 라이브러리 로드 실패 → CSV로 내보냈습니다(엑셀에서 열림).'); return;
+      }
+      var AC='FF4F46E5', AC50='FFEEF2FF', AC700='FF3730A3', GRAY='FFEFEFEF', GRAY2='FFD9D9D9', INK='FF0F172A', INK2='FF334155', MUTE='FF64748B', LINE='FFD9DEE6';
+      var thin={style:'thin',color:{argb:LINE}};
+      var wb=new ExcelJS.Workbook(); var ws=wb.addWorksheet('견적');
+      ws.columns=[{width:28},{width:30},{width:50},{width:13},{width:12},{width:16}];
+      function box(rr){ for(var c=1;c<=6;c++){ ws.getRow(rr).getCell(c).border={top:thin,left:thin,bottom:thin,right:thin}; } }
+      // 제목
+      ws.mergeCells('A1:D1'); var t=ws.getCell('A1'); t.value='[브랜드라이즈] '+brand+' 브랜드 컨설팅 — 1차 견적'; t.font={bold:true,size:14,color:{argb:INK}};
+      ws.mergeCells('E1:F1'); var dc=ws.getCell('E1'); dc.value=ymdDash()+' ver.'; dc.font={size:10,color:{argb:MUTE}}; dc.alignment={horizontal:'right'};
+      // KPI · 비고 (좌/우)
+      ws.mergeCells('A3:C3'); var kh=ws.getCell('A3'); kh.value='파트너십의 KPI'; kh.font={bold:true,size:11,color:{argb:'FFFFFFFF'}}; kh.fill={type:'pattern',pattern:'solid',fgColor:{argb:AC}};
+      ws.mergeCells('D3:F3'); var nh=ws.getCell('D3'); nh.value='비고'; nh.font={bold:true,size:11,color:{argb:'FFFFFFFF'}}; nh.fill={type:'pattern',pattern:'solid',fgColor:{argb:AC}};
+      ws.mergeCells('A4:C7'); var kt=ws.getCell('A4'); kt.value='· 데이터 정밀 진단 선행 — 결정을 내릴 수 있는 정보부터\n· 브랜드 아이덴티티 → 디자인·촬영·채널 순서 진행\n· 리테이너 + 캠페인 방식 · 인하우스 전수 목표'; kt.alignment={wrapText:true,vertical:'top'}; kt.font={size:10,color:{argb:INK2}};
+      ws.mergeCells('D4:F7'); var nt=ws.getCell('D4'); nt.value='· 본 견적의 금액은 VAT 별도 기준입니다.\n· 촬영 스튜디오 렌탈·패키지 인쇄 실비는 별도 산정.\n· 광고 매체비·퍼포먼스 광고 직접 운영은 범위 외.\n· 범위·금액은 데이터 정밀 진단 결과에 따라 협의 조정됩니다.'; nt.alignment={wrapText:true,vertical:'top'}; nt.font={size:10,color:{argb:INK2}};
+      for(var rr=3;rr<=7;rr++) box(rr);
+      // 헤더
+      var H=9; var hdr=['구분','항목','내용','단가','수량','계약 견적'];
+      hdr.forEach(function(h,i){ var c=ws.getRow(H).getCell(i+1); c.value=h; c.font={bold:true,size:10,color:{argb:AC700}}; c.fill={type:'pattern',pattern:'solid',fgColor:{argb:AC50}}; c.alignment={horizontal:i>=3?'center':'left',vertical:'middle'}; });
+      ws.getRow(H).height=20; box(H);
+      var r=H+1;
+      blocks.forEach(function(b){
+        var rH=r;
+        // 구분 헤더(블록 제목) — A:B 병합, C:F 병합=기간/레벨
+        ws.mergeCells('A'+rH+':B'+rH); var bt=ws.getCell('A'+rH); bt.value=b.title; bt.font={bold:true,size:11,color:{argb:INK}}; bt.alignment={vertical:'middle'};
+        ws.mergeCells('C'+rH+':F'+rH); var pc=ws.getCell('C'+rH); pc.value=b.period+'  ·  '+(LVLABEL[b.level]||b.level); pc.font={size:10,color:{argb:MUTE}}; pc.alignment={horizontal:'right',vertical:'middle'};
+        ws.getRow(rH).height=22; box(rH); r++;
+        // 항목 라인
+        b.lines.forEach(function(l){ var row=ws.getRow(r);
+          row.getCell(1).value=''; row.getCell(2).value=l[0]; row.getCell(2).font={bold:true,color:{argb:INK2}};
+          var d=row.getCell(3); d.value=l[1]; d.alignment={wrapText:true,vertical:'top'}; d.font={size:10,color:{argb:INK2}};
+          row.getCell(4).value='—'; row.getCell(5).value='포함'; row.getCell(6).value='포함';
+          [4,5,6].forEach(function(ci){ row.getCell(ci).alignment={horizontal:'center',vertical:'top'}; row.getCell(ci).font={size:10,color:{argb:MUTE}}; });
+          box(r); r++; });
+        // 납품물
+        var dr=ws.getRow(r); ws.mergeCells('B'+r+':F'+r);
+        dr.getCell(1).value='≫ 최종 납품'; dr.getCell(1).font={bold:true,size:9.5,color:{argb:AC700}};
+        var dd=dr.getCell(2); dd.value=b.deliver; dd.font={size:9.5,color:{argb:AC700}}; dd.alignment={wrapText:true,vertical:'top'};
+        for(var ci=1;ci<=6;ci++) dr.getCell(ci).fill={type:'pattern',pattern:'solid',fgColor:{argb:AC50}};
+        box(r); r++;
+        // 소계
+        ws.mergeCells('A'+r+':E'+r); var sl=ws.getCell('A'+r); sl.value='소       계'; sl.alignment={horizontal:'right'}; sl.font={bold:true,color:{argb:INK}};
+        var sv=ws.getCell('F'+r); sv.value=b.amount; sv.numFmt='#,##0'; sv.alignment={horizontal:'right'}; sv.font={bold:true,color:{argb:INK}};
+        for(var ci2=1;ci2<=6;ci2++) ws.getRow(r).getCell(ci2).fill={type:'pattern',pattern:'solid',fgColor:{argb:GRAY}};
+        box(r); r++;
+        // G 마케팅 가안 (블록 범위 병합) — 7열
+        ws.mergeCells('G'+rH+':G'+(r-1)); var gp=ws.getCell('G'+rH); gp.value=b.plan; gp.alignment={wrapText:true,vertical:'top'}; gp.font={size:9.5,color:{argb:INK2}};
+        for(var gr=rH;gr<=r-1;gr++) ws.getRow(gr).getCell(7).border={top:thin,left:thin,bottom:thin,right:thin};
+      });
+      // 합계
+      ws.mergeCells('A'+r+':E'+r); var hl=ws.getCell('A'+r); hl.value='합       계 (VAT 별도)'; hl.alignment={horizontal:'right'}; hl.font={bold:true,size:11,color:{argb:INK}};
+      var hv=ws.getCell('F'+r); hv.value=tot; hv.numFmt='#,##0'; hv.alignment={horizontal:'right'}; hv.font={bold:true,size:11,color:{argb:INK}};
+      for(var c3=1;c3<=6;c3++) ws.getRow(r).getCell(c3).fill={type:'pattern',pattern:'solid',fgColor:{argb:GRAY2}};
+      ws.getRow(r).height=22; box(r); r+=2;
+      // 추가 논의
+      ws.mergeCells('A'+r+':F'+r); var ad=ws.getCell('A'+r); ad.value='※ 본 견적은 1차 제안입니다. 세부 단가·산출물은 데이터 정밀 진단 결과에 따라 협의로 조정됩니다. (단가 공유 원칙 — 브랜드 불문 동일)'; ad.font={size:9.5,color:{argb:MUTE}}; ad.alignment={wrapText:true};
+      ws.getRow(1).height=22;
+      wb.xlsx.writeBuffer().then(function(buf){ dlBlob(buf,'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', brand+'_1차견적_'+ymd()+'.xlsx'); });
+    });
+  });
+
+  // 📄 HTML로 내보내기 (수주↓ · 링크로 가볍게) — 실제 견적 인디고 디자인
+  var bH=document.getElementById('btnHtml');
+  if(bH) bH.addEventListener('click',function(){
+    var m=matrix(), tot=selTotal(); if(!tot){ alert('선택된 항목이 없습니다.'); return; }
+    var brand=brandName();
+    var rows=m.map(function(o){
+      function cell(lv,amt){ return '<td'+(!o.override&&o.baseSel===lv?' class="hit"':'')+'>'+lvCell(o.monthly,amt)+'</td>'; }
+      var chip=o.override?'<span class="t b">조정 '+fmt(o.selAmt)+'만</span>':(o.sel==='제외'?'<span class="t n">제외</span>':'<span class="t b">'+o.sel+'</span>');
+      return '<tr><td class="nm">'+esc(o.name)+(o.monthly?' <span class="t n">월·6개월</span>':'')+'</td>'+cell('L1',o.L1)+cell('L2',o.L2)+cell('L3',o.L3)+'<td class="c">'+chip+'</td></tr>';
+    }).join('');
+    var css=':root{--ink:#0f172a;--ink2:#334155;--muted:#64748b;--line:#e7e9ee;--line2:#eef1f5;--bg:#fbfcfd;--card:#fff;--soft:#f6f8fb;--ac:#4f46e5;--ac-50:#eef2ff;--ac-100:#e0e7ff;--ac-700:#3730a3}'
+      +'*{margin:0;padding:0;box-sizing:border-box}body{font-family:Pretendard,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:14px;word-break:keep-all}'
+      +'.hero{background:var(--ink);color:#fff;padding:48px 0 40px}.hero .in{max-width:860px;margin:0 auto;padding:0 32px}'
+      +'.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:18px}'
+      +'.hero h1{font-size:clamp(26px,4.4vw,34px);font-weight:800;letter-spacing:-.03em;line-height:1.18;margin-bottom:10px}.hero h1 .hl{background:linear-gradient(transparent 60%,rgba(165,180,252,.55) 60%);padding:0 2px}'
+      +'.hero .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.hero .chip{font-size:12px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 12px}.hero .chip b{color:#a5b4fc}'
+      +'.wrap{max-width:860px;margin:0 auto;padding:32px 32px 80px}.sec-k{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:999px;padding:4px 12px;margin-bottom:12px}'
+      +'h2{font-size:22px;font-weight:800;letter-spacing:-.025em;margin-bottom:8px}.lead{font-size:13.5px;color:var(--ink2);margin-bottom:16px}'
+      +'table{width:100%;border-collapse:collapse;font-size:12.5px;margin:8px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-variant-numeric:tabular-nums}'
+      +'th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:right;padding:11px 13px;font-size:11.5px;border-bottom:1px solid var(--ac-100)}th:first-child{text-align:left}'
+      +'td{padding:12px 13px;border-bottom:1px solid var(--line2);text-align:right;color:var(--ink2)}td.nm{text-align:left;font-weight:700;color:var(--ink)}td.c{text-align:center}td.hit{background:var(--ac-50);font-weight:800;color:var(--ac-700)}'
+      +'tr:nth-child(even) td{background:var(--soft)}tr:nth-child(even) td.hit{background:var(--ac-100)}'
+      +'.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px}.t.b{background:var(--ac-50);color:var(--ac)}.t.n{background:#f1f5f9;color:var(--muted)}'
+      +'.total{background:var(--ink);color:#fff;border-radius:14px;padding:22px 26px;display:flex;justify-content:space-between;align-items:center;margin:16px 0;flex-wrap:wrap;gap:8px}'
+      +'.total .tl2{font-size:13px;color:#94a3b8;font-weight:700;letter-spacing:.06em}.total .tv{font-size:26px;font-weight:800;letter-spacing:-.02em;color:#a5b4fc}.total .tv small{font-size:13px;font-weight:600;color:#cbd5e1;margin-left:8px}'
+      +'.co{border-radius:12px;padding:14px 18px;margin:12px 0;font-size:13px;line-height:1.7;border:1px solid var(--line)}.co.ac{background:var(--ac-50);border-color:var(--ac-100)}.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase;color:var(--ac)}.co b{color:var(--ink)}'
+      +'footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.8;margin-top:8px}'
+      +'@media print{.hero,.total,.co,td.hit,th{-webkit-print-color-adjust:exact;print-color-adjust:exact}}';
+    var doc='<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>'+brand+' · 1차 견적 | BRANDRISE</title>'
+      +'<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet"><style>'+css+'</style></head><body>'
+      +'<div class="hero"><div class="in"><div class="badge">BRAND CONSULTING QUOTE · 1차 견적</div><h1>'+brand+' · 1차 <span class="hl">견적</span></h1>'
+      +'<div class="meta"><span class="chip">견적일 <b>'+ymdDash()+'</b></span><span class="chip">선택 합계 <b>'+won(tot)+' (VAT 별도)</b></span><span class="chip">기준 <b>셀렉 매트릭스 L 결과</b></span></div></div></div>'
+      +'<div class="wrap"><section><div class="sec-k">SELECTION RESULT</div><h2>견적 셀렉 결과 — 항목별 난이도</h2>'
+      +'<p class="lead">PREP 상담 셀렉(항목별 L1·L2·L3)으로 정해진 단가입니다. <b>L2(내부 표준)가 기준선</b>, L1은 경량(프리랜서), L3은 풀(외주·고사양). <b>단가 공유 원칙</b>: 공통 항목 단가는 브랜드 불문 동일합니다. (단위: 만원 · VAT 별도)</p>'
+      +'<table><thead><tr><th>견적 항목</th><th style="width:16%">L1 경량(프리랜서)</th><th style="width:16%">L2 표준(내부)★</th><th style="width:18%">L3 풀(외주·고사양)</th><th class="c" style="width:10%">선택</th></tr></thead><tbody>'+rows+'</tbody></table>'
+      +'<div class="total"><div class="tl2">선택 합계 (L 셀렉 결과)</div><div class="tv">'+won(tot)+' <small>= '+fmt(tot)+'만 · '+(tot/10000).toFixed(3)+'억 · VAT 별도</small></div></div>'
+      +envNote(tot)
+      +'<div class="co"><span class="lab">비고</span>· 본 견적은 <b>1차 제안</b>이며 VAT 별도입니다. 항목·범위는 데이터 정밀 진단 결과에 따라 협의로 조정됩니다.<br>· 레벨: L1 경량(프리랜서) / L2 표준(내부) / L3 풀(외주·고사양).<br>· 월 단위 항목(IMC 파트너십)은 6개월 기준 합계입니다. 촬영 스튜디오·인쇄 실비는 별도 산정.</div>'
+      +'</section></div><footer><b>BRANDRISE</b> by HIZ · Brand · IMC Consulting<br>본 1차 견적은 상담 준비(PREP) 셀렉 결과 기반입니다 — 확정 견적은 진단 후 별도 발송됩니다.</footer></body></html>';
+    dlBlob(doc,'text/html;charset=utf-8', brand+'_1차견적_'+ymd()+'.html');
+  });
+  var bR=document.getElementById('btnReset');
+  if(bR) bR.addEventListener('click',function(){
+    ITEMS.forEach(function(it){ sel[it.key]=it.def; });
+    override={};
+    rev.value='135';
+    render(false);
+  });
+  buildMatrix();
+  var restoredTs=load();
+  render(true);
+  if(restoredTs){ setStatus('이전 작업 복원됨 · 마지막 저장 '+hhmm(restoredTs),false); }
+})();
+</script>
+</body>
+</html>

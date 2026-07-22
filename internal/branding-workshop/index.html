@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE 브랜딩 워크샵 진행 가이드 · 인디고 클린
+  · 콘텐츠 출처: 000. 브랜딩 워크샵/브랜딩워크샵_설계_v1_260629.md (Phase 1 = 이 매뉴얼)
+    + VINKER(수작업 골든) / 애그하다(AI 활용) 장표 실측 + 강훈목장·그리니팅 실전 교정
+  · 스타일: consult-playbook과 동일 CSS를 그대로 씀(인디고 클린 단일, 신규 컴포넌트 없음)
+  · 배포: internal/branding-workshop/index.html
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>브랜딩 워크샵 진행 가이드 | BRANDRISE 내부</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<link href="../base.css" rel="stylesheet">
+<style>
+
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.74;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:16.5px}
+.hero{background:#0f172a;color:#fff;padding:64px 0 52px;position:relative;overflow:hidden}
+.hero .in{max-width:1180px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:clamp(38px,4.8vw,56px);font-weight:800;letter-spacing:-.03em;line-height:1.08;margin-bottom:14px}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
+.hero .sub{font-size:16px;color:#cbd5e1;font-weight:300;max-width:720px;line-height:1.75}
+.hero .meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.layout{max-width:1180px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:208px 1fr;gap:48px;align-items:start}
+nav.toc{position:sticky;top:28px;padding:36px 0;font-size:13.5px}
+nav.toc .nl{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--muted);margin:0 0 14px 12px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;border-left:2px solid transparent;font-weight:500;
+  transition:color var(--t-hover) var(--ease-out),background-color var(--t-hover) var(--ease-out),border-left-color var(--t-hover) var(--ease-out)}
+nav.toc a:hover{color:var(--ink);background:var(--soft)}
+nav.toc a.on{color:var(--ac);background:var(--ac-50);border-left-color:var(--ac);font-weight:700}
+main{padding:36px 0 100px;min-width:0;counter-reset:sec}
+section{counter-increment:sec;border-top:2px solid var(--ink);padding:34px 0 0 108px;position:relative;margin-bottom:90px;scroll-margin-top:24px}
+main>section:first-child{border-top:none;padding-top:0}
+.sec-k{font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+.sec-k::before{content:counter(sec,decimal-leading-zero);position:absolute;left:0;top:30px;font-size:62px;font-weight:800;color:var(--ac);letter-spacing:-.04em;line-height:.9;font-variant-numeric:tabular-nums}  /* 좌측 여백 마진 번호 */
+main>section:first-child .sec-k::before{top:0}
+h2{font-size:34px;font-weight:800;letter-spacing:-.025em;margin-bottom:6px;line-height:1.14}
+.lead{font-size:18px;color:var(--muted);margin-bottom:22px;line-height:1.7}
+h3{font-size:20px;font-weight:800;margin:30px 0 13px;color:var(--ink);letter-spacing:-.015em;line-height:1.35}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.co{border-radius:0 10px 10px 0;padding:16px 20px;margin:14px 0;font-size:15.5px;line-height:1.75;border:1px solid var(--line);border-left:3px solid var(--ac)}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100);border-left-color:var(--ac)} .co.ok{background:var(--ok-50);border-color:#bbf7d0;border-left-color:var(--ok)}
+.co.warn{background:var(--warn-50);border-color:#fde68a;border-left-color:var(--warn)} .co.bad{background:var(--bad-50);border-color:#fecdd3;border-left-color:var(--bad)}
+.co b,.co strong{color:var(--ink);font-weight:600}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
+.t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
+.t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:6px 0 4px;font-variant-numeric:tabular-nums;line-height:1.6}
+th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:left;padding:13px 15px;font-size:12px;border-bottom:1px solid var(--ac-100)}
+td{padding:13px 15px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b,td strong{color:var(--ink)}
+tbody tr:nth-child(even) td{background:var(--soft)}
+.op{background:linear-gradient(160deg,var(--ac-50),#fff 65%);border:1px solid var(--ac-100);border-radius:16px;padding:26px 28px}
+.op .opk{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--ac);margin-bottom:14px}
+.op .blk{margin-bottom:16px} .op .blk:last-child{margin-bottom:0}
+.op .bl{font-size:11px;font-weight:800;color:var(--ac-700);letter-spacing:.06em;margin-bottom:5px}
+.op .bt{font-size:14.5px;line-height:1.7;color:var(--ink2)} .op .bt b{color:var(--ink)}
+
+/* 6단계 타임라인 */
+.flow{border-left:2px solid var(--ac-100);padding-left:24px;margin:18px 0}
+.flow .st{position:relative;padding:6px 0 20px}
+.flow .st:last-child{padding-bottom:0}
+.flow .st::before{content:"";position:absolute;left:-31px;top:9px;width:11px;height:11px;border-radius:50%;background:var(--ac);border:2px solid #fff;box-shadow:0 0 0 2px var(--ac-100)}
+.flow .st{padding:8px 0 26px}
+.flow .sn{font-size:12px;font-weight:800;color:var(--ac);letter-spacing:.06em}
+.flow .stt{font-size:19px;font-weight:800;color:var(--ink);margin:3px 0 8px}
+.flow .sb{font-size:15px;color:var(--ink2);line-height:1.75}
+/* ===== 가독성 공통: 핵심(굵게) · 멘트(.say) · 메모(.memo) 3분리, 큰 글씨 ===== */
+.sb>b:first-child,.sd>b:first-child{display:block;font-size:16px;font-weight:800;color:var(--ink);line-height:1.55}
+.sb b,.sd b{color:var(--ink)}
+.say{border-left:3px solid var(--ac);background:var(--soft);border-radius:0 10px 10px 0;padding:11px 17px;margin:11px 0;font-size:15px;color:var(--ink);font-weight:600;line-height:1.6}
+.say::before{content:"\201C";color:var(--ac);font-weight:800}
+.say::after{content:"\201D";color:var(--ac);font-weight:800}
+.memo{display:block;font-size:13px;color:var(--muted);line-height:1.65;margin-top:9px;padding-left:13px;border-left:2px solid var(--line)}
+.memo b{color:var(--ink2);font-weight:700}
+.flow .sg{display:inline-block;font-size:13px;font-weight:700;color:var(--ac-700);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:7px;padding:4px 11px;margin-top:10px}
+
+/* 화법 인용 박스 */
+.talk{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac);border-radius:10px;padding:14px 18px;margin:10px 0}
+.talk .src{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.04em;margin-bottom:6px}
+.talk .said{font-size:15px;color:var(--ink);line-height:1.65;font-weight:600}
+.talk .said::before{content:"“";color:var(--ac);font-weight:800}
+.talk .said::after{content:"”";color:var(--ac);font-weight:800}
+.talk .eff{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.62} .talk .eff b{color:var(--ink2)}
+
+/* 질문 카드 */
+.q{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac);border-radius:10px;padding:16px 18px;margin-bottom:10px}
+.q .qn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.05em;margin-bottom:5px}
+.q .qt{font-size:15px;font-weight:600;color:var(--ink);line-height:1.6}
+.q .qi{font-size:13px;color:var(--muted);margin-top:7px;line-height:1.62}
+
+/* 패턴 2열 */
+.pat{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:20px 22px}
+.pat.a{border-color:var(--ac-100)} .pat.b{border-color:#bbf7d0}
+.pat .ph{font-size:13px;font-weight:800;letter-spacing:.02em;margin-bottom:4px}
+.pat.a .ph{color:var(--ac)} .pat.b .ph{color:var(--ok)}
+.pat .pd{font-size:14px;color:var(--muted);margin-bottom:12px;line-height:1.6}
+.pat ul{list-style:none} .pat li{font-size:14px;color:var(--ink2);padding:5px 0 5px 16px;position:relative;line-height:1.55}
+.pat li::before{content:"›";position:absolute;left:0;font-weight:800} .pat.a li::before{color:var(--ac)} .pat.b li::before{color:var(--ok)}
+
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px}
+footer .in{max-width:1180px;margin:0 auto;padding:0 40px}
+@media(max-width:880px){.layout{grid-template-columns:1fr;gap:0;padding:0 22px}nav.toc{display:none}.hero .in{padding:0 22px}.grid2,.grid3{grid-template-columns:1fr}section{padding-left:0!important}.sec-k::before{position:static;display:block;margin-bottom:4px;top:auto}}
+@media print{.card,.talk,.q,.pat,.co{break-inside:avoid}}
+.mnav{background:#0b1220;border-bottom:1px solid rgba(255,255,255,.08)}
+.mnav .in{max-width:1180px;margin:0 auto;padding:11px 40px;display:flex;gap:5px;flex-wrap:wrap;align-items:center;font-size:12.5px}
+.mnav a{color:#cbd5e1;font-weight:600;text-decoration:none;padding:4px 9px;border-radius:7px;white-space:nowrap}
+.mnav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.mnav a.home{color:#a5b4fc;font-weight:800;letter-spacing:.03em}
+.mnav a.on{color:#fff;background:rgba(165,180,252,.16)}
+.mnav .sep{color:#334155;margin:0 2px}
+/* 접이식 — 장황한 열거를 핵심 뒤로 */
+details.acc{border:1px solid var(--line);border-radius:12px;background:var(--soft);margin:14px 0;overflow:hidden}
+details.acc>summary{cursor:pointer;list-style:none;padding:15px 20px;font-weight:800;font-size:15px;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:12px}
+details.acc>summary::-webkit-details-marker{display:none}
+details.acc>summary .cnt{font-size:12.5px;font-weight:700;color:var(--ac)}
+details.acc>summary::after{content:"펼치기 ▾";font-size:12.5px;font-weight:700;color:var(--ac);white-space:nowrap}
+details.acc[open]>summary::after{content:"접기 ▴"}
+details.acc[open]>summary{border-bottom:1px solid var(--line)}
+details.acc>summary:hover{background:var(--ac-50)}
+details.acc .accb{padding:6px 20px 18px}
+details.acc .accb>:first-child{margin-top:14px}</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">BRANDING WORKSHOP · 진행 가이드 v1 · 내부 전용</div>
+  <h1>브랜딩 워크샵 <span class="hl">진행 가이드</span></h1>
+  <div class="sub">수주한 다음에 무엇을 어떤 순서로 하는지. 근거는 <b style="color:#fff">VINKER(수작업 골든)</b>와 <b style="color:#fff">애그하다(AI 활용)</b> 두 케이스, 그리고 강훈목장·그리니팅 실전. 프로세스만 알면 주니어도 돌릴 수 있게 적었다.</div>
+  <div class="meta">
+    <span class="chip">골격 <b>사전 인터뷰 → 1차 → 2차 → 3차 → 소개서</b></span>
+    <span class="chip">장표 엔진 <b>Figma</b></span>
+    <span class="chip">경계 <b>AI는 정리 · 사람은 선택</b></span>
+    <span class="chip">근거 <b>VINKER · 애그하다 · 강훈목장 · 그리니팅</b></span>
+  </div>
+</div></div>
+
+<div class="layout">
+  <nav class="toc">
+    <div class="nl">WORKSHOP 목차</div>
+    <a href="#onepager">가이드 한 장</a>
+    <a href="#interview">0. 사전 인터뷰</a>
+    <a href="#w1">1차 — 발견</a>
+    <a href="#w2">2차 — 정의·컨셉</a>
+    <a href="#w3">3차 — 비주얼</a>
+    <a href="#intro">브랜드 소개서</a>
+    <a href="#split">AI · 사람 분담</a>
+    <a href="#gate">게이트 · 공통 장표</a>
+    <a href="#figma">장표 제작 규약</a>
+    <a href="#tier">회차 · 단가</a>
+    <a href="#cases">실증 케이스</a>
+  </nav>
+
+  <main>
+
+    <!-- ===== 1. 한 장 ===== -->
+    <section id="onepager">
+      <div class="sec-k">ONE-PAGER</div>
+      <h2>가이드 한 장</h2>
+      <p class="lead">워크샵 들어가기 전에 이 카드 하나만 보면 된다. 나머지는 전부 백업.</p>
+
+      <div class="op">
+        <div class="opk">워크샵의 뼈대</div>
+        <div class="blk">
+          <div class="bl">골격 — 5단계</div>
+          <div class="bt"><b>대표 사전 인터뷰</b>(킥오프·발견) → <b>1차</b>(발견) → <b>2차</b>(정의·컨셉) → <b>3차</b>(비주얼·디자인) → <b>브랜드 소개서</b>(최종 납품물). 회차 수는 고정이 아니라 단가로 조절한다. 보통 1~3차, 3차는 거의 디자인.</div>
+        </div>
+        <div class="blk">
+          <div class="bl">인터뷰는 단계가 아니라 축이다</div>
+          <div class="bt">사전 폼으로 한 번 받고 끝이 아니다. <b>사전~3차 전 구간을 관통</b>하며 회차마다 컨셉을 보정한다. 애그하다는 전문성·소백산·50년의 우선순위가 인터뷰로 계속 이동했다.</div>
+        </div>
+        <div class="blk">
+          <div class="bl">다섯 가지 원칙</div>
+          <div class="bt"><b>AI는 정리, 사람은 선택</b> — 리서치·키워드·초안은 AI, 편가름·설득 근거·최종 결정은 사람. <b>윗단 불변, 아랫단 가변</b> — 비전·방향·아이덴티티는 거의 안 바뀌고 마케팅 액션만 소비자 따라 바뀐다. <b>없는 이야기를 짓지 않는다</b> — 브랜딩은 만드는 게 아니라 가진 진짜를 잘 보이게 하는 일. <b>결정은 대표가 한다</b> — 우리는 근거와 선택지를 좁혀 간다. <b>회차마다 리뷰로 연다</b> — 직전 워크샵 리뷰 표를 매 회차 첫 장에.</div>
+        </div>
+      </div>
+
+      <div class="co warn">
+        <span class="lab">자주 나오는 미달</span>
+        1차의 <b>시장·경쟁 블록이 가장 분량이 큰 덩어리</b>다. 경쟁사를 몇 장으로 뭉뚱그리면 그 자리에서 티가 난다. 강훈목장 1차에서 경쟁사를 "4카드 1장"으로 압축했다가 교정한 사례가 있다(2026-06-30). 기준은 <b>브랜드당 1장 · 10~12개</b>.
+      </div>
+    </section>
+
+    <!-- ===== 2. 사전 인터뷰 ===== -->
+    <section id="interview">
+      <div class="sec-k">STEP 0</div>
+      <h2>대표님 사전 인터뷰</h2>
+      <p class="lead">워크샵 전에 폼으로 받고, 1차 현장에서 같이 보며 더 판다. 두 단계다.</p>
+
+      <div class="flow">
+        <div class="card">
+          <div class="sn">A</div>
+          <div class="stt">사전 구글폼</div>
+          <div class="sb"><b>워크샵 전 대표에게 발송한다.</b>
+          답을 미리 받아야 사전 분석과 리서치 방향이 잡힌다. 적게 묻고 깊게 — 골든은 대조형 11문항이다.
+          <span class="memo"><b>왜 대조형인가</b> — 한 면만 물으면 모범답안이 돌아온다. 둘을 맞대야 진짜 우선순위가 나온다.</span>
+          </div>
+          <div class="sg">산출: 사전 답변 원자료 + 사전 분석 노트</div>
+        </div>
+
+        <div class="card">
+          <div class="sn">B</div>
+          <div class="stt">1차 현장 인터뷰</div>
+          <div class="sb"><b>사전 답변을 화면에 띄우고 함께 검토한다.</b>
+          "사전 질문 같이보기" 장표가 현장 인터뷰의 출발점이다. 그 자리에서 더 깊이 파고 컨셉을 보정한다.
+          <span class="memo">단어가 될 만한 표현은 그 자리에서 하이라이트한다. 이게 키워드 원석이 된다.</span>
+          </div>
+          <div class="sg">산출: 현장 인터뷰 노트 · 키워드 원석</div>
+        </div>
+      </div>
+
+      <h3>사전 폼 — 골든 11문항</h3>
+      <p class="lead" style="font-size:15px">모두 <b>둘을 맞대는 형식</b>이다. 애그하다 이민나 대표 응답이 질문 설계의 정본 원천.</p>
+      <table>
+        <thead><tr><th style="width:38px">#</th><th>질문</th><th style="width:150px">노리는 것</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>처음 시작한 결정적 순간·계기</td><td>기원 서사</td></tr>
+          <tr><td>2</td><td>내일 사라진다면 누가 가장 아쉬워할까, 왜</td><td>존재가치</td></tr>
+          <tr><td>3</td><td>10년 뒤 어떤 이름으로 불리고 싶나</td><td>비전</td></tr>
+          <tr><td>4</td><td>가장 자신 있는 강점 3 ↔ 가장 큰 고민 3</td><td>자산·결핍</td></tr>
+          <tr><td>5</td><td>우리가 말하는 이미지 ↔ 고객이 느끼는 이미지</td><td>인식 격차</td></tr>
+          <tr><td>6</td><td>절대 안 바꿀 것 하나 ↔ 과감히 바꿔도 될 것 하나</td><td>불변·가변 경계</td></tr>
+          <tr><td>7</td><td>지금 사주는 고객 ↔ 앞으로 만나고 싶은 고객</td><td>타깃 이동</td></tr>
+          <tr><td>8</td><td>경쟁·대체재 ↔ 그럼에도 우리만 줄 수 있는 것</td><td>차별점</td></tr>
+          <tr><td>9</td><td>라인업의 '얼굴' 제품 ↔ 나머지 제품의 역할</td><td>포트폴리오 위계</td></tr>
+          <tr><td>10</td><td>닮고 싶은 레퍼런스(링크) + 키워드 3개</td><td>취향 단서</td></tr>
+          <tr><td>11</td><td>기대하는 변화 하나 ↔ 걱정되는 점 하나</td><td>기대·불안</td></tr>
+        </tbody>
+      </table>
+      <div class="co ac">
+        <span class="lab">케이스별 추가</span>
+        연혁·OEM 납품처·인증·창업 실체 같은 <b>사실 공백</b>은 별도 섹션으로 덧붙인다. 강훈목장은 OEM 납품처·인증·목장 실체를 따로 물었다. 키워드는 강요하지 말고 함께 도출한다.
+      </div>
+
+      <details class="acc">
+        <summary>현장 심화 — Visioning 5블록 <span class="cnt">비전 · 고객 · 제품 · 디자인 · 시장</span></summary>
+        <div class="accb">
+          <p>사전 폼이 뼈대고, 현장에서 블록을 더 판다.</p>
+          <table>
+            <thead><tr><th style="width:92px">블록</th><th>현장에서 파는 질문</th></tr></thead>
+            <tbody>
+              <tr><td><b>비전</b></td><td>어떤 회사이고 어떤 회사가 되고 싶은지 / 10년 뒤 어디에 / 왜 꼭 우리 제품인지 / 근본적으로 푸는 문제</td></tr>
+              <tr><td><b>고객</b></td><td>기존 고객은 누구이고 관계는 어떤지 / 우리 소비자는 누구인지 / 누구에게·얼마에·얼마나 / 이상적 고객 경험</td></tr>
+              <tr><td><b>제품</b></td><td>무슨 제품이고 어떤 제품이 되고 싶은지 / 잘하는 것 / 경쟁 제품과 무엇이 다른지 / 우선 기준(품질·원료·가격)</td></tr>
+              <tr><td><b>디자인</b></td><td>선호 패키지·요즘 눈에 든 브랜드 / <b>사람에 비유하면?(나이·직업·옷차림)</b> / 절대 하기 싫은 모습 / 상징 색·이미지</td></tr>
+              <tr><td><b>시장</b></td><td>도전할 시장엔 어떤 브랜드·제품이 있는지 / 구매 포인트마다 잘하는 브랜드 / 채널별 특화</td></tr>
+            </tbody>
+          </table>
+          <div class="memo">질문 라이브러리 정본은 <b>000. 브랜딩 워크샵/_인터뷰/</b>에 있다. 폼 실물과 실제 응답도 같은 폴더.</div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ===== 3. 1차 ===== -->
+    <section id="w1">
+      <div class="sec-k">STEP 1</div>
+      <h2>1차 워크샵 — 발견</h2>
+      <p class="lead">가진 것을 꺼내 놓고, 시장 안에서 어디에 서 있는지 확인한다. 분량이 가장 큰 회차다.</p>
+
+      <table>
+        <thead><tr><th style="width:38px">#</th><th>장표 블록</th><th style="width:210px">채우는 방법</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>표지</td><td>—</td></tr>
+          <tr><td>2</td><td>아젠다 — 오늘 다룰 순서</td><td>—</td></tr>
+          <tr><td>3</td><td><b>사전 질문 같이보기</b></td><td>구글폼 답변 그대로</td></tr>
+          <tr><td>4</td><td><b>인터뷰</b> — Visioning 5블록 현장 심화</td><td>현장 진행, 표현 하이라이트</td></tr>
+          <tr><td>5</td><td><b>시장 조사</b> — 개요 + 경쟁사 개별 + 종합 + 포지셔닝 맵</td><td>워크샵 전 리서치로 채움</td></tr>
+          <tr><td>6</td><td>브랜드 소개 및 분석 — 자사 진단·보유자산·제약·SWOT</td><td>매출·채널 실측 + AI 초안</td></tr>
+          <tr><td>7</td><td>타겟 페르소나 방향 설정</td><td>인터뷰로 보정</td></tr>
+          <tr><td>8</td><td>브랜드 방향성 도출 — 자산 키워드에서 2~3 방향 후보</td><td>AI 초안 → 사람 편가름</td></tr>
+          <tr><td>9</td><td>2차 과제 안내 · 클로징</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <div class="memo">옵션 장표: 프로젝트 개요(목적·스펙·요청), 컨설팅 여정·일정, '브랜딩이란' 전제. 케이스와 대표 친숙도에 따라 표지~사전질문 사이에 넣는다.</div>
+
+      <h3>경쟁사 리서치 깊이 — 골든 기준</h3>
+      <div class="co bad">
+        <span class="lab">타협 금지</span>
+        <b>경쟁사는 브랜드당 1장, 10~12개.</b> 여기에 종합분석 1~2장과 포지셔닝 맵 1장을 더한다. 실측 근거 — VINKER는 별도 「브랜드 리서치」 문서만 <b>61페이지</b>(워크샵 1차 33페이지는 별도), 애그하다 1차 59장 중 경쟁사가 <b>27장</b>(12개 브랜드).
+      </div>
+
+      <details class="acc">
+        <summary>경쟁사 1장 정형 스키마 <span class="cnt">VINKER 실측 항목</span></summary>
+        <div class="accb">
+          <div class="grid2">
+            <div class="card">
+              <div class="bl" style="font-size:11px;font-weight:800;color:var(--ac-700);letter-spacing:.06em;margin-bottom:8px">기본 정보</div>
+              <div style="font-size:14.5px;line-height:1.8;color:var(--ink2)">브랜드명·로고<br>카테고리<br>창립연도·국가·소재지<br>슬로건(+의미)<br>브랜드 스토리(원문+번역)<br>브랜드 특징</div>
+            </div>
+            <div class="card">
+              <div class="bl" style="font-size:11px;font-weight:800;color:var(--ac-700);letter-spacing:.06em;margin-bottom:8px">사업·실물</div>
+              <div style="font-size:14.5px;line-height:1.8;color:var(--ink2)">시그니처 제품 + 가격(100g 환산)<br>제품 종류 · 판매 채널<br>자사몰 전술<br>홈페이지·인스타 URL(+팔로워)<br><b>제품·패키지 이미지</b><br><b>인스타 피드 캡처</b><br>우리 시사점</div>
+            </div>
+          </div>
+          <div class="memo">가격은 반드시 <b>100g 환산</b>으로 통일해야 비교가 된다. 실물 캡처(패키지·피드·실제 리뷰)가 빠지면 설득력이 반으로 준다.</div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ===== 4. 2차 ===== -->
+    <section id="w2">
+      <div class="sec-k">STEP 2</div>
+      <h2>2차 워크샵 — 정의 · 컨셉</h2>
+      <p class="lead">1차에서 꺼낸 원석을 키워드로 묶고, 컨셉 후보로 세운다.</p>
+
+      <div class="flow">
+        <div class="card">
+          <div class="sn">흐름</div>
+          <div class="stt">1차 리뷰 → 키워드 맵핑 → 컨셉 2~3안 → 포지셔닝·메시지 → 3차 과제</div>
+          <div class="sb"><b>키워드 맵핑은 3단이다.</b> 도출 → 유사키워드 확장 → 컨셉별 그룹핑.
+          컨셉 각 안에는 컨셉 키워드·소스·당위성·무드보드·캠페인이 붙는다.
+          <span class="memo">제품만 있고 브랜드명이 없는 경우엔 네이밍 후보와 키프리스 상표검색이 여기 들어간다.</span>
+          </div>
+          <div class="sg">산출: 2차 워크샵 장표</div>
+        </div>
+      </div>
+
+      <div class="co ac">
+        <span class="lab">구조 통찰 — 강훈목장 실전</span>
+        키워드 5갈래를 컨셉 3안에 <b>1:1로 승격시키면 컨셉이 아니라 자산 라벨</b>이 된다. 역할이 다른 갈래를 <b>누가·왜·어떻게</b> 세 관점으로 재조합해야 컨셉이 선다. 강훈목장은 서사축·제품축·소비자축으로 다시 묶어 7라운드 만에 풀렸다.
+      </div>
+
+      <h3>무드보드는 패키지 디자인 레퍼런스다</h3>
+      <div class="co warn">
+        <span class="lab">정의 재확인</span>
+        무드보드에 <b>사람 사진·마트 진열 사진·AI 목업</b>을 넣는 건 오답이다. 무드보드는 <b>패키지 디자인 레퍼런스</b> — 이 브랜드의 용기·라벨·질감이 어디로 갈지 보여주는 자료다. 각 장에 패키지 속성을 해시태그로 달아 무엇을 보라는 건지 못 박는다.
+        <span class="memo" style="border-color:#fde68a">큐레이션은 사람, 배치는 AI. 이미지 고르는 게 이 회차의 진짜 병목이다.</span>
+      </div>
+    </section>
+
+    <!-- ===== 5. 3차 ===== -->
+    <section id="w3">
+      <div class="sec-k">STEP 3</div>
+      <h2>3차 워크샵 — 비주얼 · 디자인</h2>
+      <p class="lead">거의 디자인 회차다. AI 비중이 가장 낮고 디자이너 비중이 가장 높다.</p>
+
+      <div class="flow">
+        <div class="card">
+          <div class="sn">흐름</div>
+          <div class="stt">2차 리뷰·컨셉 확정 → 룩앤필/BI 방향 → 패키지·상세·웹 무드 → 디자인 시안 → 매대 비교 → 확정</div>
+          <div class="sb"><b>매대 비교를 빼지 않는다.</b> 가상이든 실물이든, 경쟁 제품 옆에 놓고 봐야 결정이 난다.
+          <span class="memo">F&amp;B는 맛·관능 테스트를 여기에 붙인다.</span>
+          </div>
+          <div class="sg">산출: 3차 워크샵 장표 (주로 디자인)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 6. 소개서 ===== -->
+    <section id="intro">
+      <div class="sec-k">STEP 4</div>
+      <h2>브랜드 소개서</h2>
+      <p class="lead">최종 납품물. 디자인·촬영이 끝난 뒤 정리한다.</p>
+      <div class="card">
+        <div class="sb"><b>브랜드 DNA·비전·타깃·톤앤매너·슬로건·룩앤필을 종합한다.</b>
+        대표가 5천만~1억을 쓰고 손에 받는 자료다. 여기서 완성도가 떨어지면 앞의 세 회차가 다 깎인다.
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 7. 분담 ===== -->
+    <section id="split">
+      <div class="sec-k">ROLE</div>
+      <h2>AI · 사람 분담</h2>
+      <p class="lead">반복 가능한 리서치·초안은 AI가, 인터뷰·선택·설득·마감은 사람이 잡는다.</p>
+      <table>
+        <thead><tr><th style="width:118px">회차</th><th>AI가 하는 것</th><th>사람이 잡는 것</th></tr></thead>
+        <tbody>
+          <tr><td><b>사전 인터뷰</b></td><td>폼 질문지 구성, 답변 사전 분석</td><td>발송, 현장 인터뷰 진행, 규약 확정</td></tr>
+          <tr><td><b>1차</b></td><td>경쟁사 풀(대표 추천 10 + AI 발굴 믹스), 리서치 카드, 인사이트·SWOT·타깃 초안</td><td>인터뷰 진행, 취향 단서 캡처, 큐레이션</td></tr>
+          <tr><td><b>2차</b></td><td>키워드 맵핑·유사키워드, 컨셉 골격, 당위성·타깃·메시지 초안</td><td>엣지 키워드 선택, 설득 근거, 무드보드 이미지 큐레이션</td></tr>
+          <tr><td><b>3차</b></td><td>무드보드 키워드, 레퍼런스 검색어</td><td>실제 이미지 큐레이션(병목), 디자이너 협업, 대표 결정</td></tr>
+        </tbody>
+      </table>
+      <div class="say">클로드로 정리만 해줘도 내가 편가름만 하면 시간이 세이브된다.</div>
+      <div class="memo">2026-06-26 내부 교육 녹취. 이 문장이 분담선의 기준이다.</div>
+    </section>
+
+    <!-- ===== 8. 게이트 ===== -->
+    <section id="gate">
+      <div class="sec-k">GATE</div>
+      <h2>게이트 · 공통 장표</h2>
+      <p class="lead">건너뛰면 뒤에서 반드시 터지는 네 가지, 그리고 매 회차에 반복해서 넣는 장표.</p>
+
+      <div class="grid2">
+        <div class="pat a">
+          <div class="ph">게이트 4종</div>
+          <div class="pd">하나라도 빠지면 회차를 닫지 않는다.</div>
+          <ul>
+            <li><b>키프리스 상표검색</b> — 네이밍이 들어가는 케이스는 예외 없이</li>
+            <li><b>사실점검</b> — 미확인 항목은 To Be Confirmed 표로 남긴다</li>
+            <li><b>대표 최종 결정</b> — 우리가 좁히고 대표가 고른다</li>
+            <li><b>단가별 회차 상한</b> — 계약 범위를 넘겨 회차를 늘리지 않는다</li>
+          </ul>
+        </div>
+        <div class="pat b">
+          <div class="ph">매 회차 공통 장표</div>
+          <div class="pd">회차마다 같은 자리에 넣는다.</div>
+          <ul>
+            <li><b>직전 워크샵 리뷰 표</b> — 회차의 첫 장</li>
+            <li><b>To Be Confirmed 표</b> — 미확인 사항</li>
+            <li><b>액션아이템 2분할</b> — 클라이언트 / 에이전시</li>
+            <li><b>어록 자산</b> — 대표 발언 중 쓸 수 있는 문장</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 9. 장표 제작 ===== -->
+    <section id="figma">
+      <div class="sec-k">PRODUCTION</div>
+      <h2>장표 제작 규약</h2>
+      <p class="lead">엔진은 Figma다. Claude Code가 MCP로 슬라이드를 직접 만들고, 디자이너가 같은 파일에서 마감을 이어받는다.</p>
+
+      <div class="co ac">
+        <span class="lab">왜 Figma인가</span>
+        손코딩 HTML은 "묘한 AI스러움"의 천장을 못 넘었다. Claude Design은 깔끔하지만 Claude Code가 직접 제어할 수 없어 디자이너 last-mile에서 끊긴다. Figma는 둘 다 푼다 — 초안 생성과 디자이너 마감이 <b>한 파일에서 연속</b>된다. (2026-06-29 검증)
+      </div>
+
+      <table>
+        <thead><tr><th style="width:110px">항목</th><th>규약</th></tr></thead>
+        <tbody>
+          <tr><td><b>포맷</b></td><td>16:9 (1920×1080) 프레임 = 슬라이드 1장. 발표 네이티브</td></tr>
+          <tr><td><b>편집 권한</b></td><td><b>hiz Design 팀 파일에서만</b> 편집 가능(Full/Pro). 다른 두 팀은 View seat라 편집 불가 — 자주 걸리는 함정</td></tr>
+          <tr><td><b>컬러</b></td><td>코발트블루 <code>#2A26B8</code>(표지·구분·클로징 풀블리드) + 오렌지 <code>#F0512E</code>(강조 숫자·라벨·점선에만 소량) + 흰 배경 / 네이비 <code>#1A1A2E</code> 본문</td></tr>
+          <tr><td><b>폰트</b></td><td>대제목 <b>Black Han Sans</b>(포스터형) · 본문·숫자 <b>Pretendard</b>. 팀 파일에 Pretendard 미설치라 현재 <b>Noto Sans KR 폴백</b>. <b>세리프·명조·궁서 금지</b>(숫자에도)</td></tr>
+          <tr><td><b>이미지</b></td><td>빈 점선 플레이스홀더로 만들고 <b>사람이 실사로 교체</b>. <b>AI 생성 이미지 금지</b> — 언캐니와 AI 티의 원인</td></tr>
+          <tr><td><b>카피</b></td><td><b>건조한 사실 진술.</b> 펀치라인·대조구문·상투어·드라마틱 동사·영문 대문자 라벨 도배 금지</td></tr>
+          <tr><td><b>모티프</b></td><td>가는 점선 곡선/원호 하나(표지)</td></tr>
+        </tbody>
+      </table>
+
+      <div class="co warn">
+        <span class="lab">마감 경계</span>
+        낮은 단가는 <b>MCP 생성본 그대로</b> 나간다(빠르고 충분하다). 5천만 이상은 <b>디자이너 last-mile</b> — 실사·폰트·미세조정의 마지막 한 끗을 디자이너가 잡는다.
+      </div>
+
+      <details class="acc">
+        <summary>MCP 작업 시 자주 걸리는 것 <span class="cnt">실전 함정 4</span></summary>
+        <div class="accb">
+          <ul style="list-style:none;font-size:14.5px;line-height:1.9;color:var(--ink2)">
+            <li>· <code>use_figma</code>는 <b>return이 필수</b>다. 빠뜨리면 조용히 아무것도 안 만든다.</li>
+            <li>· <code>getNodeByIdAsync</code>는 <b>페이지 전환이 선행</b>돼야 한다.</li>
+            <li>· <code>upload_assets</code>로 만든 <b>임시 노드는 지운다</b>. 기존 IMAGE fill을 조용히 덮어쓰지도 않는다 — 덮으려면 imageHash를 직접 바인딩.</li>
+            <li>· <code>get_metadata</code>의 노드 <b>name은 화석</b>이다. 실제 내용 판독은 characters나 스크린샷으로.</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+    <!-- ===== 10. 단가 ===== -->
+    <section id="tier">
+      <div class="sec-k">TIER</div>
+      <h2>회차 · 단가 규약</h2>
+      <p class="lead">회차 수는 단가로 조절한다. 구간별 금액은 아직 내부 확정 전이다.</p>
+
+      <table>
+        <thead><tr><th style="width:112px">구간</th><th style="width:74px">회차</th><th>투입</th><th>깊이</th></tr></thead>
+        <tbody>
+          <tr><td><b>소규모</b> <span class="t n">금액 미확정</span></td><td>1~2회</td><td>인턴 / 주니어</td><td>발견·정의 핵심, AI 비중 최대</td></tr>
+          <tr><td><b>중간</b> <span class="t n">금액 미확정</span></td><td>2~3회</td><td>PM + 주니어</td><td>컨셉 2안, 디자인 제외 가능</td></tr>
+          <tr><td><b>풀패키지</b> <span class="t n">금액 미확정</span></td><td>3회+α</td><td>대표·실장·팀장·PM·디자이너</td><td>비주얼·소개서 포함</td></tr>
+          <tr><td><b>마케팅 수주 시</b></td><td>+α</td><td>+마케터</td><td>캠페인·런칭 확장 (별도 산정)</td></tr>
+        </tbody>
+      </table>
+
+      <div class="co bad">
+        <span class="lab">확인 필요</span>
+        구간별 금액·수정 횟수는 <b>내부 논의로 확정한 뒤 채운다.</b> 지금 표의 구간명은 골격일 뿐 가격이 아니다. 총액 조정은 <b>회차·범위·고유 블록</b>으로 하고, 공통 항목 단가는 브랜드 불문 동일하게 둔다.
+      </div>
+      <div class="memo">단가 정책 전반은 <b><a href="../price-guide/" style="color:var(--ac-700);font-weight:700">단가 기준표</a></b>, 견적 산출은 <b><a href="../quote-builder/" style="color:var(--ac-700);font-weight:700">견적 빌더</a></b>를 쓴다.</div>
+    </section>
+
+    <!-- ===== 11. 케이스 ===== -->
+    <section id="cases">
+      <div class="sec-k">EVIDENCE</div>
+      <h2>실증 케이스</h2>
+      <p class="lead">이 가이드의 모든 기준은 아래 네 건에서 나왔다.</p>
+
+      <table>
+        <thead><tr><th style="width:118px">케이스</th><th style="width:96px">성격</th><th>이 가이드에 남긴 것</th></tr></thead>
+        <tbody>
+          <tr><td><b>VINKER</b></td><td><span class="t b">수작업 골든</span></td><td>경쟁사 리서치 깊이의 기준선. 별도 리서치 문서 61페이지 + 1차 33페이지. 경쟁사 1장 스키마의 원본</td></tr>
+          <tr><td><b>애그하다</b></td><td><span class="t g">AI 활용</span></td><td>사전 인터뷰 폼 11문항 정본. 1차 59장 중 경쟁사 27장. 인터뷰로 컨셉 우선순위가 계속 이동한 사례</td></tr>
+          <tr><td><b>강훈목장</b></td><td><span class="t y">실전</span></td><td>경쟁사 압축 미달 교정. 키워드 5갈래를 3관점으로 재조합해야 컨셉이 선다는 구조 통찰. 무드보드 정의 재정립</td></tr>
+          <tr><td><b>그리니팅</b></td><td><span class="t y">실전</span></td><td>차별점 축을 표시사항으로 검증되는 것만 남긴 사례. 법적 표기 게이트의 필요성</td></tr>
+        </tbody>
+      </table>
+
+      <div class="memo">
+        설계 정본은 <b>000. 브랜딩 워크샵/브랜딩워크샵_설계_v1_260629.md</b>. 인터뷰 폼 실물·질문 라이브러리는 같은 폴더 <b>_인터뷰/</b>. 케이스별 장표·리서치는 각 클라이언트 폴더의 <b>워크샵/</b>에 있다.
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer><div class="in">
+  <b>BRANDRISE</b> by HIZ · 브랜딩 워크샵 진행 가이드 v1 · 비공개 내부 문서<br>
+  근거 = 브랜딩워크샵_설계_v1_260629 · VINKER / 애그하다 골든 · 강훈목장 / 그리니팅 실전
+</div></footer>
+
+<script>
+// 목차 현재 위치 표시 — 화면 상단 1/3 지점을 지난 마지막 섹션을 활성으로.
+(function(){
+  var links = [].slice.call(document.querySelectorAll('nav.toc a'));
+  var secs  = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function sync(){
+    var line = window.scrollY + window.innerHeight/3, cur = 0;
+    secs.forEach(function(s,i){ if(s && s.offsetTop <= line) cur = i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i === cur); });
+  }
+  addEventListener('scroll', sync, {passive:true});
+  addEventListener('resize', sync);
+  sync();
+})();
+</script>
+<script src="/internal/nav.js"></script>
+</body>
+</html>

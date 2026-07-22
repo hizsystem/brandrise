@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<!--
+  BRANDRISE PREP — monod24/모노드24 (순수 퍼포먼스/채널 리퍼)
+  · 통합표준 prep-v2 템플릿(NGT) 복제 · 색/컴포넌트/레이아웃 그대로.
+  · 브랜딩 컨설팅 트랙 아님 → 견적은 .tiers 카드(T1/T2/T3), GovFit 제외.
+  · PREP 원칙: 진단/니즈/적합도 = "가설". 직접 리서치 확인일 명기(2026-07-19).
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>모노드24 (monod24) — NB 상담 준비 PREP | BRANDRISE</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.75;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:16.5px}
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 42%,#4338ca 100%);color:#fff;padding:84px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"PREP";position:absolute;right:-2%;bottom:-18%;font-size:clamp(160px,22vw,360px);font-weight:800;letter-spacing:-.04em;color:#fff;opacity:.05;line-height:.8;pointer-events:none}
+.hero .in{max-width:1360px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:42px;font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:14px}
+.hero .sub{font-size:16px;color:#cbd5e1;font-weight:300;max-width:700px;line-height:1.75}
+.hero .meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.hero .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.hero .lnk{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;text-decoration:none;padding:8px 15px;border-radius:9px;transition:.15s}
+.hero .lnk svg{width:14px;height:14px}
+.hero .lnk.store{background:#fff;color:var(--ink)}
+.hero .lnk.store:hover{background:#e2e8f0}
+.hero .lnk.sns{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.hero .lnk.sns:hover{background:rgba(255,255,255,.14)}
+.layout{max-width:1360px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:208px 1fr;gap:48px;align-items:start}
+nav.toc{position:sticky;top:28px;padding:36px 0;font-size:13.5px}
+nav.toc .nl{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--muted);margin:0 0 14px 12px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;border-left:2px solid transparent;transition:.15s;font-weight:500}
+nav.toc a:hover{color:var(--ink);background:var(--soft)}
+nav.toc a.on{color:var(--ac);background:var(--ac-50);border-left-color:var(--ac);font-weight:700}
+main{padding:36px 0 100px;min-width:0;counter-reset:sec}
+section{margin-bottom:54px;scroll-margin-top:24px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+h2{font-size:29px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+.lead{font-size:18px;color:var(--ink2);margin-bottom:32px;line-height:1.8;text-wrap:balance}
+h3{font-size:20px;font-weight:800;margin:34px 0 12px;color:var(--ink);letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.co{border:1px solid var(--line2);border-left:3px solid var(--line);border-radius:0 10px 10px 0;padding:18px 24px;margin:20px 0;font-size:16px;line-height:1.8;text-wrap:pretty}
+h2,h3{text-wrap:balance}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100);border-left-color:var(--ac)} .co.ok{background:var(--ok-50);border-color:#bbf7d0;border-left-color:var(--ok)}
+.co.warn{background:var(--warn-50);border-color:#fde68a;border-left-color:var(--warn)} .co.bad{background:var(--bad-50);border-color:#fecdd3;border-left-color:var(--bad)}
+.co b,.co strong{color:var(--ink);font-weight:600}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
+.t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
+.t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 4px}
+.kpi .k{background:var(--ink);color:#fff;border-radius:12px;padding:18px}
+.kpi .k.alt{background:var(--bad)}
+.kpi .lbl{font-size:11px;color:#94a3b8;font-weight:600;margin-bottom:4px}
+.kpi .k.alt .lbl{color:#fecdd3}
+.kpi .v{font-size:28px;font-weight:800;letter-spacing:-.02em}
+.kpi .s{font-size:11px;color:#cbd5e1;margin-top:3px;line-height:1.5}
+.kpi .k.alt .s{color:#fecdd3}
+.op{background:var(--ink);color:#fff;border-radius:16px;padding:30px}
+.op .opk{font-size:11px;font-weight:800;letter-spacing:.14em;color:#a5b4fc;margin-bottom:18px}
+.op .blk{margin-bottom:22px} .op .blk:last-child{margin-bottom:0}
+.op .bl{font-size:11px;font-weight:800;color:#a5b4fc;letter-spacing:.08em;margin-bottom:9px}
+.op .need{font-size:17px;font-weight:700;line-height:1.62}
+.op .need b{color:#c7d2fe}
+.op .need .ev{display:block;margin-top:11px;font-size:13.5px;font-weight:500;color:#cbd5e1;line-height:1.72}
+.op .need .ev b{color:#e2e8f0}
+.op .do{display:grid;gap:9px}
+.op .do .item{background:rgba(255,255,255,.06);border-left:3px solid var(--ac);padding:12px 15px;border-radius:0 8px 8px 0;font-size:13.5px;line-height:1.62;color:#e2e8f0}
+.op .do .item b{color:#c7d2fe}
+.op .offer{background:rgba(79,70,229,.24);border:1px solid var(--ac);border-radius:10px;padding:15px 18px;font-size:13.5px;line-height:1.7;color:#e9ecf5}
+.op .offer b{color:#c7d2fe}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0 4px}
+th{background:var(--soft);color:var(--ink2);font-weight:700;text-align:left;padding:9px 11px;font-size:12.5px;border-bottom:1px solid var(--line)}
+td{padding:9px 11px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b,td strong{color:var(--ink)}
+.q{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac);border-radius:10px;padding:16px 18px;margin-bottom:10px}
+.q .qn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.05em;margin-bottom:5px}
+.q .qt{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.65}
+.q .qi{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.6}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px;position:relative}
+.tier.rec{border:2px solid var(--ac);box-shadow:0 8px 24px -12px rgba(79,70,229,.4)}
+.tier .rb{position:absolute;top:-11px;left:18px;background:var(--ac);color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;padding:3px 11px;border-radius:9px}
+.tier .tn{font-size:12px;font-weight:800;color:var(--muted)}
+.tier .tt{font-size:12.5px;color:var(--muted);margin:2px 0 10px}
+.tier .tp{font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.tier .td{font-size:11.5px;color:var(--muted);margin-bottom:12px}
+.tier ul{list-style:none}
+.tier li{font-size:13px;color:var(--ink2);padding:4px 0 4px 15px;position:relative;line-height:1.55}
+.tier li::before{content:"›";position:absolute;left:0;color:var(--ac);font-weight:800}
+.tl{border-left:2px solid var(--line);padding-left:20px;margin:10px 0}
+.tl .ph{position:relative;padding:10px 0}
+.tl .ph::before{content:"";position:absolute;left:-26px;top:14px;width:9px;height:9px;border-radius:50%;background:var(--ac)}
+.tl .pt{font-size:12px;font-weight:800;color:var(--ac)}
+.tl .pb{font-size:13px;color:var(--ink2);margin-top:2px}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sw{border-radius:12px;padding:16px 18px;border:1px solid var(--line)}
+.sw h4{font-size:12.5px;font-weight:800;margin-bottom:8px}
+.sw.s{background:var(--ok-50)} .sw.s h4{color:var(--ok)}
+.sw.w{background:var(--bad-50)} .sw.w h4{color:var(--bad)}
+.sw.o{background:var(--ac-50)} .sw.o h4{color:var(--ac)}
+.sw.tt{background:var(--warn-50)} .sw.tt h4{color:var(--warn)}
+.sw li{font-size:13px;color:var(--ink2);margin-left:15px;padding:2px 0;line-height:1.5}
+.verdict{background:var(--ink);color:#fff;border-radius:14px;padding:24px;text-align:center;margin:14px 0}
+.verdict .vl{font-size:12px;color:#94a3b8;font-weight:600}
+.verdict .vv{font-size:34px;font-weight:800;letter-spacing:-.02em;margin:6px 0;color:#a5b4fc}
+.verdict .vd{font-size:13px;color:#cbd5e1}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px}
+footer .in{max-width:1360px;margin:0 auto;padding:0 40px}
+@media(max-width:880px){.layout{grid-template-columns:1fr;gap:0;padding:0 22px}nav.toc{display:none}.hero .in{padding:0 22px}.hero h1{font-size:30px}.grid2,.grid3,.kpi,.tiers,.swot{grid-template-columns:1fr}}
+
+.hero h1{font-size:clamp(38px,4.8vw,56px);line-height:1.08}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
+.fcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
+.fcard .fk{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.fcard .fv{font-size:16px;font-weight:800;color:var(--ink)}
+.fcard .fs{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.55;font-weight:500}
+
+section{margin-bottom:116px;counter-increment:sec;border-top:2px solid var(--ink);padding:34px 0 0 108px;position:relative}
+main>section:first-child{border-top:none;padding-top:0}
+.sec-k{display:block;background:none;border:none;border-radius:0;padding:0;font-size:12px;letter-spacing:.2em;color:var(--ac);margin-bottom:14px}
+.sec-k::before{content:counter(sec,decimal-leading-zero);position:absolute;left:0;top:30px;font-size:62px;font-weight:800;color:var(--ac);letter-spacing:-.04em;line-height:.9;font-variant-numeric:tabular-nums}
+main>section:first-child .sec-k::before{top:0}
+@media(max-width:880px){section{padding-left:0!important}.sec-k::before{position:static;display:block;margin-bottom:4px}}
+h2{font-size:34px;margin-bottom:16px;letter-spacing:-.025em}
+h2{line-height:1.18}
+h3{letter-spacing:-.01em;line-height:1.4}
+.co.ac.band{padding:18px 22px;font-size:16px;line-height:1.85}
+table{font-variant-numeric:tabular-nums}
+th{background:var(--ac-50);color:var(--ac-700);padding:13px 15px}
+td{padding:13px 15px}
+tbody tr:nth-child(even) td, table tr:nth-child(even) td{background:var(--soft)}
+@media print{.fcard,.card{break-inside:avoid}}
+
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.stage{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px;position:relative}
+.stage.on{border:2px solid var(--ac);background:var(--ac-50)}
+.stage .sgn{font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--muted)}
+.stage.on .sgn{color:var(--ac)}
+.stage .sgt{font-size:15px;font-weight:800;color:var(--ink);margin:4px 0 8px}
+.stage .sgd{font-size:12px;color:var(--muted);line-height:1.55}
+.stage .sgr{display:block;margin-top:10px;font-size:11.5px;color:var(--ac-700);font-weight:700}
+.co a{color:var(--ac);font-weight:700;text-decoration:none;border-bottom:1px solid var(--ac-100);word-break:break-all}
+.co a:hover{border-color:var(--ac)}
+@media(max-width:880px){.stages{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">NEW BUSINESS PREP · 통합표준</div>
+  <h1>모노드24 <span class="hl">monod24</span></h1>
+  <div class="sub">1인·연 1억 미만 <b style="color:#fff">콜드브루 원액 앰플 선물세트</b>. 카카오선물하기 위시(찜) <b style="color:#fff">6,503 = 카테고리 1위</b>인데 후기는 33건 — 찜은 폭발, 구매는 붕괴. 진짜 문제는 "광고 못함"이 아니라 <b style="color:#fff">위시→구매 전환·검색채널·죽은 자사몰</b>이다.</div>
+  <div class="meta">
+    <span class="chip">사업 단계 <b>STAGE 2 (2→3 문턱)</b></span>
+    <span class="chip">기회 적합도(추정) <b>3.3 / 5.0 · 조건부 GO</b></span>
+    <span class="chip">추천 <b>채널 확장 진단 + 로드맵(단발)</b></span>
+    <span class="chip">상담 일시 <b>미정</b> · 남중 역할 <b>미정</b></span>
+    <span class="chip">트랙 <b>순수 퍼포먼스/채널 리퍼</b></span>
+  </div>
+  <div class="links">
+    <a class="lnk store" href="https://gift.kakao.com/product/12705933" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+      카카오선물하기
+    </a>
+    <a class="lnk sns" href="https://monod24.co.kr" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 01-8 0"></path></svg>
+      자사몰 monod24.co.kr
+    </a>
+    <a class="lnk sns" href="https://www.instagram.com/monod24/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      @monod24
+    </a>
+  </div>
+</div></div>
+
+<div class="layout">
+  <nav class="toc">
+    <div class="nl">PREP 목차</div>
+    <a href="#onepager">수주 한 장</a>
+    <a href="#diagnosis">핵심 진단</a>
+    <a href="#company">기업 · 제품 · 채널</a>
+    <a href="#market">시장 · 경쟁 · 니즈</a>
+    <a href="#deal">기회 · 견적</a>
+    <a href="#govfit">정부지원사업</a>
+    <a href="#consult">상담 진행</a>
+    <a href="#sources">참고 출처</a>
+  </nav>
+
+  <main>
+    <section id="onepager">
+      <div class="sec-k">ONE-PAGER</div>
+      <h2>수주 한 장</h2>
+      <p class="lead">상담 직전 이 카드 하나면 된다. 아래는 인테이크·직접 리서치 기반 가설 백업. <span class="t n">상담 전 가설</span></p>
+      <div class="op">
+        <div class="opk">수주 한 장</div>
+        <div class="blk">
+          <div class="bl">진짜 니즈 (가설)</div>
+          <div class="need">표면 = "다른 채널에서 팔고 싶다 + 메타광고가 돈만 나감". <b>진짜 니즈</b> = 카카오선물하기(선물 occasion)에서 되는 걸 <b>어느 채널에·어떤 포지셔닝으로 옮길지 판단</b>하고, 이미 확보한 <b>위시 6,500을 구매로 전환</b>하는 것. 제품엔 확신 있으나 파는 실행(유통·마케팅)에서 지고 있다.
+            <span class="ev">위시 시그니처 6,503(카테고리 1위)·마스터피스 5,664 인데 <b>후기 33·13</b> — 찜만 쌓이고 구매는 새는 구조가 "광고 돈만 나감"의 정량 증거. 자사몰(Cafe24)·인스타는 <b>이미 있으나 죽어</b> 있고, 스마트스토어(검색 유입)는 아예 없다.</span>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="bl">그래서 우리가 해주는 것</div>
+          <div class="do">
+            <div class="item"><b>① 카카오 위시→구매 전환·후기 설계</b> — 가장 빠른 레버. 6,500 찜을 구매·후기·랭킹으로 전환</div>
+            <div class="item"><b>② 검색채널 오픈 + 전환 카피</b> — 스마트스토어·오픈마켓(Cafe24 마켓플러스, 저비용) + '왜 monod24' 한 줄</div>
+            <div class="item"><b>③ 죽은 자산 복원 + 광고 재배치</b> — 자사몰·인스타 되살리고, 광고는 기반 깐 뒤 리타게팅 보조로</div>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="bl">첫 제안 & 다음 액션</div>
+          <div class="offer"><b>T1 채널 확장 진단 + 로드맵(180만~300만 · 단발)</b>으로 입구 → 검증되면 실행(T2)·월 운영(T3)으로 확장(Land&Expand). 미팅 1순위 청취 = <b>마케팅 예산·기간 · 카카오 실적(선물 vs 자가·월 판매량·후기) · 메타광고 실태(픽셀·랜딩)</b>.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="diagnosis">
+      <div class="sec-k">DIAGNOSIS (가설)</div>
+      <h2>핵심 진단</h2>
+      <p class="lead">대표는 "광고를 못 한다"를 문제로 본다. 진단은 다르다 — 근본은 <b>①위시→구매 전환 붕괴 ②검색·오가닉 채널 0 ③차별점 미번역</b>. 처방 순서는 광고 증액이 아니다. <span class="t n">상담 전 가설</span></p>
+      <div class="kpi">
+        <div class="k"><div class="lbl">카카오 위시(찜)</div><div class="v">6,503</div><div class="s">시그니처 = 카테고리 1위</div></div>
+        <div class="k alt"><div class="lbl">카카오 후기(실판매)</div><div class="v">33건</div><div class="s">위시-구매 전환 붕괴</div></div>
+        <div class="k"><div class="lbl">채널</div><div class="v">카카오 단독</div><div class="s">자사몰 死 · 스마트스토어 없음</div></div>
+        <div class="k"><div class="lbl">오가닉 자산</div><div class="v">거의 0</div><div class="s">인스타 팔로워 0·게시물 1</div></div>
+      </div>
+      <div class="grid3" style="margin-top:14px">
+        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">위시-구매 전환 붕괴</h3><p style="font-size:12.5px;color:var(--muted)">위시 6,503(1위)인데 후기 33. 광고·위시 이벤트가 값싼 '찜 담기'만 사고 구매로 안 넘어간다. 대표 통증 "돈만 나감"의 정량 증거.</p></div>
+        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">검색·오가닉 채널 0</h3><p style="font-size:12.5px;color:var(--muted)">스마트스토어 없음(검색 유입 0) · 자사몰 monod24.co.kr 死(리뷰 0·템플릿 잔여문구 방치) · 인스타·블로그·체험단 0.</p></div>
+        <div class="card"><span class="t y">High</span><h3 style="margin:8px 0 6px">무포지션 · 차별점 미번역</h3><p style="font-size:12.5px;color:var(--muted)">가격 3.3~4.2만 = 저가(보르딘 19,900) ↔ 프리미엄(HACCP) 사이 무포지션. "무조건 자신" 있는 제품이 화면에 번역돼 있지 않다.</p></div>
+      </div>
+      <div class="co bad"><span class="lab">진단 결론 (가설)</span><b>갭은 광고 실력이 아니라 "새는 전환·없는 검색채널·안 보이는 차별점"에 있다.</b> 지금 광고를 더 태우면 위시만 6,500→7,000 되고 후기는 그대로 — 이미 벌어진 실패의 반복. 처방 순서 = <b>위시 전환 → 검색채널 오픈 → 죽은 자산 복원</b>, 광고는 그 뒤 리타게팅.</div>
+      <div class="co ac band"><span class="lab">위시 6,503 vs 후기 33 — 이 갭이 열쇠</span>비교군: 카테고리 실판매 1위 <b>보르딘</b>은 위시 4·후기 2,552(검색·리뷰 유기전환형), 쌍둥이 <b>소브스</b>는 위시 6,100·후기 69(monod24와 동일 광고·위시 플레이북). monod24가 이미 쥔 위시 1위 자산을 구매로 바꾸는 것이 신규 트래픽 창출보다 빠르고 싸다. HIZ는 "광고 대행"이 아니라 <b>"태운 돈이 새지 않게 그릇부터 만드는 그로스 파트너"</b>.</div>
+    </section>
+
+    <section id="company">
+      <div class="sec-k">COMPANY · PRODUCT · CHANNEL</div>
+      <h2>기업 · 제품 · 채널</h2>
+      <p class="lead">1인 대표가 소싱·운영·CS·마케팅을 전담하는 소규모 D2C. 제품 확신은 높으나 실행 리소스·마케팅 역량이 병목. <span class="t y">상담 확인</span> 제조사(OEM)·마진·재구매율.</p>
+      <div class="grid2">
+        <div class="card">
+          <h3 style="margin-top:0">기업 기초</h3>
+          <div class="cards">
+            <div class="fcard"><div class="fk">브랜드 / 대표</div><div class="fv">monod24(모노드24) · 최민옥</div><div class="fs">"일상에 감성을 더하다"</div></div>
+            <div class="fcard"><div class="fk">사업자 / 업력</div><div class="fv">490-47-01167 · 통신판매 2024-서울강남</div><div class="fs">2024 신고 · 업력 약 1~2년</div></div>
+            <div class="fcard"><div class="fk">소재지 / 규모</div><div class="fv">서울 강남(사무실) · 1인 사업자</div><div class="fs">제조시설 아님 · 직원 0</div></div>
+            <div class="fcard"><div class="fk">제조 / 매출</div><div class="fv">OEM 추정 · 연 1억 미만</div><div class="fs">1인·강남 사무실·자체 HACCP 부재 정황</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">정량 시그널 <span style="font-size:11px;color:var(--muted);font-weight:500">(값 · 출처)</span></h3>
+          <table>
+            <tr><td style="width:34%"><b>카카오 시그니처</b></td><td>32,900원(혜택 29,900) · <b>위시 6,503</b> · 후기 33 <span class="t n">직접확인 07-19</span></td></tr>
+            <tr><td><b>카카오 마스터피스</b></td><td>41,900원(38,900) · <b>위시 5,664</b> · 후기 13 <span class="t n">직접확인 07-19</span></td></tr>
+            <tr><td><b>자사몰 정가</b></td><td>59,900 / 69,900원 — 카카오가의 약 2배 앵커 <span class="t n">monod24.co.kr</span></td></tr>
+            <tr><td><b>자사몰 상태</b></td><td>monod24.co.kr(Cafe24) 존재하나 <b>리뷰 0·템플릿 잔여문구 방치 = 사실상 死</b> <span class="t y">직접확인</span></td></tr>
+            <tr><td><b>인스타 @monod24</b></td><td>팔로워 <b>0</b> · 게시물 1 = 방치 <span class="t n">직접확인</span></td></tr>
+            <tr><td><b>스마트스토어</b></td><td>검색상 <b>미발견(없음)</b> · 블로그·체험단 흔적 0 <span class="t y">검색 유입 0</span></td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="co warn"><span class="lab">인테이크 정정 — "카카오선물하기에서만 판매" 재확인</span>직접 확인 결과 <b>자사몰(Cafe24)·인스타 계정은 이미 있다</b> — 다만 둘 다 죽어 있다(리뷰 0·팔로워 0). 즉 "채널이 없다"가 아니라 <b>"있는데 안 돈다"</b>. → 신규 구축비가 아니라 <b>정비·복원비로 저비용 착수</b> 가능(대표에게 부담 낮은 진입 메시지). 대표 "최민옥" 이력·OEM 제조사·"누적 후기 3,000개+"(자사몰 문구) 근거는 상담에서 확인.</div>
+
+      <h3>제품 라인 · 가격</h3>
+      <table>
+        <tr><th style="width:22%">상품</th><th>구성 · 가격</th></tr>
+        <tr><td><b>시그니처</b></td><td>콜드브루 원액 50ml×8병(8종·"16잔") + 전용 유리 샷잔 · 카카오 32,900(혜택 29,900) / 자사몰 59,900</td></tr>
+        <tr><td><b>마스터피스</b></td><td>50ml×8 + 디카페인(50ml×2 + 250ml×1) + 유리 샷잔 · 카카오 41,900(38,900) / 자사몰 69,900</td></tr>
+        <tr><td><b>검증된 차별점</b></td><td>유리 샷잔 동봉(선물 경험) · 디카페인 라인 정도. HACCP·산지·추출 스토리는 자사 채널 미노출 <span class="t y">= 차별점 미번역</span></td></tr>
+      </table>
+
+      <h3>채널 현황</h3>
+      <table>
+        <tr><th style="width:18%">구분</th><th>현황</th></tr>
+        <tr><td><b>실판매</b></td><td>카카오선물하기 단독(선물 occasion) — 유일한 실판매·사회적증거 채널</td></tr>
+        <tr><td><b>보유하나 死</b></td><td>자사몰 monod24.co.kr(Cafe24, 리뷰 0) · 인스타 @monod24(팔로워 0)</td></tr>
+        <tr><td><b>없음</b></td><td>스마트스토어 · 쿠팡·11번가 오픈마켓 · 블로그·체험단 (관심 확장 대상)</td></tr>
+      </table>
+      <div class="co ac"><span class="lab">진단 포인트</span>Cafe24 자사몰을 이미 보유 → <b>마켓플러스로 스마트스토어·오픈마켓 동시 확장이 기술적으로 저비용</b>(원산지 필수정보 입력만 선행). 인테이크의 '오픈마켓 확장' 니즈와 정확히 맞물린다. 가장 빠른 레버는 카카오 위시→구매 전환.</div>
+      <div class="co"><span class="lab">관련 링크 · 라이브 확인</span>
+        <a href="https://gift.kakao.com/product/12705933" target="_blank" rel="noopener">카카오 시그니처</a> ·
+        <a href="https://gift.kakao.com/product/12705941" target="_blank" rel="noopener">카카오 마스터피스</a> ·
+        <a href="https://monod24.co.kr" target="_blank" rel="noopener">자사몰 monod24.co.kr</a> ·
+        <a href="https://www.instagram.com/monod24/" target="_blank" rel="noopener">IG @monod24</a>
+      </div>
+    </section>
+
+    <section id="market">
+      <div class="sec-k">MARKET · COMPETITION · NEEDS</div>
+      <h2>시장 · 경쟁 · 니즈</h2>
+      <p class="lead">콜드브루 원액/앰플 선물세트 = 경쟁 빽빽한 커머디티(OEM 공유). 이기는 모델은 뚜렷하고, monod24는 지금 그 사이 무포지션. <span class="t n">상담 전 가설</span></p>
+      <h3>경쟁 지형 (가설 · 카카오 후기=실판매 프록시)</h3>
+      <table>
+        <tr><th style="width:18%">경쟁</th><th>포지션 · 후기/위시</th><th style="width:26%">monod24 시사점</th></tr>
+        <tr><td><b>보르딘</b></td><td>카테고리 실판매 1위. 저가(19,900)·대량·멀티채널(자사몰+쿠팡+11번가). 후기 2,552 · 위시 4</td><td>검색·리뷰 유기전환형 · 멀티채널 확장 벤치마크</td></tr>
+        <tr><td><b>마켓더치</b></td><td>HACCP 스페셜티·선물 특화(더스트백). 후기 258 · 위시 5,747</td><td>가격대 정면 충돌 · 프리미엄 소구로 차별</td></tr>
+        <tr><td><b>소브스(SVS)</b></td><td>위시 6,100 · 후기 69 — <b>monod24와 동일 플레이북</b>(高위시·低후기)</td><td><span class="t r">최대 경계</span> 이미 위시·후기 모두 근소 우위. 선점 시간창 좁음</td></tr>
+        <tr><td><b>일랑</b></td><td>통영 카페 원산지 서사 + HACCP. 후기 499·257(리뷰 축적형)</td><td>원산지 스토리 = 커머디티 탈출 경로</td></tr>
+        <tr><td><b>레이지보틀</b></td><td>"최고등급 스페셜티" 프리미엄 D2C(자사몰+카카오)</td><td>프리미엄·브랜드 서사 모델</td></tr>
+      </table>
+      <div class="co ac band"><span class="lab">시장 시사</span>이기는 두 모델이 뚜렷 — <b>보르딘형(저가·멀티채널·리뷰 대량)</b> vs <b>레이지보틀형(프리미엄·서사)</b>. monod24는 가격(3.3~4.2만)이 어중간해 <b>둘 다 아닌 무포지션</b>. 시장은 우호적(콜드브루 CAGR ~19%·온라인 선물하기 5조·카카오 셀프선물 급성장)이고, <b>자가구매(일상 원액) 수요는 통째로 미개척</b>(스마트스토어·쿠팡).</div>
+      <div class="co bad"><span class="lab">★ 왜 소예산 메타광고가 안 도는가</b> — 대표 통증의 구조적 원인</span>콜드브루 원액은 <b>차별점 약한 저관여 커머디티</b> → 광고 경매에서 유사 소재와 경쟁, 입찰가·CPA↑. 소예산으론 학습 최적화 구간(전환 데이터 축적) 도달 전 예산 소진 → "돈만 나가고 효과 없음"이 <b>구조적 결과</b>. monod24 실데이터가 증명(위시 6,503 vs 후기 33). 실질 성장채널은 광고가 아니라 <b>①카카오 전환·후기 최적화 ②스마트스토어 SEO(검색 구매의도 트래픽·저수수료) ③리뷰·체험단 ④콘텐츠 ⑤Cafe24 마켓플러스 멀티채널</b>.</div>
+      <h3>SWOT (채널 확장·퍼포먼스 관점)</h3>
+      <div class="swot">
+        <div class="sw s"><h4>Strengths</h4><ul><li>카카오 위시 카테고리 1위(6,503) = 확보된 수요 풀</li><li>유리 샷잔·디카페인 = 선물 경험 차별 요소</li><li>Cafe24 자사몰·인스타 인프라 이미 존재(복원 저비용)</li></ul></div>
+        <div class="sw w"><h4>Weaknesses</h4><ul><li>실판매 취약(후기 33·13, 위시-구매 전환 붕괴)</li><li>검색·오가닉 자산 0 · 차별점 미번역</li><li>어중간한 가격 무포지션 · 1인 리소스·역량 병목</li></ul></div>
+        <div class="sw o"><h4>Opportunities</h4><ul><li>콜드브루 CAGR ~19% · 선물하기 5조 · 셀프선물 급성장</li><li>위시 자산을 전환 설계로 단기 매출화</li><li>자가구매(일상 원액)·스마트스토어·쿠팡 미개척 + 마켓플러스 저비용 확장</li></ul></div>
+        <div class="sw tt"><h4>Threats</h4><ul><li>커머디티·OEM 공유 → 제품 차별 한계</li><li>소브스 동일 플레이북 선점 · 보르딘 가격·물량 압도</li><li>저관여 광고 경매 심화 → 소예산 지속 손실</li></ul></div>
+      </div>
+      <div class="co ac band"><span class="lab">표면 vs 진짜 니즈 (가설 · 확신%)</span><b>표면</b> = "다른 채널 확장 + 메타광고 효율화". <b>진짜 니즈 3가지</b> — <b>①(80%)</b> 채널×포지셔닝 확장 로드맵(선물 occasion을 자가구매 채널 언어로 번역) · <b>②(70%)</b> 광고 이전에 전환 기반(검색 노출·상세·리뷰·픽셀) 깔기 · <b>③(65%)</b> '왜 monod24' 전환 한 줄(브랜딩 아니라 상세·썸네일·광고에 꽂을 구매 이유).</div>
+    </section>
+
+    <section id="deal">
+      <div class="sec-k">FIT & ESTIMATE</div>
+      <h2>기회 평가 · 견적 (가설)</h2>
+      <div class="verdict"><div class="vl">종합 기회 적합도 (상담 전 추정)</div><div class="vv">3.3 / 5.0</div><div class="vd">⚠️ 조건부 GO (소액 입구) — quick-win 명확(위시 전환)·Cafe24 인프라·확장 트리거 뚜렷. 감점: 1인·연 1억 미만 소액·무포지션·경쟁 격화.</div></div>
+      <div class="grid2">
+        <div class="card"><h3 style="margin-top:0">강점 (착수 용이·성과 명확)</h3><table>
+          <tr><td>위시 1위 자산</td><td><span class="t g">✅</span> 6,503 확보 수요 → 새는 전환만 막으면 됨</td></tr>
+          <tr><td>인프라</td><td><span class="t g">✅</span> Cafe24·인스타 존재 → 복원·마켓플러스 저비용</td></tr>
+          <tr><td>Quick-win</td><td><span class="t g">✅</span> 위시→구매 전환·후기·스토어 매출 측정 가능</td></tr>
+          <tr><td>설득 난이도</td><td><span class="t g">✅</span> 대표가 페인 인지("광고 효과없다")</td></tr>
+        </table></div>
+        <div class="card"><h3 style="margin-top:0">GO 조건 · No-Go 분기</h3><table>
+          <tr><td>진입 형태</td><td><span class="t g">GO</span> T1 단발 진단으로 부담 낮게</td></tr>
+          <tr><td>프레이밍</td><td><span class="t y">조건</span> 순수 퍼포먼스/채널 트랙(브랜딩 웨지 아님)</td></tr>
+          <tr><td>확장 트리거</td><td><span class="t y">조건</span> 카카오 전환 개선·스토어 첫 매출 시 리테이너</td></tr>
+          <tr><td>No-Go</td><td><span class="t r">중단</span> "기반 말고 메타광고만 대행" 고집 / T1조차 부담(무료 기대)</td></tr>
+        </table></div>
+      </div>
+      <div class="co ac"><span class="lab">Land &amp; Expand 경로</span>T1(진단·로드맵 단발) → 카카오 전환 개선·스마트스토어 첫 매출 검증 → T2(실행 소형) → 오픈마켓 매출·후기 엔진 가동 → T3(월 리테이너). <b>작은 입구로 신뢰를 사고, 숫자가 나오면 확장</b>. 딜 사이즈는 작지만 다운사이드가 제한적이라 조건부 Go가 성립한다.</div>
+
+      <h3>3-Tier 견적 <span class="t b">소액 현실 · 예산 미상(상담 확정) · VAT 별도 · 제안</span></h3>
+      <div class="tiers">
+        <div class="tier rec">
+          <div class="rb">추천 · 입구</div>
+          <div class="tn">T1 · 진단</div>
+          <div class="tt">채널 확장 진단 + 로드맵 (단발)</div>
+          <div class="tp">180만~300만원</div>
+          <div class="td">실행 별도 · 부담 낮은 입구</div>
+          <ul>
+            <li>채널-단계 재진단서</li>
+            <li>위시→구매 전환 설계</li>
+            <li>스마트스토어·오픈마켓 오픈 순서</li>
+            <li>'왜 monod24' 전환 카피 초안</li>
+            <li>광고 투입 시점 로드맵 + 1회 리뷰</li>
+          </ul>
+        </div>
+        <div class="tier">
+          <div class="tn">T2 · 진단+실행</div>
+          <div class="tt">진단 + 실행 패키지 (4~8주)</div>
+          <div class="tp">500만~900만원</div>
+          <div class="td">매체비 별도 · 컷수·SKU로 구간</div>
+          <ul>
+            <li>T1 전부 +</li>
+            <li>스마트스토어·오픈마켓 세팅(Cafe24 마켓플러스)</li>
+            <li>상세·썸네일 전환 카피 제작</li>
+            <li>카카오 후기·랭킹 설계</li>
+            <li>소액 페이드 테스트 + 계측 세팅</li>
+          </ul>
+        </div>
+        <div class="tier">
+          <div class="tn">T3 · 확장(월)</div>
+          <div class="tt">콘텐츠·운영 리테이너</div>
+          <div class="tp">월 200만~400만원</div>
+          <div class="td">최소 3개월 · 트리거 충족 후</div>
+          <ul>
+            <li>콘텐츠 제작 · 인스타(@monod24) 재가동</li>
+            <li>채널 운영·최적화 · 체험단</li>
+            <li>월간 리포트</li>
+            <li><b>확장 트리거</b> 카카오 전환 개선 / 오픈마켓 첫 매출 / 후기 축적 중 2+</li>
+          </ul>
+        </div>
+      </div>
+      <div class="co warn"><span class="lab">견적 원칙</span>광고 매체비는 대행료와 <b>별도</b>. 성과 보장 없음 — 페이드는 기반 구축 후 리타게팅 검증으로만. 금액은 국내 시세(진단 20~100만·상세 10~54만·SNS운영 월 35~100만+) 위 에이전시 프리미엄으로 <b>구간·조건</b> 제시 — 예산 미상이라 상담에서 확정. 이 건은 브랜드라이즈 <b>브랜딩 컨설팅 견적 체계(대표참여 5천~1억)와 무관한 별도 소액 그로스 트랙</b>. 성민/PM 확정 필요.</div>
+    </section>
+
+    <section id="govfit">
+      <div class="sec-k">GOV SUPPORT MATCH · GovFit</div>
+      <h2>정부지원사업 추천</h2>
+      <p class="lead">GovFit 매칭 엔진(공공지원 통합 실시간)에 monod24 프로필을 넣어 자동 매칭한 상위 5건. 적합도는 <b>관심분야·업종·지역 키워드 규칙점수(AI 미사용)</b>이라 — 자격은 아래 판정처럼 실심사가 필요하다. 스냅샷 2026-07-21.</p>
+
+      <div class="grid2">
+        <div class="card">
+          <div style="font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:9px;text-transform:uppercase">매칭에 넣은 프로필</div>
+          <div style="font-size:16px;font-weight:700;color:var(--ink)">식품(콜드브루 원액) · 서울(강남) · 업력 약 2년차</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:6px;line-height:1.6">매출 연 1억 미만(자사 진술 · API 분류용 보수치 0.8억 사용) · <b style="color:var(--ink2)">1인 사업자(소상공인)</b> · 관심 [홍보/마케팅 · 수출/판로 · 자금/금융]</div>
+        </div>
+        <div class="card">
+          <div style="font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:9px;text-transform:uppercase">스냅샷 메타</div>
+          <div style="font-size:16px;font-weight:700;color:var(--ink)">통합 후보 993건 → 상위 5</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:6px;line-height:1.6">출처 기업마당·보조금24·K-Startup·과기정통부·온통청년(5개 공공) · 규칙기반(AI 미사용) · <a href="https://govfit-alpha.vercel.app/" target="_blank" rel="noopener">GovFit 엔진</a></div>
+        </div>
+      </div>
+
+      <div class="co bad"><span class="lab">정직 고지 — 상위 5건 전량 미달, 엔진 한계도 함께 짚는다</span>이번 스냅샷은 소로·monod24 등 서로 다른 업종·지역·업력 프로필을 넣어도 상위 5건과 점수(40~48점 좁은 밴드)가 <b>거의 동일하게 반환</b>됐다 — 관심분야 카테고리 점수가 업종·지역·매출 변수보다 훨씬 강하게 순위를 지배한다는 뜻이라 <b>이 상위 5건을 "monod24 맞춤"으로 읽으면 안 된다</b>. 실심사 결과 5건 전부 monod24에 <b>미달</b> — 4건은 지역(전주·광양)·업종(적층제조·가상융합AI·CBAM 철강) 특정 요건 불일치, 1건(온라인수출 물류지원)은 형식상 중소기업 요건은 충족하나 monod24는 <b>수출 계획·활동이 전무</b>(카카오선물하기 국내 단독 채널, 자사몰·인스타조차 방치 상태)해 실착수 대상이 아니다. monod24의 진짜 급소(죽은 자사몰·인스타 되살리기)는 애초에 정부지원사업이 아니라 <b>컨설팅·운영 영역</b>이라는 게 이 섹션의 결론이다.</div>
+
+      <table>
+        <tr><th style="width:28px">#</th><th>사업명 · 주관</th><th style="width:64px">분류</th><th style="width:108px">마감(D-day)</th><th style="width:56px">적합도</th><th style="width:170px">대상 · 자격 판정</th></tr>
+        <tr>
+          <td><b>1</b></td>
+          <td><a href="https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000124505" target="_blank" rel="noopener"><b>2026년 적층제조 산업 발전 유공자 포상 공고</b></a><br><span style="color:var(--muted);font-size:12.5px">산업통상부 / 직접수행</span></td>
+          <td><span class="t b">경영/컨설팅</span></td>
+          <td>2026-08-14 <span class="t y">D-24</span></td>
+          <td><b>48</b></td>
+          <td><span class="t r">미달</span> 적층제조(3D프린팅) 산업 종사자 전용 — 식품 무관</td>
+        </tr>
+        <tr>
+          <td><b>2</b></td>
+          <td><a href="https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000124503" target="_blank" rel="noopener"><b>2026년 전주형 가상융합 얼라이언스 모집 공고(첨단디지털 문화콘텐츠 육성공간 지원)</b></a><br><span style="color:var(--muted);font-size:12.5px">전북특별자치도 / 전주정보문화산업진흥원</span></td>
+          <td><span class="t b">R&amp;D</span></td>
+          <td>2026-08-07 <span class="t y">D-17</span></td>
+          <td><b>48</b></td>
+          <td><span class="t r">미달</span> 전주 소재 + 가상융합·AI 기업 한정 — monod24는 서울</td>
+        </tr>
+        <tr>
+          <td><b>3</b></td>
+          <td><a href="https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000124473" target="_blank" rel="noopener"><b>2026년 2차 온라인수출 중소기업 물류 지원 사업 참여기업 모집 공고</b></a><br><span style="color:var(--muted);font-size:12.5px">중소벤처기업부 / 중소벤처기업진흥공단</span></td>
+          <td><span class="t b">수출/판로</span></td>
+          <td>2026-09-16 <span class="t n">D-57</span></td>
+          <td><b>48</b></td>
+          <td><span class="t r">미달</span> 형식상 중소기업 요건은 충족하나 온라인수출 계획·활동 0건</td>
+        </tr>
+        <tr>
+          <td><b>4</b></td>
+          <td><a href="https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000124441" target="_blank" rel="noopener"><b>[전남광주] 광양시 2026년 3차 지역산업 위기대응 맞춤형 지원사업 통합공고</b></a><br><span style="color:var(--muted);font-size:12.5px">전남광주통합특별시 / 전남테크노파크</span></td>
+          <td><span class="t b">경영/컨설팅</span></td>
+          <td>2026-08-14 <span class="t y">D-24</span></td>
+          <td><b>48</b></td>
+          <td><span class="t r">미달</span> 광양시 철강산업 및 협력사 한정</td>
+        </tr>
+        <tr>
+          <td><b>5</b></td>
+          <td><a href="https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000124437" target="_blank" rel="noopener"><b>2026년 2차 중소기업 CBAM대응 인프라구축 사업 참여기업 모집 공고</b></a><br><span style="color:var(--muted);font-size:12.5px">중소벤처기업부 / 중소벤처기업진흥공단</span></td>
+          <td><span class="t b">수출/판로</span></td>
+          <td>2026-08-06 <span class="t y">D-16</span></td>
+          <td><b>48</b></td>
+          <td><span class="t r">미달</span> CBAM 대상 품목(철강 등) 제조업 한정 — 식품 무관</td>
+        </tr>
+      </table>
+
+      <div class="co ac"><span class="lab">해석 · 상담 활용</span>이번 스냅샷 기준으로는 monod24에 실착수 가능한 정부지원사업이 <b>0건</b>이다 — 상담에서 "정부지원은 알아봤는데 지금 단계엔 맞는 게 없더라"고 먼저 짚으면 뒤이어 "그래서 지금 필요한 건 죽은 채널을 살리는 운영·마케팅"이라는 우리 제안으로 자연스럽게 넘어간다. 참고로 스코어 순위 밖(45점)에는 <b>소상공인 온라인판로 지원사업</b>(target=소상공인, 홍보/마케팅 분류)처럼 결이 더 맞는 사업도 존재한다 — 상위 5건에는 못 들었지만 대표가 정부지원에 관심을 보이면 별도로 짚어줄 수 있는 카드다. 정부지원은 어느 쪽이든 브랜드라이즈 견적과는 <b>별개 트랙</b>임을 분명히 할 것.</div>
+    </section>
+
+    <section id="consult">
+      <div class="sec-k">CONSULT</div>
+      <h2>상담 진행</h2>
+      <p class="lead">상담 일시·남중 역할 <b>미정</b>(확정 시 갱신). 톤: 1인 대표의 제품 자신감을 <b>절대 건드리지 말 것</b> — 위시 1위로 열고, 약점은 대표가 스스로 말하게 유도. 죽은 자사몰·후기 33건을 지적으로 꺼내지 않는다.</p>
+      <h3>사업 단계 — monod24 = STAGE 2 (2→3 문턱)</h3>
+      <div class="stages">
+        <div class="stage">
+          <div class="sgn">STAGE 1 · 런칭 전</div>
+          <div class="sgd">팔 게 정해졌고 전환 배관만 없음.</div>
+          <span class="sgr">역할 → 첫 매출 경로 세팅</span>
+        </div>
+        <div class="stage on">
+          <div class="sgn">STAGE 2 · 런칭 ★monod24</div>
+          <div class="sgd">판매·매출 있으나 검색채널 부재·자사몰 死·전환 붕괴 → "제품·채널 다 갖춰졌나" 점검·세팅 미완.</div>
+          <span class="sgr">역할 → 진단 → 채널 세팅·개선</span>
+        </div>
+        <div class="stage">
+          <div class="sgn">STAGE 3 · 매출 드라이브</div>
+          <div class="sgd">채널 이원화·전환 동선 깔린 뒤 도달.</div>
+          <span class="sgr">역할 → 월 운영 최적화 리테이너</span>
+        </div>
+      </div>
+      <div class="co ac"><span class="lab">판정 근거</span>대표는 STAGE 3처럼 광고를 태워 매출을 밀고 싶어하지만, 실제 기반은 STAGE 2(세팅·개선)에 멈춰 있다. <b>STAGE 건너뛰기</b>가 "광고 돈만 나감"의 원인 — 전환 동선·검색채널 없이 광고만 태우니 찜만 사고 구매는 샌다.</div>
+
+      <h3>반드시 물어볼 질문 4개</h3>
+      <div class="q"><div class="qn">Q1 · 예산 (견적 좌우)</div><div class="qt">"이번에 마케팅에 한 달에 얼마 정도, 몇 달을 잡고 계세요? 딱 떨어지게는 아니어도 '이 선까지는 써볼 수 있다' 하는 감이 있으실 텐데요."</div><div class="qi">인테이크에 예산 없음. 월 100~200이면 소액 실행형 / 300~500+이면 로드맵형. 그림 먼저 깔고 마지막 30%에서 물을 것</div></div>
+      <div class="q"><div class="qn">Q2 · 카카오 실적 해부 (★핵심)</div><div class="qt">"카카오 보니까 찜이 6,500개 넘고 1위더라고요. 진짜 대단한 자산이에요. 그런데 후기가 33개던데, 이 차이 알고 계셨어요? (반응 보고) 한 달에 몇 개나 나가요? 사시는 분들이 선물로 보내세요, 본인이 드시려고요?"</div><div class="qi">찜-구매 갭을 대표 입으로 확인시키는 승부처. 선물/자가 비중이 확장 채널·메시지를 가른다. 지적 아니라 같이 발견하는 톤</div></div>
+      <div class="q"><div class="qn">Q3 · 메타광고 실태</div><div class="qt">"메타광고 한 달에 얼마씩 태우셨어요? 소재는 뭘 쓰셨고, 누르면 어디로 넘어가게 해두셨어요 — 자사몰이요 카카오요? 픽셀(방문·구매 추적) 심어두셨어요? 광고로 실제 몇 개 팔렸는지 잡히세요?"</div><div class="qi">추적 없으면 CPA를 애초에 모름(십중팔구 진짜 원인). 죽은 자사몰로 보냈으면 랜딩 붕괴. "광고 증액"이 처방 아님을 데이터로 못박기</div></div>
+      <div class="q"><div class="qn">Q4 · 제품·제조·마진</div><div class="qt">"다른 콜드브루 많잖아요. 그 사이에서 '이건 이거 때문에 산다'를 한 문장으로 하면 뭐예요 — 원두·추출·농도·맛·가격 중? OEM으로 받으시죠? 오픈마켓 열면 최저가 경쟁 붙는데 마진 여유 있으세요? 이거 선물용으로만 좋아요, 본인이 매일 마셔도 손 갈 맛이에요?"</div><div class="qi">'왜 monod24' 한 줄 원재료. 마진=오픈마켓 현실성. 자가소비 자신 있으면 '일상 원액' 포지션 신설로 성장 여지 확대</div></div>
+      <div class="co warn"><span class="lab">온도 프로브 (사이사이)</span>"이거 혼자 다 하고 계신 거죠? 다른 본업 있으세요, 여기 풀로 붙어 계세요? 올해 어디까지 키우고 싶으세요? 결정은 대표님이 바로 하시고요?" → 런웨이·절박도·실행 리소스(혼자 = 대신 돌려줄 여지)·목표 규모·의사결정 속도.</div>
+
+      <h3>상담 흐름 (35~40분)</h3>
+      <div class="tl">
+        <div class="ph"><div class="pt">3~4분 · 아이스브레이크</div><div class="pb">"카카오 찜 6,500개, 카테고리 1위더라고요. 아무나 못 만드는 숫자예요." 제품 자신감 먼저 인정 → 방어벽 내림.</div></div>
+        <div class="ph"><div class="pt">10분 · 카카오 실적·구매동기 (Q2)</div><div class="pb">찜↔후기 갭을 같이 발견 → 월 판매량·SKU·선물 vs 자가·후기 키워드. 상담의 심장.</div></div>
+        <div class="ph"><div class="pt">6분 · 광고 실태 (Q3)</div><div class="pb">얼마·소재·랜딩·픽셀·결과. "돈이 왜 샜는지" 그림 완성.</div></div>
+        <div class="ph"><div class="pt">7분 · 제품·마진·예산 (Q4+Q1)</div><div class="pb">살 이유 한 문장 뽑기 → 마진 체력 → 예산·기간. 온도 프로브 끼워넣기.</div></div>
+        <div class="ph"><div class="pt">5분 · 표면 고민 재프레이밍</div><div class="pb">"광고 잘하기가 아니라, 광고가 일할 바닥부터. 먼저 담아둔 6,500명 사게 만들고 후기 쌓고, 검색채널 열고, 광고는 그다음 리타게팅."</div></div>
+        <div class="ph"><div class="pt">5~7분 · 소액 티어 + 다음 스텝</div><div class="pb">작게 시작→숫자 돌면 확장. 이번 주 안에 순서·비용 정리해 발송 약속.</div></div>
+      </div>
+      <div class="co ac"><span class="lab">아이스브레이킹</span>"상담 전에 monod24 찾아봤는데요, 카카오에서 찜 6,500개에 카테고리 1위더라고요. 이거 제품이 좋으니까 사람들이 담아둔 거죠. 그 좋은 걸 이제 사게만 만들면 돼요." → 제품 인정 + 진짜 과제 합의.</div>
+      <div class="co ok"><span class="lab">클로징 멘트</span>"오늘 크게 벌리자는 얘기 아니에요. monod24는 없는 걸 만드는 게 아니라, 있는 걸 못 쓰고 있는 상태예요. 찜 6,500이라는 자산이 이미 있잖아요. 이거 하나만 사게 바꿔도 매출이 움직여요. 그래서 작게 시작하시죠 — 카카오 담아둔 사람들 구매로 넘기고 후기 쌓고, 네이버·스토어에 물건 걸고. 이게 되면 콘텐츠도 광고도 붙이는 거고요. 이번 주 안에 순서·비용 정리해서 보내드릴게요."</div>
+      <div class="co warn"><span class="lab">Quick Tip</span><b>①</b> 죽은 자사몰·후기 33건을 지적으로 꺼내지 말 것 → "찜 6,500 1위 자산이 있으니 전환만 풀면 된다"는 긍정 프레임(약점은 대표가 스스로 말하게). <b>②</b> 1인 대표 = 실행할 손 없음 = "대신 돌려드립니다"까지 팔 여지 큼. <b>③</b> 제품 맛·품질 자신감은 절대 건드리지 말 것 — "그 좋은 게 왜 화면엔 안 보이는지"로만 각을 튼다. <b>④</b> 예산은 마지막에, '싸게 크게 먹는 그림' 깔고 물을 것.</div>
+    </section>
+
+    <section id="sources">
+      <div class="sec-k">SOURCES</div>
+      <h2>참고 출처</h2>
+      <p class="lead">① 클라이언트 제공 ② 직접 리서치(라이브 확인 2026-07-19).</p>
+      <div class="co"><span class="lab">① 클라이언트 제공</span>인테이크 폼(최민옥 대표) — monod24·콜드브루 원액 앰플 선물세트·연 매출 1억 미만·1인(대표 직접)·현재 카카오선물하기 판매·관심채널(자사몰 쇼피파이/카페24·스마트스토어/쿠팡/11번가·카카오)·고민 "다른 채널 확장 · 메타광고 돈만 나가고 효과없음 · 바이럴/마케팅 못함".</div>
+      <div class="co ac"><span class="lab">② 직접 리서치 (2026-07-19 확인)</span>
+        <a href="https://monod24.co.kr" target="_blank" rel="noopener">monod24.co.kr</a>(자사몰·사업자 490-47-01167·리뷰 0 직접확인) ·
+        <a href="https://gift.kakao.com/product/12705933" target="_blank" rel="noopener">카카오 시그니처</a>(위시 6,503·후기 33) ·
+        <a href="https://gift.kakao.com/product/12705941" target="_blank" rel="noopener">카카오 마스터피스</a>(위시 5,664·후기 13) ·
+        <a href="https://www.instagram.com/monod24/" target="_blank" rel="noopener">IG @monod24</a>(팔로워 0) ·
+        <b>경쟁</b>: 보르딘(bordincoffee.com)·마켓더치·소브스·일랑·레이지보틀(카카오 후기/위시 스윕) ·
+        <b>시장</b>: Business Research Insights(콜드브루 CAGR ~19%)·모비인사이드(선물하기 5조)·전자신문(카카오 셀프선물) ·
+        <b>OEM</b>: 커피맵 COLDPRESSO(coldpresso.co.kr).
+      </div>
+      <div class="co warn"><span class="lab">미확인 지표 → Apify 제안</span>OEM 제조사·원두 산지·월 매출·광고비·재구매율·최민옥 대표 이력·"누적 후기 3,000개+" 근거는 상담에서 확인. 정확 팔로워·자사몰 트래픽·카카오 판매수는 로그인/도구 없이 확정 불가 → <b>Apify 활성화</b> 시 카카오 리뷰 스크레이핑·인스타 지표 정량화 권장.</div>
+    </section>
+  </main>
+</div>
+
+<footer><div class="in">BRANDRISE (MarketingOS) · 모노드24(monod24) NB 상담 준비 PREP — 통합표준 · 순수 퍼포먼스/채널 리퍼 · 상담 전(인테이크+리서치) · 내부 전용</div></footer>
+
+<script>
+const links=[...document.querySelectorAll('nav.toc a')];
+const sections=[...new Set(links.map(a=>a.getAttribute('href')))]
+  .map(href=>({href,el:document.querySelector(href)})).filter(s=>s.el);
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  const s=sections.find(s=>s.el===e.target); if(!s)return;
+  links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')===s.href));
+}})},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>obs.observe(s.el));
+</script>
+</body>
+</html>

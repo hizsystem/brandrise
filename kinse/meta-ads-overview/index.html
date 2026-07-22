@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>메타 광고, 큰 그림 — KINSE 팀</title>
+<meta name="robots" content="noindex">
+</head>
+<body>
+
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-alt: #f8f9fb;
+  --text: #1a1d23;
+  --text-soft: #5b6371;
+  --text-mute: #8b94a3;
+  --border: #e6e9ef;
+  --border-soft: #eff1f5;
+  --accent: #f07030;
+  --accent-soft: #fff2ea;
+  --accent-line: #fce0cf;
+  --sea: #eaf4fd;
+  --sea-deep: #cfe6fa;
+  --good: #10b981;
+  --radius: 10px;
+  --content-max: 760px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+.main { max-width: var(--content-max); margin: 0 auto; padding: 48px 24px 120px; }
+
+/* Hero */
+.hero { border: 1px solid var(--border); border-radius: var(--radius); padding: 36px 32px; margin-bottom: 44px; background: var(--bg); }
+.hero-badge { display: inline-block; background: var(--accent-soft); color: var(--accent); padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700; margin-bottom: 14px; }
+.hero h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 10px; }
+.hero p { color: var(--text-soft); font-size: 15.5px; max-width: 560px; }
+
+/* Section */
+.day { margin-bottom: 60px; }
+.day-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; flex-wrap: wrap; }
+.day-tag { background: var(--text); color: white; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 100px; letter-spacing: 0.04em; }
+.day h2 { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.3; margin: 6px 0 16px; }
+.day-lead { font-size: 16px; color: var(--text-soft); margin-bottom: 24px; padding-left: 14px; border-left: 3px solid var(--accent); }
+p { margin-bottom: 12px; color: var(--text); }
+strong { font-weight: 700; }
+em { font-style: normal; background: var(--accent-soft); color: var(--accent); padding: 0 4px; border-radius: 3px; font-weight: 600; }
+
+/* Callout */
+.callout { border-radius: 8px; padding: 14px 16px; margin: 16px 0 0; font-size: 15px; border: 1px solid var(--accent-line); background: var(--accent-soft); }
+.callout-title { font-weight: 700; font-size: 13px; margin-bottom: 6px; color: var(--accent); }
+.callout p { margin: 0; }
+
+/* Viz frame */
+.viz { border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg); padding: 20px; margin: 16px 0; }
+.viz-title { text-align: center; font-weight: 800; font-size: 16px; margin-bottom: 4px; }
+.viz-sub { text-align: center; font-size: 13px; color: var(--text-mute); margin-bottom: 14px; }
+.viz svg { display: block; width: 100%; height: auto; }
+.viz-caption { text-align: center; font-size: 14px; color: var(--text-soft); margin-top: 12px; }
+.viz-caption strong { color: var(--text); }
+
+/* 2-panel compare */
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 620px) { .compare { grid-template-columns: 1fr; } }
+.panel { border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; text-align: center; background: var(--bg); }
+.panel.now { background: var(--bg-alt); }
+.panel.ad { border-color: var(--accent-line); background: var(--accent-soft); }
+.panel .p-tag { display: inline-block; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 100px; margin-bottom: 12px; letter-spacing: .04em; }
+.panel.now .p-tag { background: var(--text); color: #fff; }
+.panel.ad .p-tag { background: var(--accent); color: #fff; }
+.panel h3 { font-size: 17px; font-weight: 800; margin-bottom: 4px; }
+.panel .p-desc { font-size: 13.5px; color: var(--text-soft); }
+.panel .p-num { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; margin: 10px 0 2px; }
+.panel.ad .p-num { color: var(--accent); }
+.panel .p-unit { font-size: 12.5px; color: var(--text-mute); }
+
+/* Step flow (픽셀) */
+.flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; gap: 6px; align-items: stretch; margin: 16px 0; }
+@media (max-width: 620px) { .flow { grid-template-columns: 1fr; } .flow .arrow { transform: rotate(90deg); margin: -2px auto; } }
+.fstep { border: 1px solid var(--border); border-radius: 10px; padding: 16px 10px; text-align: center; background: var(--bg); }
+.fstep .ico { font-size: 30px; line-height: 1; margin-bottom: 8px; }
+.fstep .t { font-weight: 700; font-size: 13.5px; line-height: 1.4; }
+.fstep .d { font-size: 12px; color: var(--text-mute); margin-top: 4px; line-height: 1.45; }
+.flow .arrow { display: flex; align-items: center; justify-content: center; color: var(--accent); font-weight: 800; font-size: 18px; }
+.fstep.hl { border-color: var(--accent-line); background: var(--accent-soft); }
+
+/* 3층 상자 */
+.boxes { border: 2px solid var(--text); border-radius: 12px; padding: 14px; margin: 16px 0; background: var(--bg); }
+.boxes .box-label { font-size: 12px; font-weight: 800; letter-spacing: .04em; margin-bottom: 4px; }
+.boxes .box-desc { font-size: 12.5px; color: var(--text-mute); margin-bottom: 10px; }
+.boxes-mid { border: 2px dashed var(--accent); border-radius: 10px; padding: 12px; background: var(--accent-soft); }
+.boxes-mid .box-label { color: var(--accent); }
+.ads-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 8px; }
+@media (max-width: 480px) { .ads-row { grid-template-columns: 1fr; } }
+.ad-card { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px 8px; text-align: center; }
+.ad-card .ico { font-size: 24px; }
+.ad-card .t { font-size: 12px; font-weight: 700; margin-top: 4px; }
+.ad-card .d { font-size: 11px; color: var(--text-mute); }
+.ad-card.win { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+.ad-card.win .t { color: var(--accent); }
+
+/* Funnel */
+.funnel { margin: 16px 0; }
+.fun-row { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; flex-wrap: wrap; }
+@media (max-width: 620px) {
+  .fun-row { gap: 6px; }
+  .fun-meaning { flex-basis: 100%; padding: 0 4px 6px; }
+}
+.fun-bar { height: 52px; border-radius: 8px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; color: #fff; font-weight: 700; font-size: 14px; min-width: 150px; }
+.fun-bar .n { font-size: 16px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.fun-meaning { font-size: 13.5px; color: var(--text-soft); flex: 1; }
+.fun-meaning strong { color: var(--text); }
+.f1 { width: 100%; background: #f07030; }
+.f2 { width: 72%; background: #f28c58; }
+.f3 { width: 46%; background: #f4a97f; }
+.f4 { width: 28%; background: #f7c5a6; color: #7c3a12; }
+.fun-drop { font-size: 12px; color: var(--text-mute); padding-left: 4px; margin: -4px 0 6px; }
+
+.footer { margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-mute); text-align: center; }
+
+/* Data tables (실데이터) */
+.dt-title { font-weight: 800; font-size: 15px; margin: 4px 0 8px; }
+.dt-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border); border-radius: var(--radius); }
+.dt { border-collapse: collapse; width: max-content; min-width: 100%; font-size: 13px; }
+.dt-traffic { min-width: 780px; }
+.dt thead th { background: var(--bg-alt); color: var(--text-soft); font-weight: 700; font-size: 11.5px; text-align: right; padding: 10px 10px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.dt thead th span { font-weight: 500; color: var(--text-mute); font-size: 10.5px; }
+.dt thead th.c-img, .dt thead th.c-name { text-align: left; }
+.dt td { padding: 8px 10px; text-align: right; border-bottom: 1px solid var(--border-soft); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.dt td.c-img { padding: 6px 8px; text-align: center; width: 52px; }
+.dt td.c-img img { width: 42px; height: 42px; object-fit: cover; border-radius: 7px; border: 1px solid var(--border); display: block; }
+.dt td.c-name { text-align: left; font-weight: 700; color: var(--text); white-space: normal; min-width: 116px; }
+.dt td.hl { font-weight: 800; color: var(--text); }
+.dt tbody tr:hover { background: var(--bg-alt); }
+.dt tr.dt-win { background: var(--accent-soft); }
+.dt tr.dt-win:hover { background: var(--accent-soft); }
+.dt tr.dt-win td.c-name { color: var(--accent); }
+.dt tr.dt-total td { border-top: 2px solid var(--border); border-bottom: none; font-weight: 800; background: var(--bg-alt); }
+</style>
+
+<div class="main">
+
+  <div class="hero">
+    <div class="hero-badge">2026.07.10 (금)</div>
+    <h1>메타 광고, 큰 그림</h1>
+    <p>어려운 용어는 다 빼고, <strong>그림 몇 장</strong>으로 광고가 어떻게 돌아가는지만 잡습니다.</p>
+  </div>
+
+  <!-- 01 왜 -->
+  <section class="day">
+    <div class="day-head"><span class="day-tag">01</span></div>
+    <h2>데이나님 혼자 파는 것에는 한계가 있다</h2>
+    <div class="day-lead">가게로 비유하면 — 지금은 <strong>단골 손님(팔로워)</strong>과 <strong>지나가다 들른 손님(알고리즘 추천)</strong>만큼 팔립니다. 장사는 잘되는데, 손님 수를 우리가 정할 수 없습니다.</div>
+    <div class="compare">
+      <div class="panel now">
+        <span class="p-tag">지금</span>
+        <div style="font-size:34px">🏪</div>
+        <h3>데이나님이 직접 알린다</h3>
+        <div class="p-num">닿는 만큼</div>
+        <div class="p-unit">팔로워(단골) + 알고리즘이 실어주는 만큼(그날그날 운)<br>— 범위도 시점도 우리가 못 정함</div>
+      </div>
+      <div class="panel ad">
+        <span class="p-tag">광고</span>
+        <div style="font-size:34px">📣</div>
+        <h3>메타가 대신 알린다</h3>
+        <div class="p-num">원하는 만큼</div>
+        <div class="p-unit">수천만 명 중 원하는 사람에게 · 원하는 날에 · 원하는 예산만큼<br>— 전부 우리가 정함</div>
+      </div>
+    </div>
+    <div class="callout">
+      <div class="callout-title">한 줄 정리</div>
+      <p>광고는 <strong>한계가 없는 액티베이션</strong>입니다. 데이나님의 콘텐츠는 그대로 두고, <strong>확성기 볼륨을 돈으로 키우는 것</strong> — 운에 맡기던 도달을 우리 손으로 가져옵니다.</p>
+    </div>
+  </section>
+
+  <!-- 02 그물 -->
+  <section class="day">
+    <div class="day-head"><span class="day-tag">02</span></div>
+    <h2>광고는 딱 2종류 — 그물 치기 &amp; 건져 올리기</h2>
+    <div class="day-lead">정확히는 메타 광고 목표가 6가지 있지만*, 물건 파는 브랜드의 주력은 사실상 <strong>트래픽</strong>과 <strong>전환(판매)</strong> 2가지. 그물로 생각하면 끝.</div>
+    <p style="font-size:12.5px; color:var(--text-mute); margin:-14px 0 18px;">* 인지도 · <em>트래픽</em> · 참여 · 잠재고객 · 앱 홍보 · <em>판매</em> — 나머지 4개는 목적이 다를 때(브랜드 알리기, 상담 신청 받기 등) 꺼내 씁니다.</p>
+
+    <div class="viz">
+      <div class="viz-title">① 그물 치기 = 트래픽 광고</div>
+      <div class="viz-sub">Traffic — 바다(메타 사용자)에서 최대한 많은 물고기를 그물 안으로</div>
+      <svg viewBox="0 0 600 210" role="img" aria-label="바다에 그물을 넓게 쳐서 많은 물고기를 모으는 그림">
+        <rect x="0" y="0" width="600" height="210" rx="10" fill="#eaf4fd"/>
+        <text x="20" y="30" font-size="13" fill="#5b6371">🌊 바다 = 인스타·페북을 보는 수천만 명</text>
+        <text x="60" y="80" font-size="22">🐟</text>
+        <text x="130" y="55" font-size="22">🐟</text>
+        <text x="500" y="70" font-size="22">🐟</text>
+        <text x="545" y="120" font-size="22">🐟</text>
+        <text x="40" y="150" font-size="22">🐟</text>
+        <defs>
+          <pattern id="net" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <path d="M0 0 H14 M0 0 V14" stroke="#f07030" stroke-width="1.4" opacity="0.55"/>
+          </pattern>
+        </defs>
+        <path d="M150,70 C190,200 410,200 450,70 Z" fill="url(#net)" stroke="#f07030" stroke-width="2.5" stroke-dasharray="6 4"/>
+        <text x="230" y="105" font-size="22">🐟</text>
+        <text x="290" y="130" font-size="22">🐟</text>
+        <text x="350" y="105" font-size="22">🐟</text>
+        <text x="300" y="62" font-size="13" font-weight="700" fill="#f07030" text-anchor="middle">그물 = 우리 사이트</text>
+      </svg>
+      <div class="viz-caption">사이트로 사람을 <strong>많이, 싸게</strong> 데려옵니다. 아직 파는 게 아니라 <strong>모으는 것</strong>.</div>
+    </div>
+
+    <div class="viz">
+      <div class="viz-title">② 건져 올리기 = 전환 광고</div>
+      <div class="viz-sub">Sales — 그물 안에서 "살 물고기"만 골라 계산대로</div>
+      <svg viewBox="0 0 600 210" role="img" aria-label="그물 안 물고기 중 살 물고기만 골라 계산대로 올리는 그림">
+        <rect x="0" y="0" width="600" height="210" rx="10" fill="#eaf4fd"/>
+        <defs>
+          <pattern id="net2" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <path d="M0 0 H14 M0 0 V14" stroke="#f07030" stroke-width="1.4" opacity="0.55"/>
+          </pattern>
+        </defs>
+        <path d="M110,120 C150,230 330,230 370,120 Z" fill="url(#net2)" stroke="#f07030" stroke-width="2.5" stroke-dasharray="6 4"/>
+        <text x="150" y="155" font-size="20">🐟</text>
+        <text x="215" y="175" font-size="20">🐟</text>
+        <text x="280" y="155" font-size="20">🐟</text>
+        <circle cx="230" cy="145" r="18" fill="none" stroke="#f07030" stroke-width="3"/>
+        <text x="218" y="152" font-size="20">🐟</text>
+        <path d="M255,130 C330,70 400,70 460,95" fill="none" stroke="#f07030" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowhead)"/>
+        <defs>
+          <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L7,3 L0,6 Z" fill="#f07030"/>
+          </marker>
+        </defs>
+        <text x="470" y="105" font-size="30">🛒</text>
+        <text x="465" y="135" font-size="13" font-weight="700" fill="#1a1d23">계산대</text>
+        <text x="120" y="45" font-size="13" fill="#5b6371">메타가 <tspan font-weight="700" fill="#f07030">"살 것 같은 물고기"</tspan>를 골라줍니다</text>
+      </svg>
+      <div class="viz-caption">클릭당 비용은 비싸지만 <strong>매출로 직결</strong>됩니다. 모은 사람 중에서 <strong>파는 것</strong>.</div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">순서가 핵심</div>
+      <p><strong>먼저 그물을 치고(트래픽) → 그 다음 건져 올립니다(전환).</strong> 그물 안에 물고기가 없는데 건지려고 하면 아무것도 안 잡힙니다.</p>
+    </div>
+  </section>
+
+  <!-- 03 픽셀 -->
+  <section class="day">
+    <div class="day-head"><span class="day-tag">03</span></div>
+    <h2>메타는 어떻게 "살 물고기"를 알까?</h2>
+    <div class="day-lead">비밀은 <strong>픽셀</strong> — 우리 사이트에 달아둔 작은 기록장치입니다.</div>
+    <div class="flow">
+      <div class="fstep"><div class="ico">🛍️</div><div class="t">사람들이 사이트 방문</div><div class="d">광고 클릭, 링크 유입</div></div>
+      <div class="arrow">→</div>
+      <div class="fstep"><div class="ico">📝</div><div class="t">픽셀이 기록</div><div class="d">구경했다 · 담았다 · 샀다</div></div>
+      <div class="arrow">→</div>
+      <div class="fstep"><div class="ico">🧠</div><div class="t">메타가 학습</div><div class="d">"사는 사람은 이런 사람이구나"</div></div>
+      <div class="arrow">→</div>
+      <div class="fstep hl"><div class="ico">🎯</div><div class="t">살 사람에게 광고</div><div class="d">데이터가 쌓일수록 정확·저렴</div></div>
+    </div>
+    <div class="callout">
+      <div class="callout-title">비유하면</div>
+      <p>매장에 설치한 <strong>CCTV + 포스(POS)기</strong>입니다. 누가 들어와서, 뭘 집었다 놨고, 뭘 계산했는지 다 남습니다. 이 기록을 메타에 보내주면 메타가 <strong>"사는 손님의 얼굴"을 익힙니다</strong> — 그래서 광고를 오래 돌릴수록 점점 더 잘 팝니다.</p>
+    </div>
+  </section>
+
+  <!-- 04 구조 트리 -->
+  <section class="day">
+    <div class="day-head"><span class="day-tag">04</span></div>
+    <h2>광고 계정의 구조 — 캠페인 → 광고세트 → 광고</h2>
+    <div class="day-lead">메타 공식 가이드에 나오는 구조도 그대로입니다. 위에서 아래로 <strong>"왜 → 누구에게 → 무엇을"</strong> 순서로 정합니다.</div>
+    <div class="viz">
+      <svg viewBox="0 0 640 320" role="img" aria-label="캠페인 아래 광고세트 두 개, 그 아래 광고들이 달린 트리 구조도">
+        <line x1="320" y1="66" x2="320" y2="88" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="170" y1="88" x2="470" y2="88" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="170" y1="88" x2="170" y2="110" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="470" y1="88" x2="470" y2="110" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="170" y1="176" x2="170" y2="196" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="90" y1="196" x2="250" y2="196" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="90" y1="196" x2="90" y2="218" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="250" y1="196" x2="250" y2="218" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="470" y1="176" x2="470" y2="196" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="390" y1="196" x2="550" y2="196" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="390" y1="196" x2="390" y2="218" stroke="#c9ced8" stroke-width="2"/>
+        <line x1="550" y1="196" x2="550" y2="218" stroke="#c9ced8" stroke-width="2"/>
+
+        <rect x="220" y="16" width="200" height="50" rx="10" fill="#1a1d23"/>
+        <text x="320" y="37" font-size="14" font-weight="800" fill="#ffffff" text-anchor="middle">🎯 캠페인</text>
+        <text x="320" y="55" font-size="11.5" fill="#c9ced8" text-anchor="middle">왜? — 목표 (트래픽 / 판매)</text>
+
+        <rect x="80" y="110" width="180" height="66" rx="10" fill="#fff2ea" stroke="#f07030" stroke-width="1.6"/>
+        <text x="170" y="133" font-size="13.5" font-weight="800" fill="#f07030" text-anchor="middle">👥 광고세트 A</text>
+        <text x="170" y="151" font-size="11.5" fill="#5b6371" text-anchor="middle">누구에게? — 타겟</text>
+        <text x="170" y="167" font-size="11.5" fill="#5b6371" text-anchor="middle">얼마로? — 하루 예산</text>
+
+        <rect x="380" y="110" width="180" height="66" rx="10" fill="#fff2ea" stroke="#f07030" stroke-width="1.6"/>
+        <text x="470" y="133" font-size="13.5" font-weight="800" fill="#f07030" text-anchor="middle">👥 광고세트 B</text>
+        <text x="470" y="151" font-size="11.5" fill="#5b6371" text-anchor="middle">다른 타겟 또는</text>
+        <text x="470" y="167" font-size="11.5" fill="#5b6371" text-anchor="middle">다른 예산으로 실험</text>
+
+        <rect x="40" y="218" width="100" height="60" rx="8" fill="#ffffff" stroke="#e6e9ef" stroke-width="1.5"/>
+        <text x="90" y="243" font-size="12" font-weight="700" fill="#1a1d23" text-anchor="middle">🖼️ 광고 1</text>
+        <text x="90" y="261" font-size="10.5" fill="#8b94a3" text-anchor="middle">이미지·카피</text>
+
+        <rect x="200" y="218" width="100" height="60" rx="8" fill="#ffffff" stroke="#f07030" stroke-width="2"/>
+        <text x="250" y="243" font-size="12" font-weight="700" fill="#f07030" text-anchor="middle">🖼️ 광고 2 ✓</text>
+        <text x="250" y="261" font-size="10.5" fill="#f07030" text-anchor="middle">반응 좋음 → 예산 몰림</text>
+
+        <rect x="340" y="218" width="100" height="60" rx="8" fill="#ffffff" stroke="#e6e9ef" stroke-width="1.5"/>
+        <text x="390" y="243" font-size="12" font-weight="700" fill="#1a1d23" text-anchor="middle">🖼️ 광고 3</text>
+        <text x="390" y="261" font-size="10.5" fill="#8b94a3" text-anchor="middle">이미지·카피</text>
+
+        <rect x="500" y="218" width="100" height="60" rx="8" fill="#ffffff" stroke="#e6e9ef" stroke-width="1.5"/>
+        <text x="550" y="243" font-size="12" font-weight="700" fill="#1a1d23" text-anchor="middle">🖼️ 광고 4</text>
+        <text x="550" y="261" font-size="10.5" fill="#8b94a3" text-anchor="middle">이미지·카피</text>
+
+        <text x="320" y="308" font-size="11.5" fill="#8b94a3" text-anchor="middle">위 → 아래: 왜(목표) → 누구에게·얼마로(타겟·예산) → 무엇을(소재)</text>
+      </svg>
+      <div class="viz-caption">우리가 매일 만지는 건 맨 아래 <strong>광고(소재) 켜고 끄기</strong>. 예산은 메타가 <strong>이긴 소재에 자동으로 몰아줍니다</strong> — 그래서 후보를 여러 개 넣습니다.</div>
+    </div>
+  </section>
+
+  <!-- 05 깔때기 -->
+  <section class="day">
+    <div class="day-head"><span class="day-tag">05</span></div>
+    <h2>성적표는 깔때기로 읽는다</h2>
+    <div class="day-lead">위에서 아래로 사람이 줄어듭니다. <strong>어디서 확 줄었는지</strong>가 고칠 곳. (숫자는 이해용 예시)</div>
+    <div class="funnel">
+      <div class="fun-row"><div class="fun-bar f1"><span>👀 봤다 (노출)</span><span class="n">10,000</span></div><div class="fun-meaning">광고가 화면에 보인 횟수</div></div>
+      <div class="fun-drop">↓ 여기서 확 줄면 → <strong>소재가 재미없다</strong> (안 눌렀으니까)</div>
+      <div class="fun-row"><div class="fun-bar f2"><span>👆 눌렀다 (클릭)</span><span class="n">300</span></div><div class="fun-meaning">궁금해서 사이트에 들어옴 — <strong>그물 안으로</strong></div></div>
+      <div class="fun-drop">↓ 여기서 확 줄면 → <strong>상세페이지·가격이 아쉽다</strong></div>
+      <div class="fun-row"><div class="fun-bar f3"><span>🛒 담았다 (장바구니)</span><span class="n">30</span></div><div class="fun-meaning">살 마음이 생김</div></div>
+      <div class="fun-drop">↓ 여기서 확 줄면 → <strong>결제 문턱이 높다</strong> (배송비·가입 강제)</div>
+      <div class="fun-row"><div class="fun-bar f4"><span>💳 샀다 (구매)</span><span class="n">5</span></div><div class="fun-meaning"><strong>건져 올린 물고기</strong> — 최종 성적</div></div>
+    </div>
+    <div class="callout">
+      <div class="callout-title">오늘의 전부</div>
+      <p>그물을 치고(트래픽) → 건져 올리고(전환) → 깔때기에서 <strong>새는 곳을 찾아 고친다.</strong> 메타 광고 운영은 이 반복입니다.</p>
+    </div>
+  </section>
+
+  <!-- 06 보너스 -->
+  <section class="day">
+    <div class="day-head"><span class="day-tag">06</span></div>
+    <h2>이것까지 알면 광고 대화가 됩니다 — 보너스 3</h2>
+    <div class="day-lead">오늘 꼭 안 외워도 됩니다. "이런 게 있구나"만.</div>
+    <div class="flow" style="grid-template-columns:1fr 1fr 1fr; gap:10px;">
+      <div class="fstep"><div class="ico">🔨</div><div class="t">광고비는 정가가 없다 — 경매</div><div class="d">같은 화면 자리를 두고 여러 브랜드가 입찰 경쟁. 메타는 <strong>사람들이 좋아하는 광고를 싸게</strong> 태워줍니다 → 소재가 좋으면 광고비가 내려가는 이유</div></div>
+      <div class="fstep"><div class="ico">🎣</div><div class="t">도망간 물고기 다시 — 리타겟팅</div><div class="d">그물에 들어왔다가(사이트 방문) 안 사고 나간 사람에게 다시 보여주는 광고. <strong>전환율이 가장 높은</strong> 그물질 — 픽셀 기록 덕분에 가능</div></div>
+      <div class="fstep"><div class="ico">🌱</div><div class="t">처음 며칠은 연습 — 학습 기간</div><div class="d">새 광고를 켜면 메타가 "누구한테 보여줄지" 연습하는 기간이 있습니다. <strong>첫 2~3일 숫자로 판단하지 않기</strong> — 그물 던지는 폼 잡는 중</div></div>
+    </div>
+  </section>
+
+  <!-- 07 실데이터 -->
+  <section class="day">
+    <div class="day-head"><span class="day-tag">07</span></div>
+    <h2>지금 우리 광고 실제 성적 (7/10 시점)</h2>
+    <div class="day-lead">위 개념을 <strong>실제 데이터</strong>로. 옆으로 넘겨서 보세요 →</div>
+
+    <div class="dt-title">🎣 트래픽 — 그물 던지기 (사이트로 유입)</div>
+    <div class="dt-wrap">
+    <table class="dt dt-traffic">
+      <thead><tr><th class="c-img">소재</th><th class="c-name">광고</th><th>지출</th><th>결과<br><span>랜딩 조회</span></th><th>CPC</th><th>CTR</th><th>도달</th><th>노출</th><th>빈도</th></tr></thead>
+      <tbody>
+        <tr><td class="c-img"><img src="img/sos-a.jpg" alt="SOS A" loading="lazy"></td><td class="c-name">SOS A</td><td>₩188,961</td><td class="hl">490</td><td>₩318</td><td>3.28%</td><td>14,204</td><td>18,087</td><td>1.27</td></tr>
+        <tr><td class="c-img"><img src="img/hydro-summer-a.jpg" alt="하이드로 여름수분 A" loading="lazy"></td><td class="c-name">하이드로 여름수분 A</td><td>₩65,418</td><td class="hl">167</td><td>₩322</td><td>2.96%</td><td>5,998</td><td>6,850</td><td>1.14</td></tr>
+        <tr><td class="c-img"><img src="img/cleanser-a.jpg" alt="클렌저 A" loading="lazy"></td><td class="c-name">클렌저 A</td><td>₩35,636</td><td class="hl">96</td><td>₩297</td><td>1.46%</td><td>6,791</td><td>8,217</td><td>1.21</td></tr>
+        <tr><td class="c-img"><img src="img/set-a.jpg" alt="데이나스픽 세트 A" loading="lazy"></td><td class="c-name">데이나스픽 세트 A</td><td>₩27,400</td><td class="hl">67</td><td>₩280</td><td>1.34%</td><td>4,235</td><td>7,337</td><td>1.73</td></tr>
+        <tr><td class="c-img"><img src="img/hydro-vitb-a.jpg" alt="하이드로 비타민B 부스팅 A" loading="lazy"></td><td class="c-name">하이드로 비타민B 부스팅 A</td><td>₩26,444</td><td class="hl">69</td><td>₩326</td><td>1.28%</td><td>2,969</td><td>6,328</td><td>2.13</td></tr>
+        <tr><td class="c-img"><img src="img/hydro-lemon-a.jpg" alt="하이드로 레몬 올제로 A" loading="lazy"></td><td class="c-name">하이드로 레몬 올제로 A</td><td>₩9,440</td><td class="hl">18</td><td>₩350</td><td>3.15%</td><td>822</td><td>858</td><td>1.04</td></tr>
+        <tr><td class="c-img"><img src="img/hydro-balance-a.jpg" alt="하이드로 밸런스 A" loading="lazy"></td><td class="c-name">하이드로 밸런스 A</td><td>₩3,744</td><td class="hl">6</td><td>₩374</td><td>1.23%</td><td>738</td><td>810</td><td>1.10</td></tr>
+        <tr><td class="c-img"><img src="img/mini3-a.jpg" alt="미니 3종 A" loading="lazy"></td><td class="c-name">미니 3종 A</td><td>₩1,900</td><td class="hl">5</td><td>₩317</td><td>2.33%</td><td>242</td><td>258</td><td>1.07</td></tr>
+        <tr class="dt-total"><td class="c-img"></td><td class="c-name">합계 · 8개</td><td>₩358,943</td><td class="hl">918</td><td>—</td><td>—</td><td>35,999</td><td>48,745</td><td>—</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="dt-title" style="margin-top:26px;">💳 전환 — 건져 올리기 (실제 구매)</div>
+    <div class="dt-wrap">
+    <table class="dt">
+      <thead><tr><th class="c-img">소재</th><th class="c-name">광고</th><th>지출</th><th>결과<br><span>구매</span></th><th>구매 전환값</th><th>ROAS</th></tr></thead>
+      <tbody>
+        <tr class="dt-win"><td class="c-img"><img src="img/mini3-b.jpg" alt="미니 3종 B" loading="lazy"></td><td class="c-name">미니 3종 B</td><td>₩205,273</td><td class="hl">7</td><td>₩411,300</td><td>2.00</td></tr>
+        <tr><td class="c-img"><img src="img/soothing-timedeal.jpg" alt="진정 라인 타임딜" loading="lazy"></td><td class="c-name">진정 라인 타임딜</td><td>₩96,192</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/hydro-summer-b.jpg" alt="하이드로 여름수분 B" loading="lazy"></td><td class="c-name">하이드로 여름수분 B</td><td>₩69,419</td><td class="hl">1</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/cleanser-b.jpg" alt="클렌저 B" loading="lazy"></td><td class="c-name">클렌저 B</td><td>₩38,785</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/hydro-lemon-b.jpg" alt="하이드로 레몬 올제로 B" loading="lazy"></td><td class="c-name">하이드로 레몬 올제로 B</td><td>₩36,974</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/cleanser-timedeal.jpg" alt="클렌저 라인 타임딜" loading="lazy"></td><td class="c-name">클렌저 라인 타임딜</td><td>₩19,862</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/allcare-sun.jpg" alt="올케어 선크림 (단품)" loading="lazy"></td><td class="c-name">올케어 선크림 (단품)</td><td>₩6,245</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/hydro-vitb-b.jpg" alt="하이드로 비타민B 부스팅 B" loading="lazy"></td><td class="c-name">하이드로 비타민B 부스팅 B</td><td>₩3,415</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/hydro-balance-b.jpg" alt="하이드로 밸런스 B" loading="lazy"></td><td class="c-name">하이드로 밸런스 B</td><td>₩3,126</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/sos-b.jpg" alt="SOS B" loading="lazy"></td><td class="c-name">SOS B</td><td>₩2,779</td><td class="hl">1</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/panthenol.jpg" alt="판테놀 크림" loading="lazy"></td><td class="c-name">판테놀 크림</td><td>₩173</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/set-b.jpg" alt="데이나스픽 세트 B" loading="lazy"></td><td class="c-name">데이나스픽 세트 B</td><td>₩55</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr><td class="c-img"><img src="img/serum.jpg" alt="수분락 세럼" loading="lazy"></td><td class="c-name">수분락 세럼</td><td>₩34</td><td class="hl">—</td><td>—</td><td>—</td></tr>
+        <tr class="dt-total"><td class="c-img"></td><td class="c-name">합계 · 13개</td><td>₩482,332</td><td class="hl">9</td><td>₩411,300</td><td>0.85</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout">
+      <div class="callout-title">한눈에</div>
+      <p>지출은 <strong>반응 좋은 소재(SOS A·미니 3종)</strong>에 자동으로 몰렸습니다. 전환값은 아직 <strong>미니 3종 B 한 곳(₩411,300·ROAS 2.0)</strong>에 집중 — 저가 미끼로 들어와 크게 담아간 신호입니다. 나머지 전환값 0은 <strong>초기 픽셀이 금액을 못 넘긴 구간</strong>(7/9까지)이라 실제보다 낮게 잡힌 것으로, 오늘 보정 중입니다.</p>
+    </div>
+  </section>
+
+
+  <div class="footer">HIZ Marketing · 2026.07.10</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<!-- BRANDRISE 진단서 · 인디고 클린 통합표준 (NGT 템플릿 복제 → Less Plastic Life 콘텐츠 교체). 색/컴포넌트 신규 제작 없음. -->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Less Plastic Life 브랜드 전략 진단서 | BRANDRISE</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.75;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:16.5px}
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 42%,#4338ca 100%);color:#fff;padding:60px 0 48px;position:relative;overflow:hidden}
+.hero::after{content:"DIAGNOSIS";position:absolute;right:-2%;bottom:-18%;font-size:clamp(140px,20vw,320px);font-weight:800;letter-spacing:-.04em;color:#fff;opacity:.05;line-height:.8;pointer-events:none}
+.hero .in{max-width:960px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero .sub{font-size:15.5px;color:#cbd5e1;font-weight:300;max-width:680px;line-height:1.75}
+.hero .meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.wrap{max-width:960px;margin:0 auto;padding:36px 40px 100px;counter-reset:sec}
+section{margin-bottom:50px;scroll-margin-top:24px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+h2{font-size:34px;font-weight:800;letter-spacing:-.025em;margin-bottom:6px}
+.lead{font-size:18px;color:var(--ink2);margin-bottom:20px;line-height:1.7}
+h3{font-size:20px;font-weight:800;margin:24px 0 12px;color:var(--ink);letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.co{border:1px solid var(--line2);border-left:3px solid var(--line);border-radius:0 10px 10px 0;padding:18px 24px;margin:14px 0;font-size:16px;line-height:1.8;text-wrap:pretty}
+.co.ac{background:var(--ac-50);border-left-color:var(--ac)} .co.ok{background:var(--ok-50);border-left-color:var(--ok)}
+.co.warn{background:var(--warn-50);border-left-color:var(--warn)} .co.bad{background:var(--bad-50);border-left-color:var(--bad)}
+.co b,.co strong{color:var(--ink);font-weight:600}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
+.t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
+.t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0 4px}
+th{background:var(--soft);color:var(--ink2);font-weight:700;text-align:left;padding:10px 12px;font-size:12.5px;border-bottom:1px solid var(--line)}
+td{padding:11px 12px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b,td strong{color:var(--ink)}
+.verdict{background:var(--ink);color:#fff;border-radius:14px;padding:30px 28px;text-align:center;margin:14px 0}
+.verdict .vl{font-size:12px;color:#94a3b8;font-weight:600;letter-spacing:.1em}
+.verdict .vv{font-size:23px;font-weight:800;letter-spacing:-.01em;margin:12px 0;line-height:1.5}
+.verdict .vv em{font-style:normal;color:#a5b4fc}
+.verdict .vd{font-size:14.5px;color:#cbd5e1;line-height:1.75}
+.chs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 4px}
+.ch{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 18px;text-align:center}
+.ch.own{border:2px solid var(--ac);background:var(--ac-50)}
+.ch .cn{font-weight:700;font-size:13.5px;margin-bottom:4px}
+.ch .cv{font-size:25px;font-weight:800;color:var(--ac);margin:8px 0;letter-spacing:-.02em}
+.ch .cd{font-size:13px;color:var(--muted);line-height:1.6}
+.moat{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 4px}
+.mo{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+.mo h4{font-size:14px;font-weight:800;margin-bottom:6px}
+.mo p{font-size:13.5px;color:var(--muted);line-height:1.7}
+.mo .flag{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--ac)}
+.steps{display:flex;gap:14px;margin:18px 0 4px;overflow-x:auto}
+.st{flex:1;min-width:180px;padding:20px 18px;background:var(--soft);border:1px solid var(--line);border-radius:12px;position:relative}
+.st.on{background:var(--ac);border-color:var(--ac)}
+.st:not(:last-child)::after{content:"›";position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--ac);font-weight:800;z-index:1}
+.st .sn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.05em;margin-bottom:6px}
+.st.on .sn{color:rgba(255,255,255,.85)}
+.st .stt{font-size:14.5px;font-weight:800;color:var(--ink)}
+.st.on .stt{color:#fff}
+.st .sd{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.65}
+.st.on .sd{color:rgba(255,255,255,.9)}
+.lever{background:var(--ink);color:#fff;border-radius:14px;padding:30px 28px;margin:14px 0}
+.lever .lq{font-size:19px;font-weight:700;line-height:1.6;text-align:center}
+.lever .lq em{font-style:normal;color:#a5b4fc}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9}
+.hero h1{font-size:clamp(38px,4.8vw,56px);line-height:1.08}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
+.minitoc{max-width:960px;margin:0 auto;padding:18px 40px 0;font-size:12.5px;color:var(--muted);letter-spacing:.01em}
+.minitoc a{color:var(--ink2);text-decoration:none;font-weight:700;transition:.15s}
+.minitoc a:hover{color:var(--ac)}
+.minitoc .sep{color:var(--line);margin:0 9px;font-weight:400}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:16px 0 6px}
+.shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.shot .sk{display:flex;align-items:center;gap:7px;padding:9px 13px;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--ac);background:var(--ac-50);border-bottom:1px solid var(--ac-100)}
+.shot .sk::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--ac)}
+.shot .sph{aspect-ratio:16/10;background:repeating-linear-gradient(45deg,var(--soft),var(--soft) 10px,#f0f3f8 10px,#f0f3f8 20px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted);text-align:center;padding:14px}
+.shot .sph .ic{font-size:22px;opacity:.5}
+.shot .sph .pl{font-size:12px;font-weight:700;color:var(--ink2)}
+.shot .scap{padding:10px 14px;font-size:12px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line2)}
+.shot .scap b{color:var(--ink2)}
+section{margin-bottom:64px;counter-increment:sec;border-top:2px solid var(--ink);padding:34px 0 0 108px;position:relative}
+section:first-of-type{border-top:none;padding-top:0}
+.sec-k{display:inline-block;background:var(--ac-50);border:1px solid var(--ac-100);border-radius:7px;padding:4px 10px}
+.sec-k::before{content:counter(sec,decimal-leading-zero);position:absolute;left:0;top:30px;font-size:62px;font-weight:800;color:var(--ac);letter-spacing:-.04em;line-height:.9;font-variant-numeric:tabular-nums}
+.wrap>section:first-of-type .sec-k::before{top:0}
+h2{line-height:1.28}
+h3{letter-spacing:-.01em}
+.bn{display:flex;flex-direction:column;gap:10px;margin:14px 0 4px}
+.bcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 22px;
+  display:grid;grid-template-columns:48px 1fr auto;gap:0 18px;align-items:start}
+.bcard .bnum{grid-row:1/3;width:40px;height:40px;border-radius:11px;background:var(--ac-50);color:var(--ac-700);
+  font-size:18px;font-weight:800;display:flex;align-items:center;justify-content:center;letter-spacing:-.02em}
+.bcard.crit .bnum{background:var(--bad-50);color:var(--bad)}
+.bcard .bh{font-size:14.5px;font-weight:800;color:var(--ink);letter-spacing:-.01em;align-self:center}
+.bcard .bsev{align-self:center}
+.bcard .bd{grid-column:2/4;font-size:13.5px;color:var(--ink2);line-height:1.68;margin-top:6px}
+.bcard .bmap{grid-column:2/4;margin-top:10px;font-size:11.5px;font-weight:700;color:var(--ac);
+  display:inline-flex;align-items:center;gap:6px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
+.fcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
+.fcard .fk{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.fcard .fv{font-size:16px;font-weight:800;color:var(--ink)}
+.co.ac.band{display:block;text-align:left}
+.co.ac.band .lab{color:var(--ac)}
+@media(max-width:880px){
+  .minitoc{padding:14px 22px 0;line-height:2}
+  section{padding-left:0!important}
+  .sec-k::before{position:static;display:block;margin-bottom:4px;top:auto}
+  .shots{grid-template-columns:1fr}.wrap{padding:28px 22px 80px}.hero .in{padding:0 22px}.hero h1{font-size:28px}.chs,.moat,.grid2,.grid3{grid-template-columns:1fr}.steps{flex-direction:column}.st:not(:last-child)::after{content:"";display:none}
+  .bcard{grid-template-columns:40px 1fr}
+  .bcard .bsev{grid-column:2/3;justify-self:start;margin-top:4px}
+  .bcard .bd,.bcard .bmap{grid-column:1/3}}
+@media print{
+  body{background:#fff}
+  .hero,.verdict,.lever,.st.on,.ch.own,.t,.co{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section{page-break-inside:avoid}
+  .fcard,.bcard,.shot,.shots,.co{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">BRAND STRATEGY DIAGNOSIS · 1차 전략 진단</div>
+  <h1>Less Plastic Life 브랜드 <span class="hl">진단서</span></h1>
+  <div class="sub">기술과 방향성은 이미 있다 — <b style="color:#fff">그것을 "팔리는 브랜드 언어"로 번역하는 것</b>이 과제.</div>
+  <div class="meta">
+    <span class="chip">수신 <b>Less Plastic Life 정경민 대표</b></span>
+    <span class="chip">작성 <b>브랜드라이즈 by HIZ</b></span>
+    <span class="chip">기준일 <b>2026-07-06</b></span>
+    <span class="chip">근거 <b>화상 상담 + 기획안 + 공개 리서치</b></span>
+  </div>
+</div></div>
+
+<div class="minitoc">
+  <a href="#core">핵심 진단</a><span class="sep">·</span><a href="#structure">사업 구조</a><span class="sep">·</span><a href="#bottleneck">우선 과제</a><span class="sep">·</span><a href="#asset">숨은 자산</a><span class="sep">·</span><a href="#next">다음 단계</a><span class="sep">·</span><a href="#lever">레버리지</a>
+</div>
+
+<div class="wrap">
+
+  <section id="core">
+    <div class="sec-k">CORE DIAGNOSIS</div>
+    <h2>핵심 진단 한 줄</h2>
+    <div class="verdict">
+      <div class="vl">CORE DIAGNOSIS</div>
+      <div class="vv">Less Plastic Life는 <em>"로고가 없는 회사"가 아니라<br>"방향성을 아직 한 문장으로 못 누른 회사"</em>다.</div>
+      <div class="vd">30년 기술, 완제품 납품 능력, 지자체·대기업 컨택 — 무기는 이미 있다.<br>막힌 곳은 로고가 아니라 <b style="color:#fff">"누구에게 무엇을 파는가"를 한 문장으로 누르는 일</b>이다.</div>
+    </div>
+  </section>
+
+  <section id="structure">
+    <div class="sec-k">STRUCTURE</div>
+    <h2>사업 구조 해부 — 어디부터 뾰족하게 할 것인가</h2>
+    <p class="lead">타겟이 세 층입니다. 셋을 한꺼번에 말하면 한 곳도 각인되지 않습니다. 1차 축부터 정합니다.</p>
+    <div class="chs">
+      <div class="ch own">
+        <div class="cn">B2B · B2G (1차 · 지금 돈 되는 곳)</div>
+        <div class="cv">진입 축</div>
+        <div class="cd">지자체·대기업 컨택 진행 중. 기업의 ESG 이행을 함께 푸는 "실무형 ESG 파트너". <b style="color:var(--ac)">여기가 첫 축.</b></div>
+      </div>
+      <div class="ch">
+        <div class="cn">B2C 확장 (2차)</div>
+        <div class="cv">확장 축</div>
+        <div class="cd">커피박 커트러리·뚜껑 등 소비재. B2B 톤이 아닌 "말랑하고 부드러운" 소통 방향이 별도로 필요.</div>
+      </div>
+      <div class="ch">
+        <div class="cn">ESG 파트너십 (포지셔닝)</div>
+        <div class="cv">차별 축</div>
+        <div class="cd">"단순 제조업이 아닌 ESG 솔루션 파트너". 협업이 기업의 ESG 마케팅 자료가 되게 하는 관점.</div>
+      </div>
+    </div>
+
+    <div class="shots">
+      <figure class="shot">
+        <div class="sk">타겟 · 소구 구조</div>
+        <div class="sph"><div class="ic">🎯</div><div class="pl">B2B/B2G/B2C 소구 맵</div></div>
+        <figcaption class="scap"><b>세 층 동시 겨냥</b> — 1차 축(B2B/B2G) 확정과 층별 소구 포인트 정리는 워크숍에서 도출</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="sk">발견성 현황</div>
+        <div class="sph"><div class="ic">🔍</div><div class="pl">검색 노출 0건</div></div>
+        <figcaption class="scap"><b>네이버·구글·빙 교차 0건</b> (07-05 실측) · 판매·펀딩·SNS 자산 미발견 — 신규 브랜드로는 백지</figcaption>
+      </figure>
+    </div>
+
+    <div class="co ac band"><span class="lab">사업 단계 · 발언 기반</span>LPL은 순수 제로베이스가 아닙니다 — <b>기존 사업을 활용한 리브랜딩</b>으로, 30년 기술과 실사업 컨택이 이미 있습니다(상담 2026-07-06 발언). 다만 <b>신규 브랜드 "Less Plastic Life"로는 검색·채널·비주얼 자산이 0</b>입니다. 제품 양산 단계·컨택 리스트·예산 자금원 등 정량 확정은 워크숍(사전 인터뷰) 단계에서 채웁니다.</div>
+  </section>
+
+  <section id="bottleneck">
+    <div class="sec-k">FOCUS</div>
+    <h2>지금 함께 풀 5가지</h2>
+    <p class="lead">공급측(기술·제조·컨택)은 이미 강합니다. 남은 건 수요측 — 타겟·언어·발견성입니다. 초기 단계라면 자연스러운 과제. 우선순위 순, 번호는 견적서 블록과 대응합니다.</p>
+    <div class="bn">
+      <div class="bcard">
+        <div class="bnum">1</div>
+        <div class="bh">타겟 축을 더 뾰족하게 — 지금이 정할 때</div>
+        <div class="bsev"><span class="t b">우선</span></div>
+        <div class="bd">B2B·B2G·B2C를 동시에 겨냥 중입니다. 1차 축과 층별 소구를 정하면 로고·메시지가 방향을 얻습니다. 재료는 충분합니다 — 아직 한 문장으로 안 눌렸을 뿐입니다.</div>
+        <div class="bmap">→ 견적서 부록(파트너십) · 아이덴티티 단계에서 확정</div>
+      </div>
+      <div class="bcard">
+        <div class="bnum">2</div>
+        <div class="bh">방향성을 디자인 브리프로 번역하기</div>
+        <div class="bsev"><span class="t b">우선</span></div>
+        <div class="bd">기획안(미션·비전·퍼스낼리티·비주얼 방향)은 이미 잘 정리돼 있습니다. 남은 건 이걸 디자이너가 그릴 수 있는 브리프(문장·키워드)로 옮기는 일입니다. 로고가 안 나온 건 실력이 아니라 줄 문장이 없어서입니다.</div>
+        <div class="bmap">→ 견적서 본문 · 로고·심볼 디자인</div>
+      </div>
+      <div class="bcard">
+        <div class="bnum">3</div>
+        <div class="bh">발견 가능한 최소 상태 설계</div>
+        <div class="bsev"><span class="t y">High</span></div>
+        <div class="bd">신규 브랜드로는 검색·판매채널·SNS 자산이 0입니다(07-05 실측). 로고와 함께 "검색하면 나오는 상태", 그리고 협업 레퍼런스를 눈에 보이게 쌓으면 인지도·고객 확보로 바로 이어집니다.</div>
+        <div class="bmap">→ 견적서 부록(파트너십) · 워크숍·브랜딩 소개서</div>
+      </div>
+      <div class="bcard">
+        <div class="bnum">4</div>
+        <div class="bh">네이밍·검색 점유는 미리 짚어두기</div>
+        <div class="bsev"><span class="t y">High</span></div>
+        <div class="bd">"Less Plastic"은 아모레퍼시픽·LG생건 ESG 캠페인에서도 쓰는 표현이고, 해외 동명 사이트(일본 lessplasticlife.com·영국 lessplastic.co.uk)도 있습니다. 네임은 대표 확정사항이므로 — 재검토가 아니라, 검색에서 우리가 어떻게 점유할지를 미리 설계해 두자는 관점.</div>
+        <div class="bmap">→ 견적서 부록(파트너십) · 워크숍 네이밍 진단</div>
+      </div>
+      <div class="bcard">
+        <div class="bnum">5</div>
+        <div class="bh">"친환경"은 입장권 — 무기는 섹시함</div>
+        <div class="bsev"><span class="t b">기회</span></div>
+        <div class="bd">동구밭(고용)·닥터노아(전문가)·톤28(재배) 등 선점 브랜드가 진정성 서사를 갖고 있습니다. 소비자는 ESG만으로 사지 않죠 — "디자인이 섹시하고 거기에 ESG면 시너지"(상담 중). 매력적 비주얼 + 제조사 정통성이 결합되면 오히려 강한 차별이 됩니다.</div>
+        <div class="bmap">→ 견적서 본문 로고·심볼 + 부록 파트너십</div>
+      </div>
+    </div>
+
+    <h3>병목을 뒷받침하는 리서치 근거</h3>
+    <div class="shots">
+      <figure class="shot">
+        <div class="sk">경쟁 지형</div>
+        <div class="sph"><div class="ic">🏷️</div><div class="pl">선점 브랜드 서사 맵</div></div>
+        <figcaption class="scap"><b>동구밭·지구샵·톤28·닥터노아·알맹상점</b> — 전원 진정성 서사 보유. "왜 저들이 아니라 우리인가"의 답이 필요</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="sk">네이밍 충돌</div>
+        <div class="sph"><div class="ic">⚠️</div><div class="pl">"Less Plastic" 검색 점유</div></div>
+        <figcaption class="scap"><b>아모레·LG생건 캠페인 + 해외 동명 2건</b> — 검색 지형이 이미 남의 것으로 차 있음</figcaption>
+      </figure>
+    </div>
+
+    <div class="co ac band"><span class="lab">요약 · 발언 기반 추정</span>공급측(30년 기술·제조·컨택)이 이미 강하기 때문에, <b>수요측(타겟 뾰족함·브랜드 언어·발견성)을 채우는 것</b>이 다음 한 걸음입니다. 위 내용은 상담 발언·기획안·공개 리서치 기반 가설 — 제품 양산 단계·컨택 실체 등은 워크숍 사전 인터뷰에서 함께 확정하며, <b>각 과제가 견적서(로고·심볼 3버전 · 부록 파트너십)에 대응</b>합니다.</div>
+  </section>
+
+  <section id="asset">
+    <div class="sec-k">HIDDEN ASSET</div>
+    <h2>가장 큰 자산이 가장 덜 보인다 — "메이커 + Hospitality"</h2>
+    <p class="lead">이 시장의 후발 주자는 대개 "셀러"(소싱해서 파는 사람)입니다. LPL은 원재료부터 완제품까지 직접 만드는 진짜 메이커 — 그런데 그 사실도, 대표의 독특한 관점도 아직 브랜드 언어가 되지 못했습니다.</p>
+    <div class="moat">
+      <div class="mo"><h4>30년 기술 + 전주기 납품 능력</h4><p>식물성 부산물(커피박·왕겨·곡물) → 소재 → 완제품까지 자체 전환. 소싱 셀러가 아닌 "메이커" 포지션이 후발 진입의 실마리.</p><span class="flag">→ 현재 노출: 거의 없음</span></div>
+      <div class="mo"><h4>실사업 트랙션 (지자체·대기업 컨택)</h4><p>제로베이스가 아니라 기존 사업 기반 리브랜딩. 협업 레퍼런스가 그 자체로 강력한 브랜드 자산이 될 재료.</p><span class="flag">→ 현재 브랜드 자산화: 0</span></div>
+      <div class="mo"><h4>Hospitality 관점 (대표 이력)</h4><p>스위스 호텔경영 배경 — 고객·경험의 언어로 제조업을 본다. "제조업이지만 제조업 같지 않은" 차별의 근거.</p><span class="flag">→ 서사로 미전환</span></div>
+      <div class="mo"><h4>백지 상태 = 지금이 타이밍</h4><p>검색·채널이 0이라는 건 약점이자 기회 — 리브랜딩 비용 없이 처음부터 일관된 BI를 깔 수 있는 유일한 시점.</p><span class="flag">→ 재프레임 재료</span></div>
+    </div>
+    <div class="co ok"><span class="lab">요약</span>대표님의 진짜 무기는 "친환경"이라는 카테고리가 아니라, <b>진짜 메이커라는 정통성 + Hospitality라는 관점 + 실사업 트랙션</b>입니다. 남은 건 이 자산들을 "섹시한 한 문장"으로 누르는 것 — 컨설팅의 핵심 가치가 여기 있습니다. 이 자산을 <b>세련된 브랜드 언어와 비주얼로 번역하고, 발견 가능한 최소 상태를 함께 설계</b>합니다.</div>
+  </section>
+
+  <section id="next">
+    <div class="sec-k">NEXT STEP</div>
+    <h2>이 진단을 로고로 — 다음 단계</h2>
+    <p class="lead">대표님이 원하시는 로고·심볼은 마지막에 가장 잘 나옵니다. 방향성을 문장으로 누른 뒤에 그리면, 디자이너가 바뀌어도 같은 곳을 향합니다.</p>
+    <div class="steps">
+      <div class="st on"><div class="sn">STEP 1 · 기획 워크숍</div><div class="stt">방향성 → 한 문장·브리프</div><div class="sd">사전 인터뷰 → 시장·경쟁·비주얼 리서치 → 워크숍으로 타겟 축·소구 포인트·네이밍 점유 전략 확정 → 브랜딩 소개서(IR 겸용) 산출.</div></div>
+      <div class="st"><div class="sn">STEP 2 · 아이덴티티·로고</div><div class="stt">문장 위에 로고·심볼</div><div class="sd">확정된 브리프 기준으로 아이덴티티 체계 + 로고·심볼 디자인. 글로벌 B2B·각인·패키지 적용까지 고려한 "섹시한" 비주얼.</div></div>
+      <div class="st"><div class="sn">STEP 3 · 발견성 세팅</div><div class="stt">검색하면 나오는 상태</div><div class="sd">첫 채널 우선순위(홈페이지·SNS·레퍼런스 페이지)로 협업 트랙션을 눈에 보이게. 로고와 동시에 — 디자인이 아니라 브랜딩 프로젝트로.</div></div>
+    </div>
+    <div class="co warn"><span class="lab">필요 확인 (대표 → HIZ)</span>① 제품 실물·시제품/양산 단계 ② 지자체·대기업 컨택 리스트·진행 상태 ③ 예산 자금원(자기자본/투자유치 시점·규모) ④ 30년 기술·특허 상세 ⑤ 대표가 준비하신 비주얼 방향 자료<br><b>HIZ → 대표:</b> 본 1차 진단서 + 견적서(별첨 — 로고·심볼 3버전 + 부록 파트너십)</div>
+  </section>
+
+  <section id="lever">
+    <div class="lever">
+      <div class="lq">"로고는 결과물이지 원인이 아니다.<br><em>방향성을 한 문장으로 누르는 순간</em>,<br>어떤 디자이너가 그려도 <em>같은 곳</em>을 향한다."</div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <b>BRANDRISE</b> by HIZ · Brand · IMC Consulting<br>
+  본 진단서는 2026-07-06 화상 상담 · 기획안 · 공개 리서치 기반 <b>1차 전략 진단</b>입니다. 정량 수치·제품 실체는 워크숍 사전 인터뷰 단계에서 확정됩니다.<br>
+  © 2026 브랜드라이즈 by HIZ · 비공개 — Less Plastic Life 제출용
+</footer>
+
+</body>
+</html>
