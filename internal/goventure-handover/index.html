@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>고벤처포럼 인수인계</title>
+<style>
+  :root{ --ink:#22262d; --sub:#6b7280; --line:#e9ecf1; --accent:#25508c; --soft:#f7f9fc; --day:#eef3fb; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{ font-family:"Apple SD Gothic Neo","Malgun Gothic",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    color:var(--ink); background:#eef1f5; line-height:1.65; word-break:keep-all; overflow-wrap:break-word; font-size:14px; }
+  .bar{ position:sticky; top:0; z-index:20; background:#fff; border-bottom:1px solid var(--line);
+    display:flex; gap:8px; align-items:center; padding:9px 18px; }
+  .bar .nm{ font-weight:700; font-size:13px; color:var(--accent); margin-right:auto; }
+  .bar button{ font:inherit; font-size:12.5px; font-weight:600; cursor:pointer; border:1px solid var(--line);
+    background:#fff; color:var(--ink); border-radius:7px; padding:6px 13px; }
+  .bar button.p{ background:var(--accent); color:#fff; border-color:var(--accent); }
+  .bar button.on{ background:#0f7a4d; color:#fff; border-color:#0f7a4d; }
+  .bar .sv{ font-size:11px; color:#0f7a4d; min-width:52px; }
+  .wrap{ max-width:800px; margin:26px auto 70px; background:#fff; border-radius:10px;
+    box-shadow:0 2px 18px rgba(20,40,70,.06); padding:44px 46px; }
+  .eyebrow{ color:var(--accent); font-weight:700; font-size:11px; letter-spacing:.08em; }
+  h1{ font-size:23px; margin:6px 0 4px; letter-spacing:-.01em; }
+  .subm{ font-size:12px; color:var(--sub); padding-bottom:16px; margin-bottom:2px; border-bottom:1px solid var(--line); }
+  .lead{ font-size:13.5px; color:#3a4048; margin:18px 0 4px; }
+  .lead b{ color:var(--accent); font-weight:600; }
+  h2{ font-size:15px; margin:34px 0 10px; padding-bottom:7px; border-bottom:2px solid var(--accent);
+     display:flex; align-items:baseline; gap:9px; }
+  h2 .n{ color:var(--accent); font-size:13px; font-weight:700; }
+  table{ border-collapse:collapse; width:100%; margin:2px 0; font-size:12.8px; }
+  th,td{ border-bottom:1px solid var(--line); padding:9px 4px; text-align:left; vertical-align:top; }
+  th{ color:var(--sub); font-weight:600; font-size:11.5px; border-bottom:1.5px solid #dfe4ec; }
+  td.c,th.c{ text-align:left; white-space:nowrap; }
+  .b{ font-weight:600; color:var(--ink); }
+  .sub{ color:var(--sub); }
+  code{ background:var(--soft); border:1px solid var(--line); border-radius:4px; padding:1px 5px; font-size:11px;
+    font-family:"SF Mono",Menlo,Consolas,monospace; word-break:break-all; }
+  tr.dday td{ background:var(--day); }
+  .hr{ height:1px; background:var(--line); border:0; margin:14px 0; }
+  .mail{ background:var(--soft); border:1px solid var(--line); border-radius:9px; padding:16px 20px; font-size:12.8px; margin:6px 0; }
+  .mail p{ margin:6px 0; } .mail p.mt{ margin:12px 0; }
+  .mail .ml{ font-weight:600; }
+  .mail .mk{ display:inline-block; color:var(--sub); font-size:11px; font-weight:600; margin-right:8px; }
+  .note{ font-size:11.5px; color:var(--sub); margin-top:10px; }
+  .note b{ color:#b4551a; font-weight:600; }
+  .foot{ margin-top:30px; padding-top:12px; border-top:1px solid var(--line); font-size:11px; color:#aab1bd; }
+  body.edit [data-e]{ outline:1px dashed #a9c0e2; outline-offset:3px; border-radius:4px; }
+  body.edit [data-e]:focus{ outline:2px solid var(--accent); background:#fffdf6; }
+  @page{ size:A4; margin:14mm; }
+  @media print{ body{background:#fff; font-size:10.5px;} .bar{display:none!important;}
+    .wrap{box-shadow:none;margin:0;max-width:none;padding:0;} h2,table,tr{break-inside:avoid;}
+    tr.dday td{-webkit-print-color-adjust:exact;print-color-adjust:exact;} }
+  @media(max-width:600px){ .wrap{padding:26px 20px;} }
+</style>
+</head>
+<body>
+<div class="bar">
+  <span class="nm">고벤처포럼 인수인계</span>
+  <span class="sv" id="sv"></span>
+  <button id="be" onclick="te()">✏️ 편집</button>
+  <button class="p" onclick="window.print()">🖨 PDF</button>
+  <button onclick="dl()">💾 저장</button>
+</div>
+
+<div class="wrap"><div id="doc">
+  <div data-e>
+    <div class="eyebrow">GOVENTURE FORUM</div>
+    <h1>고벤처포럼 인수인계</h1>
+    <div class="subm">우성민 → 신규 총괄 · 2026-07-26 · 상세본: 인수인계-260724.html</div>
+  </div>
+
+  <p class="lead" data-e>18년·193회·2,000기업의 비영리 스타트업 커뮤니티. <b>매달 마지막 주 화요일 정기포럼 + 무료 1:1 상담</b>이 핵심. 승인권자는 이상학 부회장. 운영 원칙 — <b>공익이 먼저, 수주는 결과.</b></p>
+
+  <!-- 1 채널 -->
+  <h2 data-e><span class="n">01</span>담당 채널</h2>
+  <table data-e>
+    <tr><th style="width:20%">채널</th><th style="width:34%">주소</th><th>운영</th></tr>
+    <tr><td class="b">공식 홈페이지</td><td><code>goventureforum.com</code></td><td>회차 모집 페이지·신청폼·공지</td></tr>
+    <tr><td class="b">인스타그램</td><td><code>@goventureforum</code></td><td>1일 1콘텐츠·모집·스케치·릴스</td></tr>
+    <tr><td class="b">뉴스레터</td><td>스티비 “고벤처포럼”</td><td>월 1회, 매월 1일 발송</td></tr>
+  </table>
+  <p class="note" data-e><b>로그인·키는 별도 전달</b>(문서 미기재). 전체 접근 목록은 상세본 §10.</p>
+
+  <!-- 2 역할 -->
+  <h2 data-e><span class="n">02</span>역할</h2>
+  <table data-e>
+    <tr><th style="width:20%">액션</th><th>내용</th></tr>
+    <tr><td class="b">SNS 운영</td><td>인스타 1일 1콘텐츠. 대시보드 선등록→컨펌→발행. 팔로워 추적.</td></tr>
+    <tr><td class="b">행사 운영</td><td>매달 마지막 주 화, 탭샵바. 접수·명찰·음료·장비·촬영. 연사 강의안·PPT 수합.</td></tr>
+    <tr><td class="b">홍보·모집</td><td>플랫폼 등록·광고·커뮤니티·DM 초청·모집 점검.</td></tr>
+    <tr><td class="b">무료 상담</td><td>신청 접수→시간 조율→현장 상담→리드 후속. 실질 진단.</td></tr>
+    <tr><td class="b">웹사이트</td><td>모집 페이지·신청폼·공지 최신화.</td></tr>
+  </table>
+  <p class="note" data-e>키노트 권윤정 대표 매월 고정 · 당일 사회 윤태현 대표 · 부회장 이상학(최종 승인).</p>
+
+  <!-- 3 스케줄 -->
+  <h2 data-e><span class="n">03</span>월간 스케줄 <span class="sub" style="font-size:12px;font-weight:400">· 행사 = 마지막 주 화요일(D-day)</span></h2>
+  <table data-e>
+    <tr><th style="width:15%">시점</th><th>할 일</th></tr>
+    <tr><td class="b">행사 직후</td><td>다음 달 모집공고 게시</td></tr>
+    <tr><td class="b">D-28</td><td>주제 확정(부회장 승인)·키노트 협의·이달의 브랜드 섭외 · 부회장 기획 보고</td></tr>
+    <tr><td class="b">매월 1일</td><td>모집 뉴스레터 발송(전월 랩업 + 이번 회차 안내) · <b>탭샵바 협조 요청 메일</b></td></tr>
+    <tr><td class="b">D-21</td><td>디자인(키비주얼→사이즈 변환)·플랫폼 등록·홈페이지 업데이트 · 부회장 중간 보고</td></tr>
+    <tr><td class="b">D-14</td><td>인스타·광고·커뮤니티 홍보·핵심 인물 DM·모집 점검</td></tr>
+    <tr><td class="b">D-7</td><td>명찰·현장물 인쇄, 연사 강의안·PPT 수합, 리마인더 · 부회장 최종 보고</td></tr>
+    <tr><td class="b">D-5</td><td>참석자 리마인드 · 상담 신청자 시간 조율</td></tr>
+    <tr><td class="b">D-2</td><td>음료 취합·미결제 안내·탭샵바 인원 최종 공유·장비 체크</td></tr>
+    <tr><td class="b">D-1</td><td>상담 신청자 리마인드</td></tr>
+    <tr class="dday"><td class="b">D-day</td><td>행사 진행 · 현장 상담 · 팔로우 전환</td></tr>
+    <tr><td class="b">D+3</td><td>부회장 결과 보고·감사 메시지·사진 정리·DB 통합·다음 달 주제 논의</td></tr>
+  </table>
+  <hr class="hr">
+  <table data-e>
+    <tr><th style="width:20%">상시</th><th>내용</th></tr>
+    <tr><td class="b">매일</td><td>인스타 1콘텐츠 발행 + 데이터 기록</td></tr>
+    <tr><td class="b">매주 월 15분</td><td>주간 점검 → 부회장 위클리 메일(지표3·한것/할것·컨펌·막힌것1)</td></tr>
+  </table>
+  <p class="note" data-e>정본 체크리스트: 마스터시트 <code>1xY2…</code> “체크리스트 템플릿” 탭(회차마다 복제).</p>
+
+  <!-- 4 탭샵바 메일 -->
+  <h2 data-e><span class="n">04</span>매월 탭샵바 협조 요청 메일 <span class="sub" style="font-size:12px;font-weight:400">· 매월 초 · 장소 고정</span></h2>
+  <p class="note" data-e style="margin-top:2px">회차 확정 후 매월 초 발송. <code>{ }</code> 부분만 교체.</p>
+  <div class="mail" data-e>
+    <p class="ml"><span class="mk">제목</span> [고벤처포럼 {회차}회] {날짜}(화) 대관·세팅 협조 요청</p>
+    <hr class="hr" style="margin:9px 0">
+    <p>탭샵바 {담당자}님, 안녕하세요. 고벤처포럼 운영팀입니다.</p>
+    <p>매월 정기포럼 관련하여 이번 달 {회차}회 행사 협조를 요청드립니다.</p>
+    <p class="mt">
+      · 일시: {날짜}(화) {시간, 예 15:30~19:30}<br>
+      · 예상 인원: {인원}명<br>
+      · 음료: 커피 / 와인 (선택 취합분 D-2 최종 공유)<br>
+      · 음식: 샌드위치 {수량}<br>
+      · 세팅: 마이크·프로젝터, 강연형 좌석 배치<br>
+      · 정산: {정산 방식}
+    </p>
+    <p class="mt">최종 인원·음식 수량은 행사 이틀 전({D-2 날짜}) 다시 공유드리겠습니다. 준비 가능 여부 회신 부탁드립니다.</p>
+    <p>감사합니다.<br>고벤처포럼 운영팀 드림</p>
+  </div>
+
+  <!-- 5 웹 개발 -->
+  <h2 data-e><span class="n">05</span>웹사이트 개발 인계 <span class="sub" style="font-size:12px;font-weight:400">· 클로드코드로 이어받기</span></h2>
+  <p class="lead" data-e style="margin-top:6px">홈페이지·신청폼·결제·상담 DB는 별도 코드 레포. 인계자도 <code>cd ~/goventureforum</code> → <code>claude</code>로 이어서 작업.</p>
+  <table data-e>
+    <tr><th style="width:22%">항목</th><th>값</th></tr>
+    <tr><td class="b">GitHub</td><td><code>github.com/hizsystem/goventureforum</code> (main)</td></tr>
+    <tr><td class="b">로컬 · 배포</td><td><code>~/goventureforum</code> · Vercel(main push 시 자동 배포)</td></tr>
+    <tr><td class="b">스택</td><td>Next.js · Supabase · 토스페이먼츠</td></tr>
+    <tr><td class="b">Supabase</td><td><code>supabase.com/dashboard/project/zdcwilegoyuipqunyays</code></td></tr>
+    <tr><td class="b">DB 마이그레이션</td><td><code>supabase/migrations/</code> — 초기·source·참석·상담</td></tr>
+    <tr><td class="b">실행</td><td><code>npm install</code> → <code>npm run dev</code> / <code>build</code> / <code>lint</code></td></tr>
+    <tr><td class="b">환경변수</td><td><code>.env.local</code> — Supabase URL·anon·service_role, 토스 client·secret, base_url</td></tr>
+  </table>
+  <p class="note" data-e><b>키 값·콘솔 접근권은 별도 전달</b> — <code>.env.local</code> 실제 값 + Supabase·GitHub·Vercel·토스 멤버 초대. 신청 데이터는 <code>scripts/update_goventure_sheet.py</code>로 마스터시트 미러. 레포에 CLAUDE.md 없음 → 이어받은 뒤 <code>/init</code> 권장.</p>
+
+  <div class="foot" data-e>고벤처포럼 인수인계 · 2026-07-26 · 상세본 인수인계-260724.html · 키·접근권 별도 전달</div>
+</div></div>
+
+<script>
+  var KEY="gvf_handover_v4_260726", doc=document.getElementById("doc"), ed=false, t=null;
+  try{ var v=localStorage.getItem(KEY); if(v){ doc.innerHTML=v; flag("복원됨"); } }catch(e){}
+  function te(){ ed=!ed; document.body.classList.toggle("edit",ed);
+    doc.querySelectorAll("[data-e]").forEach(function(n){ n.contentEditable=ed; });
+    var b=document.getElementById("be"); b.textContent=ed?"✅ 편집 끄기":"✏️ 편집"; b.classList.toggle("on",ed); }
+  doc.addEventListener("input",function(){ if(t)clearTimeout(t); t=setTimeout(function(){
+    try{ localStorage.setItem(KEY,doc.innerHTML); flag("저장됨 ✓"); }catch(e){} },400); });
+  function flag(m){ var s=document.getElementById("sv"); s.textContent=m; setTimeout(function(){ if(s.textContent===m)s.textContent=""; },2200); }
+  function dl(){ var c=document.documentElement.cloneNode(true);
+    c.querySelectorAll('[contenteditable]').forEach(function(n){ n.removeAttribute('contenteditable'); });
+    c.querySelector('body').classList.remove('edit');
+    var b=new Blob(["<!doctype html>\n"+c.outerHTML],{type:"text/html;charset=utf-8"});
+    var a=document.createElement("a"); a.href=URL.createObjectURL(b);
+    a.download="고벤처포럼-인수인계_"+new Date().toISOString().slice(0,10)+".html";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a); flag("다운로드"); }
+</script>
+</body>
+</html>
