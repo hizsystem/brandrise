@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>그리니팅 메타 광고 진단 리포트 (2026-07-28)</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#fbfaf7; --card:#fff; --ink:#1f2420; --sub:#5c665e; --line:#e4e6e1;
+    --green:#2f7d4f; --green-l:#eaf4ee; --green-d:#1d5334;
+    --red:#c0392b; --red-l:#fdeeec; --amber:#b8860b; --amber-l:#fdf6e3;
+  }
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard','Malgun Gothic',sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.7;
+    word-break:keep-all; overflow-wrap:break-word;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:940px;margin:0 auto;padding:0 20px 80px}
+
+  /* header */
+  header{padding:56px 0 36px;border-bottom:2px solid var(--ink)}
+  .eyebrow{font-size:13px;letter-spacing:.08em;color:var(--green);font-weight:700;margin-bottom:12px}
+  h1{font-size:34px;line-height:1.3;letter-spacing:-.02em;font-weight:800}
+  h1 .ex{color:var(--green)}
+  .meta{margin-top:16px;font-size:14px;color:var(--sub)}
+  .meta b{color:var(--ink);font-weight:600}
+
+  /* section */
+  section{margin-top:52px}
+  h2{font-size:22px;font-weight:800;letter-spacing:-.01em;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:22px}
+  h2 .num{display:inline-block;background:var(--ink);color:#fff;width:26px;height:26px;line-height:26px;text-align:center;border-radius:6px;font-size:14px;margin-right:10px;vertical-align:2px}
+  h3{font-size:17px;font-weight:700;margin:26px 0 10px}
+  p{margin-bottom:12px}
+  .lead{font-size:17px;line-height:1.75}
+
+  /* summary box */
+  .verdict{background:var(--ink);color:#fff;border-radius:12px;padding:28px 30px;margin-top:28px}
+  .verdict h3{color:#fff;margin:0 0 14px;font-size:15px;letter-spacing:.06em;opacity:.7}
+  .verdict ol{list-style:none;counter-reset:v}
+  .verdict li{counter-increment:v;position:relative;padding-left:36px;margin-bottom:14px;font-size:17px;line-height:1.6}
+  .verdict li:last-child{margin-bottom:0}
+  .verdict li::before{content:counter(v);position:absolute;left:0;top:2px;width:22px;height:22px;border:1.5px solid rgba(255,255,255,.5);border-radius:50%;text-align:center;line-height:20px;font-size:12px}
+  .verdict b{color:#8fdcae}
+
+  /* KPI cards */
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:12px;margin:22px 0}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+  .kpi .k{font-size:12px;color:var(--sub);margin-bottom:6px}
+  .kpi .v{font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.2}
+  .kpi .v small{font-size:14px;font-weight:600;color:var(--sub)}
+  .kpi.hi{background:var(--green-l);border-color:#bfdcc9}
+  .kpi.hi .v{color:var(--green-d)}
+
+  /* tables */
+  .tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:16px 0;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+  table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+  th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+  th{background:#f3f4f1;font-weight:700;font-size:12.5px;color:var(--sub);letter-spacing:.02em}
+  tbody tr:last-child td{border-bottom:none}
+  td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+  tr.win{background:var(--green-l)}
+  tr.lose{background:var(--red-l)}
+  .tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 7px;border-radius:4px;margin-left:6px;vertical-align:1px}
+  .tag.g{background:var(--green);color:#fff}
+  .tag.r{background:var(--red);color:#fff}
+  .tag.a{background:var(--amber);color:#fff}
+
+  /* callouts */
+  .box{border-radius:10px;padding:20px 22px;margin:18px 0;border:1px solid}
+  .box.red{background:var(--red-l);border-color:#f0c7c1}
+  .box.green{background:var(--green-l);border-color:#bfdcc9}
+  .box.amber{background:var(--amber-l);border-color:#ecdcb0}
+  .box h3{margin:0 0 8px;font-size:16px}
+  .box.red h3{color:var(--red)}
+  .box.green h3{color:var(--green-d)}
+  .box.amber h3{color:var(--amber)}
+  .box p:last-child{margin-bottom:0}
+
+  /* funnel */
+  .funnel{margin:20px 0}
+  .fstep{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+  .fbar{height:38px;background:var(--green);border-radius:5px;display:flex;align-items:center;padding:0 12px;color:#fff;font-weight:700;font-size:13px;min-width:64px;white-space:nowrap}
+  .fbar.leak{background:var(--red)}
+  .fmeta{font-size:13.5px;color:var(--sub)}
+  .fmeta b{color:var(--ink)}
+
+  /* actions */
+  .act{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--green);border-radius:8px;padding:16px 20px;margin-bottom:12px}
+  .act.urgent{border-left-color:var(--red)}
+  .act .t{font-weight:700;font-size:16px;margin-bottom:5px}
+  .act .w{font-size:14px;color:var(--sub)}
+  .act .when{display:inline-block;font-size:11.5px;font-weight:700;background:var(--ink);color:#fff;padding:2px 8px;border-radius:4px;margin-right:8px;vertical-align:1px}
+
+  ul.dot{padding-left:19px;margin-bottom:12px}
+  ul.dot li{margin-bottom:7px}
+
+  footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--sub)}
+
+  /* print btn */
+  .pbtn{position:fixed;right:22px;bottom:22px;background:var(--ink);color:#fff;border:none;border-radius:999px;padding:13px 22px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.18);font-family:inherit}
+  .pbtn:hover{background:var(--green-d)}
+
+  @media print{
+    body{background:#fff}
+    .pbtn{display:none}
+    section{break-inside:avoid}
+    .verdict{background:#1f2420 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .kpi.hi,.box,tr.win,tr.lose,th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+  @media (max-width:600px){
+    h1{font-size:26px}
+    .wrap{padding:0 16px 60px}
+    header{padding:36px 0 26px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">HIZ × 그리니팅 · 메타 광고 진단</div>
+  <h1>지금 광고는 잘 돌고 있다<span class="ex">.</span><br>다만 <span class="ex">세 군데</span>에서 새고 있다<span class="ex">!</span></h1>
+  <div class="meta">
+    분석 기준 <b>2026-04-29 ~ 2026-07-27 (90일)</b> · 누적 데이터 2025-01-07 ~ 현재<br>
+    대상 계정 <b>그리니팅</b> · <b>올리브베러_그리니팅</b> 2개 · 작성 <b>2026-07-28 · HIZ</b>
+  </div>
+</header>
+
+<div class="verdict">
+  <h3>결론 먼저</h3>
+  <ol>
+    <li>90일 <b>ROAS 3.18</b>. 광고 자체는 건강하다. 5,437만원 써서 <b>약 1.7억</b>을 만들었다.</li>
+    <li>새는 곳은 셋이다 — <b>스토리 저활용</b>, <b>18~24세·65세 이상 구간</b>, <b>상세페이지 진입 후 이탈</b>.</li>
+    <li>올리브베러 계정은 <b>230만원을 쓰고 구매 0건</b>이다. 픽셀이 한 번도 켜진 적 없다. 8/18 올영 오픈 전에 반드시 정리해야 한다.</li>
+  </ol>
+</div>
+
+<!-- 1 -->
+<section>
+  <h2><span class="num">1</span>90일 성과 스냅샷</h2>
+
+  <div class="kpis">
+    <div class="kpi hi"><div class="k">ROAS</div><div class="v">3.18<small>배</small></div></div>
+    <div class="kpi"><div class="k">광고비</div><div class="v">5,437<small>만원</small></div></div>
+    <div class="kpi hi"><div class="k">발생 매출</div><div class="v">1.73<small>억원</small></div></div>
+    <div class="kpi"><div class="k">구매</div><div class="v">2,501<small>건</small></div></div>
+    <div class="kpi"><div class="k">구매당 비용</div><div class="v">21,738<small>원</small></div></div>
+    <div class="kpi"><div class="k">평균 객단가</div><div class="v">69,048<small>원</small></div></div>
+    <div class="kpi"><div class="k">클릭률</div><div class="v">2.35<small>%</small></div></div>
+    <div class="kpi"><div class="k">도달</div><div class="v">50.6<small>만명</small></div></div>
+  </div>
+
+  <p>먼저 좋은 소식이다. <b>ROAS 3.18은 식품 이커머스에서 건강한 수준</b>이다. 구매당 21,738원을 써서 평균 69,048원짜리 주문을 만들고 있다. 계정 개설 이후 누적으로는 <b>2억 1,091만원</b>을 집행했고, 월별 추이를 보면 2025년 1월 166만원에서 12월 1,121만원까지 <b>7배 성장</b>했다. 잘 키워온 계정이다.</p>
+
+  <p>그래서 이 리포트는 "고쳐야 한다"가 아니라 <b>"같은 돈으로 얼마나 더 뽑을 수 있나"</b>를 본다.</p>
+</section>
+
+<!-- 2 -->
+<section>
+  <h2><span class="num">2</span>이 계정의 정체 — 사실상 인스타그램 전용</h2>
+
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>노출 위치</th><th class="n">광고비</th><th class="n">비중</th><th class="n">ROAS</th><th class="n">구매</th></tr></thead>
+    <tbody>
+      <tr class="win"><td>인스타그램 스토리 <span class="tag g">효율 1위</span></td><td class="n">773만원</td><td class="n">14.2%</td><td class="n">3.47</td><td class="n">337건</td></tr>
+      <tr><td>인스타그램 피드</td><td class="n">3,240만원</td><td class="n">59.6%</td><td class="n">3.22</td><td class="n">1,511건</td></tr>
+      <tr><td>인스타그램 릴스</td><td class="n">1,268만원</td><td class="n">23.3%</td><td class="n">2.83</td><td class="n">591건</td></tr>
+      <tr><td>스레드(Threads)</td><td class="n">57만원</td><td class="n">1.1%</td><td class="n">2.91</td><td class="n">23건</td></tr>
+      <tr class="lose"><td>페이스북 전체</td><td class="n">72만원</td><td class="n">1.3%</td><td class="n">2.25</td><td class="n">19건</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>광고비의 <b>97.4%가 인스타그램</b>에 들어간다. 페이스북은 1.3%뿐이다. 이건 이미 잘 맞춘 상태다 — 그리니팅 고객이 인스타에 있다는 뜻이고, 8월 브랜드 계정 리뉴얼과 광고가 같은 운동장에 있다는 뜻이기도 하다.</p>
+
+  <div class="box green">
+    <h3>🟢 기회 — 스토리가 저평가돼 있다</h3>
+    <p>스토리는 <b>ROAS 3.47로 세 위치 중 1등</b>인데 광고비는 14%밖에 안 들어간다. 반대로 릴스는 ROAS 2.83으로 가장 낮은데 23%를 쓴다.</p>
+    <p>스토리 비중을 <b>14% → 22~25%</b>로 올리고 그만큼 릴스에서 빼면, 같은 예산에서 산술적으로 <b>월 200~300만원 수준의 추가 매출</b>이 나온다. 다만 스토리는 소재 형식(세로 풀스크린·짧은 호흡)이 달라서, 8/20 에셋 촬영 때 <b>스토리 전용 컷을 따로 잡아야</b> 실현된다.</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section>
+  <h2><span class="num">3</span>누가 사는가 — 35~54세 여성이 엔진</h2>
+
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>타겟</th><th class="n">광고비</th><th class="n">비중</th><th class="n">ROAS</th><th class="n">구매</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr class="win"><td>여성 35-44</td><td class="n">2,130만원</td><td class="n">39.2%</td><td class="n">3.48</td><td class="n">1,002건</td><td>핵심 엔진</td></tr>
+      <tr><td>여성 45-54</td><td class="n">1,635만원</td><td class="n">30.1%</td><td class="n">3.02</td><td class="n">819건</td><td>안정 볼륨</td></tr>
+      <tr><td>여성 25-34</td><td class="n">765만원</td><td class="n">14.1%</td><td class="n">3.07</td><td class="n">278건</td><td>양호</td></tr>
+      <tr class="win"><td>여성 55-64</td><td class="n">407만원</td><td class="n">7.5%</td><td class="n">3.17</td><td class="n">205건</td><td>확대 여지 <span class="tag g">기회</span></td></tr>
+      <tr class="lose"><td>여성 18-24</td><td class="n">61만원</td><td class="n">1.1%</td><td class="n">1.70</td><td class="n">19건</td><td>정리 대상</td></tr>
+      <tr class="lose"><td>여성 65+</td><td class="n">53만원</td><td class="n">1.0%</td><td class="n">1.53</td><td class="n">15건</td><td>정리 대상</td></tr>
+      <tr><td>남성 전 연령</td><td class="n">372만원</td><td class="n">6.8%</td><td class="n">2.71</td><td class="n">150건</td><td>조건부 유지</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p><b>여성 ROAS 3.20 vs 남성 2.71.</b> 이미 광고비의 93%가 여성에게 가고 있어서 성별 세팅은 잘 잡혀 있다. 남성은 여성보다 15% 낮지만 극단적으로 나쁘진 않으니, 지금은 급히 끊을 필요 없다.</p>
+
+  <p>진짜 액션은 <b>연령</b>에 있다.</p>
+  <ul class="dot">
+    <li><b>18~24세와 65세 이상은 ROAS 1.5~1.7</b>이다. 다른 구간의 절반이다. 합쳐서 114만원이 여기 들어가는데, 이걸 35~54세로 옮기면 그대로 효율이 오른다.</li>
+    <li><b>55~64세 여성이 ROAS 3.17인데 광고비는 7.5%</b>다. 35~44세(3.48)에 근접한 성과인데 노출이 적다. <b>이 구간을 키우는 게 이번 분기 가장 확실한 카드</b>다.</li>
+  </ul>
+
+  <p>그리고 이 데이터는 8월 콘텐츠 방향과도 맞물린다. 브랜드 계정의 모델·캐스팅을 <b>구릿빛·운동하는 40~50대 여성</b> 쪽으로 잡기로 한 판단이 광고 데이터로도 뒷받침된다.</p>
+</section>
+
+<!-- 4 -->
+<section>
+  <h2><span class="num">4</span>어떤 광고가 이기는가</h2>
+
+  <h3>캠페인 성과 (90일, 광고비 100만원 이상)</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>캠페인</th><th class="n">광고비</th><th class="n">ROAS</th><th class="n">구매</th></tr></thead>
+    <tbody>
+      <tr class="win"><td>0714 마일드 그린 런칭특가 <span class="tag g">최고 효율</span></td><td class="n">132만원</td><td class="n">6.00</td><td class="n">79건</td></tr>
+      <tr class="win"><td>0224 스무디 이미지</td><td class="n">1,012만원</td><td class="n">3.56</td><td class="n">328건</td></tr>
+      <tr><td>0601 골든 스무디 출시 이벤트</td><td class="n">191만원</td><td class="n">3.17</td><td class="n">68건</td></tr>
+      <tr><td>노티넛츠 (최대 볼륨)</td><td class="n">1,668만원</td><td class="n">3.04</td><td class="n">1,077건</td></tr>
+      <tr><td>0703 퍼플베리 항산화 이벤트</td><td class="n">105만원</td><td class="n">3.03</td><td class="n">26건</td></tr>
+      <tr><td>0617 스무디 숏폼-2</td><td class="n">128만원</td><td class="n">3.02</td><td class="n">37건</td></tr>
+      <tr><td>0228 스무디 숏폼</td><td class="n">996만원</td><td class="n">2.88</td><td class="n">324건</td></tr>
+      <tr><td>레몬즙 비밀링크 (재구매 제외)</td><td class="n">553만원</td><td class="n">2.64</td><td class="n">305건</td></tr>
+      <tr><td>레몬즙 비밀링크</td><td class="n">296만원</td><td class="n">2.52</td><td class="n">129건</td></tr>
+      <tr class="lose"><td>7월 챌린지 모집 (전환)</td><td class="n">20만원</td><td class="n">1.25</td><td class="n">2건</td></tr>
+      <tr class="lose"><td>6월 스무디 시식단 모집</td><td class="n">6만원</td><td class="n">—</td><td class="n">0건</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box amber">
+    <h3>⚡ 가장 중요한 발견 — "모집형"은 메타에서 안 먹힌다</h3>
+    <p>제품을 직접 파는 캠페인은 <b>ROAS 3~6배</b>가 나온다. 반면 <b>챌린지 모집·시식단 모집은 1.25배 이하, 일부는 0건</b>이다.</p>
+    <p>이건 그리니팅 자기 데이터로 증명된 사실이다. <b>사람을 모으는 일에 메타 광고비를 쓰면 손해</b>라는 뜻이고, 모집은 대표 계정·브랜드 계정의 오가닉과 인플루언서로 해결하는 게 맞다.</p>
+    <p><b>8/18 올영 오픈 준비에 바로 적용된다.</b> 체험단·인플루언서 모집을 메타로 돌릴 계획이라면 재검토가 필요하다.</p>
+  </div>
+
+  <div class="box green">
+    <h3>🟢 아직 안 키운 최고 효율 — 마일드 그린 런칭특가</h3>
+    <p><b>ROAS 6.00인데 광고비는 132만원</b>밖에 안 썼다. 다른 캠페인의 1/8 수준이다. 신제품 런칭 + 특가 조합이 이 계정에서 가장 잘 먹히는 문법이라는 증거다.</p>
+    <p>스튜(마녀스프) 런칭도 <b>정확히 같은 구조</b>다. 이 캠페인의 타겟·소재·예산 곡선을 그대로 스튜에 복제하는 게 8/18 오픈의 가장 안전한 카드다.</p>
+  </div>
+
+  <h3>소재 TOP 6 (광고비 순)</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>소재명</th><th class="n">광고비</th><th class="n">클릭률</th><th class="n">ROAS</th><th class="n">구매</th></tr></thead>
+    <tbody>
+      <tr class="win"><td>0520) 견과 싹 버리고 <span class="tag g">대표 위너</span></td><td class="n">1,073만원</td><td class="n">2.80%</td><td class="n">3.20</td><td class="n">743건</td></tr>
+      <tr class="win"><td>0410 섬유질 가득 2 <span class="tag a">저평가</span></td><td class="n">556만원</td><td class="n">1.35%</td><td class="n">3.70</td><td class="n">186건</td></tr>
+      <tr><td>0825 안녕하세요_감성 <span class="tag a">클릭률 1위</span></td><td class="n">460만원</td><td class="n">3.82%</td><td class="n">3.09</td><td class="n">160건</td></tr>
+      <tr><td>0706) 견과만 10봉지</td><td class="n">253만원</td><td class="n">3.33%</td><td class="n">2.81</td><td class="n">145건</td></tr>
+      <tr><td>0610)) 4</td><td class="n">214만원</td><td class="n">1.50%</td><td class="n">3.57</td><td class="n">72건</td></tr>
+      <tr><td>0427)) 4</td><td class="n">198만원</td><td class="n">2.65%</td><td class="n">2.76</td><td class="n">117건</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p><b>"견과 싹 버리고"</b>가 혼자 1,073만원을 쓰며 743건을 만들었다. 전체 구매의 30%다. 훅이 명확한 카피형 소재가 이 계정의 승리 공식이라는 뜻이다.</p>
+  <p>주목할 건 <b>"섬유질 가득 2"</b>다. ROAS 3.70으로 대표 위너보다 높은데 광고비는 절반이다. 클릭률이 1.35%로 낮아서 예산이 덜 갔지만, <b>클릭한 사람의 구매 전환은 가장 좋다.</b> 썸네일·첫 문장만 손보면 대표 위너를 넘을 수 있는 소재다.</p>
+</section>
+
+<!-- 5 -->
+<section>
+  <h2><span class="num">5</span>어디서 새는가 — 상세페이지 진입 후</h2>
+
+  <div class="funnel">
+    <div class="fstep"><div class="fbar" style="width:100%">상세 조회 55,592</div></div>
+    <div class="fstep"><div class="fbar leak" style="width:26%">장바구니 4,671</div><div class="fmeta">전환율 <b>8.4%</b> — 🔴 여기서 91.6%가 빠진다</div></div>
+    <div class="fstep"><div class="fbar" style="width:23%">결제 시작 4,100</div><div class="fmeta">전환율 <b>87.8%</b> — 정상</div></div>
+    <div class="fstep"><div class="fbar" style="width:15%">구매 2,501</div><div class="fmeta">전환율 <b>61.0%</b> — 양호</div></div>
+  </div>
+
+  <p>퍼널이 아주 명확한 이야기를 한다. <b>장바구니에만 담으면 61%가 실제로 산다.</b> 결제 과정에는 문제가 없다는 뜻이다.</p>
+
+  <p>문제는 그 앞이다. 상세페이지를 <b>5.5만 명이 봤는데 담은 사람은 4,671명</b>뿐이다. 광고는 사람을 잘 데려오는데, 상세페이지가 "담아야겠다"는 확신을 못 만들고 있다.</p>
+
+  <div class="box red">
+    <h3>🔴 이 8.4%가 전체에서 가장 큰 레버다</h3>
+    <p>ROAS를 3.18에서 4.0으로 올리려면 광고를 더 잘 만드는 것보다 <b>이 구간을 8.4% → 10.5%로 올리는 게 훨씬 빠르다.</b> 광고비 한 푼 안 늘리고 매출 25%가 오른다.</p>
+    <p>8월 브랜드 계정 콘텐츠에서 <b>"오늘의 뒷면"</b>(앞면 카피 대신 원재료명·영양성분표를 직접 보여주는 꼭지)을 코어로 넣기로 한 판단이 이 데이터와 정확히 맞물린다. 담기 직전에 필요한 건 감성이 아니라 <b>납득할 근거</b>다.</p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section>
+  <h2><span class="num">6</span>🔴 올리브베러 계정 — 구조적으로 고장나 있다</h2>
+
+  <div class="kpis">
+    <div class="kpi"><div class="k">누적 집행</div><div class="v">약 230<small>만원</small></div></div>
+    <div class="kpi"><div class="k">랜딩 유입</div><div class="v">1,717<small>회</small></div></div>
+    <div class="kpi" style="background:var(--red-l);border-color:#f0c7c1"><div class="k">구매</div><div class="v" style="color:var(--red)">0<small>건</small></div></div>
+    <div class="kpi" style="background:var(--red-l);border-color:#f0c7c1"><div class="k">픽셀 발화</div><div class="v" style="color:var(--red)">0<small>회</small></div></div>
+  </div>
+
+  <p>2026년 2월 개설 이후 8개 캠페인, 약 230만원(USD 1,679)을 집행했다. <b>구매 전환은 0건</b>이다.</p>
+
+  <p>원인은 명확하다. <b>이 계정의 픽셀은 한 번도 발화한 적이 없다.</b> 그런데 캠페인 목적은 전부 "판매(전환)"로 설정돼 있었다. 전환을 최적화하라고 지시했는데 전환이 무엇인지 알려주는 신호가 0이었던 셈이다. 이 경우 메타는 <b>구매할 사람이 아니라 클릭을 잘 하는 사람</b>에게 광고를 뿌린다.</p>
+
+  <div class="box red">
+    <h3>🔴 8/18 올영 오픈에 그대로 걸리는 문제</h3>
+    <p>올리브영 상품 페이지에는 <b>우리 픽셀을 설치할 수 없다.</b> 즉 올영으로 보내는 광고는 구조적으로 구매 추적이 불가능하고, 픽셀 기반으로는 모수도 쌓이지 않는다.</p>
+    <p>그래서 <b>8/4 트래픽 광고로 모수를 축적하려는 계획은 지금 설계로는 작동하지 않는다.</b> 돈을 써도 9/1 2차 부스팅에 쓸 수 있는 자산이 남지 않는다.</p>
+    <p><b>해법은 픽셀이 아니라 참여 기반 모수다.</b> ① 영상 75% 시청자 ② 인스타 계정 참여자(프로필 방문·저장·댓글) ③ 자사몰 방문자(그리니팅 계정 픽셀). 이 셋은 올영 랜딩이어도 우리 자산으로 남고, 9/1에 그대로 리타게팅 모수가 된다.</p>
+  </div>
+
+  <p>추가로 두 캠페인(<b>7/8 오늘의 특가</b>, <b>0530 올리브베러 기획전_오특</b>)이 종료일이 지났는데도 활성 상태로 남아 있다. 지금 당장 정리가 필요하다.</p>
+</section>
+
+<!-- 7 -->
+<section>
+  <h2><span class="num">7</span>실행 액션 7개</h2>
+
+  <div class="act urgent">
+    <div class="t"><span class="when">즉시</span>올리브베러 계정 좀비 캠페인 2건 종료</div>
+    <div class="w">종료일이 지났는데 활성 상태다. 불필요한 과금 가능성을 먼저 차단한다.</div>
+  </div>
+
+  <div class="act urgent">
+    <div class="t"><span class="when">~8/1</span>8/4 트래픽 광고 설계를 "참여 기반 모수"로 전환</div>
+    <div class="w">올영 랜딩은 픽셀 추적이 불가능하다. 영상 75% 시청자 + 인스타 참여자 커스텀 오디언스를 쌓는 구조로 바꿔야 9/1 2차 부스팅에 쓸 자산이 남는다. 이걸 안 바꾸면 8월 트래픽 예산이 그대로 사라진다.</div>
+  </div>
+
+  <div class="act urgent">
+    <div class="t"><span class="when">~8/1</span>연령 타겟 정리 — 18~24세·65세 이상 제외</div>
+    <div class="w">두 구간 ROAS가 1.5~1.7로 나머지의 절반이다. 여기 들어가는 114만원을 35~54세로 옮기면 즉시 효율이 오른다. 세팅 변경 한 번으로 끝난다.</div>
+  </div>
+
+  <div class="act">
+    <div class="t"><span class="when">8월 초</span>55~64세 여성 구간 확대</div>
+    <div class="w">ROAS 3.17인데 광고비 비중이 7.5%뿐이다. 핵심 구간(3.48)에 근접한 성과다. 이번 분기 가장 확실한 성장 카드다.</div>
+  </div>
+
+  <div class="act">
+    <div class="t"><span class="when">8/20 촬영</span>인스타 스토리 전용 컷 확보</div>
+    <div class="w">스토리 ROAS가 3.47로 1위인데 광고비는 14%다. 비중을 22~25%로 올리려면 세로 풀스크린 전용 소재가 필요하다. 에셋 촬영 컷 배정에 반영한다.</div>
+  </div>
+
+  <div class="act">
+    <div class="t"><span class="when">8/18 오픈</span>스튜 런칭을 "마일드 그린 런칭특가" 구조로 복제</div>
+    <div class="w">ROAS 6.00을 낸 유일한 캠페인이고, 신제품 + 특가라는 구조가 스튜와 동일하다. 타겟·소재 형식·예산 곡선을 그대로 가져오는 게 가장 안전하다. 반대로 체험단·인플루언서 "모집"을 메타로 돌리는 건 재검토가 필요하다(ROAS 1.25 이하).</div>
+  </div>
+
+  <div class="act">
+    <div class="t"><span class="when">8월~9월</span>상세페이지 "담기" 전환율 개선 — 8.4% → 10.5%</div>
+    <div class="w">전체에서 가장 큰 레버다. 광고비를 늘리지 않고 매출 25%를 만든다. 브랜드 계정의 "오늘의 뒷면"(원재료명·영양성분표 직접 공개) 콘텐츠와 상세페이지 상단 구성을 같은 논리로 맞춘다.</div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section>
+  <h2><span class="num">8</span>측정 기준 안내</h2>
+  <ul class="dot">
+    <li>ROAS·구매 수치는 <b>메타 광고 관리자 어트리뷰션 기준</b>(클릭 후 7일 / 조회 후 1일)이다. 실제 자사몰 정산 매출과는 차이가 날 수 있다.</li>
+    <li>매출 금액은 ROAS × 광고비로 역산한 값이며, 원 단위 반올림했다.</li>
+    <li><b>올리브영 채널 매출은 메타에서 측정되지 않는다.</b> 8/18 오픈 이후 올영 성과는 광고 지표가 아니라 <b>올영 카테고리 순위·검색량·리뷰 증가</b>로 판단해야 한다. 이 기준을 오픈 전에 합의해두는 것을 권한다.</li>
+    <li>본 리포트는 2026-07-28 기준 데이터다. 라이브 캠페인은 계속 변하므로 수치는 조회 시점에 따라 달라진다.</li>
+  </ul>
+</section>
+
+<footer>
+  <b>그리니팅 메타 광고 진단 리포트</b> · 2026-07-28 · HIZ<br>
+  분석 대상 계정: 그리니팅 / 올리브베러_그리니팅 · 분석 기간: 최근 90일(2026-04-29~07-27) 및 누적 전체
+</footer>
+
+</div>
+<button class="pbtn" onclick="window.print()">PDF로 저장</button>
+</body>
+</html>
