@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  BRANDRISE PREP 통합표준 템플릿 v4 (정본 · 2026-07-01 정부지원사업 반영)   ║
+  ║  · 이 파일은 NGT 예시로 채워진 "살아있는 템플릿"이다. 복제 후 콘텐츠만 교체.  ║
+  ║  · §정부지원사업(GovFit) = govfit /api/recommend 상위5 스냅샷.            ║
+  ║    적합도≠자격 → 자격 실심사 판정열(부합/미달)+별개트랙 프레이밍 필수.       ║
+  ║    (생성 규칙: 스킬 references/page-build.md 참조)                        ║
+  ║  · 색/컴포넌트/레이아웃을 새로 만들지 말 것 — 인디고 단일 액센트·Pretendard·  ║
+  ║    좌측 sticky 목차 + 카드/콜아웃 스캔형 구조를 그대로 사용.                ║
+  ║  배포: research/{slug}/  (기존 prep 있으면 {slug}-v2)                    ║
+  ║  ── v3 변경(미팅 §3) ──                                                  ║
+  ║  ① §0 사업 단계(런칭전/런칭/매출드라이브) + 단계별 질문 세트(사전질의 대체)    ║
+  ║  ② USP 한 줄 상위 배치 / 니즈 용어 정리(SPIN·JTBD 제거, '가설' 라벨)        ║
+  ║  ③ 기회평가 점수표 약화 + 매출×15% envelope / ④ 3-Tier → 셀렉 매트릭스      ║
+  ║     (체크→화면 즉시 1차 견적 + 구글시트 빌더용 셀렉 복사) / ⑤ 녹음기반 상담    ║
+  ║     프로세스 / ⑥ 월 첫·마지막 주 재진단(남중) 운영룰                        ║
+  ║  ── PREP 원칙 ──                                                        ║
+  ║  ① 상담 전 문서 = 녹취록·랩업 절대 참고 금지. 진단/니즈/적합도는 "가설" 표기.  ║
+  ║  ② 직접 리서치 필수(자사몰·IG·네이버·사람인·글로벌 PR) → "참고 출처" 섹션에   ║
+  ║     ①클라이언트 제공 / ②직접 리서치(확인 날짜) 구분. 도구필요 메트릭=Apify 제안. ║
+  ╚══════════════════════════════════════════════════════════════════════╝
+-->
+
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>리상회 (RESANGHOE) — 수출 상담 PREP v2 | BRANDRISE</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.75;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:16.5px}
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 42%,#4338ca 100%);color:#fff;padding:84px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"PREP";position:absolute;right:-2%;bottom:-18%;font-size:clamp(160px,22vw,360px);font-weight:800;letter-spacing:-.04em;color:#fff;opacity:.05;line-height:.8;pointer-events:none}
+.hero .in{max-width:1360px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:42px;font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:14px}
+.hero .sub{font-size:16px;color:#cbd5e1;font-weight:300;max-width:700px;line-height:1.75}
+.hero .meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.hero .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.hero .lnk{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;text-decoration:none;padding:8px 15px;border-radius:9px;transition:.15s}
+.hero .lnk svg{width:14px;height:14px}
+.hero .lnk.store{background:#fff;color:var(--ink)}
+.hero .lnk.store:hover{background:#e2e8f0}
+.hero .lnk.sns{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.hero .lnk.sns:hover{background:rgba(255,255,255,.14)}
+.layout{max-width:1360px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:208px 1fr;gap:48px;align-items:start}
+nav.toc{position:sticky;top:28px;padding:36px 0;font-size:13.5px}
+nav.toc .nl{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--muted);margin:0 0 14px 12px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;border-left:2px solid transparent;transition:.15s;font-weight:500}
+nav.toc a:hover{color:var(--ink);background:var(--soft)}
+nav.toc a.on{color:var(--ac);background:var(--ac-50);border-left-color:var(--ac);font-weight:700}
+main{padding:36px 0 100px;min-width:0;counter-reset:sec}
+section{margin-bottom:54px;scroll-margin-top:24px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+h2{font-size:29px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+.lead{font-size:18px;color:var(--ink2);margin-bottom:32px;line-height:1.8;text-wrap:balance}
+h3{font-size:20px;font-weight:800;margin:34px 0 12px;color:var(--ink);letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.co{border:1px solid var(--line2);border-left:3px solid var(--line);border-radius:0 10px 10px 0;padding:18px 24px;margin:20px 0;font-size:16px;line-height:1.8;text-wrap:pretty}
+h2,h3{text-wrap:balance}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100);border-left-color:var(--ac)} .co.ok{background:var(--ok-50);border-color:#bbf7d0;border-left-color:var(--ok)}
+.co.warn{background:var(--warn-50);border-color:#fde68a;border-left-color:var(--warn)} .co.bad{background:var(--bad-50);border-color:#fecdd3;border-left-color:var(--bad)}
+.co b,.co strong{color:var(--ink);font-weight:600}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
+.t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
+.t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 4px}
+.kpi .k{background:var(--ink);color:#fff;border-radius:12px;padding:18px}
+.kpi .k.alt{background:var(--bad)}
+.kpi .lbl{font-size:11px;color:#94a3b8;font-weight:600;margin-bottom:4px}
+.kpi .k.alt .lbl{color:#fecdd3}
+.kpi .v{font-size:28px;font-weight:800;letter-spacing:-.02em}
+.kpi .s{font-size:11px;color:#cbd5e1;margin-top:3px;line-height:1.5}
+.kpi .k.alt .s{color:#fecdd3}
+.op{background:var(--ink);color:#fff;border-radius:16px;padding:30px}
+.op .opk{font-size:11px;font-weight:800;letter-spacing:.14em;color:#a5b4fc;margin-bottom:18px}
+.op .blk{margin-bottom:22px} .op .blk:last-child{margin-bottom:0}
+.op .bl{font-size:11px;font-weight:800;color:#a5b4fc;letter-spacing:.08em;margin-bottom:9px}
+.op .need{font-size:17px;font-weight:700;line-height:1.62}
+.op .need b{color:#c7d2fe}
+.op .need .ev{display:block;margin-top:11px;font-size:13.5px;font-weight:500;color:#cbd5e1;line-height:1.72}
+.op .need .ev b{color:#e2e8f0}
+.op .do{display:grid;gap:9px}
+.op .do .item{background:rgba(255,255,255,.06);border-left:3px solid var(--ac);padding:12px 15px;border-radius:0 8px 8px 0;font-size:13.5px;line-height:1.62;color:#e2e8f0}
+.op .do .item b{color:#c7d2fe}
+.op .offer{background:rgba(79,70,229,.24);border:1px solid var(--ac);border-radius:10px;padding:15px 18px;font-size:13.5px;line-height:1.7;color:#e9ecf5}
+.op .offer b{color:#c7d2fe}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0 4px}
+th{background:var(--soft);color:var(--ink2);font-weight:700;text-align:left;padding:9px 11px;font-size:12.5px;border-bottom:1px solid var(--line)}
+td{padding:9px 11px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b,td strong{color:var(--ink)}
+.q{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac);border-radius:10px;padding:16px 18px;margin-bottom:10px}
+.q .qn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.05em;margin-bottom:5px}
+.q .qt{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.65}
+.q .qi{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.6}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px;position:relative}
+.tier.rec{border:2px solid var(--ac);box-shadow:0 8px 24px -12px rgba(79,70,229,.4)}
+.tier .rb{position:absolute;top:-11px;left:18px;background:var(--ac);color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;padding:3px 11px;border-radius:9px}
+.tier .tn{font-size:12px;font-weight:800;color:var(--muted)}
+.tier .tt{font-size:12.5px;color:var(--muted);margin:2px 0 10px}
+.tier .tp{font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.tier .td{font-size:11.5px;color:var(--muted);margin-bottom:12px}
+.tier ul{list-style:none}
+.tier li{font-size:13px;color:var(--ink2);padding:4px 0 4px 15px;position:relative;line-height:1.55}
+.tier li::before{content:"›";position:absolute;left:0;color:var(--ac);font-weight:800}
+.tl{border-left:2px solid var(--line);padding-left:20px;margin:10px 0}
+.tl .ph{position:relative;padding:10px 0}
+.tl .ph::before{content:"";position:absolute;left:-26px;top:14px;width:9px;height:9px;border-radius:50%;background:var(--ac)}
+.tl .pt{font-size:12px;font-weight:800;color:var(--ac)}
+.tl .pb{font-size:13px;color:var(--ink2);margin-top:2px}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sw{border-radius:12px;padding:16px 18px;border:1px solid var(--line)}
+.sw h4{font-size:12.5px;font-weight:800;margin-bottom:8px}
+.sw.s{background:var(--ok-50)} .sw.s h4{color:var(--ok)}
+.sw.w{background:var(--bad-50)} .sw.w h4{color:var(--bad)}
+.sw.o{background:var(--ac-50)} .sw.o h4{color:var(--ac)}
+.sw.tt{background:var(--warn-50)} .sw.tt h4{color:var(--warn)}
+.sw li{font-size:13px;color:var(--ink2);margin-left:15px;padding:2px 0;line-height:1.5}
+.verdict{background:var(--ink);color:#fff;border-radius:14px;padding:24px;text-align:center;margin:14px 0}
+.verdict .vl{font-size:12px;color:#94a3b8;font-weight:600}
+.verdict .vv{font-size:34px;font-weight:800;letter-spacing:-.02em;margin:6px 0;color:#a5b4fc}
+.verdict .vd{font-size:13px;color:#cbd5e1}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px}
+footer .in{max-width:1360px;margin:0 auto;padding:0 40px}
+@media(max-width:880px){.layout{grid-template-columns:1fr;gap:0;padding:0 22px}nav.toc{display:none}.hero .in{padding:0 22px}.hero h1{font-size:30px}.grid2,.grid3,.kpi,.tiers,.swot{grid-template-columns:1fr}}
+
+/* ===== veggiet DNA 가산 컴포넌트 (인디고 클린 토큰만 사용) ===== */
+/* 1) 에디토리얼 커버 — h1 형광 언더라인 + clamp 반응형 */
+.hero h1{font-size:clamp(38px,4.8vw,56px);line-height:1.08}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
+
+/* 2) evidence 박스 (직접 리서치 캡처·증빙 액자) */
+.evi{border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:14px 0}
+.evi .eh{padding:11px 16px;font-size:12.5px;font-weight:800;background:var(--soft);border-bottom:1px solid var(--line);color:var(--ink2)}
+.evi img{display:block;width:100%;height:auto}
+.evi .en{padding:9px 16px;font-size:12px;color:var(--muted);border-top:1px dashed var(--line)}
+
+/* 3) 역할/팩트 카드 그리드 (핵심 팩트 스캔형 3~4열) */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
+.fcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
+.fcard .fk{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.fcard .fv{font-size:16px;font-weight:800;color:var(--ink)}
+.fcard .fs{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.55;font-weight:500}
+
+/* 4) ★ 리서치 캡처 그리드 — 광고 대시보드·경쟁사·SNS 현황 (상담 전 직접 리서치 캡처 자리) */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:16px 0 6px}
+.shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.shot .sk{display:flex;align-items:center;gap:7px;padding:9px 13px;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--ac);background:var(--ac-50);border-bottom:1px solid var(--ac-100)}
+.shot .sk::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--ac)}
+.shot .sfig{aspect-ratio:16/10;background:var(--soft);display:block;width:100%;object-fit:cover}
+/* 빈 슬롯(placeholder) 상태 — 점선 안내 */
+.shot .sph{aspect-ratio:16/10;background:repeating-linear-gradient(45deg,var(--soft),var(--soft) 10px,#f0f3f8 10px,#f0f3f8 20px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted);text-align:center;padding:14px}
+.shot .sph .ic{font-size:22px;opacity:.5}
+.shot .sph .pl{font-size:12px;font-weight:700;color:var(--ink2)}
+.shot .scap{padding:10px 14px;font-size:12px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line2)}
+.shot .scap b{color:var(--ink2)}
+
+/* 5) 디자인·가독성 격상 (v2-③) — 인디고 토큰 안에서 "디자인된 문서" */
+/* v4 에디토리얼 챕터 — 큰 솔리드 번호 오프너 + 굵은 구분선 + 대폭 여백 */
+section{margin-bottom:116px;counter-increment:sec;border-top:2px solid var(--ink);padding:34px 0 0 108px;position:relative}
+main>section:first-child{border-top:none;padding-top:0}
+.sec-k{display:block;background:none;border:none;border-radius:0;padding:0;font-size:12px;letter-spacing:.2em;color:var(--ac);margin-bottom:14px}
+.sec-k::before{content:counter(sec,decimal-leading-zero);position:absolute;left:0;top:30px;font-size:62px;font-weight:800;color:var(--ac);letter-spacing:-.04em;line-height:.9;font-variant-numeric:tabular-nums}
+main>section:first-child .sec-k::before{top:0}
+@media(max-width:880px){section{padding-left:0!important}.sec-k::before{position:static;display:block;margin-bottom:4px}}
+h2{font-size:34px;margin-bottom:16px;letter-spacing:-.025em}
+h2{line-height:1.18}
+h3{letter-spacing:-.01em;line-height:1.4}
+/* 섹션 결론 풀폭 인디고 밴드 (.co.ac.band) — 베지어트 컬러 블록 역할 */
+.co.ac.band{padding:18px 22px;font-size:16px;line-height:1.85}
+/* 표 가독성: zebra + th 인디고 틴트 + 셀 패딩 + 숫자 tabular-nums */
+table{font-variant-numeric:tabular-nums}
+th{background:var(--ac-50);color:var(--ac-700);padding:13px 15px}
+td{padding:13px 15px}
+tbody tr:nth-child(even) td, table tr:nth-child(even) td{background:var(--soft)}
+
+@media(max-width:880px){.shots{grid-template-columns:1fr}}
+@media print{
+  .evi,.fcard,.card,.shot{break-inside:avoid}
+}
+
+/* ===== v3 신규: 사업 단계 / 셀렉 매트릭스 / 인라인 1차 견적 ===== */
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.stage{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px;position:relative}
+.stage.on{border:2px solid var(--ac);background:var(--ac-50)}
+.stage .sgn{font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--muted)}
+.stage.on .sgn{color:var(--ac)}
+.stage .sgt{font-size:15px;font-weight:800;color:var(--ink);margin:4px 0 8px}
+.stage .sgd{font-size:12px;color:var(--muted);line-height:1.55}
+.stage .sgr{display:block;margin-top:10px;font-size:11.5px;color:var(--ac-700);font-weight:700}
+.sel-component{container-type:inline-size}
+.sel-split{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.9fr);gap:18px;align-items:start}
+.pane-k{font-size:11px;font-weight:800;letter-spacing:0;color:var(--muted);margin-bottom:9px}
+.selmx{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);font-variant-numeric:tabular-nums}
+.selmx .hd,.selmx .rw{display:grid;grid-template-columns:minmax(142px,1.6fr) repeat(4,minmax(62px,1fr))}
+.selmx .hd{background:var(--soft);border-bottom:1px solid var(--line)}
+.selmx .hd>div{padding:11px 8px;font-size:11px;font-weight:800;color:var(--ink2);text-align:center;line-height:1.25}
+.selmx .hd>div:first-child{text-align:left}
+.selmx .hd .ls{display:block;font-size:9.5px;font-weight:600;color:var(--muted)}
+.selmx .hd .star{color:var(--ac)}
+.selmx .rw{border-bottom:1px solid var(--line2)}
+.selmx .rw:last-child{border-bottom:0}
+.selmx .rw:hover{background:var(--soft)}
+.selmx .nm{padding:13px 14px;display:flex;flex-direction:column;gap:3px;justify-content:center}
+.selmx .nm b{font-size:13px;font-weight:700;color:var(--ink);line-height:1.35}
+.selmx .opt{margin:7px 5px;border:1.5px solid var(--line);border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:9px 3px;cursor:pointer;transition:.12s;background:var(--card);position:relative;min-height:42px;text-align:center}
+.selmx .opt .amt{font-size:13.5px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:0}
+.selmx .opt .sub{font-size:9px;font-weight:600;color:var(--muted);margin-top:1px}
+.selmx .opt.ex{border-style:dashed}
+.selmx .opt.ex .amt{color:var(--muted)}
+.selmx .opt:hover,.selmx .opt:focus-visible{border-color:var(--ac-100);background:var(--ac-50);outline:0}
+.selmx .opt.on{background:var(--ac);border-color:var(--ac);box-shadow:0 6px 15px -8px var(--ac)}
+.selmx .opt.on .amt{color:var(--card)}
+.selmx .opt.on .sub{color:var(--ac-100)}
+.selmx .opt.on.ex{background:var(--ink2);border-color:var(--ink2)}
+.selmx .opt.on.ex .amt{color:var(--card)}
+.selmx .opt.on::after{content:"✓";position:absolute;top:2px;right:5px;font-size:9px;font-weight:800;color:var(--ac-100)}
+.qpane{position:sticky;top:20px;border:2px solid var(--ac);border-radius:16px;overflow:hidden;background:var(--card)}
+.qsh{background:var(--ac);color:var(--card);padding:18px 20px}
+.qsh .ttl{font-size:12.5px;font-weight:800;color:var(--ac-100);letter-spacing:0}
+.qsh .big{margin-top:7px;line-height:1.02}
+.qsh .big .won{font-size:30px;font-weight:800;letter-spacing:0;font-variant-numeric:tabular-nums}
+.qsh .big .eok{font-size:13px;font-weight:600;color:var(--ac-100);margin-left:6px}
+.env{padding:14px 20px;border-bottom:1px solid var(--line)}
+.env .et{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;margin-bottom:8px;font-size:12px;color:var(--muted)}
+.env .et input{width:54px;padding:3px 6px;border:1px solid var(--line);border-radius:6px;font-family:inherit;font-size:12px;text-align:right}
+.env .et .st{font-weight:800}
+.env .et .st.ok{color:var(--ok)}
+.env .et .st.over{color:var(--bad)}
+.env .bar{position:relative;height:10px;border-radius:99px;background:var(--ac-50);overflow:hidden}
+.env .bar .fill{height:100%;border-radius:99px;background:var(--ac);transition:width .3s,background .3s}
+.env .bar.over .fill{background:var(--bad)}
+.env .cap{margin-top:7px;font-size:11px;color:var(--muted);line-height:1.5}
+.env .cap b{color:var(--ink)}
+.qlist{padding:6px 8px;max-height:none}
+.qrow{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid var(--line2)}
+.qrow:last-child{border-bottom:0}
+.qrow .qn{flex:1;font-size:12.5px;color:var(--ink2);line-height:1.4}
+.qrow .lvb{display:inline-block;font-size:9.5px;font-weight:800;padding:1px 6px;border-radius:5px;background:var(--ac-50);color:var(--ac);margin-right:6px;vertical-align:1px}
+.qrow.edited .lvb{background:var(--warn-50);color:var(--warn)}
+.qrow .amtin{width:78px;text-align:right;font-family:inherit;font-size:14px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;border:1px solid transparent;border-radius:7px;padding:5px 8px;background:transparent;transition:.12s}
+.qrow .amtin:hover{background:var(--soft)}
+.qrow .amtin:focus{outline:0;border-color:var(--ac);background:var(--card);box-shadow:0 0 0 3px var(--ac-50)}
+.qrow.edited .amtin{color:var(--ac-700)}
+.qrow .unit{font-size:11px;color:var(--muted)}
+.qfoot{display:flex;justify-content:space-between;align-items:center;background:var(--ink);color:var(--card);padding:13px 20px;font-size:13px;font-weight:800}
+.qfoot .ft{color:var(--ac-100);font-size:16px;font-variant-numeric:tabular-nums}
+.qact{display:flex;gap:8px;flex-wrap:wrap;padding:13px 16px;background:var(--soft);border-top:1px solid var(--line)}
+.qact .btn{font-family:inherit;font-size:12px;font-weight:700;border:1px solid var(--ac);background:var(--card);color:var(--ac);border-radius:9px;padding:8px 13px;cursor:pointer;transition:.15s}
+.qact .btn:hover{background:var(--ac);color:var(--card)}
+.qact .btn.solid{background:var(--ac);color:var(--card)}
+.qact .btn.solid:hover{background:var(--ac-700);border-color:var(--ac-700)}
+.qhint{font-size:11px;color:var(--muted);padding:0 16px 13px;background:var(--soft);line-height:1.55}
+.savest{font-weight:800;color:var(--muted)}
+.savest.ok{color:var(--ok)}
+@container (max-width:660px){.sel-component .sel-split{grid-template-columns:1fr}.sel-component .qpane{position:relative;top:auto}}
+@media(max-width:680px){.sel-split{grid-template-columns:1fr}.qpane{position:relative;top:auto}}
+@media(max-width:560px){.selmx{overflow-x:auto}.selmx .hd,.selmx .rw{min-width:620px}.qrow{align-items:flex-start;flex-wrap:wrap}.qrow .amtin{margin-left:auto}}
+/* 링크(이미지 캡처 대체) */
+.co a{color:var(--ac);font-weight:700;text-decoration:none;border-bottom:1px solid var(--ac-100);word-break:break-all}
+.co a:hover{border-color:var(--ac)}
+.mut{color:var(--muted);font-size:.92em}
+td.mut{color:var(--muted)}
+.srcgrp{margin:14px 0 6px;font-size:12px;font-weight:800;letter-spacing:.1em;color:var(--ac)}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">NEW BUSINESS PREP · 수출 특화 v2</div>
+  <h1>리상회 <span class="hl">(RESANGHOE)</span></h1>
+  <div class="sub">"건어물을 촉촉·바삭 스낵으로" — 리뷰 1.8만 건으로 제품력이 증명된 부산 D2C. 그러나 <b style="color:#fff">리비트는 제조사가 아니라 유통전문판매원</b>이라, 수출 인증의 주체가 될 수 없다. 이번 상담의 승부처는 마케팅이 아니라 <b style="color:#fff">제조사 협조와 품목 선택</b>이다.</div>
+  <div class="meta">
+    <span class="chip">국내 단계 <b>STAGE 3 · 매출 드라이브</b></span>
+    <span class="chip">수출 단계 <b>STAGE 0~1 · 실적 0</b></span>
+    <span class="chip">기회 적합도(가설) <b>2.9 / 5.0 · 조건부 GO</b></span>
+    <span class="chip">추천 <b>견과라인 0→1 · 바우처 입구</b></span>
+    <span class="chip">미팅 <b>일정 미정</b></span>
+    <span class="chip">상담 전 PREP · <b>직접 리서치 100%</b>(인테이크 없음)</span>
+  </div>
+  <div class="links">
+    <a class="lnk store" href="https://resanghoe.com/" target="_blank" rel="noopener">자사몰 바로가기</a>
+    <a class="lnk sns" href="https://www.instagram.com/resanghoe/" target="_blank" rel="noopener">@resanghoe</a>
+    <a class="lnk sns" href="https://store.kakao.com/resanghoe" target="_blank" rel="noopener">카카오 스토어</a>
+    <a class="lnk sns" href="https://hizsystem.github.io/brandrise/research/resanghoe/" target="_blank" rel="noopener">v1 PREP(준일, 8/18)</a>
+  </div>
+</div></div>
+
+<div class="layout">
+  <nav class="toc">
+    <div class="nl">PREP 목차</div>
+    <a href="#onepager">수주 한 장</a>
+    <a href="#diagnosis">핵심 진단</a>
+    <a href="#company">기업 · 제조 · 채널</a>
+    <a href="#market">시장 · 경쟁 · 규제</a>
+    <a href="#deal">기회 · 견적</a>
+    <a href="#govfit">정부지원사업</a>
+    <a href="#consult">상담 진행</a>
+    <a href="#sources">참고 출처</a>
+  </nav>
+
+  <main>
+<section id="onepager">
+  <div class="sec-k">ONE-PAGER</div>
+  <h2>수주 한 장</h2>
+  <p class="lead">미팅 직전 이 카드 하나면 된다. 본 문서는 <b>전량 직접 리서치</b>(2026-08-20) 기반이며 클라이언트 인테이크 자료는 <b>없다</b>. 진단·니즈·적합도는 모두 <b>가설</b>이다.</p>
+
+  <div class="co bad"><span class="lab">★ 이 상담의 전제를 뒤집는 사실</span>
+  상품 고시 라벨에 <b>「유통전문판매원 (주)리비트 / 제조원 ㈜강고집」</b>으로 명시돼 있다. 국세청 업태도 <b>전자상거래 소매업 단독</b>(제조업 없음). 즉 <b>리비트는 제조사가 아니다.</b> FDA 식품시설등록·수출위생증명서·EU 승인시설은 전부 <b>제조 영업소 명의로만</b> 발급되므로, 리비트는 수출 인증의 주체가 될 수 없고 화주에 머문다. <b>병목은 대표의 의지가 아니라 제조사 2곳의 협조 의사다.</b></div>
+
+  <div class="grid2" style="margin-top:16px">
+    <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">제조 통제권 없음</h3>
+    <p style="font-size:13px">제조원이 <b>SKU별로 다르다</b> — 먹태·어포튀각은 ㈜강고집(경기 남양주), 페스츄리 오징어는 ㈜동해씨앤디(부산 해운대). 협상 상대가 <b>복수</b>다. 수출 인증을 하려면 이 두 곳이 각각 움직여야 한다.</p></div>
+    <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">주력이 수출 최악 조합</h3>
+    <p style="font-size:13px">조미오징어 수출은 <b>역성장(-3%, 미국향 -11%)</b>인데 김(+13.7%)·과자류(+17.4%)가 K-푸드를 끈다. 게다가 오징어·먹태는 <b>미국 Seafood HACCP(21 CFR 123) 의무</b> + Import Alert 노출. "K-푸드 붐을 타자"가 주력 제품엔 성립하지 않는다.</p></div>
+  </div>
+
+  <div class="co ok" style="margin-top:14px"><span class="lab">★ 그래서 제안하는 경로 — 견과 라인 0→1</span>
+  <b>똑똑호두&amp;피칸만이 수산물 규제를 통째로 회피한다.</b> 21 CFR 123 미적용 · EU 승인시설 불요 · Import Alert 미노출 · 캘리포니아산 원료라 <b>수산 공급위기 밖</b>. 카테고리도 과자류로 <b>+17.4% 성장</b> 구간이다. 오징어·먹태로 미국을 두드리는 것보다 <b>비교할 수 없이 짧은 경로</b>다. <span class="mut">단 견과 라인의 제조원이 아직 미확인 — 상담에서 확인 필요.</span></div>
+
+  <div class="co ac band" style="margin-top:14px"><span class="lab">첫 제안 &amp; 다음 액션</span>
+  <b>T1 무료 진단(0원)</b>으로 열고, 선행 호의는 <b>수산식품 수출준비바우처(~2026-11-30, 5천만원)</b>와 <b>aT 현지화지원(상시, 자부담 20%)</b>이다 — 둘 다 <b>수출실적 0을 허용</b>한다. 미팅 1순위 청취는 <b>예산 성격 · 제조사 계약형태 · 왜 지금 수출인가</b>. 그리고 반드시 <b>"리상회라는 이름은 어떻게 지으셨어요?"</b> — <b>'상회(商會)'는 단어 자체가 무역상을 뜻한다.</b> 이름에 이미 수출이 들어있다는 프레이밍은 상담 온도를 크게 올린다.</div>
+
+  <div class="co warn" style="margin-top:14px"><span class="lab">가져갈 것 — 실물 패키지 뒷면 사진</span>
+  제조원·품목보고번호·유통기한이 <b>한 장으로 전부 확정</b>된다. 견과 라인 제조원이 미확인이라 권고 경로조차 이것 없이는 확정이 안 된다. <b>상담 전 대표님께 미리 요청할 것.</b></div>
+</section>
+<section id="diagnosis">
+  <div class="sec-k">DIAGNOSIS (가설)</div>
+  <h2>핵심 진단</h2>
+  <p class="lead">제품력은 이미 증명됐다. 막힌 것은 ① 수출 자격 구조 ② 국내 전환 배관 두 곳이다.</p>
+
+  <div class="kpi">
+    <div class="k"><div class="lbl">자사몰 리뷰</div><div class="v">약 18,000건</div><div class="s">현재도 일 45건 자연 유입</div></div>
+    <div class="k"><div class="lbl">카카오톡 채널 친구</div><div class="v">22,275명</div><div class="s">최대 CRM 자산 · 사실상 미가동</div></div>
+    <div class="k"><div class="lbl">실질 업력</div><div class="v">9년차</div><div class="s">전신 개인사업자 2017-02 등록</div></div>
+    <div class="k alt"><div class="lbl">수출 실적</div><div class="v">0</div><div class="s">209개국 배송은 Cafe24 기본값</div></div>
+  </div>
+
+  <div class="grid3" style="margin-top:16px">
+    <div class="card"><span class="t r">C1</span><h3 style="margin:8px 0 6px">수출 자격이 없다</h3><p style="font-size:12.5px">유통전문판매원이라 인증 신청 주체가 될 수 없음. 제조사 2곳 협조가 전제.</p></div>
+    <div class="card"><span class="t r">C2</span><h3 style="margin:8px 0 6px">리뷰 1.8만이 안 보인다</h3><p style="font-size:12.5px">별도 게시판에만 쌓이고 <b>상품 상세페이지엔 "리뷰 없음"</b> 표시. 전환 근거가 비어 보인다. 개발비 최소·임팩트 최대.</p></div>
+    <div class="card"><span class="t r">C3</span><h3 style="margin:8px 0 6px">가격이 수출을 선(先)소각</h3><p style="font-size:12.5px">전 품목 상시 15~37% 할인. 바이어는 한국 자사몰가를 앵커로 삼는다. 협상 시작점이 이미 불리.</p></div>
+  </div>
+
+  <div class="co warn" style="margin-top:14px"><span class="lab">숨은 리스크 3건 (전부 상담 확인 필요)</span>
+  ① <b>특허 10-2369329</b>(조미 먹태 제조방법) 권리자가 <b>강병희 개인</b> — 리비트 소유가 아니라 해외 브랜드 보호 불가.<br>
+  ② <b>조미건어포 HACCP이 2026-03-15 만료</b> — 연장 미확인. 페스츄리 오징어 라인 직결.<br>
+  ③ <b>상품정보제공고시가 이미지에만 존재</b> — HTML 텍스트 0건. 국내 표시 리스크 + SEO 손실이며, <b>영문 라벨의 기초 데이터가 여기서 나온다</b>.</div>
+
+  <div class="co" style="margin-top:14px"><span class="lab">표면 고민 vs 추정 진짜 니즈 (가설)</span>
+  ① "해외 배송 열어놨는데 주문이 없다" → 진짜 = <b>열어둔 것조차 의도가 아니었다</b>. 209개국 일괄 + 언어별 스토어프론트 부재 = 선택이 아닌 기본값. <b>확신 75%</b><br>
+  ② "수출 단가를 어떻게 잡나" → 진짜 = <b>원가를 모를 가능성</b>. 제조 위탁이면 원가·MOQ가 전부 공장에 묶여 있다. <b>확신 70%</b><br>
+  ③ "브랜드를 어떻게 알리나" → 진짜 = <b>바이어에게 팔 서사가 없다</b>. 안주스낵은 스펙 차별화가 불가능해 서사가 없으면 즉시 가격경쟁. <b>확신 85%</b></div>
+</section><section id="company">
+  <div class="sec-k">COMPANY</div>
+  <h2>기업 · 제조 · 채널</h2>
+
+  <h3 style="margin:18px 0 10px">기업 기초</h3>
+  <table>
+    <tr><th style="width:22%">법인 / 대표</th><td>(주)리비트(REBEAT) · <b>이정하</b></td></tr>
+    <tr><th>사업자 / 통판</th><td>604-86-03370 · 제2024-부산연제-0778호 · 법인등록 180111-1592880(부산등기소)</td></tr>
+    <tr><th>업력</th><td><b>실질 9년차</b> — 전신 개인사업자(234-31-00266) <b>2017-02-01 등록</b> → 2025-01-10 폐업(승계). 법인전환 2024-12. <span class="mut">"2024년 설립"은 법인전환 시점이지 창업 시점이 아니다 — "신생기업" 프레이밍 금지.</span></td></tr>
+    <tr><th>업종 / 규모</th><td><b>전자상거래 소매업 단독</b>(제조업 없음) · 종업원 8~9명</td></tr>
+    <tr><th>소재지</th><td>부산 연제구 반송로 108, 4·5층(연산동)</td></tr>
+    <tr><th>브랜드 2개</th><td><b>리비트</b>(무드등·꽃다발·디퓨저 등 기념일 선물잡화, 2020~) + <b>리상회</b>(건어물 스낵, 2023~) — Cafe24 백엔드 공유</td></tr>
+    <tr><th>매출</th><td><b>미확인</b> — 공시 없음. <span class="mut">★cookiedeal.io의 "매출 44.9억"은 인용 금지: 업종을 "전구 및 램프 제조업"으로, 임원을 "홍길동·김철수·이영희"로 표기한 더미 데이터.</span></td></tr>
+  </table>
+
+  <h3 style="margin:22px 0 10px">★ 제조 주체 — 라벨 원문 판독 (수출 상담 최우선)</h3>
+  <table>
+    <tr><th>제품</th><th>식품유형</th><th>품목보고번호</th><th>제조원</th><th>원료 원산지</th></tr>
+    <tr><td>어포튀각 100g</td><td>기타어육가공품</td><td>20140332261174</td><td><b>㈜강고집</b><br><span class="mut">경기 남양주</span></td><td>실꼬리돔 <b>베트남산</b></td></tr>
+    <tr><td>먹태 25g</td><td>조미건어포</td><td>20140332261167</td><td><b>㈜강고집</b></td><td>명태 <b>러시아산</b></td></tr>
+    <tr><td>페스츄리 오징어 130g</td><td>조미건어포류</td><td>2003014167552</td><td><b>㈜동해씨앤디</b><br><span class="mut">부산 해운대 · 051-722-4288</span></td><td>오징어 <b>페루산</b> 81%</td></tr>
+    <tr><td><b>똑똑호두&amp;피칸</b></td><td class="mut">미확인</td><td class="mut">미확인</td><td class="mut"><b>미확인 ★</b></td><td>캘리포니아 호두 · 미국산 피칸</td></tr>
+  </table>
+
+  <div class="co bad" style="margin-top:12px"><span class="lab">여기서 파생되는 문제</span>
+  ① <b>협상 상대가 복수</b> — 제조사가 SKU별로 달라 수출 인증을 하려면 두 곳이 각각 움직여야 한다.<br>
+  ② <b>㈜동해씨앤디는 HACCP 보유 여부 미확인</b> — 인증서를 게시한 강고집과 대조적.<br>
+  ③ <b>㈜강고집 조미건어포 HACCP(제2023-3-0158호)이 2026-03-15 만료</b> — 연장 미확인.<br>
+  ④ <b>원료가 베트남·러시아·페루산</b> → 한국산 인정 여부·FTA 특혜관세 <b>별도 검토 필요(미검증)</b>.<br>
+  ⑤ 공용 제조시설 <b>알레르겐 18종 교차오염 고지</b> → EU/US 라벨 부담.</div>
+
+  <h3 style="margin:22px 0 10px">채널 현황</h3>
+  <table>
+    <tr><th>자사몰(주력)</th><td>Cafe24. 리뷰 <b>약 18,000건</b>·일 45건 유입. <b>★그런데 상품 상세페이지엔 "리뷰 없음" 표시</b> — 최대 손실지점. 정기배송 옵션 有</td></tr>
+    <tr><th>카카오 스토어</th><td>누적구매 약 2,125건 · <b>스토어찜 41</b> · 실버등급. <span class="mut">정가 표기 불일치 — 자사몰 12,900 vs 카카오 40,000(72%↓) = 표시광고 리스크</span></td></tr>
+    <tr><th>네이버 스마트스토어</th><td>빅파워 · 관심고객 8,752 <span class="mut">(단일출처, 상담 시 재확인 권장)</span></td></tr>
+    <tr><th>쿠팡</th><td>브랜드스토어에 <b>무드등과 스낵이 혼재</b> — 식품 전용 아님</td></tr>
+    <tr><th>인스타 @resanghoe</th><td>팔로워 <b>3,798</b> · 바이오 "누적판매 80만봉"(브랜드 주장, 미검증) · 2023-12~2026-01 <b>2년 공백</b> 후 재가동, 현재 월 1회</td></tr>
+    <tr><th>해외</th><td><b>209개국 World Shipping</b> — <span class="mut">Cafe24 개인 직구(B2C) 기본 설정. B2B 수출과 무관하며 수출실적으로 잡히지 않는다</span></td></tr>
+  </table>
+
+  <div class="co warn" style="margin-top:12px"><span class="lab">동선 오류 2건 (비용 0 개선)</span>
+  자사몰 푸터 인스타 링크가 스낵이 아닌 <b>잡화 계정(@rebeat.kr)</b>으로 연결 · 틱톡 핸들 불일치(<span class="mut">@resanghoe_</span>). 3년간 사간 고객이 리상회 채널로 갈 길이 물리적으로 없다.</div>
+
+  <div class="co" style="margin-top:12px"><span class="lab">가격 (2026-08-20 실측)</span>
+  촉촉 페스츄리 오징어 12,900 → <b>11,000</b>(15%↓) · 바삭 크리스피 어포튀각 12,900 → <b>8,900</b>(31%↓) · 바삭 크리스피 먹태 18,000 → <b>12,900</b>(28%↓) · 달콤 크리스피 똑똑호두&amp;피칸 12,500 → <b>7,900</b>(<b>37%↓</b>)<br>
+  세트: 심야 안주 SET 27,900 · 한가득 선물세트 55,350(유일하게 무료배송선 초과) · 단짠 바삭 캠핑 안주템 SET</div>
+</section><section id="market">
+  <div class="sec-k">MARKET</div>
+  <h2>시장 · 경쟁 · 규제</h2>
+
+  <div class="co bad"><span class="lab">★ "K-푸드 붐을 타자"가 주력 제품엔 성립하지 않는다</span>
+  2025년 K-Food+ 수출은 136.2억$(+5.1%)로 사상 최대이고 미국이 처음 1위로 올라섰다. <b>그러나 그 성장을 끄는 건 김·라면·소스다.</b><br>
+  · 김 <b>11.33억$ (+13.7%)</b> · 과자류 <b>+17.4%</b> · 라면 15.2억$(+21.9%)<br>
+  · <b>조미오징어(HS1605.54) 25.7백만$ — 역성장 -3%, 미국향 -11%</b><br>
+  즉 <b>리상회의 주력이 유일하게 줄어드는 칸에 있다.</b> 서구권의 마른오징어 냄새 거부감도 실재하는 장벽이다.</div>
+
+  <h3 style="margin:20px 0 10px">★ 라인별 수출 난이도 — 여기가 이번 상담의 핵심 판단</h3>
+  <table>
+    <tr><th>규제</th><th>오징어 · 먹태</th><th>어포튀각</th><th><b>호두 · 피칸</b></th></tr>
+    <tr><td>미국 Seafood HACCP<br>(21 CFR 123)</td><td><b style="color:#e11d48">의무</b></td><td><b style="color:#e11d48">의무</b></td><td><b style="color:#0e9f6e">불요</b></td></tr>
+    <tr><td>EU 승인시설 등록</td><td><b style="color:#e11d48">필요</b></td><td><b style="color:#e11d48">필요</b></td><td><b style="color:#0e9f6e">불요</b></td></tr>
+    <tr><td>Import Alert 노출</td><td><b style="color:#e11d48">16-119/120</b></td><td>노출</td><td><b style="color:#0e9f6e">없음</b></td></tr>
+    <tr><td>원료 리스크</td><td><b style="color:#e11d48">최악</b> (아래)</td><td>베트남 연육</td><td><b style="color:#0e9f6e">캘리포니아산 · 안정</b></td></tr>
+    <tr><td>카테고리 성장</td><td><b style="color:#e11d48">-3% (미국향 -11%)</b></td><td>—</td><td><b style="color:#0e9f6e">과자류 +17.4%</b></td></tr>
+  </table>
+
+  <div class="co ok" style="margin-top:12px"><span class="lab">결론 — 견과 라인이 최단 0→1 경로</span>
+  <b>똑똑호두&amp;피칸만이 수산물 규제 체계를 통째로 회피한다.</b> 벤치마크: 하오마을 김부각이 <b>FDA 시설등록 + 수출전용 패키지 둘만 갖추고 미국 HEB에 22만달러(약 3억)</b>를 넣었다. 0→1은 생각보다 가볍다 — 단 <b>품목을 고르면</b> 그렇다.</div>
+
+  <div class="co warn" style="margin-top:12px"><span class="lab">★ 수출보다 급할 수 있는 문제 — 원가</span>
+  · 오징어 연근해 어획량 2021년 60,851t → 2025년 30,976t(<b>-49%</b>), 2026년 5월 <b>전년비 -85%</b>. 수온 18.74℃로 57년 최고<br>
+  · 먹태 원료 <b>러시아산 명태 수입가 +51.6%</b> (1,748원/kg → 3,674원/kg, <b>5개월 만에 2배</b>)<br>
+  페루산 조달로 어획 리스크는 완화되나 제거되지 않는다 — <b>공통 동인이 환율·유가라 수입선 전환으로 해결되지 않는다.</b> <b>주력 2개 라인이 원가에서 동시에 무너지는 중</b>이며, 이는 수출 논의 이전의 문제일 수 있다.</div>
+
+  <h3 style="margin:20px 0 10px">경쟁 지형</h3>
+  <div class="co ac"><span class="lab">이 카테고리엔 브랜드화된 D2C 플레이어가 극히 희소하다</span>
+  후보 8곳 중 <b>실존 확인은 3곳뿐</b>(한입만·바다야초·술상무·굽네안주는 근거 없음, 오징어와친구들은 김해 음식점). <b>희소성 자체가 리상회에 기회 신호</b>다.</div>
+  <table style="margin-top:10px">
+    <tr><th>브랜드</th><th>포지션</th><th>수출</th><th>인증</th><th>시사점</th></tr>
+    <tr><td><b>노쉬프로젝트</b><br>(자갈치오지매)<br><span class="mut">부산 부산진구</span></td><td>부산 로컬 프리미엄<br>세트 21,600~82,000</td><td><b>캐나다·말레이시아 CU</b></td><td><b>KMF 할랄</b></td><td><b>유일한 실질 위협.</b> 같은 부산에서 2년 앞섬(LIPS 2년 연속). 단 <b>세트 전용이라 리상회 낱개 구간과 직접 충돌 안 함</b>, <b>미국·일본은 비어 있음</b></td></tr>
+    <tr><td><b>인생건어물</b>(형기네)</td><td>온라인 실전 경쟁자</td><td class="mut">미확인</td><td class="mut">미확인</td><td>인스타 <b>45.8K</b> vs 리상회 3,798 — <b>SNS 격차 12배</b>가 실제 격차</td></tr>
+    <tr><td><b>인정식탁</b><br><span class="mut">서울 강남</span></td><td>12,900~39,900</td><td class="mut">미확인</td><td class="mut">미확인</td><td>가격대 중첩</td></tr>
+  </table>
+</section><section id="deal">
+  <div class="sec-k">OPPORTUNITY</div>
+  <h2>기회 · 견적 (가설)</h2>
+
+  <h3 style="margin:14px 0 10px">GAP 분석 — 수출에 필요한 것 vs 보유한 것</h3>
+  <table>
+    <tr><th>영역</th><th>보유</th><th>GAP</th><th>주체</th></tr>
+    <tr><td>제조 시설</td><td><b style="color:#e11d48">없음</b> (유통전문판매원)</td><td>★★★</td><td>제조사</td></tr>
+    <tr><td>HACCP</td><td>제조사 보유(강고집) / 동해씨앤디 미확인 / <b>조미건어포 만료 경과</b></td><td>★★★</td><td>제조사</td></tr>
+    <tr><td>FDA 시설등록</td><td>없음 — <b>공장 주소로 등록</b>되므로 리비트 명의 불가</td><td>★★★</td><td>제조사</td></tr>
+    <tr><td>수출 위생증명서</td><td>없음 — 발급에 <b>영업허가증+품목제조보고서</b> 필요(제조사 명의)</td><td>★★★</td><td>제조사</td></tr>
+    <tr><td>영문 브랜드자산</td><td><b>국문 브랜드스토리조차 부재</b>. 단 영문 제품명은 존재</td><td>★★★</td><td><b style="color:#0e9f6e">히즈</b></td></tr>
+    <tr><td>라벨링 현지화</td><td>없음. 고시정보가 이미지에만 존재</td><td>★★</td><td><b style="color:#0e9f6e">히즈+aT</b></td></tr>
+    <tr><td>바이어 채널</td><td>없음 (자사몰+톡딜만)</td><td>★★★</td><td>KOTRA/aT 연계</td></tr>
+    <tr><td>가격구조</td><td>상시 15~37% 할인 = <b>수출가 성립 불가</b></td><td>★★★</td><td>공동</td></tr>
+  </table>
+
+  <div class="verdict" style="margin-top:16px">
+    <div class="vl">기회 적합도 (가설)</div>
+    <div class="vv">2.9 / 5.0 · 조건부 GO</div>
+    <div class="vd">제품 수출 적합성 0.8 · 히즈 처방 적합성 0.8 · 정부지원 활용 0.6 · 지불 여력 0.4 · 실행 통제권 0.3<br>점수를 누른 것은 통제권과 지불여력이다. 제품과 처방 적합성은 높다.</div>
+  </div>
+
+  <div class="co warn" style="margin-top:14px"><span class="lab">Go 조건 — 하나라도 불충족 시 No-Go 전환</span>
+  ① 제조사가 <b>인증·서류 협조에 서면 동의</b> 가능 ② 대표가 수출을 <b>본업(리비트) 대비 우선순위로 인정</b> ③ 초기 12주 <b>주 4시간 이상 투입</b> 가능<br>
+  <b>No-Go 신호</b>: "제조사에 물어봐야 안다"가 3개 이상 항목에서 반복되면 → 진단만 무료 제공하고 <b>제조사 확정 후 재접촉</b>으로 종료.</div>
+
+  <h3 style="margin:22px 0 10px">3-Tier — 선불 대형용역 0건</h3>
+  <div class="tiers">
+    <div class="tier"><div class="tn">T1 · 수출 준비도 진단</div><div class="tp">0원</div>
+    <p style="font-size:12.5px">무료 브랜드 진단 + 수출 GAP 체크리스트 + 바우처 자격 판정 + 신청 <b>가이드</b>(대행 아님). <b>히즈 목적:</b> 신뢰 확보 + 제조 주체 등 미확인 정보 수집. <b>2주</b></p></div>
+    <div class="tier rec"><div class="rb">추천</div><div class="tn">T2 · 바우처 연계 실행팩 </div><div class="tp">자부담 20% 구간</div>
+    <p style="font-size:12.5px">aT 현지화지원이 <b>비용의 80%를 부담</b>. 영문 라벨링·패키지 현지화·영문 브랜드자산. <b>8~12주</b><br><span class="mut">★히즈가 aT 적격 수행주체인지 사전 확인 필수(061-931-0878). 미적격 시 기획·디자인만 유상 수임하고 인증·등록은 외부 연계.</span></p></div>
+    <div class="tier"><div class="tn">T3 · 성과연동 수출 인큐베이션</div><div class="tp">선불 최소 + 수수료</div>
+    <p style="font-size:12.5px">착수금 최소 + ① 첫 B2B 계약 성사 수수료 ② 수출매출 요율 ③ 2027 수출바우처 선정 시 바우처 재원으로 본 용역 전환<br><span class="mut">★히즈 성과연동 계약 경험 확인 전까지 "조건 협의"로만 제시, 확정 금지.</span></p></div>
+  </div>
+
+  <h3 style="margin:22px 0 10px">Land &amp; Expand — 졸업 트리거 (좀비 방지)</h3>
+  <table>
+    <tr><th>게이트</th><th>기한</th><th>통과 조건</th><th>미달 시</th></tr>
+    <tr><td><b>A</b></td><td>상담 후 2주</td><td>제조사명·제조 형태 서면 회신</td><td><b>관계 종료</b> · 6개월 후 재접촉 리스트</td></tr>
+    <tr><td><b>B</b></td><td>상담 후 6주</td><td>바우처 신청 접수 완료</td><td>무료 지원 <b>중단</b> · 유상 전환 제안 1회</td></tr>
+    <tr><td><b>C</b></td><td>착수 후 12주</td><td>영문 자산 납품 + 바이어 접촉 1건</td><td>T3 제안 <b>철회</b></td></tr>
+  </table>
+  <div class="co" style="margin-top:10px"><span class="lab">무료 구간 총 상한</span><b>6주 / 히즈 투입 20시간.</b> 초과 시 자동 종료 — 좀비 방지의 핵심.</div>
+
+  <h3 style="margin:22px 0 10px">★ Challenger 포인트</h3>
+  <div class="co ac"><span class="lab">(a) 가격 — 검증됨, 단정형 사용 가능</span>
+  "어포튀각 실판매가가 8,900원입니다. 여기에 수입상 마진·현지 유통마진·물류비·관세를 순차로 얹으면 현지 소비자가는 국내가의 <b>3~4배</b>가 됩니다. 그런데 상시 31% 할인이라는 건 <b>8,900원에도 팔린다는 걸 공개</b>하는 겁니다. 바이어는 한국 자사몰 가격을 봅니다. <b>수출가 협상의 상한선을 이미 스스로 정해두신 상태</b>입니다."<br>
+  <span class="mut">★원가 미확인이므로 "마진이 없다"고 단정하지 말고 "가격 앵커가 노출됐다"는 사실로만 공격.</span></div>
+  <div class="co ac" style="margin-top:10px"><span class="lab">(b) 제조 통제권 — 원리 검증됨, 질문형으로</span>
+  "리상회 제품을 만드는 공장이 리비트 소유입니까, 위탁입니까? 여쭙는 이유는 — <b>FDA 시설등록은 공장 주소로 등록</b>되고, 수출 위생증명서는 <b>영업허가증과 품목제조보고서</b>가 있어야 발급됩니다. 전부 <b>공장 명의 서류</b>입니다. 위탁이라면 대표님이 수출을 결심해도 <b>인증 취득 여부를 결정하는 건 공장</b>입니다. 계약에 협조 조항이 없으면 바이어를 데려와도 서류에서 멈춥니다."</div>
+  <div class="co ac" style="margin-top:10px"><span class="lab">(c) 209개국 배송 — 검증됨</span>
+  "209개국 배송은 <b>개인이 낱개 주문하면 특송으로 보내주는 기능</b>입니다. 수출 실적으로 잡히지도 않고 바이어가 보는 지표도 아닙니다. <b>채널이 없는 게 아니라 그 채널에 바이어가 오지 않는 구조</b>입니다."</div>
+
+  <div class="co warn" style="margin-top:14px"><span class="lab">★ 처방 실행가능성 — 경계선을 먼저 그을 것</span>
+  <b>히즈가 확실히 파는 것은 브랜드 자산 하나다.</b><br>
+  · <b>히즈 실행</b>: 브랜드 진단·브랜드스토리·영문 브랜드자산·패키지 디자인·자사몰 영문화<br>
+  · <b>공동</b>: 가격구조 재설계(원가는 대표 제공)<br>
+  · <b>외부 연계 / 대표 액션</b>: HACCP·FDA 등록·위생증명·통관·물류·바이어 발굴<br>
+  <span class="mut">상담에서 이 경계를 먼저 긋지 않으면 나중에 책임 분쟁이 난다. 안 해본 영역을 처방으로 세우면 상담 중 자인하게 되고 거기서 온도가 꺾인다.</span></div>
+</section><section id="govfit">
+  <div class="sec-k">GOVFIT</div>
+  <h2>정부지원사업 — 자격 실심사</h2>
+  <p class="lead">적합도 ≠ 자격. 아래는 <b>2026-08-20 직접 실심사</b> 결과이며, 마감·자격미달 사업을 상담에서 언급하면 그 자리에서 신뢰가 깎인다.</p>
+
+  <div class="co ok"><span class="lab">✅ 지금 신청 가능 — 2건 (둘 다 수출실적 0 허용)</span></div>
+  <table style="margin-top:10px">
+    <tr><th>사업</th><th>대상 · 기간</th><th>지원</th><th>판정</th></tr>
+    <tr><td><b>수산식품 수출준비바우처</b><br>(현지화지원)<br><span class="mut">aT 수산사업단</span></td>
+        <td><b>수산식품 수출(예정)업체</b><br>~<b>2026-11-30</b> 18:00 (선착순)</td>
+        <td>수출업체 <b>5,000만원</b></td>
+        <td><b style="color:#0e9f6e">GO · 최적</b><br><span class="mut">리상회는 오징어·어포·먹태 = 수산가공품으로 카테고리 정확히 일치. 담당 061-931-0856</span></td></tr>
+    <tr><td><b>농식품 현지화지원사업</b><br><span class="mut">aT</span></td>
+        <td>농식품 <b>수출(예정)업체</b><br><b>예산 소진 시까지 상시</b></td>
+        <td><b>80% 지원 / 자부담 20%</b><br>연 5,000만원</td>
+        <td><b style="color:#0e9f6e">GO</b><br><span class="mut">지원항목(라벨링·패키지 현지화·수입등록·식품검사)이 GAP과 그대로 일치. 담당 061-931-0878</span></td></tr>
+  </table>
+
+  <div class="co bad" style="margin-top:14px"><span class="lab">❌ 마감 · 자격미달 — 상담에서 언급 금지 (5건)</span>
+  · <b>수출바우처(중기부) 3차</b> — 2026-07-08 개시 후 <b>마감</b>. 차기는 2027년 1차(12월 공고 예상). <span class="mut">한도 3,000만원·보조율 50~70% 차등은 사실. "사업자등록 1년 이상" 요건은 공고문에 없음</span><br>
+  · <b>긴급지원바우처</b> — 對중동 수출실적/계약 보유 기업 한정 → 자격미달<br>
+  · <b>농식품글로벌성장패키지</b> — 2026-02-06 마감 + 수출 $10만↑ 요건<br>
+  · <b>부산 해외지사화</b> — 2026-06-01 마감 + <b>KOTRA 지사화 선정이 선행조건</b>이라 2단계 미충족<br>
+  · <b>부산 수출입애로 바우처(BEPA)</b> — <b>2026-04-17 마감 + 최근 3년 수출실적 증명서 필수</b> → <b style="color:#e11d48">수출실적 0인 리상회는 자격미달</b></div>
+
+  <div class="co warn" style="margin-top:12px"><span class="lab">★ 두 개의 미확인 — 상담 전 유선 확인 권장</span>
+  ① <b>aT 제외사유</b>: "해외 현지 파트너 계약 미확정 시 제외"라는 검색 결과가 있으나 공고 원문에서 확인하지 못했다. <b>061-931-0878 유선 확인 필수.</b><br>
+  ② <b>해외규격인증획득지원(상시접수)</b>: 이 사업은 <b>"공장을 인증"</b>하는 구조라 유통전문판매원 명의로 신청 가능한지 문제가 생긴다. <b>KTR 1522-0141 확인 필요.</b><br>
+  ③ <b>원산지/FTA 특혜관세</b>: 원료가 베트남·러시아·페루산이라 <b>한국산 인정 여부 미검증</b>.</div>
+
+  <div class="co ac band" style="margin-top:12px"><span class="lab">★ 클로징에 쓸 프레이밍 — 정직함이 무기다</span>
+  수출바우처를 "지금 넣어드리겠다"고 하면 <b>5초면 들통난다</b>. 대신:<br>
+  <i>"수출바우처는 정부가 준비비용의 70%를 대주고 수출실적이 0이어도 됩니다. 그런데 올해 중기부 차수는 이미 닫혔어요. 제가 오늘 '넣어드릴게요' 하면 거짓말이 되고요. <b>근데 이게 오히려 낫습니다</b> — 이 바우처는 신청서에 '뭘, 어느 나라에, 어떻게 팔 건지'를 써내야 통과되거든요. 지금 상태로 쓰면 브랜드스토리도 영문 자료도 없어서 심사위원이 볼 게 없습니다. <b>다음 차수까지 남은 몇 달이 사실은 준비 기간</b>인 거예요."</i><br>
+  <span class="mut">구조적 이점 3가지 — ①"지금은 안 됩니다"가 더 강한 신뢰 신호 ②유료 과제를 <b>정부가 정당화</b>해준다 ③외부 데드라인이 의사결정을 압박한다. 그리고 <b>수산식품 바우처(~11/30)는 실제로 살아있으므로</b> 이건 지금 바로 권할 수 있다.</span></div>
+</section><section id="consult">
+  <div class="sec-k">CONSULT</div>
+  <h2>상담 진행</h2>
+
+  <div class="co bad"><span class="lab">★ 단계 판정 — 국내축 / 수출축을 분리할 것</span>
+  리상회는 <b>국내 STAGE 2~3(매출 드라이브) × 수출 STAGE 0~1</b>이 동시에 성립한다. 한 축으로 뭉뚱그리면 오분류가 난다.<br>
+  <b>조합 처방 원칙</b> — 국내 3 × 수출 1 = <b>최상 시나리오</b>(검증된 제품 + 배관만 없음). <b>국내 1 이하 × 수출 0 = 수출을 만류하는 게 정답</b>이며, 이때 무리한 수출 견적을 밀면 신뢰를 잃는다.</div>
+
+  <h3 style="margin:20px 0 10px">★ 필수 질문 Top 3</h3>
+  <div class="qlist">
+    <div class="q"><div class="qsh">Q1 · 예산 성격 <span class="mut">【스킬 표준 고정 1번】</span></div>
+    <p>"수출 준비에 쓰실 예산을 생각해 두신 게 있다면, 그게 <b>매달 나가는 광고비</b> 개념인지 / <b>매달 맡기는 운영비</b> 개념인지 / <b>이번에 한 번 세팅하는 프로젝트 비용</b>인지 — 어느 쪽으로 잡고 계세요?"</p>
+    <div class="qhint"><b>의도</b>: 금액이 아니라 <b>성격</b>을 묻는다. 금액은 방어당하지만 성격은 잘 답한다. <b>분기</b>: 단발 프로젝트형이 리상회에 가장 적합할 것으로 봄(가설) / "아직 없다" → 수출 STAGE 0 확정, 바우처 선행. <b style="color:#e11d48">★2건 연속 미질문 실증 — 반드시 1번에 배치.</b></div></div>
+
+    <div class="q"><div class="qsh">Q2 · 브랜드명 어원 <span class="mut">【스킬 표준 고정】</span></div>
+    <p>"'리상회'라는 이름은 어떻게 지으셨어요? 리비트에서 따오신 건가요, 다른 뜻이 있나요?"</p>
+    <div class="qhint"><b>의도</b>: 웹 어디에도 없어 리서치로 못 잡는다. <b>최대 무기가 여기서 나온 사례 반복</b>. <b style="color:#0e9f6e">★'상회(商會)'는 단어 자체가 "무역상"을 뜻한다 — 이름에 이미 수출이 들어있다는 프레이밍은 상담 온도를 크게 올린다.</b> 자사몰 BRAND 페이지의 <b>4Re</b>(Refresh·Responsible·Repeat·Ready)와 법인명 <b>RE</b>BEAT가 같은 뿌리로 보이는데 웹 어디에도 연결이 쓰여 있지 않다. <b>라포 구간(0~7분)에 배치</b>해야 방어 없이 나온다.</div></div>
+
+    <div class="q"><div class="qsh">Q3 · 왜 지금 수출인가</div>
+    <p>"본업인 리비트도 잘 돌아가는데 리상회로 수출을 <b>지금 이 시점에</b> 보시는 이유가 궁금해요. 혹시 <b>어디서 먼저 연락이 온 게</b> 있으셨나요? 아니면 국내에서 한계를 느끼신 건가요?"</p>
+    <div class="qhint"><b>의도</b>: <b>Pull(외부 인입) vs Push(내부 정체) vs Vanity(막연한 동경)</b>를 가르는 단일 질문. 이 답 하나로 처방 전체가 갈린다.<br>
+    · <b>Pull</b>("바이어 메일이 왔다") → 🔥최우선. 수요가 노크 중인데 <b>받을 그릇이 없는 상태</b>. 수주 확률 최고 → <i>"그 메일 지금 갖고 계세요? 어느 나라였어요?"</i>로 즉시 파고들 것<br>
+    · <b>Push</b>("국내가 포화") → 수출이 해결책이 아닐 수 있음. 국내 단위경제부터<br>
+    · <b>Vanity</b>("요즘 K푸드가 되니까") → 가장 위험. 기대치 관리 + 저리스크 입구로 유도</div></div>
+  </div>
+
+  <h3 style="margin:22px 0 10px">수출 특화 확인 질문</h3>
+  <table>
+    <tr><th>#</th><th>질문</th><th>왜 묻는가 / 분기</th></tr>
+    <tr><td><b>E1</b></td><td><b>"이 제품들, 직접 만드시나요 아니면 만들어주는 공장이 따로 있나요?"</b></td><td>★최우선. <span class="mut">라벨로는 ㈜강고집·㈜동해씨앤디 위탁으로 확인되나 <b>대표 입으로 확인</b>받아야 한다. 단정 금지(지뢰)</span></td></tr>
+    <tr><td><b>E2</b></td><td>"HACCP은 갖고 계세요, 아니면 공장이 갖고 있나요?"</td><td>없으면 대부분 국가 B2B 통관·바이어 심사 탈락. <b>조미건어포 HACCP 2026-03-15 만료 경과분 연장 여부</b> 확인</td></tr>
+    <tr><td><b>E3</b></td><td>"공장과 계약이 어떻게 되어 있나요? <b>수출 협조 조항</b>이 있나요?"</td><td>단순 임가공 vs 독점공급. <b>인증 취득 협조 없으면 바이어를 데려와도 서류에서 멈춘다</b></td></tr>
+    <tr><td><b>E4</b></td><td><b>"똑똑호두&amp;피칸은 어디서 만드나요?"</b></td><td>★<b>권고 경로의 전제</b>. 견과 라인만 수산 규제를 회피하는데 제조원이 미확인</td></tr>
+    <tr><td><b>E5</b></td><td>"제품 유통기한이 얼마나 되나요? 제품마다 다른가요?"</td><td>★안주스낵 수출 최대 병목. 해상 4~6주 + 현지 유통 → 6개월 미만이면 <b>항공 강제 = 단가 붕괴</b></td></tr>
+    <tr><td><b>E6</b></td><td>"공장 최소생산단위(MOQ)가 어떻게 되나요?"</td><td>바이어 첫 주문은 소량. MOQ가 크면 첫 거래 자체가 불가</td></tr>
+    <tr><td><b>E7</b></td><td>"해외에서 연락 온 적, 한 번이라도 있으세요? 어느 나라였어요?"</td><td>실제 인입 이력 = 수요 검증. 있으면 그 나라가 곧 1순위 타겟(가설 아닌 실증)</td></tr>
+    <tr><td><b>E8</b></td><td>"원재료·영양성분표가 영문으로 정리된 게 있으세요?"</td><td>바이어가 <b>가장 먼저</b> 요구하는 문서. 없으면 문의 와도 회신 불가 = 기회 유실 중</td></tr>
+    <tr><td><b>E9</b></td><td>"'품절직전' 문구가 광고에 많던데, <b>마케팅 장치인가요 실제 수급 이슈인가요?</b>"</td><td>★실제라면 광고 증액 제안 자체가 위험. 오징어 -49%·명태 +51.6% 중</td></tr>
+    <tr><td><b>E10</b></td><td>"리비트와 리상회 매출·인력 비중이 어떻게 되나요? 3년 뒤 무게추는요?"</td><td>리소스 분산 검증 + 리상회 단독 예산 승인 가능 여부</td></tr>
+  </table>
+
+  <h3 style="margin:22px 0 10px">상담 흐름 (60분)</h3>
+  <table>
+    <tr><th>시간</th><th>구간</th><th>내용</th></tr>
+    <tr><td>0~7분</td><td>라포</td><td>제품 실물을 사서 테이블에 올려두고 시작<span class="mut">(오징어 11,000 + 어포튀각 8,900 = 2만원, 오늘 최고 ROI)</span>. "리비트 먼저 하시다가 안주로 넓히신 거잖아요, 어떤 계기가 있으셨어요?" → <b>Q2(어원)를 여기서 소진</b></td></tr>
+    <tr><td>7~12분</td><td>프레임 설정</td><td>"오늘은 뭘 팔러 온 게 아니고 무료 진단이라, 30분 정도는 제가 여쭤보기만 할 거예요." → <b>질문 많은 것에 대한 사전 면허</b>. 안 깔면 취조 느낌</td></tr>
+    <tr><td>12~20분</td><td>단계 판정</td><td>국내축(월매출·채널비중·광고 의존도) + 수출축(타겟국 유무·문의 이력). 숫자는 <b>범위로</b> 받는다</td></tr>
+    <tr><td>20~25분</td><td><b>예산 성격</b></td><td><b>Q1</b>. 단계 판정 직후, 처방 얘기 <b>전</b>에 배치 — 뒤로 밀면 또 못 묻는다</td></tr>
+    <tr><td>25~40분</td><td>수출 실사</td><td>E1~E10. ★<b>E1(제조주체)·E4(견과 제조원)·E5(유통기한) 3개는 반드시 확보</b></td></tr>
+    <tr><td>40~50분</td><td><b>진단 공유 ★승부처</b></td><td>Quick Tip 3개 투척. <b>받은 질문에 대한 값을 여기서 치른다.</b> 끝에 반드시 <b>"제가 잘못 본 게 있으면 말씀해주세요."</b></td></tr>
+    <tr><td>50~57분</td><td>클로징</td><td>수산식품 바우처(~11/30) 선행 호의 → 유료 브릿지</td></tr>
+    <tr><td>57~60분</td><td>마무리</td><td>서면 요청 2개까지만 + 후속 일정 그 자리에서 확정</td></tr>
+  </table>
+
+  <h3 style="margin:22px 0 10px">★ Quick Tip — 무료 진단의 값을 증명하는 카드</h3>
+  <div class="co ok"><span class="lab">Tip 1 · 리뷰 1.8만 건이 상품페이지에 안 보인다 (검증된 사실)</span>
+  "리뷰가 <b>18,000건</b>이나 쌓여 있는데, 지금 상품 상세페이지엔 <b>'아직 상품리뷰가 없습니다'</b>로 뜹니다. 별도 게시판에만 연동돼 있어서요. 하루 45건씩 계속 들어오는데 <b>전환의 가장 큰 근거가 비어 보이는 상태</b>입니다. 개발비는 거의 안 드는데 임팩트는 제일 큽니다."</div>
+  <div class="co ok" style="margin-top:10px"><span class="lab">Tip 2 · 템플릿 변수 노출 (검증된 사실)</span>
+  "홈페이지에 <b>{$*item_name}</b> 같은 카페24 치환코드가 그대로 떠 있습니다. 5분이면 고쳐요. 국내 고객은 넘어가도 <b>해외 바이어는 이걸로 판단합니다</b> — 거래 전에 제일 먼저 홈페이지를 열어보고, 코드가 노출돼 있으면 '관리가 안 되네' 하고 닫습니다. 식품이라 더 그렇고요."</div>
+  <div class="co ok" style="margin-top:10px"><span class="lab">Tip 3 · 상시할인이 수출 가격을 미리 망치고 있다</span>
+  "정가 18,000원짜리를 12,900원에 상시로 파시죠. 국내에선 흔한 전략인데 수출 준비 중이라면 위험합니다. <b>바이어는 반드시 한국 자사몰 가격을 봅니다.</b> 12,900원이 '진짜 가격'으로 읽히고 거기서 도매 마진을 또 빼달라고 해요. <b>정가를 실제로 받는 채널을 하나는 만들어두셔야 합니다.</b>"</div>
+  <div class="co" style="margin-top:10px"><span class="lab">투척 순서</span><b>Tip 1</b>(가볍고 검증가능·즉시 실행) → <b>Tip 3</b>(의외성) → <b>Tip 2</b>는 수출 맥락으로 연결. Tip 2를 뒤에 둬야 클로징으로 흐른다. <span class="mut">어원(Q2) 답변은 실시간으로 꽂아 넣을 것 — 대표 입에서 나온 단어를 되돌려주면 설득력이 배가된다.</span></div>
+
+  <h3 style="margin:22px 0 10px">★ 지뢰 — 밟으면 안 되는 것</h3>
+  <table>
+    <tr><th>#</th><th>지뢰</th><th>대신</th></tr>
+    <tr><td>1</td><td><b>본업(선물잡화) 폄하</b> — "잡화 하시다가 갑자기 식품을요?"</td><td>리비트는 캐시카우이자 자부심. <i>"두 개 다 하시는 게 쉽지 않으셨을 텐데요"</i></td></tr>
+    <tr><td>2</td><td><b>"OEM이시죠"라고 단정</b></td><td>라벨로는 확인됐지만 <b>열린 질문(E1)</b>으로. 단정하면 최대 강점을 못 알아본 게 될 수 있다</td></tr>
+    <tr><td>3</td><td><b>"신생기업이시니까"</b></td><td><b>실질 9년차</b>(2017-02 개인사업자). "2024년 설립"은 법인전환일 뿐</td></tr>
+    <tr><td>4</td><td><b>"209개국 배송 되시네요, 준비 잘 되셨네요"</b></td><td>Cafe24 기본값을 성과로 오독 = 리서치 얕다는 인상. <i>"세팅은 돼 있는데 실제 주문은 아직 없으신 거죠?"</i></td></tr>
+    <tr><td>5</td><td><b>수출바우처 "지금 신청 가능"</b> / BEPA 바우처 언급</td><td>★둘 다 <b>마감·자격미달</b>. 5초면 들통. <b>수산식품 바우처(~11/30)</b>로 말할 것</td></tr>
+    <tr><td>6</td><td><b>"영문 자산이 전무하시죠"</b></td><td>영문 제품명은 이미 존재. <i>"다국어 페이지 있으시던데 직접 하신 건가요, 카페24 자동인가요?"</i> <span class="mut">자동번역이면 원재료·알레르기 오역 = 통관 리스크로 재정의</span></td></tr>
+    <tr><td>7</td><td><b>히즈 미경험 영역 처방</b> — "인증도 저희가 해드립니다"</td><td>식품 수출 인증 실무 경험 없으면 금지. <i>"이건 전문기관 영역이고 저희는 앞단(브랜드·자료) 담당"</i>으로 역할 분리. <b>상담 중 자인하면 온도가 꺾인다</b></td></tr>
+    <tr><td>8</td><td><b>첫 상담에서 견적 숫자 제시</b></td><td>예산 성격만 받고 금액은 진단서와 함께. 무료 진단 자리에서 금액을 꺼내면 "결국 팔러 왔네"로 프레임 붕괴</td></tr>
+  </table>
+
+  <div class="co warn" style="margin-top:14px"><span class="lab">상담 후 서면 요청 (2개까지만)</span>
+  ① <b>실물 패키지 뒷면 사진</b>(제조원·품목보고번호·유통기한 일괄 확정) ② 최근 3개월 채널별 매출·리상회 단독 비중</div>
+</section><section id="sources">
+  <div class="sec-k">SOURCES</div>
+  <h2>참고 출처</h2>
+
+  <div class="co warn"><span class="lab">★ 이 문서의 한계 — 먼저 읽을 것</span>
+  <b>① 클라이언트 제공 자료: 없음.</b> 사전질문 답변·소개서·광고 대시보드가 전무해 <b>전량 직접 리서치</b>로 작성했다. 매출·원가·MOQ·유통기한·투자여력 등 인테이크에서만 나오는 정보는 <b>전부 미확인</b>이다.<br>
+  <b>② 모든 진단·니즈·적합도는 가설이다.</b> 상담 전 문서이므로 대표 확인 전 확정 금지.<br>
+  <b>③ 선행 PREP 존재</b> — 준일 작성 <a href="https://hizsystem.github.io/brandrise/research/resanghoe/" target="_blank" rel="noopener">v1(2026-08-18)</a>은 <b>국내 CRM·추석 선물 앵글</b> 중심이다. 본 v2는 <b>수출</b> 축으로, 내용이 겹치지 않고 상호보완적이다. v1의 정량치(리뷰·카톡친구·종업원수 등)를 인용했으며 재검증 표시를 유지한다.</div>
+
+  <div class="srcgrp">① 직접 리서치 — 1차 채널 (확인일 2026-08-20)</div>
+  <table>
+    <tr><th>항목</th><th>출처</th></tr>
+    <tr><td>가격·할인율·209개국 배송·미치환 템플릿 변수</td><td><a href="https://resanghoe.com/" target="_blank" rel="noopener">리상회 자사몰</a> — HTML 직접 파싱</td></tr>
+    <tr><td>모브랜드 사업구조(플라워백·무드등·디퓨저)</td><td><a href="https://rebeat.co.kr/" target="_blank" rel="noopener">㈜리비트 자사몰</a></td></tr>
+    <tr><td>구매수·스토어찜·정가 표기 불일치</td><td><a href="https://store.kakao.com/resanghoe" target="_blank" rel="noopener">카카오 스토어</a></td></tr>
+    <tr><td><b>제조원·품목보고번호·원산지</b></td><td>상품 고시 이미지 판독 <span class="mut">(근거 이미지 54건 별도 보관)</span></td></tr>
+    <tr><td>법인·업종·종업원수·업력</td><td>bizno / 국세청 업태 조회 <span class="mut">★cookiedeal.io는 더미 데이터로 인용 배제</span></td></tr>
+  </table>
+
+  <div class="srcgrp">② 정부지원사업 — 실심사</div>
+  <table>
+    <tr><td>수산식품 수출준비바우처</td><td><a href="https://global.at.or.kr/front/bizReq/brView.do?proj_id=8134" target="_blank" rel="noopener">aT 수출종합지원시스템</a> — ~2026-11-30 · 5천만원 · 061-931-0856</td></tr>
+    <tr><td>농식품 현지화지원사업</td><td><a href="https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000118524" target="_blank" rel="noopener">기업마당 공고</a> — 상시 · 80% 지원 · 061-931-0878</td></tr>
+    <tr><td>수출바우처 3차 <span class="mut">(마감)</span></td><td><a href="https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&amp;bcIdx=1069686&amp;parentSeq=1069686" target="_blank" rel="noopener">중기부 공고 제2026-444호</a></td></tr>
+    <tr><td>부산 수출입애로 바우처 <span class="mut">(마감·자격미달)</span></td><td><a href="https://trade.bepa.kr/support/responsiveness/info?seq=1478" target="_blank" rel="noopener">부산수출플랫폼</a> — 4/17 마감 + 3년 수출실적 증명서 필수</td></tr>
+    <tr><td>부산 해외지사화 <span class="mut">(마감)</span></td><td><a href="http://www.enewstoday.co.kr/news/articleView.html?idxno=2432336" target="_blank" rel="noopener">보도자료</a> — 담당 051-600-1822</td></tr>
+  </table>
+
+  <div class="srcgrp">③ 수출 규제 · 시장 통계</div>
+  <table>
+    <tr><td>K-Food+ 2025 실적 136.2억$</td><td><a href="https://www.mafra.go.kr/bbs/home/792/593514/download.do" target="_blank" rel="noopener">농식품부 보도자료 원문</a></td></tr>
+    <tr><td>K-씨푸드 33억$ · 김 11.3억$(+13.7%)</td><td><a href="https://www.korea.kr/briefing/pressReleaseView.do?newsId=156739824" target="_blank" rel="noopener">해수부 보도자료</a></td></tr>
+    <tr><td>미국 수산물 HACCP·시설등록·FSVP</td><td><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=83118" target="_blank" rel="noopener">식품음료신문 수출 가이드</a> · <a href="https://www.fda.gov/food/hazard-analysis-critical-control-point-haccp/seafood-haccp" target="_blank" rel="noopener">FDA Seafood HACCP</a></td></tr>
+    <tr><td>수출 위생증명서 발급 요건</td><td><a href="https://www.foodsafetykorea.go.kr/minwon/civilDetailList.do?menu_no=626&amp;menu_grp=MENU_GRP21" target="_blank" rel="noopener">식약처 민원안내</a></td></tr>
+    <tr><td>오징어 어획량 -49% / 명태 수입가 +51.6%</td><td><a href="https://biz.heraldcorp.com/article/10763363" target="_blank" rel="noopener">헤럴드경제</a> · <a href="https://biz.heraldcorp.com/article/10816198" target="_blank" rel="noopener">헤럴드경제</a></td></tr>
+    <tr><td>노쉬프로젝트 수출·할랄·LIPS</td><td><a href="https://www.mhns.co.kr/news/articleView.html?idxno=756043" target="_blank" rel="noopener">더쎈뉴스</a></td></tr>
+  </table>
+
+  <div class="co bad" style="margin-top:16px"><span class="lab">★ 미확인 — 상담에서 반드시 확보 (우선순위 순)</span>
+  ① <b>똑똑호두&amp;피칸 제조원</b> — 권고 경로(견과 라인 0→1)의 전제 ② <b>제조사 계약 형태·수출 협조 조항</b> ③ <b>㈜동해씨앤디 HACCP 보유 여부</b> ④ <b>㈜강고집 조미건어포 HACCP 연장</b>(2026-03-15 만료) ⑤ 제품별 <b>유통기한·MOQ·원가</b> ⑥ 해외 문의 실발생 이력 ⑦ 리상회 단독 매출·채널 비중 ⑧ 특허 10-2369329 <b>실시권</b> ⑨ <b>유통전문판매업 신고</b> 여부(연제구청) ⑩ 원산지/FTA 특혜관세 판정<br>
+  <b>가장 빠른 방법 — 실물 패키지 뒷면 사진 한 장이면 ①③④⑤ 상당수가 한 번에 확정된다.</b></div>
+
+  <div class="co" style="margin-top:12px"><span class="lab">유선 확인 권장 (상담 전 5분)</span>
+  · <b>aT 061-931-0878</b> — 현지화지원 제외사유("현지 파트너 계약 미확정")가 실재하는지<br>
+  · <b>aT 수산사업단 061-931-0856</b> — 수산식품 바우처를 <b>유통전문판매원 명의로 신청 가능한지</b><br>
+  · <b>KTR 1522-0141</b> — 해외규격인증획득지원은 "공장을 인증"하는 구조라 유통사 명의 문제 발생 가능</div>
+</section>
+  </main>
+</div>
+
+<footer><div class="in">
+  BRANDRISE · 리상회(RESANGHOE) 수출 상담 PREP v2 · 작성 2026-08-20 by hannah<br>
+  상담 전 문서 — 진단·니즈·적합도는 전부 가설이며, 클라이언트 인테이크 자료 없이 직접 리서치만으로 작성됨.
+</div></footer>
+
+</body>
+</html>
