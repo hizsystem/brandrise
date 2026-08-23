@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<!--
+  백경증류소 × HIZ — 킥오프 진행 화면 (2026-08-25 화 14:00~16:00 대면)
+  · 소스 실측 2026-08-21 : 견적 시트 1emqHfmD…「백경증류소」탭(2026-07-30 ver.) ·「스케줄」탭 gid 2039720267
+    · 계약서 [HIZ] 2026 백경 브랜드 컨설팅 계약서_260810(최종_11월말개정).docx · research/baekkyung-v2 PREP
+  · 우측 상단 [내부 노트] 토글 = 기본 OFF. 화면 공유 시 그대로 켜지 말 것.
+  · 작업 우성민 / PM 우성민
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>백경증류소 킥오프</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.75;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:16.5px}
+
+.hero{background:linear-gradient(135deg,#0b1220 0%,#132033 44%,#1e3a5f 100%);color:#fff;padding:72px 0 60px;position:relative;overflow:hidden}
+.hero::after{content:"白鯨";position:absolute;right:1%;bottom:-16%;font-size:clamp(150px,20vw,320px);font-weight:800;letter-spacing:-.04em;color:#fff;opacity:.055;line-height:.8;pointer-events:none}
+.hero .in{max-width:1360px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#a5c8e8;border:1px solid rgba(165,200,232,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:42px;font-weight:800;letter-spacing:-.03em;line-height:1.14;margin-bottom:14px}
+.hero .sub{font-size:16.5px;color:#c8d4e0;font-weight:300;max-width:760px;line-height:1.8}
+.hero .meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#93c5fd}
+
+.layout{max-width:1360px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:208px 1fr;gap:48px;align-items:start}
+nav.toc{position:sticky;top:28px;padding:36px 0;font-size:13.5px}
+nav.toc .nl{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--muted);margin:0 0 14px 12px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;border-left:2px solid transparent;transition:.15s;font-weight:500}
+nav.toc a:hover{color:var(--ink);background:var(--soft)}
+nav.toc a.on{color:var(--ac);background:var(--ac-50);border-left-color:var(--ac);font-weight:700}
+main{padding:36px 0 120px;min-width:0}
+section{margin-bottom:56px;scroll-margin-top:24px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+h2{font-size:29px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px;text-wrap:balance}
+.lead{font-size:18px;color:var(--ink2);margin-bottom:30px;line-height:1.8;text-wrap:balance}
+h3{font-size:19px;font-weight:800;margin:32px 0 12px;letter-spacing:-.01em;text-wrap:balance}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.co{border:1px solid var(--line2);border-left:3px solid var(--line);border-radius:0 10px 10px 0;padding:18px 24px;margin:20px 0;font-size:16px;line-height:1.8;text-wrap:pretty;background:#fff}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100);border-left-color:var(--ac)}
+.co.ok{background:var(--ok-50);border-color:#bbf7d0;border-left-color:var(--ok)}
+.co.warn{background:var(--warn-50);border-color:#fde68a;border-left-color:var(--warn)}
+.co.bad{background:var(--bad-50);border-color:#fecdd3;border-left-color:var(--bad)}
+.co b,.co strong{color:var(--ink);font-weight:700}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th{background:var(--soft);text-align:left;padding:11px 14px;font-weight:700;font-size:12.5px;letter-spacing:.02em;color:var(--ink2);border-bottom:1px solid var(--line)}
+td{padding:11px 14px;border-bottom:1px solid var(--line2);vertical-align:top;line-height:1.65}
+tr:last-child td{border-bottom:0}
+.tw{overflow-x:auto;margin:16px 0}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.04em;padding:3px 8px;border-radius:6px;vertical-align:middle}
+.t-red{background:var(--bad-50);color:#be123c} .t-amb{background:var(--warn-50);color:#b45309}
+.t-ok{background:var(--ok-50);color:#047857} .t-ac{background:var(--ac-50);color:var(--ac-700)}
+.t-gr{background:#f1f5f9;color:#475569}
+
+/* 인터뷰 블록 — 화면 공유용 큰 타이포 */
+.qb{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 34px;margin-bottom:16px}
+.qb .qh{display:flex;align-items:baseline;gap:12px;margin-bottom:6px;flex-wrap:wrap}
+.qb .qn{font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--ac)}
+.qb h4{font-size:25px;font-weight:800;letter-spacing:-.02em}
+.qb .qm{font-size:13px;color:var(--muted);font-weight:600}
+.qb ul{list-style:none;margin-top:18px}
+.qb li{font-size:20px;line-height:1.62;padding:12px 0 12px 30px;position:relative;color:var(--ink);border-top:1px solid var(--line2)}
+.qb li:first-child{border-top:0}
+.qb li::before{content:"—";position:absolute;left:0;top:12px;color:#cbd5e1;font-weight:700}
+.qb li.star::before{content:"★";color:var(--ac);font-size:15px;top:15px}
+.qb li.star{font-weight:700}
+.qb li .why{display:block;font-size:13.5px;color:var(--muted);font-weight:500;margin-top:5px;line-height:1.6}
+
+ol.steps{list-style:none;counter-reset:s}
+ol.steps li{counter-increment:s;position:relative;padding:14px 0 14px 44px;border-bottom:1px solid var(--line2);font-size:16px;line-height:1.7}
+ol.steps li:last-child{border-bottom:0}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:14px;width:27px;height:27px;border-radius:8px;background:var(--ac-50);color:var(--ac-700);font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center}
+ol.steps li b{font-weight:700}
+ol.steps li .sub{display:block;font-size:14px;color:var(--muted);margin-top:4px;line-height:1.65}
+
+.chk{list-style:none}
+.chk li{position:relative;padding:12px 0 12px 32px;border-bottom:1px solid var(--line2);font-size:16px;line-height:1.7}
+.chk li:last-child{border-bottom:0}
+.chk li::before{content:"";position:absolute;left:0;top:17px;width:15px;height:15px;border:2px solid #cbd5e1;border-radius:4px}
+.chk li .sub{display:block;font-size:13.5px;color:var(--muted);margin-top:3px;line-height:1.6}
+
+/* 내부 노트 토글 */
+.priv{display:none}
+body.show-priv .priv{display:block}
+.privbar{position:fixed;right:20px;top:20px;z-index:50}
+.privbtn{font-family:inherit;font-size:12px;font-weight:800;letter-spacing:.04em;padding:9px 15px;border-radius:9px;border:1px solid rgba(255,255,255,.25);background:rgba(15,23,42,.72);color:#fff;cursor:pointer;backdrop-filter:blur(6px)}
+body.show-priv .privbtn{background:var(--bad);border-color:var(--bad)}
+.priv .card,.priv .co{border-style:dashed}
+.privmark{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--bad);margin-bottom:8px}
+
+.foot{max-width:1360px;margin:0 auto;padding:34px 40px 60px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);line-height:1.9}
+
+@media (max-width:1080px){
+  .layout{grid-template-columns:1fr;gap:0;padding:0 22px}
+  nav.toc{display:none} .hero .in{padding:0 22px} .hero h1{font-size:31px}
+  .grid2,.grid3{grid-template-columns:1fr}
+  .qb{padding:22px 20px} .qb li{font-size:17.5px} .qb h4{font-size:21px}
+  .foot{padding:28px 22px 50px}
+}
+@media print{ .privbar,nav.toc{display:none} .layout{grid-template-columns:1fr} body{font-size:12px} }
+</style>
+</head>
+<body>
+
+<div class="privbar"><button class="privbtn" id="pb">내부 노트 OFF</button></div>
+
+<header class="hero">
+  <div class="in">
+    <div class="badge">KICK-OFF · 브랜드 파트너십</div>
+    <h1>백경증류소 × HIZ 킥오프</h1>
+    <p class="sub">오늘부터 시작한다는 걸 서로 확인하는 자리다. 앞의 절반은 <b>4개월을 어떻게 쓸지</b>, 뒤의 절반은 <b>백경이 어떤 브랜드인지 대표님 입으로 듣는 시간</b>이다. 오늘 나온 이야기가 촬영·라벨·홈페이지 카피의 원본이 된다.</p>
+    <div class="meta">
+      <span class="chip">2026-08-25 (화) · 대면</span>
+      <span class="chip">계약 <b>2026-08-04 ~ 11-30</b> · 4개월</span>
+      <span class="chip">총액 <b>97,200,000</b> (VAT 별도)</span>
+      <span class="chip">파트 <b>IMC · 인스타 · 홈페이지 · 브랜드/패키지</b></span>
+      <span class="chip">촬영까지 <b>D-14</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+<nav class="toc">
+  <div class="nl">CONTENTS</div>
+  <a href="#a1">오늘의 목적</a>
+  <a href="#a2">아젠다</a>
+  <a href="#a3">확정 사항</a>
+  <a href="#a4">스케줄 · 3개 게이트</a>
+  <a href="#a5">브랜드 인터뷰</a>
+  <a href="#a6">오늘 정할 5가지</a>
+  <a href="#a7">백경 측 요청</a>
+  <a href="#a8">다음 2주</a>
+</nav>
+
+<main>
+
+<!-- ═══════════ 1. 목적 ═══════════ -->
+<section id="a1">
+  <div class="sec-k">PURPOSE</div>
+  <h2>오늘의 목적</h2>
+  <p class="lead">제안하는 자리가 아니다. 듣는 자리다. 대신 일정만큼은 오늘 확정한다.</p>
+
+  <div class="grid3">
+    <div class="card"><span class="tag t-ac">01</span>
+      <h3 style="margin:12px 0 8px;font-size:17px">시작 신호를 맞춘다</h3>
+      <p style="font-size:15px;color:var(--ink2)">계약은 8/4자로 시작됐다. 오늘부터 양쪽이 같은 캘린더를 본다.</p></div>
+    <div class="card"><span class="tag t-ac">02</span>
+      <h3 style="margin:12px 0 8px;font-size:17px">브랜드를 채집한다</h3>
+      <p style="font-size:15px;color:var(--ink2)">白鯨·아버지·제주·토종쌀. 지금 문서 어디에도 없는 이야기를 오늘 받는다.</p></div>
+    <div class="card"><span class="tag t-ac">03</span>
+      <h3 style="margin:12px 0 8px;font-size:17px">촬영을 연다</h3>
+      <p style="font-size:15px;color:var(--ink2)">9/8~9/9 촬영이 4개월 전체의 첫 관문이다. 오늘 여기서 방향이 정해져야 움직인다.</p></div>
+  </div>
+
+  <div class="co ac"><b>오늘 이 자리의 성격 한 줄.</b> 백경은 술·기술·인증이 이미 최상위다. 비어 있는 건 <b>소비자가 읽을 언어</b>와 <b>그 언어를 실을 자기 채널</b>이다. 그 언어의 원재료는 대표님한테만 있다 — 그래서 오늘 절반이 인터뷰다.</div>
+
+  <div class="priv">
+    <div class="privmark">■ 내부 노트</div>
+    <div class="co bad">
+      <b>진행 원칙 — 하지 말 것 4개</b><br>
+      · <b>디자인을 깎지 않는다.</b> 현 브랜드 디자인은 대표 배우자 작업물이고 4회 수정·4,000만원이 들어갔다. 사내 디자이너·콘텐츠마케터가 그 자리에 앉아 있을 수 있다. 진입은 <b>브랜드 전략 → SKU 정리 → 유통 설계</b>, 디자인은 그 결론에 딸려오는 순서로만 말한다.<br>
+      · <b>"첫해 매출 400만원" 인용 금지.</b> 대표 자책 발언이다. 우리가 되풀이하면 관계가 상한다.<br>
+      · <b>숫자를 단정하지 않는다.</b> 리뷰 수·SKU 수는 플랫폼마다 값이 다르다. "채널마다 흩어져 합산이 안 된다"는 사실 자체만 쓴다.<br>
+      · <b>술 얘기가 시작되면 끊지 않는다.</b> 답의 길이가 온도계다. 白鯨 얘기가 길게 나오면 서사 자산이 살아 있는 것이고, 짧으면 대표에게 이름은 아직 기능적 라벨이다. 그 판정이 콘텐츠 전략을 가른다.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 2. 아젠다 ═══════════ -->
+<section id="a2">
+  <div class="sec-k">AGENDA</div>
+  <h2>아젠다 · 120분</h2>
+  <p class="lead">앞 45분은 우리가 말하고, 뒤 55분은 대표님이 말한다. 마지막 20분에 오늘 정할 것을 정한다.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th style="width:74px">구간</th><th style="width:132px">주제</th><th>내용</th><th style="width:118px">이 구간의 산출</th></tr></thead>
+    <tbody>
+      <tr><td class="num">0~10′</td><td><b>오프닝</b></td><td>인사 · 오늘 순서 합의 · 양측 팀 소개(누가 뭘 맡는지)</td><td>담당·창구 확정</td></tr>
+      <tr><td class="num">10~25′</td><td><b>확정 사항</b></td><td>계약 4개월(11/30) · 4개 파트 스코프 · 입금 3분할 · 사업비 정산 증빙</td><td>계약서 개정본 날인</td></tr>
+      <tr><td class="num">25~45′</td><td><b>스케줄</b></td><td>11/30에서 거꾸로 짠 일정 워크스루 · 게이트 3개 · 대표님 해외 일정 대조</td><td>촬영일 확정</td></tr>
+      <tr><td class="num">45~100′</td><td><b>브랜드 인터뷰</b><br><span class="tag t-ac">메인</span></td><td>8개 블록. 화면에 질문 띄워놓고 편하게 진행. <b>녹음</b>(사전 동의)</td><td>서사·SKU·타깃 원재료</td></tr>
+      <tr><td class="num">100~115′</td><td><b>정할 것 5개</b></td><td>촬영일 · 무드 방향 · 라벨 5종 · 홈페이지 개발 주체 · 정기 미팅 요일</td><td>결정 5건</td></tr>
+      <tr><td class="num">115~120′</td><td><b>요청 · 마무리</b></td><td>백경 측 제공 자료 목록(9/1 마감) · 다음 2주 일정 · 채널 개설</td><td>요청서 전달</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="co warn"><b>인터뷰가 55분인 이유.</b> 앞 45분은 이미 계약서·견적서·스케줄 시트에 다 적혀 있다. 문서로 대신할 수 없는 건 뒤 55분뿐이다. 시간이 밀리면 <b>앞을 줄이고 인터뷰를 지킨다.</b></div>
+
+  <div class="priv">
+    <div class="privmark">■ 내부 노트</div>
+    <div class="co bad"><b>🔴 당일 일정 충돌.</b> 캘린더상 이 미팅은 <b>14:00~16:00</b>인데, 같은 날 <b>15:30 고벤처포럼에서 데이로(이일오) 공동대표 동석 논의</b>가 잡혀 있다(8/19 랩업 기준). 둘 다 성민님 자리라 물리적으로 겹친다. 이번 주 안에 <b>백경을 13:00~15:00으로 당기거나</b>, 데이로 동석을 16:30 이후로 미루거나, 둘 중 하나를 정해야 한다. 백경은 세종에서 올라오는 대면 미팅이라 당일 조정이 어렵다 — <b>먼저 손대야 할 쪽은 데이로</b>.</div>
+  </div>
+</section>
+
+<!-- ═══════════ 3. 확정 사항 ═══════════ -->
+<section id="a3">
+  <div class="sec-k">SETTLED</div>
+  <h2>확정 사항</h2>
+  <p class="lead">계약·금액·스코프. 여기는 확인만 하고 넘어간다.</p>
+
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">계약</h3>
+      <div class="tw"><table>
+        <tbody>
+        <tr><th style="width:104px">업무 기간</th><td><b>2026-08-04 ~ 11-30</b> · 약 4개월<br><span style="color:var(--muted);font-size:13.5px">구 12/31 → 백경 사업비 마감(11/30)에 맞춰 단축</span></td></tr>
+        <tr><th>총액</th><td class="num"><b>97,200,000</b> (VAT 별도)<br><span style="color:var(--muted);font-size:13.5px">견적 110,000,000 − 네고 17,800,000</span></td></tr>
+        <tr><th>구성</th><td>IMC 전략 1,000만 · 인스타그램 5,000만 · 홈페이지 1,500만 · 브랜드/패키지 3,000만</td></tr>
+        <tr><th>수정</th><td>기획 범위 내 <b>2회 무상</b> (제7조)</td></tr>
+        <tr><th>승인 간주</th><td>검수 <b>5영업일</b> 무통지 / 승인요청 <b>3영업일</b> 무회신 (제6·7조)</td></tr>
+        <tr><th>범위 밖</th><td>인쇄·제작비 · 카페24 이용료 · 알림톡 · 인스타 광고비 · 앰버서더 광고비 → 별도</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">대금 · 정산</h3>
+      <div class="tw"><table>
+        <thead><tr><th>차수</th><th>시점</th><th class="num">금액</th></tr></thead>
+        <tbody>
+        <tr><td>1차</td><td><b>8월 말일</b> · 계약·브랜드기획 착수</td><td class="num">30,000,000</td></tr>
+        <tr><td>2차</td><td>10월 말일 · BI·시각디자인·소셜 착수</td><td class="num">30,000,000</td></tr>
+        <tr><td>3차</td><td>11월 말일 · 최종 납품 후 잔금</td><td class="num">37,200,000</td></tr>
+        </tbody>
+      </table></div>
+      <p style="font-size:14.5px;color:var(--ink2);margin-top:14px">세금계산서는 <b>2026년 11월 내 전액 발행</b>(사업비 마감 대응). 사업비 집행 증빙은 계약 시·지급 건별·완료 시 3단계로 제출한다.</p>
+    </div>
+  </div>
+
+  <div class="co warn"><b>사업비 정산이 이 프로젝트의 숨은 마감이다.</b> 결과보고서 · 검수조서용 증빙사진 · 최종 디자인 원본까지 내야 정산이 닫힌다. 제출 마감 <b>11/27(금)</b> — 계약 종료 D-1영업일이다. 백경 측 정산 담당자를 오늘 지정해 두면 11월이 편해진다.</div>
+
+  <div class="priv">
+    <div class="privmark">■ 내부 노트</div>
+    <div class="card">
+      <b>🔴 문서 정합성 — 킥오프 전에 정리할 것 2건</b>
+      <ul class="chk" style="margin-top:12px">
+        <li><b>계약서 11월말 개정본 날인</b> — 개정 파일은 이미 만들어져 있다(<code>…계약서_260810(최종_11월말개정).docx</code>, 8/10 생성). 개정 6건 = 제3조 기간·제3조 운영월(9~12월→8~11월)·제9조 종료일·제14조② 3차·제15조 계산서월. <b>서명 완료 여부가 확인 안 됐다</b> — 미서명이면 오늘 자리에서 날인하거나 모두싸인으로 당일 발송.
+        <li><b>견적서 4개월판 교체</b> — 현 견적 시트에 <b>"프로젝트 운영 기간 : 계약일로부터 최소 6개월"</b>, 항목 기준 <b>"6months" 2곳</b>이 그대로 남아 있다(2026-07-30 ver.). 계약(4개월)과 어긋나므로 킥오프 전에 4개월판으로 정정해 배포한다. <span class="sub">놔두면 11월에 "6개월 계약 아니었냐"가 나온다.</span>
+        <li><b>1차 3,000만 세금계산서</b> — 지급 기한이 <b>8/31(월)</b>. 계산서 수신 담당자·이메일·발행일을 오늘 확정한다.
+        <li><b>정산 증빙 세트 요청</b> — 사업자등록증 · 법인등기부등본 · <b>비교견적서 2부</b> · 통장사본 · 과업지시서. 계약 단계 증빙이라 이번 주에 받아야 한다.
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 4. 스케줄 ═══════════ -->
+<section id="a4">
+  <div class="sec-k">SCHEDULE</div>
+  <h2>스케줄 · 3개 게이트</h2>
+  <p class="lead">끝(11/30)이 고정이라 앞에서부터 짜지 않고 뒤에서부터 거꾸로 짰다. 게이트 3개만 지키면 나머지는 따라온다.</p>
+
+  <div class="grid3">
+    <div class="card" style="border-top:3px solid var(--bad)">
+      <span class="tag t-red">GATE 1</span>
+      <h3 style="margin:12px 0 6px;font-size:18px">촬영 · 9/8~9/9</h3>
+      <p style="font-size:15px;color:var(--ink2)">세종 증류소·고택 2일. 오늘로부터 <b>D-14</b>.<br>여기서 나온 컷이 추석(9/25)·파리(9/26)에 쓸 <b>유일한 신규 자산</b>이다.</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--warn)">
+      <span class="tag t-amb">GATE 2</span>
+      <h3 style="margin:12px 0 6px;font-size:18px">라벨 확정 · 10/16</h3>
+      <p style="font-size:15px;color:var(--ink2)">대표님 <b>10/19 오스트리아 출국 전</b>에 승인이 끝나야 한다. 이어서 주류 표시사항 검수·승인 10/23.</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--ac)">
+      <span class="tag t-ac">GATE 3</span>
+      <h3 style="margin:12px 0 6px;font-size:18px">정산 · 11/27</h3>
+      <p style="font-size:15px;color:var(--ink2)">결과보고서·증빙사진·최종 원본 제출. 사업비 마감 <b>11/30</b>의 D-1영업일.</p>
+    </div>
+  </div>
+
+  <h3>① 촬영까지 — 2주 역산</h3>
+  <ol class="steps">
+    <li><b>8/25 (화) · 오늘</b> — 킥오프 인터뷰 + 촬영 무드 방향 현장 확정 + 자료 요청서 전달
+      <span class="sub">여기서 방향이 안 나오면 8/28 시안이 못 나온다</span></li>
+    <li><b>8/28 (금)</b> — 무드보드 1차 시안 전달 → <b>9/2(수) 승인 마감</b> (3영업일)
+      <span class="sub">촬영 스타일링·아트디렉션의 선행 조건</span></li>
+    <li><b>9/1 (화) · 백경 측 마감</b> — 제품 실물 5종 / 증류소·고택 로케 협의 완료 / 생산자 출연 확정
+      <span class="sub">이 세 개가 늦으면 촬영일 자체가 밀린다</span></li>
+    <li><b>9/4 (금)</b> — 촬영 기획안 · 콘티 · 컷 리스트 확정 <b>(D-2)</b></li>
+    <li><b>9/8~9/9 (화·수)</b> — 촬영 2일. 사진 A컷 30+ / B컷 20+ / 브랜드 필름 1 · 숏폼 5+</li>
+    <li><b>9/18 (금)</b> — 1차 편집 컷 전달 → 추석(9/25) 영업 · 파리(9/26) 투입</li>
+    <li><b>9/24 (목)</b> — 브랜드 서사 · SKU 위계 1차 납품 <b>승인 마감</b>
+      <span class="sub">대표님이 9/25~10/1 프랑스·홍콩으로 나가 계신다 — 그 전에 닫는다</span></li>
+  </ol>
+
+  <div class="co bad"><b>9/8 촬영이 밀리면 생기는 일.</b> 다음 가능일은 9/15~16이고, 그러면 1차 컷이 9/24~25에 나온다. 추석 당일·파리 출국 직전이다. 즉 <b>파리·홍콩·오스트리아·상하이 4개 전시를 전부 기존 자산으로 나가시게 된다.</b> 오늘 촬영일을 확정하는 게 오늘 자리에서 가장 값이 큰 결정이다.</div>
+
+  <h3>② 11/30까지 — 큰 흐름</h3>
+  <div class="tw"><table>
+    <thead><tr><th style="width:88px">시점</th><th style="width:150px">파트</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td class="num">8월 말</td><td>IMC · 리서치</td><td>브랜드/제품/시장/경쟁 리서치 · SKU 35종 위계 정리 착수 · 무드보드 1차</td></tr>
+      <tr><td class="num">9월</td><td>촬영 · 기획</td><td><b>촬영 9/8~9/9</b> → 후반 편집 · 홈페이지 기획 · 브랜드 디자인 요소 개발 · 컬러/타이포</td></tr>
+      <tr><td class="num">10월 초</td><td>인스타</td><td><b>인스타그램 리뉴얼 오픈</b> (국·영·일 병기) → 본운영 시작 · 앰버서더 15인 씨딩 착수</td></tr>
+      <tr><td class="num">10월 중</td><td>패키지</td><td><b>라벨 5종 확정 10/16</b> → 표시사항 검수·승인 10/23 → 선물세트 확정 10/30</td></tr>
+      <tr><td class="num">11월 초</td><td>패키지 · 웹</td><td>인쇄·제작 발주 11/2 · 홈페이지 시각 디자인 완료 → 퍼블리싱</td></tr>
+      <tr><td class="num">11월 중</td><td>납품</td><td>디자인 최종 납품 11/9 · <b>홈페이지 오픈</b> · 2027 상반기 플랜 인계</td></tr>
+      <tr><td class="num">11/27~30</td><td>정산</td><td>정산 증빙 제출 11/27 → <b>계약 종료 11/30</b></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>③ 대표님 일정과 겹치는 지점</h3>
+  <div class="tw"><table>
+    <thead><tr><th style="width:112px">일정</th><th style="width:150px">내용</th><th>프로젝트에 미치는 영향</th></tr></thead>
+    <tbody>
+      <tr><td class="num">9/25</td><td>추석</td><td>리뉴얼 전이라 <b>기존 자산 + 촬영 1차 컷</b>으로 대응</td></tr>
+      <tr><td class="num">9/26~9/28</td><td>파리 위스키 라이브</td><td rowspan="2"><b>9/25~10/1 승인 공백 5일.</b> 무드보드·브랜드 서사·촬영 1차 컷은 전부 <b>9/24까지</b> 승인 마감</td></tr>
+      <tr><td class="num">9/30</td><td>홍콩 페어링</td></tr>
+      <tr><td class="num">10/19</td><td>오스트리아 팔스타프</td><td>라벨 5종 확정을 <b>10/16(금)</b>로 앞당김. 표시사항 승인(10/23)은 귀국 후 전제 — <b>귀국일 확인 필요</b></td></tr>
+      <tr><td class="num">11/10</td><td>상하이 프로와인</td><td>디자인 최종 납품(11/9) 직후. 영문 자산 투입 가능</td></tr>
+      <tr><td class="num">11월 중</td><td>뉴욕 CIA 강연 <span class="tag t-gr">검토</span></td><td>확정 시 강연 자료·영문 브랜드 서사는 <b>별도 견적</b>. 11/30 정산 마감과 충돌 여부 확인</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="co ac"><b>해외 4건이 전부 B2B 영업 무대다.</b> 그래서 견적의 "국·영·일 병기" 중 <b>영문 자산의 우선순위가 올라간다.</b> 파리(9/26) 기준으로 영문 브랜드 소개·제품 시트가 손에 있어야 하는지, 오늘 확인하고 싶다.</div>
+
+  <div class="priv">
+    <div class="privmark">■ 내부 노트</div>
+    <div class="co bad">
+      <b>🔴 스케줄 진단 — 착수 대비 3주 지연 상태로 시작한다</b><br>
+      스케줄 시트 정본은 <b>킥오프를 W1(8/4)</b>로 놓고 짜여 있다. 실제 킥오프가 <b>8/25 = W4</b>라 앞단이 통째로 3주 밀렸다. 이미 지나간 구간 : 리서치&분석(W2~3, 8/10~8/23) 미착수 · 무드보드 개발(W3~) 미착수 · 브랜드 기획 2개월(W2~W9) → 6주로 압축.<br><br>
+      <b>그런데 뒤는 못 민다</b>(11/30 사업비 마감). 고정 못 움직이는 것 5개 = 추석 9/25 · 파리·홍콩(9/26~30 대표 부재) · 오스트리아 10/19 출국 · 상하이 11/10 · 11/30 마감.<br>
+      → <b>지연분은 앞단(리서치·무드보드)에서만 흡수 가능</b>하고, 흡수 방법은 하나뿐이다. <b>킥오프에서 무드 방향을 그 자리에서 픽하는 것.</b> 그래서 레퍼런스 3안을 들고 들어간다(§내부 준비물 참조).<br><br>
+      뒷단(홈페이지 기획 W4~7 · 라벨 10/16 · 웹 오픈 W17)은 지연 흡수 후에도 <b>원안 유지 가능</b>하다. 실제로 깨지는 건 앞단 하나뿐이니 촬영만 지키면 된다.
+    </div>
+    <div class="co warn">
+      <b>🔴 8월 채널 운영분이 증발한다 — 오늘 재정의해 둘 것</b><br>
+      계약 제3조는 <b>인스타 4개월 운영 = 8~11월</b>이다. 그런데 8월은 이미 3주가 지났고 실운영이 없었다. 그대로 두면 11월에 "4개월 운영 안 받았다"가 나올 수 있다.<br>
+      → 오늘 자리에서 <b>8월분 = 계정 진단 + 콘텐츠 대시보드 셋업 + 프로필·하이라이트 정비 + 추석 영업 대응</b>으로 정의하고 회의록에 남긴다. 총액·기간은 건드리지 않는다.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 5. 인터뷰 ═══════════ -->
+<section id="a5">
+  <div class="sec-k">INTERVIEW · 55분</div>
+  <h2>브랜드 인터뷰</h2>
+  <p class="lead">정답이 있는 질문이 아니다. 편하게 얘기해 주시면 된다. 오늘 나온 말이 그대로 콘텐츠 문장과 라벨 카피의 원본이 된다. <b>★ 표시는 꼭 듣고 싶은 것.</b></p>
+
+  <div class="qb">
+    <div class="qh"><span class="qn">BLOCK 1</span><h4>白鯨이라는 이름</h4><span class="qm">· 8분</span></div>
+    <ul>
+      <li class="star">백경이 모비딕의 흰 고래에서 왔다는 건 인터뷰에서 봤습니다. 그런데 그 이름을 <b>왜 하필 술에</b> 붙이셨어요? 그때 그 순간이 궁금합니다.</li>
+      <li>도올 선생님 친필은 어떻게 받으신 거예요?</li>
+      <li>아버님께 배운 것 중에 지금도 절대 안 바꾸는 게 있으세요?</li>
+      <li>제주에서 보낸 3년, 백경에 남은 게 있다면 뭘까요?</li>
+      <li class="star">지금 백경을 한 문장으로 소개하신다면 뭐라고 하세요?
+        <span class="why">이 답이 브랜드 슬로건의 출발점이 된다</span></li>
+    </ul>
+  </div>
+
+  <div class="qb">
+    <div class="qh"><span class="qn">BLOCK 2</span><h4>술 그 자체</h4><span class="qm">· 8분</span></div>
+    <ul>
+      <li class="star">왜 <b>15도</b>예요? 그 숫자가 어디서 나왔어요?</li>
+      <li>토종쌀, 독자 누룩, 3단계 온도 발효 — 술 잘 모르는 사람한테 설명하시면 뭐라고 하세요?
+        <span class="why">기술 언어를 소비자 언어로 바꾸는 작업, 그 원문이 필요하다</span></li>
+      <li>처음 드셔본 분이 뭐라고 하실 때 제일 기분 좋으세요?</li>
+      <li>맛에서 절대 양보 못 하는 지점 하나만요.</li>
+      <li class="star">상온유통 되는 새 라인, 지금 어디까지 왔어요? 몇 종이고 언제 나가세요? 지금 백경15랑은 어떤 관계예요 — 대체인가요, 따로 가나요?</li>
+    </ul>
+  </div>
+
+  <div class="qb">
+    <div class="qh"><span class="qn">BLOCK 3</span><h4>사는 사람</h4><span class="qm">· 8분</span></div>
+    <ul>
+      <li class="star">백경 사가시는 분들, <b>본인이 드시려고</b> 사세요 아니면 <b>선물로</b> 사세요?</li>
+      <li>선물이면 누가 누구한테 주는 거예요? 어떤 자리예요?</li>
+      <li>지금까지 받아보신 반응 중에 제일 기억에 남는 한마디가 뭐예요?</li>
+      <li class="star">손님들이 백경 대신 뭘 살 것 같으세요 — 다른 전통주요, 위스키나 사케요?
+        <span class="why">"위스키·사케"라고 답하시면 선물 포지션이 이미 잡힌 것</span></li>
+      <li>750ml에 4만 5천 원, 향온은 12만 원. 이 가격 처음 듣는 분들 표정이 어떠세요?</li>
+    </ul>
+  </div>
+
+  <div class="qb">
+    <div class="qh"><span class="qn">BLOCK 4</span><h4>서른다섯 개의 술</h4><span class="qm">· 8분</span></div>
+    <ul>
+      <li class="star">지금 등록된 게 서른다섯 종쯤 되던데, 그중에 <b>진짜 밀고 싶은 걸 순서대로 세 개</b>만 꼽아주세요.</li>
+      <li>그 순서로 두신 이유가 뭐예요?</li>
+      <li class="star">라벨 리뉴얼 5종, 대표님 머릿속엔 어느 다섯 개예요?
+        <span class="why">오늘 정할 5가지 중 하나 — 촬영 제품 컷과 직결된다</span></li>
+      <li>반대로 정리하고 싶은 건 있으세요?</li>
+      <li>향온은 누구한테 파는 술이에요?</li>
+    </ul>
+  </div>
+
+  <div class="qb">
+    <div class="qh"><span class="qn">BLOCK 5</span><h4>파는 자리</h4><span class="qm">· 7분</span></div>
+    <ul>
+      <li class="star">지금 매출이 채널별로 몇 대 몇이에요 — 백화점·면세·카카오·자사몰·스마트스토어·B2B?</li>
+      <li class="star">그 채널들에서 <b>산 손님 명단은 누가 갖고 있어요?</b> 백화점이 갖나요, 대표님이 갖나요?
+        <span class="why">CRM·자사몰 설계의 전제가 여기서 갈린다</span></li>
+      <li>자사몰에서 제일 답답한 게 뭐예요?</li>
+      <li>월 2만 병까지 만드실 수 있다고 하셨는데, 실제로 몇 프로나 돌고 있어요?</li>
+      <li>미국 OEM 납품은 <b>백경 이름으로</b> 나가는 건가요?</li>
+    </ul>
+  </div>
+
+  <div class="qb">
+    <div class="qh"><span class="qn">BLOCK 6</span><h4>바깥에서 파는 일</h4><span class="qm">· 7분</span></div>
+    <ul>
+      <li>파리·홍콩·오스트리아·상하이 — 각각 가셔서 뭘 하고 오실 건가요?</li>
+      <li class="star">거기서 백경을 <b>영어로</b> 뭐라고 설명하세요?
+        <span class="why">영문 브랜드 서사의 원문. 통역된 문장 말고 대표님이 실제 쓰는 문장이 필요하다</span></li>
+      <li>외국 분들 반응 중에 제일 의외였던 게 뭐예요?</li>
+      <li class="star">파리 가시기 전에 손에 뭐가 있으면 편하시겠어요?
+        <span class="why">영문 자산 우선순위와 9/18 1차 컷의 용도가 여기서 정해진다</span></li>
+      <li>직접 수출로 잡히는 실적이 있으세요? 유통사가 파는 거 말고 백경 명의로요.</li>
+    </ul>
+  </div>
+
+  <div class="qb">
+    <div class="qh"><span class="qn">BLOCK 7</span><h4>하지 말아야 할 것</h4><span class="qm">· 6분</span></div>
+    <ul>
+      <li class="star">백경이 <b>절대 되면 안 되는 모습</b>이 있어요?</li>
+      <li>지금 브랜드에서 제일 아쉬운 지점 하나만 꼽으면요?</li>
+      <li>지금까지 마케팅 맡겨보신 적 있으세요? 어떤 점이 아쉬우셨어요?</li>
+      <li>저희가 뭘 하면 "이건 아닌데" 싶으실 것 같으세요?</li>
+      <li>사내에서 콘텐츠나 디자인 맡고 계신 분들, 지금 뭘 만들고 계세요? 뭘 기준으로 만드세요?
+        <span class="why">협업 창구·역할 분담의 출발점</span></li>
+    </ul>
+  </div>
+
+  <div class="qb" style="border-color:var(--ac-100);background:var(--ac-50)">
+    <div class="qh"><span class="qn">BLOCK 8</span><h4>11월 30일</h4><span class="qm">· 5분</span></div>
+    <ul>
+      <li class="star">11월 30일에 <b>뭐가 손에 있으면</b> "이거 하길 잘했다" 싶으실까요?</li>
+      <li>그중에 제일 급한 하나만 고르면요?</li>
+      <li>2027년에 백경이 어디에 가 있어야 해요?</li>
+      <li class="star">저희한테 딱 하나만 시킬 수 있다면 뭘 시키시겠어요?</li>
+    </ul>
+  </div>
+
+  <div class="priv">
+    <div class="privmark">■ 내부 노트</div>
+    <div class="card">
+      <b>인터뷰 운용</b>
+      <ul class="chk" style="margin-top:12px">
+        <li><b>녹음 동의를 오프닝에서 받는다.</b> "정리해서 다시 보내드리려고요"가 자연스러운 이유.
+          <span class="sub">55분 인터뷰를 손으로 받아적으면 대화가 끊긴다</span></li>
+        <li><b>Block 1·2가 길어지면 그대로 둔다.</b> Block 5·6은 문서로도 채울 수 있지만 1·2는 오늘밖에 못 받는다.</li>
+        <li><b>Block 7 마지막 질문(사내 담당자)은 톤이 전부다.</b> "왜 안 되고 있냐"가 아니라 "지금 어떻게 굴러가냐"로 묻는다. 그 사람이 그 자리에 앉아 있을 수 있다.</li>
+        <li><b>규제 프레임을 Block 7 앞뒤에 깔아둔다.</b> 주류 광고는 효능 표현("술로 만든 약", "건강을 담은 술") 금지, 할인·라이브 커머스 불가다. 미리 말해두면 나중에 "왜 이건 못 쓰냐"를 방어할 일이 없다. 쓸 레버는 가격이 아니라 <b>이유</b>다.</li>
+        <li><b>수상 실적은 증빙을 요청한다.</b> Superior Taste Award · DESIGN IT AWARDS 2026 — 리서치 단계에서 독립 검증이 안 됐다. 콘텐츠·홈페이지 카피에 인용하려면 증빙 원본이 먼저 있어야 한다. 의심하는 톤이 아니라 "카피에 쓰려면 증빙이 필요하다"는 실무 요청으로.</li>
+        <li><b>결과물</b> — 인터뷰 정리본은 견적 시트의 비어 있는 <b>「브랜드 설계」 탭</b>에 채운다. 브랜드 서사·SKU 위계·타깃 정의의 1차 자료가 된다.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 6. 오늘 정할 것 ═══════════ -->
+<section id="a6">
+  <div class="sec-k">DECIDE TODAY</div>
+  <h2>오늘 정할 5가지</h2>
+  <p class="lead">이 다섯 개가 정해지면 스케줄이 확정된다. 나머지는 저희가 굴린다.</p>
+
+  <ol class="steps">
+    <li><b>촬영일 · 로케 · 출연</b> <span class="tag t-red">최우선</span>
+      <span class="sub">9/8~9/9(화·수) 2일 · 세종 증류소 + 고택 · 생산자분 출연 가능 여부 · 로케 협의 담당자</span></li>
+    <li><b>촬영 무드 방향</b>
+      <span class="sub">준비해 온 레퍼런스 3안 중 방향 선택. 8/28 무드보드 1차 시안의 입력값이 된다</span></li>
+    <li><b>라벨 리뉴얼 5종</b>
+      <span class="sub">35종 중 어느 5종인지 · 표시사항 변경 신고 담당자 · 촬영 제품 컷과 직결</span></li>
+    <li><b>홈페이지 퍼블리싱·개발 주체</b>
+      <span class="sub">견적 범위는 시각 디자인까지. 개발은 백경 내부 / 외주 / 추가 견적 중 택1 · 카페24 계정 소유</span></li>
+    <li><b>정기 미팅 요일 · 협업 창구</b>
+      <span class="sub">계약상 월 4회. 요일·시간 고정 + 양측 담당자 지정 + 소통 채널 개설</span></li>
+  </ol>
+
+  <div class="co ok"><b>결정을 미뤄도 되는 것.</b> 자사몰 활성화 · CRM 셋팅 · 메타 광고는 견적에 안 들어가 있다. <b>10월에 다시 얘기하자</b>고 오늘 정리하고 넘어간다.</div>
+</section>
+
+<!-- ═══════════ 7. 요청 ═══════════ -->
+<section id="a7">
+  <div class="sec-k">REQUEST</div>
+  <h2>백경 측 요청 자료</h2>
+  <p class="lead">촬영(9/8)에 물려 있는 건 <b>9/1(화)</b>까지, 나머지는 이번 주 안에 받으면 좋겠다.</p>
+
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">🔴 9/1(화) 마감 — 촬영에 물림</h3>
+      <ul class="chk">
+        <li>제품 실물 — 라벨 리뉴얼 대상 5종 포함</li>
+        <li>증류소·고택 촬영 로케 협의 완료 <span class="sub">협의 주체·연락처</span></li>
+        <li>생산자분 출연 확정 <span class="sub">촬영 2일 중 어느 날, 몇 시간</span></li>
+        <li>기존 촬영 원본 · 제품 사진 원본</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">이번 주 — 작업 착수에 필요</h3>
+      <ul class="chk">
+        <li>계정 권한 — 인스타 <b>@baekkyung_official</b> 관리자 · 자사몰 카페24 관리자 · 유튜브 '술장이' · GA</li>
+        <li>브랜드 자산 — 로고 원본(AI/벡터) · 기존 브랜드 가이드 · 서체 파일</li>
+        <li>제품 마스터 — 35종 전체 리스트(품목·용량·도수·가격·유통채널·재고)</li>
+        <li>채널별 매출 데이터 — 최근 12개월</li>
+        <li>수상·인증 증빙 원본 <span class="sub">콘텐츠·카피 인용 전제</span></li>
+        <li>정산 증빙 — 사업자등록증 · 법인등기부등본 · 비교견적서 2부 · 통장사본 · 과업지시서</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 8. 다음 2주 ═══════════ -->
+<section id="a8">
+  <div class="sec-k">NEXT</div>
+  <h2>다음 2주</h2>
+  <div class="tw"><table>
+    <thead><tr><th style="width:104px">일자</th><th style="width:104px">주체</th><th>할 일</th></tr></thead>
+    <tbody>
+      <tr><td class="num">8/26 (수)</td><td>HIZ</td><td>킥오프 회의록 + 결정사항 5건 전달 · 협업 채널 개설 · 요청 자료 목록 발송</td></tr>
+      <tr><td class="num">8/27 (목)</td><td>HIZ</td><td>리서치 착수 — 브랜드·제품·시장·경쟁 / 인스타·자사몰 현황 진단</td></tr>
+      <tr><td class="num">8/28 (금)</td><td>HIZ</td><td><b>무드보드 1차 시안</b> 전달</td></tr>
+      <tr><td class="num">8/31 (월)</td><td>백경</td><td>1차 대금 30,000,000 · 세금계산서 처리</td></tr>
+      <tr><td class="num">9/1 (화)</td><td>백경</td><td><b>촬영 관련 제공 마감</b> — 제품 실물 · 로케 협의 · 출연 확정</td></tr>
+      <tr><td class="num">9/2 (수)</td><td>백경</td><td>무드보드 승인 마감</td></tr>
+      <tr><td class="num">9/4 (금)</td><td>HIZ</td><td>촬영 기획안 · 콘티 · 컷 리스트 확정</td></tr>
+      <tr><td class="num">9/8~9 (화·수)</td><td>공동</td><td><b>브랜드 콘텐츠 촬영 2일</b> — 세종</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="priv">
+    <div class="privmark">■ 내부 노트</div>
+    <div class="card">
+      <b>킥오프에 들고 갈 것</b>
+      <ul class="chk" style="margin-top:12px">
+        <li><b>무드보드 레퍼런스 3안</b> — 8/28 1차 시안이 킥오프 D+3이라, 방향을 그 자리에서 픽해야 일정이 산다. 준비 없이 들어가면 촬영 게이트가 그날 깨진다.
+          <span class="sub">견적서에 이미 적힌 레퍼런스 축을 출발점으로 : 글월 · 희녹 · 일엽편주 · 호호당 · 명인명촌</span></li>
+        <li><b>SKU 35종 리스트 출력본</b> — 라벨 5종 후보를 그 자리에서 표시하게 한다. 말로만 물으면 안 정해진다.</li>
+        <li><b>계약서 11월말 개정본</b> — 미서명이면 인쇄본 2부 지참(날인) 또는 모두싸인 당일 발송 준비.</li>
+        <li><b>견적서 4개월 정정본</b> — "최소 6개월"·"6months" 표기 수정본. 오늘 이걸 배포해야 이후 문서 정합이 맞는다.</li>
+        <li><b>스케줄 시트</b> — 견적 파일 「스케줄」 탭. 화면에 띄워 워크스루. 킥오프 8/25 반영해 앞단 3주를 재정렬한 버전으로 갱신 후 지참.</li>
+        <li><b>녹음기 / 녹취 앱</b> — 55분 인터뷰.</li>
+      </ul>
+    </div>
+    <div class="co warn">
+      <b>미해결 · 오늘 확인해야 답이 나오는 것</b><br>
+      · <b>대표님 오스트리아 귀국일</b> — 라벨 표시사항 승인(10/23)이 귀국 후 전제라 이 날짜를 모르면 게이트 2가 흔들린다.<br>
+      · <b>뉴욕 CIA 강연(11월)</b> — 확정 여부·일자. 확정 시 강연 자료·영문 서사는 별도 견적이고, 11/10 상하이·11/30 마감과 붙는다.<br>
+      · <b>인쇄·제작 예산과 발주 주체</b> — 리드타임 6~8주라 <b>입고가 12월</b>, 계약 종료 후다. 발주까지가 계약 안이고 입고·검수는 백경 자체 관리라는 걸 오늘 명확히 해둔다. 연말 선물 성수기(12월) 대응도 계약 범위 밖이다.<br>
+      · <b>참석자 구성</b> — 사내 디자이너·콘텐츠마케터 동석 여부에 따라 Block 7 톤을 바꾼다.
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<div class="foot">
+  백경증류소 × HIZ 브랜드 파트너십 킥오프 · 2026-08-25<br>
+  근거 : 견적 시트 「백경증류소」 탭 2026-07-30 ver. · 「스케줄」 탭 · 계약서 260810(최종_11월말개정) · PREP v2(2026-07-24) — 전부 2026-08-21 실측<br>
+  PM 우성민 · HIZ BRANDRISE
+</div>
+
+<script>
+(function(){
+  var b=document.getElementById('pb');
+  b.addEventListener('click',function(){
+    var on=document.body.classList.toggle('show-priv');
+    b.textContent='내부 노트 '+(on?'ON':'OFF');
+  });
+  var secs=[].slice.call(document.querySelectorAll('section[id]'));
+  var links=[].slice.call(document.querySelectorAll('nav.toc a'));
+  function upd(){
+    var y=window.scrollY+140,cur=secs[0];
+    secs.forEach(function(s){ if(s.offsetTop<=y) cur=s; });
+    links.forEach(function(a){ a.classList.toggle('on',a.getAttribute('href')==='#'+cur.id); });
+  }
+  window.addEventListener('scroll',upd,{passive:true}); upd();
+})();
+</script>
+</body>
+</html>
