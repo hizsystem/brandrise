@@ -130,6 +130,31 @@ ol.q li.key b{color:var(--cop2)}
 .memo .lines{background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 21px,var(--line2) 21px,var(--line2) 22px);height:44px}
 .memo.tall .lines{height:88px}
 
+
+/* ── 오늘 이것만은 ── */
+.must{border:2px solid var(--navy);border-radius:4px;margin-bottom:16px;overflow:hidden;
+      break-inside:avoid;page-break-inside:avoid}
+.must .mt{background:var(--navy);color:#fff;padding:8px 14px;font-size:12pt;font-weight:800;
+          display:flex;align-items:baseline;gap:10px;letter-spacing:-.024em}
+.must .mt span{font-size:8.6pt;font-weight:500;opacity:.9;margin-left:auto;letter-spacing:0}
+.must .mb{padding:10px 14px 12px}
+.must p.lead2{font-size:9.3pt;color:var(--ink2);line-height:1.68;margin-bottom:9px}
+.must p.lead2 b{color:var(--navy);font-weight:800}
+.must ol{list-style:none;counter-reset:m}
+.must ol li{counter-increment:m;position:relative;padding:5.4px 0 5.4px 25px;
+            font-size:10.6pt;line-height:1.56;border-bottom:1px solid var(--line2)}
+.must ol li:last-child{border-bottom:0}
+.must ol li::before{content:counter(m);position:absolute;left:0;top:6.6px;
+            width:16px;height:16px;border-radius:50%;background:var(--navy);color:#fff;
+            font-size:7.8pt;font-weight:800;text-align:center;line-height:16px;
+            font-variant-numeric:tabular-nums}
+.must ol li b{font-weight:800;color:#000}
+.must ol li em{font-style:normal;color:var(--cop2);font-weight:700;font-size:8.6pt;
+               margin-left:5px;white-space:nowrap}
+.must .why2{margin-top:9px;padding-top:8px;border-top:1px dashed var(--line);
+            font-size:8.9pt;color:var(--muted);line-height:1.6}
+.must .why2 b{color:var(--warn);font-weight:700}
+
 /* ── 사전 브리핑 ── */
 .brief{border:1.6px solid var(--cop);border-radius:4px;padding:0;margin-bottom:16px;overflow:hidden}
 .brief .bt{background:var(--cop);color:#fff;padding:7px 13px;font-size:11.4pt;font-weight:800;
@@ -234,6 +259,38 @@ table.fact b{font-weight:800;color:var(--cop2)}
     그 원재료는 대표님한테만 있다. 그래서 오늘은 전략을 묻지 않고
     <b>이야기 · 장면 · 사물 · 감각</b>만 캔다. 외부에서 지어온 말은 쓰지 않는다 — 짓는 게 아니라 캐내는 것이다.
   </div>
+
+
+  <!-- ══════════ 오늘 이것만은 ══════════ -->
+  <section class="must">
+    <div class="mt">오늘 이것만은 — 12개<span>다 못 돌아도 이건 들고 나온다</span></div>
+    <div class="mb">
+      <p class="lead2">
+        전체는 80문항이지만 <b>2시간에 다 못 돈다.</b> 아래 12개는
+        ①한 번 지나가면 되돌릴 수 없거나 ②이후 모든 산출물의 입력이 되는 것들이다.
+        <b>이것만 채우면 오늘은 성공이다.</b> 나머지는 시간이 남을 때, 또는 다음 미팅에서.
+      </p>
+      <ol>
+        <li><b>白鯨이 모비딕이에요, 향유고래예요?</b> <em>→ 라벨·해외 배너</em></li>
+        <li><b>도올 글씨, 어디까지 써도 되는 걸로 됐어요? 서면이 있어요?</b> <em>→ 5개국 전시</em></li>
+        <li><b>어릴 때 약재 법제하시는 걸 본 기억</b>, 어떤 장면이에요? <em>→ 자기 언어 1순위</em></li>
+        <li><b>약을 술로 법제한다는 게, 지금 백경 빚는 것과 닿아 있어요?</b> <em>→ 자기 언어</em></li>
+        <li><b>아버님 양조장에서 「안 하기로」 한 게 뭐였어요?</b> <em>→ 브랜드 정체성</em></li>
+        <li><b>아버님께 배운 것 중 지금도 절대 안 바꾸는 것</b> 하나. <em>→ 규칙 문장</em></li>
+        <li><b>이 술로 절대 안 할 것</b>이 있다면 하나만. <em>→ 규칙 문장 첫 줄</em></li>
+        <li><b>백경이 하는 일을 대표님만의 단어로 부른다면?</b> <em>→ 오늘의 과녁</em></li>
+        <li><b>「식탁 위의 술」, 언제부터 쓰셨어요? 직접 만드신 말이에요?</b> <em>→ 이미 있는 자산</em></li>
+        <li><b>단맛을 빼신 이유</b>가 뭐예요? <em>→ 안 하는 것 ①</em></li>
+        <li><b>진짜 밀고 싶은 것 세 개</b>를 순서대로. <em>→ 라벨 5종·촬영 컷</em></li>
+        <li><b>11월 30일에 뭐가 손에 있으면 잘했다 싶으세요?</b> <em>→ 성과 정의</em></li>
+      </ol>
+      <p class="why2">
+        실무 5개는 이것과 별개로 <b>앞 20분에 무조건 닫는다</b> —
+        계약서 날인 · 12월 과업은 계약 밖이라는 합의 · 1차 대금 발행일 ·
+        <b>패키지 확정일</b>(촬영일이 여기서 역산된다) · 백경 측 담당자 1인 지정.
+      </p>
+    </div>
+  </section>
 
   <!-- ══════════ 사전 브리핑 ══════════ -->
   <div class="brief">
