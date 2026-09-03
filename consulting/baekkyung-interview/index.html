@@ -67,15 +67,20 @@ kbd{font-family:var(--sans);font-size:.86em;border:1px solid var(--edge);border-
 
 /* ─────────── 무대 ─────────── */
 #stage{position:fixed;inset:0;display:grid;place-items:center;background:#000}
-#deck{position:relative;width:1280px;height:720px;transform:scale(var(--s,1));transform-origin:center center}
+#deck{position:relative;width:1280px;height:720px;transform:scale(var(--s,1));transform-origin:center center;
+  background-color:var(--deep);
+  background-image:
+    linear-gradient(101deg, transparent 14%, var(--ray) 18%, transparent 24%),
+    linear-gradient(96deg,  transparent 38%, rgba(216,232,244,.055) 43%, transparent 50%),
+    linear-gradient(107deg, transparent 60%, rgba(216,232,244,.04) 65%, transparent 72%),
+    radial-gradient(130% 88% at 50% -18%, #2a343d 0%, #192127 32%, #0c1114 66%, #050709 100%)}
 
 .slide{
   position:absolute;inset:0;width:1280px;height:720px;
   padding:64px 84px 74px;
   display:flex;flex-direction:column;justify-content:center;
   opacity:0;visibility:hidden;pointer-events:none;
-  transition:opacity .34s ease, transform .34s ease;
-  transform:translateY(10px) scale(.995);
+  transition:opacity .16s linear;
   overflow:hidden;
   background-color:var(--deep);
   background-image:
@@ -88,7 +93,7 @@ kbd{font-family:var(--sans);font-size:.86em;border:1px solid var(--edge);border-
   content:'';position:absolute;inset:0;pointer-events:none;opacity:.055;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
 }
-.slide.on{opacity:1;visibility:visible;pointer-events:auto;transform:none}
+.slide.on{opacity:1;visibility:visible;pointer-events:auto}
 
 /* ─────────── 공통 타이포 ─────────── */
 .eyebrow{
@@ -374,8 +379,8 @@ table.pl tr.grp td{height:32px;padding-top:14px;border-top:0;color:#8fa0ad;font-
  <ul class="mines"><li><h4>창업 첫해 매출 숫자</h4><p>기사에 나오지만 대표님 자책 발언이다. 다만 <b>"3천만 원으로 창업했다"는 본인이 자랑스럽게 말한 소재</b>다 — 조심할 건 매출 숫자지 창업 스토리가 아니다.</p></li><li><h4>디자인 평가</h4><p>배우자 작업물이다. 7/28에 우리 쪽이 이미 "혼자 하기 힘드시겠다"고 했고 대표님이 수긍하셨다. <b>진짜 의제는 평가가 아니라 출산 후 생긴 리소스 공백</b>이다.</p></li><li><h4>제품 수를 우리가 단정하지 않는다</h4><p>보도 13종 · 시트 28종 · 촬영 리스트 13종 + 여유 2. 어느 쪽도 맞다고 말하지 말고 <b>02블록 표에서 채워 확정</b>한다.</p></li><li><h4>수상 이력을 먼저 말하지 않는다</h4><p>확인되는 건 IWSC 2026 브론즈 하나다. Superior Taste Award · DESIGN IT AWARDS는 확인되지 않았다. <b>있는지 여쭙는 것</b>이지 없다고 단정하는 게 아니다.</p></li><li><h4>「미슐랭이 인정한 전통주」</h4><p>7/28에 <b>우리가 먼저 준 답</b>이다. 04에서 "백경다운 것"을 물을 때 이게 되돌아올 수 있다. 묻기 전에 선을 긋는다.</p></li></ul></section>
 <section class="slide s-must s-int" data-int="1">
  <div class="eyebrow">다 못 돌아도 이건 들고 나온다 · 인터뷰어 전용</div>
- <h2 class="ttl">오늘 이것만은 — <b>14개</b></h2>
- <ol class="must"><li><span class="mn">01</span><span class="mq">어릴 때 약재 법제하시는 걸 본 기억, 어떤 장면이에요?</span><span class="mo">01 · 백경다움</span></li><li><span class="mn">02</span><span class="mq">약을 술로 법제한다는 게 지금 백경과 닿아 있어요?</span><span class="mo">01 · 백경다움</span></li><li><span class="mn">03</span><span class="mq">아버님 양조장에서 「안 하기로」 한 게 뭐였어요?</span><span class="mo">01 · 태도</span></li><li><span class="mn">04</span><span class="mq">아버님께 배운 것 중 지금도 절대 안 바꾸는 것 하나.</span><span class="mo">01 · 원칙</span></li><li><span class="mn">05</span><span class="mq">각 제품 간략 소개 · 주력/프리미엄 · 수상·소믈리에 픽</span><span class="mo">02 · 라벨 5종</span></li><li><span class="mn">06</span><span class="mq">학계에 보고 안 된 효모 4종 — 이름 붙이셨어요?</span><span class="mo">03 · 백경다움</span></li><li><span class="mn">07</span><span class="mq">숫자가 좋아진 걸 혀로 확인하는 순간이 언제예요?</span><span class="mo">03 · 감각 회수</span></li><li><span class="mn">08</span><span class="mq">백경이 하는 일을 대표님만의 단어로 부른다면?</span><span class="mo">04 · 오늘의 과녁</span></li><li><span class="mn">09</span><span class="mq">이 술로 절대 안 할 것이 있다면 하나만.</span><span class="mo">04 · 원칙</span></li><li><span class="mn">10</span><span class="mq">포경선이 위스키면, 백경은 침몰시키는 고래예요 안 잡히는 고래예요?</span><span class="mo">04 · 태도</span></li><li><span class="mn">11</span><span class="mq">도올 글씨, 어디까지 써도 되는 걸로 됐어요? 서면 있어요?</span><span class="mo">04 · 5개국 전시</span></li><li><span class="mn">12</span><span class="mq">백경을 절대 안 살 사람은 누구예요?</span><span class="mo">05 · 경계</span></li><li><span class="mn">13</span><span class="mq">11월 30일에 뭐가 손에 있으면 잘했다 싶으세요?</span><span class="mo">09 · 성과 정의</span></li><li><span class="mn">14</span><span class="mq">꼭 얻고 싶은 것 하나 / 가장 걱정되는 것 하나</span><span class="mo">09 · 합의</span></li></ol></section>
+ <h2 class="ttl">오늘 이것만은 — <b>12개</b></h2>
+ <ol class="must"><li><span class="mn">01</span><span class="mq">어릴 때 약재 법제하시는 걸 본 기억, 어떤 장면이에요?</span><span class="mo">01 · 백경다움</span></li><li><span class="mn">02</span><span class="mq">약을 술로 법제한다는 게 지금 백경과 닿아 있어요?</span><span class="mo">01 · 백경다움</span></li><li><span class="mn">03</span><span class="mq">아버님 양조장에서 「안 하기로」 한 게 뭐였어요?</span><span class="mo">01 · 태도</span></li><li><span class="mn">04</span><span class="mq">아버님께 배운 것 중 지금도 절대 안 바꾸는 것 하나.</span><span class="mo">01 · 원칙</span></li><li><span class="mn">05</span><span class="mq">각 제품 간략 소개 · 주력/프리미엄 · 수상·소믈리에 픽</span><span class="mo">02 · 라벨 5종</span></li><li><span class="mn">06</span><span class="mq">학계에 보고 안 된 효모 4종 — 이름 붙이셨어요?</span><span class="mo">03 · 백경다움</span></li><li><span class="mn">07</span><span class="mq">숫자가 좋아진 걸 혀로 확인하는 순간이 언제예요?</span><span class="mo">03 · 감각 회수</span></li><li><span class="mn">08</span><span class="mq">백경이 하는 일을 대표님만의 단어로 부른다면?</span><span class="mo">04 · 오늘의 과녁</span></li><li><span class="mn">09</span><span class="mq">이 술로 절대 안 할 것이 있다면 하나만.</span><span class="mo">04 · 원칙</span></li><li><span class="mn">10</span><span class="mq">백경을 절대 안 살 사람은 누구예요?</span><span class="mo">05 · 경계</span></li><li><span class="mn">11</span><span class="mq">11월 30일에 뭐가 손에 있으면 잘했다 싶으세요?</span><span class="mo">09 · 성과 정의</span></li><li><span class="mn">12</span><span class="mq">꼭 얻고 싶은 것 하나 / 가장 걱정되는 것 하나</span><span class="mo">09 · 합의</span></li></ol></section>
 <section class="slide s-qs s-int" data-int="1">
      <div class="eyebrow">앞 20분에 닫는다 · 인터뷰어 전용 <span class="pg">1/2</span></div>
      <ul class="qs"><li class="k"><p><span class="star">먼저</span><b>계약서 날인</b> — 11월말 개정본(8/4~11/30 · 총액 97,200,000 VAT 별도 · 3분할)</p><div class="note"><span class="nl">내부</span>개정 6곳 반영 확인 완료</div></li><li class="k"><p><span class="star">먼저</span><b>12월 과업은 계약서 밖에서 관리한다</b> — 인쇄물 입고 · 검수 · 연말 대응은 12월까지 가지만 계약 · 정산은 11/30에 닫힌다. 이 두 줄을 <b>오늘 회의록에 남긴다</b></p><div class="note"><span class="nl">내부</span>안 남기면 12월에 "계약 끝났는데" 또는 "왜 안 해주냐" 둘 중 하나가 반드시 나온다</div></li><li class="k"><p><span class="star">먼저</span><b>1차 대금 30,000,000</b> — 계산서 수신 담당자 · 이메일 · 발행일</p><div class="note"><span class="nl">내부</span>계약상 지급월이 2026년 8월인데 이미 지났다. 오늘 새 날짜를 잡는다</div></li></ul></section>
@@ -589,7 +594,7 @@ table.pl tr.grp td{height:32px;padding-top:14px;border-top:0;color:#8fa0ad;font-
   });
   var help=document.getElementById('help'), ht;
   function nudge(){ help.classList.remove('hide'); clearTimeout(ht); ht=setTimeout(function(){ help.classList.add('hide'); },5000); }
-  window.addEventListener('mousemove', nudge); document.addEventListener('keydown', nudge); nudge();
+  document.addEventListener('keydown', nudge); nudge();
   window.addEventListener('resize', fit);
   var h=(location.hash.match(/s=(\d+)/)||[])[1];
   if((location.hash||'').indexOf('int')>-1){ internal=true; document.getElementById('it').classList.add('live'); document.getElementById('it').textContent='내부 ON'; }
