@@ -1,35 +1,27 @@
 <!doctype html>
 <!--
-  백경증류소 × HIZ — 브랜드 딥 인터뷰 v4 (정식 킥오프 2026-09-03 목 · 대표님 서울 방문 / 인쇄 지참용)
+  백경증류소 × HIZ — 브랜드 딥 인터뷰 v5 「슬라이드판」 (2026-09-03 정식 킥오프)
 
-  v4 = 「밀도」 개정판 (2026-09-01)
-  ─────────────────────────────────────────────────────────────────────
-  v3까지의 문제 : 질문이 전부 빈칸 채우기였다.
-    "토종쌀 품종이 뭐예요" · "왜 15도예요" · "수상 연도가 언제예요" —
-    우리가 모르니까 묻는 질문이다. 매거진 인터뷰의 밀도는 반대 방향에서 나온다.
-    이미 알고 들어가서, 알고 있는 사실들 사이의 어긋남을 짚을 때 밀도가 생긴다.
+  v4(인쇄 질문지) → v5(슬라이드) 전환 이유
+  ────────────────────────────────────────────────────────────
+  · 한 화면에 한 질문. 대표님이 다음 질문을 미리 못 본다 → 답이 짧아지지 않는다.
+  · 내가 종이를 안 본다. 화면이 질문을 읽어주고 나는 대표님 얼굴만 본다.
+  · 금기·주석이 본문에서 물리적으로 분리된다 — 기본 숨김, N 키로만 열린다.
 
-  v4에서 한 일 : 백경 자체에 대한 1차 자료조사를 처음으로 수행했다.
-    (기존 리서치북·레퍼런스북은 전부 시장·레퍼런스 조사였고 백경 자체 조사는 0건이었다)
-    → 확인된 사실 23건을 「사전 브리핑」 블록으로 앞에 세우고,
-      그중 웹에서 확인되는 것은 질문에서 빼고,
-      확인된 사실들 사이의 모순 3개를 인터뷰의 척추로 삼았다.
+  조작
+    ← → / Space   넘김          (화면 좌/우 클릭도 동일)
+    N             내부 노트 토글  ← 화면 공유 중에는 누르지 말 것
+    I             내부 브리핑 슬라이드 5장 시퀀스에 넣기/빼기 (기본 빼기)
+    O             전체 슬라이드 그리드 · 클릭 점프
+    0~9           블록 번호로 점프
+    F             전체화면
+    ⌘P            A4 가로 인쇄 = 백업 손패 (노트·내부 브리핑 전부 포함)
 
-  척추가 되는 모순 3개
-    ① 홈페이지 "집안 대대로 내려오는 전통 방식" ↔ 기사 "아버님 증류소를 떠났다"
-    ② 한글 白鯨(모비딕·흰고래) ↔ 영문 sperm whale(향유고래) — 같은 브랜드, 다른 동물
-    ③ 함양 한의원 집안의 법제(法製)가 뿌리인데 브랜드 어디에도 안 쓰인다
+  디자인 = 고래 흑백 레퍼런스 기반. 블랙→차콜 라디얼 그라디언트 + 수면 광선 3줄 + 필름 그레인.
+  색은 무채색만. 강조는 밝기로만 준다.
 
-  자료 출처 (2026-09-01 실측)
-    · bk-distillery.com (자사몰·브랜드 카피·푸터 사업자 정보)
-    · 헤럴드경제 미주판 2026-06-15 정창윤 대표 인터뷰 — 가장 밀도 높은 1차 자료
-    · 다음 [스타트업-ing] 2024-12-02 정창윤 대표 인터뷰
-    · KOREA EXPO 브랜드 전시관 (제품·인증)
-    · 벤처스퀘어 / 세종창조경제혁신센터 (투자)
-    · 인스타그램 @baekkyung_official 실측 (게시물 217 · 팔로워 2,237 · 2026-09-01)
-
-  인쇄 : ⌘P → A4 세로 · 여백 기본 · '배경 그래픽' 체크
-  이전본 : v3 = clients/baekkyung/_backup/interview-v3-260901.html
+  이전본 : v4 인쇄 질문지 = clients/baekkyung/_backup/interview-v4-260901.html
+  자료   : 백경 1차 자료조사 2026-09-01 (헤럴드K 26.6 · 다음 24.12 · K-EXPO · 자사몰 · 인스타 실측)
   작업 우성민 / PM 우성민
 -->
 <html lang="ko">
@@ -37,581 +29,642 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>백경증류소 브랜드 딥 인터뷰</title>
-<meta name="description" content="백경증류소 × HIZ 브랜드 파트너십 — 2026-09-03 정식 킥오프 딥 인터뷰 질문지">
+<meta name="description" content="백경증류소 × HIZ 브랜드 파트너십 — 2026-09-03 정식 킥오프 딥 인터뷰 슬라이드">
 <meta name="robots" content="noindex">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2313314e'/%3E%3Ctext x='16' y='23' font-size='19' font-family='serif' font-weight='700' fill='%23fff' text-anchor='middle'%3E白%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b1014'/%3E%3Ctext x='16' y='23' font-size='19' font-family='serif' font-weight='700' fill='%23dbe5ec' text-anchor='middle'%3E白%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
-@page { size: A4 portrait; margin: 14mm 13mm 12mm; }
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap');
+@page{ size:A4 landscape; margin:8mm; }
 :root{
-  /* 잉크 — 한 계열(cool)로 통일 */
-  --ink:#101418; --ink2:#38414c; --muted:#767f8b; --faint:#a8b0ba;
-  --line:#dfe3e9; --line2:#eef0f4;
-  /* 색은 두 개만 — 감청(구조) · 구리(강조). 적색은 경고 전용 */
-  --navy:#13314e; --navy-soft:#eaeff5;
-  --cop:#966034; --cop2:#794c28; --cop-soft:#f9f5f0;
-  --sand:#faf7f2; --sandline:#e6dccd;
-  --warn:#8a2f38; --warnbg:#fdf7f7; --warnline:#eedbdd;
-  --paper:#fff;
+  --void:#040608;
+  --deep:#080b0e; --ink:#0e1317; --slate:#161d23; --steel:#273038;
+  --ash:#5d6a74; --mist:#8e9aa4; --fog:#bcc6cd; --paper:#e9eef2; --white:#fbfdfe;
+  --ray:rgba(216,232,244,.075);
+  --edge:rgba(255,255,255,.09);
+  --warm:#c9d6e0;
+  --sans:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --serif:'Nanum Myeongjo',Georgia,'Times New Roman',serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html,body{height:100%}
 body{
-  font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo',-apple-system,sans-serif;
-  color:var(--ink); background:#e8ebef;
-  line-height:1.62; word-break:keep-all; overflow-wrap:break-word;
-  text-wrap:pretty; font-variant-numeric:tabular-nums;
-  -webkit-font-smoothing:antialiased; font-size:11pt;
+  background:#000; color:var(--paper); font-family:var(--sans);
+  word-break:keep-all; overflow-wrap:break-word;
+  -webkit-font-smoothing:antialiased; overflow:hidden;
 }
-.sheet{max-width:188mm;margin:0 auto;background:var(--paper);padding:13mm 12mm 15mm;
-       box-shadow:0 1px 3px rgba(19,49,78,.09),0 8px 28px rgba(19,49,78,.06)}
+b{font-weight:700}
+kbd{font-family:var(--sans);font-size:.86em;border:1px solid var(--edge);border-radius:4px;padding:1px 6px;background:rgba(255,255,255,.05)}
 
-/* ── header ── */
-.top{border-bottom:2.4px solid var(--navy);padding-bottom:9px;margin-bottom:13px;
-     display:flex;align-items:flex-end;justify-content:space-between;gap:18px}
-.top h1{font-size:20pt;font-weight:800;letter-spacing:-.032em;line-height:1.12;color:var(--navy);
-        text-wrap:balance}
-.top h1 small{display:block;font-size:9.2pt;font-weight:500;color:var(--muted);
-              letter-spacing:-.005em;margin-top:6px;line-height:1.5}
-.top .when{text-align:right;font-size:8.7pt;color:var(--muted);line-height:1.6;white-space:nowrap}
-.top .when b{color:var(--ink);font-weight:700;font-size:9.4pt;letter-spacing:-.01em}
+/* ─────────── 무대 ─────────── */
+#stage{position:fixed;inset:0;display:grid;place-items:center;background:#000}
+#deck{position:relative;width:1280px;height:720px;transform:scale(var(--s,1));transform-origin:center center}
 
-.howto{border-left:2.5px solid var(--navy);background:var(--navy-soft);
-       padding:9px 13px;margin-bottom:9px;border-radius:0 3px 3px 0;
-       font-size:9.3pt;color:var(--ink2);line-height:1.72}
-.howto b{color:var(--navy);font-weight:700}
-.aim{background:var(--sand);border:1px solid var(--sandline);border-radius:3px;
-     padding:10px 13px;margin-bottom:16px;font-size:9.3pt;color:var(--cop2);line-height:1.72}
-.aim b{color:#5a3820;font-weight:800}
+.slide{
+  position:absolute;inset:0;width:1280px;height:720px;
+  padding:64px 84px 74px;
+  display:flex;flex-direction:column;justify-content:center;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .34s ease, transform .34s ease;
+  transform:translateY(10px) scale(.995);
+  overflow:hidden;
+  background-color:var(--deep);
+  background-image:
+    linear-gradient(101deg, transparent 14%, var(--ray) 18%, transparent 24%),
+    linear-gradient(96deg,  transparent 38%, rgba(216,232,244,.055) 43%, transparent 50%),
+    linear-gradient(107deg, transparent 60%, rgba(216,232,244,.04) 65%, transparent 72%),
+    radial-gradient(130% 88% at 50% -18%, #2a343d 0%, #192127 32%, #0c1114 66%, #050709 100%);
+}
+.slide::after{ /* 그레인 */
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:.055;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+}
+.slide.on{opacity:1;visibility:visible;pointer-events:auto;transform:none}
 
-/* ── block ── */
-.blk{margin-bottom:15px;break-inside:avoid;page-break-inside:avoid}
-.bh{display:flex;align-items:baseline;gap:9px;border-bottom:1.4px solid var(--navy);
-    padding-bottom:5px;margin-bottom:8px}
-.bh .n{font-size:8.2pt;font-weight:800;color:#fff;background:var(--navy);
-       padding:2.5px 7px;border-radius:2px;letter-spacing:.06em;white-space:nowrap;
-       font-variant-numeric:tabular-nums}
-.bh h2{font-size:13.4pt;font-weight:800;letter-spacing:-.028em;color:var(--navy);line-height:1.25}
-.bh .why{margin-left:auto;font-size:8.3pt;color:var(--muted);font-weight:500;white-space:nowrap;
-         letter-spacing:-.01em}
-.bh.core .n{background:var(--cop)}
-.bh.core{border-bottom-color:var(--cop);border-bottom-width:2px}
-.bh.core h2{color:var(--cop2)}
+/* ─────────── 공통 타이포 ─────────── */
+.eyebrow{
+  position:relative;z-index:2;
+  font-size:15px;letter-spacing:.2em;color:var(--ash);font-weight:600;
+  display:flex;align-items:center;gap:14px;margin-bottom:26px;flex:0 0 auto;
+}
+.eyebrow::before{content:'';width:26px;height:1px;background:linear-gradient(90deg,var(--ash),transparent)}
+.eyebrow .pg{margin-left:auto;letter-spacing:.14em;color:#454f58}
+.ttl{position:relative;z-index:2;font-size:42px;line-height:1.34;font-weight:700;color:var(--white);letter-spacing:-.02em;margin-bottom:30px}
+.ttl b{color:var(--warm)}
+.fnote{position:relative;z-index:2;margin-top:auto;padding-top:20px;font-size:15px;line-height:1.75;color:var(--ash);border-top:1px solid rgba(255,255,255,.06)}
+.hi{color:var(--warm)}
 
-.lead{font-size:9.3pt;color:var(--ink2);background:#f6f8fa;
-      padding:7px 11px;margin-bottom:7px;line-height:1.66;border-radius:3px}
-.lead b{font-weight:700;color:var(--ink)}
+/* 내부 노트 */
+.note{display:none}
+body.notes .note{
+  display:block;position:relative;z-index:2;margin-top:16px;
+  font-size:15px;line-height:1.7;color:#7f8d98;
+  padding-left:14px;border-left:2px solid #3a464f;
+}
+body.notes .note .nl{
+  display:inline-block;font-size:11px;letter-spacing:.16em;color:#4d5860;
+  border:1px solid #333d45;border-radius:3px;padding:1px 6px;margin-right:9px;vertical-align:1px;
+}
 
-/* ── 질문 리스트 : 인터뷰 중 눈으로 짚는 물건이다 ── */
-ol.q{list-style:none;counter-reset:q}
-ol.q li{counter-increment:q;position:relative;
-        padding:5.5px 6px 5.5px 27px;
-        font-size:11.4pt;line-height:1.62;letter-spacing:-.014em;
-        border-bottom:1px solid var(--line2)}
-ol.q li:last-child{border-bottom:0}
-ol.q li::before{content:counter(q);position:absolute;left:0;top:6.6px;
-        font-size:8.2pt;font-weight:600;color:var(--faint);
-        width:17px;text-align:right;font-variant-numeric:tabular-nums}
-ol.q li b{font-weight:800;color:#000}
-/* 핵심 질문 — 대비를 확실히 올린다 */
-ol.q li.key{background:var(--cop-soft);border-bottom:1px solid var(--paper);
-            border-left:3px solid var(--cop);padding-left:29px;margin-left:-3px;
-            border-radius:0 3px 3px 0}
-ol.q li.key::before{left:5px;color:var(--cop);font-weight:800}
-ol.q li.key b{color:var(--cop2)}
-.note{display:block;font-size:8.5pt;color:var(--muted);font-weight:500;
-      margin-top:2.5px;line-height:1.5;letter-spacing:-.005em}
-.note::before{content:"— "}
-.src{font-size:7.9pt;color:var(--faint);font-weight:500}
+/* ─────────── 표지 ─────────── */
+.s-cover{padding:0;justify-content:flex-end}
+.cv-img{position:absolute;inset:0;background:url(whale.jpg) center 42%/cover no-repeat;filter:grayscale(1) contrast(1.16) brightness(.72)}
+.cv-scrim{position:absolute;inset:0;background:
+   linear-gradient(180deg,rgba(4,6,8,.62) 0%,rgba(4,6,8,.12) 34%,rgba(4,6,8,.86) 76%,rgba(4,6,8,.97) 100%),
+   radial-gradient(85% 60% at 20% 88%, rgba(4,6,8,.85), transparent 70%)}
+.cv-body{position:relative;z-index:2;padding:0 84px 84px}
+.cv-eyebrow{font-size:15px;letter-spacing:.26em;color:#93a1ab;font-weight:600;margin-bottom:20px}
+.cv-eyebrow span{color:#5d6a74;margin:0 6px}
+.cv-title{font-size:82px;line-height:1.06;font-weight:800;letter-spacing:-.035em;color:#fff;
+  background:linear-gradient(180deg,#ffffff 0%,#c5d1da 78%,#93a1ab 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.cv-sub{margin-top:22px;font-size:21px;line-height:1.6;color:#aab5be;max-width:820px}
+.cv-sub b{color:var(--white)}
+.cv-meta{margin-top:34px;display:flex;align-items:center;gap:0;font-size:15px;letter-spacing:.1em;color:#7c8892}
+.cv-meta b{color:#dfe7ec;font-weight:700}
+.cv-meta i{display:inline-block;width:1px;height:12px;background:#3a444c;margin:0 18px}
+.cv-mark{position:absolute;top:56px;right:74px;z-index:2;font-family:var(--serif);font-size:56px;color:rgba(255,255,255,.34);letter-spacing:.1em}
 
-.memo{border:1px solid var(--line);border-radius:3px;margin-top:8px;padding:6px 10px 9px}
-.memo .ml{font-size:7.5pt;font-weight:700;letter-spacing:.14em;color:var(--faint);margin-bottom:4px}
-.memo .lines{background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 21px,var(--line2) 21px,var(--line2) 22px);height:44px}
-.memo.tall .lines{height:88px}
+/* ─────────── 섹션 디바이더 ─────────── */
+.s-div{justify-content:center}
+.s-div .ghost{
+  position:absolute;right:52px;top:50%;transform:translateY(-50%);
+  font-family:var(--serif);font-size:340px;line-height:1;font-weight:700;
+  background:linear-gradient(180deg,rgba(255,255,255,.13),rgba(255,255,255,.015));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:-.03em;pointer-events:none;
+}
+.s-div .dv-body{position:relative;z-index:2;max-width:790px}
+.s-div .dv-h{font-size:56px;line-height:1.22;font-weight:800;letter-spacing:-.03em;color:var(--white);margin:6px 0 22px}
+.s-div .dv-l{font-size:19px;line-height:1.78;color:#96a2ac;max-width:700px}
+.s-div .dv-l b{color:var(--fog)}
+.s-div.is-core{background-image:
+    linear-gradient(101deg, transparent 14%, rgba(216,232,244,.1) 18%, transparent 24%),
+    radial-gradient(120% 90% at 26% 40%, #36434e 0%, #1d262d 38%, #0b0f12 74%, #050709 100%)}
+.s-div.is-core .dv-h{background:linear-gradient(180deg,#fff,#b9c6d1);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 
+/* ─────────── 단일 질문 ─────────── */
+.s-q{justify-content:center}
+.bigq{
+  position:relative;z-index:2;
+  font-size:44px;line-height:1.52;font-weight:600;letter-spacing:-.022em;color:var(--paper);max-width:1010px;
+}
+.bigq b{font-weight:800;color:#fff}
+.s-q.is-core .bigq{font-size:48px}
+.s-q.is-core{background-image:
+    linear-gradient(101deg, transparent 12%, rgba(216,232,244,.1) 17%, transparent 23%),
+    radial-gradient(115% 95% at 32% 34%, #333f49 0%, #1b242a 40%, #0a0e11 76%, #050709 100%)}
+.corebadge{
+  position:absolute;top:58px;left:84px;z-index:3;display:flex;align-items:center;gap:12px;
+  font-size:13px;letter-spacing:.16em;color:#9fb0bd;
+}
+.corebadge span{border:1px solid rgba(190,212,228,.34);border-radius:2px;padding:4px 10px;background:rgba(190,212,228,.07)}
+.corebadge b{font-family:var(--serif);font-size:26px;color:#dae5ee;letter-spacing:0}
+.corebadge i{color:#6e7c88;font-style:normal;letter-spacing:.06em}
+.s-q.is-core .eyebrow{margin-top:28px}
 
-/* ── 오늘 이것만은 ── */
-.must{border:2px solid var(--navy);border-radius:4px;margin-bottom:16px;overflow:hidden;
-      break-inside:avoid;page-break-inside:avoid}
-.must .mt{background:var(--navy);color:#fff;padding:8px 14px;font-size:12pt;font-weight:800;
-          display:flex;align-items:baseline;gap:10px;letter-spacing:-.024em}
-.must .mt span{font-size:8.6pt;font-weight:500;opacity:.9;margin-left:auto;letter-spacing:0}
-.must .mb{padding:10px 14px 12px}
-.must p.lead2{font-size:9.3pt;color:var(--ink2);line-height:1.68;margin-bottom:9px}
-.must p.lead2 b{color:var(--navy);font-weight:800}
-.must ol{list-style:none;counter-reset:m}
-.must ol li{counter-increment:m;position:relative;padding:5.4px 0 5.4px 25px;
-            font-size:10.6pt;line-height:1.56;border-bottom:1px solid var(--line2)}
-.must ol li:last-child{border-bottom:0}
-.must ol li::before{content:counter(m);position:absolute;left:0;top:6.6px;
-            width:16px;height:16px;border-radius:50%;background:var(--navy);color:#fff;
-            font-size:7.8pt;font-weight:800;text-align:center;line-height:16px;
-            font-variant-numeric:tabular-nums}
-.must ol li b{font-weight:800;color:#000}
-.must ol li em{font-style:normal;color:var(--cop2);font-weight:700;font-size:8.6pt;
-               margin-left:5px;white-space:nowrap}
-.must .why2{margin-top:9px;padding-top:8px;border-top:1px dashed var(--line);
-            font-size:8.9pt;color:var(--muted);line-height:1.6}
-.must .why2 b{color:var(--warn);font-weight:700}
+/* ─────────── 묶음 질문 ─────────── */
+.qs{list-style:none;position:relative;z-index:2;display:flex;flex-direction:column;gap:0}
+.qs li{padding:26px 0;border-top:1px solid rgba(255,255,255,.07)}
+.qs li:first-child{border-top:0;padding-top:6px}
+.qs li p{font-size:27px;line-height:1.58;font-weight:500;color:var(--paper);letter-spacing:-.015em}
+.qs li p b{font-weight:700;color:#fff}
+.s-qs:has(.qs li:nth-child(3)){justify-content:flex-start;padding-top:70px}
+.s-qs:has(.qs li:nth-child(3)) .qs li{padding:20px 0}
+.s-qs:has(.qs li:nth-child(3)) .qs li p{font-size:23.5px;line-height:1.55}
+body.notes .s-qs:has(.qs li:nth-child(3)) .note{font-size:14px;margin-top:11px}
 
-/* ── 사전 브리핑 ── */
-.brief{border:1.6px solid var(--cop);border-radius:4px;padding:0;margin-bottom:16px;overflow:hidden}
-.brief .bt{background:var(--cop);color:#fff;padding:7px 13px;font-size:11.4pt;font-weight:800;
-           display:flex;align-items:baseline;gap:10px;letter-spacing:-.022em}
-.brief .bt span{font-size:8.5pt;font-weight:500;opacity:.88;margin-left:auto;letter-spacing:0}
-.brief .bd{padding:11px 13px 12px}
-.brief p.gd{font-size:9.4pt;color:var(--cop2);line-height:1.7;margin-bottom:10px}
-.brief p.gd b{color:#5a3820;font-weight:800}
+/* ─────────── 과녁 ─────────── */
+.s-aim{background-image:
+   linear-gradient(101deg, transparent 12%, rgba(216,232,244,.1) 17%, transparent 23%),
+   radial-gradient(120% 100% at 70% 10%, #38454f 0%, #1c252c 40%, #0a0e11 78%, #050709 100%)}
+.aim-h{position:relative;z-index:2;font-size:60px;line-height:1.22;font-weight:800;letter-spacing:-.035em;margin-bottom:34px;
+  background:linear-gradient(180deg,#fff,#b6c4cf);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.aim-b{position:relative;z-index:2;max-width:900px}
+.aim-b p{font-size:20px;line-height:1.82;color:#9dabb5;margin-bottom:15px}
+.aim-b p b{color:var(--fog)}
+.aim-b .kick{margin-top:26px;font-size:25px;color:var(--white);font-weight:700;letter-spacing:-.02em}
 
-table.fact{width:100%;border-collapse:collapse;font-size:9.4pt;margin-bottom:11px}
-table.fact th{background:#f3efe9;color:var(--cop2);font-weight:700;text-align:left;
-              padding:5px 8px;border-bottom:1.4px solid var(--sandline);font-size:8.5pt;
-              letter-spacing:.03em}
-table.fact td{padding:4.6px 8px;border-bottom:1px solid var(--line2);
-              vertical-align:top;line-height:1.55}
-table.fact td:first-child{font-weight:700;color:var(--ink);white-space:nowrap;width:82px}
-table.fact td:last-child{color:var(--faint);font-size:7.9pt;white-space:nowrap;width:70px;
-                         text-align:right}
-table.fact tr:last-child td{border-bottom:0}
-table.fact b{font-weight:800;color:var(--cop2)}
+/* ─────────── 12개 ─────────── */
+.must{list-style:none;position:relative;z-index:2;columns:2;column-gap:56px}
+.must li{break-inside:avoid;display:flex;align-items:baseline;gap:13px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.055)}
+.must .mn{font-family:var(--serif);font-size:16px;color:#69767f;min-width:24px}
+.must .mq{font-size:16.5px;line-height:1.5;color:var(--paper);flex:1}
+.must .mo{font-size:12px;letter-spacing:.05em;color:#5a666f;white-space:nowrap}
 
-.tension{background:var(--warnbg);border:1px solid var(--warnline);border-radius:3px;
-         padding:10px 13px;margin-bottom:10px}
-.tension h4{font-size:10pt;font-weight:800;color:var(--warn);margin-bottom:5px;
-            letter-spacing:-.022em}
-.tension ol{list-style:none;counter-reset:t}
-.tension ol li{counter-increment:t;position:relative;padding:5px 0 5px 23px;
-               font-size:9.9pt;line-height:1.62;border-bottom:1px solid #f4e8ea}
-.tension ol li:last-child{border-bottom:0}
-.tension ol li::before{content:counter(t);position:absolute;left:0;top:6.4px;
-               width:14px;height:14px;border-radius:50%;background:var(--warn);color:#fff;
-               font-size:7.6pt;font-weight:800;text-align:center;line-height:14px}
-.tension ol li b{font-weight:800;color:var(--warn)}
+/* ─────────── 내부 슬라이드 ─────────── */
+.s-int{background-image:
+   linear-gradient(180deg, rgba(120,60,60,.055), transparent 40%),
+   radial-gradient(120% 90% at 50% -18%, #2b2f34 0%, #191d21 34%, #0c0f11 68%, #050607 100%)}
+.s-int .eyebrow{color:#96777a}
+.s-int .eyebrow::before{background:linear-gradient(90deg,#96777a,transparent)}
+.guide{position:relative;z-index:2;max-width:900px}
+.guide p{font-size:20px;line-height:1.85;color:#9aa5ae;margin-bottom:13px}
+.guide p b{color:var(--fog)}
+.guide .warn{margin-top:26px;padding:15px 20px;border:1px solid rgba(190,120,120,.3);border-radius:4px;background:rgba(190,120,120,.07);color:#c9a4a4;font-size:17px}
+.guide .warn b{color:#e5c4c4}
+table.fact{position:relative;z-index:2;width:100%;border-collapse:collapse;font-size:14.5px}
+table.fact td{padding:9px 12px;border-top:1px solid rgba(255,255,255,.06);vertical-align:top;line-height:1.6;color:#a3aeb7}
+table.fact td b{color:var(--white);font-weight:700}
+table.fact td.k{width:96px;color:#78848d;font-weight:700;white-space:nowrap}
+table.fact td.src{width:118px;color:#4f5a63;font-size:12.5px;text-align:right;white-space:nowrap}
+.spine{list-style:none;position:relative;z-index:2}
+.spine li{display:flex;gap:20px;padding:17px 0;border-top:1px solid rgba(255,255,255,.07)}
+.spine li:first-child{border-top:0}
+.spine .sn{font-family:var(--serif);font-size:28px;color:#5f6b74;line-height:1}
+.spine h4{font-size:22px;font-weight:700;color:var(--white);margin-bottom:7px}
+.spine p{font-size:16px;line-height:1.68;color:#98a3ac}
+.spine p b{color:var(--fog)}
+.spine .cau{margin-top:7px;font-size:14.5px;color:#8d7a7a;padding-left:12px;border-left:2px solid #4d3d3d}
+.mines{list-style:none;position:relative;z-index:2}
+.mines li{padding:15px 0;border-top:1px solid rgba(255,255,255,.07)}
+.mines li:first-child{border-top:0}
+.mines h4{font-size:21px;font-weight:700;color:#dcc4c4;margin-bottom:6px}
+.mines p{font-size:16px;line-height:1.68;color:#96a1aa}
+.mines p b{color:var(--fog)}
 
-.mines{border:1px solid var(--line);border-radius:3px;padding:9px 13px}
-.mines h4{font-size:9.4pt;font-weight:800;color:var(--ink);margin-bottom:4px;letter-spacing:-.02em}
-.mines ul{list-style:none}
-.mines li{padding:3.4px 0 3.4px 14px;position:relative;font-size:9.4pt;
-          line-height:1.58;color:var(--ink2)}
-.mines li::before{content:"·";position:absolute;left:3px;top:3.4px;
-                  color:var(--warn);font-weight:800}
-.mines li b{font-weight:700;color:var(--ink)}
+/* ─────────── 마무리 ─────────── */
+.check{list-style:none;position:relative;z-index:2;columns:2;column-gap:56px}
+.check li{break-inside:avoid;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.055)}
+.check li b{display:block;font-size:17px;color:var(--white);font-weight:700;margin-bottom:3px}
+.check li span{font-size:13.5px;line-height:1.55;color:#69757e}
+.s-end{align-items:flex-start;justify-content:center;background-image:
+   radial-gradient(105% 95% at 50% 104%, #36434e 0%, #1a2329 40%, #0a0e11 78%, #040608 100%)}
+.end-mark{position:relative;z-index:2;font-family:var(--serif);font-size:44px;color:rgba(255,255,255,.26);letter-spacing:.12em;margin-bottom:26px}
+.end-h{position:relative;z-index:2;font-size:52px;line-height:1.34;font-weight:400;color:#a8b4bd;letter-spacing:-.025em}
+.end-h b{font-weight:800;background:linear-gradient(180deg,#fff,#b6c4cf);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.end-p{position:relative;z-index:2;margin-top:26px;font-size:18px;line-height:1.8;color:#78848d}
+.end-f{position:absolute;left:84px;bottom:64px;z-index:2;font-size:13px;letter-spacing:.14em;color:#4c565e}
 
-.check{border:1.6px solid var(--navy);border-radius:4px;padding:13px 15px;margin-top:8px;
-       break-inside:avoid;page-break-inside:avoid}
-.check h3{font-size:12pt;font-weight:800;color:var(--navy);margin-bottom:3px;letter-spacing:-.026em}
-.check p.sub{font-size:9.1pt;color:var(--muted);margin-bottom:9px}
-.check ul{list-style:none}
-.check li{padding:5.6px 0 5.6px 24px;position:relative;font-size:10.6pt;
-          line-height:1.55;border-bottom:1px solid var(--line2)}
-.check li:last-child{border-bottom:0}
-.check li::before{content:"";position:absolute;left:0;top:8px;width:12px;height:12px;
-                  border:1.3px solid #9aa3ae;border-radius:2px}
-.check li b{font-weight:800}
-.check li span{color:var(--muted);font-size:8.9pt;font-weight:500}
+/* ─────────── HUD ─────────── */
+#hud{position:fixed;left:0;right:0;bottom:0;z-index:50;pointer-events:none}
+#bar{height:2px;background:rgba(255,255,255,.07)}
+#bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#4a5964,#cfdae3);transition:width .34s ease}
+#meta{position:fixed;right:20px;bottom:16px;z-index:50;font-size:12px;letter-spacing:.14em;color:#4e5960;display:flex;align-items:center;gap:14px}
+#meta b{color:#aab5bd;font-weight:700}
+#meta .tag{border:1px solid rgba(255,255,255,.12);border-radius:3px;padding:2px 7px;color:#6e7a83}
+#meta .tag.live{color:#d9b3b3;border-color:rgba(200,130,130,.4);background:rgba(200,130,130,.1)}
+#help{position:fixed;left:20px;bottom:16px;z-index:50;font-size:12px;letter-spacing:.1em;color:#3f4950;
+  transition:opacity .6s ease}
+#help.hide{opacity:0}
 
-.foot{margin-top:14px;padding-top:8px;border-top:1px solid var(--line);
-      font-size:8.1pt;color:var(--faint);display:flex;justify-content:space-between;gap:12px}
+/* 오버뷰 */
+#ov{position:fixed;inset:0;z-index:80;background:rgba(4,6,8,.97);display:none;overflow:auto;padding:34px}
+#ov.on{display:block}
+#ovg{display:grid;grid-template-columns:repeat(6,1fr);gap:11px}
+.ovc{border:1px solid rgba(255,255,255,.1);border-radius:5px;padding:11px;min-height:78px;cursor:pointer;
+  background:linear-gradient(160deg,#1a2228,#0a0e11);transition:.14s}
+.ovc:hover{border-color:rgba(255,255,255,.4);transform:translateY(-2px)}
+.ovc.cur{border-color:#cfdae3;box-shadow:0 0 0 1px #cfdae3}
+.ovc .i{font-size:10px;letter-spacing:.12em;color:#57636b;margin-bottom:5px}
+.ovc .t{font-size:11.5px;line-height:1.45;color:#b3bec6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ovc.k{background:linear-gradient(160deg,#26323b,#0d1215)}
+.ovc.d{background:linear-gradient(160deg,#39454f,#141b20)}
+.ovc.d .t{color:#e6edf2;font-weight:700}
+.ovc.x{background:linear-gradient(160deg,#2a2225,#0e0b0c)}
+#ovh{color:#6b7780;font-size:13px;letter-spacing:.14em;margin-bottom:18px;display:flex;gap:16px;align-items:center}
 
+/* ─────────── 인쇄 = 손패 ─────────── */
 @media print{
-  body{background:#fff;font-size:10.2pt}
-  .sheet{max-width:none;padding:0;box-shadow:none}
-  ol.q li{font-size:10.5pt;padding-top:4.6px;padding-bottom:4.6px}
-  .howto,.aim,.lead{font-size:9pt}
-  table.fact{font-size:8.8pt}
-  .brief,.tension,.mines{break-inside:avoid;page-break-inside:avoid}
-  .bh{break-after:avoid;page-break-after:avoid}
-  .lead{break-after:avoid;page-break-after:avoid}
-}
-@media screen and (max-width:820px){
-  body{font-size:10.5pt}
-  .sheet{padding:7mm 5mm 9mm}
-  .top{flex-direction:column;align-items:flex-start;gap:7px}
-  .top .when{text-align:left}
-  .bh{flex-wrap:wrap}
-  .bh .why{margin-left:0;flex-basis:100%}
-  table.fact td:last-child{display:none}
-  table.fact th:last-child{display:none}
+  html,body{overflow:visible;background:#fff}
+  #hud,#meta,#help,#ov{display:none!important}
+  #stage{position:static;display:block}
+  #deck{width:auto;height:auto;transform:none}
+  .slide{
+    position:relative;inset:auto;opacity:1!important;visibility:visible!important;
+    width:1280px;height:720px;transform:scale(.795);transform-origin:top left;
+    margin:0 0 -148px 0;page-break-after:always;break-after:page;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+  .note{display:block!important;margin-top:16px;font-size:15px;line-height:1.7;color:#7f8d98;padding-left:14px;border-left:2px solid #3a464f}
+  .note .nl{display:inline-block;font-size:11px;letter-spacing:.16em;color:#4d5860;border:1px solid #333d45;border-radius:3px;padding:1px 6px;margin-right:9px}
 }
 </style>
 </head>
 <body>
-<div class="sheet">
 
-  <div class="top">
-    <h1>백경증류소 브랜드 딥 인터뷰
-      <small>오늘 나온 말이 촬영 콘티 · 라벨 카피 · 홈페이지 문장의 원본이 된다</small></h1>
-    <div class="when"><b>2026-09-03 (목)</b><br>정식 킥오프 · 대표님 서울 방문<br>HIZ 우성민</div>
-  </div>
+<div id="stage"><div id="deck">
+<section class="slide s-cover">
+ <div class="cv-img"></div><div class="cv-scrim"></div>
+ <div class="cv-body">
+   <div class="cv-eyebrow">백경증류소 <span>×</span> HIZ BRANDRISE</div>
+   <h1 class="cv-title">브랜드 딥 인터뷰</h1>
+   <div class="cv-sub">오늘 나온 말이 촬영 콘티 · 라벨 카피 · 홈페이지 문장의 <b>원본</b>이 된다</div>
+   <div class="cv-meta"><b>2026. 09. 03</b><i></i>정식 킥오프 · 서울<i></i>PM 우성민</div>
+ </div>
+ <div class="cv-mark">白鯨</div></section>
+<section class="slide s-int s-guide" data-int="1">
+ <div class="eyebrow">인터뷰어 전용 · 시작 전에 나만 읽는 면</div>
+ <h2 class="ttl">진행</h2>
+ <div class="guide">
+  <p><b>앞 20분은 실무를 닫고</b>, 나머지 전부를 인터뷰에 쓴다. 순서대로 다 물을 필요 없다 —
+     <b class="hi">핵심 12개</b>만 챙기면 된다.</p>
+  <p>답이 길어지면 끊지 말고 그대로 둔다 — <b class="hi">답의 길이가 온도계다.</b></p>
+  <p>시작할 때 <b>녹음 동의</b>를 받는다("정리해서 다시 보내드리려고요").</p>
+  <p class="warn">이 덱은 <b>내부 노트가 숨어 있다.</b> 화면 공유 중에는 <kbd>N</kbd>을 누르지 말 것.</p>
+ </div></section>
+<section class="slide s-int s-fact" data-int="1">
+ <div class="eyebrow">이미 확인한 것 · 2026-09-01 공개 자료 실측 <span class="pg">1/2</span></div>
+ <h2 class="ttl">물어보지 않아도 아는 것</h2>
+ <table class="fact"><tr><td class="k">뿌리</td><td>경남 <b>함양의 대대로 한의원 집안</b>. 어릴 때부터 약재 다루기와 <b>법제(法製)</b>를 보고 자람. "한의학에서는 약재를 술로 법제하는 경우가 적지 않다"</td><td class="src">헤럴드K 26.6</td></tr><tr><td class="k">아버지</td><td>아버지가 <b>양조장을 창업</b>. 대표의 <b>첫 직장이 아버지 양조장</b>, 20대~30대 초 <b>약 7년</b> 근무</td><td class="src">헤럴드K · 다음</td></tr><tr><td class="k">독립</td><td>"아버님 증류소를 <b>떠난</b> 이유도 내가 빚고 싶은 술을 만들기 위함이었기에"</td><td class="src">다음 24.12</td></tr><tr><td class="k">제주 3년</td><td>제주에서 먼저 사업. <b>물류 때문에 세종으로 이전</b></td><td class="src">헤럴드K</td></tr><tr><td class="k">법인</td><td>농업회사법인㈜백경증류소 · 세종 장군면 평기길 151 · 증류소 약 100평</td><td class="src">자사몰 · 다음</td></tr><tr><td class="k">제품</td><td>백경15(약주) 골드·블랙·화이트·향미주곡·향온·호라산 / 백경10(탁주). <b>보도는 13종</b></td><td class="src">다음 · K-EXPO</td></tr><tr><td class="k">향온</td><td>750mL · 15% · 직접 재배 쌀 + 녹두 누룩 '향온곡' · <b>180일 다섯 번 발효(오양주)</b></td><td class="src">술담화</td></tr><tr><td class="k">누룩</td><td>직접 빚음. 밀·녹두·수수·팥·<b>토종쌀(직접 농사)</b>. 온도 40도 · 습도 70~80%</td><td class="src">다음</td></tr><tr><td class="k">맛의 방향</td><td>"전통 한국술의 강한 단맛을 벗어나 <b>음식과 조화되는 드라이 스타일</b>"</td><td class="src">K-EXPO</td></tr><tr><td class="k">포지션</td><td><b>"식탁 위의 술"</b> — "한식당이 시작점일 수는 있지만 궁극적으로는 프렌치·이탈리안·파인다이닝"</td><td class="src">헤럴드K</td></tr></table></section>
+<section class="slide s-int s-fact" data-int="1">
+ <div class="eyebrow">이미 확인한 것 · 2026-09-01 공개 자료 실측 <span class="pg">2/2</span></div>
+ <h2 class="ttl">물어보지 않아도 아는 것</h2>
+ <table class="fact"><tr><td class="k">매출</td><td>2025년 4억 → <b>현재 월 1억 수준</b> · 하반기 목표 월 2억. 대형 OEM 7월 납품 시작</td><td class="src">헤럴드K</td></tr><tr><td class="k">수출</td><td>싱가포르 첫 수출 1,000만원. 독일·홍콩·중국·미국 추진. 일본 최대 유통사 미팅. 태국 기술이전</td><td class="src">헤럴드K · 다음</td></tr><tr><td class="k">유통</td><td><b>면세점 · 백화점 입점.</b> 직수출은 아직, 국내외 유통사가 일부 품목 해외 판매</td><td class="src">헤럴드K</td></tr><tr><td class="k">투자</td><td>청년식품창업패키지 3억 · 리벤처스-세종 조합 1호 · 정부 스케일업 전국 5개 선정</td><td class="src">벤처스퀘어</td></tr><tr><td class="k">수상</td><td><b>IWSC 2026 백경15 브론즈</b> — 공개 자료에서 확인되는 유일한 수상</td><td class="src">헤럴드K</td></tr><tr><td class="k">인증</td><td>HACCP · ISO 22000 · 제품별 인증수출자 자격</td><td class="src">K-EXPO</td></tr><tr><td class="k">디자인</td><td><b>대표님 배우자가 담당.</b> 투입비 4,000만원 · 네 차례 큰 수정. 라벨은 민화풍 고래 꼬리</td><td class="src">헤럴드K · 다음</td></tr><tr><td class="k">도올 친필</td><td>'백경' 글씨 = <b>도올 김용옥 선생이 직접 써 준 도안</b></td><td class="src">다음</td></tr><tr><td class="k">채널</td><td>인스타 @baekkyung_official 게시물 217 · 팔로워 2,237 · 유튜브 · 스마트스토어</td><td class="src">실측 9/1</td></tr></table>
+ <div class="fnote">표의 사실은 <b>확인 질문으로만</b> 쓰고(30초), 아낀 시간을 전부 이야기에 쓴다.</div></section>
+<section class="slide s-int s-spine" data-int="1">
+ <div class="eyebrow">이 인터뷰의 척추</div>
+ <h2 class="ttl">확인된 사실끼리 <b>어긋나는 곳</b> 3개</h2>
+ <ol class="spine"><li><span class="sn">01</span><div><h4>계승인가, 독립인가</h4><p>홈페이지는 <b>"집안 대대로 내려오는 전통 방식"</b>이라 쓰는데, 기사에서 대표님은 <b>"아버님 증류소를 떠났다"</b>고 말한다. 우리가 「2대 계승」으로 알고 준비해 온 서사가 실제로는 <b>떠나온 이야기</b>일 수 있다.</p><p class="cau">여기가 오늘 제일 조심스럽고 제일 중요한 자리다. 캐묻지 말고 열어만 둔다</p></div></li><li><span class="sn">02</span><div><h4>고래가 두 마리다</h4><p>한글 <b>白鯨</b>은 모비딕의 흰 고래인데, 홈페이지 영문은 <b>sperm whale(향유고래)</b>이라 쓴다. 둘 다 틀린 건 아니지만 <b>해외에서는 서로 다른 브랜드처럼 읽힌다.</b></p><p class="cau">라벨 5종 인쇄 전에 하나로 정해야 한다</p></div></li><li><span class="sn">03</span><div><h4>가장 강한 자산이 브랜드에 안 쓰인다</h4><p>함양 한의원 집안의 <b>법제(法製)</b> — 약재를 술로 다스리는 그 개념은 백경만 쓸 수 있는 말인데 홈페이지·라벨·상세페이지 어디에도 없다.</p><p class="cau">'발효건축' 자리에 들어갈 백경의 단어가 여기 있을 가능성이 가장 높다</p></div></li></ol></section>
+<section class="slide s-int s-mines" data-int="1">
+ <div class="eyebrow">지뢰</div>
+ <h2 class="ttl">알되 오늘 <b>절대 꺼내지 않는 것</b></h2>
+ <ul class="mines"><li><h4>창업 첫해 매출 숫자</h4><p>기사에 나오지만 <b>대표님 자책 발언</b>이다. 우리 입으로 인용하지 않는다.</p></li><li><h4>디자인 평가</h4><p><b>배우자 작업물</b>이고 4천만원 · 4차 수정이 들어갔다. 진입은 브랜드 전략 → SKU 정리 → 유통 설계 순이고, 디자인은 그 결론에 딸려오는 것으로만 말한다.</p></li><li><h4>제품 수 · 리뷰 수를 단정하지 않는다</h4><p>보도는 13종, 우리 자료는 35종이다. 어느 쪽이 맞다고 말하지 말고 <b>대표님께 여쭤서 확정</b>한다.</p></li><li><h4>수상 이력을 먼저 말하지 않는다</h4><p>확인되는 건 IWSC 2026 브론즈 하나다. Superior Taste Award · DESIGN IT AWARDS는 확인되지 않았다. <b>있는지 여쭙는 것</b>이지 없다고 단정하는 게 아니다.</p></li></ul></section>
+<section class="slide s-aim">
+ <div class="eyebrow">오늘의 과녁</div>
+ <h2 class="aim-h">백경만의 <b>단어 하나</b>를 찾는 것</h2>
+ <div class="aim-b">
+  <p>복순도가는 자기 술 빚는 방식을 <b>'발효건축'</b>이라 불렀다. 그 한 단어가 브랜드 전체를 설명한다.</p>
+  <p>백경은 술 · 기술 · 인증 · 수출이 이미 궤도에 올랐는데 <b class="hi">그걸 담을 자기 언어가 비어 있다.</b>
+     그리고 그 원재료는 대표님한테만 있다.</p>
+  <p>그래서 오늘은 전략을 묻지 않는다. <b>이야기 · 장면 · 사물 · 감각</b>만 캔다.</p>
+  <p class="kick">짓는 게 아니라 캐내는 것이다.</p>
+ </div></section>
+<section class="slide s-must">
+ <div class="eyebrow">다 못 돌아도 이건 들고 나온다</div>
+ <h2 class="ttl">오늘 이것만은 — <b>12개</b></h2>
+ <ol class="must"><li><span class="mn">01</span><span class="mq">白鯨이 모비딕이에요, 향유고래예요?</span><span class="mo">라벨·해외 배너</span></li><li><span class="mn">02</span><span class="mq">도올 글씨, 어디까지 써도 되는 걸로 됐어요? 서면이 있어요?</span><span class="mo">5개국 전시</span></li><li><span class="mn">03</span><span class="mq">어릴 때 약재 법제하시는 걸 본 기억, 어떤 장면이에요?</span><span class="mo">자기 언어 1순위</span></li><li><span class="mn">04</span><span class="mq">약을 술로 법제한다는 게, 지금 백경 빚는 것과 닿아 있어요?</span><span class="mo">자기 언어</span></li><li><span class="mn">05</span><span class="mq">아버님 양조장에서 「안 하기로」 한 게 뭐였어요?</span><span class="mo">브랜드 정체성</span></li><li><span class="mn">06</span><span class="mq">아버님께 배운 것 중 지금도 절대 안 바꾸는 것 하나.</span><span class="mo">규칙 문장</span></li><li><span class="mn">07</span><span class="mq">이 술로 절대 안 할 것이 있다면 하나만.</span><span class="mo">규칙 문장 첫 줄</span></li><li><span class="mn">08</span><span class="mq">백경이 하는 일을 대표님만의 단어로 부른다면?</span><span class="mo">오늘의 과녁</span></li><li><span class="mn">09</span><span class="mq">「식탁 위의 술」, 언제부터 쓰셨어요? 직접 만드신 말이에요?</span><span class="mo">이미 있는 자산</span></li><li><span class="mn">10</span><span class="mq">단맛을 빼신 이유가 뭐예요?</span><span class="mo">안 하는 것 ①</span></li><li><span class="mn">11</span><span class="mq">진짜 밀고 싶은 것 세 개를 순서대로.</span><span class="mo">라벨 5종·촬영 컷</span></li><li><span class="mn">12</span><span class="mq">11월 30일에 뭐가 손에 있으면 잘했다 싶으세요?</span><span class="mo">성과 정의</span></li></ol>
+ <div class="fnote">전체 80문항은 2시간에 다 못 돈다. 이 12개는 ①한 번 지나가면 되돌릴 수 없거나 ②이후 모든 산출물의 입력이 된다.</div></section>
+<section class="slide s-div" data-blk="00">
+     <div class="ghost">00</div>
+     <div class="dv-body">
+       <div class="eyebrow">20분 · 논의 아님, 확인</div>
+       <h2 class="dv-h">먼저 닫고 가는 것</h2>
+       <p class="dv-l">여기서 시간을 끌면 인터뷰가 죽는다. 정해진 것을 확인하고, 안 정해진 건 <b>"언제까지"</b>만 받는다.</p>
+     </div></section>
+<section class="slide s-qs" data-blk="00">
+             <div class="eyebrow">00 · 먼저 닫고 가는 것 <span class="pg">1/3</span></div>
+             <ul class="qs"><li><p><b>계약서 날인</b> — 11월말 개정본(기간 8/4~11/30 · 총액 97,200,000 VAT 별도 · 3분할)</p><div class="note"><span class="nl">내부</span>지원사업 정산이 11/30에 닫혀서 종료일을 맞춘 판이다. 개정 6곳 반영 확인 완료</div></li><li><p><b>12월 과업은 계약서 밖에서 관리한다</b> — 인쇄물 입고 · 검수 · 연말 대응은 12월까지 가지만 계약 · 정산은 11/30에 닫힌다. 이 두 줄을 <b>오늘 회의록에 남긴다</b></p><div class="note"><span class="nl">내부</span>안 남기면 12월에 "계약 끝났는데" 또는 "왜 안 해주냐" 둘 중 하나가 반드시 나온다</div></li><li><p><b>1차 대금 30,000,000</b> — 계산서 수신 담당자 · 이메일 · 발행일</p><div class="note"><span class="nl">내부</span>계약상 지급월이 '2026년 8월'인데 이미 지났다. 오늘 새 날짜를 잡는다</div></li></ul></section>
+<section class="slide s-qs" data-blk="00">
+             <div class="eyebrow">00 · 먼저 닫고 가는 것 <span class="pg">2/3</span></div>
+             <ul class="qs"><li><p><b>자료 요청 시트 전달</b> — 링크 하나로 13건. 제품 · 입점처 · 매출 구분 · 채널 계정 · 드라이브</p><div class="note"><span class="nl">내부</span>대표님이 직접 안 채우셔도 된다. 사내 담당자 한 분만 지정해 주시면 된다</div></li><li><p><b>패키지 확정일</b> — 브랜드 필름을 <b>리뉴얼된 패키지로</b> 찍어야 하므로, 오늘 정할 것은 촬영일이 아니라 <b>패키지가 언제 나오느냐</b>다. 촬영일은 거기서 역산한다</p><div class="note"><span class="nl">내부</span>9/8 제품 촬영은 현행 패키지 기준 별도 트랙이라는 것도 같이 못 박는다</div></li><li><p><b>인스타그램 운영 기준</b> — 4개월 실제 진행 / 피드 월 최소 12개(주 3개) + 스토리</p></li></ul></section>
+<section class="slide s-qs" data-blk="00">
+             <div class="eyebrow">00 · 먼저 닫고 가는 것 <span class="pg">3/3</span></div>
+             <ul class="qs"><li><p><b>정기 미팅 요일 · 시간</b> + 양측 담당자 · 소통 채널</p></li></ul></section>
+<section class="slide s-div" data-blk="01">
+     <div class="ghost">01</div>
+     <div class="dv-body">
+       <div class="eyebrow">네이밍 서사 · 문자 IP</div>
+       <h2 class="dv-h">고래가 두 마리다</h2>
+       <p class="dv-l">한글은 <b>白鯨(모비딕의 흰 고래)</b>, 영문은 <b>sperm whale(향유고래)</b>로 쓰고 계신다. 둘 다 틀린 건 아니지만 라벨 5종이 인쇄되기 전에 하나로 정해야 한다.</p>
+     </div></section>
+<section class="slide s-q is-core" data-blk="01">
+         <div class="corebadge"><span>오늘 이것만은</span><b>01</b><i>→ 라벨·해외 배너</i></div><div class="eyebrow">01 · 고래가 두 마리다</div>
+         <p class="bigq">기사에선 <b>모비딕의 흰고래</b>라고 하셨는데, 홈페이지 영문은 <b>sperm whale</b> · "The Great Whale's Spirit"이더라고요. <b>대표님 머릿속의 고래는 어느 쪽</b>이에요?</p><div class="note"><span class="nl">내부</span>여기서 나오는 답이 해외 라벨·전시 배너의 기준이 된다</div></section>
+<section class="slide s-q" data-blk="01">
+         <div class="eyebrow">01 · 고래가 두 마리다</div>
+         <p class="bigq">모비딕이 맞다면 — <b>모비딕은 끝내 못 잡는 고래</b>잖아요. 그걸 아시면서도 붙이신 거예요?</p><div class="note"><span class="nl">내부</span>"거대한 바다를 건너는 힘과 도전"이라 하셨는데, 그 배는 결국 침몰한다. 이 답이 브랜드 태도 그 자체다</div></section>
+<section class="slide s-q" data-blk="01">
+         <div class="eyebrow">01 · 고래가 두 마리다</div>
+         <p class="bigq">도올 선생님 친필 — <b>그날 얘기</b> 좀 들려주세요. 어떻게 부탁드렸고, 뭐라고 쓰시면서 뭐라고 하시던가요?</p></section>
+<section class="slide s-q" data-blk="01">
+         <div class="eyebrow">01 · 고래가 두 마리다</div>
+         <p class="bigq">그 <b>글씨 원본은 지금 어디</b> 있어요? 실물이요.</p><div class="note"><span class="nl">내부</span>있으면 촬영 1순위 피사체다</div></section>
+<section class="slide s-q is-core" data-blk="01">
+         <div class="corebadge"><span>오늘 이것만은</span><b>02</b><i>→ 5개국 전시</i></div><div class="eyebrow">01 · 고래가 두 마리다</div>
+         <p class="bigq">그 글씨를 <b>어디까지 써도 되는 걸로</b> 이야기가 됐어요? 라벨 말고 굿즈 · 전시물 · 해외 패키지에도요?</p><div class="note"><span class="nl">내부</span>서면 합의면 자산, 구두면 아직 희망사항이다. 해외 전시 전에 확인해야 한다</div></section>
+<section class="slide s-qs" data-blk="01">
+         <div class="eyebrow">01 · 고래가 두 마리다 <span class="pg">이어서</span></div>
+         <ul class="qs"><li><p>후보로 놓고 <b>떨어뜨린 이름</b>이 있었어요? 뭐였고, 왜 떨어졌어요?</p></li><li><p>영문은 <b>Baekkyung</b>으로 굳히신 거예요? 로마자 음차로 갈지, 의미 번역을 병기할지요.</p><div class="note"><span class="nl">내부</span>사케가 Sake·Junmai를 세계 표준어로 만든 길이 참고가 된다</div></li></ul></section>
+<section class="slide s-div" data-blk="02">
+     <div class="ghost">02</div>
+     <div class="dv-body">
+       <div class="eyebrow">계승 서사 · 인물</div>
+       <h2 class="dv-h">함양에서 세종까지 — 떠나온 것과 남은 것</h2>
+       <p class="dv-l">우리가 「2대 계승」으로 알고 있던 자리가 실제로는 <b>3층</b>이다 — <b>함양 한의원 집안 → 아버지가 양조장 창업 → 아들이 아버지를 떠나 자기 술.</b> 홈페이지는 "집안 대대로"라 쓰고, 기사에선 "떠났다"고 하신다. <b>캐묻지 말고 열어만 둔다.</b></p>
+     </div></section>
+<section class="slide s-q is-core" data-blk="02">
+         <div class="corebadge"><span>오늘 이것만은</span><b>03</b><i>→ 자기 언어 1순위</i></div><div class="eyebrow">02 · 함양에서 세종까지 — 떠나온 것과 남은 것</div>
+         <p class="bigq">함양에서 <b>한의원 하시는 집</b>에서 자라셨다고요. 어릴 때 <b>약재 법제하는 걸 보신 기억</b>, 어떤 장면으로 남아 있어요?</p><div class="note"><span class="nl">내부</span>오늘 이 인터뷰에서 가장 값어치 있는 답이 여기서 나올 가능성이 높다</div></section>
+<section class="slide s-q is-core" data-blk="02">
+         <div class="corebadge"><span>오늘 이것만은</span><b>04</b><i>→ 자기 언어</i></div><div class="eyebrow">02 · 함양에서 세종까지 — 떠나온 것과 남은 것</div>
+         <p class="bigq">한의학에서 <b>약을 술로 법제</b>한다는 게 정확히 뭘 하는 거예요? 지금 백경 빚는 것과 닿아 있는 데가 있어요?</p><div class="note"><span class="nl">내부</span>'발효건축' 자리에 들어갈 백경의 단어 후보 1순위</div></section>
+<section class="slide s-q is-core" data-blk="02">
+         <div class="corebadge"><span>오늘 이것만은</span><b>05</b><i>→ 브랜드 정체성</i></div><div class="eyebrow">02 · 함양에서 세종까지 — 떠나온 것과 남은 것</div>
+         <p class="bigq">아버님 양조장에서 7년 계셨는데, <b>거기서 안 하기로 한 게 뭐</b>였어요?</p><div class="note"><span class="nl">내부</span>"내가 빚고 싶은 술"의 내용이 여기 있다. 아버지를 평가하는 질문이 되지 않게 조심한다</div></section>
+<section class="slide s-q is-core" data-blk="02">
+         <div class="corebadge"><span>오늘 이것만은</span><b>06</b><i>→ 규칙 문장</i></div><div class="eyebrow">02 · 함양에서 세종까지 — 떠나온 것과 남은 것</div>
+         <p class="bigq">반대로, 아버님께 배운 것 중에 <b>지금도 절대 안 바꾸는 것</b> 하나만요.</p><div class="note"><span class="nl">내부</span>자기 언어 3질문 중 첫 번째 — 규칙 문장의 재료</div></section>
+<section class="slide s-q" data-blk="02">
+         <div class="eyebrow">02 · 함양에서 세종까지 — 떠나온 것과 남은 것</div>
+         <p class="bigq">아버님 <b>사진 · 기록 · 쓰시던 도구</b>, 집안의 한의원 시절 물건 같은 게 남아 있어요?</p><div class="note"><span class="nl">내부</span>브랜드 아카이브의 씨앗 — 있으면 촬영 때 실물 확인</div></section>
+<section class="slide s-q" data-blk="02">
+         <div class="eyebrow">02 · 함양에서 세종까지 — 떠나온 것과 남은 것</div>
+         <p class="bigq"><b>제주 3년</b> — 물류 때문에 세종으로 오셨다고 들었어요. 물류 말고, <b>제주에서 백경에 남은 게</b> 있다면요?</p><div class="note"><span class="nl">내부</span>자기 언어 3질문 중 두 번째</div></section>
+<section class="slide s-qs" data-blk="02">
+         <div class="eyebrow">02 · 함양에서 세종까지 — 떠나온 것과 남은 것 <span class="pg">이어서</span></div>
+         <ul class="qs"><li><p>아버님은 어쩌다 한의원 집안에서 <b>양조장을 시작</b>하신 거예요?</p></li><li><p>홈페이지에 <b>"집안 대대로 내려오는 전통 방식"</b>이라고 쓰셨더라고요. 여기서 '대대로'는 어디를 가리키는 거예요? 한의원 쪽이에요, 양조장 쪽이에요?</p></li><li><p>아버님이 지금 백경을 보시면 뭐라고 하실 것 같으세요?</p></li></ul></section>
+<section class="slide s-qs" data-blk="02">
+         <div class="eyebrow">02 · 함양에서 세종까지 — 떠나온 것과 남은 것 <span class="pg">이어서</span></div>
+         <ul class="qs"><li><p>대표님 다음은 누가 이어요? 생각해 보신 적 있으세요?</p></li></ul></section>
+<section class="slide s-div" data-blk="03">
+     <div class="ghost">03</div>
+     <div class="dv-body">
+       <div class="eyebrow">감각 언어 채집 · 카피 원문</div>
+       <h2 class="dv-h">술이 되는 시간</h2>
+       <p class="dv-l">스펙은 이미 안다(누룩 40도 · 습도 70~80% · 향온 180일 5회 · 15%). 그러니 <b>기술이 아니라 감각</b>을 받는다. 냄새 · 소리 · 손의 감각으로 답이 나오면 그게 그대로 카피가 된다.</p>
+     </div></section>
+<section class="slide s-q" data-blk="03">
+         <div class="eyebrow">03 · 술이 되는 시간</div>
+         <p class="bigq">발효실 문을 열면 <b>무슨 냄새</b>가 나요? 아는 사람만 아는 냄새로 표현하면요?</p></section>
+<section class="slide s-q" data-blk="03">
+         <div class="eyebrow">03 · 술이 되는 시간</div>
+         <p class="bigq">술이 잘 되고 있다는 걸 <b>뭘로 아세요?</b> 소리예요, 냄새예요, 손 감각이에요?</p></section>
+<section class="slide s-q" data-blk="03">
+         <div class="eyebrow">03 · 술이 되는 시간</div>
+         <p class="bigq">향온은 <b>180일 동안 다섯 번</b> 덧술을 하신다고요. 그 반년 동안 <b>가장 마음 졸이는 구간</b>이 언제예요?</p></section>
+<section class="slide s-q" data-blk="03">
+         <div class="eyebrow">03 · 술이 되는 시간</div>
+         <p class="bigq">누룩 재료가 밀 · 녹두 · 수수 · 팥 · 토종쌀인데, <b>녹두를 쓰는 이유</b>가 뭐예요?</p><div class="note"><span class="nl">내부</span>'향온곡'이라는 이름의 뿌리가 여기 있을 수 있다. 향온주는 조선 왕실 술 이름이기도 하다</div></section>
+<section class="slide s-q is-core" data-blk="03">
+         <div class="corebadge"><span>오늘 이것만은</span><b>10</b><i>→ 안 하는 것 ①</i></div><div class="eyebrow">03 · 술이 되는 시간</div>
+         <p class="bigq"><b>단맛을 뺀 드라이 스타일</b>로 가신 이유가 뭐예요? 단 걸 좋아하는 손님을 놓치는 건데요.</p><div class="note"><span class="nl">내부</span>「안 하는 것」이 이미 하나 있다. 이걸 규칙 문장으로 세울 수 있다</div></section>
+<section class="slide s-qs" data-blk="03">
+         <div class="eyebrow">03 · 술이 되는 시간 <span class="pg">이어서</span></div>
+         <ul class="qs"><li><p>누룩 만드실 때 <b>손이 기억하는 것</b>이 있어요?</p></li><li><p>토종쌀은 <b>직접 농사</b>지으신다고요. 품종이 뭐고, 농사는 누가 지어요?</p><div class="note"><span class="nl">내부</span>이름 있는 사람이 나오면 서사 인물이 하나 생긴다</div></li><li><p>토종쌀 · 독자 누룩 · 발효 시간, 이 셋 중에 <b>하나만 없앨 수 있다면</b> 뭘 없애시겠어요?</p><div class="note"><span class="nl">내부</span>진짜 핵심을 가려내는 질문. 못 고르시면 셋 다 살아 있는 것</div></li></ul></section>
+<section class="slide s-qs" data-blk="03">
+         <div class="eyebrow">03 · 술이 되는 시간 <span class="pg">이어서</span></div>
+         <ul class="qs"><li><p>왜 <b>15도</b>예요? 14도나 16도는 왜 아니에요? 라인 전체가 15로 통일된 이유도요.</p></li></ul></section>
+<section class="slide s-div is-core" data-blk="04">
+     <div class="ghost">04</div>
+     <div class="dv-body">
+       <div class="eyebrow">★ 오늘의 핵심 블록</div>
+       <h2 class="dv-h">백경의 언어</h2>
+       <p class="dv-l">복순도가는 자기 방식을 <b>'발효건축'</b>이라 부른다. 그 한 단어가 브랜드를 다 설명한다. 백경에도 그런 단어가 <b>이미 있는데 아직 이름이 안 붙었을 뿐</b>이다 — 그걸 오늘 찾는다.</p>
+     </div></section>
+<section class="slide s-q is-core" data-blk="04">
+         <div class="corebadge"><span>오늘 이것만은</span><b>08</b><i>→ 오늘의 과녁</i></div><div class="eyebrow">04 · 백경의 언어</div>
+         <p class="bigq">백경이 하는 일을 <b>대표님만의 단어</b>로 이름 붙인다면 뭐라고 하시겠어요?</p></section>
+<section class="slide s-q" data-blk="04">
+         <div class="eyebrow">04 · 백경의 언어</div>
+         <p class="bigq">남들은 그냥 부르는데 <b>대표님만 다르게 부르는 말</b>이 있어요? 공정이든 도구든 술의 상태든요.</p></section>
+<section class="slide s-q is-core" data-blk="04">
+         <div class="corebadge"><span>오늘 이것만은</span><b>07</b><i>→ 규칙 문장 첫 줄</i></div><div class="eyebrow">04 · 백경의 언어</div>
+         <p class="bigq">이 술로 <b>절대 안 할 것</b>이 있다면 하나만요.</p><div class="note"><span class="nl">내부</span>자기 언어 3질문 중 세 번째 — 그리고 가장 중요하다. 토라야는 「이 점포에서는 양갱을 팔지 않습니다」 한 줄로 500년을 갔다. 안 하는 것이 브랜드다</div></section>
+<section class="slide s-q is-core" data-blk="04">
+         <div class="corebadge"><span>오늘 이것만은</span><b>09</b><i>→ 이미 있는 자산</i></div><div class="eyebrow">04 · 백경의 언어</div>
+         <p class="bigq"><b>"식탁 위의 술"</b>이라고 하신 걸 봤어요. 그 말을 언제부터 쓰셨어요? 대표님이 만드신 말이에요?</p><div class="note"><span class="nl">내부</span>이미 있는 자기 언어일 수 있다. 있으면 새로 짓지 말고 이걸 키운다</div></section>
+<section class="slide s-q" data-blk="04">
+         <div class="eyebrow">04 · 백경의 언어</div>
+         <p class="bigq">백경 하면 <b>딱 떠올랐으면 하는 장면</b>이 있어요?</p><div class="note"><span class="nl">내부</span>촬영 A컷의 방향이 여기서 나온다</div></section>
+<section class="slide s-qs" data-blk="04">
+         <div class="eyebrow">04 · 백경의 언어 <span class="pg">이어서</span></div>
+         <ul class="qs"><li><p>직원분들끼리만 통하는 말이 있어요?</p></li><li><p>술 설명하실 때 자꾸 나오는 <b>비유</b>가 있어요? 뭐에 빗대서 말하세요?</p></li><li><p>백경을 사람이라고 하면 어떤 사람이에요? 몇 살이고 뭐 하는 사람이에요?</p></li></ul></section>
+<section class="slide s-qs" data-blk="04">
+         <div class="eyebrow">04 · 백경의 언어 <span class="pg">이어서</span></div>
+         <ul class="qs"><li><p>다른 브랜드 중에 "저건 참 잘한다" 싶은 데 있어요? 반대로 "저렇게는 안 하고 싶다" 싶은 데는요?</p></li></ul></section>
+<section class="slide s-div" data-blk="05">
+     <div class="ghost">05</div>
+     <div class="dv-body">
+       <div class="eyebrow">예/아니오 · 한 단어 · 5분</div>
+       <h2 class="dv-h">사실 확인</h2>
+       <p class="dv-l">공개 자료로 확인되는 건 이미 표에 있다. 여기는 <b>공개 자료로는 확인이 안 되는 것</b>만 남겼다. <b>답이 안 나오는 항목은 홈페이지 · 라벨 뒷면 · 해외 전시 배너 · 보도자료에서 뺀다.</b></p>
+     </div></section>
+<section class="slide s-qs" data-blk="05">
+             <div class="eyebrow">05 · 사실 확인 <span class="pg">1/3</span></div>
+             <ul class="qs"><li><p><b>고택</b> — 저희 자료엔 고택이 촬영지로 잡혀 있는데 공개 자료엔 안 나옵니다. 어떤 건물이고, <b>소유가 개인 / 법인 / 문중</b> 중 어느 쪽이에요? 문화재 지정은요?</p></li><li><p><b>수상</b> — 확인되는 건 <b>IWSC 2026 백경15 브론즈</b>였습니다. 그 외에 받으신 것(Superior Taste Award · DESIGN IT AWARDS 등)이 있으면 <b>연도 · 수상 제품명 · 증빙 원본</b>을요.</p><div class="note"><span class="nl">내부</span>의심이 아니라 실무다. 카피에 쓰려면 증빙이 먼저 있어야 한다</div></li><li><p><b>제품 수</b> — 보도는 13종인데 저희가 받은 자료엔 35종입니다. <b>지금 살아 있는 게 몇 종</b>이에요? 단종 · 한정 · OEM을 어떻게 세느냐의 문제일 것 같은데요.</p></li></ul></section>
+<section class="slide s-qs" data-blk="05">
+             <div class="eyebrow">05 · 사실 확인 <span class="pg">2/3</span></div>
+             <ul class="qs"><li><p><b>'대대로'의 시작점</b> — 함양 한의원은 몇 대째이고, 아버님 양조장은 언제 시작하셨어요?</p><div class="note"><span class="nl">내부</span>종이로 존재하는 숫자 하나(면허 발급일 · 등기 · 집안 기록)를 찾는다. 종이가 없으면 그 숫자는 어디에도 쓰지 않는다</div></li><li><p><b>미슐랭 · 파인다이닝 입점</b> — 업장명과 입점 시점. 있으면 해외 영업 자료의 가장 강한 근거가 됩니다.</p></li><li><p><b>독자 누룩</b>은 특허 · 품종등록 · 영업비밀 중 무엇으로 관리하고 계세요?</p></li></ul></section>
+<section class="slide s-qs" data-blk="05">
+             <div class="eyebrow">05 · 사실 확인 <span class="pg">3/3</span></div>
+             <ul class="qs"><li><p><b>상표</b> — 33류 '백경'이 <b>대표님 개인 명의</b>로 확인됩니다. 법인 이전 계획이 있으세요? 해외 상표는 어느 나라에 내셨어요?</p><div class="note"><span class="nl">내부</span>전시는 5개국인데 상표가 0개국이면 순서가 거꾸로다</div></li><li><p><b>OEM 계약</b> — 어디에 어떤 제품을 납품하시는 거예요? 백경 이름이 나가나요, 안 나가나요?</p><div class="note"><span class="nl">내부</span>브랜드 노출 여부에 따라 이걸 자산으로 쓸 수 있는지가 갈린다</div></li><li><p><b>유튜브</b> — '술장이'라고 들었는데 공식 채널은 @BAEKKYUNGDISTILLERY더라고요. 둘이 같은 거예요? 누가 만들고 어떤 기준으로 만드세요?</p></li></ul></section>
+<section class="slide s-div" data-blk="06">
+     <div class="ghost">06</div>
+     <div class="dv-body">
+       <div class="eyebrow">콘텐츠 자산 실사</div>
+       <h2 class="dv-h">남아 있는 것들</h2>
+       <p class="dv-l">촬영 전에 <b>뭐가 있는지</b> 알아야 뭘 찍을지 정해진다. 물건 · 기록 · 원본 파일을 훑는다.</p>
+     </div></section>
+<section class="slide s-q" data-blk="06">
+         <div class="eyebrow">06 · 남아 있는 것들</div>
+         <p class="bigq">증류소에서 <b>제일 오래된 물건</b>이 뭐예요? 없어지면 <b>제일 아까울 물건</b>은요?</p></section>
+<section class="slide s-q" data-blk="06">
+         <div class="eyebrow">06 · 남아 있는 것들</div>
+         <p class="bigq">언론에 나갔던 것 중에 <b>제일 마음에 든 기사나 영상</b>이 뭐예요? 왜 그게 좋으셨어요?</p><div class="note"><span class="nl">내부</span>대표님이 생각하는 '잘 담긴 백경'의 기준이 여기서 나온다</div></section>
+<section class="slide s-qs" data-blk="06">
+         <div class="eyebrow">06 · 남아 있는 것들 <span class="pg">이어서</span></div>
+         <ul class="qs"><li><p>함양 집안에서 넘어온 물건이 있어요? <b>약재 다루던 도구나 옛 문헌</b> 같은 거요.</p><div class="note"><span class="nl">내부</span>있다면 이게 백경의 가장 강한 촬영 피사체다</div></li><li><p>옛날 <b>주방문이나 집안 기록</b> 같은 게 남아 있어요?</p></li><li><p>지금까지 찍어둔 <b>사진 · 영상 원본은 어디</b> 있어요? 누가 갖고 계세요?</p></li></ul></section>
+<section class="slide s-qs" data-blk="06">
+         <div class="eyebrow">06 · 남아 있는 것들 <span class="pg">이어서</span></div>
+         <ul class="qs"><li><p>아직 아무한테도 안 보여준 것이 있어요?</p></li></ul></section>
+<section class="slide s-div" data-blk="07">
+     <div class="ghost">07</div>
+     <div class="dv-body">
+       <div class="eyebrow">장면 · 로케이션 · 촬영 동선</div>
+       <h2 class="dv-h">고택과 증류소</h2>
+       <p class="dv-l">증류소는 세종 장군면 평기길 · 약 100평인 걸 안다. 여기서 받을 건 <b>동선과 장면</b>이다.</p>
+     </div></section>
+<section class="slide s-q" data-blk="07">
+         <div class="eyebrow">07 · 고택과 증류소</div>
+         <p class="bigq">백경을 <b>딱 한 장면</b>으로 찍는다면 어디서 찍고 싶으세요?</p></section>
+<section class="slide s-q" data-blk="07">
+         <div class="eyebrow">07 · 고택과 증류소</div>
+         <p class="bigq">손님이 오시면 <b>꼭 보여주시는 것</b>이 뭐예요? 보여주는 <b>순서</b>가 있어요?</p><div class="note"><span class="nl">내부</span>그 순서가 곧 브랜드 스토리의 구조다 — 홈페이지 목차가 여기서 나온다</div></section>
+<section class="slide s-qs" data-blk="07">
+         <div class="eyebrow">07 · 고택과 증류소 <span class="pg">이어서</span></div>
+         <ul class="qs"><li><p>증류소에서 대표님이 <b>제일 오래 서 계시는 자리</b>가 어디예요?</p></li><li><p>고택은 어떤 곳이고 증류소에서 얼마나 떨어져 있어요? 하루에 두 곳 다 찍을 수 있어요?</p></li><li><p>촬영에 <b>사람이 몇 명까지</b> 들어갈 수 있어요? 화장실 · 주차는요?</p><div class="note"><span class="nl">내부</span>앉을 자리 · 화장실 · 주차 중 가장 작은 값이 촬영 정원이다</div></li></ul></section>
+<section class="slide s-qs" data-blk="07">
+         <div class="eyebrow">07 · 고택과 증류소 <span class="pg">이어서</span></div>
+         <ul class="qs"><li><p>계절마다 풍경이 달라져요? 9월 · 10월은 어때요?</p></li><li><p>촬영 때 <b>절대 안 찍혔으면</b> 하는 데가 있어요?</p></li><li><p>농사 지으시는 <b>논</b>도 찍을 수 있어요? 수확이 언제예요?</p><div class="note"><span class="nl">내부</span>"직접 농사짓는다"는 말의 유일한 시각 증거다. 시기를 놓치면 1년을 기다린다</div></li></ul></section>
+<section class="slide s-div" data-blk="08">
+     <div class="ghost">08</div>
+     <div class="dv-body">
+       <div class="eyebrow">SKU 서사 · 타깃 장면</div>
+       <h2 class="dv-h">식탁 위의 술</h2>
+       <p class="dv-l">"한식당이 시작점일 수는 있지만 궁극적으로는 프렌치 · 이탈리안 · 파인다이닝"이라고 하셨다. 그 말을 <b>어느 제품이 짊어질 것인지</b>를 오늘 가른다.</p>
+     </div></section>
+<section class="slide s-q" data-blk="08">
+         <div class="eyebrow">08 · 식탁 위의 술</div>
+         <p class="bigq">골드 · 블랙 · 화이트 · 향미주곡 · 향온 · 호라산 — <b>이름은 각각 어떻게 지으셨어요?</b> 제일 아끼는 이름은요?</p></section>
+<section class="slide s-q is-core" data-blk="08">
+         <div class="corebadge"><span>오늘 이것만은</span><b>11</b><i>→ 라벨 5종·촬영 컷</i></div><div class="eyebrow">08 · 식탁 위의 술</div>
+         <p class="bigq">그중에 진짜 밀고 싶은 것 <b>세 개를 순서대로</b> 꼽으면요? 그 순서인 이유는요?</p><div class="note"><span class="nl">내부</span>라벨 리뉴얼 5종과 촬영 제품 컷이 여기서 갈린다</div></section>
+<section class="slide s-q" data-blk="08">
+         <div class="eyebrow">08 · 식탁 위의 술</div>
+         <p class="bigq">전체를 <b>대표님은 머릿속에서 어떻게 묶고</b> 계세요? 나누는 기준이 있어요?</p><div class="note"><span class="nl">내부</span>기준이 하나로 나오면 그게 곧 SKU 위계다. 안 나오면 우리가 3안을 만들어 온다</div></section>
+<section class="slide s-q" data-blk="08">
+         <div class="eyebrow">08 · 식탁 위의 술</div>
+         <p class="bigq">백경이 <b>제일 어울리는 한 접시</b>를 꼽으면요? 한식 말고 <b>양식에서</b>도 하나요.</p><div class="note"><span class="nl">내부</span>"식탁 위의 술"을 증명할 페어링 콘텐츠의 출발점</div></section>
+<section class="slide s-q" data-blk="08">
+         <div class="eyebrow">08 · 식탁 위의 술</div>
+         <p class="bigq"><b>두 번 이상 사신 분들</b>, 왜 다시 샀대요?</p><div class="note"><span class="nl">내부</span>백경의 유일한 A급 자산 후보가 재구매 고객이다</div></section>
+<section class="slide s-qs" data-blk="08">
+         <div class="eyebrow">08 · 식탁 위의 술 <span class="pg">이어서</span></div>
+         <ul class="qs"><li><p><b>해외 바이어가 제일 좋아한 게 블랙</b>이라고 하셨는데, 왜 블랙이었을까요? 뭐라고들 하시던가요?</p></li><li><p>백경이 <b>제일 어울리는 순간</b>은 언제예요? 대표님은 언제 드세요?</p></li><li><p>제일 기억에 남는 손님이 있어요? 어떤 분이었어요?</p></li></ul></section>
+<section class="slide s-qs" data-blk="08">
+         <div class="eyebrow">08 · 식탁 위의 술 <span class="pg">이어서</span></div>
+         <ul class="qs"><li><p>손님이 백경 대신 뭘 살 것 같으세요 — <b>위스키요, 사케요, 다른 전통주요?</b></p><div class="note"><span class="nl">내부</span>"위스키·사케"라고 답하시면 선물 포지션이 이미 잡힌 것</div></li></ul></section>
+<section class="slide s-div" data-blk="09">
+     <div class="ghost">09</div>
+     <div class="dv-body">
+       <div class="eyebrow">성공 정의 · 금기</div>
+       <h2 class="dv-h">11월 30일</h2>
+       <p class="dv-l">이미 월 1억이 나오고 면세점 · 백화점에 들어가 있다. 그러니 성과 정의를 매출로 잡으면 우리가 한 일이 안 보인다. <b>되돌릴 수 없는 결정 N건 + 인수인계 가능한 문서 N장</b>으로 합의한다.</p>
+     </div></section>
+<section class="slide s-q is-core" data-blk="09">
+         <div class="corebadge"><span>오늘 이것만은</span><b>12</b><i>→ 성과 정의</i></div><div class="eyebrow">09 · 11월 30일</div>
+         <p class="bigq">11월 30일에 뭐가 손에 있으면 <b>"이거 하길 잘했다"</b> 싶으실까요? 그중에 <b>제일 급한 하나</b>만 고르면요?</p></section>
+<section class="slide s-q" data-blk="09">
+         <div class="eyebrow">09 · 11월 30일</div>
+         <p class="bigq">백경이 <b>절대 되면 안 되는 모습</b>이 있어요?</p></section>
+<section class="slide s-qs" data-blk="09">
+         <div class="eyebrow">09 · 11월 30일 <span class="pg">이어서</span></div>
+         <ul class="qs"><li><p>내년 이맘때 백경이 어디에 가 있어야 해요? <b>미국 진출이 그 답인가요?</b></p></li><li><p>저희한테 <b>딱 하나만 시킬 수 있다면</b> 뭘 시키시겠어요?</p></li><li><p>지금까지 마케팅 맡겨보신 적 있으세요? 어떤 점이 아쉬우셨어요?</p></li></ul></section>
+<section class="slide s-qs" data-blk="09">
+         <div class="eyebrow">09 · 11월 30일 <span class="pg">이어서</span></div>
+         <ul class="qs"><li><p>사내에서 콘텐츠나 디자인 맡고 계신 분들, 지금 뭘 만들고 계세요? 뭘 기준으로 만드세요?</p><div class="note"><span class="nl">내부</span>"왜 안 되고 있냐"가 아니라 "지금 어떻게 굴러가냐"로 묻는다. 그분이 그 자리에 앉아 있을 수 있다</div></li></ul></section>
+<section class="slide s-check">
+ <div class="eyebrow">논의하지 않는다 · 안 정해지면 "언제까지"만 받는다</div>
+ <h2 class="ttl">일어나기 전에 — <b>날짜와 이름만</b></h2>
+ <ul class="check"><li><b>패키지 확정일</b><span>이 날짜에서 브랜드 필름 촬영일이 역산된다</span></li><li><b>9/8 제품 촬영</b><span>현행 패키지 기준 · 장소 · 준비할 제품 · 백경 측 참석자</span></li><li><b>제품 실물</b><span>라벨 리뉴얼 후보 포함 · 촬영 2주 전까지</span></li><li><b>라벨 5종</b><span>살아 있는 전 품목 중 어느 다섯 · 표시사항 변경 신고 담당자</span></li><li><b>브랜드 자산 원본</b><span>도올 친필 · 옛 사진 · 집안 기록 · 기존 촬영 원본 · 누가 갖고 있는지</span></li><li><b>계정 권한</b><span>인스타 · 자사몰 · 유튜브 · 스마트스토어 · GA · 이번 주 내</span></li><li><b>수상 · 인증 증빙</b><span>IWSC 2026 원본 · 그 외 수상 · HACCP · ISO 22000 · 인증수출자</span></li><li><b>해외 일정 날짜</b><span>파리 9/26~28 · 홍콩 9/30 · 오스트리아 출국 10/19와 <u>귀국일</u> · 미국</span></li><li><b>사내 담당자 1인</b><span>자료 시트를 채우고 · 촬영 현장에 나오고 · 11월에 인수인계를 받을 사람</span></li><li><b>정산 증빙</b><span>사업자등록증 · 법인등기부등본 · 비교견적서 2부 · 통장사본 · 과업지시서</span></li><li><b>창구</b><span>정기 미팅 요일 · 양측 담당자 · 정산 담당자 · 홈페이지 개발 주체는 10월에</span></li></ul></section>
+<section class="slide s-end">
+ <div class="end-mark">白鯨</div>
+ <h2 class="end-h">오늘 받은 말은<br><b>하나도 버리지 않는다</b></h2>
+ <p class="end-p">녹취 → 48시간 내 정리본 회신 → 촬영 콘티 · 라벨 카피 · 홈페이지 문장의 원본</p>
+ <div class="end-f">백경증류소 × HIZ BRANDRISE · 딥 인터뷰 v5 · PM 우성민</div></section>
+</div></div>
 
-  <div class="howto">
-    <b>진행.</b> 앞 20분은 실무를 닫고, 나머지 전부를 인터뷰에 쓴다.
-    순서대로 다 물을 필요 없다 — <b>구리색으로 칠해진 것</b>만 챙기면 된다.
-    답이 길어지면 끊지 말고 그대로 둔다(<b>답의 길이가 온도계다</b>).
-    시작할 때 <b>녹음 동의</b>를 받는다("정리해서 다시 보내드리려고요").
-  </div>
-
-  <div class="aim">
-    <b>오늘의 과녁 — 백경만의 단어를 하나 찾는 것.</b>
-    복순도가는 자기 술 빚는 방식을 <b>'발효건축'</b>이라 불렀고, 그 한 단어가 브랜드 전체를 설명한다.
-    백경은 술 · 기술 · 인증 · 수출이 이미 궤도에 올랐는데 <b>그걸 담을 자기 언어가 비어 있고</b>,
-    그 원재료는 대표님한테만 있다. 그래서 오늘은 전략을 묻지 않고
-    <b>이야기 · 장면 · 사물 · 감각</b>만 캔다. 외부에서 지어온 말은 쓰지 않는다 — 짓는 게 아니라 캐내는 것이다.
-  </div>
-
-
-  <!-- ══════════ 오늘 이것만은 ══════════ -->
-  <section class="must">
-    <div class="mt">오늘 이것만은 — 12개<span>다 못 돌아도 이건 들고 나온다</span></div>
-    <div class="mb">
-      <p class="lead2">
-        전체는 80문항이지만 <b>2시간에 다 못 돈다.</b> 아래 12개는
-        ①한 번 지나가면 되돌릴 수 없거나 ②이후 모든 산출물의 입력이 되는 것들이다.
-        <b>이것만 채우면 오늘은 성공이다.</b> 나머지는 시간이 남을 때, 또는 다음 미팅에서.
-      </p>
-      <ol>
-        <li><b>白鯨이 모비딕이에요, 향유고래예요?</b> <em>→ 라벨·해외 배너</em></li>
-        <li><b>도올 글씨, 어디까지 써도 되는 걸로 됐어요? 서면이 있어요?</b> <em>→ 5개국 전시</em></li>
-        <li><b>어릴 때 약재 법제하시는 걸 본 기억</b>, 어떤 장면이에요? <em>→ 자기 언어 1순위</em></li>
-        <li><b>약을 술로 법제한다는 게, 지금 백경 빚는 것과 닿아 있어요?</b> <em>→ 자기 언어</em></li>
-        <li><b>아버님 양조장에서 「안 하기로」 한 게 뭐였어요?</b> <em>→ 브랜드 정체성</em></li>
-        <li><b>아버님께 배운 것 중 지금도 절대 안 바꾸는 것</b> 하나. <em>→ 규칙 문장</em></li>
-        <li><b>이 술로 절대 안 할 것</b>이 있다면 하나만. <em>→ 규칙 문장 첫 줄</em></li>
-        <li><b>백경이 하는 일을 대표님만의 단어로 부른다면?</b> <em>→ 오늘의 과녁</em></li>
-        <li><b>「식탁 위의 술」, 언제부터 쓰셨어요? 직접 만드신 말이에요?</b> <em>→ 이미 있는 자산</em></li>
-        <li><b>단맛을 빼신 이유</b>가 뭐예요? <em>→ 안 하는 것 ①</em></li>
-        <li><b>진짜 밀고 싶은 것 세 개</b>를 순서대로. <em>→ 라벨 5종·촬영 컷</em></li>
-        <li><b>11월 30일에 뭐가 손에 있으면 잘했다 싶으세요?</b> <em>→ 성과 정의</em></li>
-      </ol>
-      <p class="why2">
-        실무 5개는 이것과 별개로 <b>앞 20분에 무조건 닫는다</b> —
-        계약서 날인 · 12월 과업은 계약 밖이라는 합의 · 1차 대금 발행일 ·
-        <b>패키지 확정일</b>(촬영일이 여기서 역산된다) · 백경 측 담당자 1인 지정.
-      </p>
-    </div>
-  </section>
-
-  <!-- ══════════ 사전 브리핑 ══════════ -->
-  <div class="brief">
-    <div class="bt">인터뷰 전에 읽는 면 — 이미 확인한 것<span>2026-09-01 공개 자료 실측 · 인터뷰어용</span></div>
-    <div class="bd">
-      <p class="gd">
-        아래는 <b>물어보지 않아도 아는 것</b>이다. 이걸 알고 들어가야 질문이 "그게 뭐예요"에서
-        <b>"제가 보니 이렇던데, 그때 왜 그러셨어요"</b>로 바뀐다. 밀도는 거기서 나온다.
-        표의 사실은 <b>확인 질문으로만</b> 쓰고(30초), 아낀 시간을 전부 이야기에 쓴다.
-      </p>
-
-      <table class="fact">
-        <tr><th>항목</th><th>확인된 사실</th><th>출처</th></tr>
-        <tr><td>뿌리</td><td>경남 <b>함양의 대대로 한의원 집안</b>. 어릴 때부터 약재 다루기와 <b>법제(法製)</b>를 보고 자람. "한의학에서는 약재를 술로 법제하는 경우가 적지 않다"</td><td>헤럴드K 26.6</td></tr>
-        <tr><td>아버지</td><td>아버지가 <b>양조장을 창업</b>. 대표의 <b>첫 직장이 아버지 양조장</b>, 20대~30대 초 <b>약 7년</b> 근무. 원료·발효·출시 전 과정 학습</td><td>헤럴드K · 다음</td></tr>
-        <tr><td>독립</td><td>"아버님 증류소를 <b>떠난</b> 이유도 내가 빚고 싶은 술을 만들기 위함이었기에". 창업 전 연소득 4,000만원</td><td>다음 24.12</td></tr>
-        <tr><td>제주 3년</td><td>제주에서 먼저 사업. <b>물류 때문에 세종으로 이전.</b> "제주에서 사업을 하며 물류가 사업의 성패를 좌우할 수 있다는 사실을 절실히 느꼈다"</td><td>헤럴드K</td></tr>
-        <tr><td>법인</td><td>농업회사법인㈜백경증류소 · <b>세종 장군면 평기길 151</b> · 사업자 883-88-02930 · 통신판매 2023-세종-0920 · 증류소 약 100평</td><td>자사몰 · 다음</td></tr>
-        <tr><td>제품</td><td><b>백경15</b>(약주) 골드 · 블랙 · 화이트 · 향미주곡 · 향온 · 호라산 / <b>백경10</b>(탁주). 소주4 · 약주6 · 탁주3 = <b>13종</b>으로 보도됨</td><td>다음 · K-EXPO</td></tr>
-        <tr><td>향온</td><td>750mL · 15% · 직접 재배 쌀 + 녹두 누룩 <b>'향온곡'</b> · <b>180일 다섯 번 발효(오양주)</b></td><td>술담화</td></tr>
-        <tr><td>누룩</td><td>직접 빚음. 재료 = 밀 · 녹두 · 수수 · 팥 · 토종쌀. <b>토종쌀은 직접 농사.</b> 온도 40도 · 습도 70~80%</td><td>다음</td></tr>
-        <tr><td>맛의 방향</td><td>"전통 한국술의 <b>강한 단맛을 벗어나</b> 음식과 조화되는 <b>드라이 스타일</b>". 원재료부터 병입까지 전 공정 관리</td><td>K-EXPO</td></tr>
-        <tr><td>포지션</td><td><b>"식탁 위의 술"</b> — 지역 특산주가 아니라 글로벌 음식에 대응하는 프리미엄. "한식당이 시작점일 수는 있지만 궁극적으로는 프렌치, 이탈리안, 파인다이닝"</td><td>헤럴드K</td></tr>
-        <tr><td>매출</td><td>2023 창업 첫해 → 2025년 <b>4억</b> → 현재 <b>월 1억</b> 수준 · 하반기 목표 월 2억. 대형 <b>OEM 계약</b> 체결, 7월 납품 시작</td><td>헤럴드K</td></tr>
-        <tr><td>수출</td><td><b>싱가포르 첫 수출 1,000만원.</b> 독일 추진 · 홍콩 · 중국 상담 · 미국 준비. 일본 최대 주류 유통사 협업 미팅. 태국은 탁주 기술 이전</td><td>헤럴드K · 다음</td></tr>
-        <tr><td>유통</td><td><b>면세점 · 백화점 입점.</b> 직수출은 아직 안 하고 국내외 유통사가 일부 품목 해외 판매</td><td>헤럴드K · 다음</td></tr>
-        <tr><td>투자</td><td>청년식품창업패키지로 <b>3억 조성</b> · 리벤처스-세종 혁신성장투자조합 1호 <b>첫 투자 대상</b> · 정부 스케일업 전국 5개 성장기업 선정</td><td>벤처스퀘어</td></tr>
-        <tr><td>수상</td><td><b>IWSC 2026 백경15 브론즈</b> — 공개 자료에서 확인되는 유일한 수상</td><td>헤럴드K</td></tr>
-        <tr><td>인증</td><td><b>HACCP · ISO 22000 · 제품별 인증수출자</b> 자격</td><td>K-EXPO</td></tr>
-        <tr><td>디자인</td><td><b>대표님 배우자가 담당.</b> 투입비 4,000만원 · <b>네 차례 큰 수정.</b> 초기엔 전통주 설명 요소가 많았고 지금은 절제된 방향. 라벨은 민화풍 <b>고래 꼬리</b></td><td>헤럴드K · 다음</td></tr>
-        <tr><td>도올 친필</td><td>'백경' 글씨 = <b>도올 김용옥 선생이 직접 써 준 도안</b></td><td>다음</td></tr>
-        <tr><td>채널</td><td>인스타 <b>@baekkyung_official — 게시물 217 · 팔로워 2,237</b>(9/1 실측) · 유튜브 @BAEKKYUNGDISTILLERY · 네이버 스마트스토어 · 페이스북</td><td>실측</td></tr>
-      </table>
-
-      <div class="tension">
-        <h4>이 인터뷰의 척추 — 확인된 사실끼리 어긋나는 곳 3개</h4>
-        <ol>
-          <li><b>계승인가, 독립인가.</b> 홈페이지는 <b>"집안 대대로 내려오는 전통 방식"</b>이라 쓰는데,
-            기사에서 대표님은 <b>"아버님 증류소를 떠났다"</b>고 말한다.
-            우리가 「2대 계승」으로 알고 준비해 온 서사가 실제로는 <b>떠나온 이야기</b>일 수 있다.
-            <span class="note">여기가 오늘 제일 조심스럽고 제일 중요한 자리다. 캐묻지 말고 열어만 둔다</span></li>
-          <li><b>고래가 두 마리다.</b> 한글 <b>白鯨</b>은 모비딕의 흰 고래인데,
-            홈페이지 영문은 <b>sperm whale(향유고래)</b> · "The Great Whale's Spirit"이라 쓴다.
-            소설 속 모비딕이 실제로 흰 향유고래라 둘 다 틀린 건 아니지만,
-            <b>해외에서는 서로 다른 브랜드처럼 읽힌다.</b> 라벨 5종 인쇄 전에 하나로 정해야 한다.</li>
-          <li><b>가장 강한 자산이 브랜드에 안 쓰인다.</b> 함양 한의원 집안의 <b>법제(法製)</b> —
-            약재를 술로 다스리는 그 개념은 백경만 쓸 수 있는 말인데
-            홈페이지 · 라벨 · 상세페이지 어디에도 없다.
-            <b>'발효건축' 자리에 들어갈 백경의 단어가 여기 있을 가능성이 가장 높다.</b></li>
-        </ol>
-      </div>
-
-      <div class="mines">
-        <h4>알되 오늘 절대 꺼내지 않는 것</h4>
-        <ul>
-          <li><b>창업 첫해 매출 숫자</b> — 기사에 나오지만 대표님 자책 발언이다. 우리 입으로 인용하지 않는다.</li>
-          <li><b>디자인 평가</b> — 배우자 작업물이고 4천만원 · 4차 수정이 들어갔다.
-            진입은 <b>브랜드 전략 → SKU 정리 → 유통 설계</b> 순이고, 디자인은 그 결론에 딸려오는 것으로만 말한다.</li>
-          <li><b>제품 수 · 리뷰 수를 우리가 단정하지 않는다</b> — 보도는 13종, 우리 자료는 35종이다.
-            어느 쪽이 맞다고 말하지 말고 <b>대표님께 여쭤서 확정</b>한다.</li>
-          <li><b>수상 이력을 먼저 말하지 않는다</b> — 확인되는 건 IWSC 2026 브론즈 하나다.
-            우리 자료의 Superior Taste Award · DESIGN IT AWARDS는 공개 자료에서 확인되지 않았다.
-            <b>있는지 여쭙는 것</b>이지 없다고 단정하는 게 아니다.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════ 00 ══════════ -->
-  <div class="blk">
-    <div class="bh"><span class="n">00</span><h2>먼저 닫고 가는 것</h2><span class="why">20분 · 논의 아님, 확인</span></div>
-    <div class="lead">여기서 시간을 끌면 인터뷰가 죽는다. 정해진 것을 확인하고, 안 정해진 건 <b>"언제까지"</b>만 받는다.</div>
-    <ol class="q">
-      <li class="key"><b>계약서 날인</b> — 11월말 개정본(기간 8/4~11/30 · 총액 97,200,000 VAT 별도 · 3분할)
-        <span class="note">지원사업 정산이 11/30에 닫혀서 종료일을 맞춘 판이다. 개정 6곳 반영 확인 완료</span></li>
-      <li class="key"><b>12월 과업은 계약서 밖에서 관리한다</b> — 인쇄물 입고 · 검수 · 연말 대응은 12월까지 가지만
-        계약 · 정산은 11/30에 닫힌다. 이 두 줄을 <b>오늘 회의록에 남긴다</b>
-        <span class="note">안 남기면 12월에 "계약 끝났는데" 또는 "왜 안 해주냐" 둘 중 하나가 반드시 나온다</span></li>
-      <li class="key"><b>1차 대금 30,000,000</b> — 계산서 수신 담당자 · 이메일 · 발행일
-        <span class="note">계약상 지급월이 '2026년 8월'인데 이미 지났다. 오늘 새 날짜를 잡는다</span></li>
-      <li><b>자료 요청 시트 전달</b> — 링크 하나로 13건. 제품 · 입점처 · 매출 구분 · 채널 계정 · 드라이브
-        <span class="note">대표님이 직접 안 채우셔도 된다. 사내 담당자 한 분만 지정해 주시면 된다</span></li>
-      <li class="key"><b>패키지 확정일</b> — 브랜드 필름을 <b>리뉴얼된 패키지로</b> 찍어야 하므로,
-        오늘 정할 것은 촬영일이 아니라 <b>패키지가 언제 나오느냐</b>다. 촬영일은 거기서 역산한다
-        <span class="note">9/8 제품 촬영은 현행 패키지 기준 별도 트랙이라는 것도 같이 못 박는다</span></li>
-      <li><b>인스타그램 운영 기준</b> — 4개월 실제 진행 / 피드 월 최소 12개(주 3개) + 스토리</li>
-      <li><b>정기 미팅 요일 · 시간</b> + 양측 담당자 · 소통 채널</li>
-    </ol>
-    <div class="memo"><div class="ml">MEMO</div><div class="lines"></div></div>
-  </div>
-
-  <!-- ══════════ 01 ══════════ -->
-  <div class="blk">
-    <div class="bh"><span class="n">01</span><h2>고래가 두 마리다</h2><span class="why">네이밍 서사 · 문자 IP</span></div>
-    <div class="lead">한글은 <b>白鯨(모비딕의 흰 고래)</b>, 영문은 <b>sperm whale(향유고래)</b>로 쓰고 계신다.
-      둘 다 틀린 건 아니지만 라벨 5종이 인쇄되기 전에 하나로 정해야 한다.</div>
-    <ol class="q">
-      <li class="key">기사에선 <b>모비딕의 흰고래</b>라고 하셨는데, 홈페이지 영문은 <b>sperm whale</b> · "The Great Whale's Spirit"이더라고요.
-        <b>대표님 머릿속의 고래는 어느 쪽</b>이에요?
-        <span class="note">여기서 나오는 답이 해외 라벨·전시 배너의 기준이 된다</span></li>
-      <li class="key">모비딕이 맞다면 — <b>모비딕은 끝내 못 잡는 고래</b>잖아요. 그걸 아시면서도 붙이신 거예요?
-        <span class="note">"거대한 바다를 건너는 힘과 도전"이라 하셨는데, 그 배는 결국 침몰한다. 이 답이 브랜드 태도 그 자체다</span></li>
-      <li>후보로 놓고 <b>떨어뜨린 이름</b>이 있었어요? 뭐였고, 왜 떨어졌어요?</li>
-      <li class="key">도올 선생님 친필 — <b>그날 얘기</b> 좀 들려주세요. 어떻게 부탁드렸고, 뭐라고 쓰시면서 뭐라고 하시던가요?</li>
-      <li class="key">그 <b>글씨 원본은 지금 어디</b> 있어요? 실물이요.
-        <span class="note">있으면 촬영 1순위 피사체다</span></li>
-      <li class="key">그 글씨를 <b>어디까지 써도 되는 걸로</b> 이야기가 됐어요? 라벨 말고 굿즈 · 전시물 · 해외 패키지에도요?
-        <span class="note">서면 합의면 자산, 구두면 아직 희망사항이다. 해외 전시 전에 확인해야 한다</span></li>
-      <li>영문은 <b>Baekkyung</b>으로 굳히신 거예요? 로마자 음차로 갈지, 의미 번역을 병기할지요.
-        <span class="note">사케가 Sake·Junmai를 세계 표준어로 만든 길이 참고가 된다</span></li>
-    </ol>
-    <div class="memo"><div class="ml">MEMO</div><div class="lines"></div></div>
-  </div>
-
-  <!-- ══════════ 02 ══════════ -->
-  <div class="blk">
-    <div class="bh core"><span class="n">02</span><h2>함양에서 세종까지 — 떠나온 것과 남은 것</h2><span class="why">계승 서사 · 인물</span></div>
-    <div class="lead">우리가 「2대 계승」으로 알고 있던 자리가 실제로는 <b>3층</b>이다 —
-      <b>함양 한의원 집안 → 아버지가 양조장 창업 → 아들이 아버지를 떠나 자기 술.</b>
-      홈페이지는 "집안 대대로"라 쓰고, 기사에선 "떠났다"고 하신다. <b>캐묻지 말고 열어만 둔다.</b></div>
-    <ol class="q">
-      <li class="key">함양에서 <b>한의원 하시는 집</b>에서 자라셨다고요. 어릴 때 <b>약재 법제하는 걸 보신 기억</b>,
-        어떤 장면으로 남아 있어요?
-        <span class="note">오늘 이 인터뷰에서 가장 값어치 있는 답이 여기서 나올 가능성이 높다</span></li>
-      <li class="key">한의학에서 <b>약을 술로 법제</b>한다는 게 정확히 뭘 하는 거예요? 지금 백경 빚는 것과 닿아 있는 데가 있어요?
-        <span class="note">'발효건축' 자리에 들어갈 백경의 단어 후보 1순위</span></li>
-      <li>아버님은 어쩌다 한의원 집안에서 <b>양조장을 시작</b>하신 거예요?</li>
-      <li class="key">아버님 양조장에서 7년 계셨는데, <b>거기서 안 하기로 한 게 뭐</b>였어요?
-        <span class="note">"내가 빚고 싶은 술"의 내용이 여기 있다. 아버지를 평가하는 질문이 되지 않게 조심한다</span></li>
-      <li class="key">반대로, 아버님께 배운 것 중에 <b>지금도 절대 안 바꾸는 것</b> 하나만요.
-        <span class="note">자기 언어 3질문 중 첫 번째 — 규칙 문장의 재료</span></li>
-      <li>홈페이지에 <b>"집안 대대로 내려오는 전통 방식"</b>이라고 쓰셨더라고요. 여기서 '대대로'는 어디를 가리키는 거예요?
-        한의원 쪽이에요, 양조장 쪽이에요?</li>
-      <li>아버님이 지금 백경을 보시면 뭐라고 하실 것 같으세요?</li>
-      <li class="key">아버님 <b>사진 · 기록 · 쓰시던 도구</b>, 집안의 한의원 시절 물건 같은 게 남아 있어요?
-        <span class="note">브랜드 아카이브의 씨앗 — 있으면 촬영 때 실물 확인</span></li>
-      <li class="key"><b>제주 3년</b> — 물류 때문에 세종으로 오셨다고 들었어요. 물류 말고, <b>제주에서 백경에 남은 게</b> 있다면요?
-        <span class="note">자기 언어 3질문 중 두 번째</span></li>
-      <li>대표님 다음은 누가 이어요? 생각해 보신 적 있으세요?</li>
-    </ol>
-    <div class="memo tall"><div class="ml">MEMO · 표현은 들린 그대로 적는다</div><div class="lines"></div></div>
-  </div>
-
-  <!-- ══════════ 03 ══════════ -->
-  <div class="blk">
-    <div class="bh"><span class="n">03</span><h2>술이 되는 시간</h2><span class="why">감각 언어 채집 · 카피 원문</span></div>
-    <div class="lead">스펙은 이미 안다(누룩 40도 · 습도 70~80% · 향온 180일 5회 · 15%).
-      그러니 <b>기술이 아니라 감각</b>을 받는다. 냄새 · 소리 · 손의 감각으로 답이 나오면 그게 그대로 카피가 된다.</div>
-    <ol class="q">
-      <li class="key">발효실 문을 열면 <b>무슨 냄새</b>가 나요? 아는 사람만 아는 냄새로 표현하면요?</li>
-      <li class="key">술이 잘 되고 있다는 걸 <b>뭘로 아세요?</b> 소리예요, 냄새예요, 손 감각이에요?</li>
-      <li>누룩 만드실 때 <b>손이 기억하는 것</b>이 있어요?</li>
-      <li class="key">향온은 <b>180일 동안 다섯 번</b> 덧술을 하신다고요. 그 반년 동안 <b>가장 마음 졸이는 구간</b>이 언제예요?</li>
-      <li class="key">누룩 재료가 밀 · 녹두 · 수수 · 팥 · 토종쌀인데, <b>녹두를 쓰는 이유</b>가 뭐예요?
-        <span class="note">'향온곡'이라는 이름의 뿌리가 여기 있을 수 있다. 향온주는 조선 왕실 술 이름이기도 하다</span></li>
-      <li>토종쌀은 <b>직접 농사</b>지으신다고요. 품종이 뭐고, 농사는 누가 지어요?
-        <span class="note">이름 있는 사람이 나오면 서사 인물이 하나 생긴다</span></li>
-      <li class="key"><b>단맛을 뺀 드라이 스타일</b>로 가신 이유가 뭐예요? 단 걸 좋아하는 손님을 놓치는 건데요.
-        <span class="note">「안 하는 것」이 이미 하나 있다. 이걸 규칙 문장으로 세울 수 있다</span></li>
-      <li>토종쌀 · 독자 누룩 · 발효 시간, 이 셋 중에 <b>하나만 없앨 수 있다면</b> 뭘 없애시겠어요?
-        <span class="note">진짜 핵심을 가려내는 질문. 못 고르시면 셋 다 살아 있는 것</span></li>
-      <li>왜 <b>15도</b>예요? 14도나 16도는 왜 아니에요? 라인 전체가 15로 통일된 이유도요.</li>
-    </ol>
-    <div class="memo"><div class="ml">MEMO · 표현은 들린 그대로 적는다</div><div class="lines"></div></div>
-  </div>
-
-  <!-- ══════════ 04 ══════════ -->
-  <div class="blk">
-    <div class="bh core"><span class="n">04</span><h2>백경의 언어</h2><span class="why">★ 오늘의 핵심 블록</span></div>
-    <div class="lead">복순도가는 자기 방식을 <b>'발효건축'</b>이라 부른다. 그 한 단어가 브랜드를 다 설명한다.
-      백경에도 그런 단어가 <b>이미 있는데 아직 이름이 안 붙었을 뿐</b>이다 — 그걸 오늘 찾는다.</div>
-    <ol class="q">
-      <li class="key">백경이 하는 일을 <b>대표님만의 단어</b>로 이름 붙인다면 뭐라고 하시겠어요?</li>
-      <li class="key">남들은 그냥 부르는데 <b>대표님만 다르게 부르는 말</b>이 있어요? 공정이든 도구든 술의 상태든요.</li>
-      <li>직원분들끼리만 통하는 말이 있어요?</li>
-      <li class="key">이 술로 <b>절대 안 할 것</b>이 있다면 하나만요.
-        <span class="note">자기 언어 3질문 중 세 번째 — 그리고 가장 중요하다.
-          토라야는 「이 점포에서는 양갱을 팔지 않습니다」 한 줄로 500년을 갔다. 안 하는 것이 브랜드다</span></li>
-      <li class="key"><b>"식탁 위의 술"</b>이라고 하신 걸 봤어요. 그 말을 언제부터 쓰셨어요? 대표님이 만드신 말이에요?
-        <span class="note">이미 있는 자기 언어일 수 있다. 있으면 새로 짓지 말고 이걸 키운다</span></li>
-      <li>술 설명하실 때 자꾸 나오는 <b>비유</b>가 있어요? 뭐에 빗대서 말하세요?</li>
-      <li>백경을 사람이라고 하면 어떤 사람이에요? 몇 살이고 뭐 하는 사람이에요?</li>
-      <li class="key">백경 하면 <b>딱 떠올랐으면 하는 장면</b>이 있어요?
-        <span class="note">촬영 A컷의 방향이 여기서 나온다</span></li>
-      <li>다른 브랜드 중에 "저건 참 잘한다" 싶은 데 있어요? 반대로 "저렇게는 안 하고 싶다" 싶은 데는요?</li>
-    </ol>
-    <div class="memo tall"><div class="ml">MEMO · 후보 단어는 전부 적는다</div><div class="lines"></div></div>
-  </div>
-
-  <!-- ══════════ 05 ══════════ -->
-  <div class="blk">
-    <div class="bh"><span class="n">05</span><h2>사실 확인</h2><span class="why">예/아니오 · 한 단어 · 5분</span></div>
-    <div class="lead">공개 자료로 확인되는 건 이미 표에 있다. 여기는 <b>공개 자료로는 확인이 안 되는 것</b>만 남겼다.
-      <b>답이 안 나오는 항목은 홈페이지 · 라벨 뒷면 · 해외 전시 배너 · 보도자료에서 뺀다.</b></div>
-    <ol class="q">
-      <li class="key"><b>고택</b> — 저희 자료엔 고택이 촬영지로 잡혀 있는데 공개 자료엔 안 나옵니다.
-        어떤 건물이고, <b>소유가 개인 / 법인 / 문중</b> 중 어느 쪽이에요? 문화재 지정은요?</li>
-      <li class="key"><b>수상</b> — 확인되는 건 <b>IWSC 2026 백경15 브론즈</b>였습니다.
-        그 외에 받으신 것(Superior Taste Award · DESIGN IT AWARDS 등)이 있으면 <b>연도 · 수상 제품명 · 증빙 원본</b>을요.
-        <span class="note">의심이 아니라 실무다. 카피에 쓰려면 증빙이 먼저 있어야 한다</span></li>
-      <li class="key"><b>제품 수</b> — 보도는 13종인데 저희가 받은 자료엔 35종입니다. <b>지금 살아 있는 게 몇 종</b>이에요?
-        단종 · 한정 · OEM을 어떻게 세느냐의 문제일 것 같은데요.</li>
-      <li><b>'대대로'의 시작점</b> — 함양 한의원은 몇 대째이고, 아버님 양조장은 언제 시작하셨어요?
-        <span class="note">종이로 존재하는 숫자 하나(면허 발급일 · 등기 · 집안 기록)를 찾는다. 종이가 없으면 그 숫자는 어디에도 쓰지 않는다</span></li>
-      <li><b>미슐랭 · 파인다이닝 입점</b> — 업장명과 입점 시점. 있으면 해외 영업 자료의 가장 강한 근거가 됩니다.</li>
-      <li><b>독자 누룩</b>은 특허 · 품종등록 · 영업비밀 중 무엇으로 관리하고 계세요?</li>
-      <li><b>상표</b> — 33류 '백경'이 <b>대표님 개인 명의</b>로 확인됩니다. 법인 이전 계획이 있으세요?
-        해외 상표는 어느 나라에 내셨어요?
-        <span class="note">전시는 5개국인데 상표가 0개국이면 순서가 거꾸로다</span></li>
-      <li><b>OEM 계약</b> — 어디에 어떤 제품을 납품하시는 거예요? 백경 이름이 나가나요, 안 나가나요?
-        <span class="note">브랜드 노출 여부에 따라 이걸 자산으로 쓸 수 있는지가 갈린다</span></li>
-      <li><b>유튜브</b> — '술장이'라고 들었는데 공식 채널은 @BAEKKYUNGDISTILLERY더라고요. 둘이 같은 거예요?
-        누가 만들고 어떤 기준으로 만드세요?</li>
-    </ol>
-    <div class="memo"><div class="ml">MEMO</div><div class="lines"></div></div>
-  </div>
-
-  <!-- ══════════ 06 ══════════ -->
-  <div class="blk">
-    <div class="bh"><span class="n">06</span><h2>남아 있는 것들</h2><span class="why">콘텐츠 자산 실사</span></div>
-    <div class="lead">촬영 전에 <b>뭐가 있는지</b> 알아야 뭘 찍을지 정해진다. 물건 · 기록 · 원본 파일을 훑는다.</div>
-    <ol class="q">
-      <li class="key">증류소에서 <b>제일 오래된 물건</b>이 뭐예요? 없어지면 <b>제일 아까울 물건</b>은요?</li>
-      <li>함양 집안에서 넘어온 물건이 있어요? <b>약재 다루던 도구나 옛 문헌</b> 같은 거요.
-        <span class="note">있다면 이게 백경의 가장 강한 촬영 피사체다</span></li>
-      <li>옛날 <b>주방문이나 집안 기록</b> 같은 게 남아 있어요?</li>
-      <li>지금까지 찍어둔 <b>사진 · 영상 원본은 어디</b> 있어요? 누가 갖고 계세요?</li>
-      <li class="key">언론에 나갔던 것 중에 <b>제일 마음에 든 기사나 영상</b>이 뭐예요? 왜 그게 좋으셨어요?
-        <span class="note">대표님이 생각하는 '잘 담긴 백경'의 기준이 여기서 나온다</span></li>
-      <li>아직 아무한테도 안 보여준 것이 있어요?</li>
-    </ol>
-    <div class="memo"><div class="ml">MEMO</div><div class="lines"></div></div>
-  </div>
-
-  <!-- ══════════ 07 ══════════ -->
-  <div class="blk">
-    <div class="bh"><span class="n">07</span><h2>고택과 증류소</h2><span class="why">장면 · 로케이션 · 촬영 동선</span></div>
-    <div class="lead">증류소는 세종 장군면 평기길 · 약 100평인 걸 안다. 여기서 받을 건 <b>동선과 장면</b>이다.</div>
-    <ol class="q">
-      <li class="key">백경을 <b>딱 한 장면</b>으로 찍는다면 어디서 찍고 싶으세요?</li>
-      <li>증류소에서 대표님이 <b>제일 오래 서 계시는 자리</b>가 어디예요?</li>
-      <li class="key">손님이 오시면 <b>꼭 보여주시는 것</b>이 뭐예요? 보여주는 <b>순서</b>가 있어요?
-        <span class="note">그 순서가 곧 브랜드 스토리의 구조다 — 홈페이지 목차가 여기서 나온다</span></li>
-      <li>고택은 어떤 곳이고 증류소에서 얼마나 떨어져 있어요? 하루에 두 곳 다 찍을 수 있어요?</li>
-      <li>촬영에 <b>사람이 몇 명까지</b> 들어갈 수 있어요? 화장실 · 주차는요?
-        <span class="note">앉을 자리 · 화장실 · 주차 중 가장 작은 값이 촬영 정원이다</span></li>
-      <li>계절마다 풍경이 달라져요? 9월 · 10월은 어때요?</li>
-      <li>촬영 때 <b>절대 안 찍혔으면</b> 하는 데가 있어요?</li>
-      <li>농사 지으시는 <b>논</b>도 찍을 수 있어요? 수확이 언제예요?
-        <span class="note">"직접 농사짓는다"는 말의 유일한 시각 증거다. 시기를 놓치면 1년을 기다린다</span></li>
-    </ol>
-    <div class="memo"><div class="ml">MEMO</div><div class="lines"></div></div>
-  </div>
-
-  <!-- ══════════ 08 ══════════ -->
-  <div class="blk">
-    <div class="bh"><span class="n">08</span><h2>식탁 위의 술</h2><span class="why">SKU 서사 · 타깃 장면</span></div>
-    <div class="lead">"한식당이 시작점일 수는 있지만 궁극적으로는 프렌치 · 이탈리안 · 파인다이닝"이라고 하셨다.
-      그 말을 <b>어느 제품이 짊어질 것인지</b>를 오늘 가른다.</div>
-    <ol class="q">
-      <li class="key">골드 · 블랙 · 화이트 · 향미주곡 · 향온 · 호라산 — <b>이름은 각각 어떻게 지으셨어요?</b>
-        제일 아끼는 이름은요?</li>
-      <li class="key">그중에 진짜 밀고 싶은 것 <b>세 개를 순서대로</b> 꼽으면요? 그 순서인 이유는요?
-        <span class="note">라벨 리뉴얼 5종과 촬영 제품 컷이 여기서 갈린다</span></li>
-      <li class="key">전체를 <b>대표님은 머릿속에서 어떻게 묶고</b> 계세요? 나누는 기준이 있어요?
-        <span class="note">기준이 하나로 나오면 그게 곧 SKU 위계다. 안 나오면 우리가 3안을 만들어 온다</span></li>
-      <li><b>해외 바이어가 제일 좋아한 게 블랙</b>이라고 하셨는데, 왜 블랙이었을까요? 뭐라고들 하시던가요?</li>
-      <li class="key">백경이 <b>제일 어울리는 한 접시</b>를 꼽으면요? 한식 말고 <b>양식에서</b>도 하나요.
-        <span class="note">"식탁 위의 술"을 증명할 페어링 콘텐츠의 출발점</span></li>
-      <li>백경이 <b>제일 어울리는 순간</b>은 언제예요? 대표님은 언제 드세요?</li>
-      <li class="key"><b>두 번 이상 사신 분들</b>, 왜 다시 샀대요?
-        <span class="note">백경의 유일한 A급 자산 후보가 재구매 고객이다</span></li>
-      <li>제일 기억에 남는 손님이 있어요? 어떤 분이었어요?</li>
-      <li>손님이 백경 대신 뭘 살 것 같으세요 — <b>위스키요, 사케요, 다른 전통주요?</b>
-        <span class="note">"위스키·사케"라고 답하시면 선물 포지션이 이미 잡힌 것</span></li>
-    </ol>
-    <div class="memo"><div class="ml">MEMO</div><div class="lines"></div></div>
-  </div>
-
-  <!-- ══════════ 09 ══════════ -->
-  <div class="blk">
-    <div class="bh"><span class="n">09</span><h2>11월 30일</h2><span class="why">성공 정의 · 금기</span></div>
-    <div class="lead">이미 월 1억이 나오고 면세점 · 백화점에 들어가 있다. 그러니 성과 정의를
-      매출로 잡으면 우리가 한 일이 안 보인다. <b>되돌릴 수 없는 결정 N건 + 인수인계 가능한 문서 N장</b>으로 합의한다.</div>
-    <ol class="q">
-      <li class="key">11월 30일에 뭐가 손에 있으면 <b>"이거 하길 잘했다"</b> 싶으실까요?
-        그중에 <b>제일 급한 하나</b>만 고르면요?</li>
-      <li class="key">백경이 <b>절대 되면 안 되는 모습</b>이 있어요?</li>
-      <li>내년 이맘때 백경이 어디에 가 있어야 해요? <b>미국 진출이 그 답인가요?</b></li>
-      <li>저희한테 <b>딱 하나만 시킬 수 있다면</b> 뭘 시키시겠어요?</li>
-      <li>지금까지 마케팅 맡겨보신 적 있으세요? 어떤 점이 아쉬우셨어요?</li>
-      <li>사내에서 콘텐츠나 디자인 맡고 계신 분들, 지금 뭘 만들고 계세요? 뭘 기준으로 만드세요?
-        <span class="note">"왜 안 되고 있냐"가 아니라 "지금 어떻게 굴러가냐"로 묻는다. 그분이 그 자리에 앉아 있을 수 있다</span></li>
-    </ol>
-    <div class="memo"><div class="ml">MEMO</div><div class="lines"></div></div>
-  </div>
-
-  <!-- ══════════ 체크리스트 ══════════ -->
-  <div class="check">
-    <h3>일어나기 전에 — 날짜와 이름만 받는다</h3>
-    <p class="sub">논의하지 않는다. 안 정해지면 "언제까지 주실 수 있나요"로 <b>날짜만</b> 받고 넘어간다.</p>
-    <ul>
-      <li><b>패키지 확정일</b> <span>· 이 날짜에서 브랜드 필름 촬영일이 역산된다</span></li>
-      <li><b>9/8 제품 촬영</b> <span>· 현행 패키지 기준 · 장소 · 준비할 제품 · 백경 측 참석자</span></li>
-      <li><b>제품 실물</b> <span>· 라벨 리뉴얼 후보 포함 · 촬영 2주 전까지</span></li>
-      <li><b>라벨 5종</b> <span>· 살아 있는 전 품목 중 어느 다섯 · 표시사항 변경 신고 담당자</span></li>
-      <li><b>브랜드 자산 원본</b> <span>· 도올 친필 · 옛 사진 · 집안 기록 · 기존 촬영 원본 · 누가 갖고 있는지</span></li>
-      <li><b>계정 권한</b> <span>· 인스타 · 자사몰 · 유튜브 · 네이버 스마트스토어 · GA · 이번 주 내</span></li>
-      <li><b>수상 · 인증 증빙</b> <span>· IWSC 2026 원본 · 그 외 수상 · HACCP · ISO 22000 · 인증수출자</span></li>
-      <li><b>해외 일정 날짜</b> <span>· 파리 9/26~28 · 홍콩 9/30 · 오스트리아 출국 10/19와 <u>귀국일</u> · 미국 일정</span></li>
-      <li><b>사내 담당자 1인</b> <span>· 자료 시트를 채우고 · 촬영 현장에 나오고 · 11월에 인수인계를 받을 사람</span></li>
-      <li><b>정산 증빙</b> <span>· 사업자등록증 · 법인등기부등본 · 비교견적서 2부 · 통장사본 · 과업지시서</span></li>
-      <li><b>창구</b> <span>· 정기 미팅 요일 · 양측 담당자 · 정산 담당자 · 홈페이지 개발 주체는 10월에</span></li>
-    </ul>
-  </div>
-
-  <div class="foot">
-    <span>백경증류소 × HIZ 브랜드 파트너십 · 정식 킥오프 딥 인터뷰 v4</span>
-    <span>PM 우성민 · HIZ BRANDRISE · 2026-09-03</span>
-  </div>
-
+<div id="hud"><div id="bar"><i id="fill"></i></div></div>
+<div id="meta">
+  <span class="tag" id="it">내부</span>
+  <span class="tag" id="nt">노트</span>
+  <span><b id="cur">01</b> / <span id="tot">00</span></span>
 </div>
+<div id="help">← → 넘김 · N 노트 · I 내부 · O 전체 · 0~9 블록 · F 전체화면</div>
+
+<div id="ov">
+  <div id="ovh"><b>전체 슬라이드</b><span>클릭하면 이동 · Esc 닫기</span></div>
+  <div id="ovg"></div>
+</div>
+
+<script>
+(function(){
+  var deck=document.getElementById('deck'), stage=document.getElementById('stage');
+  var all=[].slice.call(deck.querySelectorAll('.slide'));
+  var seq=[], cur=0, internal=false, notes=false;
+
+  function build(){
+    seq = all.filter(function(s){ return internal || s.dataset.int!=='1'; });
+    if(cur>=seq.length) cur=seq.length-1;
+    render(); buildOv();
+  }
+  function render(){
+    all.forEach(function(s){ s.classList.remove('on'); });
+    var s=seq[cur]; if(!s) return; s.classList.add('on');
+    document.getElementById('cur').textContent=String(cur+1).padStart(2,'0');
+    document.getElementById('tot').textContent=String(seq.length).padStart(2,'0');
+    document.getElementById('fill').style.width=((cur+1)/seq.length*100)+'%';
+    var c=document.querySelectorAll('#ovg .ovc');
+    for(var i=0;i<c.length;i++) c[i].classList.toggle('cur', i===cur);
+  }
+  function go(n){ cur=Math.max(0,Math.min(seq.length-1,n)); render(); }
+  function fit(){
+    var s=Math.min(window.innerWidth/1280, window.innerHeight/720);
+    deck.style.setProperty('--s', s);
+  }
+  function label(s){
+    var e=s.querySelector('.bigq, .dv-h, .ttl, .aim-h, .cv-title, .end-h');
+    return e? e.textContent.trim().slice(0,70) : '';
+  }
+  function buildOv(){
+    var g=document.getElementById('ovg'); g.innerHTML='';
+    seq.forEach(function(s,i){
+      var d=document.createElement('div');
+      var k = s.classList.contains('s-div')?'d': s.classList.contains('is-core')?'k':
+              s.dataset.int==='1'?'x':'';
+      d.className='ovc '+k;
+      d.innerHTML='<div class="i">'+String(i+1).padStart(2,'0')+(s.dataset.blk?' · '+s.dataset.blk:'')+'</div><div class="t">'+label(s)+'</div>';
+      d.onclick=function(){ go(i); document.getElementById('ov').classList.remove('on'); };
+      g.appendChild(d);
+    });
+  }
+  function jumpBlock(n){
+    for(var i=0;i<seq.length;i++){
+      if(seq[i].classList.contains('s-div') && seq[i].dataset.blk===n){ go(i); return; }
+    }
+  }
+  document.addEventListener('keydown', function(e){
+    var k=e.key;
+    if(k==='ArrowRight'||k==='ArrowDown'||k===' '||k==='PageDown'){ e.preventDefault(); go(cur+1); }
+    else if(k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'){ e.preventDefault(); go(cur-1); }
+    else if(k==='Home'){ go(0); } else if(k==='End'){ go(seq.length-1); }
+    else if(k==='n'||k==='N'){ notes=!notes; document.body.classList.toggle('notes',notes);
+      document.getElementById('nt').classList.toggle('live',notes);
+      document.getElementById('nt').textContent = notes?'노트 ON':'노트'; }
+    else if(k==='i'||k==='I'){ internal=!internal;
+      document.getElementById('it').classList.toggle('live',internal);
+      document.getElementById('it').textContent = internal?'내부 ON':'내부'; build(); }
+    else if(k==='o'||k==='O'){ document.getElementById('ov').classList.toggle('on'); }
+    else if(k==='Escape'){ document.getElementById('ov').classList.remove('on'); }
+    else if(k==='f'||k==='F'){ if(!document.fullscreenElement) document.documentElement.requestFullscreen(); else document.exitFullscreen(); }
+    else if(/^[0-9]$/.test(k)){ jumpBlock('0'+k); }
+  });
+  stage.addEventListener('click', function(e){
+    if(e.clientX > window.innerWidth*0.5) go(cur+1); else go(cur-1);
+  });
+  var help=document.getElementById('help'), ht;
+  function nudge(){ help.classList.remove('hide'); clearTimeout(ht); ht=setTimeout(function(){ help.classList.add('hide'); },5000); }
+  window.addEventListener('mousemove', nudge); document.addEventListener('keydown', nudge); nudge();
+  window.addEventListener('resize', fit);
+  var h=(location.hash.match(/s=(\d+)/)||[])[1];
+  if((location.hash||'').indexOf('int')>-1){ internal=true; document.getElementById('it').classList.add('live'); document.getElementById('it').textContent='내부 ON'; }
+  if((location.hash||'').indexOf('note')>-1){ notes=true; document.body.classList.add('notes'); document.getElementById('nt').classList.add('live'); document.getElementById('nt').textContent='노트 ON'; }
+  fit(); build();
+  if(h) go(parseInt(h,10)-1);
+})();
+</script>
 </body>
 </html>
