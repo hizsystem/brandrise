@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<!--
+  백경증류소 — 콘텐츠 15건 초안 (2026-09-03)
+  · 3축 = 아이덴티티 / 브랜드 이력 / 제품 소개 (성민님 확정안), 축당 5건
+  · 기획 근거 = consulting/baekkyung-content/ (기획 v2)
+  · 캡션은 발행 가능한 형태의 초안. 대괄호 [ ] 와 「확인 필요」가 채워지기 전 발행 금지.
+  · 우측 상단 [내부 노트] 토글 = 기본 OFF.
+  · 작업 우성민 / PM 우성민
+-->
+<!DOCTYPE html>
+<!--
+  백경증류소 — 인스타그램 콘텐츠 기획 v1 (2026-09-03)
+  · 실측 2026-09-03 : @baekkyung_official / @geulwoll.kr / @hinok.life 프로필·피드 직접 확인
+    · bk-distillery.com about.html · our-team.html · 유튜브 @suljangi 채널 정보
+    · 콘텐츠 대시보드 2026-08 발행 7건 · 마스터시트 「제품리스트」 gid 822027668 ·「MAP」 gid 1423330050
+    · 촬영 TF 킥오프 회의록 2026-09-01 · 레퍼런스북 v1 discovery/02a-kr-geulwoll-hinok.md
+  · 우측 상단 [내부 노트] 토글 = 기본 OFF. 화면 공유 시 그대로 켜지 말 것.
+  · 작업 우성민 / PM 우성민
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>백경증류소 콘텐츠 15건</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.75;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:16.5px}
+
+.hero{background:linear-gradient(135deg,#0b1220 0%,#132033 44%,#1e3a5f 100%);color:#fff;padding:72px 0 60px;position:relative;overflow:hidden}
+.hero::after{content:"白鯨";position:absolute;right:1%;bottom:-16%;font-size:clamp(150px,20vw,320px);font-weight:800;letter-spacing:-.04em;color:#fff;opacity:.055;line-height:.8;pointer-events:none}
+.hero .in{max-width:1360px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#a5c8e8;border:1px solid rgba(165,200,232,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:42px;font-weight:800;letter-spacing:-.03em;line-height:1.14;margin-bottom:14px}
+.hero .sub{font-size:16.5px;color:#c8d4e0;font-weight:300;max-width:760px;line-height:1.8}
+.hero .meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#93c5fd}
+
+.layout{max-width:1360px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:208px 1fr;gap:48px;align-items:start}
+nav.toc{position:sticky;top:28px;padding:36px 0;font-size:13.5px}
+nav.toc .nl{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--muted);margin:0 0 14px 12px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;border-left:2px solid transparent;transition:.15s;font-weight:500}
+nav.toc a:hover{color:var(--ink);background:var(--soft)}
+nav.toc a.on{color:var(--ac);background:var(--ac-50);border-left-color:var(--ac);font-weight:700}
+main{padding:36px 0 120px;min-width:0}
+section{margin-bottom:56px;scroll-margin-top:24px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+h2{font-size:29px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px;text-wrap:balance}
+.lead{font-size:18px;color:var(--ink2);margin-bottom:30px;line-height:1.8;text-wrap:balance}
+h3{font-size:19px;font-weight:800;margin:32px 0 12px;letter-spacing:-.01em;text-wrap:balance}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.co{border:1px solid var(--line2);border-left:3px solid var(--line);border-radius:0 10px 10px 0;padding:18px 24px;margin:20px 0;font-size:16px;line-height:1.8;text-wrap:pretty;background:#fff}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100);border-left-color:var(--ac)}
+.co.ok{background:var(--ok-50);border-color:#bbf7d0;border-left-color:var(--ok)}
+.co.warn{background:var(--warn-50);border-color:#fde68a;border-left-color:var(--warn)}
+.co.bad{background:var(--bad-50);border-color:#fecdd3;border-left-color:var(--bad)}
+.co b,.co strong{color:var(--ink);font-weight:700}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th{background:var(--soft);text-align:left;padding:11px 14px;font-weight:700;font-size:12.5px;letter-spacing:.02em;color:var(--ink2);border-bottom:1px solid var(--line)}
+td{padding:11px 14px;border-bottom:1px solid var(--line2);vertical-align:top;line-height:1.65}
+tr:last-child td{border-bottom:0}
+.tw{overflow-x:auto;margin:16px 0}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.04em;padding:3px 8px;border-radius:6px;vertical-align:middle}
+.t-red{background:var(--bad-50);color:#be123c} .t-amb{background:var(--warn-50);color:#b45309}
+.t-ok{background:var(--ok-50);color:#047857} .t-ac{background:var(--ac-50);color:var(--ac-700)}
+.t-gr{background:#f1f5f9;color:#475569}
+
+/* 인터뷰 블록 — 화면 공유용 큰 타이포 */
+.qb{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 34px;margin-bottom:16px}
+.qb .qh{display:flex;align-items:baseline;gap:12px;margin-bottom:6px;flex-wrap:wrap}
+.qb .qn{font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--ac)}
+.qb h4{font-size:25px;font-weight:800;letter-spacing:-.02em}
+.qb .qm{font-size:13px;color:var(--muted);font-weight:600}
+.qb ul{list-style:none;margin-top:18px}
+.qb li{font-size:20px;line-height:1.62;padding:12px 0 12px 30px;position:relative;color:var(--ink);border-top:1px solid var(--line2)}
+.qb li:first-child{border-top:0}
+.qb li::before{content:"—";position:absolute;left:0;top:12px;color:#cbd5e1;font-weight:700}
+.qb li.star::before{content:"★";color:var(--ac);font-size:15px;top:15px}
+.qb li.star{font-weight:700}
+.qb li .why{display:block;font-size:13.5px;color:var(--muted);font-weight:500;margin-top:5px;line-height:1.6}
+
+ol.steps{list-style:none;counter-reset:s}
+ol.steps li{counter-increment:s;position:relative;padding:14px 0 14px 44px;border-bottom:1px solid var(--line2);font-size:16px;line-height:1.7}
+ol.steps li:last-child{border-bottom:0}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:14px;width:27px;height:27px;border-radius:8px;background:var(--ac-50);color:var(--ac-700);font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center}
+ol.steps li b{font-weight:700}
+ol.steps li .sub{display:block;font-size:14px;color:var(--muted);margin-top:4px;line-height:1.65}
+
+.chk{list-style:none}
+.chk li{position:relative;padding:12px 0 12px 32px;border-bottom:1px solid var(--line2);font-size:16px;line-height:1.7}
+.chk li:last-child{border-bottom:0}
+.chk li::before{content:"";position:absolute;left:0;top:17px;width:15px;height:15px;border:2px solid #cbd5e1;border-radius:4px}
+.chk li .sub{display:block;font-size:13.5px;color:var(--muted);margin-top:3px;line-height:1.6}
+
+/* 내부 노트 토글 */
+.priv{display:none}
+body.show-priv .priv{display:block}
+.privbar{position:fixed;right:20px;top:20px;z-index:50}
+.privbtn{font-family:inherit;font-size:12px;font-weight:800;letter-spacing:.04em;padding:9px 15px;border-radius:9px;border:1px solid rgba(255,255,255,.25);background:rgba(15,23,42,.72);color:#fff;cursor:pointer;backdrop-filter:blur(6px)}
+body.show-priv .privbtn{background:var(--bad);border-color:var(--bad)}
+.priv .card,.priv .co{border-style:dashed}
+.privmark{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--bad);margin-bottom:8px}
+
+.foot{max-width:1360px;margin:0 auto;padding:34px 40px 60px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);line-height:1.9}
+
+@media (max-width:1080px){
+  .layout{grid-template-columns:1fr;gap:0;padding:0 22px}
+  nav.toc{display:none} .hero .in{padding:0 22px} .hero h1{font-size:31px}
+  .grid2,.grid3{grid-template-columns:1fr}
+  .qb{padding:22px 20px} .qb li{font-size:17.5px} .qb h4{font-size:21px}
+  .foot{padding:28px 22px 50px}
+}
+@media print{ .privbar,nav.toc{display:none} .layout{grid-template-columns:1fr} body{font-size:12px} }
+
+/* 콘텐츠 카드 */
+.ct{background:#fff;border:1px solid var(--line);border-radius:16px;padding:0;margin-bottom:20px;overflow:hidden}
+.ct .cth{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding:20px 26px 14px;border-bottom:1px solid var(--line2)}
+.ct .ctn{font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--ac);white-space:nowrap}
+.ct .cth h4{font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.3}
+.ct .ctb{padding:20px 26px 24px}
+.cap{background:#fbfcfd;border:1px solid var(--line2);border-left:3px solid var(--ac);border-radius:0 10px 10px 0;padding:20px 24px;font-size:16.5px;line-height:1.95;white-space:pre-line;color:var(--ink);margin-bottom:16px}
+.cap .tags{display:block;margin-top:14px;font-size:14px;color:var(--muted);font-weight:600}
+.meta-row{display:grid;grid-template-columns:88px 1fr;gap:10px 14px;font-size:14.5px;line-height:1.7;margin-top:6px}
+.meta-row dt{font-weight:800;color:var(--muted);font-size:12.5px;letter-spacing:.04em;padding-top:2px}
+.meta-row dd{color:var(--ink2)}
+@media (max-width:1080px){ .ct .cth{padding:16px 18px 12px} .ct .ctb{padding:16px 18px 20px} .cap{padding:16px 18px;font-size:15.5px} .ct .cth h4{font-size:19px} .meta-row{grid-template-columns:1fr;gap:2px 0} .meta-row dd{margin-bottom:8px} }
+</style>
+</head>
+<body>
+
+<div class="privbar"><button class="privbtn" id="pb">내부 노트 OFF</button></div>
+
+<header class="hero">
+  <div class="in">
+    <div class="badge">CONTENT DRAFT · 15건 · 2026-09-03</div>
+    <h1>백경증류소 콘텐츠 15건 초안</h1>
+    <p class="sub">3축 × 5건. 캡션은 <b>그대로 올릴 수 있는 형태</b>로 썼고, 확인이 필요한 사실은 건별로 표시했다. 톤 기준은 백경이 이미 쓴 밀누룩 캡션이다 — <b>이모지 없이, 짧은 행갈이로, 마지막에 한 줄을 남긴다.</b></p>
+    <div class="meta">
+      <span class="chip">아이덴티티 <b>5</b> · 이력 <b>5</b> · 제품 <b>5</b></span>
+      <span class="chip">촬영 배분 <b>9/8 스튜디오</b> · <b>9/18 세종</b></span>
+      <span class="chip">발행 전 게이트 <b>2</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+<nav class="toc">
+  <div class="nl">CONTENTS</div>
+  <a href="#g0">먼저 — 소개글 점검</a>
+  <a href="#g1">축 1 · 아이덴티티</a>
+  <a href="#g2">축 2 · 브랜드 이력</a>
+  <a href="#g3">축 3 · 제품 소개</a>
+  <a href="#g4">촬영 컷 배분</a>
+  <a href="#g5">발행 전 체크</a>
+</nav>
+
+<main>
+
+<!-- ═══════ 0 ═══════ -->
+<section id="g0">
+  <div class="sec-k">CHECK</div>
+  <h2>먼저 — 기존 소개글에서 얻은 것과 고칠 것</h2>
+  <p class="lead">「백경증류소의 시작, 한의원에서 출발한 건강한 술」 게시물 점검이다.</p>
+
+  <div class="co ok"><b>새로 얻은 자산 3개</b><br><br>
+  ① <b>법제술(法製酒)</b> — “한약재를 법제할 때 사용하던 술을 현대적으로 재해석”. <b>백경만 쓸 수 있는 명사</b>다. 지금까지 「법제」는 동사로만 쓰였는데, 이 게시물에서 <b>제품 카테고리 이름</b>이 됐다.<br>
+  ② <b>20년</b> — “20년 동안 전통 양조를 연구”. 브랜드가 쓸 수 있는 가장 단순한 숫자다.<br>
+  ③ <b>No guts, no glory</b> — 대표님 문장. 술 이야기 밖에서 브랜드 성격을 보여주는 자리에 쓸 수 있다.</div>
+
+  <div class="co bad"><b>🔴 그런데 이 게시물은 표시광고법 리스크가 높다.</b><br><br>
+  “몸을 이롭게 하는 존재” · “<b>건강을 위한 술</b>” · “<b>건강한 술</b>” · “한방 원료에서 찾은 자연의 힘” · <b>#건강한술 #한방술</b><br><br>
+  <b>주류에 건강·효능을 표방하는 것은 허용되지 않는다.</b> 식품 표시·광고 규정상 주류는 건강 관련 표현을 쓸 수 없고, 「한방」·「약재」와 붙으면 의약품 오인 소지까지 생긴다. 라이브 중이라면 <b>문구 수정 대상</b>이고, 최소한 <b>해시태그 2개(#건강한술 #한방술)는 지금 내려야 한다.</b></div>
+
+  <div class="co ac"><b>다행히 「건강」을 빼면 더 강해진다.</b><br>
+  이 게시물의 힘은 「건강」이 아니라 <b>「법제」</b>에서 나온다. 건강은 아무나 말할 수 있고 규제에 걸리지만, 법제는 백경만 말할 수 있고 규제에 안 걸린다.<br><br>
+  <b>안전 화법의 원칙 — 효능이 아니라 공정으로 말한다.</b><br>
+  ❌ “약성을 끌어올립니다” / “몸을 이롭게 합니다”<br>
+  ⭕ <b>“약재를 다루던 방식으로 술을 다룹니다”</b><br>
+  아래 A2가 그 실물 예시다.</div>
+</section>
+
+<!-- ═══════ 1 ═══════ -->
+<section id="g1">
+  <div class="sec-k">AXIS 1 · 아이덴티티</div>
+  <h2>축 1 · 아이덴티티 — 5건</h2>
+  <p class="lead">세상에 유일한 발효 누룩. <b>왜 유일한가 · 뭐가 다른가 · 한의학이란 무엇인가</b>에만 답한다.</p>
+
+  <div class="ct">
+    <div class="cth"><span class="ctn">A1 · 고정</span><h4>세상에 하나뿐인 누룩</h4><span class="tag t-red">축 선언</span></div>
+    <div class="ctb">
+      <div class="cap">세상에 하나뿐인 누룩이 있습니다.
+
+용연곡.
+백경이 직접 띄운 누룩입니다.
+
+대부분의 술은 사 온 누룩으로 빚습니다.
+정제된 균은 언제나 같은 맛을 냅니다.
+빠르고, 안전하고, 예측할 수 있습니다.
+
+우리는 그 길을 가지 않았습니다.
+
+40도, 습도 70에서 80 사이.
+공기 중의 균이 스스로 자리 잡기를 기다립니다.
+그 사이에서만 일어나는 일입니다.
+
+백경의 술에서 백경의 향이 나는 이유는
+이 누룩 하나 때문입니다.<span class="tags">#백경증류소 #용연곡 #백경누룩</span></div>
+      <dl class="meta-row">
+        <dt>이미지</dt><dd>누룩 표면 극단 클로즈업. 흑백. 결과 균열이 보이는 거리. <b>9/18 세종</b></dd>
+        <dt>확인 필요</dt><dd>🔴 <b>용연곡이 무엇과 비교해 유일한가</b> — 이 한 문장이 없으면 “세상에 하나뿐인”을 못 쓴다 / 용연곡의 원료(밀? 녹두?) / 40도·습도 70~80%가 용연곡 조건이 맞는지</dd>
+        <dt>비고</dt><dd>계정 <b>상단 고정</b>. 새 방문자가 처음 보는 게시물</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ct">
+    <div class="cth"><span class="ctn">A2</span><h4>백경의 시작은 술이 아니라 약이었습니다</h4><span class="tag t-ac">법제술</span></div>
+    <div class="ctb">
+      <div class="cap">백경의 시작은 술이 아니라 약이었습니다.
+
+경남 함양, 대대로 한의원을 하던 집.
+약재를 다루는 법 중에 법제(法製)라는 것이 있습니다.
+거친 성질을 눕히고 필요한 것만 남기는 일.
+
+그때 쓰던 것이 술이었습니다.
+
+약을 만들기 위해 빚던 술을
+이제는 술로 빚습니다.
+
+바뀐 것은 목적이고,
+바뀌지 않은 것은 다루는 방식입니다.<span class="tags">#백경증류소 #법제 #法製酒</span></div>
+      <dl class="meta-row">
+        <dt>이미지</dt><dd>마른 약재를 다루는 손. 흑백. 얼굴 없음. <b>9/18 세종</b> (약재가 없으면 누룩 손 컷 대체)</dd>
+        <dt>확인 필요</dt><dd>“대대로 한의원” 정확한 대수 / 실제로 법제에 술을 쓰셨던 분이 누구인지(조부? 부친?)</dd>
+        <dt>🔴 리스크</dt><dd><b>이 캡션에는 「건강」·「약성」·「효능」이 한 번도 안 나온다.</b> 그게 의도다. 검수 시 이 단어들이 들어갔는지만 보면 된다</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ct">
+    <div class="cth"><span class="ctn">A3</span><h4>빵을 좋아하신다면 이야기가 빨라집니다</h4><span class="tag t-ac">번역</span></div>
+    <div class="ctb">
+      <div class="cap">빵을 좋아하신다면 이야기가 빨라집니다.
+
+사워도우는 공기 중의 균으로 반죽을 부풀립니다.
+이스트를 넣지 않습니다.
+그래서 굽는 곳마다 맛이 다릅니다.
+
+누룩도 같습니다.
+
+밀을 뭉쳐 두면
+그 공간의 균이 내려앉아 자리를 잡습니다.
+같은 방법으로 만들어도
+띄운 곳이 다르면 다른 누룩이 됩니다.
+
+세종 장군면의 공기가
+백경의 술 안에 들어 있습니다.<span class="tags">#백경증류소 #누룩 #사워도우</span></div>
+      <dl class="meta-row">
+        <dt>이미지</dt><dd>누룩 단면. 빵 단면과 닮은 각도. 흑백 또는 극저채도. <b>9/18 세종</b></dd>
+        <dt>확인 필요</dt><dd>없음 — <b>자사몰 ABOUT의 사워도우 비유를 그대로 옮긴 것</b>이다</dd>
+        <dt>비고</dt><dd>저장·공유가 가장 잘 나올 후보. 아는 것으로 모르는 것을 설명하는 구조라 술을 모르는 사람도 읽는다</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ct">
+    <div class="cth"><span class="ctn">A4</span><h4>안 하는 것으로 설명하는 편이 빠를 때가 있습니다</h4><span class="tag t-ac">안 하는 것</span></div>
+    <div class="ctb">
+      <div class="cap">안 하는 것으로 설명하는 편이 빠를 때가 있습니다.
+
+백경은 정제균을 쓰지 않습니다.
+
+정제균은 배양된 단일 균입니다.
+넣으면 실패가 줄고, 맛이 고르고, 시간이 짧아집니다.
+대부분이 그렇게 만듭니다.
+
+우리는 자연에서 내려앉은 균을 씁니다.
+균이 여럿이면 향도 여럿이 됩니다.
+한 모금 안에 여러 겹이 생기는 이유입니다.
+
+느리고, 번거롭고, 매번 조금씩 다릅니다.
+그게 우리가 고른 쪽입니다.<span class="tags">#백경증류소 #누룩 #자연발효</span></div>
+      <dl class="meta-row">
+        <dt>이미지</dt><dd>누룩방 전경을 좁게. 어둠이 절반. 하이라이트 하나. <b>9/18 세종</b></dd>
+        <dt>확인 필요</dt><dd>없음 — 자사몰 ABOUT 문장 기반</dd>
+        <dt>비고</dt><dd>희녹의 「탈취제가 아니라 라이프 에티켓」과 같은 자리. <b>브랜드는 하는 것보다 안 하는 것으로 기억된다</b></dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ct">
+    <div class="cth"><span class="ctn">A5</span><h4>스무 해입니다</h4><span class="tag t-red">감도 기준 컷</span></div>
+    <div class="ctb">
+      <div class="cap">스무 해입니다.
+
+전통 양조를 연구한 시간입니다.
+누룩부터 쌀까지, 사지 않고 직접 해보는 쪽을 골랐습니다.
+
+그 시간은 서류에 남지 않습니다.
+손에 남습니다.<span class="tags">#백경증류소 #누룩 #세종</span></div>
+      <dl class="meta-row">
+        <dt>이미지</dt><dd>🔴 <b>레퍼런스 3컷의 기준 컷.</b> 손등 또는 두 손바닥. 흑백. 프레임 전체를 손이 채운다. 배경 완전히 날림. 얼굴 없음. <b>9/18 세종</b></dd>
+        <dt>확인 필요</dt><dd>“20년”의 기산점 — 대표님 개인 경력인지, 집안 양조 포함인지. <b>주체를 틀리면 안 된다</b></dd>
+        <dt>비고</dt><dd>캡션이 가장 짧다. 사진이 주인공인 게시물이라 글이 길면 진다</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+<!-- ═══════ 2 ═══════ -->
+<section id="g2">
+  <div class="sec-k">AXIS 2 · 브랜드 이력</div>
+  <h2>축 2 · 브랜드 이력 — 5건</h2>
+  <p class="lead">주어를 바꾼다. <b>“우리가 갔다”가 아니라 “그들이 골랐다”.</b> 그리고 수상은 <b>받은 주체를 정확히</b> 쓴다.</p>
+
+  <div class="ct">
+    <div class="cth"><span class="ctn">H1</span><h4>라벨도, 나라도 보지 않는 자리</h4><span class="tag t-ok">IWSC</span></div>
+    <div class="ctb">
+      <div class="cap">백경15가 IWSC에서 브론즈를 받았습니다.
+
+International Wine &amp; Spirit Competition.
+1969년에 시작된 주류 품평회입니다.
+
+심사는 블라인드로 진행됩니다.
+라벨도, 나라도, 이야기도 보지 않고
+잔에 담긴 것만 봅니다.
+
+그 자리에서 받은 결과입니다.<span class="tags">#백경증류소 #IWSC2026 #백경15</span></div>
+      <dl class="meta-row">
+        <dt>이미지</dt><dd>잔에 담긴 술만. 병 없이. 저조도, 하이라이트 하나. <b>9/8 스튜디오</b></dd>
+        <dt>확인 필요</dt><dd>수상 부문·제품 정확한 표기(백경15 어느 라인인지) / <b>상장 또는 인증 사본</b> / IWSC 블라인드 심사 방식 표기 문구</dd>
+        <dt>비고</dt><dd><b>“블라인드로 심사한다”가 이 게시물의 핵심</b>이다. 상 자체보다 <b>이야기 없이 맛만으로 받았다</b>는 게 메시지다</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ct">
+    <div class="cth"><span class="ctn">H2</span><h4>상은 셰프가 받았습니다</h4><span class="tag t-red">주체 표기 모범</span></div>
+    <div class="ctb">
+      <div class="cap">홍콩 SOL restaurant.
+
+미쉐린 가이드 2026 홍콩·마카오에서
+영 셰프 어워드를 받은 곳입니다.
+
+그 테이블 위에 백경이 올라갔습니다.
+와인잔에 따라서.
+
+상은 셰프가 받았습니다.
+우리는 그 셰프가 고른 술입니다.<span class="tags">#백경증류소 #SOLrestaurant #홍콩</span></div>
+      <dl class="meta-row">
+        <dt>이미지</dt><dd>와인잔에 따른 백경. 레스토랑 테이블. 기존 홍콩 촬영본 재사용 가능</dd>
+        <dt>확인 필요</dt><dd>SOL restaurant 및 셰프 표기 동의 여부(태그·언급)</dd>
+        <dt>🔴 리스크</dt><dd><b>이 두 줄이 주체 표기 문제를 해결한다.</b> “미쉐린 백경”은 허위이고, “상은 셰프가 받았습니다 / 우리는 그 셰프가 고른 술입니다”는 사실이면서 <b>더 좋은 카피</b>다. 이 축의 모든 게시물이 이 형태를 따른다</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ct">
+    <div class="cth"><span class="ctn">H3</span><h4>지적받은 것을 적어두는 편입니다</h4><span class="tag t-amb">직함 확인 후</span></div>
+    <div class="ctb">
+      <div class="cap">지적받은 것을 적어두는 편입니다.
+
+차진선 소믈리에, 케이지 소믈리에.
+두 분이 백경을 마시고 고칠 곳을 말해주셨습니다.
+
+[ 무엇을 지적받았고 무엇을 고쳤는지 — 한 가지만 구체적으로 ]
+
+칭찬은 기억에 남지 않습니다.
+고칠 곳이 남습니다.<span class="tags">#백경증류소 #소믈리에</span></div>
+      <dl class="meta-row">
+        <dt>이미지</dt><dd>두 잔이 나란히 놓인 컷. 개선 전/후를 암시. <b>9/8 스튜디오</b></dd>
+        <dt>확인 필요</dt><dd>🔴 <b>두 분의 정확한 직함</b>(케이지 = 2024 국가대표 전통주 소믈리에로 보이나 미확인) / 게시 동의 / <b>실제로 무엇을 고쳤는지</b> — 이게 없으면 이 건은 성립하지 않는다</dd>
+        <dt>비고</dt><dd><b>이 축에서 가장 강한 콘텐츠 후보다.</b> 자랑이 아니라 고친 이야기라 신뢰가 붙는다. 다만 <b>확인 전 발행 보류</b></dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ct">
+    <div class="cth"><span class="ctn">H4</span><h4>병만 보고 골라야 하는 곳</h4><span class="tag t-ok">유통</span></div>
+    <div class="ctb">
+      <div class="cap">한국을 떠나는 사람이 고르는 술.
+
+인천공항 신세계면세점 T1, T2.
+신세계백화점 강남점, 명동점, 대구점.
+
+선물로 사는 자리입니다.
+설명할 시간이 없는 자리이기도 합니다.
+
+병만 보고 골라야 하는 곳에서
+백경이 골라지고 있습니다.<span class="tags">#백경증류소 #면세점 #선물</span></div>
+      <dl class="meta-row">
+        <dt>이미지</dt><dd>병의 실루엣만. 라벨이 반쯤 어둠에 들어간 컷. <b>9/8 스튜디오</b></dd>
+        <dt>확인 필요</dt><dd><b>현재 입점 상태가 유효한지</b>(2025년 3월 게시물 기준이라 변동 가능) / 매장 표기 동의</dd>
+        <dt>비고</dt><dd>선물세트·추석 시즌과 자연스럽게 이어진다. 9월 편성에서 P4 추석 건과 붙여도 좋다</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ct">
+    <div class="cth"><span class="ctn">H5</span><h4>줄은 서는데, 식탁 위에는 없습니다</h4><span class="tag t-ok">해외</span></div>
+    <div class="ctb">
+      <div class="cap">올해 백경이 부스를 세운 곳입니다.
+
+3월, 뒤셀도르프 ProWein.
+6월, 뉴욕 팬시 푸드쇼.
+함부르크 항으로 첫 물량이 들어갔고
+홍콩과 싱가포르에도 나가 있습니다.
+
+한식당 앞에는 줄이 섭니다.
+그런데 그 식탁 위에 한국 술은 아직 없습니다.
+
+그래서 나갑니다.<span class="tags">#백경증류소 #ProWein #FancyFoodShow #수출</span></div>
+      <dl class="meta-row">
+        <dt>이미지</dt><dd>부스 현장 기존 촬영본. <b>상장·단체사진 대신 잔·테이블·손이 있는 컷</b>으로 고른다</dd>
+        <dt>확인 필요</dt><dd>2026년 전시 목록이 이게 전부인지 / 파리 위스키라이브(9/26~28)는 다음 편으로 분리</dd>
+        <dt>비고</dt><dd>마지막 세 줄은 백경 자신의 문제의식이다 — 술장이 영상 <i>“Endless Lines for Korean Food, But No Korean Alcohol?”</i>에서 왔다. <b>브랜드가 이미 가진 문장이라 힘이 있다</b></dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 3 ═══════ -->
+<section id="g3">
+  <div class="sec-k">AXIS 3 · 제품 소개</div>
+  <h2>축 3 · 제품 소개 — 5건</h2>
+  <p class="lead">글월처럼 담백하게. <b>설명하지 않고 제시한다.</b> 사달라고 하지 않고 판단을 읽는 사람에게 넘긴다.</p>
+
+  <div class="ct">
+    <div class="cth"><span class="ctn">P1</span><h4>백경15의 15는 도수입니다</h4><span class="tag t-ac">라인 소개</span></div>
+    <div class="ctb">
+      <div class="cap">백경15의 15는 도수입니다.
+
+무겁지도 가볍지도 않은 자리를 찾다가
+15에서 멈췄습니다.
+
+한식에도, 프렌치에도, 이탈리안에도
+같이 놓을 수 있는 도수입니다.
+
+Gold, White, Black.
+셋 다 15도이고, 셋 다 다른 누룩으로 빚습니다.
+
+백경이 궁금하시면 이 셋부터 권합니다.
+
+750ml · 15%<span class="tags">#백경증류소 #백경15</span></div>
+      <dl class="meta-row">
+        <dt>이미지</dt><dd>세 병을 나란히. 정면 아닌 사선. 라벨은 반쯤 보이게. <b>9/8 스튜디오</b></dd>
+        <dt>확인 필요</dt><dd>Gold·White 각각의 누룩 종류(Black=녹두는 확인됨)</dd>
+        <dt>비고</dt><dd>마지막 줄은 백경 자신의 2025-05 문장을 다듬은 것 — <i>“우리가 나아가는 길이 마음에 드신다면, 그다음 이야기를 들려드릴게요”</i></dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ct">
+    <div class="cth"><span class="ctn">P2</span><h4>백경15 블랙</h4><span class="tag t-ac">녹두 누룩</span></div>
+    <div class="ctb">
+      <div class="cap">백경15 블랙.
+
+녹두를 넣은 누룩으로 빚습니다.
+허브 같은 고소함이 여기서 나옵니다.
+
+은은한 청포도 향.
+와인 같은 미네랄리티.
+약주라기엔 지나치게 맑은 그린빛.
+
+산미가 먼저 오고, 감칠맛이 뒤에 남습니다.
+
+750ml · 15% · 50,350원<span class="tags">#백경증류소 #백경15블랙 #녹두누룩</span></div>
+      <dl class="meta-row">
+        <dt>이미지</dt><dd>잔에 따랐을 때의 그린빛. 역광. 색이 유일한 주인공이라 <b>이 건만 컬러 허용</b>. <b>9/8 스튜디오</b></dd>
+        <dt>확인 필요</dt><dd>현재 판매 상태(8/30 “블랙 완판” 공지 있었음 — <b>재입고 여부 확인 후 발행</b>)</dd>
+        <dt>비고</dt><dd>기존 2025-05 캡션을 다듬었다. 원문에 있던 “전통 속에서 피어난 고요한 혁신” 같은 수식은 뺐다</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ct">
+    <div class="cth"><span class="ctn">P3</span><h4>값이 다른 이유는 재료가 아니라 시간입니다</h4><span class="tag t-red">플래그십</span></div>
+    <div class="ctb">
+      <div class="cap">백경15 향온.
+
+향온곡으로 빚습니다.
+녹두로 띄운 누룩입니다.
+
+다섯 번 나눠 빚고, 180일을 기다립니다.
+오양주라고 부릅니다.
+
+값이 다른 이유는 재료가 아니라 시간입니다.
+
+750ml · 15% · 115,000원<span class="tags">#백경증류소 #향온 #오양주</span></div>
+      <dl class="meta-row">
+        <dt>이미지</dt><dd>항아리 또는 발효조. 시간이 보이는 컷. 흑백. <b>9/18 세종</b> (제품컷은 9/8에서 별도)</dd>
+        <dt>확인 필요</dt><dd>향온곡이 녹두 누룩이 맞는지(백경15 블랙도 녹두라 <b>둘의 차이 확인 필요</b>) / 180일·오양주 표기</dd>
+        <dt>비고</dt><dd><b>“값이 다른 이유는 재료가 아니라 시간입니다”</b> 한 줄이 115,000원을 방어한다. 가격을 숨기지 않는 게 이 톤의 원칙이다</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ct">
+    <div class="cth"><span class="ctn">P4</span><h4>백경53</h4><span class="tag t-ac">소주</span></div>
+    <div class="ctb">
+      <div class="cap">백경53.
+
+53도입니다.
+
+도수가 높으면 향이 먼저 날아갑니다.
+백경53에는 누룩의 향이 그대로 남아 있습니다.
+
+작은 잔에 조금만 따라
+천천히 드시기를 권합니다.
+
+250ml · 53% · 50,000원<span class="tags">#백경증류소 #백경53 #증류식소주</span></div>
+      <dl class="meta-row">
+        <dt>이미지</dt><dd>작은 잔 하나. 여백 많이. 흑백. <b>9/8 스튜디오</b></dd>
+        <dt>확인 필요</dt><dd>🔴 <b>어떤 술을 내려 만든 것인지</b>(약주 기반? 별도 담금?) / “향이 남는다”의 근거를 대표님 표현으로</dd>
+        <dt>비고</dt><dd>마지막 두 줄이 <b>「어떻게 마시나」 코너의 첫 조각</b>이다. 제품 소개에 마시는 법을 한 줄 붙이는 형태로 축을 잇는다</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ct">
+    <div class="cth"><span class="ctn">P5</span><h4>설탕이 들어가지 않습니다</h4><span class="tag t-ac">막걸리</span></div>
+    <div class="ctb">
+      <div class="cap">백경10 복숭아.
+
+설탕이 들어가지 않습니다.
+멥쌀, 찹쌀, 백경 누룩. 셋뿐입니다.
+
+향온곡이 복숭아와 배, 살구 같은 향을 냅니다.
+단맛은 발효가 만든 것입니다.
+
+전과도, 매운 것과도 잘 맞습니다.
+
+375ml · 10% · 17,000원<span class="tags">#백경증류소 #백경10 #향온곡</span></div>
+      <dl class="meta-row">
+        <dt>이미지</dt><dd>따랐을 때의 탁한 질감. 한 접시와 함께. <b>9/8 스튜디오 (푸드 페어링)</b></dd>
+        <dt>확인 필요</dt><dd>🔴 <b>용량 불일치</b> — 마스터시트는 375ml, 8월 게시물 캡션은 750ml. <b>둘 중 하나가 틀렸다</b></dd>
+        <dt>비고</dt><dd>8월에 이미 반응이 있던 소재를 <b>서사편으로 다시 쓴 것</b>이다. 원문의 “기적 같은”·이모지·느낌표를 걷어냈다. <b>같은 소재를 근거편/서사편으로 두 번 쓰는 희녹 방식</b></dd>
+      </dl>
+    </div>
+  </div>
+</section>
+<!-- ═══════ 4 ═══════ -->
+<section id="g4">
+  <div class="sec-k">SHOOTING</div>
+  <h2>촬영 컷 배분 — 9/8과 9/18</h2>
+  <p class="lead">15건을 두 촬영에 나눠 담으면 이렇게 된다.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th style="width:130px">촬영</th><th style="width:90px">건수</th><th>담는 것</th></tr></thead>
+    <tbody>
+      <tr><td><b>9/8 스튜디오</b><br><span style="color:var(--muted);font-size:13px">제품·푸드</span></td><td class="num"><b>8건</b></td><td>H1 잔 · H4 병 실루엣 · H3 두 잔 · P1 세 병 · P2 그린빛 · P4 작은 잔 · P5 푸드 페어링 · P3 제품컷</td></tr>
+      <tr><td><b>9/18 세종</b><br><span style="color:var(--muted);font-size:13px">재료·공간·손</span></td><td class="num"><b>6건</b></td><td><b>A1 누룩 표면 · A2 약재 다루는 손 · A3 누룩 단면 · A4 누룩방 · A5 손(기준 컷) · P3 항아리</b></td></tr>
+      <tr><td>기존 자산</td><td class="num">2건</td><td>H2 홍콩 · H5 전시 부스</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="co bad"><b>🔴 아이덴티티 5건이 전부 9/18에 걸려 있다.</b><br>
+  손 · 누룩 · 약재 · 누룩방은 스튜디오에서 나오지 않는다. <b>9/8만 찍으면 축 1은 한 건도 못 올린다</b> — 그러면 9월 편성 12건 중 4건이 비고, 계정은 다시 제품·소식 계정으로 돌아간다.<br><br>
+  9/18(금)은 이미 <b>로케이션 확인 + 미팅</b>으로 잡혀 있다. <b>추가 스튜디오 비용 0.</b> 반나절이면 위 6컷이 나오고, 같은 자리에서 10·11월 소재까지 확보된다.<br>
+  <b>그리고 9월은 벼가 익는 계절이다. 논 컷은 지금 아니면 내년이다.</b></div>
+
+  <div class="co ac"><b>9/18에 필요한 것은 장비가 아니라 대상이다.</b> 누룩방 접근 · 약재 실물 · 손 촬영 동의(누구의 손인지) · 논 위치. <b>오늘 킥오프에서 이 네 가지만 확인하면 된다.</b></div>
+</section>
+
+<!-- ═══════ 5 ═══════ -->
+<section id="g5">
+  <div class="sec-k">GATE</div>
+  <h2>발행 전 체크</h2>
+
+  <h3>게이트 ① 표시광고법 — 아이덴티티 축 전건</h3>
+  <div class="tw"><table>
+    <thead><tr><th style="width:50%">쓰지 않는다</th><th>대신 이렇게</th></tr></thead>
+    <tbody>
+      <tr><td>건강한 술 · 몸에 좋은 · 몸을 이롭게</td><td>표현 자체를 뺀다</td></tr>
+      <tr><td>약성을 끌어올린다 · 효능 · 눈 건강 · 피로 회복</td><td><b>약재를 다루던 방식으로 술을 다룬다</b></td></tr>
+      <tr><td>한방술 · 약주(藥酒)의 약을 강조</td><td><b>법제(法製)</b> — 공정 이름으로만</td></tr>
+      <tr><td>#건강한술 #한방술</td><td>#법제 #누룩 #백경증류소</td></tr>
+    </tbody>
+  </table></div>
+  <div class="co warn"><b>판정 기준 한 줄 —</b> 이 문장이 <b>몸에 무슨 일이 일어나는지</b> 말하고 있으면 걸린다. <b>술에 무슨 일이 있었는지</b>만 말하면 안전하다.</div>
+
+  <h3>게이트 ② 주체 표기 — 이력 축 전건</h3>
+  <ul class="chk">
+    <li><b>미쉐린은 백경이 받은 상이 아니다</b><span class="sub">“미쉐린 백경” ❌ / “미쉐린 영 셰프 어워드를 받은 셰프가 고른 술” ⭕</span></li>
+    <li><b>Superior Taste Award · DESIGN IT AWARDS는 발행 금지</b><span class="sub">공개 자료에서 확인되지 않는다. 오늘 상장·인증서 사본을 받기 전까지 쓰지 않는다</span></li>
+    <li><b>소믈리에 직함 확인 전 H3 보류</b><span class="sub">확인 안 되면 9/19 자리를 P4(백경53)로 교체</span></li>
+    <li><b>입점처는 현재 유효한 곳만</b><span class="sub">2025년 게시물 기준이라 변동 가능. 오늘 자료 요청 시트 「02 입점처」로 확인</span></li>
+  </ul>
+
+  <h3>오늘 인터뷰에서 반드시 받아야 하는 것</h3>
+  <div class="tw"><table>
+    <thead><tr><th style="width:60px">건</th><th>없으면 못 쓰는 것</th></tr></thead>
+    <tbody>
+      <tr><td><b>A1</b></td><td>🔴 <b>용연곡이 무엇과 비교해 유일한가</b> — 축 선언편 전체가 이 답 위에 선다</td></tr>
+      <tr><td><b>A2</b></td><td>법제에 술을 쓰던 분이 누구인지 · “대대로”의 실제 대수</td></tr>
+      <tr><td><b>A5</b></td><td>“20년”의 기산점 — 대표님 개인인지 집안 양조 포함인지</td></tr>
+      <tr><td><b>H1</b></td><td>IWSC 수상 부문·제품 정확 표기 + <b>사본</b></td></tr>
+      <tr><td><b>H3</b></td><td>소믈리에 두 분 직함 + <b>실제로 무엇을 고쳤는지</b></td></tr>
+      <tr><td><b>P1</b></td><td>Gold·White의 누룩 종류</td></tr>
+      <tr><td><b>P3</b></td><td>향온곡과 백경15블랙 녹두 누룩의 차이</td></tr>
+      <tr><td><b>P4</b></td><td>백경53의 기반 술</td></tr>
+      <tr><td><b>P5</b></td><td>🔴 <b>백경10 용량 — 375ml인가 750ml인가</b></td></tr>
+      <tr><td colspan="2">그리고 <b>“밀누룩 캡션이 제일 좋은데 왜 계속 안 하셨나요”</b> — 월 4건이 굴러갈지가 이 답에 달렸다</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="priv">
+    <div class="privmark">■ 내부 노트</div>
+    <div class="co warn"><b>15건 중 지금 당장 확인 없이 올릴 수 있는 건 A3·A4 둘뿐이다.</b> 자사몰 ABOUT 문장 기반이라 근거가 이미 있다. 나머지 13건은 오늘 인터뷰 또는 자료 수령이 선행된다.<br>
+    <b>그래서 9/9 첫 발행을 A3(사워도우)로 여는 것도 방법이다.</b> A1 선언편은 용연곡 답이 나온 뒤 올리고 고정한다 — 고정 게시물은 한 번 잘못 올리면 계속 보인다.</div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<div class="foot">
+  백경증류소 콘텐츠 15건 초안 · 2026-09-03 · 3축 = 아이덴티티 / 브랜드 이력 / 제품 소개<br>
+  기획 근거 : <a href="https://hizsystem.github.io/brandrise/consulting/baekkyung-content/" style="color:var(--ac)">콘텐츠 기획 v2</a> · @baekkyung_official 피드 78건 역주행 · bk-distillery.com ABOUT/OUR TEAM · 마스터시트 「제품리스트」 gid 822027668 · 헤럴드경제 미주판 2026-06-15 · 「한의원에서 출발한」 소개 게시물 · 촬영 TF 킥오프 회의록 2026-09-01<br>
+  캡션은 초안이며 <b>대괄호 [ ] 부분과 「확인 필요」 항목이 채워지기 전에는 발행하지 않는다.</b><br>
+  PM 우성민 · HIZ BRANDRISE
+</div>
+
+<script>
+(function(){
+  var b=document.getElementById('pb');
+  b.addEventListener('click',function(){
+    var on=document.body.classList.toggle('show-priv');
+    b.textContent='내부 노트 '+(on?'ON':'OFF');
+  });
+  var secs=[].slice.call(document.querySelectorAll('section[id]'));
+  var links=[].slice.call(document.querySelectorAll('nav.toc a'));
+  function upd(){
+    var y=window.scrollY+140,cur=secs[0];
+    secs.forEach(function(s){ if(s.offsetTop<=y) cur=s; });
+    links.forEach(function(a){ a.classList.toggle('on',a.getAttribute('href')==='#'+cur.id); });
+  }
+  window.addEventListener('scroll',upd,{passive:true}); upd();
+})();
+</script>
+</body>
+</html>
