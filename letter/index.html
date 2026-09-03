@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>브랜드라이즈 레터 구독 · BRANDRISE</title>
+<meta name="description" content="영상은 결론만 담았습니다. 과정과 숫자는 레터로 보내드립니다. 격주 1회, 브랜드라이즈 레터.">
+<meta property="og:title" content="브랜드라이즈 레터 구독 · BRANDRISE">
+<meta property="og:description" content="영상은 결론만 담았습니다. 과정과 숫자는 레터로 보내드립니다.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  /* index.html 과 동일한 토큰 — 절대 따로 정하지 말 것 */
+  :root{
+    --ink:#22242e; --body:#3c4050; --muted:#5b5f70; --faint:#8a8fa3;
+    --brand:#2f5ce5; --brand-soft:#b9caf9; --brand-wash:#eef2fe;
+    --accent:#2f5ce5;
+    /* 로고 전용 — ⚠ 아래 --logo-blue 는 추정값입니다. 벡터 원본의 정확한 hex 로 교체하세요 */
+    --logo-ink:#111318; --logo-blue:#2f5ce5;
+    --bg:#f2f3f8; --card:#ffffff; --line:#e3e4ee;
+    --radius:14px;
+    --font:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--body);font-family:var(--font);
+       font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;word-break:keep-all}
+  .wrap{max-width:680px;margin:0 auto;padding:0 20px}
+  a{color:var(--brand)}
+
+  /* 로고를 제 색으로 쓰기 위해 헤더는 흰 바탕. 블루 면은 히어로가 받는다 */
+  header{background:#fff;border-bottom:1px solid var(--line);padding:16px 0}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .logo{font-size:19px;font-weight:800;letter-spacing:-.01em;line-height:1.1}
+  .logo .b{color:var(--logo-ink)}
+  .logo .r{color:var(--logo-blue)}
+  .logo small{display:block;margin-top:5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"D2Coding",monospace;
+              font-size:10.5px;font-weight:500;letter-spacing:.13em;color:var(--faint)}
+  header .biz{font-size:12px;color:var(--muted);text-align:right;line-height:1.5}
+
+  .hero{background:linear-gradient(180deg,#2f5ce5 0%,#2246bd 100%);color:#fff;padding:52px 0 56px;text-align:center}
+  .eyebrow{display:inline-block;border:1px solid rgba(255,255,255,.38);border-radius:999px;
+           padding:5px 14px;font-size:13px;margin-bottom:22px}
+  .hero h1{margin:0 0 18px;font-size:clamp(25px,5.2vw,36px);line-height:1.4;font-weight:900;letter-spacing:-.02em}
+  .hero h1 em{font-style:normal;color:#c7d8ff;border-bottom:3px solid #c7d8ff;padding-bottom:2px}
+  .hero p{margin:0 auto;max-width:480px;font-size:16px;opacity:.9}
+  .hero .meta{margin-top:22px;font-size:13.5px;color:#bcd0fb}
+
+  section{padding:48px 0}
+  section + section{border-top:1px solid var(--line)}
+  h2{font-size:21px;line-height:1.45;font-weight:900;color:var(--ink);margin:0 0 8px;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:15px;margin:0 0 24px}
+
+  .deliver{background:var(--brand-wash);border:1px solid var(--brand-soft);border-radius:var(--radius);padding:24px}
+  .deliver ol{margin:0;padding-left:20px}
+  .deliver li{margin-bottom:12px}
+  .deliver li:last-child{margin-bottom:0}
+  .deliver li b{color:var(--brand)}
+  .note{margin-top:18px;padding-top:16px;border-top:1px dashed var(--brand-soft);
+        font-size:14px;color:var(--muted)}
+
+  .why{display:grid;gap:12px}
+  .why div{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+           border-radius:10px;padding:16px 20px;font-size:15px}
+  .why b{color:var(--ink)}
+
+  .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
+  .shots figure{margin:0;border-radius:10px;overflow:hidden;background:#e9ecf3;aspect-ratio:1/1}
+  .shots img{display:block;width:100%;height:100%;object-fit:cover}
+  .shots-cap{margin:14px 0 0;font-size:14px;color:var(--muted)}
+  .shots-cap b{color:var(--ink)}
+  @media(max-width:520px){ .shots{gap:7px} .shots-cap{font-size:13.5px} }
+
+  /* ---------- 폼 ---------- */
+  #sub{background:var(--card);border-top:1px solid var(--line)}
+  .form-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px}
+  .field{margin-bottom:18px}
+  label.lb{display:block;font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:7px}
+  label.lb .req{color:var(--accent);margin-left:3px}
+  input[type=email],input[type=text]{
+    width:100%;padding:13px 14px;font-family:inherit;font-size:15.5px;color:var(--ink);
+    background:#fff;border:1px solid var(--line);border-radius:10px;outline:none;transition:border-color .12s}
+  input:focus{border-color:var(--brand)}
+  .hint{font-size:13px;color:var(--faint);margin-top:6px}
+
+  .consents{margin-top:26px;padding-top:22px;border-top:2px solid var(--line)}
+  .consent{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;background:#fcfcfe}
+  .consent.marketing{background:var(--brand-wash);border-color:var(--brand-soft)}
+  .consent .row{display:flex;gap:11px;align-items:flex-start}
+  .consent input[type=checkbox]{flex:0 0 auto;width:19px;height:19px;margin:3px 0 0;accent-color:var(--brand);cursor:pointer}
+  .consent .txt{font-size:15px;color:var(--ink);font-weight:500;cursor:pointer}
+  .tag{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:5px;margin-right:6px;vertical-align:2px}
+  .tag.req{background:var(--accent);color:#fff}
+  details{margin-top:11px}
+  details summary{cursor:pointer;font-size:13.5px;color:var(--muted);user-select:none}
+  details summary::marker{color:var(--faint)}
+  .terms{margin-top:10px;padding:14px 16px;background:#fff;border:1px solid var(--line);
+         border-radius:9px;font-size:13.5px;line-height:1.7;color:var(--muted)}
+  .terms table{width:100%;border-collapse:collapse;margin:8px 0}
+  .terms th,.terms td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+  .terms th{background:#f7f7fb;color:var(--ink);font-weight:700;width:28%;white-space:nowrap}
+  .terms p{margin:8px 0 0}
+
+  .submit{margin-top:24px;text-align:center}
+  .submit button{width:100%;border:0;cursor:pointer;background:var(--accent);color:#fff;
+                 font-family:inherit;font-weight:700;font-size:17px;padding:17px;border-radius:12px;
+                 box-shadow:0 6px 18px rgba(47,92,229,.30)}
+  .submit button:disabled{background:#c8cad6;box-shadow:none;cursor:not-allowed}
+  .submit .after{font-size:13px;color:var(--faint);margin-top:12px}
+
+  #done{display:none;text-align:center;padding:40px 20px}
+  #done .ic{font-size:44px;line-height:1}
+  #done h3{font-size:21px;color:var(--ink);margin:14px 0 8px}
+  #done p{color:var(--muted);font-size:15px;margin:0}
+
+  footer{background:#22242e;color:#9ea3b5;font-size:13px;line-height:1.85;padding:34px 0 40px}
+  footer b{color:#fff;font-weight:700}
+  footer .legal{margin-top:16px;padding-top:16px;border-top:1px solid #34374a;font-size:12.5px;color:#7b7f92}
+  footer a{color:#b9caf9}
+
+  @media(max-width:520px){
+    header .biz{display:none}
+    section{padding:38px 0}
+    .form-card{padding:20px 16px}
+  }
+</style>
+</head>
+<body>
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     브랜드라이즈 레터 구독 페이지
+     ───────────────────────────────────────────────────────────────────────────
+     ▶ 이 페이지의 진짜 목적은 이메일 수집이 아니라 "수신 동의 증빙 확보"다.
+       B 레터는 영리목적 광고성 정보라서 정보통신망법 제50조상 사전 동의가 필요하다.
+       여기서 받은 동의 기록(시각·UA)이 B 트랙 전체의 근거가 된다.
+       그래서 광고성 정보 수신 동의를 '선택'이 아니라 '필수'로 두었다.
+       (진단 신청 페이지 index.html 은 상담이 목적이라 마케팅 동의가 선택인 것과 다르다)
+
+     ▶ 발송 전 반드시
+       1. 아래 FORM_ENDPOINT 를 실제 수집처로 교체 (index.html 과 동일 방식)
+       2. 이 페이지 URL 을 다음 3곳에 넣을 것
+          · 유튜브 영상 더보기란 첫 줄 + 고정 댓글
+          · 영상 아웃트로 멘트
+          · B 레터(direction-b-editorial.html) 하단
+       3. 아래 【 】 두 곳(첫 발송일, 미리보기 링크) 채우기
+
+     ▶ 디자인 토큰은 index.html 과 동일. 클라이언트별 컬러 금지.
+     ═══════════════════════════════════════════════════════════════════════════ -->
+
+<header>
+  <div class="wrap">
+    <div class="logo"><span class="b">BRAND</span><span class="r">RISE</span><small>Small brand, big rise</small></div>
+    <div class="biz">주식회사 히즈 · 브랜드 전략<br>02-6925-0034</div>
+  </div>
+</header>
+
+<!-- ============ 히어로 ============ -->
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow">격주 1회 · 무료</span>
+    <h1>영상은 결론만 담았습니다.<br><em>과정과 숫자</em>는 레터로 보내드립니다</h1>
+    <p>땡스큐레이터 영상에서 잘라낸 이야기를, 구독자에게만 보냅니다.</p>
+    <div class="meta">구독자 1.6만 유튜브 채널을 운영하는 팀이 격주로 씁니다</div>
+  </div>
+</div>
+
+<!-- ============ 무엇을 받는지 ============ -->
+<section>
+  <div class="wrap">
+    <h2>레터에는 영상에 없는 것만 씁니다</h2>
+    <p class="sub">요약본이 아닙니다. 요약은 유튜브 알림이 이미 하는 일이니까요.</p>
+    <div class="deliver">
+      <ol>
+        <li><b>영상에서 잘라낸 이야기</b> — 11분에 안 들어간 실제 숫자, 접었던 선택지, 대가를 치른 결정</li>
+        <li><b>바로 쓰는 프레임워크</b> — 그 회차의 내용을 본인 브랜드에 그대로 대볼 수 있는 질문과 체크리스트</li>
+        <li><b>상담에서 나온 반론</b> — 대표님들이 실제로 되물었던 것과 그에 대한 답</li>
+      </ol>
+      <div class="note">격주 1회, 영상이 올라온 뒤 2~3일 안에 보내드립니다.
+        광고성 정보가 포함되며, 언제든 한 번에 수신을 해지하실 수 있습니다.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 누가 쓰는지 ============ -->
+<section>
+  <div class="wrap">
+    <h2>누가 쓰는 레터인가</h2>
+    <p class="sub">컨설팅만 해본 팀도, 자기 브랜드만 해본 팀도 아닙니다.</p>
+    <div class="why">
+      <div><b>18년간 대기업·글로벌 브랜드를 직접 맡아온 팀</b><br>
+        CJ제일제당 맥스봉(매출 400억 → 700억) · 하이네켄 코리아 · 현대차 정몽구재단 · 현대백화점 H.Point</div>
+      <div><b>그 팀이 자사 브랜드를 직접 만들어 성공시킨 경험</b><br>
+        ReSaltZ — 미국 · 일본 진출 완료. 그래서 실패한 부분까지 쓸 수 있습니다</div>
+      <div><b>유튜브 &lsquo;땡스큐레이터&rsquo; 운영</b><br>
+        비즈니스 · 브랜드 · 트렌드 인사이트를 격주로 발행합니다</div>
+    </div>
+
+    <!-- 자사 브랜드 실물 — "직접 만들어봤다"는 말의 증거 -->
+    <div class="shots">
+      <figure><img src="img/resaltz-package.jpg" alt="ReSaltZ 아로마 리추얼 배쓰솔트와 솔트 마사지 클렌징바 패키지" loading="lazy"></figure>
+      <figure><img src="img/resaltz-bar.jpg" alt="ReSaltZ 솔트 마사지 클렌징바 3종" loading="lazy"></figure>
+      <figure><img src="img/resaltz-perfume.jpg" alt="ReSaltZ 리추얼 오드퍼퓸 선셋브리즈" loading="lazy"></figure>
+    </div>
+    <p class="shots-cap">자사 브랜드 <b>ReSaltZ</b> — 네이밍·BI·패키지·자사몰·해외 진출까지 직접 했습니다.
+      레터에 쓰는 이야기는 대부분 여기서 나옵니다.</p>
+  </div>
+</section>
+
+<!-- ============ 구독 폼 ============ -->
+<section id="sub">
+  <div class="wrap">
+    <h2>레터 받아보기</h2>
+    <p class="sub">이메일 한 줄이면 됩니다. 다음 호부터 보내드립니다.</p>
+
+    <div class="form-card">
+      <form id="subForm" novalidate>
+        <div class="field">
+          <label class="lb" for="email">이메일<span class="req">*</span></label>
+          <input type="email" id="email" name="email" required autocomplete="email"
+                 placeholder="name@company.com" inputmode="email">
+          <div class="hint">회사 메일로 받으시면 놓치지 않으십니다.</div>
+        </div>
+
+        <div class="field">
+          <label class="lb" for="company">회사명 <span style="color:var(--faint);font-weight:400;font-size:13px;">(선택)</span></label>
+          <input type="text" id="company" name="company" placeholder="예: 브랜드라이즈" autocomplete="organization">
+          <div class="hint">적어주시면 업종에 맞는 사례를 우선해 씁니다.</div>
+        </div>
+
+        <div class="consents">
+          <!-- 필수 ① 개인정보 -->
+          <div class="consent">
+            <div class="row">
+              <input type="checkbox" id="c_privacy" name="consent_privacy">
+              <label class="txt" for="c_privacy"><span class="tag req">필수</span>개인정보 수집·이용에 동의합니다</label>
+            </div>
+            <details>
+              <summary>수집 항목과 목적 보기</summary>
+              <div class="terms">
+                <table>
+                  <tr><th>수집 항목</th><td>이메일 주소 (필수), 회사명 (선택)</td></tr>
+                  <tr><th>수집 목적</th><td>브랜드라이즈 레터 발송 및 관련 문의 응대</td></tr>
+                  <tr><th>보유 기간</th><td><b>구독 해지 시까지.</b> 해지 즉시 파기합니다</td></tr>
+                  <tr><th>제3자 제공</th><td>제공하지 않습니다</td></tr>
+                </table>
+                <p>동의를 거부하실 수 있으며, 이 경우 레터 발송이 불가합니다.
+                   문의 : brandrise@hizpeople.com</p>
+              </div>
+            </details>
+          </div>
+
+          <!-- 필수 ② 광고성 정보 수신 — 이 레터는 광고성 정보를 포함하므로 선택이 아니라 필수 -->
+          <div class="consent marketing">
+            <div class="row">
+              <input type="checkbox" id="c_ad" name="consent_ad">
+              <label class="txt" for="c_ad"><span class="tag req">필수</span>광고성 정보 수신에 동의합니다</label>
+            </div>
+            <details>
+              <summary>무엇이 오는지 보기</summary>
+              <div class="terms">
+                <table>
+                  <tr><th>발송 내용</th><td>브랜드라이즈 레터 (인사이트 · 사례 · 서비스 안내)</td></tr>
+                  <tr><th>발송 주기</th><td>격주 1회</td></tr>
+                  <tr><th>발송 수단</th><td>이메일</td></tr>
+                  <tr><th>수신 거부</th><td>레터 하단 링크 또는 메일 회신 &lsquo;수신거부&rsquo; — 즉시 처리</td></tr>
+                </table>
+                <p>정보통신망법 제50조에 따라 사전 동의를 받습니다.
+                   레터에는 서비스 안내가 포함되므로 이 동의 없이는 발송할 수 없습니다.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- 동의 증빙 스냅샷 -->
+        <input type="hidden" id="h_privacy"  name="agree_privacy">
+        <input type="hidden" id="h_ad"       name="agree_ad">
+        <input type="hidden" id="h_at"       name="agreed_at">
+        <input type="hidden" id="h_ua"       name="user_agent">
+        <input type="hidden" id="h_source"   name="source">
+
+        <div class="submit">
+          <button type="submit" id="btnSubmit">레터 구독하기</button>
+          <div class="after">첫 레터는 【 첫 발송일 】에 보내드립니다.</div>
+        </div>
+      </form>
+
+      <div id="done">
+        <div class="ic">&#128231;</div>
+        <h3>구독이 완료되었습니다</h3>
+        <p>다음 호부터 보내드리겠습니다.<br>메일이 안 보이면 스팸함을 한 번 확인해 주세요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b>주식회사 히즈 (HIZ Inc.)</b> · 대표 권윤정 · 설립 2018.12.18<br>
+    서울시 마포구 양화로 73-1, 5층 · 02-6925-0034 · brandrise@hizpeople.com<br>
+    미국법인 Seoul Wellness, INC. (DE, 2023) · 자사 브랜드 ReSaltZ — 미국 / 일본 진출<br>
+    서울 청년창업사관학교 11기 · 농식품부 제73호 에이(A)벤처스 · 고벤처포럼 공동 운영<br>
+    <a href="https://www.youtube.com/channel/UCTBhYGg_U_pBOKLydoZrhwg">유튜브 땡스큐레이터</a> ·
+    <a href="https://www.instagram.com/brandrise_kr/">인스타그램 @brandrise_kr</a>
+    <div class="legal">
+      본 페이지에서 수집한 이메일은 브랜드라이즈 레터 발송 목적으로만 사용하며, 구독 해지 시 즉시 파기합니다.
+      레터에는 정보통신망법 제50조에 따른 영리목적의 광고성 정보가 포함됩니다.
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ── 전송 엔드포인트 ─────────────────────────────
+  // index.html 과 동일한 수집처를 쓰거나, 레터 전용으로 따로 두세요.
+  var FORM_ENDPOINT = ''; // 예: 'https://formspree.io/f/xxxx' 또는 자체 API URL
+
+  var form = document.getElementById('subForm');
+  var done = document.getElementById('done');
+  var btn  = document.getElementById('btnSubmit');
+
+  // 유입 경로 기록 (?src=yt_ep01 등) — 어느 영상에서 왔는지 추적
+  var params = new URLSearchParams(location.search);
+  document.getElementById('h_source').value =
+    params.get('src') || params.get('utm_source') || document.referrer || 'direct';
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    if(!document.getElementById('c_privacy').checked){
+      alert('개인정보 수집·이용 동의(필수)에 체크해 주세요.');
+      document.getElementById('c_privacy').focus(); return;
+    }
+    if(!document.getElementById('c_ad').checked){
+      alert('광고성 정보 수신 동의(필수)에 체크해 주세요.\n이 동의가 없으면 레터를 보내드릴 수 없습니다.');
+      document.getElementById('c_ad').focus(); return;
+    }
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+
+    // 동의 증빙 스냅샷
+    document.getElementById('h_privacy').value = 'Y';
+    document.getElementById('h_ad').value      = 'Y';
+    document.getElementById('h_at').value      = new Date().toISOString();
+    document.getElementById('h_ua').value      = navigator.userAgent;
+
+    btn.disabled = true; btn.textContent = '전송 중…';
+
+    var data = new FormData(form);
+
+    if(!FORM_ENDPOINT){
+      // ⚠ 수집처 미설정 상태에서 "구독 완료"를 띄우면 거짓말이 된다.
+      //   이메일이 실제로 도착하도록 메일 폴백으로 처리한다.
+      //   FORM_ENDPOINT 를 채우면 이 분기는 자동으로 안 탄다.
+      var em = document.getElementById('email').value.trim();
+      var co = document.getElementById('company').value.trim();
+      var mailto = 'mailto:brandrise@hizpeople.com'
+        + '?subject=' + encodeURIComponent('[브랜드라이즈 레터] 구독 신청')
+        + '&body=' + encodeURIComponent(
+            '레터 구독을 신청합니다.\n\n'
+            + '이메일 : ' + em + '\n'
+            + '회사명 : ' + (co || '-') + '\n'
+            + '유입 경로 : ' + document.getElementById('h_source').value + '\n\n'
+            + '· 개인정보 수집·이용 동의 : 동의함\n'
+            + '· 광고성 정보 수신 동의 : 동의함\n'
+            + '· 동의 시각 : ' + document.getElementById('h_at').value + '\n\n'
+            + '(이 메일을 그대로 보내주시면 등록해 드립니다.)');
+
+      done.innerHTML =
+        '<div class="ic">&#9993;&#65039;</div>'
+        + '<h3>마지막 한 단계만 남았습니다</h3>'
+        + '<p>아래 버튼을 누르면 신청 내용이 담긴 메일이 열립니다.<br>'
+        + '그대로 보내주시면 등록해 드리고, 다음 호부터 보내드립니다.</p>'
+        + '<p style="margin-top:20px"><a href="' + mailto + '" '
+        + 'style="display:inline-block;background:var(--accent);color:#fff;text-decoration:none;'
+        + 'font-weight:700;font-size:16px;padding:14px 28px;border-radius:12px;">메일로 구독 신청하기</a></p>'
+        + '<p style="margin-top:14px;font-size:13px;color:var(--faint)">'
+        + '버튼이 안 열리면 <b>brandrise@hizpeople.com</b> 으로 이메일 주소만 보내주셔도 됩니다.</p>';
+
+      form.style.display='none'; done.style.display='block';
+      done.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+
+    fetch(FORM_ENDPOINT, { method:'POST', body:data, headers:{'Accept':'application/json'} })
+      .then(function(r){
+        if(!r.ok) throw new Error(r.status);
+        form.style.display='none'; done.style.display='block';
+        done.scrollIntoView({behavior:'smooth',block:'center'});
+      })
+      .catch(function(){
+        btn.disabled=false; btn.textContent='레터 구독하기';
+        alert('전송에 실패했습니다. 잠시 후 다시 시도하시거나 brandrise@hizpeople.com 으로 보내주세요.');
+      });
+  });
+})();
+</script>
+</body>
+</html>
