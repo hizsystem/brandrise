@@ -1,34 +1,41 @@
 <!doctype html>
 <!--
-  백경증류소 × HIZ — 브랜드 딥 인터뷰 v5 「슬라이드판」 (2026-09-03 정식 킥오프)
+  백경증류소 × HIZ — 브랜드 심층 인터뷰 v6 「질문 중심」 (2026-09-03 정식 킥오프)
 
-  v4(인쇄 질문지) → v5(슬라이드) 전환 이유
+  v5(1장 1질문 73장) → v6(카테고리 9개 · 47장) 전환
   ────────────────────────────────────────────────────────────
-  · 한 화면에 한 질문. 대표님이 다음 질문을 미리 못 본다 → 답이 짧아지지 않는다.
-  · 내가 종이를 안 본다. 화면이 질문을 읽어주고 나는 대표님 얼굴만 본다.
-  · 금기·주석이 본문에서 물리적으로 분리된다 — 기본 숨김, N 키로만 열린다.
+  · 카테고리 제목 1장 + 질문 2~4장. 한 화면에 질문 3~4개.
+  · 카테고리 이름을 평이체로 교체 — 「시작과 뿌리」류 문학적 명명을 전부 걷어냄.
+  · 7/28 1차 미팅 회의록(대표 육성)을 처음 반영. 거기서 답이 나온 12문항은
+    질문에서 빼고 내부 브리핑 표(21건)로 올림.
+  · 9/3 클라 회신(촬영 리스트 13종 + 엔트리 5종 명시)을 02블록에 표로 반영.
+
+  카테고리
+    01 브랜드의 시작 / 02 제품 / 03 제조와 기술 / 04 브랜드 정체성 / 05 고객
+    06 시장과 경쟁 / 07 디자인과 톤 / 08 유통과 수익 / 09 목표와 우려
+    → 79문 · ★27개 · 그중 오늘 반드시 18개
 
   조작
     ← → / Space   넘김          (화면 좌/우 클릭도 동일)
     N             내부 노트 토글  ← 화면 공유 중에는 누르지 말 것
-    I             내부 브리핑 슬라이드 5장 시퀀스에 넣기/빼기 (기본 빼기)
+    I             내부 브리핑 5장 시퀀스에 넣기/빼기 (기본 빼기 · 진행 모드 42장)
     O             전체 슬라이드 그리드 · 클릭 점프
-    0~9           블록 번호로 점프
+    0~9           카테고리 번호로 점프
     F             전체화면
     ⌘P            A4 가로 인쇄 = 백업 손패 (노트·내부 브리핑 전부 포함)
 
   디자인 = 고래 흑백 레퍼런스 기반. 블랙→차콜 라디얼 그라디언트 + 수면 광선 3줄 + 필름 그레인.
-  색은 무채색만. 강조는 밝기로만 준다.
+  무채색만 쓰고 강조는 밝기로만 준다.
 
-  이전본 : v4 인쇄 질문지 = clients/baekkyung/_backup/interview-v4-260901.html
-  자료   : 백경 1차 자료조사 2026-09-01 (헤럴드K 26.6 · 다음 24.12 · K-EXPO · 자사몰 · 인스타 실측)
+  이전본 : v5 = git history · v4 인쇄 질문지 = clients/baekkyung/_backup/interview-v4-260901.html
+  자료   : 공개자료 실측 2026-09-01 + 1차 미팅 회의록 2026-07-28 + 클라 회신 2026-09-03
   작업 우성민 / PM 우성민
 -->
 <html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>백경증류소 브랜드 딥 인터뷰</title>
+<title>백경증류소 브랜드 심층 인터뷰</title>
 <meta name="description" content="백경증류소 × HIZ 브랜드 파트너십 — 2026-09-03 정식 킥오프 딥 인터뷰 슬라이드">
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b1014'/%3E%3Ctext x='16' y='23' font-size='19' font-family='serif' font-weight='700' fill='%23dbe5ec' text-anchor='middle'%3E白%3C/text%3E%3C/svg%3E">
@@ -171,7 +178,7 @@ body.notes .note .nl{
 .qs li:first-child{border-top:0;padding-top:6px}
 .qs li p{font-size:27px;line-height:1.58;font-weight:500;color:var(--paper);letter-spacing:-.015em}
 .qs li p b{font-weight:700;color:#fff}
-.s-qs:has(.qs li:nth-child(3)){justify-content:flex-start;padding-top:70px}
+body.notes .s-qs:has(.qs li:nth-child(3)){justify-content:flex-start;padding-top:70px}
 .s-qs:has(.qs li:nth-child(3)) .qs li{padding:20px 0}
 .s-qs:has(.qs li:nth-child(3)) .qs li p{font-size:23.5px;line-height:1.55}
 body.notes .s-qs:has(.qs li:nth-child(3)) .note{font-size:14px;margin-top:11px}
@@ -281,6 +288,30 @@ table.fact td.src{width:118px;color:#4f5a63;font-size:12.5px;text-align:right;wh
   .note{display:block!important;margin-top:16px;font-size:15px;line-height:1.7;color:#7f8d98;padding-left:14px;border-left:2px solid #3a464f}
   .note .nl{display:inline-block;font-size:11px;letter-spacing:.16em;color:#4d5860;border:1px solid #333d45;border-radius:3px;padding:1px 6px;margin-right:9px}
 }
+
+/* ── v6 추가 ── */
+body.notes .s-qs:has(.qs li:nth-child(4)){justify-content:flex-start;padding-top:58px}
+@media print{.s-qs:has(.qs li:nth-child(4)){justify-content:flex-start;padding-top:58px}
+ .s-qs:has(.qs li:nth-child(3)){justify-content:flex-start;padding-top:70px}}
+.s-qs:has(.qs li:nth-child(4)) .qs li{padding:16px 0}
+.s-qs:has(.qs li:nth-child(4)) .qs li p{font-size:22px;line-height:1.5}
+body.notes .s-qs:has(.qs li:nth-child(4)) .note{font-size:13.5px;margin-top:9px}
+.qs li.k{position:relative;padding-left:22px}
+.qs li.k::before{content:'';position:absolute;left:0;top:26px;bottom:14px;width:2px;
+  background:linear-gradient(180deg,#cfdae3,rgba(207,218,227,.12))}
+.qs li:first-child.k::before{top:8px}
+.qs li.k p{color:#fff}
+.star{display:inline-block;font-size:11px;letter-spacing:.14em;color:#9fb0bd;
+  border:1px solid rgba(190,212,228,.3);border-radius:2px;padding:2px 7px;margin-right:10px;
+  vertical-align:3px;background:rgba(190,212,228,.06)}
+/* 제품 표 */
+table.sku{position:relative;z-index:2;width:100%;border-collapse:collapse;font-size:15px;margin-top:6px}
+table.sku th{font-size:12.5px;letter-spacing:.12em;color:#68747d;font-weight:600;
+  text-align:left;padding:0 12px 11px;border-bottom:1px solid rgba(255,255,255,.12)}
+table.sku td{padding:15px 12px;border-top:1px solid rgba(255,255,255,.06);color:#cbd4db;vertical-align:middle}
+table.sku td.nm{font-weight:700;color:#fff;font-size:17px;white-space:nowrap}
+table.sku td.sp{color:#78848d;font-size:13.5px;white-space:nowrap}
+table.sku td.bl{border-left:1px solid rgba(255,255,255,.06);height:52px}
 </style>
 </head>
 <body>
@@ -290,7 +321,7 @@ table.fact td.src{width:118px;color:#4f5a63;font-size:12.5px;text-align:right;wh
  <div class="cv-img"></div><div class="cv-scrim"></div>
  <div class="cv-body">
    <div class="cv-eyebrow">백경증류소 <span>×</span> HIZ BRANDRISE</div>
-   <h1 class="cv-title">브랜드 딥 인터뷰</h1>
+   <h1 class="cv-title">브랜드 심층 인터뷰</h1>
    <div class="cv-sub">오늘 나온 말이 촬영 콘티 · 라벨 카피 · 홈페이지 문장의 <b>원본</b>이 된다</div>
    <div class="cv-meta"><b>2026. 09. 03</b><i></i>정식 킥오프 · 서울<i></i>PM 우성민</div>
  </div>
@@ -300,28 +331,27 @@ table.fact td.src{width:118px;color:#4f5a63;font-size:12.5px;text-align:right;wh
  <h2 class="ttl">진행</h2>
  <div class="guide">
   <p><b>앞 20분은 실무를 닫고</b>, 나머지 전부를 인터뷰에 쓴다. 순서대로 다 물을 필요 없다 —
-     <b class="hi">핵심 12개</b>만 챙기면 된다.</p>
+     전체 79문에 ★가 27개인데, 그중 <b class="hi">「오늘 이것만은」 18개</b>만 챙기면 된다.</p>
   <p>답이 길어지면 끊지 말고 그대로 둔다 — <b class="hi">답의 길이가 온도계다.</b></p>
   <p>시작할 때 <b>녹음 동의</b>를 받는다("정리해서 다시 보내드리려고요").</p>
   <p class="warn">이 덱은 <b>내부 노트가 숨어 있다.</b> 화면 공유 중에는 <kbd>N</kbd>을 누르지 말 것.</p>
  </div></section>
 <section class="slide s-int s-fact" data-int="1">
- <div class="eyebrow">이미 확인한 것 · 2026-09-01 공개 자료 실측 <span class="pg">1/2</span></div>
- <h2 class="ttl">물어보지 않아도 아는 것</h2>
- <table class="fact"><tr><td class="k">뿌리</td><td>경남 <b>함양의 대대로 한의원 집안</b>. 어릴 때부터 약재 다루기와 <b>법제(法製)</b>를 보고 자람. "한의학에서는 약재를 술로 법제하는 경우가 적지 않다"</td><td class="src">헤럴드K 26.6</td></tr><tr><td class="k">아버지</td><td>아버지가 <b>양조장을 창업</b>. 대표의 <b>첫 직장이 아버지 양조장</b>, 20대~30대 초 <b>약 7년</b> 근무</td><td class="src">헤럴드K · 다음</td></tr><tr><td class="k">독립</td><td>"아버님 증류소를 <b>떠난</b> 이유도 내가 빚고 싶은 술을 만들기 위함이었기에"</td><td class="src">다음 24.12</td></tr><tr><td class="k">제주 3년</td><td>제주에서 먼저 사업. <b>물류 때문에 세종으로 이전</b></td><td class="src">헤럴드K</td></tr><tr><td class="k">법인</td><td>농업회사법인㈜백경증류소 · 세종 장군면 평기길 151 · 증류소 약 100평</td><td class="src">자사몰 · 다음</td></tr><tr><td class="k">제품</td><td>백경15(약주) 골드·블랙·화이트·향미주곡·향온·호라산 / 백경10(탁주). <b>보도는 13종</b></td><td class="src">다음 · K-EXPO</td></tr><tr><td class="k">향온</td><td>750mL · 15% · 직접 재배 쌀 + 녹두 누룩 '향온곡' · <b>180일 다섯 번 발효(오양주)</b></td><td class="src">술담화</td></tr><tr><td class="k">누룩</td><td>직접 빚음. 밀·녹두·수수·팥·<b>토종쌀(직접 농사)</b>. 온도 40도 · 습도 70~80%</td><td class="src">다음</td></tr><tr><td class="k">맛의 방향</td><td>"전통 한국술의 강한 단맛을 벗어나 <b>음식과 조화되는 드라이 스타일</b>"</td><td class="src">K-EXPO</td></tr><tr><td class="k">포지션</td><td><b>"식탁 위의 술"</b> — "한식당이 시작점일 수는 있지만 궁극적으로는 프렌치·이탈리안·파인다이닝"</td><td class="src">헤럴드K</td></tr></table></section>
+     <div class="eyebrow">이미 확인한 것 · 공개자료 + 7/28 1차 미팅 <span class="pg">1/2</span></div>
+     <h2 class="ttl">물어보지 않아도 아는 것</h2>
+     <table class="fact"><tr><td class="k">뿌리</td><td>경남 <b>함양의 대대로 한의원 집안</b>. 어릴 때부터 약재 다루기와 <b>법제(法製)</b>를 보고 자람</td><td class="src">헤럴드K 26.6</td></tr><tr><td class="k">아버지</td><td>아버지가 <b>양조장 창업</b>. 대표의 첫 직장. 기사는 약 7년, <b>본인 진술은 10~20년</b></td><td class="src">헤럴드K · 7/28 육성</td></tr><tr><td class="k">독립</td><td>"아버님 증류소를 <b>떠난</b> 이유도 내가 빚고 싶은 술을 만들기 위함이었기에"</td><td class="src">다음 24.12</td></tr><tr><td class="k">제주 3년</td><td>제주에서 <b>공장장</b>. "기술만 있으니 투자할 테니 술 만들어 달라는 유혹이 많이 왔다"</td><td class="src">7/28 육성</td></tr><tr><td class="k">창업</td><td>정부 지원사업으로 <b>3천만 원</b> 창업. "이 정도면 잘 왔다"</td><td class="src">7/28 육성</td></tr><tr><td class="k">법인</td><td>농업회사법인㈜백경증류소 · 세종 장군면 평기길 151 · 증류소 약 100평</td><td class="src">자사몰</td></tr><tr><td class="k">제품</td><td>촬영 리스트 <b>13종 + 여유 2종</b>. 엔트리 5종 = 15화이트·골드·블랙 / 12블랙 / 10탁주</td><td class="src">9/3 클라 회신</td></tr><tr><td class="k">누룩·쌀</td><td>누룩 <b>8종</b> 직접 제조 · 쌀 <b>12품종</b> 직접 농사 · 온도 40도 습도 70~80%</td><td class="src">7/28 육성</td></tr><tr><td class="k">효모</td><td>누룩에서 <b>효모 20종 분리, 그중 4종은 학계 미보고</b>. 그 4종이 포도향을 낸다</td><td class="src">7/28 육성</td></tr><tr><td class="k">기술</td><td>한국 술 단백질이 사케의 10배 → 열 살균 시 노취. <b>멤브레인 여과 + 질소 충진</b>(팁스)</td><td class="src">7/28 육성</td></tr><tr><td class="k">데이터</td><td>품온·pH·알코올·호박산·주석산 <b>매일 1년 이상 축적</b>. AI 접목이 목표</td><td class="src">7/28 육성</td></tr></table></section>
 <section class="slide s-int s-fact" data-int="1">
- <div class="eyebrow">이미 확인한 것 · 2026-09-01 공개 자료 실측 <span class="pg">2/2</span></div>
- <h2 class="ttl">물어보지 않아도 아는 것</h2>
- <table class="fact"><tr><td class="k">매출</td><td>2025년 4억 → <b>현재 월 1억 수준</b> · 하반기 목표 월 2억. 대형 OEM 7월 납품 시작</td><td class="src">헤럴드K</td></tr><tr><td class="k">수출</td><td>싱가포르 첫 수출 1,000만원. 독일·홍콩·중국·미국 추진. 일본 최대 유통사 미팅. 태국 기술이전</td><td class="src">헤럴드K · 다음</td></tr><tr><td class="k">유통</td><td><b>면세점 · 백화점 입점.</b> 직수출은 아직, 국내외 유통사가 일부 품목 해외 판매</td><td class="src">헤럴드K</td></tr><tr><td class="k">투자</td><td>청년식품창업패키지 3억 · 리벤처스-세종 조합 1호 · 정부 스케일업 전국 5개 선정</td><td class="src">벤처스퀘어</td></tr><tr><td class="k">수상</td><td><b>IWSC 2026 백경15 브론즈</b> — 공개 자료에서 확인되는 유일한 수상</td><td class="src">헤럴드K</td></tr><tr><td class="k">인증</td><td>HACCP · ISO 22000 · 제품별 인증수출자 자격</td><td class="src">K-EXPO</td></tr><tr><td class="k">디자인</td><td><b>대표님 배우자가 담당.</b> 투입비 4,000만원 · 네 차례 큰 수정. 라벨은 민화풍 고래 꼬리</td><td class="src">헤럴드K · 다음</td></tr><tr><td class="k">도올 친필</td><td>'백경' 글씨 = <b>도올 김용옥 선생이 직접 써 준 도안</b></td><td class="src">다음</td></tr><tr><td class="k">채널</td><td>인스타 @baekkyung_official 게시물 217 · 팔로워 2,237 · 유튜브 · 스마트스토어</td><td class="src">실측 9/1</td></tr></table>
- <div class="fnote">표의 사실은 <b>확인 질문으로만</b> 쓰고(30초), 아낀 시간을 전부 이야기에 쓴다.</div></section>
+     <div class="eyebrow">이미 확인한 것 · 공개자료 + 7/28 1차 미팅 <span class="pg">2/2</span></div>
+     <h2 class="ttl">물어보지 않아도 아는 것</h2>
+     <table class="fact"><tr><td class="k">맛</td><td>"강한 단맛을 벗어나 <b>음식과 조화되는 드라이</b>". 포지션 = <b>"식탁 위의 술"</b></td><td class="src">K-EXPO · 헤럴드K</td></tr><tr><td class="k">매출</td><td>작년 4억 → 올해 10억 예상 · 월 1만 병. 28년 2공장 3만 병 목표</td><td class="src">7/28 육성</td></tr><tr><td class="k">OEM</td><td><b>BTS 술</b> 월 5천 병 / 5천만 원. <b>공식 노출 불가</b>(상대 거부)</td><td class="src">7/28 육성</td></tr><tr><td class="k">유통</td><td>인천공항 면세점 <b>유일한 한국 발효주</b> · 백화점 입점 · 캐나다 코스트코는 물량 부족으로 무산</td><td class="src">7/28 육성</td></tr><tr><td class="k">해외</td><td>뉴욕 2·3스타(아토믹스 등) · 샌프란 페누 · 위스키 익스체인지 입점 + 9월 전시 한국 유일</td><td class="src">7/28 육성</td></tr><tr><td class="k">소믈리에</td><td>차진환(사케·술장이 출연) / 김경문(마스터·미국 수입 직접) 🔴 이름 표기 확정 필요</td><td class="src">7/28 육성</td></tr><tr><td class="k">수상</td><td><b>IWSC 2026 백경15 브론즈</b> — 공개 자료에서 확인되는 유일한 수상</td><td class="src">헤럴드K</td></tr><tr><td class="k">디자인</td><td><b>배우자</b>가 담당 · 4,000만원 · 4차 수정. 공장에 라벨 프린터 → 커스텀 100장 즉시 제작. <b>출산 후 공백</b></td><td class="src">7/28 육성</td></tr><tr><td class="k">도올 친필</td><td>'백경' 글씨 = <b>도올 김용옥 선생 친필</b></td><td class="src">다음</td></tr><tr><td class="k">채널</td><td>인스타 @baekkyung_official 게시물 217 · 팔로워 2,237 · <b>담당자 퇴사로 한 달 방치</b></td><td class="src">실측 9/1 · 7/28</td></tr></table></section>
 <section class="slide s-int s-spine" data-int="1">
  <div class="eyebrow">이 인터뷰의 척추</div>
  <h2 class="ttl">확인된 사실끼리 <b>어긋나는 곳</b> 3개</h2>
- <ol class="spine"><li><span class="sn">01</span><div><h4>계승인가, 독립인가</h4><p>홈페이지는 <b>"집안 대대로 내려오는 전통 방식"</b>이라 쓰는데, 기사에서 대표님은 <b>"아버님 증류소를 떠났다"</b>고 말한다. 우리가 「2대 계승」으로 알고 준비해 온 서사가 실제로는 <b>떠나온 이야기</b>일 수 있다.</p><p class="cau">여기가 오늘 제일 조심스럽고 제일 중요한 자리다. 캐묻지 말고 열어만 둔다</p></div></li><li><span class="sn">02</span><div><h4>고래가 두 마리다</h4><p>한글 <b>白鯨</b>은 모비딕의 흰 고래인데, 홈페이지 영문은 <b>sperm whale(향유고래)</b>이라 쓴다. 둘 다 틀린 건 아니지만 <b>해외에서는 서로 다른 브랜드처럼 읽힌다.</b></p><p class="cau">라벨 5종 인쇄 전에 하나로 정해야 한다</p></div></li><li><span class="sn">03</span><div><h4>가장 강한 자산이 브랜드에 안 쓰인다</h4><p>함양 한의원 집안의 <b>법제(法製)</b> — 약재를 술로 다스리는 그 개념은 백경만 쓸 수 있는 말인데 홈페이지·라벨·상세페이지 어디에도 없다.</p><p class="cau">'발효건축' 자리에 들어갈 백경의 단어가 여기 있을 가능성이 가장 높다</p></div></li></ol></section>
+ <ol class="spine"><li><span class="sn">01</span><div><h4>계승인가, 독립인가</h4><p>홈페이지는 <b>"집안 대대로 내려오는 전통 방식"</b>이라 쓰는데, 기사에서 대표님은 <b>"아버님 증류소를 떠났다"</b>고 말한다.</p><p class="cau">여기가 오늘 제일 조심스럽고 제일 중요한 자리다. 캐묻지 말고 열어만 둔다</p></div></li><li><span class="sn">02</span><div><h4>고래가 두 마리다</h4><p>한글 <b>白鯨</b>은 모비딕의 흰 고래인데 홈페이지 영문은 <b>sperm whale</b>이다. 다만 7/28 육성은 <b>"위스키=포경선, 백경=그와 싸우는 고래"</b> — 모비딕 쪽이 원본으로 보인다.</p><p class="cau">라벨 5종 인쇄 전에 하나로 정해야 한다</p></div></li><li><span class="sn">03</span><div><h4>가장 강한 자산이 브랜드에 안 쓰인다</h4><p>함양 한의원 집안의 <b>법제(法製)</b>, 그리고 <b>학계 미보고 효모 4종</b> — 둘 다 백경만 쓸 수 있는 말인데 홈페이지·라벨 어디에도 없다.</p><p class="cau">'발효건축' 자리에 들어갈 백경의 단어가 이 둘 중 하나일 가능성이 가장 높다</p></div></li></ol></section>
 <section class="slide s-int s-mines" data-int="1">
  <div class="eyebrow">지뢰</div>
- <h2 class="ttl">알되 오늘 <b>절대 꺼내지 않는 것</b></h2>
- <ul class="mines"><li><h4>창업 첫해 매출 숫자</h4><p>기사에 나오지만 <b>대표님 자책 발언</b>이다. 우리 입으로 인용하지 않는다.</p></li><li><h4>디자인 평가</h4><p><b>배우자 작업물</b>이고 4천만원 · 4차 수정이 들어갔다. 진입은 브랜드 전략 → SKU 정리 → 유통 설계 순이고, 디자인은 그 결론에 딸려오는 것으로만 말한다.</p></li><li><h4>제품 수 · 리뷰 수를 단정하지 않는다</h4><p>보도는 13종, 우리 자료는 35종이다. 어느 쪽이 맞다고 말하지 말고 <b>대표님께 여쭤서 확정</b>한다.</p></li><li><h4>수상 이력을 먼저 말하지 않는다</h4><p>확인되는 건 IWSC 2026 브론즈 하나다. Superior Taste Award · DESIGN IT AWARDS는 확인되지 않았다. <b>있는지 여쭙는 것</b>이지 없다고 단정하는 게 아니다.</p></li></ul></section>
+ <h2 class="ttl">알되 오늘 <b>다루는 법이 정해진 것</b></h2>
+ <ul class="mines"><li><h4>창업 첫해 매출 숫자</h4><p>기사에 나오지만 대표님 자책 발언이다. 다만 <b>"3천만 원으로 창업했다"는 본인이 자랑스럽게 말한 소재</b>다 — 조심할 건 매출 숫자지 창업 스토리가 아니다.</p></li><li><h4>디자인 평가</h4><p>배우자 작업물이다. 그런데 7/28에 우리 쪽이 이미 "혼자 하기 힘드시겠다"고 했고 대표님이 수긍하셨다. <b>진짜 의제는 평가가 아니라 출산 후 생긴 리소스 공백</b>이다.</p></li><li><h4>제품 수를 우리가 단정하지 않는다</h4><p>보도 13종 · 시트 35종 · 촬영 리스트 13종 + 여유 2. 어느 쪽도 맞다고 말하지 말고 <b>02블록에서 여쭤 확정</b>한다.</p></li><li><h4>수상 이력을 먼저 말하지 않는다</h4><p>확인되는 건 IWSC 2026 브론즈 하나다. Superior Taste Award · DESIGN IT AWARDS는 확인되지 않았다. <b>있는지 여쭙는 것</b>이지 없다고 단정하는 게 아니다.</p></li><li><h4>「미슐랭이 인정한 전통주」</h4><p>7/28에 <b>우리가 먼저 준 답</b>이다. 04블록에서 "대표님만의 단어"를 물을 때 이게 되돌아올 수 있다. 묻기 전에 선을 긋는다.</p></li></ul></section>
 <section class="slide s-aim">
  <div class="eyebrow">오늘의 과녁</div>
  <h2 class="aim-h">백경만의 <b>단어 하나</b>를 찾는 것</h2>
@@ -334,247 +364,132 @@ table.fact td.src{width:118px;color:#4f5a63;font-size:12.5px;text-align:right;wh
  </div></section>
 <section class="slide s-must">
  <div class="eyebrow">다 못 돌아도 이건 들고 나온다</div>
- <h2 class="ttl">오늘 이것만은 — <b>12개</b></h2>
- <ol class="must"><li><span class="mn">01</span><span class="mq">白鯨이 모비딕이에요, 향유고래예요?</span><span class="mo">라벨·해외 배너</span></li><li><span class="mn">02</span><span class="mq">도올 글씨, 어디까지 써도 되는 걸로 됐어요? 서면이 있어요?</span><span class="mo">5개국 전시</span></li><li><span class="mn">03</span><span class="mq">어릴 때 약재 법제하시는 걸 본 기억, 어떤 장면이에요?</span><span class="mo">자기 언어 1순위</span></li><li><span class="mn">04</span><span class="mq">약을 술로 법제한다는 게, 지금 백경 빚는 것과 닿아 있어요?</span><span class="mo">자기 언어</span></li><li><span class="mn">05</span><span class="mq">아버님 양조장에서 「안 하기로」 한 게 뭐였어요?</span><span class="mo">브랜드 정체성</span></li><li><span class="mn">06</span><span class="mq">아버님께 배운 것 중 지금도 절대 안 바꾸는 것 하나.</span><span class="mo">규칙 문장</span></li><li><span class="mn">07</span><span class="mq">이 술로 절대 안 할 것이 있다면 하나만.</span><span class="mo">규칙 문장 첫 줄</span></li><li><span class="mn">08</span><span class="mq">백경이 하는 일을 대표님만의 단어로 부른다면?</span><span class="mo">오늘의 과녁</span></li><li><span class="mn">09</span><span class="mq">「식탁 위의 술」, 언제부터 쓰셨어요? 직접 만드신 말이에요?</span><span class="mo">이미 있는 자산</span></li><li><span class="mn">10</span><span class="mq">단맛을 빼신 이유가 뭐예요?</span><span class="mo">안 하는 것 ①</span></li><li><span class="mn">11</span><span class="mq">진짜 밀고 싶은 것 세 개를 순서대로.</span><span class="mo">라벨 5종·촬영 컷</span></li><li><span class="mn">12</span><span class="mq">11월 30일에 뭐가 손에 있으면 잘했다 싶으세요?</span><span class="mo">성과 정의</span></li></ol>
- <div class="fnote">전체 80문항은 2시간에 다 못 돈다. 이 12개는 ①한 번 지나가면 되돌릴 수 없거나 ②이후 모든 산출물의 입력이 된다.</div></section>
-<section class="slide s-div" data-blk="00">
-     <div class="ghost">00</div>
-     <div class="dv-body">
-       <div class="eyebrow">20분 · 논의 아님, 확인</div>
-       <h2 class="dv-h">먼저 닫고 가는 것</h2>
-       <p class="dv-l">여기서 시간을 끌면 인터뷰가 죽는다. 정해진 것을 확인하고, 안 정해진 건 <b>"언제까지"</b>만 받는다.</p>
-     </div></section>
+ <h2 class="ttl">오늘 이것만은 — <b>18개</b></h2>
+ <ol class="must"><li><span class="mn">01</span><span class="mq">어릴 때 약재 법제하시는 걸 본 기억, 어떤 장면이에요?</span><span class="mo">01 · 자기 언어</span></li><li><span class="mn">02</span><span class="mq">약을 술로 법제한다는 게 지금 백경과 닿아 있어요?</span><span class="mo">01 · 자기 언어</span></li><li><span class="mn">03</span><span class="mq">아버님 양조장에서 「안 하기로」 한 게 뭐였어요?</span><span class="mo">01 · 정체성</span></li><li><span class="mn">04</span><span class="mq">아버님께 배운 것 중 지금도 절대 안 바꾸는 것 하나.</span><span class="mo">01 · 규칙 문장</span></li><li><span class="mn">05</span><span class="mq">엔트리 5종 안에서 얼굴 하나를 꼽으면요?</span><span class="mo">02 · 라벨 5종</span></li><li><span class="mn">06</span><span class="mq">향온만 왜 115,000원이에요? 프리미엄 얼굴은 뭐예요?</span><span class="mo">02 · 이원 구조</span></li><li><span class="mn">07</span><span class="mq">상 받은 것·소믈리에 픽 — 제품별로 뭐가 뭘 받았어요?</span><span class="mo">02 · 카피 증빙</span></li><li><span class="mn">08</span><span class="mq">백경13 White는 왜 촬영에서 빼셨어요?</span><span class="mo">02 · SKU 정리</span></li><li><span class="mn">09</span><span class="mq">촬영에서 빠진 것들은 단종이에요, 면허만 살아 있어요?</span><span class="mo">02 · SKU 확정</span></li><li><span class="mn">10</span><span class="mq">학계에 보고 안 된 효모 4종 — 이름 붙이셨어요?</span><span class="mo">03 · 자기 언어</span></li><li><span class="mn">11</span><span class="mq">숫자가 좋아진 걸 혀로 확인하는 순간이 언제예요?</span><span class="mo">03 · 감각 회수</span></li><li><span class="mn">12</span><span class="mq">백경이 하는 일을 대표님만의 단어로 부른다면?</span><span class="mo">04 · 오늘의 과녁</span></li><li><span class="mn">13</span><span class="mq">이 술로 절대 안 할 것이 있다면 하나만.</span><span class="mo">04 · 규칙 문장</span></li><li><span class="mn">14</span><span class="mq">포경선이 위스키면, 백경은 침몰시키는 고래예요 안 잡히는 고래예요?</span><span class="mo">04 · 브랜드 태도</span></li><li><span class="mn">15</span><span class="mq">도올 글씨, 어디까지 써도 되는 걸로 됐어요? 서면 있어요?</span><span class="mo">04 · 5개국 전시</span></li><li><span class="mn">16</span><span class="mq">백경을 절대 안 살 사람은 누구예요?</span><span class="mo">05 · 경계</span></li><li><span class="mn">17</span><span class="mq">11월 30일에 뭐가 손에 있으면 잘했다 싶으세요?</span><span class="mo">09 · 성과 정의</span></li><li><span class="mn">18</span><span class="mq">꼭 얻고 싶은 것 하나 / 가장 걱정되는 것 하나</span><span class="mo">09 · 합의</span></li></ol>
+ <div class="fnote">전체 79문 · ★ 27개. 2시간에 다 못 돈다. 아래 18개는 ①한 번 지나가면 되돌릴 수 없거나 ②이후 모든 산출물의 입력이 된다.</div></section>
 <section class="slide s-qs" data-blk="00">
-             <div class="eyebrow">00 · 먼저 닫고 가는 것 <span class="pg">1/3</span></div>
-             <ul class="qs"><li><p><b>계약서 날인</b> — 11월말 개정본(기간 8/4~11/30 · 총액 97,200,000 VAT 별도 · 3분할)</p><div class="note"><span class="nl">내부</span>지원사업 정산이 11/30에 닫혀서 종료일을 맞춘 판이다. 개정 6곳 반영 확인 완료</div></li><li><p><b>12월 과업은 계약서 밖에서 관리한다</b> — 인쇄물 입고 · 검수 · 연말 대응은 12월까지 가지만 계약 · 정산은 11/30에 닫힌다. 이 두 줄을 <b>오늘 회의록에 남긴다</b></p><div class="note"><span class="nl">내부</span>안 남기면 12월에 "계약 끝났는데" 또는 "왜 안 해주냐" 둘 중 하나가 반드시 나온다</div></li><li><p><b>1차 대금 30,000,000</b> — 계산서 수신 담당자 · 이메일 · 발행일</p><div class="note"><span class="nl">내부</span>계약상 지급월이 '2026년 8월'인데 이미 지났다. 오늘 새 날짜를 잡는다</div></li></ul></section>
+     <div class="eyebrow">00 · 먼저 닫고 가는 것 <span class="pg">1/2 · 20분 · 논의 아님</span></div>
+     <ul class="qs"><li class="k"><p><span class="star">먼저</span><b>계약서 날인</b> — 11월말 개정본(8/4~11/30 · 총액 97,200,000 VAT 별도 · 3분할)</p><div class="note"><span class="nl">내부</span>개정 6곳 반영 확인 완료</div></li><li class="k"><p><span class="star">먼저</span><b>12월 과업은 계약서 밖에서 관리한다</b> — 인쇄물 입고 · 검수 · 연말 대응은 12월까지 가지만 계약 · 정산은 11/30에 닫힌다. 이 두 줄을 <b>오늘 회의록에 남긴다</b></p><div class="note"><span class="nl">내부</span>안 남기면 12월에 "계약 끝났는데" 또는 "왜 안 해주냐" 둘 중 하나가 반드시 나온다</div></li><li class="k"><p><span class="star">먼저</span><b>1차 대금 30,000,000</b> — 계산서 수신 담당자 · 이메일 · 발행일</p><div class="note"><span class="nl">내부</span>계약상 지급월이 2026년 8월인데 이미 지났다. 오늘 새 날짜를 잡는다</div></li></ul></section>
 <section class="slide s-qs" data-blk="00">
-             <div class="eyebrow">00 · 먼저 닫고 가는 것 <span class="pg">2/3</span></div>
-             <ul class="qs"><li><p><b>자료 요청 시트 전달</b> — 링크 하나로 13건. 제품 · 입점처 · 매출 구분 · 채널 계정 · 드라이브</p><div class="note"><span class="nl">내부</span>대표님이 직접 안 채우셔도 된다. 사내 담당자 한 분만 지정해 주시면 된다</div></li><li><p><b>패키지 확정일</b> — 브랜드 필름을 <b>리뉴얼된 패키지로</b> 찍어야 하므로, 오늘 정할 것은 촬영일이 아니라 <b>패키지가 언제 나오느냐</b>다. 촬영일은 거기서 역산한다</p><div class="note"><span class="nl">내부</span>9/8 제품 촬영은 현행 패키지 기준 별도 트랙이라는 것도 같이 못 박는다</div></li><li><p><b>인스타그램 운영 기준</b> — 4개월 실제 진행 / 피드 월 최소 12개(주 3개) + 스토리</p></li></ul></section>
-<section class="slide s-qs" data-blk="00">
-             <div class="eyebrow">00 · 먼저 닫고 가는 것 <span class="pg">3/3</span></div>
-             <ul class="qs"><li><p><b>정기 미팅 요일 · 시간</b> + 양측 담당자 · 소통 채널</p></li></ul></section>
+     <div class="eyebrow">00 · 먼저 닫고 가는 것 <span class="pg">2/2 · 20분 · 논의 아님</span></div>
+     <ul class="qs"><li class="k"><p><span class="star">먼저</span><b>패키지 확정일</b> — 브랜드 필름을 리뉴얼된 패키지로 찍어야 하므로, 오늘 정할 것은 촬영일이 아니라 <b>패키지가 언제 나오느냐</b>다</p><div class="note"><span class="nl">내부</span>9/8 제품 촬영은 현행 패키지 기준 별도 트랙이라는 것도 같이 못 박는다</div></li><li><p><b>자료 요청 시트</b> — 링크 하나로 13건. 사내 담당자 한 분만 지정해 주시면 된다</p></li><li><p><b>인스타그램 운영 기준</b> — 4개월 실제 진행 / 피드 월 최소 12개(주 3개) + 스토리</p></li><li><p><b>정기 미팅 요일 · 시간</b> + 양측 담당자 · 소통 채널</p></li></ul></section>
 <section class="slide s-div" data-blk="01">
      <div class="ghost">01</div>
-     <div class="dv-body">
-       <div class="eyebrow">네이밍 서사 · 문자 IP</div>
-       <h2 class="dv-h">고래가 두 마리다</h2>
-       <p class="dv-l">한글은 <b>白鯨(모비딕의 흰 고래)</b>, 영문은 <b>sperm whale(향유고래)</b>로 쓰고 계신다. 둘 다 틀린 건 아니지만 라벨 5종이 인쇄되기 전에 하나로 정해야 한다.</p>
-     </div></section>
-<section class="slide s-q is-core" data-blk="01">
-         <div class="corebadge"><span>오늘 이것만은</span><b>01</b><i>→ 라벨·해외 배너</i></div><div class="eyebrow">01 · 고래가 두 마리다</div>
-         <p class="bigq">기사에선 <b>모비딕의 흰고래</b>라고 하셨는데, 홈페이지 영문은 <b>sperm whale</b> · "The Great Whale's Spirit"이더라고요. <b>대표님 머릿속의 고래는 어느 쪽</b>이에요?</p><div class="note"><span class="nl">내부</span>여기서 나오는 답이 해외 라벨·전시 배너의 기준이 된다</div></section>
-<section class="slide s-q" data-blk="01">
-         <div class="eyebrow">01 · 고래가 두 마리다</div>
-         <p class="bigq">모비딕이 맞다면 — <b>모비딕은 끝내 못 잡는 고래</b>잖아요. 그걸 아시면서도 붙이신 거예요?</p><div class="note"><span class="nl">내부</span>"거대한 바다를 건너는 힘과 도전"이라 하셨는데, 그 배는 결국 침몰한다. 이 답이 브랜드 태도 그 자체다</div></section>
-<section class="slide s-q" data-blk="01">
-         <div class="eyebrow">01 · 고래가 두 마리다</div>
-         <p class="bigq">도올 선생님 친필 — <b>그날 얘기</b> 좀 들려주세요. 어떻게 부탁드렸고, 뭐라고 쓰시면서 뭐라고 하시던가요?</p></section>
-<section class="slide s-q" data-blk="01">
-         <div class="eyebrow">01 · 고래가 두 마리다</div>
-         <p class="bigq">그 <b>글씨 원본은 지금 어디</b> 있어요? 실물이요.</p><div class="note"><span class="nl">내부</span>있으면 촬영 1순위 피사체다</div></section>
-<section class="slide s-q is-core" data-blk="01">
-         <div class="corebadge"><span>오늘 이것만은</span><b>02</b><i>→ 5개국 전시</i></div><div class="eyebrow">01 · 고래가 두 마리다</div>
-         <p class="bigq">그 글씨를 <b>어디까지 써도 되는 걸로</b> 이야기가 됐어요? 라벨 말고 굿즈 · 전시물 · 해외 패키지에도요?</p><div class="note"><span class="nl">내부</span>서면 합의면 자산, 구두면 아직 희망사항이다. 해외 전시 전에 확인해야 한다</div></section>
+     <div class="dv-body"><div class="eyebrow">기원 · 계승 · 독립</div><h2 class="dv-h">브랜드의 시작</h2><p class="dv-l">함양 한의원 집 → 아버지 양조장 → 떠나서 제주 → 세종. 3층이다. 홈페이지는 <b>「집안 대대로」</b>라 쓰고 기사에선 <b>「아버님 증류소를 떠났다」</b>고 하신다. 캐묻지 말고 열어만 둔다.</p></div></section>
 <section class="slide s-qs" data-blk="01">
-         <div class="eyebrow">01 · 고래가 두 마리다 <span class="pg">이어서</span></div>
-         <ul class="qs"><li><p>후보로 놓고 <b>떨어뜨린 이름</b>이 있었어요? 뭐였고, 왜 떨어졌어요?</p></li><li><p>영문은 <b>Baekkyung</b>으로 굳히신 거예요? 로마자 음차로 갈지, 의미 번역을 병기할지요.</p><div class="note"><span class="nl">내부</span>사케가 Sake·Junmai를 세계 표준어로 만든 길이 참고가 된다</div></li></ul></section>
+         <div class="eyebrow">01 · 브랜드의 시작 <span class="pg">1/3</span></div>
+         <ul class="qs"><li><p>이 술을 시작하게 된 계기가 뭐예요?</p></li><li class="k"><p><span class="star">★</span>함양 한의원 집에서 자라셨는데, 어릴 때 <b>약재 법제(法製)</b>하시는 걸 본 기억이 어떤 장면으로 남아 있어요?</p><div class="note"><span class="nl">내부</span>오늘 인터뷰에서 가장 값어치 있는 답이 여기서 나올 가능성이 높다</div></li><li class="k"><p><span class="star">★</span>약을 술로 법제한다는 게, <b>지금 백경 빚는 것과 닿아 있는 데</b>가 있어요?</p><div class="note"><span class="nl">내부</span>'발효건축' 자리에 들어갈 백경의 단어 후보 1순위</div></li></ul></section>
+<section class="slide s-qs" data-blk="01">
+         <div class="eyebrow">01 · 브랜드의 시작 <span class="pg">2/3</span></div>
+         <ul class="qs"><li><p>아버님은 어쩌다 한의원 집안에서 양조장을 시작하셨어요?</p></li><li class="k"><p><span class="star">★</span>아버님 양조장에서 7년 계셨는데, 거기서 <b>「안 하기로」</b> 한 게 뭐였어요?</p><div class="note"><span class="nl">내부</span>"내가 빚고 싶은 술"의 내용이 여기 있다. 아버지를 평가하는 질문이 되지 않게 조심한다</div></li><li class="k"><p><span class="star">★</span>반대로, 아버님께 배운 것 중 <b>지금도 절대 안 바꾸는 것</b> 하나만요.</p><div class="note"><span class="nl">내부</span>규칙 문장의 재료</div></li></ul></section>
+<section class="slide s-qs" data-blk="01">
+         <div class="eyebrow">01 · 브랜드의 시작 <span class="pg">3/3</span></div>
+         <ul class="qs"><li><p>제주에서 3년 공장장으로 계셨죠. <b>남의 술을 만들어 주다가 내 이름을 붙이기로</b> 한 게 언제예요?</p><div class="note"><span class="nl">내부</span>7/28 육성 — "기술만 있다 보니 자기네가 투자할 테니 술 만들어 달라는 유혹이 많이 왔다". 아버지도 같은 방식이었다</div></li><li><p><b>3천만 원</b>으로 시작하셨다는데, 그 돈을 뭐에 먼저 쓰셨어요?</p><div class="note"><span class="nl">내부</span>본인이 자랑스러워하는 숫자다. 창업 스토리는 열어도 되고, 조심할 건 첫해 매출 숫자다</div></li><li><p><b>동생분</b>과 노하우를 어떻게 나눠 갖고 계세요?</p><div class="note"><span class="nl">내부</span>누룩·효모 노하우를 형제 둘이 보유. 승계 서사의 인물이 하나 더 있다</div></li><li><p>밖에서 잘 모르는 사실이 있다면요?</p></li></ul></section>
 <section class="slide s-div" data-blk="02">
      <div class="ghost">02</div>
-     <div class="dv-body">
-       <div class="eyebrow">계승 서사 · 인물</div>
-       <h2 class="dv-h">함양에서 세종까지 — 떠나온 것과 남은 것</h2>
-       <p class="dv-l">우리가 「2대 계승」으로 알고 있던 자리가 실제로는 <b>3층</b>이다 — <b>함양 한의원 집안 → 아버지가 양조장 창업 → 아들이 아버지를 떠나 자기 술.</b> 홈페이지는 "집안 대대로"라 쓰고, 기사에선 "떠났다"고 하신다. <b>캐묻지 말고 열어만 둔다.</b></p>
-     </div></section>
-<section class="slide s-q is-core" data-blk="02">
-         <div class="corebadge"><span>오늘 이것만은</span><b>03</b><i>→ 자기 언어 1순위</i></div><div class="eyebrow">02 · 함양에서 세종까지 — 떠나온 것과 남은 것</div>
-         <p class="bigq">함양에서 <b>한의원 하시는 집</b>에서 자라셨다고요. 어릴 때 <b>약재 법제하는 걸 보신 기억</b>, 어떤 장면으로 남아 있어요?</p><div class="note"><span class="nl">내부</span>오늘 이 인터뷰에서 가장 값어치 있는 답이 여기서 나올 가능성이 높다</div></section>
-<section class="slide s-q is-core" data-blk="02">
-         <div class="corebadge"><span>오늘 이것만은</span><b>04</b><i>→ 자기 언어</i></div><div class="eyebrow">02 · 함양에서 세종까지 — 떠나온 것과 남은 것</div>
-         <p class="bigq">한의학에서 <b>약을 술로 법제</b>한다는 게 정확히 뭘 하는 거예요? 지금 백경 빚는 것과 닿아 있는 데가 있어요?</p><div class="note"><span class="nl">내부</span>'발효건축' 자리에 들어갈 백경의 단어 후보 1순위</div></section>
-<section class="slide s-q is-core" data-blk="02">
-         <div class="corebadge"><span>오늘 이것만은</span><b>05</b><i>→ 브랜드 정체성</i></div><div class="eyebrow">02 · 함양에서 세종까지 — 떠나온 것과 남은 것</div>
-         <p class="bigq">아버님 양조장에서 7년 계셨는데, <b>거기서 안 하기로 한 게 뭐</b>였어요?</p><div class="note"><span class="nl">내부</span>"내가 빚고 싶은 술"의 내용이 여기 있다. 아버지를 평가하는 질문이 되지 않게 조심한다</div></section>
-<section class="slide s-q is-core" data-blk="02">
-         <div class="corebadge"><span>오늘 이것만은</span><b>06</b><i>→ 규칙 문장</i></div><div class="eyebrow">02 · 함양에서 세종까지 — 떠나온 것과 남은 것</div>
-         <p class="bigq">반대로, 아버님께 배운 것 중에 <b>지금도 절대 안 바꾸는 것</b> 하나만요.</p><div class="note"><span class="nl">내부</span>자기 언어 3질문 중 첫 번째 — 규칙 문장의 재료</div></section>
-<section class="slide s-q" data-blk="02">
-         <div class="eyebrow">02 · 함양에서 세종까지 — 떠나온 것과 남은 것</div>
-         <p class="bigq">아버님 <b>사진 · 기록 · 쓰시던 도구</b>, 집안의 한의원 시절 물건 같은 게 남아 있어요?</p><div class="note"><span class="nl">내부</span>브랜드 아카이브의 씨앗 — 있으면 촬영 때 실물 확인</div></section>
-<section class="slide s-q" data-blk="02">
-         <div class="eyebrow">02 · 함양에서 세종까지 — 떠나온 것과 남은 것</div>
-         <p class="bigq"><b>제주 3년</b> — 물류 때문에 세종으로 오셨다고 들었어요. 물류 말고, <b>제주에서 백경에 남은 게</b> 있다면요?</p><div class="note"><span class="nl">내부</span>자기 언어 3질문 중 두 번째</div></section>
+     <div class="dv-body"><div class="eyebrow">SKU 위계 · 라벨 5종의 근거</div><h2 class="dv-h">제품</h2><p class="dv-l">촬영 리스트 13종 + 여유 2종을 받았고 <b>엔트리 5종</b>이 명시됐다. 여기서 들을 건 소개가 아니라 <b>대표님이 이걸 어떻게 묶고 있는가</b>다. 표부터 채우고 시작한다.</p></div></section>
+<section class="slide s-fact" data-blk="02">
+             <div class="eyebrow">02 · 제품 <span class="pg">엔트리 5종 — 클라 회신 9/3</span></div>
+             <table class="sku">
+               <tr><th>제품</th><th>규격</th><th>가격</th><th>한 줄로 어떤 술</th><th>어떻게 나온 술</th><th>상 · 소믈리에 픽</th></tr>
+               <tr><td class="nm">백경15 White</td><td class="sp">750ml · 15%</td><td class="sp">45,600</td><td class="bl"></td><td class="bl"></td><td class="bl"></td></tr><tr><td class="nm">백경15 Gold</td><td class="sp">750ml · 15%</td><td class="sp">45,600</td><td class="bl"></td><td class="bl"></td><td class="bl"></td></tr><tr><td class="nm">백경15 Black</td><td class="sp">750ml · 15%</td><td class="sp">50,350</td><td class="bl"></td><td class="bl"></td><td class="bl"></td></tr><tr><td class="nm">백경12 Black</td><td class="sp">용량 ?</td><td class="sp">가격 ?</td><td class="bl"></td><td class="bl"></td><td class="bl"></td></tr><tr><td class="nm">백경10 탁주</td><td class="sp">용량 ?</td><td class="sp">가격 ?</td><td class="bl"></td><td class="bl"></td><td class="bl"></td></tr></table>
+             <div class="fnote">"15 화이트 · 골드 · 블랙 · 12블랙 · 10탁주는 <b>엔트리 제품으로 최우선, 가장 주력으로 밀고 있는 제품</b>입니다" — 백경 회신 9/3 13:59</div></section>
 <section class="slide s-qs" data-blk="02">
-         <div class="eyebrow">02 · 함양에서 세종까지 — 떠나온 것과 남은 것 <span class="pg">이어서</span></div>
-         <ul class="qs"><li><p>아버님은 어쩌다 한의원 집안에서 <b>양조장을 시작</b>하신 거예요?</p></li><li><p>홈페이지에 <b>"집안 대대로 내려오는 전통 방식"</b>이라고 쓰셨더라고요. 여기서 '대대로'는 어디를 가리키는 거예요? 한의원 쪽이에요, 양조장 쪽이에요?</p></li><li><p>아버님이 지금 백경을 보시면 뭐라고 하실 것 같으세요?</p></li></ul></section>
+         <div class="eyebrow">02 · 제품 <span class="pg">1/4</span></div>
+         <ul class="qs"><li><p>화이트 · 골드 · 블랙은 뭐가 달라요? 손님한테 어떻게 설명하세요?</p></li><li><p><b>백경10이 복숭아에서 탁주로</b> 바뀌는 거예요? 복숭아는 단종이에요?</p><div class="note"><span class="nl">내부</span>시트엔 「백경10 복숭아 375ml 10% 17,000」, 촬영 리스트엔 「백경10→탁주」</div></li><li><p>12블랙과 10탁주 가격이 시트에 비어 있는데 얼마예요?</p></li><li class="k"><p><span class="star">★</span>이 5종 안에서 <b>얼굴 하나</b>를 꼽으면요?</p><div class="note"><span class="nl">내부</span>라벨 리뉴얼 5종 = 엔트리 5종인지가 여기서 갈린다</div></li></ul></section>
 <section class="slide s-qs" data-blk="02">
-         <div class="eyebrow">02 · 함양에서 세종까지 — 떠나온 것과 남은 것 <span class="pg">이어서</span></div>
-         <ul class="qs"><li><p>대표님 다음은 누가 이어요? 생각해 보신 적 있으세요?</p></li></ul></section>
+         <div class="eyebrow">02 · 제품 <span class="pg">2/4</span></div>
+         <ul class="qs"><li class="k"><p><span class="star">★</span><b>향온만 왜 115,000원</b>이에요? 다른 750ml의 2.3배인데요.</p><div class="note"><span class="nl">내부</span>180일 다섯 번 발효(오양주) 때문인지, 다른 이유가 있는지</div></li><li class="k"><p><span class="star">★</span>엔트리가 5종이면 <b>프리미엄 얼굴은 뭐예요?</b></p><div class="note"><span class="nl">내부</span>향온이 엔트리에 없다 → 엔트리/프리미엄 이원 구조로 보인다</div></li><li><p>소유리 — 시트엔 세종(녹두도+소유리)·(흑산조+소유리) 둘인데 촬영엔 하나예요. 같은 거예요?</p></li><li><p>백경46은 「세종소주46」이에요? 백경28은 새로 나온 거예요?</p><div class="note"><span class="nl">내부</span>둘 다 제품 리스트 시트에 없다</div></li></ul></section>
+<section class="slide s-qs" data-blk="02">
+         <div class="eyebrow">02 · 제품 <span class="pg">3/4</span></div>
+         <ul class="qs"><li class="k"><p><span class="star">★</span><b>상 받은 것 · 소믈리에가 집은 것</b> — 제품별로 뭐가 뭘 받았어요? 연도 · 제품명 · 증빙 원본까지요.</p><div class="note"><span class="nl">내부</span>공개 자료에서 확인되는 건 IWSC 2026 백경15 브론즈 하나뿐이다. 카피에 쓰려면 증빙이 먼저 있어야 한다</div></li><li><p>차진환 소믈리에 / 김경문 소믈리에가 집은 게 각각 어느 제품이에요?</p><div class="note"><span class="nl">내부</span>차진환=사케·술장이 출연 / 김경문(김동문?)=마스터 소믈리에·미국 수입까지. 🔴 이름 표기 확정 필요</div></li><li><p>증류주는 세금 때문에 재미없다고 하셨는데 <b>53·46·28 세 개를 다 찍으시네요.</b> 다시 미시는 거예요?</p><div class="note"><span class="nl">내부</span>7/28 육성과 촬영 리스트가 어긋나는 자리</div></li></ul></section>
+<section class="slide s-qs" data-blk="02">
+         <div class="eyebrow">02 · 제품 <span class="pg">4/4</span></div>
+         <ul class="qs"><li class="k"><p><span class="star">★</span><b>백경13 White는 왜 촬영에서 빼셨어요?</b> 파는 제품인데요.</p><div class="note"><span class="nl">내부</span>시트에선 가격·재고가 확인되는 A그룹(500ml 20,000원)인데 촬영 대상이 아니다</div></li><li><p>백경23 · 33 · 333 · 533은 뭐예요? 도수가 아닌 것 같은데요.</p><div class="note"><span class="nl">내부</span>나머지는 전부 「백경+도수」로 읽힌다. 이 넷과 서리주·온전한 하루만 예외</div></li><li><p>서리주 · 온전한 하루는 왜 「백경」을 안 붙이셨어요?</p></li><li class="k"><p><span class="star">★</span>촬영에서 빠진 것들(Silver · 육곡 · 그린 · 백경7 · 8복숭아 · 13Black · 서리주 · 온전한 하루) — <b>단종이에요, 면허만 살아 있는 거예요?</b> 안 팔리는데 못 없애는 게 있다면 왜요?</p><div class="note"><span class="nl">내부</span>보도는 13종, 시트는 35종. 어느 쪽도 아니었다. 여기서 확정한다</div></li></ul></section>
 <section class="slide s-div" data-blk="03">
      <div class="ghost">03</div>
-     <div class="dv-body">
-       <div class="eyebrow">감각 언어 채집 · 카피 원문</div>
-       <h2 class="dv-h">술이 되는 시간</h2>
-       <p class="dv-l">스펙은 이미 안다(누룩 40도 · 습도 70~80% · 향온 180일 5회 · 15%). 그러니 <b>기술이 아니라 감각</b>을 받는다. 냄새 · 소리 · 손의 감각으로 답이 나오면 그게 그대로 카피가 된다.</p>
-     </div></section>
-<section class="slide s-q" data-blk="03">
-         <div class="eyebrow">03 · 술이 되는 시간</div>
-         <p class="bigq">발효실 문을 열면 <b>무슨 냄새</b>가 나요? 아는 사람만 아는 냄새로 표현하면요?</p></section>
-<section class="slide s-q" data-blk="03">
-         <div class="eyebrow">03 · 술이 되는 시간</div>
-         <p class="bigq">술이 잘 되고 있다는 걸 <b>뭘로 아세요?</b> 소리예요, 냄새예요, 손 감각이에요?</p></section>
-<section class="slide s-q" data-blk="03">
-         <div class="eyebrow">03 · 술이 되는 시간</div>
-         <p class="bigq">향온은 <b>180일 동안 다섯 번</b> 덧술을 하신다고요. 그 반년 동안 <b>가장 마음 졸이는 구간</b>이 언제예요?</p></section>
-<section class="slide s-q" data-blk="03">
-         <div class="eyebrow">03 · 술이 되는 시간</div>
-         <p class="bigq">누룩 재료가 밀 · 녹두 · 수수 · 팥 · 토종쌀인데, <b>녹두를 쓰는 이유</b>가 뭐예요?</p><div class="note"><span class="nl">내부</span>'향온곡'이라는 이름의 뿌리가 여기 있을 수 있다. 향온주는 조선 왕실 술 이름이기도 하다</div></section>
-<section class="slide s-q is-core" data-blk="03">
-         <div class="corebadge"><span>오늘 이것만은</span><b>10</b><i>→ 안 하는 것 ①</i></div><div class="eyebrow">03 · 술이 되는 시간</div>
-         <p class="bigq"><b>단맛을 뺀 드라이 스타일</b>로 가신 이유가 뭐예요? 단 걸 좋아하는 손님을 놓치는 건데요.</p><div class="note"><span class="nl">내부</span>「안 하는 것」이 이미 하나 있다. 이걸 규칙 문장으로 세울 수 있다</div></section>
+     <div class="dv-body"><div class="eyebrow">누룩 8종 · 효모 20종 · 비열살균</div><h2 class="dv-h">제조와 기술</h2><p class="dv-l">스펙은 이미 안다(누룩 40도·습도 70~80%·향온 180일 5회·15%). 그러니 기술이 아니라 <b>그 기술을 뭐라고 부를 것인가</b>를 받는다.</p></div></section>
 <section class="slide s-qs" data-blk="03">
-         <div class="eyebrow">03 · 술이 되는 시간 <span class="pg">이어서</span></div>
-         <ul class="qs"><li><p>누룩 만드실 때 <b>손이 기억하는 것</b>이 있어요?</p></li><li><p>토종쌀은 <b>직접 농사</b>지으신다고요. 품종이 뭐고, 농사는 누가 지어요?</p><div class="note"><span class="nl">내부</span>이름 있는 사람이 나오면 서사 인물이 하나 생긴다</div></li><li><p>토종쌀 · 독자 누룩 · 발효 시간, 이 셋 중에 <b>하나만 없앨 수 있다면</b> 뭘 없애시겠어요?</p><div class="note"><span class="nl">내부</span>진짜 핵심을 가려내는 질문. 못 고르시면 셋 다 살아 있는 것</div></li></ul></section>
+         <div class="eyebrow">03 · 제조와 기술 <span class="pg">1/3</span></div>
+         <ul class="qs"><li><p>누룩을 <b>8종</b> 만드신다고요. 누룩마다 뭐가 달라져요?</p></li><li><p>재료가 밀 · 녹두 · 수수 · 팥 · 토종쌀인데, <b>녹두</b>를 쓰는 이유가 뭐예요?</p><div class="note"><span class="nl">내부</span>'향온곡'이라는 이름의 뿌리가 여기 있을 수 있다. 향온주는 조선 왕실 술 이름이기도 하다</div></li><li><p>쌀 <b>12품종</b>을 직접 농사지으신다고요. 농사는 누가 지어요?</p><div class="note"><span class="nl">내부</span>이름 있는 사람이 나오면 서사 인물이 하나 생긴다. 100% 국산 원물 = 농식품부 R&D 요건</div></li></ul></section>
 <section class="slide s-qs" data-blk="03">
-         <div class="eyebrow">03 · 술이 되는 시간 <span class="pg">이어서</span></div>
-         <ul class="qs"><li><p>왜 <b>15도</b>예요? 14도나 16도는 왜 아니에요? 라인 전체가 15로 통일된 이유도요.</p></li></ul></section>
+         <div class="eyebrow">03 · 제조와 기술 <span class="pg">2/3</span></div>
+         <ul class="qs"><li class="k"><p><span class="star">★</span>누룩에서 효모 20종을 분리하셨고 <b>그중 4종이 학계 미보고</b>라고 하셨는데 — <b>이름 붙이셨어요?</b></p><div class="note"><span class="nl">내부</span>신종 효모 명명권은 백경만 가진 것이다. 자기 언어 후보로는 법제(法製)보다 강할 수도 있다</div></li><li><p>그 4종이 <b>포도향</b>을 낸다고요. 지금 어느 제품에 들어가 있어요?</p></li><li><p>열 살균 대신 <b>멤브레인 + 질소 충진</b>으로 가신 이유를, 손님한테 하는 말로 설명하면요?</p><div class="note"><span class="nl">내부</span>한국 술 단백질이 사케의 10배 → 열 가하면 노취. 인천공항 면세점 유일 한국 발효주의 근거</div></li></ul></section>
+<section class="slide s-qs" data-blk="03">
+         <div class="eyebrow">03 · 제조와 기술 <span class="pg">3/3</span></div>
+         <ul class="qs"><li class="k"><p><span class="star">★</span>매일 품온 · pH · 호박산 · 주석산을 적으시는데, <b>그 숫자가 좋아진 걸 혀로 확인하는 순간</b>이 언제예요?</p><div class="note"><span class="nl">내부</span>🔴 대표님은 냄새·손끝이 아니라 숫자로 말하는 사람이다. "발효실 문 열면 무슨 냄새 나요"는 헛돈다. 데이터에서 감각으로 넘어가는 다리를 놓는 질문</div></li><li><p>토종쌀 · 독자 누룩 · 발효 시간, 이 셋 중 <b>하나만 없앨 수 있다면</b> 뭘 없애시겠어요?</p><div class="note"><span class="nl">내부</span>진짜 핵심을 가려내는 질문. 못 고르시면 셋 다 살아 있는 것</div></li><li><p>왜 15도예요? 14도나 16도는 왜 아니에요?</p></li></ul></section>
 <section class="slide s-div is-core" data-blk="04">
      <div class="ghost">04</div>
-     <div class="dv-body">
-       <div class="eyebrow">★ 오늘의 핵심 블록</div>
-       <h2 class="dv-h">백경의 언어</h2>
-       <p class="dv-l">복순도가는 자기 방식을 <b>'발효건축'</b>이라 부른다. 그 한 단어가 브랜드를 다 설명한다. 백경에도 그런 단어가 <b>이미 있는데 아직 이름이 안 붙었을 뿐</b>이다 — 그걸 오늘 찾는다.</p>
-     </div></section>
-<section class="slide s-q is-core" data-blk="04">
-         <div class="corebadge"><span>오늘 이것만은</span><b>08</b><i>→ 오늘의 과녁</i></div><div class="eyebrow">04 · 백경의 언어</div>
-         <p class="bigq">백경이 하는 일을 <b>대표님만의 단어</b>로 이름 붙인다면 뭐라고 하시겠어요?</p></section>
-<section class="slide s-q" data-blk="04">
-         <div class="eyebrow">04 · 백경의 언어</div>
-         <p class="bigq">남들은 그냥 부르는데 <b>대표님만 다르게 부르는 말</b>이 있어요? 공정이든 도구든 술의 상태든요.</p></section>
-<section class="slide s-q is-core" data-blk="04">
-         <div class="corebadge"><span>오늘 이것만은</span><b>07</b><i>→ 규칙 문장 첫 줄</i></div><div class="eyebrow">04 · 백경의 언어</div>
-         <p class="bigq">이 술로 <b>절대 안 할 것</b>이 있다면 하나만요.</p><div class="note"><span class="nl">내부</span>자기 언어 3질문 중 세 번째 — 그리고 가장 중요하다. 토라야는 「이 점포에서는 양갱을 팔지 않습니다」 한 줄로 500년을 갔다. 안 하는 것이 브랜드다</div></section>
-<section class="slide s-q is-core" data-blk="04">
-         <div class="corebadge"><span>오늘 이것만은</span><b>09</b><i>→ 이미 있는 자산</i></div><div class="eyebrow">04 · 백경의 언어</div>
-         <p class="bigq"><b>"식탁 위의 술"</b>이라고 하신 걸 봤어요. 그 말을 언제부터 쓰셨어요? 대표님이 만드신 말이에요?</p><div class="note"><span class="nl">내부</span>이미 있는 자기 언어일 수 있다. 있으면 새로 짓지 말고 이걸 키운다</div></section>
-<section class="slide s-q" data-blk="04">
-         <div class="eyebrow">04 · 백경의 언어</div>
-         <p class="bigq">백경 하면 <b>딱 떠올랐으면 하는 장면</b>이 있어요?</p><div class="note"><span class="nl">내부</span>촬영 A컷의 방향이 여기서 나온다</div></section>
+     <div class="dv-body"><div class="eyebrow">자기 언어 · 안 하는 것 · 이름</div><h2 class="dv-h">브랜드 정체성</h2><p class="dv-l">복순도가는 자기 방식을 <b>'발효건축'</b>이라 부른다. 그 한 단어가 브랜드를 다 설명한다. 백경에도 그런 단어가 이미 있는데 이름이 안 붙었을 뿐이다.</p></div></section>
 <section class="slide s-qs" data-blk="04">
-         <div class="eyebrow">04 · 백경의 언어 <span class="pg">이어서</span></div>
-         <ul class="qs"><li><p>직원분들끼리만 통하는 말이 있어요?</p></li><li><p>술 설명하실 때 자꾸 나오는 <b>비유</b>가 있어요? 뭐에 빗대서 말하세요?</p></li><li><p>백경을 사람이라고 하면 어떤 사람이에요? 몇 살이고 뭐 하는 사람이에요?</p></li></ul></section>
+         <div class="eyebrow">04 · 브랜드 정체성 <span class="pg">1/3</span></div>
+         <ul class="qs"><li class="k"><p><span class="star">★</span><b>백경이 하는 일을 대표님만의 단어로</b> 이름 붙인다면 뭐라고 하시겠어요?</p><div class="note"><span class="nl">내부</span>🔴 7월에 우리가 「미슐랭이 인정한 전통주」를 답으로 줬다. 그게 되돌아올 수 있다. 묻기 전에 선을 긋는다 — "미슐랭은 남이 준 인증이고, 지금 찾는 건 대표님이 직접 지으신 말입니다"</div></li><li><p>남들은 그냥 부르는데 대표님만 다르게 부르는 말이 있어요? 공정이든 도구든 술의 상태든요.</p></li><li><p>직원분들끼리만 통하는 말이 있어요?</p></li><li><p><b>「식탁 위의 술」</b> — 언제부터 쓰셨어요? 대표님이 만드신 말이에요?</p><div class="note"><span class="nl">내부</span>이미 있는 자기 언어일 수 있다. 있으면 새로 짓지 말고 이걸 키운다</div></li></ul></section>
 <section class="slide s-qs" data-blk="04">
-         <div class="eyebrow">04 · 백경의 언어 <span class="pg">이어서</span></div>
-         <ul class="qs"><li><p>다른 브랜드 중에 "저건 참 잘한다" 싶은 데 있어요? 반대로 "저렇게는 안 하고 싶다" 싶은 데는요?</p></li></ul></section>
+         <div class="eyebrow">04 · 브랜드 정체성 <span class="pg">2/3</span></div>
+         <ul class="qs"><li class="k"><p><span class="star">★</span><b>이 술로 절대 안 할 것</b>이 있다면 하나만요.</p><div class="note"><span class="nl">내부</span>토라야는 「이 점포에서는 양갱을 팔지 않습니다」 한 줄로 500년을 갔다. 안 하는 것이 브랜드다</div></li><li><p><b>단맛을 빼신 이유</b>가 뭐예요? 단 걸 좋아하는 손님을 놓치는 건데요.</p><div class="note"><span class="nl">내부</span>「안 하는 것」이 이미 하나 있다. 이걸 규칙 문장으로 세울 수 있다</div></li><li><p>돈이 되는데 <b>거절한 제안</b>이 있었어요? 왜 거절하셨어요?</p></li><li><p>백경이 <b>절대 되면 안 되는 모습</b>이 있어요?</p></li></ul></section>
+<section class="slide s-qs" data-blk="04">
+         <div class="eyebrow">04 · 브랜드 정체성 <span class="pg">3/3</span></div>
+         <ul class="qs"><li class="k"><p><span class="star">★</span>위스키를 <b>포경선</b>이라고 하셨잖아요. 그러면 백경은 그 배를 <b>침몰시키는 고래</b>예요, <b>끝까지 안 잡히는 고래</b>예요?</p><div class="note"><span class="nl">내부</span>7/28 육성 — "위스키가 너무 강력하니까 포경선이라고 생각하고, 그 포경선과 싸우는 고래라고 생각해서 만들었다". 이 답이 브랜드 태도 그 자체다</div></li><li><p>한글 <b>白鯨</b>(모비딕)과 영문 <b>sperm whale</b>(향유고래) — 라벨 5종 인쇄 전에 어느 쪽으로 정할까요?</p><div class="note"><span class="nl">내부</span>해외에서는 서로 다른 브랜드처럼 읽힌다</div></li><li class="k"><p><span class="star">★</span>도올 선생님 친필 — <b>어디까지 써도 되는 걸로</b> 이야기가 됐어요? 라벨 말고 굿즈 · 전시물 · 해외 패키지에도요? 서면이 있어요?</p><div class="note"><span class="nl">내부</span>서면 합의면 자산, 구두면 아직 희망사항이다. 5개국 전시 전에 확인해야 한다</div></li></ul></section>
 <section class="slide s-div" data-blk="05">
      <div class="ghost">05</div>
-     <div class="dv-body">
-       <div class="eyebrow">예/아니오 · 한 단어 · 5분</div>
-       <h2 class="dv-h">사실 확인</h2>
-       <p class="dv-l">공개 자료로 확인되는 건 이미 표에 있다. 여기는 <b>공개 자료로는 확인이 안 되는 것</b>만 남겼다. <b>답이 안 나오는 항목은 홈페이지 · 라벨 뒷면 · 해외 전시 배너 · 보도자료에서 뺀다.</b></p>
-     </div></section>
+     <div class="dv-body"><div class="eyebrow">사는 사람 · 안 사는 사람</div><h2 class="dv-h">고객</h2><p class="dv-l">면세점 · 백화점 · 미슐랭은 이미 뚫렸다. 비어 있는 건 <b>직접 사는 사람이 누구인가</b>와, 더 중요하게는 <b>누가 안 사는가</b>다.</p></div></section>
 <section class="slide s-qs" data-blk="05">
-             <div class="eyebrow">05 · 사실 확인 <span class="pg">1/3</span></div>
-             <ul class="qs"><li><p><b>고택</b> — 저희 자료엔 고택이 촬영지로 잡혀 있는데 공개 자료엔 안 나옵니다. 어떤 건물이고, <b>소유가 개인 / 법인 / 문중</b> 중 어느 쪽이에요? 문화재 지정은요?</p></li><li><p><b>수상</b> — 확인되는 건 <b>IWSC 2026 백경15 브론즈</b>였습니다. 그 외에 받으신 것(Superior Taste Award · DESIGN IT AWARDS 등)이 있으면 <b>연도 · 수상 제품명 · 증빙 원본</b>을요.</p><div class="note"><span class="nl">내부</span>의심이 아니라 실무다. 카피에 쓰려면 증빙이 먼저 있어야 한다</div></li><li><p><b>제품 수</b> — 보도는 13종인데 저희가 받은 자료엔 35종입니다. <b>지금 살아 있는 게 몇 종</b>이에요? 단종 · 한정 · OEM을 어떻게 세느냐의 문제일 것 같은데요.</p></li></ul></section>
+         <div class="eyebrow">05 · 고객 <span class="pg">1/3</span></div>
+         <ul class="qs"><li class="k"><p><span class="star">★</span>면세점 · 백화점 말고, <b>직접 사는 사람은 누구</b>예요? 나이 · 상황 · 왜 사는지요.</p></li><li><p>두 번 이상 사신 분들, 왜 다시 샀대요?</p><div class="note"><span class="nl">내부</span>백경의 A급 자산 후보가 재구매 고객이다</div></li><li><p>제일 기억에 남는 손님이 있어요? 어떤 분이었어요?</p></li></ul></section>
 <section class="slide s-qs" data-blk="05">
-             <div class="eyebrow">05 · 사실 확인 <span class="pg">2/3</span></div>
-             <ul class="qs"><li><p><b>'대대로'의 시작점</b> — 함양 한의원은 몇 대째이고, 아버님 양조장은 언제 시작하셨어요?</p><div class="note"><span class="nl">내부</span>종이로 존재하는 숫자 하나(면허 발급일 · 등기 · 집안 기록)를 찾는다. 종이가 없으면 그 숫자는 어디에도 쓰지 않는다</div></li><li><p><b>미슐랭 · 파인다이닝 입점</b> — 업장명과 입점 시점. 있으면 해외 영업 자료의 가장 강한 근거가 됩니다.</p></li><li><p><b>독자 누룩</b>은 특허 · 품종등록 · 영업비밀 중 무엇으로 관리하고 계세요?</p></li></ul></section>
+         <div class="eyebrow">05 · 고객 <span class="pg">2/3</span></div>
+         <ul class="qs"><li class="k"><p><span class="star">★</span><b>한 번 보고 안 산 사람</b>은 왜 안 샀을까요?</p></li><li class="k"><p><span class="star">★</span>백경을 <b>절대 안 살 사람</b>은 누구예요?</p><div class="note"><span class="nl">내부</span>브랜드의 경계는 안 사는 사람이 정한다. 여기서 프리미엄 라인이 그어진다</div></li><li><p>손님이 백경 대신 뭘 살 것 같으세요 — 위스키요, 사케요, 다른 전통주요?</p><div class="note"><span class="nl">내부</span>"위스키·사케"라고 답하시면 선물 포지션이 이미 잡힌 것</div></li></ul></section>
 <section class="slide s-qs" data-blk="05">
-             <div class="eyebrow">05 · 사실 확인 <span class="pg">3/3</span></div>
-             <ul class="qs"><li><p><b>상표</b> — 33류 '백경'이 <b>대표님 개인 명의</b>로 확인됩니다. 법인 이전 계획이 있으세요? 해외 상표는 어느 나라에 내셨어요?</p><div class="note"><span class="nl">내부</span>전시는 5개국인데 상표가 0개국이면 순서가 거꾸로다</div></li><li><p><b>OEM 계약</b> — 어디에 어떤 제품을 납품하시는 거예요? 백경 이름이 나가나요, 안 나가나요?</p><div class="note"><span class="nl">내부</span>브랜드 노출 여부에 따라 이걸 자산으로 쓸 수 있는지가 갈린다</div></li><li><p><b>유튜브</b> — '술장이'라고 들었는데 공식 채널은 @BAEKKYUNGDISTILLERY더라고요. 둘이 같은 거예요? 누가 만들고 어떤 기준으로 만드세요?</p></li></ul></section>
+         <div class="eyebrow">05 · 고객 <span class="pg">3/3</span></div>
+         <ul class="qs"><li><p>인스타 팔로워가 2,200명인데 좋아요가 90개씩 붙어요. <b>이분들이 누구인지 아세요?</b></p><div class="note"><span class="nl">내부</span>1만 명이어도 100개가 안 되는 게 보통이다. 진성 팬덤이 이미 있다는 신호</div></li><li><p>백경이 제일 어울리는 <b>한 접시</b>를 꼽으면요? 한식 말고 양식에서도 하나요.</p><div class="note"><span class="nl">내부</span>"식탁 위의 술"을 증명할 페어링 콘텐츠의 출발점</div></li></ul></section>
 <section class="slide s-div" data-blk="06">
      <div class="ghost">06</div>
-     <div class="dv-body">
-       <div class="eyebrow">콘텐츠 자산 실사</div>
-       <h2 class="dv-h">남아 있는 것들</h2>
-       <p class="dv-l">촬영 전에 <b>뭐가 있는지</b> 알아야 뭘 찍을지 정해진다. 물건 · 기록 · 원본 파일을 훑는다.</p>
-     </div></section>
-<section class="slide s-q" data-blk="06">
-         <div class="eyebrow">06 · 남아 있는 것들</div>
-         <p class="bigq">증류소에서 <b>제일 오래된 물건</b>이 뭐예요? 없어지면 <b>제일 아까울 물건</b>은요?</p></section>
-<section class="slide s-q" data-blk="06">
-         <div class="eyebrow">06 · 남아 있는 것들</div>
-         <p class="bigq">언론에 나갔던 것 중에 <b>제일 마음에 든 기사나 영상</b>이 뭐예요? 왜 그게 좋으셨어요?</p><div class="note"><span class="nl">내부</span>대표님이 생각하는 '잘 담긴 백경'의 기준이 여기서 나온다</div></section>
+     <div class="dv-body"><div class="eyebrow">자리 · 거울</div><h2 class="dv-h">시장과 경쟁</h2><p class="dv-l">국내 전통주 시장은 1,100~1,200억. 대표님은 여기서 싸우지 않겠다고 하셨다. 그러면 <b>어디서 누구와 싸우는지</b>를 받아야 한다.</p></div></section>
 <section class="slide s-qs" data-blk="06">
-         <div class="eyebrow">06 · 남아 있는 것들 <span class="pg">이어서</span></div>
-         <ul class="qs"><li><p>함양 집안에서 넘어온 물건이 있어요? <b>약재 다루던 도구나 옛 문헌</b> 같은 거요.</p><div class="note"><span class="nl">내부</span>있다면 이게 백경의 가장 강한 촬영 피사체다</div></li><li><p>옛날 <b>주방문이나 집안 기록</b> 같은 게 남아 있어요?</p></li><li><p>지금까지 찍어둔 <b>사진 · 영상 원본은 어디</b> 있어요? 누가 갖고 계세요?</p></li></ul></section>
+         <div class="eyebrow">06 · 시장과 경쟁 <span class="pg">1/2</span></div>
+         <ul class="qs"><li><p>직접 경쟁이라고 보시는 데 3~5곳과, 그들의 잘하는 점 · 약점은요?</p></li><li class="k"><p><span class="star">★</span><b>닮고 싶은 브랜드 하나 / 절대 닮기 싫은 브랜드 하나</b>와 이유는요?</p><div class="note"><span class="nl">내부</span>긍정 레퍼런스보다 부정 레퍼런스에서 진짜 기준이 나온다</div></li><li><p>일엽편주가 국내 다이닝을 다 잡았는데, 백경과 뭐가 달랐다고 보세요?</p><div class="note"><span class="nl">내부</span>7/28에 우리 쪽이 먼저 꺼낸 이름이다. 대표님도 "브랜딩"이라고 답하셨다</div></li></ul></section>
 <section class="slide s-qs" data-blk="06">
-         <div class="eyebrow">06 · 남아 있는 것들 <span class="pg">이어서</span></div>
-         <ul class="qs"><li><p>아직 아무한테도 안 보여준 것이 있어요?</p></li></ul></section>
+         <div class="eyebrow">06 · 시장과 경쟁 <span class="pg">2/2</span></div>
+         <ul class="qs"><li><p>그 브랜드들이 백경을 뒤에서 뭐라고 할 것 같으세요?</p><div class="note"><span class="nl">내부</span>3인칭 투사 — 직접 못 하는 말을 남의 입으로 하게 한다</div></li><li><p>이 시장에서 <b>성공과 실패를 가르는 게</b> 뭐라고 보세요?</p></li></ul></section>
 <section class="slide s-div" data-blk="07">
      <div class="ghost">07</div>
-     <div class="dv-body">
-       <div class="eyebrow">장면 · 로케이션 · 촬영 동선</div>
-       <h2 class="dv-h">고택과 증류소</h2>
-       <p class="dv-l">증류소는 세종 장군면 평기길 · 약 100평인 걸 안다. 여기서 받을 건 <b>동선과 장면</b>이다.</p>
-     </div></section>
-<section class="slide s-q" data-blk="07">
-         <div class="eyebrow">07 · 고택과 증류소</div>
-         <p class="bigq">백경을 <b>딱 한 장면</b>으로 찍는다면 어디서 찍고 싶으세요?</p></section>
-<section class="slide s-q" data-blk="07">
-         <div class="eyebrow">07 · 고택과 증류소</div>
-         <p class="bigq">손님이 오시면 <b>꼭 보여주시는 것</b>이 뭐예요? 보여주는 <b>순서</b>가 있어요?</p><div class="note"><span class="nl">내부</span>그 순서가 곧 브랜드 스토리의 구조다 — 홈페이지 목차가 여기서 나온다</div></section>
+     <div class="dv-body"><div class="eyebrow">장면 · 색 · 말투</div><h2 class="dv-h">디자인과 톤</h2><p class="dv-l">디자인 평가를 하는 자리가 아니다. <b>대표님 머릿속 이미지를 언어로 회수</b>하는 자리다. 여기서 나온 말이 촬영 콘티와 비주얼 가이드가 된다.</p></div></section>
 <section class="slide s-qs" data-blk="07">
-         <div class="eyebrow">07 · 고택과 증류소 <span class="pg">이어서</span></div>
-         <ul class="qs"><li><p>증류소에서 대표님이 <b>제일 오래 서 계시는 자리</b>가 어디예요?</p></li><li><p>고택은 어떤 곳이고 증류소에서 얼마나 떨어져 있어요? 하루에 두 곳 다 찍을 수 있어요?</p></li><li><p>촬영에 <b>사람이 몇 명까지</b> 들어갈 수 있어요? 화장실 · 주차는요?</p><div class="note"><span class="nl">내부</span>앉을 자리 · 화장실 · 주차 중 가장 작은 값이 촬영 정원이다</div></li></ul></section>
+         <div class="eyebrow">07 · 디자인과 톤 <span class="pg">1/2</span></div>
+         <ul class="qs"><li class="k"><p><span class="star">★</span>백경을 <b>사람에 비유하면</b> 어떤 사람이에요? 나이 · 직업 · 사는 곳 · 입은 옷 · 말투요.</p></li><li><p>백경 하면 떠올랐으면 하는 색이 있어요? 반대로 절대 쓰기 싫은 느낌 · 색은요?</p></li><li><p>백경의 말투는 어땠으면 좋겠어요? 정직한 · 따뜻한 · 깐깐한 · 프리미엄한 중에서요.</p></li></ul></section>
 <section class="slide s-qs" data-blk="07">
-         <div class="eyebrow">07 · 고택과 증류소 <span class="pg">이어서</span></div>
-         <ul class="qs"><li><p>계절마다 풍경이 달라져요? 9월 · 10월은 어때요?</p></li><li><p>촬영 때 <b>절대 안 찍혔으면</b> 하는 데가 있어요?</p></li><li><p>농사 지으시는 <b>논</b>도 찍을 수 있어요? 수확이 언제예요?</p><div class="note"><span class="nl">내부</span>"직접 농사짓는다"는 말의 유일한 시각 증거다. 시기를 놓치면 1년을 기다린다</div></li></ul></section>
+         <div class="eyebrow">07 · 디자인과 톤 <span class="pg">2/2</span></div>
+         <ul class="qs"><li class="k"><p><span class="star">★</span>백경을 <b>딱 한 장면</b>으로 찍는다면 어디서 뭘 찍고 싶으세요?</p><div class="note"><span class="nl">내부</span>촬영 A컷의 방향이 여기서 나온다</div></li><li><p>손님이 오시면 꼭 보여주시는 게 뭐예요? <b>보여주는 순서</b>가 있어요?</p><div class="note"><span class="nl">내부</span>그 순서가 곧 브랜드 스토리의 구조다 — 홈페이지 목차가 여기서 나온다</div></li><li><p>도올 선생님 <b>글씨 원본은 지금 어디</b> 있어요? 실물이요.</p><div class="note"><span class="nl">내부</span>있으면 촬영 1순위 피사체다</div></li><li><p>좋아하시는 브랜드 · 패키지 이미지 3장만요.</p><div class="note"><span class="nl">내부</span>폼 말고 카톡 · 메일로 회수. 디자인 브리프 · 무드보드 직결</div></li></ul></section>
 <section class="slide s-div" data-blk="08">
      <div class="ghost">08</div>
-     <div class="dv-body">
-       <div class="eyebrow">SKU 서사 · 타깃 장면</div>
-       <h2 class="dv-h">식탁 위의 술</h2>
-       <p class="dv-l">"한식당이 시작점일 수는 있지만 궁극적으로는 프렌치 · 이탈리안 · 파인다이닝"이라고 하셨다. 그 말을 <b>어느 제품이 짊어질 것인지</b>를 오늘 가른다.</p>
-     </div></section>
-<section class="slide s-q" data-blk="08">
-         <div class="eyebrow">08 · 식탁 위의 술</div>
-         <p class="bigq">골드 · 블랙 · 화이트 · 향미주곡 · 향온 · 호라산 — <b>이름은 각각 어떻게 지으셨어요?</b> 제일 아끼는 이름은요?</p></section>
-<section class="slide s-q is-core" data-blk="08">
-         <div class="corebadge"><span>오늘 이것만은</span><b>11</b><i>→ 라벨 5종·촬영 컷</i></div><div class="eyebrow">08 · 식탁 위의 술</div>
-         <p class="bigq">그중에 진짜 밀고 싶은 것 <b>세 개를 순서대로</b> 꼽으면요? 그 순서인 이유는요?</p><div class="note"><span class="nl">내부</span>라벨 리뉴얼 5종과 촬영 제품 컷이 여기서 갈린다</div></section>
-<section class="slide s-q" data-blk="08">
-         <div class="eyebrow">08 · 식탁 위의 술</div>
-         <p class="bigq">전체를 <b>대표님은 머릿속에서 어떻게 묶고</b> 계세요? 나누는 기준이 있어요?</p><div class="note"><span class="nl">내부</span>기준이 하나로 나오면 그게 곧 SKU 위계다. 안 나오면 우리가 3안을 만들어 온다</div></section>
-<section class="slide s-q" data-blk="08">
-         <div class="eyebrow">08 · 식탁 위의 술</div>
-         <p class="bigq">백경이 <b>제일 어울리는 한 접시</b>를 꼽으면요? 한식 말고 <b>양식에서</b>도 하나요.</p><div class="note"><span class="nl">내부</span>"식탁 위의 술"을 증명할 페어링 콘텐츠의 출발점</div></section>
-<section class="slide s-q" data-blk="08">
-         <div class="eyebrow">08 · 식탁 위의 술</div>
-         <p class="bigq"><b>두 번 이상 사신 분들</b>, 왜 다시 샀대요?</p><div class="note"><span class="nl">내부</span>백경의 유일한 A급 자산 후보가 재구매 고객이다</div></section>
+     <div class="dv-body"><div class="eyebrow">채널 · 마진 · 생산능력</div><h2 class="dv-h">유통과 수익</h2><p class="dv-l">브랜딩 결정은 결국 여기서 검증된다. 월 1만 병 · 작년 4억 · 올해 10억 예상. <b>어느 채널이 남고 무엇이 생산을 막는지</b>를 받는다.</p></div></section>
 <section class="slide s-qs" data-blk="08">
-         <div class="eyebrow">08 · 식탁 위의 술 <span class="pg">이어서</span></div>
-         <ul class="qs"><li><p><b>해외 바이어가 제일 좋아한 게 블랙</b>이라고 하셨는데, 왜 블랙이었을까요? 뭐라고들 하시던가요?</p></li><li><p>백경이 <b>제일 어울리는 순간</b>은 언제예요? 대표님은 언제 드세요?</p></li><li><p>제일 기억에 남는 손님이 있어요? 어떤 분이었어요?</p></li></ul></section>
+         <div class="eyebrow">08 · 유통과 수익 <span class="pg">1/2</span></div>
+         <ul class="qs"><li><p>매출이 어디서 나와요? 채널별 비중이 어떻게 돼요?</p></li><li class="k"><p><span class="star">★</span>그중에 <b>제일 남는 채널</b>은 어디고, <b>제일 안 남는 데</b>는요?</p><div class="note"><span class="nl">내부</span>면세점 · 백화점은 들어가 있는 것과 남는 것이 다르다</div></li><li><p>가격은 어떻게 정하셨어요? 올릴 수 있다고 보세요?</p></li></ul></section>
 <section class="slide s-qs" data-blk="08">
-         <div class="eyebrow">08 · 식탁 위의 술 <span class="pg">이어서</span></div>
-         <ul class="qs"><li><p>손님이 백경 대신 뭘 살 것 같으세요 — <b>위스키요, 사케요, 다른 전통주요?</b></p><div class="note"><span class="nl">내부</span>"위스키·사케"라고 답하시면 선물 포지션이 이미 잡힌 것</div></li></ul></section>
+         <div class="eyebrow">08 · 유통과 수익 <span class="pg">2/2</span></div>
+         <ul class="qs"><li><p><b>BTS 술 OEM</b>이 월 5천만 원인데 백경 이름이 안 나갑니다. 이게 언제까지 괜찮으세요?</p><div class="note"><span class="nl">내부</span>상대가 공식 노출을 거부한 상태. 자산이냐 종속이냐가 갈리는 자리다. 조심스럽게 연다</div></li><li><p><b>캐나다 코스트코</b>를 물량 때문에 놓치셨는데, 생산이 지금 뭘 막고 있어요?</p></li><li><p>월 1만 병에서 3만 병으로 갈 때 제일 먼저 필요한 게 뭐예요?</p><div class="note"><span class="nl">내부</span>28년 2공장 · 중국산 설비 10억 · 농촌진흥청 20억 지원을 노리는 그림</div></li></ul></section>
 <section class="slide s-div" data-blk="09">
      <div class="ghost">09</div>
-     <div class="dv-body">
-       <div class="eyebrow">성공 정의 · 금기</div>
-       <h2 class="dv-h">11월 30일</h2>
-       <p class="dv-l">이미 월 1억이 나오고 면세점 · 백화점에 들어가 있다. 그러니 성과 정의를 매출로 잡으면 우리가 한 일이 안 보인다. <b>되돌릴 수 없는 결정 N건 + 인수인계 가능한 문서 N장</b>으로 합의한다.</p>
-     </div></section>
-<section class="slide s-q is-core" data-blk="09">
-         <div class="corebadge"><span>오늘 이것만은</span><b>12</b><i>→ 성과 정의</i></div><div class="eyebrow">09 · 11월 30일</div>
-         <p class="bigq">11월 30일에 뭐가 손에 있으면 <b>"이거 하길 잘했다"</b> 싶으실까요? 그중에 <b>제일 급한 하나</b>만 고르면요?</p></section>
-<section class="slide s-q" data-blk="09">
-         <div class="eyebrow">09 · 11월 30일</div>
-         <p class="bigq">백경이 <b>절대 되면 안 되는 모습</b>이 있어요?</p></section>
+     <div class="dv-body"><div class="eyebrow">11월 30일 · 그 다음</div><h2 class="dv-h">목표와 우려</h2><p class="dv-l">이미 월 1억이 나오고 면세점 · 백화점에 들어가 있다. 성과를 매출로 잡으면 우리가 한 일이 안 보인다. <b>되돌릴 수 없는 결정 N건 + 인수인계 가능한 문서 N장</b>으로 합의한다.</p></div></section>
 <section class="slide s-qs" data-blk="09">
-         <div class="eyebrow">09 · 11월 30일 <span class="pg">이어서</span></div>
-         <ul class="qs"><li><p>내년 이맘때 백경이 어디에 가 있어야 해요? <b>미국 진출이 그 답인가요?</b></p></li><li><p>저희한테 <b>딱 하나만 시킬 수 있다면</b> 뭘 시키시겠어요?</p></li><li><p>지금까지 마케팅 맡겨보신 적 있으세요? 어떤 점이 아쉬우셨어요?</p></li></ul></section>
+         <div class="eyebrow">09 · 목표와 우려 <span class="pg">1/3</span></div>
+         <ul class="qs"><li class="k"><p><span class="star">★</span><b>11월 30일에 뭐가 손에 있으면</b> "이거 하길 잘했다" 싶으실까요? 그중 제일 급한 하나만 고르면요?</p><div class="note"><span class="nl">내부</span>부회장님 기준의 성과는 「농식품부 R&D 신청이 가능한 브랜드 서사 한 벌」일 수 있다. 100% 국산 원물 요건은 백경이 이미 충족한다(직접 농사 12품종)</div></li><li class="k"><p><span class="star">★</span>리브랜딩에서 <b>절대 바뀌면 안 되는 것</b>은요? 반대로 <b>꼭 바꾸고 싶은 것</b>은요?</p></li><li><p>그동안 쌓인 자산 중에 제일 <b>아까운(안 쓰이는)</b> 게 뭐예요?</p></li></ul></section>
 <section class="slide s-qs" data-blk="09">
-         <div class="eyebrow">09 · 11월 30일 <span class="pg">이어서</span></div>
-         <ul class="qs"><li><p>사내에서 콘텐츠나 디자인 맡고 계신 분들, 지금 뭘 만들고 계세요? 뭘 기준으로 만드세요?</p><div class="note"><span class="nl">내부</span>"왜 안 되고 있냐"가 아니라 "지금 어떻게 굴러가냐"로 묻는다. 그분이 그 자리에 앉아 있을 수 있다</div></li></ul></section>
+         <div class="eyebrow">09 · 목표와 우려 <span class="pg">2/3</span></div>
+         <ul class="qs"><li><p>10년 뒤 백경을 화면 하나로 그려주시면요?</p></li><li><p>대표님 다음은 누가 이어요? 생각해 보신 적 있으세요?</p></li></ul></section>
+<section class="slide s-qs" data-blk="09">
+         <div class="eyebrow">09 · 목표와 우려 <span class="pg">3/3</span></div>
+         <ul class="qs"><li class="k"><p><span class="star">★</span>이번 프로젝트에서 <b>꼭 얻고 싶은 것 하나</b>는요?</p></li><li class="k"><p><span class="star">★</span><b>가장 걱정되는 것 하나</b>는요?</p></li><li><p>저희한테 딱 하나만 시킬 수 있다면 뭘 시키시겠어요?</p></li></ul></section>
 <section class="slide s-check">
  <div class="eyebrow">논의하지 않는다 · 안 정해지면 "언제까지"만 받는다</div>
  <h2 class="ttl">일어나기 전에 — <b>날짜와 이름만</b></h2>
- <ul class="check"><li><b>패키지 확정일</b><span>이 날짜에서 브랜드 필름 촬영일이 역산된다</span></li><li><b>9/8 제품 촬영</b><span>현행 패키지 기준 · 장소 · 준비할 제품 · 백경 측 참석자</span></li><li><b>제품 실물</b><span>라벨 리뉴얼 후보 포함 · 촬영 2주 전까지</span></li><li><b>라벨 5종</b><span>살아 있는 전 품목 중 어느 다섯 · 표시사항 변경 신고 담당자</span></li><li><b>브랜드 자산 원본</b><span>도올 친필 · 옛 사진 · 집안 기록 · 기존 촬영 원본 · 누가 갖고 있는지</span></li><li><b>계정 권한</b><span>인스타 · 자사몰 · 유튜브 · 스마트스토어 · GA · 이번 주 내</span></li><li><b>수상 · 인증 증빙</b><span>IWSC 2026 원본 · 그 외 수상 · HACCP · ISO 22000 · 인증수출자</span></li><li><b>해외 일정 날짜</b><span>파리 9/26~28 · 홍콩 9/30 · 오스트리아 출국 10/19와 <u>귀국일</u> · 미국</span></li><li><b>사내 담당자 1인</b><span>자료 시트를 채우고 · 촬영 현장에 나오고 · 11월에 인수인계를 받을 사람</span></li><li><b>정산 증빙</b><span>사업자등록증 · 법인등기부등본 · 비교견적서 2부 · 통장사본 · 과업지시서</span></li><li><b>창구</b><span>정기 미팅 요일 · 양측 담당자 · 정산 담당자 · 홈페이지 개발 주체는 10월에</span></li></ul></section>
+ <ul class="check"><li><b>패키지 확정일</b><span>이 날짜에서 브랜드 필름 촬영일이 역산된다</span></li><li><b>9/8 제품 촬영</b><span>촬영 리스트 13종 + 여유 2 · 장소 · 백경 측 참석자</span></li><li><b>제품 실물</b><span>엔트리 5종 우선 · 촬영 2주 전까지</span></li><li><b>라벨 5종</b><span>엔트리 5종으로 갈지 확정 · 표시사항 변경 신고 담당자</span></li><li><b>브랜드 자산 원본</b><span>도올 친필 · 옛 사진 · 집안 기록 · 기존 촬영 원본 · 누가 갖고 있는지</span></li><li><b>계정 권한</b><span>인스타 · 자사몰 · 유튜브 · 스마트스토어 · GA · 이번 주 내</span></li><li><b>수상 · 인증 증빙</b><span>IWSC 2026 원본 · 그 외 수상 · HACCP · ISO 22000 · 인증수출자</span></li><li><b>해외 일정 날짜</b><span>파리 9/26~28 · 홍콩 9/30 · 오스트리아 출국 10/19와 <u>귀국일</u> · 미국</span></li><li><b>사내 담당자 1인</b><span>자료 시트를 채우고 · 촬영 현장에 나오고 · 11월에 인수인계를 받을 사람</span></li><li><b>정산 증빙</b><span>사업자등록증 · 법인등기부등본 · 비교견적서 2부 · 통장사본 · 과업지시서</span></li><li><b>창구</b><span>정기 미팅 요일 · 양측 담당자 · 정산 담당자 · 홈페이지 개발 주체는 10월에</span></li></ul></section>
 <section class="slide s-end">
  <div class="end-mark">白鯨</div>
  <h2 class="end-h">오늘 받은 말은<br><b>하나도 버리지 않는다</b></h2>
  <p class="end-p">녹취 → 48시간 내 정리본 회신 → 촬영 콘티 · 라벨 카피 · 홈페이지 문장의 원본</p>
- <div class="end-f">백경증류소 × HIZ BRANDRISE · 딥 인터뷰 v5 · PM 우성민</div></section>
+ <div class="end-f">백경증류소 × HIZ BRANDRISE · 심층 인터뷰 v6 · PM 우성민</div></section>
 </div></div>
 
 <div id="hud"><div id="bar"><i id="fill"></i></div></div>
