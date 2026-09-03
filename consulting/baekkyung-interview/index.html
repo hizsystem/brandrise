@@ -296,14 +296,25 @@ body.notes .s-qs:has(.qs li:nth-child(4)){justify-content:flex-start;padding-top
 .s-qs:has(.qs li:nth-child(4)) .qs li{padding:16px 0}
 .s-qs:has(.qs li:nth-child(4)) .qs li p{font-size:22px;line-height:1.5}
 body.notes .s-qs:has(.qs li:nth-child(4)) .note{font-size:13.5px;margin-top:9px}
-.qs li.k{position:relative;padding-left:22px}
-.qs li.k::before{content:'';position:absolute;left:0;top:26px;bottom:14px;width:2px;
+/* ★ 핵심 표시 = 인터뷰어용. 노트 ON 또는 인쇄일 때만 보인다 */
+.star{display:none}
+body.notes .qs li.k{position:relative;padding-left:22px}
+body.notes .qs li.k::before{content:'';position:absolute;left:0;top:26px;bottom:14px;width:2px;
   background:linear-gradient(180deg,#cfdae3,rgba(207,218,227,.12))}
-.qs li:first-child.k::before{top:8px}
-.qs li.k p{color:#fff}
-.star{display:inline-block;font-size:11px;letter-spacing:.14em;color:#9fb0bd;
+body.notes .qs li:first-child.k::before{top:8px}
+body.notes .qs li.k p{color:#fff}
+body.notes .star{display:inline-block;font-size:11px;letter-spacing:.14em;color:#9fb0bd;
   border:1px solid rgba(190,212,228,.3);border-radius:2px;padding:2px 7px;margin-right:10px;
   vertical-align:3px;background:rgba(190,212,228,.06)}
+@media print{
+  .star{display:inline-block!important;font-size:11px;letter-spacing:.14em;color:#9fb0bd;
+    border:1px solid rgba(190,212,228,.3);border-radius:2px;padding:2px 7px;margin-right:10px;
+    vertical-align:3px;background:rgba(190,212,228,.06)}
+  .qs li.k{position:relative;padding-left:22px}
+  .qs li.k::before{content:'';position:absolute;left:0;top:26px;bottom:14px;width:2px;
+    background:linear-gradient(180deg,#cfdae3,rgba(207,218,227,.12))}
+  .qs li.k p{color:#fff}
+}
 /* 인트로 */
 .s-intro{justify-content:center}
 .intro-h{position:relative;z-index:2;font-size:56px;line-height:1.24;font-weight:800;letter-spacing:-.035em;margin-bottom:38px;
