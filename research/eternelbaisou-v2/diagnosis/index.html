@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>éternelbysu (에떼르넬바이수) 브랜드 진단서 | BRANDRISE</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.75;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:16.5px}
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 42%,#4338ca 100%);color:#fff;padding:60px 0 48px;position:relative;overflow:hidden}
+.hero::after{content:"DIAGNOSIS";position:absolute;right:-2%;bottom:-18%;font-size:clamp(140px,20vw,320px);font-weight:800;letter-spacing:-.04em;color:#fff;opacity:.05;line-height:.8;pointer-events:none}
+.hero .in{max-width:960px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero .sub{font-size:15.5px;color:#cbd5e1;font-weight:300;max-width:680px;line-height:1.75}
+.hero .meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.wrap{max-width:960px;margin:0 auto;padding:36px 40px 100px;counter-reset:sec}
+section{margin-bottom:50px;scroll-margin-top:24px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+h2{font-size:34px;font-weight:800;letter-spacing:-.025em;margin-bottom:6px}
+.lead{font-size:18px;color:var(--ink2);margin-bottom:20px;line-height:1.7}
+h3{font-size:20px;font-weight:800;margin:24px 0 12px;color:var(--ink);letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.co{border:1px solid var(--line2);border-left:3px solid var(--line);border-radius:0 10px 10px 0;padding:18px 24px;margin:14px 0;font-size:16px;line-height:1.8;text-wrap:pretty}
+.co.ac{background:var(--ac-50);border-left-color:var(--ac)} .co.ok{background:var(--ok-50);border-left-color:var(--ok)}
+.co.warn{background:var(--warn-50);border-left-color:var(--warn)} .co.bad{background:var(--bad-50);border-left-color:var(--bad)}
+.co b,.co strong{color:var(--ink);font-weight:600}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
+.t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
+.t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0 4px}
+th{background:var(--soft);color:var(--ink2);font-weight:700;text-align:left;padding:10px 12px;font-size:12.5px;border-bottom:1px solid var(--line)}
+td{padding:11px 12px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b,td strong{color:var(--ink)}
+.verdict{background:var(--ink);color:#fff;border-radius:14px;padding:30px 28px;text-align:center;margin:14px 0}
+.verdict .vl{font-size:12px;color:#94a3b8;font-weight:600;letter-spacing:.1em}
+.verdict .vv{font-size:23px;font-weight:800;letter-spacing:-.01em;margin:12px 0;line-height:1.5}
+.verdict .vv em{font-style:normal;color:#a5b4fc}
+.verdict .vd{font-size:14.5px;color:#cbd5e1;line-height:1.75}
+.chs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 4px}
+.ch{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 18px;text-align:center}
+.ch.own{border:2px solid var(--ac);background:var(--ac-50)}
+.ch .cn{font-weight:700;font-size:13.5px;margin-bottom:4px}
+.ch .cv{font-size:25px;font-weight:800;color:var(--ac);margin:8px 0;letter-spacing:-.02em}
+.ch .cd{font-size:13px;color:var(--muted);line-height:1.6}
+.moat{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 4px}
+.mo{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+.mo h4{font-size:14px;font-weight:800;margin-bottom:6px}
+.mo p{font-size:13.5px;color:var(--muted);line-height:1.7}
+.mo .flag{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--ac)}
+.steps{display:flex;gap:14px;margin:18px 0 4px;overflow-x:auto}
+.st{flex:1;min-width:180px;padding:20px 18px;background:var(--soft);border:1px solid var(--line);border-radius:12px;position:relative}
+.st.on{background:var(--ac);border-color:var(--ac)}
+.st:not(:last-child)::after{content:"›";position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--ac);font-weight:800;z-index:1}
+.st .sn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.05em;margin-bottom:6px}
+.st.on .sn{color:rgba(255,255,255,.85)}
+.st .stt{font-size:14.5px;font-weight:800;color:var(--ink)}
+.st.on .stt{color:#fff}
+.st .sd{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.65}
+.st.on .sd{color:rgba(255,255,255,.9)}
+.lever{background:var(--ink);color:#fff;border-radius:14px;padding:30px 28px;margin:14px 0}
+.lever .lq{font-size:19px;font-weight:700;line-height:1.6;text-align:center}
+.lever .lq em{font-style:normal;color:#a5b4fc}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.9}
+
+/* ===== veggiet DNA 이식 (인디고 클린) — 가산 컴포넌트 ===== */
+/* 1) 에디토리얼 커버: h1 형광 언더라인 + 반응형 클램프 */
+.hero h1{font-size:clamp(38px,4.8vw,56px);line-height:1.08}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
+
+/* 2) 인라인 미니 목차 (hero 아래 — 박스/메뉴바 느낌 제거, 얇은 텍스트 한 줄) */
+.minitoc{max-width:960px;margin:0 auto;padding:18px 40px 0;font-size:12.5px;color:var(--muted);letter-spacing:.01em}
+.minitoc a{color:var(--ink2);text-decoration:none;font-weight:700;transition:.15s}
+.minitoc a:hover{color:var(--ac)}
+.minitoc .sep{color:var(--line);margin:0 9px;font-weight:400}
+
+/* 4) evidence 박스 (데이터 근거 스샷/증빙) */
+.evi{border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:14px 0}
+.evi .eh{padding:11px 16px;font-size:12.5px;font-weight:800;background:var(--soft);border-bottom:1px solid var(--line);color:var(--ink2)}
+.evi img{display:block;width:100%;height:auto}
+.evi .en{padding:9px 16px;font-size:12px;color:var(--muted);border-top:1px dashed var(--line)}
+
+/* 5) layer 스택 (이름|기간|설명 가로 레이어) */
+.stack{display:flex;flex-direction:column;gap:8px;margin:14px 0}
+.layer{display:grid;grid-template-columns:130px 150px 1fr;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.layer .ln{padding:14px 16px;font-weight:800;font-size:14px;background:var(--ac-50);color:var(--ac-700);display:flex;align-items:center}
+.layer .lp{padding:14px 12px;font-size:12.5px;font-weight:700;color:var(--ink2);display:flex;align-items:center;border-left:1px dashed var(--line);border-right:1px dashed var(--line)}
+.layer .ld{padding:14px 18px;font-size:13px;color:var(--ink2);display:flex;align-items:center}
+
+/* 6) 역할/팩트 카드 그리드 */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
+.fcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
+.fcard .fk{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.fcard .fv{font-size:16px;font-weight:800;color:var(--ink)}
+
+/* ★ 병목 진단 카드 (표→카드, 번호↔견적블록 대응 유지) */
+.bn{display:flex;flex-direction:column;gap:10px;margin:14px 0 4px}
+.bcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 22px;
+  display:grid;grid-template-columns:48px 1fr auto;gap:0 18px;align-items:start}
+.bcard .bnum{grid-row:1/3;width:40px;height:40px;border-radius:11px;background:var(--ac-50);color:var(--ac-700);
+  font-size:18px;font-weight:800;display:flex;align-items:center;justify-content:center;letter-spacing:-.02em}
+.bcard.crit .bnum{background:var(--bad-50);color:var(--bad)}
+.bcard .bh{font-size:14.5px;font-weight:800;color:var(--ink);letter-spacing:-.01em;align-self:center}
+.bcard .bsev{align-self:center}
+.bcard .bd{grid-column:2/4;font-size:13.5px;color:var(--ink2);line-height:1.68;margin-top:6px}
+.bcard .bmap{grid-column:2/4;margin-top:10px;font-size:11.5px;font-weight:700;color:var(--ac);
+  display:inline-flex;align-items:center;gap:6px}
+
+/* ★ v2-② 리서치 캡처 이미지 슬롯 (데이터 근거 — 진단서 핵심 비주얼) */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:16px 0 6px}
+.shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.shot .sk{display:flex;align-items:center;gap:7px;padding:9px 13px;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--ac);background:var(--ac-50);border-bottom:1px solid var(--ac-100)}
+.shot .sk::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--ac)}
+.shot .sfig{aspect-ratio:16/10;background:var(--soft);display:block;width:100%;object-fit:cover}
+.shot .sph{aspect-ratio:16/10;background:repeating-linear-gradient(45deg,var(--soft),var(--soft) 10px,#f0f3f8 10px,#f0f3f8 20px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted);text-align:center;padding:14px}
+.shot .sph .ic{font-size:22px;opacity:.5}
+.shot .sph .pl{font-size:12px;font-weight:700;color:var(--ink2)}
+.shot .scap{padding:10px 14px;font-size:12px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line2)}
+.shot .scap b{color:var(--ink2)}
+
+/* ★ v2-③ 디자인·가독성 격상 (인디고 토큰 내) */
+section{margin-bottom:64px;counter-increment:sec;border-top:2px solid var(--ink);padding:34px 0 0 108px;position:relative}  /* 섹션 호흡 ↑ + 에디토리얼 챕터(좌측 마진 번호) */
+section:first-of-type{border-top:none;padding-top:0}
+.sec-k{display:inline-block;background:var(--ac-50);border:1px solid var(--ac-100);border-radius:7px;padding:4px 10px}  /* sec-k 칩화 */
+.sec-k::before{content:counter(sec,decimal-leading-zero);position:absolute;left:0;top:30px;font-size:62px;font-weight:800;color:var(--ac);letter-spacing:-.04em;line-height:.9;font-variant-numeric:tabular-nums}  /* 좌측 여백 마진 번호 */
+.wrap>section:first-of-type .sec-k::before{top:0}
+h2{line-height:1.28}
+h3{letter-spacing:-.01em}
+table{margin:10px 0 6px}
+th{padding:13px 15px}
+td{padding:13px 15px}
+tbody tr:nth-child(even) td{background:var(--soft)}            /* zebra */
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.co.ac.band{display:block;text-align:left}                    /* 풀폭 결론 밴드 */
+.co.ac.band .lab{color:var(--ac)}
+
+@media(max-width:880px){
+  .minitoc{padding:14px 22px 0;line-height:2}
+  section{padding-left:0!important}
+  .sec-k::before{position:static;display:block;margin-bottom:4px;top:auto}
+  .shots{grid-template-columns:1fr}.wrap{padding:28px 22px 80px}.hero .in{padding:0 22px}.hero h1{font-size:28px}.chs,.moat,.grid2,.grid3{grid-template-columns:1fr}.steps{flex-direction:column}.st:not(:last-child)::after{content:"";display:none}
+  .layer{grid-template-columns:110px 1fr}
+  .layer .lp{border-right:none}
+  .layer .ld{grid-column:1/3;border-top:1px dashed var(--line)}
+  .bcard{grid-template-columns:40px 1fr}
+  .bcard .bsev{grid-column:2/3;justify-self:start;margin-top:4px}
+  .bcard .bd,.bcard .bmap{grid-column:1/3}}
+@media print{
+  body{background:#fff}
+  .hero,.verdict,.lever,.st.on,.ch.own,.t,.co{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section{page-break-inside:avoid}
+  .evi,.layer,.fcard,.bcard,.shot,.shots,.co{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="in">
+  <div class="badge">BRAND STRATEGY DIAGNOSIS · 1차 전략 진단</div>
+  <h1>éternelbysu (에떼르넬바이수) 브랜드 <span class="hl">진단서</span></h1>
+  <div class="sub">구성으로는 차별이 서지 않는다 — <b style="color:#fff">순서와 시간, 그리고 그것을 설계한 사람</b>.</div>
+  <div class="meta">
+    <span class="chip">수신 <b>에떼르넬바이수 김수진 대표</b></span>
+    <span class="chip">작성 <b>브랜드라이즈 by HIZ</b></span>
+    <span class="chip">기준일 <b>2026-09-11</b></span>
+    <span class="chip">근거 <b>상담 + 공개 리서치</b></span>
+  </div>
+</div></div>
+
+<div class="minitoc">
+  <a href="#core">핵심 진단</a><span class="sep">·</span><a href="#structure">가격 구조</a><span class="sep">·</span><a href="#bottleneck">병목 진단</a><span class="sep">·</span><a href="#asset">숨은 자산</a><span class="sep">·</span><a href="#next">다음 단계</a><span class="sep">·</span><a href="#lever">레버리지</a>
+</div>
+
+<div class="wrap">
+
+  <section id="core">
+    <div class="sec-k">CORE DIAGNOSIS</div>
+    <h2>핵심 진단 한 줄</h2>
+    <div class="verdict">
+      <div class="vl">CORE DIAGNOSIS</div>
+      <div class="vv">이 브랜드의 과제는 <em>"제품을 더 잘 만드는 것"이 아니라<br>"이 3분을 왜 매일 하는지"를 문장과 증거로 만드는 것</em>이다.</div>
+      <div class="vd">오일도, 아로마 스톤도, 괄사도, 가이드도 이미 시장에 다 있다. 같은 구성이 국내에서 26,900원에 팔린다.<br><b style="color:#fff">남는 차별점은 순서와 시간, 그리고 그것을 설계한 사람</b>이다.</div>
+    </div>
+  </section>
+
+  <section id="structure">
+    <div class="sec-k">STRUCTURE</div>
+    <h2>가격 구조 해부 — 첫 시장이 곧 판가다</h2>
+    <p class="lead">"같은 구성"이 어디에서 얼마에 팔리는지가 첫 시장 결정을 좌우합니다. 국내와 글로벌 사이가 세 배 넘게 벌어져 있습니다.</p>
+    <div class="chs">
+      <div class="ch">
+        <div class="cn">국내 · 오일+괄사 세트</div>
+        <div class="cv">2.7~4.1만</div>
+        <div class="cd">아떼 뉴아워 리추얼 테라피 키트 26,900원(컬리) · 아로마티카 바디오일+괄사 40,800원. 최소 네 곳이 이 구간에 있다.</div>
+      </div>
+      <div class="ch">
+        <div class="cn">국내 · 편집숍 리추얼 키트</div>
+        <div class="cv">6.8만</div>
+        <div class="cd">챕터원이 리추얼 키트를 카테고리로 취급. 브랜드 온도(ONDO), 스머지+크리스탈 구성.</div>
+      </div>
+      <div class="ch own">
+        <div class="cn">글로벌 · 프리미엄 괄사 세트</div>
+        <div class="cv">$98~150</div>
+        <div class="cd">Mount Lai $99 · YINA $98 · Lanshin $108 · Odacité $130 · Blissoma $150. <b style="color:var(--ac)">첫 시장을 어디로 잡느냐가 판가를 정한다.</b></div>
+      </div>
+    </div>
+    <div class="co ac band"><span class="lab">수치 출처 · 2026-09-11 직접 확인</span>위 국내 가격은 <b>각 브랜드 판매 페이지에서 직접 확인</b>한 값입니다(컬리·자사몰·편집숍). 글로벌은 각 브랜드 공식몰 기준. <b>국내를 첫 시장으로 잡으면 지금 구성의 판가는 3~7만원 구간에서 형성</b>되고, 그 이상을 받으려면 소재·마감 또는 판매처가 달라져야 합니다. 이 판단은 제조 원가와 MOQ가 나온 뒤 확정합니다.</div>
+  </section>
+
+  <section id="bottleneck">
+    <div class="sec-k">BOTTLENECKS</div>
+    <h2>4대 병목 진단</h2>
+    <p class="lead">제품은 이미 움직이고 있습니다(샘플 수정 중, 스톤 공장 협의 중). 비어 있는 것은 그 다음입니다. 심각도 순 — 번호는 견적서 항목과 대응.</p>
+    <div class="bn">
+      <div class="bcard crit">
+        <div class="bnum">1</div>
+        <div class="bh">첫 제품 범위가 아직 안 닫혔다</div>
+        <div class="bsev"><span class="t r">Critical</span></div>
+        <div class="bd">구성품 다섯 가지 중 무엇을 1차에 넣을지 미확정. 괄사용 오일을 따로 둘지, 크림류 히어로 제품을 추가할지가 열려 있다(대표 상담 발언). 이 결정이 안 나면 패키지 범위도 제조사 견적도 고정되지 않는다.</div>
+        <div class="bmap">→ 견적서 항목 ①에 대응</div>
+      </div>
+      <div class="bcard crit">
+        <div class="bnum">2</div>
+        <div class="bh">구성만으로는 차별이 서지 않는다</div>
+        <div class="bsev"><span class="t r">Critical</span></div>
+        <div class="bd">괄사에 아로마 오일을 묶은 키트는 국내외에 이미 많다. 국내 최저 26,900원, 글로벌 프리미엄 $98~150. 다만 <b>그 세트 중 호흡을 사용 순서에 넣은 곳은 확인 범위에서 한 곳도 없었다.</b> 국내 1위 유사 제품조차 사용법이 "롤링하고 마사지하라"에서 끝난다.</div>
+        <div class="bmap">→ 견적서 항목 ②에 대응</div>
+      </div>
+      <div class="bcard">
+        <div class="bnum">3</div>
+        <div class="bh">한 번 사면 다시 살 게 없다</div>
+        <div class="bsev"><span class="t y">High</span></div>
+        <div class="bd">구성품 다섯 중 소모품은 오일 하나뿐. 스톤과 괄사는 내구재, 가이드와 사운드는 무한 재사용. 대표도 이 한계를 알고 있고 바디·룸스프레이 2차 확장으로 답했으나, 지금 구성 안에서의 리필 구조는 아직 설계되지 않았다.</div>
+        <div class="bmap">→ 견적서 항목 ③에 대응</div>
+      </div>
+      <div class="bcard">
+        <div class="bnum">4</div>
+        <div class="bh">온라인에서 파는 구조가 아직 없다</div>
+        <div class="bsev"><span class="t y">High</span></div>
+        <div class="bd">자사몰이 없고 도메인도 비어 있다. 인스타는 꽃 콘텐츠 기준으로 운영돼 왔고 블로그 사업 포스팅은 연 한두 건이다. 제품이 나와도 도달시킬 경로가 아직 없다는 뜻이다.</div>
+        <div class="bmap">→ 견적서 범위 밖 · 출시 후 단계</div>
+      </div>
+    </div>
+    <div class="co ac band"><span class="lab">병목 결론</span>네 병목의 공통 뿌리는 <b>"제품이 약하다"가 아니라 "출시 시점이 정해지지 않았다"</b>입니다. 외부 마감이 없으면 완성도를 높이는 쪽으로 계속 미뤄집니다. <b>출시 목표 월을 먼저 못 박는 것</b>이 나머지 결정을 전부 푸는 열쇠입니다.</div>
+  </section>
+
+  <section id="asset">
+    <div class="sec-k">HIDDEN ASSET</div>
+    <h2>가장 큰 자산이 가장 안 보인다 — 연구자 이력</h2>
+    <p class="lead">경쟁 브랜드의 뿌리는 조향이거나 전통의학입니다. 생리학에 기반한 브랜드는 이 카테고리에서 거의 없습니다. 그런데 그 이력이 지금 브랜드 어디에도 보이지 않습니다.</p>
+    <div class="moat">
+      <div class="mo"><h4>제약공학 학사 · 의과학 석사 · 병원 연구원</h4><p>호흡과 자율신경을 다루는 언어를 쓸 수 있는 배경. 경쟁 브랜드는 향을 말하지 몸의 반응을 말하지 못한다.</p><span class="flag">→ 현재 노출: 없음</span></div>
+      <div class="mo"><h4>책임판매관리자 자격 요건 충족</h4><p>화장품법 시행규칙 제8조③ — 상시근로자 10명 이하면 대표가 직접 겸직 가능하고 요건이 이공계 학사 이상이다. 인체용 제품으로 갈 때 남들은 사람을 채용해 푸는 문제를 본인으로 푼다.</p><span class="flag">→ 초기 브랜드에 드문 조건</span></div>
+      <div class="mo"><h4>플라워 스튜디오 6년 10개월</h4><p>제품 기획부터 제작·고객 응대·공간·패키지까지 혼자 돌려본 경험. 그리고 그 7년간 만난 고객 명단이 첫 100명이 될 수 있다.</p><span class="flag">→ 브랜드에 미연결</span></div>
+      <div class="mo"><h4>호흡이라는 빈칸</h4><p>괄사 키트 아홉 종과 국내 유사 제품을 확인한 결과, 호흡을 사용 순서에 넣은 곳이 없었다. 생리학 배경이 있어야 설계 가능한 자리다.</p><span class="flag">→ 유일하게 남은 구성 차별점</span></div>
+    </div>
+    <div class="co bad"><span class="lab">지금 가장 조심할 것 — 카피 한 줄이 트랙을 바꾼다</span>
+      오일을 <b>"공간용"으로 두면 방향제</b>이고, <b>"피부에 바르세요"가 한 줄 붙으면 화장품</b>이 되어 책임판매업 등록이 필요해집니다. 괄사에 <b>혈액순환·림프·부기·리프팅·통증 표현을 쓰면 의료기기 오인 광고</b>가 됩니다. 안전한 표현은 "얼굴 마사지 · 결 정돈 · 이완"입니다. 아로마 스톤은 <b>무향으로 납품받아야</b> 규제 밖 잡화로 남습니다.<br>
+      이 세 줄을 지키면 신고 대상은 오일 한 건뿐이고, 싱가포르에서는 화장품·의료기기 규제 양쪽 밖에 서며 관세도 0%입니다. <b>규제가 진입을 막는 게 아니라 카피 한 줄이 막습니다.</b>
+    </div>
+  </section>
+
+  <section id="next">
+    <div class="sec-k">NEXT STEP</div>
+    <h2>이 진단을 결정으로 — 다음 단계</h2>
+    <p class="lead">지금 필요한 것은 더 많은 기획이 아니라 세 개의 숫자입니다. 그 숫자가 나오면 나머지가 한 번에 정해집니다.</p>
+    <div class="steps">
+      <div class="st on"><div class="sn">STEP 1 · 확정</div><div class="stt">첫 제품 범위와 출시 월</div><div class="sd">구성품 다섯 중 1차에 넣을 것을 고정하고 출시 목표 월을 못 박는다. 자체 원료 개발은 2차로 미룬다 — 처방·시험·신고를 다시 밟으면 1~2년이 밀린다.</div></div>
+      <div class="st"><div class="sn">STEP 2 · 디자인</div><div class="stt">로고 기준선 + 패키지</div><div class="sd">로고·컬러·폰트 기준을 먼저 세우고 패키지를 그 위에 얹는다. 카드와 홈페이지가 나중에 같은 기준을 쓰게 된다. (별첨 견적서)</div></div>
+      <div class="st"><div class="sn">STEP 3 · 증거</div><div class="stt">3분을 콘텐츠로, 공간을 레퍼런스로</div><div class="sd">제품이 없어도 아침 3분과 저녁 3분은 지금부터 찍을 수 있다. 창원·부산의 요가·필라테스 스튜디오 서너 곳에 먼저 깔아 "쓰고 있는 사진과 후기"를 만든다. 수출 상담에서 바이어가 가장 먼저 보는 페이지다.</div></div>
+    </div>
+    <div class="co warn"><span class="lab">필요한 것 (대표님 → HIZ)</span>① 제조사 견적과 MOQ ② 예상 판매가 ③ 출시 목표 월 ④ 상표 출원 여부<br><b>HIZ → 대표님:</b> 패키지·BI 견적서(별첨) · 정부지원사업 리스트와 마감일 · 구성품별 법적 분류 한 장</div>
+  </section>
+
+  <section id="lever">
+    <div class="lever">
+      <div class="lq">"조합은 누구나 따라 한다.<br>따라오지 못하는 것은 <em>순서와 시간</em>,<br>그리고 <em>그것을 설계한 사람</em>이다."</div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <b>BRANDRISE</b> by HIZ · Brand · IMC Consulting<br>
+  본 진단서는 2026-09-11 상담 및 공개 리서치 기반 <b>1차 전략 진단</b>입니다. 가격·규제 판단은 확인 시점 기준이며, 정량 확정은 제조 원가·MOQ 수령 후 이루어집니다.<br>
+  © 2026 브랜드라이즈 by HIZ · 비공개 — 수신처 제출용
+</footer>
+
+</body>
+</html>
