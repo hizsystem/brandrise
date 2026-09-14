@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  BRANDRISE PREP 통합표준 템플릿 v4 (정본 · 2026-07-01 정부지원사업 반영)   ║
+  ║  · 이 파일은 NGT 예시로 채워진 "살아있는 템플릿"이다. 복제 후 콘텐츠만 교체.  ║
+  ║  · §정부지원사업(GovFit) = govfit /api/recommend 상위5 스냅샷.            ║
+  ║    적합도≠자격 → 자격 실심사 판정열(부합/미달)+별개트랙 프레이밍 필수.       ║
+  ║    (생성 규칙: 스킬 references/page-build.md 참조)                        ║
+  ║  · 색/컴포넌트/레이아웃을 새로 만들지 말 것 — 인디고 단일 액센트·Pretendard·  ║
+  ║    좌측 sticky 목차 + 카드/콜아웃 스캔형 구조를 그대로 사용.                ║
+  ║  배포: research/{slug}/  (기존 prep 있으면 {slug}-v2)                    ║
+  ║  ── v3 변경(미팅 §3) ──                                                  ║
+  ║  ① §0 사업 단계(런칭전/런칭/매출드라이브) + 단계별 질문 세트(사전질의 대체)    ║
+  ║  ② USP 한 줄 상위 배치 / 니즈 용어 정리(SPIN·JTBD 제거, '가설' 라벨)        ║
+  ║  ③ 기회평가 점수표 약화 + 매출×15% envelope / ④ 3-Tier → 셀렉 매트릭스      ║
+  ║     (체크→화면 즉시 1차 견적 + 구글시트 빌더용 셀렉 복사) / ⑤ 녹음기반 상담    ║
+  ║     프로세스 / ⑥ 월 첫·마지막 주 재진단(남중) 운영룰                        ║
+  ║  ── PREP 원칙 ──                                                        ║
+  ║  ① 상담 전 문서 = 녹취록·랩업 절대 참고 금지. 진단/니즈/적합도는 "가설" 표기.  ║
+  ║  ② 직접 리서치 필수(자사몰·IG·네이버·사람인·글로벌 PR) → "참고 출처" 섹션에   ║
+  ║     ①클라이언트 제공 / ②직접 리서치(확인 날짜) 구분. 도구필요 메트릭=Apify 제안. ║
+  ╚══════════════════════════════════════════════════════════════════════╝
+-->
+
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>웨이브메트릭 (Wavemetric) — 텍스처드 헤어케어 NB 상담 준비 PREP | BRANDRISE</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.75;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:16.5px}
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 42%,#4338ca 100%);color:#fff;padding:84px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"PREP";position:absolute;right:-2%;bottom:-18%;font-size:clamp(160px,22vw,360px);font-weight:800;letter-spacing:-.04em;color:#fff;opacity:.05;line-height:.8;pointer-events:none}
+.hero .in{max-width:1360px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:42px;font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:14px}
+.hero .sub{font-size:16px;color:#cbd5e1;font-weight:300;max-width:700px;line-height:1.75}
+.hero .meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.hero .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.hero .lnk{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;text-decoration:none;padding:8px 15px;border-radius:9px;transition:.15s}
+.hero .lnk svg{width:14px;height:14px}
+.hero .lnk.store{background:#fff;color:var(--ink)}
+.hero .lnk.store:hover{background:#e2e8f0}
+.hero .lnk.sns{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.hero .lnk.sns:hover{background:rgba(255,255,255,.14)}
+.layout{max-width:1360px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:208px 1fr;gap:48px;align-items:start}
+nav.toc{position:sticky;top:28px;padding:36px 0;font-size:13.5px}
+nav.toc .nl{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--muted);margin:0 0 14px 12px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;border-left:2px solid transparent;transition:.15s;font-weight:500}
+nav.toc a:hover{color:var(--ink);background:var(--soft)}
+nav.toc a.on{color:var(--ac);background:var(--ac-50);border-left-color:var(--ac);font-weight:700}
+main{padding:36px 0 100px;min-width:0;counter-reset:sec}
+section{margin-bottom:54px;scroll-margin-top:24px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+h2{font-size:29px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+.lead{font-size:18px;color:var(--ink2);margin-bottom:32px;line-height:1.8;text-wrap:balance}
+h3{font-size:20px;font-weight:800;margin:34px 0 12px;color:var(--ink);letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.co{border:1px solid var(--line2);border-left:3px solid var(--line);border-radius:0 10px 10px 0;padding:18px 24px;margin:20px 0;font-size:16px;line-height:1.8;text-wrap:pretty}
+h2,h3{text-wrap:balance}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100);border-left-color:var(--ac)} .co.ok{background:var(--ok-50);border-color:#bbf7d0;border-left-color:var(--ok)}
+.co.warn{background:var(--warn-50);border-color:#fde68a;border-left-color:var(--warn)} .co.bad{background:var(--bad-50);border-color:#fecdd3;border-left-color:var(--bad)}
+.co b,.co strong{color:var(--ink);font-weight:600}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
+.t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
+.t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 4px}
+.kpi .k{background:var(--ink);color:#fff;border-radius:12px;padding:18px}
+.kpi .k.alt{background:var(--bad)}
+.kpi .lbl{font-size:11px;color:#94a3b8;font-weight:600;margin-bottom:4px}
+.kpi .k.alt .lbl{color:#fecdd3}
+.kpi .v{font-size:28px;font-weight:800;letter-spacing:-.02em}
+.kpi .s{font-size:11px;color:#cbd5e1;margin-top:3px;line-height:1.5}
+.kpi .k.alt .s{color:#fecdd3}
+.op{background:var(--ink);color:#fff;border-radius:16px;padding:30px}
+.op .opk{font-size:11px;font-weight:800;letter-spacing:.14em;color:#a5b4fc;margin-bottom:18px}
+.op .blk{margin-bottom:22px} .op .blk:last-child{margin-bottom:0}
+.op .bl{font-size:11px;font-weight:800;color:#a5b4fc;letter-spacing:.08em;margin-bottom:9px}
+.op .need{font-size:17px;font-weight:700;line-height:1.62}
+.op .need b{color:#c7d2fe}
+.op .need .ev{display:block;margin-top:11px;font-size:13.5px;font-weight:500;color:#cbd5e1;line-height:1.72}
+.op .need .ev b{color:#e2e8f0}
+.op .do{display:grid;gap:9px}
+.op .do .item{background:rgba(255,255,255,.06);border-left:3px solid var(--ac);padding:12px 15px;border-radius:0 8px 8px 0;font-size:13.5px;line-height:1.62;color:#e2e8f0}
+.op .do .item b{color:#c7d2fe}
+.op .offer{background:rgba(79,70,229,.24);border:1px solid var(--ac);border-radius:10px;padding:15px 18px;font-size:13.5px;line-height:1.7;color:#e9ecf5}
+.op .offer b{color:#c7d2fe}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0 4px}
+th{background:var(--soft);color:var(--ink2);font-weight:700;text-align:left;padding:9px 11px;font-size:12.5px;border-bottom:1px solid var(--line)}
+td{padding:9px 11px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b,td strong{color:var(--ink)}
+.q{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac);border-radius:10px;padding:16px 18px;margin-bottom:10px}
+.q .qn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.05em;margin-bottom:5px}
+.q .qt{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.65}
+.q .qi{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.6}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px;position:relative}
+.tier.rec{border:2px solid var(--ac);box-shadow:0 8px 24px -12px rgba(79,70,229,.4)}
+.tier .rb{position:absolute;top:-11px;left:18px;background:var(--ac);color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;padding:3px 11px;border-radius:9px}
+.tier .tn{font-size:12px;font-weight:800;color:var(--muted)}
+.tier .tt{font-size:12.5px;color:var(--muted);margin:2px 0 10px}
+.tier .tp{font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.tier .td{font-size:11.5px;color:var(--muted);margin-bottom:12px}
+.tier ul{list-style:none}
+.tier li{font-size:13px;color:var(--ink2);padding:4px 0 4px 15px;position:relative;line-height:1.55}
+.tier li::before{content:"›";position:absolute;left:0;color:var(--ac);font-weight:800}
+.tl{border-left:2px solid var(--line);padding-left:20px;margin:10px 0}
+.tl .ph{position:relative;padding:10px 0}
+.tl .ph::before{content:"";position:absolute;left:-26px;top:14px;width:9px;height:9px;border-radius:50%;background:var(--ac)}
+.tl .pt{font-size:12px;font-weight:800;color:var(--ac)}
+.tl .pb{font-size:13px;color:var(--ink2);margin-top:2px}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sw{border-radius:12px;padding:16px 18px;border:1px solid var(--line)}
+.sw h4{font-size:12.5px;font-weight:800;margin-bottom:8px}
+.sw.s{background:var(--ok-50)} .sw.s h4{color:var(--ok)}
+.sw.w{background:var(--bad-50)} .sw.w h4{color:var(--bad)}
+.sw.o{background:var(--ac-50)} .sw.o h4{color:var(--ac)}
+.sw.tt{background:var(--warn-50)} .sw.tt h4{color:var(--warn)}
+.sw li{font-size:13px;color:var(--ink2);margin-left:15px;padding:2px 0;line-height:1.5}
+.verdict{background:var(--ink);color:#fff;border-radius:14px;padding:24px;text-align:center;margin:14px 0}
+.verdict .vl{font-size:12px;color:#94a3b8;font-weight:600}
+.verdict .vv{font-size:34px;font-weight:800;letter-spacing:-.02em;margin:6px 0;color:#a5b4fc}
+.verdict .vd{font-size:13px;color:#cbd5e1}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px}
+footer .in{max-width:1360px;margin:0 auto;padding:0 40px}
+@media(max-width:880px){.layout{grid-template-columns:1fr;gap:0;padding:0 22px}nav.toc{display:none}.hero .in{padding:0 22px}.hero h1{font-size:30px}.grid2,.grid3,.kpi,.tiers,.swot{grid-template-columns:1fr}}
+
+/* ===== veggiet DNA 가산 컴포넌트 (인디고 클린 토큰만 사용) ===== */
+/* 1) 에디토리얼 커버 — h1 형광 언더라인 + clamp 반응형 */
+.hero h1{font-size:clamp(38px,4.8vw,56px);line-height:1.08}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
+
+/* 2) evidence 박스 (직접 리서치 캡처·증빙 액자) */
+.evi{border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:14px 0}
+.evi .eh{padding:11px 16px;font-size:12.5px;font-weight:800;background:var(--soft);border-bottom:1px solid var(--line);color:var(--ink2)}
+.evi img{display:block;width:100%;height:auto}
+.evi .en{padding:9px 16px;font-size:12px;color:var(--muted);border-top:1px dashed var(--line)}
+
+/* 3) 역할/팩트 카드 그리드 (핵심 팩트 스캔형 3~4열) */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
+.fcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
+.fcard .fk{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.fcard .fv{font-size:16px;font-weight:800;color:var(--ink)}
+.fcard .fs{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.55;font-weight:500}
+
+/* 4) ★ 리서치 캡처 그리드 — 광고 대시보드·경쟁사·SNS 현황 (상담 전 직접 리서치 캡처 자리) */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:16px 0 6px}
+.shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.shot .sk{display:flex;align-items:center;gap:7px;padding:9px 13px;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--ac);background:var(--ac-50);border-bottom:1px solid var(--ac-100)}
+.shot .sk::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--ac)}
+.shot .sfig{aspect-ratio:16/10;background:var(--soft);display:block;width:100%;object-fit:cover}
+/* 빈 슬롯(placeholder) 상태 — 점선 안내 */
+.shot .sph{aspect-ratio:16/10;background:repeating-linear-gradient(45deg,var(--soft),var(--soft) 10px,#f0f3f8 10px,#f0f3f8 20px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted);text-align:center;padding:14px}
+.shot .sph .ic{font-size:22px;opacity:.5}
+.shot .sph .pl{font-size:12px;font-weight:700;color:var(--ink2)}
+.shot .scap{padding:10px 14px;font-size:12px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line2)}
+.shot .scap b{color:var(--ink2)}
+
+/* 5) 디자인·가독성 격상 (v2-③) — 인디고 토큰 안에서 "디자인된 문서" */
+/* v4 에디토리얼 챕터 — 큰 솔리드 번호 오프너 + 굵은 구분선 + 대폭 여백 */
+section{margin-bottom:116px;counter-increment:sec;border-top:2px solid var(--ink);padding:34px 0 0 108px;position:relative}
+main>section:first-child{border-top:none;padding-top:0}
+.sec-k{display:block;background:none;border:none;border-radius:0;padding:0;font-size:12px;letter-spacing:.2em;color:var(--ac);margin-bottom:14px}
+.sec-k::before{content:counter(sec,decimal-leading-zero);position:absolute;left:0;top:30px;font-size:62px;font-weight:800;color:var(--ac);letter-spacing:-.04em;line-height:.9;font-variant-numeric:tabular-nums}
+main>section:first-child .sec-k::before{top:0}
+@media(max-width:880px){section{padding-left:0!important}.sec-k::before{position:static;display:block;margin-bottom:4px}}
+h2{font-size:34px;margin-bottom:16px;letter-spacing:-.025em}
+h2{line-height:1.18}
+h3{letter-spacing:-.01em;line-height:1.4}
+/* 섹션 결론 풀폭 인디고 밴드 (.co.ac.band) — 베지어트 컬러 블록 역할 */
+.co.ac.band{padding:18px 22px;font-size:16px;line-height:1.85}
+/* 표 가독성: zebra + th 인디고 틴트 + 셀 패딩 + 숫자 tabular-nums */
+table{font-variant-numeric:tabular-nums}
+th{background:var(--ac-50);color:var(--ac-700);padding:13px 15px}
+td{padding:13px 15px}
+tbody tr:nth-child(even) td, table tr:nth-child(even) td{background:var(--soft)}
+
+@media(max-width:880px){.shots{grid-template-columns:1fr}}
+@media print{
+  .evi,.fcard,.card,.shot{break-inside:avoid}
+}
+
+/* ===== v3 신규: 사업 단계 / 셀렉 매트릭스 / 인라인 1차 견적 ===== */
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.stage{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px;position:relative}
+.stage.on{border:2px solid var(--ac);background:var(--ac-50)}
+.stage .sgn{font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--muted)}
+.stage.on .sgn{color:var(--ac)}
+.stage .sgt{font-size:15px;font-weight:800;color:var(--ink);margin:4px 0 8px}
+.stage .sgd{font-size:12px;color:var(--muted);line-height:1.55}
+.stage .sgr{display:block;margin-top:10px;font-size:11.5px;color:var(--ac-700);font-weight:700}
+.sel-component{container-type:inline-size}
+.sel-split{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.9fr);gap:18px;align-items:start}
+.pane-k{font-size:11px;font-weight:800;letter-spacing:0;color:var(--muted);margin-bottom:9px}
+.selmx{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);font-variant-numeric:tabular-nums}
+.selmx .hd,.selmx .rw{display:grid;grid-template-columns:minmax(142px,1.6fr) repeat(4,minmax(62px,1fr))}
+.selmx .hd{background:var(--soft);border-bottom:1px solid var(--line)}
+.selmx .hd>div{padding:11px 8px;font-size:11px;font-weight:800;color:var(--ink2);text-align:center;line-height:1.25}
+.selmx .hd>div:first-child{text-align:left}
+.selmx .hd .ls{display:block;font-size:9.5px;font-weight:600;color:var(--muted)}
+.selmx .hd .star{color:var(--ac)}
+.selmx .rw{border-bottom:1px solid var(--line2)}
+.selmx .rw:last-child{border-bottom:0}
+.selmx .rw:hover{background:var(--soft)}
+.selmx .nm{padding:13px 14px;display:flex;flex-direction:column;gap:3px;justify-content:center}
+.selmx .nm b{font-size:13px;font-weight:700;color:var(--ink);line-height:1.35}
+.selmx .opt{margin:7px 5px;border:1.5px solid var(--line);border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:9px 3px;cursor:pointer;transition:.12s;background:var(--card);position:relative;min-height:42px;text-align:center}
+.selmx .opt .amt{font-size:13.5px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:0}
+.selmx .opt .sub{font-size:9px;font-weight:600;color:var(--muted);margin-top:1px}
+.selmx .opt.ex{border-style:dashed}
+.selmx .opt.ex .amt{color:var(--muted)}
+.selmx .opt:hover,.selmx .opt:focus-visible{border-color:var(--ac-100);background:var(--ac-50);outline:0}
+.selmx .opt.on{background:var(--ac);border-color:var(--ac);box-shadow:0 6px 15px -8px var(--ac)}
+.selmx .opt.on .amt{color:var(--card)}
+.selmx .opt.on .sub{color:var(--ac-100)}
+.selmx .opt.on.ex{background:var(--ink2);border-color:var(--ink2)}
+.selmx .opt.on.ex .amt{color:var(--card)}
+.selmx .opt.on::after{content:"✓";position:absolute;top:2px;right:5px;font-size:9px;font-weight:800;color:var(--ac-100)}
+.qpane{position:sticky;top:20px;border:2px solid var(--ac);border-radius:16px;overflow:hidden;background:var(--card)}
+.qsh{background:var(--ac);color:var(--card);padding:18px 20px}
+.qsh .ttl{font-size:12.5px;font-weight:800;color:var(--ac-100);letter-spacing:0}
+.qsh .big{margin-top:7px;line-height:1.02}
+.qsh .big .won{font-size:30px;font-weight:800;letter-spacing:0;font-variant-numeric:tabular-nums}
+.qsh .big .eok{font-size:13px;font-weight:600;color:var(--ac-100);margin-left:6px}
+.env{padding:14px 20px;border-bottom:1px solid var(--line)}
+.env .et{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;margin-bottom:8px;font-size:12px;color:var(--muted)}
+.env .et input{width:54px;padding:3px 6px;border:1px solid var(--line);border-radius:6px;font-family:inherit;font-size:12px;text-align:right}
+.env .et .st{font-weight:800}
+.env .et .st.ok{color:var(--ok)}
+.env .et .st.over{color:var(--bad)}
+.env .bar{position:relative;height:10px;border-radius:99px;background:var(--ac-50);overflow:hidden}
+.env .bar .fill{height:100%;border-radius:99px;background:var(--ac);transition:width .3s,background .3s}
+.env .bar.over .fill{background:var(--bad)}
+.env .cap{margin-top:7px;font-size:11px;color:var(--muted);line-height:1.5}
+.env .cap b{color:var(--ink)}
+.qlist{padding:6px 8px;max-height:none}
+.qrow{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid var(--line2)}
+.qrow:last-child{border-bottom:0}
+.qrow .qn{flex:1;font-size:12.5px;color:var(--ink2);line-height:1.4}
+.qrow .lvb{display:inline-block;font-size:9.5px;font-weight:800;padding:1px 6px;border-radius:5px;background:var(--ac-50);color:var(--ac);margin-right:6px;vertical-align:1px}
+.qrow.edited .lvb{background:var(--warn-50);color:var(--warn)}
+.qrow .amtin{width:78px;text-align:right;font-family:inherit;font-size:14px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;border:1px solid transparent;border-radius:7px;padding:5px 8px;background:transparent;transition:.12s}
+.qrow .amtin:hover{background:var(--soft)}
+.qrow .amtin:focus{outline:0;border-color:var(--ac);background:var(--card);box-shadow:0 0 0 3px var(--ac-50)}
+.qrow.edited .amtin{color:var(--ac-700)}
+.qrow .unit{font-size:11px;color:var(--muted)}
+.qfoot{display:flex;justify-content:space-between;align-items:center;background:var(--ink);color:var(--card);padding:13px 20px;font-size:13px;font-weight:800}
+.qfoot .ft{color:var(--ac-100);font-size:16px;font-variant-numeric:tabular-nums}
+.qact{display:flex;gap:8px;flex-wrap:wrap;padding:13px 16px;background:var(--soft);border-top:1px solid var(--line)}
+.qact .btn{font-family:inherit;font-size:12px;font-weight:700;border:1px solid var(--ac);background:var(--card);color:var(--ac);border-radius:9px;padding:8px 13px;cursor:pointer;transition:.15s}
+.qact .btn:hover{background:var(--ac);color:var(--card)}
+.qact .btn.solid{background:var(--ac);color:var(--card)}
+.qact .btn.solid:hover{background:var(--ac-700);border-color:var(--ac-700)}
+.qhint{font-size:11px;color:var(--muted);padding:0 16px 13px;background:var(--soft);line-height:1.55}
+.savest{font-weight:800;color:var(--muted)}
+.savest.ok{color:var(--ok)}
+@container (max-width:660px){.sel-component .sel-split{grid-template-columns:1fr}.sel-component .qpane{position:relative;top:auto}}
+@media(max-width:680px){.sel-split{grid-template-columns:1fr}.qpane{position:relative;top:auto}}
+@media(max-width:560px){.selmx{overflow-x:auto}.selmx .hd,.selmx .rw{min-width:620px}.qrow{align-items:flex-start;flex-wrap:wrap}.qrow .amtin{margin-left:auto}}
+/* 링크(이미지 캡처 대체) */
+.co a{color:var(--ac);font-weight:700;text-decoration:none;border-bottom:1px solid var(--ac-100);word-break:break-all}
+.co a:hover{border-color:var(--ac)}
+/* 모바일 넘침 보정 */
+.sel-split>div{min-width:0}
+.env .et input{width:68px}
+@media(max-width:880px){main table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}
+</style>
+</head>
+<body>
+<div class="hero"><div class="in">
+  <div class="badge">NEW BUSINESS PREP · 통합표준</div>
+  <h1>웨이브메트릭 <span class="hl">(Wavemetric)</span></h1>
+  <div class="sub">쿠팡·네이버 퍼포먼스 광고 대행 2년차 법인이, 대행 수익으로 <b style="color:#fff">북미 곱슬·코일리(Type 3~4) 헤어케어 브랜드</b>를 2027년 2분기에 런칭하려 한다. 광고 운영 역량은 있고, 비어 있는 건 <b style="color:#fff">"한국 팀이 만든 텍스처드 헤어 브랜드를 커뮤니티가 믿을 이유"</b>와 그걸 런칭일에 맞출 역산 일정이다.</div>
+  <div class="meta">
+    <span class="chip">사업 단계 <b>STAGE 0 · 브랜드 창업 (런칭 약 7~9개월 전)</b></span>
+    <span class="chip">기회 적합도(추정) <b>4.1 / 5.0 · GO (조건 2)</b></span>
+    <span class="chip">예산 <b>5,000만원 이하 · 신청서 기재</b></span>
+    <span class="chip">미팅 <b>대면 · BR 사무실 · 일정 조율 중</b></span>
+    <span class="chip">유입 <b>유튜브 땡스큐레이터 (자사 채널)</b></span>
+  </div>
+  <div class="links">
+    <a class="lnk store" href="https://wavemetric.io/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"></path></svg>
+      wavemetric.io · 광고대행 소개
+    </a>
+    <a class="lnk sns" href="https://www.instagram.com/wavemetric_/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      @wavemetric_ · 9/9 개설
+    </a>
+  </div>
+</div></div>
+
+<div class="layout">
+  <nav class="toc">
+    <div class="nl">PREP 목차</div>
+    <a href="#onepager">수주 한 장</a>
+    <a href="#diagnosis">핵심 진단</a>
+    <a href="#company">기업 · 역량 · 채널</a>
+    <a href="#market">시장 · 경쟁 · 니즈</a>
+    <a href="#deal">기회 · 견적</a>
+    <a href="#consult">상담 진행</a>
+    <a href="#sources">참고 출처</a>
+  </nav>
+
+  <main>
+
+    <section id="onepager">
+      <div class="sec-k">ONE-PAGER</div>
+      <h2>수주 한 장</h2>
+      <p class="lead">상담 직전 이 카드 하나면 된다. 아래는 신청서와 직접 리서치(2026-09-14)를 바탕으로 한 가설 백업. <span class="t n">상담 전 가설</span></p>
+
+      <div class="op">
+        <div class="opk">수주 한 장</div>
+        <div class="blk">
+          <div class="bl">USP &amp; 진짜 니즈 (가설)</div>
+          <div class="need"><b>USP</b> = <b>아직 없음(백지형)</b>. "Type 3~4 × 북미 → 유럽·아프리카"는 타깃과 시장이지 USP가 아니다. <b>진짜 니즈</b> = 로고·패키지 산출물이 아니라 <b>"텍스처드 헤어 당사자가 아닌 한국 팀이 만든 브랜드가 신뢰받는 구조"</b>, 그리고 2027년 2분기 런칭에서 거꾸로 계산한 브랜드 확정 일정.
+            <span class="ev">신청서의 "내부적으로 브랜딩 역량이 부족"은 디자인 이야기로 읽힌다. 하지만 이 카테고리에서 브랜딩의 병목은 디자인이 아니라 <b>진정성</b>이다. 커뮤니티가 브랜드를 띄우기도 하고(Mielle) 무너뜨리기도 한다(DevaCurl 2020). 게다가 2026년 6월 Fashionista가 <b>"K-뷰티 헤어가 흑인 소비자를 소외시키는가"</b>를 이미 기사로 다뤘다. 이 브랜드는 그 질문 한가운데서 출시된다.</span>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="bl">그래서 우리가 해주는 것</div>
+          <div class="do">
+            <div class="item"><b>① 포지셔닝 + 신뢰 구조 설계</b> — "누가, 어떻게 만들었나"를 브랜드 뼈대에 넣는다. 공동창작 자문단 구성안, 출시 전 웨어테스트(실사용 테스트), 소유 구조를 먼저 밝히는 커뮤니케이션 원칙까지</div>
+            <div class="item"><b>② 글로벌 네이밍 + 영문 버벌 아이덴티티</b> — "Type 3-4" 같은 숫자 등급 대신 다공성·밀도·두피를 쓰는 진단형 언어로. 미국 상표 스크리닝 액션 리스트 포함</div>
+            <div class="item"><b>③ BI + 히어로 라인 패키지</b> — 2027년 1월 패키지 확정이라는 역산 데드라인에 맞춰 산출. 두피 소구 카피는 미국 화장품/의약품 경계선 안에서</div>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="bl">첫 제안 &amp; 다음 액션</div>
+          <div class="offer"><b>코어 5,000만(아이덴티티 L2 + 디자인 L2)</b> = 신청 예산 상한과 같다. <b>풀 7,500만</b>(미국 소비자 서베이 + 촬영 + 무드보드 추가)은 차액을 <b>수출바우처 2027년 1차</b>(12월 공고 예상)와 연결하는 방식으로만 꺼낸다. 오늘 받아낼 최소 커밋 = <b>10월 착수 목표일 합의</b> + <b>제품 개발 현황(OEM·처방·SKU 후보) 공유 약속</b>.</div>
+        </div>
+      </div>
+
+      <div class="co ac band"><span class="lab">이번 상담 최대 무기 — 이 두 줄만 기억해도 된다</span>
+        <b>① "이 카테고리에서 소비자가 먼저 묻는 건 '성분이 뭐냐'가 아니라 '누가 만들었냐'입니다."</b> 2018년 NPR 보도에서 미국 뷰티서플라이 업계 관계자는 흑인 헤어 뷰티서플라이 매장의 약 70%가 한인 소유라고 말했다. 2026-09-10 문을 연 Target Beauty Studio는 90개 브랜드 중 흑인 소유 브랜드가 2곳뿐이다. 지금 미국에서는 <b>"K-뷰티가 흑인 소유 브랜드의 진열대를 가져간다"</b>는 서사가 만들어지고 있다. 대행사는 이 문제를 광고로 풀 수 없다. 브랜드 구조로 풀어야 한다.<br>
+        <b>② "두피 케어는 가장 큰 기회이면서 규제선입니다."</b> 두피 케어는 미국 프레스티지 헤어에서 3년 연속 두 자릿수로 성장했다(Circana). 그런데 <b>발모·탈모 방지·비듬 표현을 쓰는 순간 미국에서는 의약품</b>이 되고, 비듬 원료 징크피리치온(ZPT)은 EU·영국에서 금지다. <b>포지셔닝 문장 하나가 곧 규제 판정</b>이다.
+      </div>
+    </section>
+
+    <section id="diagnosis">
+      <div class="sec-k">DIAGNOSIS (가설)</div>
+      <h2>핵심 진단</h2>
+      <p class="lead">"브랜딩 역량이 부족하다"는 정확한 자기진단이지만 절반이다. 나머지 절반은 <b>신뢰를 어디서 가져올지</b>와 <b>시간</b>이다. <span class="t n">상담 전 가설</span></p>
+
+      <div class="kpi">
+        <div class="k"><div class="lbl">법인 · 업력</div><div class="v">2년 4개월</div><div class="s">설립 2024-05 · 광고대행 본업</div></div>
+        <div class="k"><div class="lbl">규모</div><div class="v">2~4명</div><div class="s">원티드 고용보험 2 · NICE 약 4 (추정)</div></div>
+        <div class="k"><div class="lbl">신규 브랜드 흔적</div><div class="v">0</div><div class="s">이름·도메인·계정·상표 미발견</div></div>
+        <div class="k alt"><div class="lbl">시급 과제</div><div class="v">역산 일정</div><div class="s">BI 12월 · 패키지 1월 확정(추정)</div></div>
+      </div>
+
+      <div class="grid3" style="margin-top:14px">
+        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">진정성 공백</h3><p style="font-size:12.5px;color:var(--muted)">창업팀과 곱슬·코일리 모발 사이의 연결고리가 공개된 게 없다. 이 카테고리 소비자가 가장 먼저 확인하는 게 <b>"누가 만들었나"</b>다. 흑인 소유처럼 보이던 브랜드들의 실제 소유 구조를 정리한 목록이 2020년에 크게 퍼졌다.</p></div>
+        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">런칭 역산 일정</h3><p style="font-size:12.5px;color:var(--muted)">2027년 2분기 런칭에서 양산, 용기·인쇄 발주, MoCRA(미국 화장품 규제) 준비를 거꾸로 빼면 <b>패키지는 1월, BI는 12월</b>에 확정돼야 한다(업계 통상 리드타임 기준 추정). <b>10월에 착수하지 않으면 런칭이 밀린다.</b></p></div>
+        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">포지셔닝 = 규제선</h3><p style="font-size:12.5px;color:var(--muted)">쌀과 본드 리페어는 이미 Mielle·Briogeo·Pattern이 선점했다. 남은 성장축은 두피인데, 두피 카피는 한 줄만 넘어가도 <b>미국 의약품(OTC 비듬 모노그래프 또는 승인 의약품)</b>이 된다.</p></div>
+      </div>
+      <div class="grid3" style="margin-top:12px">
+        <div class="card"><span class="t y">High</span><h3 style="margin:8px 0 6px">에이전시 문법 ≠ 이 시장 문법</h3><p style="font-size:12.5px;color:var(--muted)">웨이브메트릭이 익힌 건 <b>쿠팡·네이버·카카오 퍼포먼스</b> 문법이다. 미국 텍스처드 헤어는 <b>샘플 체험이 신제품 구매 이유 1순위</b>(TextureTrends 2018)이고, 커뮤니티와 크리에이터가 먼저인 시장이다.</p></div>
+        <div class="card"><span class="t y">High</span><h3 style="margin:8px 0 6px">3대륙 한 번에 그린 로드맵</h3><p style="font-size:12.5px;color:var(--muted)">아프리카는 <b>가발·익스텐션 시장이 샴푸·릴랙서 같은 웻헤어 시장보다 몇 배 크고</b> 가격에 민감하다. 나이지리아는 현지 에이전트 명의로 등록해야 한다. 유럽은 처방 규제가 다르다(ZPT 금지 등). 같은 SKU와 같은 가격으로는 갈 수 없다.</p></div>
+        <div class="card"><span class="t y">High</span><h3 style="margin:8px 0 6px">자금 구조 · 운영 주체</h3><p style="font-size:12.5px;color:var(--muted)">외부 투자 없이 수익을 재투자하는 구조다(원티드 회사 소개). 신청서에는 "투자금 확보 중"이라고 썼다. 브랜드 산출물이 <b>IR 자료</b> 역할도 해야 할 수 있다. 2~4명 조직에서 <b>신규 브랜드를 누가 전담하는지</b>도 확인해야 한다.</p></div>
+      </div>
+
+      <div class="co bad"><span class="lab">진단 결론 (가설)</span><b>이 케이스의 리스크는 "디자인이 약하다"가 아니라 "예쁘게 만들었는데 커뮤니티가 믿지 않는다"이다.</b> 퍼포먼스 대행사는 광고로 트래픽을 사는 데 익숙하다. 하지만 신뢰가 없는 신규 텍스처드 브랜드에 광고비를 붓는 건 ROAS가 가장 안 나오는 구조다. 그래서 처방 1순위는 로고가 아니라 <b>브랜드 뼈대에 신뢰 구조(누가·어떻게·누구와 만들었나)를 넣는 것</b>, 2순위는 <b>런칭일에서 거꾸로 계산한 확정 일정</b>이다.</div>
+
+      <div class="co ac band"><span class="lab">USP 상태 — 웨이브메트릭 = 백지형 (타깃은 있고 이유가 없는 경우)</span>공개된 브랜드 자산은 하나도 없다(이름·도메인·IG·상표 미발견). 이 상태가 오히려 기회다. <b>처음부터 신뢰 구조를 설계할 수 있는 마지막 시점</b>이라는 뜻이다. 공백 후보 3개(모두 가설, 소비자 검증 필요):
+        <b>① 보호 스타일 착용 중 두피 루틴</b> — 브레이드·위브를 하면 세정 간격이 평균 17.9일에서 32.8일로 늘어난다는 연구가 있다(검색 요약, 원문 확인 필요). <b>② 발효·마이크로바이옴 기반 건조 두피 케어</b> — 경쟁사 가격 조회 과정에서 발효를 내세운 제품은 발견되지 않았다(미검증). <b>③ $18~22 가격 공백</b> — 매스(12oz $9~17)와 프레스티지(8oz $24~32) 사이. K-뷰티의 두피 과학을 쓰되, 브랜드 전면에 "K"를 내세우지 않는 설계.</div>
+    </section>
+
+    <section id="company">
+      <div class="sec-k">COMPANY · CAPABILITY · CHANNEL</div>
+      <h2>기업 · 역량 · 채널</h2>
+      <p class="lead">국내 이커머스 퍼포먼스 대행 법인. 헤어 브랜드는 아직 공개된 흔적이 전혀 없다. <span class="t n">직접 리서치 2026-09-14 · 회사 주장은 미검증 표기</span></p>
+
+      <div class="grid2">
+        <div class="card">
+          <h3 style="margin-top:0">기업 기초 <span style="font-size:11px;color:var(--muted);font-weight:500">(사업자 조회 실측)</span></h3>
+          <div class="cards">
+            <div class="fcard"><div class="fk">상호 / 대표</div><div class="fv">주식회사 웨이브메트릭 · 유형태 대표 <span class="t n">bizno</span></div></div>
+            <div class="fcard"><div class="fk">형태 / 사업자번호</div><div class="fv">영리법인 본점 · 중소기업 · 127-86-63172 <span class="t n">bizno</span></div></div>
+            <div class="fcard"><div class="fk">설립 · 업력</div><div class="fv">2024-05-27(NICE) · 등록 2024-06-05 · <b>약 2년 4개월</b></div></div>
+            <div class="fcard"><div class="fk">소재지</div><div class="fv">등기상 인천 연수구(송도, 호수 표기로 보아 비상주 추정) · 실제 근무지 서울 강남 공유오피스 <span class="t y">자료별 상이</span></div></div>
+            <div class="fcard"><div class="fk">업태 / 종목</div><div class="fv">도소매 / 전자상거래 소매업 · 통신판매업 신고 보유</div></div>
+            <div class="fcard"><div class="fk">연락</div><div class="fv">yooht@wavemetric.io (신청서)</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">정량 시그널 <span style="font-size:11px;color:var(--muted);font-weight:500">(값 · 출처)</span></h3>
+          <table>
+            <tr><td style="width:34%"><b>인원</b></td><td>고용보험 2명(원티드, 2025-01 기준) · NICE 약 4명 <span class="t y">현재 인원 미확인</span></td></tr>
+            <tr><td><b>투자</b></td><td>"외부 투자 없이 수익 재투자" <span class="t n">원티드 공고 공통 문구</span></td></tr>
+            <tr><td><b>대표 · 창업팀</b></td><td>유형태 대표의 공개 이력(이전 회사·학력·LinkedIn·인터뷰)은 <b>한국어·영어 검색 모두 없음</b> · 예전 원티드 소개에 있던 "시리즈 A·B 스타트업 및 창업/매각 경험을 보유한 공동 창업자들" 문구는 <b>현재 페이지에서 내려감</b> <span class="t y">검색 요약에만 남음 · 상담 확인</span></td></tr>
+            <tr><td><b>성장</b></td><td>"2년 만에 약 95배 성장" <span class="t y">회사 주장 · 기준 금액 미공개</span></td></tr>
+            <tr><td><b>파트너사</b></td><td>"30개+", "뷰티업계 1위 브랜드와 계약" <span class="t y">홈페이지 주장 · 미검증</span></td></tr>
+            <tr><td><b>자체 브랜드</b></td><td>"대행과 자체 브랜드 운영을 병행하며 6개 브랜드 운영" <span class="t n">원티드 공고</span> · 브랜드명 미확인</td></tr>
+            <tr><td><b>신규 헤어 브랜드</b></td><td>이름·도메인·IG·크라우드펀딩 <b>전부 미발견</b> · 원티드에는 "뷰티·라이프스타일 분야에서 첫 자사 브랜드를 준비 중" 문구만</td></tr>
+            <tr><td><b>상표</b></td><td>웨이브메트릭 명의 상표 <b>미발견</b>(USPTO 미러·웹 검색) · <span class="t y">KIPRIS는 자동 조회가 차단돼 확인 못 함</span> → 브라우저에서 출원인 "웨이브메트릭" 수동 조회 필요 · 동명 "WaveMetrics"(미국 소프트웨어사)는 무관</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <h3>에이전시 역량 인벤토리 — "마케팅 문법"의 실체</h3>
+      <table>
+        <tr><th style="width:26%">영역</th><th style="width:14%">근거</th><th>상태 · 이 브랜드에 주는 의미</th></tr>
+        <tr><td><b>쿠팡 · 이커머스 광고</b></td><td><span class="t g">주력</span></td><td>홈페이지 "No.1 AI-Powered Advertising Agency", "쿠팡 &amp; 이커머스" 전문. 국내 마켓플레이스 운영 역량</td></tr>
+        <tr><td><b>네이버 · 카카오모먼트</b></td><td><span class="t g">운영</span></td><td>네이버 검색광고 확장 중(홈페이지), 카카오모먼트(채용공고)</td></tr>
+        <tr><td><b>숏폼 · SNS 광고 제작</b></td><td><span class="t g">운영</span></td><td>마케팅팀 채용공고. 메타·인스타그램·틱톡은 <b>우대사항에만</b> 등장</td></tr>
+        <tr><td><b>미국 · 아마존 · 틱톡샵</b></td><td><span class="t r">흔적 없음</span></td><td>공개 자료상 경험 없음. 미국 법인 연결고리도 미발견</td></tr>
+        <tr><td><b>텍스처드 헤어 · 흑인 소비자</b></td><td><span class="t r">흔적 없음</span></td><td>커뮤니티·크리에이터·살롱 네트워크 모두 새로 만들어야 함</td></tr>
+        <tr><td><b>AI 활용</b></td><td><span class="t b">강조</span></td><td>채용공고 우대사항에 Claude 등 AI 활용. 우리 쪽 AI 대행사 영상과 접점(추정)</td></tr>
+      </table>
+      <div class="co"><span class="lab">회사가 스스로 쓴 소개 (원티드 회사 페이지 원문)</span><i>"스타트업에 자금과 시간은 무한하지 않습니다. 그래서 우리는 '작고 빠른 실행'을 핵심 전략으로 삼고, 마케팅 에이전시 운영을 첫걸음으로 선택했습니다. 국내 주요 뷰티·건기식 브랜드들의 성장을 함께하며 … 2024년 5월 설립 이후 불과 2년 만에 약 95배의 매출 성장을 만들어냈습니다."</i> → 신청서의 "브랜드 런칭을 위한 투자금을 확보하고 있다"와 같은 이야기다. <b>대행은 수단이고 목적은 자체 브랜드</b>라는 게 회사 소개에도 박혀 있다. 라포에서 이 문장을 인용하면 된다.</div>
+      <div class="co warn"><span class="lab">진단 포인트</span>"뷰티 시장의 마케팅 문법을 익혔다"의 실체는 <b>국내 마켓플레이스 퍼포먼스</b>다. 미국 텍스처드 헤어는 커뮤니티, 크리에이터, 샘플, 리뷰로 움직이는 시장이라 쓰는 문법이 다르다. 약점을 지적하려는 게 아니라 <b>우리 역할의 경계를 정하는 포인트</b>다. 런칭 후 광고 운영은 웨이브메트릭이 가장 잘하는 일이고, 우리는 그 광고가 먹히게 할 브랜드의 이유를 만든다.</div>
+
+      <h3>디지털 프레즌스 (직접 확인 2026-09-14)</h3>
+      <table>
+        <tr><th style="width:22%">채널</th><th style="width:13%">상태</th><th>실측</th></tr>
+        <tr><td><b>wavemetric.io</b></td><td><span class="t y">운영 · 관리 공백</span></td><td>아임웹 한국어 1페이지. <b>SSL 인증서 2026-03-27 만료</b>(브라우저 경고 표시) · 개인정보처리방침에 템플릿 문구 잔존 · "서비스 소개서" 링크 비어 있음</td></tr>
+        <tr><td><b>Instagram @wavemetric_</b></td><td><span class="t n">막 개설</span></td><td>팔로워 6 · 게시물 2026-09-09~10에만 존재(상담 신청 전날~당일) · Threads 같은 핸들</td></tr>
+        <tr><td><b>원티드</b></td><td><span class="t g">채용 중</span></td><td>공고 3건(9월 초 확인) · 근무지 서울 강남</td></tr>
+        <tr><td><b>헤어 브랜드 계정·도메인</b></td><td><span class="t r">없음</span></td><td>한국어·영어 검색 모두 미발견</td></tr>
+      </table>
+      <div class="co ac"><span class="lab">채널 진단 — 내부용 (상담에서 먼저 꺼내지 말 것)</span>자사 홈페이지 인증서 만료와 템플릿 문구는 <b>"대행 본업이 바빠 자사 브랜딩은 뒤로 밀린다"</b>는 신호다. 신청서에 적은 "내부 브랜딩 역량 부족"과 같은 이야기다. 먼저 지적하면 방어적으로 나올 수 있다. 우리가 챙길 건 이 패턴이 신규 브랜드에서 반복되지 않도록 <b>브랜드 전담자와 운영 리소스를 견적 조건에 넣는 것</b>이다. 인스타 계정을 신청 전날 연 것은 "브랜드를 시작하겠다"는 온도 신호로 읽는다.</div>
+      <div class="co ok"><span class="lab">유입 신호 — 우리 콘텐츠를 보고 왔다</span>유입 채널 <b>땡스큐레이터</b>(@땡큐채널, 구독자 약 1.84만)는 우리 쪽 채널이다. 브랜딩과 MD, 리서치, AI 대행사 이야기, 정부지원사업, 견적서 작성 영상이 있다. 대표가 <b>우리 방식을 이미 보고 신청했다</b>는 뜻이라, 무엇을 하는 회사인지 처음부터 설명할 필요가 없다. 어떤 영상을 보고 왔는지 물으면 대표가 기대하는 것을 바로 알 수 있다.</div>
+      <div class="co"><span class="lab">관련 링크 · 라이브 확인</span>
+        <a href="https://wavemetric.io/" target="_blank" rel="noopener">wavemetric.io</a> ·
+        <a href="https://www.instagram.com/wavemetric_/" target="_blank" rel="noopener">IG @wavemetric_</a> ·
+        <a href="https://www.wanted.co.kr/wd/382103" target="_blank" rel="noopener">원티드 공고</a> ·
+        <a href="https://www.wanted.co.kr/wd/377776" target="_blank" rel="noopener">원티드 마케팅팀 공고</a> ·
+        <a href="https://bizno.net/article/1278663172" target="_blank" rel="noopener">bizno 사업자 조회</a>
+      </div>
+    </section>
+
+    <section id="market">
+      <div class="sec-k">MARKET · COMPETITION · NEEDS</div>
+      <h2>시장 · 경쟁 · 니즈</h2>
+      <p class="lead">헤어케어는 미국 흑인 소비자가 뷰티에 가장 많이 쓰는 카테고리다. 그리고 <b>커뮤니티의 신뢰가 매출을 가르는</b> 몇 안 되는 시장이다. <span class="t n">서드파티 시장 추정치는 기관마다 2배 가까이 차이 — 참고용</span></p>
+
+      <h3>① 시장 규모 — 확인된 숫자만</h3>
+      <table>
+        <tr><th style="width:36%">지표</th><th>값 · 출처</th></tr>
+        <tr><td><b>미국 흑인 소비자 헤어케어</b></td><td><b>22.9억 달러</b>, 흑인 소비자 뷰티 지출 1위 카테고리 (2022년 4월까지 1년) · 흑인 여성 38%가 "흑인 소유 브랜드 헤어 제품에 더 지불 의향" <span class="t n">NielsenIQ 2022</span></td></tr>
+        <tr><td><b>흑인 소비자 뷰티 지출</b></td><td>66억 달러(2021, 미국 뷰티의 약 11%) · 흑인 브랜드 매출 점유율은 2.5% · 헤어·스킨·메이크업 선택지에 불만족할 가능성이 비흑인 대비 3배 <span class="t n">McKinsey 2022</span></td></tr>
+        <tr><td><b>미국 프레스티지 헤어</b></td><td>2025년 +8%로 가장 빨리 성장한 프레스티지 카테고리 · <b>두피 케어 3년 연속 두 자릿수 성장</b> · 온라인 매출이 과반인 유일한 카테고리 <span class="t n">Circana 2025 (WWD)</span></td></tr>
+        <tr><td><b>블랙 헤어케어 흐름</b></td><td>2025년 매출 소폭 감소. SheaMoisture·Mielle과 흑인 소비자 중심 인디 브랜드가 점유율을 가져감 · 마케팅은 "인종 기반"에서 "텍스처 기반"으로 이동 <span class="t n">Mintel 2025</span></td></tr>
+        <tr><td><b>영국</b></td><td>흑인 여성 헤어 지출 연 1억 6,806만 파운드 = 영국 헤어케어 시장의 약 10%(성인 인구 비중은 2%) · 아프로 헤어를 다루는 살롱은 약 1% <span class="t n">Treasure Tress 2020 · Spell</span></td></tr>
+        <tr><td><b>아프리카 (남아공·나이지리아·카메룬)</b></td><td>웻헤어(샴푸·릴랙서) 11억 달러 vs <b>드라이헤어(가발·익스텐션) 연 60억 달러</b> <span class="t y">Euromonitor 인용 · 2014년 자료</span> · 남아공은 릴랙싱이 살롱 매출의 약 80%(2017)</td></tr>
+      </table>
+
+      <h3>② 경쟁 지도 — 가격대 <span class="t n">공식몰·리테일러 직접 조회 2026-09-14</span></h3>
+      <table>
+        <tr><th style="width:14%">가격대</th><th style="width:30%">브랜드</th><th>확인 가격 · 포지션</th></tr>
+        <tr><td><b>매스</b></td><td>Mielle · SheaMoisture · Aunt Jackie's · As I Am</td><td>Mielle 로즈마리민트 샴푸 12oz <b>$9.99</b> · SheaMoisture Curl &amp; Style Milk 8oz $8.99(Target BOGO 50% 행사) · As I Am 코워시 16oz $8.99</td></tr>
+        <tr><td><b>매스 상단~중가</b></td><td>Carol's Daughter · Camille Rose · TGIN · The Doux · Kinky-Curly</td><td>Camille Rose Curl Maker $22 · TGIN 샴푸 13oz $16.99, <b>두피 세럼 $15.99</b> · The Doux Mousse Def 7oz $16.99</td></tr>
+        <tr><td><b>프레스티지 입문</b></td><td>Bread Beauty Supply</td><td>hair-wash 250ml $20 · 마스크 $28 · <b>scalp-thingy $18</b> — 쿨한 미니멀 디자인. 창업자는 아프리칸 브레이딩 살롱을 하던 어머니 밑에서 자람(검색 요약)</td></tr>
+        <tr><td><b>프레스티지</b></td><td>Briogeo · Curlsmith · Pattern · Ouidad · Innersense</td><td>Pattern 리브인 9.8oz $29(<b>샘플 $4 · 샘플러 $19</b>) · Curlsmith 8oz $27~32 · Briogeo Curl Charisma $24~28</td></tr>
+      </table>
+      <div class="co ac"><span class="lab">가격 구조 시사</span>매스는 12oz 기준 <b>$9~17</b>이고 BOGO 같은 프로모션 압박이 크다. 프레스티지는 8oz 기준 <b>$24~32</b>이고 <b>샘플·미니·점보 사이즈를 함께 운영</b>한다. 그 사이 <b>$18~22 구간</b>이 비어 있다. 이 구간을 두피 과학과 검증 데이터로 설명하면 매스보다 비싼 이유가 된다. 샘플 사이즈는 제품 라인업에 처음부터 넣는다. 샘플 체험이 신제품 구매 이유 1순위이기 때문이다.</div>
+
+      <h3>③ K-뷰티 소구점은 이미 들어가 있는가</h3>
+      <table>
+        <tr><th style="width:22%">K 소구점</th><th>이미 선점한 미국 제품 (확인)</th><th style="width:22%">판단</th></tr>
+        <tr><td><b>쌀 · 라이스워터</b></td><td>Mielle Rice Water 라인 · Briogeo "Rice Amino" 라인 $24~28</td><td><span class="t r">포화</span></td></tr>
+        <tr><td><b>본드 리페어</b></td><td>Mielle Bond Treatment $13.99 · Pattern Repair360 $28 · Briogeo Bonding Leave-In</td><td><span class="t r">매스·프레스티지 모두 진입</span></td></tr>
+        <tr><td><b>두피 케어</b></td><td>Carol's Daughter Lisa's Kitchen · TGIN 두피 세럼 · Bread scalp-thingy</td><td><span class="t y">성장 중 · 규제선 주의</span></td></tr>
+        <tr><td><b>발효 · 마이크로바이옴</b></td><td>이번 조회에서는 발견되지 않음</td><td><span class="t g">공백 후보 · 미검증</span></td></tr>
+      </table>
+      <div class="co warn"><span class="lab">"첫 K 텍스처드 브랜드"는 아니다 — K-헤어가 이미 들어오고 있다</span>Sephora는 2026년 한국 헤어 브랜드 <b>Unove·Dr. Groot</b>를 입점시켰다(Glossy). Fashionista(2026-06)에 따르면 Dr. Groot는 틱톡 흑인·브라운 크리에이터의 추천이 가장 많은데 다수가 무보수 추천이고, 이후 테스트 모발 타입을 넓히고 미국 전담팀을 만들었다. Narka는 곱슬 정도가 다른 인모 표준 샘플을 들였고, Unove는 미국 진출 전에 코일리 모발 피험자를 모집했다(검색 요약, 원문 확인 필요). <b>경쟁 상대는 미국 흑인 창업 브랜드만이 아니라 현지화 속도를 올리는 K-헤어 브랜드들이다.</b></div>
+
+      <h3>④ 진정성 리스크 — 이 카테고리에서 실제로 일어난 일 <span class="t r">이번 PREP 핵심</span></h3>
+      <table>
+        <tr><th style="width:24%">사례</th><th>무슨 일이 있었나</th><th style="width:28%">교훈</th></tr>
+        <tr><td><b>SheaMoisture (2017)</b></td><td>#EverybodyGetsLove 광고의 여성 4명 중 흑인은 1명. "핵심 고객을 지웠다"는 반발에 브랜드가 "we really f-ed this one up"이라고 사과. 같은 해 Unilever에 인수됨</td><td>확장을 명분으로 핵심 고객을 비주얼에서 빼면 흑인 창업 브랜드도 무너진다</td></tr>
+        <tr><td><b>DevaCurl (2020)</b></td><td>탈모 피해자 페이스북 그룹이 약 4,000명에서 인플루언서 영상 한 편 뒤 35,000명 이상으로 늘었다(이후 51,000명 이상). 520만 달러 합의, <b>청구율 약 8.2%</b>(일반 소비자 집단소송은 보통 1~3%)</td><td>두피·탈모 안전성 논란은 커뮤니티 안에서 몇 달 쌓이다가 한 번에 터진다</td></tr>
+        <tr><td><b>소유 구조 폭로 (2020)</b></td><td>BLM 시기, 흑인 소유로 알려졌던 브랜드들(Carol's Daughter·SheaMoisture·Cantu 등)의 실제 소유 구조를 정리한 목록이 확산</td><td>소비자는 결국 확인한다. 소유 구조는 먼저, 투명하게 밝힌다</td></tr>
+        <tr><td><b>BSS 한인 소유</b></td><td>2018년 NPR 보도: 업계 관계자 발언으로 <b>BSS의 약 70%가 한인 소유</b>. 흑인 점주들은 유통사가 선불을 요구하거나 인기 제품 공급을 제한했다고 증언(Beauty Independent 2020)</td><td><b>한국 창업자에게 가장 민감한 영역.</b> 유통 채널 선택까지 이 역사와 연결해 해석될 수 있다</td></tr>
+        <tr><td><b>Target Beauty Studio (2026-09-10)</b></td><td>90개 브랜드 중 흑인 소유·창업 브랜드는 Briogeo·Glamazon 2곳. Target은 2025년 DEI 목표 프로그램 종료. 대변인은 한국·일본 등 해외 브랜드를 강조(검색 요약)</td><td>"K-뷰티가 흑인 브랜드 진열대를 가져간다"는 서사가 <b>지금</b> 만들어지는 중</td></tr>
+      </table>
+
+      <h3>⑤ 비당사자 · 신규 브랜드가 신뢰를 얻은 방식</h3>
+      <div class="grid2">
+        <div class="card"><h3 style="margin-top:0;font-size:14px">Curlsmith — 커뮤니티를 먼저 만들었다</h3><p style="font-size:12.5px;color:var(--muted)">영국 부부가 2018년 창업. 제품보다 곱슬머리 인스타 커뮤니티를 먼저 만들고, 보정 없는 실제 고객 결과를 광고에 썼다. Helen of Troy가 약 1.5억 달러에 인수(보도). 브랜드 문구는 <b>"for, and with, curlfriends, experts and influencers"</b>. 다만 공식 스토리 페이지에 Type 4 전문가 언급은 없다.</p></div>
+        <div class="card"><h3 style="margin-top:0;font-size:14px">Pantene Gold Series — 개발자 실명 공개</h3><p style="font-size:12.5px;color:var(--muted)">대기업 라인인데도 <b>흑인 박사급 과학자 5명의 이름을 공개</b>하고 개발팀으로 내세웠다. "누가 만들었나"에 대기업이 내놓은 답이다. 스타일리스트와 피부과 전문의, 여러 나라 여성 수천 명이 참여했다는 설명도 있다(검색 요약).</p></div>
+        <div class="card"><h3 style="margin-top:0;font-size:14px">Mielle — 창업자의 루틴이 곧 브랜드</h3><p style="font-size:12.5px;color:var(--muted)">간호사 출신 창업자가 인스타에 자기 모발 루틴을 올리며 수요를 확인하고 2014년 창업했다. 2023년 P&amp;G가 인수한 뒤에도 창업자 부부가 계속 경영한다(검색 요약).</p></div>
+        <div class="card"><h3 style="margin-top:0;font-size:14px">Ouidad — 살롱 전문성</h3><p style="font-size:12.5px;color:var(--muted)">레바논 출신 창업자가 1984년 미국 최초의 곱슬머리 전문 살롱을 열었다. 커트 기법 같은 <b>현장 전문성</b>으로 신뢰를 쌓은 비당사자 모델이다(검색 요약).</p></div>
+      </div>
+      <div class="co ok"><span class="lab">★ 공통 패턴 — 한국 팀이 할 수 있는 신뢰 구조 3개</span><b>① 이름을 건 공동창작</b> — 흑인 스타일리스트·트리콜로지스트(모발·두피 전문가)·피부과 전문의를 자문단이나 공동개발자로 두고 <b>이름과 권한을 공개</b>한다. 크리에이터에게 무보수 추천을 기대하지 않는다. <b>② 출시 전 커뮤니티 검증</b> — 다양한 컬 패턴과 보호 스타일 조건에서 웨어테스트를 하고 결과를 공개한다. <b>③ 소유 구조 선공개</b> — 흑인 소유처럼 보이게 연출하지 않는다. "한국의 두피 과학 × 이 커뮤니티와 함께 만든 브랜드"라고 먼저 말한다.</div>
+
+      <h3>⑥ 헤어타입 언어 리스크 — "Type 3-4"를 브랜드 언어로 쓰지 말 것</h3>
+      <div class="co warn"><span class="lab">네이밍·핵심 카피에 숫자 등급 금지</span>1A~4C 분류(Andre Walker 체계)는 1990년대에 <b>자기 제품 라인을 마케팅하려고 만든</b> 분류다. 직모를 위에 두는 듯한 위계라는 비판과, 특정 질감을 더 낫게 보는 인식(텍스처리즘)을 강화한다는 비판을 받는다. Mintel 2026은 텍스처를 <i>"a layered hair state shaped by scalp condition, strand thickness, style, treatment history, and cultural context"</i>로 보라고 정리했다. 두피 상태, 모발 굵기, 스타일, 시술 이력, 문화적 맥락이 겹친 상태라는 뜻이다. → 내부 타깃 정의로는 써도 되지만, <b>브랜드명과 핵심 카피는 다공성·밀도·굵기·두피 상태를 쓰는 진단형 언어</b>로 간다. "good hair", "manageable", "tame" 같은 표현도 피한다.</div>
+
+      <h3>⑦ 소비자 페인포인트 · 구매 행동</h3>
+      <table>
+        <tr><th style="width:30%">항목</th><th>근거</th></tr>
+        <tr><td><b>최대 고민</b></td><td>코일리 모발은 <b>건조·수분 유지</b>, 모발 성장, 엉킴 풀기 <span class="t n">TextureTrends 2017·2018</span></td></tr>
+        <tr><td><b>탐색형 소비</b></td><td>91%가 인생템을 찾은 뒤에도 계속 신제품을 탐색 · 곱슬·코일리 소비자 1/3 이상이 월 2회 이상 구매 · 연 지출 247달러(직모 139달러) <span class="t n">TextureTrends 2017·2018 (자료가 오래됨)</span></td></tr>
+        <tr><td><b>구매 계기</b></td><td>신제품 구매 1순위 이유 = <b>샘플을 써보고 마음에 든 경험</b> · 선택 기준은 리뷰·성분·가격 · 곱슬·코일리 여성 80% 이상이 리브인 사용</td></tr>
+        <tr><td><b>발견 경로</b></td><td>흑인 소비자 1/4 이상이 소셜미디어로 새 브랜드 발견 <span class="t n">Mintel</span></td></tr>
+        <tr><td><b>두피</b></td><td>평균 세정 간격 17.9일, 브레이드·위브 착용 시 32.8일 · 흑인 여성의 CCCA(정수리 흉터성 탈모) 유병률 2.7~5.6% <span class="t y">논문 검색 요약 · 원문 대조 필요</span> · 앞으로 두피 우선 케어와 웰니스형 주장이 커질 전망 <span class="t n">Mintel 2026</span></td></tr>
+        <tr><td><b>루틴 구조</b></td><td>기초 관리 제품 지출은 정체. 보호 스타일·붙임머리·가발이 루틴 안으로 들어옴 · 합성모 안전성 우려가 신제품 개발을 이끔 <span class="t n">Mintel 2026</span></td></tr>
+      </table>
+
+      <h3>⑧ SWOT <span class="t n">상담 전 가설</span></h3>
+      <div class="swot">
+        <div class="sw s"><h4>Strengths</h4><ul><li>광고 운영 실무 역량 — 런칭 후 트래픽 집행은 내재화 가능</li><li>한국 OEM·두피 과학 접근성</li><li>브랜드 자산 0 = 신뢰 구조를 처음부터 설계할 수 있음</li></ul></div>
+        <div class="sw w"><h4>Weaknesses</h4><ul><li>창업팀-카테고리 연결고리 미공개</li><li>미국·커뮤니티·크리에이터 경험 없음</li><li>2~4명 조직 · 외부 투자 없음 · 브랜드 전담자 미확인</li></ul></div>
+        <div class="sw o"><h4>Opportunities</h4><ul><li>두피 케어 3년 연속 두 자릿수 성장</li><li>$18~22 가격 공백 · 발효 소구 미발견</li><li>흑인 소비자 3배 불만족 = 채워지지 않은 수요</li></ul></div>
+        <div class="sw tt"><h4>Threats</h4><ul><li>한인 BSS 역사 + K-뷰티의 진열대 대체 서사</li><li>두피 카피의 의약품 경계 · CA AB 496(2027-01-01)</li><li>현지화 속도를 올리는 K-헤어 브랜드(Dr. Groot·Unove)</li></ul></div>
+      </div>
+
+      <h3>⑨ 표면 고민 vs 추정 진짜 니즈</h3>
+      <div class="co ac band"><span class="lab">표면 vs 진짜 (가설)</span><b>표면</b> = "내부 브랜딩 역량이 부족하니 브랜드 기획·아이덴티티·BI를 해달라. 맞춤형 마케팅 전략 로드맵을 원한다." <b>진짜</b> = <b>①</b> 대표는 이미 광고 운영자라, "로드맵"은 광고 계획이 아니라 <b>무엇을 먼저 증명해야 광고가 먹히는지의 순서표</b>일 가능성이 높다. <b>②</b> "글로벌 소비재 브랜드 빌더"라는 목표를 보면 이번 브랜드는 <b>포트폴리오의 첫 사례이자 투자 유치용 증거</b>다. 브랜드 산출물이 IR 서사를 겸해야 한다. <b>③</b> 대표가 스스로 말하지 않은 리스크, 곧 <b>"누가 만들었나"</b>를 먼저 꺼내주는 팀을 찾고 있을 수 있다. 우리 영상을 보고 왔다는 게 그 신호다.</div>
+
+      <h3>⑩ 3대륙 로드맵 재조정 — "같은 브랜드, 다른 사업"</h3>
+      <table>
+        <tr><th style="width:16%">권역</th><th style="width:34%">시장 성격</th><th>진입 조건 (규제·운영)</th></tr>
+        <tr><td><b>미국 (1순위)</b></td><td>온라인 비중 과반 · 커뮤니티·샘플 주도 · 두피 성장</td><td>MoCRA(아래 규제 실측) · CA AB 496이 <b>2027-01-01</b> 발효 · 주별 PFAS 금지</td></tr>
+        <tr><td><b>캐나다</b></td><td>미국 연장선</td><td>첫 판매 후 10일 안에 CNF(화장품 신고서) 제출 · 영어·불어 병기 · 향료 알레르겐 24종 표시(2026-04-12~)</td></tr>
+        <tr><td><b>영국 (유럽 1순위 제안)</b></td><td>흑인 여성 지출이 헤어케어의 10% · 아프로 살롱 1%</td><td>UK RP(영국 책임자) + SCPN 신고 · <b>ZPT 금지</b></td></tr>
+        <tr><td><b>EU</b></td><td>공식 인종 통계 없음(프랑스 등) · 미국 브랜드 의존</td><td>EU RP + CPNP 신고 · CPSR(안전성 보고서) · 향료 알레르겐 82종으로 확대 · ZPT 금지</td></tr>
+        <tr><td><b>아프리카</b></td><td><b>가발·익스텐션 경제</b> · 가격 민감 · 비공식 유통 비중 큼</td><td>나이지리아 NAFDAC: 현지 에이전트 명의 등록, 약 1.3~1.4만 달러(2차 출처) · 케냐: 선적마다 적합성 인증(PVoC)</td></tr>
+      </table>
+      <div class="co bad"><span class="lab">★ 재조정 권고 — 아프리카는 "확장"이 아니라 별도 사업</span>미국 가격($18~22)과 같은 SKU로 아프리카에 가는 건 성립하기 어렵다. 그곳은 웻헤어보다 드라이헤어(가발·익스텐션)가 몇 배 큰 시장이다. 로드맵은 <b>미국 → 캐나다·영국 → EU</b>까지를 한 줄로 잡고, 아프리카는 <b>가격대·SKU·유통 파트너를 따로 설계하는 2차 사업</b>으로 분리한다. 3대륙을 동시에 약속하면 5,000만 안에서 아무것도 깊게 하지 못한다.</div>
+    </section>
+
+    <section id="deal">
+      <div class="sec-k">FIT &amp; ESTIMATE</div>
+      <h2>기회 평가 · 견적 (가설)</h2>
+
+      <div class="verdict"><div class="vl">종합 기회 적합도 (상담 전 추정)</div><div class="vv">4.1 / 5.0</div><div class="vd">✅ GO (조건 2) — 니즈(브랜딩·BI)가 우리 코어와 정면으로 맞고 예산도 명시됐다. 감점 요인은 <b>미국 커뮤니티 역량이 우리에게도 없다는 것</b>과 <b>제품 개발 현황을 모른다는 것</b>.</div></div>
+
+      <div class="grid2">
+        <div class="card"><h3 style="margin-top:0">적합도 (가중) <span class="t n">참고용</span></h3>
+          <table>
+            <tr><td>니즈-핏 30%</td><td><b>4.5</b></td><td style="font-size:11.5px;color:var(--muted)">브랜드 기획·아이덴티티·BI = 코어 정면. 단 미국 커뮤니티 검증은 파트너 필요</td></tr>
+            <tr><td>예산 20%</td><td><b>3.5</b></td><td style="font-size:11.5px;color:var(--muted)">5,000만 명시 · 외부 투자 없음 · 풀안은 초과</td></tr>
+            <tr><td>의사결정 15%</td><td><b>4.5</b></td><td style="font-size:11.5px;color:var(--muted)">대표 본인 신청 · 공동창업자 존재 가능성(미확인)</td></tr>
+            <tr><td>긴급도 15%</td><td><b>4.0</b></td><td style="font-size:11.5px;color:var(--muted)">2027년 2분기 런칭 → BI 12월 확정 역산</td></tr>
+            <tr><td>성장·레퍼런스 20%</td><td><b>4.0</b></td><td style="font-size:11.5px;color:var(--muted)">첫 글로벌 헤어 레퍼런스 · "브랜드 빌더" 포트폴리오 연속 수주 가능성</td></tr>
+          </table></div>
+        <div class="card"><h3 style="margin-top:0">GO 조건 · 리스크 분기점</h3><table>
+          <tr><td>의사결정</td><td><span class="t g">✅</span> 대표 본인</td></tr>
+          <tr><td>예산</td><td><span class="t g">✅</span> 5,000만 명시 · <span class="t y">⚠️</span> 풀안은 별도 재원</td></tr>
+          <tr><td>제품 개발 현황</td><td><span class="t r">⚠️</span> OEM·처방·SKU 미확인 — <b>상담 필수</b></td></tr>
+          <tr><td>진정성 파트너</td><td><span class="t y">⚠️</span> 미국 흑인 전문가·크리에이터 네트워크 없음</td></tr>
+          <tr><td>우리 역량 밖</td><td><span class="t y">⚠️</span> 원어민 카피 · 미국 상표 · 미국 규제 실무</td></tr>
+        </table></div>
+      </div>
+
+      <div class="co warn"><span class="lab">GO의 2가지 조건</span><b>A. 신뢰 구조에 투자할 의지</b> — 네이밍과 포지셔닝에 들어가기 전에 "공동창작 파트너(미국 흑인 스타일리스트·트리콜로지스트·크리에이터)를 이름과 보상을 걸고 둘 의향이 있는가"를 확인한다. 없으면 우리가 무엇을 만들어도 겉포장이 된다. <b>B. 제품 일정이 역산 일정 안에 있는지</b> — OEM·처방·SKU가 미정이면 BI만 먼저 끝나고 제품이 늦는 불일치가 생긴다. 이 경우 착수 범위를 <b>아이덴티티(전략·네이밍)까지로 먼저 끊는다</b>.</div>
+      <div class="co ac"><span class="lab">예산 기준 = 신청서 상한 (매출 envelope 미적용)</span>통상 쓰는 <b>연 마케팅비 ≈ 매출 × 15%</b> 가늠자는 대행사 매출이 신규 브랜드 예산과 직결되지 않고 매출도 공개되지 않아 쓰지 않는다. 대신 <b>신청서에 적힌 5,000만원 이하</b>를 상한으로 놓는다. 외부 투자가 없는 구조라 <b>마일스톤 분할 결제</b>(착수 30 / 중간 산출물 검수 40 / 최종 30)가 기본이다. <b>보조 질문</b>: "5,000만은 브랜드 개발 전체 예산인가요, 이번 1단계 예산인가요? 촬영·런칭 콘텐츠는 별도로 잡혀 있나요?"</div>
+
+      <h3>2안 앵커링 <span class="t y">VAT 별도 · 단가 SSOT 기준 · 금액은 범위로만 제시</span></h3>
+      <div class="tiers">
+        <div class="tier rec"><div class="rb">첫 제안은 여기까지</div><div class="tn">코어 · 브랜드 토대</div><div class="tt">아이덴티티 L2 + 디자인 L2</div><div class="tp">5,000만</div><div class="td">10월 착수 → 1월 패키지 확정 (약 14주)</div><ul>
+          <li>포지셔닝 + 신뢰 구조 설계(공동창작·웨어테스트·소유 구조 원칙)</li><li>글로벌 네이밍 후보 + 미국 상표 스크리닝 액션</li><li>영문 버벌 아이덴티티(메시지·톤·클레임 가이드)</li><li>BI + 히어로 라인 패키지 + 브랜드 가이드라인</li><li>소비자 서베이 <b>설계·해석</b>은 포함, 패널 집행은 웨이브메트릭</li></ul></div>
+        <div class="tier"><div class="tn">풀 · 검증까지</div><div class="tt">코어 + 진단 L2 + 촬영 L2 + 무드보드</div><div class="tp">7,500만</div><div class="td">차액 2,500만 = 별도 재원</div><ul>
+          <li>미국 소비자 서베이 + 경쟁 감사(우리 집행)</li><li>런칭 비주얼 촬영(스타일리스트급)</li><li>인스타그램 무드보드</li><li>차액은 수출바우처 2027년 1차와 연결 검토</li></ul></div>
+        <div class="tier"><div class="tn">후속 · 런칭 운영</div><div class="tt">런칭 후 협의 — Land &amp; Expand</div><div class="tp">월 리테이너</div><div class="td">런칭 3개월 전 제안</div><ul>
+          <li>IMC 파트너십(월 단위)</li><li>시즌 캠페인 기획</li><li>광고 집행은 웨이브메트릭 내재화</li></ul></div>
+      </div>
+
+      <h3>견적 셀렉 <span class="t b">상담 중 선택 → 견적 자동</span></h3>
+      <div class="sel-component">
+        <div class="sel-split">
+          <div>
+            <div class="pane-k">투입 레벨 선택 — L1 프리랜서 / L2 내부 히즈 ★ / L3 외주·풀</div>
+            <div class="selmx" id="selmx">
+              <div class="hd">
+                <div>견적 항목 <span class="t n">단계</span></div>
+                <div>제외</div>
+                <div>L1<span class="ls">프리랜서</span></div>
+                <div class="star">L2 ★<span class="ls">내부 히즈</span></div>
+                <div>L3<span class="ls">외주·풀</span></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="pane-k">1차 견적서 · 실시간</div>
+            <div class="qpane">
+              <div class="qsh">
+                <div class="ttl">📋 1차 견적서 · 셀렉 결과</div>
+                <div class="big"><span class="won" id="bigWon">—</span><span class="eok" id="bigEok"></span></div>
+              </div>
+              <div class="env">
+                <div class="et"><span>예산 상한 <input id="rev" type="number" value="5000" min="0">만 · 기준 <b id="envAmt">—</b></span><span class="st" id="envSt">—</span></div>
+                <div class="bar" id="bar"><div class="fill" id="fill" style="width:0"></div></div>
+                <div class="cap" id="envCap"></div>
+              </div>
+              <div class="qlist" id="qlist"></div>
+              <div class="qfoot"><span>합계 · VAT 별도</span><span class="ft" id="qtot">—</span></div>
+              <div class="qact">
+                <button class="btn solid" id="btnSave" type="button">💾 저장</button>
+                <button class="btn" id="btnExcel" type="button">📊 엑셀</button>
+                <button class="btn" id="btnHtml" type="button">📄 HTML</button>
+                <button class="btn" id="btnReset" type="button">기본값 복원</button>
+              </div>
+              <div class="qhint"><span class="savest" id="saveSt">자동 저장 켜짐</span> · 손댄 금액엔 레벨칩이 <b style="color:var(--warn)">조정</b> 색으로 바뀐다. 단가 공유 원칙(브랜드 불문 동일).</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="co warn"><span class="lab">패키징 원칙</span>기본값은 <b>코어(아이덴티티 L2 + 디자인 L2 = 5,000만)</b>다. 서베이는 코어 안에서 <b>설계와 해석</b>만 맡고, 패널 집행(온라인 설문 플랫폼)은 웨이브메트릭이 한다. 광고 대행사라 집행은 잘하는 영역이다. 예산을 넘기면 항목을 빼거나 레벨을 낮추고, 단가 자체는 깎지 않는다(단가 공유 원칙).</div>
+
+      <div class="co ok"><span class="lab">차액 재원 — 수출바우처 2027년 1차 (브랜드 메뉴 있음 · 조건부)</span><b>메뉴가 있다.</b> 중기부 2026년 2차 공고(15개 분야)에 <b>"브랜드 개발‧관리"</b>가 독립 분야로 있다. 원문은 "수출브랜드 진단/분석, <b>신규 수출 브랜드 런칭</b>, 마케팅/브랜드 전략…"이다. <b>"디자인 개발"</b>에는 "외국어 포장디자인… <b>CI 및 BI 개발</b>"이 들어 있다. 산업부 공고의 브랜드 분야에는 <b>"네이밍"</b>이 명시돼 있다. 명칭에 "수출브랜드"와 "외국어"가 붙어 있어 <b>해외용 결과물</b>이어야 하는데, 북미 전용 브랜드라 오히려 딱 맞다.<br>
+        <b>금액</b>: 전년도 수출 1,000불 미만이면 <b>내수기업 트랙, 한도 3,000만원</b>이다. 국고보조율은 매출 100억 미만 70%이고 나머지 30%가 자부담이다(2026 중기부 2차 기준).<br>
+        <b>일정</b>: 2026년은 3차(7월)가 "올해 마지막 공고"였다. 2026년 1차가 전년 12월 16일 공고, 1월 9일 마감이었으니 <b>2027년 1차는 2026년 12월 공고가 유력</b>하다(추정, 공식 발표 없음).<br>
+        <b>설계</b>: 코어는 자부담으로 10월에 착수하고, 풀 차액(서베이·촬영·해외 인증)은 바우처가 선정되면 집행한다. <b>바우처는 착수 조건이 아니다.</b> 코어 일정을 바우처에 걸면 런칭이 밀린다.<br>
+        <span class="t y">확인 2가지</span> ① <b>우리(HIZ)가 브랜드·디자인 분야 수행기관으로 등록돼 있는가</b>. 수행기관 신청은 exportvoucher.com에서 수시로 받는다. ② <b>웨이브메트릭이 수행기관으로 등록돼 있지 않은가</b>. 공고상 "수행기관으로 등록 및 협약이 유효한 기업"은 참여기업으로 신청할 수 없다. 광고대행사라 홍보·광고 분야 수행기관일 가능성이 있다.</div>
+
+      <h3>실행가능성 검열 <span class="t b">필수 — 상담에서 "저희도 안 해봤습니다"가 나오면 온도가 꺾인다</span></h3>
+      <div class="grid2">
+        <div class="card"><h3 style="margin-top:0;font-size:14px">HIZ가 <u>못 하는</u> 것 → 성격 전환</h3><table>
+          <tr><td><b>원어민 영문 카피</b></td><td>→ 네이티브 카피라이터 파트너 검수를 견적에 명시(L3 또는 실비)</td></tr>
+          <tr><td><b>미국 흑인 커뮤니티 공동창작</b></td><td>→ 자문단 <b>구조·보상 설계는 우리</b> / 섭외·계약은 대표 액션</td></tr>
+          <tr><td>미국 상표 출원(USPTO·마드리드)</td><td>→ 변리사 연결. 우리는 네이밍 후보와 1차 스크리닝까지</td></tr>
+          <tr><td>처방 · 안전성 입증</td><td>→ OEM 몫. 우리는 클레임 가이드와 카피 레드라인</td></tr>
+          <tr><td>MoCRA 실무</td><td>→ OEM(시설 등록) + 미국 에이전트 + KCII 해외 인허가 컨설팅 연결</td></tr>
+          <tr><td>미국 퍼포먼스 광고</td><td>→ 웨이브메트릭 내재화. <b>이번 범위 제외</b></td></tr>
+        </table></div>
+        <div class="card"><h3 style="margin-top:0;font-size:14px">대표가 <u>못 만지는</u> 레버 → KPI에 넣지 말 것</h3><table>
+          <tr><td><b>웨어테스트 참여자 모집</b></td><td><span class="t g">통제 가능 ⭐</span> 설문·패널·크리에이터 유료 모집</td></tr>
+          <tr><td><b>크리에이터 유료 파트너십</b></td><td><span class="t g">통제 가능</span> 무보수 추천 기대 금지</td></tr>
+          <tr><td>자사몰(Shopify) · 아마존 리스팅</td><td><span class="t g">통제 가능</span></td></tr>
+          <tr><td>Target·Ulta·Sephora 입점 편성</td><td><span class="t r">통제 불가</span> 신규 브랜드는 검토 진입도 어려움</td></tr>
+          <tr><td>인큐베이터 선발 · 틱톡 바이럴</td><td><span class="t r">통제 불가</span></td></tr>
+        </table></div>
+      </div>
+
+      <h3>런칭 역산 일정 <span class="t y">업계 통상 리드타임 기반 추정 — OEM에 확인 필요</span></h3>
+      <div class="tl">
+        <div class="ph"><div class="pt">2026-10 · 착수</div><div class="pb">킥오프 인터뷰 · 제품 개발 현황 공유 · 서베이 설계 · 공동창작 파트너 요건 정의</div></div>
+        <div class="ph"><div class="pt">2026-11 · 포지셔닝 · 네이밍</div><div class="pb">포지셔닝 확정 · 네이밍 후보 → 미국 상표 1차 스크리닝 · 영문 버벌 초안 · 서베이 결과 반영</div></div>
+        <div class="ph"><div class="pt">2026-12 · BI 확정</div><div class="pb">로고·컬러·타이포 확정 · <b>수출바우처 2027년 1차 공고 대응</b>(예상)</div></div>
+        <div class="ph"><div class="pt">2027-01 · 패키지 확정</div><div class="pb">히어로 라인 패키지 · 라벨 표기(미국 연락처·INCI·영불 병기 여부) → 용기·인쇄 발주</div></div>
+        <div class="ph"><div class="pt">2027-02~03 · 양산 · 규제 준비</div><div class="pb">OEM 시설 등록 확인 · 안전성 입증 기록 · 웨어테스트 결과 공개 준비 · 자사몰 구축</div></div>
+        <div class="ph"><div class="pt">2027-04~06 · 런칭</div><div class="pb">첫 판매 후 120일 안에 제품 리스팅(소규모 면제 해당 여부 확인) · 광고 집행은 웨이브메트릭</div></div>
+      </div>
+
+      <h3>규제 실측 <span class="t g">미국 중심 · 공식 출처 대조</span></h3>
+      <table>
+        <tr><th style="width:24%">항목</th><th>요건</th><th style="width:22%">누가</th></tr>
+        <tr><td><b>시설 등록</b></td><td>미국 유통 화장품 제조 시설 등록 · 해외 시설은 <b>미국 에이전트 지정 필수</b> · 2년 갱신 · 무료</td><td>OEM(브랜드사가 대신 제출 가능)</td></tr>
+        <tr><td><b>제품 리스팅</b></td><td>제품별로 첫 판매 후 <b>120일 안에</b> 성분 포함 리스팅 · 매년 갱신 · Cosmetics Direct(무료)</td><td>브랜드사 = 책임자(RP)</td></tr>
+        <tr><td><b>안전성 입증 · 이상사례</b></td><td>안전성 입증 기록 보관 · 중대 이상사례는 <b>15 영업일 안에</b> 보고</td><td>브랜드사 RP · <b>면제 없음</b></td></tr>
+        <tr><td><b>라벨 연락처</b></td><td>미국 내 주소, 미국 내 전화번호, 전자 연락처(웹사이트) 중 하나</td><td>브랜드사</td></tr>
+        <tr><td><b>소규모 사업자 면제</b></td><td>직전 3년 평균 미국 매출 <b>100만 달러 미만</b>이면 등록·리스팅 면제. 단 <b>24시간 넘게 외모를 바꾸는 제품</b>(일부 염모제 등 — 릴랙서·펌 해당 가능성)은 면제 제외</td><td>—</td></tr>
+        <tr><td><b>캘리포니아 AB 496</b></td><td><b>2027-01-01부터</b> 26종 추가 금지 — 사이클로테트라실록산(D4, 일부 실리콘 제형), 릴리알, 붕산·붕산염 포함 · 이미 PFAS 의도 첨가 전면 금지(2025~)</td><td>OEM 처방 점검</td></tr>
+        <tr><td><b>포름알데히드 스무딩 금지</b></td><td>FDA 입법예고 목표 2026년 11월(2023년 이후 반복 지연)</td><td>스트레이트 제품 기획 시</td></tr>
+        <tr><td><b>한국 쪽</b></td><td>수출 전용이어도 위탁 제조 제품을 수출하려면 <b>화장품책임판매업 등록</b>이 필요하다는 해석이 일반적 · 자유판매증명서(CFS) 발급에도 요구됨</td><td>웨이브메트릭 <span class="t y">식약처 유권해석 미확인</span></td></tr>
+      </table>
+      <div class="co bad"><span class="lab">⛔ 레드라인 — 두피 카피가 제품을 의약품으로 바꾼다</span>
+        <b>R1. "발모·탈모 방지·성장 촉진·모낭 강화"</b> → 미국에서 의약품. 외용 OTC 경로는 사실상 막혀 있고 승인 의약품 경로만 남는다(21 CFR 310.527).<br>
+        <b>R2. "비듬 치료"</b> → OTC 비듬 모노그래프(M032) 적용. 의약품 표시(Drug Facts)와 의약품 제조 기준이 붙는다. 비듬 원료 <b>ZPT는 EU(2022-03-01)·영국(2022-10-15)에서 금지</b>라 미국 제형을 그대로 가져갈 수 없다.<br>
+        <b>R3. "가려움·염증 치료"</b> → 의약품 리스크.<br>
+        <b>안전한 표현</b>: 세정, 보습, 끊김(breakage) 감소, 두피 컨디셔닝처럼 외관·미용 범위의 표현. → 두피 포지셔닝을 잡는다면 <b>"치료"가 아니라 "루틴과 컨디션"</b>의 언어로 설계한다.</div>
+    </section>
+
+    <section id="consult">
+      <div class="sec-k">CONSULT</div>
+      <h2>상담 진행</h2>
+      <p class="lead">대면 미팅, BR 사무실 방문(일정 조율 중 · 가능 시간 평일 10~19시). 톤은 <b>대표가 퍼포먼스 마케터라는 점</b>에 맞춘다. 감성 수사를 걷어내고 숫자와 사례로 말한다. 인용문은 그대로 읽어도 되는 완성 문장이고, "듣는다"는 받아적을 항목이다.</p>
+
+      <div class="co ok"><span class="lab">리드가 상담 전 5분 안에 훑을 것 — 30초 요약</span>주식회사 웨이브메트릭, 유형태 대표. 2024년 5월 설립한 <b>쿠팡·네이버·카카오 퍼포먼스 광고 대행사</b>이고 인원은 2~4명(추정)이다. 대행으로 번 돈으로 <b>북미 곱슬·코일리 모발(Type 3~4) 헤어케어 브랜드</b>를 2027년 2분기에 런칭하려 한다. 이후 유럽·아프리카로 확장할 계획이다. 브랜드명·제품·계정은 아직 공개된 게 없다. 예산은 5,000만 이하이고, 원하는 것은 "브랜드 기획·아이덴티티·BI + 맞춤형 마케팅 전략 로드맵"이다. 유입은 <b>우리 유튜브 땡스큐레이터</b>.<br><b>이 상담의 성격</b>: 로고 시안 이야기가 아니라 <b>"이 브랜드를 커뮤니티가 믿을 이유"와 "런칭일에서 거꾸로 계산한 일정"</b>을 합의하는 자리다.</div>
+
+      <div class="co bad"><span class="lab">지뢰밭 — 절대 하지 말 것 / 반드시 할 것</span><b>절대 금지</b>: ① "Type 3-4"를 브랜드 언어로 쓰는 데 맞장구치기 ② 광고·ROAS 이야기로 흐르기(대표 본업이라 대화가 쉽게 그쪽으로 끌려간다) ③ "K-뷰티니까 된다" ④ 아프리카를 같은 SKU·같은 가격으로 약속하기 ⑤ 로고·컬러 취향부터 묻기 ⑥ BSS 한인 소유 이슈를 가볍게 또는 농담처럼 다루기 ⑦ 미국 흑인 커뮤니티 섭외를 우리가 대행하겠다고 약속하기.<br><b>반드시</b>: 신청서 문장을 직접 인용한다("글로벌 소비재 브랜드 빌더", "마케팅 문법을 익히고"). 모든 주장에 숫자나 사례를 붙인다. 미확인 사항은 "(상담 확인 필요)"로 처리한다.</div>
+
+      <h3>사업 단계 — 웨이브메트릭 신규 브랜드 = STAGE 0</h3>
+      <div class="stages">
+        <div class="stage on">
+          <div class="sgn">STAGE 0 · 브랜드 창업 ★웨이브메트릭</div>
+          <div class="sgd">카테고리·타깃·권역은 정해졌지만 <b>브랜드·제품·SKU는 백지(추정)</b>. 운영 법인과 광고 역량은 있음.</div>
+          <span class="sgr">역할 → 포지셔닝·신뢰 구조·BI · 역산 일정</span>
+        </div>
+        <div class="stage">
+          <div class="sgn">STAGE 1 · 런칭 전</div>
+          <div class="sgd">팔 게 정해졌고 <b>전환 경로만 없음</b>.</div>
+          <span class="sgr">역할 → 첫 매출 전환 경로 세팅</span>
+        </div>
+        <div class="stage">
+          <div class="sgn">STAGE 2·3 · 런칭 / 매출 드라이브</div>
+          <div class="sgd">제품·채널 있음 → 운영 중·매출 있음.</div>
+          <span class="sgr">역할 → 점검·개선 / 마케팅 분석</span>
+        </div>
+      </div>
+      <div class="co warn"><span class="lab">STAGE 1로 반올림하면 안 되는 이유</span>대표가 광고 운영자라서 "런칭 전 퍼널을 짜 달라"로 대화가 흐르기 쉽다. 하지만 브랜드명도 포지셔닝도 없는 상태에서 퍼널을 설계하면, 광고가 실어 나를 메시지 자체가 없다. 반대로 <b>제품 개발이 이미 많이 진행돼 있다면</b>(OEM 확정, 처방 확정) STAGE 0.5로 올리고 패키지 일정을 앞당긴다. B1 답으로 판정한다.</div>
+
+      <h3>분류 질문 <span class="t b">상담 첫 5분 · STAGE 확정용</span></h3>
+      <div class="q"><div class="qn">B1 · 제품은 어디까지 와 있나</div><div class="qt">"오늘 브랜드 이야기 전에 딱 하나만 먼저 여쭐게요. 제품 쪽은 지금 어디까지 와 있으세요? <b>OEM이 정해졌는지, 처방이나 SKU 후보가 나왔는지</b>요. 아니면 브랜드 방향이 먼저 나와야 제품을 정하실 계획이세요?"</div><div class="qi">왜 묻나 — 이 답이 역산 일정 전체를 가른다. 처방이 확정돼 있으면 패키지 일정이 빨라지고, 백지면 착수 범위를 아이덴티티(전략·네이밍)까지로 먼저 끊어야 한다.</div></div>
+      <div class="q"><div class="qn">B2 · 이름과 흔적</div><div class="qt">"브랜드 이름은 생각해 두신 게 있으세요? <b>도메인이나 상표를 먼저 잡아두신 것</b>도 있는지 궁금합니다."</div><div class="qi">왜 묻나 — 공개 검색에서는 이름·도메인·계정·상표가 하나도 나오지 않았다. 이미 정한 이름이 있다면 미국 상표 스크리닝이 첫 액션이 된다. "Type"이나 숫자 등급이 들어간 이름이라면 여기서 방향을 틀어야 한다.</div></div>
+
+      <h3>필수 질문 Top 3</h3>
+      <div class="q"><div class="qn">Q1 · 예산 성격과 재원 <span class="t r">고정 · 반드시 물을 것</span></div><div class="qt">"적어주신 5,000만원이 <b>이번 브랜드 개발 1단계 전체 예산</b>인지, 아니면 브랜딩만의 예산이고 <b>촬영·런칭 콘텐츠·광고비는 따로</b> 잡혀 있는지 여쭤볼게요. 그리고 재원이 <b>대행 수익 재투자</b>인지, <b>투자 유치가 되면 집행</b>하시는 구조인지도 같이 알고 싶습니다."</div><div class="qi">왜 묻나 — 신청서에 "투자금을 확보하고 있다"고 썼다. 투자 전제라면 견적을 낸 뒤 "투자 들어오면 할게요"로 몇 달이 증발한다. 반대로 대행 수익이면 마일스톤 분할로 바로 착수할 수 있다. (직전 상담들에서 연속으로 놓친 질문이라 Top 3의 1번에 고정)</div></div>
+      <div class="q"><div class="qn">Q2 · 왜 Type 3~4인가 <span class="t r">이 상담의 심장 · 반드시 물을 것</span></div><div class="qt">"대표님, 이 카테고리를 고르신 이유가 정말 궁금했어요. 헤어케어 중에서도 <b>곱슬·코일리 모발, 그리고 북미</b>를 고르셨잖아요. <b>누구의 머리카락에서 시작된 이야기</b>인지, 팀 안에 이 모발을 가진 분이 있는지, 아니면 대행하시면서 데이터로 발견하신 기회인지요."</div><div class="qi">왜 묻나 — 이 답이 브랜드의 진정성 전략을 결정한다. <b>당사자 연결고리가 있다면</b> 그게 브랜드 서사의 1번 자산이다. <b>데이터로 발견한 기회라면</b> 신뢰를 빌려올 구조(공동창작 자문단·웨어테스트·소유 구조 선공개)가 필수가 된다. 어느 쪽이든 나쁜 답이 아니지만, 모르고 설계하면 전부 틀린다.</div></div>
+      <div class="q"><div class="qn">Q3 · 런칭 시점 · 첫 채널 · 미국 운영 주체 <span class="t b">견적 범위를 실제로 가르는 질문</span></div><div class="qt">"2027년 2분기 런칭이 <b>첫 판매 시작 시점</b>인 거죠? 첫 판매는 <b>자사몰, 아마존, 틱톡샵</b> 중 어디로 생각하세요? 그리고 미국 쪽 법인이나 물류(3PL), 현지에서 움직일 사람은 계획이 있으세요?"</div><div class="qi">왜 묻나 — 첫 채널이 패키지 사양(아마존 규격·틱톡샵 번들·샘플 사이즈)을 바꾼다. 미국 운영 주체가 없으면 라벨 연락처(미국 주소·전화 또는 웹사이트)와 이상사례 대응 창구부터 비어 있다.</div></div>
+      <div class="co"><span class="lab">보조 질문 (시간 남으면)</span>⓪ "예전 회사 소개에 <b>공동창업자분들이 시리즈 A·B 스타트업이랑 창업·매각 경험</b>이 있다고 봤어요. 어떤 회사들이었어요?" — 공개 이력이 전혀 없어서 창업팀 역량은 여기서만 확인된다. 소비재나 브랜드 경험이 있으면 신뢰 구조 설계의 재료가 된다 ① "공동창업자분들 중에 이 브랜드를 <b>전담</b>하실 분이 계세요?" — 2~4명 조직의 리소스 확인 ② "직접 운영하신다는 <b>6개 브랜드</b>는 어떤 브랜드들이에요?" — 채용공고 문구. 자체 브랜드 운영 이력이 있으면 운영 역량 판단이 달라진다 ③ "두피 쪽 기능을 생각하고 계세요? 탈모나 비듬 같은 기능성까지요?" — 규제선 확인 ④ "유럽·아프리카는 언제쯤을 보세요?" ⑤ "땡스큐레이터에서 <b>어떤 영상</b>을 보고 연락 주셨어요?" — 기대치 확인 ⑥ "혹시 웨이브메트릭이 <b>수출바우처 수행기관</b>으로 등록돼 있으세요?" — 등록돼 있으면 참여기업으로 바우처를 받을 수 없다. 풀안 재원 설계가 달라진다.</div>
+
+      <h3>상담 타임라인 (60분)</h3>
+      <div class="tl">
+        <div class="ph"><div class="pt">0–7분 · 라포 — 신청서를 읽고 왔다는 걸 증명한다</div><div class="pb"><b>말한다:</b> "신청서에 '글로벌 소비재 브랜드 빌더가 되기 위해 사업을 시작했다', 그리고 '마케팅 에이전시를 먼저 해서 뷰티 시장의 마케팅 문법을 익혔다'고 쓰셨어요. 이 순서가 인상적이었습니다. 보통은 브랜드부터 만들고 광고를 배우는데, <b>대표님은 반대로 트래픽을 먼저 다룰 줄 아는 상태에서 브랜드를 시작하시는 거</b>잖아요."<br><b>듣는다:</b> 대표가 스스로를 "마케터"로 보는지 "브랜드 창업자"로 보는지. 전자라면 이후 대화를 <b>"광고가 먹히게 하는 전제 조건"</b>으로 프레이밍한다.</div></div>
+        <div class="ph"><div class="pt">7–20분 · 실체 · STAGE 확정</div><div class="pb"><b>말한다:</b> B1 → B2 → Q1 → Q2 → Q3 순서로 그대로 읽는다.<br><b>받아적을 체크리스트:</b> ☐ OEM·처방·SKU 현황 ☐ 브랜드명·도메인·상표 ☐ 예산 범위(1단계 전체 vs 브랜딩만) + 재원(대행 수익 vs 투자 전제) ☐ <b>왜 Type 3~4인가(당사자 연결고리 유무)</b> ☐ 첫 판매 채널 ☐ 미국 법인·3PL·현지 인력 ☐ 브랜드 전담자 ☐ 두피 기능성 여부 ☐ 유럽·아프리카 시점</div></div>
+        <div class="ph"><div class="pt">20–35분 · 재프레이밍 (Challenger) — 이 상담의 심장</div><div class="pb"><b>말한다:</b> "제가 리서치하면서 느낀 걸 좀 직설적으로 말씀드려도 될까요. 이 카테고리는 <b>소비자가 성분보다 '누가 만들었냐'를 먼저 봅니다.</b> 흑인 소비자가 뷰티에서 가장 많이 쓰는 카테고리가 헤어인데(NielsenIQ 22.9억 달러), 헤어·스킨·메이크업 선택지에 불만족할 가능성이 비흑인 대비 3배예요(McKinsey). 그래서 <b>믿을 수 있는 브랜드에 대한 수요는 크고, 믿는 기준은 까다롭습니다.</b>"<br>"그리고 한국 창업자에게는 특별히 무거운 맥락이 있어요. 2018년 NPR 보도에서 미국 뷰티서플라이 업계 관계자는 흑인 헤어 매장의 약 70%가 한인 소유라고 했습니다. 이번 주에 문을 연 Target Beauty Studio는 90개 브랜드 중 흑인 소유 브랜드가 두 곳이고, 올해 6월에는 '<b>K-뷰티 헤어가 흑인 소비자를 소외시키냐</b>'는 기사도 나왔어요. 대표님 브랜드는 그 질문 한가운데서 출시됩니다."<br>"그런데 저는 이게 막는 벽이 아니라 <b>설계할 수 있는 조건</b>이라고 봅니다. Curlsmith는 영국 부부가 만든 브랜드인데 커뮤니티를 먼저 만들고 실제 고객 결과만 광고에 써서 약 1.5억 달러에 인수됐어요. 판틴은 대기업인데도 <b>흑인 과학자 다섯 명의 이름을 공개</b>하고 개발팀으로 내세웠고요. <b>신뢰는 광고로 사는 게 아니라 구조로 만듭니다.</b> 누구와 만들었는지, 출시 전에 누가 써봤는지, 소유 구조를 먼저 말하는지요."<br><b>대표 언어로 번역:</b> "대표님 식으로 말하면, <b>신뢰 구조가 없는 브랜드에 광고비를 붓는 게 ROAS가 제일 안 나오는 구조</b>예요. 광고는 대표님이 제일 잘하시니까, 저희는 그 광고가 먹히게 할 전제 조건을 만드는 겁니다."<br><b>듣는다:</b> 대표가 "그 부분은 생각 못 했다"고 하는지, 아니면 "그래서 우리가 ○○를 준비했다"고 하는지. 후자라면 그게 브랜드 서사의 재료다.</div></div>
+        <div class="ph"><div class="pt">35–47분 · 처방 3단계 + 규제 한 장 — 짧게</div><div class="pb"><b>"1단계, 포지셔닝과 신뢰 구조를 같이 정합니다."</b> 쌀·본드 리페어는 이미 선점됐고, 두피는 성장 중이지만 규제선이 있어요. 공백 후보는 보호 스타일 착용 중 두피 루틴, 발효 기반 건조 두피, $18~22 가격대입니다.<br><b>"2단계, 이름과 언어."</b> 'Type 3-4'는 내부 타깃 정의로는 괜찮지만 브랜드 언어로 쓰면 위험합니다. 원래 제품 마케팅용으로 만든 분류라 위계가 있다는 비판을 받거든요. 다공성·밀도·두피 상태 같은 진단형 언어로 갑니다.<br><b>"3단계, BI와 패키지 — 1월까지."</b> 2분기 런칭이면 패키지는 1월, BI는 12월에 확정돼야 합니다. 그래서 착수가 10월이어야 해요.<br><b>규제 한 장 보여주기:</b> "두피 카피에서 '탈모 방지'나 '비듬 치료' 한 줄이 들어가면 미국에서는 의약품이 됩니다. 비듬 원료 ZPT는 유럽·영국에서 금지고요. 그리고 캘리포니아는 <b>2027년 1월 1일</b>부터 일부 실리콘(D4)을 금지해요. 런칭 전에 발효되니 OEM 처방에서 꼭 확인하셔야 합니다."</div></div>
+        <div class="ph"><div class="pt">47–60분 · 견적 범위 · 다음 액션 · Quick Tip</div><div class="pb"><b>말한다:</b> "적어주신 예산 안에서 저희가 제안드리는 건 <b>브랜드 토대</b>예요. 포지셔닝과 신뢰 구조, 네이밍과 영문 언어, BI와 히어로 패키지까지입니다. 서베이는 저희가 설계하고 해석할 테니, 집행은 대행하시는 역량으로 직접 돌리시면 예산 안에 들어옵니다." → 클로징으로 연결. 마지막 3분은 Quick Tip을 무상으로 준다.</div></div>
+      </div>
+      <div class="co ac"><span class="lab">30분 버전 (압축)</span><b>0–3분</b> 라포 한 문장("트래픽을 먼저 다룰 줄 아는 상태에서 브랜드를 시작하신다") · <b>3–12분</b> B1·Q1·Q2·Q3 <b>네 개는 무조건</b> · <b>12–22분</b> 재프레이밍 두 덩어리만: "누가 만들었냐가 먼저" + "신뢰는 구조로 만든다(Curlsmith·판틴)" · <b>22–27분</b> 역산 일정(10월 착수 → 12월 BI → 1월 패키지)과 두피 레드라인 한 줄 · <b>27–30분</b> 최소 커밋 → Quick Tip.<br><b>버리는 것</b>: 3대륙 로드맵 재조정(자료로 대체 송부) · 경쟁 가격 상세 · 보조 질문.</div>
+
+      <h3>예상 반론 &amp; 대응 스크립트 <span class="t b">그대로 읽으면 됨</span></h3>
+      <div class="q"><div class="qn">D1 · "로고랑 패키지만 잘 만들어 주시면, 마케팅은 저희가 해요"</div><div class="qt">"네, 광고는 대표님이 저희보다 잘하세요. 그 부분은 손대지 않을 거예요. 그런데 로고랑 패키지는 <b>무엇을 말할지가 정해진 다음에</b> 나오는 결과물입니다. 이 카테고리에서는 '무엇을 말할지'가 성분이 아니라 <b>'누구와 어떻게 만들었는지'</b>예요. 그게 빠진 채로 예쁜 패키지를 만들면, 대표님이 집행하실 광고에 실을 이유가 없어요. 저희가 먼저 잡는 건 그 이유고, 로고와 패키지는 그 이유를 보이게 만드는 겁니다."</div></div>
+      <div class="q"><div class="qn">D2 · "5,000만 안에서 서베이·촬영까지 다 해주세요"</div><div class="qt">"솔직하게 말씀드리면, 5,000만 안에 전부 넣으면 하나하나가 얕아집니다. 그래서 두 가지를 제안드려요. 첫째, <b>서베이는 저희가 설계·해석하고 집행은 직접 하시면</b> 예산 안에 들어옵니다. 대행하시는 분들이라 이건 잘하시는 영역이에요. 둘째, 촬영처럼 런칭 직전에 필요한 건 <b>수출바우처</b>와 연결해 볼 수 있어요. 2027년 1차 공고가 12월쯤 나올 텐데, <b>'브랜드 개발‧관리'(신규 수출 브랜드 런칭·네이밍)와 '디자인 개발'(CI·BI, 외국어 포장디자인) 메뉴</b>가 따로 있어요. 수출 실적이 없으면 내수기업 트랙이라 한도 3,000만원에 정부가 70%를 댑니다. 다만 착수를 바우처에 걸면 런칭이 밀리니까, <b>토대는 10월에 시작하고 바우처는 추가분에만</b> 쓰는 구조를 권합니다."</div></div>
+      <div class="q"><div class="qn">D3 · "K-뷰티 성분이 저희 차별점이에요"</div><div class="qt">"K-뷰티 기술은 분명한 무기예요. 그런데 쌀이랑 본드 리페어는 이미 Mielle, Briogeo, Pattern이 매스부터 프레스티지까지 다 들어가 있어요. 그리고 Unove, Dr. Groot 같은 한국 헤어 브랜드들이 올해 세포라에 들어갔고요. <b>'K'라는 단어만으로는 차별점이 안 됩니다.</b> 저희가 보는 공백은 '두피 과학'을 이 모발의 실제 생활, 예를 들어 <b>보호 스타일을 몇 주씩 하는 동안의 두피 루틴</b>에 붙이는 거예요. K는 기술의 출처로 쓰고, 브랜드 앞에 내세우지는 않는 설계입니다."</div></div>
+      <div class="q"><div class="qn">D4 · "진정성은 흑인 인플루언서를 쓰면 되지 않나요?" <span class="t r">가장 중요</span></div><div class="qt">"인플루언서는 꼭 필요해요. 그런데 <b>인플루언서는 신뢰를 증폭하지, 만들지는 않습니다.</b> 올해 기사에서 한국 헤어 브랜드가 흑인 크리에이터에게 <b>무보수 추천</b>을 받는 구조가 지적됐어요. 그 브랜드는 그 뒤에 미국 전담팀을 만들고 테스트 모발 타입을 넓혔고요. 그리고 DevaCurl은 인플루언서 영상 한 편 뒤에 피해자 그룹이 4천 명에서 3만 5천 명으로 늘었습니다. <b>인플루언서는 양쪽으로 다 작동해요.</b>"<br>"그래서 순서를 이렇게 제안드려요. 먼저 <b>이름과 권한을 건 공동창작 파트너</b>, 예를 들어 스타일리스트나 트리콜로지스트가 제품과 언어에 실제로 참여하게 합니다. 다음은 <b>출시 전 웨어테스트</b>로 결과를 쌓고요. 인플루언서는 그 위에 <b>정당한 보상</b>으로 얹습니다. 그러면 인플루언서가 말할 거리가 생겨요."</div></div>
+      <div class="q"><div class="qn">D5 · "유럽·아프리카까지 같이 설계해 주세요"</div><div class="qt">"브랜드 언어와 BI는 처음부터 글로벌로 설계합니다. 영문 기준으로 만들고, 영국·EU 표기 요건까지 고려할게요. 다만 아프리카는 <b>같은 제품을 그대로 가져가는 게 성립하기 어려워요.</b> 거기는 샴푸 같은 웻헤어보다 가발·익스텐션 시장이 몇 배 크고, 가격 민감도도 전혀 다릅니다. 나이지리아는 현지 에이전트 명의로 등록해야 하고요. 그래서 <b>미국 → 캐나다·영국 → EU</b>를 한 줄로 가고, 아프리카는 SKU와 가격을 따로 짜는 2차 사업으로 분리하는 걸 권합니다."</div></div>
+
+      <h3>클로징 <span class="t b">STAGE 0 · 역산 일정 합의</span></h3>
+      <div class="co ok"><span class="lab">오늘 반드시 받아낼 최소 커밋 — 이것만 하면 성공</span><b>① 10월 착수 목표일에 합의한다. ② 제품 개발 자료(OEM 견적·처방 방향·SKU 후보)를 공유받기로 약속한다.</b><br>읽을 문장: "2분기 런칭에서 거꾸로 계산하면 착수가 10월이어야 해요. 오늘 계약을 결정하실 필요는 없고, <b>착수 목표일만 달력에 찍어두시죠.</b> 그리고 OEM 쪽 자료를 주시면 그걸 기준으로 견적 범위를 확정해서 드리겠습니다."<br>"그 사이에 저희가 <b>세 가지를 무료로</b> 정리해서 보내드릴게요. ①런칭 역산 일정표 한 장 ②두피 카피 레드라인 한 장(화장품이냐 의약품이냐) ③미국 텍스처드 헤어 경쟁 가격 지도."<br><b>왜 이 커밋인가</b>: (a)대표 부담이 0이라 거절할 이유가 없다 (b)일정을 먼저 합의하면 견적이 "비용"이 아니라 "런칭을 지키는 조건"으로 읽힌다 (c)제품 자료가 오면 그때가 진짜 견적 타이밍이다.</div>
+      <div class="co warn"><span class="lab">견적 언급 방식 — 범위로만, 코어 먼저</span>"적어주신 예산 안에서 <b>브랜드 토대</b>를 하는 게 저희 기본 제안이에요. 검증과 촬영까지 넣는 풀 버전도 있는데, 그 차액은 수출바우처 같은 별도 재원과 연결하는 걸 권합니다." → <b>풀 버전 금액은 대표가 먼저 물을 때만</b> 말한다. Q1 답이 "투자 전제"였다면 코어 금액도 이번 상담에서는 꺼내지 않고, 역산 일정만 남긴다.</div>
+
+      <h3>Quick Tip <span class="t b">상담 말미 무상 제공 · 3분</span></h3>
+      <div class="co ac band"><span class="lab">「두피 카피 신호등 — 지금 쓰려는 문장이 화장품인지 의약품인지」</span>"마지막으로 오늘 그냥 드리고 갈 게 하나 있어요. 두피 케어로 가실 거면 제일 먼저 부딪히는 게 카피예요. 미국 FDA는 <b>무엇이 들어 있느냐보다 무엇을 약속하느냐</b>로 화장품과 의약품을 나눕니다. 그래서 문장 하나로 제품의 법적 지위가 바뀌어요. 이 표 한 장만 옆에 두시면 됩니다."</div>
+      <table>
+        <tr><th style="width:14%">신호</th><th>표현 예시</th><th style="width:34%">결과</th></tr>
+        <tr><td><span class="t g">초록</span></td><td>cleanses the scalp · moisturizes · reduces breakage · soothes the look of dryness · scalp routine</td><td>화장품 범위(외관·미용)</td></tr>
+        <tr><td><span class="t y">노랑</span></td><td>strengthens · nourishes follicles · balances scalp</td><td>맥락에 따라 판단이 갈림 → 근거와 문장 수위 조절</td></tr>
+        <tr><td><span class="t r">빨강</span></td><td>prevents hair loss · promotes hair growth · treats dandruff · relieves itching · anti-inflammatory</td><td><b>의약품</b> — 발모·탈모는 승인 의약품 경로, 비듬은 OTC 모노그래프(Drug Facts)</td></tr>
+      </table>
+      <div class="co bad"><span class="lab">함께 짚을 것</span>"비듬 제품을 생각하신다면, 미국에서 흔히 쓰는 원료 <b>ZPT는 유럽과 영국에서 금지</b>예요. 처음부터 글로벌로 가실 거면 원료 선택부터 권역을 같이 보셔야 합니다. 그리고 캘리포니아는 <b>2027년 1월 1일</b>부터 일부 실리콘(D4)을 금지하니, OEM 처방 리스트에서 한 번만 검색해 보세요."</div>
+
+      <h3>상담장 준비물 체크리스트</h3>
+      <table>
+        <tr><th style="width:28px">#</th><th>준비물</th><th style="width:38%">왜</th></tr>
+        <tr><td>★1</td><td><b>이 페이지의 「30초 요약」 + B1·Q1·Q2·Q3 문장</b></td><td>이것만 외우면 상담이 굴러간다. 질문은 <b>문장 그대로</b> 읽으면 된다</td></tr>
+        <tr><td>★2</td><td><b>「지뢰밭」 콜아웃</b></td><td>절대 금지 7개. 상담 직전 30초 훑기</td></tr>
+        <tr><td>3</td><td><b>진정성 리스크 표 1장</b> (SheaMoisture·DevaCurl·BSS·Target Beauty Studio)</td><td>재프레이밍 구간의 물증. 말로만 하지 말고 종이로 보여준다</td></tr>
+        <tr><td>4</td><td><b>경쟁 가격 지도 1장</b> (매스 $9~17 / 공백 $18~22 / 프레스티지 $24~32)</td><td>퍼포먼스 마케터에게 가장 빨리 먹히는 자료</td></tr>
+        <tr><td>5</td><td><b>런칭 역산 타임라인 1장</b></td><td>10월 착수 합의의 근거</td></tr>
+        <tr><td>6</td><td><b>두피 카피 신호등 인쇄본</b></td><td>Quick Tip. 상담 후에도 책상에 남는 물건</td></tr>
+        <tr><td>7</td><td>견적 셀렉 <span class="t y">지갑에만</span></td><td>코어 5,000만 1종. <b>대표가 먼저 금액을 묻기 전에는 꺼내지 않는다</b></td></tr>
+      </table>
+
+      <div class="co ok"><span class="lab">상담 후 랩업 입력값</span>OEM·처방·SKU 현황 / 브랜드명·도메인·상표 / 예산 범위 + 재원(대행 수익 vs 투자 전제) / <b>왜 Type 3~4인가(당사자 연결고리)</b> / 첫 판매 채널 / 미국 법인·3PL·현지 인력 / 브랜드 전담자 / 두피 기능성 여부 / 유럽·아프리카 시점 / <b>10월 착수 목표일</b> → 이 값들이 모이면 진단서와 견적으로 이어간다.</div>
+    </section>
+
+    <section id="sources">
+      <div class="sec-k">SOURCES</div>
+      <h2>참고 출처</h2>
+      <p class="lead">① 클라이언트 제공 ② 직접 리서치(라이브 확인 <b>2026-09-14</b>). [검색 요약] 표시는 원문을 열지 못한 것이라, 인쇄물이나 발표 전에 원문과 대조한다.</p>
+
+      <div class="co"><span class="lab">① 클라이언트 제공</span>상담 신청 인테이크(구글폼 "LAW data 모객", 유형태 대표, 2026-09-10 21:26 접수 · 슬랙 #2026-bc-br 알림): 업종 헬스/뷰티 · 유입 유튜브(땡스큐레이터) · 관심 서비스 = 브랜드 컨설팅(신규 브랜드 런칭), 브랜드 마케팅(브랜드 기획·아이덴티티·BI 개발) · 문의 = 글로벌 소비재 브랜드 빌더 목표, 에이전시로 뷰티 마케팅 문법을 익히며 브랜드 런칭 투자금 확보 중, 2027년 2분기 Type 3~4 헤어 대상 글로벌 헤어케어 브랜드 런칭(북미 → 유럽·아프리카), 내부 브랜딩 역량 부족 · 예산 5,000만원 이하 · 기대 = 맞춤형 마케팅 전략 로드맵 · 미팅 = 대면(브랜드라이즈 사무실 방문), 평일 10~19시 가능</div>
+
+      <div class="co ac"><span class="lab">② 직접 리서치 — 기업 · 채널</span>
+        <a href="https://bizno.net/article/1278663172" target="_blank" rel="noopener">bizno 사업자 조회</a>(사업자·법인등록번호·등기 소재지·업태) ·
+        <a href="https://www.nicebizinfo.com/ep/EP0100M002GE.nice?kiscode=RA9842" target="_blank" rel="noopener">NICE 기업정보</a>(설립일·인원, 제3자) ·
+        <a href="https://wavemetric.io/" target="_blank" rel="noopener">wavemetric.io</a>(서비스·회사 주장·SSL 만료) ·
+        <a href="https://www.wanted.co.kr/wd/382103" target="_blank" rel="noopener">원티드 공고</a> ·
+        <a href="https://www.wanted.co.kr/wd/377776" target="_blank" rel="noopener">원티드 마케팅팀 공고</a>(6개 브랜드 운영·매체) ·
+        <a href="https://www.wanted.co.kr/company/53483" target="_blank" rel="noopener">원티드 회사 페이지</a>(회사 소개 원문·인원 2명) ·
+        <a href="https://www.wanted.co.kr/wd/292152" target="_blank" rel="noopener">원티드 MD 공고</a> ·
+        <a href="https://www.instagram.com/wavemetric_/" target="_blank" rel="noopener">IG @wavemetric_</a> ·
+        <a href="https://www.youtube.com/channel/UCTBhYGg_U_pBOKLydoZrhwg" target="_blank" rel="noopener">땡스큐레이터 유튜브</a>
+      </div>
+
+      <div class="co ac"><span class="lab">② 직접 리서치 — 시장 · 경쟁 · 가격</span>
+        <a href="https://nielseniq.com/global/en/insights/analysis/2022/attracting-black-beauty-consumers-in-2022/" target="_blank" rel="noopener">NielsenIQ 2022</a> ·
+        <a href="https://www.retailbrew.com/stories/2022/06/28/inequity-still-a-pressing-issue-for-black-beauty-consumers-and-brands-mckinsey-report" target="_blank" rel="noopener">McKinsey 2022(Retail Brew)</a> ·
+        <a href="https://wwd.com/beauty-industry-news/beauty-features/circana-2025-beauty-mass-prestige-trends-2026-1238555852/" target="_blank" rel="noopener">Circana 2025(WWD)</a> ·
+        <a href="https://store.mintel.com/report/us-textured-haircare-and-hair-styles-market-report" target="_blank" rel="noopener">Mintel 2025</a> ·
+        <a href="https://store.mintel.com/report/us-black-textured-haircare-market-report" target="_blank" rel="noopener">Mintel 2026</a> ·
+        <a href="https://insights.treasuretress.co.uk/spending-insights" target="_blank" rel="noopener">Treasure Tress(영국)</a> ·
+        <a href="https://www.news24.com/life/archive/African-hair-care-a-multi-billion-dollar-industry-20140806" target="_blank" rel="noopener">News24(아프리카, 2014)</a> ·
+        <a href="https://mielleorganics.com/products/rosemary-mint-strengthening-shampoo.js" target="_blank" rel="noopener">Mielle</a> ·
+        <a href="https://www.target.com/s?searchTerm=sheamoisture+coconut+hibiscus+curl+enhancing+smoothie" target="_blank" rel="noopener">SheaMoisture(Target)</a> ·
+        <a href="https://www.tginatural.com/" target="_blank" rel="noopener">TGIN</a> ·
+        <a href="https://thedoux.com/products/mousse-def-texture-foam" target="_blank" rel="noopener">The Doux</a> ·
+        <a href="https://breadbeautysupply.com/" target="_blank" rel="noopener">Bread</a> ·
+        <a href="https://briogeohair.com/collections/curl-charisma" target="_blank" rel="noopener">Briogeo</a> ·
+        <a href="https://curlsmith.com/" target="_blank" rel="noopener">Curlsmith</a> ·
+        <a href="https://patternbeauty.com/products/leave-in" target="_blank" rel="noopener">Pattern</a> ·
+        <a href="https://www.glossy.co/beauty/sephora-doubles-down-on-k-beauty-hair-care/" target="_blank" rel="noopener">Glossy(Sephora K-헤어)</a> ·
+        <a href="https://fashionista.com/2026/06/korean-hair-care-brands-coily-textures-black-consumers" target="_blank" rel="noopener">Fashionista 2026-06</a>(검색 요약)
+      </div>
+
+      <div class="co ac"><span class="lab">② 직접 리서치 — 진정성 · 소비자</span>
+        <a href="https://www.nbcnews.com/news/nbcblk/shea-moisture-ad-falls-flat-after-backlash-n750421" target="_blank" rel="noopener">NBC(SheaMoisture 2017)</a> ·
+        <a href="https://www.nbcnews.com/news/us-news/former-devacurl-aficionados-allege-products-cause-hair-loss-n1134316" target="_blank" rel="noopener">NBC(DevaCurl)</a> ·
+        <a href="https://news.bloomberglaw.com/class-action/devacurl-5-2-million-hair-products-injury-deal-gets-final-nod" target="_blank" rel="noopener">Bloomberg Law(DevaCurl 합의)</a> ·
+        <a href="https://www.newsweek.com/list-non-black-hair-brands-shea-moisture-carols-daughter-1509677" target="_blank" rel="noopener">Newsweek(소유 구조 목록)</a> ·
+        <a href="https://www.wosu.org/news/2018-07-26/black-hair-supplies-once-a-korean-business-shifts-to-black-ownership" target="_blank" rel="noopener">NPR/WOSU 2018(BSS 한인 소유)</a> ·
+        <a href="https://www.beautyindependent.com/black-entrepreneurs-fighting-discrimination-beauty-supply-sector/" target="_blank" rel="noopener">Beauty Independent 2020</a> ·
+        <a href="https://www.modernretail.co/marketing/targets-new-beauty-selection-has-almost-no-black-owned-brands/" target="_blank" rel="noopener">Modern Retail(Target Beauty Studio)</a> ·
+        <a href="https://piper.co.uk/founder-stories/curlsmith/" target="_blank" rel="noopener">Piper(Curlsmith)</a> ·
+        <a href="https://1966mag.com/pantene-gold-series/" target="_blank" rel="noopener">1966(Pantene Gold Series)</a> ·
+        <a href="https://en.wikipedia.org/wiki/Andre_Walker_Hair_Typing_System" target="_blank" rel="noopener">Andre Walker 체계</a> ·
+        <a href="https://ourx.co/blogs/root/on-texturism-and-the-deep-roots-of-hair-typing" target="_blank" rel="noopener">OurX(텍스처리즘)</a> ·
+        <a href="https://www.prnewswire.com/news-releases/influential-textured-hair-category-continues-to-revolutionize-the-retail-beauty-marketplace-300763710.html" target="_blank" rel="noopener">TextureTrends 2018</a> ·
+        <a href="https://www.mintel.com/insights/beauty-and-personal-care/black-haircare-market-trends/" target="_blank" rel="noopener">Mintel 인사이트</a> ·
+        <a href="https://pubmed.ncbi.nlm.nih.gov/38217001/" target="_blank" rel="noopener">세정 주기 논문</a>(검색 요약)
+      </div>
+
+      <div class="co ac"><span class="lab">② 직접 리서치 — 규제 · 지원</span>
+        <a href="https://www.fda.gov/cosmetics/cosmetics-laws-regulations/modernization-cosmetics-regulation-act-2022-mocra" target="_blank" rel="noopener">FDA MoCRA</a> ·
+        <a href="https://www.fda.gov/media/170732/download" target="_blank" rel="noopener">FDA 등록·리스팅 가이던스</a> ·
+        <a href="https://www.fda.gov/cosmetics/cosmetics-labeling-regulations/summary-cosmetics-labeling-requirements" target="_blank" rel="noopener">FDA 라벨 요건</a> ·
+        <a href="https://www.fda.gov/cosmetics/cosmetics-laws-regulations/it-cosmetic-drug-or-both-or-it-soap" target="_blank" rel="noopener">FDA 화장품/의약품 구분</a> ·
+        <a href="https://www.fda.gov/drugs/historical-status-otc-rulemakings/rulemaking-history-otc-hair-growth-and-loss-drug-products" target="_blank" rel="noopener">FDA 발모·탈모 OTC</a> ·
+        <a href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202320240AB496" target="_blank" rel="noopener">CA AB 496</a> ·
+        <a href="https://www.reginfo.gov/public/do/eAgendaViewRule?pubId=202510&amp;RIN=0910-AI83" target="_blank" rel="noopener">포름알데히드 규칙(reginfo)</a> ·
+        <a href="https://www.canada.ca/en/health-canada/services/consumer-product-safety/reports-publications/industry-professionals/labelling-cosmetics.html" target="_blank" rel="noopener">캐나다 라벨</a> ·
+        <a href="https://single-market-economy.ec.europa.eu/sectors/cosmetics/cosmetic-product-notification-portal_en" target="_blank" rel="noopener">EU CPNP</a> ·
+        <a href="https://www.gov.uk/guidance/submit-a-cosmetic-product-notification" target="_blank" rel="noopener">UK SCPN</a> ·
+        <a href="https://www.obelis.net/news/lilial-and-zinc-pyrithione-banned-in-the-eu/" target="_blank" rel="noopener">ZPT EU 금지</a> ·
+        <a href="https://www.mondaq.com/nigeria/life-sciences-biotechnology-nanotechnology/1736452/obtaining-a-license-for-your-products-in-nigeria-frequently-asked-questions" target="_blank" rel="noopener">NAFDAC(Mondaq)</a> ·
+        <a href="https://www.mfds.go.kr/brd/m_875/view.do?seq=44601&amp;page=1" target="_blank" rel="noopener">식약처 책임판매업 안내</a> ·
+        <a href="https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000116842" target="_blank" rel="noopener">수출바우처 2026 1차 공고</a> ·
+        <a href="https://www.pibs.co.kr/new2016/album/news/1776243076.pdf" target="_blank" rel="noopener">수출바우처 2026 2차 공고문(메뉴·트랙 한도)</a> ·
+        <a href="https://www.kita.net/board/totalTradeNews/totalTradeNewsDetail.do?no=102905&amp;siteId=1" target="_blank" rel="noopener">KITA(2026 3차 · 마지막 공고)</a> ·
+        <a href="https://www.exportvoucher.com" target="_blank" rel="noopener">exportvoucher.com(수행기관 신청)</a>
+      </div>
+
+      <div class="co warn"><span class="lab">미확인 — 상담 또는 후속 확인</span>현재 본점 소재지 · 실제 인원·매출 · <b>대표 이력과 공동창업자 신원</b>(공개 자료 없음 → 상담 질문, 또는 법인등기부 사내이사 명단) · <b>KIPRIS 상표 수동 조회</b>(출원인 "웨이브메트릭", 3류 화장품·헤어케어 · 출원 후 공개 전이면 안 나올 수 있음) · 게시된 클라이언트 로고의 실제 계약 여부 · 자체 운영 "6개 브랜드"의 실체(원티드 회사 소개는 "첫 자사 브랜드 준비 중"이라 대행 고객사일 가능성 · 검색 요약에 "치약 중심" 문구가 있으나 원문 미열람) · OEM·제품 개발 단계 · <b>HIZ·웨이브메트릭의 수출바우처 수행기관 등록 여부</b> · 수출바우처 2027년 1차 공고일 · 식약처 수출 전용 책임판매업 유권해석 · M&amp;A 금액 세부(Mielle·Curlsmith) · Fashionista·Bread·Ouidad·논문 원문.</div>
+    </section>
+  </main>
+</div>
+
+<footer><div class="in">BRANDRISE (MarketingOS) · 웨이브메트릭(Wavemetric) 신규 텍스처드 헤어케어 브랜드 NB 상담 준비 PREP — 상담 전(인테이크+리서치) · 내부 전용</div></footer>
+
+<script>
+const links=[...document.querySelectorAll('nav.toc a')];
+const sections=[...new Set(links.map(a=>a.getAttribute('href')))]
+  .map(href=>({href,el:document.querySelector(href)})).filter(s=>s.el);
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  const s=sections.find(s=>s.el===e.target); if(!s)return;
+  links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')===s.href));
+}})},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>obs.observe(s.el));
+
+// ===== 셀렉 매트릭스 → 인라인 1차 견적 + 구글시트 빌더용 셀렉 =====
+(function(){
+  var mx=document.getElementById('selmx'); if(!mx) return;
+  var ITEMS=[
+    {key:'진단',name:'미국 텍스처드 헤어 소비자 서베이 + 경쟁 감사',stage:'타깃 검증·포지셔닝 근거',ex:0,L1:500,L2:1000,L3:2000,def:'ex'},
+    {key:'아이덴티티',name:'브랜드 아이덴티티 정립 + 제품체계 전략',stage:'포지셔닝·네이밍·영문 버벌',ex:0,L1:1000,L2:2000,L3:3500,def:'L2'},
+    {key:'디자인',name:'브랜드 로고 & 패키지 디자인 (신규)',stage:'BI·패키지·가이드',ex:0,L1:1500,L2:3000,L3:5000,def:'L2'},
+    {key:'촬영',name:'스튜디오 촬영 (하우스 800 / 스타일리스트 1,000 / 모델 2,000+)',stage:'런칭 비주얼',ex:0,L1:800,L2:1000,L3:2000,def:'ex'},
+    {key:'무드보드',name:'인스타그램 무드보드 (피그마)',stage:'SNS 시각 기준',ex:0,L1:500,L2:500,L3:500,def:'ex'},
+    {key:'IMC',name:'브랜드 IMC 전략 파트너십 / 대행사 fee',stage:'런칭 전후 6개월',ex:0,L1:360,L2:840,L3:1800,monthly:1,def:'ex'}
+  ];
+  var LV=['ex','L1','L2','L3'], LVN={ex:'제외',L1:'L1',L2:'L2',L3:'L3'};
+  var sel={}, override={}, saveTimer=null;
+  var rev=document.getElementById('rev'), ql=document.getElementById('qlist'), qtot=document.getElementById('qtot');
+  var bigWon=document.getElementById('bigWon'), bigEok=document.getElementById('bigEok'), envAmt=document.getElementById('envAmt');
+  var envSt=document.getElementById('envSt'), envCap=document.getElementById('envCap'), bar=document.getElementById('bar'), fill=document.getElementById('fill');
+  var stEl=document.getElementById('saveSt');
+  ITEMS.forEach(function(it){ sel[it.key]=it.def; });
+  function fmt(n){return (parseFloat(n)||0).toLocaleString();}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  function brandName(){ var h=document.querySelector('.hero h1'); return h?h.textContent.trim().replace(/\s+/g,' '):'BRAND'; }
+  function brandSlug(){return brandName().toLowerCase().replace(/[^\w가-힣]+/g,'-').replace(/^-+|-+$/g,'')||'brand';}
+  function ymd(){ var d=new Date(), p=function(n){return(n<10?'0':'')+n;}; return ''+d.getFullYear()+p(d.getMonth()+1)+p(d.getDate()); }
+  function ymdDash(){ return ymd().replace(/(\d{4})(\d{2})(\d{2})/,'$1-$2-$3'); }
+  function won(manwon){ return (manwon*10000).toLocaleString()+'원'; }
+  function dlBlob(content,mime,fname){ var b=new Blob([content],{type:mime}), u=URL.createObjectURL(b), a=document.createElement('a'); a.href=u; a.download=fname; document.body.appendChild(a); a.click(); setTimeout(function(){URL.revokeObjectURL(u); a.remove();},800); }
+  function ensureLib(src,glob,cb){ if(window[glob]){cb(true);return;} var s=document.createElement('script'); s.src=src; s.onload=function(){cb(!!window[glob]);}; s.onerror=function(){cb(false);}; document.head.appendChild(s); }
+  var SKEY='brandrise:selmx:'+(location.pathname||brandSlug());
+  function lvAmt(it,lv){ return lv==='ex'?0:it[lv]; }
+  function hasOverride(k){ return Object.prototype.hasOwnProperty.call(override,k); }
+  function effAmt(it){ return hasOverride(it.key)?override[it.key]:lvAmt(it,sel[it.key]); }
+  function cleanAmt(v){ var n=parseInt(v,10); return isNaN(n)?0:Math.max(0,n); }
+  function pad(n){return(n<10?'0':'')+n;}
+  function hhmm(ts){var d=new Date(ts);return pad(d.getHours())+':'+pad(d.getMinutes());}
+  function setStatus(txt,ok){ if(!stEl) return; stEl.textContent=txt; stEl.className='savest'+(ok?' ok':''); }
+  function writeSave(ts){
+    try{ localStorage.setItem(SKEY,JSON.stringify({sel:sel,override:override,rev:rev?rev.value:'',ts:ts})); }catch(e){}
+  }
+  function save(silent){
+    if(saveTimer){ clearTimeout(saveTimer); saveTimer=null; }
+    if(silent){
+      saveTimer=setTimeout(function(){ var ts=Date.now(); writeSave(ts); setStatus('자동 저장됨 '+hhmm(ts),false); },300);
+    }else{ var ts=Date.now(); writeSave(ts); setStatus('저장됨 ✓ '+hhmm(ts),true); }
+  }
+  function load(){
+    try{
+      var s=JSON.parse(localStorage.getItem(SKEY)||'null'); if(!s) return null;
+      if(s.sel) ITEMS.forEach(function(it){ if(s.sel[it.key]&&LV.indexOf(s.sel[it.key])>-1) sel[it.key]=s.sel[it.key]; });
+      if(s.override){
+        override={};
+        ITEMS.forEach(function(it){ if(s.override[it.key]!=null) override[it.key]=cleanAmt(s.override[it.key]); });
+      }
+      if(rev&&s.rev!=null) rev.value=s.rev;
+      return s.ts||0;
+    }catch(e){ return null; }
+  }
+  function buildMatrix(){
+    ITEMS.forEach(function(it){
+      var rw=document.createElement('div'); rw.className='rw'; rw.setAttribute('data-key',it.key);
+      var h='<div class="nm"><b>'+esc(it.name)+'</b><span class="t n">'+esc(it.stage)+'</span></div>';
+      LV.forEach(function(lv){
+        var amt=lvAmt(it,lv);
+        var label=lv==='ex'?'–':(it.monthly?('월 '+Math.round(amt/6)):fmt(amt));
+        var sub=lv==='ex'?'제외':(it.monthly?(fmt(amt)+'·6개월'):'');
+        h+='<div class="opt'+(lv==='ex'?' ex':'')+'" data-lv="'+lv+'" role="button" tabindex="0" aria-pressed="false"><span class="amt">'+label+'</span>'+(sub?'<span class="sub">'+sub+'</span>':'')+'</div>';
+      });
+      rw.innerHTML=h; mx.appendChild(rw);
+      [].forEach.call(rw.querySelectorAll('.opt'),function(o){
+        function choose(){ sel[it.key]=o.getAttribute('data-lv'); delete override[it.key]; render(false); }
+        o.addEventListener('click',choose);
+        o.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); choose(); } });
+      });
+    });
+  }
+  function matrix(){
+    return ITEMS.map(function(it){
+      var base=sel[it.key]||it.def, edited=hasOverride(it.key), amt=effAmt(it);
+      return {key:it.key,name:it.name,monthly:!!it.monthly,L1:it.L1,L2:it.L2,L3:it.L3,
+        sel:edited?'조정':(base==='ex'?'제외':base), baseSel:base, selAmt:(base!=='ex'||edited)?amt:0, override:edited};
+    });
+  }
+  function selTotal(){ return matrix().reduce(function(s,o){return s+(o.selAmt||0);},0); }
+  function lvCell(monthly,amt){ return monthly?('월 '+Math.round(amt/6)):fmt(amt); }
+  function render(skipSave){
+    [].forEach.call(mx.querySelectorAll('.rw'),function(rw){
+      var k=rw.getAttribute('data-key');
+      [].forEach.call(rw.querySelectorAll('.opt'),function(o){
+        var on=o.getAttribute('data-lv')===sel[k];
+        o.classList.toggle('on',on); o.setAttribute('aria-pressed',on?'true':'false');
+      });
+    });
+    var html='';
+    ITEMS.forEach(function(it){
+      if(sel[it.key]==='ex'&&!hasOverride(it.key)) return;
+      var amt=effAmt(it), ed=hasOverride(it.key), lvtxt=ed?'조정':LVN[sel[it.key]];
+      html+='<div class="qrow'+(ed?' edited':'')+'" data-key="'+it.key+'">'+
+        '<span class="qn"><span class="lvb">'+lvtxt+'</span>'+esc(it.name)+(it.monthly?' (월 '+Math.round(amt/6)+')':'')+'</span>'+
+        '<input class="amtin" type="number" min="0" step="10" value="'+amt+'" data-key="'+it.key+'"><span class="unit">만</span></div>';
+    });
+    ql.innerHTML=html||'<div style="text-align:center;color:var(--muted);padding:22px;font-size:13px">선택된 항목 없음</div>';
+    [].forEach.call(ql.querySelectorAll('.amtin'),function(inp){
+      inp.addEventListener('input',function(){
+        var k=inp.getAttribute('data-key'), row=inp.parentNode, chip=row.querySelector('.lvb');
+        override[k]=cleanAmt(inp.value);
+        row.classList.add('edited'); if(chip) chip.textContent='조정';
+        totals(); save(true);
+      });
+      inp.addEventListener('change',function(){ override[inp.getAttribute('data-key')]=cleanAmt(inp.value); render(false); });
+    });
+    totals();
+    if(!skipSave) save(true);
+  }
+  function totals(){
+    var sum=selTotal();
+    qtot.textContent=fmt(sum)+'만';
+    bigWon.textContent=(sum*10000).toLocaleString()+'원';
+    bigEok.textContent='('+(sum/10000).toFixed(3)+'억)';
+    var rv=parseFloat(rev.value)||0, half=Math.round(rv);
+    envAmt.textContent=half?fmt(half)+'만':'—';
+    if(half<=0){
+      fill.style.width='0'; bar.classList.remove('over'); envSt.textContent=''; envSt.className='st';
+      envCap.innerHTML='예산 상한 미입력'; return;
+    }
+    var pct=Math.min(100,Math.round(sum/half*100)), over=sum>half;
+    fill.style.width=pct+'%'; bar.classList.toggle('over',over);
+    envSt.className='st '+(over?'over':'ok'); envSt.textContent=over?'⚠ 초과':'✓ 안에 듦';
+    envCap.innerHTML='선택 <b>'+(sum/10000).toFixed(3)+'억</b> / 예산 상한 <b>'+(half/10000).toFixed(2)+'억</b> 대비 '+pct+'%'+(over?' — 항목·레벨 조정 또는 별도 재원 협의':'');
+  }
+  if(rev) rev.addEventListener('input',function(){ totals(); save(true); });
+  var bS=document.getElementById('btnSave');
+  if(bS) bS.addEventListener('click',function(){ save(false); });
+  window.addEventListener('beforeunload',function(){ if(saveTimer){ clearTimeout(saveTimer); writeSave(Date.now()); } });
+  // 전체 셀렉 매트릭스(전 항목 × L1/L2/L3 + 선택) — 실제 견적 SELECTION RESULT와 동일 구조로 내보내기 위함
+  function envNote(tot){ var rv=parseFloat(rev.value)||0; if(rv<=0) return '';
+    return '<div class="co ac"><span class="lab">예산 기준 · 신청서 기재 상한</span>신청서 예산 <b>'+fmt(rv)+'만원 이하</b> · 선택 합계 '+fmt(tot)+'만 = '+(tot<=rv?'<b>예산 안에 듦.</b>':'<b>예산 초과 — 항목·레벨 조정 또는 별도 재원 협의.</b>')+'</div>'; }
+
+  // 견적 블록 표준 콘텐츠(클라이언트 고유사실 없는 범용 텍스트 — 재사용 안전). data-key로 매칭.
+  var QORDER=['IMC','진단','아이덴티티','디자인','촬영','무드보드'];
+  var LVLABEL={L1:'경량(프리랜서)',L2:'표준(내부)',L3:'풀(외주·고사양)','조정':'조정 견적'};
+  var QC={
+    'IMC':{title:'브랜드 IMC 전략 파트너십 / 대행사 fee', period:'6개월 상시', plan:'● 운영 체계\n감(感) 운영 → 데이터 기반 월간 의사결정\n· 목표: 매출·광고 월간 리뷰 루틴 + 대시보드',
+      lines:[['월간 IMC 회의','매출·광고 데이터 분석 및 월 단위 마케팅 기획 리뷰 (정기 미팅 + 상시 슬랙 컨설팅)'],['AI 관리 대시보드','매출·광고 데이터 종합 분석 툴 제공 (웹 대시보드)'],['플랜 시트 납품','연간(월간) 플랜 시트 및 관리 데이터 최초 세팅']],
+      deliver:'연간(월간) 플랜 시트 및 관리 데이터 (매월 납품)'},
+    '진단':{title:'미국 텍스처드 헤어 소비자 서베이 + 경쟁 감사', period:'착수 즉시 · 3~4주', plan:'● 검증 먼저\n가정 → 타깃의 말로\n· 목표: 포지셔닝 근거 확보',
+      lines:[['소비자 서베이','미국 Type 3~4 헤어 소비자 온라인 패널 서베이 — 페인포인트·구매 기준·가격 수용도'],['경쟁 감사','주요 텍스처드 헤어 브랜드 포지셔닝·가격·클레임·채널 매핑'],['공백 정리','경쟁이 비워둔 자리 + 브랜드가 쓸 수 있는 근거 정리']],
+      deliver:'소비자 서베이 리포트 + 경쟁 지도 + 포지셔닝 후보'},
+    '아이덴티티':{title:'브랜드 아이덴티티 정립 + 제품체계 전략', period:'진단 직후 · 1~2개월', plan:'● 포지셔닝\n파는 것 → 브랜드로\n· 한 줄 축 공식화 + 제품 하우스 구조화',
+      lines:[['브랜드 워크숍','진단·서베이 공유 → 페르소나·니즈 정의 → 라인업 도출 (대표·핵심 멤버 참여)'],['브랜드 포지셔닝 전략','핵심 축 공식화 — 강점을 브랜드 언어로 번역 / 타겟·경쟁 포지셔닝'],['제품 라인업 전략','히어로/서브/확장 역할 정의 — 브랜드 하우스 구조화'],['브랜드 커뮤니케이션 가이드','핵심 메시지·슬로건·톤앤매너·채널별 말투 가이드']],
+      deliver:'포지셔닝 전략 문서 + 제품 라인업 역할 정의 + 커뮤니케이션 가이드'},
+    '디자인':{title:'브랜드 로고 & 패키지 디자인 (신규 런칭)', period:'아이덴티티 확정 후 · 2개월', plan:'● 시각화\n노후 디자인 → 정통성이 보이는 디자인',
+      lines:[['로고 리뉴얼','리뉴얼 방향 3안 → 최종 확정 + 컬러 시스템·타이포 가이드'],['패키지 디자인','메인·히어로 라인 패키지 — 채널 MD 호환'],['상세페이지 템플릿 리뉴얼','히어로 기준 신규 템플릿 — 내부 확장 적용 가능한 구조'],['브랜드 가이드라인','로고·컬러·패키지 규정 / 내부·외주 활용']],
+      deliver:'로고 리뉴얼 + 패키지 디자인 + 브랜드 가이드라인'},
+    '촬영':{title:'사진 촬영(제품·라이프스타일) + 콘텐츠 제작', period:'디자인 확정 후', plan:'● 시각 자산\n쓸 사진 확보 → 광고·상세 전용 소재',
+      lines:[['촬영 기획 및 디렉팅','콘셉트 기획·무드보드 / 셋업 / 현장 디렉팅 (1일 full day)'],['제품·라이프스타일 컷','전 라인업 제품 컷 + 라이프스타일 컷 — 입점·상세·광고 활용'],['콘텐츠 제작','광고 후킹 콘텐츠 + 랜딩용 상세 이미지']],
+      deliver:'제품 포트폴리오 컷 + 라이프스타일 컷 + 광고·상세 소재 (스튜디오 렌탈 실비 별도)'},
+    '마케팅':{title:'인스타그램 콘텐츠 기획 & 운영', period:'아이덴티티 확립 후 착수', plan:'● 자산 전환\n임대한 도달 → 소유한 팬덤(자사몰·CRM)',
+      lines:[['인스타그램 무드보드','연간 채널 운영 전략 — 시각 기준·레퍼런스 / 피드·릴스·스토리 구조'],['월 콘텐츠 기획보드','월 8~10건 기획 + 레퍼런스 — 콘텐츠 구조화 + CRM 메시지'],['캠페인 기획','시즌·런칭 캠페인 기획 + 인하우스 전수']],
+      deliver:'무드보드 + 월 콘텐츠 기획보드 + 캠페인 기획서'},
+    '무드보드':{title:'인스타그램 무드보드', period:'BI 확정 후 · 2주', plan:'● SNS 시각 기준\n런칭 전 피드 톤 확정',
+      lines:[['무드보드','피드·릴스·스토리 시각 기준과 레퍼런스 (피그마)']],
+      deliver:'인스타그램 무드보드 (피그마)'},
+    '자사몰':{title:'자사몰(카페24) 세팅', period:'1개월', plan:'● 판매 채널\n자사몰 자생 매출 기반 확보',
+      lines:[['사이트 기획·와이어프레임','메인·상품·상세·브랜드스토리·마이페이지 화면 구조 + 전환 UX'],['카페24 기본 셋팅','계정·배송/반품 정책·PG 결제 연동'],['UI 디자인 & 상품 페이지','쇼핑몰 UI 커스텀 + 상세 페이지 제작 + 오픈 QA']],
+      deliver:'쇼핑몰 셋팅 + 상세 페이지 디자인'}
+  };
+  // 선택된 블록을 표준 순서로 — {key,title,period,plan,lines,deliver,amount(원),level}
+  function selectedBlocks(){
+    var byKey={}; matrix().forEach(function(o){ if(o.selAmt>0) byKey[o.key]={amt:o.selAmt*10000, lv:o.sel}; });
+    var out=[]; QORDER.forEach(function(k){ if(byKey[k]&&QC[k]){ var b=QC[k]; out.push({key:k,title:b.title,period:b.period,plan:b.plan,lines:b.lines,deliver:b.deliver,amount:byKey[k].amt,level:byKey[k].lv}); } });
+    return out;
+  }
+
+  // 📊 엑셀로 내보내기 (수주↑ · 코 잡고 정식) — 실제 견적(강훈 5블록) 포맷 · ExcelJS
+  var bX=document.getElementById('btnExcel');
+  if(bX) bX.addEventListener('click',function(){
+    var blocks=selectedBlocks(), tot=selTotal()*10000; if(!blocks.length){ alert('선택된 항목이 없습니다.'); return; }
+    var brand=brandName();
+    ensureLib('https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js','ExcelJS',function(ok){
+      if(!(ok&&window.ExcelJS)){
+        var rows=[['구분','항목','내용','단가','수량','계약 견적']];
+        blocks.forEach(function(b){ rows.push([b.title,'','','','','']); b.lines.forEach(function(l){ rows.push(['',l[0],l[1],'—','포함','포함']); }); rows.push(['','>> 최종 납품',b.deliver,'','','']); rows.push(['소계','','','','',b.amount]); });
+        rows.push(['합계 (VAT 별도)','','','','',tot]);
+        var csv='﻿'+rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"';}).join(',');}).join('\n');
+        dlBlob(csv,'text/csv;charset=utf-8', brand+'_1차견적_'+ymd()+'.csv');
+        alert('엑셀 라이브러리 로드 실패 → CSV로 내보냈습니다(엑셀에서 열림).'); return;
+      }
+      var AC='FF4F46E5', AC50='FFEEF2FF', AC700='FF3730A3', GRAY='FFEFEFEF', GRAY2='FFD9D9D9', INK='FF0F172A', INK2='FF334155', MUTE='FF64748B', LINE='FFD9DEE6';
+      var thin={style:'thin',color:{argb:LINE}};
+      var wb=new ExcelJS.Workbook(); var ws=wb.addWorksheet('견적');
+      ws.columns=[{width:28},{width:30},{width:50},{width:13},{width:12},{width:16}];
+      function box(rr){ for(var c=1;c<=6;c++){ ws.getRow(rr).getCell(c).border={top:thin,left:thin,bottom:thin,right:thin}; } }
+      // 제목
+      ws.mergeCells('A1:D1'); var t=ws.getCell('A1'); t.value='[브랜드라이즈] '+brand+' 브랜드 컨설팅 — 1차 견적'; t.font={bold:true,size:14,color:{argb:INK}};
+      ws.mergeCells('E1:F1'); var dc=ws.getCell('E1'); dc.value=ymdDash()+' ver.'; dc.font={size:10,color:{argb:MUTE}}; dc.alignment={horizontal:'right'};
+      // KPI · 비고 (좌/우)
+      ws.mergeCells('A3:C3'); var kh=ws.getCell('A3'); kh.value='파트너십의 KPI'; kh.font={bold:true,size:11,color:{argb:'FFFFFFFF'}}; kh.fill={type:'pattern',pattern:'solid',fgColor:{argb:AC}};
+      ws.mergeCells('D3:F3'); var nh=ws.getCell('D3'); nh.value='비고'; nh.font={bold:true,size:11,color:{argb:'FFFFFFFF'}}; nh.fill={type:'pattern',pattern:'solid',fgColor:{argb:AC}};
+      ws.mergeCells('A4:C7'); var kt=ws.getCell('A4'); kt.value='· 데이터 정밀 진단 선행 — 결정을 내릴 수 있는 정보부터\n· 브랜드 아이덴티티 → 디자인·촬영·채널 순서 진행\n· 리테이너 + 캠페인 방식 · 인하우스 전수 목표'; kt.alignment={wrapText:true,vertical:'top'}; kt.font={size:10,color:{argb:INK2}};
+      ws.mergeCells('D4:F7'); var nt=ws.getCell('D4'); nt.value='· 본 견적의 금액은 VAT 별도 기준입니다.\n· 촬영 스튜디오 렌탈·패키지 인쇄 실비는 별도 산정.\n· 광고 매체비·퍼포먼스 광고 직접 운영은 범위 외.\n· 범위·금액은 데이터 정밀 진단 결과에 따라 협의 조정됩니다.'; nt.alignment={wrapText:true,vertical:'top'}; nt.font={size:10,color:{argb:INK2}};
+      for(var rr=3;rr<=7;rr++) box(rr);
+      // 헤더
+      var H=9; var hdr=['구분','항목','내용','단가','수량','계약 견적'];
+      hdr.forEach(function(h,i){ var c=ws.getRow(H).getCell(i+1); c.value=h; c.font={bold:true,size:10,color:{argb:AC700}}; c.fill={type:'pattern',pattern:'solid',fgColor:{argb:AC50}}; c.alignment={horizontal:i>=3?'center':'left',vertical:'middle'}; });
+      ws.getRow(H).height=20; box(H);
+      var r=H+1;
+      blocks.forEach(function(b){
+        var rH=r;
+        // 구분 헤더(블록 제목) — A:B 병합, C:F 병합=기간/레벨
+        ws.mergeCells('A'+rH+':B'+rH); var bt=ws.getCell('A'+rH); bt.value=b.title; bt.font={bold:true,size:11,color:{argb:INK}}; bt.alignment={vertical:'middle'};
+        ws.mergeCells('C'+rH+':F'+rH); var pc=ws.getCell('C'+rH); pc.value=b.period+'  ·  '+(LVLABEL[b.level]||b.level); pc.font={size:10,color:{argb:MUTE}}; pc.alignment={horizontal:'right',vertical:'middle'};
+        ws.getRow(rH).height=22; box(rH); r++;
+        // 항목 라인
+        b.lines.forEach(function(l){ var row=ws.getRow(r);
+          row.getCell(1).value=''; row.getCell(2).value=l[0]; row.getCell(2).font={bold:true,color:{argb:INK2}};
+          var d=row.getCell(3); d.value=l[1]; d.alignment={wrapText:true,vertical:'top'}; d.font={size:10,color:{argb:INK2}};
+          row.getCell(4).value='—'; row.getCell(5).value='포함'; row.getCell(6).value='포함';
+          [4,5,6].forEach(function(ci){ row.getCell(ci).alignment={horizontal:'center',vertical:'top'}; row.getCell(ci).font={size:10,color:{argb:MUTE}}; });
+          box(r); r++; });
+        // 납품물
+        var dr=ws.getRow(r); ws.mergeCells('B'+r+':F'+r);
+        dr.getCell(1).value='≫ 최종 납품'; dr.getCell(1).font={bold:true,size:9.5,color:{argb:AC700}};
+        var dd=dr.getCell(2); dd.value=b.deliver; dd.font={size:9.5,color:{argb:AC700}}; dd.alignment={wrapText:true,vertical:'top'};
+        for(var ci=1;ci<=6;ci++) dr.getCell(ci).fill={type:'pattern',pattern:'solid',fgColor:{argb:AC50}};
+        box(r); r++;
+        // 소계
+        ws.mergeCells('A'+r+':E'+r); var sl=ws.getCell('A'+r); sl.value='소       계'; sl.alignment={horizontal:'right'}; sl.font={bold:true,color:{argb:INK}};
+        var sv=ws.getCell('F'+r); sv.value=b.amount; sv.numFmt='#,##0'; sv.alignment={horizontal:'right'}; sv.font={bold:true,color:{argb:INK}};
+        for(var ci2=1;ci2<=6;ci2++) ws.getRow(r).getCell(ci2).fill={type:'pattern',pattern:'solid',fgColor:{argb:GRAY}};
+        box(r); r++;
+        // G 마케팅 가안 (블록 범위 병합) — 7열
+        ws.mergeCells('G'+rH+':G'+(r-1)); var gp=ws.getCell('G'+rH); gp.value=b.plan; gp.alignment={wrapText:true,vertical:'top'}; gp.font={size:9.5,color:{argb:INK2}};
+        for(var gr=rH;gr<=r-1;gr++) ws.getRow(gr).getCell(7).border={top:thin,left:thin,bottom:thin,right:thin};
+      });
+      // 합계
+      ws.mergeCells('A'+r+':E'+r); var hl=ws.getCell('A'+r); hl.value='합       계 (VAT 별도)'; hl.alignment={horizontal:'right'}; hl.font={bold:true,size:11,color:{argb:INK}};
+      var hv=ws.getCell('F'+r); hv.value=tot; hv.numFmt='#,##0'; hv.alignment={horizontal:'right'}; hv.font={bold:true,size:11,color:{argb:INK}};
+      for(var c3=1;c3<=6;c3++) ws.getRow(r).getCell(c3).fill={type:'pattern',pattern:'solid',fgColor:{argb:GRAY2}};
+      ws.getRow(r).height=22; box(r); r+=2;
+      // 추가 논의
+      ws.mergeCells('A'+r+':F'+r); var ad=ws.getCell('A'+r); ad.value='※ 본 견적은 1차 제안입니다. 세부 단가·산출물은 데이터 정밀 진단 결과에 따라 협의로 조정됩니다. (단가 공유 원칙 — 브랜드 불문 동일)'; ad.font={size:9.5,color:{argb:MUTE}}; ad.alignment={wrapText:true};
+      ws.getRow(1).height=22;
+      wb.xlsx.writeBuffer().then(function(buf){ dlBlob(buf,'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', brand+'_1차견적_'+ymd()+'.xlsx'); });
+    });
+  });
+
+  // 📄 HTML로 내보내기 (수주↓ · 링크로 가볍게) — 실제 견적 인디고 디자인
+  var bH=document.getElementById('btnHtml');
+  if(bH) bH.addEventListener('click',function(){
+    var m=matrix(), tot=selTotal(); if(!tot){ alert('선택된 항목이 없습니다.'); return; }
+    var brand=brandName();
+    var rows=m.map(function(o){
+      function cell(lv,amt){ return '<td'+(!o.override&&o.baseSel===lv?' class="hit"':'')+'>'+lvCell(o.monthly,amt)+'</td>'; }
+      var chip=o.override?'<span class="t b">조정 '+fmt(o.selAmt)+'만</span>':(o.sel==='제외'?'<span class="t n">제외</span>':'<span class="t b">'+o.sel+'</span>');
+      return '<tr><td class="nm">'+esc(o.name)+(o.monthly?' <span class="t n">월·6개월</span>':'')+'</td>'+cell('L1',o.L1)+cell('L2',o.L2)+cell('L3',o.L3)+'<td class="c">'+chip+'</td></tr>';
+    }).join('');
+    var css=':root{--ink:#0f172a;--ink2:#334155;--muted:#64748b;--line:#e7e9ee;--line2:#eef1f5;--bg:#fbfcfd;--card:#fff;--soft:#f6f8fb;--ac:#4f46e5;--ac-50:#eef2ff;--ac-100:#e0e7ff;--ac-700:#3730a3}'
+      +'*{margin:0;padding:0;box-sizing:border-box}body{font-family:Pretendard,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:14px;word-break:keep-all}'
+      +'.hero{background:var(--ink);color:#fff;padding:48px 0 40px}.hero .in{max-width:860px;margin:0 auto;padding:0 32px}'
+      +'.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:18px}'
+      +'.hero h1{font-size:clamp(26px,4.4vw,34px);font-weight:800;letter-spacing:-.03em;line-height:1.18;margin-bottom:10px}.hero h1 .hl{background:linear-gradient(transparent 60%,rgba(165,180,252,.55) 60%);padding:0 2px}'
+      +'.hero .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.hero .chip{font-size:12px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 12px}.hero .chip b{color:#a5b4fc}'
+      +'.wrap{max-width:860px;margin:0 auto;padding:32px 32px 80px}.sec-k{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:999px;padding:4px 12px;margin-bottom:12px}'
+      +'h2{font-size:22px;font-weight:800;letter-spacing:-.025em;margin-bottom:8px}.lead{font-size:13.5px;color:var(--ink2);margin-bottom:16px}'
+      +'table{width:100%;border-collapse:collapse;font-size:12.5px;margin:8px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-variant-numeric:tabular-nums}'
+      +'th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:right;padding:11px 13px;font-size:11.5px;border-bottom:1px solid var(--ac-100)}th:first-child{text-align:left}'
+      +'td{padding:12px 13px;border-bottom:1px solid var(--line2);text-align:right;color:var(--ink2)}td.nm{text-align:left;font-weight:700;color:var(--ink)}td.c{text-align:center}td.hit{background:var(--ac-50);font-weight:800;color:var(--ac-700)}'
+      +'tr:nth-child(even) td{background:var(--soft)}tr:nth-child(even) td.hit{background:var(--ac-100)}'
+      +'.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px}.t.b{background:var(--ac-50);color:var(--ac)}.t.n{background:#f1f5f9;color:var(--muted)}'
+      +'.total{background:var(--ink);color:#fff;border-radius:14px;padding:22px 26px;display:flex;justify-content:space-between;align-items:center;margin:16px 0;flex-wrap:wrap;gap:8px}'
+      +'.total .tl2{font-size:13px;color:#94a3b8;font-weight:700;letter-spacing:.06em}.total .tv{font-size:26px;font-weight:800;letter-spacing:-.02em;color:#a5b4fc}.total .tv small{font-size:13px;font-weight:600;color:#cbd5e1;margin-left:8px}'
+      +'.co{border-radius:12px;padding:14px 18px;margin:12px 0;font-size:13px;line-height:1.7;border:1px solid var(--line)}.co.ac{background:var(--ac-50);border-color:var(--ac-100)}.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase;color:var(--ac)}.co b{color:var(--ink)}'
+      +'footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.8;margin-top:8px}'
+      +'@media print{.hero,.total,.co,td.hit,th{-webkit-print-color-adjust:exact;print-color-adjust:exact}}';
+    var doc='<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>'+brand+' · 1차 견적 | BRANDRISE</title>'
+      +'<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet"><style>'+css+'</style></head><body>'
+      +'<div class="hero"><div class="in"><div class="badge">BRAND CONSULTING QUOTE · 1차 견적</div><h1>'+brand+' · 1차 <span class="hl">견적</span></h1>'
+      +'<div class="meta"><span class="chip">견적일 <b>'+ymdDash()+'</b></span><span class="chip">선택 합계 <b>'+won(tot)+' (VAT 별도)</b></span><span class="chip">기준 <b>셀렉 매트릭스 L 결과</b></span></div></div></div>'
+      +'<div class="wrap"><section><div class="sec-k">SELECTION RESULT</div><h2>견적 셀렉 결과 — 항목별 난이도</h2>'
+      +'<p class="lead">PREP 상담 셀렉(항목별 L1·L2·L3)으로 정해진 단가입니다. <b>L2(내부 표준)가 기준선</b>, L1은 경량(프리랜서), L3은 풀(외주·고사양). <b>단가 공유 원칙</b>: 공통 항목 단가는 브랜드 불문 동일합니다. (단위: 만원 · VAT 별도)</p>'
+      +'<table><thead><tr><th>견적 항목</th><th style="width:16%">L1 경량(프리랜서)</th><th style="width:16%">L2 표준(내부)★</th><th style="width:18%">L3 풀(외주·고사양)</th><th class="c" style="width:10%">선택</th></tr></thead><tbody>'+rows+'</tbody></table>'
+      +'<div class="total"><div class="tl2">선택 합계 (L 셀렉 결과)</div><div class="tv">'+won(tot)+' <small>= '+fmt(tot)+'만 · '+(tot/10000).toFixed(3)+'억 · VAT 별도</small></div></div>'
+      +envNote(tot)
+      +'<div class="co"><span class="lab">비고</span>· 본 견적은 <b>1차 제안</b>이며 VAT 별도입니다. 항목·범위는 데이터 정밀 진단 결과에 따라 협의로 조정됩니다.<br>· 레벨: L1 경량(프리랜서) / L2 표준(내부) / L3 풀(외주·고사양).<br>· 월 단위 항목(IMC 파트너십)은 6개월 기준 합계입니다. 촬영 스튜디오·인쇄 실비는 별도 산정.</div>'
+      +'</section></div><footer><b>BRANDRISE</b> by HIZ · Brand · IMC Consulting<br>본 1차 견적은 상담 준비(PREP) 셀렉 결과 기반입니다 — 확정 견적은 진단 후 별도 발송됩니다.</footer></body></html>';
+    dlBlob(doc,'text/html;charset=utf-8', brand+'_1차견적_'+ymd()+'.html');
+  });
+  var bR=document.getElementById('btnReset');
+  if(bR) bR.addEventListener('click',function(){
+    ITEMS.forEach(function(it){ sel[it.key]=it.def; });
+    override={};
+    rev.value='5000';
+    render(false);
+  });
+  buildMatrix();
+  var restoredTs=load();
+  render(true);
+  if(restoredTs){ setStatus('이전 작업 복원됨 · 마지막 저장 '+hhmm(restoredTs),false); }
+})();
+</script>
+</body>
+</html>
+
