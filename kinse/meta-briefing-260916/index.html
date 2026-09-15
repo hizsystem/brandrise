@@ -302,6 +302,38 @@ table{border-collapse:collapse;width:100%}
 .gloss{font-size:17px}
 .side-note div{font-size:17px}
 
+
+/* ── 개정 컴포넌트 ── */
+.promise{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:auto;border-top:2px solid var(--ink)}
+.pc{padding:22px 24px 20px 0}.pc+.pc{padding-left:24px;border-left:1px solid var(--line)}
+.pc .pk{font-size:15px;font-weight:700;letter-spacing:.04em;color:var(--sub)}
+.pc .pv{font-size:56px;font-weight:700;letter-spacing:-.04em;line-height:1.1;margin:6px 0 10px}
+.pc p{font-size:17px;line-height:1.55;color:var(--sub)}.pc p b{color:var(--ink)}
+.pc.now .pv{color:#c2419f}.pc.plan .pv{background:linear-gradient(transparent 62%,var(--lav-t) 62%);display:inline-block}
+.why2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+.why2 div{background:var(--white);padding:16px 20px;font-size:16.5px;line-height:1.6}
+.why2 div>b:first-child{display:block;font-size:14px;letter-spacing:.06em;color:var(--sub);margin-bottom:4px}
+.crm{list-style:none;display:flex;flex-direction:column;margin-top:8px}
+.crm li{display:grid;grid-template-columns:92px 1fr auto;gap:10px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--line);font-size:16.5px;line-height:1.45}
+.crm li b{font-size:18px}.crm li i{font-style:normal;font-size:12.5px;font-weight:700;padding:2px 7px;background:var(--lav-t)}
+.steps{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1.1fr;align-items:center;gap:12px;margin-top:22px}
+.steps div{background:var(--white);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.steps i{font-style:normal;font-size:14px;color:var(--sub)}.steps b{font-size:26px;letter-spacing:-.02em}.steps small{font-size:12px;color:var(--faint)}
+.steps em{font-style:normal;font-size:24px;color:var(--faint)}
+.steps .res2{background:var(--pink-t)}.steps .res2 b{font-size:30px}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:auto;align-items:end}
+.rung{background:var(--white);padding:20px 18px;display:flex;flex-direction:column;gap:8px;border-top:6px solid var(--pink)}
+.rung:nth-child(1){min-height:250px}.rung:nth-child(2){min-height:280px}.rung:nth-child(3){min-height:310px}.rung:nth-child(4){min-height:340px}
+.rung .st{font-size:14px;font-weight:700;letter-spacing:.04em;color:#c2419f}
+.rung h4{font-size:21px;line-height:1.35;letter-spacing:-.01em}
+.rung p{font-size:16px;color:var(--sub);line-height:1.55}
+.rung .kp{margin-top:auto;padding-top:10px;border-top:1px solid var(--line);font-size:15px;line-height:1.45}
+.rung .kp i{font-style:normal;display:block;font-size:11.5px;letter-spacing:.08em;color:var(--faint)}
+table.mini{width:100%;border-collapse:collapse;font-size:16.5px;margin-top:6px;background:var(--white)}
+table.mini th,table.mini td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);line-height:1.4}
+table.mini thead th{font-size:13px;color:var(--sub);border-bottom:2px solid var(--ink);letter-spacing:.04em}
+.minor{margin-top:10px;font-size:14.5px;color:var(--sub)}
+
 /* 낙서(장식) */
 .doodle{position:absolute;pointer-events:none}
 
@@ -581,45 +613,57 @@ body.edit [contenteditable="true"]{outline:1px dashed rgba(194,65,159,.6);outlin
 
 <!-- 16 Q1 신규 증액 -->
 <section class="slide s3" data-t="Q 9월 신규 증액">
-  <div class="eyebrow"><span class="sq"></span>본부장님 질문 ① · 9/10<span class="pg">12</span></div>
-  <h2 class="ttl">“9월 신규 증액, 잘 되고 있나요? <span class="mk">페인포인트 소재, 확실한가요?</span>”</h2>
+  <div class="eyebrow"><span class="sq"></span>본부장님 질문 ① · 9/10<span class="pg">00</span></div>
+  <h2 class="ttl">“9월 신규 증액, 잘 되고 있나요?” — <span class="mk">약속한 50만 명, 9월 안에 채우겠습니다</span></h2>
+  <div class="promise">
+    <div class="pc"><div class="pk">9/1 약속</div><div class="pv num">50만 명</div><p>증액 300만 원(실집행 255만)으로 새 사람에게 도달. 도달 1명당 5원 기준</p></div>
+    <div class="pc now"><div class="pk">9/14 현재</div><div class="pv num">15.7만 명</div><p>도달 1명당 <b>9.7원</b> — 계산보다 2배 비쌌습니다. 대신 사이트 방문 <b>12,097회</b>(1명당 125원)가 쌓였습니다</p></div>
+    <div class="pc plan"><div class="pk">남은 16일</div><div class="pv num">+34만 명</div><p>신규 예산 중 약 120만 원을 <b>‘도달’ 목적 광고</b>로 돌려 9/30까지 50만 명을 채웁니다</p></div>
+  </div>
+  <div class="why2">
+    <div><b>왜 비쌌나</b>50만 명 계산은 8월 옥타비 단가(4.3원)였습니다. 9월엔 페인포인트 5종으로 소재를 넓혔고(12.2원), <b>방문까지 올 사람을 골라 사는 방식</b>이라 넓게 퍼지지 않았습니다.</div>
+    <div><b>어떻게 채우나</b>도달 목적 광고는 “많은 사람에게 한 번씩” 보여주는 방식이라 1명당 3~4원이 목표입니다. 방문 광고는 단가가 가장 좋은 옥타비 신규도달(5.3원) 중심으로 유지합니다. <b>9/22에 중간 수치를 공유</b>드리겠습니다.</div>
+  </div>
+  
+</section>
+
+<!-- 16b 페인포인트 -->
+<section class="slide s3" data-t="Q 페인포인트 확실한가">
+  <div class="eyebrow"><span class="sq"></span>본부장님 질문 ① · 9/10<span class="pg">00</span></div>
+  <h2 class="ttl">“페인포인트 소재, 확실한가요?” — <span class="mk">기존보다 25% 쌉니다. 다만 제품에 따라 5배 차이</span></h2>
   <div class="qa">
     <div>
-      <div class="q">새 사람만 노린 광고 · 9/1~9/14</div>
-      <div class="facts num">
-        <div class="fact"><span>광고비</span><b>151.0만 원</b></div>
-        <div class="fact"><span>처음 닿은 사람</span><b>15.7만 명</b></div>
-        <div class="fact"><span>사이트 방문</span><b>12,097회</b></div>
-        <div class="fact"><span>방문 1명당</span><b>125원</b></div>
-      </div>
-      <p class="honest">솔직히: 9월 도달 목표 80만 명에는 못 미칩니다(9/14 계정 전체 19.5만 명). 방문 최적화 광고는 <b>누를 사람을 골라</b> 보여줘서 넓게 퍼지지 않습니다. 10월부터는 목표를 <b>새 방문자 수</b>로 바꿔 보고드리겠습니다.</p>
-    </div>
-    <div>
-      <div class="q">방문 1명당 광고비 비교 · 9/2~9/10</div>
+      <div class="q">방문 1명당 광고비 · 9/2~9/10</div>
       <div class="hbars num">
         <div class="hb"><div class="l">기존 브로드 광고</div><div class="t"><i style="width:100%;background:#CFCCC2"></i></div><div class="v">329원</div></div>
         <div class="hb"><div class="l">페인포인트 5종<small>SOS·시크리티 3종·하이드로</small></div><div class="t"><i style="width:75%;background:var(--lav)"></i></div><div class="v">246원</div></div>
         <div class="hb"><div class="l">옥타비 신규도달</div><div class="t"><i style="width:16%;background:var(--lime)"></i></div><div class="v">52원</div></div>
       </div>
-      <div class="box" style="margin-top:22px"><h4>페인포인트는 기존보다 25% 쌉니다.<br>다만 제품에 따라 5배 차이가 납니다.</h4>소재 형식보다 <b>제품과 앵글</b>이 더 크게 작용합니다. 그래서 형식은 유지하고, 제품별로 계속 다듬어야 합니다.</div>
     </div>
+    <div class="box"><h4>형식은 맞고, 제품·앵글이 더 크게 작용합니다</h4>
+      <p style="color:var(--sub)">같은 페인포인트 형식인데도 옥타비는 52원, 하이드로는 340원대입니다. 형식보다 <b>어떤 제품의 어떤 고민을 건드리느냐</b>가 효율을 가릅니다.</p>
+      <p style="margin-top:12px">그래서 형식은 유지하고, <b>제품별로 앵글을 계속 바꿔 시험</b>합니다. 이긴 앵글만 판매 광고로 올립니다. 본부장님 말씀처럼 “9월 분리 전략”이 이 비교를 가능하게 했습니다.</p></div>
   </div>
   
 </section>
 
 <!-- 17 Q2 소재 실험 / CRM -->
-<section class="slide s3" data-t="Q 소재 실험 · 2차 CRM">
-  <div class="eyebrow"><span class="sq"></span>본부장님 질문 ②③ · 9/10<span class="pg">13</span></div>
-  <h2 class="ttl">“다른 소재 실험, 새 고객 2차 CRM도 필요할까요?” — <span class="mk">둘 다 필요합니다</span></h2>
+<section class="slide s3" data-t="Q 새 고객 2차 구매">
+  <div class="eyebrow"><span class="sq"></span>본부장님 질문 ②③ · 9/10<span class="pg">00</span></div>
+  <h2 class="ttl">“새로 들어온 고객의 2차 CRM, 강화가 필요할까요?” — <span class="mk">네, 11월 이후 체력이 여기서 나옵니다</span></h2>
   <div class="qa">
-    <div class="box"><span class="tagl b-lav">소재 실험</span><h4>트래픽 광고에서 싸게 여러 개 시험하고,<br>이긴 소재만 판매 광고로 올립니다</h4>
-      <p style="color:var(--sub)">판매 광고는 일주일 구매 수가 적어 소재를 여러 개 동시에 돌리면 판정이 안 됩니다. 방문 단가로 빨리 가려내는 트래픽 광고가 실험실 역할을 합니다.</p>
-      <p style="margin-top:12px"><b>10월 실험 후보</b> — 옥타비 새 페인포인트 · 하이드로 가을 러너 · 판테놀 A/B(진행 중)</p></div>
-    <div class="box"><span class="tagl b-pink">2차 CRM</span><h4>광고로 데려오고, 가입·친구톡으로 붙잡고,<br>발송일에 광고를 얹습니다</h4>
-      <p style="color:var(--sub)">사이트만 다녀간 분께 광고로 다시 연락하는 건 약했습니다 — 9/3~9/13 장바구니 1건당 14,553원, 구매 0건이라 9/14 종료했습니다.</p>
-      <p style="margin-top:12px">반대로 <b>친구톡 보낸 날 판매 광고 ROAS는 1,130%</b>(7/20)였습니다. CRM이 수요를 만들고, 광고가 거둬들이는 순서가 맞습니다.</p></div>
+    <div class="box"><span class="tagl b-pink">왜 필요한가</span><h4>이 계정 매출은 ‘다시 사는 분’이 떠받칩니다</h4>
+      <p style="color:var(--sub)">광고로 들어온 주문 45명 중 <b>39명(88.6%)이 이미 사본 적 있는 분</b>이었고, 다시 산 시점은 <b>직전 구매 후 31~60일</b>이 가장 많았습니다(45.5%) — 원이 매니저님 7/20~7/23 분석.</p>
+      <p style="margin-top:12px">광고로 데려온 새 고객이 두 번째 구매까지 가야 11월 이후 매출이 쌓입니다. 9,900원 미니 3종처럼 <b>입문 상품으로 온 분을 본품으로</b> 잇는 게 핵심입니다.</p></div>
+    <div class="box"><span class="tagl b-lav">어떻게</span><h4>첫 구매 후 60일, CRM과 광고를 같은 달력으로</h4>
+      <ul class="crm num">
+        <li><b>D+7</b>사용법·루틴 안내 <i>CRM</i></li>
+        <li><b>D+21</b>본품 쿠폰 · 미니 3종 구매자에게 판테놀·pH 본품 <i>CRM</i></li>
+        <li><b>D+21~45</b>최근 구매자 대상 본품 광고 <i>메타</i></li>
+        <li><b>D+45</b>재구매 알림 · 발송일엔 판매 광고 예산 먼저 증액 <i>CRM+메타</i></li>
+      </ul></div>
   </div>
-  <p class="rule">그래서 부탁드립니다 — <b>CRM 발송 캘린더를 미리 공유</b>해주시면, 발송일에 판매 광고 예산을 먼저 올려두겠습니다.</p>
+  <p class="rule">친구톡 보낸 날 판매 광고 ROAS는 <b>1,130%</b>(7/20)였습니다. 그래서 두 가지를 부탁드립니다 — <b>CRM 발송 캘린더 공유</b>, 그리고 <b>미니 3종 구매자 명단</b>(암호화 업로드, 본품 광고용).</p>
   
 </section>
 
@@ -655,7 +699,52 @@ body.edit [contenteditable="true"]{outline:1px dashed rgba(194,65,159,.6);outlin
     <div class="bowl"><div class="c" style="width:190px;height:190px;border:4px dashed var(--pink);background:var(--paper);font-size:22px">?</div><div class="n">대표님 인스타<br>참여자</div><div class="d">팔로워 23만 · 참여자 수 미확인<br>연결되면 그릇이 가장 크게 커진다</div></div>
     <div class="bowl"><div class="c" style="width:210px;height:210px;background:#E8E6DE;font-size:22px">500만+</div><div class="n">모르는 여성<br>35~54세</div><div class="d">490만~580만 명<br>넓지만 효율은 증명 전 (215%)</div></div>
   </div>
-  <div class="calc"><div class="f num">우리를 아는 2만 명 × 하루 1번 × 7일 × 1,000번 보여주는 데 21,698원<br><span style="color:var(--sub);font-size:15px">같은 분께 하루 1번 넘게 보여주면 피로만 쌓입니다</span></div><div class="r num">≈ 주 300만 원</div></div>
+  <div class="steps num">
+    <div><i>우리를 아는 분</i><b>약 2만 명</b></div><em>→</em>
+    <div><i>하루 한 번씩 일주일</i><b>14만 번 노출</b></div><em>→</em>
+    <div><i>1,000번 보여주는 비용</i><b>약 2.2만 원</b><small>리타겟팅 실측</small></div><em>→</em>
+    <div class="res2"><i>일주일에 쓸 수 있는 돈</i><b>약 300만 원</b></div>
+  </div>
+  <p class="rule" style="margin-top:14px">이보다 더 쓰면 같은 분께 하루에 여러 번 보여주게 되어 효율이 떨어집니다. 그래서 <b>11월 전에 ‘우리를 아는 분’ 수를 늘리는 게 먼저</b>입니다.</p>
+  
+</section>
+
+<!-- 20b 신규 회원 → 구매 설계 -->
+<section class="slide s4" data-t="신규 회원 → 구매 설계">
+  <div class="eyebrow"><span class="sq"></span>11월 전략 · 그릇을 키우는 법<span class="pg">00</span></div>
+  <h2 class="ttl">새 사람을 <span class="mk">회원으로, 첫 구매로, 두 번째 구매로</span> 잇습니다</h2>
+  <div class="ladder">
+    <div class="rung"><div class="st">1 · 처음 만나기</div><h4>페인포인트 방문 광고 + 도달 광고</h4><p>기존 방문자·구매자 제외. 9월 50만 명 도달</p><div class="kp"><i>보는 숫자</i>방문 1명당 250원 이하</div></div>
+    <div class="rung"><div class="st">2 · 회원 되기</div><h4>다녀간 분께 ‘가입’ 목적 광고</h4><p>첫 구매 쿠폰으로 가입 유도. 가입 이벤트는 7/22부터 측정 중</p><div class="kp"><i>보는 숫자</i>가입 1건당 광고비 · 기준 4.5만(8월 마칼디)</div></div>
+    <div class="rung"><div class="st">3 · 첫 구매</div><h4>미니 3종 9,900원을 신규 전용 입문 오퍼로</h4><p>기존 구매자는 빼고 새 회원에게만. 장바구니 담은 분은 7일 안에 다시</p><div class="kp"><i>보는 숫자</i>신규 구매 1건당 3만 원 이하</div></div>
+    <div class="rung"><div class="st">4 · 두 번째 구매</div><h4>미니 3종 구매자 → 본품</h4><p>첫 구매 후 21~45일에 본품 광고 + CRM (앞 장)</p><div class="kp"><i>보는 숫자</i>60일 재구매율</div></div>
+  </div>
+  <p class="rule">지금은 1번(처음 만나기)과 3번의 장바구니 리타겟팅만 돌고 있습니다. <b>10월에 2번·4번을 새로 켜서</b> 11월 “우리를 아는 분”을 2만 명보다 크게 만듭니다.</p>
+  
+</section>
+
+<!-- 20c 타겟 레이어 -->
+<section class="slide s4" data-t="유사타겟·리타겟팅 재설계">
+  <div class="eyebrow"><span class="sq"></span>11월 전략 · 타겟 재설계<span class="pg">00</span></div>
+  <h2 class="ttl">유사타겟은 <span class="mk">씨앗을 바꾸고</span>, 리타겟팅은 <span class="mk">단계를 나눕니다</span></h2>
+  <div class="qa">
+    <div><div class="q">유사타겟 — 누구와 닮은 사람을 찾을까 (10월 각 일 2~3만 원 × 7일)</div>
+      <table class="mini num"><thead><tr><th>씨앗(원본)</th><th>지금</th><th>10월</th></tr></thead><tbody>
+        <tr><td>구매자 전체 180일</td><td>ROAS 215% (8월)</td><td>기준선</td></tr>
+        <tr><td><b>대표님 인스타 참여자</b></td><td>연결 대기</td><td>1순위 시험</td></tr>
+        <tr><td><b>재구매·고액 구매자 명단</b></td><td>—</td><td>킨스 명단 업로드</td></tr>
+        <tr><td><b>회원가입자</b></td><td>—</td><td>가입 이벤트로 생성</td></tr>
+      </tbody></table>
+      <p class="minor">합격선: 구매 1건당 6만 원 이하 (관문 G3)</p></div>
+    <div><div class="q">리타겟팅 — 어디까지 왔는지에 따라 다른 말</div>
+      <table class="mini num"><thead><tr><th>단계</th><th>하는 말</th><th>상태</th></tr></thead><tbody>
+        <tr><td>장바구니·결제·구매 180일</td><td>“담아두신 그 제품”</td><td>운영 중 · 가장 강함</td></tr>
+        <tr><td>제품 상세 본 분 30일</td><td>본 제품 그대로 다시</td><td>10월 신설</td></tr>
+        <tr><td>가입했지만 미구매</td><td>첫 구매 쿠폰</td><td>10월 신설</td></tr>
+        <tr><td>최근 구매자 21~45일</td><td>본품·다음 제품</td><td>10월 신설</td></tr>
+      </tbody></table>
+      <p class="minor">제품 상세 조회는 8/7부터 상품번호까지 측정 중이라 제품별로 나눌 수 있습니다</p></div>
+  </div>
   
 </section>
 
@@ -664,8 +753,8 @@ body.edit [contenteditable="true"]{outline:1px dashed rgba(194,65,159,.6);outlin
   <div class="eyebrow"><span class="sq"></span>11월 전략 · 10월에 할 일<span class="pg">16</span></div>
   <h2 class="ttl">10월, 그릇을 키우는 <span class="mk">관문 4개</span></h2>
   <div class="gates">
-    <div class="gate"><div class="g"><b>G1</b><span>9/30</span></div><h4>대표님 인스타 연결</h4><p>참여자 수를 실측합니다. 11월 “아는 분” 예산의 천장을 정합니다.</p><div class="pass"><i>통과 기준</i>참여 맞춤타겟 생성 · 크기 확인</div></div>
-    <div class="gate"><div class="g"><b>G2</b><span>10/5</span></div><h4>공구 증액 리허설</h4><p>하이드로 공구(9/29~10/5)에 판매 예산을 평소 2배로 올려봅니다. 월 예산 총액은 그대로 둡니다.</p><div class="pass"><i>통과 기준</i>2배일 때 ROAS가 얼마나 버티는지 측정</div></div>
+    <div class="gate"><div class="g"><b>G1</b><span>9/30</span></div><h4>대표님 인스타 참여자 타겟</h4><p>대표님 계정은 옮기지 않고, 대표님 쪽에서 만든 ‘참여자 타겟’만 공유받습니다.</p><div class="pass"><i>통과 기준</i>참여 맞춤타겟 생성 · 크기 확인</div></div>
+    <div class="gate"><div class="g"><b>G2</b><span>10/5</span></div><h4>11월 예행연습</h4><p>하이드로 공구 7일간 판매 광고비만 하루 약 13만 → 27만 원. 예산을 늘리면 효율이 얼마나 떨어지는지 미리 잽니다.</p><div class="pass"><i>통과 기준</i>2배일 때 구매 1건당 광고비 변화 측정</div></div>
     <div class="gate"><div class="g"><b>G3</b><span>10/26</span></div><h4>모르는 사람 판매 재검증</h4><p>기존 고객을 뺀 판매 광고를 하루 3~5만 원으로 2주 돌립니다.</p><div class="pass"><i>통과 기준</i>구매 1건당 6만 원 이하 (ROAS 약 200%)</div></div>
     <div class="gate"><div class="g"><b>G4</b><span>11/2</span></div><h4>런칭 운영 준비</h4><p>오퍼·상세페이지 D-7, 소재 D-5 컨펌, D-1 랜딩 전수 점검. 공구 오픈 규율을 그대로 씁니다.</p><div class="pass"><i>통과 기준</i>런칭 D-1 모든 소재·랜딩 정렬</div></div>
   </div>
@@ -699,23 +788,10 @@ body.edit [contenteditable="true"]{outline:1px dashed rgba(194,65,159,.6);outlin
   <div class="eyebrow"><span class="sq"></span>킨스팀께<span class="pg">18</span></div>
   <h2 class="ttl">함께 해주셔야 할 <span class="mk">네 가지</span></h2>
   <div class="asks">
-    <div class="ask"><div class="i">1</div><div><h4>대표님 인스타 연결</h4><p>파트너 권한 방식. 광고는 danaspick.official 이름으로만 나갑니다</p></div><div class="due">9/30</div></div>
-    <div class="ask"><div class="i">2</div><div><h4>하이드로 공구 증액 리허설 승인</h4><p>판매 예산 평소 2배 · 월 예산 총액은 그대로</p></div><div class="due">9/29 전</div></div>
+    <div class="ask"><div class="i">1</div><div><h4>대표님 인스타 참여자 타겟 공유</h4><p>대표님 계정은 옮기지 않습니다. 광고는 danaspick.official 이름으로만</p></div><div class="due">9/30</div></div>
+    <div class="ask"><div class="i">2</div><div><h4>하이드로 공구로 11월 예행연습</h4><p>공구 7일만 판매 광고비 2배(약 +95만 원) · 런칭과 조건이 가장 비슷한 날</p></div><div class="due">9/29 전</div></div>
     <div class="ask"><div class="i">3</div><div><h4>런칭 오퍼 · 상세페이지 주소</h4><p>할인·구성과 랜딩 URL을 미리 받아야 소재·광고를 맞춥니다</p></div><div class="due">11/2 (D-7)</div></div>
     <div class="ask"><div class="i">4</div><div><h4>CRM 발송 캘린더 공유</h4><p>발송일에 판매 광고 예산을 먼저 올려둡니다</p></div><div class="due">매월 말</div></div>
-  </div>
-  
-</section>
-
-<!-- 24 협업 -->
-<section class="slide s4" data-t="함께 일하는 방식">
-  <div class="eyebrow"><span class="sq"></span>함께 일하는 방식<span class="pg">19</span></div>
-  <h2 class="ttl">매일 보고, 매주 배우고, 매달 닫습니다</h2>
-  <div class="ways">
-    <div class="way"><div class="f">매일 오전 9시</div><h4>데일리 공유</h4><p>전날 숫자와 그날 조정. 모든 숫자는 광고관리자에서 그대로 확인할 수 있게 드립니다.</p></div>
-    <div class="way"><div class="f">매주 수요일 · 원이 매니저님 HIZ 방문</div><h4>메타 세션</h4>
-      <ul class="cur"><li><b>9/16</b>계정 지도 — 캠페인·광고·소재, 네 줄의 역할</li><li><b>9/23</b>숫자 읽기 — ROAS와 구매 1건당 광고비</li><li><b>9/30</b>소재 판정 — 3일 판정, 나눠서 비교</li><li><b>10/7</b>공구 운영 — 전날 점검, 종료·원복</li><li><b>10/14</b>오디언스 — 대표님 인스타 참여 타겟</li><li><b>10/28</b>11월 런칭 캠페인 공동 설계</li></ul></div>
-    <div class="way"><div class="f">매월 초</div><h4>월 결산 · 다음 달 계획</h4><p>9월 미디어믹스 시트는 증액분(1,050만)과 9/13 실집행 기준으로 9/14에 업데이트했습니다.</p></div>
   </div>
   
 </section>
@@ -747,6 +823,7 @@ body.edit [contenteditable="true"]{outline:1px dashed rgba(194,65,159,.6);outlin
 </section>
 
 <!-- 내부 1 -->
+<!-- 내부 2 -->
 </div></div>
 
 <div id="bar"><div id="fill"></div></div>
@@ -793,7 +870,9 @@ var SEGS = [{"name":"7월 상시","start":"2026-07-09","end":"2026-07-27","days"
   /* ── 덱 엔진 ── */
   var deck=document.getElementById('deck'), all=[].slice.call(deck.querySelectorAll('.slide'));
   var seq=[], cur=0, internal=false, notes=false, edit=false;
-  function build(){ seq=all.filter(function(s){return internal||s.dataset.int!=='1';}); if(cur>=seq.length) cur=seq.length-1; render(); buildOv(); }
+  function build(){ seq=all.filter(function(s){return internal||s.dataset.int!=='1';}); if(cur>=seq.length) cur=seq.length-1;
+    var n=0; seq.forEach(function(s,i){ var p=s.querySelector('.pg'); if(p && /^\d+$/.test(p.textContent.trim())){ p.textContent=String(i).padStart(2,'0'); } });
+    render(); buildOv(); }
   function render(){ all.forEach(function(s){s.classList.remove('on');}); var s=seq[cur]; s.classList.add('on');
     document.getElementById('cur').textContent=String(cur+1).padStart(2,'0'); document.getElementById('tot').textContent=String(seq.length).padStart(2,'0');
     document.getElementById('fill').style.width=((cur+1)/seq.length*100)+'%';
