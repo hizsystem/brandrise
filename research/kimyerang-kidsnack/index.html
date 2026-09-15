@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  BRANDRISE PREP 통합표준 템플릿 v4 (정본 · 2026-07-01 정부지원사업 반영)   ║
+  ║  · 이 파일은 NGT 예시로 채워진 "살아있는 템플릿"이다. 복제 후 콘텐츠만 교체.  ║
+  ║  · §정부지원사업(GovFit) = govfit /api/recommend 상위5 스냅샷.            ║
+  ║    적합도≠자격 → 자격 실심사 판정열(부합/미달)+별개트랙 프레이밍 필수.       ║
+  ║    (생성 규칙: 스킬 references/page-build.md 참조)                        ║
+  ║  · 색/컴포넌트/레이아웃을 새로 만들지 말 것 — 인디고 단일 액센트·Pretendard·  ║
+  ║    좌측 sticky 목차 + 카드/콜아웃 스캔형 구조를 그대로 사용.                ║
+  ║  배포: research/{slug}/  (기존 prep 있으면 {slug}-v2)                    ║
+  ║  ── v3 변경(미팅 §3) ──                                                  ║
+  ║  ① §0 사업 단계(런칭전/런칭/매출드라이브) + 단계별 질문 세트(사전질의 대체)    ║
+  ║  ② USP 한 줄 상위 배치 / 니즈 용어 정리(SPIN·JTBD 제거, '가설' 라벨)        ║
+  ║  ③ 기회평가 점수표 약화 + 매출×15% envelope / ④ 3-Tier → 셀렉 매트릭스      ║
+  ║     (체크→화면 즉시 1차 견적 + 구글시트 빌더용 셀렉 복사) / ⑤ 녹음기반 상담    ║
+  ║     프로세스 / ⑥ 월 첫·마지막 주 재진단(남중) 운영룰                        ║
+  ║  ── PREP 원칙 ──                                                        ║
+  ║  ① 상담 전 문서 = 녹취록·랩업 절대 참고 금지. 진단/니즈/적합도는 "가설" 표기.  ║
+  ║  ② 직접 리서치 필수(자사몰·IG·네이버·사람인·글로벌 PR) → "참고 출처" 섹션에   ║
+  ║     ①클라이언트 제공 / ②직접 리서치(확인 날짜) 구분. 도구필요 메트릭=Apify 제안. ║
+  ╚══════════════════════════════════════════════════════════════════════╝
+-->
+
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>김예랑 · 무안 아동 과자 브랜드 (모두의 창업 로컬) — NB 상담 준비 PREP | BRANDRISE</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#e7e9ee; --line2:#eef1f5;
+  --bg:#fbfcfd; --card:#fff; --soft:#f6f8fb;
+  --ac:#4f46e5; --ac-50:#eef2ff; --ac-100:#e0e7ff; --ac-700:#3730a3;
+  --ok:#0e9f6e; --ok-50:#ecfdf5; --warn:#d97706; --warn-50:#fffbeb; --bad:#e11d48; --bad-50:#fef2f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.75;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;font-size:16.5px}
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 42%,#4338ca 100%);color:#fff;padding:84px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"PREP";position:absolute;right:-2%;bottom:-18%;font-size:clamp(160px,22vw,360px);font-weight:800;letter-spacing:-.04em;color:#fff;opacity:.05;line-height:.8;pointer-events:none}
+.hero .in{max-width:1360px;margin:0 auto;padding:0 40px}
+.hero .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:20px}
+.hero h1{font-size:42px;font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:14px}
+.hero .sub{font-size:16px;color:#cbd5e1;font-weight:300;max-width:700px;line-height:1.75}
+.hero .meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.hero .chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px}
+.hero .chip b{color:#a5b4fc}
+.hero .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.hero .lnk{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;text-decoration:none;padding:8px 15px;border-radius:9px;transition:.15s}
+.hero .lnk svg{width:14px;height:14px}
+.hero .lnk.store{background:#fff;color:var(--ink)}
+.hero .lnk.store:hover{background:#e2e8f0}
+.hero .lnk.sns{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.hero .lnk.sns:hover{background:rgba(255,255,255,.14)}
+.layout{max-width:1360px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:208px 1fr;gap:48px;align-items:start}
+nav.toc{position:sticky;top:28px;padding:36px 0;font-size:13.5px}
+nav.toc .nl{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--muted);margin:0 0 14px 12px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;border-left:2px solid transparent;transition:.15s;font-weight:500}
+nav.toc a:hover{color:var(--ink);background:var(--soft)}
+nav.toc a.on{color:var(--ac);background:var(--ac-50);border-left-color:var(--ac);font-weight:700}
+main{padding:36px 0 100px;min-width:0;counter-reset:sec}
+section{margin-bottom:54px;scroll-margin-top:24px}
+.sec-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);margin-bottom:8px}
+h2{font-size:29px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+.lead{font-size:18px;color:var(--ink2);margin-bottom:32px;line-height:1.8;text-wrap:balance}
+h3{font-size:20px;font-weight:800;margin:34px 0 12px;color:var(--ink);letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.co{border:1px solid var(--line2);border-left:3px solid var(--line);border-radius:0 10px 10px 0;padding:18px 24px;margin:20px 0;font-size:16px;line-height:1.8;text-wrap:pretty}
+h2,h3{text-wrap:balance}
+.co.ac{background:var(--ac-50);border-color:var(--ac-100);border-left-color:var(--ac)} .co.ok{background:var(--ok-50);border-color:#bbf7d0;border-left-color:var(--ok)}
+.co.warn{background:var(--warn-50);border-color:#fde68a;border-left-color:var(--warn)} .co.bad{background:var(--bad-50);border-color:#fecdd3;border-left-color:var(--bad)}
+.co b,.co strong{color:var(--ink);font-weight:600}
+.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+.co.ac .lab{color:var(--ac)} .co.ok .lab{color:var(--ok)} .co.warn .lab{color:var(--warn)} .co.bad .lab{color:var(--bad)}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px;margin:1px 2px;white-space:nowrap}
+.t.r{background:var(--bad-50);color:var(--bad)} .t.y{background:var(--warn-50);color:var(--warn)}
+.t.g{background:var(--ok-50);color:var(--ok)} .t.b{background:var(--ac-50);color:var(--ac)} .t.n{background:#f1f5f9;color:var(--muted)}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 4px}
+.kpi .k{background:var(--ink);color:#fff;border-radius:12px;padding:18px}
+.kpi .k.alt{background:var(--bad)}
+.kpi .lbl{font-size:11px;color:#94a3b8;font-weight:600;margin-bottom:4px}
+.kpi .k.alt .lbl{color:#fecdd3}
+.kpi .v{font-size:28px;font-weight:800;letter-spacing:-.02em}
+.kpi .s{font-size:11px;color:#cbd5e1;margin-top:3px;line-height:1.5}
+.kpi .k.alt .s{color:#fecdd3}
+.op{background:var(--ink);color:#fff;border-radius:16px;padding:30px}
+.op .opk{font-size:11px;font-weight:800;letter-spacing:.14em;color:#a5b4fc;margin-bottom:18px}
+.op .blk{margin-bottom:22px} .op .blk:last-child{margin-bottom:0}
+.op .bl{font-size:11px;font-weight:800;color:#a5b4fc;letter-spacing:.08em;margin-bottom:9px}
+.op .need{font-size:17px;font-weight:700;line-height:1.62}
+.op .need b{color:#c7d2fe}
+.op .need .ev{display:block;margin-top:11px;font-size:13.5px;font-weight:500;color:#cbd5e1;line-height:1.72}
+.op .need .ev b{color:#e2e8f0}
+.op .do{display:grid;gap:9px}
+.op .do .item{background:rgba(255,255,255,.06);border-left:3px solid var(--ac);padding:12px 15px;border-radius:0 8px 8px 0;font-size:13.5px;line-height:1.62;color:#e2e8f0}
+.op .do .item b{color:#c7d2fe}
+.op .offer{background:rgba(79,70,229,.24);border:1px solid var(--ac);border-radius:10px;padding:15px 18px;font-size:13.5px;line-height:1.7;color:#e9ecf5}
+.op .offer b{color:#c7d2fe}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0 4px}
+th{background:var(--soft);color:var(--ink2);font-weight:700;text-align:left;padding:9px 11px;font-size:12.5px;border-bottom:1px solid var(--line)}
+td{padding:9px 11px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+td b,td strong{color:var(--ink)}
+.q{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac);border-radius:10px;padding:16px 18px;margin-bottom:10px}
+.q .qn{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.05em;margin-bottom:5px}
+.q .qt{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.65}
+.q .qi{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.6}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px;position:relative}
+.tier.rec{border:2px solid var(--ac);box-shadow:0 8px 24px -12px rgba(79,70,229,.4)}
+.tier .rb{position:absolute;top:-11px;left:18px;background:var(--ac);color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;padding:3px 11px;border-radius:9px}
+.tier .tn{font-size:12px;font-weight:800;color:var(--muted)}
+.tier .tt{font-size:12.5px;color:var(--muted);margin:2px 0 10px}
+.tier .tp{font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.tier .td{font-size:11.5px;color:var(--muted);margin-bottom:12px}
+.tier ul{list-style:none}
+.tier li{font-size:13px;color:var(--ink2);padding:4px 0 4px 15px;position:relative;line-height:1.55}
+.tier li::before{content:"›";position:absolute;left:0;color:var(--ac);font-weight:800}
+.tl{border-left:2px solid var(--line);padding-left:20px;margin:10px 0}
+.tl .ph{position:relative;padding:10px 0}
+.tl .ph::before{content:"";position:absolute;left:-26px;top:14px;width:9px;height:9px;border-radius:50%;background:var(--ac)}
+.tl .pt{font-size:12px;font-weight:800;color:var(--ac)}
+.tl .pb{font-size:13px;color:var(--ink2);margin-top:2px}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sw{border-radius:12px;padding:16px 18px;border:1px solid var(--line)}
+.sw h4{font-size:12.5px;font-weight:800;margin-bottom:8px}
+.sw.s{background:var(--ok-50)} .sw.s h4{color:var(--ok)}
+.sw.w{background:var(--bad-50)} .sw.w h4{color:var(--bad)}
+.sw.o{background:var(--ac-50)} .sw.o h4{color:var(--ac)}
+.sw.tt{background:var(--warn-50)} .sw.tt h4{color:var(--warn)}
+.sw li{font-size:13px;color:var(--ink2);margin-left:15px;padding:2px 0;line-height:1.5}
+.verdict{background:var(--ink);color:#fff;border-radius:14px;padding:24px;text-align:center;margin:14px 0}
+.verdict .vl{font-size:12px;color:#94a3b8;font-weight:600}
+.verdict .vv{font-size:34px;font-weight:800;letter-spacing:-.02em;margin:6px 0;color:#a5b4fc}
+.verdict .vd{font-size:13px;color:#cbd5e1}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:12px}
+footer .in{max-width:1360px;margin:0 auto;padding:0 40px}
+@media(max-width:880px){.layout{grid-template-columns:1fr;gap:0;padding:0 22px}nav.toc{display:none}.hero .in{padding:0 22px}.hero h1{font-size:30px}.grid2,.grid3,.kpi,.tiers,.swot{grid-template-columns:1fr}}
+
+/* ===== veggiet DNA 가산 컴포넌트 (인디고 클린 토큰만 사용) ===== */
+/* 1) 에디토리얼 커버 — h1 형광 언더라인 + clamp 반응형 */
+.hero h1{font-size:clamp(38px,4.8vw,56px);line-height:1.08}
+.hero h1 .hl{background:linear-gradient(transparent 60%, rgba(165,180,252,.55) 60%);padding:0 2px;border-radius:2px}
+
+/* 2) evidence 박스 (직접 리서치 캡처·증빙 액자) */
+.evi{border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:14px 0}
+.evi .eh{padding:11px 16px;font-size:12.5px;font-weight:800;background:var(--soft);border-bottom:1px solid var(--line);color:var(--ink2)}
+.evi img{display:block;width:100%;height:auto}
+.evi .en{padding:9px 16px;font-size:12px;color:var(--muted);border-top:1px dashed var(--line)}
+
+/* 3) 역할/팩트 카드 그리드 (핵심 팩트 스캔형 3~4열) */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
+.fcard{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px}
+.fcard .fk{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.fcard .fv{font-size:16px;font-weight:800;color:var(--ink)}
+.fcard .fs{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.55;font-weight:500}
+
+/* 4) ★ 리서치 캡처 그리드 — 광고 대시보드·경쟁사·SNS 현황 (상담 전 직접 리서치 캡처 자리) */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:16px 0 6px}
+.shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.shot .sk{display:flex;align-items:center;gap:7px;padding:9px 13px;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--ac);background:var(--ac-50);border-bottom:1px solid var(--ac-100)}
+.shot .sk::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--ac)}
+.shot .sfig{aspect-ratio:16/10;background:var(--soft);display:block;width:100%;object-fit:cover}
+/* 빈 슬롯(placeholder) 상태 — 점선 안내 */
+.shot .sph{aspect-ratio:16/10;background:repeating-linear-gradient(45deg,var(--soft),var(--soft) 10px,#f0f3f8 10px,#f0f3f8 20px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted);text-align:center;padding:14px}
+.shot .sph .ic{font-size:22px;opacity:.5}
+.shot .sph .pl{font-size:12px;font-weight:700;color:var(--ink2)}
+.shot .scap{padding:10px 14px;font-size:12px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line2)}
+.shot .scap b{color:var(--ink2)}
+
+/* 5) 디자인·가독성 격상 (v2-③) — 인디고 토큰 안에서 "디자인된 문서" */
+/* v4 에디토리얼 챕터 — 큰 솔리드 번호 오프너 + 굵은 구분선 + 대폭 여백 */
+section{margin-bottom:116px;counter-increment:sec;border-top:2px solid var(--ink);padding:34px 0 0 108px;position:relative}
+main>section:first-child{border-top:none;padding-top:0}
+.sec-k{display:block;background:none;border:none;border-radius:0;padding:0;font-size:12px;letter-spacing:.2em;color:var(--ac);margin-bottom:14px}
+.sec-k::before{content:counter(sec,decimal-leading-zero);position:absolute;left:0;top:30px;font-size:62px;font-weight:800;color:var(--ac);letter-spacing:-.04em;line-height:.9;font-variant-numeric:tabular-nums}
+main>section:first-child .sec-k::before{top:0}
+@media(max-width:880px){section{padding-left:0!important}.sec-k::before{position:static;display:block;margin-bottom:4px}}
+h2{font-size:34px;margin-bottom:16px;letter-spacing:-.025em}
+h2{line-height:1.18}
+h3{letter-spacing:-.01em;line-height:1.4}
+/* 섹션 결론 풀폭 인디고 밴드 (.co.ac.band) — 베지어트 컬러 블록 역할 */
+.co.ac.band{padding:18px 22px;font-size:16px;line-height:1.85}
+/* 표 가독성: zebra + th 인디고 틴트 + 셀 패딩 + 숫자 tabular-nums */
+table{font-variant-numeric:tabular-nums}
+th{background:var(--ac-50);color:var(--ac-700);padding:13px 15px}
+td{padding:13px 15px}
+tbody tr:nth-child(even) td, table tr:nth-child(even) td{background:var(--soft)}
+
+@media(max-width:880px){.shots{grid-template-columns:1fr}}
+@media print{
+  .evi,.fcard,.card,.shot{break-inside:avoid}
+}
+
+/* ===== v3 신규: 사업 단계 / 셀렉 매트릭스 / 인라인 1차 견적 ===== */
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.stage{border:1.5px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px;position:relative}
+.stage.on{border:2px solid var(--ac);background:var(--ac-50)}
+.stage .sgn{font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--muted)}
+.stage.on .sgn{color:var(--ac)}
+.stage .sgt{font-size:15px;font-weight:800;color:var(--ink);margin:4px 0 8px}
+.stage .sgd{font-size:12px;color:var(--muted);line-height:1.55}
+.stage .sgr{display:block;margin-top:10px;font-size:11.5px;color:var(--ac-700);font-weight:700}
+.sel-component{container-type:inline-size}
+.sel-split{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.9fr);gap:18px;align-items:start}
+.pane-k{font-size:11px;font-weight:800;letter-spacing:0;color:var(--muted);margin-bottom:9px}
+.selmx{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);font-variant-numeric:tabular-nums}
+.selmx .hd,.selmx .rw{display:grid;grid-template-columns:minmax(142px,1.6fr) repeat(4,minmax(62px,1fr))}
+.selmx .hd{background:var(--soft);border-bottom:1px solid var(--line)}
+.selmx .hd>div{padding:11px 8px;font-size:11px;font-weight:800;color:var(--ink2);text-align:center;line-height:1.25}
+.selmx .hd>div:first-child{text-align:left}
+.selmx .hd .ls{display:block;font-size:9.5px;font-weight:600;color:var(--muted)}
+.selmx .hd .star{color:var(--ac)}
+.selmx .rw{border-bottom:1px solid var(--line2)}
+.selmx .rw:last-child{border-bottom:0}
+.selmx .rw:hover{background:var(--soft)}
+.selmx .nm{padding:13px 14px;display:flex;flex-direction:column;gap:3px;justify-content:center}
+.selmx .nm b{font-size:13px;font-weight:700;color:var(--ink);line-height:1.35}
+.selmx .opt{margin:7px 5px;border:1.5px solid var(--line);border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:9px 3px;cursor:pointer;transition:.12s;background:var(--card);position:relative;min-height:42px;text-align:center}
+.selmx .opt .amt{font-size:13.5px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:0}
+.selmx .opt .sub{font-size:9px;font-weight:600;color:var(--muted);margin-top:1px}
+.selmx .opt.ex{border-style:dashed}
+.selmx .opt.ex .amt{color:var(--muted)}
+.selmx .opt:hover,.selmx .opt:focus-visible{border-color:var(--ac-100);background:var(--ac-50);outline:0}
+.selmx .opt.on{background:var(--ac);border-color:var(--ac);box-shadow:0 6px 15px -8px var(--ac)}
+.selmx .opt.on .amt{color:var(--card)}
+.selmx .opt.on .sub{color:var(--ac-100)}
+.selmx .opt.on.ex{background:var(--ink2);border-color:var(--ink2)}
+.selmx .opt.on.ex .amt{color:var(--card)}
+.selmx .opt.on::after{content:"✓";position:absolute;top:2px;right:5px;font-size:9px;font-weight:800;color:var(--ac-100)}
+.qpane{position:sticky;top:20px;border:2px solid var(--ac);border-radius:16px;overflow:hidden;background:var(--card)}
+.qsh{background:var(--ac);color:var(--card);padding:18px 20px}
+.qsh .ttl{font-size:12.5px;font-weight:800;color:var(--ac-100);letter-spacing:0}
+.qsh .big{margin-top:7px;line-height:1.02}
+.qsh .big .won{font-size:30px;font-weight:800;letter-spacing:0;font-variant-numeric:tabular-nums}
+.qsh .big .eok{font-size:13px;font-weight:600;color:var(--ac-100);margin-left:6px}
+.env{padding:14px 20px;border-bottom:1px solid var(--line)}
+.env .et{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;margin-bottom:8px;font-size:12px;color:var(--muted)}
+.env .et input{width:54px;padding:3px 6px;border:1px solid var(--line);border-radius:6px;font-family:inherit;font-size:12px;text-align:right}
+.env .et .st{font-weight:800}
+.env .et .st.ok{color:var(--ok)}
+.env .et .st.over{color:var(--bad)}
+.env .bar{position:relative;height:10px;border-radius:99px;background:var(--ac-50);overflow:hidden}
+.env .bar .fill{height:100%;border-radius:99px;background:var(--ac);transition:width .3s,background .3s}
+.env .bar.over .fill{background:var(--bad)}
+.env .cap{margin-top:7px;font-size:11px;color:var(--muted);line-height:1.5}
+.env .cap b{color:var(--ink)}
+.qlist{padding:6px 8px;max-height:none}
+.qrow{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid var(--line2)}
+.qrow:last-child{border-bottom:0}
+.qrow .qn{flex:1;font-size:12.5px;color:var(--ink2);line-height:1.4}
+.qrow .lvb{display:inline-block;font-size:9.5px;font-weight:800;padding:1px 6px;border-radius:5px;background:var(--ac-50);color:var(--ac);margin-right:6px;vertical-align:1px}
+.qrow.edited .lvb{background:var(--warn-50);color:var(--warn)}
+.qrow .amtin{width:78px;text-align:right;font-family:inherit;font-size:14px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;border:1px solid transparent;border-radius:7px;padding:5px 8px;background:transparent;transition:.12s}
+.qrow .amtin:hover{background:var(--soft)}
+.qrow .amtin:focus{outline:0;border-color:var(--ac);background:var(--card);box-shadow:0 0 0 3px var(--ac-50)}
+.qrow.edited .amtin{color:var(--ac-700)}
+.qrow .unit{font-size:11px;color:var(--muted)}
+.qfoot{display:flex;justify-content:space-between;align-items:center;background:var(--ink);color:var(--card);padding:13px 20px;font-size:13px;font-weight:800}
+.qfoot .ft{color:var(--ac-100);font-size:16px;font-variant-numeric:tabular-nums}
+.qact{display:flex;gap:8px;flex-wrap:wrap;padding:13px 16px;background:var(--soft);border-top:1px solid var(--line)}
+.qact .btn{font-family:inherit;font-size:12px;font-weight:700;border:1px solid var(--ac);background:var(--card);color:var(--ac);border-radius:9px;padding:8px 13px;cursor:pointer;transition:.15s}
+.qact .btn:hover{background:var(--ac);color:var(--card)}
+.qact .btn.solid{background:var(--ac);color:var(--card)}
+.qact .btn.solid:hover{background:var(--ac-700);border-color:var(--ac-700)}
+.qhint{font-size:11px;color:var(--muted);padding:0 16px 13px;background:var(--soft);line-height:1.55}
+.savest{font-weight:800;color:var(--muted)}
+.savest.ok{color:var(--ok)}
+@container (max-width:660px){.sel-component .sel-split{grid-template-columns:1fr}.sel-component .qpane{position:relative;top:auto}}
+@media(max-width:680px){.sel-split{grid-template-columns:1fr}.qpane{position:relative;top:auto}}
+@media(max-width:560px){.selmx{overflow-x:auto}.selmx .hd,.selmx .rw{min-width:620px}.qrow{align-items:flex-start;flex-wrap:wrap}.qrow .amtin{margin-left:auto}}
+/* 링크(이미지 캡처 대체) */
+.co a{color:var(--ac);font-weight:700;text-decoration:none;border-bottom:1px solid var(--ac-100);word-break:break-all}
+.co a:hover{border-color:var(--ac)}
+/* 모바일 넘침 보정 */
+.sel-split>div{min-width:0}
+.env .et input{width:68px}
+@media(max-width:880px){main table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}
+</style>
+</head>
+<body>
+<div class="hero"><div class="in">
+  <div class="badge">NEW BUSINESS PREP · 통합표준</div>
+  <h1>김예랑 대표 <span class="hl">(무안 아동 과자 · 브랜드명 미정)</span></h1>
+  <div class="sub">목포에 사는 부부가 전남 무안에서 준비하는 아동 과자 사업. 중기부 「모두의 창업」 1기 <b style="color:#fff">로컬 트랙 2라운드</b>에 올라 있고, 1라운드에서 제품을 만들었다. 이제 <b style="color:#fff">11월 초·중순 2라운드 마감 전까지</b> 이름·브랜드·패키지를 세워야 한다.</div>
+  <div class="meta">
+    <span class="chip">사업 단계 <b>STAGE 1(경계) · 제품 있음 · 브랜드 백지</b></span>
+    <span class="chip">기회 적합도(추정) <b>4.1 / 5.0 · GO</b></span>
+    <span class="chip">예산 <b>미기재 · 로컬 사업화자금 최대 3,000만(차등)</b></span>
+    <span class="chip">미팅 <b>전화 회신 요청 · 일정 미정</b></span>
+    <span class="chip">유입 <b>유튜브 땡스큐레이터 · 폼 + 땡큐메일 2건</b></span>
+  </div>
+  <div class="links">
+    <a class="lnk sns" href="https://modoo.business/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"></path></svg>
+      모두의 창업 프로젝트
+    </a>
+  </div>
+</div></div>
+
+<div class="layout">
+  <nav class="toc">
+    <div class="nl">PREP 목차</div>
+    <a href="#onepager">수주 한 장</a>
+    <a href="#diagnosis">핵심 진단</a>
+    <a href="#company">창업팀 · 제품 · 프로그램</a>
+    <a href="#market">시장 · 경쟁 · 니즈</a>
+    <a href="#deal">기회 · 견적</a>
+    <a href="#consult">상담 진행</a>
+    <a href="#sources">참고 출처</a>
+  </nav>
+
+  <main>
+
+    <section id="onepager">
+      <div class="sec-k">ONE-PAGER</div>
+      <h2>수주 한 장</h2>
+      <p class="lead">전화 회신 전에 이 카드 하나면 된다. 공개된 브랜드 흔적이 없어서, 아래는 문의 두 건과 프로그램·시장 리서치(2026-09-15)를 바탕으로 한 가설이다. <span class="t n">상담 전 가설</span></p>
+
+      <div class="op">
+        <div class="opk">수주 한 장</div>
+        <div class="blk">
+          <div class="bl">USP &amp; 진짜 니즈 (가설)</div>
+          <div class="need"><b>USP</b> = <b>아직 없음(백지형)</b>. 이름도 공개 채널도 없다. 재료 후보는 두 가지다. <b>무안의 원료</b>(양파·황토고구마·연근 등, 실제 원료는 미확인)와 <b>"부부가 아이에게 먹이려고 만든 과자"</b>라는 서사. <b>진짜 니즈</b> = 예쁜 로고가 아니라 <b>2라운드 심사에서 통과할 브랜드 논리</b>, 그리고 그걸 <b>11월 전에 실물(이름·패키지)로 만드는 일정</b>.
+            <span class="ev">로컬 트랙은 "지역자원을 기반으로 창의성과 혁신성을 결합해 새로운 가치를 창출"하는 사업을 뽑는다(공고 해설). 그래서 이 건의 브랜딩은 마케팅이 아니라 <b>심사 논리 그 자체</b>다. "왜 무안이어야 하는가"가 브랜드 한 문장이 되고, 그 문장이 심사장에서 설득한다.</span>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="bl">그래서 우리가 해주는 것</div>
+          <div class="do">
+            <div class="item"><b>① 네이밍 + 포지셔닝 + 지역 서사</b> — 부모가 믿을 이유(원료·첨가물·만든 사람)와 심사위원이 뽑을 이유(지역자원)를 한 문장으로</div>
+            <div class="item"><b>② 로고 + 패키지 1종</b> — 부모가 뒤집어 보는 뒷면까지. 영유아용인지 어린이용인지에 따라 달라지는 표시 기준 안에서</div>
+            <div class="item"><b>③ 2라운드 역산 일정</b> — 9월 말 착수 → 10월 이름·패키지 → 11월 초·중순 마감 제출. 3라운드 오디션 자료로 이어지게</div>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="bl">첫 제안 &amp; 다음 액션</div>
+          <div class="offer"><b>코어 2,500만(아이덴티티 L1 + 디자인 L1)</b> — 2라운드 사업화자금 안에서 집행하는 구조를 기본으로 한다. 단 <b>자금은 차등 지원이고 생산·포장재에도 써야 하니</b>, 브랜딩에 쓸 수 있는 실제 금액을 먼저 묻고 맞춘다. 오늘 받아낼 최소 커밋 = <b>다음 주 킥오프 날짜</b> + <b>1라운드 시제품 정보와 협약서의 비목표 공유</b>.</div>
+        </div>
+      </div>
+
+      <div class="co ac band"><span class="lab">이번 상담 최대 무기 — 이 두 줄만 기억해도 된다</span>
+        <b>① "이번 브랜딩은 마케팅이 아니라 2라운드 심사 논리입니다."</b> 로컬 트랙 2라운드에는 600명이 올라왔고 그중 F&amp;B가 38.8%다. 공고 기준 일정대로면 다음 단계에서 100명으로 줄어든다. 수백 명이 비슷한 로컬 먹거리를 들고 오는 자리에서 남는 건 <b>"왜 무안이어야 하는지"를 한 문장으로 말하는 팀</b>이다.<br>
+        <b>② "무첨가는 이제 기본값입니다. 차별점은 원료가 어디서 왔고 누가 만들었는지예요."</b> 아이얌 떡뻥은 밀가루·설탕·소금·착색료 무첨가, 튀기지 않는 제법으로 누적 2,000만 봉을 팔았다(2026). 떡뻥 30g은 2,400~3,600원에 몰려 있다. 같은 말로는 이 가격대 안에서 싸움이 안 된다. <b>무안 원물로 만든 아동 간식은 이번 조회에서 찾지 못했다.</b> 그 자리가 비어 있다.
+      </div>
+    </section>
+
+    <section id="diagnosis">
+      <div class="sec-k">DIAGNOSIS (가설)</div>
+      <h2>핵심 진단</h2>
+      <p class="lead">제품은 1라운드에서 만들었다. 비어 있는 건 <b>이름, 이유, 그리고 시간</b>이다. <span class="t n">상담 전 가설</span></p>
+
+      <div class="kpi">
+        <div class="k"><div class="lbl">프로그램</div><div class="v">로컬 2R</div><div class="s">1기 · 로컬 진출 600명 중 1팀</div></div>
+        <div class="k"><div class="lbl">사업화자금</div><div class="v">≤3,000만</div><div class="s">로컬 트랙 상한 · 차등 지원</div></div>
+        <div class="k"><div class="lbl">공개 흔적</div><div class="v">0</div><div class="s">브랜드명·채널·언론 미발견</div></div>
+        <div class="k alt"><div class="lbl">시급 과제</div><div class="v">6~8주</div><div class="s">11월 초·중순 2R 마감</div></div>
+      </div>
+
+      <div class="grid3" style="margin-top:14px">
+        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">이름이 없다</h3><p style="font-size:12.5px;color:var(--muted)">검색에서 브랜드명·사업자·SNS·스마트스토어가 하나도 나오지 않는다. <b>네이밍부터 시작</b>해야 하고, 이름이 정해져야 로고·패키지·상표가 움직인다.</p></div>
+        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">시간이 6~8주뿐이다</h3><p style="font-size:12.5px;color:var(--muted)">대표가 적은 2라운드 기한은 11월 초·중순이다. 1차 공고 기준으로는 2라운드 전국 예선이 10월까지로 되어 있어 <b>더 빠를 수도 있다</b>. 네이밍 → 로고 → 패키지 → 인쇄를 역산하면 <b>9월 말에 착수</b>해야 한다.</p></div>
+        <div class="card"><span class="t r">Critical</span><h3 style="margin:8px 0 6px">로컬 = 지역자원이 심사 기준</h3><p style="font-size:12.5px;color:var(--muted)">로컬 트랙은 지역자원 기반 사업을 뽑는다. <b>무안 원료를 쓰는지, 무안과 무엇이 연결되는지</b>가 브랜드의 뼈대이자 심사 논리다. 실제 원료는 미확인이다.</p></div>
+      </div>
+      <div class="grid3" style="margin-top:12px">
+        <div class="card"><span class="t y">High</span><h3 style="margin:8px 0 6px">부모가 사는 제품</h3><p style="font-size:12.5px;color:var(--muted)">먹는 사람은 아이지만 사는 사람은 부모다. 부모의 구매 기준은 <b>원재료와 첨가물</b>이고, 재구매와 입소문이 성장을 이끈다(2026 기사). 브랜드는 감성보다 <b>믿을 근거</b>로 서야 한다.</p></div>
+        <div class="card"><span class="t y">High</span><h3 style="margin:8px 0 6px">대상 연령이 표시를 가른다</h3><p style="font-size:12.5px;color:var(--muted)">생후 36개월 미만을 겨냥해 "영유아용"이라고 쓰려면 영유아용 식품 기준을 맞춰야 하는 것으로 안다(원문 확인 필요). <b>누구를 위한 과자인지</b>가 이름·패키지·카피를 모두 바꾼다.</p></div>
+        <div class="card"><span class="t y">High</span><h3 style="margin:8px 0 6px">자금 비목과 견적 항목</h3><p style="font-size:12.5px;color:var(--muted)">2라운드 자금으로 포장디자인·홈페이지 같은 광고선전비를 쓸 수 있다는 해설이 있다(공식 원문 미확인). <b>우리 견적 항목명이 인정 비목에 맞아야</b> 집행된다. 협약서 비목표를 먼저 받는다.</p></div>
+      </div>
+
+      <div class="co bad"><span class="lab">진단 결론 (가설)</span><b>이 케이스의 리스크는 "브랜드를 모른다"가 아니라 "마감 전에 이유 없는 패키지만 나오는 것"이다.</b> 2라운드 자금이 들어오면 제일 먼저 포장부터 찍고 싶어진다. 그런데 이름과 한 문장 없이 만든 패키지는 심사장에서도 매대에서도 설명을 못 한다. 처방 1순위는 <b>"왜 무안, 왜 우리 아이"를 한 문장으로 정하는 것</b>이고, 2순위는 그 문장을 <b>11월 전에 실물로 만드는 역산 일정</b>이다.</div>
+
+      <div class="co ac band"><span class="lab">USP 상태 — 백지형 (재료는 있는데 아직 이름이 없는 경우)</span>대표가 쓴 말에 재료가 이미 있다. "저와 남편이 함께 브랜드를 꿈꾸며 시작한 사업", "진심을 다해 소비자에게 좋은 것을 주고 싶은 마음", 그리고 무안이라는 장소. 이걸 <b>부모가 믿을 증거</b>로 바꾸는 게 일이다. 가설 한 문장의 뼈대: <b>"무안의 [원료]로, 우리 아이에게 먹이려고 만든 과자."</b> 대괄호 안이 상담 1순위 질문이다.</div>
+    </section>
+
+    <section id="company">
+      <div class="sec-k">TEAM · PRODUCT · PROGRAM</div>
+      <h2>창업팀 · 제품 · 프로그램</h2>
+      <p class="lead">공개된 브랜드 정보가 없어서, 문의 원문과 모두의 창업 프로그램 구조로 채웠다. <span class="t n">직접 리서치 2026-09-15</span></p>
+
+      <div class="grid2">
+        <div class="card">
+          <h3 style="margin-top:0">창업팀 <span style="font-size:11px;color:var(--muted);font-weight:500">(문의 원문 기준)</span></h3>
+          <div class="cards">
+            <div class="fcard"><div class="fk">대표</div><div class="fv">김예랑 · 목포 거주 청년 · 남편과 공동 창업</div></div>
+            <div class="fcard"><div class="fk">사업지</div><div class="fv">전남 무안 (진행 예정)</div></div>
+            <div class="fcard"><div class="fk">아이템</div><div class="fv">아동식품(과자) · 원료·대상 연령 <span class="t y">미확인</span></div></div>
+            <div class="fcard"><div class="fk">단계</div><div class="fv">모두의 창업 1기 로컬 트랙 2라운드 · 1R은 제품 개발 중심</div></div>
+            <div class="fcard"><div class="fk">사업자 · 브랜드명</div><div class="fv"><span class="t y">미확인</span> · 공개 검색 흔적 없음</div></div>
+            <div class="fcard"><div class="fk">경험</div><div class="fv">"큰 사업을 만들어가본 적도, 구체적인 브랜딩 방법도 잘 모르지만" (본인 표현)</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">문의에서 읽히는 것</h3>
+          <table>
+            <tr><td style="width:30%"><b>요청</b></td><td>"토탈 브랜딩 상담과 더불어 의뢰 요청" · "견적 및 의뢰 요청"</td></tr>
+            <tr><td><b>2R 목표</b></td><td>"1라운드 때는 제품 개발에 비중을 높인 터라 마케팅 또는 브랜딩 방향 등을 2라운드에는 집중"</td></tr>
+            <tr><td><b>기한</b></td><td>"금주부터 11월 초·중순까지 라운드 사업추진"</td></tr>
+            <tr><td><b>유입 이유</b></td><td>땡스큐레이터에서 <b>권윤정 대표의 "브랜드 리드 방식과 과정"</b>에 공감</td></tr>
+            <tr><td><b>온도</b></td><td>웹 폼과 이메일로 <b>두 번</b> 연락 · 전화 회신 요청 → 높음</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="co ok"><span class="lab">온도 신호 — 우리 방식을 보고 왔다</span>대표는 콘텐츠를 보고 <b>권윤정 대표의 진행 방식</b>에 공감했다고 이름까지 적었다. 가격보다 <b>"누가 어떻게 이끌어주는가"</b>를 사는 리드다. 첫 통화에서 <b>누가 이 건을 리드하는지</b>를 분명히 말해 기대치를 맞춘다.</div>
+
+      <h3>모두의 창업 — 로컬 트랙 구조</h3>
+      <table>
+        <tr><th style="width:26%">항목</th><th>내용 · 출처</th></tr>
+        <tr><td><b>1기 규모</b></td><td>약 6.3만 명 지원 → 1R 5,000명 → <b>2R 진출 1,100명</b>(일반·기술 500, <b>로컬 600</b>) · 2026-09-04 발표 <span class="t n">중기부 보도자료 기사</span></td></tr>
+        <tr><td><b>로컬 진출자 분야</b></td><td>생활 45%, <b>F&amp;B 38.8%</b>, 뷰티 9.7% · 선정자 지역 호남권 19.1% <span class="t n">머니투데이 2026-09-04</span></td></tr>
+        <tr><td><b>로컬 사업화자금</b></td><td>"최대 <b>3,000만원</b> 지원(권역별 오디션 진출자)", <b>차등 지원</b> <span class="t y">공고 요약·민간 해설</span> · 일반·기술 트랙은 MVP 제작 최대 2,000만원</td></tr>
+        <tr><td><b>로컬 일정 (1차 공고)</b></td><td>2R 전국 예선 600→100명(~10월) → 3R 전국 오디션 100→13명(~12월) · 과제기간 2026.03~12 · 파이널 상금 최대 1억원 · 보도자료는 "12월 중 최종 200명 선발" <span class="t y">명칭·일정이 자료마다 달라 협약서 확인</span></td></tr>
+        <tr><td><b>로컬 선정 기준</b></td><td>"지역자원을 기반으로 창의성과 혁신성을 결합하여 새로운 가치를 창출" <span class="t n">민간 해설</span></td></tr>
+        <tr><td><b>비목</b></td><td>1R 창업활동자금: 외주용역은 "시제품·MVP 개발을 위한 전문업체 활용" 한정(검색 요약) · 2R 사업화자금: 광고선전비(홈페이지·홍보영상·<b>포장디자인</b>·포털 배너) 집행 가능, e나라도움 집행 <span class="t y">민간 해설 · 공식 원문 미확인</span></td></tr>
+        <tr><td><b>2R 부가 지원</b></td><td>멘토링, 규제 스크리닝, 협약보증, 9/7부터 전국 순회 설명회</td></tr>
+      </table>
+      <div class="co warn"><span class="lab">자금 해석 주의</span>① 상한 3,000만은 <b>차등 지원</b>이라 이 팀이 받는 금액은 모른다. ② 같은 자금으로 <b>생산·포장재 인쇄·인증</b>도 해야 한다. ③ 브랜딩 비용이 인정되는 비목(광고선전비 등)은 <b>협약서 기준</b>이다. → 견적은 "받은 금액 중 브랜딩 가용액"에 맞춰야 하고, <b>견적서 항목명을 비목 용어(포장디자인·홈페이지 등)에 맞춰</b> 써야 집행이 막히지 않는다.</div>
+    </section>
+
+    <section id="market">
+      <div class="sec-k">MARKET · COMPETITION · NEEDS</div>
+      <h2>시장 · 경쟁 · 니즈</h2>
+      <p class="lead">아이는 줄고 한 아이에게 쓰는 돈은 는다. 부모는 원재료와 첨가물을 보고 산다. 떡뻥 매대는 이미 꽉 차 있다. <span class="t n">상담 전 가설</span></p>
+
+      <h3>① 시장 신호</h3>
+      <table>
+        <tr><th style="width:34%">지표</th><th>값 · 출처</th></tr>
+        <tr><td><b>영유아식 시장</b></td><td>2015년 680억 → 2020년 1,671억 → 2025년 3,300억원(전망, aT) <span class="t y">검색 요약</span></td></tr>
+        <tr><td><b>출생아 수</b></td><td>2015년 43.84만 → 2025년 <b>25.43만 명(-42.0%)</b> <span class="t n">한국경제 2026-09-09</span></td></tr>
+        <tr><td><b>쌀 가공 확대</b></td><td>식품 제조업체 쌀 사용량 2025년 106.5만 톤(+22.0%) <span class="t n">한국경제 2026-09-09</span></td></tr>
+        <tr><td><b>1위 사례</b></td><td>아이얌 떡뻥: 2015년 출시, <b>누적 2,000만 봉</b>, 하루 약 5,000봉 · 밀가루·설탕·소금·착색료·팽창제 무첨가, 튀기지 않는 제법 · 부모 구매 기준은 원재료와 첨가물 <span class="t n">한국경제 2026-07-22</span></td></tr>
+      </table>
+
+      <h3>② 경쟁 가격 — 떡뻥 30g <span class="t n">다나와 최저가 2026-09-15</span></h3>
+      <table>
+        <tr><th style="width:40%">제품</th><th>가격</th></tr>
+        <tr><td>아이배냇 유기농 쌀떡뻥 백미 30g</td><td>3,410원</td></tr>
+        <tr><td>아이배냇 롱떡뻥 단호박 / 블루베리 30g</td><td>2,500원 / 3,110원</td></tr>
+        <tr><td>아이얌 유기농 백미 떡뻥 / 시금치 떡뻥 30g</td><td>3,487원 / 3,570원</td></tr>
+        <tr><td>요미요미 시금치와 브로콜리 떡뻥 30g</td><td>3,280원</td></tr>
+        <tr><td>자연주의 유기농 떡뻥 오리지널 30g</td><td>2,440원</td></tr>
+        <tr><td>리뉴얼라이프 자색고구마 떡뻥 30g</td><td>2,900원</td></tr>
+        <tr><td>질마재농장 현미블루베리 / 백미배 떡뻥 70g</td><td>4,100원 / 3,800원</td></tr>
+      </table>
+      <div class="co ac"><span class="lab">가격 시사</span>떡뻥 30g은 <b>2,400~3,600원</b>에 몰려 있고 "유기농·무첨가"는 이미 모두가 쓰는 말이다. 같은 말로 들어가면 이 밴드 안에서 가격 싸움이 된다. 빠져나갈 길은 <b>원료 출처(무안)와 만든 사람(부부)</b>이다. <b>무안 원물로 만든 아동 간식은 이번 조회에서 찾지 못했다</b>(무안군 공식몰의 아이 음료는 다른 회사 제품).</div>
+
+      <h3>③ 표시 · 클레임 — 이름과 카피를 정하기 전에 <span class="t y">원문 확인 필요</span></h3>
+      <table>
+        <tr><th style="width:28%">항목</th><th>요약</th></tr>
+        <tr><td><b>"영유아용" 표시</b></td><td>식품공전에서 영유아는 <b>생후 36개월 미만</b>으로 알고 있으며, "영유아용"을 표시하려면 영유아용 식품 기준에 맞아야 한다 <span class="t y">배경지식 · 원문 미열람</span></td></tr>
+        <tr><td><b>어린이 기호식품 품질인증</b></td><td>식약처가 정한 안전·영양·첨가물 기준(유형별 열량·포화지방·당류 상한 등)에 맞으면 인증 · 과자류 수치 기준 미확인 <span class="t n">식약처 고시</span></td></tr>
+        <tr><td><b>고열량·저영양 식품</b></td><td>같은 제도로 판정하며, 해당되면 광고·판매 제한이 붙는 것으로 알고 있다 <span class="t y">원문 미열람</span></td></tr>
+        <tr><td><b>금지 표현</b></td><td>질병 예방·치료 효능, 의약품 오인, 거짓·과장 표현 금지(식품표시광고법 제8조로 알고 있음) → <b>"키 성장", "면역력 강화"</b> 같은 말은 위험 <span class="t y">원문 미열람</span></td></tr>
+      </table>
+
+      <h3>④ SWOT <span class="t n">상담 전 가설</span></h3>
+      <div class="swot">
+        <div class="sw s"><h4>Strengths</h4><ul><li>1R 제품 개발 완료(추정)</li><li>무안 지역자원 접근성(원료 미확인)</li><li>부부 공동 창업 서사 · 높은 진정성과 온도</li></ul></div>
+        <div class="sw w"><h4>Weaknesses</h4><ul><li>브랜드명·채널·판매 이력 없음</li><li>첫 창업 · 브랜딩 경험 없음(본인 표현)</li><li>자금이 지원금에 묶여 비목 제약</li></ul></div>
+        <div class="sw o"><h4>Opportunities</h4><ul><li>무안 원물 아동 간식 공백(이번 조회 기준)</li><li>3R·파이널(상금 최대 1억)·후속 지원사업 우대</li><li>한 아이당 지출 증가</li></ul></div>
+        <div class="sw tt"><h4>Threats</h4><ul><li>떡뻥 레드오션 · 무첨가는 기본값</li><li>출생아 감소</li><li>영유아용 표시·클레임 규제</li></ul></div>
+      </div>
+
+      <h3>⑤ 표면 고민 vs 추정 진짜 니즈</h3>
+      <div class="co ac band"><span class="lab">표면 vs 진짜 (가설)</span><b>표면</b> = "토탈 브랜딩 상담과 의뢰. 2라운드에는 마케팅·브랜딩 방향에 집중하고 싶다." <b>진짜</b> = <b>①</b> 11월 전에 <b>심사를 통과할 브랜드 논리와 실물</b>. <b>②</b> "잘 모르지만 겸손하게 배우겠다"는 말대로 <b>무엇을 어떤 순서로 해야 하는지 이끌어줄 사람</b>. 결과물만큼 과정을 산다. <b>③</b> 2라운드 자금을 <b>규정에 맞게, 낭비 없이</b> 쓰는 방법.</div>
+    </section>
+
+    <section id="deal">
+      <div class="sec-k">FIT &amp; ESTIMATE</div>
+      <h2>기회 평가 · 견적 (가설)</h2>
+
+      <div class="verdict"><div class="vl">종합 기회 적합도 (상담 전 추정)</div><div class="vv">4.1 / 5.0</div><div class="vd">✅ GO — 니즈(토탈 브랜딩)·의사결정(부부 대표)·긴급도(11월 마감)가 모두 강하다. 감점은 <b>자금이 차등 지원금이고 비목이 미확인</b>이라는 것.</div></div>
+
+      <div class="grid2">
+        <div class="card"><h3 style="margin-top:0">적합도 (가중) <span class="t n">참고용</span></h3>
+          <table>
+            <tr><td>니즈-핏 30%</td><td><b>4.5</b></td><td style="font-size:11.5px;color:var(--muted)">네이밍부터 패키지까지 = 코어 정면</td></tr>
+            <tr><td>예산 20%</td><td><b>3.0</b></td><td style="font-size:11.5px;color:var(--muted)">로컬 자금 최대 3,000만 · 차등 · 비목 미확인</td></tr>
+            <tr><td>의사결정 15%</td><td><b>4.5</b></td><td style="font-size:11.5px;color:var(--muted)">부부 공동 대표 · 결재 단계 없음</td></tr>
+            <tr><td>긴급도 15%</td><td><b>5.0</b></td><td style="font-size:11.5px;color:var(--muted)">11월 초·중순 2R 마감</td></tr>
+            <tr><td>성장·레퍼런스 20%</td><td><b>3.5</b></td><td style="font-size:11.5px;color:var(--muted)">3R·파이널 진출 시 레퍼런스 · 같은 처지의 2R 팀 수백 곳</td></tr>
+          </table></div>
+        <div class="card"><h3 style="margin-top:0">GO 조건 · 리스크 분기점</h3><table>
+          <tr><td>의사결정</td><td><span class="t g">✅</span> 부부 대표 본인</td></tr>
+          <tr><td>니즈-서비스 핏</td><td><span class="t g">✅</span> 토탈 브랜딩 정면</td></tr>
+          <tr><td>자금</td><td><span class="t y">⚠️</span> 배정액·비목 <b>상담 필수 확인</b></td></tr>
+          <tr><td>일정</td><td><span class="t r">⚠️</span> 6~8주 · 착수 지연 시 마감 불가</td></tr>
+          <tr><td>표시 규제</td><td><span class="t y">⚠️</span> 대상 연령 미정</td></tr>
+        </table></div>
+      </div>
+
+      <div class="co warn"><span class="lab">GO 조건</span><b>A.</b> 착수는 <b>9월 말</b>이어야 한다. 10월 중순 이후 착수면 범위를 <b>네이밍·로고·패키지 1종</b>으로 줄인다. <b>B.</b> <b>협약서 비목표</b>를 보고 견적서 항목명을 맞춘다. 비목에 안 맞으면 지원금으로 집행할 수 없다. <b>C.</b> 1R 시제품의 <b>원료·대상 연령·제조 방식</b>이 확인되기 전에는 이름을 확정하지 않는다.</div>
+
+      <h3>2안 앵커링 <span class="t y">VAT 별도 · 단가 SSOT 기준 · 금액은 범위로만</span></h3>
+      <div class="tiers">
+        <div class="tier"><div class="tn">입구 · 스프린트 워크숍</div><div class="tt">자금 집행이 막히거나 가용액이 작을 때</div><div class="tp">150~300만</div><div class="td">반나절 + 정리 1주</div><ul>
+          <li>이름 후보 + 한 문장 + 지역 서사</li><li>2R 심사 자료용 브랜드 요약</li><li>패키지 뒷면 체크리스트</li></ul></div>
+        <div class="tier rec"><div class="rb">추천</div><div class="tn">코어 · 2R 브랜드 패키지</div><div class="tt">아이덴티티 L1 + 디자인 L1</div><div class="tp">2,500만</div><div class="td">9월 말 착수 → 11월 초 (약 6주)</div><ul>
+          <li>네이밍·포지셔닝·지역 서사 한 문장</li><li>상표 1차 검색 액션</li><li>로고 + 패키지 1종(앞·뒷면)</li><li>브랜드 가이드 1장</li></ul></div>
+        <div class="tier"><div class="tn">풀 · 3R까지</div><div class="tt">코어 + 진단 L1 + 촬영 L1 + 인스타 기획 L1</div><div class="tp">4,000만</div><div class="td">3R 오디션(~12월)까지</div><ul>
+          <li>부모 인터뷰 + 경쟁 감사</li><li>제품·상세 촬영</li><li>런칭 콘텐츠 기획</li><li>자금 상한 초과분은 자부담·후속 지원</li></ul></div>
+      </div>
+
+      <h3>견적 셀렉 <span class="t b">상담 중 선택 → 견적 자동</span></h3>
+      <div class="sel-component">
+        <div class="sel-split">
+          <div>
+            <div class="pane-k">투입 레벨 선택 — L1 프리랜서 / L2 내부 히즈 ★ / L3 외주·풀</div>
+            <div class="selmx" id="selmx">
+              <div class="hd">
+                <div>견적 항목 <span class="t n">단계</span></div>
+                <div>제외</div>
+                <div>L1<span class="ls">프리랜서</span></div>
+                <div class="star">L2 ★<span class="ls">내부 히즈</span></div>
+                <div>L3<span class="ls">외주·풀</span></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="pane-k">1차 견적서 · 실시간</div>
+            <div class="qpane">
+              <div class="qsh">
+                <div class="ttl">📋 1차 견적서 · 셀렉 결과</div>
+                <div class="big"><span class="won" id="bigWon">—</span><span class="eok" id="bigEok"></span></div>
+              </div>
+              <div class="env">
+                <div class="et"><span>예산 기준 <input id="rev" type="number" value="3000" min="0">만 · 기준 <b id="envAmt">—</b></span><span class="st" id="envSt">—</span></div>
+                <div class="bar" id="bar"><div class="fill" id="fill" style="width:0"></div></div>
+                <div class="cap" id="envCap"></div>
+              </div>
+              <div class="qlist" id="qlist"></div>
+              <div class="qfoot"><span>합계 · VAT 별도</span><span class="ft" id="qtot">—</span></div>
+              <div class="qact">
+                <button class="btn solid" id="btnSave" type="button">💾 저장</button>
+                <button class="btn" id="btnExcel" type="button">📊 엑셀</button>
+                <button class="btn" id="btnHtml" type="button">📄 HTML</button>
+                <button class="btn" id="btnReset" type="button">기본값 복원</button>
+              </div>
+              <div class="qhint"><span class="savest" id="saveSt">자동 저장 켜짐</span> · 상담에서 브랜딩 가용액을 들으면 예산 기준을 그 금액으로 바꾼다. 단가 공유 원칙(브랜드 불문 동일).</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="co warn"><span class="lab">패키징 원칙</span>기본값은 <b>코어(아이덴티티 L1 1,000 + 디자인 L1 1,500 = 2,500만)</b>이고, 예산 기준은 로컬 사업화자금 상한 3,000만이다. 실제 배정액과 브랜딩 가용액을 들으면 그 금액으로 바꾼다. 가용액이 1,500만 안팎이면 디자인 L1만 남기고, 네이밍·포지셔닝은 스프린트 워크숍으로 압축하는 조합을 검토한다. 단가는 깎지 않고 항목·레벨로 맞춘다.</div>
+
+      <div class="co ok"><span class="lab">★ 확장 기회 — 이 건이 "2R 브랜드 패키지"의 파일럿이 될 수 있다</span>로컬 트랙 2라운드 진출자는 600명이고 그중 F&amp;B가 38.8%(약 230팀 추정)다. 모두 <b>같은 기한(11월 전후), 같은 자금 구조(광고선전비 집행), 같은 과제(이름·패키지·심사 논리)</b>를 안고 있다. 이 건을 표준 상품으로 정리하면(범위·기간·비목 맞춤 견적서 양식) 땡스큐레이터의 정부지원사업 콘텐츠와 바로 연결된다. <span class="t n">내부 메모 · 상담에서 언급하지 말 것</span></div>
+
+      <h3>실행가능성 검열</h3>
+      <div class="grid2">
+        <div class="card"><h3 style="margin-top:0;font-size:14px">HIZ가 <u>못 하는</u> 것 → 성격 전환</h3><table>
+          <tr><td><b>식품 표시 적합성 판정</b></td><td>→ 체크리스트까지. 최종 판정은 식약처·전문기관·제조사</td></tr>
+          <tr><td>상표 출원</td><td>→ 1차 검색까지. 출원은 변리사</td></tr>
+          <tr><td>포장재 인쇄·생산</td><td>→ 인쇄 파일까지. 발주·단가는 제조사·인쇄소</td></tr>
+          <tr><td>지원금 집행 행정</td><td>→ 비목 맞춘 견적서·산출물 제공. 집행은 대표(e나라도움)</td></tr>
+        </table></div>
+        <div class="card"><h3 style="margin-top:0;font-size:14px">대표가 <u>못 만지는</u> 레버 → KPI에 넣지 말 것</h3><table>
+          <tr><td><b>이름·패키지·심사 자료 완성</b></td><td><span class="t g">통제 가능 ⭐</span> 11월 전</td></tr>
+          <tr><td>시식·부모 피드백 수집</td><td><span class="t g">통제 가능</span></td></tr>
+          <tr><td>3R 진출 · 파이널 선발</td><td><span class="t r">통제 불가</span> 심사 결과</td></tr>
+          <tr><td>배정 자금 규모</td><td><span class="t r">통제 불가</span> 차등 지원</td></tr>
+        </table></div>
+      </div>
+
+      <h3>2라운드 역산 일정 <span class="t y">추정 — 협약서 마감일로 보정</span></h3>
+      <div class="tl">
+        <div class="ph"><div class="pt">9월 4주 · 킥오프</div><div class="pb">1R 시제품·원료·대상 연령·제조 방식 확인 · 협약서 비목표 확인 · 부부 인터뷰(왜 이 과자, 왜 무안)</div></div>
+        <div class="ph"><div class="pt">10월 1~2주 · 이름과 한 문장</div><div class="pb">네이밍 후보 → 상표 1차 검색 → 확정 · 포지셔닝·지역 서사 한 문장 · 부모 시식 피드백(가능하면)</div></div>
+        <div class="ph"><div class="pt">10월 3~4주 · 로고 · 패키지</div><div class="pb">로고 + 패키지 1종 앞·뒷면(원재료·원산지·대상 연령·표시 문구)</div></div>
+        <div class="ph"><div class="pt">10월 말~11월 초 · 실물</div><div class="pb">인쇄 파일 → 샘플 인쇄 · 2R 제출 자료에 브랜드 반영 · (풀) 촬영</div></div>
+        <div class="ph"><div class="pt">11월 초·중순 · 2R 마감 → 12월 3R 오디션</div><div class="pb">오디션 자료·피칭 한 문장 정리</div></div>
+      </div>
+    </section>
+
+    <section id="consult">
+      <div class="sec-k">CONSULT</div>
+      <h2>상담 진행</h2>
+      <p class="lead">대표가 <b>전화 회신</b>을 요청했다. 톤: 첫 창업이고 스스로 "잘 모른다"고 말하는 팀이다. 가르치듯 하지 말고, <b>순서를 같이 잡아주는</b> 대화로 간다. 인용문은 그대로 읽어도 되는 완성 문장이다.</p>
+
+      <div class="co ok"><span class="lab">리드가 통화 전 5분 안에 훑을 것 — 30초 요약</span>김예랑 대표. 목포에 살고 남편과 함께 <b>전남 무안에서 아동 과자</b> 사업을 준비한다. <b>모두의 창업 1기 로컬 트랙 2라운드</b>에 올라 있고 1R에서 제품을 만들었다. 2R은 <b>이번 주부터 11월 초·중순까지</b>이고, 이번엔 브랜딩·마케팅에 집중하고 싶다. 브랜드명·채널은 공개된 게 없다. <b>우리 유튜브에서 권윤정 대표의 진행 방식을 보고</b> 폼과 메일로 두 번 연락했다.<br><b>이 통화의 성격</b>: 견적 설명이 아니라 <b>"11월까지 무엇을 어떤 순서로"</b>를 합의하고 킥오프 날짜를 잡는 자리다.</div>
+
+      <div class="co bad"><span class="lab">지뢰밭 — 절대 하지 말 것 / 반드시 할 것</span><b>절대 금지</b>: ① 2R 자금 전액을 브랜딩에 쓰자고 하기(생산·포장재에도 써야 한다) ② 비목 확인 없이 견적 금액 확정 ③ "키 성장", "면역력" 같은 효능 카피 제안 ④ 떡뻥 경쟁사를 깎아내리기 ⑤ 누가 리드하는지 모호하게 두기(대표는 권윤정 대표의 방식을 보고 왔다).<br><b>반드시</b>: 대표가 쓴 문장을 인용한다("저와 남편이 함께 브랜드를 꿈꾸며", "진심을 다해 소비자에게 좋은 것을"). 2R 마감일을 협약서 날짜로 확인한다. 통화 끝에 킥오프 날짜를 잡는다.</div>
+
+      <h3>사업 단계 — STAGE 1 (경계 0.5)</h3>
+      <div class="stages">
+        <div class="stage">
+          <div class="sgn">STAGE 0 · 사업 모델 미정</div>
+          <div class="sgd">무엇을 팔지부터 열려 있음.</div>
+          <span class="sgr">역할 → 첫 제품 의사결정</span>
+        </div>
+        <div class="stage on">
+          <div class="sgn">STAGE 1 · 런칭 전 ★이번 건</div>
+          <div class="sgd">1R에서 <b>제품은 만들었고</b>, 이름·브랜드·판매 경로가 없음.</div>
+          <span class="sgr">역할 → 이름·패키지·심사 논리 → 첫 판매 준비</span>
+        </div>
+        <div class="stage">
+          <div class="sgn">STAGE 2·3 · 런칭 / 매출 드라이브</div>
+          <div class="sgd">채널·매출 있음.</div>
+          <span class="sgr">역할 → 점검·개선</span>
+        </div>
+      </div>
+      <div class="co warn"><span class="lab">경계 판정</span>1R 결과물이 <b>레시피 수준</b>이면 STAGE 0.5로 내리고 이름보다 <b>제품 정의(원료·대상 연령·형태)</b>부터 잡는다. <b>양산 가능한 시제품</b>이 있으면 STAGE 1 그대로 간다. B1 답으로 판정한다.</div>
+
+      <h3>분류 질문 <span class="t b">통화 첫 5분</span></h3>
+      <div class="q"><div class="qn">B1 · 1라운드에서 무엇을 만들었나</div><div class="qt">"1라운드에서 제품 개발에 집중하셨다고 하셨는데, 지금 <b>어떤 과자가 어디까지</b> 나와 있어요? 원료는 무엇이고, <b>몇 살 아이</b>를 생각하고 만드신 건지, 그리고 직접 만드시는지 공장에 맡기시는지도 궁금해요."</div><div class="qi">왜 묻나 — 원료가 무안 것인지가 로컬 심사 논리와 브랜드 한 문장을 정한다. 36개월 미만을 겨냥하면 "영유아용" 표시 기준을 따라야 할 수 있다. 직접 제조면 식품제조 허가, 위탁이면 제조원 표기가 걸린다.</div></div>
+
+      <h3>필수 질문 Top 3</h3>
+      <div class="q"><div class="qn">Q1 · 자금과 비목 <span class="t r">고정 · 반드시 물을 것</span></div><div class="qt">"2라운드 사업화자금은 <b>얼마를 배정받으셨는지</b>, 그중에 <b>브랜딩·디자인에 쓸 수 있는 금액</b>이 어느 정도인지 여쭤볼게요. 그리고 협약서에 <b>외주용역이나 광고선전비 같은 비목</b>이 어떻게 되어 있는지도 같이 봐야 저희 견적서를 거기에 맞춰 드릴 수 있어요."</div><div class="qi">왜 묻나 — 로컬 자금은 최대 3,000만이지만 차등 지원이다. 같은 돈으로 생산·포장재도 해야 한다. 견적 항목명이 비목과 안 맞으면 집행이 막힌다. (직전 상담들에서 연속으로 놓친 질문이라 Top 3의 1번에 고정)</div></div>
+      <div class="q"><div class="qn">Q2 · 왜 무안인가 <span class="t b">브랜드와 심사를 동시에 가르는 질문</span></div><div class="qt">"목포에 사시면서 <b>무안에서 사업을 하시려는 이유</b>가 궁금해요. 무안의 원료를 쓰시는 건지, 공간이나 사람과 연결된 건지요. 로컬 트랙은 지역 자원을 보는 심사라서, 이 답이 곧 브랜드의 한 문장이 될 거예요."</div><div class="qi">왜 묻나 — "지역자원 기반"이 로컬 트랙의 선정 기준이다. 연결이 약하면 그걸 만드는 게 브랜딩 1순위다(예: 원료 계약 농가, 지역 특산물 부재료).</div></div>
+      <div class="q"><div class="qn">Q3 · 2라운드에 무엇을 보여줘야 하나</div><div class="qt">"2라운드 마감이 11월 초·중순이라고 하셨는데, <b>정확한 날짜</b>와 그때 <b>무엇을 제출하거나 보여줘야 하는지</b> 아세요? 패키지 실물, 판매 실적, 발표 자료 중에서요."</div><div class="qi">왜 묻나 — 제출물이 산출물 우선순위를 정한다. 공고 기준으로는 2R 전국 예선이 10월까지로 되어 있어 일정이 더 빠를 수 있다.</div></div>
+      <div class="co"><span class="lab">보조 질문 (시간 남으면)</span>① "생각해 두신 브랜드 이름이 있으세요?" ② "남편분이랑 역할은 어떻게 나누세요? 브랜드 결정은 두 분이 같이 하시나요?" ③ "처음에 어디서 파실 생각이세요? 스마트스토어, 지역 매장, 어린이집 같은 곳이요." ④ "사업자등록이나 식품 제조 허가는 어떻게 되어 있으세요?" ⑤ "땡스큐레이터에서 <b>어떤 영상</b>을 보고 공감하셨어요?" — 기대하는 진행 방식 확인</div>
+
+      <h3>통화 흐름 (30분)</h3>
+      <div class="tl">
+        <div class="ph"><div class="pt">0–4분 · 인사 — 두 번 연락 준 것에 답한다</div><div class="pb"><b>말한다:</b> "폼이랑 메일 두 번 다 잘 받았어요. '저와 남편이 함께 브랜드를 꿈꾸며 시작한 사업'이라고 쓰신 게 기억에 남았어요. 그리고 2라운드 진출 축하드려요. 로컬 트랙에서 600팀 안에 드신 거잖아요."<br><b>듣는다:</b> 지금 가장 급한 게 무엇인지(마감, 돈, 방향).</div></div>
+        <div class="ph"><div class="pt">4–14분 · 실체 파악</div><div class="pb"><b>말한다:</b> B1 → Q1 → Q2 → Q3 순서.<br><b>받아적을 체크리스트:</b> ☐ 제품(원료·형태·대상 연령·제조 방식) ☐ 배정 자금·브랜딩 가용액·비목 ☐ 무안과의 연결 ☐ 2R 정확한 마감일·제출물 ☐ 브랜드명 후보 ☐ 사업자·식품 제조 허가 ☐ 판매 채널 계획 ☐ 부부 역할</div></div>
+        <div class="ph"><div class="pt">14–22분 · 재프레이밍 — 이번 브랜딩은 심사 논리</div><div class="pb"><b>말한다:</b> "제가 드리고 싶은 말씀은 하나예요. 이번 2라운드에서 브랜딩은 예쁘게 만드는 일이 아니라 <b>심사위원이 '왜 이 팀이냐'를 한 문장으로 알아듣게 하는 일</b>이에요. 로컬 트랙 2라운드에 600팀이 올라왔고 먹거리가 40% 가까이 돼요. 무첨가, 유기농은 이미 다 쓰는 말이고요. 아이얌 떡뻥이 무첨가로 2,000만 봉을 팔았거든요. <b>남는 건 '무안의 무엇으로, 누가, 왜 만들었나'</b>예요."<br>"그래서 순서가 중요해요. <b>이름과 한 문장이 먼저, 로고와 패키지는 그다음</b>이에요. 포장부터 찍으면 나중에 이름이 바뀌어서 두 번 찍게 됩니다."</div></div>
+        <div class="ph"><div class="pt">22–27분 · 일정과 범위</div><div class="pb"><b>말한다:</b> "11월 초·중순이 마감이면 거꾸로 세서 <b>9월 말에는 시작</b>해야 해요. 10월 초에 이름과 한 문장, 10월 말까지 로고와 패키지, 11월 초에 실물이요. 금액은 배정받으신 자금이랑 비목을 보고 거기에 맞춰서 드릴게요. <b>지원금 규정에 맞게 견적서 항목을 써 드리는 것까지</b> 저희가 챙깁니다."</div></div>
+        <div class="ph"><div class="pt">27–30분 · 다음 액션 · Quick Tip</div><div class="pb">킥오프 날짜 확정 → 자료 요청(시제품 사진·원료, 협약서 비목표) → Quick Tip 한 가지.</div></div>
+      </div>
+
+      <h3>예상 반론 &amp; 대응 스크립트 <span class="t b">그대로 읽으면 됨</span></h3>
+      <div class="q"><div class="qn">D1 · "예산이 지원금뿐이라 많이 못 써요"</div><div class="qt">"네, 당연해요. 그 돈으로 생산도 하셔야 하니까요. 그래서 먼저 <b>브랜딩에 쓸 수 있는 금액</b>을 정하고, 그 안에서 이름·로고·패키지 중에 <b>11월 전에 꼭 있어야 하는 것부터</b> 넣을게요. 견적서도 협약서 비목 이름에 맞춰 드려서 집행이 막히지 않게 할게요."</div></div>
+      <div class="q"><div class="qn">D2 · "로고랑 포장만 빨리 해주시면 돼요"</div><div class="qt">"빨리 가는 게 맞아요, 시간이 없으니까요. 그런데 <b>이름이 정해지기 전에 포장을 찍으면 두 번 찍게 돼요.</b> 이름과 한 문장은 2주면 됩니다. 그게 있어야 심사장에서도 매대에서도 포장이 설명을 해 줘요."</div></div>
+      <div class="q"><div class="qn">D3 · "떡뻥 같은 게 이미 너무 많은데 괜찮을까요?"</div><div class="qt">"많아요. 30g에 2,400원에서 3,600원 사이에 수십 개가 있어요. 그래서 <b>같은 말로 들어가면 안 돼요.</b> 무첨가는 이제 다 하는 거라 기본값이고, 이번에 찾아보니 <b>무안 원물로 만든 아이 간식은 없었어요.</b> 대표님이 무안에서 하시는 이유가 곧 차별점이 될 수 있어요."</div></div>
+      <div class="q"><div class="qn">D4 · "11월까지 정말 가능할까요?"</div><div class="qt">"9월 말에 시작하면 가능해요. 대신 범위를 욕심내지 않고 <b>이름, 한 문장, 로고, 패키지 1종</b>에 집중할게요. 촬영이나 콘텐츠는 3라운드 오디션을 보면서 붙이면 됩니다."</div></div>
+
+      <h3>클로징</h3>
+      <div class="co ok"><span class="lab">오늘 반드시 받아낼 최소 커밋</span><b>다음 주 킥오프 날짜를 잡는다.</b> 그리고 <b>시제품 정보(사진·원료·대상 연령)와 협약서 비목표</b>를 보내 달라고 한다.<br>읽을 문장: "시간이 없으니까 <b>다음 주에 바로 킥오프</b>를 잡을게요. 그 전에 시제품 사진이랑 원료, 그리고 협약서에서 비목 적힌 부분만 보내주시면 금액이랑 범위를 거기에 딱 맞춰서 드릴게요."<br><b>우리가 먼저 보내줄 것(무상)</b>: ①2라운드 역산 일정표 한 장 ②패키지 뒷면 체크리스트 ③떡뻥 경쟁 가격 지도.</div>
+      <div class="co warn"><span class="lab">견적 언급 방식</span>통화에서는 <b>금액을 확정하지 않는다.</b> "브랜딩 가용액과 비목을 보고 맞춰 드린다"까지만 말한다. 대표가 먼저 물으면 "이름·로고·패키지 1종까지 2,000만원대 중반, 범위를 줄이면 그 아래로도 가능하다" 수준의 범위만 준다.</div>
+
+      <h3>Quick Tip <span class="t b">통화 말미 무상 제공 · 3분</span></h3>
+      <div class="co ac band"><span class="lab">「부모가 뒤집어 보는 패키지 뒷면 5칸」</span>"마지막으로 하나만 드릴게요. 아이 간식은 <b>부모가 앞면을 보고 집어서, 뒷면을 보고 삽니다.</b> 그래서 저희는 뒷면부터 설계해요. 다섯 칸만 먼저 채워 보세요. 표시 규정은 제품이 정해지면 전문기관에서 한 번 더 확인하셔야 해요."</div>
+      <table>
+        <tr><th style="width:28px">#</th><th style="width:22%">칸</th><th>무엇을</th><th style="width:28%">주의</th></tr>
+        <tr><td>1</td><td><b>원재료 · 원산지</b></td><td>무안산이면 여기서 가장 크게 보이게 · 원료 수를 적게</td><td>원산지 표시 규정 확인</td></tr>
+        <tr><td>2</td><td><b>무엇을 넣지 않았나</b></td><td>설탕·소금·첨가물 중 실제로 뺀 것만</td><td>"무첨가" 표현 규칙 확인</td></tr>
+        <tr><td>3</td><td><b>몇 살부터</b></td><td>대상 연령 한 줄</td><td>36개월 미만이면 영유아용 기준 검토</td></tr>
+        <tr><td>4</td><td><b>누가 만들었나</b></td><td>부부 이름·무안 제조 공간 한 줄</td><td>제조원·판매원 표기</td></tr>
+        <tr><td>5</td><td><b>알레르기</b></td><td>알레르기 유발 원료 표기</td><td>필수 표시 항목</td></tr>
+      </table>
+      <div class="co bad"><span class="lab">함께 짚을 것</span>"그리고 <b>'키 성장', '면역력'</b> 같은 말은 쓰시면 안 돼요. 식품에 효능을 약속하는 표현은 문제가 될 수 있어요. 대신 '무엇으로 만들었고 무엇을 뺐는지'를 말하면 부모는 그걸로 충분히 믿어요."</div>
+
+      <div class="co ok"><span class="lab">상담 후 랩업 입력값</span>제품(원료·형태·대상 연령·제조 방식) / 배정 자금·브랜딩 가용액·비목 / 무안과의 연결 / 2R 정확한 마감일·제출물 / 브랜드명 후보 / 사업자·식품 제조 허가 / 판매 채널 계획 / 부부 역할 / <b>킥오프 날짜</b> → 이 값들로 비목 맞춤 견적서를 쓴다.</div>
+    </section>
+
+    <section id="sources">
+      <div class="sec-k">SOURCES</div>
+      <h2>참고 출처</h2>
+      <p class="lead">① 클라이언트 제공 ② 직접 리서치(라이브 확인 <b>2026-09-15</b>). [검색 요약]·[배경지식] 표시는 원문을 열지 못한 것이라, 인쇄물이나 발표 전에 원문과 대조한다.</p>
+
+      <div class="co"><span class="lab">① 클라이언트 제공</span><b>웹 폼 문의</b>: 유튜브 땡스큐레이터로 알게 됨 · 토탈 브랜딩 상담과 의뢰 요청 · 전남 무안에서 사업 진행 예정 · 모두의 창업 1기 2라운드 로컬 특화 분야 참가자 · "저와 남편이 함께 브랜드를 꿈꾸며 시작한 사업".<br><b>땡큐메일</b>(같은 신청자, 목포 · 아동식품 과자): 모두의 창업 1기 2라운드 진출, 금주부터 11월 초·중순까지 라운드 사업 추진 · 1R은 제품 개발, 2R은 마케팅·브랜딩 방향 집중 · 땡스큐레이터에서 권윤정 대표의 브랜드 리드 방식에 공감 · 전화 회신 요청.<br><span style="color:var(--muted)">슬랙 구글폼 접수 알림에서는 검색되지 않음(2026-09-15).</span></div>
+
+      <div class="co ac"><span class="lab">② 직접 리서치 — 프로그램</span>
+        <a href="https://www.newswhoplus.com/news/articleView.html?idxno=68928" target="_blank" rel="noopener">1기 2R 진출 발표(중기부 보도자료 기사)</a> ·
+        <a href="https://www.mt.co.kr/future/2026/09/04/2026090411055637850" target="_blank" rel="noopener">머니투데이(로컬 분야·지역 비중·12월 최종)</a> ·
+        <a href="https://app.rndcircle.io/gov-grant/74349c38-e0d6-48e2-a311-67e2717e1db4" target="_blank" rel="noopener">1차 로컬 공고 요약(RnDcircle)</a> ·
+        <a href="https://www.marketpilot.it/guide/modoo-startup/overview" target="_blank" rel="noopener">마켓파일럿 개요</a> ·
+        <a href="https://www.marketpilot.it/guide/modoo-startup/local-track" target="_blank" rel="noopener">마켓파일럿 로컬 트랙</a> ·
+        <a href="https://www.venturesquare.net/1111088" target="_blank" rel="noopener">벤처스퀘어(2R MVP)</a> ·
+        <a href="https://modoo.business/" target="_blank" rel="noopener">modoo.business</a>
+      </div>
+
+      <div class="co ac"><span class="lab">② 직접 리서치 — 시장 · 경쟁 · 규제</span>
+        <a href="https://www.metroseoul.co.kr/article/20231130500171" target="_blank" rel="noopener">영유아식 시장(aT 전망)</a>(검색 요약) ·
+        <a href="https://www.hankyung.com/article/202609093212i" target="_blank" rel="noopener">한국경제 2026-09-09(출생아·쌀 사용량)</a> ·
+        <a href="https://www.hankyung.com/article/202607228452i" target="_blank" rel="noopener">한국경제 2026-07-22(아이얌 떡뻥)</a> ·
+        <a href="https://search.danawa.com/dsearch.php?query=%EB%96%A1%EB%BB%A5" target="_blank" rel="noopener">다나와 떡뻥 가격</a> ·
+        <a href="https://muanshop.com/article/review/4/3332/" target="_blank" rel="noopener">무안군 공식몰(무안 원료 아이 음료 — 타사)</a> ·
+        <a href="https://www.law.go.kr/LSW/admRulLsInfoP.do?admRulSeq=2000000017115" target="_blank" rel="noopener">어린이 기호식품 품질인증 기준(식약처 고시)</a> ·
+        <a href="https://www.foodsafetykorea.go.kr/hilow/content/view.do?contentKey=0&amp;menuKey=1" target="_blank" rel="noopener">식품안전나라 고열량·저영양</a>
+      </div>
+
+      <div class="co warn"><span class="lab">미확인 — 통화 또는 후속 확인</span>브랜드명·사업자·식품 제조 허가 · 1R 시제품의 원료·대상 연령·제조 방식 · 배정 자금과 비목(외주용역·광고선전비 인정 여부) · 2R 정확한 마감일과 제출물 · 로컬 3R·파이널 일정 · 영유아용 표시 기준·어린이 기호식품 과자류 수치·금지 표현 원문 · 짱죽·순수본 등 국내 가격 · 3~12세 아동 간식 시장 규모.</div>
+    </section>
+  </main>
+</div>
+
+<footer><div class="in">BRANDRISE (MarketingOS) · 김예랑 대표 무안 아동 과자 브랜드(모두의 창업 로컬) NB 상담 준비 PREP — 상담 전(문의+리서치) · 내부 전용</div></footer>
+
+<script>
+const links=[...document.querySelectorAll('nav.toc a')];
+const sections=[...new Set(links.map(a=>a.getAttribute('href')))]
+  .map(href=>({href,el:document.querySelector(href)})).filter(s=>s.el);
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  const s=sections.find(s=>s.el===e.target); if(!s)return;
+  links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')===s.href));
+}})},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>obs.observe(s.el));
+
+// ===== 셀렉 매트릭스 → 인라인 1차 견적 + 구글시트 빌더용 셀렉 =====
+(function(){
+  var mx=document.getElementById('selmx'); if(!mx) return;
+  var ITEMS=[
+    {key:'진단',name:'부모 소비자 인터뷰 + 경쟁 감사',stage:'부모가 사는 이유',ex:0,L1:500,L2:1000,L3:2000,def:'ex'},
+    {key:'아이덴티티',name:'브랜드 아이덴티티 정립 + 제품체계 전략',stage:'네이밍·포지셔닝·지역 서사',ex:0,L1:1000,L2:2000,L3:3500,def:'L1'},
+    {key:'디자인',name:'브랜드 로고 & 패키지 디자인 (신규)',stage:'BI·패키지 1종·가이드',ex:0,L1:1500,L2:3000,L3:5000,def:'L1'},
+    {key:'촬영',name:'스튜디오 촬영 (하우스 800 / 스타일리스트 1,000 / 모델 2,000+)',stage:'상세·오디션 비주얼',ex:0,L1:800,L2:1000,L3:2000,def:'ex'},
+    {key:'인스타기획',name:'인스타그램 콘텐츠 기획 (기획만·최소 200)',stage:'런칭 콘텐츠 축',ex:0,L1:200,L2:300,L3:300,def:'ex'},
+    {key:'무드보드',name:'인스타그램 무드보드 (피그마)',stage:'SNS 시각 기준',ex:0,L1:500,L2:500,L3:500,def:'ex'}
+  ];
+  var LV=['ex','L1','L2','L3'], LVN={ex:'제외',L1:'L1',L2:'L2',L3:'L3'};
+  var sel={}, override={}, saveTimer=null;
+  var rev=document.getElementById('rev'), ql=document.getElementById('qlist'), qtot=document.getElementById('qtot');
+  var bigWon=document.getElementById('bigWon'), bigEok=document.getElementById('bigEok'), envAmt=document.getElementById('envAmt');
+  var envSt=document.getElementById('envSt'), envCap=document.getElementById('envCap'), bar=document.getElementById('bar'), fill=document.getElementById('fill');
+  var stEl=document.getElementById('saveSt');
+  ITEMS.forEach(function(it){ sel[it.key]=it.def; });
+  function fmt(n){return (parseFloat(n)||0).toLocaleString();}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  function brandName(){ var h=document.querySelector('.hero h1'); return h?h.textContent.trim().replace(/\s+/g,' '):'BRAND'; }
+  function brandSlug(){return brandName().toLowerCase().replace(/[^\w가-힣]+/g,'-').replace(/^-+|-+$/g,'')||'brand';}
+  function ymd(){ var d=new Date(), p=function(n){return(n<10?'0':'')+n;}; return ''+d.getFullYear()+p(d.getMonth()+1)+p(d.getDate()); }
+  function ymdDash(){ return ymd().replace(/(\d{4})(\d{2})(\d{2})/,'$1-$2-$3'); }
+  function won(manwon){ return (manwon*10000).toLocaleString()+'원'; }
+  function dlBlob(content,mime,fname){ var b=new Blob([content],{type:mime}), u=URL.createObjectURL(b), a=document.createElement('a'); a.href=u; a.download=fname; document.body.appendChild(a); a.click(); setTimeout(function(){URL.revokeObjectURL(u); a.remove();},800); }
+  function ensureLib(src,glob,cb){ if(window[glob]){cb(true);return;} var s=document.createElement('script'); s.src=src; s.onload=function(){cb(!!window[glob]);}; s.onerror=function(){cb(false);}; document.head.appendChild(s); }
+  var SKEY='brandrise:selmx:'+(location.pathname||brandSlug());
+  function lvAmt(it,lv){ return lv==='ex'?0:it[lv]; }
+  function hasOverride(k){ return Object.prototype.hasOwnProperty.call(override,k); }
+  function effAmt(it){ return hasOverride(it.key)?override[it.key]:lvAmt(it,sel[it.key]); }
+  function cleanAmt(v){ var n=parseInt(v,10); return isNaN(n)?0:Math.max(0,n); }
+  function pad(n){return(n<10?'0':'')+n;}
+  function hhmm(ts){var d=new Date(ts);return pad(d.getHours())+':'+pad(d.getMinutes());}
+  function setStatus(txt,ok){ if(!stEl) return; stEl.textContent=txt; stEl.className='savest'+(ok?' ok':''); }
+  function writeSave(ts){
+    try{ localStorage.setItem(SKEY,JSON.stringify({sel:sel,override:override,rev:rev?rev.value:'',ts:ts})); }catch(e){}
+  }
+  function save(silent){
+    if(saveTimer){ clearTimeout(saveTimer); saveTimer=null; }
+    if(silent){
+      saveTimer=setTimeout(function(){ var ts=Date.now(); writeSave(ts); setStatus('자동 저장됨 '+hhmm(ts),false); },300);
+    }else{ var ts=Date.now(); writeSave(ts); setStatus('저장됨 ✓ '+hhmm(ts),true); }
+  }
+  function load(){
+    try{
+      var s=JSON.parse(localStorage.getItem(SKEY)||'null'); if(!s) return null;
+      if(s.sel) ITEMS.forEach(function(it){ if(s.sel[it.key]&&LV.indexOf(s.sel[it.key])>-1) sel[it.key]=s.sel[it.key]; });
+      if(s.override){
+        override={};
+        ITEMS.forEach(function(it){ if(s.override[it.key]!=null) override[it.key]=cleanAmt(s.override[it.key]); });
+      }
+      if(rev&&s.rev!=null) rev.value=s.rev;
+      return s.ts||0;
+    }catch(e){ return null; }
+  }
+  function buildMatrix(){
+    ITEMS.forEach(function(it){
+      var rw=document.createElement('div'); rw.className='rw'; rw.setAttribute('data-key',it.key);
+      var h='<div class="nm"><b>'+esc(it.name)+'</b><span class="t n">'+esc(it.stage)+'</span></div>';
+      LV.forEach(function(lv){
+        var amt=lvAmt(it,lv);
+        var label=lv==='ex'?'–':(it.monthly?('월 '+Math.round(amt/6)):fmt(amt));
+        var sub=lv==='ex'?'제외':(it.monthly?(fmt(amt)+'·6개월'):'');
+        h+='<div class="opt'+(lv==='ex'?' ex':'')+'" data-lv="'+lv+'" role="button" tabindex="0" aria-pressed="false"><span class="amt">'+label+'</span>'+(sub?'<span class="sub">'+sub+'</span>':'')+'</div>';
+      });
+      rw.innerHTML=h; mx.appendChild(rw);
+      [].forEach.call(rw.querySelectorAll('.opt'),function(o){
+        function choose(){ sel[it.key]=o.getAttribute('data-lv'); delete override[it.key]; render(false); }
+        o.addEventListener('click',choose);
+        o.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); choose(); } });
+      });
+    });
+  }
+  function matrix(){
+    return ITEMS.map(function(it){
+      var base=sel[it.key]||it.def, edited=hasOverride(it.key), amt=effAmt(it);
+      return {key:it.key,name:it.name,monthly:!!it.monthly,L1:it.L1,L2:it.L2,L3:it.L3,
+        sel:edited?'조정':(base==='ex'?'제외':base), baseSel:base, selAmt:(base!=='ex'||edited)?amt:0, override:edited};
+    });
+  }
+  function selTotal(){ return matrix().reduce(function(s,o){return s+(o.selAmt||0);},0); }
+  function lvCell(monthly,amt){ return monthly?('월 '+Math.round(amt/6)):fmt(amt); }
+  function render(skipSave){
+    [].forEach.call(mx.querySelectorAll('.rw'),function(rw){
+      var k=rw.getAttribute('data-key');
+      [].forEach.call(rw.querySelectorAll('.opt'),function(o){
+        var on=o.getAttribute('data-lv')===sel[k];
+        o.classList.toggle('on',on); o.setAttribute('aria-pressed',on?'true':'false');
+      });
+    });
+    var html='';
+    ITEMS.forEach(function(it){
+      if(sel[it.key]==='ex'&&!hasOverride(it.key)) return;
+      var amt=effAmt(it), ed=hasOverride(it.key), lvtxt=ed?'조정':LVN[sel[it.key]];
+      html+='<div class="qrow'+(ed?' edited':'')+'" data-key="'+it.key+'">'+
+        '<span class="qn"><span class="lvb">'+lvtxt+'</span>'+esc(it.name)+(it.monthly?' (월 '+Math.round(amt/6)+')':'')+'</span>'+
+        '<input class="amtin" type="number" min="0" step="10" value="'+amt+'" data-key="'+it.key+'"><span class="unit">만</span></div>';
+    });
+    ql.innerHTML=html||'<div style="text-align:center;color:var(--muted);padding:22px;font-size:13px">선택된 항목 없음</div>';
+    [].forEach.call(ql.querySelectorAll('.amtin'),function(inp){
+      inp.addEventListener('input',function(){
+        var k=inp.getAttribute('data-key'), row=inp.parentNode, chip=row.querySelector('.lvb');
+        override[k]=cleanAmt(inp.value);
+        row.classList.add('edited'); if(chip) chip.textContent='조정';
+        totals(); save(true);
+      });
+      inp.addEventListener('change',function(){ override[inp.getAttribute('data-key')]=cleanAmt(inp.value); render(false); });
+    });
+    totals();
+    if(!skipSave) save(true);
+  }
+  function totals(){
+    var sum=selTotal();
+    qtot.textContent=fmt(sum)+'만';
+    bigWon.textContent=(sum*10000).toLocaleString()+'원';
+    bigEok.textContent='('+(sum/10000).toFixed(3)+'억)';
+    var rv=parseFloat(rev.value)||0, half=Math.round(rv);
+    envAmt.textContent=half?fmt(half)+'만':'—';
+    if(half<=0){
+      fill.style.width='0'; bar.classList.remove('over'); envSt.textContent=''; envSt.className='st';
+      envCap.innerHTML='예산 기준 미입력'; return;
+    }
+    var pct=Math.min(100,Math.round(sum/half*100)), over=sum>half;
+    fill.style.width=pct+'%'; bar.classList.toggle('over',over);
+    envSt.className='st '+(over?'over':'ok'); envSt.textContent=over?'⚠ 초과':'✓ 안에 듦';
+    envCap.innerHTML='선택 <b>'+(sum/10000).toFixed(3)+'억</b> / 예산 기준 <b>'+(half/10000).toFixed(2)+'억</b> 대비 '+pct+'%'+(over?' — 항목·레벨 조정 또는 별도 재원 협의':'');
+  }
+  if(rev) rev.addEventListener('input',function(){ totals(); save(true); });
+  var bS=document.getElementById('btnSave');
+  if(bS) bS.addEventListener('click',function(){ save(false); });
+  window.addEventListener('beforeunload',function(){ if(saveTimer){ clearTimeout(saveTimer); writeSave(Date.now()); } });
+  // 전체 셀렉 매트릭스(전 항목 × L1/L2/L3 + 선택) — 실제 견적 SELECTION RESULT와 동일 구조로 내보내기 위함
+  function envNote(tot){ var rv=parseFloat(rev.value)||0; if(rv<=0) return '';
+    return '<div class="co ac"><span class="lab">예산 기준</span>예산 기준 <b>'+fmt(rv)+'만원</b>(모두의 창업 로컬 사업화자금 상한 · 차등 지원이라 실제 배정액과 비목은 협약서 확인) · 선택 합계 '+fmt(tot)+'만 = '+(tot<=rv?'<b>예산 안에 듦.</b>':'<b>예산 초과 — 항목·레벨 조정 또는 별도 재원 협의.</b>')+'</div>'; }
+
+  // 견적 블록 표준 콘텐츠(클라이언트 고유사실 없는 범용 텍스트 — 재사용 안전). data-key로 매칭.
+  var QORDER=['진단','아이덴티티','디자인','촬영','인스타기획','무드보드'];
+  var LVLABEL={L1:'경량(프리랜서)',L2:'표준(내부)',L3:'풀(외주·고사양)','조정':'조정 견적'};
+  var QC={
+    'IMC':{title:'브랜드 IMC 전략 파트너십 / 대행사 fee', period:'6개월 상시', plan:'● 운영 체계\n감(感) 운영 → 데이터 기반 월간 의사결정\n· 목표: 매출·광고 월간 리뷰 루틴 + 대시보드',
+      lines:[['월간 IMC 회의','매출·광고 데이터 분석 및 월 단위 마케팅 기획 리뷰 (정기 미팅 + 상시 슬랙 컨설팅)'],['AI 관리 대시보드','매출·광고 데이터 종합 분석 툴 제공 (웹 대시보드)'],['플랜 시트 납품','연간(월간) 플랜 시트 및 관리 데이터 최초 세팅']],
+      deliver:'연간(월간) 플랜 시트 및 관리 데이터 (매월 납품)'},
+    '진단':{title:'부모 소비자 인터뷰 + 경쟁 감사', period:'착수 즉시 · 2주', plan:'● 검증 먼저\n부모가 사는 이유부터\n· 목표: 포지셔닝 근거 확보',
+      lines:[['부모 인터뷰','영유아·어린이 자녀 부모 8~10명 인터뷰 — 간식 고르는 기준·불안·가격 수용도'],['경쟁 감사','떡뻥·원물 간식 브랜드 포지션·가격·패키지·표시 문구 매핑'],['시식 피드백','1R 시제품 시식 피드백 정리']],
+      deliver:'부모 인터뷰 리포트 + 경쟁 지도'},
+    '아이덴티티':{title:'브랜드 아이덴티티 정립 + 제품체계 전략', period:'진단 직후 · 1~2개월', plan:'● 포지셔닝\n파는 것 → 브랜드로\n· 한 줄 축 공식화 + 제품 하우스 구조화',
+      lines:[['브랜드 워크숍','진단·서베이 공유 → 페르소나·니즈 정의 → 라인업 도출 (대표·핵심 멤버 참여)'],['브랜드 포지셔닝 전략','핵심 축 공식화 — 강점을 브랜드 언어로 번역 / 타겟·경쟁 포지셔닝'],['제품 라인업 전략','히어로/서브/확장 역할 정의 — 브랜드 하우스 구조화'],['브랜드 커뮤니케이션 가이드','핵심 메시지·슬로건·톤앤매너·채널별 말투 가이드']],
+      deliver:'포지셔닝 전략 문서 + 제품 라인업 역할 정의 + 커뮤니케이션 가이드'},
+    '디자인':{title:'브랜드 로고 & 패키지 디자인 (신규 런칭)', period:'아이덴티티 확정 후 · 2개월', plan:'● 시각화\n노후 디자인 → 정통성이 보이는 디자인',
+      lines:[['로고 리뉴얼','리뉴얼 방향 3안 → 최종 확정 + 컬러 시스템·타이포 가이드'],['패키지 디자인','메인·히어로 라인 패키지 — 채널 MD 호환'],['상세페이지 템플릿 리뉴얼','히어로 기준 신규 템플릿 — 내부 확장 적용 가능한 구조'],['브랜드 가이드라인','로고·컬러·패키지 규정 / 내부·외주 활용']],
+      deliver:'로고 리뉴얼 + 패키지 디자인 + 브랜드 가이드라인'},
+    '촬영':{title:'사진 촬영(제품·라이프스타일) + 콘텐츠 제작', period:'디자인 확정 후', plan:'● 시각 자산\n쓸 사진 확보 → 광고·상세 전용 소재',
+      lines:[['촬영 기획 및 디렉팅','콘셉트 기획·무드보드 / 셋업 / 현장 디렉팅 (1일 full day)'],['제품·라이프스타일 컷','전 라인업 제품 컷 + 라이프스타일 컷 — 입점·상세·광고 활용'],['콘텐츠 제작','광고 후킹 콘텐츠 + 랜딩용 상세 이미지']],
+      deliver:'제품 포트폴리오 컷 + 라이프스타일 컷 + 광고·상세 소재 (스튜디오 렌탈 실비 별도)'},
+    '마케팅':{title:'인스타그램 콘텐츠 기획 & 운영', period:'아이덴티티 확립 후 착수', plan:'● 자산 전환\n임대한 도달 → 소유한 팬덤(자사몰·CRM)',
+      lines:[['인스타그램 무드보드','연간 채널 운영 전략 — 시각 기준·레퍼런스 / 피드·릴스·스토리 구조'],['월 콘텐츠 기획보드','월 8~10건 기획 + 레퍼런스 — 콘텐츠 구조화 + CRM 메시지'],['캠페인 기획','시즌·런칭 캠페인 기획 + 인하우스 전수']],
+      deliver:'무드보드 + 월 콘텐츠 기획보드 + 캠페인 기획서'},
+    '인스타기획':{title:'인스타그램 콘텐츠 기획', period:'아이덴티티 확정 후 · 2~3주', plan:'● 알리기\n정체성 → 반복되는 콘텐츠 축',
+      lines:[['콘텐츠 축 기획','월 콘텐츠 축·포맷·레퍼런스 기획 (운영은 내부)']],
+      deliver:'인스타그램 콘텐츠 기획서'},
+    '무드보드':{title:'인스타그램 무드보드', period:'BI 확정 후 · 2주', plan:'● SNS 시각 기준\n피드 톤 확정',
+      lines:[['무드보드','피드·릴스·스토리 시각 기준과 레퍼런스 (피그마)']],
+      deliver:'인스타그램 무드보드 (피그마)'},
+    '자사몰':{title:'자사몰(카페24) 세팅', period:'1개월', plan:'● 판매 채널\n자사몰 자생 매출 기반 확보',
+      lines:[['사이트 기획·와이어프레임','메인·상품·상세·브랜드스토리·마이페이지 화면 구조 + 전환 UX'],['카페24 기본 셋팅','계정·배송/반품 정책·PG 결제 연동'],['UI 디자인 & 상품 페이지','쇼핑몰 UI 커스텀 + 상세 페이지 제작 + 오픈 QA']],
+      deliver:'쇼핑몰 셋팅 + 상세 페이지 디자인'}
+  };
+  // 선택된 블록을 표준 순서로 — {key,title,period,plan,lines,deliver,amount(원),level}
+  function selectedBlocks(){
+    var byKey={}; matrix().forEach(function(o){ if(o.selAmt>0) byKey[o.key]={amt:o.selAmt*10000, lv:o.sel}; });
+    var out=[]; QORDER.forEach(function(k){ if(byKey[k]&&QC[k]){ var b=QC[k]; out.push({key:k,title:b.title,period:b.period,plan:b.plan,lines:b.lines,deliver:b.deliver,amount:byKey[k].amt,level:byKey[k].lv}); } });
+    return out;
+  }
+
+  // 📊 엑셀로 내보내기 (수주↑ · 코 잡고 정식) — 실제 견적(강훈 5블록) 포맷 · ExcelJS
+  var bX=document.getElementById('btnExcel');
+  if(bX) bX.addEventListener('click',function(){
+    var blocks=selectedBlocks(), tot=selTotal()*10000; if(!blocks.length){ alert('선택된 항목이 없습니다.'); return; }
+    var brand=brandName();
+    ensureLib('https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js','ExcelJS',function(ok){
+      if(!(ok&&window.ExcelJS)){
+        var rows=[['구분','항목','내용','단가','수량','계약 견적']];
+        blocks.forEach(function(b){ rows.push([b.title,'','','','','']); b.lines.forEach(function(l){ rows.push(['',l[0],l[1],'—','포함','포함']); }); rows.push(['','>> 최종 납품',b.deliver,'','','']); rows.push(['소계','','','','',b.amount]); });
+        rows.push(['합계 (VAT 별도)','','','','',tot]);
+        var csv='﻿'+rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"';}).join(',');}).join('\n');
+        dlBlob(csv,'text/csv;charset=utf-8', brand+'_1차견적_'+ymd()+'.csv');
+        alert('엑셀 라이브러리 로드 실패 → CSV로 내보냈습니다(엑셀에서 열림).'); return;
+      }
+      var AC='FF4F46E5', AC50='FFEEF2FF', AC700='FF3730A3', GRAY='FFEFEFEF', GRAY2='FFD9D9D9', INK='FF0F172A', INK2='FF334155', MUTE='FF64748B', LINE='FFD9DEE6';
+      var thin={style:'thin',color:{argb:LINE}};
+      var wb=new ExcelJS.Workbook(); var ws=wb.addWorksheet('견적');
+      ws.columns=[{width:28},{width:30},{width:50},{width:13},{width:12},{width:16}];
+      function box(rr){ for(var c=1;c<=6;c++){ ws.getRow(rr).getCell(c).border={top:thin,left:thin,bottom:thin,right:thin}; } }
+      // 제목
+      ws.mergeCells('A1:D1'); var t=ws.getCell('A1'); t.value='[브랜드라이즈] '+brand+' 브랜드 컨설팅 — 1차 견적'; t.font={bold:true,size:14,color:{argb:INK}};
+      ws.mergeCells('E1:F1'); var dc=ws.getCell('E1'); dc.value=ymdDash()+' ver.'; dc.font={size:10,color:{argb:MUTE}}; dc.alignment={horizontal:'right'};
+      // KPI · 비고 (좌/우)
+      ws.mergeCells('A3:C3'); var kh=ws.getCell('A3'); kh.value='파트너십의 KPI'; kh.font={bold:true,size:11,color:{argb:'FFFFFFFF'}}; kh.fill={type:'pattern',pattern:'solid',fgColor:{argb:AC}};
+      ws.mergeCells('D3:F3'); var nh=ws.getCell('D3'); nh.value='비고'; nh.font={bold:true,size:11,color:{argb:'FFFFFFFF'}}; nh.fill={type:'pattern',pattern:'solid',fgColor:{argb:AC}};
+      ws.mergeCells('A4:C7'); var kt=ws.getCell('A4'); kt.value='· 데이터 정밀 진단 선행 — 결정을 내릴 수 있는 정보부터\n· 브랜드 아이덴티티 → 디자인·촬영·채널 순서 진행\n· 리테이너 + 캠페인 방식 · 인하우스 전수 목표'; kt.alignment={wrapText:true,vertical:'top'}; kt.font={size:10,color:{argb:INK2}};
+      ws.mergeCells('D4:F7'); var nt=ws.getCell('D4'); nt.value='· 본 견적의 금액은 VAT 별도 기준입니다.\n· 촬영 스튜디오 렌탈·패키지 인쇄 실비는 별도 산정.\n· 광고 매체비·퍼포먼스 광고 직접 운영은 범위 외.\n· 범위·금액은 데이터 정밀 진단 결과에 따라 협의 조정됩니다.'; nt.alignment={wrapText:true,vertical:'top'}; nt.font={size:10,color:{argb:INK2}};
+      for(var rr=3;rr<=7;rr++) box(rr);
+      // 헤더
+      var H=9; var hdr=['구분','항목','내용','단가','수량','계약 견적'];
+      hdr.forEach(function(h,i){ var c=ws.getRow(H).getCell(i+1); c.value=h; c.font={bold:true,size:10,color:{argb:AC700}}; c.fill={type:'pattern',pattern:'solid',fgColor:{argb:AC50}}; c.alignment={horizontal:i>=3?'center':'left',vertical:'middle'}; });
+      ws.getRow(H).height=20; box(H);
+      var r=H+1;
+      blocks.forEach(function(b){
+        var rH=r;
+        // 구분 헤더(블록 제목) — A:B 병합, C:F 병합=기간/레벨
+        ws.mergeCells('A'+rH+':B'+rH); var bt=ws.getCell('A'+rH); bt.value=b.title; bt.font={bold:true,size:11,color:{argb:INK}}; bt.alignment={vertical:'middle'};
+        ws.mergeCells('C'+rH+':F'+rH); var pc=ws.getCell('C'+rH); pc.value=b.period+'  ·  '+(LVLABEL[b.level]||b.level); pc.font={size:10,color:{argb:MUTE}}; pc.alignment={horizontal:'right',vertical:'middle'};
+        ws.getRow(rH).height=22; box(rH); r++;
+        // 항목 라인
+        b.lines.forEach(function(l){ var row=ws.getRow(r);
+          row.getCell(1).value=''; row.getCell(2).value=l[0]; row.getCell(2).font={bold:true,color:{argb:INK2}};
+          var d=row.getCell(3); d.value=l[1]; d.alignment={wrapText:true,vertical:'top'}; d.font={size:10,color:{argb:INK2}};
+          row.getCell(4).value='—'; row.getCell(5).value='포함'; row.getCell(6).value='포함';
+          [4,5,6].forEach(function(ci){ row.getCell(ci).alignment={horizontal:'center',vertical:'top'}; row.getCell(ci).font={size:10,color:{argb:MUTE}}; });
+          box(r); r++; });
+        // 납품물
+        var dr=ws.getRow(r); ws.mergeCells('B'+r+':F'+r);
+        dr.getCell(1).value='≫ 최종 납품'; dr.getCell(1).font={bold:true,size:9.5,color:{argb:AC700}};
+        var dd=dr.getCell(2); dd.value=b.deliver; dd.font={size:9.5,color:{argb:AC700}}; dd.alignment={wrapText:true,vertical:'top'};
+        for(var ci=1;ci<=6;ci++) dr.getCell(ci).fill={type:'pattern',pattern:'solid',fgColor:{argb:AC50}};
+        box(r); r++;
+        // 소계
+        ws.mergeCells('A'+r+':E'+r); var sl=ws.getCell('A'+r); sl.value='소       계'; sl.alignment={horizontal:'right'}; sl.font={bold:true,color:{argb:INK}};
+        var sv=ws.getCell('F'+r); sv.value=b.amount; sv.numFmt='#,##0'; sv.alignment={horizontal:'right'}; sv.font={bold:true,color:{argb:INK}};
+        for(var ci2=1;ci2<=6;ci2++) ws.getRow(r).getCell(ci2).fill={type:'pattern',pattern:'solid',fgColor:{argb:GRAY}};
+        box(r); r++;
+        // G 마케팅 가안 (블록 범위 병합) — 7열
+        ws.mergeCells('G'+rH+':G'+(r-1)); var gp=ws.getCell('G'+rH); gp.value=b.plan; gp.alignment={wrapText:true,vertical:'top'}; gp.font={size:9.5,color:{argb:INK2}};
+        for(var gr=rH;gr<=r-1;gr++) ws.getRow(gr).getCell(7).border={top:thin,left:thin,bottom:thin,right:thin};
+      });
+      // 합계
+      ws.mergeCells('A'+r+':E'+r); var hl=ws.getCell('A'+r); hl.value='합       계 (VAT 별도)'; hl.alignment={horizontal:'right'}; hl.font={bold:true,size:11,color:{argb:INK}};
+      var hv=ws.getCell('F'+r); hv.value=tot; hv.numFmt='#,##0'; hv.alignment={horizontal:'right'}; hv.font={bold:true,size:11,color:{argb:INK}};
+      for(var c3=1;c3<=6;c3++) ws.getRow(r).getCell(c3).fill={type:'pattern',pattern:'solid',fgColor:{argb:GRAY2}};
+      ws.getRow(r).height=22; box(r); r+=2;
+      // 추가 논의
+      ws.mergeCells('A'+r+':F'+r); var ad=ws.getCell('A'+r); ad.value='※ 본 견적은 1차 제안입니다. 세부 단가·산출물은 데이터 정밀 진단 결과에 따라 협의로 조정됩니다. (단가 공유 원칙 — 브랜드 불문 동일)'; ad.font={size:9.5,color:{argb:MUTE}}; ad.alignment={wrapText:true};
+      ws.getRow(1).height=22;
+      wb.xlsx.writeBuffer().then(function(buf){ dlBlob(buf,'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', brand+'_1차견적_'+ymd()+'.xlsx'); });
+    });
+  });
+
+  // 📄 HTML로 내보내기 (수주↓ · 링크로 가볍게) — 실제 견적 인디고 디자인
+  var bH=document.getElementById('btnHtml');
+  if(bH) bH.addEventListener('click',function(){
+    var m=matrix(), tot=selTotal(); if(!tot){ alert('선택된 항목이 없습니다.'); return; }
+    var brand=brandName();
+    var rows=m.map(function(o){
+      function cell(lv,amt){ return '<td'+(!o.override&&o.baseSel===lv?' class="hit"':'')+'>'+lvCell(o.monthly,amt)+'</td>'; }
+      var chip=o.override?'<span class="t b">조정 '+fmt(o.selAmt)+'만</span>':(o.sel==='제외'?'<span class="t n">제외</span>':'<span class="t b">'+o.sel+'</span>');
+      return '<tr><td class="nm">'+esc(o.name)+(o.monthly?' <span class="t n">월·6개월</span>':'')+'</td>'+cell('L1',o.L1)+cell('L2',o.L2)+cell('L3',o.L3)+'<td class="c">'+chip+'</td></tr>';
+    }).join('');
+    var css=':root{--ink:#0f172a;--ink2:#334155;--muted:#64748b;--line:#e7e9ee;--line2:#eef1f5;--bg:#fbfcfd;--card:#fff;--soft:#f6f8fb;--ac:#4f46e5;--ac-50:#eef2ff;--ac-100:#e0e7ff;--ac-700:#3730a3}'
+      +'*{margin:0;padding:0;box-sizing:border-box}body{font-family:Pretendard,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:14px;word-break:keep-all}'
+      +'.hero{background:var(--ink);color:#fff;padding:48px 0 40px}.hero .in{max-width:860px;margin:0 auto;padding:0 32px}'
+      +'.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#c7d2fe;border:1px solid rgba(199,210,254,.3);border-radius:999px;padding:5px 13px;margin-bottom:18px}'
+      +'.hero h1{font-size:clamp(26px,4.4vw,34px);font-weight:800;letter-spacing:-.03em;line-height:1.18;margin-bottom:10px}.hero h1 .hl{background:linear-gradient(transparent 60%,rgba(165,180,252,.55) 60%);padding:0 2px}'
+      +'.hero .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.hero .chip{font-size:12px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 12px}.hero .chip b{color:#a5b4fc}'
+      +'.wrap{max-width:860px;margin:0 auto;padding:32px 32px 80px}.sec-k{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--ac);background:var(--ac-50);border:1px solid var(--ac-100);border-radius:999px;padding:4px 12px;margin-bottom:12px}'
+      +'h2{font-size:22px;font-weight:800;letter-spacing:-.025em;margin-bottom:8px}.lead{font-size:13.5px;color:var(--ink2);margin-bottom:16px}'
+      +'table{width:100%;border-collapse:collapse;font-size:12.5px;margin:8px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-variant-numeric:tabular-nums}'
+      +'th{background:var(--ac-50);color:var(--ac-700);font-weight:800;text-align:right;padding:11px 13px;font-size:11.5px;border-bottom:1px solid var(--ac-100)}th:first-child{text-align:left}'
+      +'td{padding:12px 13px;border-bottom:1px solid var(--line2);text-align:right;color:var(--ink2)}td.nm{text-align:left;font-weight:700;color:var(--ink)}td.c{text-align:center}td.hit{background:var(--ac-50);font-weight:800;color:var(--ac-700)}'
+      +'tr:nth-child(even) td{background:var(--soft)}tr:nth-child(even) td.hit{background:var(--ac-100)}'
+      +'.t{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:7px}.t.b{background:var(--ac-50);color:var(--ac)}.t.n{background:#f1f5f9;color:var(--muted)}'
+      +'.total{background:var(--ink);color:#fff;border-radius:14px;padding:22px 26px;display:flex;justify-content:space-between;align-items:center;margin:16px 0;flex-wrap:wrap;gap:8px}'
+      +'.total .tl2{font-size:13px;color:#94a3b8;font-weight:700;letter-spacing:.06em}.total .tv{font-size:26px;font-weight:800;letter-spacing:-.02em;color:#a5b4fc}.total .tv small{font-size:13px;font-weight:600;color:#cbd5e1;margin-left:8px}'
+      +'.co{border-radius:12px;padding:14px 18px;margin:12px 0;font-size:13px;line-height:1.7;border:1px solid var(--line)}.co.ac{background:var(--ac-50);border-color:var(--ac-100)}.co .lab{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase;color:var(--ac)}.co b{color:var(--ink)}'
+      +'footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.8;margin-top:8px}'
+      +'@media print{.hero,.total,.co,td.hit,th{-webkit-print-color-adjust:exact;print-color-adjust:exact}}';
+    var doc='<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>'+brand+' · 1차 견적 | BRANDRISE</title>'
+      +'<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet"><style>'+css+'</style></head><body>'
+      +'<div class="hero"><div class="in"><div class="badge">BRAND CONSULTING QUOTE · 1차 견적</div><h1>'+brand+' · 1차 <span class="hl">견적</span></h1>'
+      +'<div class="meta"><span class="chip">견적일 <b>'+ymdDash()+'</b></span><span class="chip">선택 합계 <b>'+won(tot)+' (VAT 별도)</b></span><span class="chip">기준 <b>셀렉 매트릭스 L 결과</b></span></div></div></div>'
+      +'<div class="wrap"><section><div class="sec-k">SELECTION RESULT</div><h2>견적 셀렉 결과 — 항목별 난이도</h2>'
+      +'<p class="lead">PREP 상담 셀렉(항목별 L1·L2·L3)으로 정해진 단가입니다. <b>L2(내부 표준)가 기준선</b>, L1은 경량(프리랜서), L3은 풀(외주·고사양). <b>단가 공유 원칙</b>: 공통 항목 단가는 브랜드 불문 동일합니다. (단위: 만원 · VAT 별도)</p>'
+      +'<table><thead><tr><th>견적 항목</th><th style="width:16%">L1 경량(프리랜서)</th><th style="width:16%">L2 표준(내부)★</th><th style="width:18%">L3 풀(외주·고사양)</th><th class="c" style="width:10%">선택</th></tr></thead><tbody>'+rows+'</tbody></table>'
+      +'<div class="total"><div class="tl2">선택 합계 (L 셀렉 결과)</div><div class="tv">'+won(tot)+' <small>= '+fmt(tot)+'만 · '+(tot/10000).toFixed(3)+'억 · VAT 별도</small></div></div>'
+      +envNote(tot)
+      +'<div class="co"><span class="lab">비고</span>· 본 견적은 <b>1차 제안</b>이며 VAT 별도입니다. 항목·범위는 데이터 정밀 진단 결과에 따라 협의로 조정됩니다.<br>· 레벨: L1 경량(프리랜서) / L2 표준(내부) / L3 풀(외주·고사양).<br>· 월 단위 항목(IMC 파트너십)은 6개월 기준 합계입니다. 촬영 스튜디오·인쇄 실비는 별도 산정.</div>'
+      +'</section></div><footer><b>BRANDRISE</b> by HIZ · Brand · IMC Consulting<br>본 1차 견적은 상담 준비(PREP) 셀렉 결과 기반입니다 — 확정 견적은 진단 후 별도 발송됩니다.</footer></body></html>';
+    dlBlob(doc,'text/html;charset=utf-8', brand+'_1차견적_'+ymd()+'.html');
+  });
+  var bR=document.getElementById('btnReset');
+  if(bR) bR.addEventListener('click',function(){
+    ITEMS.forEach(function(it){ sel[it.key]=it.def; });
+    override={};
+    rev.value='3000';
+    render(false);
+  });
+  buildMatrix();
+  var restoredTs=load();
+  render(true);
+  if(restoredTs){ setStatus('이전 작업 복원됨 · 마지막 저장 '+hhmm(restoredTs),false); }
+})();
+</script>
+</body>
+</html>
+
