@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>백경 디자인 브리프</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+@page{size:1280px 720px;margin:0}
+:root{
+  --paper:#F3EFE6; --card:#FBF9F4; --ink:#161514; --sub:#65615A; --faint:#A29D92; --line:#D9D3C6;
+  --sea:#1D3550; --sea-t:#E2E7ED; --red:#A3372B; --red-t:#F3E2DD; --gold:#9C7F45; --gold-t:#EFE7D6;
+  --sans:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --serif:'Noto Serif KR','Nanum Myeongjo',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{background:#121211;color:var(--ink);font-family:var(--sans);word-break:keep-all;overflow-wrap:break-word;
+  -webkit-font-smoothing:antialiased;overflow:hidden;font-feature-settings:"tnum" 1}
+b,strong{font-weight:700}
+
+#stage{position:fixed;inset:0;display:grid;place-items:center;background:#121211}
+#deck{position:relative;width:1280px;height:720px;transform:scale(var(--s,1));transform-origin:center center;background:var(--paper);overflow:hidden}
+.slide{position:absolute;inset:0;width:1280px;height:720px;padding:54px 72px 50px;display:flex;flex-direction:column;
+  opacity:0;visibility:hidden;transition:opacity .18s linear;background:var(--paper);overflow:hidden}
+.slide.on{opacity:1;visibility:visible}
+@media (prefers-reduced-motion:reduce){.slide{transition:none}}
+
+/* 머리 */
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:600;letter-spacing:.12em;color:var(--sub);margin-bottom:16px}
+.eyebrow .hj{font-family:var(--serif);font-size:15px;letter-spacing:.02em;color:var(--ink)}
+.eyebrow .bar{width:28px;height:1px;background:var(--ink)}
+.eyebrow .pg{margin-left:auto;color:var(--faint);font-weight:500}
+.ttl{font-size:38px;line-height:1.3;font-weight:700;letter-spacing:-.028em;max-width:1080px}
+.ttl .mk{background:linear-gradient(transparent 60%,var(--mk,var(--gold-t)) 60%);padding:0 .05em}
+.lead{margin-top:12px;font-size:18px;line-height:1.6;color:var(--sub);max-width:980px}
+.body{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0}
+.foot{margin-top:auto;padding-top:12px;font-size:13px;color:var(--faint);line-height:1.6}
+.note{display:none}
+
+/* 표지 */
+.cover{background:var(--ink);color:var(--paper);padding:56px 72px}
+.cover .top{display:flex;justify-content:space-between;font-size:13px;font-weight:600;letter-spacing:.14em;color:#8f8a80}
+.cover .mark{margin-top:70px;display:flex;align-items:flex-end;gap:44px}
+.cover .hj{font-family:var(--serif);font-weight:700;font-size:180px;line-height:.9;letter-spacing:-.02em}
+.cover .t{padding-bottom:14px}
+.cover .t .k{font-size:17px;letter-spacing:.2em;color:#b9b2a5;font-weight:600}
+.cover .t h1{margin-top:14px;font-size:44px;line-height:1.25;font-weight:700;letter-spacing:-.03em}
+.cover .meta{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid #3a3834;padding-top:22px;font-size:16px;line-height:1.7;color:#cfc8ba}
+.cover .meta b{color:var(--paper)}
+
+/* 3행 */
+.rows{display:grid;gap:12px;margin-top:30px}
+.rows .r{display:grid;grid-template-columns:70px 300px 1fr;align-items:center;gap:22px;background:var(--card);padding:22px 28px;border-left:3px solid var(--sea)}
+.rows .n{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--sea);line-height:1}
+.rows .h{font-size:23px;font-weight:700;letter-spacing:-.02em;line-height:1.35}
+.rows .d{font-size:16px;color:var(--sub);line-height:1.6}
+
+/* 브랜드 */
+.brand{display:grid;grid-template-columns:430px 1fr;gap:28px;margin-top:26px;flex:1;min-height:0}
+.quote{background:var(--sea);color:var(--paper);padding:30px 32px;display:flex;flex-direction:column}
+.quote .q{font-family:var(--serif);font-size:29px;line-height:1.5;font-weight:700;letter-spacing:-.01em}
+.quote .by{margin-top:12px;font-size:14px;color:#aebccc}
+.quote .ex{margin-top:auto;font-size:15px;line-height:1.65;color:#d7dee6;border-top:1px solid #3b5470;padding-top:16px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--ink)}
+.fact{padding:24px 18px 24px 0;border-bottom:1px solid var(--line)}
+.fact:nth-child(3n+2),.fact:nth-child(3n+3){padding-left:20px;border-left:1px solid var(--line)}
+.fact .v{font-size:40px;font-weight:700;letter-spacing:-.04em;line-height:1}
+.fact .v small{font-size:19px;font-weight:600;margin-left:3px;letter-spacing:0}
+.fact .k{margin-top:8px;font-size:14px;color:var(--sub);line-height:1.45}
+.bline{margin-top:22px;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:14.5px;line-height:1.55}
+.bline dt{font-weight:700}
+.bline dd{color:var(--sub)}
+
+/* 제약 4 */
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+.lock{background:var(--card);padding:22px 20px 20px;display:flex;flex-direction:column;gap:10px;border-top:4px solid var(--red)}
+.lock .no{font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--red)}
+.lock .say{font-size:24px;font-weight:700;letter-spacing:-.025em;line-height:1.28}
+.lock p{font-size:15px;color:var(--sub);line-height:1.6}
+.lock .ok{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-size:14px;line-height:1.5}
+.lock .ok i{font-style:normal;font-weight:700;color:var(--sea)}
+.band{margin-top:14px;background:var(--ink);color:var(--paper);padding:16px 24px;font-size:17px;display:flex;gap:18px;align-items:center}
+.band .tag{font-size:12px;letter-spacing:.14em;color:#a9a397;font-weight:700;white-space:nowrap}
+
+/* 패키지 */
+.pk{display:grid;grid-template-columns:470px 1fr;gap:30px;margin-top:24px;flex:1;align-content:center}
+.ladder{background:var(--card);padding:22px 24px}
+.ladder h4,.spec h4{font-size:13px;letter-spacing:.12em;color:var(--sub);font-weight:700;margin-bottom:14px}
+.step{display:grid;grid-template-columns:14px 1fr;gap:14px;align-items:start;padding:12px 0;border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:0}
+.step .dot{width:12px;height:12px;margin-top:6px;background:var(--ink)}
+.step .nm{font-size:17px;font-weight:700;line-height:1.4}
+.step .ds{font-size:14px;color:var(--sub);line-height:1.5}
+.step.gap{background:var(--red-t);margin:4px -12px;padding:14px 12px;border:1px dashed var(--red)}
+.step.gap .dot{background:transparent;border:2px solid var(--red)}
+.step.gap .nm{color:var(--red)}
+.spec table{width:100%;border-collapse:collapse;font-size:15.5px}
+.spec th,.spec td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.spec thead th{border-bottom:2px solid var(--ink);font-size:15px}
+.spec tbody th{width:128px;color:var(--sub);font-weight:600}
+.tbd{background:var(--gold-t);padding:1px 6px}
+.spec .memo{margin-top:10px;font-size:13px;color:var(--faint)}
+.ask{margin-top:16px;border-left:3px solid var(--sea);padding:6px 0 6px 18px;font-size:17px;line-height:1.6}
+.ask b{color:var(--sea)}
+
+/* 띠지 */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px}
+.pov{background:var(--card);padding:30px 28px 26px;display:flex;flex-direction:column;gap:14px;min-height:250px}
+.pov .who{font-size:13px;letter-spacing:.12em;font-weight:700;color:var(--sub)}
+.pov .say{font-family:var(--serif);font-size:26px;line-height:1.5;font-weight:700}
+.pov p{font-size:15px;color:var(--sub);line-height:1.6;margin-top:auto}
+.arrow{margin-top:12px;flex:1;max-height:190px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.arrow .now{background:var(--red-t);padding:26px 28px;font-size:19px;line-height:1.6}
+.arrow .now b{color:var(--red)}
+.arrow .want{background:var(--sea);color:var(--paper);padding:26px 28px;font-size:18px;line-height:1.6}
+.arrow .want b{font-size:24px;display:block;margin-bottom:8px}
+
+/* 과업표 */
+.scope{width:100%;border-collapse:collapse;margin-top:30px;font-size:16.5px}
+.scope th,.scope td{text-align:left;padding:21px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+.scope thead th{padding-top:10px;padding-bottom:10px;border-bottom:2px solid var(--ink);font-size:14px;color:var(--sub);letter-spacing:.04em}
+.scope td.n{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--sea);width:52px}
+.scope td.t{font-size:19px;font-weight:700;width:220px}
+.scope td.dd{width:120px;font-weight:700;font-size:17px;white-space:nowrap}
+.pri{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;color:#fff;background:var(--red);padding:2px 7px;margin-left:6px;vertical-align:3px}
+.scope tr.top td{background:var(--card)}
+
+/* 브랜드 정리 방향 */
+.grid4{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;margin-top:26px;flex:1;min-height:0}
+.dir{background:var(--card);padding:30px 28px;align-content:start;display:grid;grid-template-columns:120px 1fr;gap:18px}
+.dir .l{font-size:13px;letter-spacing:.1em;font-weight:700;color:var(--sea);line-height:1.5}
+.dir .l .big{display:block;font-family:var(--serif);font-size:24px;letter-spacing:0;color:var(--ink);margin-top:6px}
+.dir h4{font-size:21px;line-height:1.4;letter-spacing:-.02em;margin-bottom:8px}
+.dir ul{list-style:none;font-size:15.5px;color:var(--sub);line-height:1.7}
+.dir li{padding-left:12px;position:relative}
+.dir li::before{content:'';position:absolute;left:0;top:.72em;width:5px;height:1px;background:var(--sub)}
+
+/* 일정 */
+.tl{position:relative;margin-top:34px;flex:1;min-height:0}
+.tl .lane{position:relative;display:grid;grid-template-columns:150px 1fr;border-top:1px solid var(--line)}
+.tl .lane .nm{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--sub);padding-top:12px;line-height:1.45}
+.tl .lane .nm small{display:block;font-weight:500;letter-spacing:0;color:var(--faint)}
+.tl .cv{position:relative}
+.tl .mo{position:absolute;top:0;bottom:0;border-left:1px dashed var(--line)}
+.tl .mh{display:grid;grid-template-columns:150px 1fr}
+.tl .mh .cv{height:26px}
+.tl .mh .ml{position:absolute;top:0;font-size:13px;font-weight:700;color:var(--faint);padding-left:6px;letter-spacing:.06em}
+.tl .axis{position:absolute;left:0;right:0;top:122px;height:2px;background:var(--ink)}
+.tl .ms{position:absolute;top:115px;width:0}
+.tl .ms i{position:absolute;left:-8px;top:0;width:16px;height:16px;background:var(--paper);border:3px solid var(--ink);border-radius:50%}
+.tl .ms.hard i{background:var(--red);border-color:var(--red)}
+.tl .ms .lb{position:absolute;bottom:26px;left:-52px;width:104px;text-align:center;font-size:13.5px;line-height:1.35;color:var(--sub)}
+.tl .ms .lb b{display:block;font-size:20px;letter-spacing:-.02em;color:var(--ink)}
+.tl .ms.hard .lb b{color:var(--red)}
+.tl .bar{position:absolute;height:24px;font-size:12.5px;line-height:24px;white-space:nowrap}
+.tl .bar em{font-style:normal;position:absolute;left:100%;margin-left:8px;color:var(--sub)}
+.tl .bar.in em{position:static;margin:0;padding:0 8px;color:inherit}
+.tl .win{background:var(--gold-t);border:1px solid var(--gold)}
+.tl .win em{color:var(--gold);font-weight:700}
+.tl .busy{background:repeating-linear-gradient(135deg,#d6cfc1 0 6px,#e6e0d4 6px 12px)}
+.tl .prod{background:var(--ink);color:var(--paper)}
+.tl .prod.bk{background:var(--sea-t);color:var(--sea)}
+.tl .pf{position:absolute;width:14px;height:14px;transform:rotate(45deg);border:2px solid var(--sea);background:var(--paper)}
+.tl .legend{margin-top:14px;display:flex;gap:22px;font-size:13px;color:var(--sub);flex-wrap:wrap}
+.tl .legend span{display:inline-flex;align-items:center;gap:6px}
+.tl .legend i{display:inline-block;width:16px;height:12px}
+
+/* 레퍼런스 */
+.refs{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:34px}
+.ref{background:var(--card);padding:28px 22px;display:flex;flex-direction:column;gap:12px;min-height:330px}
+.ref .nm{font-size:24px;font-weight:700;letter-spacing:-.02em}
+.ref .why{font-size:12.5px;letter-spacing:.08em;color:var(--sea);font-weight:700}
+.ref p{font-size:16px;color:var(--sub);line-height:1.6}
+.not{margin-top:12px;display:flex;gap:18px;align-items:center;background:var(--red-t);padding:20px 24px;font-size:17px}
+.not .tag{font-size:12px;letter-spacing:.12em;color:var(--red);font-weight:700;white-space:nowrap}
+
+/* 요청 */
+.req{display:grid;grid-template-columns:1.15fr 1fr;gap:30px;margin-top:32px}
+.req h4{font-size:13px;letter-spacing:.12em;color:var(--sub);font-weight:700;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--ink)}
+.req ol,.req ul{list-style:none;counter-reset:q}
+.req li{position:relative;padding:14px 0 14px 34px;border-bottom:1px solid var(--line);font-size:16.5px;line-height:1.5}
+.req ol li{counter-increment:q}
+.req ol li::before{content:counter(q,decimal-leading-zero);position:absolute;left:0;top:16px;font-size:13px;font-weight:700;color:var(--sea)}
+.req ul li::before{content:'';position:absolute;left:4px;top:21px;width:10px;height:10px;border:1.5px solid var(--ink)}
+.req li span{color:var(--sub)}
+.how{margin-top:18px;background:var(--sea);color:var(--paper);padding:22px 24px;font-size:16.5px;line-height:1.7}
+
+/* 크롬 */
+#bar{position:fixed;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.08);z-index:20}
+#fill{height:100%;width:0;background:var(--gold);transition:width .2s}
+#hud{position:fixed;right:14px;bottom:12px;z-index:21;background:rgba(18,18,17,.82);padding:6px 8px 6px 12px;font:600 12px/1 var(--sans);color:rgba(255,255,255,.55);letter-spacing:.08em;display:flex;gap:10px;align-items:center}
+#hud button{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.75);font:600 11px var(--sans);padding:5px 8px;cursor:pointer;letter-spacing:.06em}
+#hud button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+body.edit #bE{background:var(--gold);color:#111;border-color:var(--gold)}
+#nt{position:fixed;left:50%;transform:translateX(-50%);bottom:24px;width:min(1100px,94vw);max-height:30vh;overflow:auto;background:rgba(18,18,17,.95);color:#f3efe6;
+  font-size:16px;line-height:1.65;padding:16px 22px;z-index:22;display:none;border-top:3px solid var(--gold)}
+body.notes #nt{display:block}
+#ov{position:fixed;inset:0;background:rgba(18,18,17,.97);z-index:30;display:none;overflow:auto;padding:40px}
+#ov.on{display:block}
+#ovg{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;max-width:1300px;margin:0 auto}
+.ovc{background:#2a2926;color:#eee;padding:12px 14px;cursor:pointer;font-size:14px;line-height:1.45;min-height:80px}
+.ovc .i{font-size:11px;letter-spacing:.1em;color:#999;margin-bottom:6px}
+.ovc.cur{outline:2px solid var(--gold)}
+body.edit [contenteditable="true"]{outline:1px dashed rgba(156,127,69,.8);outline-offset:3px}
+
+@media print{
+  html,body{height:auto;overflow:visible;background:#fff}
+  #stage{position:static;display:block}
+  #deck{transform:none!important;width:1280px;height:auto;overflow:visible}
+  .slide{position:relative;opacity:1;visibility:visible;page-break-after:always;break-after:page}
+  #bar,#hud,#nt,#ov{display:none!important}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div id="stage"><div id="deck">
+
+<!-- 00 표지 -->
+<section class="slide cover" data-t="표지">
+  <div class="top"><span>BAEKKYUNG DISTILLERY × HIZ</span><span>DESIGN BRIEF · v2</span></div>
+  <div class="mark">
+    <div class="hj">白鯨</div>
+    <div class="t">
+      <div class="k">백경증류소</div>
+      <h1 class="ed">브랜드 디자인 ·<br>선물 패키지 리뉴얼 브리프</h1>
+    </div>
+  </div>
+  <div class="meta">
+    <div class="ed"><b>2026. 09. 21</b> · 디자인 파트너 미팅</div>
+    <div class="ed" style="text-align:right">HIZ 우성민</div>
+  </div>
+  <div class="note">실물 술은 테이블 위에 미리 세팅. 750ml 백경15 3종 + 375ml 탁주 + 현행 선물 상자. 냉장 보관분 1병을 같이 두면 결로 설명이 빠르다.</div>
+</section>
+
+<!-- 01 과업 정의 -->
+<section class="slide" data-t="과업 정의">
+  <div class="eyebrow"><span class="hj">白鯨</span><span class="bar"></span>01 · 과업 정의<span class="pg">01</span></div>
+  <h2 class="ttl ed">새로운 백경을 만드는 게 아니라,<br><span class="mk">이미 좋은 백경을 더 가치 있게</span> 보이게 하는 작업입니다</h2>
+  <div class="body">
+    <div class="rows">
+      <div class="r"><div class="n">01</div><div class="h ed">술은 이미 충분하다</div><div class="d ed">누룩부터 직접 만드는 양조, IWSC 2026 수상, 해외 미쉐린 선정 레스토랑 페어링까지. 품질에 대한 평가는 이미 높습니다.</div></div>
+      <div class="r"><div class="n">02</div><div class="h ed">보여주는 체계가 없다</div><div class="d ed">로고·라벨은 있지만 하나의 시스템이 아닙니다. 서체 4종이 섞여 있고, 해외 바이어마다 라벨을 건별로 새로 만들고 있습니다.</div></div>
+      <div class="r"><div class="n">03</div><div class="h ed">선물 구간이 비어 있다</div><div class="d ed">프리미엄은 목각 케이스, 그 아래는 글씨만 인쇄된 흰 상자. 두 등급 사이가 통째로 비어 있습니다.</div></div>
+    </div>
+  </div>
+  <div class="foot ed">리브랜딩이 아닌 정리·확장 — 백경이 가진 자산과 헤리티지는 그대로 두고, 가치가 더 높게 읽히도록 만듭니다.</div>
+  <div class="note">한 줄로 시작: "브랜드를 다 바꾸는 게 아니라 더 비싸게 보이게 하는 작업." 기존 디자인을 평가하는 말은 쓰지 않는다.</div>
+</section>
+
+<!-- 02 브랜드 -->
+<section class="slide" data-t="백경은 어떤 브랜드인가">
+  <div class="eyebrow"><span class="hj">白鯨</span><span class="bar"></span>02 · 브랜드<span class="pg">02</span></div>
+  <h2 class="ttl ed">누룩부터 직접 빚는, <span class="mk" style="--mk:var(--sea-t)">아버지와 두 아들의 양조장</span></h2>
+  <div class="brand">
+    <div class="quote">
+      <div class="q ed">“일본술이 사시미라면,<br>한국술은 비빔밥입니다.”</div>
+      <div class="by">정창윤 대표</div>
+      <div class="ex ed">일본술은 쌀을 깎고 효모 하나로 순수한 맛을 찾는 술. 백경은 누룩 속 스무 가지 효모가 한 항아리 안에서 어우러지는 술. <b style="color:#fff">소거가 아니라 공존</b>이 백경의 문법입니다.</div>
+    </div>
+    <div>
+      <div class="facts">
+        <div class="fact"><div class="v">7<small>종</small></div><div class="k ed">직접 디디는 누룩<br>용연곡·향온곡·밀누룩 외</div></div>
+        <div class="fact"><div class="v">20<small>종</small></div><div class="k ed">누룩 속 효모<br>상업 효모 0g</div></div>
+        <div class="fact"><div class="v">180<small>일</small></div><div class="k ed">백경15 저온 숙성<br>500L 소규모 배치</div></div>
+        <div class="fact"><div class="v">8<small>종</small></div><div class="k ed">메인 라인<br>17,000 ~ 115,000원</div></div>
+        <div class="fact"><div class="v">3<small>인</small></div><div class="k ed">MASTER 정태영 · CEO 정창윤<br>BREWER 정승안</div></div>
+        <div class="fact"><div class="v">B2B<small>·수출</small></div><div class="k ed">매출 중심 채널<br>설·추석이 연간 최대 대목</div></div>
+      </div>
+      <dl class="bline">
+        <dt>뿌리</dt><dd class="ed">한약방 집안에서 약재를 법제할 때 쓰던 술 → 사람이 즐기는 술로 바꿔 온 20년</dd>
+        <dt>성과</dt><dd class="ed">IWSC 2026 Bronze(백경15) · 2025 관광벤처 장관상 · ProWein · 뉴욕 Fancy Food Show · 함부르크 입고</dd>
+        <dt>채널</dt><dd class="ed">bk-distillery.com · @baekkyung_official</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="note">국내 대표 = 골드, 해외 대표 = 블랙. 블랙은 고기, 화이트는 해산물 페어링으로 설계된 술.</div>
+</section>
+
+<!-- 03 못 바꾸는 것 -->
+<section class="slide" data-t="못 바꾸는 것 4가지">
+  <div class="eyebrow"><span class="hj">白鯨</span><span class="bar"></span>03 · 설계 전 제약<span class="pg">03</span></div>
+  <h2 class="ttl ed">설계 전에 먼저 고정할 것, <span class="mk" style="--mk:var(--red-t)">바꿀 수 없는 4가지</span></h2>
+  <div class="body">
+    <div class="four">
+      <div class="lock"><div class="no">LOCK 01</div><div class="say ed">병 750ml</div><p class="ed">해외 와인셀러 슬롯 규격입니다. 병이 얇아지면 셀러에서 빠집니다. 수출 표준이 750ml입니다.</p><div class="ok ed"><i>참고</i> 375ml 병도 사용 중 — 국내 선호. 라벨 판형이 2규격</div></div>
+      <div class="lock"><div class="no">LOCK 02</div><div class="say ed">방수 라벨</div><p class="ed">냉장 보관과 결로로 물이 라벨에 직접 닿습니다. 한지 실물은 젖으면 색이 진해져 제외합니다.</p><div class="ok ed"><i>가능</i> 한지 ‘느낌’을 내는 방수 지종 · 내한·내수 점착</div></div>
+      <div class="lock"><div class="no">LOCK 03</div><div class="say ed">실링 2만 개<br>발주 완료</div><p class="ed">병목 봉인은 출고 필수입니다. 이번 물량은 디자인이 고정되고, 변경은 다음 발주분부터입니다.</p><div class="ok ed"><i>환영</i> 뗄 때 남는 본드 자국 — 다음 발주분 개선 제안</div></div>
+      <div class="lock"><div class="no">LOCK 04</div><div class="say ed">수작업<br>최소화</div><p class="ed">엔트리 라인은 수백~수천 병 단위로 나갑니다. 병마다 손이 가는 구조는 생산 라인에서 버티지 못합니다.</p><div class="ok ed"><i>기준</i> 엔트리 라인은 병당 추가 손작업 0에 가깝게</div></div>
+    </div>
+    <div class="band"><span class="tag">이번 발주 대상</span><span class="ed">라벨 · 지류 선물 패키지 · 단상자·박스 — <b>병·실링·캡은 고정</b></span></div>
+  </div>
+  <div class="note">병을 직접 손에 쥐여주고 냉장분 라벨 상태를 같이 본다. 라벨 재질 변경은 이전에 두 번 시도했다가 실패한 지점이라는 것도 전달.</div>
+</section>
+
+<!-- 04 선물 패키지 -->
+<section class="slide" data-t="선물 패키지 — 빈 구간">
+  <div class="eyebrow"><span class="hj">白鯨</span><span class="bar"></span>04 · 선물 패키지 · 최우선 과업<span class="pg">04</span></div>
+  <h2 class="ttl ed">핵심은 <span class="mk" style="--mk:var(--red-t)">목각 케이스와 흰 상자 사이의 빈 구간</span>입니다</h2>
+  <div class="pk">
+    <div class="ladder">
+      <h4>현행 선물 라인</h4>
+      <div class="step"><span class="dot"></span><div><div class="nm ed">마호가니 목각 2구</div><div class="ds ed">750ml × 2 · 프리미엄</div></div></div>
+      <div class="step"><span class="dot"></span><div><div class="nm ed">소나무 목각 1구 · 3구</div><div class="ds ed">750ml × 1 · 250ml × 3</div></div></div>
+      <div class="step gap"><span class="dot"></span><div><div class="nm ed">비어 있음 — 이번에 채울 구간</div><div class="ds ed">선물로 설계된 지류 패키지가 없음</div></div></div>
+      <div class="step"><span class="dot"></span><div><div class="nm ed">흰색·아이보리 종이 상자</div><div class="ds ed">글씨만 인쇄 · 기본 포장용</div></div></div>
+    </div>
+    <div class="spec">
+      <h4>이번에 설계할 2종</h4>
+      <table>
+        <thead><tr><th></th><th>일반 선물세트</th><th>프리미엄 선물세트</th></tr></thead>
+        <tbody>
+          <tr><th>기준 구성</th><td class="ed">750ml × 2<br>(3병 확장 대응)</td><td class="ed">750ml × 2<br>+ 잔·엽서 등 동봉물</td></tr>
+          <tr><th>대표 제품</th><td class="ed">백경15 골드 · 블랙</td><td class="ed">백경15 향온</td></tr>
+          <tr><th>세트 판매가</th><td class="ed">10~13만원대</td><td class="ed">20~25만원대</td></tr>
+          <tr><th>목표 제작 단가</th><td class="ed"><span class="tbd">8,000~12,000원</span></td><td class="ed"><span class="tbd">20,000~30,000원</span></td></tr>
+        </tbody>
+      </table>
+      <div class="memo ed">세트 판매가·제작 단가는 잠정치 — 현행 발주 단가 확인 후 확정합니다.</div>
+      <div class="ask ed"><b>소재 등급보다 개봉 경험과 구성으로</b> 차이를 만들어 주세요. 해외 발송·팝업 이동이 잦아 파손과 무게도 기준입니다.</div>
+    </div>
+  </div>
+  <div class="note">현행 흰 상자 실물을 열어 보여준다. 목표 단가는 세종 실측 전이라 잠정. 설·추석이 최대 대목이고 신규 패키지는 12월 연말 시즌부터 투입.</div>
+</section>
+
+<!-- 05 띠지·끈 -->
+<section class="slide" data-t="띠지·끈 — 풀어야 할 문제">
+  <div class="eyebrow"><span class="hj">白鯨</span><span class="bar"></span>05 · 풀어야 할 문제<span class="pg">05</span></div>
+  <h2 class="ttl ed">아직 아무도 못 푼 문제, <span class="mk" style="--mk:var(--sea-t)">병 상단의 띠지와 끈</span></h2>
+  <div class="three">
+    <div class="pov"><div class="who">브랜드 관점</div><div class="say ed">“병 위에 띠지나 끈이 있어야 선물 감도가 난다.”</div><p class="ed">수작업이 들더라도 있어야 한다는 입장</p></div>
+    <div class="pov"><div class="who">생산 관점</div><div class="say ed">“병마다 손으로 감는 공수는 감당할 수 없다.”</div><p class="ed">엔트리 라인은 수백~수천 병 단위</p></div>
+    <div class="pov"><div class="who">대표 관점</div><div class="say ed">“스티커 접착제가 남는 건 싫다.”</div><p class="ed">실링을 뗄 때 남는 본드 자국도 같은 불만</p></div>
+  </div>
+  <div class="arrow">
+    <div class="now ed"><b>지금</b> — 절충안이 없어 실링(루땡)으로 대체. 공정은 풀렸지만 고급감이 빠졌습니다.</div>
+    <div class="want ed"><b>손이 최소로 가면서 감도가 나오는 방식</b>끼움·다이컷·자립 슬리브 등 구조로 푸는 아이디어를 기대합니다.</div>
+  </div>
+  <div class="note">여기서는 설명보다 먼저 디자이너 아이디어를 듣는다. 실링은 이번 물량 고정이라는 점(03장)과 같이 본다.</div>
+</section>
+
+<!-- 06 과업 범위 -->
+<section class="slide" data-t="과업 범위 5블록">
+  <div class="eyebrow"><span class="hj">白鯨</span><span class="bar"></span>06 · 과업 범위<span class="pg">06</span></div>
+  <h2 class="ttl ed">과업은 다섯 블록, <span class="mk">선물 패키지와 라벨이 우선</span>입니다</h2>
+  <table class="scope">
+    <thead><tr><th></th><th>과업</th><th>내용</th><th>확정 목표</th></tr></thead>
+    <tbody>
+      <tr class="top"><td class="n">①</td><td class="t ed">선물세트 패키지<span class="pri">최우선</span></td><td class="ed">일반 1종 · 프리미엄 1종 — 구성 기획, 구조 설계(전개도·칼선), 지종·후가공 지정, 인쇄 데이터</td><td class="dd ed">11/7</td></tr>
+      <tr class="top"><td class="n">②</td><td class="t ed">라벨 5종<span class="pri">우선</span></td><td class="ed">백경15 화이트 · 골드 · 블랙 / 백경12 / 백경10 탁주 — 판형 2규격(750ml 4종 + 375ml 1종)</td><td class="dd ed">10/17</td></tr>
+      <tr><td class="n">③</td><td class="t ed">브랜드 디자인 정리</td><td class="ed">서체 체계 · 고래 심볼 디테일 · 컬러 · 타이포그래피 · 기본 응용 원칙</td><td class="dd ed">10월</td></tr>
+      <tr><td class="n">④</td><td class="t ed">단상자 · 택배 박스</td><td class="ed">750 / 375 단상자 · 택배 박스 체계 (기성 박스 + 브랜드 스탬프 방식 포함 검토)</td><td class="dd ed">11/7</td></tr>
+      <tr><td class="n">⑤</td><td class="t ed">브랜드 디자인 가이드</td><td class="ed">로고 사용 규정 · 컬러 · 서체 · 이미지 톤 문서화</td><td class="dd ed">11/20</td></tr>
+    </tbody>
+  </table>
+  <div class="foot ed">범위 밖 — 프리미엄 오양주(향온·향미주곡·호라산) 라벨과 소주 · 호라산은 제품명 변경 가능성으로 제외 · 사내 라벨 프린터로 소량 커스텀을 뽑기 때문에 원본은 <b style="color:var(--sub)">AI 원본 + 변형 규칙</b>으로 재생산 가능해야 합니다.</div>
+  <div class="note">택배 박스는 알병·단상자·목각·합포장·아이스팩까지 전부 맞추려다 규격이 비대해진 상태. 전용 박스보다 기성 박스 + 스탬프가 현실적.</div>
+</section>
+
+<!-- 07 브랜드 정리 방향 -->
+<section class="slide" data-t="브랜드 디자인 정리 방향">
+  <div class="eyebrow"><span class="hj">白鯨</span><span class="bar"></span>07 · 브랜드 디자인 정리 방향<span class="pg">07</span></div>
+  <h2 class="ttl ed">자산은 이미 있습니다. <span class="mk" style="--mk:var(--sea-t)">쓰는 원칙</span>이 필요합니다</h2>
+  <div class="grid4">
+    <div class="dir"><div class="l">TYPE<span class="big">4 → 1</span></div><div><h4 class="ed">서체 4종을 하나의 원칙으로</h4><ul class="ed"><li>도올 김용옥 한자 · 도올 한글 · 캘리그래피(현 배경 로고) · 기존 로고</li><li>국내는 한자 활용도가 높고, 미국·유럽 바이어는 한글 타입을 선호</li><li>둘 다 근거 있는 자산 — 상황별 사용 원칙 + 바이어용 변형 규칙</li></ul></div></div>
+    <div class="dir"><div class="l">SYMBOL<span class="big">白鯨</span></div><div><h4 class="ed">고래는 향유고래로</h4><ul class="ed"><li>백경 = 『모비 딕』의 흰 고래, 곧 향유고래</li><li>자체 누룩 ‘용연곡’도 향유고래의 용연향에서 온 이름</li><li>메타포는 유지, 누워 있는 인상 → 꼬리와 실루엣을 살림</li></ul></div></div>
+    <div class="dir"><div class="l">COLOR<span class="big">1단계</span></div><div><h4 class="ed">오리지널 체계가 먼저</h4><ul class="ed"><li>이번 차수 = 백경의 기본 컬러·타이포 체계 확립</li><li>라인별 컬러 베리에이션은 내년 리미티드·시즈널로</li><li>1차 시안에 <b style="color:var(--ink)">「내년 리미티드 컬러 로드맵」 1장</b> 포함 요청</li></ul></div></div>
+    <div class="dir"><div class="l">LABEL TEXT<span class="big">검수</span></div><div><h4 class="ed">문구·표시사항은 HIZ와 확정</h4><ul class="ed"><li>주류는 건강·효능 표현 불가 — 확정 전 HIZ 검수</li><li>카테고리 표기(약주 등)는 소비자 오인 문제로 검토 중</li><li>수출 라벨 — 영문 표시사항·수입사 스티커 자리 확보</li></ul></div></div>
+  </div>
+  <div class="note">대표님 원형 서사: 위스키가 포경선이면 백경은 그에 맞서는 고래. 컬러 플레이는 대표님 관심이 큰 주제라 로드맵 1장이 필요.</div>
+</section>
+
+<!-- 08 일정 -->
+<section class="slide" data-t="일정">
+  <div class="eyebrow"><span class="hj">白鯨</span><span class="bar"></span>08 · 일정<span class="pg">08</span></div>
+  <h2 class="ttl ed">11/30 종료가 고정이라, <span class="mk" style="--mk:var(--red-t)">확정일 두 개는 움직이지 않습니다</span></h2>
+  <div class="tl" id="tl"></div>
+  <div class="note">백경 대표·담당자가 10/16~29 팝업, 11월 초 박람회·상하이 전시로 자리를 비운다. 승인은 금색 구간 두 곳에서 받는다. 브랜드 촬영용 프루프 1세트가 11월 초에 필요하다는 것도 이 장에서 말한다.</div>
+</section>
+
+<!-- 09 레퍼런스 -->
+<section class="slide" data-t="레퍼런스 좌표">
+  <div class="eyebrow"><span class="hj">白鯨</span><span class="bar"></span>09 · 레퍼런스 좌표<span class="pg">09</span></div>
+  <h2 class="ttl ed">백경 측과 함께 본 <span class="mk">감도의 기준선</span></h2>
+  <div class="refs">
+    <div class="ref"><div class="why">국내 기준선</div><div class="nm ed">일엽편주</div><p class="ed">작은 병과 매트한 재질. 국내 프리미엄 전통주 감도의 기준.</p></div>
+    <div class="ref"><div class="why">완성도</div><div class="nm ed">마타리</div><p class="ed">미쉐린 셰프들이 만든 브랜드. 같은 가격대에서 디자인 완성도가 가장 높게 평가됨.</p></div>
+    <div class="ref"><div class="why">형태</div><div class="nm ed">노구치 나오</div><p class="ed">예쁜 이유가 색이 아니라 병 쉐입. 간결한 라벨.</p></div>
+    <div class="ref"><div class="why">패키지 질감</div><div class="nm ed">프로젝트 삼례</div><p class="ed">싸바리 박스 질감. 틴케이스 라인으로 3~4만원대 선물 구간을 새로 만듦.</p></div>
+    <div class="ref"><div class="why">한지 활용</div><div class="nm ed">잉크우드</div><p class="ed">전주 한지 패키지. 편지지까지 한지로 맞춘 개봉 경험.</p></div>
+  </div>
+  <div class="not"><span class="tag">배제</span><span class="ed">라인별 컬러 플레이 중심의 사케 패키지 · 내추럴와인 톤</span></div>
+  <div class="note">삼례는 가격대 구간을 새로 만든 사례라 04장 빈 구간과 연결해서 설명.</div>
+</section>
+
+<!-- 10 요청 -->
+<section class="slide" data-t="견적 · 회신 요청">
+  <div class="eyebrow"><span class="hj">白鯨</span><span class="bar"></span>10 · 견적 · 회신 요청<span class="pg">10</span></div>
+  <h2 class="ttl ed">견적 단계에서 <span class="mk">함께 정하고 싶은 것</span></h2>
+  <div class="req">
+    <div>
+      <h4>견적에 담아주실 것</h4>
+      <ol class="ed">
+        <li>과업별 분리 견적 <span>— ① 패키지 ② 라벨 ③ 브랜드 정리 ④ 단상자·박스 ⑤ 가이드</span></li>
+        <li>시안 안(案) 수 <span>— 패키지 2안 · 브랜드 체계 1안+변형 · 라벨 2안 기준</span></li>
+        <li>무상 수정 <span>— 산출물별 시안 확정 후 2회</span></li>
+        <li>지식재산권 <span>— 최종 결과물은 백경증류소 귀속, 포트폴리오 사용 가능</span></li>
+        <li>패키지 구조 설계(전개도·칼선) · 인쇄 감리·색교정 포함 여부</li>
+        <li>브랜드 촬영용 패키지 프루프 1세트 <span>— 제작 가능 시점·비용</span></li>
+        <li>착수 가능일 · 1차 시안까지 소요 기간</li>
+      </ol>
+    </div>
+    <div>
+      <h4>착수 시 전달드릴 자료</h4>
+      <ul class="ed">
+        <li>서체 원본 4종 <span>(한자 · 한글 · 캘리그래피 · 기존 로고)</span></li>
+        <li>기존 라벨 원본 AI 전 제품</li>
+        <li>현행 선물세트 · 단상자 인쇄 데이터</li>
+        <li>회사소개서 · 제품소개서 · 카탈로그</li>
+        <li>현행 선물세트 실물 샘플</li>
+      </ul>
+      <div class="how ed">시안 리뷰에는 백경 브랜드 담당(이사님)이 함께합니다 · 온라인 가능<br>커뮤니케이션 창구 — HIZ 우성민</div>
+    </div>
+  </div>
+  <div class="note">미팅 종료 전 견적 회신일을 날짜로 받는다.</div>
+</section>
+
+</div></div>
+
+<div id="bar"><div id="fill"></div></div>
+<div id="hud"><span><span id="cur">01</span> / <span id="tot">01</span></span>
+  <button id="bO" title="전체 보기 (O)">전체</button><button id="bN" title="발표 노트 (N)">노트</button><button id="bE" title="편집 모드 (E)">편집</button><button id="bP" title="PDF 저장 (P)">PDF</button></div>
+<div id="nt"></div>
+<div id="ov"><div id="ovg"></div></div>
+
+<script>
+(function(){
+  /* ── 일정 타임라인 ── */
+  var T0=new Date('2026-09-21'), T1=new Date('2027-01-01'), W=986;
+  function x(d){ return Math.round((new Date(d)-T0)/(T1-T0)*W); }
+  function w(a,b){ return x(b)-x(a); }
+  var MO=[['2026-09-21','9월'],['2026-10-01','10월'],['2026-11-01','11월'],['2026-12-01','12월']];
+  function grid(){ return MO.slice(1).map(function(m){ return '<div class="mo" style="left:'+x(m[0])+'px"></div>'; }).join(''); }
+  function bar(cls,a,b,top,label,inside){ return '<div class="bar '+cls+(inside?' in':'')+'" style="top:'+top+'px;left:'+x(a)+'px;width:'+w(a,b)+'px"><em>'+label+'</em></div>'; }
+  var h='<div class="mh"><div></div><div class="cv">'+MO.map(function(m,i){ return '<div class="ml" style="left:'+(i?x(m[0]):0)+'px">'+m[1]+'</div>'; }).join('')+'</div></div>';
+  // 1 마일스톤
+  var ms=[['2026-09-28','','9월 말','착수'],['2026-10-17','hard','10/17','라벨 확정'],['2026-11-07','hard','11/7','패키지 확정'],['2026-11-20','','11/20','가이드 인계'],['2026-11-30','hard','11/30','프로젝트 종료']];
+  h+='<div class="lane"><div class="nm">확정 일정<small>디자인 · HIZ</small></div><div class="cv" style="height:150px">'+grid()+'<div class="axis"></div>'+
+     ms.map(function(m){ return '<div class="ms '+m[1]+'" style="left:'+x(m[0])+'px"><i></i><div class="lb"><b>'+m[2]+'</b>'+m[3]+'</div></div>'; }).join('')+'</div></div>';
+  // 2 승인 창
+  h+='<div class="lane"><div class="nm">백경 승인 창<small>이 구간에 확정</small></div><div class="cv" style="height:60px">'+grid()+
+     bar('win','2026-10-10','2026-10-16',18,'라벨 승인 10/10~15')+bar('win','2026-10-30','2026-11-04',18,'패키지 승인 10/30~11/3')+'</div></div>';
+  // 3 행사
+  h+='<div class="lane"><div class="nm">백경 행사 일정<small>피드백 지연 구간</small></div><div class="cv" style="height:84px">'+grid()+
+     bar('busy','2026-09-26','2026-09-29',12,'해외 행사 9/26~28')+bar('busy','2026-10-16','2026-10-30',12,'국내 팝업 10/16~29',true)+
+     bar('busy','2026-11-10','2026-11-13',12,'해외 전시 11/10~12')+bar('busy','2026-11-04','2026-11-08',42,'박람회 11/4~7')+'</div></div>';
+  // 4 제작
+  h+='<div class="lane" style="border-bottom:1px solid var(--line)"><div class="nm">제작<small>인쇄 · 입고</small></div><div class="cv" style="height:76px">'+grid()+
+     '<div class="pf" style="top:17px;left:'+(x('2026-11-03')-7)+'px"></div><div class="bar" style="top:12px;left:'+(x('2026-11-03')-14)+'px;width:0"><em style="left:auto;right:100%;margin:0 0 0 0;position:absolute;color:var(--sea);font-weight:700">촬영용 프루프 1세트 ▸</em></div>'+
+     bar('prod','2026-11-10','2026-12-01',12,'인쇄 발주 11/10 → 후가공',true)+bar('prod bk','2026-12-01','2027-01-01',12,'12월 입고·검수 (백경 자체)',true)+
+     '<div class="bar" style="top:44px;left:'+x('2026-12-01')+'px"><em style="position:static;margin:0;padding:0 8px;color:var(--gold);font-weight:700">판매 투입 = 12월 연말 · 본 타깃 2027 설</em></div>'+'</div></div>';
+  h+='<div class="legend"><span><i style="background:var(--red);border-radius:50%;width:12px"></i>고정 확정일</span><span><i style="background:var(--gold-t);border:1px solid var(--gold)"></i>백경 승인 가능 구간</span><span><i style="background:repeating-linear-gradient(135deg,#d6cfc1 0 4px,#e6e0d4 4px 8px)"></i>백경 대표·담당 부재</span><span><i style="border:2px solid var(--sea);transform:rotate(45deg);width:10px;height:10px"></i>프루프 — 제작 가능 시점 협의</span></div>';
+  document.getElementById('tl').innerHTML=h;
+
+  /* ── 덱 엔진 ── */
+  var deck=document.getElementById('deck'), seq=[].slice.call(deck.querySelectorAll('.slide'));
+  var cur=0, notes=false, edit=false, KEY='bk-design-brief-v2';
+  function render(){ seq.forEach(function(s){s.classList.remove('on');}); var s=seq[cur]; s.classList.add('on');
+    document.getElementById('cur').textContent=String(cur+1).padStart(2,'0'); document.getElementById('tot').textContent=String(seq.length).padStart(2,'0');
+    document.getElementById('fill').style.width=((cur+1)/seq.length*100)+'%';
+    var nt=s.querySelector('.note'); document.getElementById('nt').textContent=nt?nt.textContent:'(노트 없음)';
+    [].forEach.call(document.querySelectorAll('.ovc'),function(c,i){c.classList.toggle('cur',i===cur);});
+    try{ history.replaceState(null,'','#'+(cur+1)); }catch(e){} }
+  function go(n){ cur=Math.max(0,Math.min(seq.length-1,n)); render(); }
+  function fit(){ deck.style.setProperty('--s',Math.min(window.innerWidth/1280,window.innerHeight/720)); }
+  function buildOv(){ var g=document.getElementById('ovg'); g.innerHTML='';
+    seq.forEach(function(s,i){ var d=document.createElement('div'); d.className='ovc';
+      d.innerHTML='<div class="i">'+String(i).padStart(2,'0')+'</div>'+(s.dataset.t||'');
+      d.onclick=function(){ go(i); document.getElementById('ov').classList.remove('on'); }; g.appendChild(d); }); }
+  var eds=[].slice.call(deck.querySelectorAll('.ed'));
+  function load(){ try{ var d=JSON.parse(localStorage.getItem(KEY)||'{}'); eds.forEach(function(e,i){ if(d[i]!=null) e.innerHTML=d[i]; }); }catch(e){} }
+  function save(){ try{ var d={}; eds.forEach(function(e,i){ d[i]=e.innerHTML; }); localStorage.setItem(KEY,JSON.stringify(d)); }catch(e){} }
+  function toggleEdit(){ edit=!edit; document.body.classList.toggle('edit',edit);
+    eds.forEach(function(e){ e.contentEditable=edit?'true':'false'; }); if(!edit) save(); }
+  deck.addEventListener('input',function(){ if(edit) save(); });
+  document.addEventListener('keydown',function(e){ var k=e.key;
+    if(document.activeElement && document.activeElement.isContentEditable && k!=='Escape') return;
+    if(k==='ArrowRight'||k==='ArrowDown'||k===' '||k==='PageDown'){ e.preventDefault(); go(cur+1); }
+    else if(k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'){ e.preventDefault(); go(cur-1); }
+    else if(k==='Home'){ go(0); } else if(k==='End'){ go(seq.length-1); }
+    else if(k==='n'||k==='N'){ notes=!notes; document.body.classList.toggle('notes',notes); }
+    else if(k==='o'||k==='O'){ document.getElementById('ov').classList.toggle('on'); }
+    else if(k==='e'||k==='E'){ toggleEdit(); }
+    else if(k==='p'||k==='P'){ window.print(); }
+    else if(k==='Escape'){ document.getElementById('ov').classList.remove('on'); if(edit) toggleEdit(); } });
+  deck.addEventListener('click',function(e){ if(edit||e.target.closest('a,button')) return; var r=deck.getBoundingClientRect(); go(e.clientX>r.left+r.width/2?cur+1:cur-1); });
+  document.getElementById('bO').onclick=function(){ document.getElementById('ov').classList.toggle('on'); };
+  document.getElementById('bN').onclick=function(){ notes=!notes; document.body.classList.toggle('notes',notes); };
+  document.getElementById('bE').onclick=toggleEdit;
+  document.getElementById('bP').onclick=function(){ window.print(); };
+  window.addEventListener('resize',fit); fit(); load(); buildOv();
+  var hs=parseInt((location.hash||'').slice(1),10); render(); if(hs>0) go(hs-1);
+  window.addEventListener('hashchange',function(){ var n=parseInt((location.hash||'').slice(1),10); if(n>0&&n-1!==cur) go(n-1); });
+})();
+</script>
+</body>
+</html>
