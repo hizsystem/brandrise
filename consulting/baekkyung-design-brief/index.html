@@ -150,7 +150,7 @@ img{display:block}
 .pri{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;color:#fff;background:var(--red);padding:2px 6px;margin-top:5px}
 
 /* 일정 */
-.tl{position:relative;margin-top:34px;flex:1;min-height:0}
+.tl{position:relative;margin-top:18px;flex:1;min-height:0}
 .tl .lane{position:relative;display:grid;grid-template-columns:150px 1fr;border-top:1px solid var(--line)}
 .tl .lane .nm{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--sub);padding-top:12px;line-height:1.45}
 .tl .lane .nm small{display:block;font-weight:500;letter-spacing:0;color:var(--faint)}
@@ -159,11 +159,11 @@ img{display:block}
 .tl .mh{display:grid;grid-template-columns:150px 1fr}
 .tl .mh .cv{height:26px}
 .tl .mh .ml{position:absolute;top:0;font-size:13px;font-weight:700;color:var(--faint);padding-left:6px;letter-spacing:.06em}
-.tl .axis{position:absolute;left:0;right:0;top:122px;height:2px;background:var(--ink)}
-.tl .ms{position:absolute;top:115px;width:0}
+.tl .axis{position:absolute;left:0;right:0;top:98px;height:2px;background:var(--ink)}
+.tl .ms{position:absolute;top:91px;width:0}
 .tl .ms i{position:absolute;left:-8px;top:0;width:16px;height:16px;background:var(--paper);border:3px solid var(--ink);border-radius:50%}
 .tl .ms.hard i{background:var(--red);border-color:var(--red)}
-.tl .ms .lb{position:absolute;bottom:26px;left:-52px;width:104px;text-align:center;font-size:13.5px;line-height:1.35;color:var(--sub)}
+.tl .ms .lb{position:absolute;bottom:26px;left:-46px;width:92px;text-align:center;font-size:13px;line-height:1.35;color:var(--sub)}
 .tl .ms .lb b{display:block;font-size:20px;letter-spacing:-.02em;color:var(--ink)}
 .tl .ms.hard .lb b{color:var(--red)}
 .tl .bar{position:absolute;height:24px;font-size:12.5px;line-height:24px;white-space:nowrap}
@@ -175,7 +175,7 @@ img{display:block}
 .tl .prod{background:var(--ink);color:var(--paper)}
 .tl .prod.bk{background:var(--sea-t);color:var(--sea)}
 .tl .pf{position:absolute;width:14px;height:14px;transform:rotate(45deg);border:2px solid var(--sea);background:var(--paper)}
-.tl .legend{margin-top:14px;display:flex;gap:22px;font-size:13px;color:var(--sub);flex-wrap:wrap}
+.tl .legend{margin-top:10px;display:flex;gap:22px;font-size:13px;color:var(--sub);flex-wrap:wrap}
 .tl .legend span{display:inline-flex;align-items:center;gap:6px}
 .tl .legend i{display:inline-block;width:16px;height:12px}
 
@@ -434,21 +434,23 @@ body.edit [contenteditable="true"]{outline:1px dashed rgba(156,127,69,.8);outlin
   var h='<div class="mh"><div></div><div class="cv">'+MO.map(function(m,i){ return '<div class="ml" style="left:'+(i?x(m[0]):0)+'px">'+m[1]+'</div>'; }).join('')+'</div></div>';
   // 1 마일스톤
   var ms=[['2026-09-28','','9월 말','착수'],['2026-10-17','hard','10/17','라벨 확정'],['2026-11-07','hard','11/7','패키지 확정'],['2026-11-20','','11/20','가이드 인계'],['2026-11-30','hard','11/30','프로젝트 종료']];
-  h+='<div class="lane"><div class="nm">확정 일정<small>디자인 · HIZ</small></div><div class="cv" style="height:150px">'+grid()+'<div class="axis"></div>'+
+  h+='<div class="lane"><div class="nm">확정 일정<small>디자인 · HIZ</small></div><div class="cv" style="height:126px">'+grid()+'<div class="axis"></div>'+
      ms.map(function(m){ return '<div class="ms '+m[1]+'" style="left:'+x(m[0])+'px"><i></i><div class="lb"><b>'+m[2]+'</b>'+m[3]+'</div></div>'; }).join('')+'</div></div>';
   // 2 승인 창
   h+='<div class="lane"><div class="nm">백경 승인 창<small>이 구간에 확정</small></div><div class="cv" style="height:60px">'+grid()+
-     bar('win','2026-10-10','2026-10-16',18,'라벨 승인 10/10~15')+bar('win','2026-10-30','2026-11-04',18,'패키지 승인 10/30~11/3')+'</div></div>';
+     bar('win','2026-10-06','2026-10-14',18,'라벨 승인 10/6~13')+bar('win','2026-10-30','2026-11-04',18,'패키지 승인 10/30~11/3')+'</div></div>';
   // 3 행사
-  h+='<div class="lane"><div class="nm">백경 행사 일정<small>피드백 지연 구간</small></div><div class="cv" style="height:84px">'+grid()+
-     bar('busy','2026-09-26','2026-09-29',12,'해외 행사 9/26~28')+bar('busy','2026-10-16','2026-10-30',12,'국내 팝업 10/16~29',true)+
-     bar('busy','2026-11-10','2026-11-13',12,'해외 전시 11/10~12')+bar('busy','2026-11-04','2026-11-08',42,'박람회 11/4~7')+'</div></div>';
+  h+='<div class="lane"><div class="nm">백경 행사 일정<small>피드백 지연 구간</small></div><div class="cv" style="height:104px">'+grid()+
+     bar('busy','2026-09-26','2026-10-01',12,'해외 행사 9/26~30')+bar('busy','2026-10-14','2026-10-20',12,'오스트리아 10/14~19')+
+     bar('busy','2026-11-10','2026-11-13',12,'해외 전시 11/10~12')+
+     bar('busy','2026-10-09','2026-10-11',42,'술술축제 10/9~10')+bar('busy','2026-11-04','2026-11-08',42,'박람회 11/4~7')+
+     bar('busy','2026-10-16','2026-10-30',76,'국내 팝업 10/16~29',true)+'</div></div>';
   // 4 제작
   h+='<div class="lane" style="border-bottom:1px solid var(--line)"><div class="nm">제작<small>인쇄 · 입고</small></div><div class="cv" style="height:76px">'+grid()+
      '<div class="pf" style="top:17px;left:'+(x('2026-11-03')-7)+'px"></div><div class="bar" style="top:12px;left:'+(x('2026-11-03')-14)+'px;width:0"><em style="left:auto;right:100%;margin:0 0 0 0;position:absolute;color:var(--sea);font-weight:700">촬영용 프루프 1세트 ▸</em></div>'+
      bar('prod','2026-11-10','2026-12-01',12,'인쇄 발주 11/10 → 후가공',true)+bar('prod bk','2026-12-01','2027-01-01',12,'12월 입고·검수 (백경 자체)',true)+
      '<div class="bar" style="top:44px;left:'+x('2026-12-01')+'px"><em style="position:static;margin:0;padding:0 8px;color:var(--gold);font-weight:700">판매 투입 = 12월 연말 · 본 타깃 2027 설</em></div>'+'</div></div>';
-  h+='<div class="legend"><span><i style="background:var(--red);border-radius:50%;width:12px"></i>고정 확정일</span><span><i style="background:var(--gold-t);border:1px solid var(--gold)"></i>백경 승인 가능 구간</span><span><i style="background:repeating-linear-gradient(135deg,#d6cfc1 0 4px,#e6e0d4 4px 8px)"></i>백경 대표·담당 부재</span><span><i style="border:2px solid var(--sea);transform:rotate(45deg);width:10px;height:10px"></i>프루프 — 제작 가능 시점 협의</span></div>';
+  h+='<div class="legend"><span><i style="background:var(--red);border-radius:50%;width:12px"></i>고정 확정일</span><span><i style="background:var(--gold-t);border:1px solid var(--gold)"></i>백경 승인 가능 구간</span><span><i style="background:repeating-linear-gradient(135deg,#d6cfc1 0 4px,#e6e0d4 4px 8px)"></i>백경 대표·담당 부재</span><span><i style="border:2px solid var(--sea);transform:rotate(45deg);width:10px;height:10px"></i>프루프 — 제작 가능 시점 협의</span><span style="color:var(--red);font-weight:700">10/14~19 대표 부재 — 라벨 승인은 10/13까지</span></div>';
   document.getElementById('tl').innerHTML=h;
 
   /* ── 덱 엔진 ── */
